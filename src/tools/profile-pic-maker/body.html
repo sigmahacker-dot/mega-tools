@@ -1,0 +1,47 @@
+<div class="tool-card">
+  <div class="dropzone" id="profile-pic-maker-drop">
+    <span class="dz-icon">👤</span>
+    <strong>Drop your photo here</strong> or click to browse
+    <input type="file" id="profile-pic-maker-file" accept="image/*" class="hidden">
+  </div>
+  <div class="grid2 mt">
+    <div class="field">
+      <label for="profile-pic-maker-zoom">Zoom: <span id="profile-pic-maker-zoom-val">1.0</span>×</label>
+      <input type="range" id="profile-pic-maker-zoom" min="1" max="3" step="0.1" value="1">
+    </div>
+    <div class="field">
+      <label for="profile-pic-maker-shape">Shape</label>
+      <select class="select" id="profile-pic-maker-shape">
+        <option value="circle">Circle</option>
+        <option value="square">Square</option>
+      </select>
+    </div>
+  </div>
+  <div class="grid2">
+    <div class="field">
+      <label for="profile-pic-maker-ring">Ring color</label>
+      <input type="color" class="input" id="profile-pic-maker-ring" value="#4f46e5">
+    </div>
+    <div class="field">
+      <label for="profile-pic-maker-ringwidth">Ring width: <span id="profile-pic-maker-ringwidth-val">10</span> px</label>
+      <input type="range" id="profile-pic-maker-ringwidth" min="0" max="40" value="10">
+      <span class="hint">Set to 0 for no ring.</span>
+    </div>
+  </div>
+  <div class="field">
+    <label for="profile-pic-maker-size">Export size</label>
+    <select class="select" id="profile-pic-maker-size">
+      <option value="256">256 × 256 px</option>
+      <option value="512" selected>512 × 512 px</option>
+      <option value="1024">1024 × 1024 px</option>
+    </select>
+  </div>
+  <div class="center">
+    <canvas id="profile-pic-maker-canvas" class="preview" style="max-width:320px;width:100%;height:auto"></canvas>
+  </div>
+  <div class="btn-row">
+    <button class="btn btn-primary" id="profile-pic-maker-download">Download PNG</button>
+  </div>
+  <div class="error" id="profile-pic-maker-error"></div>
+  <p class="note">The crop is always centered on your photo. Files never leave your device — everything is processed in your browser.</p>
+</div>

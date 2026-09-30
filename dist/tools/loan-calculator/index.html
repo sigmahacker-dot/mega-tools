@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Loan Calculator — Free Online | ToolNest</title>
+<meta name="description" content="See the full cost of a loan: enter amount, interest rate and tenure to get the monthly EMI, total interest, total payable and a year-by-year amortization table.">
+<meta name="keywords" content="loan calculator, amortization calculator, loan interest calculator">
+<link rel="canonical" href="https://toolnest.vercel.app/tools/loan-calculator/">
+<meta property="og:title" content="Loan Calculator — Free Online | ToolNest">
+<meta property="og:description" content="See the full cost of a loan: enter amount, interest rate and tenure to get the monthly EMI, total interest, total payable and a year-by-year amortization table.">
+<meta property="og:type" content="website">
+<link rel="stylesheet" href="/assets/site.css?v=1">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='22' fill='%234f46e5'/><text x='50' y='68' font-size='52' text-anchor='middle' fill='white' font-family='Arial' font-weight='bold'>T</text></svg>">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebApplication","name":"Loan Calculator","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0"},"url":"https://toolnest.vercel.app/tools/loan-calculator/","description":"See the full cost of a loan: enter amount, interest rate and tenure to get the monthly EMI, total interest, total payable and a year-by-year amortization table."},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What does the amortization table show?","acceptedAnswer":{"@type":"Answer","text":"For each year it shows how much of your payments went to principal vs interest, and the remaining loan balance at year end."}},{"@type":"Question","name":"Why is interest higher in the early years?","acceptedAnswer":{"@type":"Answer","text":"Interest is charged on the outstanding balance, which is largest at the start, so early payments are mostly interest."}},{"@type":"Question","name":"Is this a fixed-rate calculation?","acceptedAnswer":{"@type":"Answer","text":"Yes. It assumes a fixed annual interest rate with monthly compounding over the whole tenure."}}]}]}</script>
+</head>
+<body>
+<header class="site-header">
+  <div class="container">
+    <a class="logo" href="/"><span class="logo-mark">🧰</span> ToolNest</a>
+    <nav class="site-nav">
+      <a href="/">Home</a>
+      <a href="/#categories">Categories</a>
+      <a href="/#all-tools">All Tools</a>
+    </nav>
+  </div>
+</header>
+
+<!-- ADSTERRA-HEADER: paste your Adsterra banner ad code inside the div below -->
+<div class="container"><div class="ad-slot ad-leaderboard" data-ad="header"></div></div>
+
+<main class="container">
+  <nav class="crumbs"><a href="/">Home</a> &rsaquo; <a href="/#calculators">Calculators</a> &rsaquo; Loan Calculator</nav>
+  <div class="tool-hero">
+    <h1>Loan Calculator</h1>
+    <p>See the full cost of a loan: enter amount, interest rate and tenure to get the monthly EMI, total interest, total payable and a year-by-year amortization table.</p>
+  </div>
+
+  <div class="tool-card">
+  <div class="grid2">
+    <div class="field">
+      <label for="loan-principal">Loan amount</label>
+      <input type="number" class="input" id="loan-principal" min="0" step="any" placeholder="e.g. 500000">
+    </div>
+    <div class="field">
+      <label for="loan-rate">Annual interest rate (%)</label>
+      <input type="number" class="input" id="loan-rate" min="0" step="any" placeholder="e.g. 9.5">
+    </div>
+    <div class="field">
+      <label for="loan-tenure">Tenure</label>
+      <input type="number" class="input" id="loan-tenure" min="0" step="any" placeholder="e.g. 5">
+    </div>
+    <div class="field">
+      <label for="loan-tenure-unit">Tenure unit</label>
+      <select class="select" id="loan-tenure-unit">
+        <option value="years" selected>Years</option>
+        <option value="months">Months</option>
+      </select>
+    </div>
+  </div>
+  <div class="error" id="loan-calculator-error"></div>
+  <div class="result" id="loan-result">
+    <div class="stat-cards">
+      <div class="stat-card"><div class="v" id="loan-monthly">–</div><div class="l">Monthly EMI</div></div>
+      <div class="stat-card"><div class="v" id="loan-interest">–</div><div class="l">Total interest</div></div>
+      <div class="stat-card"><div class="v" id="loan-total">–</div><div class="l">Total payable</div></div>
+    </div>
+    <table class="data" id="loan-table">
+      <thead>
+        <tr><th>Year</th><th>Principal paid</th><th>Interest paid</th><th>Balance</th></tr>
+      </thead>
+      <tbody id="loan-tbody">
+        <tr><td colspan="4" class="muted center">Enter loan details to see the amortization schedule.</td></tr>
+      </tbody>
+    </table>
+    <p class="note">Fixed annual rate, monthly compounding. Excludes fees, insurance and taxes.</p>
+  </div>
+</div>
+
+  <!-- ADSTERRA-INCONTENT: paste your Adsterra native/in-content ad code inside the div below -->
+  <div class="ad-slot" data-ad="incontent"></div>
+
+  <div class="info-grid">
+    <div class="info-card">
+      <h2>📖 How to use</h2>
+      <ol><li>Enter the loan amount (principal).</li><li>Enter the annual interest rate percentage.</li><li>Enter the tenure and choose years or months.</li><li>View your EMI summary and the yearly amortization table below.</li></ol>
+    </div>
+    <div class="info-card">
+      <h2>❓ Frequently asked questions</h2>
+      <div class="faq"><details><summary>What does the amortization table show?</summary><p>For each year it shows how much of your payments went to principal vs interest, and the remaining loan balance at year end.</p></details><details><summary>Why is interest higher in the early years?</summary><p>Interest is charged on the outstanding balance, which is largest at the start, so early payments are mostly interest.</p></details><details><summary>Is this a fixed-rate calculation?</summary><p>Yes. It assumes a fixed annual interest rate with monthly compounding over the whole tenure.</p></details></div>
+    </div>
+  </div>
+
+  <section class="section">
+    <h2>🔗 Related tools</h2>
+    <div class="tool-grid"><a class="tool-link" href="/tools/age-calculator/" data-search="age calculator enter your date of birth to get your exact age in years, months and days, plus total weeks, days, hours, the weekday you were born, and days until your next birthday. age calculator calculate age date of birth age">Age Calculator<small>Enter your date of birth to get your exact age in years, months and da…</small></a><a class="tool-link" href="/tools/bmi-calculator/" data-search="bmi calculator calculate your body mass index from height and weight in metric or imperial units. get your bmi value, weight category and the healthy weight range for your height. bmi calculator body mass index healthy weight calculator">BMI Calculator<small>Calculate your Body Mass Index from height and weight in metric or imp…</small></a><a class="tool-link" href="/tools/currency-converter/" data-search="currency converter convert any amount between 30+ world currencies with live exchange rates. pick source and target currencies, convert instantly, and see the rate and last update date. currency converter exchange rate converter usd to pkr converter">Currency Converter<small>Convert any amount between 30+ world currencies with live exchange rat…</small></a><a class="tool-link" href="/tools/discount-calculator/" data-search="discount calculator calculate the final price after a discount, with support for a second discount and a coupon amount. see the final price, total savings and effective savings percentage. discount calculator sale price calculator savings calculator">Discount Calculator<small>Calculate the final price after a discount, with support for a second …</small></a><a class="tool-link" href="/tools/emi-calculator/" data-search="emi calculator calculate your monthly emi for any loan: enter the loan amount, annual interest rate and tenure to see the monthly payment, total interest and total amount payable. emi calculator loan emi calculator monthly installment calculator">EMI Calculator<small>Calculate your monthly EMI for any loan: enter the loan amount, annual…</small></a><a class="tool-link" href="/tools/gst-calculator/" data-search="gst calculator calculate gst with preset rates of 0, 5, 12, 18 and 28 percent or a custom rate, in inclusive or exclusive mode. see the gst amount, base price and total breakup. gst calculator gst tax calculator gst inclusive exclusive">GST Calculator<small>Calculate GST with preset rates of 0, 5, 12, 18 and 28 percent or a cu…</small></a></div>
+  </section>
+</main>
+
+<!-- ADSTERRA-FOOTER: paste your Adsterra footer/banner ad code inside the div below -->
+<div class="container"><div class="ad-slot" data-ad="footer"></div></div>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="f-grid">
+      <div>
+        <span class="brandline">🧰 ToolNest</span>
+        <p>Free online tools that actually work. No sign-up, no watermarks — and your files never leave your device for client-side tools.</p>
+      </div>
+      <div>
+        <h4>Popular</h4>
+        <a href="/tools/qr-code-generator/">QR Code Generator</a>
+        <a href="/tools/background-remover/">Background Remover</a>
+        <a href="/tools/pdf-merger/">PDF Merger</a>
+        <a href="/tools/word-counter/">Word Counter</a>
+      </div>
+      <div>
+        <h4>Categories</h4>
+        <a href="/#image">Image Tools</a>
+        <a href="/#pdf">PDF &amp; Documents</a>
+        <a href="/#calculators">Calculators</a>
+        <a href="/#developer">Developer Tools</a>
+      </div>
+      <div>
+        <h4>Site</h4>
+        <a href="/">Home</a>
+        <a href="/#all-tools">All Tools</a>
+        <a href="/sitemap.xml">Sitemap</a>
+      </div>
+    </div>
+    <div class="f-bottom">© 2026 ToolNest · Free tools for everyone · Made with care</div>
+  </div>
+</footer>
+
+<script src="/assets/site.js?v=1"></script>
+
+<script>
+(function () {
+  'use strict';
+  var ERR = 'loan-calculator-error';
+  function money(n) {
+    try {
+      return n.toLocaleString('en-US', { maximumFractionDigits: 0 });
+    } catch (e) { return String(Math.round(n)); }
+  }
+  function calc() {
+    var pEl = TN.el('loan-principal'), rEl = TN.el('loan-rate'),
+        tEl = TN.el('loan-tenure'), uEl = TN.el('loan-tenure-unit');
+    if (!pEl || !rEl || !tEl || !uEl) return;
+    TN.clearErr(ERR);
+    var P = parseFloat(pEl.value);
+    var annual = parseFloat(rEl.value);
+    var t = parseFloat(tEl.value);
+    if (!(P > 0)) { TN.setErr(ERR, 'Please enter a loan amount greater than 0.'); return; }
+    if (!(annual >= 0)) { TN.setErr(ERR, 'Please enter an annual interest rate of 0 or more.'); return; }
+    if (!(t > 0)) { TN.setErr(ERR, 'Please enter a tenure greater than 0.'); return; }
+    var n = uEl.value === 'months' ? Math.round(t) : Math.round(t * 12);
+    if (!(n > 0)) { TN.setErr(ERR, 'Tenure is too short.'); return; }
+    var r = annual / 1200;
+    var emi = r === 0 ? P / n : (function () {
+      var pow = Math.pow(1 + r, n);
+      return P * r * pow / (pow - 1);
+    })();
+
+    var totalInterest = 0, totalPaid = 0;
+    var balance = P;
+    var rows = [];
+    var year = 1, yPrin = 0, yInt = 0;
+    for (var i = 1; i <= n; i++) {
+      var intPart = balance * r;
+      var prinPart = emi - intPart;
+      if (i === n) { prinPart = balance; intPart = emi - prinPart; } // last payment adjustment
+      balance -= prinPart;
+      if (balance < 0.005) balance = 0;
+      yPrin += prinPart; yInt += intPart;
+      totalInterest += intPart; totalPaid += prinPart + intPart;
+      if (i % 12 === 0 || i === n) {
+        rows.push({ y: year, p: yPrin, i: yInt, b: balance });
+        year++; yPrin = 0; yInt = 0;
+      }
+    }
+
+    TN.el('loan-monthly').textContent = money(emi);
+    TN.el('loan-interest').textContent = money(totalInterest);
+    TN.el('loan-total').textContent = money(P + totalInterest);
+
+    var tbody = TN.el('loan-tbody');
+    if (tbody) {
+      var html = '';
+      rows.forEach(function (row) {
+        html += '<tr><td>' + row.y + '</td><td>' + money(row.p) + '</td><td>' +
+                money(row.i) + '</td><td>' + money(row.b) + '</td></tr>';
+      });
+      tbody.innerHTML = html;
+    }
+  }
+  try {
+    ['loan-principal', 'loan-rate', 'loan-tenure', 'loan-tenure-unit'].forEach(function (id) {
+      TN.on(id, 'input', calc);
+      TN.on(id, 'change', calc);
+    });
+  } catch (e) { /* never throw on load */ }
+})();
+
+</script>
+</body>
+</html>

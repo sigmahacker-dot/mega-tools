@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>To-Do List — Free Online | ToolNest</title>
+<meta name="description" content="A simple to-do list with task filters, completion checkboxes, deletion and clear-completed. Your tasks are saved in your browser and are still there on your next visit.">
+<meta name="keywords" content="todo list, task list, to do app, checklist">
+<link rel="canonical" href="https://toolnest.vercel.app/tools/todo-list/">
+<meta property="og:title" content="To-Do List — Free Online | ToolNest">
+<meta property="og:description" content="A simple to-do list with task filters, completion checkboxes, deletion and clear-completed. Your tasks are saved in your browser and are still there on your next visit.">
+<meta property="og:type" content="website">
+<link rel="stylesheet" href="/assets/site.css?v=1">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='22' fill='%234f46e5'/><text x='50' y='68' font-size='52' text-anchor='middle' fill='white' font-family='Arial' font-weight='bold'>T</text></svg>">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebApplication","name":"To-Do List","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0"},"url":"https://toolnest.vercel.app/tools/todo-list/","description":"A simple to-do list with task filters, completion checkboxes, deletion and clear-completed. Your tasks are saved in your browser and are still there on your next visit."},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Where are my tasks stored?","acceptedAnswer":{"@type":"Answer","text":"Your tasks are stored in your browser's localStorage on this device only. Clearing site data or using a different browser or device will start a fresh list."}},{"@type":"Question","name":"Do I need the internet to use it?","acceptedAnswer":{"@type":"Answer","text":"No — the tool works fully offline once the page has loaded. All data stays on your own device."}},{"@type":"Question","name":"What do the All / Active / Done filters do?","acceptedAnswer":{"@type":"Answer","text":"The filter buttons show All, Active or Done tasks so you can focus on what is left, while the counter always shows how many tasks are still active."}}]}]}</script>
+</head>
+<body>
+<header class="site-header">
+  <div class="container">
+    <a class="logo" href="/"><span class="logo-mark">🧰</span> ToolNest</a>
+    <nav class="site-nav">
+      <a href="/">Home</a>
+      <a href="/#categories">Categories</a>
+      <a href="/#all-tools">All Tools</a>
+    </nav>
+  </div>
+</header>
+
+<!-- ADSTERRA-HEADER: paste your Adsterra banner ad code inside the div below -->
+<div class="container"><div class="ad-slot ad-leaderboard" data-ad="header"></div></div>
+
+<main class="container">
+  <nav class="crumbs"><a href="/">Home</a> &rsaquo; <a href="/#fun">Fun &amp; Lifestyle</a> &rsaquo; To-Do List</nav>
+  <div class="tool-hero">
+    <h1>To-Do List</h1>
+    <p>A simple to-do list with task filters, completion checkboxes, deletion and clear-completed. Your tasks are saved in your browser and are still there on your next visit.</p>
+  </div>
+
+  <div class="tool-card">
+  <div class="row">
+    <div class="field" style="flex:1;">
+      <label for="todo-list-input">New task</label>
+      <input class="input" id="todo-list-input" type="text" placeholder="What needs doing?" maxlength="200" autocomplete="off">
+    </div>
+    <div class="field" style="align-self:end;">
+      <button class="btn btn-primary" id="todo-list-add" type="button">Add</button>
+    </div>
+  </div>
+  <div class="btn-row mt">
+    <button class="btn btn-outline btn-sm" id="todo-list-filter-all" type="button">All</button>
+    <button class="btn btn-outline btn-sm" id="todo-list-filter-active" type="button">Active</button>
+    <button class="btn btn-outline btn-sm" id="todo-list-filter-done" type="button">Done</button>
+    <button class="btn btn-danger btn-sm" id="todo-list-clear" type="button">Clear completed</button>
+  </div>
+  <div class="error" id="todo-list-error"></div>
+  <div class="field mt">
+    <label>Tasks <span class="muted" id="todo-list-count"></span></label>
+    <ul class="file-list" id="todo-list-items"></ul>
+    <p class="muted" id="todo-list-empty">No tasks yet &mdash; add your first one above.</p>
+  </div>
+  <p class="note">Your tasks are saved in this browser only, so they survive reloads on this device.</p>
+</div>
+
+
+  <!-- ADSTERRA-INCONTENT: paste your Adsterra native/in-content ad code inside the div below -->
+  <div class="ad-slot" data-ad="incontent"></div>
+
+  <div class="info-grid">
+    <div class="info-card">
+      <h2>📖 How to use</h2>
+      <ol><li>Type a task in the input box and click &quot;Add&quot; (or press Enter).</li><li>Tick the checkbox next to a task to mark it done.</li><li>Use the filter buttons to view All, Active or Done tasks.</li><li>Click &quot;Clear completed&quot; to remove all finished tasks at once.</li></ol>
+    </div>
+    <div class="info-card">
+      <h2>❓ Frequently asked questions</h2>
+      <div class="faq"><details><summary>Where are my tasks stored?</summary><p>Your tasks are stored in your browser&#39;s localStorage on this device only. Clearing site data or using a different browser or device will start a fresh list.</p></details><details><summary>Do I need the internet to use it?</summary><p>No — the tool works fully offline once the page has loaded. All data stays on your own device.</p></details><details><summary>What do the All / Active / Done filters do?</summary><p>The filter buttons show All, Active or Done tasks so you can focus on what is left, while the counter always shows how many tasks are still active.</p></details></div>
+    </div>
+  </div>
+
+  <section class="section">
+    <h2>🔗 Related tools</h2>
+    <div class="tool-grid"><a class="tool-link" href="/tools/baby-name-generator/" data-search="baby name generator discover baby names by gender and origin — pakistani, arabic, western, indian or turkish — with meanings, random picks and tap-to-copy. baby name generator baby names with meanings muslim baby names boy girl names">Baby Name Generator<small>Discover baby names by gender and origin — Pakistani, Arabic, Western,…</small></a><a class="tool-link" href="/tools/battery-status-checker/" data-search="battery status checker check your device&#39;s battery level, charging status and estimated time remaining, with live updates — where your browser supports the battery api. battery status battery level checker laptop battery charging status">Battery Status Checker<small>Check your device&#39;s battery level, charging status and estimated time …</small></a><a class="tool-link" href="/tools/birthday-countdown/" data-search="birthday countdown enter your birthday for a live countdown to your next one — days, hours, minutes and seconds — plus the age you&#39;ll turn and a fun message. birthday countdown countdown to birthday how old am i birthday timer">Birthday Countdown<small>Enter your birthday for a live countdown to your next one — days, hour…</small></a><a class="tool-link" href="/tools/calendar-generator/" data-search="calendar generator generate a monthly calendar for any month and year, with correct weekdays, leap years, today&#39;s date highlighted, and previous/next month navigation. calendar generator monthly calendar printable calendar month planner">Calendar Generator<small>Generate a monthly calendar for any month and year, with correct weekd…</small></a><a class="tool-link" href="/tools/coin-flip/" data-search="coin flip flip a virtual coin with a fun animated toss. get instant heads or tails results, keep a running tally of both sides, and reset the count whenever you like. coin flip heads or tails coin toss random coin">Coin Flip<small>Flip a virtual coin with a fun animated toss. Get instant Heads or Tai…</small></a><a class="tool-link" href="/tools/dice-roller/" data-search="dice roller roll up to six dice with 4, 6, 8, 10, 12 or 20 sides. watch the animated faces settle, see the total instantly, and review a history of your recent rolls. dice roller d20 roller rpg dice roll dice online">Dice Roller<small>Roll up to six dice with 4, 6, 8, 10, 12 or 20 sides. Watch the animat…</small></a></div>
+  </section>
+</main>
+
+<!-- ADSTERRA-FOOTER: paste your Adsterra footer/banner ad code inside the div below -->
+<div class="container"><div class="ad-slot" data-ad="footer"></div></div>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="f-grid">
+      <div>
+        <span class="brandline">🧰 ToolNest</span>
+        <p>Free online tools that actually work. No sign-up, no watermarks — and your files never leave your device for client-side tools.</p>
+      </div>
+      <div>
+        <h4>Popular</h4>
+        <a href="/tools/qr-code-generator/">QR Code Generator</a>
+        <a href="/tools/background-remover/">Background Remover</a>
+        <a href="/tools/pdf-merger/">PDF Merger</a>
+        <a href="/tools/word-counter/">Word Counter</a>
+      </div>
+      <div>
+        <h4>Categories</h4>
+        <a href="/#image">Image Tools</a>
+        <a href="/#pdf">PDF &amp; Documents</a>
+        <a href="/#calculators">Calculators</a>
+        <a href="/#developer">Developer Tools</a>
+      </div>
+      <div>
+        <h4>Site</h4>
+        <a href="/">Home</a>
+        <a href="/#all-tools">All Tools</a>
+        <a href="/sitemap.xml">Sitemap</a>
+      </div>
+    </div>
+    <div class="f-bottom">© 2026 ToolNest · Free tools for everyone · Made with care</div>
+  </div>
+</footer>
+
+<script src="/assets/site.js?v=1"></script>
+
+<script>
+(function () {
+  'use strict';
+  var P = 'todo-list-';
+  function g(id) { return document.getElementById(P + id); }
+
+  var input = g('input'), addBtn = g('add');
+  if (!input || !addBtn) return;
+
+  var KEY = 'tn_todo_list';
+  var tasks = [];
+  var filter = 'all'; // all | active | done
+
+  function load() {
+    try {
+      var raw = localStorage.getItem(KEY);
+      if (raw) {
+        var parsed = JSON.parse(raw);
+        if (Array.isArray(parsed)) tasks = parsed.filter(function (t) {
+          return t && typeof t.text === 'string';
+        });
+      }
+    } catch (e) { tasks = []; }
+  }
+
+  function save() {
+    try { localStorage.setItem(KEY, JSON.stringify(tasks)); } catch (e) { /* private mode */ }
+  }
+
+  function addTask() {
+    TN.clearErr(P + 'error');
+    var text = (input.value || '').trim();
+    if (!text) {
+      TN.setErr(P + 'error', 'Please type a task before adding it.');
+      return;
+    }
+    if (text.length > 200) {
+      TN.setErr(P + 'error', 'Please keep tasks under 200 characters.');
+      return;
+    }
+    tasks.push({ id: Date.now() + '-' + Math.floor(Math.random() * 1e6), text: text, done: false });
+    input.value = '';
+    save();
+    render();
+    try { input.focus(); } catch (e) { /* ignore */ }
+  }
+
+  function removeTask(id) {
+    tasks = tasks.filter(function (t) { return t.id !== id; });
+    save();
+    render();
+  }
+
+  function toggleTask(id) {
+    for (var i = 0; i < tasks.length; i++) {
+      if (tasks[i].id === id) { tasks[i].done = !tasks[i].done; break; }
+    }
+    save();
+    render();
+  }
+
+  function clearCompleted() {
+    tasks = tasks.filter(function (t) { return !t.done; });
+    save();
+    render();
+  }
+
+  function setFilter(f) {
+    filter = f;
+    render();
+  }
+
+  function render() {
+    var list = g('items'), empty = g('empty'), count = g('count');
+    if (!list) return;
+    var visible = tasks.filter(function (t) {
+      if (filter === 'active') return !t.done;
+      if (filter === 'done') return t.done;
+      return true;
+    });
+    var html = '';
+    for (var i = 0; i < visible.length; i++) {
+      (function (t) {
+        html += '<li><label class="checkbox-row">' +
+          '<input type="checkbox" data-todo-toggle="' + TN.esc(t.id) + '"' + (t.done ? ' checked' : '') + '> ' +
+          '<span' + (t.done ? ' style="text-decoration:line-through;opacity:.6;"' : '') + '>' + TN.esc(t.text) + '</span></label> ' +
+          '<button class="btn btn-danger btn-sm" data-todo-del="' + TN.esc(t.id) + '" type="button">Delete</button></li>';
+      })(visible[i]);
+    }
+    list.innerHTML = html;
+
+    // Bind via delegation
+    list.onclick = function (e) {
+      var tgt = e.target;
+      var tog = tgt.getAttribute && tgt.getAttribute('data-todo-toggle');
+      var del = tgt.getAttribute && tgt.getAttribute('data-todo-del');
+      if (tog) toggleTask(tog);
+      else if (del) removeTask(del);
+    };
+
+    if (empty) empty.style.display = tasks.length ? 'none' : '';
+    if (count) {
+      var active = tasks.filter(function (t) { return !t.done; }).length;
+      count.textContent = '(' + active + ' active, ' + tasks.length + ' total)';
+    }
+    var filters = [['filter-all', 'all'], ['filter-active', 'active'], ['filter-done', 'done']];
+    for (var k = 0; k < filters.length; k++) {
+      var b = g(filters[k][0]);
+      if (b) {
+        if (filters[k][1] === filter) b.classList.add('btn-primary');
+        else b.classList.remove('btn-primary');
+      }
+    }
+  }
+
+  TN.on(addBtn, 'click', addTask);
+  TN.on(input, 'keydown', function (e) { if (e.key === 'Enter') addTask(); });
+  TN.on(g('clear'), 'click', clearCompleted);
+  TN.on(g('filter-all'), 'click', function () { setFilter('all'); });
+  TN.on(g('filter-active'), 'click', function () { setFilter('active'); });
+  TN.on(g('filter-done'), 'click', function () { setFilter('done'); });
+
+  load();
+  render();
+})();
+
+</script>
+</body>
+</html>

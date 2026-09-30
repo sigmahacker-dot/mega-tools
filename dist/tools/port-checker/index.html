@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Port Checker — Free Online | ToolNest</title>
+<meta name="description" content="Check whether a TCP port is open on a host, with quick buttons for common ports and measured response time.">
+<meta name="keywords" content="port checker, open port check, is port open, tcp port test, port scanner online">
+<link rel="canonical" href="https://toolnest.vercel.app/tools/port-checker/">
+<meta property="og:title" content="Port Checker — Free Online | ToolNest">
+<meta property="og:description" content="Check whether a TCP port is open on a host, with quick buttons for common ports and measured response time.">
+<meta property="og:type" content="website">
+<link rel="stylesheet" href="/assets/site.css?v=1">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='22' fill='%234f46e5'/><text x='50' y='68' font-size='52' text-anchor='middle' fill='white' font-family='Arial' font-weight='bold'>T</text></svg>">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebApplication","name":"Port Checker","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0"},"url":"https://toolnest.vercel.app/tools/port-checker/","description":"Check whether a TCP port is open on a host, with quick buttons for common ports and measured response time."},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Which ports can I check?","acceptedAnswer":{"@type":"Answer","text":"80 (HTTP), 443 (HTTPS), 21 (FTP), 22 (SSH), 25 (SMTP), 3306 (MySQL) and 8080 (alt HTTP) — or type any port from 1 to 65535."}},{"@type":"Question","name":"What does Closed mean?","acceptedAnswer":{"@type":"Answer","text":"A closed result means our server could not connect. Your own firewall, ISP filtering, or the target's firewall can all affect the result."}},{"@type":"Question","name":"Is the check done from my computer?","acceptedAnswer":{"@type":"Answer","text":"No. The check is performed from our server, so your local firewall does not affect it — but it also cannot see ports blocked only on your network."}}]}]}</script>
+</head>
+<body>
+<header class="site-header">
+  <div class="container">
+    <a class="logo" href="/"><span class="logo-mark">🧰</span> ToolNest</a>
+    <nav class="site-nav">
+      <a href="/">Home</a>
+      <a href="/#categories">Categories</a>
+      <a href="/#all-tools">All Tools</a>
+    </nav>
+  </div>
+</header>
+
+<!-- ADSTERRA-HEADER: paste your Adsterra banner ad code inside the div below -->
+<div class="container"><div class="ad-slot ad-leaderboard" data-ad="header"></div></div>
+
+<main class="container">
+  <nav class="crumbs"><a href="/">Home</a> &rsaquo; <a href="/#developer">Developer Tools</a> &rsaquo; Port Checker</nav>
+  <div class="tool-hero">
+    <h1>Port Checker</h1>
+    <p>Check whether a TCP port is open on a host, with quick buttons for common ports and measured response time.</p>
+  </div>
+
+  <div class="tool-card">
+  <div class="grid2">
+    <div class="field">
+      <label for="port-checker-host">Hostname</label>
+      <input class="input" id="port-checker-host" type="text" placeholder="example.com" autocomplete="off" spellcheck="false">
+    </div>
+    <div class="field">
+      <label for="port-checker-port">Port</label>
+      <input class="input" id="port-checker-port" type="number" min="1" max="65535" placeholder="443" inputmode="numeric">
+    </div>
+  </div>
+  <div class="field">
+    <label>Common ports</label>
+    <div class="btn-row" id="port-checker-quick">
+      <button class="btn btn-sm btn-outline" type="button" data-port="80">80</button>
+      <button class="btn btn-sm btn-outline" type="button" data-port="443">443</button>
+      <button class="btn btn-sm btn-outline" type="button" data-port="21">21</button>
+      <button class="btn btn-sm btn-outline" type="button" data-port="22">22</button>
+      <button class="btn btn-sm btn-outline" type="button" data-port="25">25</button>
+      <button class="btn btn-sm btn-outline" type="button" data-port="3306">3306</button>
+      <button class="btn btn-sm btn-outline" type="button" data-port="8080">8080</button>
+    </div>
+  </div>
+  <div class="btn-row">
+    <button class="btn btn-primary" id="port-checker-check" type="button">Check Port</button>
+  </div>
+  <div class="error" id="port-checker-error"></div>
+  <div class="result hidden" id="port-checker-result">
+    <p><span class="tag" id="port-checker-badge">—</span> <span class="muted" id="port-checker-detail"></span></p>
+  </div>
+  <p class="note">Checked from our server — your local firewall may differ.</p>
+</div>
+
+  <!-- ADSTERRA-INCONTENT: paste your Adsterra native/in-content ad code inside the div below -->
+  <div class="ad-slot" data-ad="incontent"></div>
+
+  <div class="info-grid">
+    <div class="info-card">
+      <h2>📖 How to use</h2>
+      <ol><li>Type a hostname such as example.com.</li><li>Enter a port number or tap a quick-port button.</li><li>Click Check Port.</li><li>See the Open/Closed result and the response time in milliseconds.</li></ol>
+    </div>
+    <div class="info-card">
+      <h2>❓ Frequently asked questions</h2>
+      <div class="faq"><details><summary>Which ports can I check?</summary><p>80 (HTTP), 443 (HTTPS), 21 (FTP), 22 (SSH), 25 (SMTP), 3306 (MySQL) and 8080 (alt HTTP) — or type any port from 1 to 65535.</p></details><details><summary>What does Closed mean?</summary><p>A closed result means our server could not connect. Your own firewall, ISP filtering, or the target&#39;s firewall can all affect the result.</p></details><details><summary>Is the check done from my computer?</summary><p>No. The check is performed from our server, so your local firewall does not affect it — but it also cannot see ports blocked only on your network.</p></details></div>
+    </div>
+  </div>
+
+  <section class="section">
+    <h2>🔗 Related tools</h2>
+    <div class="tool-grid"><a class="tool-link" href="/tools/base64-encoder-decoder/" data-search="base64 encoder / decoder encode text to base64 or decode base64 back to text, with full utf-8 support and a file-to-data-url converter. base64 encoder base64 decoder base64 encode base64 decode file to base64">Base64 Encoder / Decoder<small>Encode text to Base64 or decode Base64 back to text, with full UTF-8 s…</small></a><a class="tool-link" href="/tools/color-code-converter/" data-search="color code converter type a color in hex, rgb or hsl format and instantly see it converted to all three formats with a preview swatch. color converter hex to rgb rgb to hex hsl converter color code">Color Code Converter<small>Type a color in HEX, RGB or HSL format and instantly see it converted …</small></a><a class="tool-link" href="/tools/css-minifier/" data-search="css minifier compress css by stripping comments, collapsing whitespace and removing redundant semicolons, with before/after byte stats. css minifier minify css css compressor reduce css size">CSS Minifier<small>Compress CSS by stripping comments, collapsing whitespace and removing…</small></a><a class="tool-link" href="/tools/dns-lookup/" data-search="dns lookup look up dns records (a, aaaa, cname, mx, txt, ns) for any hostname, resolved live from our server. dns lookup dns checker mx record lookup txt record lookup ns lookup online">DNS Lookup<small>Look up DNS records (A, AAAA, CNAME, MX, TXT, NS) for any hostname, re…</small></a><a class="tool-link" href="/tools/html-minifier/" data-search="html minifier shrink html by removing comments and collapsing whitespace, with byte stats showing how much was saved. html minifier minify html html compressor reduce html size">HTML Minifier<small>Shrink HTML by removing comments and collapsing whitespace, with byte …</small></a><a class="tool-link" href="/tools/ip-address-finder/" data-search="ip address finder find the public ip address your network shows to websites, displayed large with a one-click copy button. what is my ip ip address finder my public ip find my ip ip lookup">IP Address Finder<small>Find the public IP address your network shows to websites, displayed l…</small></a></div>
+  </section>
+</main>
+
+<!-- ADSTERRA-FOOTER: paste your Adsterra footer/banner ad code inside the div below -->
+<div class="container"><div class="ad-slot" data-ad="footer"></div></div>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="f-grid">
+      <div>
+        <span class="brandline">🧰 ToolNest</span>
+        <p>Free online tools that actually work. No sign-up, no watermarks — and your files never leave your device for client-side tools.</p>
+      </div>
+      <div>
+        <h4>Popular</h4>
+        <a href="/tools/qr-code-generator/">QR Code Generator</a>
+        <a href="/tools/background-remover/">Background Remover</a>
+        <a href="/tools/pdf-merger/">PDF Merger</a>
+        <a href="/tools/word-counter/">Word Counter</a>
+      </div>
+      <div>
+        <h4>Categories</h4>
+        <a href="/#image">Image Tools</a>
+        <a href="/#pdf">PDF &amp; Documents</a>
+        <a href="/#calculators">Calculators</a>
+        <a href="/#developer">Developer Tools</a>
+      </div>
+      <div>
+        <h4>Site</h4>
+        <a href="/">Home</a>
+        <a href="/#all-tools">All Tools</a>
+        <a href="/sitemap.xml">Sitemap</a>
+      </div>
+    </div>
+    <div class="f-bottom">© 2026 ToolNest · Free tools for everyone · Made with care</div>
+  </div>
+</footer>
+
+<script src="/assets/site.js?v=1"></script>
+
+<script>
+(function () {
+  'use strict';
+  var P = 'port-checker-';
+
+  TN.on(P + 'check', 'click', function () {
+    var host = TN.el(P + 'host').value.trim();
+    var portRaw = TN.el(P + 'port').value.trim();
+    var port = parseInt(portRaw, 10);
+    if (!host) { TN.setErr(P + 'error', 'Enter a hostname, e.g. example.com.'); return; }
+    if (!/^[a-zA-Z0-9]([a-zA-Z0-9.\-]*[a-zA-Z0-9])?$/.test(host)) {
+      TN.setErr(P + 'error', 'That does not look like a valid hostname.');
+      return;
+    }
+    if (!portRaw || isNaN(port) || port < 1 || port > 65535) {
+      TN.setErr(P + 'error', 'Enter a valid port number between 1 and 65535.');
+      return;
+    }
+    TN.clearErr(P + 'error');
+    TN.hide(P + 'result');
+    var btn = TN.el(P + 'check');
+    var oldLabel = btn.textContent;
+    btn.textContent = 'Checking…';
+    btn.disabled = true;
+
+    fetch('/api/port?host=' + encodeURIComponent(host) + '&port=' + port)
+      .then(function (r) {
+        if (!r.ok) { throw new Error('Server returned ' + r.status); }
+        return r.json();
+      })
+      .then(function (d) {
+        var badge = TN.el(P + 'badge');
+        var detail = TN.el(P + 'detail');
+        if (d && d.open) {
+          badge.textContent = 'OPEN';
+          badge.className = 'tag';
+          badge.style.background = '#16a34a';
+          badge.style.color = '#fff';
+        } else {
+          badge.textContent = 'CLOSED';
+          badge.className = 'tag';
+          badge.style.background = '#dc2626';
+          badge.style.color = '#fff';
+        }
+        var ms = d && typeof d.ms !== 'undefined' ? d.ms : null;
+        detail.textContent = host + ':' + port + (ms !== null ? ' — responded in ' + ms + ' ms' : '');
+        TN.show(P + 'result');
+      })
+      .catch(function (e) {
+        TN.setErr(P + 'error', 'Check failed: ' + (e && e.message ? e.message : e));
+      })
+      .then(function () {
+        btn.textContent = oldLabel;
+        btn.disabled = false;
+      });
+  });
+
+  // Quick-port buttons fill the port field (and host default hint left untouched).
+  var quick = TN.el(P + 'quick');
+  if (quick) {
+    quick.addEventListener('click', function (ev) {
+      var t = ev.target;
+      if (t && t.getAttribute && t.getAttribute('data-port')) {
+        TN.el(P + 'port').value = t.getAttribute('data-port');
+        TN.clearErr(P + 'error');
+      }
+    });
+  }
+})();
+
+</script>
+</body>
+</html>

@@ -1,0 +1,44 @@
+<div class="tool-card">
+  <div class="field">
+    <label for="qr-code-generator-text">Text or URL</label>
+    <textarea class="textarea" id="qr-code-generator-text" rows="3" placeholder="https://example.com"></textarea>
+  </div>
+  <div class="grid2">
+    <div class="field">
+      <label for="qr-code-generator-size">Size</label>
+      <select class="select" id="qr-code-generator-size">
+        <option value="256">256 × 256 px</option>
+        <option value="512" selected>512 × 512 px</option>
+        <option value="1024">1024 × 1024 px</option>
+      </select>
+    </div>
+    <div class="field">
+      <label for="qr-code-generator-ecc">Error correction</label>
+      <select class="select" id="qr-code-generator-ecc">
+        <option value="L">Low (7%)</option>
+        <option value="M" selected>Medium (15%)</option>
+        <option value="Q">Quartile (25%)</option>
+        <option value="H">High (30%)</option>
+      </select>
+    </div>
+  </div>
+  <div class="grid2">
+    <div class="field">
+      <label for="qr-code-generator-dark">Foreground color</label>
+      <input type="color" id="qr-code-generator-dark" value="#000000" class="input">
+    </div>
+    <div class="field">
+      <label for="qr-code-generator-light">Background color</label>
+      <input type="color" id="qr-code-generator-light" value="#ffffff" class="input">
+    </div>
+  </div>
+  <div class="btn-row">
+    <button class="btn btn-primary" id="qr-code-generator-generate">Generate QR Code</button>
+    <button class="btn btn-outline hidden" id="qr-code-generator-download">Download PNG</button>
+  </div>
+  <div class="error" id="qr-code-generator-error"></div>
+  <div class="center mt hidden" id="qr-code-generator-preview-wrap">
+    <canvas id="qr-code-generator-canvas"></canvas>
+  </div>
+  <p class="note">Tip: use a dark foreground on a light background — QR scanners struggle with low contrast.</p>
+</div>

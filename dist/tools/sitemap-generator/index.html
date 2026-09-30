@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sitemap Generator — Free Online | ToolNest</title>
+<meta name="description" content="Create a standards-compliant sitemap.xml in seconds. Paste your page URLs, set change frequency and priority, then copy or download the file.">
+<meta name="keywords" content="sitemap generator, xml sitemap, sitemap.xml generator, seo sitemap, create sitemap">
+<link rel="canonical" href="https://toolnest.vercel.app/tools/sitemap-generator/">
+<meta property="og:title" content="Sitemap Generator — Free Online | ToolNest">
+<meta property="og:description" content="Create a standards-compliant sitemap.xml in seconds. Paste your page URLs, set change frequency and priority, then copy or download the file.">
+<meta property="og:type" content="website">
+<link rel="stylesheet" href="/assets/site.css?v=1">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='22' fill='%234f46e5'/><text x='50' y='68' font-size='52' text-anchor='middle' fill='white' font-family='Arial' font-weight='bold'>T</text></svg>">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebApplication","name":"Sitemap Generator","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0"},"url":"https://toolnest.vercel.app/tools/sitemap-generator/","description":"Create a standards-compliant sitemap.xml in seconds. Paste your page URLs, set change frequency and priority, then copy or download the file."},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What is a sitemap.xml?","acceptedAnswer":{"@type":"Answer","text":"An XML file listing your site's pages so search engines can discover and crawl them efficiently."}},{"@type":"Question","name":"Where do I upload it?","acceptedAnswer":{"@type":"Answer","text":"Upload sitemap.xml to your website's root folder (e.g. example.com/sitemap.xml) and submit it in Google Search Console."}},{"@type":"Question","name":"How many URLs can it contain?","acceptedAnswer":{"@type":"Answer","text":"The sitemap protocol allows up to 50,000 URLs and 50 MB per file. For larger sites, split them into multiple sitemaps."}}]}]}</script>
+</head>
+<body>
+<header class="site-header">
+  <div class="container">
+    <a class="logo" href="/"><span class="logo-mark">🧰</span> ToolNest</a>
+    <nav class="site-nav">
+      <a href="/">Home</a>
+      <a href="/#categories">Categories</a>
+      <a href="/#all-tools">All Tools</a>
+    </nav>
+  </div>
+</header>
+
+<!-- ADSTERRA-HEADER: paste your Adsterra banner ad code inside the div below -->
+<div class="container"><div class="ad-slot ad-leaderboard" data-ad="header"></div></div>
+
+<main class="container">
+  <nav class="crumbs"><a href="/">Home</a> &rsaquo; <a href="/#seo">SEO &amp; Web</a> &rsaquo; Sitemap Generator</nav>
+  <div class="tool-hero">
+    <h1>Sitemap Generator</h1>
+    <p>Create a standards-compliant sitemap.xml in seconds. Paste your page URLs, set change frequency and priority, then copy or download the file.</p>
+  </div>
+
+  <div class="tool-card">
+  <div class="error" id="sitemap-generator-error"></div>
+  <div class="field">
+    <label for="sitemap-generator-urls">Page URLs (one per line)</label>
+    <textarea class="textarea" id="sitemap-generator-urls" rows="8" placeholder="https://example.com/&#10;https://example.com/about&#10;https://example.com/contact"></textarea>
+  </div>
+  <div class="grid2">
+    <div class="field">
+      <label for="sitemap-generator-changefreq">Change frequency</label>
+      <select class="select" id="sitemap-generator-changefreq">
+        <option value="always">always</option>
+        <option value="hourly">hourly</option>
+        <option value="daily">daily</option>
+        <option value="weekly" selected>weekly</option>
+        <option value="monthly">monthly</option>
+        <option value="yearly">yearly</option>
+        <option value="never">never</option>
+      </select>
+    </div>
+    <div class="field">
+      <label for="sitemap-generator-priority">Priority</label>
+      <select class="select" id="sitemap-generator-priority">
+        <option value="1.0">1.0</option>
+        <option value="0.9">0.9</option>
+        <option value="0.8">0.8</option>
+        <option value="0.7">0.7</option>
+        <option value="0.6">0.6</option>
+        <option value="0.5" selected>0.5</option>
+        <option value="0.4">0.4</option>
+        <option value="0.3">0.3</option>
+        <option value="0.2">0.2</option>
+        <option value="0.1">0.1</option>
+        <option value="0.0">0.0</option>
+      </select>
+    </div>
+  </div>
+  <div class="checkbox-row">
+    <input type="checkbox" id="sitemap-generator-trailing-slash">
+    <label for="sitemap-generator-trailing-slash">Add trailing slash to URLs</label>
+  </div>
+  <div class="btn-row">
+    <button class="btn btn-primary" id="sitemap-generator-generate" type="button">Generate Sitemap</button>
+    <button class="btn btn-outline" id="sitemap-generator-copy" type="button">Copy XML</button>
+    <button class="btn btn-outline" id="sitemap-generator-download" type="button">Download sitemap.xml</button>
+  </div>
+  <div class="success hidden" id="sitemap-generator-success"></div>
+  <div class="stat-cards hidden" id="sitemap-generator-stats">
+    <div class="stat-card"><div class="v" id="sitemap-generator-count">0</div><div class="l">Valid URLs</div></div>
+    <div class="stat-card"><div class="v" id="sitemap-generator-invalid-count">0</div><div class="l">Invalid lines</div></div>
+  </div>
+  <div class="error" id="sitemap-generator-invalid-list"></div>
+  <div class="result hidden" id="sitemap-generator-output">
+    <pre id="sitemap-generator-code"></pre>
+  </div>
+  <p class="note">Only http:// and https:// URLs are accepted. Upload the file to your site root and submit it in Google Search Console.</p>
+</div>
+
+
+  <!-- ADSTERRA-INCONTENT: paste your Adsterra native/in-content ad code inside the div below -->
+  <div class="ad-slot" data-ad="incontent"></div>
+
+  <div class="info-grid">
+    <div class="info-card">
+      <h2>📖 How to use</h2>
+      <ol><li>Paste your page URLs into the box, one per line.</li><li>Choose a change frequency, priority and whether to add trailing slashes.</li><li>Click Generate Sitemap to validate every URL and build the XML.</li><li>Copy the XML or download sitemap.xml and upload it to your site root.</li></ol>
+    </div>
+    <div class="info-card">
+      <h2>❓ Frequently asked questions</h2>
+      <div class="faq"><details><summary>What is a sitemap.xml?</summary><p>An XML file listing your site&#39;s pages so search engines can discover and crawl them efficiently.</p></details><details><summary>Where do I upload it?</summary><p>Upload sitemap.xml to your website&#39;s root folder (e.g. example.com/sitemap.xml) and submit it in Google Search Console.</p></details><details><summary>How many URLs can it contain?</summary><p>The sitemap protocol allows up to 50,000 URLs and 50 MB per file. For larger sites, split them into multiple sitemaps.</p></details></div>
+    </div>
+  </div>
+
+  <section class="section">
+    <h2>🔗 Related tools</h2>
+    <div class="tool-grid"><a class="tool-link" href="/tools/keyword-density-checker/" data-search="keyword density checker analyze any text for keyword density: total words, keyword count, density percentage and a top-10 word frequency table. paste text or fetch a page url. keyword density keyword density checker seo text analysis word frequency keyword analysis tool">Keyword Density Checker<small>Analyze any text for keyword density: total words, keyword count, dens…</small></a><a class="tool-link" href="/tools/meta-tag-generator/" data-search="meta tag generator generate a complete set of seo and social meta tags for any page. fill in your details, preview the result, and copy the ready-to-paste html block. meta tag generator meta tags seo meta tags open graph tags twitter card generator">Meta Tag Generator<small>Generate a complete set of SEO and social meta tags for any page. Fill…</small></a><a class="tool-link" href="/tools/robots-txt-generator/" data-search="robots.txt generator build a valid robots.txt with allow and disallow rules, crawl-delay and a sitemap directive. live preview, then copy or download the file. robots.txt generator robots txt seo robots crawl rules robots file generator">Robots.txt Generator<small>Build a valid robots.txt with allow and disallow rules, crawl-delay an…</small></a><a class="tool-link" href="/tools/ssl-checker/" data-search="ssl checker check any domain&#39;s ssl certificate in one click: validity status, issuer, valid-from and expiry dates, and days remaining. ssl checker ssl certificate check check ssl expiry tls certificate website security check">SSL Checker<small>Check any domain&#39;s SSL certificate in one click: validity status, issu…</small></a><a class="tool-link" href="/tools/whois-lookup/" data-search="whois lookup look up domain registration details: registrar, creation and expiry dates, status and name servers, plus the full raw whois record. whois lookup domain whois whois check domain registration lookup domain owner lookup">Whois Lookup<small>Look up domain registration details: registrar, creation and expiry da…</small></a></div>
+  </section>
+</main>
+
+<!-- ADSTERRA-FOOTER: paste your Adsterra footer/banner ad code inside the div below -->
+<div class="container"><div class="ad-slot" data-ad="footer"></div></div>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="f-grid">
+      <div>
+        <span class="brandline">🧰 ToolNest</span>
+        <p>Free online tools that actually work. No sign-up, no watermarks — and your files never leave your device for client-side tools.</p>
+      </div>
+      <div>
+        <h4>Popular</h4>
+        <a href="/tools/qr-code-generator/">QR Code Generator</a>
+        <a href="/tools/background-remover/">Background Remover</a>
+        <a href="/tools/pdf-merger/">PDF Merger</a>
+        <a href="/tools/word-counter/">Word Counter</a>
+      </div>
+      <div>
+        <h4>Categories</h4>
+        <a href="/#image">Image Tools</a>
+        <a href="/#pdf">PDF &amp; Documents</a>
+        <a href="/#calculators">Calculators</a>
+        <a href="/#developer">Developer Tools</a>
+      </div>
+      <div>
+        <h4>Site</h4>
+        <a href="/">Home</a>
+        <a href="/#all-tools">All Tools</a>
+        <a href="/sitemap.xml">Sitemap</a>
+      </div>
+    </div>
+    <div class="f-bottom">© 2026 ToolNest · Free tools for everyone · Made with care</div>
+  </div>
+</footer>
+
+<script src="/assets/site.js?v=1"></script>
+
+<script>
+/* Sitemap Generator — validates URLs and builds a standards-compliant sitemap.xml */
+(function () {
+  'use strict';
+  var S = 'sitemap-generator';
+  var lastXml = '';
+
+  function xmlEsc(s) {
+    return String(s == null ? '' : s)
+      .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;').replace(/'/g, '&#39;');
+  }
+
+  function flash(msg) {
+    var el = TN.el(S + '-success');
+    if (!el) return;
+    el.textContent = msg;
+    el.classList.remove('hidden');
+    setTimeout(function () { el.classList.add('hidden'); }, 2500);
+  }
+
+  function generate() {
+    try {
+      TN.clearErr(S + '-error');
+      var listEl = TN.el(S + '-invalid-list');
+      if (listEl) { listEl.classList.remove('show'); listEl.textContent = ''; }
+
+      var urlsEl = TN.el(S + '-urls');
+      var rawText = urlsEl ? urlsEl.value : '';
+      if (!rawText.trim()) {
+        TN.setErr(S + '-error', 'Paste at least one URL to generate a sitemap.');
+        return;
+      }
+
+      var addSlashEl = TN.el(S + '-trailing-slash');
+      var addSlash = !!(addSlashEl && addSlashEl.checked);
+      var cfEl = TN.el(S + '-changefreq');
+      var prEl = TN.el(S + '-priority');
+      var cf = cfEl ? cfEl.value : 'weekly';
+      var pr = prEl ? prEl.value : '0.5';
+
+      var valid = [], invalid = [];
+      rawText.split(/\r?\n/).forEach(function (line, i) {
+        var u = line.trim();
+        if (!u) return;
+        try {
+          var url = new URL(u);
+          if (url.protocol !== 'http:' && url.protocol !== 'https:') {
+            invalid.push('Line ' + (i + 1) + ': ' + u + ' — only http:// and https:// URLs are allowed');
+            return;
+          }
+          if (addSlash && url.pathname.charAt(url.pathname.length - 1) !== '/') {
+            url.pathname = url.pathname + '/';
+          }
+          valid.push(url.toString());
+        } catch (e) {
+          invalid.push('Line ' + (i + 1) + ': ' + u + ' — not a valid URL');
+        }
+      });
+
+      var today = new Date().toISOString().slice(0, 10);
+      var parts = ['<?xml version="1.0" encoding="UTF-8"?>', '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">'];
+      valid.forEach(function (u) {
+        parts.push('  <url>');
+        parts.push('    <loc>' + xmlEsc(u) + '</loc>');
+        parts.push('    <lastmod>' + today + '</lastmod>');
+        parts.push('    <changefreq>' + xmlEsc(cf) + '</changefreq>');
+        parts.push('    <priority>' + xmlEsc(pr) + '</priority>');
+        parts.push('  </url>');
+      });
+      parts.push('</urlset>');
+      lastXml = parts.join('\n');
+
+      var codeEl = TN.el(S + '-code');
+      if (codeEl) codeEl.textContent = lastXml;
+      var cEl = TN.el(S + '-count');
+      if (cEl) cEl.textContent = String(valid.length);
+      var icEl = TN.el(S + '-invalid-count');
+      if (icEl) icEl.textContent = String(invalid.length);
+      TN.show(S + '-stats');
+      TN.show(S + '-output');
+
+      if (invalid.length && listEl) {
+        listEl.innerHTML = '<strong>Invalid lines (' + invalid.length + '):</strong><br>' +
+          invalid.map(function (x) { return TN.esc(x); }).join('<br>');
+        listEl.classList.add('show');
+      }
+      if (!valid.length) {
+        TN.setErr(S + '-error', 'No valid URLs found. Fix the invalid lines above and generate again.');
+      }
+    } catch (err) {
+      TN.setErr(S + '-error', 'Something went wrong while generating the sitemap.');
+    }
+  }
+
+  function copyXml() {
+    TN.clearErr(S + '-error');
+    if (!lastXml) { TN.setErr(S + '-error', 'Generate the sitemap first, then copy.'); return; }
+    TN.copy(lastXml).then(function (ok) {
+      if (ok) flash('Sitemap XML copied to clipboard.');
+      else TN.setErr(S + '-error', 'Copy was blocked by the browser. Select the XML manually.');
+    });
+  }
+
+  function downloadXml() {
+    TN.clearErr(S + '-error');
+    if (!lastXml) { TN.setErr(S + '-error', 'Generate the sitemap first, then download.'); return; }
+    TN.downloadText(lastXml, 'sitemap.xml', 'application/xml;charset=utf-8');
+  }
+
+  function init() {
+    try {
+      TN.on(S + '-generate', 'click', generate);
+      TN.on(S + '-copy', 'click', copyXml);
+      TN.on(S + '-download', 'click', downloadXml);
+    } catch (err) { /* never throw on load */ }
+  }
+
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init);
+  else init();
+})();
+
+</script>
+</body>
+</html>

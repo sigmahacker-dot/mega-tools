@@ -1,0 +1,32 @@
+<div class="tool-card">
+  <div class="grid2">
+    <div class="field">
+      <label for="port-checker-host">Hostname</label>
+      <input class="input" id="port-checker-host" type="text" placeholder="example.com" autocomplete="off" spellcheck="false">
+    </div>
+    <div class="field">
+      <label for="port-checker-port">Port</label>
+      <input class="input" id="port-checker-port" type="number" min="1" max="65535" placeholder="443" inputmode="numeric">
+    </div>
+  </div>
+  <div class="field">
+    <label>Common ports</label>
+    <div class="btn-row" id="port-checker-quick">
+      <button class="btn btn-sm btn-outline" type="button" data-port="80">80</button>
+      <button class="btn btn-sm btn-outline" type="button" data-port="443">443</button>
+      <button class="btn btn-sm btn-outline" type="button" data-port="21">21</button>
+      <button class="btn btn-sm btn-outline" type="button" data-port="22">22</button>
+      <button class="btn btn-sm btn-outline" type="button" data-port="25">25</button>
+      <button class="btn btn-sm btn-outline" type="button" data-port="3306">3306</button>
+      <button class="btn btn-sm btn-outline" type="button" data-port="8080">8080</button>
+    </div>
+  </div>
+  <div class="btn-row">
+    <button class="btn btn-primary" id="port-checker-check" type="button">Check Port</button>
+  </div>
+  <div class="error" id="port-checker-error"></div>
+  <div class="result hidden" id="port-checker-result">
+    <p><span class="tag" id="port-checker-badge">—</span> <span class="muted" id="port-checker-detail"></span></p>
+  </div>
+  <p class="note">Checked from our server — your local firewall may differ.</p>
+</div>

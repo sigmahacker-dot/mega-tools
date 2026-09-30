@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Currency Converter — Free Online | ToolNest</title>
+<meta name="description" content="Convert any amount between 30+ world currencies with live exchange rates. Pick source and target currencies, convert instantly, and see the rate and last update date.">
+<meta name="keywords" content="currency converter, exchange rate converter, usd to pkr converter">
+<link rel="canonical" href="https://toolnest.vercel.app/tools/currency-converter/">
+<meta property="og:title" content="Currency Converter — Free Online | ToolNest">
+<meta property="og:description" content="Convert any amount between 30+ world currencies with live exchange rates. Pick source and target currencies, convert instantly, and see the rate and last update date.">
+<meta property="og:type" content="website">
+<link rel="stylesheet" href="/assets/site.css?v=1">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='22' fill='%234f46e5'/><text x='50' y='68' font-size='52' text-anchor='middle' fill='white' font-family='Arial' font-weight='bold'>T</text></svg>">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebApplication","name":"Currency Converter","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0"},"url":"https://toolnest.vercel.app/tools/currency-converter/","description":"Convert any amount between 30+ world currencies with live exchange rates. Pick source and target currencies, convert instantly, and see the rate and last update date."},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Where do the exchange rates come from?","acceptedAnswer":{"@type":"Answer","text":"Live rates are fetched from /api/rates. If the fetch fails you will see a clear error message and the last cached result stays visible."}},{"@type":"Question","name":"Are rates refreshed automatically?","acceptedAnswer":{"@type":"Answer","text":"The converted amount is updated whenever the rate loads. Fetched rates are cached per base currency so switching back is instant."}},{"@type":"Question","name":"What is the current USD to PKR rate?","acceptedAnswer":{"@type":"Answer","text":"The USD -> PKR rate shown comes straight from the live feed, so it reflects the latest available market rate."}}]}]}</script>
+</head>
+<body>
+<header class="site-header">
+  <div class="container">
+    <a class="logo" href="/"><span class="logo-mark">🧰</span> ToolNest</a>
+    <nav class="site-nav">
+      <a href="/">Home</a>
+      <a href="/#categories">Categories</a>
+      <a href="/#all-tools">All Tools</a>
+    </nav>
+  </div>
+</header>
+
+<!-- ADSTERRA-HEADER: paste your Adsterra banner ad code inside the div below -->
+<div class="container"><div class="ad-slot ad-leaderboard" data-ad="header"></div></div>
+
+<main class="container">
+  <nav class="crumbs"><a href="/">Home</a> &rsaquo; <a href="/#calculators">Calculators</a> &rsaquo; Currency Converter</nav>
+  <div class="tool-hero">
+    <h1>Currency Converter</h1>
+    <p>Convert any amount between 30+ world currencies with live exchange rates. Pick source and target currencies, convert instantly, and see the rate and last update date.</p>
+  </div>
+
+  <div class="tool-card">
+  <div class="field">
+    <label for="currency-amount">Amount</label>
+    <input type="number" class="input" id="currency-amount" min="0" step="any" placeholder="e.g. 100">
+  </div>
+  <div class="grid2">
+    <div class="field">
+      <label for="currency-from">From</label>
+      <select class="select" id="currency-from"></select>
+    </div>
+    <div class="field">
+      <label for="currency-to">To</label>
+      <select class="select" id="currency-to"></select>
+    </div>
+  </div>
+  <div class="btn-row">
+    <button type="button" class="btn btn-primary" id="currency-convert-btn">Convert</button>
+    <button type="button" class="btn btn-outline" id="currency-swap-btn">⇄ Swap</button>
+  </div>
+  <div class="error" id="currency-converter-error"></div>
+  <div class="result" id="currency-result">
+    <div class="stat-cards">
+      <div class="stat-card"><div class="v" id="currency-value">–</div><div class="l">Converted amount</div></div>
+      <div class="stat-card"><div class="v" id="currency-rate">–</div><div class="l">Exchange rate</div></div>
+    </div>
+    <p class="muted" id="currency-updated">Rates not loaded yet.</p>
+  </div>
+</div>
+
+  <!-- ADSTERRA-INCONTENT: paste your Adsterra native/in-content ad code inside the div below -->
+  <div class="ad-slot" data-ad="incontent"></div>
+
+  <div class="info-grid">
+    <div class="info-card">
+      <h2>📖 How to use</h2>
+      <ol><li>Enter an amount.</li><li>Choose the From and To currencies.</li><li>Tap Convert (or just change the amount) to see the result.</li><li>Use Swap to flip the currencies; rates are cached per base currency.</li></ol>
+    </div>
+    <div class="info-card">
+      <h2>❓ Frequently asked questions</h2>
+      <div class="faq"><details><summary>Where do the exchange rates come from?</summary><p>Live rates are fetched from /api/rates. If the fetch fails you will see a clear error message and the last cached result stays visible.</p></details><details><summary>Are rates refreshed automatically?</summary><p>The converted amount is updated whenever the rate loads. Fetched rates are cached per base currency so switching back is instant.</p></details><details><summary>What is the current USD to PKR rate?</summary><p>The USD -&gt; PKR rate shown comes straight from the live feed, so it reflects the latest available market rate.</p></details></div>
+    </div>
+  </div>
+
+  <section class="section">
+    <h2>🔗 Related tools</h2>
+    <div class="tool-grid"><a class="tool-link" href="/tools/age-calculator/" data-search="age calculator enter your date of birth to get your exact age in years, months and days, plus total weeks, days, hours, the weekday you were born, and days until your next birthday. age calculator calculate age date of birth age">Age Calculator<small>Enter your date of birth to get your exact age in years, months and da…</small></a><a class="tool-link" href="/tools/bmi-calculator/" data-search="bmi calculator calculate your body mass index from height and weight in metric or imperial units. get your bmi value, weight category and the healthy weight range for your height. bmi calculator body mass index healthy weight calculator">BMI Calculator<small>Calculate your Body Mass Index from height and weight in metric or imp…</small></a><a class="tool-link" href="/tools/discount-calculator/" data-search="discount calculator calculate the final price after a discount, with support for a second discount and a coupon amount. see the final price, total savings and effective savings percentage. discount calculator sale price calculator savings calculator">Discount Calculator<small>Calculate the final price after a discount, with support for a second …</small></a><a class="tool-link" href="/tools/emi-calculator/" data-search="emi calculator calculate your monthly emi for any loan: enter the loan amount, annual interest rate and tenure to see the monthly payment, total interest and total amount payable. emi calculator loan emi calculator monthly installment calculator">EMI Calculator<small>Calculate your monthly EMI for any loan: enter the loan amount, annual…</small></a><a class="tool-link" href="/tools/gst-calculator/" data-search="gst calculator calculate gst with preset rates of 0, 5, 12, 18 and 28 percent or a custom rate, in inclusive or exclusive mode. see the gst amount, base price and total breakup. gst calculator gst tax calculator gst inclusive exclusive">GST Calculator<small>Calculate GST with preset rates of 0, 5, 12, 18 and 28 percent or a cu…</small></a><a class="tool-link" href="/tools/loan-calculator/" data-search="loan calculator see the full cost of a loan: enter amount, interest rate and tenure to get the monthly emi, total interest, total payable and a year-by-year amortization table. loan calculator amortization calculator loan interest calculator">Loan Calculator<small>See the full cost of a loan: enter amount, interest rate and tenure to…</small></a></div>
+  </section>
+</main>
+
+<!-- ADSTERRA-FOOTER: paste your Adsterra footer/banner ad code inside the div below -->
+<div class="container"><div class="ad-slot" data-ad="footer"></div></div>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="f-grid">
+      <div>
+        <span class="brandline">🧰 ToolNest</span>
+        <p>Free online tools that actually work. No sign-up, no watermarks — and your files never leave your device for client-side tools.</p>
+      </div>
+      <div>
+        <h4>Popular</h4>
+        <a href="/tools/qr-code-generator/">QR Code Generator</a>
+        <a href="/tools/background-remover/">Background Remover</a>
+        <a href="/tools/pdf-merger/">PDF Merger</a>
+        <a href="/tools/word-counter/">Word Counter</a>
+      </div>
+      <div>
+        <h4>Categories</h4>
+        <a href="/#image">Image Tools</a>
+        <a href="/#pdf">PDF &amp; Documents</a>
+        <a href="/#calculators">Calculators</a>
+        <a href="/#developer">Developer Tools</a>
+      </div>
+      <div>
+        <h4>Site</h4>
+        <a href="/">Home</a>
+        <a href="/#all-tools">All Tools</a>
+        <a href="/sitemap.xml">Sitemap</a>
+      </div>
+    </div>
+    <div class="f-bottom">© 2026 ToolNest · Free tools for everyone · Made with care</div>
+  </div>
+</footer>
+
+<script src="/assets/site.js?v=1"></script>
+
+<script>
+(function () {
+  'use strict';
+  var ERR = 'currency-converter-error';
+  var CURRENCIES = [
+    'USD', 'EUR', 'GBP', 'PKR', 'INR', 'AED', 'SAR', 'CNY', 'JPY', 'AUD', 'CAD',
+    'CHF', 'SEK', 'NOK', 'DKK', 'TRY', 'QAR', 'KWD', 'BHD', 'OMR', 'MYR', 'IDR',
+    'THB', 'SGD', 'HKD', 'NZD', 'ZAR', 'MXN', 'BRL', 'KRW', 'PHP', 'BDT', 'NPR', 'LKR'
+  ];
+  var cache = {};   // base -> { rates, date }
+  var fetching = {}; // base -> Promise
+
+  function fmtNum(n) {
+    try { return n.toLocaleString('en-US', { maximumFractionDigits: 2 }); }
+    catch (e) { return String(Math.round(n * 100) / 100); }
+  }
+  function fillSelect(el, selected) {
+    if (!el) return;
+    var html = '';
+    CURRENCIES.forEach(function (c) {
+      html += '<option value="' + c + '"' + (c === selected ? ' selected' : '') + '>' + c + '</option>';
+    });
+    el.innerHTML = html;
+  }
+  function getRates(base) {
+    if (cache[base]) return Promise.resolve(cache[base]);
+    if (fetching[base]) return fetching[base];
+    var p = fetch('/api/rates?base=' + encodeURIComponent(base)).then(function (res) {
+      if (!res.ok) throw new Error('HTTP ' + res.status);
+      return res.json();
+    }).then(function (data) {
+      if (!data || !data.rates) throw new Error('bad response');
+      var entry = { rates: data.rates, date: data.date || '' };
+      cache[base] = entry;
+      delete fetching[base];
+      return entry;
+    }).catch(function (err) {
+      delete fetching[base];
+      throw err;
+    });
+    fetching[base] = p;
+    return p;
+  }
+  function convert() {
+    var aEl = TN.el('currency-amount'), fEl = TN.el('currency-from'), tEl = TN.el('currency-to');
+    if (!aEl || !fEl || !tEl) return;
+    TN.clearErr(ERR);
+    var amount = parseFloat(aEl.value);
+    var from = fEl.value, to = tEl.value;
+    var upd = TN.el('currency-updated');
+    if (isNaN(amount)) {
+      if (upd) upd.textContent = 'Enter an amount to convert.';
+      return;
+    }
+    if (!(amount >= 0)) { TN.setErr(ERR, 'Please enter an amount of 0 or more.'); return; }
+    if (from === to) {
+      TN.el('currency-value').textContent = fmtNum(amount) + ' ' + to;
+      TN.el('currency-rate').textContent = '1 ' + from + ' = 1 ' + to;
+      if (upd) upd.textContent = 'Same currency — no conversion needed.';
+      return;
+    }
+    TN.el('currency-value').textContent = 'Loading…';
+    getRates(from).then(function (entry) {
+      var r = entry.rates[to];
+      if (typeof r !== 'number' || !(r > 0)) {
+        TN.setErr(ERR, 'Rate not available for ' + to + '. Try another currency.');
+        TN.el('currency-value').textContent = '–';
+        TN.el('currency-rate').textContent = '–';
+        return;
+      }
+      var result = amount * r;
+      TN.el('currency-value').textContent = fmtNum(result) + ' ' + to;
+      TN.el('currency-rate').textContent = '1 ' + from + ' = ' + r + ' ' + to;
+      if (upd) upd.textContent = 'Rates updated: ' + (entry.date || 'recently') + ' (base ' + from + ')';
+    }).catch(function () {
+      TN.setErr(ERR, 'Could not fetch exchange rates. Please check your connection and try again.');
+      TN.el('currency-value').textContent = '–';
+      TN.el('currency-rate').textContent = '–';
+    });
+  }
+  try {
+    fillSelect(TN.el('currency-from'), 'USD');
+    fillSelect(TN.el('currency-to'), 'PKR');
+    TN.on('currency-convert-btn', 'click', convert);
+    TN.on('currency-swap-btn', 'click', function () {
+      var fEl = TN.el('currency-from'), tEl = TN.el('currency-to');
+      if (!fEl || !tEl) return;
+      var tmp = fEl.value;
+      fEl.value = tEl.value;
+      tEl.value = tmp;
+      convert();
+    });
+    var run = TN.debounce ? TN.debounce(convert, 300) : convert;
+    TN.on('currency-amount', 'input', run);
+    TN.on('currency-from', 'change', convert);
+    TN.on('currency-to', 'change', convert);
+  } catch (e) { /* never throw on load */ }
+})();
+
+</script>
+</body>
+</html>

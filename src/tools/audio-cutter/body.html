@@ -1,0 +1,27 @@
+<div class="tool-card">
+  <div class="field">
+    <label for="audio-cutter-file">Choose an audio file</label>
+    <input class="input" id="audio-cutter-file" type="file" accept="audio/*">
+  </div>
+  <div id="audio-cutter-times" class="hidden">
+    <p class="muted">Duration: <span id="audio-cutter-duration">—</span></p>
+    <div class="grid2">
+      <div class="field">
+        <label for="audio-cutter-start">Start (seconds)</label>
+        <input class="input" id="audio-cutter-start" type="number" min="0" step="0.1" value="0">
+      </div>
+      <div class="field">
+        <label for="audio-cutter-end">End (seconds)</label>
+        <input class="input" id="audio-cutter-end" type="number" min="0" step="0.1" value="0">
+      </div>
+    </div>
+    <div class="btn-row">
+      <button class="btn btn-outline" id="audio-cutter-preview" type="button">Preview selection</button>
+      <button class="btn btn-primary" id="audio-cutter-cut" type="button">Cut &amp; Download MP3</button>
+    </div>
+  </div>
+  <div class="error" id="audio-cutter-error"></div>
+  <div class="progress hidden" id="audio-cutter-progress"><div id="audio-cutter-bar" style="width:0%"></div></div>
+  <p class="muted" id="audio-cutter-status"></p>
+  <p class="note">Files never leave your device — decoding, cutting and MP3 encoding all happen in your browser.</p>
+</div>

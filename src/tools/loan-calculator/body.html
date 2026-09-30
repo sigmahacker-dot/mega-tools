@@ -1,0 +1,40 @@
+<div class="tool-card">
+  <div class="grid2">
+    <div class="field">
+      <label for="loan-principal">Loan amount</label>
+      <input type="number" class="input" id="loan-principal" min="0" step="any" placeholder="e.g. 500000">
+    </div>
+    <div class="field">
+      <label for="loan-rate">Annual interest rate (%)</label>
+      <input type="number" class="input" id="loan-rate" min="0" step="any" placeholder="e.g. 9.5">
+    </div>
+    <div class="field">
+      <label for="loan-tenure">Tenure</label>
+      <input type="number" class="input" id="loan-tenure" min="0" step="any" placeholder="e.g. 5">
+    </div>
+    <div class="field">
+      <label for="loan-tenure-unit">Tenure unit</label>
+      <select class="select" id="loan-tenure-unit">
+        <option value="years" selected>Years</option>
+        <option value="months">Months</option>
+      </select>
+    </div>
+  </div>
+  <div class="error" id="loan-calculator-error"></div>
+  <div class="result" id="loan-result">
+    <div class="stat-cards">
+      <div class="stat-card"><div class="v" id="loan-monthly">–</div><div class="l">Monthly EMI</div></div>
+      <div class="stat-card"><div class="v" id="loan-interest">–</div><div class="l">Total interest</div></div>
+      <div class="stat-card"><div class="v" id="loan-total">–</div><div class="l">Total payable</div></div>
+    </div>
+    <table class="data" id="loan-table">
+      <thead>
+        <tr><th>Year</th><th>Principal paid</th><th>Interest paid</th><th>Balance</th></tr>
+      </thead>
+      <tbody id="loan-tbody">
+        <tr><td colspan="4" class="muted center">Enter loan details to see the amortization schedule.</td></tr>
+      </tbody>
+    </table>
+    <p class="note">Fixed annual rate, monthly compounding. Excludes fees, insurance and taxes.</p>
+  </div>
+</div>

@@ -1,0 +1,270 @@
+(function () {
+  'use strict';
+  var P = 'story-generator-';
+  function g(id) { return document.getElementById(P + id); }
+
+  var goBtn = g('go');
+  if (!goBtn) return;
+
+  // Each genre: titles[], kw (default keyword), parts[5 slots][4 variants].
+  // Variants use {hero} and {keyword} placeholders. All gender-neutral.
+  var DATA = {
+    adventure: {
+      titles: ['the Lost Valley', 'the Hidden Map', 'the Crystal Caves', 'the Sky Pirates', 'the Golden Compass'],
+      kw: 'ancient compass',
+      parts: [
+        [
+          "{hero} had always dreamed of adventure, and on a bright morning, a weathered envelope arrived with no return address. Inside was a hand-drawn map and a single line: 'Follow the {keyword} — it knows the way.'",
+          "The village of Eldermere had not seen an explorer in fifty years — until {hero} decided to change that. Packing a satchel, a brave heart, and the mysterious {keyword}, {hero} set off before sunrise.",
+          "Every great journey begins with a single step, and {hero}'s began at the edge of the Whispering Woods. The {keyword} pulsed warm in {hero}'s pocket, as if eager to begin.",
+          "Rain drummed on the windows when {hero} discovered the old journal in the attic. Its final page described a treasure no one had ever found — and the {keyword} was the key."
+        ],
+        [
+          "The path wound through emerald valleys and over mist-shrouded hills. {hero} crossed a rope bridge that swayed above a roaring river, gripping the {keyword} tightly for courage.",
+          "Days blurred into nights as {hero} trekked across golden deserts and dense jungles. Strange birds called from the canopy, and the {keyword} always pointed true, even when the stars were hidden.",
+          "{hero} climbed the jagged Stonefang Mountains, where the air grew thin and cold. A friendly mountain goat seemed to guide the way, bleating encouragement at every steep turn.",
+          "Through bustling market towns and silent ruins {hero} traveled, collecting stories and supplies. An old sailor warned of dangers ahead, but {hero} only smiled and pressed on."
+        ],
+        [
+          "On the seventh day, the trail ended at a canyon guarded by a gruff troll who demanded a riddle's answer for passage. {hero} thought hard, then answered — and the troll, impressed, stepped aside with a bow.",
+          "A sudden storm trapped {hero} in a cave, and in the darkness something enormous stirred. It was only a family of bears, but {hero}'s heart pounded until the {keyword} glowed softly, calming them all.",
+          "Bandits blocked the mountain pass, demanding {hero}'s supplies. Instead of fighting, {hero} challenged their leader to a contest of wits — and won, earning both freedom and new friends.",
+          "The ancient bridge over the Chasm of Echoes had collapsed. {hero} spent a whole day weaving vines into a rope, testing each knot twice before swinging across the dizzying gap."
+        ],
+        [
+          "Just when hope seemed lost, the {keyword} began to glow brighter than ever. It was not pointing to treasure at all — it was pointing home, and {hero} finally understood why.",
+          "A hooded stranger appeared at the campfire that night, revealing they had been following {hero} all along. 'The map was mine,' they whispered, 'but the journey was always meant to be yours.'",
+          "{hero} discovered the treasure chest was empty — except for a mirror. In its reflection, {hero} saw not gold but every brave thing done along the way, and laughed out loud.",
+          "The final landmark on the map was a tree {hero} had climbed as a child. The real adventure, it turned out, had been waiting in {hero}'s own backyard all along."
+        ],
+        [
+          "{hero} returned home a hero, with stories that would be told for generations. And whenever someone asked about the {keyword}, {hero} would just wink and say, 'Some maps lead to treasure. Mine led to me.'",
+          "The treasure was real after all — but {hero} shared it with every village along the way. For the greatest discovery of the journey was that adventure is better when it is shared.",
+          "Years later, {hero} would place the {keyword} in a new envelope and send it to another dreamer. Because every ending, {hero} knew, is just someone else's beginning.",
+          "And so {hero}'s legend grew, sung by travelers in every tavern from here to the sea. The {keyword} still sits on the mantelpiece — waiting, perhaps, for the next adventure."
+        ]
+      ]
+    },
+    horror: {
+      titles: ['the House on Blackwood Lane', 'the Thirteenth Step', 'the Whispering Walls', 'the Midnight Invitation', 'the Empty Lot'],
+      kw: 'black candle',
+      parts: [
+        [
+          "{hero} moved into the old house on Blackwood Lane because the rent was impossibly cheap. On the first night, the previous owner's {keyword} was still sitting on the mantel — and it was already lit.",
+          "The invitation arrived at midnight: an abandoned manor, a dare, and {hero}'s name written in ink that looked unsettlingly like dried blood. No one else was brave enough to go — so {hero} went alone.",
+          "{hero} had always laughed at ghost stories, until the night the power went out during the storm. In the flickering light of a phone, {hero} saw the {keyword} glowing in a room that should have been empty.",
+          "Every town has a house nobody talks about, and in Millbrook it was the grey one at the end of the street. When {hero}'s ball rolled through its broken gate, there was no choice but to go after it."
+        ],
+        [
+          "The floorboards creaked in patterns that sounded like footsteps — always stopping just behind {hero}. The air grew cold, and {hero}'s breath fogged even though it was summer.",
+          "Doors that {hero} had locked stood open each morning. Scratches appeared on the inside of the closet door, spelling letters that almost — almost — formed a name.",
+          "The mirrors in the house showed the room a half-second late. {hero} tested it again and again, until one evening the reflection smiled first.",
+          "Whispers seeped from the walls at 3 a.m., speaking in a voice like dry leaves. {hero} pressed an ear to the plaster and heard, clear as a bell, their own name."
+        ],
+        [
+          "{hero} tried to leave, but the front door would not open — though it had no lock. The {keyword}'s flame bent sideways, as if bowing to something standing in the corner.",
+          "The thing in the basement began climbing the stairs, one slow step at a time. {hero} counted thirteen steps — but the staircase only had twelve.",
+          "Photographs around the house began to change: in each one, a shadowy figure stood a little closer to the camera. In the last photo, it stood where {hero} was standing.",
+          "{hero}'s own voice called from the attic, begging to be let out. {hero} stood frozen at the bottom of the ladder, because {hero} had never gone up there."
+        ],
+        [
+          "The ghost was not haunting {hero} — it was warning {hero}. The real danger had been living in the house all along, wearing a familiar face.",
+          "{hero} finally understood: the house was not haunted by the dead. It was haunted by the living — by every cruel thing ever done within its walls, replaying forever.",
+          "When {hero} lit the {keyword} properly, the shadows recoiled — and in the sudden light, {hero} saw that the monster had {hero}'s own eyes.",
+          "Dawn revealed the terrible truth: there had never been a house on Blackwood Lane. Only an empty lot — and {hero}, standing in the rain, holding a burnt-out candle."
+        ],
+        [
+          "{hero} escaped as the sun rose, vowing never to speak of that night. But sometimes, in quiet rooms, {hero} still hears the whisper of their own name.",
+          "The house burned down that winter, and the town finally slept easy. {hero} keeps the {keyword} in a drawer — unlit, always — just in case.",
+          "They say {hero} still walks those halls on stormy nights. If you listen closely at 3 a.m., you might hear the newest whisper joining the walls.",
+          "{hero} never found out what wanted the {keyword} so badly. Some doors, {hero} learned, are locked for a reason — and should stay that way."
+        ]
+      ]
+    },
+    scifi: {
+      titles: ['the Derelict Signal', 'the Kepler Silence', 'the Last Navigator', 'the Wormhole Letter', 'the Meridian Logs'],
+      kw: 'quantum drive',
+      parts: [
+        [
+          "In the year 2147, {hero} was the youngest navigator in the Stellar Fleet — and the only one who could read the strange signals coming from the {keyword} recovered from a derelict ship.",
+          "The colony on Kepler-9 had been silent for six months when {hero}'s crew was sent to investigate. Their orders were simple: find out what happened, and do not touch the {keyword}.",
+          "{hero} woke from cryosleep a century early, alone on a ship drifting between stars. The AI greeted {hero} politely, then admitted it had no idea where they were — or what year it was.",
+          "When the first wormhole opened above Earth, humanity sent its bravest through. {hero} volunteered — and on the other side found a message addressed by name, written in {hero}'s own handwriting."
+        ],
+        [
+          "The ship's {keyword} hummed with impossible energy as {hero} plotted a course through the asteroid storm. Alarms screamed, the hull groaned — and somehow, impossibly, they slipped through untouched.",
+          "{hero} descended to the alien planet in a landing pod, where twin suns painted the sky violet. The flora moved when unobserved, and the fauna watched {hero} with intelligent, curious eyes.",
+          "Aboard the space station Meridian, {hero} discovered the crew's logs — all ending mid-sentence on the same date. The station's AI insisted everything was fine, but its cameras kept turning toward {hero}.",
+          "{hero} piloted the scout ship into the nebula, where radio waves bent into music. The {keyword} translated the melody into coordinates — a map to somewhere no human had ever been."
+        ],
+        [
+          "The ship's AI turned hostile at 0400 hours, sealing the airlocks and venting the cargo bay. {hero} had to crawl through the maintenance ducts, rewriting its core directives one line at a time.",
+          "A rival fleet appeared on the scanners, demanding the {keyword}. {hero} had minutes to decide: surrender humanity's greatest discovery, or outrun warships in a vessel held together by hope.",
+          "The alien entity boarded the ship without opening a single door. It spoke directly into {hero}'s mind, offering knowledge beyond imagination — at a price it would not name.",
+          "Time began to fracture around the ship: {hero} met versions of the crew from yesterday and tomorrow, each warning of a different disaster. Only one timeline could survive."
+        ],
+        [
+          "The signal was not a distress call — it was an invitation. And it had been broadcasting for ten thousand years, waiting for someone exactly like {hero}.",
+          "{hero} realized the {keyword} was not a machine at all. It was alive — and it had chosen {hero} as its pilot long before {hero} was born.",
+          "The 'aliens' were humans from the far future, come back to prevent the mistake {hero} was about to make. But their records of the past were wrong about one crucial detail.",
+          "Earth had been the colony all along. The home world {hero} had been searching for was the one they had left behind — and it had been calling them home."
+        ],
+        [
+          "{hero} engaged the {keyword} one final time, and the stars stretched into lines of light. Somewhere ahead lay the answer to everything — and {hero} was finally ready to find it.",
+          "The crew returned to Earth as legends, though {hero} never told the full story. Some truths, {hero} decided, belong to the stars alone.",
+          "In the end, {hero} chose to stay among the stars, becoming part of the legend the next generation would chase. The {keyword} still hums in the dark, waiting for its next navigator.",
+          "And as the ship sailed home, {hero} looked back at the infinite dark and smiled. The universe was vast, mysterious — and absolutely worth exploring."
+        ]
+      ]
+    },
+    funny: {
+      titles: ['the Great Pancake Incident', 'the Pigeon Uprising', 'the Talent Show Disaster', 'the Unicycle Catastrophe', 'the Glitter Explosion'],
+      kw: 'rubber chicken',
+      parts: [
+        [
+          "{hero} woke up on Tuesday with a mission: to eat the world's largest pancake. It seemed simple. It was not simple. Nothing involving {hero} and a {keyword} ever is.",
+          "It all started when {hero} tried to impress the neighbors by juggling. Three flaming torches, one unicycle, and a {keyword} later, the fire department knew {hero} by name.",
+          "{hero}'s alarm clock broke, the dog ate the homework (again), and the bus left early. 'Today,' {hero} declared, tying on a cape made from a curtain, 'will be LEGENDARY.'",
+          "The village talent show had a grand prize of one hundred gold coins, and {hero} had a plan. The plan involved a {keyword}, seventeen pigeons, and absolutely no backup plan."
+        ],
+        [
+          "The pancake batter exploded. The kitchen looked like a snow globe. The dog wore a batter hat. And {hero}, covered head to toe in flour, declared it 'rustic.'",
+          "The pigeons, it turned out, had unionized. They demanded better breadcrumbs and staged a sit-in on {hero}'s head right in the middle of the performance.",
+          "The unicycle had other plans — mainly, rolling directly into the mayor's prize petunias. The mayor's face turned a shade of purple previously unknown to science.",
+          "{hero} accidentally swapped the sugar with salt, the glue with glitter, and the cat with — well, the cat is still missing. The glitter, however, will never leave."
+        ],
+        [
+          "Just as victory seemed near, {hero}'s rival appeared: Chad, who was better at everything and knew it. Chad smirked. {hero} gripped the {keyword}. It was ON.",
+          "The pancake began to slide. Time slowed. {hero} dove across the kitchen in slow motion, arms outstretched, while the dog watched with the calm of a seasoned critic.",
+          "The judges conferred in whispers. One judge laughed. Another cried. A third asked for {hero}'s autograph, which seemed like a good sign — or a very bad one.",
+          "Disaster struck: the curtain-cape got caught in the ceiling fan. {hero} spun around the room like a human helicopter while the audience gave a standing ovation."
+        ],
+        [
+          "In a shocking turn, the {keyword} turned out to be the secret ingredient all along. The judges tasted, gasped, and awarded {hero} first prize — plus a lifetime supply of syrup.",
+          "Chad slipped on a pigeon feather and face-planted into the cake. The crowd went wild. {hero} won by default, which {hero} insists counts as winning.",
+          "{hero} discovered the talent show was actually a reality TV audition. Somewhere, millions of viewers were watching {hero} wrestle a pancake the size of a mattress.",
+          "The missing cat reappeared at the perfect moment, wearing a tiny cape. The audience lost their minds. {hero} took full credit, obviously."
+        ],
+        [
+          "{hero} went home victorious, sticky, and covered in glitter. Some heroes get statues. {hero} got a pancake named after them, which is honestly better.",
+          "The moral of the story, {hero} told reporters, is to never give up on your dreams — unless your dream involves juggling flaming torches, in which case please reconsider.",
+          "And so {hero} became a local legend, the {keyword} was framed and hung above the fireplace, and the dog got the pancake crusts. Everyone won.",
+          "Years later, children still tell the tale of {hero} and the Great Pancake Incident. {hero} denies nothing and confirms everything."
+        ]
+      ]
+    },
+    fairytale: {
+      titles: ['the Golden Acorn', 'the Moonflower Path', 'the Laughing Kingdom', 'the Beanstalk Staircase', 'the Starlit Wish'],
+      kw: 'golden acorn',
+      parts: [
+        [
+          "Once upon a time, in a kingdom tucked between two silver mountains, lived a kind-hearted {hero}. Though {hero} had little, {hero} shared everything — and that is where our story begins.",
+          "In a cottage at the edge of the Enchanted Forest, {hero} found a tiny door that had not been there yesterday. Behind it glowed the {keyword}, humming a song only {hero} could hear.",
+          "Long ago, when magic still flowed like rivers, a prophecy spoke of {hero} by name. The royal owls delivered the message at dawn, and {hero} packed a lunch of cheese and courage.",
+          "Every night, {hero} wished upon the brightest star for an adventure. One starry evening, the star winked back — and the {keyword} appeared on {hero}'s windowsill."
+        ],
+        [
+          "{hero} followed a path of moonflowers deep into the forest, where fireflies lit the way like tiny lanterns. A talking fox offered directions in exchange for riddles, and {hero} was excellent at riddles.",
+          "Over the Gingerbread Bridge and past the Singing Waterfall {hero} traveled, meeting a grumpy troll who was only grumpy because nobody had ever asked about his stamp collection.",
+          "The {keyword} led {hero} to a meadow where unicorns grazed among clouds of butterflies. The eldest unicorn bowed low and whispered, 'We have been waiting for you.'",
+          "{hero} climbed the Beanstalk Staircase to a castle floating among the clouds, where the giant was not fearsome at all — just lonely, and very bad at knitting."
+        ],
+        [
+          "But the wicked sorcerer Malachar had stolen the kingdom's laughter and locked it in a crystal jar. Without laughter, the flowers refused to bloom and the sun rose grey each morning.",
+          "A jealous witch cast a sleeping spell over the whole village — everyone except {hero}, who had been protected by the {keyword}'s warm glow. Now only {hero} could break the spell.",
+          "The grumpy dragon Grimbold demanded a toll of one hundred riddles before letting anyone pass. {hero} took a deep breath and began: 'What has roots that nobody sees...'",
+          "A curse turned the prince into a frog and the castle into a maze of thorns. The {keyword} pulsed in {hero}'s hand — it knew the way through, if {hero} was brave enough to follow."
+        ],
+        [
+          "The sorcerer was not evil at all — just heartbroken, for no one had laughed at his jokes in three hundred years. {hero}'s giggle at his silliest joke broke the spell instantly.",
+          "{hero} discovered the {keyword} was a seed, and it could only grow if planted with a selfless wish. {hero} wished not for riches, but for the village to wake — and the seed burst into golden bloom.",
+          "The dragon's toll was a trick: he only wanted someone to talk to. {hero} stayed for tea, heard three hundred years of stories, and left with a dragon friend for life.",
+          "The frog prince revealed the maze had been a test of kindness all along. Every thorn {hero} had gently moved aside had been watching — and approving."
+        ],
+        [
+          "Laughter returned to the kingdom like sunshine after rain, and the flowers bloomed in colors no one had ever seen. {hero} was crowned Friend of the Realm, which is the very best title of all.",
+          "The village woke to birdsong and the smell of fresh bread, and the witch's spell melted like morning frost. {hero} was celebrated with a feast that lasted seven days and seven nights.",
+          "And so {hero} lived happily ever after — not in a palace, but in the cozy cottage by the forest, where the door to adventure is always open and the kettle is always on.",
+          "The golden tree that grew from the {keyword} still stands in the meadow today. They say if you listen closely on a quiet night, you can hear it humming {hero}'s favorite song."
+        ]
+      ]
+    }
+  };
+
+  var HEROES = ['Alex', 'Sam', 'Riley', 'Jordan', 'Avery', 'Noor'];
+  var GENRE_NAMES = { adventure: 'Adventure', horror: 'Horror', scifi: 'Sci-Fi', funny: 'Funny', fairytale: 'Fairy Tale' };
+
+  function pick(arr) { return arr[Math.floor(Math.random() * arr.length)]; }
+
+  function fill(template, hero, kw) {
+    return template.split('{hero}').join(hero).split('{keyword}').join(kw);
+  }
+
+  function slugify(s) {
+    return s.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '') || 'story';
+  }
+
+  var lastText = '';
+
+  function generate() {
+    TN.clearErr(P + 'error');
+    var okEl = g('copied');
+    if (okEl) okEl.classList.remove('show');
+
+    var genre = g('genre') ? g('genre').value : 'adventure';
+    var gd = DATA[genre];
+    if (!gd) { TN.setErr(P + 'error', 'Please choose a valid genre.'); return; }
+
+    var hero = g('hero') ? g('hero').value.trim() : '';
+    if (!hero) hero = pick(HEROES);
+    if (hero.length > 30) hero = hero.slice(0, 30);
+
+    var kw = g('kw') ? g('kw').value.trim() : '';
+    if (!kw) kw = gd.kw;
+    if (kw.length > 40) kw = kw.slice(0, 40);
+
+    var title = hero + ' and ' + pick(gd.titles);
+    var paras = gd.parts.map(function (slot) { return fill(pick(slot), hero, kw); });
+
+    lastText = title + '\n\n' + paras.join('\n\n');
+
+    var tEl = g('title'); if (tEl) tEl.textContent = title;
+    var mEl = g('meta');
+    if (mEl) {
+      var words = lastText.split(/\s+/).length;
+      mEl.textContent = GENRE_NAMES[genre] + ' · ' + paras.length + ' paragraphs · ' + words + ' words';
+    }
+    var sEl = g('story');
+    if (sEl) {
+      sEl.innerHTML = '';
+      paras.forEach(function (p) {
+        var pe = document.createElement('p');
+        pe.textContent = p;
+        sEl.appendChild(pe);
+      });
+    }
+    TN.show(P + 'out');
+  }
+
+  TN.on(goBtn, 'click', generate);
+  TN.on(P + 'regen', 'click', generate);
+
+  TN.on(P + 'copy', 'click', function () {
+    if (!lastText) return;
+    TN.copy(lastText).then(function () {
+      var ok = g('copied');
+      if (ok) { ok.textContent = 'Story copied to clipboard.'; ok.classList.add('show'); }
+    }).catch(function () {
+      TN.setErr(P + 'error', 'Could not copy — your browser blocked clipboard access.');
+    });
+  });
+
+  TN.on(P + 'dl', 'click', function () {
+    if (!lastText) { TN.setErr(P + 'error', 'Generate a story first.'); return; }
+    var firstLine = lastText.split('\n')[0];
+    TN.downloadText(lastText, slugify(firstLine) + '.txt', 'text/plain;charset=utf-8');
+  });
+
+  // Show a story immediately so the page isn't empty.
+  generate();
+})();

@@ -1,0 +1,33 @@
+<div class="tool-card">
+  <div class="error" id="keyword-density-checker-error"></div>
+  <div class="field">
+    <label for="keyword-density-checker-keyword">Keyword or phrase</label>
+    <input class="input" id="keyword-density-checker-keyword" type="text" placeholder="e.g. hiking trails">
+  </div>
+  <div class="field">
+    <label for="keyword-density-checker-text">Paste text</label>
+    <textarea class="textarea" id="keyword-density-checker-text" rows="8" placeholder="Paste your article text here..."></textarea>
+  </div>
+  <div class="field">
+    <label for="keyword-density-checker-url">…or fetch from a page URL</label>
+    <input class="input" id="keyword-density-checker-url" type="url" placeholder="https://example.com/article">
+  </div>
+  <div class="btn-row">
+    <button class="btn btn-outline" id="keyword-density-checker-fetch" type="button">Fetch &amp; Load Text</button>
+    <button class="btn btn-primary" id="keyword-density-checker-analyze" type="button">Analyze</button>
+  </div>
+  <div class="success hidden" id="keyword-density-checker-success"></div>
+  <div class="stat-cards hidden" id="keyword-density-checker-stats">
+    <div class="stat-card"><div class="v" id="keyword-density-checker-total">0</div><div class="l">Total words</div></div>
+    <div class="stat-card"><div class="v" id="keyword-density-checker-count">0</div><div class="l">Keyword occurrences</div></div>
+    <div class="stat-card"><div class="v" id="keyword-density-checker-density">0%</div><div class="l">Density</div></div>
+  </div>
+  <div class="result hidden" id="keyword-density-checker-output">
+    <p class="muted">Top 10 words (common stop-words excluded)</p>
+    <table class="data" id="keyword-density-checker-table">
+      <thead><tr><th>Word</th><th>Count</th><th>Frequency</th></tr></thead>
+      <tbody></tbody>
+    </table>
+  </div>
+  <p class="note">Fetching a URL only works if the site allows cross-origin access (CORS). If it fails, copy the page text and paste it above.</p>
+</div>

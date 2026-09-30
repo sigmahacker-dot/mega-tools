@@ -1,0 +1,30 @@
+<div class="tool-card">
+  <div class="grid2">
+    <div class="field">
+      <label for="dns-lookup-host">Hostname</label>
+      <input class="input" id="dns-lookup-host" type="text" placeholder="example.com" autocomplete="off" spellcheck="false">
+    </div>
+    <div class="field">
+      <label for="dns-lookup-type">Record type</label>
+      <select class="select" id="dns-lookup-type">
+        <option value="A">A</option>
+        <option value="AAAA">AAAA</option>
+        <option value="CNAME">CNAME</option>
+        <option value="MX">MX</option>
+        <option value="TXT">TXT</option>
+        <option value="NS">NS</option>
+      </select>
+    </div>
+  </div>
+  <div class="btn-row">
+    <button class="btn btn-primary" id="dns-lookup-go" type="button">Look Up DNS</button>
+  </div>
+  <div class="error" id="dns-lookup-error"></div>
+  <div class="result hidden" id="dns-lookup-result">
+    <table class="data">
+      <thead><tr><th style="width:3em;">#</th><th>Record</th></tr></thead>
+      <tbody id="dns-lookup-rows"></tbody>
+    </table>
+  </div>
+  <p class="note">Records are resolved live from our server via the /api/dns endpoint.</p>
+</div>

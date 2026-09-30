@@ -1,0 +1,31 @@
+<div class="tool-card">
+  <div class="field">
+    <label for="video-to-gif-file">Choose a video file</label>
+    <input class="input" id="video-to-gif-file" type="file" accept="video/*">
+  </div>
+  <div class="grid2">
+    <div class="field">
+      <label for="video-to-gif-len">Clip length (seconds, max 10)</label>
+      <input class="input" id="video-to-gif-len" type="number" min="0.5" max="10" step="0.5" value="3">
+    </div>
+    <div class="field">
+      <label for="video-to-gif-fps">Frames per second (max 15)</label>
+      <input class="input" id="video-to-gif-fps" type="number" min="1" max="15" step="1" value="10">
+    </div>
+  </div>
+  <div class="field">
+    <label for="video-to-gif-width">GIF width (pixels, max 480)</label>
+    <select class="select" id="video-to-gif-width">
+      <option value="240">240 px</option>
+      <option value="320" selected>320 px</option>
+      <option value="480">480 px</option>
+    </select>
+  </div>
+  <div class="btn-row">
+    <button class="btn btn-primary" id="video-to-gif-convert" type="button" disabled>Convert to GIF</button>
+  </div>
+  <div class="error" id="video-to-gif-error"></div>
+  <div class="progress hidden" id="video-to-gif-progress"><div id="video-to-gif-bar" style="width:0%"></div></div>
+  <p class="muted" id="video-to-gif-status"></p>
+  <p class="note">Best for short clips of a few seconds. Longer clips, high frame rates or large widths use a lot of memory and take longer to encode. Your video never leaves your device.</p>
+</div>

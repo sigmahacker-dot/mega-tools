@@ -1,0 +1,38 @@
+<div class="tool-card">
+  <div class="dropzone" id="meme-generator-drop">
+    <span class="dz-icon">😂</span>
+    <strong>Drop a photo here</strong> or click to browse <span class="muted">(optional)</span>
+    <input type="file" id="meme-generator-file" accept="image/*" class="hidden">
+  </div>
+  <div class="grid2 mt">
+    <div class="field">
+      <label for="meme-generator-top">Top text</label>
+      <input type="text" class="input" id="meme-generator-top" placeholder="TOP TEXT" maxlength="120">
+    </div>
+    <div class="field">
+      <label for="meme-generator-bottom">Bottom text</label>
+      <input type="text" class="input" id="meme-generator-bottom" placeholder="BOTTOM TEXT" maxlength="120">
+    </div>
+  </div>
+  <div class="grid2">
+    <div class="field">
+      <label for="meme-generator-size">Font size: <span id="meme-generator-size-val">56</span></label>
+      <input type="range" id="meme-generator-size" min="24" max="140" value="56">
+    </div>
+    <div class="field">
+      <label for="meme-generator-color">Text color</label>
+      <input type="color" class="input" id="meme-generator-color" value="#ffffff">
+    </div>
+  </div>
+  <div class="field">
+    <label for="meme-generator-bg">Background color (only used without a photo)</label>
+    <input type="color" class="input" id="meme-generator-bg" value="#1e293b">
+  </div>
+  <canvas id="meme-generator-canvas" class="preview" style="max-width:100%;height:auto"></canvas>
+  <div class="btn-row">
+    <button class="btn btn-primary" id="meme-generator-download">Download meme</button>
+    <button class="btn btn-outline" id="meme-generator-clear">Clear photo</button>
+  </div>
+  <div class="error" id="meme-generator-error"></div>
+  <p class="note">Live preview — every keystroke updates the meme. Files never leave your device — everything is processed in your browser.</p>
+</div>

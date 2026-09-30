@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Audio Cutter — Free Online | ToolNest</title>
+<meta name="description" content="Cut a section out of any audio file in your browser. Set start and end times, preview the selection, then download it as an MP3.">
+<meta name="keywords" content="audio cutter, cut audio online, trim mp3, audio trimmer, mp3 cutter">
+<link rel="canonical" href="https://toolnest.vercel.app/tools/audio-cutter/">
+<meta property="og:title" content="Audio Cutter — Free Online | ToolNest">
+<meta property="og:description" content="Cut a section out of any audio file in your browser. Set start and end times, preview the selection, then download it as an MP3.">
+<meta property="og:type" content="website">
+<link rel="stylesheet" href="/assets/site.css?v=1">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='22' fill='%234f46e5'/><text x='50' y='68' font-size='52' text-anchor='middle' fill='white' font-family='Arial' font-weight='bold'>T</text></svg>">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebApplication","name":"Audio Cutter","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0"},"url":"https://toolnest.vercel.app/tools/audio-cutter/","description":"Cut a section out of any audio file in your browser. Set start and end times, preview the selection, then download it as an MP3."},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What format is the cut audio saved in?","acceptedAnswer":{"@type":"Answer","text":"The selected section is encoded to a real MP3 at 128 kbps using the lamejs encoder, entirely on your device."}},{"@type":"Question","name":"Which audio formats can I cut?","acceptedAnswer":{"@type":"Answer","text":"Most common formats (MP3, WAV, OGG, M4A/AAC) decode in modern browsers. If decoding fails, your browser cannot read that file's audio."}},{"@type":"Question","name":"Is my audio uploaded anywhere?","acceptedAnswer":{"@type":"Answer","text":"Yes — the cut MP3 is generated locally in your browser. Your file is never uploaded anywhere."}}]}]}</script>
+</head>
+<body>
+<header class="site-header">
+  <div class="container">
+    <a class="logo" href="/"><span class="logo-mark">🧰</span> ToolNest</a>
+    <nav class="site-nav">
+      <a href="/">Home</a>
+      <a href="/#categories">Categories</a>
+      <a href="/#all-tools">All Tools</a>
+    </nav>
+  </div>
+</header>
+
+<!-- ADSTERRA-HEADER: paste your Adsterra banner ad code inside the div below -->
+<div class="container"><div class="ad-slot ad-leaderboard" data-ad="header"></div></div>
+
+<main class="container">
+  <nav class="crumbs"><a href="/">Home</a> &rsaquo; <a href="/#video-audio">Video &amp; Audio</a> &rsaquo; Audio Cutter</nav>
+  <div class="tool-hero">
+    <h1>Audio Cutter</h1>
+    <p>Cut a section out of any audio file in your browser. Set start and end times, preview the selection, then download it as an MP3.</p>
+  </div>
+
+  <div class="tool-card">
+  <div class="field">
+    <label for="audio-cutter-file">Choose an audio file</label>
+    <input class="input" id="audio-cutter-file" type="file" accept="audio/*">
+  </div>
+  <div id="audio-cutter-times" class="hidden">
+    <p class="muted">Duration: <span id="audio-cutter-duration">—</span></p>
+    <div class="grid2">
+      <div class="field">
+        <label for="audio-cutter-start">Start (seconds)</label>
+        <input class="input" id="audio-cutter-start" type="number" min="0" step="0.1" value="0">
+      </div>
+      <div class="field">
+        <label for="audio-cutter-end">End (seconds)</label>
+        <input class="input" id="audio-cutter-end" type="number" min="0" step="0.1" value="0">
+      </div>
+    </div>
+    <div class="btn-row">
+      <button class="btn btn-outline" id="audio-cutter-preview" type="button">Preview selection</button>
+      <button class="btn btn-primary" id="audio-cutter-cut" type="button">Cut &amp; Download MP3</button>
+    </div>
+  </div>
+  <div class="error" id="audio-cutter-error"></div>
+  <div class="progress hidden" id="audio-cutter-progress"><div id="audio-cutter-bar" style="width:0%"></div></div>
+  <p class="muted" id="audio-cutter-status"></p>
+  <p class="note">Files never leave your device — decoding, cutting and MP3 encoding all happen in your browser.</p>
+</div>
+
+
+  <!-- ADSTERRA-INCONTENT: paste your Adsterra native/in-content ad code inside the div below -->
+  <div class="ad-slot" data-ad="incontent"></div>
+
+  <div class="info-grid">
+    <div class="info-card">
+      <h2>📖 How to use</h2>
+      <ol><li>Choose an audio file from your device and wait for its duration to load.</li><li>Enter the start and end times in seconds for the section you want to keep.</li><li>Optionally press Preview to listen to the selection before cutting.</li><li>Click &quot;Cut &amp; Download MP3&quot; to save the section as an MP3 file.</li></ol>
+    </div>
+    <div class="info-card">
+      <h2>❓ Frequently asked questions</h2>
+      <div class="faq"><details><summary>What format is the cut audio saved in?</summary><p>The selected section is encoded to a real MP3 at 128 kbps using the lamejs encoder, entirely on your device.</p></details><details><summary>Which audio formats can I cut?</summary><p>Most common formats (MP3, WAV, OGG, M4A/AAC) decode in modern browsers. If decoding fails, your browser cannot read that file&#39;s audio.</p></details><details><summary>Is my audio uploaded anywhere?</summary><p>Yes — the cut MP3 is generated locally in your browser. Your file is never uploaded anywhere.</p></details></div>
+    </div>
+  </div>
+
+  <section class="section">
+    <h2>🔗 Related tools</h2>
+    <div class="tool-grid"><a class="tool-link" href="/tools/stock-video-downloader/" data-search="royalty-free stock video downloader search thousands of royalty-free stock videos and download them free. every clip is pexels license — free for commercial use, no attribution needed. stock video downloader royalty free videos free stock footage pexels videos download">Royalty-Free Stock Video Downloader<small>Search thousands of royalty-free stock videos and download them free. …</small></a><a class="tool-link" href="/tools/video-compressor/" data-search="video compressor shrink a video file by re-encoding it at a lower bitrate. pick low, medium or high quality and compare the original and new file sizes. compress video reduce video size video compressor shrink mp4 webm converter">Video Compressor<small>Shrink a video file by re-encoding it at a lower bitrate. Pick Low, Me…</small></a><a class="tool-link" href="/tools/video-merger/" data-search="video merger join multiple video clips into one file, right in your browser. clips play in order and are re-recorded into a single downloadable video. merge videos combine videos join video clips video joiner concatenate videos">Video Merger<small>Join multiple video clips into one file, right in your browser. Clips …</small></a><a class="tool-link" href="/tools/video-to-gif/" data-search="video to gif converter turn any short video clip into an animated gif. choose clip length, frame rate and width — frames are captured and encoded right in your browser. video to gif convert video to gif mp4 to gif gif maker">Video to GIF Converter<small>Turn any short video clip into an animated GIF. Choose clip length, fr…</small></a><a class="tool-link" href="/tools/video-to-mp3/" data-search="video to mp3 converter convert a video file to mp3 audio entirely in your browser. your file never leaves your device — decoding and mp3 encoding happen locally. video to mp3 convert video to mp3 extract audio from video mp4 to mp3">Video to MP3 Converter<small>Convert a video file to MP3 audio entirely in your browser. Your file …</small></a><a class="tool-link" href="/tools/youtube-thumbnail-downloader/" data-search="youtube thumbnail downloader paste any youtube link or video id to preview every available thumbnail size and download the one you need in a single click. youtube thumbnail downloader download youtube thumbnail yt thumbnail saver video thumbnail grabber">YouTube Thumbnail Downloader<small>Paste any YouTube link or video ID to preview every available thumbnai…</small></a></div>
+  </section>
+</main>
+
+<!-- ADSTERRA-FOOTER: paste your Adsterra footer/banner ad code inside the div below -->
+<div class="container"><div class="ad-slot" data-ad="footer"></div></div>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="f-grid">
+      <div>
+        <span class="brandline">🧰 ToolNest</span>
+        <p>Free online tools that actually work. No sign-up, no watermarks — and your files never leave your device for client-side tools.</p>
+      </div>
+      <div>
+        <h4>Popular</h4>
+        <a href="/tools/qr-code-generator/">QR Code Generator</a>
+        <a href="/tools/background-remover/">Background Remover</a>
+        <a href="/tools/pdf-merger/">PDF Merger</a>
+        <a href="/tools/word-counter/">Word Counter</a>
+      </div>
+      <div>
+        <h4>Categories</h4>
+        <a href="/#image">Image Tools</a>
+        <a href="/#pdf">PDF &amp; Documents</a>
+        <a href="/#calculators">Calculators</a>
+        <a href="/#developer">Developer Tools</a>
+      </div>
+      <div>
+        <h4>Site</h4>
+        <a href="/">Home</a>
+        <a href="/#all-tools">All Tools</a>
+        <a href="/sitemap.xml">Sitemap</a>
+      </div>
+    </div>
+    <div class="f-bottom">© 2026 ToolNest · Free tools for everyone · Made with care</div>
+  </div>
+</footer>
+
+<script src="/assets/site.js?v=1"></script>
+<script src="https://cdn.jsdelivr.net/npm/lamejs@1.2.1/lame.min.js" defer></script>
+<script>
+/* Audio Cutter — decode, slice an AudioBuffer, preview, encode selection to MP3 with lamejs */
+(function () {
+  'use strict';
+  var SLUG = 'audio-cutter';
+  var file = null;
+  var audioBuf = null;
+  var busy = false;
+  var previewNodes = null;
+
+  function AC() { return window.AudioContext || window.webkitAudioContext; }
+
+  function setStatus(t) {
+    var s = TN.el(SLUG + '-status');
+    if (s) s.textContent = t;
+  }
+  function setProg(p) {
+    var bar = TN.el(SLUG + '-bar');
+    if (bar) bar.style.width = Math.max(0, Math.min(100, Math.round(p * 100))) + '%';
+    var pr = TN.el(SLUG + '-progress');
+    if (pr) pr.classList.toggle('hidden', !(p > 0 && p < 1));
+  }
+  function fmtTime(s) {
+    s = Math.max(0, s);
+    var m = Math.floor(s / 60), sec = s - m * 60;
+    return m + ':' + (sec < 10 ? '0' : '') + sec.toFixed(1);
+  }
+
+  function stopPreview() {
+    if (previewNodes) {
+      try { previewNodes.src.stop(); } catch (e) {}
+      try { previewNodes.ctx.close(); } catch (e2) {}
+      previewNodes = null;
+    }
+  }
+
+  function sliceBuffer(ab, start, end) {
+    var Ctor = AC();
+    var tmp = new Ctor();
+    try {
+      var sr = ab.sampleRate, ch = ab.numberOfChannels;
+      var s0 = Math.max(0, Math.floor(start * sr));
+      var s1 = Math.min(ab.length, Math.ceil(end * sr));
+      var out = tmp.createBuffer(ch, Math.max(1, s1 - s0), sr);
+      for (var c = 0; c < ch; c++) {
+        out.getChannelData(c).set(ab.getChannelData(c).subarray(s0, s1));
+      }
+      return out;
+    } finally {
+      try { tmp.close(); } catch (e) {}
+    }
+  }
+
+  function encodeMp3(ab, onTick) {
+    return new Promise(function (resolve, reject) {
+      try {
+        var ch = Math.min(ab.numberOfChannels, 2);
+        var enc = new lamejs.Mp3Encoder(ch, ab.sampleRate, 128);
+        var len = ab.length;
+        var left = ab.getChannelData(0);
+        var right = ch > 1 ? ab.getChannelData(1) : null;
+        var parts = [];
+        var CHUNK = 1152 * 64;
+        var i = 0;
+        (function step() {
+          try {
+            var n = Math.min(CHUNK, len - i);
+            var l16 = new Int16Array(n);
+            for (var k = 0; k < n; k++) {
+              var s = Math.max(-1, Math.min(1, left[i + k]));
+              l16[k] = s < 0 ? s * 0x8000 : s * 0x7FFF;
+            }
+            var data;
+            if (right) {
+              var r16 = new Int16Array(n);
+              for (var k2 = 0; k2 < n; k2++) {
+                var s2 = Math.max(-1, Math.min(1, right[i + k2]));
+                r16[k2] = s2 < 0 ? s2 * 0x8000 : s2 * 0x7FFF;
+              }
+              data = enc.encodeBuffer(l16, r16);
+            } else {
+              data = enc.encodeBuffer(l16);
+            }
+            if (data.length) parts.push(new Uint8Array(data));
+            i += n;
+            if (onTick) onTick(i / len);
+            if (i < len) { setTimeout(step, 0); }
+            else {
+              var end = enc.flush();
+              if (end.length) parts.push(new Uint8Array(end));
+              resolve(new Blob(parts, { type: 'audio/mpeg' }));
+            }
+          } catch (e) { reject(e); }
+        })();
+      } catch (e) { reject(e); }
+    });
+  }
+
+  function readTimes() {
+    var startEl = TN.el(SLUG + '-start'), endEl = TN.el(SLUG + '-end');
+    var start = parseFloat(startEl && startEl.value);
+    var end = parseFloat(endEl && endEl.value);
+    if (isNaN(start)) start = 0;
+    if (isNaN(end)) end = 0;
+    return { start: start, end: end };
+  }
+
+  function validate() {
+    if (!audioBuf) { TN.setErr(SLUG + '-error', 'Choose an audio file first.'); return null; }
+    var t = readTimes();
+    var dur = audioBuf.duration;
+    if (t.start < 0 || t.end < 0) { TN.setErr(SLUG + '-error', 'Start and end times cannot be negative.'); return null; }
+    if (!(t.start < t.end)) { TN.setErr(SLUG + '-error', 'Start time must be before the end time.'); return null; }
+    if (t.end > dur) { TN.setErr(SLUG + '-error', 'End time is past the end of the audio (' + fmtTime(dur) + ').'); return null; }
+    TN.clearErr(SLUG + '-error');
+    return t;
+  }
+
+  TN.on(SLUG + '-file', 'change', function () {
+    var el = TN.el(SLUG + '-file');
+    file = el && el.files && el.files[0] ? el.files[0] : null;
+    audioBuf = null;
+    stopPreview();
+    TN.clearErr(SLUG + '-error');
+    TN.hide(SLUG + '-times');
+    setStatus('');
+    if (!file) return;
+    var Ctor = AC();
+    if (!Ctor) {
+      TN.setErr(SLUG + '-error', 'Your browser does not support Web Audio, which is needed to process audio files.');
+      return;
+    }
+    if (typeof lamejs === 'undefined') {
+      TN.setErr(SLUG + '-error', 'The MP3 encoder library failed to load. Check your internet connection and reload the page.');
+      return;
+    }
+    setStatus('Decoding audio\u2026');
+    var actx = new Ctor();
+    TN.readAsArrayBuffer(file).then(function (buf) {
+      return actx.decodeAudioData(buf);
+    }).then(function (ab) {
+      audioBuf = ab;
+      var durEl = TN.el(SLUG + '-duration');
+      if (durEl) durEl.textContent = fmtTime(ab.duration) + ' (' + ab.duration.toFixed(1) + ' s)';
+      var sEl = TN.el(SLUG + '-start'), eEl = TN.el(SLUG + '-end');
+      if (sEl) sEl.value = 0;
+      if (eEl) { eEl.value = ab.duration.toFixed(1); eEl.max = ab.duration.toFixed(1); }
+      TN.show(SLUG + '-times');
+      setStatus('Ready — set your start and end times.');
+    }).catch(function () {
+      TN.setErr(SLUG + '-error', 'Could not decode this file. It may be corrupt or use an audio format your browser cannot read.');
+      setStatus('');
+    }).then(function () {
+      try { actx.close(); } catch (e) {}
+    });
+  });
+
+  TN.on(SLUG + '-preview', 'click', function () {
+    var t = validate();
+    if (!t) return;
+    stopPreview();
+    var Ctor = AC();
+    if (!Ctor) return;
+    try {
+      var ctx = new Ctor();
+      var sliced = sliceBuffer(audioBuf, t.start, t.end);
+      var src = ctx.createBufferSource();
+      src.buffer = sliced;
+      src.connect(ctx.destination);
+      src.onended = function () { stopPreview(); };
+      if (ctx.resume) ctx.resume();
+      src.start();
+      previewNodes = { src: src, ctx: ctx };
+      setStatus('Previewing ' + fmtTime(t.start) + ' \u2192 ' + fmtTime(t.end) + '\u2026');
+    } catch (e) {
+      TN.setErr(SLUG + '-error', 'Preview failed: ' + (e && e.message || e));
+    }
+  });
+
+  TN.on(SLUG + '-cut', 'click', function () {
+    if (busy) return;
+    var t = validate();
+    if (!t) return;
+    if (typeof lamejs === 'undefined') {
+      TN.setErr(SLUG + '-error', 'The MP3 encoder library failed to load. Check your internet connection and reload the page.');
+      return;
+    }
+    stopPreview();
+    busy = true;
+    setProg(0.02);
+    setStatus('Cutting selection\u2026');
+    var sliced;
+    try {
+      sliced = sliceBuffer(audioBuf, t.start, t.end);
+    } catch (e) {
+      busy = false; setProg(0);
+      TN.setErr(SLUG + '-error', 'Could not cut the audio: ' + (e && e.message || e));
+      return;
+    }
+    encodeMp3(sliced, function (frac) {
+      setProg(0.05 + frac * 0.93);
+      setStatus('Encoding MP3\u2026 ' + Math.round(frac * 100) + '%');
+    }).then(function (blob) {
+      setProg(1);
+      setStatus('Done — cut MP3 is ' + TN.fmtBytes(blob.size) + '.');
+      var name = (file.name.replace(/\.[^.]+$/, '') || 'cut') + '-cut.mp3';
+      TN.download(blob, name);
+    }).catch(function (err) {
+      TN.setErr(SLUG + '-error', 'Encoding failed: ' + ((err && err.message) || err));
+      setStatus('');
+    }).then(function () {
+      busy = false;
+      setProg(0);
+    });
+  });
+})();
+
+</script>
+</body>
+</html>

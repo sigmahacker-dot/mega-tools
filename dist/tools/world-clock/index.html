@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>World Clock — Free Online | ToolNest</title>
+<meta name="description" content="See live clocks for eight major world cities, plus any time zone you add yourself. Every clock updates each second, with your local date shown too.">
+<meta name="keywords" content="world clock, time zones, current time cities, international clock">
+<link rel="canonical" href="https://toolnest.vercel.app/tools/world-clock/">
+<meta property="og:title" content="World Clock — Free Online | ToolNest">
+<meta property="og:description" content="See live clocks for eight major world cities, plus any time zone you add yourself. Every clock updates each second, with your local date shown too.">
+<meta property="og:type" content="website">
+<link rel="stylesheet" href="/assets/site.css?v=1">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='22' fill='%234f46e5'/><text x='50' y='68' font-size='52' text-anchor='middle' fill='white' font-family='Arial' font-weight='bold'>T</text></svg>">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebApplication","name":"World Clock","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0"},"url":"https://toolnest.vercel.app/tools/world-clock/","description":"See live clocks for eight major world cities, plus any time zone you add yourself. Every clock updates each second, with your local date shown too."},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Do the clocks handle daylight saving time?","acceptedAnswer":{"@type":"Answer","text":"The clocks use your browser's built-in time zone database (Intl.DateTimeFormat), so they handle daylight saving automatically and always reflect the current date."}},{"@type":"Question","name":"Which time zones can I add?","acceptedAnswer":{"@type":"Answer","text":"Type an IANA time zone name such as America/Chicago or Asia/Karachi. If the name is not recognized, you will see a friendly error and nothing is added."}},{"@type":"Question","name":"Are my added cities remembered?","acceptedAnswer":{"@type":"Answer","text":"Yes — any custom time zones you add are saved in your browser, so they are still there the next time you open the tool on this device."}}]}]}</script>
+</head>
+<body>
+<header class="site-header">
+  <div class="container">
+    <a class="logo" href="/"><span class="logo-mark">🧰</span> ToolNest</a>
+    <nav class="site-nav">
+      <a href="/">Home</a>
+      <a href="/#categories">Categories</a>
+      <a href="/#all-tools">All Tools</a>
+    </nav>
+  </div>
+</header>
+
+<!-- ADSTERRA-HEADER: paste your Adsterra banner ad code inside the div below -->
+<div class="container"><div class="ad-slot ad-leaderboard" data-ad="header"></div></div>
+
+<main class="container">
+  <nav class="crumbs"><a href="/">Home</a> &rsaquo; <a href="/#fun">Fun &amp; Lifestyle</a> &rsaquo; World Clock</nav>
+  <div class="tool-hero">
+    <h1>World Clock</h1>
+    <p>See live clocks for eight major world cities, plus any time zone you add yourself. Every clock updates each second, with your local date shown too.</p>
+  </div>
+
+  <div class="tool-card">
+  <div class="field">
+    <label id="world-clock-local-label">Your local time</label>
+    <div class="center" style="font-size:1.75rem;font-weight:700;font-variant-numeric:tabular-nums;" id="world-clock-local-time"></div>
+    <p class="muted center" id="world-clock-local-date"></p>
+  </div>
+  <div class="row mt">
+    <div class="field" style="flex:1;">
+      <label for="world-clock-tz">Add your own time zone (e.g. America/Chicago)</label>
+      <input class="input" id="world-clock-tz" type="text" placeholder="Continent/City" autocomplete="off" maxlength="60">
+    </div>
+    <div class="field" style="align-self:end;">
+      <button class="btn btn-primary" id="world-clock-add" type="button">Add</button>
+    </div>
+  </div>
+  <div class="error" id="world-clock-error"></div>
+  <div class="stat-cards mt" id="world-clock-grid"></div>
+  <p class="note">Clocks update every second and handle daylight saving automatically.</p>
+</div>
+
+
+  <!-- ADSTERRA-INCONTENT: paste your Adsterra native/in-content ad code inside the div below -->
+  <div class="ad-slot" data-ad="incontent"></div>
+
+  <div class="info-grid">
+    <div class="info-card">
+      <h2>📖 How to use</h2>
+      <ol><li>Scroll to see the live clocks for the eight default cities.</li><li>Type a time zone name (e.g. America/Chicago) in the &quot;Add your own&quot; box.</li><li>Click &quot;Add&quot; to pin a new live clock for that zone.</li><li>Use the delete button on a custom clock to remove it.</li></ol>
+    </div>
+    <div class="info-card">
+      <h2>❓ Frequently asked questions</h2>
+      <div class="faq"><details><summary>Do the clocks handle daylight saving time?</summary><p>The clocks use your browser&#39;s built-in time zone database (Intl.DateTimeFormat), so they handle daylight saving automatically and always reflect the current date.</p></details><details><summary>Which time zones can I add?</summary><p>Type an IANA time zone name such as America/Chicago or Asia/Karachi. If the name is not recognized, you will see a friendly error and nothing is added.</p></details><details><summary>Are my added cities remembered?</summary><p>Yes — any custom time zones you add are saved in your browser, so they are still there the next time you open the tool on this device.</p></details></div>
+    </div>
+  </div>
+
+  <section class="section">
+    <h2>🔗 Related tools</h2>
+    <div class="tool-grid"><a class="tool-link" href="/tools/baby-name-generator/" data-search="baby name generator discover baby names by gender and origin — pakistani, arabic, western, indian or turkish — with meanings, random picks and tap-to-copy. baby name generator baby names with meanings muslim baby names boy girl names">Baby Name Generator<small>Discover baby names by gender and origin — Pakistani, Arabic, Western,…</small></a><a class="tool-link" href="/tools/battery-status-checker/" data-search="battery status checker check your device&#39;s battery level, charging status and estimated time remaining, with live updates — where your browser supports the battery api. battery status battery level checker laptop battery charging status">Battery Status Checker<small>Check your device&#39;s battery level, charging status and estimated time …</small></a><a class="tool-link" href="/tools/birthday-countdown/" data-search="birthday countdown enter your birthday for a live countdown to your next one — days, hours, minutes and seconds — plus the age you&#39;ll turn and a fun message. birthday countdown countdown to birthday how old am i birthday timer">Birthday Countdown<small>Enter your birthday for a live countdown to your next one — days, hour…</small></a><a class="tool-link" href="/tools/calendar-generator/" data-search="calendar generator generate a monthly calendar for any month and year, with correct weekdays, leap years, today&#39;s date highlighted, and previous/next month navigation. calendar generator monthly calendar printable calendar month planner">Calendar Generator<small>Generate a monthly calendar for any month and year, with correct weekd…</small></a><a class="tool-link" href="/tools/coin-flip/" data-search="coin flip flip a virtual coin with a fun animated toss. get instant heads or tails results, keep a running tally of both sides, and reset the count whenever you like. coin flip heads or tails coin toss random coin">Coin Flip<small>Flip a virtual coin with a fun animated toss. Get instant Heads or Tai…</small></a><a class="tool-link" href="/tools/dice-roller/" data-search="dice roller roll up to six dice with 4, 6, 8, 10, 12 or 20 sides. watch the animated faces settle, see the total instantly, and review a history of your recent rolls. dice roller d20 roller rpg dice roll dice online">Dice Roller<small>Roll up to six dice with 4, 6, 8, 10, 12 or 20 sides. Watch the animat…</small></a></div>
+  </section>
+</main>
+
+<!-- ADSTERRA-FOOTER: paste your Adsterra footer/banner ad code inside the div below -->
+<div class="container"><div class="ad-slot" data-ad="footer"></div></div>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="f-grid">
+      <div>
+        <span class="brandline">🧰 ToolNest</span>
+        <p>Free online tools that actually work. No sign-up, no watermarks — and your files never leave your device for client-side tools.</p>
+      </div>
+      <div>
+        <h4>Popular</h4>
+        <a href="/tools/qr-code-generator/">QR Code Generator</a>
+        <a href="/tools/background-remover/">Background Remover</a>
+        <a href="/tools/pdf-merger/">PDF Merger</a>
+        <a href="/tools/word-counter/">Word Counter</a>
+      </div>
+      <div>
+        <h4>Categories</h4>
+        <a href="/#image">Image Tools</a>
+        <a href="/#pdf">PDF &amp; Documents</a>
+        <a href="/#calculators">Calculators</a>
+        <a href="/#developer">Developer Tools</a>
+      </div>
+      <div>
+        <h4>Site</h4>
+        <a href="/">Home</a>
+        <a href="/#all-tools">All Tools</a>
+        <a href="/sitemap.xml">Sitemap</a>
+      </div>
+    </div>
+    <div class="f-bottom">© 2026 ToolNest · Free tools for everyone · Made with care</div>
+  </div>
+</footer>
+
+<script src="/assets/site.js?v=1"></script>
+
+<script>
+(function () {
+  'use strict';
+  var P = 'world-clock-';
+  function g(id) { return document.getElementById(P + id); }
+
+  var grid = g('grid'), tzIn = g('tz'), addBtn = g('add');
+  if (!grid || !tzIn || !addBtn) return;
+
+  var KEY = 'tn_world_clock_custom';
+  var defaults = [
+    { label: 'Karachi', tz: 'Asia/Karachi' },
+    { label: 'Dubai', tz: 'Asia/Dubai' },
+    { label: 'London', tz: 'Europe/London' },
+    { label: 'New York', tz: 'America/New_York' },
+    { label: 'Tokyo', tz: 'Asia/Tokyo' },
+    { label: 'Sydney', tz: 'Australia/Sydney' },
+    { label: 'Riyadh', tz: 'Asia/Riyadh' },
+    { label: 'Delhi', tz: 'Asia/Kolkata' }
+  ];
+  var customs = [];
+
+  function loadCustom() {
+    try {
+      var raw = localStorage.getItem(KEY);
+      if (raw) {
+        var parsed = JSON.parse(raw);
+        if (Array.isArray(parsed)) {
+          customs = parsed.filter(function (c) {
+            return c && typeof c.tz === 'string' && isValidTz(c.tz);
+          }).map(function (c) { return { label: String(c.label || c.tz), tz: c.tz }; });
+        }
+      }
+    } catch (e) { customs = []; }
+  }
+
+  function saveCustom() {
+    try { localStorage.setItem(KEY, JSON.stringify(customs)); } catch (e) { /* private mode */ }
+  }
+
+  function isValidTz(tz) {
+    try {
+      new Intl.DateTimeFormat('en', { timeZone: tz });
+      return true;
+    } catch (e) { return false; }
+  }
+
+  function fmtTime(tz) {
+    try {
+      return new Intl.DateTimeFormat('en-GB', {
+        hour: '2-digit', minute: '2-digit', second: '2-digit',
+        hour12: false, timeZone: tz
+      }).format(new Date());
+    } catch (e) { return '--:--:--'; }
+  }
+
+  function fmtDate(tz) {
+    try {
+      return new Intl.DateTimeFormat('en-GB', {
+        weekday: 'short', day: 'numeric', month: 'short',
+        timeZone: tz
+      }).format(new Date());
+    } catch (e) { return ''; }
+  }
+
+  function allZones() {
+    return defaults.concat(customs.map(function (c) {
+      return { label: c.label, tz: c.tz, custom: true };
+    }));
+  }
+
+  function buildGrid() {
+    var zones = allZones();
+    var html = '';
+    for (var i = 0; i < zones.length; i++) {
+      var z = zones[i];
+      var del = z.custom
+        ? ' <button class="btn btn-danger btn-sm" data-wc-del="' + TN.esc(z.tz) + '" type="button">Remove</button>'
+        : '';
+      html += '<div class="stat-card"><div class="v" data-wc-time="' + i + '" style="font-size:1.6rem;">--:--:--</div>' +
+        '<div class="l">' + TN.esc(z.label) + '<br><span class="muted">' + TN.esc(fmtDate(z.tz)) + '</span>' + del + '</div></div>';
+    }
+    grid.innerHTML = html;
+  }
+
+  function tick() {
+    var zones = allZones();
+    for (var i = 0; i < zones.length; i++) {
+      var el = grid.querySelector('[data-wc-time="' + i + '"]');
+      if (el) el.textContent = fmtTime(zones[i].tz);
+    }
+    var local = g('local-time');
+    if (local) {
+      try {
+        local.textContent = new Date().toLocaleTimeString('en-GB', { hour12: false });
+      } catch (e) { local.textContent = ''; }
+    }
+    var ldate = g('local-date');
+    if (ldate) {
+      try {
+        ldate.textContent = new Date().toLocaleDateString(undefined, {
+          weekday: 'long', year: 'numeric', month: 'long', day: 'numeric'
+        });
+      } catch (e) { ldate.textContent = ''; }
+    }
+  }
+
+  function addCustom() {
+    TN.clearErr(P + 'error');
+    var tz = (tzIn.value || '').trim();
+    if (!tz) {
+      TN.setErr(P + 'error', 'Please type a time zone name, e.g. America/Chicago.');
+      return;
+    }
+    if (tz.length > 60) {
+      TN.setErr(P + 'error', 'That time zone name is too long.');
+      return;
+    }
+    if (!isValidTz(tz)) {
+      TN.setErr(P + 'error', 'Unknown time zone "' + tz + '". Use a Continent/City name like Europe/Paris.');
+      return;
+    }
+    var zones = allZones();
+    for (var i = 0; i < zones.length; i++) {
+      if (zones[i].tz.toLowerCase() === tz.toLowerCase()) {
+        TN.setErr(P + 'error', 'That time zone is already shown.');
+        return;
+      }
+    }
+    var label = tz.split('/').pop().replace(/_/g, ' ');
+    customs.push({ label: label, tz: tz });
+    saveCustom();
+    tzIn.value = '';
+    buildGrid();
+    tick();
+  }
+
+  grid.onclick = function (e) {
+    var tgt = e.target;
+    var tz = tgt.getAttribute && tgt.getAttribute('data-wc-del');
+    if (tz) {
+      customs = customs.filter(function (c) { return c.tz !== tz; });
+      saveCustom();
+      buildGrid();
+      tick();
+    }
+  };
+
+  TN.on(addBtn, 'click', addCustom);
+  TN.on(tzIn, 'keydown', function (e) { if (e.key === 'Enter') addCustom(); });
+
+  loadCustom();
+  buildGrid();
+  tick();
+  setInterval(tick, 1000);
+})();
+
+</script>
+</body>
+</html>

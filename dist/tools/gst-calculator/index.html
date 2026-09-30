@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GST Calculator — Free Online | ToolNest</title>
+<meta name="description" content="Calculate GST with preset rates of 0, 5, 12, 18 and 28 percent or a custom rate, in inclusive or exclusive mode. See the GST amount, base price and total breakup.">
+<meta name="keywords" content="gst calculator, gst tax calculator, gst inclusive exclusive">
+<link rel="canonical" href="https://toolnest.vercel.app/tools/gst-calculator/">
+<meta property="og:title" content="GST Calculator — Free Online | ToolNest">
+<meta property="og:description" content="Calculate GST with preset rates of 0, 5, 12, 18 and 28 percent or a custom rate, in inclusive or exclusive mode. See the GST amount, base price and total breakup.">
+<meta property="og:type" content="website">
+<link rel="stylesheet" href="/assets/site.css?v=1">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='22' fill='%234f46e5'/><text x='50' y='68' font-size='52' text-anchor='middle' fill='white' font-family='Arial' font-weight='bold'>T</text></svg>">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebApplication","name":"GST Calculator","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0"},"url":"https://toolnest.vercel.app/tools/gst-calculator/","description":"Calculate GST with preset rates of 0, 5, 12, 18 and 28 percent or a custom rate, in inclusive or exclusive mode. See the GST amount, base price and total breakup."},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What is the difference between inclusive and exclusive GST?","acceptedAnswer":{"@type":"Answer","text":"Exclusive adds GST on top: total = price + GST. Inclusive treats your amount as already containing GST and splits it out."}},{"@type":"Question","name":"How is GST calculated?","acceptedAnswer":{"@type":"Answer","text":"Exclusive: GST = amount x rate/100. Inclusive: GST = amount - amount/(1 + rate/100)."}},{"@type":"Question","name":"Can I use a custom GST rate?","acceptedAnswer":{"@type":"Answer","text":"Yes. Type any percentage in the custom rate field; the preset buttons will deselect automatically."}}]}]}</script>
+</head>
+<body>
+<header class="site-header">
+  <div class="container">
+    <a class="logo" href="/"><span class="logo-mark">🧰</span> ToolNest</a>
+    <nav class="site-nav">
+      <a href="/">Home</a>
+      <a href="/#categories">Categories</a>
+      <a href="/#all-tools">All Tools</a>
+    </nav>
+  </div>
+</header>
+
+<!-- ADSTERRA-HEADER: paste your Adsterra banner ad code inside the div below -->
+<div class="container"><div class="ad-slot ad-leaderboard" data-ad="header"></div></div>
+
+<main class="container">
+  <nav class="crumbs"><a href="/">Home</a> &rsaquo; <a href="/#calculators">Calculators</a> &rsaquo; GST Calculator</nav>
+  <div class="tool-hero">
+    <h1>GST Calculator</h1>
+    <p>Calculate GST with preset rates of 0, 5, 12, 18 and 28 percent or a custom rate, in inclusive or exclusive mode. See the GST amount, base price and total breakup.</p>
+  </div>
+
+  <div class="tool-card">
+  <div class="field">
+    <label for="gst-amount">Amount</label>
+    <input type="number" class="input" id="gst-amount" min="0" step="any" placeholder="e.g. 1000">
+  </div>
+  <div class="field">
+    <label>GST rate (%)</label>
+    <div class="btn-row" role="group" aria-label="GST rate presets">
+      <button type="button" class="btn btn-outline btn-sm gst-rate" data-rate="0">0%</button>
+      <button type="button" class="btn btn-outline btn-sm gst-rate" data-rate="5">5%</button>
+      <button type="button" class="btn btn-outline btn-sm gst-rate" data-rate="12">12%</button>
+      <button type="button" class="btn btn-outline btn-sm gst-rate" data-rate="18">18%</button>
+      <button type="button" class="btn btn-outline btn-sm gst-rate" data-rate="28">28%</button>
+    </div>
+    <div class="field mt">
+      <label for="gst-custom">Custom rate (%)</label>
+      <input type="number" class="input" id="gst-custom" min="0" step="any" placeholder="e.g. 15">
+    </div>
+  </div>
+  <div class="btn-row" role="group" aria-label="GST mode">
+    <button type="button" class="btn btn-primary btn-sm" id="gst-exclusive-btn">Exclusive (add GST)</button>
+    <button type="button" class="btn btn-outline btn-sm" id="gst-inclusive-btn">Inclusive (GST included)</button>
+  </div>
+  <div class="error" id="gst-calculator-error"></div>
+  <div class="result" id="gst-result">
+    <div class="stat-cards">
+      <div class="stat-card"><div class="v" id="gst-base">–</div><div class="l">Base price</div></div>
+      <div class="stat-card"><div class="v" id="gst-tax">–</div><div class="l">GST amount</div></div>
+      <div class="stat-card"><div class="v" id="gst-total">–</div><div class="l">Total</div></div>
+    </div>
+    <p class="muted" id="gst-summary"></p>
+  </div>
+</div>
+
+  <!-- ADSTERRA-INCONTENT: paste your Adsterra native/in-content ad code inside the div below -->
+  <div class="ad-slot" data-ad="incontent"></div>
+
+  <div class="info-grid">
+    <div class="info-card">
+      <h2>📖 How to use</h2>
+      <ol><li>Enter the amount.</li><li>Pick a GST rate preset or type a custom rate.</li><li>Choose Exclusive (add GST) or Inclusive (GST included).</li><li>The GST amount, base price and total appear instantly.</li></ol>
+    </div>
+    <div class="info-card">
+      <h2>❓ Frequently asked questions</h2>
+      <div class="faq"><details><summary>What is the difference between inclusive and exclusive GST?</summary><p>Exclusive adds GST on top: total = price + GST. Inclusive treats your amount as already containing GST and splits it out.</p></details><details><summary>How is GST calculated?</summary><p>Exclusive: GST = amount x rate/100. Inclusive: GST = amount - amount/(1 + rate/100).</p></details><details><summary>Can I use a custom GST rate?</summary><p>Yes. Type any percentage in the custom rate field; the preset buttons will deselect automatically.</p></details></div>
+    </div>
+  </div>
+
+  <section class="section">
+    <h2>🔗 Related tools</h2>
+    <div class="tool-grid"><a class="tool-link" href="/tools/age-calculator/" data-search="age calculator enter your date of birth to get your exact age in years, months and days, plus total weeks, days, hours, the weekday you were born, and days until your next birthday. age calculator calculate age date of birth age">Age Calculator<small>Enter your date of birth to get your exact age in years, months and da…</small></a><a class="tool-link" href="/tools/bmi-calculator/" data-search="bmi calculator calculate your body mass index from height and weight in metric or imperial units. get your bmi value, weight category and the healthy weight range for your height. bmi calculator body mass index healthy weight calculator">BMI Calculator<small>Calculate your Body Mass Index from height and weight in metric or imp…</small></a><a class="tool-link" href="/tools/currency-converter/" data-search="currency converter convert any amount between 30+ world currencies with live exchange rates. pick source and target currencies, convert instantly, and see the rate and last update date. currency converter exchange rate converter usd to pkr converter">Currency Converter<small>Convert any amount between 30+ world currencies with live exchange rat…</small></a><a class="tool-link" href="/tools/discount-calculator/" data-search="discount calculator calculate the final price after a discount, with support for a second discount and a coupon amount. see the final price, total savings and effective savings percentage. discount calculator sale price calculator savings calculator">Discount Calculator<small>Calculate the final price after a discount, with support for a second …</small></a><a class="tool-link" href="/tools/emi-calculator/" data-search="emi calculator calculate your monthly emi for any loan: enter the loan amount, annual interest rate and tenure to see the monthly payment, total interest and total amount payable. emi calculator loan emi calculator monthly installment calculator">EMI Calculator<small>Calculate your monthly EMI for any loan: enter the loan amount, annual…</small></a><a class="tool-link" href="/tools/loan-calculator/" data-search="loan calculator see the full cost of a loan: enter amount, interest rate and tenure to get the monthly emi, total interest, total payable and a year-by-year amortization table. loan calculator amortization calculator loan interest calculator">Loan Calculator<small>See the full cost of a loan: enter amount, interest rate and tenure to…</small></a></div>
+  </section>
+</main>
+
+<!-- ADSTERRA-FOOTER: paste your Adsterra footer/banner ad code inside the div below -->
+<div class="container"><div class="ad-slot" data-ad="footer"></div></div>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="f-grid">
+      <div>
+        <span class="brandline">🧰 ToolNest</span>
+        <p>Free online tools that actually work. No sign-up, no watermarks — and your files never leave your device for client-side tools.</p>
+      </div>
+      <div>
+        <h4>Popular</h4>
+        <a href="/tools/qr-code-generator/">QR Code Generator</a>
+        <a href="/tools/background-remover/">Background Remover</a>
+        <a href="/tools/pdf-merger/">PDF Merger</a>
+        <a href="/tools/word-counter/">Word Counter</a>
+      </div>
+      <div>
+        <h4>Categories</h4>
+        <a href="/#image">Image Tools</a>
+        <a href="/#pdf">PDF &amp; Documents</a>
+        <a href="/#calculators">Calculators</a>
+        <a href="/#developer">Developer Tools</a>
+      </div>
+      <div>
+        <h4>Site</h4>
+        <a href="/">Home</a>
+        <a href="/#all-tools">All Tools</a>
+        <a href="/sitemap.xml">Sitemap</a>
+      </div>
+    </div>
+    <div class="f-bottom">© 2026 ToolNest · Free tools for everyone · Made with care</div>
+  </div>
+</footer>
+
+<script src="/assets/site.js?v=1"></script>
+
+<script>
+(function () {
+  'use strict';
+  var ERR = 'gst-calculator-error';
+  var rate = 18;
+  var inclusive = false;
+  function money(n) {
+    try {
+      return n.toLocaleString('en-US', { maximumFractionDigits: 2, minimumFractionDigits: 2 });
+    } catch (e) { return String(Math.round(n * 100) / 100); }
+  }
+  function markPreset() {
+    var btns = TN.qsa('.gst-rate');
+    for (var i = 0; i < btns.length; i++) {
+      var b = btns[i];
+      var isActive = parseFloat(b.getAttribute('data-rate')) === rate;
+      b.className = 'btn btn-sm gst-rate ' + (isActive ? 'btn-primary' : 'btn-outline');
+    }
+  }
+  function setMode(inc) {
+    inclusive = inc;
+    var ex = TN.el('gst-exclusive-btn'), inb = TN.el('gst-inclusive-btn');
+    if (ex) ex.className = 'btn btn-sm ' + (!inc ? 'btn-primary' : 'btn-outline');
+    if (inb) inb.className = 'btn btn-sm ' + (inc ? 'btn-primary' : 'btn-outline');
+    calc();
+  }
+  function calc() {
+    var aEl = TN.el('gst-amount');
+    if (!aEl) return;
+    TN.clearErr(ERR);
+    var amount = parseFloat(aEl.value);
+    if (!(amount >= 0) || isNaN(amount)) { TN.setErr(ERR, 'Please enter a valid amount.'); return; }
+    if (!(rate >= 0) || isNaN(rate)) { TN.setErr(ERR, 'Please enter a valid GST rate.'); return; }
+    var base, tax, total;
+    if (inclusive) {
+      total = amount;
+      base = amount / (1 + rate / 100);
+      tax = amount - base;
+    } else {
+      base = amount;
+      tax = amount * rate / 100;
+      total = amount + tax;
+    }
+    TN.el('gst-base').textContent = money(base);
+    TN.el('gst-tax').textContent = money(tax);
+    TN.el('gst-total').textContent = money(total);
+    var sum = TN.el('gst-summary');
+    if (sum) {
+      sum.textContent = inclusive
+        ? 'Your amount of ' + money(amount) + ' already includes ' + money(tax) + ' GST at ' + rate + '%.'
+        : 'GST of ' + money(tax) + ' (' + rate + '%) added to ' + money(amount) + '.';
+    }
+  }
+  try {
+    var btns = TN.qsa('.gst-rate');
+    for (var i = 0; i < btns.length; i++) {
+      (function (b) {
+        TN.on(b, 'click', function () {
+          rate = parseFloat(b.getAttribute('data-rate'));
+          var c = TN.el('gst-custom');
+          if (c) c.value = '';
+          markPreset();
+          calc();
+        });
+      })(btns[i]);
+    }
+    TN.on('gst-custom', 'input', function () {
+      var c = TN.el('gst-custom');
+      if (!c) return;
+      var v = parseFloat(c.value);
+      if (!isNaN(v) && v >= 0) {
+        rate = v;
+        markPreset();
+        calc();
+      } else if (c.value === '') {
+        markPreset();
+      }
+    });
+    TN.on('gst-exclusive-btn', 'click', function () { setMode(false); });
+    TN.on('gst-inclusive-btn', 'click', function () { setMode(true); });
+    TN.on('gst-amount', 'input', calc);
+    markPreset();
+    calc();
+  } catch (e) { /* never throw on load */ }
+})();
+
+</script>
+</body>
+</html>

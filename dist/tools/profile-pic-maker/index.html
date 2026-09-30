@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Profile Picture Maker — Free Online | ToolNest</title>
+<meta name="description" content="Turn any photo into a perfect profile picture: square center-crop with zoom, circle or square shape, a colored ring, and export at 256, 512 or 1024 px.">
+<meta name="keywords" content="profile picture maker, pfp maker, avatar creator">
+<link rel="canonical" href="https://toolnest.vercel.app/tools/profile-pic-maker/">
+<meta property="og:title" content="Profile Picture Maker — Free Online | ToolNest">
+<meta property="og:description" content="Turn any photo into a perfect profile picture: square center-crop with zoom, circle or square shape, a colored ring, and export at 256, 512 or 1024 px.">
+<meta property="og:type" content="website">
+<link rel="stylesheet" href="/assets/site.css?v=1">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='22' fill='%234f46e5'/><text x='50' y='68' font-size='52' text-anchor='middle' fill='white' font-family='Arial' font-weight='bold'>T</text></svg>">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebApplication","name":"Profile Picture Maker","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0"},"url":"https://toolnest.vercel.app/tools/profile-pic-maker/","description":"Turn any photo into a perfect profile picture: square center-crop with zoom, circle or square shape, a colored ring, and export at 256, 512 or 1024 px."},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How do I frame my face?","acceptedAnswer":{"@type":"Answer","text":"Move the zoom slider right to crop tighter on your face, or left to include more of the photo. The crop always stays centered."}},{"@type":"Question","name":"Can I remove the ring?","acceptedAnswer":{"@type":"Answer","text":"Yes — set the ring width to 0 and it disappears entirely, leaving just your cropped photo."}},{"@type":"Question","name":"Is my photo uploaded?","acceptedAnswer":{"@type":"Answer","text":"No. Your photo is cropped and drawn on a canvas in your browser — it is never uploaded anywhere."}}]}]}</script>
+</head>
+<body>
+<header class="site-header">
+  <div class="container">
+    <a class="logo" href="/"><span class="logo-mark">🧰</span> ToolNest</a>
+    <nav class="site-nav">
+      <a href="/">Home</a>
+      <a href="/#categories">Categories</a>
+      <a href="/#all-tools">All Tools</a>
+    </nav>
+  </div>
+</header>
+
+<!-- ADSTERRA-HEADER: paste your Adsterra banner ad code inside the div below -->
+<div class="container"><div class="ad-slot ad-leaderboard" data-ad="header"></div></div>
+
+<main class="container">
+  <nav class="crumbs"><a href="/">Home</a> &rsaquo; <a href="/#image">Image Tools</a> &rsaquo; Profile Picture Maker</nav>
+  <div class="tool-hero">
+    <h1>Profile Picture Maker</h1>
+    <p>Turn any photo into a perfect profile picture: square center-crop with zoom, circle or square shape, a colored ring, and export at 256, 512 or 1024 px.</p>
+  </div>
+
+  <div class="tool-card">
+  <div class="dropzone" id="profile-pic-maker-drop">
+    <span class="dz-icon">👤</span>
+    <strong>Drop your photo here</strong> or click to browse
+    <input type="file" id="profile-pic-maker-file" accept="image/*" class="hidden">
+  </div>
+  <div class="grid2 mt">
+    <div class="field">
+      <label for="profile-pic-maker-zoom">Zoom: <span id="profile-pic-maker-zoom-val">1.0</span>×</label>
+      <input type="range" id="profile-pic-maker-zoom" min="1" max="3" step="0.1" value="1">
+    </div>
+    <div class="field">
+      <label for="profile-pic-maker-shape">Shape</label>
+      <select class="select" id="profile-pic-maker-shape">
+        <option value="circle">Circle</option>
+        <option value="square">Square</option>
+      </select>
+    </div>
+  </div>
+  <div class="grid2">
+    <div class="field">
+      <label for="profile-pic-maker-ring">Ring color</label>
+      <input type="color" class="input" id="profile-pic-maker-ring" value="#4f46e5">
+    </div>
+    <div class="field">
+      <label for="profile-pic-maker-ringwidth">Ring width: <span id="profile-pic-maker-ringwidth-val">10</span> px</label>
+      <input type="range" id="profile-pic-maker-ringwidth" min="0" max="40" value="10">
+      <span class="hint">Set to 0 for no ring.</span>
+    </div>
+  </div>
+  <div class="field">
+    <label for="profile-pic-maker-size">Export size</label>
+    <select class="select" id="profile-pic-maker-size">
+      <option value="256">256 × 256 px</option>
+      <option value="512" selected>512 × 512 px</option>
+      <option value="1024">1024 × 1024 px</option>
+    </select>
+  </div>
+  <div class="center">
+    <canvas id="profile-pic-maker-canvas" class="preview" style="max-width:320px;width:100%;height:auto"></canvas>
+  </div>
+  <div class="btn-row">
+    <button class="btn btn-primary" id="profile-pic-maker-download">Download PNG</button>
+  </div>
+  <div class="error" id="profile-pic-maker-error"></div>
+  <p class="note">The crop is always centered on your photo. Files never leave your device — everything is processed in your browser.</p>
+</div>
+
+
+  <!-- ADSTERRA-INCONTENT: paste your Adsterra native/in-content ad code inside the div below -->
+  <div class="ad-slot" data-ad="incontent"></div>
+
+  <div class="info-grid">
+    <div class="info-card">
+      <h2>📖 How to use</h2>
+      <ol><li>Upload your photo — a live preview appears instantly.</li><li>Drag the zoom slider to frame your face the way you like.</li><li>Pick circle or square shape, a ring color and ring width.</li><li>Choose the export size (256, 512 or 1024 px) and click “Download PNG”.</li></ol>
+    </div>
+    <div class="info-card">
+      <h2>❓ Frequently asked questions</h2>
+      <div class="faq"><details><summary>How do I frame my face?</summary><p>Move the zoom slider right to crop tighter on your face, or left to include more of the photo. The crop always stays centered.</p></details><details><summary>Can I remove the ring?</summary><p>Yes — set the ring width to 0 and it disappears entirely, leaving just your cropped photo.</p></details><details><summary>Is my photo uploaded?</summary><p>No. Your photo is cropped and drawn on a canvas in your browser — it is never uploaded anywhere.</p></details></div>
+    </div>
+  </div>
+
+  <section class="section">
+    <h2>🔗 Related tools</h2>
+    <div class="tool-grid"><a class="tool-link" href="/tools/background-remover/" data-search="background remover remove the background from any photo with real on-device ai and download a transparent png. free, private and unlimited — no sign-up needed. background remover remove image background transparent png maker">Background Remover<small>Remove the background from any photo with real on-device AI and downlo…</small></a><a class="tool-link" href="/tools/favicon-generator/" data-search="favicon generator generate a complete png favicon set (16–512 px) from your logo in one click, download it as a zip, and copy the ready-to-paste html link tags. favicon generator favicon maker png favicon">Favicon Generator<small>Generate a complete PNG favicon set (16–512 px) from your logo in one …</small></a><a class="tool-link" href="/tools/image-compressor/" data-search="image compressor shrink jpg, png and webp images right in your browser with an adjustable quality slider. compare before/after sizes, download each file or grab everything as a zip. image compressor compress jpg reduce image size">Image Compressor<small>Shrink JPG, PNG and WebP images right in your browser with an adjustab…</small></a><a class="tool-link" href="/tools/image-resizer/" data-search="image resizer resize any image to exact pixel dimensions with an aspect-ratio lock, quick presets and percentage scaling. preview the result and download as png, jpg or webp. image resizer resize photo change image dimensions">Image Resizer<small>Resize any image to exact pixel dimensions with an aspect-ratio lock, …</small></a><a class="tool-link" href="/tools/image-to-pdf/" data-search="image to pdf turn your photos into a pdf document — one full-page image per page, sized to each photo. reorder pages freely, then download a single ready-to-share pdf. image to pdf jpg to pdf photos to pdf">Image to PDF<small>Turn your photos into a PDF document — one full-page image per page, s…</small></a><a class="tool-link" href="/tools/jpg-to-png/" data-search="jpg to png converter convert jpg photos to png format instantly in your browser. handles multiple files at once with individual downloads or a single zip archive. jpg to png jpeg to png converter convert jpg png">JPG to PNG Converter<small>Convert JPG photos to PNG format instantly in your browser. Handles mu…</small></a></div>
+  </section>
+</main>
+
+<!-- ADSTERRA-FOOTER: paste your Adsterra footer/banner ad code inside the div below -->
+<div class="container"><div class="ad-slot" data-ad="footer"></div></div>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="f-grid">
+      <div>
+        <span class="brandline">🧰 ToolNest</span>
+        <p>Free online tools that actually work. No sign-up, no watermarks — and your files never leave your device for client-side tools.</p>
+      </div>
+      <div>
+        <h4>Popular</h4>
+        <a href="/tools/qr-code-generator/">QR Code Generator</a>
+        <a href="/tools/background-remover/">Background Remover</a>
+        <a href="/tools/pdf-merger/">PDF Merger</a>
+        <a href="/tools/word-counter/">Word Counter</a>
+      </div>
+      <div>
+        <h4>Categories</h4>
+        <a href="/#image">Image Tools</a>
+        <a href="/#pdf">PDF &amp; Documents</a>
+        <a href="/#calculators">Calculators</a>
+        <a href="/#developer">Developer Tools</a>
+      </div>
+      <div>
+        <h4>Site</h4>
+        <a href="/">Home</a>
+        <a href="/#all-tools">All Tools</a>
+        <a href="/sitemap.xml">Sitemap</a>
+      </div>
+    </div>
+    <div class="f-bottom">© 2026 ToolNest · Free tools for everyone · Made with care</div>
+  </div>
+</footer>
+
+<script src="/assets/site.js?v=1"></script>
+
+<script>
+/* Profile Picture Maker — center-crop, zoom, circle/square, ring, export sizes. */
+(function () {
+  'use strict';
+  var SLUG = 'profile-pic-maker';
+  var photo = null;
+  var renderT = null;
+
+  function $(id) { return document.getElementById(id); }
+  function errId() { return SLUG + '-error'; }
+
+  function setFile(f) {
+    if (!f) return;
+    TN.clearErr(errId());
+    TN.readAsDataURL(f).then(TN.loadImage).then(function (img) {
+      if (!img.naturalWidth || !img.naturalHeight) throw new Error('unreadable');
+      photo = img;
+      scheduleRender();
+    }).catch(function () {
+      TN.setErr(errId(), 'That file could not be read as an image. Try a JPG, PNG or WebP file.');
+    });
+  }
+
+  function render() {
+    var canvas = $(SLUG + '-canvas');
+    if (!canvas) return;
+    var ctx = canvas.getContext('2d');
+    var S = parseInt($(SLUG + '-size').value, 10) || 512;
+    canvas.width = S;
+    canvas.height = S;
+    ctx.clearRect(0, 0, S, S);
+    if (!photo) {
+      ctx.fillStyle = '#eef0ff';
+      ctx.fillRect(0, 0, S, S);
+      ctx.fillStyle = '#8a90b5';
+      ctx.font = '600 ' + Math.round(S / 16) + 'px Arial, sans-serif';
+      ctx.textAlign = 'center';
+      ctx.textBaseline = 'middle';
+      ctx.fillText('Upload a photo to preview', S / 2, S / 2);
+      return;
+    }
+    var zoom = parseFloat($(SLUG + '-zoom').value) || 1;
+    if (zoom < 1) zoom = 1;
+    var shape = $(SLUG + '-shape').value;
+    var ringColor = $(SLUG + '-ring').value || '#4f46e5';
+    var ring = parseInt($(SLUG + '-ringwidth').value, 10) || 0;
+    ring = Math.max(0, Math.min(ring, Math.floor(S / 2) - 2));
+
+    var w = photo.naturalWidth, h = photo.naturalHeight;
+    var side = Math.min(w, h) / zoom;
+    var sx = (w - side) / 2, sy = (h - side) / 2;
+    var d = S - 2 * ring; // inner box size
+
+    if (shape === 'circle') {
+      if (ring > 0) {
+        ctx.fillStyle = ringColor;
+        ctx.beginPath();
+        ctx.arc(S / 2, S / 2, S / 2, 0, Math.PI * 2);
+        ctx.fill();
+      }
+      ctx.save();
+      ctx.beginPath();
+      ctx.arc(S / 2, S / 2, S / 2 - ring, 0, Math.PI * 2);
+      ctx.clip();
+      ctx.drawImage(photo, sx, sy, side, side, ring, ring, d, d);
+      ctx.restore();
+    } else {
+      if (ring > 0) {
+        ctx.fillStyle = ringColor;
+        ctx.fillRect(0, 0, S, S);
+      }
+      ctx.drawImage(photo, sx, sy, side, side, ring, ring, d, d);
+    }
+  }
+
+  function scheduleRender() {
+    if (renderT) clearTimeout(renderT);
+    renderT = setTimeout(render, 60);
+  }
+
+  function download() {
+    if (!photo) {
+      TN.setErr(errId(), 'Upload a photo first.');
+      return;
+    }
+    TN.clearErr(errId());
+    render();
+    var canvas = $(SLUG + '-canvas');
+    try {
+      canvas.toBlob(function (b) {
+        if (b) TN.download(b, 'profile-picture.png');
+        else TN.setErr(errId(), 'Could not encode the image. Try a different browser.');
+      }, 'image/png');
+    } catch (e) {
+      TN.setErr(errId(), 'Could not encode the image. Try a different browser.');
+    }
+  }
+
+  function init() {
+    var dz = $(SLUG + '-drop');
+    var input = $(SLUG + '-file');
+    if (!dz || !input) return;
+    dz.addEventListener('click', function () { input.click(); });
+    input.addEventListener('change', function () {
+      var f = input.files && input.files[0];
+      input.value = '';
+      setFile(f);
+    });
+    ['dragover', 'dragenter'].forEach(function (ev) {
+      dz.addEventListener(ev, function (e) { e.preventDefault(); dz.classList.add('dragover'); });
+    });
+    ['dragleave', 'drop'].forEach(function (ev) {
+      dz.addEventListener(ev, function (e) { e.preventDefault(); dz.classList.remove('dragover'); });
+    });
+    dz.addEventListener('drop', function (e) {
+      var f = e.dataTransfer && e.dataTransfer.files && e.dataTransfer.files[0];
+      setFile(f);
+    });
+
+    var z = $(SLUG + '-zoom');
+    var zv = $(SLUG + '-zoom-val');
+    if (z) z.addEventListener('input', function () {
+      if (zv) zv.textContent = parseFloat(z.value).toFixed(1);
+      scheduleRender();
+    });
+    var rw = $(SLUG + '-ringwidth');
+    var rwv = $(SLUG + '-ringwidth-val');
+    if (rw) rw.addEventListener('input', function () {
+      if (rwv) rwv.textContent = rw.value;
+      scheduleRender();
+    });
+    TN.on(SLUG + '-shape', 'change', scheduleRender);
+    TN.on(SLUG + '-ring', 'input', scheduleRender);
+    TN.on(SLUG + '-size', 'change', scheduleRender);
+    TN.on(SLUG + '-download', 'click', download);
+
+    render();
+  }
+
+  try { init(); } catch (e) { /* never throw on page load */ }
+})();
+
+</script>
+</body>
+</html>

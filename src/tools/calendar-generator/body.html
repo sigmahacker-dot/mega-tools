@@ -1,0 +1,36 @@
+<div class="tool-card">
+  <div class="row">
+    <div class="field">
+      <label for="calendar-generator-month">Month</label>
+      <select id="calendar-generator-month" class="select"></select>
+    </div>
+    <div class="field">
+      <label for="calendar-generator-year">Year</label>
+      <select id="calendar-generator-year" class="select"></select>
+    </div>
+  </div>
+  <div class="btn-row">
+    <button type="button" class="btn btn-outline" id="calendar-generator-prev">&larr; Prev</button>
+    <button type="button" class="btn btn-outline" id="calendar-generator-today">Today</button>
+    <button type="button" class="btn btn-outline" id="calendar-generator-next">Next &rarr;</button>
+    <button type="button" class="btn btn-primary" id="calendar-generator-print">Print</button>
+  </div>
+  <div class="error" id="calendar-generator-error"></div>
+  <div id="calendar-generator-sheet" class="mt">
+    <h3 class="center" id="calendar-generator-title"></h3>
+    <div class="cal-grid" id="calendar-generator-grid"></div>
+  </div>
+  <style>
+    .cal-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:4px}
+    .cal-dow{font-weight:700;text-align:center;padding:6px 2px;font-size:.82em;color:#64748b}
+    .cal-day{border:1px solid #e2e8f0;border-radius:6px;min-height:46px;padding:6px;font-size:.9em;background:#fff}
+    .cal-day.other{color:#a0aec0;background:#f8fafc}
+    .cal-day.today{background:#166534;border-color:#166534;color:#fff;font-weight:700}
+    @media(max-width:480px){.cal-day{min-height:36px;font-size:.78em;padding:4px}}
+    @media print{
+      body *{visibility:hidden}
+      #calendar-generator-sheet,#calendar-generator-sheet *{visibility:visible}
+      #calendar-generator-sheet{position:absolute;left:0;top:0;width:100%;margin:0}
+    }
+  </style>
+</div>

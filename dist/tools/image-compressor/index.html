@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Image Compressor — Free Online | ToolNest</title>
+<meta name="description" content="Shrink JPG, PNG and WebP images right in your browser with an adjustable quality slider. Compare before/after sizes, download each file or grab everything as a ZIP.">
+<meta name="keywords" content="image compressor, compress jpg, reduce image size">
+<link rel="canonical" href="https://toolnest.vercel.app/tools/image-compressor/">
+<meta property="og:title" content="Image Compressor — Free Online | ToolNest">
+<meta property="og:description" content="Shrink JPG, PNG and WebP images right in your browser with an adjustable quality slider. Compare before/after sizes, download each file or grab everything as a ZIP.">
+<meta property="og:type" content="website">
+<link rel="stylesheet" href="/assets/site.css?v=1">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='22' fill='%234f46e5'/><text x='50' y='68' font-size='52' text-anchor='middle' fill='white' font-family='Arial' font-weight='bold'>T</text></svg>">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebApplication","name":"Image Compressor","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0"},"url":"https://toolnest.vercel.app/tools/image-compressor/","description":"Shrink JPG, PNG and WebP images right in your browser with an adjustable quality slider. Compare before/after sizes, download each file or grab everything as a ZIP."},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Does the quality slider affect PNG files?","acceptedAnswer":{"@type":"Answer","text":"Yes — the quality slider only affects JPEG and WebP output. PNG is lossless, so re-encoding a PNG keeps every pixel (the file may still shrink slightly)."}},{"@type":"Question","name":"Why did my transparent PNG turn white?","acceptedAnswer":{"@type":"Answer","text":"Converting to JPEG gives the smallest files but removes transparency — transparent areas are filled white. Choose WebP or PNG if you need to keep transparency."}},{"@type":"Question","name":"Is there a file size or count limit?","acceptedAnswer":{"@type":"Answer","text":"Your files are processed locally with the canvas API. Nothing is uploaded, and there are no watermarks or limits."}}]}]}</script>
+</head>
+<body>
+<header class="site-header">
+  <div class="container">
+    <a class="logo" href="/"><span class="logo-mark">🧰</span> ToolNest</a>
+    <nav class="site-nav">
+      <a href="/">Home</a>
+      <a href="/#categories">Categories</a>
+      <a href="/#all-tools">All Tools</a>
+    </nav>
+  </div>
+</header>
+
+<!-- ADSTERRA-HEADER: paste your Adsterra banner ad code inside the div below -->
+<div class="container"><div class="ad-slot ad-leaderboard" data-ad="header"></div></div>
+
+<main class="container">
+  <nav class="crumbs"><a href="/">Home</a> &rsaquo; <a href="/#image">Image Tools</a> &rsaquo; Image Compressor</nav>
+  <div class="tool-hero">
+    <h1>Image Compressor</h1>
+    <p>Shrink JPG, PNG and WebP images right in your browser with an adjustable quality slider. Compare before/after sizes, download each file or grab everything as a ZIP.</p>
+  </div>
+
+  <div class="tool-card">
+  <div class="dropzone" id="image-compressor-drop">
+    <span class="dz-icon">🗜️</span>
+    <strong>Drop images here</strong> or click to browse
+    <input type="file" id="image-compressor-file" accept="image/*" multiple class="hidden">
+  </div>
+  <ul class="file-list" id="image-compressor-list"></ul>
+  <div class="grid2">
+    <div class="field">
+      <label for="image-compressor-quality">Quality: <span id="image-compressor-quality-val">80</span></label>
+      <input type="range" id="image-compressor-quality" min="10" max="95" value="80">
+      <span class="hint">Applies to JPEG and WebP output only.</span>
+    </div>
+    <div class="field">
+      <label for="image-compressor-format">Output format</label>
+      <select class="select" id="image-compressor-format">
+        <option value="keep">Keep original format</option>
+        <option value="image/jpeg">JPEG — smallest, no transparency</option>
+        <option value="image/webp">WebP — small, keeps transparency</option>
+        <option value="image/png">PNG — lossless</option>
+      </select>
+    </div>
+  </div>
+  <div class="btn-row">
+    <button class="btn btn-primary" id="image-compressor-go">Compress images</button>
+    <button class="btn btn-outline hidden" id="image-compressor-zip">Download all as ZIP</button>
+  </div>
+  <div class="result hidden" id="image-compressor-result">
+    <table class="data">
+      <thead><tr><th>File</th><th>Original</th><th>Compressed</th><th>Saved</th><th></th></tr></thead>
+      <tbody id="image-compressor-rows"></tbody>
+    </table>
+  </div>
+  <div class="error" id="image-compressor-error"></div>
+  <p class="note">PNG → JPEG removes transparency (transparent areas are filled white) — pick WebP or PNG to keep it. Files never leave your device — everything is processed in your browser.</p>
+</div>
+
+
+  <!-- ADSTERRA-INCONTENT: paste your Adsterra native/in-content ad code inside the div below -->
+  <div class="ad-slot" data-ad="incontent"></div>
+
+  <div class="info-grid">
+    <div class="info-card">
+      <h2>📖 How to use</h2>
+      <ol><li>Drop one or more images into the upload zone (JPG, PNG, WebP…).</li><li>Set the quality slider (10–95) and pick an output format — keep original, JPEG, WebP or PNG.</li><li>Click “Compress images” and compare the original vs compressed size for each file.</li><li>Download images individually, or click “Download all as ZIP” for multiple files.</li></ol>
+    </div>
+    <div class="info-card">
+      <h2>❓ Frequently asked questions</h2>
+      <div class="faq"><details><summary>Does the quality slider affect PNG files?</summary><p>Yes — the quality slider only affects JPEG and WebP output. PNG is lossless, so re-encoding a PNG keeps every pixel (the file may still shrink slightly).</p></details><details><summary>Why did my transparent PNG turn white?</summary><p>Converting to JPEG gives the smallest files but removes transparency — transparent areas are filled white. Choose WebP or PNG if you need to keep transparency.</p></details><details><summary>Is there a file size or count limit?</summary><p>Your files are processed locally with the canvas API. Nothing is uploaded, and there are no watermarks or limits.</p></details></div>
+    </div>
+  </div>
+
+  <section class="section">
+    <h2>🔗 Related tools</h2>
+    <div class="tool-grid"><a class="tool-link" href="/tools/background-remover/" data-search="background remover remove the background from any photo with real on-device ai and download a transparent png. free, private and unlimited — no sign-up needed. background remover remove image background transparent png maker">Background Remover<small>Remove the background from any photo with real on-device AI and downlo…</small></a><a class="tool-link" href="/tools/favicon-generator/" data-search="favicon generator generate a complete png favicon set (16–512 px) from your logo in one click, download it as a zip, and copy the ready-to-paste html link tags. favicon generator favicon maker png favicon">Favicon Generator<small>Generate a complete PNG favicon set (16–512 px) from your logo in one …</small></a><a class="tool-link" href="/tools/image-resizer/" data-search="image resizer resize any image to exact pixel dimensions with an aspect-ratio lock, quick presets and percentage scaling. preview the result and download as png, jpg or webp. image resizer resize photo change image dimensions">Image Resizer<small>Resize any image to exact pixel dimensions with an aspect-ratio lock, …</small></a><a class="tool-link" href="/tools/image-to-pdf/" data-search="image to pdf turn your photos into a pdf document — one full-page image per page, sized to each photo. reorder pages freely, then download a single ready-to-share pdf. image to pdf jpg to pdf photos to pdf">Image to PDF<small>Turn your photos into a PDF document — one full-page image per page, s…</small></a><a class="tool-link" href="/tools/jpg-to-png/" data-search="jpg to png converter convert jpg photos to png format instantly in your browser. handles multiple files at once with individual downloads or a single zip archive. jpg to png jpeg to png converter convert jpg png">JPG to PNG Converter<small>Convert JPG photos to PNG format instantly in your browser. Handles mu…</small></a><a class="tool-link" href="/tools/meme-generator/" data-search="meme generator make classic memes in seconds: upload a photo or start from a blank background, add top and bottom captions in bold meme style, and download as a png. meme generator meme maker caption image">Meme Generator<small>Make classic memes in seconds: upload a photo or start from a blank ba…</small></a></div>
+  </section>
+</main>
+
+<!-- ADSTERRA-FOOTER: paste your Adsterra footer/banner ad code inside the div below -->
+<div class="container"><div class="ad-slot" data-ad="footer"></div></div>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="f-grid">
+      <div>
+        <span class="brandline">🧰 ToolNest</span>
+        <p>Free online tools that actually work. No sign-up, no watermarks — and your files never leave your device for client-side tools.</p>
+      </div>
+      <div>
+        <h4>Popular</h4>
+        <a href="/tools/qr-code-generator/">QR Code Generator</a>
+        <a href="/tools/background-remover/">Background Remover</a>
+        <a href="/tools/pdf-merger/">PDF Merger</a>
+        <a href="/tools/word-counter/">Word Counter</a>
+      </div>
+      <div>
+        <h4>Categories</h4>
+        <a href="/#image">Image Tools</a>
+        <a href="/#pdf">PDF &amp; Documents</a>
+        <a href="/#calculators">Calculators</a>
+        <a href="/#developer">Developer Tools</a>
+      </div>
+      <div>
+        <h4>Site</h4>
+        <a href="/">Home</a>
+        <a href="/#all-tools">All Tools</a>
+        <a href="/sitemap.xml">Sitemap</a>
+      </div>
+    </div>
+    <div class="f-bottom">© 2026 ToolNest · Free tools for everyone · Made with care</div>
+  </div>
+</footer>
+
+<script src="/assets/site.js?v=1"></script>
+<script src="https://cdn.jsdelivr.net/npm/jszip@3.10.1/dist/jszip.min.js" defer></script>
+<script>
+/* Image Compressor — batch compress via canvas, optional ZIP via JSZip. */
+(function () {
+  'use strict';
+
+  var files = [];
+  var outputs = [];
+
+  function $(id) { return document.getElementById(id); }
+
+  function canvasToBlob(canvas, type, quality) {
+    return new Promise(function (resolve, reject) {
+      try {
+        canvas.toBlob(function (b) {
+          if (b) resolve(b);
+          else reject(new Error('This browser could not encode the image in that format.'));
+        }, type, quality);
+      } catch (e) { reject(e); }
+    });
+  }
+
+  function extFor(mime) {
+    if (mime === 'image/jpeg') return 'jpg';
+    if (mime === 'image/webp') return 'webp';
+    return 'png';
+  }
+
+  function looksLikeImage(f) {
+    var t = (f.type || '').toLowerCase();
+    if (t.indexOf('image/') === 0) return true;
+    return /\.(jpe?g|png|webp|gif|bmp|avif)$/i.test(f.name || '');
+  }
+
+  function addFiles(list) {
+    var added = 0;
+    for (var i = 0; i < list.length; i++) {
+      if (looksLikeImage(list[i])) { files.push(list[i]); added++; }
+    }
+    if (!added) TN.setErr('image-compressor-error', 'No image files found in that selection.');
+    else TN.clearErr('image-compressor-error');
+    renderList();
+  }
+
+  function renderList() {
+    var ul = $('image-compressor-list');
+    if (!ul) return;
+    if (!files.length) { ul.innerHTML = ''; return; }
+    var html = '';
+    for (var i = 0; i < files.length; i++) {
+      html += '<li><span>' + TN.esc(files[i].name || 'image') +
+        ' <span class="muted">(' + TN.fmtBytes(files[i].size) + ')</span></span>' +
+        '<button class="btn btn-sm btn-danger" data-rm="' + i + '">Remove</button></li>';
+    }
+    ul.innerHTML = html;
+  }
+
+  function compressOne(file, quality, mime) {
+    return TN.readAsDataURL(file).then(TN.loadImage).then(function (img) {
+      if (!img.naturalWidth || !img.naturalHeight) {
+        throw new Error('Could not read "' + (file.name || 'image') + '".');
+      }
+      var canvas = document.createElement('canvas');
+      canvas.width = img.naturalWidth;
+      canvas.height = img.naturalHeight;
+      var ctx = canvas.getContext('2d');
+      if (mime === 'image/jpeg') {
+        ctx.fillStyle = '#ffffff';
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+      }
+      ctx.drawImage(img, 0, 0);
+      var q = (mime === 'image/jpeg' || mime === 'image/webp') ? quality / 100 : undefined;
+      return canvasToBlob(canvas, mime, q).then(function (blob) {
+        var base = (file.name || 'image').replace(/\.[^.]+$/, '') || 'image';
+        var name = base + '-compressed.' + extFor(mime);
+        outputs.push({ blob: blob, name: name });
+        var saved = file.size > 0 ? Math.round((1 - blob.size / file.size) * 100) : 0;
+        return { name: file.name || 'image', orig: file.size, size: blob.size, saved: saved, idx: outputs.length - 1 };
+      });
+    });
+  }
+
+  function renderTable(rows) {
+    var wrap = $('image-compressor-result');
+    var tbody = $('image-compressor-rows');
+    if (!wrap || !tbody) return;
+    var html = '';
+    rows.forEach(function (r) {
+      var tag = r.saved > 0
+        ? '<span class="tag">−' + r.saved + '%</span>'
+        : '<span class="tag">±0%</span>';
+      html += '<tr><td>' + TN.esc(r.name) + '</td><td>' + TN.fmtBytes(r.orig) + '</td><td>' +
+        TN.fmtBytes(r.size) + '</td><td>' + tag + '</td>' +
+        '<td><button class="btn btn-sm btn-outline" data-dl="' + r.idx + '">Download</button></td></tr>';
+    });
+    tbody.innerHTML = html;
+    wrap.classList.remove('hidden');
+    var zipBtn = $('image-compressor-zip');
+    if (zipBtn) {
+      if (outputs.length > 1) zipBtn.classList.remove('hidden');
+      else zipBtn.classList.add('hidden');
+    }
+  }
+
+  function compress() {
+    if (!files.length) {
+      TN.setErr('image-compressor-error', 'Choose at least one image first.');
+      return;
+    }
+    TN.clearErr('image-compressor-error');
+    var btn = $('image-compressor-go');
+    if (btn) { btn.disabled = true; btn.textContent = 'Compressing…'; }
+    outputs = [];
+    var wrap = $('image-compressor-result');
+    if (wrap) wrap.classList.add('hidden');
+    var zipBtn = $('image-compressor-zip');
+    if (zipBtn) zipBtn.classList.add('hidden');
+    var quality = parseInt($('image-compressor-quality').value, 10) || 80;
+    var format = $('image-compressor-format').value;
+    var rows = [];
+    var chain = Promise.resolve();
+    files.forEach(function (file) {
+      chain = chain.then(function () {
+        var mime = format === 'keep' ? (file.type || 'image/png') : format;
+        if (mime !== 'image/jpeg' && mime !== 'image/webp' && mime !== 'image/png') mime = 'image/png';
+        return compressOne(file, quality, mime).then(function (r) { rows.push(r); });
+      });
+    });
+    chain.then(function () {
+      renderTable(rows);
+      if (btn) { btn.disabled = false; btn.textContent = 'Compress images'; }
+    }).catch(function (e) {
+      if (btn) { btn.disabled = false; btn.textContent = 'Compress images'; }
+      TN.setErr('image-compressor-error', 'Compression failed: ' + (e && e.message ? e.message : 'unknown error'));
+    });
+  }
+
+  function downloadZip() {
+    if (typeof JSZip === 'undefined') {
+      TN.setErr('image-compressor-error', 'The ZIP library failed to load. Check your connection and reload the page.');
+      return;
+    }
+    if (!outputs.length) return;
+    try {
+      var zip = new JSZip();
+      outputs.forEach(function (o) { zip.file(o.name, o.blob); });
+      zip.generateAsync({ type: 'blob' }).then(function (blob) {
+        TN.download(blob, 'compressed-images.zip');
+      }).catch(function () {
+        TN.setErr('image-compressor-error', 'Could not build the ZIP file.');
+      });
+    } catch (e) {
+      TN.setErr('image-compressor-error', 'Could not build the ZIP file.');
+    }
+  }
+
+  function init() {
+    var dz = $('image-compressor-drop');
+    var input = $('image-compressor-file');
+    if (!dz || !input) return;
+    dz.addEventListener('click', function () { input.click(); });
+    input.addEventListener('change', function () {
+      addFiles(input.files || []);
+      input.value = '';
+    });
+    ['dragover', 'dragenter'].forEach(function (ev) {
+      dz.addEventListener(ev, function (e) { e.preventDefault(); dz.classList.add('dragover'); });
+    });
+    ['dragleave', 'drop'].forEach(function (ev) {
+      dz.addEventListener(ev, function (e) { e.preventDefault(); dz.classList.remove('dragover'); });
+    });
+    dz.addEventListener('drop', function (e) {
+      if (e.dataTransfer && e.dataTransfer.files) addFiles(e.dataTransfer.files);
+    });
+
+    var list = $('image-compressor-list');
+    if (list) list.addEventListener('click', function (e) {
+      var b = e.target && e.target.closest ? e.target.closest('[data-rm]') : null;
+      if (b) { files.splice(parseInt(b.getAttribute('data-rm'), 10), 1); renderList(); }
+    });
+
+    var q = $('image-compressor-quality');
+    var qv = $('image-compressor-quality-val');
+    if (q && qv) q.addEventListener('input', function () { qv.textContent = q.value; });
+
+    TN.on('image-compressor-go', 'click', compress);
+    TN.on('image-compressor-zip', 'click', downloadZip);
+
+    var res = $('image-compressor-result');
+    if (res) res.addEventListener('click', function (e) {
+      var b = e.target && e.target.closest ? e.target.closest('[data-dl]') : null;
+      if (b) {
+        var o = outputs[parseInt(b.getAttribute('data-dl'), 10)];
+        if (o) TN.download(o.blob, o.name);
+      }
+    });
+  }
+
+  try { init(); } catch (e) { /* never throw on page load */ }
+})();
+
+</script>
+</body>
+</html>

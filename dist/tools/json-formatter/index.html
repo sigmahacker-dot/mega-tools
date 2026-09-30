@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>JSON Formatter — Free Online | ToolNest</title>
+<meta name="description" content="Paste JSON to pretty-print it with 2 or 4 space indentation, minify it, or validate it with precise error messages.">
+<meta name="keywords" content="json formatter, json beautifier, json validator, json minify, pretty print json">
+<link rel="canonical" href="https://toolnest.vercel.app/tools/json-formatter/">
+<meta property="og:title" content="JSON Formatter — Free Online | ToolNest">
+<meta property="og:description" content="Paste JSON to pretty-print it with 2 or 4 space indentation, minify it, or validate it with precise error messages.">
+<meta property="og:type" content="website">
+<link rel="stylesheet" href="/assets/site.css?v=1">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='22' fill='%234f46e5'/><text x='50' y='68' font-size='52' text-anchor='middle' fill='white' font-family='Arial' font-weight='bold'>T</text></svg>">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebApplication","name":"JSON Formatter","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0"},"url":"https://toolnest.vercel.app/tools/json-formatter/","description":"Paste JSON to pretty-print it with 2 or 4 space indentation, minify it, or validate it with precise error messages."},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What happens if my JSON is invalid?","acceptedAnswer":{"@type":"Answer","text":"The tool shows the exact JSON.parse error, including the character position where parsing failed, so you can find the problem quickly."}},{"@type":"Question","name":"Does Minify remove anything besides whitespace?","acceptedAnswer":{"@type":"Answer","text":"Minify removes all unnecessary whitespace, producing the most compact valid JSON. Great for shrinking payloads."}},{"@type":"Question","name":"Is my JSON sent to a server?","acceptedAnswer":{"@type":"Answer","text":"Yes. Everything runs locally in your browser — your JSON is never sent to any server."}}]}]}</script>
+</head>
+<body>
+<header class="site-header">
+  <div class="container">
+    <a class="logo" href="/"><span class="logo-mark">🧰</span> ToolNest</a>
+    <nav class="site-nav">
+      <a href="/">Home</a>
+      <a href="/#categories">Categories</a>
+      <a href="/#all-tools">All Tools</a>
+    </nav>
+  </div>
+</header>
+
+<!-- ADSTERRA-HEADER: paste your Adsterra banner ad code inside the div below -->
+<div class="container"><div class="ad-slot ad-leaderboard" data-ad="header"></div></div>
+
+<main class="container">
+  <nav class="crumbs"><a href="/">Home</a> &rsaquo; <a href="/#developer">Developer Tools</a> &rsaquo; JSON Formatter</nav>
+  <div class="tool-hero">
+    <h1>JSON Formatter</h1>
+    <p>Paste JSON to pretty-print it with 2 or 4 space indentation, minify it, or validate it with precise error messages.</p>
+  </div>
+
+  <div class="tool-card">
+  <div class="field">
+    <label for="json-formatter-input">JSON input</label>
+    <textarea class="textarea code" id="json-formatter-input" rows="10" placeholder='Paste JSON here, e.g. {"name":"Ada","tags":["dev","tools"]}'></textarea>
+  </div>
+  <div class="btn-row">
+    <button class="btn btn-primary" id="json-formatter-format2" type="button">Format (2-space)</button>
+    <button class="btn btn-outline" id="json-formatter-format4" type="button">Format (4-space)</button>
+    <button class="btn btn-outline" id="json-formatter-minify" type="button">Minify</button>
+    <button class="btn btn-outline" id="json-formatter-validate" type="button">Validate</button>
+    <button class="btn btn-outline" id="json-formatter-sample" type="button">Sample</button>
+  </div>
+  <div class="error" id="json-formatter-error"></div>
+  <div class="success hidden" id="json-formatter-success"></div>
+  <div class="result hidden" id="json-formatter-result">
+    <pre id="json-formatter-output"></pre>
+    <div class="btn-row mt">
+      <button class="btn btn-sm" id="json-formatter-copy" type="button">Copy</button>
+      <button class="btn btn-sm btn-outline" id="json-formatter-download" type="button">Download .json</button>
+    </div>
+  </div>
+  <p class="note">All processing happens in your browser — your JSON is never uploaded.</p>
+</div>
+
+  <!-- ADSTERRA-INCONTENT: paste your Adsterra native/in-content ad code inside the div below -->
+  <div class="ad-slot" data-ad="incontent"></div>
+
+  <div class="info-grid">
+    <div class="info-card">
+      <h2>📖 How to use</h2>
+      <ol><li>Paste your JSON into the input box, or click Sample to load an example.</li><li>Choose Format (2-space), Format (4-space), Minify, or Validate.</li><li>Read the result, or the exact parse error if the JSON is invalid.</li><li>Copy the result or download it as a .json file.</li></ol>
+    </div>
+    <div class="info-card">
+      <h2>❓ Frequently asked questions</h2>
+      <div class="faq"><details><summary>What happens if my JSON is invalid?</summary><p>The tool shows the exact JSON.parse error, including the character position where parsing failed, so you can find the problem quickly.</p></details><details><summary>Does Minify remove anything besides whitespace?</summary><p>Minify removes all unnecessary whitespace, producing the most compact valid JSON. Great for shrinking payloads.</p></details><details><summary>Is my JSON sent to a server?</summary><p>Yes. Everything runs locally in your browser — your JSON is never sent to any server.</p></details></div>
+    </div>
+  </div>
+
+  <section class="section">
+    <h2>🔗 Related tools</h2>
+    <div class="tool-grid"><a class="tool-link" href="/tools/base64-encoder-decoder/" data-search="base64 encoder / decoder encode text to base64 or decode base64 back to text, with full utf-8 support and a file-to-data-url converter. base64 encoder base64 decoder base64 encode base64 decode file to base64">Base64 Encoder / Decoder<small>Encode text to Base64 or decode Base64 back to text, with full UTF-8 s…</small></a><a class="tool-link" href="/tools/color-code-converter/" data-search="color code converter type a color in hex, rgb or hsl format and instantly see it converted to all three formats with a preview swatch. color converter hex to rgb rgb to hex hsl converter color code">Color Code Converter<small>Type a color in HEX, RGB or HSL format and instantly see it converted …</small></a><a class="tool-link" href="/tools/css-minifier/" data-search="css minifier compress css by stripping comments, collapsing whitespace and removing redundant semicolons, with before/after byte stats. css minifier minify css css compressor reduce css size">CSS Minifier<small>Compress CSS by stripping comments, collapsing whitespace and removing…</small></a><a class="tool-link" href="/tools/dns-lookup/" data-search="dns lookup look up dns records (a, aaaa, cname, mx, txt, ns) for any hostname, resolved live from our server. dns lookup dns checker mx record lookup txt record lookup ns lookup online">DNS Lookup<small>Look up DNS records (A, AAAA, CNAME, MX, TXT, NS) for any hostname, re…</small></a><a class="tool-link" href="/tools/html-minifier/" data-search="html minifier shrink html by removing comments and collapsing whitespace, with byte stats showing how much was saved. html minifier minify html html compressor reduce html size">HTML Minifier<small>Shrink HTML by removing comments and collapsing whitespace, with byte …</small></a><a class="tool-link" href="/tools/ip-address-finder/" data-search="ip address finder find the public ip address your network shows to websites, displayed large with a one-click copy button. what is my ip ip address finder my public ip find my ip ip lookup">IP Address Finder<small>Find the public IP address your network shows to websites, displayed l…</small></a></div>
+  </section>
+</main>
+
+<!-- ADSTERRA-FOOTER: paste your Adsterra footer/banner ad code inside the div below -->
+<div class="container"><div class="ad-slot" data-ad="footer"></div></div>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="f-grid">
+      <div>
+        <span class="brandline">🧰 ToolNest</span>
+        <p>Free online tools that actually work. No sign-up, no watermarks — and your files never leave your device for client-side tools.</p>
+      </div>
+      <div>
+        <h4>Popular</h4>
+        <a href="/tools/qr-code-generator/">QR Code Generator</a>
+        <a href="/tools/background-remover/">Background Remover</a>
+        <a href="/tools/pdf-merger/">PDF Merger</a>
+        <a href="/tools/word-counter/">Word Counter</a>
+      </div>
+      <div>
+        <h4>Categories</h4>
+        <a href="/#image">Image Tools</a>
+        <a href="/#pdf">PDF &amp; Documents</a>
+        <a href="/#calculators">Calculators</a>
+        <a href="/#developer">Developer Tools</a>
+      </div>
+      <div>
+        <h4>Site</h4>
+        <a href="/">Home</a>
+        <a href="/#all-tools">All Tools</a>
+        <a href="/sitemap.xml">Sitemap</a>
+      </div>
+    </div>
+    <div class="f-bottom">© 2026 ToolNest · Free tools for everyone · Made with care</div>
+  </div>
+</footer>
+
+<script src="/assets/site.js?v=1"></script>
+
+<script>
+(function () {
+  'use strict';
+  var P = 'json-formatter-';
+  var lastOutput = '';
+
+  function tryParse() {
+    var t = TN.el(P + 'input').value;
+    TN.hide(P + 'success');
+    if (!t.trim()) { TN.setErr(P + 'error', 'Paste some JSON first.'); return null; }
+    try {
+      var v = JSON.parse(t);
+      TN.clearErr(P + 'error');
+      return { ok: true, v: v };
+    } catch (e) {
+      TN.setErr(P + 'error', 'Invalid JSON: ' + (e && e.message ? e.message : e));
+      TN.hide(P + 'result');
+      return null;
+    }
+  }
+
+  function show(text) {
+    lastOutput = text;
+    TN.el(P + 'output').textContent = text;
+    TN.show(P + 'result');
+  }
+
+  TN.on(P + 'format2', 'click', function () {
+    var r = tryParse(); if (!r) return;
+    show(JSON.stringify(r.v, null, 2));
+  });
+  TN.on(P + 'format4', 'click', function () {
+    var r = tryParse(); if (!r) return;
+    show(JSON.stringify(r.v, null, 4));
+  });
+  TN.on(P + 'minify', 'click', function () {
+    var r = tryParse(); if (!r) return;
+    show(JSON.stringify(r.v));
+  });
+  TN.on(P + 'validate', 'click', function () {
+    var r = tryParse(); if (!r) return;
+    TN.hide(P + 'result');
+    var s = TN.el(P + 'success');
+    s.textContent = 'Valid JSON.';
+    TN.show(P + 'success');
+  });
+  TN.on(P + 'sample', 'click', function () {
+    TN.el(P + 'input').value = JSON.stringify({
+      name: 'Ada Lovelace',
+      role: 'developer',
+      active: true,
+      score: 99.5,
+      tags: ['json', 'tools', 'web'],
+      address: { city: 'London', zip: null }
+    }, null, 2);
+    TN.clearErr(P + 'error');
+    TN.hide(P + 'result');
+    TN.hide(P + 'success');
+  });
+  TN.on(P + 'copy', 'click', function () {
+    if (!lastOutput) { TN.setErr(P + 'error', 'Nothing to copy yet — format or minify first.'); return; }
+    TN.clearErr(P + 'error');
+    TN.copy(lastOutput).then(function () {
+      TN.setErr(P + 'error', '');
+    }, function () {
+      TN.setErr(P + 'error', 'Copy failed — select the text manually.');
+    });
+  });
+  TN.on(P + 'download', 'click', function () {
+    if (!lastOutput) { TN.setErr(P + 'error', 'Nothing to download yet — format or minify first.'); return; }
+    TN.clearErr(P + 'error');
+    TN.downloadText(lastOutput, 'formatted.json', 'application/json');
+  });
+})();
+
+</script>
+</body>
+</html>

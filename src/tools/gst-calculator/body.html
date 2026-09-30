@@ -1,0 +1,33 @@
+<div class="tool-card">
+  <div class="field">
+    <label for="gst-amount">Amount</label>
+    <input type="number" class="input" id="gst-amount" min="0" step="any" placeholder="e.g. 1000">
+  </div>
+  <div class="field">
+    <label>GST rate (%)</label>
+    <div class="btn-row" role="group" aria-label="GST rate presets">
+      <button type="button" class="btn btn-outline btn-sm gst-rate" data-rate="0">0%</button>
+      <button type="button" class="btn btn-outline btn-sm gst-rate" data-rate="5">5%</button>
+      <button type="button" class="btn btn-outline btn-sm gst-rate" data-rate="12">12%</button>
+      <button type="button" class="btn btn-outline btn-sm gst-rate" data-rate="18">18%</button>
+      <button type="button" class="btn btn-outline btn-sm gst-rate" data-rate="28">28%</button>
+    </div>
+    <div class="field mt">
+      <label for="gst-custom">Custom rate (%)</label>
+      <input type="number" class="input" id="gst-custom" min="0" step="any" placeholder="e.g. 15">
+    </div>
+  </div>
+  <div class="btn-row" role="group" aria-label="GST mode">
+    <button type="button" class="btn btn-primary btn-sm" id="gst-exclusive-btn">Exclusive (add GST)</button>
+    <button type="button" class="btn btn-outline btn-sm" id="gst-inclusive-btn">Inclusive (GST included)</button>
+  </div>
+  <div class="error" id="gst-calculator-error"></div>
+  <div class="result" id="gst-result">
+    <div class="stat-cards">
+      <div class="stat-card"><div class="v" id="gst-base">–</div><div class="l">Base price</div></div>
+      <div class="stat-card"><div class="v" id="gst-tax">–</div><div class="l">GST amount</div></div>
+      <div class="stat-card"><div class="v" id="gst-total">–</div><div class="l">Total</div></div>
+    </div>
+    <p class="muted" id="gst-summary"></p>
+  </div>
+</div>

@@ -1,0 +1,30 @@
+<div class="tool-card">
+  <div class="row">
+    <div class="field">
+      <label for="lottery-number-generator-max">Highest number</label>
+      <input type="number" id="lottery-number-generator-max" class="input" value="49" min="2" max="999">
+    </div>
+    <div class="field">
+      <label for="lottery-number-generator-count">How many numbers</label>
+      <input type="number" id="lottery-number-generator-count" class="input" value="6" min="1" max="100">
+    </div>
+  </div>
+  <div class="checkbox-row">
+    <input type="checkbox" id="lottery-number-generator-unique" checked>
+    <label for="lottery-number-generator-unique">No duplicates</label>
+  </div>
+  <div class="btn-row">
+    <button type="button" class="btn btn-primary" id="lottery-number-generator-go">Generate</button>
+    <button type="button" class="btn btn-outline btn-sm" id="lottery-number-generator-clear">Clear history</button>
+  </div>
+  <div class="error" id="lottery-number-generator-error"></div>
+  <div class="lotto-balls mt" id="lottery-number-generator-balls"></div>
+  <p class="note">Random for fun — lotteries can't be predicted. Every draw is independent.</p>
+  <h4 class="mt">Draw history</h4>
+  <ul class="file-list" id="lottery-number-generator-history"></ul>
+  <p class="muted" id="lottery-number-generator-empty">No draws yet — your generated sets will appear here.</p>
+  <style>
+    .lotto-balls{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;min-height:20px}
+    .lotto-ball{width:54px;height:54px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:1.15rem;color:#fff;background:radial-gradient(circle at 30% 30%,#818cf8,#4338ca);box-shadow:0 3px 8px rgba(0,0,0,.22)}
+  </style>
+</div>

@@ -1,0 +1,39 @@
+<div class="tool-card">
+  <div class="btn-row" role="group" aria-label="Unit system">
+    <button type="button" class="btn btn-primary btn-sm" id="bmi-metric-btn">Metric (cm, kg)</button>
+    <button type="button" class="btn btn-outline btn-sm" id="bmi-imperial-btn">Imperial (ft/in, lb)</button>
+  </div>
+  <div id="bmi-metric-fields" class="grid2">
+    <div class="field">
+      <label for="bmi-cm">Height (cm)</label>
+      <input type="number" class="input" id="bmi-cm" min="0" step="any" placeholder="e.g. 170">
+    </div>
+    <div class="field">
+      <label for="bmi-kg">Weight (kg)</label>
+      <input type="number" class="input" id="bmi-kg" min="0" step="any" placeholder="e.g. 68">
+    </div>
+  </div>
+  <div id="bmi-imperial-fields" class="grid2 hidden">
+    <div class="field">
+      <label for="bmi-ft">Height (ft)</label>
+      <input type="number" class="input" id="bmi-ft" min="0" step="any" placeholder="e.g. 5">
+    </div>
+    <div class="field">
+      <label for="bmi-in">Height (in)</label>
+      <input type="number" class="input" id="bmi-in" min="0" step="any" placeholder="e.g. 7">
+    </div>
+    <div class="field">
+      <label for="bmi-lb">Weight (lb)</label>
+      <input type="number" class="input" id="bmi-lb" min="0" step="any" placeholder="e.g. 150">
+    </div>
+  </div>
+  <div class="error" id="bmi-calculator-error"></div>
+  <div class="result" id="bmi-result">
+    <div class="stat-cards">
+      <div class="stat-card"><div class="v" id="bmi-value">–</div><div class="l">Your BMI</div></div>
+      <div class="stat-card"><div class="v" id="bmi-range">–</div><div class="l">Healthy weight range</div></div>
+    </div>
+    <p class="center"><span class="tag" id="bmi-category">–</span></p>
+    <p class="note">BMI is a screening tool, not a medical diagnosis. It does not account for muscle mass, age or body composition.</p>
+  </div>
+</div>

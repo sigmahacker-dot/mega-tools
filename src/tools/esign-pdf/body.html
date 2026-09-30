@@ -1,0 +1,43 @@
+<div class="tool-card">
+  <h2>eSign PDF</h2>
+  <p class="muted">Draw your signature and stamp it onto any page of your PDF.</p>
+  <div class="field">
+    <label for="esign-pdf-file">PDF file</label>
+    <input type="file" id="esign-pdf-file" class="input" accept=".pdf,application/pdf">
+  </div>
+  <p class="muted" id="esign-pdf-info">No file loaded yet.</p>
+  <div class="field">
+    <label for="esign-pdf-sig">Your signature — draw below (mouse or touch)</label>
+    <canvas id="esign-pdf-sig" width="480" height="160" style="width:100%;max-width:480px;height:auto;border:1px solid #cbd5e1;border-radius:8px;background:#ffffff;cursor:crosshair;display:block;"></canvas>
+    <div class="btn-row mt">
+      <button class="btn btn-sm btn-outline" id="esign-pdf-clear-sig">Clear signature</button>
+    </div>
+  </div>
+  <div class="grid2">
+    <div class="field">
+      <label for="esign-pdf-page">Page number</label>
+      <input type="number" id="esign-pdf-page" class="input" min="1" value="1">
+    </div>
+    <div class="field">
+      <label for="esign-pdf-size">Signature width: <span id="esign-pdf-size-val">120</span> pt</label>
+      <input type="range" id="esign-pdf-size" class="input" min="40" max="300" value="120">
+    </div>
+  </div>
+  <div class="grid2">
+    <div class="field">
+      <label for="esign-pdf-x">X position (from left): <span id="esign-pdf-x-val">70</span>%</label>
+      <input type="range" id="esign-pdf-x" class="input" min="0" max="100" value="70">
+    </div>
+    <div class="field">
+      <label for="esign-pdf-y">Y position (from top): <span id="esign-pdf-y-val">80</span>%</label>
+      <input type="range" id="esign-pdf-y" class="input" min="0" max="100" value="80">
+    </div>
+  </div>
+  <div class="btn-row">
+    <button class="btn btn-primary" id="esign-pdf-sign">Sign &amp; Download</button>
+    <button class="btn btn-outline" id="esign-pdf-clear">Clear</button>
+  </div>
+  <div class="error" id="esign-pdf-error"></div>
+  <div class="result hidden" id="esign-pdf-result"></div>
+  <p class="note"><strong>Please note:</strong> this adds a drawn signature image to the document — it is not a certified cryptographic digital signature. Files never leave your device — everything is processed in your browser.</p>
+</div>

@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Image Resizer — Free Online | ToolNest</title>
+<meta name="description" content="Resize any image to exact pixel dimensions with an aspect-ratio lock, quick presets and percentage scaling. Preview the result and download as PNG, JPG or WebP.">
+<meta name="keywords" content="image resizer, resize photo, change image dimensions">
+<link rel="canonical" href="https://toolnest.vercel.app/tools/image-resizer/">
+<meta property="og:title" content="Image Resizer — Free Online | ToolNest">
+<meta property="og:description" content="Resize any image to exact pixel dimensions with an aspect-ratio lock, quick presets and percentage scaling. Preview the result and download as PNG, JPG or WebP.">
+<meta property="og:type" content="website">
+<link rel="stylesheet" href="/assets/site.css?v=1">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='22' fill='%234f46e5'/><text x='50' y='68' font-size='52' text-anchor='middle' fill='white' font-family='Arial' font-weight='bold'>T</text></svg>">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebApplication","name":"Image Resizer","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0"},"url":"https://toolnest.vercel.app/tools/image-resizer/","description":"Resize any image to exact pixel dimensions with an aspect-ratio lock, quick presets and percentage scaling. Preview the result and download as PNG, JPG or WebP."},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Will my image get stretched?","acceptedAnswer":{"@type":"Answer","text":"Yes — “Lock aspect ratio” is on by default. Change either the width or the height and the other updates automatically so the image never stretches."}},{"@type":"Question","name":"Does resizing reduce the file size?","acceptedAnswer":{"@type":"Answer","text":"The pixel dimensions always change. The file size usually shrinks when you downscale, but upscaling or choosing PNG can make it larger."}},{"@type":"Question","name":"Is my image uploaded?","acceptedAnswer":{"@type":"Answer","text":"No. Everything is drawn on a canvas in your browser — your image is never uploaded anywhere."}}]}]}</script>
+</head>
+<body>
+<header class="site-header">
+  <div class="container">
+    <a class="logo" href="/"><span class="logo-mark">🧰</span> ToolNest</a>
+    <nav class="site-nav">
+      <a href="/">Home</a>
+      <a href="/#categories">Categories</a>
+      <a href="/#all-tools">All Tools</a>
+    </nav>
+  </div>
+</header>
+
+<!-- ADSTERRA-HEADER: paste your Adsterra banner ad code inside the div below -->
+<div class="container"><div class="ad-slot ad-leaderboard" data-ad="header"></div></div>
+
+<main class="container">
+  <nav class="crumbs"><a href="/">Home</a> &rsaquo; <a href="/#image">Image Tools</a> &rsaquo; Image Resizer</nav>
+  <div class="tool-hero">
+    <h1>Image Resizer</h1>
+    <p>Resize any image to exact pixel dimensions with an aspect-ratio lock, quick presets and percentage scaling. Preview the result and download as PNG, JPG or WebP.</p>
+  </div>
+
+  <div class="tool-card">
+  <div class="dropzone" id="image-resizer-drop">
+    <span class="dz-icon">📐</span>
+    <strong>Drop an image here</strong> or click to browse
+    <input type="file" id="image-resizer-file" accept="image/*" class="hidden">
+  </div>
+  <p class="muted mt" id="image-resizer-orig"></p>
+  <div id="image-resizer-controls" class="hidden">
+    <div class="row">
+      <div class="field">
+        <label for="image-resizer-width">Width (px)</label>
+        <input type="number" class="input" id="image-resizer-width" min="1" max="12000">
+      </div>
+      <div class="field">
+        <label for="image-resizer-height">Height (px)</label>
+        <input type="number" class="input" id="image-resizer-height" min="1" max="12000">
+      </div>
+    </div>
+    <label class="checkbox-row"><input type="checkbox" id="image-resizer-lock" checked> Lock aspect ratio</label>
+    <div class="btn-row">
+      <button class="btn btn-sm btn-outline" data-preset="1920">1920px</button>
+      <button class="btn btn-sm btn-outline" data-preset="1280">1280px</button>
+      <button class="btn btn-sm btn-outline" data-preset="800">800px</button>
+      <button class="btn btn-sm btn-outline" data-preset="half">50%</button>
+      <button class="btn btn-sm btn-outline" data-preset="quarter">25%</button>
+    </div>
+    <div class="grid2 mt">
+      <div class="field">
+        <label for="image-resizer-format">Output format</label>
+        <select class="select" id="image-resizer-format">
+          <option value="keep">Keep original format</option>
+          <option value="image/png">PNG</option>
+          <option value="image/jpeg">JPEG</option>
+          <option value="image/webp">WebP</option>
+        </select>
+      </div>
+      <div class="field">
+        <label for="image-resizer-quality">Quality (JPEG/WebP)</label>
+        <input type="range" id="image-resizer-quality" min="10" max="100" value="90">
+      </div>
+    </div>
+    <div class="btn-row">
+      <button class="btn btn-primary" id="image-resizer-go">Resize image</button>
+    </div>
+    <div id="image-resizer-result" class="hidden">
+      <img id="image-resizer-preview" class="preview-img hidden" alt="Resized preview">
+      <p class="muted" id="image-resizer-outinfo"></p>
+      <div class="btn-row">
+        <button class="btn btn-outline" id="image-resizer-download">Download</button>
+      </div>
+    </div>
+  </div>
+  <div class="error" id="image-resizer-error"></div>
+  <p class="note">Pixel presets fit the longest side. Files never leave your device — everything is processed in your browser.</p>
+</div>
+
+
+  <!-- ADSTERRA-INCONTENT: paste your Adsterra native/in-content ad code inside the div below -->
+  <div class="ad-slot" data-ad="incontent"></div>
+
+  <div class="info-grid">
+    <div class="info-card">
+      <h2>📖 How to use</h2>
+      <ol><li>Choose an image — its current dimensions appear automatically.</li><li>Type the new width and height (aspect ratio stays locked unless you untick it), or tap a preset like 1920px, 1280px, 50% or 25%.</li><li>Pick an output format (PNG, JPG or WebP) and set quality for JPG/WebP.</li><li>Click “Resize image”, preview the result and download it.</li></ol>
+    </div>
+    <div class="info-card">
+      <h2>❓ Frequently asked questions</h2>
+      <div class="faq"><details><summary>Will my image get stretched?</summary><p>Yes — “Lock aspect ratio” is on by default. Change either the width or the height and the other updates automatically so the image never stretches.</p></details><details><summary>Does resizing reduce the file size?</summary><p>The pixel dimensions always change. The file size usually shrinks when you downscale, but upscaling or choosing PNG can make it larger.</p></details><details><summary>Is my image uploaded?</summary><p>No. Everything is drawn on a canvas in your browser — your image is never uploaded anywhere.</p></details></div>
+    </div>
+  </div>
+
+  <section class="section">
+    <h2>🔗 Related tools</h2>
+    <div class="tool-grid"><a class="tool-link" href="/tools/background-remover/" data-search="background remover remove the background from any photo with real on-device ai and download a transparent png. free, private and unlimited — no sign-up needed. background remover remove image background transparent png maker">Background Remover<small>Remove the background from any photo with real on-device AI and downlo…</small></a><a class="tool-link" href="/tools/favicon-generator/" data-search="favicon generator generate a complete png favicon set (16–512 px) from your logo in one click, download it as a zip, and copy the ready-to-paste html link tags. favicon generator favicon maker png favicon">Favicon Generator<small>Generate a complete PNG favicon set (16–512 px) from your logo in one …</small></a><a class="tool-link" href="/tools/image-compressor/" data-search="image compressor shrink jpg, png and webp images right in your browser with an adjustable quality slider. compare before/after sizes, download each file or grab everything as a zip. image compressor compress jpg reduce image size">Image Compressor<small>Shrink JPG, PNG and WebP images right in your browser with an adjustab…</small></a><a class="tool-link" href="/tools/image-to-pdf/" data-search="image to pdf turn your photos into a pdf document — one full-page image per page, sized to each photo. reorder pages freely, then download a single ready-to-share pdf. image to pdf jpg to pdf photos to pdf">Image to PDF<small>Turn your photos into a PDF document — one full-page image per page, s…</small></a><a class="tool-link" href="/tools/jpg-to-png/" data-search="jpg to png converter convert jpg photos to png format instantly in your browser. handles multiple files at once with individual downloads or a single zip archive. jpg to png jpeg to png converter convert jpg png">JPG to PNG Converter<small>Convert JPG photos to PNG format instantly in your browser. Handles mu…</small></a><a class="tool-link" href="/tools/meme-generator/" data-search="meme generator make classic memes in seconds: upload a photo or start from a blank background, add top and bottom captions in bold meme style, and download as a png. meme generator meme maker caption image">Meme Generator<small>Make classic memes in seconds: upload a photo or start from a blank ba…</small></a></div>
+  </section>
+</main>
+
+<!-- ADSTERRA-FOOTER: paste your Adsterra footer/banner ad code inside the div below -->
+<div class="container"><div class="ad-slot" data-ad="footer"></div></div>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="f-grid">
+      <div>
+        <span class="brandline">🧰 ToolNest</span>
+        <p>Free online tools that actually work. No sign-up, no watermarks — and your files never leave your device for client-side tools.</p>
+      </div>
+      <div>
+        <h4>Popular</h4>
+        <a href="/tools/qr-code-generator/">QR Code Generator</a>
+        <a href="/tools/background-remover/">Background Remover</a>
+        <a href="/tools/pdf-merger/">PDF Merger</a>
+        <a href="/tools/word-counter/">Word Counter</a>
+      </div>
+      <div>
+        <h4>Categories</h4>
+        <a href="/#image">Image Tools</a>
+        <a href="/#pdf">PDF &amp; Documents</a>
+        <a href="/#calculators">Calculators</a>
+        <a href="/#developer">Developer Tools</a>
+      </div>
+      <div>
+        <h4>Site</h4>
+        <a href="/">Home</a>
+        <a href="/#all-tools">All Tools</a>
+        <a href="/sitemap.xml">Sitemap</a>
+      </div>
+    </div>
+    <div class="f-bottom">© 2026 ToolNest · Free tools for everyone · Made with care</div>
+  </div>
+</footer>
+
+<script src="/assets/site.js?v=1"></script>
+
+<script>
+/* Image Resizer — canvas resize with aspect lock, presets, format choice. */
+(function () {
+  'use strict';
+
+  var img = null, imgName = 'image', imgType = 'image/png';
+  var origW = 0, origH = 0;
+  var outBlob = null, outUrl = null, outName = '';
+
+  function $(id) { return document.getElementById(id); }
+
+  function canvasToBlob(canvas, type, quality) {
+    return new Promise(function (resolve, reject) {
+      try {
+        canvas.toBlob(function (b) {
+          if (b) resolve(b);
+          else reject(new Error('This browser could not encode the image in that format.'));
+        }, type, quality);
+      } catch (e) { reject(e); }
+    });
+  }
+
+  function setFile(f) {
+    if (!f) return;
+    TN.clearErr('image-resizer-error');
+    TN.readAsDataURL(f).then(TN.loadImage).then(function (im) {
+      if (!im.naturalWidth || !im.naturalHeight) throw new Error('unreadable');
+      img = im;
+      imgName = f.name || 'image';
+      imgType = f.type || 'image/png';
+      origW = im.naturalWidth;
+      origH = im.naturalHeight;
+      $('image-resizer-width').value = origW;
+      $('image-resizer-height').value = origH;
+      $('image-resizer-orig').textContent = 'Original: ' + origW + ' × ' + origH + ' px';
+      $('image-resizer-controls').classList.remove('hidden');
+      $('image-resizer-result').classList.add('hidden');
+    }).catch(function () {
+      TN.setErr('image-resizer-error', 'That file could not be read as an image. Try a JPG, PNG or WebP file.');
+    });
+  }
+
+  function dims() {
+    var w = parseInt($('image-resizer-width').value, 10);
+    var h = parseInt($('image-resizer-height').value, 10);
+    return {
+      w: Math.min(12000, Math.max(1, isNaN(w) ? 1 : w)),
+      h: Math.min(12000, Math.max(1, isNaN(h) ? 1 : h))
+    };
+  }
+
+  function onWidth() {
+    if ($('image-resizer-lock').checked && origW > 0) {
+      var w = parseInt($('image-resizer-width').value, 10);
+      if (!isNaN(w) && w > 0) $('image-resizer-height').value = Math.max(1, Math.round(w * origH / origW));
+    }
+  }
+
+  function onHeight() {
+    if ($('image-resizer-lock').checked && origH > 0) {
+      var h = parseInt($('image-resizer-height').value, 10);
+      if (!isNaN(h) && h > 0) $('image-resizer-width').value = Math.max(1, Math.round(h * origW / origH));
+    }
+  }
+
+  function applyPreset(kind) {
+    if (!img) {
+      TN.setErr('image-resizer-error', 'Choose an image first.');
+      return;
+    }
+    var w, h;
+    if (kind === 'half') { w = Math.round(origW / 2); h = Math.round(origH / 2); }
+    else if (kind === 'quarter') { w = Math.round(origW / 4); h = Math.round(origH / 4); }
+    else {
+      var target = parseInt(kind, 10);
+      var s = target / Math.max(origW, origH);
+      w = Math.round(origW * s); h = Math.round(origH * s);
+    }
+    $('image-resizer-width').value = w;
+    $('image-resizer-height').value = h;
+  }
+
+  function resize() {
+    if (!img) {
+      TN.setErr('image-resizer-error', 'Choose an image first.');
+      return;
+    }
+    TN.clearErr('image-resizer-error');
+    var d = dims();
+    var fmt = $('image-resizer-format').value;
+    var mime = fmt === 'keep' ? imgType : fmt;
+    if (mime !== 'image/png' && mime !== 'image/jpeg' && mime !== 'image/webp') mime = 'image/png';
+    var canvas = document.createElement('canvas');
+    canvas.width = d.w;
+    canvas.height = d.h;
+    var ctx = canvas.getContext('2d');
+    if (mime === 'image/jpeg') {
+      ctx.fillStyle = '#ffffff';
+      ctx.fillRect(0, 0, d.w, d.h);
+    }
+    ctx.drawImage(img, 0, 0, d.w, d.h);
+    var lossy = (mime === 'image/jpeg' || mime === 'image/webp');
+    var q = lossy ? (parseInt($('image-resizer-quality').value, 10) || 90) / 100 : undefined;
+    var btn = $('image-resizer-go');
+    if (btn) { btn.disabled = true; btn.textContent = 'Resizing…'; }
+    canvasToBlob(canvas, mime, q).then(function (blob) {
+      outBlob = blob;
+      if (outUrl) { try { URL.revokeObjectURL(outUrl); } catch (e) {} }
+      outUrl = URL.createObjectURL(blob);
+      var pv = $('image-resizer-preview');
+      pv.src = outUrl;
+      pv.classList.remove('hidden');
+      var ext = mime === 'image/jpeg' ? 'jpg' : mime === 'image/webp' ? 'webp' : 'png';
+      var base = (imgName || 'image').replace(/\.[^.]+$/, '') || 'image';
+      outName = base + '-' + d.w + 'x' + d.h + '.' + ext;
+      $('image-resizer-outinfo').textContent = d.w + ' × ' + d.h + ' px · ' + TN.fmtBytes(blob.size) + ' · ' + ext.toUpperCase();
+      $('image-resizer-result').classList.remove('hidden');
+      if (btn) { btn.disabled = false; btn.textContent = 'Resize image'; }
+    }).catch(function (e) {
+      if (btn) { btn.disabled = false; btn.textContent = 'Resize image'; }
+      TN.setErr('image-resizer-error', 'Resize failed: ' + (e && e.message ? e.message : 'unknown error'));
+    });
+  }
+
+  function init() {
+    var dz = $('image-resizer-drop');
+    var input = $('image-resizer-file');
+    if (!dz || !input) return;
+    dz.addEventListener('click', function () { input.click(); });
+    input.addEventListener('change', function () {
+      var f = input.files && input.files[0];
+      input.value = '';
+      setFile(f);
+    });
+    ['dragover', 'dragenter'].forEach(function (ev) {
+      dz.addEventListener(ev, function (e) { e.preventDefault(); dz.classList.add('dragover'); });
+    });
+    ['dragleave', 'drop'].forEach(function (ev) {
+      dz.addEventListener(ev, function (e) { e.preventDefault(); dz.classList.remove('dragover'); });
+    });
+    dz.addEventListener('drop', function (e) {
+      var f = e.dataTransfer && e.dataTransfer.files && e.dataTransfer.files[0];
+      setFile(f);
+    });
+
+    TN.on('image-resizer-width', 'input', onWidth);
+    TN.on('image-resizer-height', 'input', onHeight);
+    TN.on('image-resizer-go', 'click', resize);
+    TN.on('image-resizer-download', 'click', function () {
+      if (outBlob) TN.download(outBlob, outName || 'resized.png');
+    });
+
+    var ctrls = $('image-resizer-controls');
+    if (ctrls) ctrls.addEventListener('click', function (e) {
+      var b = e.target && e.target.closest ? e.target.closest('[data-preset]') : null;
+      if (b) applyPreset(b.getAttribute('data-preset'));
+    });
+  }
+
+  try { init(); } catch (e) { /* never throw on page load */ }
+})();
+
+</script>
+</body>
+</html>

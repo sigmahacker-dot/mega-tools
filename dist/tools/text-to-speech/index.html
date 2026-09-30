@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Text to Speech — Free Online | ToolNest</title>
+<meta name="description" content="Turn any text into spoken audio right in your browser. Pick a voice, adjust speed and pitch, then speak, pause, resume or stop.">
+<meta name="keywords" content="text to speech, tts online, read text aloud">
+<link rel="canonical" href="https://toolnest.vercel.app/tools/text-to-speech/">
+<meta property="og:title" content="Text to Speech — Free Online | ToolNest">
+<meta property="og:description" content="Turn any text into spoken audio right in your browser. Pick a voice, adjust speed and pitch, then speak, pause, resume or stop.">
+<meta property="og:type" content="website">
+<link rel="stylesheet" href="/assets/site.css?v=1">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='22' fill='%234f46e5'/><text x='50' y='68' font-size='52' text-anchor='middle' fill='white' font-family='Arial' font-weight='bold'>T</text></svg>">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebApplication","name":"Text to Speech","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0"},"url":"https://toolnest.vercel.app/tools/text-to-speech/","description":"Turn any text into spoken audio right in your browser. Pick a voice, adjust speed and pitch, then speak, pause, resume or stop."},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How does the text-to-speech work?","acceptedAnswer":{"@type":"Answer","text":"It uses the built-in speech synthesis of your browser (Chrome, Edge, Firefox, Safari). No audio files are created or uploaded."}},{"@type":"Question","name":"Why do I see different voices on different devices?","acceptedAnswer":{"@type":"Answer","text":"The voice list comes from your device and browser. Different devices and browsers offer different voices and languages."}},{"@type":"Question","name":"The voice list is empty. What should I do?","acceptedAnswer":{"@type":"Answer","text":"Some browsers need a moment to load voices. If the list is empty, wait a second and reload the page."}}]}]}</script>
+</head>
+<body>
+<header class="site-header">
+  <div class="container">
+    <a class="logo" href="/"><span class="logo-mark">🧰</span> ToolNest</a>
+    <nav class="site-nav">
+      <a href="/">Home</a>
+      <a href="/#categories">Categories</a>
+      <a href="/#all-tools">All Tools</a>
+    </nav>
+  </div>
+</header>
+
+<!-- ADSTERRA-HEADER: paste your Adsterra banner ad code inside the div below -->
+<div class="container"><div class="ad-slot ad-leaderboard" data-ad="header"></div></div>
+
+<main class="container">
+  <nav class="crumbs"><a href="/">Home</a> &rsaquo; <a href="/#text">Text &amp; Writing</a> &rsaquo; Text to Speech</nav>
+  <div class="tool-hero">
+    <h1>Text to Speech</h1>
+    <p>Turn any text into spoken audio right in your browser. Pick a voice, adjust speed and pitch, then speak, pause, resume or stop.</p>
+  </div>
+
+  <div class="tool-card">
+  <div id="text-to-speech-unsupported" class="hidden">
+    <p class="note">Not supported in this browser. Text-to-speech needs a browser with the Web Speech API (Chrome, Edge, Firefox or Safari).</p>
+  </div>
+  <div id="text-to-speech-ui">
+    <div class="field">
+      <label for="text-to-speech-text">Text to speak <span class="muted" id="text-to-speech-count">(0 characters)</span></label>
+      <textarea class="textarea" id="text-to-speech-text" rows="8" placeholder="Type or paste the text you want to hear..."></textarea>
+    </div>
+    <div class="grid2">
+      <div class="field">
+        <label for="text-to-speech-voice">Voice</label>
+        <select class="select" id="text-to-speech-voice"></select>
+      </div>
+      <div class="field">
+        <label for="text-to-speech-rate">Rate: <span id="text-to-speech-rateval">1</span></label>
+        <input type="range" id="text-to-speech-rate" min="0.5" max="2" step="0.1" value="1" style="width:100%">
+      </div>
+      <div class="field">
+        <label for="text-to-speech-pitch">Pitch: <span id="text-to-speech-pitchval">1</span></label>
+        <input type="range" id="text-to-speech-pitch" min="0" max="2" step="0.1" value="1" style="width:100%">
+      </div>
+    </div>
+    <div class="btn-row">
+      <button class="btn btn-primary" id="text-to-speech-speak" type="button">Speak</button>
+      <button class="btn btn-outline" id="text-to-speech-pause" type="button">Pause</button>
+      <button class="btn btn-outline" id="text-to-speech-resume" type="button">Resume</button>
+      <button class="btn btn-danger" id="text-to-speech-stop" type="button">Stop</button>
+    </div>
+    <div class="error" id="text-to-speech-error"></div>
+    <p class="note" id="text-to-speech-status">Ready.</p>
+  </div>
+</div>
+
+
+  <!-- ADSTERRA-INCONTENT: paste your Adsterra native/in-content ad code inside the div below -->
+  <div class="ad-slot" data-ad="incontent"></div>
+
+  <div class="info-grid">
+    <div class="info-card">
+      <h2>📖 How to use</h2>
+      <ol><li>Paste or type the text you want to hear.</li><li>Choose a voice from the dropdown.</li><li>Adjust the rate and pitch sliders.</li><li>Click Speak, and use Pause, Resume or Stop anytime.</li></ol>
+    </div>
+    <div class="info-card">
+      <h2>❓ Frequently asked questions</h2>
+      <div class="faq"><details><summary>How does the text-to-speech work?</summary><p>It uses the built-in speech synthesis of your browser (Chrome, Edge, Firefox, Safari). No audio files are created or uploaded.</p></details><details><summary>Why do I see different voices on different devices?</summary><p>The voice list comes from your device and browser. Different devices and browsers offer different voices and languages.</p></details><details><summary>The voice list is empty. What should I do?</summary><p>Some browsers need a moment to load voices. If the list is empty, wait a second and reload the page.</p></details></div>
+    </div>
+  </div>
+
+  <section class="section">
+    <h2>🔗 Related tools</h2>
+    <div class="tool-grid"><a class="tool-link" href="/tools/article-rewriter/" data-search="article rewriter rewrite articles with a built-in synonym engine covering 130+ common english words. whole-word replacement with capitalization preserved and a change report. article rewriter paraphrasing tool rewrite text online">Article Rewriter<small>Rewrite articles with a built-in synonym engine covering 130+ common E…</small></a><a class="tool-link" href="/tools/case-converter/" data-search="case converter convert text to uppercase, lowercase, title case, sentence case, alternating case and inverse case instantly, then copy or download the result. case converter uppercase lowercase converter title case converter">Case Converter<small>Convert text to UPPERCASE, lowercase, Title Case, Sentence case, aLtEr…</small></a><a class="tool-link" href="/tools/character-counter/" data-search="character counter count characters with and without spaces, words and lines in real time, with a live x/twitter 280-character limit gauge and sms segment indicator. character counter twitter character count count characters online">Character Counter<small>Count characters with and without spaces, words and lines in real time…</small></a><a class="tool-link" href="/tools/hashtag-generator/" data-search="hashtag generator generate around 20 hashtag ideas from any keyword — keyword variations, popular combos and generic reach tags — with click-to-copy on each tag. hashtag generator instagram hashtags hashtag ideas">Hashtag Generator<small>Generate around 20 hashtag ideas from any keyword — keyword variations…</small></a><a class="tool-link" href="/tools/lorem-ipsum-generator/" data-search="lorem ipsum generator generate classic lorem ipsum placeholder text by paragraphs, words or sentences for your designs, mockups and wireframes in one click. lorem ipsum generator placeholder text dummy text generator">Lorem Ipsum Generator<small>Generate classic lorem ipsum placeholder text by paragraphs, words or …</small></a><a class="tool-link" href="/tools/speech-to-text/" data-search="speech to text dictate text with your voice using your browser&#39;s speech recognition. live interim results, final transcript, multiple languages and one-click copy. speech to text voice to text dictation online">Speech to Text<small>Dictate text with your voice using your browser&#39;s speech recognition. …</small></a></div>
+  </section>
+</main>
+
+<!-- ADSTERRA-FOOTER: paste your Adsterra footer/banner ad code inside the div below -->
+<div class="container"><div class="ad-slot" data-ad="footer"></div></div>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="f-grid">
+      <div>
+        <span class="brandline">🧰 ToolNest</span>
+        <p>Free online tools that actually work. No sign-up, no watermarks — and your files never leave your device for client-side tools.</p>
+      </div>
+      <div>
+        <h4>Popular</h4>
+        <a href="/tools/qr-code-generator/">QR Code Generator</a>
+        <a href="/tools/background-remover/">Background Remover</a>
+        <a href="/tools/pdf-merger/">PDF Merger</a>
+        <a href="/tools/word-counter/">Word Counter</a>
+      </div>
+      <div>
+        <h4>Categories</h4>
+        <a href="/#image">Image Tools</a>
+        <a href="/#pdf">PDF &amp; Documents</a>
+        <a href="/#calculators">Calculators</a>
+        <a href="/#developer">Developer Tools</a>
+      </div>
+      <div>
+        <h4>Site</h4>
+        <a href="/">Home</a>
+        <a href="/#all-tools">All Tools</a>
+        <a href="/sitemap.xml">Sitemap</a>
+      </div>
+    </div>
+    <div class="f-bottom">© 2026 ToolNest · Free tools for everyone · Made with care</div>
+  </div>
+</footer>
+
+<script src="/assets/site.js?v=1"></script>
+
+<script>
+/* Text to Speech — browser speech synthesis */
+(function () {
+  'use strict';
+  var supported = ('speechSynthesis' in window);
+  var ui = TN.el('text-to-speech-ui');
+  var unsupported = TN.el('text-to-speech-unsupported');
+  if (!supported) {
+    if (ui) TN.hide(ui);
+    if (unsupported) TN.show(unsupported);
+    return;
+  }
+  if (unsupported) TN.hide(unsupported);
+
+  var textEl = TN.el('text-to-speech-text');
+  var voiceEl = TN.el('text-to-speech-voice');
+  var rateEl = TN.el('text-to-speech-rate');
+  var pitchEl = TN.el('text-to-speech-pitch');
+  var rateVal = TN.el('text-to-speech-rateval');
+  var pitchVal = TN.el('text-to-speech-pitchval');
+  var countEl = TN.el('text-to-speech-count');
+  var statusEl = TN.el('text-to-speech-status');
+  if (!textEl || !voiceEl) return;
+
+  function setStatus(msg) { if (statusEl) statusEl.textContent = msg; }
+
+  function loadVoices() {
+    try {
+      var voices = window.speechSynthesis.getVoices() || [];
+      voiceEl.innerHTML = '';
+      if (!voices.length) {
+        var o = document.createElement('option');
+        o.textContent = 'No voices available';
+        voiceEl.appendChild(o);
+        return;
+      }
+      voices.forEach(function (v, i) {
+        var opt = document.createElement('option');
+        opt.value = String(i);
+        opt.textContent = v.name + ' (' + v.lang + ')' + (v.default ? ' — default' : '');
+        voiceEl.appendChild(opt);
+      });
+    } catch (e) { /* keep silent, voices optional */ }
+  }
+
+  loadVoices();
+  if ('onvoiceschanged' in window.speechSynthesis) {
+    window.speechSynthesis.onvoiceschanged = loadVoices;
+  }
+  /* some browsers need a nudge */
+  setTimeout(loadVoices, 800);
+
+  TN.on('text-to-speech-text', 'input', TN.debounce(function () {
+    var n = (textEl.value || '').length;
+    if (countEl) countEl.textContent = '(' + n.toLocaleString('en-US') + ' characters)';
+  }, 120));
+
+  TN.on('text-to-speech-rate', 'input', function () {
+    if (rateVal) rateVal.textContent = rateEl.value;
+  });
+  TN.on('text-to-speech-pitch', 'input', function () {
+    if (pitchVal) pitchVal.textContent = pitchEl.value;
+  });
+
+  TN.on('text-to-speech-speak', 'click', function () {
+    try {
+      TN.clearErr('text-to-speech-error');
+      var text = (textEl.value || '').trim();
+      if (!text) { TN.setErr('text-to-speech-error', 'Type some text first.'); return; }
+      window.speechSynthesis.cancel();
+      var u = new SpeechSynthesisUtterance(text);
+      var voices = window.speechSynthesis.getVoices() || [];
+      var idx = parseInt(voiceEl.value, 10);
+      if (voices[idx]) u.voice = voices[idx];
+      u.rate = parseFloat(rateEl.value) || 1;
+      u.pitch = parseFloat(pitchEl.value) || 1;
+      u.onend = function () { setStatus('Ready.'); };
+      u.onerror = function (ev) {
+        if (ev && ev.error === 'canceled') { setStatus('Ready.'); return; }
+        setStatus('Ready.');
+        TN.setErr('text-to-speech-error', 'Speech failed in this browser. Try a different voice.');
+      };
+      setStatus('Speaking...');
+      window.speechSynthesis.speak(u);
+    } catch (e) {
+      TN.setErr('text-to-speech-error', 'Speech failed in this browser.');
+    }
+  });
+
+  TN.on('text-to-speech-pause', 'click', function () {
+    try { if (window.speechSynthesis.speaking) { window.speechSynthesis.pause(); setStatus('Paused.'); } } catch (e) {}
+  });
+  TN.on('text-to-speech-resume', 'click', function () {
+    try { if (window.speechSynthesis.paused) { window.speechSynthesis.resume(); setStatus('Speaking...'); } } catch (e) {}
+  });
+  TN.on('text-to-speech-stop', 'click', function () {
+    try { window.speechSynthesis.cancel(); setStatus('Ready.'); } catch (e) {}
+  });
+})();
+
+</script>
+</body>
+</html>

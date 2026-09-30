@@ -1,0 +1,51 @@
+<div class="tool-card">
+  <div class="error" id="robots-txt-generator-error"></div>
+  <div class="field">
+    <label>Default rule for all pages</label>
+    <div class="checkbox-row">
+      <input type="radio" name="robots-txt-generator-default" id="robots-txt-generator-allow" value="allow" checked>
+      <label for="robots-txt-generator-allow">Allow everything</label>
+    </div>
+    <div class="checkbox-row">
+      <input type="radio" name="robots-txt-generator-default" id="robots-txt-generator-disallow" value="disallow">
+      <label for="robots-txt-generator-disallow">Disallow everything</label>
+    </div>
+  </div>
+  <div class="grid2">
+    <div class="field">
+      <label for="robots-txt-generator-useragent">User-agent</label>
+      <select class="select" id="robots-txt-generator-useragent">
+        <option value="*">*</option>
+        <option value="Googlebot">Googlebot</option>
+        <option value="Bingbot">Bingbot</option>
+      </select>
+    </div>
+    <div class="field">
+      <label for="robots-txt-generator-crawl-delay">Crawl-delay (seconds, optional)</label>
+      <input class="input" id="robots-txt-generator-crawl-delay" type="number" min="0" placeholder="e.g. 10">
+    </div>
+  </div>
+  <div class="grid2">
+    <div class="field">
+      <label for="robots-txt-generator-disallow-paths">Disallow paths (one per line)</label>
+      <textarea class="textarea" id="robots-txt-generator-disallow-paths" rows="4" placeholder="/admin&#10;/private"></textarea>
+    </div>
+    <div class="field">
+      <label for="robots-txt-generator-allow-paths">Allow paths (one per line)</label>
+      <textarea class="textarea" id="robots-txt-generator-allow-paths" rows="4" placeholder="/public"></textarea>
+    </div>
+  </div>
+  <div class="field">
+    <label for="robots-txt-generator-sitemap">Sitemap URL (optional)</label>
+    <input class="input" id="robots-txt-generator-sitemap" type="url" placeholder="https://example.com/sitemap.xml">
+  </div>
+  <div class="btn-row">
+    <button class="btn btn-outline" id="robots-txt-generator-copy" type="button">Copy</button>
+    <button class="btn btn-outline" id="robots-txt-generator-download" type="button">Download robots.txt</button>
+  </div>
+  <div class="success hidden" id="robots-txt-generator-success"></div>
+  <div class="result hidden" id="robots-txt-generator-output">
+    <pre id="robots-txt-generator-code"></pre>
+  </div>
+  <p class="note">The preview updates live. Upload the file to your domain root as robots.txt.</p>
+</div>

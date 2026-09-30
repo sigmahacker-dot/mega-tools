@@ -1,0 +1,36 @@
+<div class="tool-card">
+  <div class="dropzone" id="image-compressor-drop">
+    <span class="dz-icon">🗜️</span>
+    <strong>Drop images here</strong> or click to browse
+    <input type="file" id="image-compressor-file" accept="image/*" multiple class="hidden">
+  </div>
+  <ul class="file-list" id="image-compressor-list"></ul>
+  <div class="grid2">
+    <div class="field">
+      <label for="image-compressor-quality">Quality: <span id="image-compressor-quality-val">80</span></label>
+      <input type="range" id="image-compressor-quality" min="10" max="95" value="80">
+      <span class="hint">Applies to JPEG and WebP output only.</span>
+    </div>
+    <div class="field">
+      <label for="image-compressor-format">Output format</label>
+      <select class="select" id="image-compressor-format">
+        <option value="keep">Keep original format</option>
+        <option value="image/jpeg">JPEG — smallest, no transparency</option>
+        <option value="image/webp">WebP — small, keeps transparency</option>
+        <option value="image/png">PNG — lossless</option>
+      </select>
+    </div>
+  </div>
+  <div class="btn-row">
+    <button class="btn btn-primary" id="image-compressor-go">Compress images</button>
+    <button class="btn btn-outline hidden" id="image-compressor-zip">Download all as ZIP</button>
+  </div>
+  <div class="result hidden" id="image-compressor-result">
+    <table class="data">
+      <thead><tr><th>File</th><th>Original</th><th>Compressed</th><th>Saved</th><th></th></tr></thead>
+      <tbody id="image-compressor-rows"></tbody>
+    </table>
+  </div>
+  <div class="error" id="image-compressor-error"></div>
+  <p class="note">PNG → JPEG removes transparency (transparent areas are filled white) — pick WebP or PNG to keep it. Files never leave your device — everything is processed in your browser.</p>
+</div>

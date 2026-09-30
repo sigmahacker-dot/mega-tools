@@ -1,0 +1,47 @@
+<div class="tool-card">
+  <div id="speech-to-text-unsupported" class="hidden">
+    <p class="note">Speech recognition is not supported in this browser. Please use Chrome or Edge on desktop or Android.</p>
+  </div>
+  <div id="speech-to-text-ui">
+    <p class="note">Works in Chrome/Edge on desktop &amp; Android. Requires microphone permission.</p>
+    <div class="grid2">
+      <div class="field">
+        <label for="speech-to-text-lang">Language</label>
+        <select class="select" id="speech-to-text-lang">
+          <option value="en-US">English (US)</option>
+          <option value="en-GB">English (UK)</option>
+          <option value="ur-PK">Urdu (Pakistan)</option>
+          <option value="hi-IN">Hindi (India)</option>
+          <option value="ar-SA">Arabic (Saudi Arabia)</option>
+          <option value="es-ES">Spanish (Spain)</option>
+          <option value="fr-FR">French</option>
+          <option value="de-DE">German</option>
+          <option value="it-IT">Italian</option>
+          <option value="pt-BR">Portuguese (Brazil)</option>
+          <option value="tr-TR">Turkish</option>
+          <option value="ru-RU">Russian</option>
+        </select>
+      </div>
+      <div class="field">
+        <label>&nbsp;</label>
+        <div class="btn-row" style="margin-top:0">
+          <button class="btn btn-primary" id="speech-to-text-start" type="button">Start</button>
+          <button class="btn btn-danger" id="speech-to-text-stop" type="button" disabled>Stop</button>
+        </div>
+      </div>
+    </div>
+    <div class="field">
+      <label>Live transcript</label>
+      <div class="result" id="speech-to-text-interim" style="min-height:2.5em">Speak after pressing Start...</div>
+    </div>
+    <div class="field">
+      <label for="speech-to-text-final">Final transcript</label>
+      <textarea class="textarea" id="speech-to-text-final" rows="8" placeholder="Your final transcript will appear here..."></textarea>
+    </div>
+    <div class="error" id="speech-to-text-error"></div>
+    <div class="btn-row">
+      <button class="btn btn-outline" id="speech-to-text-copy" type="button">Copy</button>
+      <button class="btn btn-outline" id="speech-to-text-clear" type="button">Clear</button>
+    </div>
+  </div>
+</div>

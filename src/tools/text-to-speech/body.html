@@ -1,0 +1,33 @@
+<div class="tool-card">
+  <div id="text-to-speech-unsupported" class="hidden">
+    <p class="note">Not supported in this browser. Text-to-speech needs a browser with the Web Speech API (Chrome, Edge, Firefox or Safari).</p>
+  </div>
+  <div id="text-to-speech-ui">
+    <div class="field">
+      <label for="text-to-speech-text">Text to speak <span class="muted" id="text-to-speech-count">(0 characters)</span></label>
+      <textarea class="textarea" id="text-to-speech-text" rows="8" placeholder="Type or paste the text you want to hear..."></textarea>
+    </div>
+    <div class="grid2">
+      <div class="field">
+        <label for="text-to-speech-voice">Voice</label>
+        <select class="select" id="text-to-speech-voice"></select>
+      </div>
+      <div class="field">
+        <label for="text-to-speech-rate">Rate: <span id="text-to-speech-rateval">1</span></label>
+        <input type="range" id="text-to-speech-rate" min="0.5" max="2" step="0.1" value="1" style="width:100%">
+      </div>
+      <div class="field">
+        <label for="text-to-speech-pitch">Pitch: <span id="text-to-speech-pitchval">1</span></label>
+        <input type="range" id="text-to-speech-pitch" min="0" max="2" step="0.1" value="1" style="width:100%">
+      </div>
+    </div>
+    <div class="btn-row">
+      <button class="btn btn-primary" id="text-to-speech-speak" type="button">Speak</button>
+      <button class="btn btn-outline" id="text-to-speech-pause" type="button">Pause</button>
+      <button class="btn btn-outline" id="text-to-speech-resume" type="button">Resume</button>
+      <button class="btn btn-danger" id="text-to-speech-stop" type="button">Stop</button>
+    </div>
+    <div class="error" id="text-to-speech-error"></div>
+    <p class="note" id="text-to-speech-status">Ready.</p>
+  </div>
+</div>

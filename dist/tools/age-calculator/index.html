@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Age Calculator — Free Online | ToolNest</title>
+<meta name="description" content="Enter your date of birth to get your exact age in years, months and days, plus total weeks, days, hours, the weekday you were born, and days until your next birthday.">
+<meta name="keywords" content="age calculator, calculate age, date of birth age">
+<link rel="canonical" href="https://toolnest.vercel.app/tools/age-calculator/">
+<meta property="og:title" content="Age Calculator — Free Online | ToolNest">
+<meta property="og:description" content="Enter your date of birth to get your exact age in years, months and days, plus total weeks, days, hours, the weekday you were born, and days until your next birthday.">
+<meta property="og:type" content="website">
+<link rel="stylesheet" href="/assets/site.css?v=1">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='22' fill='%234f46e5'/><text x='50' y='68' font-size='52' text-anchor='middle' fill='white' font-family='Arial' font-weight='bold'>T</text></svg>">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebApplication","name":"Age Calculator","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0"},"url":"https://toolnest.vercel.app/tools/age-calculator/","description":"Enter your date of birth to get your exact age in years, months and days, plus total weeks, days, hours, the weekday you were born, and days until your next birthday."},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How is the exact age calculated?","acceptedAnswer":{"@type":"Answer","text":"Years, months and days are computed by comparing the birth date with the target date and borrowing days/months when needed, so the result matches how calendars actually work."}},{"@type":"Question","name":"Why does the total days count differ from years times 365?","acceptedAnswer":{"@type":"Answer","text":"Leap years add extra days. The total day count uses the real calendar difference between the two dates, including leap days."}},{"@type":"Question","name":"Can I calculate age as of a past or future date?","acceptedAnswer":{"@type":"Answer","text":"Yes, change the 'as of' date field to any date and the age is recalculated relative to it."}}]}]}</script>
+</head>
+<body>
+<header class="site-header">
+  <div class="container">
+    <a class="logo" href="/"><span class="logo-mark">🧰</span> ToolNest</a>
+    <nav class="site-nav">
+      <a href="/">Home</a>
+      <a href="/#categories">Categories</a>
+      <a href="/#all-tools">All Tools</a>
+    </nav>
+  </div>
+</header>
+
+<!-- ADSTERRA-HEADER: paste your Adsterra banner ad code inside the div below -->
+<div class="container"><div class="ad-slot ad-leaderboard" data-ad="header"></div></div>
+
+<main class="container">
+  <nav class="crumbs"><a href="/">Home</a> &rsaquo; <a href="/#calculators">Calculators</a> &rsaquo; Age Calculator</nav>
+  <div class="tool-hero">
+    <h1>Age Calculator</h1>
+    <p>Enter your date of birth to get your exact age in years, months and days, plus total weeks, days, hours, the weekday you were born, and days until your next birthday.</p>
+  </div>
+
+  <div class="tool-card">
+  <div class="grid2">
+    <div class="field">
+      <label for="age-dob">Date of birth</label>
+      <input type="date" class="input" id="age-dob" max="2026-12-31">
+    </div>
+    <div class="field">
+      <label for="age-asof">Calculate age as of</label>
+      <input type="date" class="input" id="age-asof">
+    </div>
+  </div>
+  <div class="error" id="age-calculator-error"></div>
+  <div class="result" id="age-result">
+    <div class="stat-cards">
+      <div class="stat-card"><div class="v" id="age-years">–</div><div class="l">Years</div></div>
+      <div class="stat-card"><div class="v" id="age-months">–</div><div class="l">Months</div></div>
+      <div class="stat-card"><div class="v" id="age-days">–</div><div class="l">Days</div></div>
+    </div>
+    <table class="data">
+      <tbody>
+        <tr><th scope="row">Total months</th><td id="age-total-months">–</td></tr>
+        <tr><th scope="row">Total weeks</th><td id="age-total-weeks">–</td></tr>
+        <tr><th scope="row">Total days</th><td id="age-total-days">–</td></tr>
+        <tr><th scope="row">Total hours</th><td id="age-total-hours">–</td></tr>
+        <tr><th scope="row">Born on</th><td id="age-weekday">–</td></tr>
+        <tr><th scope="row">Next birthday</th><td id="age-next">–</td></tr>
+      </tbody>
+    </table>
+    <p class="note">Age is computed against the calendar, including leap years.</p>
+  </div>
+</div>
+
+  <!-- ADSTERRA-INCONTENT: paste your Adsterra native/in-content ad code inside the div below -->
+  <div class="ad-slot" data-ad="incontent"></div>
+
+  <div class="info-grid">
+    <div class="info-card">
+      <h2>📖 How to use</h2>
+      <ol><li>Pick your date of birth from the calendar picker.</li><li>Optionally change the &#39;as of&#39; date, or leave it as today.</li><li>Your exact age is calculated instantly below.</li><li>See total months, weeks, days and hours, plus your birth weekday and countdown to your next birthday.</li></ol>
+    </div>
+    <div class="info-card">
+      <h2>❓ Frequently asked questions</h2>
+      <div class="faq"><details><summary>How is the exact age calculated?</summary><p>Years, months and days are computed by comparing the birth date with the target date and borrowing days/months when needed, so the result matches how calendars actually work.</p></details><details><summary>Why does the total days count differ from years times 365?</summary><p>Leap years add extra days. The total day count uses the real calendar difference between the two dates, including leap days.</p></details><details><summary>Can I calculate age as of a past or future date?</summary><p>Yes, change the &#39;as of&#39; date field to any date and the age is recalculated relative to it.</p></details></div>
+    </div>
+  </div>
+
+  <section class="section">
+    <h2>🔗 Related tools</h2>
+    <div class="tool-grid"><a class="tool-link" href="/tools/bmi-calculator/" data-search="bmi calculator calculate your body mass index from height and weight in metric or imperial units. get your bmi value, weight category and the healthy weight range for your height. bmi calculator body mass index healthy weight calculator">BMI Calculator<small>Calculate your Body Mass Index from height and weight in metric or imp…</small></a><a class="tool-link" href="/tools/currency-converter/" data-search="currency converter convert any amount between 30+ world currencies with live exchange rates. pick source and target currencies, convert instantly, and see the rate and last update date. currency converter exchange rate converter usd to pkr converter">Currency Converter<small>Convert any amount between 30+ world currencies with live exchange rat…</small></a><a class="tool-link" href="/tools/discount-calculator/" data-search="discount calculator calculate the final price after a discount, with support for a second discount and a coupon amount. see the final price, total savings and effective savings percentage. discount calculator sale price calculator savings calculator">Discount Calculator<small>Calculate the final price after a discount, with support for a second …</small></a><a class="tool-link" href="/tools/emi-calculator/" data-search="emi calculator calculate your monthly emi for any loan: enter the loan amount, annual interest rate and tenure to see the monthly payment, total interest and total amount payable. emi calculator loan emi calculator monthly installment calculator">EMI Calculator<small>Calculate your monthly EMI for any loan: enter the loan amount, annual…</small></a><a class="tool-link" href="/tools/gst-calculator/" data-search="gst calculator calculate gst with preset rates of 0, 5, 12, 18 and 28 percent or a custom rate, in inclusive or exclusive mode. see the gst amount, base price and total breakup. gst calculator gst tax calculator gst inclusive exclusive">GST Calculator<small>Calculate GST with preset rates of 0, 5, 12, 18 and 28 percent or a cu…</small></a><a class="tool-link" href="/tools/loan-calculator/" data-search="loan calculator see the full cost of a loan: enter amount, interest rate and tenure to get the monthly emi, total interest, total payable and a year-by-year amortization table. loan calculator amortization calculator loan interest calculator">Loan Calculator<small>See the full cost of a loan: enter amount, interest rate and tenure to…</small></a></div>
+  </section>
+</main>
+
+<!-- ADSTERRA-FOOTER: paste your Adsterra footer/banner ad code inside the div below -->
+<div class="container"><div class="ad-slot" data-ad="footer"></div></div>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="f-grid">
+      <div>
+        <span class="brandline">🧰 ToolNest</span>
+        <p>Free online tools that actually work. No sign-up, no watermarks — and your files never leave your device for client-side tools.</p>
+      </div>
+      <div>
+        <h4>Popular</h4>
+        <a href="/tools/qr-code-generator/">QR Code Generator</a>
+        <a href="/tools/background-remover/">Background Remover</a>
+        <a href="/tools/pdf-merger/">PDF Merger</a>
+        <a href="/tools/word-counter/">Word Counter</a>
+      </div>
+      <div>
+        <h4>Categories</h4>
+        <a href="/#image">Image Tools</a>
+        <a href="/#pdf">PDF &amp; Documents</a>
+        <a href="/#calculators">Calculators</a>
+        <a href="/#developer">Developer Tools</a>
+      </div>
+      <div>
+        <h4>Site</h4>
+        <a href="/">Home</a>
+        <a href="/#all-tools">All Tools</a>
+        <a href="/sitemap.xml">Sitemap</a>
+      </div>
+    </div>
+    <div class="f-bottom">© 2026 ToolNest · Free tools for everyone · Made with care</div>
+  </div>
+</footer>
+
+<script src="/assets/site.js?v=1"></script>
+
+<script>
+(function () {
+  'use strict';
+  var ERR = 'age-calculator-error';
+  function fmt(n) {
+    try { return n.toLocaleString('en-US'); } catch (e) { return String(n); }
+  }
+  function daysInMonth(y, m) { return new Date(y, m + 1, 0).getDate(); }
+  function clampAdd(date, years, months) {
+    var y = date.getFullYear() + years;
+    var m = date.getMonth() + months;
+    y += Math.floor(m / 12);
+    m = ((m % 12) + 12) % 12;
+    var d = Math.min(date.getDate(), daysInMonth(y, m));
+    return new Date(y, m, d, 0, 0, 0, 0);
+  }
+  function parse(d) {
+    if (!d) return null;
+    var dt = new Date(d + 'T00:00:00');
+    return isNaN(dt.getTime()) ? null : dt;
+  }
+  function calc() {
+    var dobEl = TN.el('age-dob');
+    var asofEl = TN.el('age-asof');
+    if (!dobEl || !asofEl) return;
+    TN.clearErr(ERR);
+    var dob = parse(dobEl.value);
+    var asof = parse(asofEl.value);
+    if (!dob) { TN.setErr(ERR, 'Please enter a valid date of birth.'); return; }
+    if (!asof) { TN.setErr(ERR, 'Please enter a valid "as of" date.'); return; }
+    if (dob > asof) { TN.setErr(ERR, 'Date of birth cannot be after the "as of" date.'); return; }
+
+    // Exact y/m/d by walking forward from dob (day clamped to month length)
+    var y = 0;
+    while (clampAdd(dob, y + 1, 0) <= asof) y++;
+    var m = 0;
+    while (clampAdd(dob, y, m + 1) <= asof) m++;
+    var rest = clampAdd(dob, y, m);
+    var d = Math.round((asof - rest) / 86400000);
+
+    var totalDays = Math.floor((asof - dob) / 86400000);
+    var totalMonths = y * 12 + m;
+    var totalWeeks = Math.floor(totalDays / 7);
+    var totalHours = totalDays * 24;
+
+    var weekday = '';
+    try { weekday = dob.toLocaleDateString('en-US', { weekday: 'long' }); } catch (e) { weekday = ''; }
+
+    // Next birthday (Feb 29 clamped to Feb 28 in non-leap years)
+    var nb = clampAdd(dob, y + 1, 0);
+    if (nb <= asof) nb = clampAdd(dob, y + 2, 0);
+    var daysUntil = Math.round((nb - asof) / 86400000);
+    var nbStr = '';
+    try {
+      nbStr = nb.toLocaleDateString('en-US', { weekday: 'short', year: 'numeric', month: 'short', day: 'numeric' });
+    } catch (e) { nbStr = ''; }
+
+    TN.el('age-years').textContent = fmt(y);
+    TN.el('age-months').textContent = fmt(m);
+    TN.el('age-days').textContent = fmt(d);
+    TN.el('age-total-months').textContent = fmt(totalMonths);
+    TN.el('age-total-weeks').textContent = fmt(totalWeeks);
+    TN.el('age-total-days').textContent = fmt(totalDays);
+    TN.el('age-total-hours').textContent = fmt(totalHours);
+    TN.el('age-weekday').textContent = weekday || '–';
+    TN.el('age-next').textContent = daysUntil === 0 ? 'Today!' : nbStr + ' (in ' + fmt(daysUntil) + ' day' + (daysUntil === 1 ? '' : 's') + ')';
+  }
+  try {
+    var asofEl = TN.el('age-asof');
+    if (asofEl && !asofEl.value) {
+      var now = new Date();
+      var mm = ('0' + (now.getMonth() + 1)).slice(-2);
+      var dd = ('0' + now.getDate()).slice(-2);
+      asofEl.value = now.getFullYear() + '-' + mm + '-' + dd;
+    }
+    TN.on('age-dob', 'input', calc);
+    TN.on('age-dob', 'change', calc);
+    TN.on('age-asof', 'input', calc);
+    TN.on('age-asof', 'change', calc);
+  } catch (e) { /* never throw on load */ }
+})();
+
+</script>
+</body>
+</html>

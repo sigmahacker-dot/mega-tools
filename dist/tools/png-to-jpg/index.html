@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PNG to JPG Converter — Free Online | ToolNest</title>
+<meta name="description" content="Convert PNG images to smaller JPG files with adjustable quality and a custom background color for transparent areas. Batch convert and download as a ZIP.">
+<meta name="keywords" content="png to jpg, png to jpeg converter, convert png jpg">
+<link rel="canonical" href="https://toolnest.vercel.app/tools/png-to-jpg/">
+<meta property="og:title" content="PNG to JPG Converter — Free Online | ToolNest">
+<meta property="og:description" content="Convert PNG images to smaller JPG files with adjustable quality and a custom background color for transparent areas. Batch convert and download as a ZIP.">
+<meta property="og:type" content="website">
+<link rel="stylesheet" href="/assets/site.css?v=1">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='22' fill='%234f46e5'/><text x='50' y='68' font-size='52' text-anchor='middle' fill='white' font-family='Arial' font-weight='bold'>T</text></svg>">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebApplication","name":"PNG to JPG Converter","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0"},"url":"https://toolnest.vercel.app/tools/png-to-jpg/","description":"Convert PNG images to smaller JPG files with adjustable quality and a custom background color for transparent areas. Batch convert and download as a ZIP."},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What happens to transparency?","acceptedAnswer":{"@type":"Answer","text":"JPG does not support transparency, so any transparent pixels are filled with the background color you pick (white by default)."}},{"@type":"Question","name":"Which quality should I choose?","acceptedAnswer":{"@type":"Answer","text":"Around 85 looks great for photos. Below 70 you may see blocky artifacts; 95 is near-lossless but much larger."}},{"@type":"Question","name":"Is there a size limit?","acceptedAnswer":{"@type":"Answer","text":"No — everything runs locally in your browser via the canvas API. No uploads, no watermarks, no limits."}}]}]}</script>
+</head>
+<body>
+<header class="site-header">
+  <div class="container">
+    <a class="logo" href="/"><span class="logo-mark">🧰</span> ToolNest</a>
+    <nav class="site-nav">
+      <a href="/">Home</a>
+      <a href="/#categories">Categories</a>
+      <a href="/#all-tools">All Tools</a>
+    </nav>
+  </div>
+</header>
+
+<!-- ADSTERRA-HEADER: paste your Adsterra banner ad code inside the div below -->
+<div class="container"><div class="ad-slot ad-leaderboard" data-ad="header"></div></div>
+
+<main class="container">
+  <nav class="crumbs"><a href="/">Home</a> &rsaquo; <a href="/#image">Image Tools</a> &rsaquo; PNG to JPG Converter</nav>
+  <div class="tool-hero">
+    <h1>PNG to JPG Converter</h1>
+    <p>Convert PNG images to smaller JPG files with adjustable quality and a custom background color for transparent areas. Batch convert and download as a ZIP.</p>
+  </div>
+
+  <div class="tool-card">
+  <div class="dropzone" id="png-to-jpg-drop">
+    <span class="dz-icon">🖼️</span>
+    <strong>Drop PNG files here</strong> or click to browse
+    <input type="file" id="png-to-jpg-file" accept="image/png,.png" multiple class="hidden">
+  </div>
+  <ul class="file-list" id="png-to-jpg-list"></ul>
+  <div class="grid2">
+    <div class="field">
+      <label for="png-to-jpg-quality">JPEG quality: <span id="png-to-jpg-quality-val">85</span></label>
+      <input type="range" id="png-to-jpg-quality" min="10" max="100" value="85">
+    </div>
+    <div class="field">
+      <label for="png-to-jpg-bg">Background color (fills transparency)</label>
+      <input type="color" class="input" id="png-to-jpg-bg" value="#ffffff">
+    </div>
+  </div>
+  <div class="btn-row">
+    <button class="btn btn-primary" id="png-to-jpg-go">Convert to JPG</button>
+    <button class="btn btn-outline hidden" id="png-to-jpg-zip">Download all as ZIP</button>
+  </div>
+  <div class="result hidden" id="png-to-jpg-result">
+    <table class="data">
+      <thead><tr><th>File</th><th>Original</th><th>JPG size</th><th>Saved</th><th></th></tr></thead>
+      <tbody id="png-to-jpg-rows"></tbody>
+    </table>
+  </div>
+  <div class="error" id="png-to-jpg-error"></div>
+  <p class="note">JPG has no transparency — transparent areas are filled with your chosen background color. Files never leave your device — everything is processed in your browser.</p>
+</div>
+
+
+  <!-- ADSTERRA-INCONTENT: paste your Adsterra native/in-content ad code inside the div below -->
+  <div class="ad-slot" data-ad="incontent"></div>
+
+  <div class="info-grid">
+    <div class="info-card">
+      <h2>📖 How to use</h2>
+      <ol><li>Drop one or more PNG files into the upload zone.</li><li>Pick a background color for transparent areas and set the JPEG quality (10–100).</li><li>Click “Convert to JPG” and review the per-file size savings.</li><li>Download each JPG individually or all together as a ZIP.</li></ol>
+    </div>
+    <div class="info-card">
+      <h2>❓ Frequently asked questions</h2>
+      <div class="faq"><details><summary>What happens to transparency?</summary><p>JPG does not support transparency, so any transparent pixels are filled with the background color you pick (white by default).</p></details><details><summary>Which quality should I choose?</summary><p>Around 85 looks great for photos. Below 70 you may see blocky artifacts; 95 is near-lossless but much larger.</p></details><details><summary>Is there a size limit?</summary><p>No — everything runs locally in your browser via the canvas API. No uploads, no watermarks, no limits.</p></details></div>
+    </div>
+  </div>
+
+  <section class="section">
+    <h2>🔗 Related tools</h2>
+    <div class="tool-grid"><a class="tool-link" href="/tools/background-remover/" data-search="background remover remove the background from any photo with real on-device ai and download a transparent png. free, private and unlimited — no sign-up needed. background remover remove image background transparent png maker">Background Remover<small>Remove the background from any photo with real on-device AI and downlo…</small></a><a class="tool-link" href="/tools/favicon-generator/" data-search="favicon generator generate a complete png favicon set (16–512 px) from your logo in one click, download it as a zip, and copy the ready-to-paste html link tags. favicon generator favicon maker png favicon">Favicon Generator<small>Generate a complete PNG favicon set (16–512 px) from your logo in one …</small></a><a class="tool-link" href="/tools/image-compressor/" data-search="image compressor shrink jpg, png and webp images right in your browser with an adjustable quality slider. compare before/after sizes, download each file or grab everything as a zip. image compressor compress jpg reduce image size">Image Compressor<small>Shrink JPG, PNG and WebP images right in your browser with an adjustab…</small></a><a class="tool-link" href="/tools/image-resizer/" data-search="image resizer resize any image to exact pixel dimensions with an aspect-ratio lock, quick presets and percentage scaling. preview the result and download as png, jpg or webp. image resizer resize photo change image dimensions">Image Resizer<small>Resize any image to exact pixel dimensions with an aspect-ratio lock, …</small></a><a class="tool-link" href="/tools/image-to-pdf/" data-search="image to pdf turn your photos into a pdf document — one full-page image per page, sized to each photo. reorder pages freely, then download a single ready-to-share pdf. image to pdf jpg to pdf photos to pdf">Image to PDF<small>Turn your photos into a PDF document — one full-page image per page, s…</small></a><a class="tool-link" href="/tools/jpg-to-png/" data-search="jpg to png converter convert jpg photos to png format instantly in your browser. handles multiple files at once with individual downloads or a single zip archive. jpg to png jpeg to png converter convert jpg png">JPG to PNG Converter<small>Convert JPG photos to PNG format instantly in your browser. Handles mu…</small></a></div>
+  </section>
+</main>
+
+<!-- ADSTERRA-FOOTER: paste your Adsterra footer/banner ad code inside the div below -->
+<div class="container"><div class="ad-slot" data-ad="footer"></div></div>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="f-grid">
+      <div>
+        <span class="brandline">🧰 ToolNest</span>
+        <p>Free online tools that actually work. No sign-up, no watermarks — and your files never leave your device for client-side tools.</p>
+      </div>
+      <div>
+        <h4>Popular</h4>
+        <a href="/tools/qr-code-generator/">QR Code Generator</a>
+        <a href="/tools/background-remover/">Background Remover</a>
+        <a href="/tools/pdf-merger/">PDF Merger</a>
+        <a href="/tools/word-counter/">Word Counter</a>
+      </div>
+      <div>
+        <h4>Categories</h4>
+        <a href="/#image">Image Tools</a>
+        <a href="/#pdf">PDF &amp; Documents</a>
+        <a href="/#calculators">Calculators</a>
+        <a href="/#developer">Developer Tools</a>
+      </div>
+      <div>
+        <h4>Site</h4>
+        <a href="/">Home</a>
+        <a href="/#all-tools">All Tools</a>
+        <a href="/sitemap.xml">Sitemap</a>
+      </div>
+    </div>
+    <div class="f-bottom">© 2026 ToolNest · Free tools for everyone · Made with care</div>
+  </div>
+</footer>
+
+<script src="/assets/site.js?v=1"></script>
+<script src="https://cdn.jsdelivr.net/npm/jszip@3.10.1/dist/jszip.min.js" defer></script>
+<script>
+/* PNG to JPG Converter — quality slider + background fill, ZIP via JSZip. */
+(function () {
+  'use strict';
+  var SLUG = 'png-to-jpg';
+  var files = [];
+  var outputs = [];
+
+  function $(id) { return document.getElementById(id); }
+  function errId() { return SLUG + '-error'; }
+
+  function toBlobP(canvas, type, quality) {
+    return new Promise(function (resolve, reject) {
+      try {
+        canvas.toBlob(function (b) {
+          if (b) resolve(b);
+          else reject(new Error('This browser could not encode a JPEG.'));
+        }, type, quality);
+      } catch (e) { reject(e); }
+    });
+  }
+
+  function addFiles(list) {
+    var added = 0;
+    for (var i = 0; i < list.length; i++) {
+      var f = list[i];
+      var t = (f.type || '').toLowerCase();
+      if (t === 'image/png' || /\.png$/i.test(f.name || '')) { files.push(f); added++; }
+    }
+    if (!added) TN.setErr(errId(), 'No PNG files found in that selection.');
+    else TN.clearErr(errId());
+    renderList();
+  }
+
+  function renderList() {
+    var ul = $(SLUG + '-list');
+    if (!ul) return;
+    var html = '';
+    for (var i = 0; i < files.length; i++) {
+      html += '<li><span>' + TN.esc(files[i].name || 'image') +
+        ' <span class="muted">(' + TN.fmtBytes(files[i].size) + ')</span></span>' +
+        '<button class="btn btn-sm btn-danger" data-rm="' + i + '">Remove</button></li>';
+    }
+    ul.innerHTML = html;
+  }
+
+  function convertOne(file, quality, bg) {
+    return TN.readAsDataURL(file).then(TN.loadImage).then(function (img) {
+      if (!img.naturalWidth || !img.naturalHeight) {
+        throw new Error('Could not read "' + (file.name || 'image') + '".');
+      }
+      var canvas = document.createElement('canvas');
+      canvas.width = img.naturalWidth;
+      canvas.height = img.naturalHeight;
+      var ctx = canvas.getContext('2d');
+      ctx.fillStyle = bg;
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+      ctx.drawImage(img, 0, 0);
+      return toBlobP(canvas, 'image/jpeg', quality).then(function (blob) {
+        var base = (file.name || 'image').replace(/\.[^.]+$/, '') || 'image';
+        var name = base + '.jpg';
+        outputs.push({ blob: blob, name: name });
+        var saved = file.size > 0 ? Math.round((1 - blob.size / file.size) * 100) : 0;
+        return { name: file.name || 'image', orig: file.size, size: blob.size, saved: saved, idx: outputs.length - 1 };
+      });
+    });
+  }
+
+  function renderTable(rows) {
+    var wrap = $(SLUG + '-result');
+    var tbody = $(SLUG + '-rows');
+    if (!wrap || !tbody) return;
+    var html = '';
+    rows.forEach(function (r) {
+      var tag = r.saved > 0 ? '<span class="tag">−' + r.saved + '%</span>' : '<span class="tag">±0%</span>';
+      html += '<tr><td>' + TN.esc(r.name) + '</td><td>' + TN.fmtBytes(r.orig) + '</td><td>' +
+        TN.fmtBytes(r.size) + '</td><td>' + tag + '</td>' +
+        '<td><button class="btn btn-sm btn-outline" data-dl="' + r.idx + '">Download</button></td></tr>';
+    });
+    tbody.innerHTML = html;
+    wrap.classList.remove('hidden');
+    var zipBtn = $(SLUG + '-zip');
+    if (zipBtn) {
+      if (outputs.length > 1) zipBtn.classList.remove('hidden');
+      else zipBtn.classList.add('hidden');
+    }
+  }
+
+  function convert() {
+    if (!files.length) { TN.setErr(errId(), 'Choose at least one PNG file first.'); return; }
+    TN.clearErr(errId());
+    var btn = $(SLUG + '-go');
+    if (btn) { btn.disabled = true; btn.textContent = 'Converting…'; }
+    outputs = [];
+    $(SLUG + '-result').classList.add('hidden');
+    $(SLUG + '-zip').classList.add('hidden');
+    var quality = (parseInt($(SLUG + '-quality').value, 10) || 85) / 100;
+    var bg = $(SLUG + '-bg').value || '#ffffff';
+    var rows = [];
+    var chain = Promise.resolve();
+    files.forEach(function (file) {
+      chain = chain.then(function () {
+        return convertOne(file, quality, bg).then(function (r) { rows.push(r); });
+      });
+    });
+    chain.then(function () {
+      renderTable(rows);
+      if (btn) { btn.disabled = false; btn.textContent = 'Convert to JPG'; }
+    }).catch(function (e) {
+      if (btn) { btn.disabled = false; btn.textContent = 'Convert to JPG'; }
+      TN.setErr(errId(), 'Conversion failed: ' + (e && e.message ? e.message : 'unknown error'));
+    });
+  }
+
+  function downloadZip() {
+    if (typeof JSZip === 'undefined') {
+      TN.setErr(errId(), 'The ZIP library failed to load. Check your connection and reload the page.');
+      return;
+    }
+    if (!outputs.length) return;
+    try {
+      var zip = new JSZip();
+      outputs.forEach(function (o) { zip.file(o.name, o.blob); });
+      zip.generateAsync({ type: 'blob' }).then(function (blob) {
+        TN.download(blob, 'jpg-images.zip');
+      }).catch(function () { TN.setErr(errId(), 'Could not build the ZIP file.'); });
+    } catch (e) { TN.setErr(errId(), 'Could not build the ZIP file.'); }
+  }
+
+  function init() {
+    var dz = $(SLUG + '-drop');
+    var input = $(SLUG + '-file');
+    if (!dz || !input) return;
+    dz.addEventListener('click', function () { input.click(); });
+    input.addEventListener('change', function () { addFiles(input.files || []); input.value = ''; });
+    ['dragover', 'dragenter'].forEach(function (ev) {
+      dz.addEventListener(ev, function (e) { e.preventDefault(); dz.classList.add('dragover'); });
+    });
+    ['dragleave', 'drop'].forEach(function (ev) {
+      dz.addEventListener(ev, function (e) { e.preventDefault(); dz.classList.remove('dragover'); });
+    });
+    dz.addEventListener('drop', function (e) {
+      if (e.dataTransfer && e.dataTransfer.files) addFiles(e.dataTransfer.files);
+    });
+    var list = $(SLUG + '-list');
+    if (list) list.addEventListener('click', function (e) {
+      var b = e.target && e.target.closest ? e.target.closest('[data-rm]') : null;
+      if (b) { files.splice(parseInt(b.getAttribute('data-rm'), 10), 1); renderList(); }
+    });
+    var q = $(SLUG + '-quality');
+    var qv = $(SLUG + '-quality-val');
+    if (q && qv) q.addEventListener('input', function () { qv.textContent = q.value; });
+    TN.on(SLUG + '-go', 'click', convert);
+    TN.on(SLUG + '-zip', 'click', downloadZip);
+    var res = $(SLUG + '-result');
+    if (res) res.addEventListener('click', function (e) {
+      var b = e.target && e.target.closest ? e.target.closest('[data-dl]') : null;
+      if (b) {
+        var o = outputs[parseInt(b.getAttribute('data-dl'), 10)];
+        if (o) TN.download(o.blob, o.name);
+      }
+    });
+  }
+
+  try { init(); } catch (e) { /* never throw on page load */ }
+})();
+
+</script>
+</body>
+</html>

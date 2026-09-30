@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Meta Tag Generator — Free Online | ToolNest</title>
+<meta name="description" content="Generate a complete set of SEO and social meta tags for any page. Fill in your details, preview the result, and copy the ready-to-paste HTML block.">
+<meta name="keywords" content="meta tag generator, meta tags, seo meta tags, open graph tags, twitter card generator">
+<link rel="canonical" href="https://toolnest.vercel.app/tools/meta-tag-generator/">
+<meta property="og:title" content="Meta Tag Generator — Free Online | ToolNest">
+<meta property="og:description" content="Generate a complete set of SEO and social meta tags for any page. Fill in your details, preview the result, and copy the ready-to-paste HTML block.">
+<meta property="og:type" content="website">
+<link rel="stylesheet" href="/assets/site.css?v=1">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='22' fill='%234f46e5'/><text x='50' y='68' font-size='52' text-anchor='middle' fill='white' font-family='Arial' font-weight='bold'>T</text></svg>">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebApplication","name":"Meta Tag Generator","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0"},"url":"https://toolnest.vercel.app/tools/meta-tag-generator/","description":"Generate a complete set of SEO and social meta tags for any page. Fill in your details, preview the result, and copy the ready-to-paste HTML block."},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What are meta tags?","acceptedAnswer":{"@type":"Answer","text":"Meta tags are HTML elements in a page's \u003chead> that describe the page to search engines and social networks — title, description, preview image and more."}},{"@type":"Question","name":"Where do I paste this code?","acceptedAnswer":{"@type":"Answer","text":"Paste the generated block inside the \u003chead> section of your HTML page, before the closing \u003c/head> tag."}},{"@type":"Question","name":"Do meta tags improve my ranking?","acceptedAnswer":{"@type":"Answer","text":"A good title and description improve how your page looks in search results and can raise click-through rates, but they are only one part of SEO."}}]}]}</script>
+</head>
+<body>
+<header class="site-header">
+  <div class="container">
+    <a class="logo" href="/"><span class="logo-mark">🧰</span> ToolNest</a>
+    <nav class="site-nav">
+      <a href="/">Home</a>
+      <a href="/#categories">Categories</a>
+      <a href="/#all-tools">All Tools</a>
+    </nav>
+  </div>
+</header>
+
+<!-- ADSTERRA-HEADER: paste your Adsterra banner ad code inside the div below -->
+<div class="container"><div class="ad-slot ad-leaderboard" data-ad="header"></div></div>
+
+<main class="container">
+  <nav class="crumbs"><a href="/">Home</a> &rsaquo; <a href="/#seo">SEO &amp; Web</a> &rsaquo; Meta Tag Generator</nav>
+  <div class="tool-hero">
+    <h1>Meta Tag Generator</h1>
+    <p>Generate a complete set of SEO and social meta tags for any page. Fill in your details, preview the result, and copy the ready-to-paste HTML block.</p>
+  </div>
+
+  <div class="tool-card">
+  <div class="error" id="meta-tag-generator-error"></div>
+  <div class="grid2">
+    <div>
+      <div class="field">
+        <label for="meta-tag-generator-title">Page title</label>
+        <input class="input" id="meta-tag-generator-title" type="text" maxlength="70" placeholder="e.g. Best Hiking Trails in Pakistan 2026">
+      </div>
+      <div class="field">
+        <label for="meta-tag-generator-description">Meta description</label>
+        <textarea class="textarea" id="meta-tag-generator-description" rows="3" maxlength="160" placeholder="Short summary shown in search results (up to ~160 characters)"></textarea>
+      </div>
+      <div class="field">
+        <label for="meta-tag-generator-keywords">Keywords (comma separated)</label>
+        <input class="input" id="meta-tag-generator-keywords" type="text" placeholder="hiking, pakistan, trails">
+      </div>
+      <div class="field">
+        <label for="meta-tag-generator-author">Author</label>
+        <input class="input" id="meta-tag-generator-author" type="text" placeholder="Your name or brand">
+      </div>
+      <div class="field">
+        <label for="meta-tag-generator-theme-color">Theme color</label>
+        <input class="input" id="meta-tag-generator-theme-color" type="color" value="#166534">
+      </div>
+    </div>
+    <div>
+      <div class="field">
+        <label for="meta-tag-generator-og-title">Open Graph title</label>
+        <input class="input" id="meta-tag-generator-og-title" type="text" placeholder="Leave blank to reuse page title">
+      </div>
+      <div class="field">
+        <label for="meta-tag-generator-og-description">Open Graph description</label>
+        <textarea class="textarea" id="meta-tag-generator-og-description" rows="3" placeholder="Leave blank to reuse meta description"></textarea>
+      </div>
+      <div class="field">
+        <label for="meta-tag-generator-og-image">Open Graph image URL</label>
+        <input class="input" id="meta-tag-generator-og-image" type="url" placeholder="https://example.com/share-image.jpg">
+      </div>
+      <div class="field">
+        <label for="meta-tag-generator-twitter-card">Twitter card type</label>
+        <select class="select" id="meta-tag-generator-twitter-card">
+          <option value="summary">summary</option>
+          <option value="summary_large_image" selected>summary_large_image</option>
+        </select>
+      </div>
+      <p class="note">Tags and previews update live as you type. Copy or download the block and paste it inside your page's &lt;head&gt;.</p>
+    </div>
+  </div>
+  <div class="btn-row">
+    <button class="btn btn-outline" id="meta-tag-generator-copy" type="button">Copy HTML</button>
+    <button class="btn btn-outline" id="meta-tag-generator-download" type="button">Download .html</button>
+  </div>
+  <div class="success hidden" id="meta-tag-generator-success"></div>
+  <div class="result hidden" id="meta-tag-generator-output">
+    <pre id="meta-tag-generator-code"></pre>
+  </div>
+  <div class="result hidden" id="meta-tag-generator-preview">
+    <p class="muted">Search result preview</p>
+    <div id="meta-tag-generator-google" style="background:#fff;border:1px solid #e2e6f5;border-radius:10px;padding:12px 14px;margin:8px 0;max-width:560px"></div>
+    <p class="muted">Social card preview</p>
+    <div id="meta-tag-generator-social" style="margin:8px 0"></div>
+  </div>
+</div>
+
+
+  <!-- ADSTERRA-INCONTENT: paste your Adsterra native/in-content ad code inside the div below -->
+  <div class="ad-slot" data-ad="incontent"></div>
+
+  <div class="info-grid">
+    <div class="info-card">
+      <h2>📖 How to use</h2>
+      <ol><li>Fill in your page title, description, keywords and social sharing details.</li><li>Choose the Twitter card type that fits your page layout.</li><li>Watch the code block and previews update live as you type.</li><li>Copy the code or download it, then paste it inside your page&#39;s &lt;head&gt;.</li></ol>
+    </div>
+    <div class="info-card">
+      <h2>❓ Frequently asked questions</h2>
+      <div class="faq"><details><summary>What are meta tags?</summary><p>Meta tags are HTML elements in a page&#39;s &lt;head&gt; that describe the page to search engines and social networks — title, description, preview image and more.</p></details><details><summary>Where do I paste this code?</summary><p>Paste the generated block inside the &lt;head&gt; section of your HTML page, before the closing &lt;/head&gt; tag.</p></details><details><summary>Do meta tags improve my ranking?</summary><p>A good title and description improve how your page looks in search results and can raise click-through rates, but they are only one part of SEO.</p></details></div>
+    </div>
+  </div>
+
+  <section class="section">
+    <h2>🔗 Related tools</h2>
+    <div class="tool-grid"><a class="tool-link" href="/tools/keyword-density-checker/" data-search="keyword density checker analyze any text for keyword density: total words, keyword count, density percentage and a top-10 word frequency table. paste text or fetch a page url. keyword density keyword density checker seo text analysis word frequency keyword analysis tool">Keyword Density Checker<small>Analyze any text for keyword density: total words, keyword count, dens…</small></a><a class="tool-link" href="/tools/robots-txt-generator/" data-search="robots.txt generator build a valid robots.txt with allow and disallow rules, crawl-delay and a sitemap directive. live preview, then copy or download the file. robots.txt generator robots txt seo robots crawl rules robots file generator">Robots.txt Generator<small>Build a valid robots.txt with allow and disallow rules, crawl-delay an…</small></a><a class="tool-link" href="/tools/sitemap-generator/" data-search="sitemap generator create a standards-compliant sitemap.xml in seconds. paste your page urls, set change frequency and priority, then copy or download the file. sitemap generator xml sitemap sitemap.xml generator seo sitemap create sitemap">Sitemap Generator<small>Create a standards-compliant sitemap.xml in seconds. Paste your page U…</small></a><a class="tool-link" href="/tools/ssl-checker/" data-search="ssl checker check any domain&#39;s ssl certificate in one click: validity status, issuer, valid-from and expiry dates, and days remaining. ssl checker ssl certificate check check ssl expiry tls certificate website security check">SSL Checker<small>Check any domain&#39;s SSL certificate in one click: validity status, issu…</small></a><a class="tool-link" href="/tools/whois-lookup/" data-search="whois lookup look up domain registration details: registrar, creation and expiry dates, status and name servers, plus the full raw whois record. whois lookup domain whois whois check domain registration lookup domain owner lookup">Whois Lookup<small>Look up domain registration details: registrar, creation and expiry da…</small></a></div>
+  </section>
+</main>
+
+<!-- ADSTERRA-FOOTER: paste your Adsterra footer/banner ad code inside the div below -->
+<div class="container"><div class="ad-slot" data-ad="footer"></div></div>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="f-grid">
+      <div>
+        <span class="brandline">🧰 ToolNest</span>
+        <p>Free online tools that actually work. No sign-up, no watermarks — and your files never leave your device for client-side tools.</p>
+      </div>
+      <div>
+        <h4>Popular</h4>
+        <a href="/tools/qr-code-generator/">QR Code Generator</a>
+        <a href="/tools/background-remover/">Background Remover</a>
+        <a href="/tools/pdf-merger/">PDF Merger</a>
+        <a href="/tools/word-counter/">Word Counter</a>
+      </div>
+      <div>
+        <h4>Categories</h4>
+        <a href="/#image">Image Tools</a>
+        <a href="/#pdf">PDF &amp; Documents</a>
+        <a href="/#calculators">Calculators</a>
+        <a href="/#developer">Developer Tools</a>
+      </div>
+      <div>
+        <h4>Site</h4>
+        <a href="/">Home</a>
+        <a href="/#all-tools">All Tools</a>
+        <a href="/sitemap.xml">Sitemap</a>
+      </div>
+    </div>
+    <div class="f-bottom">© 2026 ToolNest · Free tools for everyone · Made with care</div>
+  </div>
+</footer>
+
+<script src="/assets/site.js?v=1"></script>
+
+<script>
+/* Meta Tag Generator — builds the full <meta>/<title> block with live previews */
+(function () {
+  'use strict';
+  var S = 'meta-tag-generator';
+  var lastCode = '';
+
+  function get(id) { var el = TN.el(S + '-' + id); return el ? el.value : ''; }
+  function trimVal(id) { return get(id).trim(); }
+  function isHttpUrl(u) { return /^(https?:\/\/)/i.test(u); }
+
+  function flash(msg) {
+    var el = TN.el(S + '-success');
+    if (!el) return;
+    el.textContent = msg;
+    el.classList.remove('hidden');
+    setTimeout(function () { el.classList.add('hidden'); }, 2500);
+  }
+
+  function build() {
+    var title = trimVal('title');
+    var desc = trimVal('description');
+    var kw = trimVal('keywords');
+    var author = trimVal('author');
+    var theme = trimVal('theme-color');
+    var ogt = trimVal('og-title') || title;
+    var ogd = trimVal('og-description') || desc;
+    var ogi = trimVal('og-image');
+    var card = trimVal('twitter-card') || 'summary';
+    var e = TN.esc;
+    var lines = [];
+    lines.push('<!-- Primary meta tags -->');
+    if (title) lines.push('<title>' + e(title) + '</title>');
+    if (desc) lines.push('<meta name="description" content="' + e(desc) + '" />');
+    if (kw) lines.push('<meta name="keywords" content="' + e(kw) + '" />');
+    if (author) lines.push('<meta name="author" content="' + e(author) + '" />');
+    if (theme) lines.push('<meta name="theme-color" content="' + e(theme) + '" />');
+    lines.push('');
+    lines.push('<!-- Open Graph / Facebook -->');
+    lines.push('<meta property="og:type" content="website" />');
+    if (ogt) lines.push('<meta property="og:title" content="' + e(ogt) + '" />');
+    if (ogd) lines.push('<meta property="og:description" content="' + e(ogd) + '" />');
+    if (ogi) lines.push('<meta property="og:image" content="' + e(ogi) + '" />');
+    lines.push('');
+    lines.push('<!-- Twitter -->');
+    lines.push('<meta name="twitter:card" content="' + e(card) + '" />');
+    if (ogt) lines.push('<meta name="twitter:title" content="' + e(ogt) + '" />');
+    if (ogd) lines.push('<meta name="twitter:description" content="' + e(ogd) + '" />');
+    if (ogi) lines.push('<meta name="twitter:image" content="' + e(ogi) + '" />');
+    return { code: lines.join('\n'), title: title, desc: desc, ogt: ogt, ogd: ogd, ogi: ogi };
+  }
+
+  function renderPreviews(d) {
+    var e = TN.esc;
+    var siteLabel = 'example.com';
+    if (d.ogi && isHttpUrl(d.ogi)) {
+      try { siteLabel = new URL(d.ogi).hostname; } catch (err) { /* keep default */ }
+    }
+    var g = TN.el(S + '-google');
+    if (g) {
+      g.innerHTML =
+        '<div style="font-size:13px;color:#202124;margin-bottom:2px">' + e(siteLabel) + '</div>' +
+        '<div style="font-size:20px;color:#1a0dab;line-height:1.3;margin-bottom:2px">' + e(d.title || 'Your page title') + '</div>' +
+        '<div style="font-size:14px;color:#4d5156;line-height:1.4">' + e(d.desc || 'Your meta description will appear here in search results.') + '</div>';
+    }
+    var so = TN.el(S + '-social');
+    if (so) {
+      var imgHtml;
+      if (d.ogi && isHttpUrl(d.ogi)) {
+        imgHtml = '<img src="' + e(d.ogi) + '" alt="Social preview image" style="width:100%;display:block;max-height:200px;object-fit:cover" onerror="this.style.display=\'none\'">';
+      } else {
+        imgHtml = '<div style="height:90px;background:#eef0ff;display:flex;align-items:center;justify-content:center;color:#8a90a8;font-size:13px">No image</div>';
+      }
+      so.innerHTML =
+        '<div style="border:1px solid #e2e6f5;border-radius:10px;overflow:hidden;max-width:480px;background:#fff">' +
+        imgHtml +
+        '<div style="padding:10px 12px">' +
+        '<div style="font-weight:700;font-size:14px;color:#111;margin-bottom:2px">' + e(d.ogt || 'Social title') + '</div>' +
+        '<div style="font-size:13px;color:#555">' + e(d.ogd || 'Social description') + '</div>' +
+        '</div></div>';
+    }
+  }
+
+  function render() {
+    try {
+      TN.clearErr(S + '-error');
+      var d = build();
+      lastCode = d.code;
+      var codeEl = TN.el(S + '-code');
+      if (codeEl) codeEl.textContent = d.code;
+      TN.show(S + '-output');
+      renderPreviews(d);
+      TN.show(S + '-preview');
+    } catch (err) {
+      TN.setErr(S + '-error', 'Something went wrong while generating the tags.');
+    }
+  }
+
+  function copyCode() {
+    TN.clearErr(S + '-error');
+    if (!lastCode) { TN.setErr(S + '-error', 'Nothing to copy yet — enter a title or description first.'); return; }
+    TN.copy(lastCode).then(function (ok) {
+      if (ok) flash('Copied to clipboard.');
+      else TN.setErr(S + '-error', 'Copy was blocked by the browser. Select the code manually.');
+    });
+  }
+
+  function downloadCode() {
+    TN.clearErr(S + '-error');
+    if (!lastCode) { TN.setErr(S + '-error', 'Nothing to download yet — enter a title or description first.'); return; }
+    TN.downloadText(lastCode, 'meta-tags.html', 'text/html;charset=utf-8');
+  }
+
+  function init() {
+    try {
+      var renderLive = (typeof TN.debounce === 'function') ? TN.debounce(render, 350) : render;
+      ['title', 'description', 'keywords', 'author', 'theme-color', 'og-title', 'og-description', 'og-image', 'twitter-card'].forEach(function (id) {
+        TN.on(S + '-' + id, 'input', renderLive);
+        TN.on(S + '-' + id, 'change', renderLive);
+      });
+      TN.on(S + '-copy', 'click', copyCode);
+      TN.on(S + '-download', 'click', downloadCode);
+      render();
+    } catch (err) { /* never throw on load */ }
+  }
+
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init);
+  else init();
+})();
+
+</script>
+</body>
+</html>

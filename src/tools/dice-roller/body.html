@@ -1,0 +1,35 @@
+<div class="tool-card">
+  <div class="grid2">
+    <div class="field">
+      <label for="dice-roller-count">Number of dice (1&ndash;6)</label>
+      <input class="input" id="dice-roller-count" type="number" min="1" max="6" value="2" inputmode="numeric">
+    </div>
+    <div class="field">
+      <label for="dice-roller-sides">Sides per die</label>
+      <select class="select" id="dice-roller-sides">
+        <option value="4">4 sides (d4)</option>
+        <option value="6" selected>6 sides (d6)</option>
+        <option value="8">8 sides (d8)</option>
+        <option value="10">10 sides (d10)</option>
+        <option value="12">12 sides (d12)</option>
+        <option value="20">20 sides (d20)</option>
+      </select>
+    </div>
+  </div>
+  <div class="btn-row mt">
+    <button class="btn btn-primary" id="dice-roller-roll" type="button">Roll Dice</button>
+    <button class="btn btn-outline" id="dice-roller-clear" type="button">Clear History</button>
+  </div>
+  <div class="error" id="dice-roller-error"></div>
+  <div class="result hidden" id="dice-roller-result">
+    <div class="center" id="dice-roller-faces" style="font-size:3rem;letter-spacing:.25rem;"></div>
+    <div class="stat-cards">
+      <div class="stat-card"><div class="v" id="dice-roller-total">&ndash;</div><div class="l">Total</div></div>
+    </div>
+  </div>
+  <div class="field mt" id="dice-roller-history-wrap">
+    <label>Roll history</label>
+    <ul class="file-list" id="dice-roller-history"></ul>
+    <p class="muted" id="dice-roller-history-empty">No rolls yet &mdash; roll the dice!</p>
+  </div>
+</div>

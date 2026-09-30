@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Meme Generator — Free Online | ToolNest</title>
+<meta name="description" content="Make classic memes in seconds: upload a photo or start from a blank background, add top and bottom captions in bold meme style, and download as a PNG.">
+<meta name="keywords" content="meme generator, meme maker, caption image">
+<link rel="canonical" href="https://toolnest.vercel.app/tools/meme-generator/">
+<meta property="og:title" content="Meme Generator — Free Online | ToolNest">
+<meta property="og:description" content="Make classic memes in seconds: upload a photo or start from a blank background, add top and bottom captions in bold meme style, and download as a PNG.">
+<meta property="og:type" content="website">
+<link rel="stylesheet" href="/assets/site.css?v=1">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='22' fill='%234f46e5'/><text x='50' y='68' font-size='52' text-anchor='middle' fill='white' font-family='Arial' font-weight='bold'>T</text></svg>">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebApplication","name":"Meme Generator","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0"},"url":"https://toolnest.vercel.app/tools/meme-generator/","description":"Make classic memes in seconds: upload a photo or start from a blank background, add top and bottom captions in bold meme style, and download as a PNG."},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Can I make a meme without uploading a photo?","acceptedAnswer":{"@type":"Answer","text":"Yes — leave the image empty and pick any background color. You get a plain square canvas with your top and bottom captions."}},{"@type":"Question","name":"Why is the text white with a black outline?","acceptedAnswer":{"@type":"Answer","text":"Classic meme text is white with a thick black outline, which stays readable on any background. You can change the fill color if you like."}},{"@type":"Question","name":"Is my photo uploaded?","acceptedAnswer":{"@type":"Answer","text":"No. The meme is drawn on a canvas in your browser and downloaded directly — nothing is uploaded anywhere."}}]}]}</script>
+</head>
+<body>
+<header class="site-header">
+  <div class="container">
+    <a class="logo" href="/"><span class="logo-mark">🧰</span> ToolNest</a>
+    <nav class="site-nav">
+      <a href="/">Home</a>
+      <a href="/#categories">Categories</a>
+      <a href="/#all-tools">All Tools</a>
+    </nav>
+  </div>
+</header>
+
+<!-- ADSTERRA-HEADER: paste your Adsterra banner ad code inside the div below -->
+<div class="container"><div class="ad-slot ad-leaderboard" data-ad="header"></div></div>
+
+<main class="container">
+  <nav class="crumbs"><a href="/">Home</a> &rsaquo; <a href="/#image">Image Tools</a> &rsaquo; Meme Generator</nav>
+  <div class="tool-hero">
+    <h1>Meme Generator</h1>
+    <p>Make classic memes in seconds: upload a photo or start from a blank background, add top and bottom captions in bold meme style, and download as a PNG.</p>
+  </div>
+
+  <div class="tool-card">
+  <div class="dropzone" id="meme-generator-drop">
+    <span class="dz-icon">😂</span>
+    <strong>Drop a photo here</strong> or click to browse <span class="muted">(optional)</span>
+    <input type="file" id="meme-generator-file" accept="image/*" class="hidden">
+  </div>
+  <div class="grid2 mt">
+    <div class="field">
+      <label for="meme-generator-top">Top text</label>
+      <input type="text" class="input" id="meme-generator-top" placeholder="TOP TEXT" maxlength="120">
+    </div>
+    <div class="field">
+      <label for="meme-generator-bottom">Bottom text</label>
+      <input type="text" class="input" id="meme-generator-bottom" placeholder="BOTTOM TEXT" maxlength="120">
+    </div>
+  </div>
+  <div class="grid2">
+    <div class="field">
+      <label for="meme-generator-size">Font size: <span id="meme-generator-size-val">56</span></label>
+      <input type="range" id="meme-generator-size" min="24" max="140" value="56">
+    </div>
+    <div class="field">
+      <label for="meme-generator-color">Text color</label>
+      <input type="color" class="input" id="meme-generator-color" value="#ffffff">
+    </div>
+  </div>
+  <div class="field">
+    <label for="meme-generator-bg">Background color (only used without a photo)</label>
+    <input type="color" class="input" id="meme-generator-bg" value="#1e293b">
+  </div>
+  <canvas id="meme-generator-canvas" class="preview" style="max-width:100%;height:auto"></canvas>
+  <div class="btn-row">
+    <button class="btn btn-primary" id="meme-generator-download">Download meme</button>
+    <button class="btn btn-outline" id="meme-generator-clear">Clear photo</button>
+  </div>
+  <div class="error" id="meme-generator-error"></div>
+  <p class="note">Live preview — every keystroke updates the meme. Files never leave your device — everything is processed in your browser.</p>
+</div>
+
+
+  <!-- ADSTERRA-INCONTENT: paste your Adsterra native/in-content ad code inside the div below -->
+  <div class="ad-slot" data-ad="incontent"></div>
+
+  <div class="info-grid">
+    <div class="info-card">
+      <h2>📖 How to use</h2>
+      <ol><li>Upload a photo, or leave it empty and pick a background color for a plain meme.</li><li>Type your TOP TEXT and BOTTOM TEXT captions.</li><li>Adjust the font size slider and text color — the preview updates live.</li><li>Click “Download meme” to save it as a PNG.</li></ol>
+    </div>
+    <div class="info-card">
+      <h2>❓ Frequently asked questions</h2>
+      <div class="faq"><details><summary>Can I make a meme without uploading a photo?</summary><p>Yes — leave the image empty and pick any background color. You get a plain square canvas with your top and bottom captions.</p></details><details><summary>Why is the text white with a black outline?</summary><p>Classic meme text is white with a thick black outline, which stays readable on any background. You can change the fill color if you like.</p></details><details><summary>Is my photo uploaded?</summary><p>No. The meme is drawn on a canvas in your browser and downloaded directly — nothing is uploaded anywhere.</p></details></div>
+    </div>
+  </div>
+
+  <section class="section">
+    <h2>🔗 Related tools</h2>
+    <div class="tool-grid"><a class="tool-link" href="/tools/background-remover/" data-search="background remover remove the background from any photo with real on-device ai and download a transparent png. free, private and unlimited — no sign-up needed. background remover remove image background transparent png maker">Background Remover<small>Remove the background from any photo with real on-device AI and downlo…</small></a><a class="tool-link" href="/tools/favicon-generator/" data-search="favicon generator generate a complete png favicon set (16–512 px) from your logo in one click, download it as a zip, and copy the ready-to-paste html link tags. favicon generator favicon maker png favicon">Favicon Generator<small>Generate a complete PNG favicon set (16–512 px) from your logo in one …</small></a><a class="tool-link" href="/tools/image-compressor/" data-search="image compressor shrink jpg, png and webp images right in your browser with an adjustable quality slider. compare before/after sizes, download each file or grab everything as a zip. image compressor compress jpg reduce image size">Image Compressor<small>Shrink JPG, PNG and WebP images right in your browser with an adjustab…</small></a><a class="tool-link" href="/tools/image-resizer/" data-search="image resizer resize any image to exact pixel dimensions with an aspect-ratio lock, quick presets and percentage scaling. preview the result and download as png, jpg or webp. image resizer resize photo change image dimensions">Image Resizer<small>Resize any image to exact pixel dimensions with an aspect-ratio lock, …</small></a><a class="tool-link" href="/tools/image-to-pdf/" data-search="image to pdf turn your photos into a pdf document — one full-page image per page, sized to each photo. reorder pages freely, then download a single ready-to-share pdf. image to pdf jpg to pdf photos to pdf">Image to PDF<small>Turn your photos into a PDF document — one full-page image per page, s…</small></a><a class="tool-link" href="/tools/jpg-to-png/" data-search="jpg to png converter convert jpg photos to png format instantly in your browser. handles multiple files at once with individual downloads or a single zip archive. jpg to png jpeg to png converter convert jpg png">JPG to PNG Converter<small>Convert JPG photos to PNG format instantly in your browser. Handles mu…</small></a></div>
+  </section>
+</main>
+
+<!-- ADSTERRA-FOOTER: paste your Adsterra footer/banner ad code inside the div below -->
+<div class="container"><div class="ad-slot" data-ad="footer"></div></div>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="f-grid">
+      <div>
+        <span class="brandline">🧰 ToolNest</span>
+        <p>Free online tools that actually work. No sign-up, no watermarks — and your files never leave your device for client-side tools.</p>
+      </div>
+      <div>
+        <h4>Popular</h4>
+        <a href="/tools/qr-code-generator/">QR Code Generator</a>
+        <a href="/tools/background-remover/">Background Remover</a>
+        <a href="/tools/pdf-merger/">PDF Merger</a>
+        <a href="/tools/word-counter/">Word Counter</a>
+      </div>
+      <div>
+        <h4>Categories</h4>
+        <a href="/#image">Image Tools</a>
+        <a href="/#pdf">PDF &amp; Documents</a>
+        <a href="/#calculators">Calculators</a>
+        <a href="/#developer">Developer Tools</a>
+      </div>
+      <div>
+        <h4>Site</h4>
+        <a href="/">Home</a>
+        <a href="/#all-tools">All Tools</a>
+        <a href="/sitemap.xml">Sitemap</a>
+      </div>
+    </div>
+    <div class="f-bottom">© 2026 ToolNest · Free tools for everyone · Made with care</div>
+  </div>
+</footer>
+
+<script src="/assets/site.js?v=1"></script>
+
+<script>
+/* Meme Generator — canvas render with classic stroked captions, live preview. */
+(function () {
+  'use strict';
+  var SLUG = 'meme-generator';
+  var baseImg = null;
+  var renderT = null;
+
+  function $(id) { return document.getElementById(id); }
+  function errId() { return SLUG + '-error'; }
+
+  function setFile(f) {
+    if (!f) return;
+    TN.clearErr(errId());
+    TN.readAsDataURL(f).then(TN.loadImage).then(function (img) {
+      if (!img.naturalWidth || !img.naturalHeight) throw new Error('unreadable');
+      baseImg = img;
+      scheduleRender();
+    }).catch(function () {
+      TN.setErr(errId(), 'That file could not be read as an image. Try a JPG, PNG or WebP file.');
+    });
+  }
+
+  function wrapLines(ctx, text, maxW) {
+    var words = String(text).split(/\s+/).filter(function (w) { return w.length; });
+    var lines = [];
+    var line = '';
+    words.forEach(function (w) {
+      var t = line ? line + ' ' + w : w;
+      if (line && ctx.measureText(t).width > maxW) {
+        lines.push(line);
+        line = w;
+      } else {
+        line = t;
+      }
+    });
+    if (line) lines.push(line);
+    return lines;
+  }
+
+  function drawCaption(ctx, text, W, size, color, top) {
+    var lines = wrapLines(ctx, text, W * 0.92);
+    if (!lines.length) return;
+    ctx.font = 'bold ' + size + 'px Impact, "Arial Black", Arial, sans-serif';
+    ctx.textAlign = 'center';
+    ctx.lineJoin = 'round';
+    ctx.lineWidth = Math.max(3, Math.round(size / 9));
+    ctx.strokeStyle = '#000000';
+    ctx.fillStyle = color;
+    var step = size * 1.12;
+    if (top) {
+      ctx.textBaseline = 'top';
+      var y = size * 0.25;
+      lines.forEach(function (ln) {
+        ctx.strokeText(ln, W / 2, y);
+        ctx.fillText(ln, W / 2, y);
+        y += step;
+      });
+    } else {
+      ctx.textBaseline = 'bottom';
+      var H = ctx.canvas.height;
+      var yb = H - size * 0.25;
+      for (var i = lines.length - 1; i >= 0; i--) {
+        ctx.strokeText(lines[i], W / 2, yb);
+        ctx.fillText(lines[i], W / 2, yb);
+        yb -= step;
+      }
+    }
+  }
+
+  function render() {
+    var canvas = $(SLUG + '-canvas');
+    if (!canvas) return;
+    var size = parseInt($(SLUG + '-size').value, 10) || 56;
+    var color = $(SLUG + '-color').value || '#ffffff';
+    var top = ($(SLUG + '-top').value || '').toUpperCase();
+    var bottom = ($(SLUG + '-bottom').value || '').toUpperCase();
+    var W, H;
+    if (baseImg) {
+      var scale = 1;
+      var longest = Math.max(baseImg.naturalWidth, baseImg.naturalHeight);
+      if (longest > 1600) scale = 1600 / longest;
+      W = Math.round(baseImg.naturalWidth * scale);
+      H = Math.round(baseImg.naturalHeight * scale);
+    } else {
+      W = 900; H = 900;
+    }
+    canvas.width = W;
+    canvas.height = H;
+    var ctx = canvas.getContext('2d');
+    if (baseImg) {
+      ctx.drawImage(baseImg, 0, 0, W, H);
+    } else {
+      ctx.fillStyle = $(SLUG + '-bg').value || '#1e293b';
+      ctx.fillRect(0, 0, W, H);
+    }
+    drawCaption(ctx, top, W, size, color, true);
+    drawCaption(ctx, bottom, W, size, color, false);
+  }
+
+  function scheduleRender() {
+    if (renderT) clearTimeout(renderT);
+    renderT = setTimeout(render, 60);
+  }
+
+  function download() {
+    var canvas = $(SLUG + '-canvas');
+    if (!canvas || !canvas.width) {
+      TN.setErr(errId(), 'Nothing to download yet.');
+      return;
+    }
+    TN.clearErr(errId());
+    try {
+      canvas.toBlob(function (b) {
+        if (b) TN.download(b, 'meme.png');
+        else TN.setErr(errId(), 'Could not encode the meme. Try a different browser.');
+      }, 'image/png');
+    } catch (e) {
+      TN.setErr(errId(), 'Could not encode the meme. Try a different browser.');
+    }
+  }
+
+  function init() {
+    var dz = $(SLUG + '-drop');
+    var input = $(SLUG + '-file');
+    if (!dz || !input) return;
+    dz.addEventListener('click', function () { input.click(); });
+    input.addEventListener('change', function () {
+      var f = input.files && input.files[0];
+      input.value = '';
+      setFile(f);
+    });
+    ['dragover', 'dragenter'].forEach(function (ev) {
+      dz.addEventListener(ev, function (e) { e.preventDefault(); dz.classList.add('dragover'); });
+    });
+    ['dragleave', 'drop'].forEach(function (ev) {
+      dz.addEventListener(ev, function (e) { e.preventDefault(); dz.classList.remove('dragover'); });
+    });
+    dz.addEventListener('drop', function (e) {
+      var f = e.dataTransfer && e.dataTransfer.files && e.dataTransfer.files[0];
+      setFile(f);
+    });
+
+    ['top', 'bottom', 'color', 'bg'].forEach(function (k) {
+      TN.on(SLUG + '-' + k, 'input', scheduleRender);
+    });
+    var sz = $(SLUG + '-size');
+    var szv = $(SLUG + '-size-val');
+    if (sz) sz.addEventListener('input', function () {
+      if (szv) szv.textContent = sz.value;
+      scheduleRender();
+    });
+
+    TN.on(SLUG + '-download', 'click', download);
+    TN.on(SLUG + '-clear', 'click', function () {
+      baseImg = null;
+      scheduleRender();
+    });
+
+    render();
+  }
+
+  try { init(); } catch (e) { /* never throw on page load */ }
+})();
+
+</script>
+</body>
+</html>

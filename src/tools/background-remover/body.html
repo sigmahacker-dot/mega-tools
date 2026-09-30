@@ -1,0 +1,28 @@
+<div class="tool-card">
+  <div class="dropzone" id="background-remover-drop">
+    <span class="dz-icon">🪄</span>
+    <strong>Drop a photo here</strong> or click to browse
+    <input type="file" id="background-remover-file" accept="image/*" class="hidden">
+    <p class="muted mt">JPG, PNG, WebP…</p>
+  </div>
+  <div class="btn-row">
+    <button class="btn btn-primary" id="background-remover-btn" disabled>Remove background</button>
+  </div>
+  <p class="muted" id="background-remover-status">Choose an image to begin.</p>
+  <div class="progress"><div id="background-remover-bar"></div></div>
+  <div class="grid2 mt">
+    <div>
+      <p class="muted">Original</p>
+      <img id="background-remover-original" class="preview-img hidden" alt="Original image">
+    </div>
+    <div id="background-remover-result" class="hidden">
+      <p class="muted">Result — transparent PNG</p>
+      <img id="background-remover-preview" class="preview-img" alt="Background removed" style="background:repeating-conic-gradient(#d7dbe8 0 25%, #ffffff 0 50%) 0 0/18px 18px">
+      <div class="btn-row">
+        <button class="btn btn-outline" id="background-remover-download">Download PNG</button>
+      </div>
+    </div>
+  </div>
+  <div class="error" id="background-remover-error"></div>
+  <p class="note">Real on-device AI. First use downloads the model once (~40MB). Files never leave your device — everything is processed in your browser.</p>
+</div>

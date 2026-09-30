@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dice Roller — Free Online | ToolNest</title>
+<meta name="description" content="Roll up to six dice with 4, 6, 8, 10, 12 or 20 sides. Watch the animated faces settle, see the total instantly, and review a history of your recent rolls.">
+<meta name="keywords" content="dice roller, d20 roller, rpg dice, roll dice online">
+<link rel="canonical" href="https://toolnest.vercel.app/tools/dice-roller/">
+<meta property="og:title" content="Dice Roller — Free Online | ToolNest">
+<meta property="og:description" content="Roll up to six dice with 4, 6, 8, 10, 12 or 20 sides. Watch the animated faces settle, see the total instantly, and review a history of your recent rolls.">
+<meta property="og:type" content="website">
+<link rel="stylesheet" href="/assets/site.css?v=1">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='22' fill='%234f46e5'/><text x='50' y='68' font-size='52' text-anchor='middle' fill='white' font-family='Arial' font-weight='bold'>T</text></svg>">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebApplication","name":"Dice Roller","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0"},"url":"https://toolnest.vercel.app/tools/dice-roller/","description":"Roll up to six dice with 4, 6, 8, 10, 12 or 20 sides. Watch the animated faces settle, see the total instantly, and review a history of your recent rolls."},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How random are the dice rolls?","acceptedAnswer":{"@type":"Answer","text":"It uses your browser's built-in random number generator (Math.random), which is fine for games and fun but not for security or gambling purposes."}},{"@type":"Question","name":"Can I roll more than 6 dice at once?","acceptedAnswer":{"@type":"Answer","text":"You can roll between 1 and 6 dice at a time. For more dice, roll in batches — every roll is added to the history list."}},{"@type":"Question","name":"Why do some dice show numbers instead of pips?","acceptedAnswer":{"@type":"Answer","text":"For the classic 6-sided die you see unicode dice faces; for other die sizes the rolled number is shown on each die instead."}}]}]}</script>
+</head>
+<body>
+<header class="site-header">
+  <div class="container">
+    <a class="logo" href="/"><span class="logo-mark">🧰</span> ToolNest</a>
+    <nav class="site-nav">
+      <a href="/">Home</a>
+      <a href="/#categories">Categories</a>
+      <a href="/#all-tools">All Tools</a>
+    </nav>
+  </div>
+</header>
+
+<!-- ADSTERRA-HEADER: paste your Adsterra banner ad code inside the div below -->
+<div class="container"><div class="ad-slot ad-leaderboard" data-ad="header"></div></div>
+
+<main class="container">
+  <nav class="crumbs"><a href="/">Home</a> &rsaquo; <a href="/#fun">Fun &amp; Lifestyle</a> &rsaquo; Dice Roller</nav>
+  <div class="tool-hero">
+    <h1>Dice Roller</h1>
+    <p>Roll up to six dice with 4, 6, 8, 10, 12 or 20 sides. Watch the animated faces settle, see the total instantly, and review a history of your recent rolls.</p>
+  </div>
+
+  <div class="tool-card">
+  <div class="grid2">
+    <div class="field">
+      <label for="dice-roller-count">Number of dice (1&ndash;6)</label>
+      <input class="input" id="dice-roller-count" type="number" min="1" max="6" value="2" inputmode="numeric">
+    </div>
+    <div class="field">
+      <label for="dice-roller-sides">Sides per die</label>
+      <select class="select" id="dice-roller-sides">
+        <option value="4">4 sides (d4)</option>
+        <option value="6" selected>6 sides (d6)</option>
+        <option value="8">8 sides (d8)</option>
+        <option value="10">10 sides (d10)</option>
+        <option value="12">12 sides (d12)</option>
+        <option value="20">20 sides (d20)</option>
+      </select>
+    </div>
+  </div>
+  <div class="btn-row mt">
+    <button class="btn btn-primary" id="dice-roller-roll" type="button">Roll Dice</button>
+    <button class="btn btn-outline" id="dice-roller-clear" type="button">Clear History</button>
+  </div>
+  <div class="error" id="dice-roller-error"></div>
+  <div class="result hidden" id="dice-roller-result">
+    <div class="center" id="dice-roller-faces" style="font-size:3rem;letter-spacing:.25rem;"></div>
+    <div class="stat-cards">
+      <div class="stat-card"><div class="v" id="dice-roller-total">&ndash;</div><div class="l">Total</div></div>
+    </div>
+  </div>
+  <div class="field mt" id="dice-roller-history-wrap">
+    <label>Roll history</label>
+    <ul class="file-list" id="dice-roller-history"></ul>
+    <p class="muted" id="dice-roller-history-empty">No rolls yet &mdash; roll the dice!</p>
+  </div>
+</div>
+
+
+  <!-- ADSTERRA-INCONTENT: paste your Adsterra native/in-content ad code inside the div below -->
+  <div class="ad-slot" data-ad="incontent"></div>
+
+  <div class="info-grid">
+    <div class="info-card">
+      <h2>📖 How to use</h2>
+      <ol><li>Choose how many dice to roll (1 to 6).</li><li>Pick the number of sides: 4, 6, 8, 10, 12 or 20.</li><li>Click &quot;Roll Dice&quot; to see the animated result and the total.</li><li>Scroll the history list to review your previous rolls.</li></ol>
+    </div>
+    <div class="info-card">
+      <h2>❓ Frequently asked questions</h2>
+      <div class="faq"><details><summary>How random are the dice rolls?</summary><p>It uses your browser&#39;s built-in random number generator (Math.random), which is fine for games and fun but not for security or gambling purposes.</p></details><details><summary>Can I roll more than 6 dice at once?</summary><p>You can roll between 1 and 6 dice at a time. For more dice, roll in batches — every roll is added to the history list.</p></details><details><summary>Why do some dice show numbers instead of pips?</summary><p>For the classic 6-sided die you see unicode dice faces; for other die sizes the rolled number is shown on each die instead.</p></details></div>
+    </div>
+  </div>
+
+  <section class="section">
+    <h2>🔗 Related tools</h2>
+    <div class="tool-grid"><a class="tool-link" href="/tools/baby-name-generator/" data-search="baby name generator discover baby names by gender and origin — pakistani, arabic, western, indian or turkish — with meanings, random picks and tap-to-copy. baby name generator baby names with meanings muslim baby names boy girl names">Baby Name Generator<small>Discover baby names by gender and origin — Pakistani, Arabic, Western,…</small></a><a class="tool-link" href="/tools/battery-status-checker/" data-search="battery status checker check your device&#39;s battery level, charging status and estimated time remaining, with live updates — where your browser supports the battery api. battery status battery level checker laptop battery charging status">Battery Status Checker<small>Check your device&#39;s battery level, charging status and estimated time …</small></a><a class="tool-link" href="/tools/birthday-countdown/" data-search="birthday countdown enter your birthday for a live countdown to your next one — days, hours, minutes and seconds — plus the age you&#39;ll turn and a fun message. birthday countdown countdown to birthday how old am i birthday timer">Birthday Countdown<small>Enter your birthday for a live countdown to your next one — days, hour…</small></a><a class="tool-link" href="/tools/calendar-generator/" data-search="calendar generator generate a monthly calendar for any month and year, with correct weekdays, leap years, today&#39;s date highlighted, and previous/next month navigation. calendar generator monthly calendar printable calendar month planner">Calendar Generator<small>Generate a monthly calendar for any month and year, with correct weekd…</small></a><a class="tool-link" href="/tools/coin-flip/" data-search="coin flip flip a virtual coin with a fun animated toss. get instant heads or tails results, keep a running tally of both sides, and reset the count whenever you like. coin flip heads or tails coin toss random coin">Coin Flip<small>Flip a virtual coin with a fun animated toss. Get instant Heads or Tai…</small></a><a class="tool-link" href="/tools/internet-speed-test/" data-search="internet speed test test your download speed by fetching a 10 mb file from our server three times. shows per-run and average mbps with a live progress bar. internet speed test download speed test wifi speed mbps test">Internet Speed Test<small>Test your download speed by fetching a 10 MB file from our server thre…</small></a></div>
+  </section>
+</main>
+
+<!-- ADSTERRA-FOOTER: paste your Adsterra footer/banner ad code inside the div below -->
+<div class="container"><div class="ad-slot" data-ad="footer"></div></div>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="f-grid">
+      <div>
+        <span class="brandline">🧰 ToolNest</span>
+        <p>Free online tools that actually work. No sign-up, no watermarks — and your files never leave your device for client-side tools.</p>
+      </div>
+      <div>
+        <h4>Popular</h4>
+        <a href="/tools/qr-code-generator/">QR Code Generator</a>
+        <a href="/tools/background-remover/">Background Remover</a>
+        <a href="/tools/pdf-merger/">PDF Merger</a>
+        <a href="/tools/word-counter/">Word Counter</a>
+      </div>
+      <div>
+        <h4>Categories</h4>
+        <a href="/#image">Image Tools</a>
+        <a href="/#pdf">PDF &amp; Documents</a>
+        <a href="/#calculators">Calculators</a>
+        <a href="/#developer">Developer Tools</a>
+      </div>
+      <div>
+        <h4>Site</h4>
+        <a href="/">Home</a>
+        <a href="/#all-tools">All Tools</a>
+        <a href="/sitemap.xml">Sitemap</a>
+      </div>
+    </div>
+    <div class="f-bottom">© 2026 ToolNest · Free tools for everyone · Made with care</div>
+  </div>
+</footer>
+
+<script src="/assets/site.js?v=1"></script>
+
+<script>
+(function () {
+  'use strict';
+  var P = 'dice-roller-';
+  function g(id) { return document.getElementById(P + id); }
+
+  var countInput = g('count'), sidesSel = g('sides'), rollBtn = g('roll');
+  if (!countInput || !sidesSel || !rollBtn) return;
+
+  var D6_FACES = ['\u2680', '\u2681', '\u2682', '\u2683', '\u2684', '\u2685'];
+  var rolling = false;
+  var history = [];
+  var MAX_HISTORY = 30;
+
+  function faceFor(value, sides) {
+    if (sides === 6) return D6_FACES[value - 1];
+    return String(value);
+  }
+
+  function renderFaces(values, sides) {
+    var wrap = g('faces');
+    if (!wrap) return;
+    var html = '';
+    var i;
+    if (sides === 6) {
+      for (i = 0; i < values.length; i++) html += values[i];
+    } else {
+      for (i = 0; i < values.length; i++) {
+        html += '<span class="tag" style="font-size:1.5rem;padding:.4rem .7rem;">' + values[i] + '</span>';
+      }
+    }
+    wrap.innerHTML = html;
+  }
+
+  function renderHistory() {
+    var list = g('history'), empty = g('history-empty');
+    if (!list) return;
+    var html = '';
+    for (var i = 0; i < history.length; i++) {
+      html += '<li>' + TN.esc(history[i]) + '</li>';
+    }
+    list.innerHTML = html;
+    if (empty) empty.style.display = history.length ? 'none' : '';
+  }
+
+  function roll() {
+    if (rolling) return;
+    TN.clearErr(P + 'error');
+    var count = parseInt(countInput.value, 10);
+    var sides = parseInt(sidesSel.value, 10);
+    if (isNaN(count) || count < 1 || count > 6) {
+      TN.setErr(P + 'error', 'Please enter a dice count between 1 and 6.');
+      return;
+    }
+    if ([4, 6, 8, 10, 12, 20].indexOf(sides) === -1) {
+      TN.setErr(P + 'error', 'Please choose a valid number of sides.');
+      return;
+    }
+    rolling = true;
+    rollBtn.disabled = true;
+    var finalVals = [];
+    for (var i = 0; i < count; i++) finalVals.push(1 + Math.floor(Math.random() * sides));
+    var total = 0;
+    for (i = 0; i < finalVals.length; i++) total += finalVals[i];
+
+    var ticks = 0;
+    var anim = setInterval(function () {
+      var tmp = [];
+      for (var j = 0; j < count; j++) tmp.push(1 + Math.floor(Math.random() * sides));
+      renderFaces(tmp.map(function (v) { return faceFor(v, sides); }), sides);
+      if (++ticks >= 10) {
+        clearInterval(anim);
+        renderFaces(finalVals.map(function (v) { return faceFor(v, sides); }), sides);
+        var t = g('total');
+        if (t) t.textContent = total;
+        TN.show(P + 'result');
+        var facesStr = finalVals.map(function (v) { return faceFor(v, sides); }).join(' ');
+        history.unshift(count + 'd' + sides + ': ' + facesStr + ' = ' + total);
+        if (history.length > MAX_HISTORY) history.length = MAX_HISTORY;
+        renderHistory();
+        rolling = false;
+        rollBtn.disabled = false;
+      }
+    }, 70);
+  }
+
+  TN.on(rollBtn, 'click', roll);
+  TN.on(g('clear'), 'click', function () {
+    history = [];
+    renderHistory();
+    TN.hide(P + 'result');
+    TN.clearErr(P + 'error');
+  });
+  renderHistory();
+})();
+
+</script>
+</body>
+</html>

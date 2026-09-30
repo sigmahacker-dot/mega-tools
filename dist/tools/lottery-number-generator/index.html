@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lottery Number Generator — Free Online | ToolNest</title>
+<meta name="description" content="Generate random lottery numbers with your own max number and count. Sorted lucky balls, optional duplicates, and a history of your draws.">
+<meta name="keywords" content="lottery number generator, lucky numbers, lotto picker, random numbers">
+<link rel="canonical" href="https://toolnest.vercel.app/tools/lottery-number-generator/">
+<meta property="og:title" content="Lottery Number Generator — Free Online | ToolNest">
+<meta property="og:description" content="Generate random lottery numbers with your own max number and count. Sorted lucky balls, optional duplicates, and a history of your draws.">
+<meta property="og:type" content="website">
+<link rel="stylesheet" href="/assets/site.css?v=1">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='22' fill='%234f46e5'/><text x='50' y='68' font-size='52' text-anchor='middle' fill='white' font-family='Arial' font-weight='bold'>T</text></svg>">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebApplication","name":"Lottery Number Generator","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0"},"url":"https://toolnest.vercel.app/tools/lottery-number-generator/","description":"Generate random lottery numbers with your own max number and count. Sorted lucky balls, optional duplicates, and a history of your draws."},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Can this predict winning lottery numbers?","acceptedAnswer":{"@type":"Answer","text":"No — and nothing can. Every draw is independent and random, so these numbers are purely for fun."}},{"@type":"Question","name":"How random are the numbers?","acceptedAnswer":{"@type":"Answer","text":"The tool uses your browser's cryptographic random generator (crypto.getRandomValues) when available, falling back to Math.random."}},{"@type":"Question","name":"Why can't I draw 10 numbers from 1–9 without duplicates?","acceptedAnswer":{"@type":"Answer","text":"With duplicates off, the count can't exceed the highest number — there simply aren't enough unique numbers to draw."}}]}]}</script>
+</head>
+<body>
+<header class="site-header">
+  <div class="container">
+    <a class="logo" href="/"><span class="logo-mark">🧰</span> ToolNest</a>
+    <nav class="site-nav">
+      <a href="/">Home</a>
+      <a href="/#categories">Categories</a>
+      <a href="/#all-tools">All Tools</a>
+    </nav>
+  </div>
+</header>
+
+<!-- ADSTERRA-HEADER: paste your Adsterra banner ad code inside the div below -->
+<div class="container"><div class="ad-slot ad-leaderboard" data-ad="header"></div></div>
+
+<main class="container">
+  <nav class="crumbs"><a href="/">Home</a> &rsaquo; <a href="/#fun">Fun &amp; Lifestyle</a> &rsaquo; Lottery Number Generator</nav>
+  <div class="tool-hero">
+    <h1>Lottery Number Generator</h1>
+    <p>Generate random lottery numbers with your own max number and count. Sorted lucky balls, optional duplicates, and a history of your draws.</p>
+  </div>
+
+  <div class="tool-card">
+  <div class="row">
+    <div class="field">
+      <label for="lottery-number-generator-max">Highest number</label>
+      <input type="number" id="lottery-number-generator-max" class="input" value="49" min="2" max="999">
+    </div>
+    <div class="field">
+      <label for="lottery-number-generator-count">How many numbers</label>
+      <input type="number" id="lottery-number-generator-count" class="input" value="6" min="1" max="100">
+    </div>
+  </div>
+  <div class="checkbox-row">
+    <input type="checkbox" id="lottery-number-generator-unique" checked>
+    <label for="lottery-number-generator-unique">No duplicates</label>
+  </div>
+  <div class="btn-row">
+    <button type="button" class="btn btn-primary" id="lottery-number-generator-go">Generate</button>
+    <button type="button" class="btn btn-outline btn-sm" id="lottery-number-generator-clear">Clear history</button>
+  </div>
+  <div class="error" id="lottery-number-generator-error"></div>
+  <div class="lotto-balls mt" id="lottery-number-generator-balls"></div>
+  <p class="note">Random for fun — lotteries can't be predicted. Every draw is independent.</p>
+  <h4 class="mt">Draw history</h4>
+  <ul class="file-list" id="lottery-number-generator-history"></ul>
+  <p class="muted" id="lottery-number-generator-empty">No draws yet — your generated sets will appear here.</p>
+  <style>
+    .lotto-balls{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;min-height:20px}
+    .lotto-ball{width:54px;height:54px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:1.15rem;color:#fff;background:radial-gradient(circle at 30% 30%,#818cf8,#4338ca);box-shadow:0 3px 8px rgba(0,0,0,.22)}
+  </style>
+</div>
+
+  <!-- ADSTERRA-INCONTENT: paste your Adsterra native/in-content ad code inside the div below -->
+  <div class="ad-slot" data-ad="incontent"></div>
+
+  <div class="info-grid">
+    <div class="info-card">
+      <h2>📖 How to use</h2>
+      <ol><li>Set the highest number (e.g. 49) and how many numbers to draw (e.g. 6).</li><li>Keep “No duplicates” on for realistic lottery-style draws, or turn it off for repeats.</li><li>Click “Generate” to draw your sorted lucky balls.</li><li>Every draw is saved to the history list below, so you can compare sets.</li></ol>
+    </div>
+    <div class="info-card">
+      <h2>❓ Frequently asked questions</h2>
+      <div class="faq"><details><summary>Can this predict winning lottery numbers?</summary><p>No — and nothing can. Every draw is independent and random, so these numbers are purely for fun.</p></details><details><summary>How random are the numbers?</summary><p>The tool uses your browser&#39;s cryptographic random generator (crypto.getRandomValues) when available, falling back to Math.random.</p></details><details><summary>Why can&#39;t I draw 10 numbers from 1–9 without duplicates?</summary><p>With duplicates off, the count can&#39;t exceed the highest number — there simply aren&#39;t enough unique numbers to draw.</p></details></div>
+    </div>
+  </div>
+
+  <section class="section">
+    <h2>🔗 Related tools</h2>
+    <div class="tool-grid"><a class="tool-link" href="/tools/baby-name-generator/" data-search="baby name generator discover baby names by gender and origin — pakistani, arabic, western, indian or turkish — with meanings, random picks and tap-to-copy. baby name generator baby names with meanings muslim baby names boy girl names">Baby Name Generator<small>Discover baby names by gender and origin — Pakistani, Arabic, Western,…</small></a><a class="tool-link" href="/tools/battery-status-checker/" data-search="battery status checker check your device&#39;s battery level, charging status and estimated time remaining, with live updates — where your browser supports the battery api. battery status battery level checker laptop battery charging status">Battery Status Checker<small>Check your device&#39;s battery level, charging status and estimated time …</small></a><a class="tool-link" href="/tools/birthday-countdown/" data-search="birthday countdown enter your birthday for a live countdown to your next one — days, hours, minutes and seconds — plus the age you&#39;ll turn and a fun message. birthday countdown countdown to birthday how old am i birthday timer">Birthday Countdown<small>Enter your birthday for a live countdown to your next one — days, hour…</small></a><a class="tool-link" href="/tools/calendar-generator/" data-search="calendar generator generate a monthly calendar for any month and year, with correct weekdays, leap years, today&#39;s date highlighted, and previous/next month navigation. calendar generator monthly calendar printable calendar month planner">Calendar Generator<small>Generate a monthly calendar for any month and year, with correct weekd…</small></a><a class="tool-link" href="/tools/coin-flip/" data-search="coin flip flip a virtual coin with a fun animated toss. get instant heads or tails results, keep a running tally of both sides, and reset the count whenever you like. coin flip heads or tails coin toss random coin">Coin Flip<small>Flip a virtual coin with a fun animated toss. Get instant Heads or Tai…</small></a><a class="tool-link" href="/tools/dice-roller/" data-search="dice roller roll up to six dice with 4, 6, 8, 10, 12 or 20 sides. watch the animated faces settle, see the total instantly, and review a history of your recent rolls. dice roller d20 roller rpg dice roll dice online">Dice Roller<small>Roll up to six dice with 4, 6, 8, 10, 12 or 20 sides. Watch the animat…</small></a></div>
+  </section>
+</main>
+
+<!-- ADSTERRA-FOOTER: paste your Adsterra footer/banner ad code inside the div below -->
+<div class="container"><div class="ad-slot" data-ad="footer"></div></div>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="f-grid">
+      <div>
+        <span class="brandline">🧰 ToolNest</span>
+        <p>Free online tools that actually work. No sign-up, no watermarks — and your files never leave your device for client-side tools.</p>
+      </div>
+      <div>
+        <h4>Popular</h4>
+        <a href="/tools/qr-code-generator/">QR Code Generator</a>
+        <a href="/tools/background-remover/">Background Remover</a>
+        <a href="/tools/pdf-merger/">PDF Merger</a>
+        <a href="/tools/word-counter/">Word Counter</a>
+      </div>
+      <div>
+        <h4>Categories</h4>
+        <a href="/#image">Image Tools</a>
+        <a href="/#pdf">PDF &amp; Documents</a>
+        <a href="/#calculators">Calculators</a>
+        <a href="/#developer">Developer Tools</a>
+      </div>
+      <div>
+        <h4>Site</h4>
+        <a href="/">Home</a>
+        <a href="/#all-tools">All Tools</a>
+        <a href="/sitemap.xml">Sitemap</a>
+      </div>
+    </div>
+    <div class="f-bottom">© 2026 ToolNest · Free tools for everyone · Made with care</div>
+  </div>
+</footer>
+
+<script src="/assets/site.js?v=1"></script>
+
+<script>
+(function () {
+  'use strict';
+  var P = 'lottery-number-generator-';
+  function g(id) { return document.getElementById(P + id); }
+
+  var maxInput = g('max'), countInput = g('count'), uniqueBox = g('unique');
+  var balls = g('balls'), historyList = g('history'), emptyMsg = g('empty');
+  if (!maxInput || !countInput || !uniqueBox || !balls) return;
+
+  var draws = 0;
+
+  function randInt(min, max) {
+    // Cryptographic randomness when available, Math.random fallback.
+    try {
+      if (typeof crypto !== 'undefined' && crypto.getRandomValues) {
+        var range = max - min + 1;
+        var arr = new Uint32Array(1);
+        var limit = Math.floor(4294967296 / range) * range; // avoid modulo bias
+        var v;
+        do { crypto.getRandomValues(arr); v = arr[0]; } while (v >= limit);
+        return min + (v % range);
+      }
+    } catch (e) {}
+    return min + Math.floor(Math.random() * (max - min + 1));
+  }
+
+  function generate() {
+    TN.clearErr(P + 'error');
+    var max = parseInt(maxInput.value, 10);
+    var count = parseInt(countInput.value, 10);
+    var unique = uniqueBox.checked;
+
+    if (isNaN(max) || max < 2 || max > 999) {
+      TN.setErr(P + 'error', 'Highest number must be between 2 and 999.');
+      return;
+    }
+    if (isNaN(count) || count < 1 || count > 100) {
+      TN.setErr(P + 'error', 'How many numbers must be between 1 and 100.');
+      return;
+    }
+    if (unique && count > max) {
+      TN.setErr(P + 'error', 'With “No duplicates” on, you can\u2019t draw ' + count + ' unique numbers from 1–' + max + '. Lower the count or allow duplicates.');
+      return;
+    }
+
+    var nums = [];
+    if (unique) {
+      var set = {};
+      while (nums.length < count) {
+        var n = randInt(1, max);
+        if (!set[n]) { set[n] = true; nums.push(n); }
+      }
+    } else {
+      for (var i = 0; i < count; i++) nums.push(randInt(1, max));
+    }
+    nums.sort(function (a, b) { return a - b; });
+
+    var html = '';
+    for (var j = 0; j < nums.length; j++) html += '<div class="lotto-ball">' + nums[j] + '</div>';
+    balls.innerHTML = html;
+
+    draws++;
+    var li = document.createElement('li');
+    var left = document.createElement('span');
+    left.textContent = 'Draw ' + draws + ': ' + nums.join(' – ');
+    var right = document.createElement('span');
+    right.className = 'muted';
+    try { right.textContent = new Date().toLocaleTimeString(); } catch (e) { right.textContent = ''; }
+    li.appendChild(left);
+    li.appendChild(right);
+    if (historyList) {
+      historyList.insertBefore(li, historyList.firstChild);
+      while (historyList.children.length > 20) historyList.removeChild(historyList.lastChild);
+    }
+    if (emptyMsg) TN.hide(emptyMsg);
+  }
+
+  function clearHistory() {
+    if (historyList) historyList.innerHTML = '';
+    draws = 0;
+    if (emptyMsg) TN.show(emptyMsg);
+    balls.innerHTML = '';
+    TN.clearErr(P + 'error');
+  }
+
+  TN.on(P + 'go', 'click', generate);
+  TN.on(P + 'clear', 'click', clearHistory);
+})();
+
+</script>
+</body>
+</html>

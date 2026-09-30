@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Percentage Calculator — Free Online | ToolNest</title>
+<meta name="description" content="Solve any percentage problem: find X percent of Y, find what percent X is of Y, or calculate the percentage increase or decrease between two numbers.">
+<meta name="keywords" content="percentage calculator, percent calculator, percent increase calculator">
+<link rel="canonical" href="https://toolnest.vercel.app/tools/percentage-calculator/">
+<meta property="og:title" content="Percentage Calculator — Free Online | ToolNest">
+<meta property="og:description" content="Solve any percentage problem: find X percent of Y, find what percent X is of Y, or calculate the percentage increase or decrease between two numbers.">
+<meta property="og:type" content="website">
+<link rel="stylesheet" href="/assets/site.css?v=1">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='22' fill='%234f46e5'/><text x='50' y='68' font-size='52' text-anchor='middle' fill='white' font-family='Arial' font-weight='bold'>T</text></svg>">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebApplication","name":"Percentage Calculator","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0"},"url":"https://toolnest.vercel.app/tools/percentage-calculator/","description":"Solve any percentage problem: find X percent of Y, find what percent X is of Y, or calculate the percentage increase or decrease between two numbers."},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How do I find the percentage of a number like 30 of 200?","acceptedAnswer":{"@type":"Answer","text":"Use 'X is what % of Y' with X = 30 and Y = 200 to get 15%."}},{"@type":"Question","name":"What is the formula for percentage increase?","acceptedAnswer":{"@type":"Answer","text":"Increase is (new-old)/old x 100. Decrease is (old-new)/old x 100, shown as a negative or labeled decrease."}},{"@type":"Question","name":"Can it handle negative changes?","acceptedAnswer":{"@type":"Answer","text":"Yes. The 'Increase / Decrease' mode handles negative results, e.g. going from 50 to 30 is a 40% decrease."}}]}]}</script>
+</head>
+<body>
+<header class="site-header">
+  <div class="container">
+    <a class="logo" href="/"><span class="logo-mark">🧰</span> ToolNest</a>
+    <nav class="site-nav">
+      <a href="/">Home</a>
+      <a href="/#categories">Categories</a>
+      <a href="/#all-tools">All Tools</a>
+    </nav>
+  </div>
+</header>
+
+<!-- ADSTERRA-HEADER: paste your Adsterra banner ad code inside the div below -->
+<div class="container"><div class="ad-slot ad-leaderboard" data-ad="header"></div></div>
+
+<main class="container">
+  <nav class="crumbs"><a href="/">Home</a> &rsaquo; <a href="/#calculators">Calculators</a> &rsaquo; Percentage Calculator</nav>
+  <div class="tool-hero">
+    <h1>Percentage Calculator</h1>
+    <p>Solve any percentage problem: find X percent of Y, find what percent X is of Y, or calculate the percentage increase or decrease between two numbers.</p>
+  </div>
+
+  <div class="tool-card">
+  <div class="field">
+    <label for="percentage-mode">Calculation type</label>
+    <select class="select" id="percentage-mode">
+      <option value="of" selected>X% of Y</option>
+      <option value="what">X is what % of Y</option>
+      <option value="change">% increase / decrease from X to Y</option>
+    </select>
+  </div>
+  <div class="grid2">
+    <div class="field">
+      <label for="percentage-x" id="percentage-x-label">X</label>
+      <input type="number" class="input" id="percentage-x" step="any" placeholder="e.g. 20">
+    </div>
+    <div class="field">
+      <label for="percentage-y" id="percentage-y-label">Y</label>
+      <input type="number" class="input" id="percentage-y" step="any" placeholder="e.g. 150">
+    </div>
+  </div>
+  <div class="error" id="percentage-calculator-error"></div>
+  <div class="result" id="percentage-result">
+    <div class="stat-cards">
+      <div class="stat-card"><div class="v" id="percentage-value">–</div><div class="l" id="percentage-value-label">Result</div></div>
+    </div>
+    <p class="muted" id="percentage-explain"></p>
+  </div>
+</div>
+
+  <!-- ADSTERRA-INCONTENT: paste your Adsterra native/in-content ad code inside the div below -->
+  <div class="ad-slot" data-ad="incontent"></div>
+
+  <div class="info-grid">
+    <div class="info-card">
+      <h2>📖 How to use</h2>
+      <ol><li>Pick a mode: percent of, what percent, or increase/decrease.</li><li>Enter the two numbers for that mode.</li><li>The result calculates instantly as you type.</li><li>Switch modes anytime; each keeps its own inputs.</li></ol>
+    </div>
+    <div class="info-card">
+      <h2>❓ Frequently asked questions</h2>
+      <div class="faq"><details><summary>How do I find the percentage of a number like 30 of 200?</summary><p>Use &#39;X is what % of Y&#39; with X = 30 and Y = 200 to get 15%.</p></details><details><summary>What is the formula for percentage increase?</summary><p>Increase is (new-old)/old x 100. Decrease is (old-new)/old x 100, shown as a negative or labeled decrease.</p></details><details><summary>Can it handle negative changes?</summary><p>Yes. The &#39;Increase / Decrease&#39; mode handles negative results, e.g. going from 50 to 30 is a 40% decrease.</p></details></div>
+    </div>
+  </div>
+
+  <section class="section">
+    <h2>🔗 Related tools</h2>
+    <div class="tool-grid"><a class="tool-link" href="/tools/age-calculator/" data-search="age calculator enter your date of birth to get your exact age in years, months and days, plus total weeks, days, hours, the weekday you were born, and days until your next birthday. age calculator calculate age date of birth age">Age Calculator<small>Enter your date of birth to get your exact age in years, months and da…</small></a><a class="tool-link" href="/tools/bmi-calculator/" data-search="bmi calculator calculate your body mass index from height and weight in metric or imperial units. get your bmi value, weight category and the healthy weight range for your height. bmi calculator body mass index healthy weight calculator">BMI Calculator<small>Calculate your Body Mass Index from height and weight in metric or imp…</small></a><a class="tool-link" href="/tools/currency-converter/" data-search="currency converter convert any amount between 30+ world currencies with live exchange rates. pick source and target currencies, convert instantly, and see the rate and last update date. currency converter exchange rate converter usd to pkr converter">Currency Converter<small>Convert any amount between 30+ world currencies with live exchange rat…</small></a><a class="tool-link" href="/tools/discount-calculator/" data-search="discount calculator calculate the final price after a discount, with support for a second discount and a coupon amount. see the final price, total savings and effective savings percentage. discount calculator sale price calculator savings calculator">Discount Calculator<small>Calculate the final price after a discount, with support for a second …</small></a><a class="tool-link" href="/tools/emi-calculator/" data-search="emi calculator calculate your monthly emi for any loan: enter the loan amount, annual interest rate and tenure to see the monthly payment, total interest and total amount payable. emi calculator loan emi calculator monthly installment calculator">EMI Calculator<small>Calculate your monthly EMI for any loan: enter the loan amount, annual…</small></a><a class="tool-link" href="/tools/gst-calculator/" data-search="gst calculator calculate gst with preset rates of 0, 5, 12, 18 and 28 percent or a custom rate, in inclusive or exclusive mode. see the gst amount, base price and total breakup. gst calculator gst tax calculator gst inclusive exclusive">GST Calculator<small>Calculate GST with preset rates of 0, 5, 12, 18 and 28 percent or a cu…</small></a></div>
+  </section>
+</main>
+
+<!-- ADSTERRA-FOOTER: paste your Adsterra footer/banner ad code inside the div below -->
+<div class="container"><div class="ad-slot" data-ad="footer"></div></div>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="f-grid">
+      <div>
+        <span class="brandline">🧰 ToolNest</span>
+        <p>Free online tools that actually work. No sign-up, no watermarks — and your files never leave your device for client-side tools.</p>
+      </div>
+      <div>
+        <h4>Popular</h4>
+        <a href="/tools/qr-code-generator/">QR Code Generator</a>
+        <a href="/tools/background-remover/">Background Remover</a>
+        <a href="/tools/pdf-merger/">PDF Merger</a>
+        <a href="/tools/word-counter/">Word Counter</a>
+      </div>
+      <div>
+        <h4>Categories</h4>
+        <a href="/#image">Image Tools</a>
+        <a href="/#pdf">PDF &amp; Documents</a>
+        <a href="/#calculators">Calculators</a>
+        <a href="/#developer">Developer Tools</a>
+      </div>
+      <div>
+        <h4>Site</h4>
+        <a href="/">Home</a>
+        <a href="/#all-tools">All Tools</a>
+        <a href="/sitemap.xml">Sitemap</a>
+      </div>
+    </div>
+    <div class="f-bottom">© 2026 ToolNest · Free tools for everyone · Made with care</div>
+  </div>
+</footer>
+
+<script src="/assets/site.js?v=1"></script>
+
+<script>
+(function () {
+  'use strict';
+  var ERR = 'percentage-calculator-error';
+  var LABELS = {
+    of:    { x: 'Percentage (X%)', y: 'Base value (Y)', rl: 'X% of Y' },
+    what:  { x: 'Part (X)', y: 'Whole (Y)', rl: 'X is what % of Y' },
+    change:{ x: 'Old value (X)', y: 'New value (Y)', rl: '% change from X to Y' }
+  };
+  function fmtNum(n) {
+    var r = Math.round(n * 10000) / 10000;
+    try { return r.toLocaleString('en-US'); } catch (e) { return String(r); }
+  }
+  function calc() {
+    var mEl = TN.el('percentage-mode'), xEl = TN.el('percentage-x'), yEl = TN.el('percentage-y');
+    if (!mEl || !xEl || !yEl) return;
+    TN.clearErr(ERR);
+    var mode = mEl.value;
+    var x = parseFloat(xEl.value);
+    var y = parseFloat(yEl.value);
+    var out = TN.el('percentage-value');
+    var outLabel = TN.el('percentage-value-label');
+    var explain = TN.el('percentage-explain');
+    if (isNaN(x) || isNaN(y)) {
+      if (out) out.textContent = '–';
+      if (explain) explain.textContent = '';
+      return;
+    }
+    var result, expl, label;
+    if (mode === 'of') {
+      result = x / 100 * y;
+      label = fmtNum(x) + '% of ' + fmtNum(y);
+      expl = fmtNum(x) + '% of ' + fmtNum(y) + ' = ' + fmtNum(result);
+    } else if (mode === 'what') {
+      if (y === 0) { TN.setErr(ERR, 'Y cannot be 0 for this calculation.'); return; }
+      result = x / y * 100;
+      label = fmtNum(x) + ' is what % of ' + fmtNum(y);
+      expl = fmtNum(x) + ' / ' + fmtNum(y) + ' × 100 = ' + fmtNum(result) + '%';
+    } else {
+      if (x === 0) { TN.setErr(ERR, 'X cannot be 0 for percentage change.'); return; }
+      result = (y - x) / x * 100;
+      var dir = result > 0 ? 'increase' : (result < 0 ? 'decrease' : 'no change');
+      label = '% change from ' + fmtNum(x) + ' to ' + fmtNum(y);
+      expl = '(' + fmtNum(y) + ' − ' + fmtNum(x) + ') / ' + fmtNum(x) + ' × 100 = ' +
+             fmtNum(result) + '% (' + dir + ')';
+    }
+    if (out) out.textContent = (mode === 'of' ? fmtNum(result) : fmtNum(result) + '%');
+    if (outLabel) outLabel.textContent = label;
+    if (explain) explain.textContent = expl;
+  }
+  function syncLabels() {
+    var mEl = TN.el('percentage-mode');
+    if (!mEl) return;
+    var L = LABELS[mEl.value] || LABELS.of;
+    var xl = TN.el('percentage-x-label'), yl = TN.el('percentage-y-label');
+    if (xl) xl.textContent = L.x;
+    if (yl) yl.textContent = L.y;
+  }
+  try {
+    TN.on('percentage-mode', 'change', function () { syncLabels(); calc(); });
+    TN.on('percentage-x', 'input', calc);
+    TN.on('percentage-y', 'input', calc);
+    syncLabels();
+  } catch (e) { /* never throw on load */ }
+})();
+
+</script>
+</body>
+</html>

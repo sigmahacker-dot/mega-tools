@@ -1,0 +1,26 @@
+<div class="tool-card">
+  <div class="field">
+    <label for="video-compressor-file">Choose a video file</label>
+    <input class="input" id="video-compressor-file" type="file" accept="video/*">
+  </div>
+  <div class="field">
+    <label for="video-compressor-quality">Quality</label>
+    <select class="select" id="video-compressor-quality">
+      <option value="low">Low — smallest file (~0.5 Mbps)</option>
+      <option value="medium" selected>Medium — balanced (~1.5 Mbps)</option>
+      <option value="high">High — best quality (~3 Mbps)</option>
+    </select>
+  </div>
+  <div class="btn-row">
+    <button class="btn btn-primary" id="video-compressor-compress" type="button" disabled>Compress Video</button>
+  </div>
+  <div class="error" id="video-compressor-error"></div>
+  <div class="progress hidden" id="video-compressor-progress"><div id="video-compressor-bar" style="width:0%"></div></div>
+  <p class="muted" id="video-compressor-status"></p>
+  <div id="video-compressor-compare" class="stat-cards hidden mt">
+    <div class="stat-card"><div class="v" id="video-compressor-orig">—</div><div class="l">Original</div></div>
+    <div class="stat-card"><div class="v" id="video-compressor-new">—</div><div class="l">Compressed</div></div>
+    <div class="stat-card"><div class="v" id="video-compressor-saved">—</div><div class="l">Saved</div></div>
+  </div>
+  <p class="note">Re-encodes to WebM at a lower bitrate. Your file never leaves your device.</p>
+</div>

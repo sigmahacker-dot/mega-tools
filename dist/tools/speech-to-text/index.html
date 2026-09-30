@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Speech to Text — Free Online | ToolNest</title>
+<meta name="description" content="Dictate text with your voice using your browser&#39;s speech recognition. Live interim results, final transcript, multiple languages and one-click copy.">
+<meta name="keywords" content="speech to text, voice to text, dictation online">
+<link rel="canonical" href="https://toolnest.vercel.app/tools/speech-to-text/">
+<meta property="og:title" content="Speech to Text — Free Online | ToolNest">
+<meta property="og:description" content="Dictate text with your voice using your browser&#39;s speech recognition. Live interim results, final transcript, multiple languages and one-click copy.">
+<meta property="og:type" content="website">
+<link rel="stylesheet" href="/assets/site.css?v=1">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='22' fill='%234f46e5'/><text x='50' y='68' font-size='52' text-anchor='middle' fill='white' font-family='Arial' font-weight='bold'>T</text></svg>">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebApplication","name":"Speech to Text","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0"},"url":"https://toolnest.vercel.app/tools/speech-to-text/","description":"Dictate text with your voice using your browser's speech recognition. Live interim results, final transcript, multiple languages and one-click copy."},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Which browsers support speech to text?","acceptedAnswer":{"@type":"Answer","text":"Speech recognition is supported in Chrome and Edge on desktop and Android. Safari and Firefox currently do not support it."}},{"@type":"Question","name":"How do I start dictating?","acceptedAnswer":{"@type":"Answer","text":"Click Start, allow microphone access when asked, and speak clearly. Click Stop when you are done."}},{"@type":"Question","name":"Is my voice sent anywhere?","acceptedAnswer":{"@type":"Answer","text":"Recognition happens through your browser's built-in speech service, which may send audio to the browser vendor for processing."}}]}]}</script>
+</head>
+<body>
+<header class="site-header">
+  <div class="container">
+    <a class="logo" href="/"><span class="logo-mark">🧰</span> ToolNest</a>
+    <nav class="site-nav">
+      <a href="/">Home</a>
+      <a href="/#categories">Categories</a>
+      <a href="/#all-tools">All Tools</a>
+    </nav>
+  </div>
+</header>
+
+<!-- ADSTERRA-HEADER: paste your Adsterra banner ad code inside the div below -->
+<div class="container"><div class="ad-slot ad-leaderboard" data-ad="header"></div></div>
+
+<main class="container">
+  <nav class="crumbs"><a href="/">Home</a> &rsaquo; <a href="/#text">Text &amp; Writing</a> &rsaquo; Speech to Text</nav>
+  <div class="tool-hero">
+    <h1>Speech to Text</h1>
+    <p>Dictate text with your voice using your browser&#39;s speech recognition. Live interim results, final transcript, multiple languages and one-click copy.</p>
+  </div>
+
+  <div class="tool-card">
+  <div id="speech-to-text-unsupported" class="hidden">
+    <p class="note">Speech recognition is not supported in this browser. Please use Chrome or Edge on desktop or Android.</p>
+  </div>
+  <div id="speech-to-text-ui">
+    <p class="note">Works in Chrome/Edge on desktop &amp; Android. Requires microphone permission.</p>
+    <div class="grid2">
+      <div class="field">
+        <label for="speech-to-text-lang">Language</label>
+        <select class="select" id="speech-to-text-lang">
+          <option value="en-US">English (US)</option>
+          <option value="en-GB">English (UK)</option>
+          <option value="ur-PK">Urdu (Pakistan)</option>
+          <option value="hi-IN">Hindi (India)</option>
+          <option value="ar-SA">Arabic (Saudi Arabia)</option>
+          <option value="es-ES">Spanish (Spain)</option>
+          <option value="fr-FR">French</option>
+          <option value="de-DE">German</option>
+          <option value="it-IT">Italian</option>
+          <option value="pt-BR">Portuguese (Brazil)</option>
+          <option value="tr-TR">Turkish</option>
+          <option value="ru-RU">Russian</option>
+        </select>
+      </div>
+      <div class="field">
+        <label>&nbsp;</label>
+        <div class="btn-row" style="margin-top:0">
+          <button class="btn btn-primary" id="speech-to-text-start" type="button">Start</button>
+          <button class="btn btn-danger" id="speech-to-text-stop" type="button" disabled>Stop</button>
+        </div>
+      </div>
+    </div>
+    <div class="field">
+      <label>Live transcript</label>
+      <div class="result" id="speech-to-text-interim" style="min-height:2.5em">Speak after pressing Start...</div>
+    </div>
+    <div class="field">
+      <label for="speech-to-text-final">Final transcript</label>
+      <textarea class="textarea" id="speech-to-text-final" rows="8" placeholder="Your final transcript will appear here..."></textarea>
+    </div>
+    <div class="error" id="speech-to-text-error"></div>
+    <div class="btn-row">
+      <button class="btn btn-outline" id="speech-to-text-copy" type="button">Copy</button>
+      <button class="btn btn-outline" id="speech-to-text-clear" type="button">Clear</button>
+    </div>
+  </div>
+</div>
+
+
+  <!-- ADSTERRA-INCONTENT: paste your Adsterra native/in-content ad code inside the div below -->
+  <div class="ad-slot" data-ad="incontent"></div>
+
+  <div class="info-grid">
+    <div class="info-card">
+      <h2>📖 How to use</h2>
+      <ol><li>Choose your language from the dropdown.</li><li>Click Start and allow microphone access.</li><li>Speak — interim results appear live, final text lands below.</li><li>Click Copy to copy the transcript.</li></ol>
+    </div>
+    <div class="info-card">
+      <h2>❓ Frequently asked questions</h2>
+      <div class="faq"><details><summary>Which browsers support speech to text?</summary><p>Speech recognition is supported in Chrome and Edge on desktop and Android. Safari and Firefox currently do not support it.</p></details><details><summary>How do I start dictating?</summary><p>Click Start, allow microphone access when asked, and speak clearly. Click Stop when you are done.</p></details><details><summary>Is my voice sent anywhere?</summary><p>Recognition happens through your browser&#39;s built-in speech service, which may send audio to the browser vendor for processing.</p></details></div>
+    </div>
+  </div>
+
+  <section class="section">
+    <h2>🔗 Related tools</h2>
+    <div class="tool-grid"><a class="tool-link" href="/tools/article-rewriter/" data-search="article rewriter rewrite articles with a built-in synonym engine covering 130+ common english words. whole-word replacement with capitalization preserved and a change report. article rewriter paraphrasing tool rewrite text online">Article Rewriter<small>Rewrite articles with a built-in synonym engine covering 130+ common E…</small></a><a class="tool-link" href="/tools/case-converter/" data-search="case converter convert text to uppercase, lowercase, title case, sentence case, alternating case and inverse case instantly, then copy or download the result. case converter uppercase lowercase converter title case converter">Case Converter<small>Convert text to UPPERCASE, lowercase, Title Case, Sentence case, aLtEr…</small></a><a class="tool-link" href="/tools/character-counter/" data-search="character counter count characters with and without spaces, words and lines in real time, with a live x/twitter 280-character limit gauge and sms segment indicator. character counter twitter character count count characters online">Character Counter<small>Count characters with and without spaces, words and lines in real time…</small></a><a class="tool-link" href="/tools/hashtag-generator/" data-search="hashtag generator generate around 20 hashtag ideas from any keyword — keyword variations, popular combos and generic reach tags — with click-to-copy on each tag. hashtag generator instagram hashtags hashtag ideas">Hashtag Generator<small>Generate around 20 hashtag ideas from any keyword — keyword variations…</small></a><a class="tool-link" href="/tools/lorem-ipsum-generator/" data-search="lorem ipsum generator generate classic lorem ipsum placeholder text by paragraphs, words or sentences for your designs, mockups and wireframes in one click. lorem ipsum generator placeholder text dummy text generator">Lorem Ipsum Generator<small>Generate classic lorem ipsum placeholder text by paragraphs, words or …</small></a><a class="tool-link" href="/tools/text-to-speech/" data-search="text to speech turn any text into spoken audio right in your browser. pick a voice, adjust speed and pitch, then speak, pause, resume or stop. text to speech tts online read text aloud">Text to Speech<small>Turn any text into spoken audio right in your browser. Pick a voice, a…</small></a></div>
+  </section>
+</main>
+
+<!-- ADSTERRA-FOOTER: paste your Adsterra footer/banner ad code inside the div below -->
+<div class="container"><div class="ad-slot" data-ad="footer"></div></div>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="f-grid">
+      <div>
+        <span class="brandline">🧰 ToolNest</span>
+        <p>Free online tools that actually work. No sign-up, no watermarks — and your files never leave your device for client-side tools.</p>
+      </div>
+      <div>
+        <h4>Popular</h4>
+        <a href="/tools/qr-code-generator/">QR Code Generator</a>
+        <a href="/tools/background-remover/">Background Remover</a>
+        <a href="/tools/pdf-merger/">PDF Merger</a>
+        <a href="/tools/word-counter/">Word Counter</a>
+      </div>
+      <div>
+        <h4>Categories</h4>
+        <a href="/#image">Image Tools</a>
+        <a href="/#pdf">PDF &amp; Documents</a>
+        <a href="/#calculators">Calculators</a>
+        <a href="/#developer">Developer Tools</a>
+      </div>
+      <div>
+        <h4>Site</h4>
+        <a href="/">Home</a>
+        <a href="/#all-tools">All Tools</a>
+        <a href="/sitemap.xml">Sitemap</a>
+      </div>
+    </div>
+    <div class="f-bottom">© 2026 ToolNest · Free tools for everyone · Made with care</div>
+  </div>
+</footer>
+
+<script src="/assets/site.js?v=1"></script>
+
+<script>
+/* Speech to Text — browser speech recognition */
+(function () {
+  'use strict';
+  var SR = window.SpeechRecognition || window.webkitSpeechRecognition;
+  var ui = TN.el('speech-to-text-ui');
+  var unsupported = TN.el('speech-to-text-unsupported');
+  if (!SR) {
+    if (ui) TN.hide(ui);
+    if (unsupported) TN.show(unsupported);
+    return;
+  }
+  if (unsupported) TN.hide(unsupported);
+
+  var langEl = TN.el('speech-to-text-lang');
+  var startBtn = TN.el('speech-to-text-start');
+  var stopBtn = TN.el('speech-to-text-stop');
+  var interimEl = TN.el('speech-to-text-interim');
+  var finalEl = TN.el('speech-to-text-final');
+  if (!langEl || !startBtn || !stopBtn || !finalEl) return;
+
+  var rec = null;
+  var listening = false;
+
+  function setButtons() {
+    startBtn.disabled = listening;
+    stopBtn.disabled = !listening;
+  }
+
+  function start() {
+    try {
+      TN.clearErr('speech-to-text-error');
+      rec = new SR();
+      rec.continuous = true;
+      rec.interimResults = true;
+      rec.lang = langEl.value || 'en-US';
+
+      rec.onresult = function (ev) {
+        try {
+          var interim = '', finalChunk = '';
+          for (var i = ev.resultIndex; i < ev.results.length; i++) {
+            var res = ev.results[i];
+            if (res.isFinal) finalChunk += res[0].transcript;
+            else interim += res[0].transcript;
+          }
+          if (interimEl) interimEl.textContent = interim || (listening ? 'Listening...' : 'Speak after pressing Start...');
+          if (finalChunk) {
+            var cur = finalEl.value;
+            finalEl.value = cur + (cur && !/\s$/.test(cur) ? ' ' : '') + finalChunk.trim() + ' ';
+          }
+        } catch (e) {}
+      };
+
+      rec.onerror = function (ev) {
+        var code = (ev && ev.error) || '';
+        if (code === 'not-allowed' || code === 'service-not-allowed') {
+          TN.setErr('speech-to-text-error', 'Microphone access was denied. Allow microphone permission and try again.');
+        } else if (code === 'no-speech') {
+          /* harmless — user just didn't speak */
+        } else if (code === 'audio-capture') {
+          TN.setErr('speech-to-text-error', 'No microphone found on this device.');
+        } else {
+          TN.setErr('speech-to-text-error', 'Recognition error: ' + code + '. Try again.');
+        }
+        stop();
+      };
+
+      rec.onend = function () {
+        if (listening) { stop(); }
+      };
+
+      rec.start();
+      listening = true;
+      setButtons();
+      if (interimEl) interimEl.textContent = 'Listening...';
+    } catch (e) {
+      TN.setErr('speech-to-text-error', 'Could not start recognition in this browser.');
+    }
+  }
+
+  function stop() {
+    listening = false;
+    setButtons();
+    try { if (rec) rec.stop(); } catch (e) {}
+    rec = null;
+    if (interimEl) interimEl.textContent = 'Stopped. Press Start to dictate again.';
+  }
+
+  TN.on('speech-to-text-start', 'click', start);
+  TN.on('speech-to-text-stop', 'click', stop);
+  TN.on('speech-to-text-copy', 'click', function () {
+    if (!finalEl.value.trim()) { TN.setErr('speech-to-text-error', 'Nothing to copy — dictate something first.'); return; }
+    TN.clearErr('speech-to-text-error');
+    TN.copy(finalEl.value.trim()).then(function (ok) {
+      if (!ok) TN.setErr('speech-to-text-error', 'Copy failed in this browser. Select the text and press Ctrl/Cmd+C.');
+    });
+  });
+  TN.on('speech-to-text-clear', 'click', function () {
+    finalEl.value = '';
+    if (interimEl) interimEl.textContent = listening ? 'Listening...' : 'Speak after pressing Start...';
+    TN.clearErr('speech-to-text-error');
+  });
+})();
+
+</script>
+</body>
+</html>

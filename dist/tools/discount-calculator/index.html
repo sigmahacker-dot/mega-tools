@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Discount Calculator — Free Online | ToolNest</title>
+<meta name="description" content="Calculate the final price after a discount, with support for a second discount and a coupon amount. See the final price, total savings and effective savings percentage.">
+<meta name="keywords" content="discount calculator, sale price calculator, savings calculator">
+<link rel="canonical" href="https://toolnest.vercel.app/tools/discount-calculator/">
+<meta property="og:title" content="Discount Calculator — Free Online | ToolNest">
+<meta property="og:description" content="Calculate the final price after a discount, with support for a second discount and a coupon amount. See the final price, total savings and effective savings percentage.">
+<meta property="og:type" content="website">
+<link rel="stylesheet" href="/assets/site.css?v=1">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='22' fill='%234f46e5'/><text x='50' y='68' font-size='52' text-anchor='middle' fill='white' font-family='Arial' font-weight='bold'>T</text></svg>">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebApplication","name":"Discount Calculator","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0"},"url":"https://toolnest.vercel.app/tools/discount-calculator/","description":"Calculate the final price after a discount, with support for a second discount and a coupon amount. See the final price, total savings and effective savings percentage."},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How is the final price calculated?","acceptedAnswer":{"@type":"Answer","text":"Final price = original x (1 - discount/100). A second discount applies to the already-discounted price, then any coupon amount is subtracted."}},{"@type":"Question","name":"Can I stack two discounts?","acceptedAnswer":{"@type":"Answer","text":"Yes. Apply the second discount to the price after the first, or enter it directly as a flat coupon amount."}},{"@type":"Question","name":"Is the coupon applied before or after the discount?","acceptedAnswer":{"@type":"Answer","text":"After. Discounts are applied first, then the flat coupon amount is subtracted from the discounted price (never below zero)."}}]}]}</script>
+</head>
+<body>
+<header class="site-header">
+  <div class="container">
+    <a class="logo" href="/"><span class="logo-mark">🧰</span> ToolNest</a>
+    <nav class="site-nav">
+      <a href="/">Home</a>
+      <a href="/#categories">Categories</a>
+      <a href="/#all-tools">All Tools</a>
+    </nav>
+  </div>
+</header>
+
+<!-- ADSTERRA-HEADER: paste your Adsterra banner ad code inside the div below -->
+<div class="container"><div class="ad-slot ad-leaderboard" data-ad="header"></div></div>
+
+<main class="container">
+  <nav class="crumbs"><a href="/">Home</a> &rsaquo; <a href="/#calculators">Calculators</a> &rsaquo; Discount Calculator</nav>
+  <div class="tool-hero">
+    <h1>Discount Calculator</h1>
+    <p>Calculate the final price after a discount, with support for a second discount and a coupon amount. See the final price, total savings and effective savings percentage.</p>
+  </div>
+
+  <div class="tool-card">
+  <div class="grid2">
+    <div class="field">
+      <label for="discount-price">Original price</label>
+      <input type="number" class="input" id="discount-price" min="0" step="any" placeholder="e.g. 2000">
+    </div>
+    <div class="field">
+      <label for="discount-percent">Discount (%)</label>
+      <input type="number" class="input" id="discount-percent" min="0" max="100" step="any" placeholder="e.g. 25">
+    </div>
+    <div class="field">
+      <label for="discount-second">Second discount (%) <span class="muted">(optional)</span></label>
+      <input type="number" class="input" id="discount-second" min="0" max="100" step="any" placeholder="e.g. 10">
+    </div>
+    <div class="field">
+      <label for="discount-coupon">Coupon amount <span class="muted">(optional)</span></label>
+      <input type="number" class="input" id="discount-coupon" min="0" step="any" placeholder="e.g. 100">
+    </div>
+  </div>
+  <div class="error" id="discount-calculator-error"></div>
+  <div class="result" id="discount-result">
+    <div class="stat-cards">
+      <div class="stat-card"><div class="v" id="discount-final">–</div><div class="l">Final price</div></div>
+      <div class="stat-card"><div class="v" id="discount-savings">–</div><div class="l">You save</div></div>
+      <div class="stat-card"><div class="v" id="discount-pct">–</div><div class="l">Effective savings</div></div>
+    </div>
+    <p class="muted" id="discount-breakdown"></p>
+  </div>
+</div>
+
+  <!-- ADSTERRA-INCONTENT: paste your Adsterra native/in-content ad code inside the div below -->
+  <div class="ad-slot" data-ad="incontent"></div>
+
+  <div class="info-grid">
+    <div class="info-card">
+      <h2>📖 How to use</h2>
+      <ol><li>Enter the original price.</li><li>Enter the discount percentage.</li><li>Optionally add a second discount % or a flat coupon amount.</li><li>The final price and savings appear instantly.</li></ol>
+    </div>
+    <div class="info-card">
+      <h2>❓ Frequently asked questions</h2>
+      <div class="faq"><details><summary>How is the final price calculated?</summary><p>Final price = original x (1 - discount/100). A second discount applies to the already-discounted price, then any coupon amount is subtracted.</p></details><details><summary>Can I stack two discounts?</summary><p>Yes. Apply the second discount to the price after the first, or enter it directly as a flat coupon amount.</p></details><details><summary>Is the coupon applied before or after the discount?</summary><p>After. Discounts are applied first, then the flat coupon amount is subtracted from the discounted price (never below zero).</p></details></div>
+    </div>
+  </div>
+
+  <section class="section">
+    <h2>🔗 Related tools</h2>
+    <div class="tool-grid"><a class="tool-link" href="/tools/age-calculator/" data-search="age calculator enter your date of birth to get your exact age in years, months and days, plus total weeks, days, hours, the weekday you were born, and days until your next birthday. age calculator calculate age date of birth age">Age Calculator<small>Enter your date of birth to get your exact age in years, months and da…</small></a><a class="tool-link" href="/tools/bmi-calculator/" data-search="bmi calculator calculate your body mass index from height and weight in metric or imperial units. get your bmi value, weight category and the healthy weight range for your height. bmi calculator body mass index healthy weight calculator">BMI Calculator<small>Calculate your Body Mass Index from height and weight in metric or imp…</small></a><a class="tool-link" href="/tools/currency-converter/" data-search="currency converter convert any amount between 30+ world currencies with live exchange rates. pick source and target currencies, convert instantly, and see the rate and last update date. currency converter exchange rate converter usd to pkr converter">Currency Converter<small>Convert any amount between 30+ world currencies with live exchange rat…</small></a><a class="tool-link" href="/tools/emi-calculator/" data-search="emi calculator calculate your monthly emi for any loan: enter the loan amount, annual interest rate and tenure to see the monthly payment, total interest and total amount payable. emi calculator loan emi calculator monthly installment calculator">EMI Calculator<small>Calculate your monthly EMI for any loan: enter the loan amount, annual…</small></a><a class="tool-link" href="/tools/gst-calculator/" data-search="gst calculator calculate gst with preset rates of 0, 5, 12, 18 and 28 percent or a custom rate, in inclusive or exclusive mode. see the gst amount, base price and total breakup. gst calculator gst tax calculator gst inclusive exclusive">GST Calculator<small>Calculate GST with preset rates of 0, 5, 12, 18 and 28 percent or a cu…</small></a><a class="tool-link" href="/tools/loan-calculator/" data-search="loan calculator see the full cost of a loan: enter amount, interest rate and tenure to get the monthly emi, total interest, total payable and a year-by-year amortization table. loan calculator amortization calculator loan interest calculator">Loan Calculator<small>See the full cost of a loan: enter amount, interest rate and tenure to…</small></a></div>
+  </section>
+</main>
+
+<!-- ADSTERRA-FOOTER: paste your Adsterra footer/banner ad code inside the div below -->
+<div class="container"><div class="ad-slot" data-ad="footer"></div></div>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="f-grid">
+      <div>
+        <span class="brandline">🧰 ToolNest</span>
+        <p>Free online tools that actually work. No sign-up, no watermarks — and your files never leave your device for client-side tools.</p>
+      </div>
+      <div>
+        <h4>Popular</h4>
+        <a href="/tools/qr-code-generator/">QR Code Generator</a>
+        <a href="/tools/background-remover/">Background Remover</a>
+        <a href="/tools/pdf-merger/">PDF Merger</a>
+        <a href="/tools/word-counter/">Word Counter</a>
+      </div>
+      <div>
+        <h4>Categories</h4>
+        <a href="/#image">Image Tools</a>
+        <a href="/#pdf">PDF &amp; Documents</a>
+        <a href="/#calculators">Calculators</a>
+        <a href="/#developer">Developer Tools</a>
+      </div>
+      <div>
+        <h4>Site</h4>
+        <a href="/">Home</a>
+        <a href="/#all-tools">All Tools</a>
+        <a href="/sitemap.xml">Sitemap</a>
+      </div>
+    </div>
+    <div class="f-bottom">© 2026 ToolNest · Free tools for everyone · Made with care</div>
+  </div>
+</footer>
+
+<script src="/assets/site.js?v=1"></script>
+
+<script>
+(function () {
+  'use strict';
+  var ERR = 'discount-calculator-error';
+  function money(n) {
+    try {
+      return n.toLocaleString('en-US', { maximumFractionDigits: 2, minimumFractionDigits: 2 });
+    } catch (e) { return String(Math.round(n * 100) / 100); }
+  }
+  function calc() {
+    var pEl = TN.el('discount-price'), dEl = TN.el('discount-percent'),
+        sEl = TN.el('discount-second'), cEl = TN.el('discount-coupon');
+    if (!pEl || !dEl) return;
+    TN.clearErr(ERR);
+    var price = parseFloat(pEl.value);
+    var d1 = parseFloat(dEl.value);
+    var d2 = sEl ? parseFloat(sEl.value) : NaN;
+    var coupon = cEl ? parseFloat(cEl.value) : NaN;
+    if (!(price > 0)) { TN.setErr(ERR, 'Please enter an original price greater than 0.'); return; }
+    if (isNaN(d1) || d1 < 0 || d1 > 100) { TN.setErr(ERR, 'Discount must be between 0 and 100%.'); return; }
+    if (!isNaN(d2) && (d2 < 0 || d2 > 100)) { TN.setErr(ERR, 'Second discount must be between 0 and 100%.'); return; }
+    if (!isNaN(coupon) && coupon < 0) { TN.setErr(ERR, 'Coupon amount cannot be negative.'); return; }
+
+    var steps = [];
+    var running = price;
+    steps.push('Original: ' + money(price));
+    if (d1 > 0) {
+      running = running * (1 - d1 / 100);
+      steps.push('After ' + d1 + '% off: ' + money(running));
+    }
+    if (!isNaN(d2) && d2 > 0) {
+      running = running * (1 - d2 / 100);
+      steps.push('After extra ' + d2 + '% off: ' + money(running));
+    }
+    if (!isNaN(coupon) && coupon > 0) {
+      running = running - coupon;
+      steps.push('After coupon of ' + money(coupon) + ': ' + money(running));
+    }
+    if (running < 0) running = 0;
+
+    var savings = price - running;
+    var pct = savings / price * 100;
+
+    TN.el('discount-final').textContent = money(running);
+    TN.el('discount-savings').textContent = money(savings);
+    TN.el('discount-pct').textContent = pct.toFixed(2) + '%';
+    var bd = TN.el('discount-breakdown');
+    if (bd) bd.textContent = steps.join(' → ');
+  }
+  try {
+    ['discount-price', 'discount-percent', 'discount-second', 'discount-coupon'].forEach(function (id) {
+      TN.on(id, 'input', calc);
+    });
+  } catch (e) { /* never throw on load */ }
+})();
+
+</script>
+</body>
+</html>

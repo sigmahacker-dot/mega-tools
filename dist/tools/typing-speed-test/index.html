@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Typing Speed Test — Free Online | ToolNest</title>
+<meta name="description" content="Take a 60-second typing test on a random paragraph. Live per-character feedback, then your words-per-minute score and accuracy.">
+<meta name="keywords" content="typing speed test, wpm test, typing test online, words per minute">
+<link rel="canonical" href="https://toolnest.vercel.app/tools/typing-speed-test/">
+<meta property="og:title" content="Typing Speed Test — Free Online | ToolNest">
+<meta property="og:description" content="Take a 60-second typing test on a random paragraph. Live per-character feedback, then your words-per-minute score and accuracy.">
+<meta property="og:type" content="website">
+<link rel="stylesheet" href="/assets/site.css?v=1">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='22' fill='%234f46e5'/><text x='50' y='68' font-size='52' text-anchor='middle' fill='white' font-family='Arial' font-weight='bold'>T</text></svg>">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebApplication","name":"Typing Speed Test","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0"},"url":"https://toolnest.vercel.app/tools/typing-speed-test/","description":"Take a 60-second typing test on a random paragraph. Live per-character feedback, then your words-per-minute score and accuracy."},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How is WPM calculated?","acceptedAnswer":{"@type":"Answer","text":"One “word” counts as 5 characters. Your net WPM is (correct characters ÷ 5) ÷ minutes, so errors lower your score."}},{"@type":"Question","name":"What is a good typing speed?","acceptedAnswer":{"@type":"Answer","text":"Around 40 WPM is average, 60+ is good, and 80+ is fast. Professional typists often exceed 100 WPM."}},{"@type":"Question","name":"Can I cheat by pasting the text?","acceptedAnswer":{"@type":"Answer","text":"No — pasting is blocked in the typing box, so every score is genuinely typed."}}]}]}</script>
+</head>
+<body>
+<header class="site-header">
+  <div class="container">
+    <a class="logo" href="/"><span class="logo-mark">🧰</span> ToolNest</a>
+    <nav class="site-nav">
+      <a href="/">Home</a>
+      <a href="/#categories">Categories</a>
+      <a href="/#all-tools">All Tools</a>
+    </nav>
+  </div>
+</header>
+
+<!-- ADSTERRA-HEADER: paste your Adsterra banner ad code inside the div below -->
+<div class="container"><div class="ad-slot ad-leaderboard" data-ad="header"></div></div>
+
+<main class="container">
+  <nav class="crumbs"><a href="/">Home</a> &rsaquo; <a href="/#fun">Fun &amp; Lifestyle</a> &rsaquo; Typing Speed Test</nav>
+  <div class="tool-hero">
+    <h1>Typing Speed Test</h1>
+    <p>Take a 60-second typing test on a random paragraph. Live per-character feedback, then your words-per-minute score and accuracy.</p>
+  </div>
+
+  <div class="tool-card">
+  <p class="note">Type the paragraph below as fast and accurately as you can. The 60-second timer starts on your first keystroke. Pasting is disabled — every score is genuinely typed.</p>
+  <div class="btn-row">
+    <button type="button" class="btn btn-primary" id="typing-speed-test-new">New Test</button>
+    <button type="button" class="btn btn-outline" id="typing-speed-test-restart">Restart</button>
+  </div>
+  <div class="error" id="typing-speed-test-error"></div>
+  <div class="stat-cards">
+    <div class="stat-card"><div class="v" id="typing-speed-test-time">60</div><div class="l">Seconds left</div></div>
+    <div class="stat-card"><div class="v" id="typing-speed-test-wpm">0</div><div class="l">WPM (live)</div></div>
+    <div class="stat-card"><div class="v" id="typing-speed-test-acc">100%</div><div class="l">Accuracy</div></div>
+  </div>
+  <div class="progress"><div id="typing-speed-test-bar" style="width:100%"></div></div>
+  <div id="typing-speed-test-text" class="type-text mt"></div>
+  <div class="field mt">
+    <label for="typing-speed-test-input">Type here</label>
+    <textarea id="typing-speed-test-input" class="textarea" rows="4" placeholder="Click here and start typing…" autocomplete="off" autocapitalize="off" autocorrect="off" spellcheck="false"></textarea>
+  </div>
+  <div class="result hidden" id="typing-speed-test-result"></div>
+  <style>
+    .type-text{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:1.02rem;line-height:1.9;background:#f8fafc;border:1.5px solid #e2e8f0;border-radius:10px;padding:14px 16px;user-select:none}
+    .type-text span{border-radius:3px;padding:1px 0}
+    .type-text span.ok{background:#dcfce7;color:#15803d}
+    .type-text span.bad{background:#fee2e2;color:#b91c1c}
+    .type-text span.cur{border-bottom:3px solid #4f46e5}
+  </style>
+</div>
+
+  <!-- ADSTERRA-INCONTENT: paste your Adsterra native/in-content ad code inside the div below -->
+  <div class="ad-slot" data-ad="incontent"></div>
+
+  <div class="info-grid">
+    <div class="info-card">
+      <h2>📖 How to use</h2>
+      <ol><li>Click “New Test” to get a random paragraph, or just start typing.</li><li>The 60-second timer starts automatically on your first keystroke.</li><li>Type into the box — correct letters turn green, mistakes turn red as you go.</li><li>When time runs out (or you finish the paragraph), you&#39;ll see your WPM score and accuracy.</li></ol>
+    </div>
+    <div class="info-card">
+      <h2>❓ Frequently asked questions</h2>
+      <div class="faq"><details><summary>How is WPM calculated?</summary><p>One “word” counts as 5 characters. Your net WPM is (correct characters ÷ 5) ÷ minutes, so errors lower your score.</p></details><details><summary>What is a good typing speed?</summary><p>Around 40 WPM is average, 60+ is good, and 80+ is fast. Professional typists often exceed 100 WPM.</p></details><details><summary>Can I cheat by pasting the text?</summary><p>No — pasting is blocked in the typing box, so every score is genuinely typed.</p></details></div>
+    </div>
+  </div>
+
+  <section class="section">
+    <h2>🔗 Related tools</h2>
+    <div class="tool-grid"><a class="tool-link" href="/tools/baby-name-generator/" data-search="baby name generator discover baby names by gender and origin — pakistani, arabic, western, indian or turkish — with meanings, random picks and tap-to-copy. baby name generator baby names with meanings muslim baby names boy girl names">Baby Name Generator<small>Discover baby names by gender and origin — Pakistani, Arabic, Western,…</small></a><a class="tool-link" href="/tools/battery-status-checker/" data-search="battery status checker check your device&#39;s battery level, charging status and estimated time remaining, with live updates — where your browser supports the battery api. battery status battery level checker laptop battery charging status">Battery Status Checker<small>Check your device&#39;s battery level, charging status and estimated time …</small></a><a class="tool-link" href="/tools/birthday-countdown/" data-search="birthday countdown enter your birthday for a live countdown to your next one — days, hours, minutes and seconds — plus the age you&#39;ll turn and a fun message. birthday countdown countdown to birthday how old am i birthday timer">Birthday Countdown<small>Enter your birthday for a live countdown to your next one — days, hour…</small></a><a class="tool-link" href="/tools/calendar-generator/" data-search="calendar generator generate a monthly calendar for any month and year, with correct weekdays, leap years, today&#39;s date highlighted, and previous/next month navigation. calendar generator monthly calendar printable calendar month planner">Calendar Generator<small>Generate a monthly calendar for any month and year, with correct weekd…</small></a><a class="tool-link" href="/tools/coin-flip/" data-search="coin flip flip a virtual coin with a fun animated toss. get instant heads or tails results, keep a running tally of both sides, and reset the count whenever you like. coin flip heads or tails coin toss random coin">Coin Flip<small>Flip a virtual coin with a fun animated toss. Get instant Heads or Tai…</small></a><a class="tool-link" href="/tools/dice-roller/" data-search="dice roller roll up to six dice with 4, 6, 8, 10, 12 or 20 sides. watch the animated faces settle, see the total instantly, and review a history of your recent rolls. dice roller d20 roller rpg dice roll dice online">Dice Roller<small>Roll up to six dice with 4, 6, 8, 10, 12 or 20 sides. Watch the animat…</small></a></div>
+  </section>
+</main>
+
+<!-- ADSTERRA-FOOTER: paste your Adsterra footer/banner ad code inside the div below -->
+<div class="container"><div class="ad-slot" data-ad="footer"></div></div>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="f-grid">
+      <div>
+        <span class="brandline">🧰 ToolNest</span>
+        <p>Free online tools that actually work. No sign-up, no watermarks — and your files never leave your device for client-side tools.</p>
+      </div>
+      <div>
+        <h4>Popular</h4>
+        <a href="/tools/qr-code-generator/">QR Code Generator</a>
+        <a href="/tools/background-remover/">Background Remover</a>
+        <a href="/tools/pdf-merger/">PDF Merger</a>
+        <a href="/tools/word-counter/">Word Counter</a>
+      </div>
+      <div>
+        <h4>Categories</h4>
+        <a href="/#image">Image Tools</a>
+        <a href="/#pdf">PDF &amp; Documents</a>
+        <a href="/#calculators">Calculators</a>
+        <a href="/#developer">Developer Tools</a>
+      </div>
+      <div>
+        <h4>Site</h4>
+        <a href="/">Home</a>
+        <a href="/#all-tools">All Tools</a>
+        <a href="/sitemap.xml">Sitemap</a>
+      </div>
+    </div>
+    <div class="f-bottom">© 2026 ToolNest · Free tools for everyone · Made with care</div>
+  </div>
+</footer>
+
+<script src="/assets/site.js?v=1"></script>
+
+<script>
+(function () {
+  'use strict';
+  var P = 'typing-speed-test-';
+  function g(id) { return document.getElementById(P + id); }
+
+  var textBox = g('text'), input = g('input');
+  if (!textBox || !input) return;
+
+  var DURATION = 60;
+
+  var PARAS = [
+    'The old lighthouse stood on the cliff for over a hundred years, guiding ships safely through the darkest storms. Its keeper climbed the winding stairs each evening, polishing the great lamp until it shone like a second moon.',
+    'Learning to play the piano takes patience more than talent. At first your fingers stumble over the keys, but slowly the scales become smooth and the melodies begin to flow like water over stones.',
+    'A river of stars stretched across the night sky as the campers sat quietly around the fire. Somewhere in the distance an owl called, and the flames crackled, sending sparks dancing upward into the dark.',
+    'The market was alive with color and noise on Saturday morning. Vendors called out their prices, children weaved between the stalls, and the smell of fresh bread drifted from the corner bakery.',
+    'Scientists believe that regular exercise and good sleep are the two most powerful habits for a healthy mind. Even a short daily walk can sharpen focus, lift your mood, and spark brand new ideas.',
+    'Deep in the jungle, a hidden waterfall tumbled into a crystal pool where colorful birds gathered at dawn. The explorer held her breath, sketching quickly, afraid the magic of the moment might vanish.'
+  ];
+
+  var para = '', started = false, finished = false, timer = null, startTs = 0, timeLeft = DURATION;
+
+  function set(id, val) { var el = g(id); if (el) el.textContent = val; }
+
+  function pickPara() {
+    var next = para;
+    while (PARAS.length > 1 && next === para) {
+      next = PARAS[Math.floor(Math.random() * PARAS.length)];
+    }
+    return next;
+  }
+
+  function renderText() {
+    var html = '';
+    for (var i = 0; i < para.length; i++) {
+      html += '<span data-i="' + i + '">' + TN.esc(para[i]) + '</span>';
+    }
+    textBox.innerHTML = html;
+  }
+
+  function spans() { return textBox.querySelectorAll('span'); }
+
+  function stats() {
+    var typed = input.value, correct = 0;
+    var n = Math.min(typed.length, para.length);
+    for (var i = 0; i < n; i++) if (typed[i] === para[i]) correct++;
+    return { typed: typed.length, correct: correct };
+  }
+
+  function liveStats() {
+    var s = stats();
+    var elapsedMin = (Date.now() - startTs) / 60000;
+    var wpm = elapsedMin > 0.01 ? Math.round((s.correct / 5) / elapsedMin) : 0;
+    var acc = s.typed > 0 ? Math.round((s.correct / s.typed) * 100) : 100;
+    set('wpm', wpm);
+    set('acc', acc + '%');
+  }
+
+  function paint() {
+    var typed = input.value, list = spans();
+    for (var i = 0; i < list.length; i++) {
+      var sp = list[i];
+      sp.className = '';
+      if (i < typed.length) {
+        sp.className = typed[i] === para[i] ? 'ok' : 'bad';
+      } else if (i === typed.length) {
+        sp.className = 'cur';
+      }
+    }
+  }
+
+  function tick() {
+    timeLeft--;
+    set('time', timeLeft);
+    var bar = g('bar'); if (bar) bar.style.width = Math.max(0, (timeLeft / DURATION) * 100) + '%';
+    if (timeLeft <= 0) finish();
+  }
+
+  function verdict(wpm, acc) {
+    if (wpm >= 80) return 'Blazing fast — professional-level typing!';
+    if (wpm >= 60) return 'Great speed — well above average.';
+    if (wpm >= 40) return 'Solid, average-to-good typing. Keep practicing!';
+    if (wpm >= 20) return 'A decent start — regular practice will raise this quickly.';
+    return 'Everyone starts somewhere — try again and watch it climb.';
+  }
+
+  function finish() {
+    if (finished) return;
+    finished = true;
+    if (timer) { clearInterval(timer); timer = null; }
+    input.disabled = true;
+    var s = stats();
+    var elapsedSec = Math.max(1, (Date.now() - startTs) / 1000);
+    var minutes = elapsedSec / 60;
+    var wpm = Math.round((s.correct / 5) / minutes);
+    var acc = s.typed > 0 ? Math.round((s.correct / s.typed) * 100) : 0;
+    set('wpm', wpm);
+    set('acc', acc + '%');
+    var res = g('result');
+    if (res) {
+      res.innerHTML = '<p><strong>Your score: ' + wpm + ' WPM</strong> with ' + acc + '% accuracy.</p>' +
+        '<p class="muted">' + TN.esc(verdict(wpm, acc)) + ' (' + s.correct + ' correct of ' + s.typed + ' characters in ' + Math.round(elapsedSec) + 's)</p>';
+      TN.show(P + 'result');
+    }
+  }
+
+  function reset(newPara) {
+    if (timer) { clearInterval(timer); timer = null; }
+    if (newPara) para = pickPara();
+    started = false; finished = false; timeLeft = DURATION; startTs = 0;
+    input.value = '';
+    input.disabled = false;
+    renderText();
+    paint();
+    set('time', DURATION);
+    set('wpm', 0);
+    set('acc', '100%');
+    var bar = g('bar'); if (bar) bar.style.width = '100%';
+    TN.hide(P + 'result');
+    TN.clearErr(P + 'error');
+  }
+
+  TN.on(input, 'input', function () {
+    if (finished) return;
+    if (!started) {
+      started = true;
+      startTs = Date.now();
+      timer = setInterval(tick, 1000);
+    }
+    paint();
+    liveStats();
+    if (input.value.length >= para.length) finish();
+  });
+
+  TN.on(input, 'paste', function (e) {
+    if (e && e.preventDefault) e.preventDefault();
+    TN.setErr(P + 'error', 'Pasting is disabled — type it yourself, that\u2019s the whole point!');
+  });
+
+  TN.on(P + 'new', 'click', function () { reset(true); input.focus(); });
+  TN.on(P + 'restart', 'click', function () { reset(false); input.focus(); });
+
+  reset(true);
+})();
+
+</script>
+</body>
+</html>

@@ -1,0 +1,56 @@
+<div class="tool-card">
+  <div class="error" id="sitemap-generator-error"></div>
+  <div class="field">
+    <label for="sitemap-generator-urls">Page URLs (one per line)</label>
+    <textarea class="textarea" id="sitemap-generator-urls" rows="8" placeholder="https://example.com/&#10;https://example.com/about&#10;https://example.com/contact"></textarea>
+  </div>
+  <div class="grid2">
+    <div class="field">
+      <label for="sitemap-generator-changefreq">Change frequency</label>
+      <select class="select" id="sitemap-generator-changefreq">
+        <option value="always">always</option>
+        <option value="hourly">hourly</option>
+        <option value="daily">daily</option>
+        <option value="weekly" selected>weekly</option>
+        <option value="monthly">monthly</option>
+        <option value="yearly">yearly</option>
+        <option value="never">never</option>
+      </select>
+    </div>
+    <div class="field">
+      <label for="sitemap-generator-priority">Priority</label>
+      <select class="select" id="sitemap-generator-priority">
+        <option value="1.0">1.0</option>
+        <option value="0.9">0.9</option>
+        <option value="0.8">0.8</option>
+        <option value="0.7">0.7</option>
+        <option value="0.6">0.6</option>
+        <option value="0.5" selected>0.5</option>
+        <option value="0.4">0.4</option>
+        <option value="0.3">0.3</option>
+        <option value="0.2">0.2</option>
+        <option value="0.1">0.1</option>
+        <option value="0.0">0.0</option>
+      </select>
+    </div>
+  </div>
+  <div class="checkbox-row">
+    <input type="checkbox" id="sitemap-generator-trailing-slash">
+    <label for="sitemap-generator-trailing-slash">Add trailing slash to URLs</label>
+  </div>
+  <div class="btn-row">
+    <button class="btn btn-primary" id="sitemap-generator-generate" type="button">Generate Sitemap</button>
+    <button class="btn btn-outline" id="sitemap-generator-copy" type="button">Copy XML</button>
+    <button class="btn btn-outline" id="sitemap-generator-download" type="button">Download sitemap.xml</button>
+  </div>
+  <div class="success hidden" id="sitemap-generator-success"></div>
+  <div class="stat-cards hidden" id="sitemap-generator-stats">
+    <div class="stat-card"><div class="v" id="sitemap-generator-count">0</div><div class="l">Valid URLs</div></div>
+    <div class="stat-card"><div class="v" id="sitemap-generator-invalid-count">0</div><div class="l">Invalid lines</div></div>
+  </div>
+  <div class="error" id="sitemap-generator-invalid-list"></div>
+  <div class="result hidden" id="sitemap-generator-output">
+    <pre id="sitemap-generator-code"></pre>
+  </div>
+  <p class="note">Only http:// and https:// URLs are accepted. Upload the file to your site root and submit it in Google Search Console.</p>
+</div>

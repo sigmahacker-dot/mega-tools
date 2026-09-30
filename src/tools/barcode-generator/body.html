@@ -1,0 +1,31 @@
+<div class="tool-card">
+  <div class="field">
+    <label for="barcode-generator-text">Value to encode</label>
+    <input class="input" id="barcode-generator-text" type="text" placeholder="e.g. 123456789012">
+  </div>
+  <div class="grid2">
+    <div class="field">
+      <label for="barcode-generator-format">Format</label>
+      <select class="select" id="barcode-generator-format">
+        <option value="CODE128" selected>CODE128</option>
+        <option value="CODE39">CODE39</option>
+        <option value="EAN13">EAN-13</option>
+        <option value="EAN8">EAN-8</option>
+        <option value="UPC">UPC-A</option>
+        <option value="ITF14">ITF-14</option>
+      </select>
+    </div>
+    <div class="field">
+      <label for="barcode-generator-height">Height (px)</label>
+      <input class="input" id="barcode-generator-height" type="number" value="100" min="30" max="300">
+    </div>
+  </div>
+  <div class="btn-row">
+    <button class="btn btn-primary" id="barcode-generator-generate">Generate Barcode</button>
+    <button class="btn btn-outline hidden" id="barcode-generator-png">Download PNG</button>
+    <button class="btn btn-outline hidden" id="barcode-generator-svg">Download SVG</button>
+  </div>
+  <div class="error" id="barcode-generator-error"></div>
+  <div class="center mt" id="barcode-generator-preview-wrap"></div>
+  <p class="note">Retail formats are strict: EAN-13 needs 12–13 digits, EAN-8 needs 7–8, UPC needs 11–12, ITF-14 needs 13–14. CODE128 accepts letters and symbols too.</p>
+</div>

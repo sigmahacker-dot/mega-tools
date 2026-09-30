@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Robots.txt Generator — Free Online | ToolNest</title>
+<meta name="description" content="Build a valid robots.txt with allow and disallow rules, crawl-delay and a sitemap directive. Live preview, then copy or download the file.">
+<meta name="keywords" content="robots.txt generator, robots txt, seo robots, crawl rules, robots file generator">
+<link rel="canonical" href="https://toolnest.vercel.app/tools/robots-txt-generator/">
+<meta property="og:title" content="Robots.txt Generator — Free Online | ToolNest">
+<meta property="og:description" content="Build a valid robots.txt with allow and disallow rules, crawl-delay and a sitemap directive. Live preview, then copy or download the file.">
+<meta property="og:type" content="website">
+<link rel="stylesheet" href="/assets/site.css?v=1">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='22' fill='%234f46e5'/><text x='50' y='68' font-size='52' text-anchor='middle' fill='white' font-family='Arial' font-weight='bold'>T</text></svg>">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebApplication","name":"Robots.txt Generator","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0"},"url":"https://toolnest.vercel.app/tools/robots-txt-generator/","description":"Build a valid robots.txt with allow and disallow rules, crawl-delay and a sitemap directive. Live preview, then copy or download the file."},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What does robots.txt do?","acceptedAnswer":{"@type":"Answer","text":"It tells search engine crawlers which parts of your site they may or may not crawl. Place it at your domain root."}},{"@type":"Question","name":"Does robots.txt block all bots?","acceptedAnswer":{"@type":"Answer","text":"No — it is a request, not enforcement. Well-behaved crawlers obey it; malicious bots ignore it."}},{"@type":"Question","name":"What is crawl-delay?","acceptedAnswer":{"@type":"Answer","text":"The number of seconds a crawler should wait between requests. Not all search engines honor it."}}]}]}</script>
+</head>
+<body>
+<header class="site-header">
+  <div class="container">
+    <a class="logo" href="/"><span class="logo-mark">🧰</span> ToolNest</a>
+    <nav class="site-nav">
+      <a href="/">Home</a>
+      <a href="/#categories">Categories</a>
+      <a href="/#all-tools">All Tools</a>
+    </nav>
+  </div>
+</header>
+
+<!-- ADSTERRA-HEADER: paste your Adsterra banner ad code inside the div below -->
+<div class="container"><div class="ad-slot ad-leaderboard" data-ad="header"></div></div>
+
+<main class="container">
+  <nav class="crumbs"><a href="/">Home</a> &rsaquo; <a href="/#seo">SEO &amp; Web</a> &rsaquo; Robots.txt Generator</nav>
+  <div class="tool-hero">
+    <h1>Robots.txt Generator</h1>
+    <p>Build a valid robots.txt with allow and disallow rules, crawl-delay and a sitemap directive. Live preview, then copy or download the file.</p>
+  </div>
+
+  <div class="tool-card">
+  <div class="error" id="robots-txt-generator-error"></div>
+  <div class="field">
+    <label>Default rule for all pages</label>
+    <div class="checkbox-row">
+      <input type="radio" name="robots-txt-generator-default" id="robots-txt-generator-allow" value="allow" checked>
+      <label for="robots-txt-generator-allow">Allow everything</label>
+    </div>
+    <div class="checkbox-row">
+      <input type="radio" name="robots-txt-generator-default" id="robots-txt-generator-disallow" value="disallow">
+      <label for="robots-txt-generator-disallow">Disallow everything</label>
+    </div>
+  </div>
+  <div class="grid2">
+    <div class="field">
+      <label for="robots-txt-generator-useragent">User-agent</label>
+      <select class="select" id="robots-txt-generator-useragent">
+        <option value="*">*</option>
+        <option value="Googlebot">Googlebot</option>
+        <option value="Bingbot">Bingbot</option>
+      </select>
+    </div>
+    <div class="field">
+      <label for="robots-txt-generator-crawl-delay">Crawl-delay (seconds, optional)</label>
+      <input class="input" id="robots-txt-generator-crawl-delay" type="number" min="0" placeholder="e.g. 10">
+    </div>
+  </div>
+  <div class="grid2">
+    <div class="field">
+      <label for="robots-txt-generator-disallow-paths">Disallow paths (one per line)</label>
+      <textarea class="textarea" id="robots-txt-generator-disallow-paths" rows="4" placeholder="/admin&#10;/private"></textarea>
+    </div>
+    <div class="field">
+      <label for="robots-txt-generator-allow-paths">Allow paths (one per line)</label>
+      <textarea class="textarea" id="robots-txt-generator-allow-paths" rows="4" placeholder="/public"></textarea>
+    </div>
+  </div>
+  <div class="field">
+    <label for="robots-txt-generator-sitemap">Sitemap URL (optional)</label>
+    <input class="input" id="robots-txt-generator-sitemap" type="url" placeholder="https://example.com/sitemap.xml">
+  </div>
+  <div class="btn-row">
+    <button class="btn btn-outline" id="robots-txt-generator-copy" type="button">Copy</button>
+    <button class="btn btn-outline" id="robots-txt-generator-download" type="button">Download robots.txt</button>
+  </div>
+  <div class="success hidden" id="robots-txt-generator-success"></div>
+  <div class="result hidden" id="robots-txt-generator-output">
+    <pre id="robots-txt-generator-code"></pre>
+  </div>
+  <p class="note">The preview updates live. Upload the file to your domain root as robots.txt.</p>
+</div>
+
+
+  <!-- ADSTERRA-INCONTENT: paste your Adsterra native/in-content ad code inside the div below -->
+  <div class="ad-slot" data-ad="incontent"></div>
+
+  <div class="info-grid">
+    <div class="info-card">
+      <h2>📖 How to use</h2>
+      <ol><li>Pick the default rule: allow everything or disallow everything.</li><li>Add extra disallow and allow paths, one per line.</li><li>Optionally set a user-agent, crawl-delay and your sitemap URL.</li><li>Watch the live preview, then copy or download robots.txt.</li></ol>
+    </div>
+    <div class="info-card">
+      <h2>❓ Frequently asked questions</h2>
+      <div class="faq"><details><summary>What does robots.txt do?</summary><p>It tells search engine crawlers which parts of your site they may or may not crawl. Place it at your domain root.</p></details><details><summary>Does robots.txt block all bots?</summary><p>No — it is a request, not enforcement. Well-behaved crawlers obey it; malicious bots ignore it.</p></details><details><summary>What is crawl-delay?</summary><p>The number of seconds a crawler should wait between requests. Not all search engines honor it.</p></details></div>
+    </div>
+  </div>
+
+  <section class="section">
+    <h2>🔗 Related tools</h2>
+    <div class="tool-grid"><a class="tool-link" href="/tools/keyword-density-checker/" data-search="keyword density checker analyze any text for keyword density: total words, keyword count, density percentage and a top-10 word frequency table. paste text or fetch a page url. keyword density keyword density checker seo text analysis word frequency keyword analysis tool">Keyword Density Checker<small>Analyze any text for keyword density: total words, keyword count, dens…</small></a><a class="tool-link" href="/tools/meta-tag-generator/" data-search="meta tag generator generate a complete set of seo and social meta tags for any page. fill in your details, preview the result, and copy the ready-to-paste html block. meta tag generator meta tags seo meta tags open graph tags twitter card generator">Meta Tag Generator<small>Generate a complete set of SEO and social meta tags for any page. Fill…</small></a><a class="tool-link" href="/tools/sitemap-generator/" data-search="sitemap generator create a standards-compliant sitemap.xml in seconds. paste your page urls, set change frequency and priority, then copy or download the file. sitemap generator xml sitemap sitemap.xml generator seo sitemap create sitemap">Sitemap Generator<small>Create a standards-compliant sitemap.xml in seconds. Paste your page U…</small></a><a class="tool-link" href="/tools/ssl-checker/" data-search="ssl checker check any domain&#39;s ssl certificate in one click: validity status, issuer, valid-from and expiry dates, and days remaining. ssl checker ssl certificate check check ssl expiry tls certificate website security check">SSL Checker<small>Check any domain&#39;s SSL certificate in one click: validity status, issu…</small></a><a class="tool-link" href="/tools/whois-lookup/" data-search="whois lookup look up domain registration details: registrar, creation and expiry dates, status and name servers, plus the full raw whois record. whois lookup domain whois whois check domain registration lookup domain owner lookup">Whois Lookup<small>Look up domain registration details: registrar, creation and expiry da…</small></a></div>
+  </section>
+</main>
+
+<!-- ADSTERRA-FOOTER: paste your Adsterra footer/banner ad code inside the div below -->
+<div class="container"><div class="ad-slot" data-ad="footer"></div></div>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="f-grid">
+      <div>
+        <span class="brandline">🧰 ToolNest</span>
+        <p>Free online tools that actually work. No sign-up, no watermarks — and your files never leave your device for client-side tools.</p>
+      </div>
+      <div>
+        <h4>Popular</h4>
+        <a href="/tools/qr-code-generator/">QR Code Generator</a>
+        <a href="/tools/background-remover/">Background Remover</a>
+        <a href="/tools/pdf-merger/">PDF Merger</a>
+        <a href="/tools/word-counter/">Word Counter</a>
+      </div>
+      <div>
+        <h4>Categories</h4>
+        <a href="/#image">Image Tools</a>
+        <a href="/#pdf">PDF &amp; Documents</a>
+        <a href="/#calculators">Calculators</a>
+        <a href="/#developer">Developer Tools</a>
+      </div>
+      <div>
+        <h4>Site</h4>
+        <a href="/">Home</a>
+        <a href="/#all-tools">All Tools</a>
+        <a href="/sitemap.xml">Sitemap</a>
+      </div>
+    </div>
+    <div class="f-bottom">© 2026 ToolNest · Free tools for everyone · Made with care</div>
+  </div>
+</footer>
+
+<script src="/assets/site.js?v=1"></script>
+
+<script>
+/* Robots.txt Generator — builds a valid robots.txt with live preview */
+(function () {
+  'use strict';
+  var S = 'robots-txt-generator';
+  var lastTxt = '';
+
+  function get(id) { var el = TN.el(S + '-' + id); return el ? el.value : ''; }
+  function trimVal(id) { return get(id).trim(); }
+
+  function flash(msg) {
+    var el = TN.el(S + '-success');
+    if (!el) return;
+    el.textContent = msg;
+    el.classList.remove('hidden');
+    setTimeout(function () { el.classList.add('hidden'); }, 2500);
+  }
+
+  function normPath(p) {
+    p = p.trim();
+    if (!p) return '';
+    return p.charAt(0) === '/' ? p : '/' + p;
+  }
+
+  function eachLine(text, fn) {
+    text.split(/\r?\n/).forEach(function (line) {
+      var p = normPath(line);
+      if (p) fn(p);
+    });
+  }
+
+  function selectedDefault() {
+    var radios = TN.qsa('input[name="' + S + '-default"]');
+    for (var i = 0; i < radios.length; i++) {
+      if (radios[i].checked) return radios[i].value;
+    }
+    return 'allow';
+  }
+
+  function build() {
+    var ua = trimVal('useragent') || '*';
+    var cd = trimVal('crawl-delay');
+    var sm = trimVal('sitemap');
+    if (cd && !/^\d+$/.test(cd)) throw new Error('Crawl-delay must be a whole number of seconds.');
+    if (sm) {
+      try {
+        var u = new URL(sm);
+        if (u.protocol !== 'http:' && u.protocol !== 'https:') throw new Error('bad');
+      } catch (e) {
+        throw new Error('Sitemap URL is not a valid http(s) URL.');
+      }
+    }
+    var lines = [];
+    lines.push('User-agent: ' + ua);
+    if (selectedDefault() === 'allow') lines.push('Allow: /');
+    else lines.push('Disallow: /');
+    eachLine(trimVal('allow-paths'), function (p) { lines.push('Allow: ' + p); });
+    eachLine(trimVal('disallow-paths'), function (p) { lines.push('Disallow: ' + p); });
+    if (cd) lines.push('Crawl-delay: ' + cd);
+    if (sm) { lines.push(''); lines.push('Sitemap: ' + sm); }
+    return lines.join('\n');
+  }
+
+  function render() {
+    try {
+      TN.clearErr(S + '-error');
+      lastTxt = build();
+      var codeEl = TN.el(S + '-code');
+      if (codeEl) codeEl.textContent = lastTxt;
+      TN.show(S + '-output');
+    } catch (err) {
+      TN.setErr(S + '-error', err && err.message ? err.message : 'Invalid input.');
+    }
+  }
+
+  function copyTxt() {
+    TN.clearErr(S + '-error');
+    if (!lastTxt) { TN.setErr(S + '-error', 'Nothing to copy yet — adjust the form above.'); return; }
+    TN.copy(lastTxt).then(function (ok) {
+      if (ok) flash('robots.txt copied to clipboard.');
+      else TN.setErr(S + '-error', 'Copy was blocked by the browser. Select the text manually.');
+    });
+  }
+
+  function downloadTxt() {
+    TN.clearErr(S + '-error');
+    if (!lastTxt) { TN.setErr(S + '-error', 'Nothing to download yet — adjust the form above.'); return; }
+    TN.downloadText(lastTxt, 'robots.txt', 'text/plain;charset=utf-8');
+  }
+
+  function init() {
+    try {
+      var live = (typeof TN.debounce === 'function') ? TN.debounce(render, 350) : render;
+      ['useragent', 'crawl-delay', 'disallow-paths', 'allow-paths', 'sitemap'].forEach(function (id) {
+        TN.on(S + '-' + id, 'input', live);
+        TN.on(S + '-' + id, 'change', live);
+      });
+      TN.qsa('input[name="' + S + '-default"]').forEach(function (r) {
+        r.addEventListener('change', live);
+      });
+      TN.on(S + '-copy', 'click', copyTxt);
+      TN.on(S + '-download', 'click', downloadTxt);
+      render();
+    } catch (err) { /* never throw on load */ }
+  }
+
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init);
+  else init();
+})();
+
+</script>
+</body>
+</html>

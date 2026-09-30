@@ -1,0 +1,35 @@
+<div class="tool-card">
+  <h2>Compress PDF</h2>
+  <p class="muted">Reduce a PDF's file size by re-rendering its pages as compressed images.</p>
+  <p class="note"><strong>Please note:</strong> this re-renders pages as compressed images — great for image-heavy PDFs; text will no longer be selectable in the output.</p>
+  <div class="field">
+    <label for="pdf-compressor-file">PDF file</label>
+    <input type="file" id="pdf-compressor-file" class="input" accept=".pdf,application/pdf">
+  </div>
+  <div class="field">
+    <label for="pdf-compressor-quality">Quality</label>
+    <select id="pdf-compressor-quality" class="select">
+      <option value="low">Low — smallest file</option>
+      <option value="medium" selected>Medium — balanced</option>
+      <option value="high">High — best detail</option>
+    </select>
+  </div>
+  <div class="btn-row">
+    <button class="btn btn-primary" id="pdf-compressor-compress">Compress PDF</button>
+    <button class="btn btn-outline" id="pdf-compressor-clear">Clear</button>
+  </div>
+  <div class="progress mt hidden" id="pdf-compressor-progress"><div style="width:0%"></div></div>
+  <p class="muted" id="pdf-compressor-status"></p>
+  <div class="error" id="pdf-compressor-error"></div>
+  <div class="result hidden" id="pdf-compressor-result">
+    <div class="stat-cards">
+      <div class="stat-card"><div class="v" id="pdf-compressor-orig">–</div><div class="l">Original size</div></div>
+      <div class="stat-card"><div class="v" id="pdf-compressor-new">–</div><div class="l">Compressed size</div></div>
+      <div class="stat-card"><div class="v" id="pdf-compressor-saved">–</div><div class="l">Size saved</div></div>
+    </div>
+    <div class="btn-row mt">
+      <button class="btn btn-primary" id="pdf-compressor-download">Download compressed PDF</button>
+    </div>
+  </div>
+  <p class="note">Files never leave your device — everything is processed in your browser. If your PDF is mostly text, re-rendering may not shrink it much.</p>
+</div>

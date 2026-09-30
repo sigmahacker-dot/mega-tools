@@ -1,0 +1,55 @@
+<div class="tool-card">
+  <div class="dropzone" id="image-resizer-drop">
+    <span class="dz-icon">📐</span>
+    <strong>Drop an image here</strong> or click to browse
+    <input type="file" id="image-resizer-file" accept="image/*" class="hidden">
+  </div>
+  <p class="muted mt" id="image-resizer-orig"></p>
+  <div id="image-resizer-controls" class="hidden">
+    <div class="row">
+      <div class="field">
+        <label for="image-resizer-width">Width (px)</label>
+        <input type="number" class="input" id="image-resizer-width" min="1" max="12000">
+      </div>
+      <div class="field">
+        <label for="image-resizer-height">Height (px)</label>
+        <input type="number" class="input" id="image-resizer-height" min="1" max="12000">
+      </div>
+    </div>
+    <label class="checkbox-row"><input type="checkbox" id="image-resizer-lock" checked> Lock aspect ratio</label>
+    <div class="btn-row">
+      <button class="btn btn-sm btn-outline" data-preset="1920">1920px</button>
+      <button class="btn btn-sm btn-outline" data-preset="1280">1280px</button>
+      <button class="btn btn-sm btn-outline" data-preset="800">800px</button>
+      <button class="btn btn-sm btn-outline" data-preset="half">50%</button>
+      <button class="btn btn-sm btn-outline" data-preset="quarter">25%</button>
+    </div>
+    <div class="grid2 mt">
+      <div class="field">
+        <label for="image-resizer-format">Output format</label>
+        <select class="select" id="image-resizer-format">
+          <option value="keep">Keep original format</option>
+          <option value="image/png">PNG</option>
+          <option value="image/jpeg">JPEG</option>
+          <option value="image/webp">WebP</option>
+        </select>
+      </div>
+      <div class="field">
+        <label for="image-resizer-quality">Quality (JPEG/WebP)</label>
+        <input type="range" id="image-resizer-quality" min="10" max="100" value="90">
+      </div>
+    </div>
+    <div class="btn-row">
+      <button class="btn btn-primary" id="image-resizer-go">Resize image</button>
+    </div>
+    <div id="image-resizer-result" class="hidden">
+      <img id="image-resizer-preview" class="preview-img hidden" alt="Resized preview">
+      <p class="muted" id="image-resizer-outinfo"></p>
+      <div class="btn-row">
+        <button class="btn btn-outline" id="image-resizer-download">Download</button>
+      </div>
+    </div>
+  </div>
+  <div class="error" id="image-resizer-error"></div>
+  <p class="note">Pixel presets fit the longest side. Files never leave your device — everything is processed in your browser.</p>
+</div>

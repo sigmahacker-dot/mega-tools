@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Password Generator — Free Online | ToolNest</title>
+<meta name="description" content="Generate strong, random passwords with full control over length and character sets. Passwords are created locally in your browser — nothing is ever sent anywhere.">
+<meta name="keywords" content="password generator, random password, strong password, secure password maker">
+<link rel="canonical" href="https://toolnest.vercel.app/tools/password-generator/">
+<meta property="og:title" content="Password Generator — Free Online | ToolNest">
+<meta property="og:description" content="Generate strong, random passwords with full control over length and character sets. Passwords are created locally in your browser — nothing is ever sent anywhere.">
+<meta property="og:type" content="website">
+<link rel="stylesheet" href="/assets/site.css?v=1">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='22' fill='%234f46e5'/><text x='50' y='68' font-size='52' text-anchor='middle' fill='white' font-family='Arial' font-weight='bold'>T</text></svg>">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebApplication","name":"Password Generator","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0"},"url":"https://toolnest.vercel.app/tools/password-generator/","description":"Generate strong, random passwords with full control over length and character sets. Passwords are created locally in your browser — nothing is ever sent anywhere."},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How strong is a 16-character password?","acceptedAnswer":{"@type":"Answer","text":"With all character sets enabled it has roughly 105 bits of entropy, which is effectively unbreakable by brute force. The strength meter shows the estimate for your exact settings."}},{"@type":"Question","name":"Are my passwords sent to a server?","acceptedAnswer":{"@type":"Answer","text":"No. Generation uses your browser’s built-in cryptographic random number generator (Web Crypto API) and nothing ever leaves your device."}},{"@type":"Question","name":"Should I include symbols?","acceptedAnswer":{"@type":"Answer","text":"Symbols increase the character pool and therefore strength. Some older sites reject them, so you can turn them off if needed."}}]}]}</script>
+</head>
+<body>
+<header class="site-header">
+  <div class="container">
+    <a class="logo" href="/"><span class="logo-mark">🧰</span> ToolNest</a>
+    <nav class="site-nav">
+      <a href="/">Home</a>
+      <a href="/#categories">Categories</a>
+      <a href="/#all-tools">All Tools</a>
+    </nav>
+  </div>
+</header>
+
+<!-- ADSTERRA-HEADER: paste your Adsterra banner ad code inside the div below -->
+<div class="container"><div class="ad-slot ad-leaderboard" data-ad="header"></div></div>
+
+<main class="container">
+  <nav class="crumbs"><a href="/">Home</a> &rsaquo; <a href="/#generators">Generators</a> &rsaquo; Password Generator</nav>
+  <div class="tool-hero">
+    <h1>Password Generator</h1>
+    <p>Generate strong, random passwords with full control over length and character sets. Passwords are created locally in your browser — nothing is ever sent anywhere.</p>
+  </div>
+
+  <div class="tool-card">
+  <div class="field">
+    <label for="password-generator-length">Length: <span id="password-generator-length-val">16</span></label>
+    <input type="range" id="password-generator-length" min="8" max="64" value="16" style="width:100%">
+  </div>
+  <div class="grid2">
+    <div class="checkbox-row"><input type="checkbox" id="password-generator-upper" checked> <label for="password-generator-upper">Uppercase (A–Z)</label></div>
+    <div class="checkbox-row"><input type="checkbox" id="password-generator-lower" checked> <label for="password-generator-lower">Lowercase (a–z)</label></div>
+    <div class="checkbox-row"><input type="checkbox" id="password-generator-numbers" checked> <label for="password-generator-numbers">Numbers (0–9)</label></div>
+    <div class="checkbox-row"><input type="checkbox" id="password-generator-symbols" checked> <label for="password-generator-symbols">Symbols (!@#$…)</label></div>
+  </div>
+  <div class="checkbox-row mt"><input type="checkbox" id="password-generator-ambiguous"> <label for="password-generator-ambiguous">Exclude ambiguous characters (0, O, l, I, 1)</label></div>
+  <div class="btn-row mt">
+    <button class="btn btn-primary" id="password-generator-generate">Generate Password</button>
+    <button class="btn btn-outline" id="password-generator-copy">Copy</button>
+    <button class="btn btn-outline" id="password-generator-regen">Regenerate</button>
+    <button class="btn btn-outline" id="password-generator-bulk">Generate 10</button>
+  </div>
+  <div class="error" id="password-generator-error"></div>
+  <div class="result hidden" id="password-generator-result">
+    <div class="copy-row"><code id="password-generator-output" style="word-break:break-all"></code></div>
+  </div>
+  <div class="field mt hidden" id="password-generator-strength-wrap">
+    <label>Strength: <span id="password-generator-strength-label" class="muted"></span></label>
+    <div class="progress"><div id="password-generator-strength-bar" style="width:0%"></div></div>
+    <p class="muted" id="password-generator-entropy"></p>
+  </div>
+  <div id="password-generator-bulk-list" class="file-list hidden"></div>
+  <p class="note">Passwords are generated locally in your browser using the Web Crypto API and are never sent anywhere. For important accounts, store them in a password manager.</p>
+</div>
+
+  <!-- ADSTERRA-INCONTENT: paste your Adsterra native/in-content ad code inside the div below -->
+  <div class="ad-slot" data-ad="incontent"></div>
+
+  <div class="info-grid">
+    <div class="info-card">
+      <h2>📖 How to use</h2>
+      <ol><li>Drag the length slider to choose 8 to 64 characters.</li><li>Tick the character sets you want to include.</li><li>Click Generate Password to create one.</li><li>Use the strength meter as a guide and copy your password.</li></ol>
+    </div>
+    <div class="info-card">
+      <h2>❓ Frequently asked questions</h2>
+      <div class="faq"><details><summary>How strong is a 16-character password?</summary><p>With all character sets enabled it has roughly 105 bits of entropy, which is effectively unbreakable by brute force. The strength meter shows the estimate for your exact settings.</p></details><details><summary>Are my passwords sent to a server?</summary><p>No. Generation uses your browser’s built-in cryptographic random number generator (Web Crypto API) and nothing ever leaves your device.</p></details><details><summary>Should I include symbols?</summary><p>Symbols increase the character pool and therefore strength. Some older sites reject them, so you can turn them off if needed.</p></details></div>
+    </div>
+  </div>
+
+  <section class="section">
+    <h2>🔗 Related tools</h2>
+    <div class="tool-grid"><a class="tool-link" href="/tools/barcode-generator/" data-search="barcode generator generate barcodes in common formats — code128, code39, ean-13, ean-8, upc and itf-14 — and download them as png or svg images. barcode generator barcode maker ean13 barcode upc barcode generator">Barcode Generator<small>Generate barcodes in common formats — CODE128, CODE39, EAN-13, EAN-8, …</small></a><a class="tool-link" href="/tools/button-generator/" data-search="button generator design a custom button with your text, colors, border radius, padding and shadow — then copy the generated css and use it anywhere. button generator css button maker button css custom button design">Button Generator<small>Design a custom button with your text, colors, border radius, padding …</small></a><a class="tool-link" href="/tools/color-picker/" data-search="color picker pick any color and instantly get its hex, rgb and hsl values with click-to-copy readouts, plus auto-generated shades, tints and a random color button. color picker hex color picker rgb to hex color codes">Color Picker<small>Pick any color and instantly get its HEX, RGB and HSL values with clic…</small></a><a class="tool-link" href="/tools/gradient-generator/" data-search="gradient generator design beautiful css gradients with two color pickers and an angle slider. preview it live, then copy the ready-to-use linear-gradient css. gradient generator css gradient gradient maker linear gradient css">Gradient Generator<small>Design beautiful CSS gradients with two color pickers and an angle sli…</small></a><a class="tool-link" href="/tools/invoice-generator/" data-search="invoice generator build a professional invoice with your business and client details, line items, tax and notes. totals update live and you can print or save it as pdf. invoice generator free invoice maker invoice pdf billing invoice">Invoice Generator<small>Build a professional invoice with your business and client details, li…</small></a><a class="tool-link" href="/tools/qr-code-generator/" data-search="qr code generator create a custom qr code from any text or url. choose the size, foreground and background colors, and error correction level, then download it as a png. qr code generator qr code maker free qr code qr png download">QR Code Generator<small>Create a custom QR code from any text or URL. Choose the size, foregro…</small></a></div>
+  </section>
+</main>
+
+<!-- ADSTERRA-FOOTER: paste your Adsterra footer/banner ad code inside the div below -->
+<div class="container"><div class="ad-slot" data-ad="footer"></div></div>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="f-grid">
+      <div>
+        <span class="brandline">🧰 ToolNest</span>
+        <p>Free online tools that actually work. No sign-up, no watermarks — and your files never leave your device for client-side tools.</p>
+      </div>
+      <div>
+        <h4>Popular</h4>
+        <a href="/tools/qr-code-generator/">QR Code Generator</a>
+        <a href="/tools/background-remover/">Background Remover</a>
+        <a href="/tools/pdf-merger/">PDF Merger</a>
+        <a href="/tools/word-counter/">Word Counter</a>
+      </div>
+      <div>
+        <h4>Categories</h4>
+        <a href="/#image">Image Tools</a>
+        <a href="/#pdf">PDF &amp; Documents</a>
+        <a href="/#calculators">Calculators</a>
+        <a href="/#developer">Developer Tools</a>
+      </div>
+      <div>
+        <h4>Site</h4>
+        <a href="/">Home</a>
+        <a href="/#all-tools">All Tools</a>
+        <a href="/sitemap.xml">Sitemap</a>
+      </div>
+    </div>
+    <div class="f-bottom">© 2026 ToolNest · Free tools for everyone · Made with care</div>
+  </div>
+</footer>
+
+<script src="/assets/site.js?v=1"></script>
+
+<script>
+(function () {
+  'use strict';
+  var S = 'password-generator';
+  var AMBIGUOUS = '0OlI1';
+  function on(id, evt, fn) { try { TN.on(id, evt, fn); } catch (e) {} }
+  function charset() {
+    var c = '';
+    if (TN.el(S + '-upper').checked) c += 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+    if (TN.el(S + '-lower').checked) c += 'abcdefghijklmnopqrstuvwxyz';
+    if (TN.el(S + '-numbers').checked) c += '0123456789';
+    if (TN.el(S + '-symbols').checked) c += '!@#$%^&*()-_=+[]{};:,.<>?/~';
+    if (TN.el(S + '-ambiguous').checked) {
+      c = c.split('').filter(function (ch) { return AMBIGUOUS.indexOf(ch) < 0; }).join('');
+    }
+    return c;
+  }
+  function randInt(max) {
+    var buf = new Uint32Array(1);
+    var limit = Math.floor(0xFFFFFFFF / max) * max;
+    var x;
+    do { window.crypto.getRandomValues(buf); x = buf[0]; } while (x >= limit);
+    return x % max;
+  }
+  function makeOne(len) {
+    var cs = charset();
+    if (!cs) return null;
+    var out = '';
+    for (var i = 0; i < len; i++) out += cs.charAt(randInt(cs.length));
+    return out;
+  }
+  function currentLen() {
+    var n = parseInt(TN.el(S + '-length').value, 10);
+    return (n >= 8 && n <= 64) ? n : 16;
+  }
+  function strength(pw) {
+    var cs = charset().length;
+    if (!cs || !pw) return null;
+    var entropy = pw.length * (Math.log(cs) / Math.log(2));
+    var pct = Math.min(100, Math.round(entropy / 128 * 100));
+    var label = entropy < 40 ? 'Weak' : entropy < 60 ? 'Fair' : entropy < 80 ? 'Good' : 'Strong';
+    return { entropy: Math.round(entropy), pct: pct, label: label };
+  }
+  function show(pw) {
+    TN.clearErr(S + '-error');
+    if (pw === null) { TN.setErr(S + '-error', 'Please select at least one character set.'); return; }
+    TN.el(S + '-output').textContent = pw;
+    TN.show(S + '-result');
+    var st = strength(pw);
+    if (st) {
+      TN.show(S + '-strength-wrap');
+      TN.el(S + '-strength-bar').style.width = st.pct + '%';
+      TN.el(S + '-strength-label').textContent = st.label;
+      TN.el(S + '-entropy').textContent = '≈ ' + st.entropy + ' bits of entropy';
+    }
+  }
+  on(S + '-length', 'input', function () {
+    try { TN.el(S + '-length-val').textContent = currentLen(); } catch (e) {}
+  });
+  on(S + '-generate', 'click', function () { show(makeOne(currentLen())); });
+  on(S + '-regen', 'click', function () { show(makeOne(currentLen())); });
+  on(S + '-copy', 'click', function () {
+    try {
+      var pw = TN.el(S + '-output').textContent;
+      if (!pw) { TN.setErr(S + '-error', 'Generate a password first.'); return; }
+      TN.copy(pw).then(function () { TN.clearErr(S + '-error'); }, function () {
+        TN.setErr(S + '-error', 'Copy failed — please copy manually.');
+      });
+    } catch (e) {}
+  });
+  on(S + '-bulk', 'click', function () {
+    try {
+      var list = TN.el(S + '-bulk-list');
+      list.innerHTML = '';
+      var frag = document.createDocumentFragment();
+      for (var i = 0; i < 10; i++) {
+        var pw = makeOne(currentLen());
+        if (pw === null) { TN.setErr(S + '-error', 'Please select at least one character set.'); return; }
+        var row = document.createElement('div');
+        row.className = 'copy-row';
+        var code = document.createElement('code');
+        code.style.wordBreak = 'break-all';
+        code.textContent = pw;
+        var btn = document.createElement('button');
+        btn.className = 'btn btn-sm btn-outline';
+        btn.textContent = 'Copy';
+        (function (p) {
+          btn.addEventListener('click', function () {
+            TN.copy(p).catch(function () { TN.setErr(S + '-error', 'Copy failed — please copy manually.'); });
+          });
+        })(pw);
+        row.appendChild(code);
+        row.appendChild(btn);
+        frag.appendChild(row);
+      }
+      list.appendChild(frag);
+      TN.show(S + '-bulk-list');
+    } catch (e) {}
+  });
+  // Auto-generate one on load for instant value
+  try { show(makeOne(currentLen())); } catch (e) {}
+})();
+
+</script>
+</body>
+</html>

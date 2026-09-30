@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DNS Lookup — Free Online | ToolNest</title>
+<meta name="description" content="Look up DNS records (A, AAAA, CNAME, MX, TXT, NS) for any hostname, resolved live from our server.">
+<meta name="keywords" content="dns lookup, dns checker, mx record lookup, txt record lookup, ns lookup online">
+<link rel="canonical" href="https://toolnest.vercel.app/tools/dns-lookup/">
+<meta property="og:title" content="DNS Lookup — Free Online | ToolNest">
+<meta property="og:description" content="Look up DNS records (A, AAAA, CNAME, MX, TXT, NS) for any hostname, resolved live from our server.">
+<meta property="og:type" content="website">
+<link rel="stylesheet" href="/assets/site.css?v=1">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='22' fill='%234f46e5'/><text x='50' y='68' font-size='52' text-anchor='middle' fill='white' font-family='Arial' font-weight='bold'>T</text></svg>">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebApplication","name":"DNS Lookup","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0"},"url":"https://toolnest.vercel.app/tools/dns-lookup/","description":"Look up DNS records (A, AAAA, CNAME, MX, TXT, NS) for any hostname, resolved live from our server."},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Which record types are supported?","acceptedAnswer":{"@type":"Answer","text":"A, AAAA, CNAME, MX, TXT and NS — pick the type from the dropdown before looking up."}},{"@type":"Question","name":"What if a domain has no records of that type?","acceptedAnswer":{"@type":"Answer","text":"You will see a clear 'no records found' message for that type. The domain may simply have no records of that type."}},{"@type":"Question","name":"How does the lookup work?","acceptedAnswer":{"@type":"Answer","text":"The query goes to the site's /api/dns endpoint, which resolves the records server-side and returns them as JSON."}}]}]}</script>
+</head>
+<body>
+<header class="site-header">
+  <div class="container">
+    <a class="logo" href="/"><span class="logo-mark">🧰</span> ToolNest</a>
+    <nav class="site-nav">
+      <a href="/">Home</a>
+      <a href="/#categories">Categories</a>
+      <a href="/#all-tools">All Tools</a>
+    </nav>
+  </div>
+</header>
+
+<!-- ADSTERRA-HEADER: paste your Adsterra banner ad code inside the div below -->
+<div class="container"><div class="ad-slot ad-leaderboard" data-ad="header"></div></div>
+
+<main class="container">
+  <nav class="crumbs"><a href="/">Home</a> &rsaquo; <a href="/#developer">Developer Tools</a> &rsaquo; DNS Lookup</nav>
+  <div class="tool-hero">
+    <h1>DNS Lookup</h1>
+    <p>Look up DNS records (A, AAAA, CNAME, MX, TXT, NS) for any hostname, resolved live from our server.</p>
+  </div>
+
+  <div class="tool-card">
+  <div class="grid2">
+    <div class="field">
+      <label for="dns-lookup-host">Hostname</label>
+      <input class="input" id="dns-lookup-host" type="text" placeholder="example.com" autocomplete="off" spellcheck="false">
+    </div>
+    <div class="field">
+      <label for="dns-lookup-type">Record type</label>
+      <select class="select" id="dns-lookup-type">
+        <option value="A">A</option>
+        <option value="AAAA">AAAA</option>
+        <option value="CNAME">CNAME</option>
+        <option value="MX">MX</option>
+        <option value="TXT">TXT</option>
+        <option value="NS">NS</option>
+      </select>
+    </div>
+  </div>
+  <div class="btn-row">
+    <button class="btn btn-primary" id="dns-lookup-go" type="button">Look Up DNS</button>
+  </div>
+  <div class="error" id="dns-lookup-error"></div>
+  <div class="result hidden" id="dns-lookup-result">
+    <table class="data">
+      <thead><tr><th style="width:3em;">#</th><th>Record</th></tr></thead>
+      <tbody id="dns-lookup-rows"></tbody>
+    </table>
+  </div>
+  <p class="note">Records are resolved live from our server via the /api/dns endpoint.</p>
+</div>
+
+  <!-- ADSTERRA-INCONTENT: paste your Adsterra native/in-content ad code inside the div below -->
+  <div class="ad-slot" data-ad="incontent"></div>
+
+  <div class="info-grid">
+    <div class="info-card">
+      <h2>📖 How to use</h2>
+      <ol><li>Type a hostname such as example.com.</li><li>Choose the DNS record type.</li><li>Click Look Up DNS.</li><li>Read the records in the results table.</li></ol>
+    </div>
+    <div class="info-card">
+      <h2>❓ Frequently asked questions</h2>
+      <div class="faq"><details><summary>Which record types are supported?</summary><p>A, AAAA, CNAME, MX, TXT and NS — pick the type from the dropdown before looking up.</p></details><details><summary>What if a domain has no records of that type?</summary><p>You will see a clear &#39;no records found&#39; message for that type. The domain may simply have no records of that type.</p></details><details><summary>How does the lookup work?</summary><p>The query goes to the site&#39;s /api/dns endpoint, which resolves the records server-side and returns them as JSON.</p></details></div>
+    </div>
+  </div>
+
+  <section class="section">
+    <h2>🔗 Related tools</h2>
+    <div class="tool-grid"><a class="tool-link" href="/tools/base64-encoder-decoder/" data-search="base64 encoder / decoder encode text to base64 or decode base64 back to text, with full utf-8 support and a file-to-data-url converter. base64 encoder base64 decoder base64 encode base64 decode file to base64">Base64 Encoder / Decoder<small>Encode text to Base64 or decode Base64 back to text, with full UTF-8 s…</small></a><a class="tool-link" href="/tools/color-code-converter/" data-search="color code converter type a color in hex, rgb or hsl format and instantly see it converted to all three formats with a preview swatch. color converter hex to rgb rgb to hex hsl converter color code">Color Code Converter<small>Type a color in HEX, RGB or HSL format and instantly see it converted …</small></a><a class="tool-link" href="/tools/css-minifier/" data-search="css minifier compress css by stripping comments, collapsing whitespace and removing redundant semicolons, with before/after byte stats. css minifier minify css css compressor reduce css size">CSS Minifier<small>Compress CSS by stripping comments, collapsing whitespace and removing…</small></a><a class="tool-link" href="/tools/html-minifier/" data-search="html minifier shrink html by removing comments and collapsing whitespace, with byte stats showing how much was saved. html minifier minify html html compressor reduce html size">HTML Minifier<small>Shrink HTML by removing comments and collapsing whitespace, with byte …</small></a><a class="tool-link" href="/tools/ip-address-finder/" data-search="ip address finder find the public ip address your network shows to websites, displayed large with a one-click copy button. what is my ip ip address finder my public ip find my ip ip lookup">IP Address Finder<small>Find the public IP address your network shows to websites, displayed l…</small></a><a class="tool-link" href="/tools/js-minifier/" data-search="js minifier minify javascript using the real terser engine with compression and mangling, showing genuine errors and byte savings. js minifier javascript minifier minify javascript terser online javascript compressor">JS Minifier<small>Minify JavaScript using the real Terser engine with compression and ma…</small></a></div>
+  </section>
+</main>
+
+<!-- ADSTERRA-FOOTER: paste your Adsterra footer/banner ad code inside the div below -->
+<div class="container"><div class="ad-slot" data-ad="footer"></div></div>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="f-grid">
+      <div>
+        <span class="brandline">🧰 ToolNest</span>
+        <p>Free online tools that actually work. No sign-up, no watermarks — and your files never leave your device for client-side tools.</p>
+      </div>
+      <div>
+        <h4>Popular</h4>
+        <a href="/tools/qr-code-generator/">QR Code Generator</a>
+        <a href="/tools/background-remover/">Background Remover</a>
+        <a href="/tools/pdf-merger/">PDF Merger</a>
+        <a href="/tools/word-counter/">Word Counter</a>
+      </div>
+      <div>
+        <h4>Categories</h4>
+        <a href="/#image">Image Tools</a>
+        <a href="/#pdf">PDF &amp; Documents</a>
+        <a href="/#calculators">Calculators</a>
+        <a href="/#developer">Developer Tools</a>
+      </div>
+      <div>
+        <h4>Site</h4>
+        <a href="/">Home</a>
+        <a href="/#all-tools">All Tools</a>
+        <a href="/sitemap.xml">Sitemap</a>
+      </div>
+    </div>
+    <div class="f-bottom">© 2026 ToolNest · Free tools for everyone · Made with care</div>
+  </div>
+</footer>
+
+<script src="/assets/site.js?v=1"></script>
+
+<script>
+(function () {
+  'use strict';
+  var P = 'dns-lookup-';
+
+  function fmtRecord(r) {
+    if (r === null || r === undefined) return '';
+    if (typeof r === 'object') {
+      try { return JSON.stringify(r); } catch (e) { return String(r); }
+    }
+    return String(r);
+  }
+
+  TN.on(P + 'go', 'click', function () {
+    var host = TN.el(P + 'host').value.trim();
+    var type = TN.el(P + 'type').value;
+    if (!host) { TN.setErr(P + 'error', 'Enter a hostname, e.g. example.com.'); return; }
+    // Basic hostname sanity check.
+    if (!/^[a-zA-Z0-9]([a-zA-Z0-9.\-]*[a-zA-Z0-9])?$/.test(host)) {
+      TN.setErr(P + 'error', 'That does not look like a valid hostname.');
+      return;
+    }
+    TN.clearErr(P + 'error');
+    TN.hide(P + 'result');
+    var btn = TN.el(P + 'go');
+    var oldLabel = btn.textContent;
+    btn.textContent = 'Looking up…';
+    btn.disabled = true;
+
+    fetch('/api/dns?host=' + encodeURIComponent(host) + '&type=' + encodeURIComponent(type))
+      .then(function (r) {
+        if (!r.ok) { throw new Error('Server returned ' + r.status); }
+        return r.json();
+      })
+      .then(function (d) {
+        var records = d && d.records;
+        var tbody = TN.el(P + 'rows');
+        tbody.innerHTML = '';
+        if (!records || !records.length) {
+          var tr = document.createElement('tr');
+          var td = document.createElement('td');
+          td.colSpan = 2;
+          td.textContent = 'No ' + type + ' records found for ' + host + '.';
+          tr.appendChild(td);
+          tbody.appendChild(tr);
+        } else {
+          records.forEach(function (rec, i) {
+            var tr = document.createElement('tr');
+            var n = document.createElement('td');
+            n.textContent = String(i + 1);
+            var v = document.createElement('td');
+            v.textContent = fmtRecord(rec);
+            tr.appendChild(n);
+            tr.appendChild(v);
+            tbody.appendChild(tr);
+          });
+        }
+        TN.show(P + 'result');
+      })
+      .catch(function (e) {
+        TN.setErr(P + 'error', 'Lookup failed: ' + (e && e.message ? e.message : e));
+      })
+      .then(function () {
+        btn.textContent = oldLabel;
+        btn.disabled = false;
+      });
+  });
+})();
+
+</script>
+</body>
+</html>

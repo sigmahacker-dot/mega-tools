@@ -1,0 +1,30 @@
+<div class="tool-card">
+  <div class="field">
+    <label for="password-generator-length">Length: <span id="password-generator-length-val">16</span></label>
+    <input type="range" id="password-generator-length" min="8" max="64" value="16" style="width:100%">
+  </div>
+  <div class="grid2">
+    <div class="checkbox-row"><input type="checkbox" id="password-generator-upper" checked> <label for="password-generator-upper">Uppercase (A–Z)</label></div>
+    <div class="checkbox-row"><input type="checkbox" id="password-generator-lower" checked> <label for="password-generator-lower">Lowercase (a–z)</label></div>
+    <div class="checkbox-row"><input type="checkbox" id="password-generator-numbers" checked> <label for="password-generator-numbers">Numbers (0–9)</label></div>
+    <div class="checkbox-row"><input type="checkbox" id="password-generator-symbols" checked> <label for="password-generator-symbols">Symbols (!@#$…)</label></div>
+  </div>
+  <div class="checkbox-row mt"><input type="checkbox" id="password-generator-ambiguous"> <label for="password-generator-ambiguous">Exclude ambiguous characters (0, O, l, I, 1)</label></div>
+  <div class="btn-row mt">
+    <button class="btn btn-primary" id="password-generator-generate">Generate Password</button>
+    <button class="btn btn-outline" id="password-generator-copy">Copy</button>
+    <button class="btn btn-outline" id="password-generator-regen">Regenerate</button>
+    <button class="btn btn-outline" id="password-generator-bulk">Generate 10</button>
+  </div>
+  <div class="error" id="password-generator-error"></div>
+  <div class="result hidden" id="password-generator-result">
+    <div class="copy-row"><code id="password-generator-output" style="word-break:break-all"></code></div>
+  </div>
+  <div class="field mt hidden" id="password-generator-strength-wrap">
+    <label>Strength: <span id="password-generator-strength-label" class="muted"></span></label>
+    <div class="progress"><div id="password-generator-strength-bar" style="width:0%"></div></div>
+    <p class="muted" id="password-generator-entropy"></p>
+  </div>
+  <div id="password-generator-bulk-list" class="file-list hidden"></div>
+  <p class="note">Passwords are generated locally in your browser using the Web Crypto API and are never sent anywhere. For important accounts, store them in a password manager.</p>
+</div>

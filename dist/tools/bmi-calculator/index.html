@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BMI Calculator — Free Online | ToolNest</title>
+<meta name="description" content="Calculate your Body Mass Index from height and weight in metric or imperial units. Get your BMI value, weight category and the healthy weight range for your height.">
+<meta name="keywords" content="bmi calculator, body mass index, healthy weight calculator">
+<link rel="canonical" href="https://toolnest.vercel.app/tools/bmi-calculator/">
+<meta property="og:title" content="BMI Calculator — Free Online | ToolNest">
+<meta property="og:description" content="Calculate your Body Mass Index from height and weight in metric or imperial units. Get your BMI value, weight category and the healthy weight range for your height.">
+<meta property="og:type" content="website">
+<link rel="stylesheet" href="/assets/site.css?v=1">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='22' fill='%234f46e5'/><text x='50' y='68' font-size='52' text-anchor='middle' fill='white' font-family='Arial' font-weight='bold'>T</text></svg>">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebApplication","name":"BMI Calculator","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0"},"url":"https://toolnest.vercel.app/tools/bmi-calculator/","description":"Calculate your Body Mass Index from height and weight in metric or imperial units. Get your BMI value, weight category and the healthy weight range for your height."},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What is the BMI formula?","acceptedAnswer":{"@type":"Answer","text":"Metric: weight(kg) / height(m)^2. Imperial: 703 x weight(lb) / height(in)^2. Both give the same result."}},{"@type":"Question","name":"Is BMI an accurate measure of health?","acceptedAnswer":{"@type":"Answer","text":"BMI is a screening tool, not a diagnosis. Muscle mass, age, pregnancy and body composition are not accounted for."}},{"@type":"Question","name":"How do I switch between metric and imperial?","acceptedAnswer":{"@type":"Answer","text":"Switch the unit toggle at the top: Metric uses cm and kg, Imperial uses feet/inches and pounds."}}]}]}</script>
+</head>
+<body>
+<header class="site-header">
+  <div class="container">
+    <a class="logo" href="/"><span class="logo-mark">🧰</span> ToolNest</a>
+    <nav class="site-nav">
+      <a href="/">Home</a>
+      <a href="/#categories">Categories</a>
+      <a href="/#all-tools">All Tools</a>
+    </nav>
+  </div>
+</header>
+
+<!-- ADSTERRA-HEADER: paste your Adsterra banner ad code inside the div below -->
+<div class="container"><div class="ad-slot ad-leaderboard" data-ad="header"></div></div>
+
+<main class="container">
+  <nav class="crumbs"><a href="/">Home</a> &rsaquo; <a href="/#calculators">Calculators</a> &rsaquo; BMI Calculator</nav>
+  <div class="tool-hero">
+    <h1>BMI Calculator</h1>
+    <p>Calculate your Body Mass Index from height and weight in metric or imperial units. Get your BMI value, weight category and the healthy weight range for your height.</p>
+  </div>
+
+  <div class="tool-card">
+  <div class="btn-row" role="group" aria-label="Unit system">
+    <button type="button" class="btn btn-primary btn-sm" id="bmi-metric-btn">Metric (cm, kg)</button>
+    <button type="button" class="btn btn-outline btn-sm" id="bmi-imperial-btn">Imperial (ft/in, lb)</button>
+  </div>
+  <div id="bmi-metric-fields" class="grid2">
+    <div class="field">
+      <label for="bmi-cm">Height (cm)</label>
+      <input type="number" class="input" id="bmi-cm" min="0" step="any" placeholder="e.g. 170">
+    </div>
+    <div class="field">
+      <label for="bmi-kg">Weight (kg)</label>
+      <input type="number" class="input" id="bmi-kg" min="0" step="any" placeholder="e.g. 68">
+    </div>
+  </div>
+  <div id="bmi-imperial-fields" class="grid2 hidden">
+    <div class="field">
+      <label for="bmi-ft">Height (ft)</label>
+      <input type="number" class="input" id="bmi-ft" min="0" step="any" placeholder="e.g. 5">
+    </div>
+    <div class="field">
+      <label for="bmi-in">Height (in)</label>
+      <input type="number" class="input" id="bmi-in" min="0" step="any" placeholder="e.g. 7">
+    </div>
+    <div class="field">
+      <label for="bmi-lb">Weight (lb)</label>
+      <input type="number" class="input" id="bmi-lb" min="0" step="any" placeholder="e.g. 150">
+    </div>
+  </div>
+  <div class="error" id="bmi-calculator-error"></div>
+  <div class="result" id="bmi-result">
+    <div class="stat-cards">
+      <div class="stat-card"><div class="v" id="bmi-value">–</div><div class="l">Your BMI</div></div>
+      <div class="stat-card"><div class="v" id="bmi-range">–</div><div class="l">Healthy weight range</div></div>
+    </div>
+    <p class="center"><span class="tag" id="bmi-category">–</span></p>
+    <p class="note">BMI is a screening tool, not a medical diagnosis. It does not account for muscle mass, age or body composition.</p>
+  </div>
+</div>
+
+  <!-- ADSTERRA-INCONTENT: paste your Adsterra native/in-content ad code inside the div below -->
+  <div class="ad-slot" data-ad="incontent"></div>
+
+  <div class="info-grid">
+    <div class="info-card">
+      <h2>📖 How to use</h2>
+      <ol><li>Choose Metric or Imperial units.</li><li>Enter your height and weight.</li><li>Your BMI, category and healthy weight range appear instantly.</li><li>Toggle between metric and imperial anytime; the category thresholds stay the same.</li></ol>
+    </div>
+    <div class="info-card">
+      <h2>❓ Frequently asked questions</h2>
+      <div class="faq"><details><summary>What is the BMI formula?</summary><p>Metric: weight(kg) / height(m)^2. Imperial: 703 x weight(lb) / height(in)^2. Both give the same result.</p></details><details><summary>Is BMI an accurate measure of health?</summary><p>BMI is a screening tool, not a diagnosis. Muscle mass, age, pregnancy and body composition are not accounted for.</p></details><details><summary>How do I switch between metric and imperial?</summary><p>Switch the unit toggle at the top: Metric uses cm and kg, Imperial uses feet/inches and pounds.</p></details></div>
+    </div>
+  </div>
+
+  <section class="section">
+    <h2>🔗 Related tools</h2>
+    <div class="tool-grid"><a class="tool-link" href="/tools/age-calculator/" data-search="age calculator enter your date of birth to get your exact age in years, months and days, plus total weeks, days, hours, the weekday you were born, and days until your next birthday. age calculator calculate age date of birth age">Age Calculator<small>Enter your date of birth to get your exact age in years, months and da…</small></a><a class="tool-link" href="/tools/currency-converter/" data-search="currency converter convert any amount between 30+ world currencies with live exchange rates. pick source and target currencies, convert instantly, and see the rate and last update date. currency converter exchange rate converter usd to pkr converter">Currency Converter<small>Convert any amount between 30+ world currencies with live exchange rat…</small></a><a class="tool-link" href="/tools/discount-calculator/" data-search="discount calculator calculate the final price after a discount, with support for a second discount and a coupon amount. see the final price, total savings and effective savings percentage. discount calculator sale price calculator savings calculator">Discount Calculator<small>Calculate the final price after a discount, with support for a second …</small></a><a class="tool-link" href="/tools/emi-calculator/" data-search="emi calculator calculate your monthly emi for any loan: enter the loan amount, annual interest rate and tenure to see the monthly payment, total interest and total amount payable. emi calculator loan emi calculator monthly installment calculator">EMI Calculator<small>Calculate your monthly EMI for any loan: enter the loan amount, annual…</small></a><a class="tool-link" href="/tools/gst-calculator/" data-search="gst calculator calculate gst with preset rates of 0, 5, 12, 18 and 28 percent or a custom rate, in inclusive or exclusive mode. see the gst amount, base price and total breakup. gst calculator gst tax calculator gst inclusive exclusive">GST Calculator<small>Calculate GST with preset rates of 0, 5, 12, 18 and 28 percent or a cu…</small></a><a class="tool-link" href="/tools/loan-calculator/" data-search="loan calculator see the full cost of a loan: enter amount, interest rate and tenure to get the monthly emi, total interest, total payable and a year-by-year amortization table. loan calculator amortization calculator loan interest calculator">Loan Calculator<small>See the full cost of a loan: enter amount, interest rate and tenure to…</small></a></div>
+  </section>
+</main>
+
+<!-- ADSTERRA-FOOTER: paste your Adsterra footer/banner ad code inside the div below -->
+<div class="container"><div class="ad-slot" data-ad="footer"></div></div>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="f-grid">
+      <div>
+        <span class="brandline">🧰 ToolNest</span>
+        <p>Free online tools that actually work. No sign-up, no watermarks — and your files never leave your device for client-side tools.</p>
+      </div>
+      <div>
+        <h4>Popular</h4>
+        <a href="/tools/qr-code-generator/">QR Code Generator</a>
+        <a href="/tools/background-remover/">Background Remover</a>
+        <a href="/tools/pdf-merger/">PDF Merger</a>
+        <a href="/tools/word-counter/">Word Counter</a>
+      </div>
+      <div>
+        <h4>Categories</h4>
+        <a href="/#image">Image Tools</a>
+        <a href="/#pdf">PDF &amp; Documents</a>
+        <a href="/#calculators">Calculators</a>
+        <a href="/#developer">Developer Tools</a>
+      </div>
+      <div>
+        <h4>Site</h4>
+        <a href="/">Home</a>
+        <a href="/#all-tools">All Tools</a>
+        <a href="/sitemap.xml">Sitemap</a>
+      </div>
+    </div>
+    <div class="f-bottom">© 2026 ToolNest · Free tools for everyone · Made with care</div>
+  </div>
+</footer>
+
+<script src="/assets/site.js?v=1"></script>
+
+<script>
+(function () {
+  'use strict';
+  var ERR = 'bmi-calculator-error';
+  var mode = 'metric';
+  function calc() {
+    var cmEl = TN.el('bmi-cm'), kgEl = TN.el('bmi-kg'),
+        ftEl = TN.el('bmi-ft'), inEl = TN.el('bmi-in'), lbEl = TN.el('bmi-lb');
+    if (!cmEl || !kgEl) return;
+    TN.clearErr(ERR);
+    var heightM, weightKg, heightIn;
+    if (mode === 'metric') {
+      var cm = parseFloat(cmEl.value);
+      var kg = parseFloat(kgEl.value);
+      if (!(cm > 0)) { TN.setErr(ERR, 'Please enter a height greater than 0 cm.'); return; }
+      if (!(kg > 0)) { TN.setErr(ERR, 'Please enter a weight greater than 0 kg.'); return; }
+      heightM = cm / 100;
+      weightKg = kg;
+      heightIn = cm / 2.54;
+    } else {
+      var ft = parseFloat(ftEl.value) || 0;
+      var inch = parseFloat(inEl.value) || 0;
+      var lb = parseFloat(lbEl.value);
+      var totalIn = ft * 12 + inch;
+      if (!(totalIn > 0)) { TN.setErr(ERR, 'Please enter a height greater than 0.'); return; }
+      if (!(lb > 0)) { TN.setErr(ERR, 'Please enter a weight greater than 0 lb.'); return; }
+      heightM = totalIn * 0.0254;
+      weightKg = lb * 0.45359237;
+      heightIn = totalIn;
+    }
+    var bmi = weightKg / (heightM * heightM);
+    var cat, cls;
+    if (bmi < 18.5) { cat = 'Underweight'; cls = 'tag'; }
+    else if (bmi < 25) { cat = 'Normal weight'; cls = 'tag success'; }
+    else if (bmi < 30) { cat = 'Overweight'; cls = 'tag'; }
+    else { cat = 'Obese'; cls = 'tag error'; }
+
+    var lo = 18.5 * heightM * heightM;
+    var hi = 24.9 * heightM * heightM;
+    var rangeText;
+    if (mode === 'metric') {
+      rangeText = lo.toFixed(1) + ' – ' + hi.toFixed(1) + ' kg';
+    } else {
+      rangeText = (lo / 0.45359237).toFixed(0) + ' – ' + (hi / 0.45359237).toFixed(0) + ' lb';
+    }
+    TN.el('bmi-value').textContent = bmi.toFixed(1);
+    TN.el('bmi-range').textContent = rangeText;
+    var tag = TN.el('bmi-category');
+    if (tag) { tag.textContent = cat; tag.className = cls; }
+  }
+  function setMode(m) {
+    mode = m;
+    var mBtn = TN.el('bmi-metric-btn'), iBtn = TN.el('bmi-imperial-btn');
+    var mF = TN.el('bmi-metric-fields'), iF = TN.el('bmi-imperial-fields');
+    if (mBtn && iBtn) {
+      mBtn.className = 'btn btn-sm ' + (m === 'metric' ? 'btn-primary' : 'btn-outline');
+      iBtn.className = 'btn btn-sm ' + (m === 'imperial' ? 'btn-primary' : 'btn-outline');
+    }
+    if (mF && iF) {
+      if (m === 'metric') { TN.show(mF); TN.hide(iF); }
+      else { TN.hide(mF); TN.show(iF); }
+    }
+    TN.clearErr(ERR);
+    calc();
+  }
+  try {
+    TN.on('bmi-metric-btn', 'click', function () { setMode('metric'); });
+    TN.on('bmi-imperial-btn', 'click', function () { setMode('imperial'); });
+    ['bmi-cm', 'bmi-kg', 'bmi-ft', 'bmi-in', 'bmi-lb'].forEach(function (id) {
+      TN.on(id, 'input', calc);
+    });
+  } catch (e) { /* never throw on load */ }
+})();
+
+</script>
+</body>
+</html>

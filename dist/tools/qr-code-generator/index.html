@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>QR Code Generator — Free Online | ToolNest</title>
+<meta name="description" content="Create a custom QR code from any text or URL. Choose the size, foreground and background colors, and error correction level, then download it as a PNG.">
+<meta name="keywords" content="qr code generator, qr code maker, free qr code, qr png download">
+<link rel="canonical" href="https://toolnest.vercel.app/tools/qr-code-generator/">
+<meta property="og:title" content="QR Code Generator — Free Online | ToolNest">
+<meta property="og:description" content="Create a custom QR code from any text or URL. Choose the size, foreground and background colors, and error correction level, then download it as a PNG.">
+<meta property="og:type" content="website">
+<link rel="stylesheet" href="/assets/site.css?v=1">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='22' fill='%234f46e5'/><text x='50' y='68' font-size='52' text-anchor='middle' fill='white' font-family='Arial' font-weight='bold'>T</text></svg>">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebApplication","name":"QR Code Generator","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0"},"url":"https://toolnest.vercel.app/tools/qr-code-generator/","description":"Create a custom QR code from any text or URL. Choose the size, foreground and background colors, and error correction level, then download it as a PNG."},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What can I encode in a QR code?","acceptedAnswer":{"@type":"Answer","text":"Any text up to a few thousand characters — URLs, Wi‑Fi credentials, contact details, or plain text. Longer content makes a denser code that is harder to scan."}},{"@type":"Question","name":"What does error correction do?","acceptedAnswer":{"@type":"Answer","text":"It adds redundancy so the code still scans if part of it is damaged or covered by a logo. Higher levels make the code denser; Medium is a good default."}},{"@type":"Question","name":"Is the generated QR code free to use?","acceptedAnswer":{"@type":"Answer","text":"Yes. The code is generated entirely in your browser and you can use it for personal or commercial purposes without restrictions."}}]}]}</script>
+</head>
+<body>
+<header class="site-header">
+  <div class="container">
+    <a class="logo" href="/"><span class="logo-mark">🧰</span> ToolNest</a>
+    <nav class="site-nav">
+      <a href="/">Home</a>
+      <a href="/#categories">Categories</a>
+      <a href="/#all-tools">All Tools</a>
+    </nav>
+  </div>
+</header>
+
+<!-- ADSTERRA-HEADER: paste your Adsterra banner ad code inside the div below -->
+<div class="container"><div class="ad-slot ad-leaderboard" data-ad="header"></div></div>
+
+<main class="container">
+  <nav class="crumbs"><a href="/">Home</a> &rsaquo; <a href="/#generators">Generators</a> &rsaquo; QR Code Generator</nav>
+  <div class="tool-hero">
+    <h1>QR Code Generator</h1>
+    <p>Create a custom QR code from any text or URL. Choose the size, foreground and background colors, and error correction level, then download it as a PNG.</p>
+  </div>
+
+  <div class="tool-card">
+  <div class="field">
+    <label for="qr-code-generator-text">Text or URL</label>
+    <textarea class="textarea" id="qr-code-generator-text" rows="3" placeholder="https://example.com"></textarea>
+  </div>
+  <div class="grid2">
+    <div class="field">
+      <label for="qr-code-generator-size">Size</label>
+      <select class="select" id="qr-code-generator-size">
+        <option value="256">256 × 256 px</option>
+        <option value="512" selected>512 × 512 px</option>
+        <option value="1024">1024 × 1024 px</option>
+      </select>
+    </div>
+    <div class="field">
+      <label for="qr-code-generator-ecc">Error correction</label>
+      <select class="select" id="qr-code-generator-ecc">
+        <option value="L">Low (7%)</option>
+        <option value="M" selected>Medium (15%)</option>
+        <option value="Q">Quartile (25%)</option>
+        <option value="H">High (30%)</option>
+      </select>
+    </div>
+  </div>
+  <div class="grid2">
+    <div class="field">
+      <label for="qr-code-generator-dark">Foreground color</label>
+      <input type="color" id="qr-code-generator-dark" value="#000000" class="input">
+    </div>
+    <div class="field">
+      <label for="qr-code-generator-light">Background color</label>
+      <input type="color" id="qr-code-generator-light" value="#ffffff" class="input">
+    </div>
+  </div>
+  <div class="btn-row">
+    <button class="btn btn-primary" id="qr-code-generator-generate">Generate QR Code</button>
+    <button class="btn btn-outline hidden" id="qr-code-generator-download">Download PNG</button>
+  </div>
+  <div class="error" id="qr-code-generator-error"></div>
+  <div class="center mt hidden" id="qr-code-generator-preview-wrap">
+    <canvas id="qr-code-generator-canvas"></canvas>
+  </div>
+  <p class="note">Tip: use a dark foreground on a light background — QR scanners struggle with low contrast.</p>
+</div>
+
+  <!-- ADSTERRA-INCONTENT: paste your Adsterra native/in-content ad code inside the div below -->
+  <div class="ad-slot" data-ad="incontent"></div>
+
+  <div class="info-grid">
+    <div class="info-card">
+      <h2>📖 How to use</h2>
+      <ol><li>Type or paste the text or URL you want encoded.</li><li>Pick a size (256, 512 or 1024 px), colors, and error-correction level.</li><li>Click Generate QR Code to preview it.</li><li>Click Download PNG to save the code to your device.</li></ol>
+    </div>
+    <div class="info-card">
+      <h2>❓ Frequently asked questions</h2>
+      <div class="faq"><details><summary>What can I encode in a QR code?</summary><p>Any text up to a few thousand characters — URLs, Wi‑Fi credentials, contact details, or plain text. Longer content makes a denser code that is harder to scan.</p></details><details><summary>What does error correction do?</summary><p>It adds redundancy so the code still scans if part of it is damaged or covered by a logo. Higher levels make the code denser; Medium is a good default.</p></details><details><summary>Is the generated QR code free to use?</summary><p>Yes. The code is generated entirely in your browser and you can use it for personal or commercial purposes without restrictions.</p></details></div>
+    </div>
+  </div>
+
+  <section class="section">
+    <h2>🔗 Related tools</h2>
+    <div class="tool-grid"><a class="tool-link" href="/tools/barcode-generator/" data-search="barcode generator generate barcodes in common formats — code128, code39, ean-13, ean-8, upc and itf-14 — and download them as png or svg images. barcode generator barcode maker ean13 barcode upc barcode generator">Barcode Generator<small>Generate barcodes in common formats — CODE128, CODE39, EAN-13, EAN-8, …</small></a><a class="tool-link" href="/tools/button-generator/" data-search="button generator design a custom button with your text, colors, border radius, padding and shadow — then copy the generated css and use it anywhere. button generator css button maker button css custom button design">Button Generator<small>Design a custom button with your text, colors, border radius, padding …</small></a><a class="tool-link" href="/tools/color-picker/" data-search="color picker pick any color and instantly get its hex, rgb and hsl values with click-to-copy readouts, plus auto-generated shades, tints and a random color button. color picker hex color picker rgb to hex color codes">Color Picker<small>Pick any color and instantly get its HEX, RGB and HSL values with clic…</small></a><a class="tool-link" href="/tools/gradient-generator/" data-search="gradient generator design beautiful css gradients with two color pickers and an angle slider. preview it live, then copy the ready-to-use linear-gradient css. gradient generator css gradient gradient maker linear gradient css">Gradient Generator<small>Design beautiful CSS gradients with two color pickers and an angle sli…</small></a><a class="tool-link" href="/tools/invoice-generator/" data-search="invoice generator build a professional invoice with your business and client details, line items, tax and notes. totals update live and you can print or save it as pdf. invoice generator free invoice maker invoice pdf billing invoice">Invoice Generator<small>Build a professional invoice with your business and client details, li…</small></a><a class="tool-link" href="/tools/password-generator/" data-search="password generator generate strong, random passwords with full control over length and character sets. passwords are created locally in your browser — nothing is ever sent anywhere. password generator random password strong password secure password maker">Password Generator<small>Generate strong, random passwords with full control over length and ch…</small></a></div>
+  </section>
+</main>
+
+<!-- ADSTERRA-FOOTER: paste your Adsterra footer/banner ad code inside the div below -->
+<div class="container"><div class="ad-slot" data-ad="footer"></div></div>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="f-grid">
+      <div>
+        <span class="brandline">🧰 ToolNest</span>
+        <p>Free online tools that actually work. No sign-up, no watermarks — and your files never leave your device for client-side tools.</p>
+      </div>
+      <div>
+        <h4>Popular</h4>
+        <a href="/tools/qr-code-generator/">QR Code Generator</a>
+        <a href="/tools/background-remover/">Background Remover</a>
+        <a href="/tools/pdf-merger/">PDF Merger</a>
+        <a href="/tools/word-counter/">Word Counter</a>
+      </div>
+      <div>
+        <h4>Categories</h4>
+        <a href="/#image">Image Tools</a>
+        <a href="/#pdf">PDF &amp; Documents</a>
+        <a href="/#calculators">Calculators</a>
+        <a href="/#developer">Developer Tools</a>
+      </div>
+      <div>
+        <h4>Site</h4>
+        <a href="/">Home</a>
+        <a href="/#all-tools">All Tools</a>
+        <a href="/sitemap.xml">Sitemap</a>
+      </div>
+    </div>
+    <div class="f-bottom">© 2026 ToolNest · Free tools for everyone · Made with care</div>
+  </div>
+</footer>
+
+<script src="/assets/site.js?v=1"></script>
+<script src="https://cdn.jsdelivr.net/npm/qrcode@1.5.3/build/qrcode.min.js" defer></script>
+<script>
+(function () {
+  'use strict';
+  var S = 'qr-code-generator';
+  function on(id, evt, fn) { try { TN.on(id, evt, fn); } catch (e) {} }
+  function gen() {
+    try {
+      TN.clearErr(S + '-error');
+      var text = (TN.el(S + '-text').value || '').trim();
+      if (!text) { TN.setErr(S + '-error', 'Please enter some text or a URL first.'); return; }
+      if (typeof QRCode === 'undefined' || !QRCode.toCanvas) {
+        TN.setErr(S + '-error', 'QR library failed to load. Please check your connection and reload the page.');
+        return;
+      }
+      var size = parseInt(TN.el(S + '-size').value, 10) || 512;
+      var canvas = TN.el(S + '-canvas');
+      QRCode.toCanvas(canvas, text, {
+        width: size,
+        margin: 2,
+        errorCorrectionLevel: TN.el(S + '-ecc').value || 'M',
+        color: { dark: TN.el(S + '-dark').value || '#000000', light: TN.el(S + '-light').value || '#ffffff' }
+      }, function (err) {
+        try {
+          if (err) { TN.setErr(S + '-error', 'Could not generate the QR code: ' + (err.message || 'too much data.')); return; }
+          TN.show(S + '-preview-wrap');
+          TN.show(S + '-download');
+        } catch (e2) {}
+      });
+    } catch (e) { TN.setErr(S + '-error', 'Something went wrong. Please try again.'); }
+  }
+  function dl() {
+    try {
+      var canvas = TN.el(S + '-canvas');
+      if (!canvas || !canvas.width) { TN.setErr(S + '-error', 'Generate a QR code first.'); return; }
+      canvas.toBlob(function (blob) {
+        try {
+          if (blob) TN.download(blob, 'qr-code.png');
+          else TN.setErr(S + '-error', 'Could not export the image.');
+        } catch (e) {}
+      }, 'image/png');
+    } catch (e) { TN.setErr(S + '-error', 'Could not export the image.'); }
+  }
+  on(S + '-generate', 'click', gen);
+  on(S + '-download', 'click', dl);
+})();
+
+</script>
+</body>
+</html>

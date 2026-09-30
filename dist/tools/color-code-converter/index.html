@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Color Code Converter — Free Online | ToolNest</title>
+<meta name="description" content="Type a color in HEX, RGB or HSL format and instantly see it converted to all three formats with a preview swatch.">
+<meta name="keywords" content="color converter, hex to rgb, rgb to hex, hsl converter, color code">
+<link rel="canonical" href="https://toolnest.vercel.app/tools/color-code-converter/">
+<meta property="og:title" content="Color Code Converter — Free Online | ToolNest">
+<meta property="og:description" content="Type a color in HEX, RGB or HSL format and instantly see it converted to all three formats with a preview swatch.">
+<meta property="og:type" content="website">
+<link rel="stylesheet" href="/assets/site.css?v=1">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='22' fill='%234f46e5'/><text x='50' y='68' font-size='52' text-anchor='middle' fill='white' font-family='Arial' font-weight='bold'>T</text></svg>">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebApplication","name":"Color Code Converter","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0"},"url":"https://toolnest.vercel.app/tools/color-code-converter/","description":"Type a color in HEX, RGB or HSL format and instantly see it converted to all three formats with a preview swatch."},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Which color formats are accepted?","acceptedAnswer":{"@type":"Answer","text":"Hex like #ff0000 (3, 6 or 8 digits), rgb(255, 0, 0), rgba(255, 0, 0, 0.5), hsl(0, 100%, 50%) and hsla(0, 100%, 50%, 0.5)."}},{"@type":"Question","name":"How do I copy a converted value?","acceptedAnswer":{"@type":"Answer","text":"Click any of the HEX, RGB or HSL result rows to copy that exact value to your clipboard."}},{"@type":"Question","name":"What happens with an invalid color?","acceptedAnswer":{"@type":"Answer","text":"You will see a clear error message explaining that the color could not be recognized."}}]}]}</script>
+</head>
+<body>
+<header class="site-header">
+  <div class="container">
+    <a class="logo" href="/"><span class="logo-mark">🧰</span> ToolNest</a>
+    <nav class="site-nav">
+      <a href="/">Home</a>
+      <a href="/#categories">Categories</a>
+      <a href="/#all-tools">All Tools</a>
+    </nav>
+  </div>
+</header>
+
+<!-- ADSTERRA-HEADER: paste your Adsterra banner ad code inside the div below -->
+<div class="container"><div class="ad-slot ad-leaderboard" data-ad="header"></div></div>
+
+<main class="container">
+  <nav class="crumbs"><a href="/">Home</a> &rsaquo; <a href="/#developer">Developer Tools</a> &rsaquo; Color Code Converter</nav>
+  <div class="tool-hero">
+    <h1>Color Code Converter</h1>
+    <p>Type a color in HEX, RGB or HSL format and instantly see it converted to all three formats with a preview swatch.</p>
+  </div>
+
+  <div class="tool-card">
+  <div class="field">
+    <label for="color-code-converter-input">Color (HEX, RGB or HSL)</label>
+    <input class="input" id="color-code-converter-input" type="text" placeholder="e.g. #ff0000, rgb(255, 0, 0), hsl(0, 100%, 50%)" autocomplete="off" spellcheck="false">
+  </div>
+  <div class="btn-row">
+    <button class="btn btn-primary" id="color-code-converter-convert" type="button">Convert</button>
+  </div>
+  <div class="error" id="color-code-converter-error"></div>
+  <div class="result hidden" id="color-code-converter-result">
+    <div class="row">
+      <div id="color-code-converter-swatch" style="width:64px;height:64px;border-radius:8px;border:1px solid rgba(0,0,0,.15);flex:0 0 auto;"></div>
+      <div style="flex:1;min-width:0;">
+        <div class="copy-row"><code id="color-code-converter-hex"></code><button class="btn btn-sm btn-outline" id="color-code-converter-copy-hex" type="button">Copy HEX</button></div>
+        <div class="copy-row mt"><code id="color-code-converter-rgb"></code><button class="btn btn-sm btn-outline" id="color-code-converter-copy-rgb" type="button">Copy RGB</button></div>
+        <div class="copy-row mt"><code id="color-code-converter-hsl"></code><button class="btn btn-sm btn-outline" id="color-code-converter-copy-hsl" type="button">Copy HSL</button></div>
+      </div>
+    </div>
+  </div>
+  <p class="note">Accepts 3/6/8-digit hex, rgb()/rgba() and hsl()/hsla(). Alpha is preserved where possible.</p>
+</div>
+
+  <!-- ADSTERRA-INCONTENT: paste your Adsterra native/in-content ad code inside the div below -->
+  <div class="ad-slot" data-ad="incontent"></div>
+
+  <div class="info-grid">
+    <div class="info-card">
+      <h2>📖 How to use</h2>
+      <ol><li>Type or paste a color in HEX, RGB or HSL format.</li><li>Click Convert.</li><li>See the HEX, RGB and HSL readouts plus a live preview swatch.</li><li>Click any readout to copy it.</li></ol>
+    </div>
+    <div class="info-card">
+      <h2>❓ Frequently asked questions</h2>
+      <div class="faq"><details><summary>Which color formats are accepted?</summary><p>Hex like #ff0000 (3, 6 or 8 digits), rgb(255, 0, 0), rgba(255, 0, 0, 0.5), hsl(0, 100%, 50%) and hsla(0, 100%, 50%, 0.5).</p></details><details><summary>How do I copy a converted value?</summary><p>Click any of the HEX, RGB or HSL result rows to copy that exact value to your clipboard.</p></details><details><summary>What happens with an invalid color?</summary><p>You will see a clear error message explaining that the color could not be recognized.</p></details></div>
+    </div>
+  </div>
+
+  <section class="section">
+    <h2>🔗 Related tools</h2>
+    <div class="tool-grid"><a class="tool-link" href="/tools/base64-encoder-decoder/" data-search="base64 encoder / decoder encode text to base64 or decode base64 back to text, with full utf-8 support and a file-to-data-url converter. base64 encoder base64 decoder base64 encode base64 decode file to base64">Base64 Encoder / Decoder<small>Encode text to Base64 or decode Base64 back to text, with full UTF-8 s…</small></a><a class="tool-link" href="/tools/css-minifier/" data-search="css minifier compress css by stripping comments, collapsing whitespace and removing redundant semicolons, with before/after byte stats. css minifier minify css css compressor reduce css size">CSS Minifier<small>Compress CSS by stripping comments, collapsing whitespace and removing…</small></a><a class="tool-link" href="/tools/dns-lookup/" data-search="dns lookup look up dns records (a, aaaa, cname, mx, txt, ns) for any hostname, resolved live from our server. dns lookup dns checker mx record lookup txt record lookup ns lookup online">DNS Lookup<small>Look up DNS records (A, AAAA, CNAME, MX, TXT, NS) for any hostname, re…</small></a><a class="tool-link" href="/tools/html-minifier/" data-search="html minifier shrink html by removing comments and collapsing whitespace, with byte stats showing how much was saved. html minifier minify html html compressor reduce html size">HTML Minifier<small>Shrink HTML by removing comments and collapsing whitespace, with byte …</small></a><a class="tool-link" href="/tools/ip-address-finder/" data-search="ip address finder find the public ip address your network shows to websites, displayed large with a one-click copy button. what is my ip ip address finder my public ip find my ip ip lookup">IP Address Finder<small>Find the public IP address your network shows to websites, displayed l…</small></a><a class="tool-link" href="/tools/js-minifier/" data-search="js minifier minify javascript using the real terser engine with compression and mangling, showing genuine errors and byte savings. js minifier javascript minifier minify javascript terser online javascript compressor">JS Minifier<small>Minify JavaScript using the real Terser engine with compression and ma…</small></a></div>
+  </section>
+</main>
+
+<!-- ADSTERRA-FOOTER: paste your Adsterra footer/banner ad code inside the div below -->
+<div class="container"><div class="ad-slot" data-ad="footer"></div></div>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="f-grid">
+      <div>
+        <span class="brandline">🧰 ToolNest</span>
+        <p>Free online tools that actually work. No sign-up, no watermarks — and your files never leave your device for client-side tools.</p>
+      </div>
+      <div>
+        <h4>Popular</h4>
+        <a href="/tools/qr-code-generator/">QR Code Generator</a>
+        <a href="/tools/background-remover/">Background Remover</a>
+        <a href="/tools/pdf-merger/">PDF Merger</a>
+        <a href="/tools/word-counter/">Word Counter</a>
+      </div>
+      <div>
+        <h4>Categories</h4>
+        <a href="/#image">Image Tools</a>
+        <a href="/#pdf">PDF &amp; Documents</a>
+        <a href="/#calculators">Calculators</a>
+        <a href="/#developer">Developer Tools</a>
+      </div>
+      <div>
+        <h4>Site</h4>
+        <a href="/">Home</a>
+        <a href="/#all-tools">All Tools</a>
+        <a href="/sitemap.xml">Sitemap</a>
+      </div>
+    </div>
+    <div class="f-bottom">© 2026 ToolNest · Free tools for everyone · Made with care</div>
+  </div>
+</footer>
+
+<script src="/assets/site.js?v=1"></script>
+
+<script>
+(function () {
+  'use strict';
+  var P = 'color-code-converter-';
+
+  function clamp(v, lo, hi) { return Math.min(hi, Math.max(lo, v)); }
+
+  function hslToRgb(h, s, l) {
+    h = ((h % 360) + 360) % 360;
+    s = clamp(s, 0, 100) / 100;
+    l = clamp(l, 0, 100) / 100;
+    var c = (1 - Math.abs(2 * l - 1)) * s;
+    var x = c * (1 - Math.abs(((h / 60) % 2) - 1));
+    var m = l - c / 2;
+    var r = 0, g = 0, b = 0;
+    if (h < 60) { r = c; g = x; }
+    else if (h < 120) { r = x; g = c; }
+    else if (h < 180) { g = c; b = x; }
+    else if (h < 240) { g = x; b = c; }
+    else if (h < 300) { r = x; b = c; }
+    else { r = c; b = x; }
+    return {
+      r: Math.round((r + m) * 255),
+      g: Math.round((g + m) * 255),
+      b: Math.round((b + m) * 255)
+    };
+  }
+
+  function rgbToHsl(r, g, b) {
+    r /= 255; g /= 255; b /= 255;
+    var max = Math.max(r, g, b), min = Math.min(r, g, b);
+    var h = 0, s = 0, l = (max + min) / 2;
+    if (max !== min) {
+      var d = max - min;
+      s = l > 0.5 ? d / (2 - max - min) : d / (max + min);
+      if (max === r) { h = ((g - b) / d + (g < b ? 6 : 0)); }
+      else if (max === g) { h = (b - r) / d + 2; }
+      else { h = (r - g) / d + 4; }
+      h *= 60;
+    }
+    return { h: Math.round(h), s: Math.round(s * 100), l: Math.round(l * 100) };
+  }
+
+  function toHex2(n) {
+    var h = clamp(Math.round(n), 0, 255).toString(16);
+    return h.length === 1 ? '0' + h : h;
+  }
+
+  // Returns {r,g,b,a} or null.
+  function parseColor(s) {
+    s = s.trim();
+    var m;
+    // Hex: #rgb, #rgba, #rrggbb, #rrggbbaa
+    if ((m = /^#([0-9a-fA-F]{3,4}|[0-9a-fA-F]{6}|[0-9a-fA-F]{8})$/.exec(s))) {
+      var h = m[1];
+      var r, g, b, a = 1;
+      if (h.length === 3 || h.length === 4) {
+        r = parseInt(h[0] + h[0], 16);
+        g = parseInt(h[1] + h[1], 16);
+        b = parseInt(h[2] + h[2], 16);
+        if (h.length === 4) a = parseInt(h[3] + h[3], 16) / 255;
+      } else {
+        r = parseInt(h.substr(0, 2), 16);
+        g = parseInt(h.substr(2, 2), 16);
+        b = parseInt(h.substr(4, 2), 16);
+        if (h.length === 8) a = parseInt(h.substr(6, 2), 16) / 255;
+      }
+      return { r: r, g: g, b: b, a: a };
+    }
+    // rgb() / rgba()
+    if ((m = /^rgba?\(\s*([0-9]{1,3})\s*,\s*([0-9]{1,3})\s*,\s*([0-9]{1,3})\s*(?:,\s*([0-9]*\.?[0-9]+)\s*)?\)$/i.exec(s))) {
+      var r2 = +m[1], g2 = +m[2], b2 = +m[3];
+      if (r2 > 255 || g2 > 255 || b2 > 255) return null;
+      var a2 = m[4] === undefined ? 1 : +m[4];
+      if (a2 < 0 || a2 > 1) return null;
+      return { r: r2, g: g2, b: b2, a: a2 };
+    }
+    // hsl() / hsla()
+    if ((m = /^hsla?\(\s*(-?[0-9]*\.?[0-9]+)\s*,\s*([0-9]*\.?[0-9]+)%\s*,\s*([0-9]*\.?[0-9]+)%\s*(?:,\s*([0-9]*\.?[0-9]+)\s*)?\)$/i.exec(s))) {
+      var s3 = +m[2], l3 = +m[3];
+      if (s3 > 100 || l3 > 100) return null;
+      var a3 = m[4] === undefined ? 1 : +m[4];
+      if (a3 < 0 || a3 > 1) return null;
+      var rgb = hslToRgb(+m[1], s3, l3);
+      rgb.a = a3;
+      return rgb;
+    }
+    return null;
+  }
+
+  function fmtAlpha(a) {
+    return Math.round(a * 100) / 100;
+  }
+
+  TN.on(P + 'convert', 'click', function () {
+    var input = TN.el(P + 'input').value;
+    if (!input.trim()) { TN.setErr(P + 'error', 'Type a color first, e.g. #ff0000.'); return; }
+    var c = parseColor(input);
+    if (!c) {
+      TN.hide(P + 'result');
+      TN.setErr(P + 'error', 'Could not recognize that color. Try #ff0000, rgb(255, 0, 0) or hsl(0, 100%, 50%).');
+      return;
+    }
+    TN.clearErr(P + 'error');
+    var hex = '#' + toHex2(c.r) + toHex2(c.g) + toHex2(c.b);
+    var hexA = c.a < 1 ? hex + toHex2(c.a * 255) : hex;
+    var rgbStr = c.a < 1
+      ? 'rgba(' + c.r + ', ' + c.g + ', ' + c.b + ', ' + fmtAlpha(c.a) + ')'
+      : 'rgb(' + c.r + ', ' + c.g + ', ' + c.b + ')';
+    var hsl = rgbToHsl(c.r, c.g, c.b);
+    var hslStr = c.a < 1
+      ? 'hsla(' + hsl.h + ', ' + hsl.s + '%, ' + hsl.l + '%, ' + fmtAlpha(c.a) + ')'
+      : 'hsl(' + hsl.h + ', ' + hsl.s + '%, ' + hsl.l + '%)';
+    TN.el(P + 'hex').textContent = hexA;
+    TN.el(P + 'rgb').textContent = rgbStr;
+    TN.el(P + 'hsl').textContent = hslStr;
+    TN.el(P + 'swatch').style.background = hexA;
+    TN.show(P + 'result');
+  });
+
+  function copyVal(id, label) {
+    var t = TN.el(id).textContent;
+    if (!t) return;
+    TN.copy(t).then(null, function () {
+      TN.setErr(P + 'error', label + ' copy failed — select the text manually.');
+    });
+  }
+  TN.on(P + 'copy-hex', 'click', function () { copyVal(P + 'hex', 'HEX'); });
+  TN.on(P + 'copy-rgb', 'click', function () { copyVal(P + 'rgb', 'RGB'); });
+  TN.on(P + 'copy-hsl', 'click', function () { copyVal(P + 'hsl', 'HSL'); });
+})();
+
+</script>
+</body>
+</html>

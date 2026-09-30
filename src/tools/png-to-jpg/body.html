@@ -1,0 +1,30 @@
+<div class="tool-card">
+  <div class="dropzone" id="png-to-jpg-drop">
+    <span class="dz-icon">🖼️</span>
+    <strong>Drop PNG files here</strong> or click to browse
+    <input type="file" id="png-to-jpg-file" accept="image/png,.png" multiple class="hidden">
+  </div>
+  <ul class="file-list" id="png-to-jpg-list"></ul>
+  <div class="grid2">
+    <div class="field">
+      <label for="png-to-jpg-quality">JPEG quality: <span id="png-to-jpg-quality-val">85</span></label>
+      <input type="range" id="png-to-jpg-quality" min="10" max="100" value="85">
+    </div>
+    <div class="field">
+      <label for="png-to-jpg-bg">Background color (fills transparency)</label>
+      <input type="color" class="input" id="png-to-jpg-bg" value="#ffffff">
+    </div>
+  </div>
+  <div class="btn-row">
+    <button class="btn btn-primary" id="png-to-jpg-go">Convert to JPG</button>
+    <button class="btn btn-outline hidden" id="png-to-jpg-zip">Download all as ZIP</button>
+  </div>
+  <div class="result hidden" id="png-to-jpg-result">
+    <table class="data">
+      <thead><tr><th>File</th><th>Original</th><th>JPG size</th><th>Saved</th><th></th></tr></thead>
+      <tbody id="png-to-jpg-rows"></tbody>
+    </table>
+  </div>
+  <div class="error" id="png-to-jpg-error"></div>
+  <p class="note">JPG has no transparency — transparent areas are filled with your chosen background color. Files never leave your device — everything is processed in your browser.</p>
+</div>
