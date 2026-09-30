@@ -2,19 +2,19 @@
 
 - [x] Project scaffold (package.json, vercel.json, build.mjs, templates, shared CSS/JS)
 - [x] Own APIs: /api/rates /api/weather /api/dns /api/ip /api/whois /api/ssl /api/port
-- [ ] video-audio tools (7)
-- [ ] image tools (10)
-- [ ] pdf tools (7)
-- [ ] text+social tools (12)
-- [ ] seo tools (6)
-- [ ] calculators (10)
-- [ ] generators (10)
-- [ ] developer tools (10)
-- [ ] fun-a tools (9)
-- [ ] fun-b tools (9)
-- [ ] Build runs clean, node --check all JS
-- [ ] jsdom load-test all pages + interactive smoke tests
-- [ ] GitHub repo sigmahacker-dot/mega-tools created + pushed
-- [ ] Vercel project created (git-linked, auto-deploy)
-- [ ] Live verification: all pages 200, /api/* real data
-- [ ] Goal tracking entry + MEMORY.md update
+- [x] video-audio tools (7)
+- [x] image tools (10)
+- [x] pdf tools (7)
+- [x] text+social tools (12)
+- [x] seo tools (6)
+- [x] calculators (10)
+- [x] generators (10)
+- [x] developer tools (10)
+- [x] fun-a tools (9)
+- [x] fun-b tools (9)
+- [x] Build runs clean, node --check all JS
+- [x] jsdom load-test all pages + interactive smoke tests
+- [x] GitHub repo sigmahacker-dot/mega-tools created + pushed
+- [x] Vercel project created (git-linked, auto-deploy)
+- [x] Live verification: all pages 200, /api/* real data
+- [x] Goal tracking entry + MEMORY.md update
