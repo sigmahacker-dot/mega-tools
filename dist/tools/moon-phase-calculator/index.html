@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Moon Phase Calculator — Free Online | ToolNest</title>
+<meta name="description" content="Find the moon phase for any date: phase name, illumination percentage, moon age and the next full and new moons — computed with the standard synodic-month algorithm.">
+<meta name="keywords" content="moon phase calculator, what phase is the moon, moon illumination, lunar phase today, next full moon">
+<link rel="canonical" href="https://toolnest.vercel.app/tools/moon-phase-calculator/">
+<meta name="theme-color" content="#07070b">
+<meta property="og:title" content="Moon Phase Calculator — Free Online | ToolNest">
+<meta property="og:description" content="Find the moon phase for any date: phase name, illumination percentage, moon age and the next full and new moons — computed with the standard synodic-month algorithm.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css?v=4">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%23e01111'/><text x='50' y='68' font-size='58' text-anchor='middle' fill='white' font-family='Arial' font-weight='bold'>T</text></svg>">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebApplication","name":"Moon Phase Calculator","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0"},"url":"https://toolnest.vercel.app/tools/moon-phase-calculator/","description":"Find the moon phase for any date: phase name, illumination percentage, moon age and the next full and new moons — computed with the standard synodic-month algorithm."},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How is the phase calculated?","acceptedAnswer":{"@type":"Answer","text":"From the moon's age in the 29.530588853-day synodic cycle, measured from the known new moon of 6 January 2000, 18:14 UTC. Illumination follows from (1 − cos(2π·age/cycle)) / 2."}},{"@type":"Question","name":"How accurate is it?","acceptedAnswer":{"@type":"Answer","text":"Approximate: typically within about a day of the true phase. It is a simplified astronomical algorithm, not a full ephemeris."}},{"@type":"Question","name":"What are the 8 phases?","acceptedAnswer":{"@type":"Answer","text":"New Moon, Waxing Crescent, First Quarter, Waxing Gibbous, Full Moon, Waning Gibbous, Last Quarter and Waning Crescent."}}]}]}</script>
+</head>
+<body>
+<header class="site-header">
+  <div class="container">
+    <a class="logo" href="/"><span class="logo-mark">T</span> ToolNest</a>
+    <div class="header-right">
+      <form class="nav-search" action="/" method="get" role="search">
+        <span class="ns-icon">🔍</span>
+        <input type="search" name="q" placeholder="Search tools…" aria-label="Search tools" autocomplete="off">
+      </form>
+      <div class="menu-wrap">
+        <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="menuPanel" aria-label="Open menu"><span></span><span></span><span></span></button>
+        <nav class="menu-panel" id="menuPanel" aria-label="Site">
+          <a href="/">Home</a>
+          <a href="/#categories">Categories</a>
+          <a href="/#all-tools">All Tools</a>
+        </nav>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ADSTERRA-HEADER: paste your Adsterra banner ad code inside the div below -->
+<div class="container"><div class="ad-slot ad-leaderboard" data-ad="header"></div></div>
+
+<main class="container">
+  <nav class="crumbs"><a href="/">Home</a> &rsaquo; <a href="/#time">Time &amp; Date</a> &rsaquo; Moon Phase Calculator</nav>
+  <div class="tool-hero">
+    <h1>Moon Phase Calculator</h1>
+    <p>Find the moon phase for any date: phase name, illumination percentage, moon age and the next full and new moons — computed with the standard synodic-month algorithm.</p>
+  </div>
+
+  <div class="tool-card">
+  <div class="grid2">
+    <div class="field">
+      <label for="moon-phase-calculator-date">Date</label>
+      <input type="date" class="input" id="moon-phase-calculator-date">
+    </div>
+  </div>
+  <div class="error" id="moon-phase-calculator-error"></div>
+  <div class="result" id="moon-phase-calculator-result">
+    <div class="stat-cards">
+      <div class="stat-card"><div class="v" id="moon-phase-calculator-emoji" style="font-size:2rem;">–</div><div class="l" id="moon-phase-calculator-name">Phase</div></div>
+      <div class="stat-card"><div class="v" id="moon-phase-calculator-illum">–</div><div class="l">Illumination</div></div>
+      <div class="stat-card"><div class="v" id="moon-phase-calculator-age">–</div><div class="l">Moon age (days)</div></div>
+    </div>
+    <table class="data">
+      <thead><tr><th>Event</th><th>Date</th></tr></thead>
+      <tbody id="moon-phase-calculator-body"></tbody>
+    </table>
+    <p class="note">Approximate — computed from the 29.530588853-day synodic month, accurate to about a day.</p>
+  </div>
+</div>
+
+
+  <!-- ADSTERRA-INCONTENT: paste your Adsterra native/in-content ad code inside the div below -->
+  <div class="ad-slot" data-ad="incontent"></div>
+
+  <div class="info-grid">
+    <div class="info-card">
+      <h2>📖 How to use</h2>
+      <ol><li>Pick any date (defaults to today).</li><li>Read the phase name, emoji, illumination and moon age instantly.</li><li>See the dates of the next new moon and next full moon.</li><li>Remember the result is approximate — good to about a day.</li></ol>
+    </div>
+    <div class="info-card">
+      <h2>❓ Frequently asked questions</h2>
+      <div class="faq"><details><summary>How is the phase calculated?</summary><p>From the moon&#39;s age in the 29.530588853-day synodic cycle, measured from the known new moon of 6 January 2000, 18:14 UTC. Illumination follows from (1 − cos(2π·age/cycle)) / 2.</p></details><details><summary>How accurate is it?</summary><p>Approximate: typically within about a day of the true phase. It is a simplified astronomical algorithm, not a full ephemeris.</p></details><details><summary>What are the 8 phases?</summary><p>New Moon, Waxing Crescent, First Quarter, Waxing Gibbous, Full Moon, Waning Gibbous, Last Quarter and Waning Crescent.</p></details></div>
+    </div>
+  </div>
+
+  <section class="section">
+    <h2>🔗 Related tools</h2>
+    <div class="tool-grid"><a class="tool-link" href="/tools/add-subtract-days-calculator/" data-search="add / subtract days calculator add or subtract days, weeks, months or years from any date. optional business-days-only mode skips weekends automatically. add days to date subtract days calculator date plus days business days calculator date arithmetic"><span class="t-ico">⏰</span><span class="t-body"><b>Add / Subtract Days Calculator</b><small>Add or subtract days, weeks, months or years from any date. Optional business-days-only mode…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/anniversary-calculator/" data-search="anniversary calculator track any anniversary: days until the next one, which number it is (10th, 25th…), total days together and the weekday it falls on. anniversary calculator wedding anniversary countdown how many days until anniversary anniversary date tracker years together calculator"><span class="t-ico">⏰</span><span class="t-body"><b>Anniversary Calculator</b><small>Track any anniversary: days until the next one, which number it is (10th, 25th…), total days…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/date-duration-calculator/" data-search="date duration calculator exact duration between two dates, plus business days. date duration calculator days between dates business days calculator"><span class="t-ico">⏰</span><span class="t-body"><b>Date Duration Calculator</b><small>Exact duration between two dates, plus business days.</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/event-countdown/" data-search="event countdown timer live ticking countdown to any future date and time. countdown timer event countdown countdown to date"><span class="t-ico">⏰</span><span class="t-body"><b>Event Countdown Timer</b><small>Live ticking countdown to any future date and time.</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/fiscal-quarter-finder/" data-search="fiscal quarter finder find the fiscal quarter for any date with any fiscal year start month. get the fy label, quarter start/end dates and days remaining. fiscal quarter finder what quarter are we in financial quarter calculator fy quarter dates fiscal year calculator"><span class="t-ico">⏰</span><span class="t-body"><b>Fiscal Quarter Finder</b><small>Find the fiscal quarter for any date with any fiscal year start month. Get the FY label, qua…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/meeting-cost-calculator/" data-search="meeting cost calculator calculate what meetings really cost: enter attendees, average hourly rate and duration to see the cost per meeting, per week, per month and per year. meeting cost calculator cost of meetings meeting time cost how much do meetings cost meeting roi calculator"><span class="t-ico">⏰</span><span class="t-body"><b>Meeting Cost Calculator</b><small>Calculate what meetings really cost: enter attendees, average hourly rate and duration to se…</small></span><span class="t-arrow">→</span></a></div>
+  </section>
+</main>
+
+<!-- ADSTERRA-FOOTER: paste your Adsterra footer/banner ad code inside the div below -->
+<div class="container"><div class="ad-slot" data-ad="footer"></div></div>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="f-grid">
+      <div>
+        <span class="brandline"><span class="logo-mark">T</span> ToolNest</span>
+        <p>Free online tools that actually work. No sign-up, no watermarks — and your files never leave your device for client-side tools.</p>
+      </div>
+      <div>
+        <h4>Popular</h4>
+        <a href="/tools/qr-code-generator/">QR Code Generator</a>
+        <a href="/tools/background-remover/">Background Remover</a>
+        <a href="/tools/pdf-merger/">PDF Merger</a>
+        <a href="/tools/word-counter/">Word Counter</a>
+      </div>
+      <div>
+        <h4>Categories</h4>
+        <a href="/#image">Image Tools</a>
+        <a href="/#pdf">PDF &amp; Documents</a>
+        <a href="/#calculators">Calculators</a>
+        <a href="/#developer">Developer Tools</a>
+      </div>
+      <div>
+        <h4>Site</h4>
+        <a href="/">Home</a>
+        <a href="/#all-tools">All Tools</a>
+        <a href="/sitemap.xml">Sitemap</a>
+      </div>
+    </div>
+    <div class="f-bottom">© 2026 ToolNest · Free tools for everyone · Made with care</div>
+  </div>
+</footer>
+
+<script src="/assets/site.js?v=5"></script>
+
+<script>
+(function () {
+  'use strict';
+  var P = 'moon-phase-calculator-';
+  var ERR = P + 'error';
+  function g(id) { return document.getElementById(P + id); }
+  function set(id, v) { var el = g(id); if (el) el.textContent = v; }
+  var SYNODIC = 29.530588853;
+  var REF = Date.UTC(2000, 0, 6, 18, 14); /* known new moon */
+  var MONTHS = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+  function phaseFor(age) {
+    var e = SYNODIC / 8; /* 3.6913 */
+    if (age < e / 2 || age >= SYNODIC - e / 2) return ['New Moon', '🌑'];
+    if (age < e * 1.5) return ['Waxing Crescent', '🌒'];
+    if (age < e * 2.5) return ['First Quarter', '🌓'];
+    if (age < e * 3.5) return ['Waxing Gibbous', '🌔'];
+    if (age < e * 4.5) return ['Full Moon', '🌕'];
+    if (age < e * 5.5) return ['Waning Gibbous', '🌘'];
+    if (age < e * 6.5) return ['Last Quarter', '🌗'];
+    return ['Waning Crescent', '🌖'];
+  }
+  function fmtD(ms) {
+    var d = new Date(ms);
+    return MONTHS[d.getUTCMonth()] + ' ' + d.getUTCDate() + ', ' + d.getUTCFullYear();
+  }
+  function calc() {
+    if (!g('date')) return;
+    TN.clearErr(ERR);
+    var v = g('date').value;
+    var m = /^(\d{4})-(\d{2})-(\d{2})$/.exec(v || '');
+    if (!m) {
+      set('emoji', '–'); set('name', 'Phase'); set('illum', '–'); set('age', '–');
+      g('body').innerHTML = '<tr><td colspan="2" class="muted">Pick a date to see its moon phase.</td></tr>';
+      return;
+    }
+    var ms = Date.UTC(parseInt(m[1], 10), parseInt(m[2], 10) - 1, parseInt(m[3], 10), 12, 0);
+    var age = (((ms - REF) / 86400000) % SYNODIC + SYNODIC) % SYNODIC;
+    var illum = (1 - Math.cos(2 * Math.PI * age / SYNODIC)) / 2;
+    var ph = phaseFor(age);
+    set('emoji', ph[1]);
+    set('name', ph[0]);
+    set('illum', (illum * 100).toFixed(1) + '%');
+    set('age', age.toFixed(1));
+    var toNew = (SYNODIC - age) % SYNODIC;
+    var toFull = ((SYNODIC / 2 - age) % SYNODIC + SYNODIC) % SYNODIC;
+    g('body').innerHTML =
+      '<tr><td>🌑 Next new moon</td><td>' + TN.esc(fmtD(ms + toNew * 86400000)) + ' (in ' + TN.esc(Math.round(toNew)) + ' days)</td></tr>' +
+      '<tr><td>🌕 Next full moon</td><td>' + TN.esc(fmtD(ms + toFull * 86400000)) + ' (in ' + TN.esc(Math.round(toFull)) + ' days)</td></tr>';
+  }
+  try {
+    var t = new Date();
+    g('date').value = t.getFullYear() + '-' + String(t.getMonth() + 1).padStart(2, '0') + '-' + String(t.getDate()).padStart(2, '0');
+    TN.on(P + 'date', 'input', calc);
+    TN.on(P + 'date', 'change', calc);
+    calc();
+  } catch (e) { /* never throw on load */ }
+})();
+
+</script>
+</body>
+</html>

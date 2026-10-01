@@ -1,0 +1,25 @@
+<div class="tool-card">
+  <div class="grid2">
+    <div class="field"><label for="rvb-rent">Monthly rent ($)</label><input type="number" class="input" id="rvb-rent" min="0" step="any" placeholder="1800"></div>
+    <div class="field"><label for="rvb-price">Home price ($)</label><input type="number" class="input" id="rvb-price" min="0" step="any" placeholder="350000"></div>
+    <div class="field"><label for="rvb-down">Down payment (%)</label><input type="number" class="input" id="rvb-down" min="0" max="100" step="any" placeholder="20"></div>
+    <div class="field"><label for="rvb-rate">Mortgage rate (%)</label><input type="number" class="input" id="rvb-rate" min="0" max="20" step="any" placeholder="6.5"></div>
+    <div class="field"><label for="rvb-term">Loan term (years)</label><input type="number" class="input" id="rvb-term" min="1" max="50" step="1" placeholder="30"></div>
+    <div class="field"><label for="rvb-years">Compare over (years)</label><input type="number" class="input" id="rvb-years" min="1" max="30" step="1" placeholder="10"></div>
+    <div class="field"><label for="rvb-appr">Home appreciation (%/yr)</label><input type="number" class="input" id="rvb-appr" min="-10" max="20" step="any" placeholder="3"></div>
+    <div class="field"><label for="rvb-rentgrow">Rent growth (%/yr)</label><input type="number" class="input" id="rvb-rentgrow" min="-10" max="20" step="any" placeholder="3"></div>
+  </div>
+  <div class="error" id="rent-vs-buy-calculator-error"></div>
+  <div class="result" id="rvb-result">
+    <div class="stat-cards">
+      <div class="stat-card"><div class="v" id="rvb-verdict">–</div><div class="l">Verdict</div></div>
+      <div class="stat-card"><div class="v" id="rvb-breakeven">–</div><div class="l">Breakeven year</div></div>
+      <div class="stat-card"><div class="v" id="rvb-diff">–</div><div class="l" id="rvb-diff-label">Difference</div></div>
+    </div>
+    <table class="data">
+      <thead><tr><th>Year</th><th>Net cost: buy</th><th>Net cost: rent</th><th>Cheaper</th></tr></thead>
+      <tbody id="rvb-body"><tr><td colspan="4" class="muted">Enter details to compare.</td></tr></tbody>
+    </table>
+    <p class="note">Simplified model: 2% closing costs, ~1.2%/yr tax + insurance + maintenance. Opportunity cost of the down payment is not modeled.</p>
+  </div>
+</div>

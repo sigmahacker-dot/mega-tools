@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Blood Pressure Tracker — Free Online | ToolNest</title>
+<meta name="description" content="Log blood pressure readings with automatic AHA category classification, averages and history saved in your browser.">
+<meta name="keywords" content="blood pressure tracker, bp log, blood pressure chart, hypertension tracker, bp monitor log">
+<link rel="canonical" href="https://toolnest.vercel.app/tools/blood-pressure-tracker/">
+<meta name="theme-color" content="#07070b">
+<meta property="og:title" content="Blood Pressure Tracker — Free Online | ToolNest">
+<meta property="og:description" content="Log blood pressure readings with automatic AHA category classification, averages and history saved in your browser.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css?v=4">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%23e01111'/><text x='50' y='68' font-size='58' text-anchor='middle' fill='white' font-family='Arial' font-weight='bold'>T</text></svg>">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebApplication","name":"Blood Pressure Tracker","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0"},"url":"https://toolnest.vercel.app/tools/blood-pressure-tracker/","description":"Log blood pressure readings with automatic AHA category classification, averages and history saved in your browser."},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What do the categories mean?","acceptedAnswer":{"@type":"Answer","text":"Per the American Heart Association: Normal is below 120/80, Elevated is 120-129/\u003c80, Stage 1 is 130-139 or 80-89, Stage 2 is 140+ or 90+, and above 180/120 is a hypertensive crisis — seek emergency care."}},{"@type":"Question","name":"Where is my data stored?","acceptedAnswer":{"@type":"Answer","text":"Only in this browser's local storage on your device. Nothing is uploaded anywhere."}},{"@type":"Question","name":"When should I measure?","acceptedAnswer":{"@type":"Answer","text":"Sit quietly 5 minutes first, feet flat, arm supported at heart level. Measure at the same times daily for comparable readings."}}]}]}</script>
+</head>
+<body>
+<header class="site-header">
+  <div class="container">
+    <a class="logo" href="/"><span class="logo-mark">T</span> ToolNest</a>
+    <div class="header-right">
+      <form class="nav-search" action="/" method="get" role="search">
+        <span class="ns-icon">🔍</span>
+        <input type="search" name="q" placeholder="Search tools…" aria-label="Search tools" autocomplete="off">
+      </form>
+      <div class="menu-wrap">
+        <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="menuPanel" aria-label="Open menu"><span></span><span></span><span></span></button>
+        <nav class="menu-panel" id="menuPanel" aria-label="Site">
+          <a href="/">Home</a>
+          <a href="/#categories">Categories</a>
+          <a href="/#all-tools">All Tools</a>
+        </nav>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ADSTERRA-HEADER: paste your Adsterra banner ad code inside the div below -->
+<div class="container"><div class="ad-slot ad-leaderboard" data-ad="header"></div></div>
+
+<main class="container">
+  <nav class="crumbs"><a href="/">Home</a> &rsaquo; <a href="/#health">Health &amp; Fitness</a> &rsaquo; Blood Pressure Tracker</nav>
+  <div class="tool-hero">
+    <h1>Blood Pressure Tracker</h1>
+    <p>Log blood pressure readings with automatic AHA category classification, averages and history saved in your browser.</p>
+  </div>
+
+  <div class="tool-card">
+  <div class="grid2">
+    <div class="field"><label for="bp-sys">Systolic (top number)</label><input type="number" class="input" id="bp-sys" min="40" max="300" step="1" placeholder="120"></div>
+    <div class="field"><label for="bp-dia">Diastolic (bottom number)</label><input type="number" class="input" id="bp-dia" min="20" max="200" step="1" placeholder="80"></div>
+    <div class="field"><label>&nbsp;</label>
+      <div>
+        <button class="btn" id="bp-add">Add reading</button>
+        <button class="btn" id="bp-clear">Clear history</button>
+      </div>
+    </div>
+  </div>
+  <div class="error" id="blood-pressure-tracker-error"></div>
+  <div class="result" id="bp-result">
+    <div class="stat-cards">
+      <div class="stat-card"><div class="v" id="bp-avg">–</div><div class="l">Average reading</div></div>
+      <div class="stat-card"><div class="v" id="bp-cat">–</div><div class="l">Average category</div></div>
+      <div class="stat-card"><div class="v" id="bp-count">–</div><div class="l">Readings logged</div></div>
+    </div>
+    <table class="data">
+      <thead><tr><th>Date</th><th>Reading</th><th>Category</th></tr></thead>
+      <tbody id="bp-body"><tr><td colspan="3" class="muted">No readings yet.</td></tr></tbody>
+    </table>
+    <p class="note">Not medical advice. Above 180/120 with symptoms is an emergency — seek care immediately.</p>
+  </div>
+</div>
+
+  <!-- ADSTERRA-INCONTENT: paste your Adsterra native/in-content ad code inside the div below -->
+  <div class="ad-slot" data-ad="incontent"></div>
+
+  <div class="info-grid">
+    <div class="info-card">
+      <h2>📖 How to use</h2>
+      <ol><li>Enter your systolic (top) and diastolic (bottom) numbers.</li><li>Press Add reading — it is saved in your browser with a timestamp.</li><li>Watch your average and AHA category update; clear history anytime.</li></ol>
+    </div>
+    <div class="info-card">
+      <h2>❓ Frequently asked questions</h2>
+      <div class="faq"><details><summary>What do the categories mean?</summary><p>Per the American Heart Association: Normal is below 120/80, Elevated is 120-129/&lt;80, Stage 1 is 130-139 or 80-89, Stage 2 is 140+ or 90+, and above 180/120 is a hypertensive crisis — seek emergency care.</p></details><details><summary>Where is my data stored?</summary><p>Only in this browser&#39;s local storage on your device. Nothing is uploaded anywhere.</p></details><details><summary>When should I measure?</summary><p>Sit quietly 5 minutes first, feet flat, arm supported at heart level. Measure at the same times daily for comparable readings.</p></details></div>
+    </div>
+  </div>
+
+  <section class="section">
+    <h2>🔗 Related tools</h2>
+    <div class="tool-grid"><a class="tool-link" href="/tools/body-fat-calculator/" data-search="body fat calculator estimate body fat percentage with the us navy tape-measure method and see your fitness category. body fat calculator us navy body fat body fat percentage calculator"><span class="t-ico">❤️</span><span class="t-body"><b>Body Fat Calculator</b><small>Estimate body fat percentage with the US Navy tape-measure method and see your fitness categ…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/calorie-calculator/" data-search="tdee calorie calculator estimate your daily calorie needs with the mifflin-st jeor equation and get targets for losing, maintaining or gaining weight. tdee calculator calorie calculator mifflin st jeor daily calorie needs"><span class="t-ico">❤️</span><span class="t-body"><b>TDEE Calorie Calculator</b><small>Estimate your daily calorie needs with the Mifflin-St Jeor equation and get targets for losi…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/carb-cycling-calculator/" data-search="carb cycling calculator build high, medium and low carb day macros from your tdee using the mifflin-st jeor equation. carb cycling calculator macro cycling high low carb days tdee macro calculator carb cycle plan"><span class="t-ico">❤️</span><span class="t-body"><b>Carb Cycling Calculator</b><small>Build high, medium and low carb day macros from your TDEE using the Mifflin-St Jeor equation…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/eye-strain-timer/" data-search="eye strain timer (20-20-20) a 20-20-20 rule timer for screen workers: work 20 minutes, then rest your eyes 20 seconds looking 20 feet away. 20-20-20 timer eye strain timer eye break reminder screen break timer eye rest timer"><span class="t-ico">❤️</span><span class="t-body"><b>Eye Strain Timer (20-20-20)</b><small>A 20-20-20 rule timer for screen workers: work 20 minutes, then rest your eyes 20 seconds lo…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/five-k-pace-calculator/" data-search="5k pace calculator turn a 5k goal time into pace per km, per mile and a full kilometer-by-kilometer split plan. 5k pace calculator 5k goal time running splits calculator 5k training pace pace chart 5k"><span class="t-ico">❤️</span><span class="t-body"><b>5K Pace Calculator</b><small>Turn a 5K goal time into pace per km, per mile and a full kilometer-by-kilometer split plan.</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/heart-rate-zone-calculator/" data-search="heart rate zone calculator find your five karvonen heart-rate training zones from your age and resting heart rate, with bpm ranges. heart rate zones calculator karvonen calculator training zones bpm"><span class="t-ico">❤️</span><span class="t-body"><b>Heart Rate Zone Calculator</b><small>Find your five Karvonen heart-rate training zones from your age and resting heart rate, with…</small></span><span class="t-arrow">→</span></a></div>
+  </section>
+</main>
+
+<!-- ADSTERRA-FOOTER: paste your Adsterra footer/banner ad code inside the div below -->
+<div class="container"><div class="ad-slot" data-ad="footer"></div></div>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="f-grid">
+      <div>
+        <span class="brandline"><span class="logo-mark">T</span> ToolNest</span>
+        <p>Free online tools that actually work. No sign-up, no watermarks — and your files never leave your device for client-side tools.</p>
+      </div>
+      <div>
+        <h4>Popular</h4>
+        <a href="/tools/qr-code-generator/">QR Code Generator</a>
+        <a href="/tools/background-remover/">Background Remover</a>
+        <a href="/tools/pdf-merger/">PDF Merger</a>
+        <a href="/tools/word-counter/">Word Counter</a>
+      </div>
+      <div>
+        <h4>Categories</h4>
+        <a href="/#image">Image Tools</a>
+        <a href="/#pdf">PDF &amp; Documents</a>
+        <a href="/#calculators">Calculators</a>
+        <a href="/#developer">Developer Tools</a>
+      </div>
+      <div>
+        <h4>Site</h4>
+        <a href="/">Home</a>
+        <a href="/#all-tools">All Tools</a>
+        <a href="/sitemap.xml">Sitemap</a>
+      </div>
+    </div>
+    <div class="f-bottom">© 2026 ToolNest · Free tools for everyone · Made with care</div>
+  </div>
+</footer>
+
+<script src="/assets/site.js?v=5"></script>
+
+<script>
+(function () {
+  'use strict';
+  var ERR = 'blood-pressure-tracker-error';
+  var KEY = 'tn-blood-pressure-tracker';
+  function load() { try { var s = localStorage.getItem(KEY); var a = s ? JSON.parse(s) : []; return Array.isArray(a) ? a : []; } catch (e) { return []; } }
+  function save(a) { try { localStorage.setItem(KEY, JSON.stringify(a)); } catch (e) {} }
+  function cat(s, d) {
+    if (s > 180 || d > 120) return 'Hypertensive crisis';
+    if (s >= 140 || d >= 90) return 'Stage 2 hypertension';
+    if (s >= 130 || d >= 80) return 'Stage 1 hypertension';
+    if (s >= 120 && d < 80) return 'Elevated';
+    return 'Normal';
+  }
+  function render() {
+    var a = load();
+    TN.el('bp-count').textContent = a.length;
+    if (!a.length) {
+      TN.el('bp-avg').textContent = '–';
+      TN.el('bp-cat').textContent = '–';
+      TN.el('bp-body').innerHTML = '<tr><td colspan="3" class="muted">No readings yet.</td></tr>';
+      return;
+    }
+    var ss = 0, dd = 0;
+    a.forEach(function (r) { ss += r.s; dd += r.d; });
+    var as = Math.round(ss / a.length), ad = Math.round(dd / a.length);
+    TN.el('bp-avg').textContent = as + '/' + ad;
+    TN.el('bp-cat').textContent = cat(as, ad);
+    var rows = a.slice().reverse().map(function (r) {
+      var dt = '';
+      try { dt = new Date(r.t).toLocaleString([], { month: 'short', day: 'numeric', hour: 'numeric', minute: '2-digit' }); } catch (e) { dt = ''; }
+      return '<tr><td>' + dt + '</td><td>' + r.s + '/' + r.d + '</td><td>' + cat(r.s, r.d) + '</td></tr>';
+    });
+    TN.el('bp-body').innerHTML = rows.join('');
+  }
+  function add() {
+    TN.clearErr(ERR);
+    var s = parseInt(TN.el('bp-sys').value, 10);
+    var d = parseInt(TN.el('bp-dia').value, 10);
+    if (!(s >= 40 && s <= 300)) { TN.setErr(ERR, 'Enter a systolic value between 40 and 300.'); return; }
+    if (!(d >= 20 && d <= 200)) { TN.setErr(ERR, 'Enter a diastolic value between 20 and 200.'); return; }
+    if (d >= s) { TN.setErr(ERR, 'Diastolic should be lower than systolic.'); return; }
+    var a = load();
+    a.push({ t: Date.now(), s: s, d: d });
+    save(a);
+    TN.el('bp-sys').value = ''; TN.el('bp-dia').value = '';
+    render();
+  }
+  function clearAll() { save([]); render(); }
+  try {
+    TN.on('bp-add', 'click', add);
+    TN.on('bp-clear', 'click', clearAll);
+    render();
+  } catch (e) { /* never throw on load */ }
+})();
+</script>
+</body>
+</html>

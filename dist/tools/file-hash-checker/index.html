@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>File Hash Checker — Free Online | ToolNest</title>
+<meta name="description" content="Compute real SHA-1, SHA-256, SHA-384 and SHA-512 hashes of any file with the Web Crypto API — and verify against an expected hash.">
+<meta name="keywords" content="file hash checker, sha256 file, compute sha256, file integrity check, hash verifier">
+<link rel="canonical" href="https://toolnest.vercel.app/tools/file-hash-checker/">
+<meta name="theme-color" content="#07070b">
+<meta property="og:title" content="File Hash Checker — Free Online | ToolNest">
+<meta property="og:description" content="Compute real SHA-1, SHA-256, SHA-384 and SHA-512 hashes of any file with the Web Crypto API — and verify against an expected hash.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css?v=4">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%23e01111'/><text x='50' y='68' font-size='58' text-anchor='middle' fill='white' font-family='Arial' font-weight='bold'>T</text></svg>">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebApplication","name":"File Hash Checker","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0"},"url":"https://toolnest.vercel.app/tools/file-hash-checker/","description":"Compute real SHA-1, SHA-256, SHA-384 and SHA-512 hashes of any file with the Web Crypto API — and verify against an expected hash."},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How are hashes computed?","acceptedAnswer":{"@type":"Answer","text":"The file is read into memory and hashed with crypto.subtle.digest, the browser's native Web Crypto implementation — the same algorithms servers use."}},{"@type":"Question","name":"Why is there no MD5?","acceptedAnswer":{"@type":"Answer","text":"MD5 and other legacy hashes are not exposed by the Web Crypto API, so only the SHA-2 family (plus SHA-1) is available natively."}},{"@type":"Question","name":"How does verification work?","acceptedAnswer":{"@type":"Answer","text":"Paste the expected hash and the tool compares it case-insensitively, ignoring spaces and colons, then shows MATCH or MISMATCH."}},{"@type":"Question","name":"Is my file uploaded anywhere?","acceptedAnswer":{"@type":"Answer","text":"Yes — hashing happens entirely on your device; the file is never uploaded."}}]}]}</script>
+</head>
+<body>
+<header class="site-header">
+  <div class="container">
+    <a class="logo" href="/"><span class="logo-mark">T</span> ToolNest</a>
+    <div class="header-right">
+      <form class="nav-search" action="/" method="get" role="search">
+        <span class="ns-icon">🔍</span>
+        <input type="search" name="q" placeholder="Search tools…" aria-label="Search tools" autocomplete="off">
+      </form>
+      <div class="menu-wrap">
+        <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="menuPanel" aria-label="Open menu"><span></span><span></span><span></span></button>
+        <nav class="menu-panel" id="menuPanel" aria-label="Site">
+          <a href="/">Home</a>
+          <a href="/#categories">Categories</a>
+          <a href="/#all-tools">All Tools</a>
+        </nav>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ADSTERRA-HEADER: paste your Adsterra banner ad code inside the div below -->
+<div class="container"><div class="ad-slot ad-leaderboard" data-ad="header"></div></div>
+
+<main class="container">
+  <nav class="crumbs"><a href="/">Home</a> &rsaquo; <a href="/#developer">Developer Tools</a> &rsaquo; File Hash Checker</nav>
+  <div class="tool-hero">
+    <h1>File Hash Checker</h1>
+    <p>Compute real SHA-1, SHA-256, SHA-384 and SHA-512 hashes of any file with the Web Crypto API — and verify against an expected hash.</p>
+  </div>
+
+  <div class="tool-card">
+  <div class="grid2">
+    <div class="field"><label for="fh-file">Choose a file</label><input type="file" class="input" id="fh-file"></div>
+    <div class="field"><label for="fh-algo">Algorithm</label>
+      <select class="select" id="fh-algo">
+        <option value="SHA-256" selected>SHA-256</option>
+        <option value="SHA-1">SHA-1</option>
+        <option value="SHA-384">SHA-384</option>
+        <option value="SHA-512">SHA-512</option>
+      </select>
+    </div>
+  </div>
+  <div class="field"><label for="fh-expect">Expected hash <span class="hint">(optional — paste to verify)</span></label><input type="text" class="input" id="fh-expect" placeholder="paste expected hex digest..." style="font-family:ui-monospace,monospace"></div>
+  <div class="error" id="file-hash-checker-error"></div>
+  <div class="result" id="fh-result">
+    <div class="stat-cards">
+      <div class="stat-card"><div class="v" id="fh-size">–</div><div class="l">File size</div></div>
+      <div class="stat-card"><div class="v" id="fh-time">–</div><div class="l">Hash time</div></div>
+      <div class="stat-card"><div class="v" id="fh-match">–</div><div class="l">Verification</div></div>
+    </div>
+    <div class="field"><label for="fh-out">Hex digest</label><textarea class="textarea" id="fh-out" rows="3" readonly style="font-family:ui-monospace,monospace;word-break:break-all"></textarea></div>
+    <div class="btn-row">
+      <button class="btn btn-primary" id="fh-copy" type="button">Copy hash</button>
+    </div>
+    <p class="note">Hashed locally with the Web Crypto API — your file never leaves this device.</p>
+  </div>
+</div>
+
+  <!-- ADSTERRA-INCONTENT: paste your Adsterra native/in-content ad code inside the div below -->
+  <div class="ad-slot" data-ad="incontent"></div>
+
+  <div class="info-grid">
+    <div class="info-card">
+      <h2>📖 How to use</h2>
+      <ol><li>Choose a file and a hash algorithm.</li><li>The real cryptographic hash is computed locally.</li><li>Paste an expected hash to verify integrity.</li></ol>
+    </div>
+    <div class="info-card">
+      <h2>❓ Frequently asked questions</h2>
+      <div class="faq"><details><summary>How are hashes computed?</summary><p>The file is read into memory and hashed with crypto.subtle.digest, the browser&#39;s native Web Crypto implementation — the same algorithms servers use.</p></details><details><summary>Why is there no MD5?</summary><p>MD5 and other legacy hashes are not exposed by the Web Crypto API, so only the SHA-2 family (plus SHA-1) is available natively.</p></details><details><summary>How does verification work?</summary><p>Paste the expected hash and the tool compares it case-insensitively, ignoring spaces and colons, then shows MATCH or MISMATCH.</p></details><details><summary>Is my file uploaded anywhere?</summary><p>Yes — hashing happens entirely on your device; the file is never uploaded.</p></details></div>
+    </div>
+  </div>
+
+  <section class="section">
+    <h2>🔗 Related tools</h2>
+    <div class="tool-grid"><a class="tool-link" href="/tools/ascii-table-reference/" data-search="ascii table reference full ascii table 0–127: decimal, hex, octal, character, control-code names and html entities — searchable. ascii table ascii codes ascii chart control characters ascii reference"><span class="t-ico">💻</span><span class="t-body"><b>ASCII Table Reference</b><small>Full ASCII table 0–127: decimal, hex, octal, character, control-code names and HTML entities…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/base64-encoder-decoder/" data-search="base64 encoder / decoder encode text to base64 or decode base64 back to text, with full utf-8 support and a file-to-data-url converter. base64 encoder base64 decoder base64 encode base64 decode file to base64"><span class="t-ico">💻</span><span class="t-body"><b>Base64 Encoder / Decoder</b><small>Encode text to Base64 or decode Base64 back to text, with full UTF-8 support and a file-to-d…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/binary-text-converter/" data-search="binary and text converter convert text to binary or hex and back, with full utf-8 awareness and strict input validation. binary to text text to binary hex to text converter"><span class="t-ico">💻</span><span class="t-body"><b>Binary and Text Converter</b><small>Convert text to binary or hex and back, with full UTF-8 awareness and strict input validatio…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/color-code-converter/" data-search="color code converter type a color in hex, rgb or hsl format and instantly see it converted to all three formats with a preview swatch. color converter hex to rgb rgb to hex hsl converter color code"><span class="t-ico">💻</span><span class="t-body"><b>Color Code Converter</b><small>Type a color in HEX, RGB or HSL format and instantly see it converted to all three formats w…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/css-minifier/" data-search="css minifier compress css by stripping comments, collapsing whitespace and removing redundant semicolons, with before/after byte stats. css minifier minify css css compressor reduce css size"><span class="t-ico">💻</span><span class="t-body"><b>CSS Minifier</b><small>Compress CSS by stripping comments, collapsing whitespace and removing redundant semicolons,…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/css-specificity-calculator/" data-search="css specificity calculator calculate css selector specificity as (a,b,c) with a full breakdown — handles ids, classes, attributes, pseudo-classes, :not(), :is(), :where() and pseudo-elements. css specificity calculator specificity calculator css selector weight calculate specificity css cascade"><span class="t-ico">💻</span><span class="t-body"><b>CSS Specificity Calculator</b><small>Calculate CSS selector specificity as (a,b,c) with a full breakdown — handles IDs, classes, …</small></span><span class="t-arrow">→</span></a></div>
+  </section>
+</main>
+
+<!-- ADSTERRA-FOOTER: paste your Adsterra footer/banner ad code inside the div below -->
+<div class="container"><div class="ad-slot" data-ad="footer"></div></div>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="f-grid">
+      <div>
+        <span class="brandline"><span class="logo-mark">T</span> ToolNest</span>
+        <p>Free online tools that actually work. No sign-up, no watermarks — and your files never leave your device for client-side tools.</p>
+      </div>
+      <div>
+        <h4>Popular</h4>
+        <a href="/tools/qr-code-generator/">QR Code Generator</a>
+        <a href="/tools/background-remover/">Background Remover</a>
+        <a href="/tools/pdf-merger/">PDF Merger</a>
+        <a href="/tools/word-counter/">Word Counter</a>
+      </div>
+      <div>
+        <h4>Categories</h4>
+        <a href="/#image">Image Tools</a>
+        <a href="/#pdf">PDF &amp; Documents</a>
+        <a href="/#calculators">Calculators</a>
+        <a href="/#developer">Developer Tools</a>
+      </div>
+      <div>
+        <h4>Site</h4>
+        <a href="/">Home</a>
+        <a href="/#all-tools">All Tools</a>
+        <a href="/sitemap.xml">Sitemap</a>
+      </div>
+    </div>
+    <div class="f-bottom">© 2026 ToolNest · Free tools for everyone · Made with care</div>
+  </div>
+</footer>
+
+<script src="/assets/site.js?v=5"></script>
+
+<script>
+(function () {
+  'use strict';
+  var ERR = 'file-hash-checker-error';
+  var lastHex = '';
+  function fmtSize(n) {
+    if (n < 1024) return n + ' B';
+    if (n < 1048576) return (n / 1024).toFixed(1) + ' KB';
+    if (n < 1073741824) return (n / 1048576).toFixed(2) + ' MB';
+    return (n / 1073741824).toFixed(2) + ' GB';
+  }
+  function toHex(buf) {
+    var bytes = new Uint8Array(buf), out = '';
+    for (var i = 0; i < bytes.length; i++) {
+      out += (bytes[i] < 16 ? '0' : '') + bytes[i].toString(16);
+    }
+    return out;
+  }
+  function checkMatch() {
+    var exp = TN.el('fh-expect').value.trim().toLowerCase().replace(/[\s:]/g, '');
+    var mEl = TN.el('fh-match');
+    if (!lastHex) { mEl.textContent = '–'; return; }
+    if (!exp) { mEl.textContent = '–'; return; }
+    if (exp === lastHex.toLowerCase()) {
+      mEl.textContent = '✓ MATCH';
+      mEl.style.color = '#4ade80';
+    } else {
+      mEl.textContent = '✕ MISMATCH';
+      mEl.style.color = '#f87171';
+    }
+  }
+  function hashFile() {
+    TN.clearErr(ERR);
+    var files = TN.el('fh-file').files;
+    if (!files || !files[0]) return;
+    var file = files[0];
+    if (!window.crypto || !crypto.subtle) {
+      TN.setErr(ERR, 'Web Crypto is not available — use a secure (HTTPS) context.');
+      return;
+    }
+    var algo = TN.el('fh-algo').value;
+    TN.el('fh-out').value = 'Hashing...';
+    TN.el('fh-size').textContent = fmtSize(file.size);
+    var t0 = performance.now();
+    file.arrayBuffer().then(function (buf) {
+      return crypto.subtle.digest(algo, buf);
+    }).then(function (digest) {
+      lastHex = toHex(digest);
+      TN.el('fh-out').value = lastHex;
+      TN.el('fh-time').textContent = Math.round(performance.now() - t0) + ' ms';
+      checkMatch();
+    }).catch(function () {
+      TN.el('fh-out').value = '';
+      TN.setErr(ERR, 'Hashing failed for this file.');
+    });
+  }
+  try {
+    TN.on('fh-file', 'change', hashFile);
+    TN.on('fh-algo', 'change', hashFile);
+    TN.on('fh-expect', 'input', function () { TN.clearErr(ERR); checkMatch(); });
+    TN.on('fh-copy', 'click', function () {
+      if (!lastHex) { TN.setErr(ERR, 'Choose a file first.'); return; }
+      TN.clearErr(ERR);
+      if (TN.copy) TN.copy(lastHex);
+    });
+  } catch (e) { /* never throw on load */ }
+})();
+</script>
+</body>
+</html>

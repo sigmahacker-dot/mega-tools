@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Work / Break Timer — Free Online | ToolNest</title>
+<meta name="description" content="A simple repeating work/break timer (like 90/20 ultradian rhythm): set work and break lengths and it cycles automatically with a chime.">
+<meta name="keywords" content="work break timer, ultradian rhythm timer, 90 20 timer, focus break timer, work rest timer">
+<link rel="canonical" href="https://toolnest.vercel.app/tools/work-break-timer/">
+<meta name="theme-color" content="#07070b">
+<meta property="og:title" content="Work / Break Timer — Free Online | ToolNest">
+<meta property="og:description" content="A simple repeating work/break timer (like 90/20 ultradian rhythm): set work and break lengths and it cycles automatically with a chime.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css?v=4">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%23e01111'/><text x='50' y='68' font-size='58' text-anchor='middle' fill='white' font-family='Arial' font-weight='bold'>T</text></svg>">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebApplication","name":"Work / Break Timer","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0"},"url":"https://toolnest.vercel.app/tools/work-break-timer/","description":"A simple repeating work/break timer (like 90/20 ultradian rhythm): set work and break lengths and it cycles automatically with a chime."},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How is this different from a Pomodoro timer?","acceptedAnswer":{"@type":"Answer","text":"It is simpler: one work length and one break length repeating forever, with no long-break cycle. Ideal for ultradian rhythms like 90 minutes on / 20 off."}},{"@type":"Question","name":"What is the ultradian rhythm?","acceptedAnswer":{"@type":"Answer","text":"Research suggests the brain works well in ~90-minute focus cycles followed by ~20-minute breaks. The defaults reflect that pattern."}},{"@type":"Question","name":"Does it stay accurate in a background tab?","acceptedAnswer":{"@type":"Answer","text":"Yes — timing is driven by wall-clock timestamps, not tick counting."}}]}]}</script>
+</head>
+<body>
+<header class="site-header">
+  <div class="container">
+    <a class="logo" href="/"><span class="logo-mark">T</span> ToolNest</a>
+    <div class="header-right">
+      <form class="nav-search" action="/" method="get" role="search">
+        <span class="ns-icon">🔍</span>
+        <input type="search" name="q" placeholder="Search tools…" aria-label="Search tools" autocomplete="off">
+      </form>
+      <div class="menu-wrap">
+        <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="menuPanel" aria-label="Open menu"><span></span><span></span><span></span></button>
+        <nav class="menu-panel" id="menuPanel" aria-label="Site">
+          <a href="/">Home</a>
+          <a href="/#categories">Categories</a>
+          <a href="/#all-tools">All Tools</a>
+        </nav>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ADSTERRA-HEADER: paste your Adsterra banner ad code inside the div below -->
+<div class="container"><div class="ad-slot ad-leaderboard" data-ad="header"></div></div>
+
+<main class="container">
+  <nav class="crumbs"><a href="/">Home</a> &rsaquo; <a href="/#time">Time &amp; Date</a> &rsaquo; Work / Break Timer</nav>
+  <div class="tool-hero">
+    <h1>Work / Break Timer</h1>
+    <p>A simple repeating work/break timer (like 90/20 ultradian rhythm): set work and break lengths and it cycles automatically with a chime.</p>
+  </div>
+
+  <div class="tool-card">
+  <div class="grid2">
+    <div class="field">
+      <label for="work-break-timer-work">Work (minutes)</label>
+      <input type="number" class="input" id="work-break-timer-work" min="1" max="480" step="1" value="90">
+    </div>
+    <div class="field">
+      <label for="work-break-timer-break">Break (minutes)</label>
+      <input type="number" class="input" id="work-break-timer-break" min="1" max="180" step="1" value="20">
+    </div>
+  </div>
+  <div style="text-align:center;margin:18px 0 6px;">
+    <div class="muted" id="work-break-timer-phase" style="font-size:1rem;">Ready</div>
+    <div id="work-break-timer-display" style="font-size:3.2rem;font-weight:700;font-variant-numeric:tabular-nums;letter-spacing:.05em;">90:00</div>
+    <div class="muted" id="work-break-timer-cycles">Completed cycles: 0</div>
+  </div>
+  <div class="btn-row" style="justify-content:center;">
+    <button class="btn btn-primary" id="work-break-timer-start" type="button">Start</button>
+    <button class="btn btn-outline" id="work-break-timer-reset" type="button">Reset</button>
+  </div>
+  <div class="error" id="work-break-timer-error"></div>
+  <p class="note" style="text-align:center;">Cycles Work → Break automatically with a chime on every switch.</p>
+</div>
+
+
+  <!-- ADSTERRA-INCONTENT: paste your Adsterra native/in-content ad code inside the div below -->
+  <div class="ad-slot" data-ad="incontent"></div>
+
+  <div class="info-grid">
+    <div class="info-card">
+      <h2>📖 How to use</h2>
+      <ol><li>Set your work minutes and break minutes (defaults 90 / 20).</li><li>Press Start — the timer alternates Work → Break → Work automatically.</li><li>A chime sounds on every switch; the cycle counter tracks completed rounds.</li><li>Pause any time, or Reset to start fresh.</li></ol>
+    </div>
+    <div class="info-card">
+      <h2>❓ Frequently asked questions</h2>
+      <div class="faq"><details><summary>How is this different from a Pomodoro timer?</summary><p>It is simpler: one work length and one break length repeating forever, with no long-break cycle. Ideal for ultradian rhythms like 90 minutes on / 20 off.</p></details><details><summary>What is the ultradian rhythm?</summary><p>Research suggests the brain works well in ~90-minute focus cycles followed by ~20-minute breaks. The defaults reflect that pattern.</p></details><details><summary>Does it stay accurate in a background tab?</summary><p>Yes — timing is driven by wall-clock timestamps, not tick counting.</p></details></div>
+    </div>
+  </div>
+
+  <section class="section">
+    <h2>🔗 Related tools</h2>
+    <div class="tool-grid"><a class="tool-link" href="/tools/add-subtract-days-calculator/" data-search="add / subtract days calculator add or subtract days, weeks, months or years from any date. optional business-days-only mode skips weekends automatically. add days to date subtract days calculator date plus days business days calculator date arithmetic"><span class="t-ico">⏰</span><span class="t-body"><b>Add / Subtract Days Calculator</b><small>Add or subtract days, weeks, months or years from any date. Optional business-days-only mode…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/anniversary-calculator/" data-search="anniversary calculator track any anniversary: days until the next one, which number it is (10th, 25th…), total days together and the weekday it falls on. anniversary calculator wedding anniversary countdown how many days until anniversary anniversary date tracker years together calculator"><span class="t-ico">⏰</span><span class="t-body"><b>Anniversary Calculator</b><small>Track any anniversary: days until the next one, which number it is (10th, 25th…), total days…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/date-duration-calculator/" data-search="date duration calculator exact duration between two dates, plus business days. date duration calculator days between dates business days calculator"><span class="t-ico">⏰</span><span class="t-body"><b>Date Duration Calculator</b><small>Exact duration between two dates, plus business days.</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/event-countdown/" data-search="event countdown timer live ticking countdown to any future date and time. countdown timer event countdown countdown to date"><span class="t-ico">⏰</span><span class="t-body"><b>Event Countdown Timer</b><small>Live ticking countdown to any future date and time.</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/fiscal-quarter-finder/" data-search="fiscal quarter finder find the fiscal quarter for any date with any fiscal year start month. get the fy label, quarter start/end dates and days remaining. fiscal quarter finder what quarter are we in financial quarter calculator fy quarter dates fiscal year calculator"><span class="t-ico">⏰</span><span class="t-body"><b>Fiscal Quarter Finder</b><small>Find the fiscal quarter for any date with any fiscal year start month. Get the FY label, qua…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/meeting-cost-calculator/" data-search="meeting cost calculator calculate what meetings really cost: enter attendees, average hourly rate and duration to see the cost per meeting, per week, per month and per year. meeting cost calculator cost of meetings meeting time cost how much do meetings cost meeting roi calculator"><span class="t-ico">⏰</span><span class="t-body"><b>Meeting Cost Calculator</b><small>Calculate what meetings really cost: enter attendees, average hourly rate and duration to se…</small></span><span class="t-arrow">→</span></a></div>
+  </section>
+</main>
+
+<!-- ADSTERRA-FOOTER: paste your Adsterra footer/banner ad code inside the div below -->
+<div class="container"><div class="ad-slot" data-ad="footer"></div></div>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="f-grid">
+      <div>
+        <span class="brandline"><span class="logo-mark">T</span> ToolNest</span>
+        <p>Free online tools that actually work. No sign-up, no watermarks — and your files never leave your device for client-side tools.</p>
+      </div>
+      <div>
+        <h4>Popular</h4>
+        <a href="/tools/qr-code-generator/">QR Code Generator</a>
+        <a href="/tools/background-remover/">Background Remover</a>
+        <a href="/tools/pdf-merger/">PDF Merger</a>
+        <a href="/tools/word-counter/">Word Counter</a>
+      </div>
+      <div>
+        <h4>Categories</h4>
+        <a href="/#image">Image Tools</a>
+        <a href="/#pdf">PDF &amp; Documents</a>
+        <a href="/#calculators">Calculators</a>
+        <a href="/#developer">Developer Tools</a>
+      </div>
+      <div>
+        <h4>Site</h4>
+        <a href="/">Home</a>
+        <a href="/#all-tools">All Tools</a>
+        <a href="/sitemap.xml">Sitemap</a>
+      </div>
+    </div>
+    <div class="f-bottom">© 2026 ToolNest · Free tools for everyone · Made with care</div>
+  </div>
+</footer>
+
+<script src="/assets/site.js?v=5"></script>
+
+<script>
+(function () {
+  'use strict';
+  var P = 'work-break-timer-';
+  var ERR = P + 'error';
+  function g(id) { return document.getElementById(P + id); }
+  function set(id, v) { var el = g(id); if (el) el.textContent = v; }
+  var onWork = true, cycles = 0;
+  var running = false, remainingMs = 0, endStamp = 0, timerId = null;
+  function pad(n) { return (n < 10 ? '0' : '') + n; }
+  function fmtMs(ms) {
+    var s = Math.max(0, Math.ceil(ms / 1000));
+    return pad(Math.floor(s / 60)) + ':' + pad(s % 60);
+  }
+  function beep() {
+    try {
+      var AC = window.AudioContext || window.webkitAudioContext;
+      if (!AC) return;
+      var ctx = new AC(), o = ctx.createOscillator(), gn = ctx.createGain();
+      o.connect(gn); gn.connect(ctx.destination);
+      o.type = 'sine'; o.frequency.value = onWork ? 660 : 880;
+      gn.gain.setValueAtTime(0.001, ctx.currentTime);
+      gn.gain.exponentialRampToValueAtTime(0.4, ctx.currentTime + 0.03);
+      gn.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.6);
+      o.start(); o.stop(ctx.currentTime + 0.65);
+    } catch (e) { /* audio unavailable */ }
+  }
+  function readSettings() {
+    var w = parseInt(g('work').value, 10), b = parseInt(g('break').value, 10);
+    if ([w, b].some(isNaN) || w < 1 || w > 480 || b < 1 || b > 180) {
+      TN.setErr(ERR, 'Check the settings: work 1–480 min, break 1–180 min.');
+      return null;
+    }
+    TN.clearErr(ERR);
+    return { w: w, b: b };
+  }
+  function render() {
+    set('phase', onWork ? '💼 Work' : '☕ Break');
+    set('display', fmtMs(remainingMs));
+    set('cycles', 'Completed cycles: ' + cycles);
+    g('start').textContent = running ? 'Pause' : 'Start';
+  }
+  function tick() {
+    var rem = endStamp - Date.now();
+    if (rem <= 0) { advance(); return; }
+    remainingMs = rem;
+    set('display', fmtMs(rem));
+  }
+  function advance() {
+    beep();
+    if (!onWork) cycles++;
+    onWork = !onWork;
+    var st = readSettings() || { w: 90, b: 20 };
+    remainingMs = (onWork ? st.w : st.b) * 60000;
+    if (running) endStamp = Date.now() + remainingMs;
+    render();
+  }
+  function stopTimer() {
+    if (timerId !== null) { clearInterval(timerId); timerId = null; }
+    running = false;
+  }
+  function startPause() {
+    var st = readSettings();
+    if (!st) return;
+    if (running) {
+      remainingMs = Math.max(0, endStamp - Date.now());
+      stopTimer(); render(); return;
+    }
+    endStamp = Date.now() + remainingMs;
+    running = true;
+    timerId = setInterval(tick, 250);
+    render();
+  }
+  function reset() {
+    stopTimer();
+    var st = readSettings();
+    if (!st) return;
+    onWork = true; cycles = 0;
+    remainingMs = st.w * 60000;
+    set('phase', 'Ready');
+    render();
+  }
+  try {
+    remainingMs = 90 * 60000;
+    render();
+    TN.on(P + 'start', 'click', startPause);
+    TN.on(P + 'reset', 'click', reset);
+    TN.on(P + 'work', 'change', reset);
+    TN.on(P + 'break', 'change', reset);
+  } catch (e) { /* never throw on load */ }
+})();
+
+</script>
+</body>
+</html>

@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Palindrome Checker — Free Online | ToolNest</title>
+<meta name="description" content="Check if any word, phrase or number reads the same forwards and backwards, with options to ignore case, spaces and punctuation.">
+<meta name="keywords" content="palindrome checker, is this a palindrome, palindrome tester, check palindrome online">
+<link rel="canonical" href="https://toolnest.vercel.app/tools/palindrome-checker/">
+<meta name="theme-color" content="#07070b">
+<meta property="og:title" content="Palindrome Checker — Free Online | ToolNest">
+<meta property="og:description" content="Check if any word, phrase or number reads the same forwards and backwards, with options to ignore case, spaces and punctuation.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css?v=4">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%23e01111'/><text x='50' y='68' font-size='58' text-anchor='middle' fill='white' font-family='Arial' font-weight='bold'>T</text></svg>">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebApplication","name":"Palindrome Checker","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0"},"url":"https://toolnest.vercel.app/tools/palindrome-checker/","description":"Check if any word, phrase or number reads the same forwards and backwards, with options to ignore case, spaces and punctuation."},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What counts as a palindrome?","acceptedAnswer":{"@type":"Answer","text":"Text that reads identically forwards and backwards. With \"ignore spaces and punctuation\" on, \"A man, a plan, a canal: Panama\" is a palindrome."}},{"@type":"Question","name":"Does it check numbers too?","acceptedAnswer":{"@type":"Answer","text":"Yes. Numeric strings like 12321 or 1221 are checked the same way as words."}},{"@type":"Question","name":"What is the \"longest palindromic part\"?","acceptedAnswer":{"@type":"Answer","text":"The longest contiguous substring of your text that is itself a palindrome, found with an expand-around-center scan."}}]}]}</script>
+</head>
+<body>
+<header class="site-header">
+  <div class="container">
+    <a class="logo" href="/"><span class="logo-mark">T</span> ToolNest</a>
+    <div class="header-right">
+      <form class="nav-search" action="/" method="get" role="search">
+        <span class="ns-icon">🔍</span>
+        <input type="search" name="q" placeholder="Search tools…" aria-label="Search tools" autocomplete="off">
+      </form>
+      <div class="menu-wrap">
+        <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="menuPanel" aria-label="Open menu"><span></span><span></span><span></span></button>
+        <nav class="menu-panel" id="menuPanel" aria-label="Site">
+          <a href="/">Home</a>
+          <a href="/#categories">Categories</a>
+          <a href="/#all-tools">All Tools</a>
+        </nav>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ADSTERRA-HEADER: paste your Adsterra banner ad code inside the div below -->
+<div class="container"><div class="ad-slot ad-leaderboard" data-ad="header"></div></div>
+
+<main class="container">
+  <nav class="crumbs"><a href="/">Home</a> &rsaquo; <a href="/#text">Text &amp; Writing</a> &rsaquo; Palindrome Checker</nav>
+  <div class="tool-hero">
+    <h1>Palindrome Checker</h1>
+    <p>Check if any word, phrase or number reads the same forwards and backwards, with options to ignore case, spaces and punctuation.</p>
+  </div>
+
+  <div class="tool-card">
+  <div class="field">
+    <label for="palindrome-checker-input">Your text</label>
+    <textarea class="textarea" id="palindrome-checker-input" rows="6" placeholder="e.g. A man, a plan, a canal: Panama"></textarea>
+  </div>
+  <div class="grid2">
+    <div class="checkbox-row"><input type="checkbox" id="palindrome-checker-case" checked> <label for="palindrome-checker-case">Ignore case</label></div>
+    <div class="checkbox-row"><input type="checkbox" id="palindrome-checker-space" checked> <label for="palindrome-checker-space">Ignore spaces</label></div>
+    <div class="checkbox-row"><input type="checkbox" id="palindrome-checker-punct" checked> <label for="palindrome-checker-punct">Ignore punctuation</label></div>
+  </div>
+  <div class="error" id="palindrome-checker-error"></div>
+  <div class="stat-cards mt">
+    <div class="stat-card"><div class="v" id="palindrome-checker-result">–</div><div class="l">Palindrome?</div></div>
+    <div class="stat-card"><div class="v" id="palindrome-checker-len">0</div><div class="l">Characters checked</div></div>
+    <div class="stat-card"><div class="v" id="palindrome-checker-longest">–</div><div class="l">Longest palindromic part</div></div>
+  </div>
+  <p class="note">All checks run in your browser — nothing is uploaded.</p>
+</div>
+
+
+  <!-- ADSTERRA-INCONTENT: paste your Adsterra native/in-content ad code inside the div below -->
+  <div class="ad-slot" data-ad="incontent"></div>
+
+  <div class="info-grid">
+    <div class="info-card">
+      <h2>📖 How to use</h2>
+      <ol><li>Type or paste your text into the box.</li><li>Choose whether to ignore case, spaces and punctuation.</li><li>See instantly whether it is a palindrome, plus the cleaned text and the longest palindromic part.</li></ol>
+    </div>
+    <div class="info-card">
+      <h2>❓ Frequently asked questions</h2>
+      <div class="faq"><details><summary>What counts as a palindrome?</summary><p>Text that reads identically forwards and backwards. With &quot;ignore spaces and punctuation&quot; on, &quot;A man, a plan, a canal: Panama&quot; is a palindrome.</p></details><details><summary>Does it check numbers too?</summary><p>Yes. Numeric strings like 12321 or 1221 are checked the same way as words.</p></details><details><summary>What is the &quot;longest palindromic part&quot;?</summary><p>The longest contiguous substring of your text that is itself a palindrome, found with an expand-around-center scan.</p></details></div>
+    </div>
+  </div>
+
+  <section class="section">
+    <h2>🔗 Related tools</h2>
+    <div class="tool-grid"><a class="tool-link" href="/tools/acronym-generator/" data-search="acronym generator turn any phrase into an acronym instantly — first letters, with options to skip small words, add periods and force uppercase. acronym generator make acronym from words initialism generator phrase to acronym"><span class="t-ico">✍️</span><span class="t-body"><b>Acronym Generator</b><small>Turn any phrase into an acronym instantly — first letters, with options to skip small words,…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/aes-text-encryptor/" data-search="aes text encryptor encrypt text with real aes-256-gcm using a password-derived key (pbkdf2), fully in your browser. aes encrypt text encrypt message password aes-gcm online"><span class="t-ico">✍️</span><span class="t-body"><b>AES Text Encryptor</b><small>Encrypt text with real AES-256-GCM using a password-derived key (PBKDF2), fully in your brow…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/article-rewriter/" data-search="article rewriter rewrite articles with a built-in synonym engine covering 130+ common english words. whole-word replacement with capitalization preserved and a change report. article rewriter paraphrasing tool rewrite text online"><span class="t-ico">✍️</span><span class="t-body"><b>Article Rewriter</b><small>Rewrite articles with a built-in synonym engine covering 130+ common English words. Whole-wo…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/case-converter/" data-search="case converter convert text to uppercase, lowercase, title case, sentence case, alternating case and inverse case instantly, then copy or download the result. case converter uppercase lowercase converter title case converter"><span class="t-ico">✍️</span><span class="t-body"><b>Case Converter</b><small>Convert text to UPPERCASE, lowercase, Title Case, Sentence case, aLtErNaTiNg cAsE and iNVERS…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/case-style-converter/" data-search="case style converter convert text between camelcase, pascalcase, snake_case, kebab-case and more. case converter camelcase to snakecase kebab case converter"><span class="t-ico">✍️</span><span class="t-body"><b>Case Style Converter</b><small>Convert text between camelCase, PascalCase, snake_case, kebab-case and more.</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/character-counter/" data-search="character counter count characters with and without spaces, words and lines in real time, with a live x/twitter 280-character limit gauge and sms segment indicator. character counter twitter character count count characters online"><span class="t-ico">✍️</span><span class="t-body"><b>Character Counter</b><small>Count characters with and without spaces, words and lines in real time, with a live X/Twitte…</small></span><span class="t-arrow">→</span></a></div>
+  </section>
+</main>
+
+<!-- ADSTERRA-FOOTER: paste your Adsterra footer/banner ad code inside the div below -->
+<div class="container"><div class="ad-slot" data-ad="footer"></div></div>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="f-grid">
+      <div>
+        <span class="brandline"><span class="logo-mark">T</span> ToolNest</span>
+        <p>Free online tools that actually work. No sign-up, no watermarks — and your files never leave your device for client-side tools.</p>
+      </div>
+      <div>
+        <h4>Popular</h4>
+        <a href="/tools/qr-code-generator/">QR Code Generator</a>
+        <a href="/tools/background-remover/">Background Remover</a>
+        <a href="/tools/pdf-merger/">PDF Merger</a>
+        <a href="/tools/word-counter/">Word Counter</a>
+      </div>
+      <div>
+        <h4>Categories</h4>
+        <a href="/#image">Image Tools</a>
+        <a href="/#pdf">PDF &amp; Documents</a>
+        <a href="/#calculators">Calculators</a>
+        <a href="/#developer">Developer Tools</a>
+      </div>
+      <div>
+        <h4>Site</h4>
+        <a href="/">Home</a>
+        <a href="/#all-tools">All Tools</a>
+        <a href="/sitemap.xml">Sitemap</a>
+      </div>
+    </div>
+    <div class="f-bottom">© 2026 ToolNest · Free tools for everyone · Made with care</div>
+  </div>
+</footer>
+
+<script src="/assets/site.js?v=5"></script>
+
+<script>
+(function () {
+  'use strict';
+  var P = 'palindrome-checker-', ERR = P + 'error';
+  function g(id) { return TN.el(P + id); }
+  function longestPal(s) {
+    var n = s.length, best = '';
+    if (!n) return '';
+    function expand(l, r) {
+      while (l >= 0 && r < n && s[l] === s[r]) { l--; r++; }
+      return s.slice(l + 1, r);
+    }
+    for (var c = 0; c < n; c++) {
+      var o1 = expand(c, c), o2 = expand(c, c + 1);
+      if (o1.length > best.length) best = o1;
+      if (o2.length > best.length) best = o2;
+      if (best.length > n - c) break;
+    }
+    return best;
+  }
+  function check() {
+    try {
+      TN.clearErr(ERR);
+      var t = g('input') ? g('input').value : '';
+      var ignCase = g('case') && g('case').checked;
+      var ignSpace = g('space') && g('space').checked;
+      var ignPunct = g('punct') && g('punct').checked;
+      var s = t;
+      if (ignSpace) s = s.replace(/\s+/g, '');
+      if (ignPunct) s = s.replace(/[^a-zA-Z0-9]/g, '');
+      if (ignCase) s = s.toLowerCase();
+      var res = g('result'), ln = g('len'), lo = g('longest');
+      if (!s) {
+        res.textContent = '–'; ln.textContent = '0'; lo.textContent = '–';
+        return;
+      }
+      var i = 0, j = s.length - 1, ok = true;
+      while (i < j) { if (s[i] !== s[j]) { ok = false; break; } i++; j--; }
+      res.textContent = ok ? 'Yes ✓' : 'No ✗';
+      res.style.color = ok ? '#4D7C0F' : '#dc2626';
+      ln.textContent = s.length.toLocaleString('en-US');
+      var lp = longestPal(s);
+      lo.textContent = lp.length >= 2 ? (lp.length > 40 ? lp.slice(0, 40) + '…' : lp) + ' (' + lp.length + ')' : '–';
+    } catch (e) { TN.setErr(ERR, 'Could not check the text. Please try again.'); }
+  }
+  try {
+    TN.on(P + 'input', 'input', TN.debounce(check, 120));
+    ['case', 'space', 'punct'].forEach(function (k) { TN.on(P + k, 'change', check); });
+    check();
+  } catch (e) { /* never throw on load */ }
+})();
+
+</script>
+</body>
+</html>

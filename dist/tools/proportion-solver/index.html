@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Proportion Solver — Free Online | ToolNest</title>
+<meta name="description" content="Solve proportions of the form a:b = c:d. Pick which value is unknown (x) and get the answer instantly with the cross-multiplication steps shown.">
+<meta name="keywords" content="proportion solver, solve proportion calculator, cross multiplication calculator, find missing value ratio, a/b = c/d solver">
+<link rel="canonical" href="https://toolnest.vercel.app/tools/proportion-solver/">
+<meta name="theme-color" content="#07070b">
+<meta property="og:title" content="Proportion Solver — Free Online | ToolNest">
+<meta property="og:description" content="Solve proportions of the form a:b = c:d. Pick which value is unknown (x) and get the answer instantly with the cross-multiplication steps shown.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css?v=4">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%23e01111'/><text x='50' y='68' font-size='58' text-anchor='middle' fill='white' font-family='Arial' font-weight='bold'>T</text></svg>">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebApplication","name":"Proportion Solver","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0"},"url":"https://toolnest.vercel.app/tools/proportion-solver/","description":"Solve proportions of the form a:b = c:d. Pick which value is unknown (x) and get the answer instantly with the cross-multiplication steps shown."},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What is a proportion?","acceptedAnswer":{"@type":"Answer","text":"A proportion states that two ratios are equal, written a:b = c:d or a/b = c/d. If three of the four values are known, the fourth is found by cross-multiplication."}},{"@type":"Question","name":"How does cross-multiplication work?","acceptedAnswer":{"@type":"Answer","text":"In a/b = c/d, multiplying both sides to clear the fractions gives a*d = b*c. Rearranging for the unknown gives, for example, d = (b*c)/a."}},{"@type":"Question","name":"Can any of the four values be the unknown?","acceptedAnswer":{"@type":"Answer","text":"Yes. Choose which of a, b, c or d is unknown and enter the other three. The solver applies the correct rearranged formula for each case."}},{"@type":"Question","name":"What if a denominator is zero?","acceptedAnswer":{"@type":"Answer","text":"A proportion with b = 0 or d = 0 is undefined, so the tool will ask you to enter non-zero values for the denominators."}}]}]}</script>
+</head>
+<body>
+<header class="site-header">
+  <div class="container">
+    <a class="logo" href="/"><span class="logo-mark">T</span> ToolNest</a>
+    <div class="header-right">
+      <form class="nav-search" action="/" method="get" role="search">
+        <span class="ns-icon">🔍</span>
+        <input type="search" name="q" placeholder="Search tools…" aria-label="Search tools" autocomplete="off">
+      </form>
+      <div class="menu-wrap">
+        <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="menuPanel" aria-label="Open menu"><span></span><span></span><span></span></button>
+        <nav class="menu-panel" id="menuPanel" aria-label="Site">
+          <a href="/">Home</a>
+          <a href="/#categories">Categories</a>
+          <a href="/#all-tools">All Tools</a>
+        </nav>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ADSTERRA-HEADER: paste your Adsterra banner ad code inside the div below -->
+<div class="container"><div class="ad-slot ad-leaderboard" data-ad="header"></div></div>
+
+<main class="container">
+  <nav class="crumbs"><a href="/">Home</a> &rsaquo; <a href="/#math">Math &amp; Numbers</a> &rsaquo; Proportion Solver</nav>
+  <div class="tool-hero">
+    <h1>Proportion Solver</h1>
+    <p>Solve proportions of the form a:b = c:d. Pick which value is unknown (x) and get the answer instantly with the cross-multiplication steps shown.</p>
+  </div>
+
+  <div class="tool-card">
+  <div class="grid2">
+    <div class="field">
+      <label for="proportion-solver-unknown">Unknown value (x)</label>
+      <select class="select" id="proportion-solver-unknown">
+        <option value="a">a is unknown</option>
+        <option value="b">b is unknown</option>
+        <option value="c">c is unknown</option>
+        <option value="d" selected>d is unknown</option>
+      </select>
+    </div>
+    <div class="field">
+      <label for="proportion-solver-a">a</label>
+      <input type="number" class="input" id="proportion-solver-a" step="any" placeholder="e.g. 3">
+    </div>
+    <div class="field">
+      <label for="proportion-solver-b">b</label>
+      <input type="number" class="input" id="proportion-solver-b" step="any" placeholder="e.g. 4">
+    </div>
+    <div class="field">
+      <label for="proportion-solver-c">c</label>
+      <input type="number" class="input" id="proportion-solver-c" step="any" placeholder="e.g. 9">
+    </div>
+    <div class="field">
+      <label for="proportion-solver-d">d</label>
+      <input type="number" class="input" id="proportion-solver-d" step="any" placeholder="leave empty if unknown">
+    </div>
+  </div>
+  <div class="error" id="proportion-solver-error"></div>
+  <div class="result" id="proportion-solver-result">
+    <div class="stat-cards">
+      <div class="stat-card"><div class="v" id="proportion-solver-x">–</div><div class="l">Value of x</div></div>
+      <div class="stat-card"><div class="v" id="proportion-solver-check">–</div><div class="l">Check: a/b</div></div>
+      <div class="stat-card"><div class="v" id="proportion-solver-check2">–</div><div class="l">Check: c/d</div></div>
+    </div>
+    <p class="note" id="proportion-solver-steps">Choose the unknown and enter the other three values.</p>
+  </div>
+</div>
+
+
+  <!-- ADSTERRA-INCONTENT: paste your Adsterra native/in-content ad code inside the div below -->
+  <div class="ad-slot" data-ad="incontent"></div>
+
+  <div class="info-grid">
+    <div class="info-card">
+      <h2>📖 How to use</h2>
+      <ol><li>Choose which value (a, b, c or d) is the unknown x.</li><li>Enter the three known numbers.</li><li>The missing value is calculated instantly by cross-multiplication.</li><li>Read the step-by-step working to see exactly how the answer was found.</li></ol>
+    </div>
+    <div class="info-card">
+      <h2>❓ Frequently asked questions</h2>
+      <div class="faq"><details><summary>What is a proportion?</summary><p>A proportion states that two ratios are equal, written a:b = c:d or a/b = c/d. If three of the four values are known, the fourth is found by cross-multiplication.</p></details><details><summary>How does cross-multiplication work?</summary><p>In a/b = c/d, multiplying both sides to clear the fractions gives a*d = b*c. Rearranging for the unknown gives, for example, d = (b*c)/a.</p></details><details><summary>Can any of the four values be the unknown?</summary><p>Yes. Choose which of a, b, c or d is unknown and enter the other three. The solver applies the correct rearranged formula for each case.</p></details><details><summary>What if a denominator is zero?</summary><p>A proportion with b = 0 or d = 0 is undefined, so the tool will ask you to enter non-zero values for the denominators.</p></details></div>
+    </div>
+  </div>
+
+  <section class="section">
+    <h2>🔗 Related tools</h2>
+    <div class="tool-grid"><a class="tool-link" href="/tools/complex-number-calculator/" data-search="complex number calculator add, subtract, multiply and divide complex numbers. see the result in a+bi form with modulus, argument and conjugates. complex number calculator imaginary number calculator complex division a+bi calculator complex arithmetic"><span class="t-ico">📐</span><span class="t-body"><b>Complex Number Calculator</b><small>Add, subtract, multiply and divide complex numbers. See the result in a+bi form with modulus…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/exponent-calculator/" data-search="exponent calculator raise any base to any exponent. get base^exponent instantly with the expanded multiplication shown step by step for integer powers. exponent calculator power calculator base to the power exponential calculation x to the power of n"><span class="t-ico">📐</span><span class="t-body"><b>Exponent Calculator</b><small>Raise any base to any exponent. Get base^exponent instantly with the expanded multiplication…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/factorial-calculator/" data-search="factorial calculator compute n! for any n from 0 to 170. see the exact value, scientific notation, the multiplication expanded step by step and the count of trailing zeros. factorial calculator n factorial compute n! trailing zeros factorial factorial value"><span class="t-ico">📐</span><span class="t-body"><b>Factorial Calculator</b><small>Compute n! for any n from 0 to 170. See the exact value, scientific notation, the multiplica…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/fraction-calculator/" data-search="fraction calculator add, subtract, multiply and divide fractions with simplification. fraction calculator add fractions simplify fraction"><span class="t-ico">📐</span><span class="t-body"><b>Fraction Calculator</b><small>Add, subtract, multiply and divide fractions with simplification.</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/gcf-lcm-calculator/" data-search="gcf &amp; lcm calculator greatest common factor and least common multiple of any list. gcf calculator lcm calculator greatest common factor"><span class="t-ico">📐</span><span class="t-body"><b>GCF &amp; LCM Calculator</b><small>Greatest common factor and least common multiple of any list.</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/logarithm-calculator/" data-search="logarithm calculator compute logarithms to any base using the change-of-base formula. get log, natural log (ln), log10 and log2 of any positive number. logarithm calculator log base calculator natural log calculator change of base formula log10 log2 calculator"><span class="t-ico">📐</span><span class="t-body"><b>Logarithm Calculator</b><small>Compute logarithms to any base using the change-of-base formula. Get log, natural log (ln), …</small></span><span class="t-arrow">→</span></a></div>
+  </section>
+</main>
+
+<!-- ADSTERRA-FOOTER: paste your Adsterra footer/banner ad code inside the div below -->
+<div class="container"><div class="ad-slot" data-ad="footer"></div></div>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="f-grid">
+      <div>
+        <span class="brandline"><span class="logo-mark">T</span> ToolNest</span>
+        <p>Free online tools that actually work. No sign-up, no watermarks — and your files never leave your device for client-side tools.</p>
+      </div>
+      <div>
+        <h4>Popular</h4>
+        <a href="/tools/qr-code-generator/">QR Code Generator</a>
+        <a href="/tools/background-remover/">Background Remover</a>
+        <a href="/tools/pdf-merger/">PDF Merger</a>
+        <a href="/tools/word-counter/">Word Counter</a>
+      </div>
+      <div>
+        <h4>Categories</h4>
+        <a href="/#image">Image Tools</a>
+        <a href="/#pdf">PDF &amp; Documents</a>
+        <a href="/#calculators">Calculators</a>
+        <a href="/#developer">Developer Tools</a>
+      </div>
+      <div>
+        <h4>Site</h4>
+        <a href="/">Home</a>
+        <a href="/#all-tools">All Tools</a>
+        <a href="/sitemap.xml">Sitemap</a>
+      </div>
+    </div>
+    <div class="f-bottom">© 2026 ToolNest · Free tools for everyone · Made with care</div>
+  </div>
+</footer>
+
+<script src="/assets/site.js?v=5"></script>
+
+<script>
+(function () {
+  'use strict';
+  var P = 'proportion-solver-';
+  var ERR = P + 'error';
+  function g(id) { return document.getElementById(P + id); }
+  function set(id, v) { var el = g(id); if (el) el.textContent = v; }
+  function fmt(n) { if (!isFinite(n)) return '–'; return String(Number(n.toFixed(6))); }
+  function num(id) { var v = g(id).value; return v === '' ? NaN : parseFloat(v); }
+  function calc() {
+    if (!g('a')) return;
+    TN.clearErr(ERR);
+    var u = g('unknown').value;
+    var a = num('a'), b = num('b'), c = num('c'), d = num('d');
+    var vals = { a: a, b: b, c: c, d: d };
+    var need = ['a', 'b', 'c', 'd'].filter(function (k) { return k !== u; });
+    for (var i = 0; i < need.length; i++) {
+      if (isNaN(vals[need[i]])) {
+        set('x', '–'); set('check', '–'); set('check2', '–');
+        set('steps', 'Enter the three known values to solve for ' + u + '.');
+        return;
+      }
+    }
+    if (u === 'b' || u === 'd') { /* unknown is a denominator; known denominators must be nonzero too */ }
+    var kb = (u === 'b') ? NaN : b, kd = (u === 'd') ? NaN : d;
+    if ((u !== 'b' && b === 0) || (u !== 'd' && d === 0)) {
+      TN.setErr(ERR, 'Denominators b and d cannot be zero in a proportion.');
+      set('x', '–'); set('check', '–'); set('check2', '–'); return;
+    }
+    var x, formula;
+    if (u === 'a') { if (d === 0) { TN.setErr(ERR, 'd cannot be zero.'); return; } x = (b * c) / d; formula = 'a = (b × c) ÷ d = (' + fmt(b) + ' × ' + fmt(c) + ') ÷ ' + fmt(d); }
+    else if (u === 'b') { if (c === 0) { TN.setErr(ERR, 'c cannot be zero when solving for b.'); return; } x = (a * d) / c; formula = 'b = (a × d) ÷ c = (' + fmt(a) + ' × ' + fmt(d) + ') ÷ ' + fmt(c); }
+    else if (u === 'c') { if (b === 0) { TN.setErr(ERR, 'b cannot be zero.'); return; } x = (a * d) / b; formula = 'c = (a × d) ÷ b = (' + fmt(a) + ' × ' + fmt(d) + ') ÷ ' + fmt(b); }
+    else { if (a === 0) { TN.setErr(ERR, 'a cannot be zero when solving for d.'); return; } x = (b * c) / a; formula = 'd = (b × c) ÷ a = (' + fmt(b) + ' × ' + fmt(c) + ') ÷ ' + fmt(a); }
+    vals[u] = x;
+    set('x', fmt(x));
+    set('check', fmt(vals.a / vals.b));
+    set('check2', fmt(vals.c / vals.d));
+    set('steps', 'Cross-multiplication: a × d = b × c, so ' + formula + ' = ' + fmt(x) + '. Check: ' + fmt(vals.a) + '/' + fmt(vals.b) + ' = ' + fmt(vals.c) + '/' + fmt(vals.d) + '.');
+    void kb; void kd;
+  }
+  try {
+    ['a', 'b', 'c', 'd'].forEach(function (k) { TN.on(P + k, 'input', calc); });
+    TN.on(P + 'unknown', 'change', calc);
+    calc();
+  } catch (e) { /* never throw on load */ }
+})();
+
+</script>
+</body>
+</html>

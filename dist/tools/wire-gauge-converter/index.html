@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Wire Gauge (AWG) Converter — Free Online | ToolNest</title>
+<meta name="description" content="Convert AWG wire gauge to diameter (mm/in), cross-section area and copper resistance per km — or go backwards from a measured diameter to AWG.">
+<meta name="keywords" content="AWG to mm, wire gauge converter, awg wire size chart, wire diameter to AWG, copper wire resistance">
+<link rel="canonical" href="https://toolnest.vercel.app/tools/wire-gauge-converter/">
+<meta name="theme-color" content="#07070b">
+<meta property="og:title" content="Wire Gauge (AWG) Converter — Free Online | ToolNest">
+<meta property="og:description" content="Convert AWG wire gauge to diameter (mm/in), cross-section area and copper resistance per km — or go backwards from a measured diameter to AWG.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css?v=4">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%23e01111'/><text x='50' y='68' font-size='58' text-anchor='middle' fill='white' font-family='Arial' font-weight='bold'>T</text></svg>">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebApplication","name":"Wire Gauge (AWG) Converter","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0"},"url":"https://toolnest.vercel.app/tools/wire-gauge-converter/","description":"Convert AWG wire gauge to diameter (mm/in), cross-section area and copper resistance per km — or go backwards from a measured diameter to AWG."},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What is AWG?","acceptedAnswer":{"@type":"Answer","text":"American Wire Gauge is a logarithmic wire-size standard: larger AWG numbers mean thinner wire. Each 3-gauge step halves the cross-section area."}},{"@type":"Question","name":"How is diameter computed from AWG?","acceptedAnswer":{"@type":"Answer","text":"With the standard formula d = 0.005 × 92^((36−n)/39) inches, then converted to millimetres. Cross-section follows from π·d²/4."}},{"@type":"Question","name":"How is resistance per km computed?","acceptedAnswer":{"@type":"Answer","text":"From R = ρ·L/A with annealed copper resistivity ρ = 1.68×10⁻⁸ Ω·m at 20 °C. Real installations run slightly higher due to temperature and stranding."}}]}]}</script>
+</head>
+<body>
+<header class="site-header">
+  <div class="container">
+    <a class="logo" href="/"><span class="logo-mark">T</span> ToolNest</a>
+    <div class="header-right">
+      <form class="nav-search" action="/" method="get" role="search">
+        <span class="ns-icon">🔍</span>
+        <input type="search" name="q" placeholder="Search tools…" aria-label="Search tools" autocomplete="off">
+      </form>
+      <div class="menu-wrap">
+        <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="menuPanel" aria-label="Open menu"><span></span><span></span><span></span></button>
+        <nav class="menu-panel" id="menuPanel" aria-label="Site">
+          <a href="/">Home</a>
+          <a href="/#categories">Categories</a>
+          <a href="/#all-tools">All Tools</a>
+        </nav>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ADSTERRA-HEADER: paste your Adsterra banner ad code inside the div below -->
+<div class="container"><div class="ad-slot ad-leaderboard" data-ad="header"></div></div>
+
+<main class="container">
+  <nav class="crumbs"><a href="/">Home</a> &rsaquo; <a href="/#converters">Converters</a> &rsaquo; Wire Gauge (AWG) Converter</nav>
+  <div class="tool-hero">
+    <h1>Wire Gauge (AWG) Converter</h1>
+    <p>Convert AWG wire gauge to diameter (mm/in), cross-section area and copper resistance per km — or go backwards from a measured diameter to AWG.</p>
+  </div>
+
+  <div class="tool-card">
+  <div class="grid2">
+    <div class="field">
+      <label for="wire-gauge-converter-mode">Direction</label>
+      <select class="select" id="wire-gauge-converter-mode">
+        <option value="awg">AWG → diameter &amp; specs</option>
+        <option value="dia">Diameter (mm) → AWG</option>
+      </select>
+    </div>
+    <div class="field">
+      <label for="wire-gauge-converter-val" id="wire-gauge-converter-lab">AWG number (0–40)</label>
+      <input type="number" class="input" id="wire-gauge-converter-val" step="any" placeholder="e.g. 12">
+    </div>
+  </div>
+  <div class="error" id="wire-gauge-converter-error"></div>
+  <div class="result" id="wire-gauge-converter-result">
+    <div class="stat-cards">
+      <div class="stat-card"><div class="v" id="wire-gauge-converter-dmm">–</div><div class="l">Diameter (mm)</div></div>
+      <div class="stat-card"><div class="v" id="wire-gauge-converter-area">–</div><div class="l">Cross-section (mm²)</div></div>
+      <div class="stat-card"><div class="v" id="wire-gauge-converter-res">–</div><div class="l">Cu resistance (Ω/km)</div></div>
+    </div>
+    <p class="note" id="wire-gauge-converter-steps">Enter an AWG number to see its specs.</p>
+  </div>
+</div>
+
+
+  <!-- ADSTERRA-INCONTENT: paste your Adsterra native/in-content ad code inside the div below -->
+  <div class="ad-slot" data-ad="incontent"></div>
+
+  <div class="info-grid">
+    <div class="info-card">
+      <h2>📖 How to use</h2>
+      <ol><li>Choose AWG → specs or diameter → AWG.</li><li>Enter the AWG number (0–40) or the diameter in mm.</li><li>Read diameter, cross-section and copper resistance instantly.</li><li>Use the reverse mode to identify an unknown wire from a caliper measurement.</li></ol>
+    </div>
+    <div class="info-card">
+      <h2>❓ Frequently asked questions</h2>
+      <div class="faq"><details><summary>What is AWG?</summary><p>American Wire Gauge is a logarithmic wire-size standard: larger AWG numbers mean thinner wire. Each 3-gauge step halves the cross-section area.</p></details><details><summary>How is diameter computed from AWG?</summary><p>With the standard formula d = 0.005 × 92^((36−n)/39) inches, then converted to millimetres. Cross-section follows from π·d²/4.</p></details><details><summary>How is resistance per km computed?</summary><p>From R = ρ·L/A with annealed copper resistivity ρ = 1.68×10⁻⁸ Ω·m at 20 °C. Real installations run slightly higher due to temperature and stranding.</p></details></div>
+    </div>
+  </div>
+
+  <section class="section">
+    <h2>🔗 Related tools</h2>
+    <div class="tool-grid"><a class="tool-link" href="/tools/angle-converter/" data-search="angle converter convert angles between degrees, radians, gradians, turns, arcminutes, arcseconds and mils. enter a value once and see it in every unit instantly. angle converter degrees to radians radians to degrees gradians converter mils to degrees"><span class="t-ico">🔄</span><span class="t-body"><b>Angle Converter</b><small>Convert angles between degrees, radians, gradians, turns, arcminutes, arcseconds and mils. E…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/area-converter/" data-search="area converter square millimeters to square miles. area converter square feet to square meters acres to hectares"><span class="t-ico">🔄</span><span class="t-body"><b>Area Converter</b><small>Square millimeters to square miles.</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/clothing-size-converter/" data-search="clothing size converter convert clothing and shoe sizes between us, uk, eu and international systems for men&#39;s tops, pants, women&#39;s dresses and footwear. clothing size converter us to eu size uk to us shoe size dress size conversion pant size converter"><span class="t-ico">🔄</span><span class="t-body"><b>Clothing Size Converter</b><small>Convert clothing and shoe sizes between US, UK, EU and international systems for men&#39;s tops,…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/cooking-converter/" data-search="cooking converter cups, spoons and milliliters — plus grams via ingredient density. cooking converter cups to grams cups to ml"><span class="t-ico">🔄</span><span class="t-body"><b>Cooking Converter</b><small>Cups, spoons and milliliters — plus grams via ingredient density.</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/data-storage-converter/" data-search="data storage converter bits to petabytes, decimal and binary modes. data converter bytes to mb gb to mb"><span class="t-ico">🔄</span><span class="t-body"><b>Data Storage Converter</b><small>Bits to petabytes, decimal and binary modes.</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/data-transfer-time-calculator/" data-search="data transfer time calculator calculate how long a file takes to download or upload at a given connection speed. enter file size and transfer rate — get days, hours, minutes and seconds. download time calculator file transfer time how long to download upload time calculator bandwidth time calculator"><span class="t-ico">🔄</span><span class="t-body"><b>Data Transfer Time Calculator</b><small>Calculate how long a file takes to download or upload at a given connection speed. Enter fil…</small></span><span class="t-arrow">→</span></a></div>
+  </section>
+</main>
+
+<!-- ADSTERRA-FOOTER: paste your Adsterra footer/banner ad code inside the div below -->
+<div class="container"><div class="ad-slot" data-ad="footer"></div></div>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="f-grid">
+      <div>
+        <span class="brandline"><span class="logo-mark">T</span> ToolNest</span>
+        <p>Free online tools that actually work. No sign-up, no watermarks — and your files never leave your device for client-side tools.</p>
+      </div>
+      <div>
+        <h4>Popular</h4>
+        <a href="/tools/qr-code-generator/">QR Code Generator</a>
+        <a href="/tools/background-remover/">Background Remover</a>
+        <a href="/tools/pdf-merger/">PDF Merger</a>
+        <a href="/tools/word-counter/">Word Counter</a>
+      </div>
+      <div>
+        <h4>Categories</h4>
+        <a href="/#image">Image Tools</a>
+        <a href="/#pdf">PDF &amp; Documents</a>
+        <a href="/#calculators">Calculators</a>
+        <a href="/#developer">Developer Tools</a>
+      </div>
+      <div>
+        <h4>Site</h4>
+        <a href="/">Home</a>
+        <a href="/#all-tools">All Tools</a>
+        <a href="/sitemap.xml">Sitemap</a>
+      </div>
+    </div>
+    <div class="f-bottom">© 2026 ToolNest · Free tools for everyone · Made with care</div>
+  </div>
+</footer>
+
+<script src="/assets/site.js?v=5"></script>
+
+<script>
+(function () {
+  'use strict';
+  var P = 'wire-gauge-converter-';
+  var ERR = P + 'error';
+  function g(id) { return document.getElementById(P + id); }
+  function set(id, v) { var el = g(id); if (el) el.textContent = v; }
+  function f3(n) { return String(Number(n.toFixed(3))); }
+  /* AWG -> diameter in inches: d = 0.005 * 92^((36-n)/39) */
+  function awgToDiaIn(n) { return 0.005 * Math.pow(92, (36 - n) / 39); }
+  function diaInToAwg(dIn) { return 36 - 39 * Math.log(dIn / 0.005) / Math.log(92); }
+  function specs(dMm) {
+    var area = Math.PI * dMm * dMm / 4;
+    var res = 0.0168 / area; /* rho=1.68e-8, L=1000m, A in mm² */
+    return { dMm: dMm, area: area, res: res };
+  }
+  function blank() {
+    set('dmm', '–'); set('area', '–'); set('res', '–');
+    set('steps', 'Enter a value to convert.');
+  }
+  function calc() {
+    if (!g('val')) return;
+    TN.clearErr(ERR);
+    var mode = g('mode').value;
+    g('lab').textContent = mode === 'awg' ? 'AWG number (0–40)' : 'Diameter (mm)';
+    var raw = g('val').value;
+    if (raw === '') { blank(); return; }
+    var v = parseFloat(raw);
+    if (isNaN(v)) { TN.setErr(ERR, 'Enter a valid number.'); blank(); return; }
+    var n, sp;
+    if (mode === 'awg') {
+      if (Math.floor(v) !== v || v < 0 || v > 40) { TN.setErr(ERR, 'AWG must be a whole number from 0 to 40.'); blank(); return; }
+      n = v;
+      sp = specs(awgToDiaIn(n) * 25.4);
+      set('steps', 'AWG ' + n + ': d = 0.005 × 92^((36−' + n + ')/39) in = ' + f3(sp.dMm) + ' mm. Resistance is for solid annealed copper at 20 °C.');
+    } else {
+      if (v <= 0 || v > 50) { TN.setErr(ERR, 'Enter a diameter between 0 and 50 mm.'); blank(); return; }
+      n = Math.round(diaInToAwg(v / 25.4));
+      if (n < 0 || n > 40) { TN.setErr(ERR, 'That diameter is outside the AWG 0–40 range.'); blank(); return; }
+      sp = specs(v);
+      var exact = diaInToAwg(v / 25.4);
+      set('steps', f3(v) + ' mm corresponds to AWG ' + exact.toFixed(2) + ' → nearest standard size AWG ' + n +
+        ' (' + f3(awgToDiaIn(n) * 25.4) + ' mm nominal).');
+    }
+    set('dmm', f3(sp.dMm));
+    set('area', f3(sp.area));
+    set('res', f3(sp.res));
+  }
+  try {
+    TN.on(P + 'mode', 'change', calc);
+    TN.on(P + 'val', 'input', calc);
+    calc();
+  } catch (e) { /* never throw on load */ }
+})();
+
+</script>
+</body>
+</html>

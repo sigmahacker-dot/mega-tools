@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Habit Tracker Lite — Free Online | ToolNest</title>
+<meta name="description" content="Track daily habits with streaks and a 7-day history — check off today, build streaks, all saved on this device.">
+<meta name="keywords" content="habit tracker, daily habit tracker, streak tracker, habit builder, simple habit tracker">
+<link rel="canonical" href="https://toolnest.vercel.app/tools/habit-tracker-lite/">
+<meta name="theme-color" content="#07070b">
+<meta property="og:title" content="Habit Tracker Lite — Free Online | ToolNest">
+<meta property="og:description" content="Track daily habits with streaks and a 7-day history — check off today, build streaks, all saved on this device.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css?v=4">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%23e01111'/><text x='50' y='68' font-size='58' text-anchor='middle' fill='white' font-family='Arial' font-weight='bold'>T</text></svg>">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebApplication","name":"Habit Tracker Lite","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0"},"url":"https://toolnest.vercel.app/tools/habit-tracker-lite/","description":"Track daily habits with streaks and a 7-day history — check off today, build streaks, all saved on this device."},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How do streaks work?","acceptedAnswer":{"@type":"Answer","text":"Add a habit, then tick it each day you complete it. The streak counts consecutive days up to today (or yesterday if today is not done yet)."}},{"@type":"Question","name":"Is my data saved?","acceptedAnswer":{"@type":"Answer","text":"Yes — habits and their history are stored in your browser's localStorage."}},{"@type":"Question","name":"What does the week view show?","acceptedAnswer":{"@type":"Answer","text":"The 7-day strip shows the last 7 days with a dot for each completed day."}},{"@type":"Question","name":"Can I delete a habit?","acceptedAnswer":{"@type":"Answer","text":"Use the delete button on a habit to remove it and its history."}},{"@type":"Question","name":"Is this private?","acceptedAnswer":{"@type":"Answer","text":"Yes — everything stays in your browser."}}]}]}</script>
+</head>
+<body>
+<header class="site-header">
+  <div class="container">
+    <a class="logo" href="/"><span class="logo-mark">T</span> ToolNest</a>
+    <div class="header-right">
+      <form class="nav-search" action="/" method="get" role="search">
+        <span class="ns-icon">🔍</span>
+        <input type="search" name="q" placeholder="Search tools…" aria-label="Search tools" autocomplete="off">
+      </form>
+      <div class="menu-wrap">
+        <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="menuPanel" aria-label="Open menu"><span></span><span></span><span></span></button>
+        <nav class="menu-panel" id="menuPanel" aria-label="Site">
+          <a href="/">Home</a>
+          <a href="/#categories">Categories</a>
+          <a href="/#all-tools">All Tools</a>
+        </nav>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ADSTERRA-HEADER: paste your Adsterra banner ad code inside the div below -->
+<div class="container"><div class="ad-slot ad-leaderboard" data-ad="header"></div></div>
+
+<main class="container">
+  <nav class="crumbs"><a href="/">Home</a> &rsaquo; <a href="/#fun">Fun &amp; Lifestyle</a> &rsaquo; Habit Tracker Lite</nav>
+  <div class="tool-hero">
+    <h1>Habit Tracker Lite</h1>
+    <p>Track daily habits with streaks and a 7-day history — check off today, build streaks, all saved on this device.</p>
+  </div>
+
+  <div class="tool-card">
+  <div class="field"><label for="habit-name">New habit</label>
+    <div style="display:flex;gap:8px"><input type="text" class="input" id="habit-name" placeholder="Read 20 pages">
+    <button class="btn btn-primary btn-sm" id="habit-add" type="button">Add</button></div>
+  </div>
+  <div class="error" id="habit-tracker-lite-error"></div>
+  <div class="result" id="habit-result">
+    <div class="stat-cards">
+      <div class="stat-card"><div class="v" id="habit-count">0</div><div class="l">Habits</div></div>
+      <div class="stat-card"><div class="v" id="habit-done-today">0</div><div class="l">Done today</div></div>
+      <div class="stat-card"><div class="v" id="habit-best">0</div><div class="l">Best streak</div></div>
+    </div>
+    <div id="habit-list"></div>
+    <p class="note">Streaks count consecutive days. Data is stored on this device only.</p>
+  </div>
+</div>
+
+  <!-- ADSTERRA-INCONTENT: paste your Adsterra native/in-content ad code inside the div below -->
+  <div class="ad-slot" data-ad="incontent"></div>
+
+  <div class="info-grid">
+    <div class="info-card">
+      <h2>📖 How to use</h2>
+      <ol><li>Add the habits you want to build.</li><li>Tick each habit on days you complete it.</li><li>Watch your streaks grow in the 7-day view.</li></ol>
+    </div>
+    <div class="info-card">
+      <h2>❓ Frequently asked questions</h2>
+      <div class="faq"><details><summary>How do streaks work?</summary><p>Add a habit, then tick it each day you complete it. The streak counts consecutive days up to today (or yesterday if today is not done yet).</p></details><details><summary>Is my data saved?</summary><p>Yes — habits and their history are stored in your browser&#39;s localStorage.</p></details><details><summary>What does the week view show?</summary><p>The 7-day strip shows the last 7 days with a dot for each completed day.</p></details><details><summary>Can I delete a habit?</summary><p>Use the delete button on a habit to remove it and its history.</p></details><details><summary>Is this private?</summary><p>Yes — everything stays in your browser.</p></details></div>
+    </div>
+  </div>
+
+  <section class="section">
+    <h2>🔗 Related tools</h2>
+    <div class="tool-grid"><a class="tool-link" href="/tools/aim-trainer-game/" data-search="aim trainer game test and train your aim — targets pop up at random spots for 30 seconds. hits, misses and accuracy are tracked live. aim trainer aim test reaction test click speed test fps aim trainer"><span class="t-ico">🎲</span><span class="t-body"><b>Aim Trainer Game</b><small>Test and train your aim — targets pop up at random spots for 30 seconds. Hits, misses and ac…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/baby-name-generator/" data-search="baby name generator discover baby names by gender and origin — pakistani, arabic, western, indian or turkish — with meanings, random picks and tap-to-copy. baby name generator baby names with meanings muslim baby names boy girl names"><span class="t-ico">🎲</span><span class="t-body"><b>Baby Name Generator</b><small>Discover baby names by gender and origin — Pakistani, Arabic, Western, Indian or Turkish — w…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/battery-status-checker/" data-search="battery status checker check your device&#39;s battery level, charging status and estimated time remaining, with live updates — where your browser supports the battery api. battery status battery level checker laptop battery charging status"><span class="t-ico">🎲</span><span class="t-body"><b>Battery Status Checker</b><small>Check your device&#39;s battery level, charging status and estimated time remaining, with live u…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/birthday-countdown/" data-search="birthday countdown enter your birthday for a live countdown to your next one — days, hours, minutes and seconds — plus the age you&#39;ll turn and a fun message. birthday countdown countdown to birthday how old am i birthday timer"><span class="t-ico">🎲</span><span class="t-body"><b>Birthday Countdown</b><small>Enter your birthday for a live countdown to your next one — days, hours, minutes and seconds…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/calendar-generator/" data-search="calendar generator generate a monthly calendar for any month and year, with correct weekdays, leap years, today&#39;s date highlighted, and previous/next month navigation. calendar generator monthly calendar printable calendar month planner"><span class="t-ico">🎲</span><span class="t-body"><b>Calendar Generator</b><small>Generate a monthly calendar for any month and year, with correct weekdays, leap years, today…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/coin-flip/" data-search="coin flip flip a virtual coin with a fun animated toss. get instant heads or tails results, keep a running tally of both sides, and reset the count whenever you like. coin flip heads or tails coin toss random coin"><span class="t-ico">🎲</span><span class="t-body"><b>Coin Flip</b><small>Flip a virtual coin with a fun animated toss. Get instant Heads or Tails results, keep a run…</small></span><span class="t-arrow">→</span></a></div>
+  </section>
+</main>
+
+<!-- ADSTERRA-FOOTER: paste your Adsterra footer/banner ad code inside the div below -->
+<div class="container"><div class="ad-slot" data-ad="footer"></div></div>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="f-grid">
+      <div>
+        <span class="brandline"><span class="logo-mark">T</span> ToolNest</span>
+        <p>Free online tools that actually work. No sign-up, no watermarks — and your files never leave your device for client-side tools.</p>
+      </div>
+      <div>
+        <h4>Popular</h4>
+        <a href="/tools/qr-code-generator/">QR Code Generator</a>
+        <a href="/tools/background-remover/">Background Remover</a>
+        <a href="/tools/pdf-merger/">PDF Merger</a>
+        <a href="/tools/word-counter/">Word Counter</a>
+      </div>
+      <div>
+        <h4>Categories</h4>
+        <a href="/#image">Image Tools</a>
+        <a href="/#pdf">PDF &amp; Documents</a>
+        <a href="/#calculators">Calculators</a>
+        <a href="/#developer">Developer Tools</a>
+      </div>
+      <div>
+        <h4>Site</h4>
+        <a href="/">Home</a>
+        <a href="/#all-tools">All Tools</a>
+        <a href="/sitemap.xml">Sitemap</a>
+      </div>
+    </div>
+    <div class="f-bottom">© 2026 ToolNest · Free tools for everyone · Made with care</div>
+  </div>
+</footer>
+
+<script src="/assets/site.js?v=5"></script>
+
+<script>
+(function () {
+  'use strict';
+  var ERR = 'habit-tracker-lite-error';
+  var KEY = 'tn_habits_lite';
+  var habits = [];
+  function esc(s) {
+    return String(s).replace(/[&<>"']/g, function (c) {
+      return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c];
+    });
+  }
+  function dayKey(d) {
+    return d.getFullYear() + '-' + ('0' + (d.getMonth() + 1)).slice(-2) + '-' + ('0' + d.getDate()).slice(-2);
+  }
+  function save() { try { localStorage.setItem(KEY, JSON.stringify(habits)); } catch (e) {} }
+  function load() {
+    try {
+      var raw = localStorage.getItem(KEY);
+      if (raw) habits = JSON.parse(raw) || [];
+    } catch (e) { habits = []; }
+    habits.forEach(function (h) { if (!h.days) h.days = {}; });
+  }
+  function streak(h) {
+    var d = new Date(), s = 0;
+    if (!h.days[dayKey(d)]) d.setDate(d.getDate() - 1); // allow today pending
+    while (h.days[dayKey(d)]) { s++; d.setDate(d.getDate() - 1); }
+    return s;
+  }
+  function bestStreak(h) {
+    var keys = Object.keys(h.days).sort(), best = 0, cur = 0, prev = null;
+    keys.forEach(function (k) {
+      var d = new Date(k + 'T12:00:00');
+      if (prev && (d - prev) === 86400000) cur++;
+      else cur = 1;
+      if (cur > best) best = cur;
+      prev = d;
+    });
+    return best;
+  }
+  function render() {
+    TN.el('habit-count').textContent = habits.length;
+    var today = dayKey(new Date()), doneToday = 0, best = 0;
+    habits.forEach(function (h) {
+      if (h.days[today]) doneToday++;
+      var b = bestStreak(h);
+      if (b > best) best = b;
+    });
+    TN.el('habit-done-today').textContent = doneToday;
+    TN.el('habit-best').textContent = best;
+    var html = '';
+    habits.forEach(function (h, i) {
+      var st = streak(h), checked = h.days[today] ? ' checked' : '';
+      var week = '';
+      for (var d = 6; d >= 0; d--) {
+        var dt = new Date(); dt.setDate(dt.getDate() - d);
+        var k = dayKey(dt), done = !!h.days[k];
+        var label = dt.toLocaleDateString('en-US', { weekday: 'narrow' });
+        week += '<div title="' + k + '" style="width:30px;text-align:center"><div style="font-size:.7rem;color:#888">' + label + '</div>' +
+          '<div style="width:22px;height:22px;border-radius:50%;margin:2px auto;background:' + (done ? '#4ade80' : 'rgba(255,255,255,.08)') + '"></div></div>';
+      }
+      html += '<div style="border:1px solid rgba(255,255,255,.1);border-radius:12px;padding:12px;margin-bottom:10px">' +
+        '<div class="checkbox-row" style="justify-content:space-between;margin:0 0 8px">' +
+        '<span><input type="checkbox" data-i="' + i + '" id="habit-c' + i + '"' + checked + '>' +
+        '<label for="habit-c' + i + '"><strong>' + esc(h.name) + '</strong></label></span>' +
+        '<span><span class="muted">🔥 ' + st + ' day' + (st === 1 ? '' : 's') + '</span> ' +
+        '<button type="button" class="btn btn-danger btn-sm habit-del" data-i="' + i + '">✕</button></span></div>' +
+        '<div style="display:flex;gap:4px">' + week + '</div></div>';
+    });
+    TN.el('habit-list').innerHTML = html || '<p class="muted">No habits yet — add your first one above.</p>';
+    TN.qsa('#habit-list input[type=checkbox]').forEach(function (cb) {
+      cb.addEventListener('change', function () {
+        var h = habits[parseInt(cb.getAttribute('data-i'), 10)];
+        if (cb.checked) h.days[dayKey(new Date())] = 1;
+        else delete h.days[dayKey(new Date())];
+        save(); render();
+      });
+    });
+    TN.qsa('#habit-list .habit-del').forEach(function (b) {
+      b.addEventListener('click', function () {
+        habits.splice(parseInt(b.getAttribute('data-i'), 10), 1);
+        save(); render();
+      });
+    });
+  }
+  try {
+    load(); render();
+    TN.on('habit-add', 'click', function () {
+      TN.clearErr(ERR);
+      var n = TN.el('habit-name').value.trim();
+      if (!n) { TN.setErr(ERR, 'Type a habit name first.'); return; }
+      habits.push({ name: n, days: {} });
+      TN.el('habit-name').value = '';
+      save(); render();
+    });
+    TN.el('habit-name').addEventListener('keydown', function (e) {
+      if (e.key === 'Enter') { e.preventDefault(); TN.el('habit-add').click(); }
+    });
+  } catch (e) { /* never throw on load */ }
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ratio Simplifier — Free Online | ToolNest</title>
+<meta name="description" content="Simplify any ratio to its lowest terms. Enter two or three numbers and get the reduced ratio, the greatest common divisor and each part&#39;s share of the whole.">
+<meta name="keywords" content="ratio simplifier, simplify ratio calculator, reduce ratio to lowest terms, ratio in simplest form, gcd ratio calculator">
+<link rel="canonical" href="https://toolnest.vercel.app/tools/ratio-simplifier/">
+<meta name="theme-color" content="#07070b">
+<meta property="og:title" content="Ratio Simplifier — Free Online | ToolNest">
+<meta property="og:description" content="Simplify any ratio to its lowest terms. Enter two or three numbers and get the reduced ratio, the greatest common divisor and each part&#39;s share of the whole.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css?v=4">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%23e01111'/><text x='50' y='68' font-size='58' text-anchor='middle' fill='white' font-family='Arial' font-weight='bold'>T</text></svg>">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebApplication","name":"Ratio Simplifier","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0"},"url":"https://toolnest.vercel.app/tools/ratio-simplifier/","description":"Simplify any ratio to its lowest terms. Enter two or three numbers and get the reduced ratio, the greatest common divisor and each part's share of the whole."},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How is a ratio simplified?","acceptedAnswer":{"@type":"Answer","text":"Every number in the ratio is divided by the greatest common divisor (GCD) of all the numbers. For example, 12:18:30 has a GCD of 6, so it simplifies to 2:3:5."}},{"@type":"Question","name":"Can I simplify ratios with decimals?","acceptedAnswer":{"@type":"Answer","text":"Yes. Decimal inputs are scaled up to whole numbers first (for example 1.5:2.5 becomes 15:25) and then reduced, giving 3:5."}},{"@type":"Question","name":"What does each part's percentage mean?","acceptedAnswer":{"@type":"Answer","text":"It is the simplified part divided by the total of the simplified parts. In 2:3:5 the first part is 2/10 = 20% of the whole."}}]}]}</script>
+</head>
+<body>
+<header class="site-header">
+  <div class="container">
+    <a class="logo" href="/"><span class="logo-mark">T</span> ToolNest</a>
+    <div class="header-right">
+      <form class="nav-search" action="/" method="get" role="search">
+        <span class="ns-icon">🔍</span>
+        <input type="search" name="q" placeholder="Search tools…" aria-label="Search tools" autocomplete="off">
+      </form>
+      <div class="menu-wrap">
+        <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="menuPanel" aria-label="Open menu"><span></span><span></span><span></span></button>
+        <nav class="menu-panel" id="menuPanel" aria-label="Site">
+          <a href="/">Home</a>
+          <a href="/#categories">Categories</a>
+          <a href="/#all-tools">All Tools</a>
+        </nav>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ADSTERRA-HEADER: paste your Adsterra banner ad code inside the div below -->
+<div class="container"><div class="ad-slot ad-leaderboard" data-ad="header"></div></div>
+
+<main class="container">
+  <nav class="crumbs"><a href="/">Home</a> &rsaquo; <a href="/#math">Math &amp; Numbers</a> &rsaquo; Ratio Simplifier</nav>
+  <div class="tool-hero">
+    <h1>Ratio Simplifier</h1>
+    <p>Simplify any ratio to its lowest terms. Enter two or three numbers and get the reduced ratio, the greatest common divisor and each part&#39;s share of the whole.</p>
+  </div>
+
+  <div class="tool-card">
+  <div class="grid2">
+    <div class="field">
+      <label for="ratio-simplifier-a">First number</label>
+      <input type="number" class="input" id="ratio-simplifier-a" step="any" min="0" placeholder="e.g. 12">
+    </div>
+    <div class="field">
+      <label for="ratio-simplifier-b">Second number</label>
+      <input type="number" class="input" id="ratio-simplifier-b" step="any" min="0" placeholder="e.g. 18">
+    </div>
+    <div class="field">
+      <label for="ratio-simplifier-c">Third number (optional)</label>
+      <input type="number" class="input" id="ratio-simplifier-c" step="any" min="0" placeholder="e.g. 30">
+    </div>
+  </div>
+  <div class="error" id="ratio-simplifier-error"></div>
+  <div class="result" id="ratio-simplifier-result">
+    <div class="stat-cards">
+      <div class="stat-card"><div class="v" id="ratio-simplifier-simple">–</div><div class="l">Simplified ratio</div></div>
+      <div class="stat-card"><div class="v" id="ratio-simplifier-gcd">–</div><div class="l">Greatest common divisor</div></div>
+      <div class="stat-card"><div class="v" id="ratio-simplifier-total">–</div><div class="l">Total simplified parts</div></div>
+    </div>
+    <table class="data">
+      <thead><tr><th>Part</th><th>Original</th><th>Simplified</th><th>Share of whole</th><th>Percentage</th></tr></thead>
+      <tbody id="ratio-simplifier-body">
+        <tr><td colspan="5" class="muted">Enter at least two numbers to simplify the ratio.</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+
+  <!-- ADSTERRA-INCONTENT: paste your Adsterra native/in-content ad code inside the div below -->
+  <div class="ad-slot" data-ad="incontent"></div>
+
+  <div class="info-grid">
+    <div class="info-card">
+      <h2>📖 How to use</h2>
+      <ol><li>Enter the first and second numbers of your ratio.</li><li>Optionally add a third number for a three-part ratio.</li><li>The simplified ratio appears instantly, reduced by the greatest common divisor.</li><li>Use the table to see each part&#39;s simplified value and its percentage of the whole.</li></ol>
+    </div>
+    <div class="info-card">
+      <h2>❓ Frequently asked questions</h2>
+      <div class="faq"><details><summary>How is a ratio simplified?</summary><p>Every number in the ratio is divided by the greatest common divisor (GCD) of all the numbers. For example, 12:18:30 has a GCD of 6, so it simplifies to 2:3:5.</p></details><details><summary>Can I simplify ratios with decimals?</summary><p>Yes. Decimal inputs are scaled up to whole numbers first (for example 1.5:2.5 becomes 15:25) and then reduced, giving 3:5.</p></details><details><summary>What does each part&#39;s percentage mean?</summary><p>It is the simplified part divided by the total of the simplified parts. In 2:3:5 the first part is 2/10 = 20% of the whole.</p></details></div>
+    </div>
+  </div>
+
+  <section class="section">
+    <h2>🔗 Related tools</h2>
+    <div class="tool-grid"><a class="tool-link" href="/tools/complex-number-calculator/" data-search="complex number calculator add, subtract, multiply and divide complex numbers. see the result in a+bi form with modulus, argument and conjugates. complex number calculator imaginary number calculator complex division a+bi calculator complex arithmetic"><span class="t-ico">📐</span><span class="t-body"><b>Complex Number Calculator</b><small>Add, subtract, multiply and divide complex numbers. See the result in a+bi form with modulus…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/exponent-calculator/" data-search="exponent calculator raise any base to any exponent. get base^exponent instantly with the expanded multiplication shown step by step for integer powers. exponent calculator power calculator base to the power exponential calculation x to the power of n"><span class="t-ico">📐</span><span class="t-body"><b>Exponent Calculator</b><small>Raise any base to any exponent. Get base^exponent instantly with the expanded multiplication…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/factorial-calculator/" data-search="factorial calculator compute n! for any n from 0 to 170. see the exact value, scientific notation, the multiplication expanded step by step and the count of trailing zeros. factorial calculator n factorial compute n! trailing zeros factorial factorial value"><span class="t-ico">📐</span><span class="t-body"><b>Factorial Calculator</b><small>Compute n! for any n from 0 to 170. See the exact value, scientific notation, the multiplica…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/fraction-calculator/" data-search="fraction calculator add, subtract, multiply and divide fractions with simplification. fraction calculator add fractions simplify fraction"><span class="t-ico">📐</span><span class="t-body"><b>Fraction Calculator</b><small>Add, subtract, multiply and divide fractions with simplification.</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/gcf-lcm-calculator/" data-search="gcf &amp; lcm calculator greatest common factor and least common multiple of any list. gcf calculator lcm calculator greatest common factor"><span class="t-ico">📐</span><span class="t-body"><b>GCF &amp; LCM Calculator</b><small>Greatest common factor and least common multiple of any list.</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/logarithm-calculator/" data-search="logarithm calculator compute logarithms to any base using the change-of-base formula. get log, natural log (ln), log10 and log2 of any positive number. logarithm calculator log base calculator natural log calculator change of base formula log10 log2 calculator"><span class="t-ico">📐</span><span class="t-body"><b>Logarithm Calculator</b><small>Compute logarithms to any base using the change-of-base formula. Get log, natural log (ln), …</small></span><span class="t-arrow">→</span></a></div>
+  </section>
+</main>
+
+<!-- ADSTERRA-FOOTER: paste your Adsterra footer/banner ad code inside the div below -->
+<div class="container"><div class="ad-slot" data-ad="footer"></div></div>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="f-grid">
+      <div>
+        <span class="brandline"><span class="logo-mark">T</span> ToolNest</span>
+        <p>Free online tools that actually work. No sign-up, no watermarks — and your files never leave your device for client-side tools.</p>
+      </div>
+      <div>
+        <h4>Popular</h4>
+        <a href="/tools/qr-code-generator/">QR Code Generator</a>
+        <a href="/tools/background-remover/">Background Remover</a>
+        <a href="/tools/pdf-merger/">PDF Merger</a>
+        <a href="/tools/word-counter/">Word Counter</a>
+      </div>
+      <div>
+        <h4>Categories</h4>
+        <a href="/#image">Image Tools</a>
+        <a href="/#pdf">PDF &amp; Documents</a>
+        <a href="/#calculators">Calculators</a>
+        <a href="/#developer">Developer Tools</a>
+      </div>
+      <div>
+        <h4>Site</h4>
+        <a href="/">Home</a>
+        <a href="/#all-tools">All Tools</a>
+        <a href="/sitemap.xml">Sitemap</a>
+      </div>
+    </div>
+    <div class="f-bottom">© 2026 ToolNest · Free tools for everyone · Made with care</div>
+  </div>
+</footer>
+
+<script src="/assets/site.js?v=5"></script>
+
+<script>
+(function () {
+  'use strict';
+  var P = 'ratio-simplifier-';
+  var ERR = P + 'error';
+  function g(id) { return document.getElementById(P + id); }
+  function set(id, v) { var el = g(id); if (el) el.textContent = v; }
+  function fmt(n) { if (!isFinite(n)) return '–'; return String(Number(n.toFixed(6))); }
+  function gcd2(a, b) {
+    a = Math.abs(Math.round(a)); b = Math.abs(Math.round(b));
+    while (b) { var t = a % b; a = b; b = t; }
+    return a || 1;
+  }
+  function blanks() {
+    set('simple', '–'); set('gcd', '–'); set('total', '–');
+    g('body').innerHTML = '<tr><td colspan="5" class="muted">Enter at least two numbers to simplify the ratio.</td></tr>';
+  }
+  function calc() {
+    if (!g('a')) return;
+    TN.clearErr(ERR);
+    var raws = [g('a').value, g('b').value, g('c').value];
+    var nums = [];
+    for (var i = 0; i < raws.length; i++) {
+      if (raws[i] === '') continue;
+      var v = parseFloat(raws[i]);
+      if (isNaN(v) || v <= 0) { TN.setErr(ERR, 'Enter positive numbers only (decimals are fine).'); blanks(); return; }
+      nums.push(v);
+    }
+    if (nums.length < 2) {
+      if (raws.some(function (r) { return r !== ''; })) TN.setErr(ERR, 'Enter at least two numbers to form a ratio.');
+      blanks(); return;
+    }
+    var maxDp = 0;
+    nums.forEach(function (v) {
+      var s = String(v), d = s.indexOf('.');
+      if (d >= 0) maxDp = Math.max(maxDp, s.length - d - 1);
+    });
+    if (maxDp > 6) { TN.setErr(ERR, 'Please use at most 6 decimal places.'); blanks(); return; }
+    var scale = Math.pow(10, maxDp);
+    var ints = nums.map(function (v) { return Math.round(v * scale); });
+    var d = ints.reduce(gcd2);
+    var simp = ints.map(function (v) { return v / d; });
+    var total = simp.reduce(function (s, v) { return s + v; }, 0);
+    set('simple', simp.join(' : '));
+    set('gcd', fmt(d / scale));
+    set('total', String(total));
+    var rows = '';
+    var labels = ['First', 'Second', 'Third'];
+    for (var j = 0; j < nums.length; j++) {
+      var share = simp[j] / total;
+      rows += '<tr><td>' + labels[j] + '</td><td>' + TN.esc(fmt(nums[j])) + '</td><td>' +
+        TN.esc(String(simp[j])) + '</td><td>' + TN.esc(simp[j] + ' / ' + total) + '</td><td>' +
+        TN.esc((share * 100).toFixed(2) + '%') + '</td></tr>';
+    }
+    g('body').innerHTML = rows;
+  }
+  try {
+    ['a', 'b', 'c'].forEach(function (k) { TN.on(P + k, 'input', calc); });
+    calc();
+  } catch (e) { /* never throw on load */ }
+})();
+
+</script>
+</body>
+</html>

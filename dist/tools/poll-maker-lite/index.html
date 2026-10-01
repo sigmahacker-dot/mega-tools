@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Poll Maker Lite — Free Online | ToolNest</title>
+<meta name="description" content="Create a quick poll with custom options, vote on it, and watch live percentage bars — votes are saved on this device.">
+<meta name="keywords" content="poll maker, online poll creator, vote poll, straw poll, quick poll maker">
+<link rel="canonical" href="https://toolnest.vercel.app/tools/poll-maker-lite/">
+<meta name="theme-color" content="#07070b">
+<meta property="og:title" content="Poll Maker Lite — Free Online | ToolNest">
+<meta property="og:description" content="Create a quick poll with custom options, vote on it, and watch live percentage bars — votes are saved on this device.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css?v=4">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%23e01111'/><text x='50' y='68' font-size='58' text-anchor='middle' fill='white' font-family='Arial' font-weight='bold'>T</text></svg>">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebApplication","name":"Poll Maker Lite","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0"},"url":"https://toolnest.vercel.app/tools/poll-maker-lite/","description":"Create a quick poll with custom options, vote on it, and watch live percentage bars — votes are saved on this device."},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How do I make a poll?","acceptedAnswer":{"@type":"Answer","text":"Type a question, add at least two options, and press Create poll. Then click an option to cast votes."}},{"@type":"Question","name":"Are votes saved?","acceptedAnswer":{"@type":"Answer","text":"Yes — votes are stored in your browser's localStorage, so they survive page reloads on this device."}},{"@type":"Question","name":"Can I reset or delete a poll?","acceptedAnswer":{"@type":"Answer","text":"Press Reset votes to zero all counts, or New poll to start over."}},{"@type":"Question","name":"Is this private?","acceptedAnswer":{"@type":"Answer","text":"Yes — everything, including vote storage, stays in your browser."}}]}]}</script>
+</head>
+<body>
+<header class="site-header">
+  <div class="container">
+    <a class="logo" href="/"><span class="logo-mark">T</span> ToolNest</a>
+    <div class="header-right">
+      <form class="nav-search" action="/" method="get" role="search">
+        <span class="ns-icon">🔍</span>
+        <input type="search" name="q" placeholder="Search tools…" aria-label="Search tools" autocomplete="off">
+      </form>
+      <div class="menu-wrap">
+        <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="menuPanel" aria-label="Open menu"><span></span><span></span><span></span></button>
+        <nav class="menu-panel" id="menuPanel" aria-label="Site">
+          <a href="/">Home</a>
+          <a href="/#categories">Categories</a>
+          <a href="/#all-tools">All Tools</a>
+        </nav>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ADSTERRA-HEADER: paste your Adsterra banner ad code inside the div below -->
+<div class="container"><div class="ad-slot ad-leaderboard" data-ad="header"></div></div>
+
+<main class="container">
+  <nav class="crumbs"><a href="/">Home</a> &rsaquo; <a href="/#fun">Fun &amp; Lifestyle</a> &rsaquo; Poll Maker Lite</nav>
+  <div class="tool-hero">
+    <h1>Poll Maker Lite</h1>
+    <p>Create a quick poll with custom options, vote on it, and watch live percentage bars — votes are saved on this device.</p>
+  </div>
+
+  <div class="tool-card">
+  <div id="poll-setup">
+    <div class="field"><label for="poll-q">Question</label><input type="text" class="input" id="poll-q" placeholder="Where should we go for lunch?"></div>
+    <div class="field"><label>Options</label><div id="poll-opts"></div>
+      <div class="btn-row"><button class="btn btn-outline btn-sm" id="poll-add" type="button">+ Add option</button></div>
+    </div>
+    <div class="error" id="poll-maker-lite-error"></div>
+    <div class="btn-row"><button class="btn btn-primary" id="poll-create" type="button">Create poll</button></div>
+  </div>
+  <div id="poll-live" style="display:none">
+    <h3 id="poll-title" style="margin-top:0"></h3>
+    <div class="stat-cards">
+      <div class="stat-card"><div class="v" id="poll-total">0</div><div class="l">Total votes</div></div>
+    </div>
+    <div id="poll-results"></div>
+    <div class="btn-row">
+      <button class="btn btn-outline btn-sm" id="poll-reset" type="button">Reset votes</button>
+      <button class="btn btn-outline btn-sm" id="poll-new" type="button">New poll</button>
+    </div>
+    <p class="note">Click an option to cast a vote. Votes are stored on this device.</p>
+  </div>
+</div>
+
+  <!-- ADSTERRA-INCONTENT: paste your Adsterra native/in-content ad code inside the div below -->
+  <div class="ad-slot" data-ad="incontent"></div>
+
+  <div class="info-grid">
+    <div class="info-card">
+      <h2>📖 How to use</h2>
+      <ol><li>Type your poll question and add options (at least two).</li><li>Press Create poll.</li><li>Click an option to vote and watch the live results.</li></ol>
+    </div>
+    <div class="info-card">
+      <h2>❓ Frequently asked questions</h2>
+      <div class="faq"><details><summary>How do I make a poll?</summary><p>Type a question, add at least two options, and press Create poll. Then click an option to cast votes.</p></details><details><summary>Are votes saved?</summary><p>Yes — votes are stored in your browser&#39;s localStorage, so they survive page reloads on this device.</p></details><details><summary>Can I reset or delete a poll?</summary><p>Press Reset votes to zero all counts, or New poll to start over.</p></details><details><summary>Is this private?</summary><p>Yes — everything, including vote storage, stays in your browser.</p></details></div>
+    </div>
+  </div>
+
+  <section class="section">
+    <h2>🔗 Related tools</h2>
+    <div class="tool-grid"><a class="tool-link" href="/tools/aim-trainer-game/" data-search="aim trainer game test and train your aim — targets pop up at random spots for 30 seconds. hits, misses and accuracy are tracked live. aim trainer aim test reaction test click speed test fps aim trainer"><span class="t-ico">🎲</span><span class="t-body"><b>Aim Trainer Game</b><small>Test and train your aim — targets pop up at random spots for 30 seconds. Hits, misses and ac…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/baby-name-generator/" data-search="baby name generator discover baby names by gender and origin — pakistani, arabic, western, indian or turkish — with meanings, random picks and tap-to-copy. baby name generator baby names with meanings muslim baby names boy girl names"><span class="t-ico">🎲</span><span class="t-body"><b>Baby Name Generator</b><small>Discover baby names by gender and origin — Pakistani, Arabic, Western, Indian or Turkish — w…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/battery-status-checker/" data-search="battery status checker check your device&#39;s battery level, charging status and estimated time remaining, with live updates — where your browser supports the battery api. battery status battery level checker laptop battery charging status"><span class="t-ico">🎲</span><span class="t-body"><b>Battery Status Checker</b><small>Check your device&#39;s battery level, charging status and estimated time remaining, with live u…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/birthday-countdown/" data-search="birthday countdown enter your birthday for a live countdown to your next one — days, hours, minutes and seconds — plus the age you&#39;ll turn and a fun message. birthday countdown countdown to birthday how old am i birthday timer"><span class="t-ico">🎲</span><span class="t-body"><b>Birthday Countdown</b><small>Enter your birthday for a live countdown to your next one — days, hours, minutes and seconds…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/calendar-generator/" data-search="calendar generator generate a monthly calendar for any month and year, with correct weekdays, leap years, today&#39;s date highlighted, and previous/next month navigation. calendar generator monthly calendar printable calendar month planner"><span class="t-ico">🎲</span><span class="t-body"><b>Calendar Generator</b><small>Generate a monthly calendar for any month and year, with correct weekdays, leap years, today…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/coin-flip/" data-search="coin flip flip a virtual coin with a fun animated toss. get instant heads or tails results, keep a running tally of both sides, and reset the count whenever you like. coin flip heads or tails coin toss random coin"><span class="t-ico">🎲</span><span class="t-body"><b>Coin Flip</b><small>Flip a virtual coin with a fun animated toss. Get instant Heads or Tails results, keep a run…</small></span><span class="t-arrow">→</span></a></div>
+  </section>
+</main>
+
+<!-- ADSTERRA-FOOTER: paste your Adsterra footer/banner ad code inside the div below -->
+<div class="container"><div class="ad-slot" data-ad="footer"></div></div>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="f-grid">
+      <div>
+        <span class="brandline"><span class="logo-mark">T</span> ToolNest</span>
+        <p>Free online tools that actually work. No sign-up, no watermarks — and your files never leave your device for client-side tools.</p>
+      </div>
+      <div>
+        <h4>Popular</h4>
+        <a href="/tools/qr-code-generator/">QR Code Generator</a>
+        <a href="/tools/background-remover/">Background Remover</a>
+        <a href="/tools/pdf-merger/">PDF Merger</a>
+        <a href="/tools/word-counter/">Word Counter</a>
+      </div>
+      <div>
+        <h4>Categories</h4>
+        <a href="/#image">Image Tools</a>
+        <a href="/#pdf">PDF &amp; Documents</a>
+        <a href="/#calculators">Calculators</a>
+        <a href="/#developer">Developer Tools</a>
+      </div>
+      <div>
+        <h4>Site</h4>
+        <a href="/">Home</a>
+        <a href="/#all-tools">All Tools</a>
+        <a href="/sitemap.xml">Sitemap</a>
+      </div>
+    </div>
+    <div class="f-bottom">© 2026 ToolNest · Free tools for everyone · Made with care</div>
+  </div>
+</footer>
+
+<script src="/assets/site.js?v=5"></script>
+
+<script>
+(function () {
+  'use strict';
+  var ERR = 'poll-maker-lite-error';
+  var KEY = 'tn_poll_lite';
+  var poll = null;
+  function esc(s) {
+    return String(s).replace(/[&<>"']/g, function (c) {
+      return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c];
+    });
+  }
+  function save() { try { localStorage.setItem(KEY, JSON.stringify(poll)); } catch (e) {} }
+  function load() {
+    try {
+      var raw = localStorage.getItem(KEY);
+      if (raw) poll = JSON.parse(raw);
+    } catch (e) { poll = null; }
+  }
+  function addOptRow(v) {
+    var box = TN.el('poll-opts');
+    var d = document.createElement('div');
+    d.style.cssText = 'display:flex;gap:8px;margin-bottom:8px;';
+    d.innerHTML = '<input type="text" class="input poll-opt" placeholder="Option">' +
+      '<button type="button" class="btn btn-danger btn-sm poll-opt-del" title="Remove">✕</button>';
+    if (v) d.querySelector('.poll-opt').value = v;
+    box.appendChild(d);
+    d.querySelector('.poll-opt-del').addEventListener('click', function () { d.remove(); });
+  }
+  function showSetup() { TN.el('poll-setup').style.display = ''; TN.el('poll-live').style.display = 'none'; }
+  function showLive() { TN.el('poll-setup').style.display = 'none'; TN.el('poll-live').style.display = ''; }
+  function render() {
+    TN.el('poll-title').textContent = poll.q;
+    var total = poll.opts.reduce(function (a, o) { return a + o.votes; }, 0);
+    TN.el('poll-total').textContent = total;
+    var html = '';
+    poll.opts.forEach(function (o, i) {
+      var pct = total ? Math.round(o.votes / total * 100) : 0;
+      html += '<button type="button" class="btn btn-outline poll-vote" data-i="' + i + '" style="display:block;width:100%;justify-content:flex-start;margin-bottom:8px;text-align:left">' +
+        '<span style="flex:1">' + esc(o.text) + '</span><span class="muted">' + o.votes + ' (' + pct + '%)</span></button>' +
+        '<div style="height:8px;background:rgba(255,255,255,.08);border-radius:99px;margin:-4px 0 12px;overflow:hidden">' +
+        '<div style="height:100%;width:' + pct + '%;background:linear-gradient(90deg,#f23333,#c80f0f);border-radius:99px"></div></div>';
+    });
+    TN.el('poll-results').innerHTML = html;
+    TN.qsa('#poll-results .poll-vote').forEach(function (b) {
+      b.addEventListener('click', function () {
+        poll.opts[parseInt(b.getAttribute('data-i'), 10)].votes++;
+        save(); render();
+      });
+    });
+  }
+  try {
+    load();
+    addOptRow('Pizza'); addOptRow('Sushi');
+    TN.on('poll-add', 'click', function () { addOptRow(''); });
+    TN.on('poll-create', 'click', function () {
+      TN.clearErr(ERR);
+      var q = TN.el('poll-q').value.trim();
+      var opts = TN.qsa('#poll-opts .poll-opt').map(function (el) { return el.value.trim(); }).filter(function (x) { return x; });
+      if (!q) { TN.setErr(ERR, 'Type a poll question first.'); return; }
+      if (opts.length < 2) { TN.setErr(ERR, 'Add at least two options.'); return; }
+      poll = { q: q, opts: opts.map(function (t) { return { text: t, votes: 0 }; }) };
+      save(); showLive(); render();
+    });
+    TN.on('poll-reset', 'click', function () {
+      poll.opts.forEach(function (o) { o.votes = 0; });
+      save(); render();
+    });
+    TN.on('poll-new', 'click', function () {
+      poll = null; save(); showSetup();
+    });
+    if (poll && poll.opts) { showLive(); render(); }
+  } catch (e) { /* never throw on load */ }
+})();
+</script>
+</body>
+</html>

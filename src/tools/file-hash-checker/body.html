@@ -1,0 +1,27 @@
+<div class="tool-card">
+  <div class="grid2">
+    <div class="field"><label for="fh-file">Choose a file</label><input type="file" class="input" id="fh-file"></div>
+    <div class="field"><label for="fh-algo">Algorithm</label>
+      <select class="select" id="fh-algo">
+        <option value="SHA-256" selected>SHA-256</option>
+        <option value="SHA-1">SHA-1</option>
+        <option value="SHA-384">SHA-384</option>
+        <option value="SHA-512">SHA-512</option>
+      </select>
+    </div>
+  </div>
+  <div class="field"><label for="fh-expect">Expected hash <span class="hint">(optional — paste to verify)</span></label><input type="text" class="input" id="fh-expect" placeholder="paste expected hex digest..." style="font-family:ui-monospace,monospace"></div>
+  <div class="error" id="file-hash-checker-error"></div>
+  <div class="result" id="fh-result">
+    <div class="stat-cards">
+      <div class="stat-card"><div class="v" id="fh-size">–</div><div class="l">File size</div></div>
+      <div class="stat-card"><div class="v" id="fh-time">–</div><div class="l">Hash time</div></div>
+      <div class="stat-card"><div class="v" id="fh-match">–</div><div class="l">Verification</div></div>
+    </div>
+    <div class="field"><label for="fh-out">Hex digest</label><textarea class="textarea" id="fh-out" rows="3" readonly style="font-family:ui-monospace,monospace;word-break:break-all"></textarea></div>
+    <div class="btn-row">
+      <button class="btn btn-primary" id="fh-copy" type="button">Copy hash</button>
+    </div>
+    <p class="note">Hashed locally with the Web Crypto API — your file never leaves this device.</p>
+  </div>
+</div>

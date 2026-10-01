@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Letter Spacing Tuner — Free Online | ToolNest</title>
+<meta name="description" content="Fine-tune CSS letter-spacing on live sample text — slider in px and em, with font-size control and copyable CSS.">
+<meta name="keywords" content="letter spacing css, tracking tuner, letter-spacing generator, typography spacing tool">
+<link rel="canonical" href="https://toolnest.vercel.app/tools/letter-spacing-tuner/">
+<meta name="theme-color" content="#07070b">
+<meta property="og:title" content="Letter Spacing Tuner — Free Online | ToolNest">
+<meta property="og:description" content="Fine-tune CSS letter-spacing on live sample text — slider in px and em, with font-size control and copyable CSS.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css?v=4">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%23e01111'/><text x='50' y='68' font-size='58' text-anchor='middle' fill='white' font-family='Arial' font-weight='bold'>T</text></svg>">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebApplication","name":"Letter Spacing Tuner","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0"},"url":"https://toolnest.vercel.app/tools/letter-spacing-tuner/","description":"Fine-tune CSS letter-spacing on live sample text — slider in px and em, with font-size control and copyable CSS."},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What is letter-spacing?","acceptedAnswer":{"@type":"Answer","text":"The CSS property that adds or removes space between characters (called \"tracking\" in print design). Positive values air text out; negative values tighten it."}},{"@type":"Question","name":"When should I change it?","acceptedAnswer":{"@type":"Answer","text":"All-caps headlines usually need +0.05em to +0.15em; large display type often looks better slightly tightened; body text is best left at normal."}},{"@type":"Question","name":"px or em — which unit?","acceptedAnswer":{"@type":"Answer","text":"em scales with font size, so it stays proportional if the text size changes. The tool shows both values live."}}]}]}</script>
+</head>
+<body>
+<header class="site-header">
+  <div class="container">
+    <a class="logo" href="/"><span class="logo-mark">T</span> ToolNest</a>
+    <div class="header-right">
+      <form class="nav-search" action="/" method="get" role="search">
+        <span class="ns-icon">🔍</span>
+        <input type="search" name="q" placeholder="Search tools…" aria-label="Search tools" autocomplete="off">
+      </form>
+      <div class="menu-wrap">
+        <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="menuPanel" aria-label="Open menu"><span></span><span></span><span></span></button>
+        <nav class="menu-panel" id="menuPanel" aria-label="Site">
+          <a href="/">Home</a>
+          <a href="/#categories">Categories</a>
+          <a href="/#all-tools">All Tools</a>
+        </nav>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ADSTERRA-HEADER: paste your Adsterra banner ad code inside the div below -->
+<div class="container"><div class="ad-slot ad-leaderboard" data-ad="header"></div></div>
+
+<main class="container">
+  <nav class="crumbs"><a href="/">Home</a> &rsaquo; <a href="/#color">Color Tools</a> &rsaquo; Letter Spacing Tuner</nav>
+  <div class="tool-hero">
+    <h1>Letter Spacing Tuner</h1>
+    <p>Fine-tune CSS letter-spacing on live sample text — slider in px and em, with font-size control and copyable CSS.</p>
+  </div>
+
+  <div class="tool-card">
+  <div class="field">
+    <label for="letter-spacing-tuner-text">Sample text</label>
+    <input type="text" class="input" id="letter-spacing-tuner-text" value="DESIGN WITH SPACE" maxlength="60">
+  </div>
+  <div class="grid2">
+    <div class="field"><label for="letter-spacing-tuner-ls">Letter spacing: <span id="letter-spacing-tuner-ls-v">2</span>px (<span id="letter-spacing-tuner-ls-em">0.05</span>em)</label><input type="range" id="letter-spacing-tuner-ls" min="-10" max="40" step="0.5" value="2"></div>
+    <div class="field"><label for="letter-spacing-tuner-fs">Font size: <span id="letter-spacing-tuner-fs-v">40</span>px</label><input type="range" id="letter-spacing-tuner-fs" min="12" max="120" value="40"></div>
+  </div>
+  <div class="checkbox-row"><input type="checkbox" id="letter-spacing-tuner-upper" checked> <label for="letter-spacing-tuner-upper">Uppercase preview</label></div>
+  <div class="error" id="letter-spacing-tuner-error"></div>
+  <div class="result mt">
+    <div id="letter-spacing-tuner-preview" style="border:1px solid var(--line);border-radius:12px;padding:32px 16px;text-align:center;font-weight:700;">DESIGN WITH SPACE</div>
+    <div class="field mt">
+      <label for="letter-spacing-tuner-css">CSS</label>
+      <input type="text" class="input" id="letter-spacing-tuner-css" readonly style="font-family:ui-monospace,monospace;">
+    </div>
+    <div class="btn-row">
+      <button class="btn btn-outline btn-sm" id="letter-spacing-tuner-copy" type="button">Copy CSS</button>
+    </div>
+  </div>
+</div>
+
+
+  <!-- ADSTERRA-INCONTENT: paste your Adsterra native/in-content ad code inside the div below -->
+  <div class="ad-slot" data-ad="incontent"></div>
+
+  <div class="info-grid">
+    <div class="info-card">
+      <h2>📖 How to use</h2>
+      <ol><li>Edit the sample text to your own headline.</li><li>Drag the letter-spacing slider (negative values tighten, positive loosen).</li><li>Adjust font size to judge the spacing at real scale, then copy the CSS.</li></ol>
+    </div>
+    <div class="info-card">
+      <h2>❓ Frequently asked questions</h2>
+      <div class="faq"><details><summary>What is letter-spacing?</summary><p>The CSS property that adds or removes space between characters (called &quot;tracking&quot; in print design). Positive values air text out; negative values tighten it.</p></details><details><summary>When should I change it?</summary><p>All-caps headlines usually need +0.05em to +0.15em; large display type often looks better slightly tightened; body text is best left at normal.</p></details><details><summary>px or em — which unit?</summary><p>em scales with font size, so it stays proportional if the text size changes. The tool shows both values live.</p></details></div>
+    </div>
+  </div>
+
+  <section class="section">
+    <h2>🔗 Related tools</h2>
+    <div class="tool-grid"><a class="tool-link" href="/tools/color-blindness-simulator/" data-search="color blindness simulator see colors and images as color-blind viewers do. color blindness simulator protanopia simulator deuteranopia test"><span class="t-ico">🎨</span><span class="t-body"><b>Color Blindness Simulator</b><small>See colors and images as color-blind viewers do.</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/color-harmony-generator/" data-search="color harmony generator build complementary, analogous, triadic, tetradic and split-complementary palettes from any base color using real hsl math. color harmony generator complementary color finder analogous colors triadic color scheme"><span class="t-ico">🎨</span><span class="t-body"><b>Color Harmony Generator</b><small>Build complementary, analogous, triadic, tetradic and split-complementary palettes from any …</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/color-mixer/" data-search="color mixer blend any two colors with a ratio slider — see the real mixed result as hex and rgb with a live preview. color mixer blend two colors mix colors online color blender tool"><span class="t-ico">🎨</span><span class="t-body"><b>Color Mixer</b><small>Blend any two colors with a ratio slider — see the real mixed result as HEX and RGB with a l…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/color-temperature-converter/" data-search="color temperature converter convert light color temperature (kelvin) to its approximate on-screen color — real blackbody math with warm/cool labels. kelvin to rgb color temperature converter kelvin to hex light temperature color"><span class="t-ico">🎨</span><span class="t-body"><b>Color Temperature Converter</b><small>Convert light color temperature (Kelvin) to its approximate on-screen color — real blackbody…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/contrast-checker/" data-search="color contrast checker wcag contrast ratio with aa/aaa verdicts. contrast checker wcag contrast color contrast ratio"><span class="t-ico">🎨</span><span class="t-body"><b>Color Contrast Checker</b><small>WCAG contrast ratio with AA/AAA verdicts.</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/css-clamp-generator/" data-search="css clamp generator generate fluid clamp() typography and spacing — the exact math from your min/max sizes and viewport range, with a live demo. css clamp generator fluid typography calculator clamp css generator responsive font size"><span class="t-ico">🎨</span><span class="t-body"><b>CSS Clamp Generator</b><small>Generate fluid clamp() typography and spacing — the exact math from your min/max sizes and v…</small></span><span class="t-arrow">→</span></a></div>
+  </section>
+</main>
+
+<!-- ADSTERRA-FOOTER: paste your Adsterra footer/banner ad code inside the div below -->
+<div class="container"><div class="ad-slot" data-ad="footer"></div></div>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="f-grid">
+      <div>
+        <span class="brandline"><span class="logo-mark">T</span> ToolNest</span>
+        <p>Free online tools that actually work. No sign-up, no watermarks — and your files never leave your device for client-side tools.</p>
+      </div>
+      <div>
+        <h4>Popular</h4>
+        <a href="/tools/qr-code-generator/">QR Code Generator</a>
+        <a href="/tools/background-remover/">Background Remover</a>
+        <a href="/tools/pdf-merger/">PDF Merger</a>
+        <a href="/tools/word-counter/">Word Counter</a>
+      </div>
+      <div>
+        <h4>Categories</h4>
+        <a href="/#image">Image Tools</a>
+        <a href="/#pdf">PDF &amp; Documents</a>
+        <a href="/#calculators">Calculators</a>
+        <a href="/#developer">Developer Tools</a>
+      </div>
+      <div>
+        <h4>Site</h4>
+        <a href="/">Home</a>
+        <a href="/#all-tools">All Tools</a>
+        <a href="/sitemap.xml">Sitemap</a>
+      </div>
+    </div>
+    <div class="f-bottom">© 2026 ToolNest · Free tools for everyone · Made with care</div>
+  </div>
+</footer>
+
+<script src="/assets/site.js?v=5"></script>
+
+<script>
+(function () {
+  'use strict';
+  var P = 'letter-spacing-tuner-', ERR = P + 'error';
+  function update() {
+    try {
+      TN.clearErr(ERR);
+      var text = TN.el(P + 'text').value || 'DESIGN WITH SPACE';
+      var ls = parseFloat(TN.el(P + 'ls').value), fs = parseInt(TN.el(P + 'fs').value, 10);
+      var upper = TN.el(P + 'upper').checked;
+      TN.el(P + 'ls-v').textContent = ls;
+      TN.el(P + 'ls-em').textContent = (ls / fs).toFixed(3);
+      TN.el(P + 'fs-v').textContent = fs;
+      var prev = TN.el(P + 'preview');
+      prev.textContent = upper ? text.toUpperCase() : text;
+      prev.style.letterSpacing = ls + 'px';
+      prev.style.fontSize = fs + 'px';
+      TN.el(P + 'css').value = 'letter-spacing: ' + ls + 'px; /* ' + (ls / fs).toFixed(3) + 'em at ' + fs + 'px */';
+    } catch (e) { TN.setErr(ERR, 'Could not tune the spacing. Please try again.'); }
+  }
+  try {
+    ['text', 'ls', 'fs'].forEach(function (k) { TN.on(P + k, 'input', update); });
+    TN.on(P + 'upper', 'change', update);
+    TN.on(P + 'copy', 'click', function () {
+      TN.clearErr(ERR);
+      TN.copy(TN.el(P + 'css').value).then(function (ok) {
+        var b = TN.el(P + 'copy');
+        b.textContent = ok ? 'Copied!' : 'Copy failed';
+        setTimeout(function () { b.textContent = 'Copy CSS'; }, 1200);
+      });
+    });
+    update();
+  } catch (e) { /* never throw on load */ }
+})();
+
+</script>
+</body>
+</html>

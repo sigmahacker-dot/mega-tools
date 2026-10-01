@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Crypto Profit Calculator — Free Online | ToolNest</title>
+<meta name="description" content="Calculate profit, loss and ROI on any crypto trade with buy/sell fees included.">
+<meta name="keywords" content="crypto profit calculator, bitcoin profit calculator, crypto roi calculator, trading profit calculator, coin profit loss">
+<link rel="canonical" href="https://toolnest.vercel.app/tools/crypto-profit-calculator/">
+<meta name="theme-color" content="#07070b">
+<meta property="og:title" content="Crypto Profit Calculator — Free Online | ToolNest">
+<meta property="og:description" content="Calculate profit, loss and ROI on any crypto trade with buy/sell fees included.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css?v=4">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%23e01111'/><text x='50' y='68' font-size='58' text-anchor='middle' fill='white' font-family='Arial' font-weight='bold'>T</text></svg>">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebApplication","name":"Crypto Profit Calculator","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0"},"url":"https://toolnest.vercel.app/tools/crypto-profit-calculator/","description":"Calculate profit, loss and ROI on any crypto trade with buy/sell fees included."},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How are fees handled?","acceptedAnswer":{"@type":"Answer","text":"Buy fees increase your cost basis; sell fees reduce your proceeds. Both are deducted before profit is computed."}},{"@type":"Question","name":"What does ROI mean here?","acceptedAnswer":{"@type":"Answer","text":"Return on investment = net profit ÷ total invested (including buy fees), as a percent."}},{"@type":"Question","name":"Does this handle taxes?","acceptedAnswer":{"@type":"Answer","text":"No. Crypto-to-crypto trades and sales may be taxable events in your country — consult a tax professional."}}]}]}</script>
+</head>
+<body>
+<header class="site-header">
+  <div class="container">
+    <a class="logo" href="/"><span class="logo-mark">T</span> ToolNest</a>
+    <div class="header-right">
+      <form class="nav-search" action="/" method="get" role="search">
+        <span class="ns-icon">🔍</span>
+        <input type="search" name="q" placeholder="Search tools…" aria-label="Search tools" autocomplete="off">
+      </form>
+      <div class="menu-wrap">
+        <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="menuPanel" aria-label="Open menu"><span></span><span></span><span></span></button>
+        <nav class="menu-panel" id="menuPanel" aria-label="Site">
+          <a href="/">Home</a>
+          <a href="/#categories">Categories</a>
+          <a href="/#all-tools">All Tools</a>
+        </nav>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ADSTERRA-HEADER: paste your Adsterra banner ad code inside the div below -->
+<div class="container"><div class="ad-slot ad-leaderboard" data-ad="header"></div></div>
+
+<main class="container">
+  <nav class="crumbs"><a href="/">Home</a> &rsaquo; <a href="/#finance">Finance &amp; Money</a> &rsaquo; Crypto Profit Calculator</nav>
+  <div class="tool-hero">
+    <h1>Crypto Profit Calculator</h1>
+    <p>Calculate profit, loss and ROI on any crypto trade with buy/sell fees included.</p>
+  </div>
+
+  <div class="tool-card">
+  <div class="grid2">
+    <div class="field"><label for="cp-buy">Buy price ($)</label><input type="number" class="input" id="cp-buy" min="0" step="any" placeholder="30000"></div>
+    <div class="field"><label for="cp-sell">Sell price ($)</label><input type="number" class="input" id="cp-sell" min="0" step="any" placeholder="42000"></div>
+    <div class="field"><label for="cp-amount">Amount (coins)</label><input type="number" class="input" id="cp-amount" min="0" step="any" placeholder="0.5"></div>
+    <div class="field"><label for="cp-buyfee">Buy fee (%)</label><input type="number" class="input" id="cp-buyfee" min="0" max="100" step="any" placeholder="0.5"></div>
+    <div class="field"><label for="cp-sellfee">Sell fee (%)</label><input type="number" class="input" id="cp-sellfee" min="0" max="100" step="any" placeholder="0.5"></div>
+  </div>
+  <div class="error" id="crypto-profit-calculator-error"></div>
+  <div class="result" id="cp-result">
+    <div class="stat-cards">
+      <div class="stat-card"><div class="v" id="cp-profit">–</div><div class="l">Net profit / loss</div></div>
+      <div class="stat-card"><div class="v" id="cp-roi">–</div><div class="l">ROI</div></div>
+      <div class="stat-card"><div class="v" id="cp-fees">–</div><div class="l">Total fees</div></div>
+    </div>
+    <table class="data">
+      <thead><tr><th>Item</th><th>Amount</th></tr></thead>
+      <tbody id="cp-body"><tr><td colspan="2" class="muted">Enter trade details.</td></tr></tbody>
+    </table>
+  </div>
+</div>
+
+  <!-- ADSTERRA-INCONTENT: paste your Adsterra native/in-content ad code inside the div below -->
+  <div class="ad-slot" data-ad="incontent"></div>
+
+  <div class="info-grid">
+    <div class="info-card">
+      <h2>📖 How to use</h2>
+      <ol><li>Enter the buy price, sell price and amount of coins/tokens.</li><li>Add the exchange fee percentages for buying and selling.</li><li>Read your net profit or loss and ROI.</li></ol>
+    </div>
+    <div class="info-card">
+      <h2>❓ Frequently asked questions</h2>
+      <div class="faq"><details><summary>How are fees handled?</summary><p>Buy fees increase your cost basis; sell fees reduce your proceeds. Both are deducted before profit is computed.</p></details><details><summary>What does ROI mean here?</summary><p>Return on investment = net profit ÷ total invested (including buy fees), as a percent.</p></details><details><summary>Does this handle taxes?</summary><p>No. Crypto-to-crypto trades and sales may be taxable events in your country — consult a tax professional.</p></details></div>
+    </div>
+  </div>
+
+  <section class="section">
+    <h2>🔗 Related tools</h2>
+    <div class="tool-grid"><a class="tool-link" href="/tools/budget-50-30-20-calculator/" data-search="50/30/20 budget calculator split your take-home pay into needs (50%), wants (30%) and savings (20%), then compare with your actual spending. 50 30 20 budget budget calculator needs wants savings monthly budget planner budget rule calculator"><span class="t-ico">💰</span><span class="t-body"><b>50/30/20 Budget Calculator</b><small>Split your take-home pay into needs (50%), wants (30%) and savings (20%), then compare with …</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/car-loan-calculator/" data-search="car loan calculator compute monthly car payments, total interest and full cost from price, down payment, trade-in, rate and term. car loan calculator auto loan calculator monthly car payment car finance calculator vehicle loan estimator"><span class="t-ico">💰</span><span class="t-body"><b>Car Loan Calculator</b><small>Compute monthly car payments, total interest and full cost from price, down payment, trade-i…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/compound-interest-calculator/" data-search="compound interest calculator project how your savings grow over time with compound interest, regular monthly contributions and your choice of compounding frequency. compound interest calculator savings growth calculator compound interest with contributions"><span class="t-ico">💰</span><span class="t-body"><b>Compound Interest Calculator</b><small>Project how your savings grow over time with compound interest, regular monthly contribution…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/credit-card-validator/" data-search="credit card validator check any card number with the luhn algorithm and detect its brand — a format check only, never a real-card check. credit card validator luhn check card number checker card brand detector"><span class="t-ico">💰</span><span class="t-body"><b>Credit Card Validator</b><small>Check any card number with the Luhn algorithm and detect its brand — a format check only, ne…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/debt-payoff-calculator/" data-search="debt payoff planner build an avalanche payoff plan for up to 8 debts: payoff order, months to debt-free and total interest paid. debt payoff calculator debt avalanche calculator pay off debt planner"><span class="t-ico">💰</span><span class="t-body"><b>Debt Payoff Planner</b><small>Build an avalanche payoff plan for up to 8 debts: payoff order, months to debt-free and tota…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/dividend-yield-calculator/" data-search="dividend yield calculator calculate dividend yield percentage and annual, quarterly and monthly income from any dividend stock. dividend yield calculator dividend income calculator stock yield calculator dividend return yield on cost"><span class="t-ico">💰</span><span class="t-body"><b>Dividend Yield Calculator</b><small>Calculate dividend yield percentage and annual, quarterly and monthly income from any divide…</small></span><span class="t-arrow">→</span></a></div>
+  </section>
+</main>
+
+<!-- ADSTERRA-FOOTER: paste your Adsterra footer/banner ad code inside the div below -->
+<div class="container"><div class="ad-slot" data-ad="footer"></div></div>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="f-grid">
+      <div>
+        <span class="brandline"><span class="logo-mark">T</span> ToolNest</span>
+        <p>Free online tools that actually work. No sign-up, no watermarks — and your files never leave your device for client-side tools.</p>
+      </div>
+      <div>
+        <h4>Popular</h4>
+        <a href="/tools/qr-code-generator/">QR Code Generator</a>
+        <a href="/tools/background-remover/">Background Remover</a>
+        <a href="/tools/pdf-merger/">PDF Merger</a>
+        <a href="/tools/word-counter/">Word Counter</a>
+      </div>
+      <div>
+        <h4>Categories</h4>
+        <a href="/#image">Image Tools</a>
+        <a href="/#pdf">PDF &amp; Documents</a>
+        <a href="/#calculators">Calculators</a>
+        <a href="/#developer">Developer Tools</a>
+      </div>
+      <div>
+        <h4>Site</h4>
+        <a href="/">Home</a>
+        <a href="/#all-tools">All Tools</a>
+        <a href="/sitemap.xml">Sitemap</a>
+      </div>
+    </div>
+    <div class="f-bottom">© 2026 ToolNest · Free tools for everyone · Made with care</div>
+  </div>
+</footer>
+
+<script src="/assets/site.js?v=5"></script>
+
+<script>
+(function () {
+  'use strict';
+  var ERR = 'crypto-profit-calculator-error';
+  function money(n) { var neg = n < 0; try { return (neg ? '−$' : '$') + Math.abs(n).toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 }); } catch (e) { return (neg ? '−$' : '$') + (Math.round(Math.abs(n) * 100) / 100); } }
+  function calc() {
+    if (!TN.el('cp-buy')) return;
+    TN.clearErr(ERR);
+    var buy = parseFloat(TN.el('cp-buy').value);
+    var sell = parseFloat(TN.el('cp-sell').value);
+    var amt = parseFloat(TN.el('cp-amount').value);
+    var bf = parseFloat(TN.el('cp-buyfee').value) || 0;
+    var sf = parseFloat(TN.el('cp-sellfee').value) || 0;
+    if (!(buy > 0)) { TN.setErr(ERR, 'Enter a buy price greater than 0.'); return; }
+    if (!(sell > 0)) { TN.setErr(ERR, 'Enter a sell price greater than 0.'); return; }
+    if (!(amt > 0)) { TN.setErr(ERR, 'Enter an amount greater than 0.'); return; }
+    if (bf < 0 || bf > 100 || sf < 0 || sf > 100) { TN.setErr(ERR, 'Fees must be between 0 and 100%.'); return; }
+    var invested = buy * amt * (1 + bf / 100);
+    var received = sell * amt * (1 - sf / 100);
+    var profit = received - invested;
+    var fees = buy * amt * bf / 100 + sell * amt * sf / 100;
+    TN.el('cp-profit').textContent = money(profit);
+    TN.el('cp-roi').textContent = (profit / invested * 100).toFixed(2) + '%';
+    TN.el('cp-fees').textContent = money(fees);
+    TN.el('cp-body').innerHTML =
+      '<tr><td>Total invested (incl. buy fee)</td><td>' + money(invested) + '</td></tr>' +
+      '<tr><td>Total received (after sell fee)</td><td>' + money(received) + '</td></tr>' +
+      '<tr><td><strong>Net profit / loss</strong></td><td><strong>' + money(profit) + '</strong></td></tr>';
+  }
+  try {
+    ['cp-buy', 'cp-sell', 'cp-amount', 'cp-buyfee', 'cp-sellfee'].forEach(function (id) { TN.on(id, 'input', calc); });
+    calc();
+  } catch (e) { /* never throw on load */ }
+})();
+</script>
+</body>
+</html>

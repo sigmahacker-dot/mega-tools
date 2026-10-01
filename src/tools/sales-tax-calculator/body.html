@@ -1,0 +1,21 @@
+<div class="tool-card">
+  <div class="grid2">
+    <div class="field"><label for="salestax-mode">Calculation mode</label>
+      <select class="input" id="salestax-mode">
+        <option value="add">Add tax to price</option>
+        <option value="extract">Extract tax from total</option>
+      </select>
+    </div>
+    <div class="field"><label for="salestax-amount">Amount ($)</label><input type="number" class="input" id="salestax-amount" min="0" step="any" placeholder="100"></div>
+    <div class="field"><label for="salestax-rate">Tax rate (%)</label><input type="number" class="input" id="salestax-rate" min="0" max="100" step="any" placeholder="8.5"></div>
+  </div>
+  <div class="error" id="sales-tax-calculator-error"></div>
+  <div class="result" id="salestax-result">
+    <div class="stat-cards">
+      <div class="stat-card"><div class="v" id="salestax-tax">–</div><div class="l">Tax amount</div></div>
+      <div class="stat-card"><div class="v" id="salestax-main">–</div><div class="l" id="salestax-main-label">Total with tax</div></div>
+      <div class="stat-card"><div class="v" id="salestax-base">–</div><div class="l" id="salestax-base-label">Price before tax</div></div>
+    </div>
+    <p class="note">Add mode: tax = price × rate. Extract mode: pre-tax price = total ÷ (1 + rate).</p>
+  </div>
+</div>

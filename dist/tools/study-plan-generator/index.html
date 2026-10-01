@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Study Plan Generator — Free Online | ToolNest</title>
+<meta name="description" content="Build a weekly study plan: enter subjects with weekly hours, pick your available days, and get a balanced day-by-day schedule.">
+<meta name="keywords" content="study plan generator, study schedule maker, weekly study planner, exam study timetable, study routine planner">
+<link rel="canonical" href="https://toolnest.vercel.app/tools/study-plan-generator/">
+<meta name="theme-color" content="#07070b">
+<meta property="og:title" content="Study Plan Generator — Free Online | ToolNest">
+<meta property="og:description" content="Build a weekly study plan: enter subjects with weekly hours, pick your available days, and get a balanced day-by-day schedule.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css?v=4">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%23e01111'/><text x='50' y='68' font-size='58' text-anchor='middle' fill='white' font-family='Arial' font-weight='bold'>T</text></svg>">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebApplication","name":"Study Plan Generator","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0"},"url":"https://toolnest.vercel.app/tools/study-plan-generator/","description":"Build a weekly study plan: enter subjects with weekly hours, pick your available days, and get a balanced day-by-day schedule."},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How is the schedule built?","acceptedAnswer":{"@type":"Answer","text":"Each subject's weekly hours are split into sessions of your chosen length and dealt round-robin across your available days, so no day is overloaded."}},{"@type":"Question","name":"Can I choose which days I study?","acceptedAnswer":{"@type":"Answer","text":"Yes — tick only the days you can study and all sessions land on those days."}},{"@type":"Question","name":"How long should each session be?","acceptedAnswer":{"@type":"Answer","text":"Sessions default to 45 minutes with a short break, which you can change. Shorter, regular sessions beat marathon cramming."}},{"@type":"Question","name":"Is this private?","acceptedAnswer":{"@type":"Answer","text":"Yes, everything is computed locally in your browser."}}]}]}</script>
+</head>
+<body>
+<header class="site-header">
+  <div class="container">
+    <a class="logo" href="/"><span class="logo-mark">T</span> ToolNest</a>
+    <div class="header-right">
+      <form class="nav-search" action="/" method="get" role="search">
+        <span class="ns-icon">🔍</span>
+        <input type="search" name="q" placeholder="Search tools…" aria-label="Search tools" autocomplete="off">
+      </form>
+      <div class="menu-wrap">
+        <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="menuPanel" aria-label="Open menu"><span></span><span></span><span></span></button>
+        <nav class="menu-panel" id="menuPanel" aria-label="Site">
+          <a href="/">Home</a>
+          <a href="/#categories">Categories</a>
+          <a href="/#all-tools">All Tools</a>
+        </nav>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ADSTERRA-HEADER: paste your Adsterra banner ad code inside the div below -->
+<div class="container"><div class="ad-slot ad-leaderboard" data-ad="header"></div></div>
+
+<main class="container">
+  <nav class="crumbs"><a href="/">Home</a> &rsaquo; <a href="/#generators">Generators</a> &rsaquo; Study Plan Generator</nav>
+  <div class="tool-hero">
+    <h1>Study Plan Generator</h1>
+    <p>Build a weekly study plan: enter subjects with weekly hours, pick your available days, and get a balanced day-by-day schedule.</p>
+  </div>
+
+  <div class="tool-card">
+  <div class="field"><label>Subjects</label><div id="study-subjects"></div>
+    <div class="btn-row"><button class="btn btn-outline btn-sm" id="study-add" type="button">+ Add subject</button></div>
+  </div>
+  <div class="grid2">
+    <div class="field"><label>Available days</label>
+      <div id="study-days">
+        <div class="checkbox-row"><input type="checkbox" id="study-d0" checked><label for="study-d0">Monday</label></div>
+        <div class="checkbox-row"><input type="checkbox" id="study-d1" checked><label for="study-d1">Tuesday</label></div>
+        <div class="checkbox-row"><input type="checkbox" id="study-d2" checked><label for="study-d2">Wednesday</label></div>
+        <div class="checkbox-row"><input type="checkbox" id="study-d3" checked><label for="study-d3">Thursday</label></div>
+        <div class="checkbox-row"><input type="checkbox" id="study-d4" checked><label for="study-d4">Friday</label></div>
+        <div class="checkbox-row"><input type="checkbox" id="study-d5"><label for="study-d5">Saturday</label></div>
+        <div class="checkbox-row"><input type="checkbox" id="study-d6"><label for="study-d6">Sunday</label></div>
+      </div>
+    </div>
+    <div class="field"><label for="study-session">Session length (minutes)</label>
+      <select class="select" id="study-session"><option>25</option><option selected>45</option><option>60</option><option>90</option></select>
+      <p class="note">Sessions are dealt round-robin across your days so the load stays balanced.</p>
+    </div>
+  </div>
+  <div class="error" id="study-plan-generator-error"></div>
+  <div class="result" id="study-result">
+    <div class="stat-cards">
+      <div class="stat-card"><div class="v" id="study-total-h">–</div><div class="l">Hours / week</div></div>
+      <div class="stat-card"><div class="v" id="study-total-s">–</div><div class="l">Sessions</div></div>
+    </div>
+    <div id="study-plan"></div>
+    <div class="btn-row">
+      <button class="btn btn-primary" id="study-go" type="button">Build plan</button>
+      <button class="btn btn-outline" id="study-dl" type="button">Download .txt</button>
+    </div>
+  </div>
+</div>
+
+  <!-- ADSTERRA-INCONTENT: paste your Adsterra native/in-content ad code inside the div below -->
+  <div class="ad-slot" data-ad="incontent"></div>
+
+  <div class="info-grid">
+    <div class="info-card">
+      <h2>📖 How to use</h2>
+      <ol><li>Add your subjects with the hours per week each needs.</li><li>Tick your available study days and set the session length.</li><li>Press Build plan to get your day-by-day schedule.</li></ol>
+    </div>
+    <div class="info-card">
+      <h2>❓ Frequently asked questions</h2>
+      <div class="faq"><details><summary>How is the schedule built?</summary><p>Each subject&#39;s weekly hours are split into sessions of your chosen length and dealt round-robin across your available days, so no day is overloaded.</p></details><details><summary>Can I choose which days I study?</summary><p>Yes — tick only the days you can study and all sessions land on those days.</p></details><details><summary>How long should each session be?</summary><p>Sessions default to 45 minutes with a short break, which you can change. Shorter, regular sessions beat marathon cramming.</p></details><details><summary>Is this private?</summary><p>Yes, everything is computed locally in your browser.</p></details></div>
+    </div>
+  </div>
+
+  <section class="section">
+    <h2>🔗 Related tools</h2>
+    <div class="tool-grid"><a class="tool-link" href="/tools/band-name-generator/" data-search="band name generator generate original band names by genre — rock, metal, pop, hip-hop, electronic, jazz, punk or indie — with one click and copy. band name generator rock band names metal band names cool band names music group name ideas"><span class="t-ico">⚙️</span><span class="t-body"><b>Band Name Generator</b><small>Generate original band names by genre — rock, metal, pop, hip-hop, electronic, jazz, punk or…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/barcode-generator/" data-search="barcode generator generate barcodes in common formats — code128, code39, ean-13, ean-8, upc and itf-14 — and download them as png or svg images. barcode generator barcode maker ean13 barcode upc barcode generator"><span class="t-ico">⚙️</span><span class="t-body"><b>Barcode Generator</b><small>Generate barcodes in common formats — CODE128, CODE39, EAN-13, EAN-8, UPC and ITF-14 — and d…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/bingo-card-generator/" data-search="bingo card generator create printable 5×5 bingo cards with classic b-i-n-g-o number ranges, an optional free space, or your own custom word list. bingo card generator printable bingo cards custom bingo cards bingo number generator free bingo cards"><span class="t-ico">⚙️</span><span class="t-body"><b>Bingo Card Generator</b><small>Create printable 5×5 bingo cards with classic B-I-N-G-O number ranges, an optional free spac…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/border-radius-generator/" data-search="border radius generator organic blob shapes with an 8-handle radius editor. border radius generator blob shape css border-radius css"><span class="t-ico">⚙️</span><span class="t-body"><b>Border Radius Generator</b><small>Organic blob shapes with an 8-handle radius editor.</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/box-shadow-generator/" data-search="box shadow generator visual css box-shadow builder with live preview. box shadow generator css shadow box-shadow css"><span class="t-ico">⚙️</span><span class="t-body"><b>Box Shadow Generator</b><small>Visual CSS box-shadow builder with live preview.</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/button-generator/" data-search="button generator design a custom button with your text, colors, border radius, padding and shadow — then copy the generated css and use it anywhere. button generator css button maker button css custom button design"><span class="t-ico">⚙️</span><span class="t-body"><b>Button Generator</b><small>Design a custom button with your text, colors, border radius, padding and shadow — then copy…</small></span><span class="t-arrow">→</span></a></div>
+  </section>
+</main>
+
+<!-- ADSTERRA-FOOTER: paste your Adsterra footer/banner ad code inside the div below -->
+<div class="container"><div class="ad-slot" data-ad="footer"></div></div>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="f-grid">
+      <div>
+        <span class="brandline"><span class="logo-mark">T</span> ToolNest</span>
+        <p>Free online tools that actually work. No sign-up, no watermarks — and your files never leave your device for client-side tools.</p>
+      </div>
+      <div>
+        <h4>Popular</h4>
+        <a href="/tools/qr-code-generator/">QR Code Generator</a>
+        <a href="/tools/background-remover/">Background Remover</a>
+        <a href="/tools/pdf-merger/">PDF Merger</a>
+        <a href="/tools/word-counter/">Word Counter</a>
+      </div>
+      <div>
+        <h4>Categories</h4>
+        <a href="/#image">Image Tools</a>
+        <a href="/#pdf">PDF &amp; Documents</a>
+        <a href="/#calculators">Calculators</a>
+        <a href="/#developer">Developer Tools</a>
+      </div>
+      <div>
+        <h4>Site</h4>
+        <a href="/">Home</a>
+        <a href="/#all-tools">All Tools</a>
+        <a href="/sitemap.xml">Sitemap</a>
+      </div>
+    </div>
+    <div class="f-bottom">© 2026 ToolNest · Free tools for everyone · Made with care</div>
+  </div>
+</footer>
+
+<script src="/assets/site.js?v=5"></script>
+
+<script>
+(function () {
+  'use strict';
+  var ERR = 'study-plan-generator-error';
+  var DAYS = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
+  var lastPlan = null;
+  function esc(s) {
+    return String(s).replace(/[&<>"']/g, function (c) {
+      return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c];
+    });
+  }
+  function addSubject(name, hours) {
+    var box = TN.el('study-subjects');
+    var d = document.createElement('div');
+    d.className = 'study-row';
+    d.style.cssText = 'display:grid;grid-template-columns:1fr 110px 34px;gap:8px;margin-bottom:8px;';
+    d.innerHTML = '<input type="text" class="input study-name" placeholder="Subject">' +
+      '<input type="number" class="input study-hours" min="0.5" step="0.5" placeholder="hrs/wk">' +
+      '<button type="button" class="btn btn-danger btn-sm study-del" title="Remove">✕</button>';
+    if (name) d.querySelector('.study-name').value = name;
+    if (hours) d.querySelector('.study-hours').value = hours;
+    box.appendChild(d);
+    d.querySelector('.study-del').addEventListener('click', function () { d.remove(); });
+  }
+  function build() {
+    TN.clearErr(ERR);
+    var subjects = [];
+    TN.qsa('#study-subjects .study-row').forEach(function (r) {
+      var n = r.querySelector('.study-name').value.trim();
+      var h = parseFloat(r.querySelector('.study-hours').value) || 0;
+      if (n && h > 0) subjects.push({ name: n, hours: h });
+    });
+    if (!subjects.length) { TN.setErr(ERR, 'Add at least one subject with weekly hours.'); return; }
+    var avail = [];
+    for (var i = 0; i < 7; i++) if (TN.el('study-d' + i).checked) avail.push(i);
+    if (!avail.length) { TN.setErr(ERR, 'Tick at least one available day.'); return; }
+    var sessMin = parseInt(TN.el('study-session').value, 10);
+    var sessions = [];
+    subjects.forEach(function (s) {
+      var n = Math.max(1, Math.round(s.hours * 60 / sessMin));
+      for (var k = 0; k < n; k++) sessions.push(s.name);
+    });
+    // interleave subjects then deal round-robin across days
+    var bySubj = {};
+    sessions.forEach(function (s) { (bySubj[s] = bySubj[s] || []).push(s); });
+    var keys = Object.keys(bySubj), mixed = [], more = true, idx = 0;
+    while (more) {
+      more = false;
+      for (var ki = 0; ki < keys.length; ki++) {
+        var q = bySubj[keys[ki]];
+        if (q.length) { mixed.push(q.shift()); more = true; }
+      }
+      if (++idx > 10000) break;
+    }
+    var plan = avail.map(function () { return []; });
+    mixed.forEach(function (s, mi) { plan[mi % avail.length].push(s); });
+    lastPlan = { avail: avail, plan: plan, sessMin: sessMin };
+    var totH = subjects.reduce(function (a, s) { return a + s.hours; }, 0);
+    TN.el('study-total-h').textContent = (Math.round(totH * 10) / 10) + 'h';
+    TN.el('study-total-s').textContent = mixed.length;
+    var html = '<table class="data"><thead><tr><th>Day</th><th>Sessions</th><th>Time</th></tr></thead><tbody>';
+    avail.forEach(function (di, ai) {
+      var list = plan[ai];
+      var counts = {};
+      list.forEach(function (s) { counts[s] = (counts[s] || 0) + 1; });
+      var parts = Object.keys(counts).map(function (k) { return esc(k) + ' ×' + counts[k]; });
+      html += '<tr><td><strong>' + DAYS[di] + '</strong></td><td>' + (parts.join('<br>') || '<span class="muted">—</span>') +
+        '</td><td>' + (list.length * sessMin / 60).toFixed(1) + 'h</td></tr>';
+    });
+    TN.el('study-plan').innerHTML = html + '</tbody></table>';
+  }
+  try {
+    TN.on('study-add', 'click', function () { addSubject(); });
+    TN.on('study-go', 'click', build);
+    TN.on('study-dl', 'click', function () {
+      if (!lastPlan) { TN.setErr(ERR, 'Build a plan first.'); return; }
+      TN.clearErr(ERR);
+      var lines = ['WEEKLY STUDY PLAN (' + lastPlan.sessMin + '-min sessions)', ''];
+      lastPlan.avail.forEach(function (di, ai) {
+        lines.push(DAYS[di].toUpperCase());
+        var counts = {};
+        lastPlan.plan[ai].forEach(function (s) { counts[s] = (counts[s] || 0) + 1; });
+        Object.keys(counts).forEach(function (k) { lines.push('  - ' + k + ' x' + counts[k]); });
+        lines.push('');
+      });
+      var b = new Blob([lines.join('\n')], { type: 'text/plain;charset=utf-8' });
+      var a = document.createElement('a');
+      a.href = URL.createObjectURL(b); a.download = 'study-plan.txt';
+      document.body.appendChild(a); a.click();
+      setTimeout(function () { URL.revokeObjectURL(a.href); a.remove(); }, 400);
+    });
+    addSubject('Mathematics', 5);
+    addSubject('Physics', 4);
+    addSubject('English', 3);
+    TN.el('study-plan').innerHTML = '<p class="muted">Press Build plan to generate your schedule.</p>';
+  } catch (e) { /* never throw on load */ }
+})();
+</script>
+</body>
+</html>

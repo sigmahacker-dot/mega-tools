@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Posture Break Timer — Free Online | ToolNest</title>
+<meta name="description" content="A desk-worker timer that nudges you to stand, stretch and fix your posture on a schedule you set.">
+<meta name="keywords" content="posture reminder, stand up reminder, desk break timer, stretch reminder, sitting break timer">
+<link rel="canonical" href="https://toolnest.vercel.app/tools/posture-break-timer/">
+<meta name="theme-color" content="#07070b">
+<meta property="og:title" content="Posture Break Timer — Free Online | ToolNest">
+<meta property="og:description" content="A desk-worker timer that nudges you to stand, stretch and fix your posture on a schedule you set.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css?v=4">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%23e01111'/><text x='50' y='68' font-size='58' text-anchor='middle' fill='white' font-family='Arial' font-weight='bold'>T</text></svg>">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebApplication","name":"Posture Break Timer","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0"},"url":"https://toolnest.vercel.app/tools/posture-break-timer/","description":"A desk-worker timer that nudges you to stand, stretch and fix your posture on a schedule you set."},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How often should I take a posture break?","acceptedAnswer":{"@type":"Answer","text":"Every 30 minutes is the common recommendation: stand, roll your shoulders, and look away from the screen for a minute."}},{"@type":"Question","name":"What should I do during the break?","acceptedAnswer":{"@type":"Answer","text":"Stand up, stretch your chest and hip flexors, roll your neck gently, and reset your sitting posture when you sit back down."}},{"@type":"Question","name":"Does the counter reset daily?","acceptedAnswer":{"@type":"Answer","text":"Yes — it tracks breaks per calendar day in this browser."}}]}]}</script>
+</head>
+<body>
+<header class="site-header">
+  <div class="container">
+    <a class="logo" href="/"><span class="logo-mark">T</span> ToolNest</a>
+    <div class="header-right">
+      <form class="nav-search" action="/" method="get" role="search">
+        <span class="ns-icon">🔍</span>
+        <input type="search" name="q" placeholder="Search tools…" aria-label="Search tools" autocomplete="off">
+      </form>
+      <div class="menu-wrap">
+        <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="menuPanel" aria-label="Open menu"><span></span><span></span><span></span></button>
+        <nav class="menu-panel" id="menuPanel" aria-label="Site">
+          <a href="/">Home</a>
+          <a href="/#categories">Categories</a>
+          <a href="/#all-tools">All Tools</a>
+        </nav>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ADSTERRA-HEADER: paste your Adsterra banner ad code inside the div below -->
+<div class="container"><div class="ad-slot ad-leaderboard" data-ad="header"></div></div>
+
+<main class="container">
+  <nav class="crumbs"><a href="/">Home</a> &rsaquo; <a href="/#health">Health &amp; Fitness</a> &rsaquo; Posture Break Timer</nav>
+  <div class="tool-hero">
+    <h1>Posture Break Timer</h1>
+    <p>A desk-worker timer that nudges you to stand, stretch and fix your posture on a schedule you set.</p>
+  </div>
+
+  <div class="tool-card">
+  <div class="grid2">
+    <div class="field"><label for="pb-every">Break every</label>
+      <select class="input" id="pb-every">
+        <option value="15">15 minutes</option>
+        <option value="20">20 minutes</option>
+        <option value="30" selected>30 minutes</option>
+        <option value="45">45 minutes</option>
+        <option value="60">60 minutes</option>
+      </select>
+    </div>
+    <div class="field"><label>&nbsp;</label>
+      <div>
+        <button class="btn" id="pb-start">Start</button>
+        <button class="btn" id="pb-pause">Pause</button>
+        <button class="btn" id="pb-reset">Reset</button>
+      </div>
+    </div>
+  </div>
+  <div class="error" id="posture-break-timer-error"></div>
+  <div class="result" id="pb-result">
+    <div class="stat-cards">
+      <div class="stat-card"><div class="v" id="pb-time">–</div><div class="l">Next break in</div></div>
+      <div class="stat-card"><div class="v" id="pb-count">0</div><div class="l">Breaks today</div></div>
+    </div>
+    <div class="field"><label for="pb-bar">Progress</label><progress class="input" id="pb-bar" max="100" value="0" style="width:100%"></progress></div>
+    <p class="muted" id="pb-detail">Press Start to begin the countdown.</p>
+  </div>
+</div>
+
+  <!-- ADSTERRA-INCONTENT: paste your Adsterra native/in-content ad code inside the div below -->
+  <div class="ad-slot" data-ad="incontent"></div>
+
+  <div class="info-grid">
+    <div class="info-card">
+      <h2>📖 How to use</h2>
+      <ol><li>Choose how often you want a posture break.</li><li>Press Start and keep working — the countdown runs in the tab.</li><li>When it fires, stand, stretch and reset your posture; breaks are counted for today.</li></ol>
+    </div>
+    <div class="info-card">
+      <h2>❓ Frequently asked questions</h2>
+      <div class="faq"><details><summary>How often should I take a posture break?</summary><p>Every 30 minutes is the common recommendation: stand, roll your shoulders, and look away from the screen for a minute.</p></details><details><summary>What should I do during the break?</summary><p>Stand up, stretch your chest and hip flexors, roll your neck gently, and reset your sitting posture when you sit back down.</p></details><details><summary>Does the counter reset daily?</summary><p>Yes — it tracks breaks per calendar day in this browser.</p></details></div>
+    </div>
+  </div>
+
+  <section class="section">
+    <h2>🔗 Related tools</h2>
+    <div class="tool-grid"><a class="tool-link" href="/tools/blood-pressure-tracker/" data-search="blood pressure tracker log blood pressure readings with automatic aha category classification, averages and history saved in your browser. blood pressure tracker bp log blood pressure chart hypertension tracker bp monitor log"><span class="t-ico">❤️</span><span class="t-body"><b>Blood Pressure Tracker</b><small>Log blood pressure readings with automatic AHA category classification, averages and history…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/body-fat-calculator/" data-search="body fat calculator estimate body fat percentage with the us navy tape-measure method and see your fitness category. body fat calculator us navy body fat body fat percentage calculator"><span class="t-ico">❤️</span><span class="t-body"><b>Body Fat Calculator</b><small>Estimate body fat percentage with the US Navy tape-measure method and see your fitness categ…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/calorie-calculator/" data-search="tdee calorie calculator estimate your daily calorie needs with the mifflin-st jeor equation and get targets for losing, maintaining or gaining weight. tdee calculator calorie calculator mifflin st jeor daily calorie needs"><span class="t-ico">❤️</span><span class="t-body"><b>TDEE Calorie Calculator</b><small>Estimate your daily calorie needs with the Mifflin-St Jeor equation and get targets for losi…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/carb-cycling-calculator/" data-search="carb cycling calculator build high, medium and low carb day macros from your tdee using the mifflin-st jeor equation. carb cycling calculator macro cycling high low carb days tdee macro calculator carb cycle plan"><span class="t-ico">❤️</span><span class="t-body"><b>Carb Cycling Calculator</b><small>Build high, medium and low carb day macros from your TDEE using the Mifflin-St Jeor equation…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/eye-strain-timer/" data-search="eye strain timer (20-20-20) a 20-20-20 rule timer for screen workers: work 20 minutes, then rest your eyes 20 seconds looking 20 feet away. 20-20-20 timer eye strain timer eye break reminder screen break timer eye rest timer"><span class="t-ico">❤️</span><span class="t-body"><b>Eye Strain Timer (20-20-20)</b><small>A 20-20-20 rule timer for screen workers: work 20 minutes, then rest your eyes 20 seconds lo…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/five-k-pace-calculator/" data-search="5k pace calculator turn a 5k goal time into pace per km, per mile and a full kilometer-by-kilometer split plan. 5k pace calculator 5k goal time running splits calculator 5k training pace pace chart 5k"><span class="t-ico">❤️</span><span class="t-body"><b>5K Pace Calculator</b><small>Turn a 5K goal time into pace per km, per mile and a full kilometer-by-kilometer split plan.</small></span><span class="t-arrow">→</span></a></div>
+  </section>
+</main>
+
+<!-- ADSTERRA-FOOTER: paste your Adsterra footer/banner ad code inside the div below -->
+<div class="container"><div class="ad-slot" data-ad="footer"></div></div>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="f-grid">
+      <div>
+        <span class="brandline"><span class="logo-mark">T</span> ToolNest</span>
+        <p>Free online tools that actually work. No sign-up, no watermarks — and your files never leave your device for client-side tools.</p>
+      </div>
+      <div>
+        <h4>Popular</h4>
+        <a href="/tools/qr-code-generator/">QR Code Generator</a>
+        <a href="/tools/background-remover/">Background Remover</a>
+        <a href="/tools/pdf-merger/">PDF Merger</a>
+        <a href="/tools/word-counter/">Word Counter</a>
+      </div>
+      <div>
+        <h4>Categories</h4>
+        <a href="/#image">Image Tools</a>
+        <a href="/#pdf">PDF &amp; Documents</a>
+        <a href="/#calculators">Calculators</a>
+        <a href="/#developer">Developer Tools</a>
+      </div>
+      <div>
+        <h4>Site</h4>
+        <a href="/">Home</a>
+        <a href="/#all-tools">All Tools</a>
+        <a href="/sitemap.xml">Sitemap</a>
+      </div>
+    </div>
+    <div class="f-bottom">© 2026 ToolNest · Free tools for everyone · Made with care</div>
+  </div>
+</footer>
+
+<script src="/assets/site.js?v=5"></script>
+
+<script>
+(function () {
+  'use strict';
+  var ERR = 'posture-break-timer-error';
+  var KEY = 'tn-posture-break-timer';
+  var timer = null, left = 0, total = 1, paused = false, running = false;
+  function pad(n) { return (n < 10 ? '0' : '') + n; }
+  function fmt(s) { s = Math.max(0, Math.ceil(s)); return pad(Math.floor(s / 60)) + ':' + pad(s % 60); }
+  function todayKey() { var d = new Date(); return d.getFullYear() + '-' + (d.getMonth() + 1) + '-' + d.getDate(); }
+  function getCount() { try { var s = localStorage.getItem(KEY); if (!s) return 0; var o = JSON.parse(s); return o.day === todayKey() ? (o.n || 0) : 0; } catch (e) { return 0; } }
+  function bump() { try { localStorage.setItem(KEY, JSON.stringify({ day: todayKey(), n: getCount() + 1 })); } catch (e) {} }
+  function beep() {
+    try {
+      var C = window.AudioContext || window.webkitAudioContext;
+      if (!C) return;
+      var ctx = new C(), o = ctx.createOscillator(), g = ctx.createGain();
+      o.connect(g); g.connect(ctx.destination);
+      o.frequency.value = 740;
+      g.gain.setValueAtTime(0.001, ctx.currentTime);
+      g.gain.exponentialRampToValueAtTime(0.4, ctx.currentTime + 0.02);
+      g.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.6);
+      o.start(); o.stop(ctx.currentTime + 0.65);
+      setTimeout(function () { try { ctx.close(); } catch (e) {} }, 800);
+    } catch (e) {}
+  }
+  function render() {
+    TN.el('pb-time').textContent = running ? fmt(left) : '–';
+    TN.el('pb-count').textContent = getCount();
+    TN.el('pb-bar').value = total > 0 && running ? Math.min(100, Math.max(0, (total - left) / total * 100)) : 0;
+  }
+  function tick() {
+    if (paused || !running) return;
+    left -= 1;
+    if (left <= 0) {
+      bump(); beep();
+      TN.el('pb-detail').textContent = 'Break time! Stand up, stretch your chest and shoulders, roll your neck, then sit tall.';
+      var mins = parseInt(TN.el('pb-every').value, 10) || 30;
+      left = mins * 60; total = mins * 60;
+    }
+    render();
+  }
+  function start() {
+    TN.clearErr(ERR);
+    var mins = parseInt(TN.el('pb-every').value, 10);
+    if (!(mins >= 1)) { TN.setErr(ERR, 'Pick a break interval.'); return; }
+    if (timer) clearInterval(timer);
+    left = mins * 60; total = mins * 60; paused = false; running = true;
+    TN.el('pb-detail').textContent = 'Countdown running. Next break in ' + mins + ' minutes.';
+    timer = setInterval(tick, 1000);
+    render();
+  }
+  function pause() { paused = !paused; TN.el('pb-detail').textContent = paused ? 'Paused.' : 'Resumed.'; }
+  function reset() { if (timer) { clearInterval(timer); timer = null; } running = false; paused = false; TN.el('pb-detail').textContent = 'Press Start to begin the countdown.'; render(); }
+  try {
+    TN.on('pb-start', 'click', start);
+    TN.on('pb-pause', 'click', pause);
+    TN.on('pb-reset', 'click', reset);
+    TN.on('pb-every', 'change', function () { if (running) start(); });
+    render();
+  } catch (e) { /* never throw on load */ }
+})();
+</script>
+</body>
+</html>

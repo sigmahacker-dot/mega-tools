@@ -1,0 +1,42 @@
+<div class="tool-card">
+  <div class="grid2">
+    <div class="field">
+      <label for="recurring-date-calculator-start">Start date</label>
+      <input type="date" class="input" id="recurring-date-calculator-start">
+    </div>
+    <div class="field">
+      <label for="recurring-date-calculator-freq">Frequency</label>
+      <select class="select" id="recurring-date-calculator-freq">
+        <option value="daily">Daily</option>
+        <option value="weekly">Weekly</option>
+        <option value="biweekly">Every 2 weeks</option>
+        <option value="monthly" selected>Monthly</option>
+        <option value="quarterly">Quarterly (every 3 months)</option>
+        <option value="yearly">Yearly</option>
+        <option value="ndays">Every N days…</option>
+      </select>
+    </div>
+    <div class="field" id="recurring-date-calculator-nwrap" style="display:none;">
+      <label for="recurring-date-calculator-n">Every N days</label>
+      <input type="number" class="input" id="recurring-date-calculator-n" min="1" max="3650" step="1" value="10">
+    </div>
+    <div class="field">
+      <label for="recurring-date-calculator-count">Occurrences (1–60)</label>
+      <input type="number" class="input" id="recurring-date-calculator-count" min="1" max="60" step="1" value="12">
+    </div>
+  </div>
+  <div class="error" id="recurring-date-calculator-error"></div>
+  <div class="result" id="recurring-date-calculator-result">
+    <div class="stat-cards">
+      <div class="stat-card"><div class="v" id="recurring-date-calculator-first">–</div><div class="l">First</div></div>
+      <div class="stat-card"><div class="v" id="recurring-date-calculator-last">–</div><div class="l">Last</div></div>
+      <div class="stat-card"><div class="v" id="recurring-date-calculator-span">–</div><div class="l">Span (days)</div></div>
+    </div>
+    <table class="data">
+      <thead><tr><th>#</th><th>Date</th><th>Day</th></tr></thead>
+      <tbody id="recurring-date-calculator-body">
+        <tr><td colspan="3" class="muted">Pick a start date to generate the series.</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>

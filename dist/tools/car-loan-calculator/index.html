@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Car Loan Calculator — Free Online | ToolNest</title>
+<meta name="description" content="Compute monthly car payments, total interest and full cost from price, down payment, trade-in, rate and term.">
+<meta name="keywords" content="car loan calculator, auto loan calculator, monthly car payment, car finance calculator, vehicle loan estimator">
+<link rel="canonical" href="https://toolnest.vercel.app/tools/car-loan-calculator/">
+<meta name="theme-color" content="#07070b">
+<meta property="og:title" content="Car Loan Calculator — Free Online | ToolNest">
+<meta property="og:description" content="Compute monthly car payments, total interest and full cost from price, down payment, trade-in, rate and term.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css?v=4">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%23e01111'/><text x='50' y='68' font-size='58' text-anchor='middle' fill='white' font-family='Arial' font-weight='bold'>T</text></svg>">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebApplication","name":"Car Loan Calculator","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0"},"url":"https://toolnest.vercel.app/tools/car-loan-calculator/","description":"Compute monthly car payments, total interest and full cost from price, down payment, trade-in, rate and term."},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How is the monthly payment calculated?","acceptedAnswer":{"@type":"Answer","text":"With the standard amortizing formula M = P·r(1+r)^n / ((1+r)^n − 1) on the financed amount (price minus down payment and trade-in)."}},{"@type":"Question","name":"Does this include taxes and fees?","acceptedAnswer":{"@type":"Answer","text":"No — add your local sales tax, title and dealer fees to the vehicle price first for a true out-the-door number."}},{"@type":"Question","name":"Is a longer term better?","acceptedAnswer":{"@type":"Answer","text":"It lowers the monthly payment but raises total interest and the risk of owing more than the car is worth."}}]}]}</script>
+</head>
+<body>
+<header class="site-header">
+  <div class="container">
+    <a class="logo" href="/"><span class="logo-mark">T</span> ToolNest</a>
+    <div class="header-right">
+      <form class="nav-search" action="/" method="get" role="search">
+        <span class="ns-icon">🔍</span>
+        <input type="search" name="q" placeholder="Search tools…" aria-label="Search tools" autocomplete="off">
+      </form>
+      <div class="menu-wrap">
+        <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="menuPanel" aria-label="Open menu"><span></span><span></span><span></span></button>
+        <nav class="menu-panel" id="menuPanel" aria-label="Site">
+          <a href="/">Home</a>
+          <a href="/#categories">Categories</a>
+          <a href="/#all-tools">All Tools</a>
+        </nav>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ADSTERRA-HEADER: paste your Adsterra banner ad code inside the div below -->
+<div class="container"><div class="ad-slot ad-leaderboard" data-ad="header"></div></div>
+
+<main class="container">
+  <nav class="crumbs"><a href="/">Home</a> &rsaquo; <a href="/#finance">Finance &amp; Money</a> &rsaquo; Car Loan Calculator</nav>
+  <div class="tool-hero">
+    <h1>Car Loan Calculator</h1>
+    <p>Compute monthly car payments, total interest and full cost from price, down payment, trade-in, rate and term.</p>
+  </div>
+
+  <div class="tool-card">
+  <div class="grid2">
+    <div class="field"><label for="car-price">Vehicle price ($)</label><input type="number" class="input" id="car-price" min="0" step="any" placeholder="28000"></div>
+    <div class="field"><label for="car-down">Down payment ($)</label><input type="number" class="input" id="car-down" min="0" step="any" placeholder="3000"></div>
+    <div class="field"><label for="car-trade">Trade-in value ($)</label><input type="number" class="input" id="car-trade" min="0" step="any" placeholder="5000"></div>
+    <div class="field"><label for="car-rate">APR (%)</label><input type="number" class="input" id="car-rate" min="0" max="30" step="any" placeholder="6.9"></div>
+    <div class="field"><label for="car-term">Term (months)</label><input type="number" class="input" id="car-term" min="1" max="120" step="1" placeholder="60"></div>
+  </div>
+  <div class="error" id="car-loan-calculator-error"></div>
+  <div class="result" id="car-result">
+    <div class="stat-cards">
+      <div class="stat-card"><div class="v" id="car-payment">–</div><div class="l">Monthly payment</div></div>
+      <div class="stat-card"><div class="v" id="car-interest">–</div><div class="l">Total interest</div></div>
+      <div class="stat-card"><div class="v" id="car-total">–</div><div class="l">Total cost</div></div>
+    </div>
+    <table class="data">
+      <thead><tr><th>Item</th><th>Amount</th></tr></thead>
+      <tbody id="car-body"><tr><td colspan="2" class="muted">Enter loan details to calculate.</td></tr></tbody>
+    </table>
+    <p class="note">Taxes, title and dealer fees are not included — add them to the price first.</p>
+  </div>
+</div>
+
+  <!-- ADSTERRA-INCONTENT: paste your Adsterra native/in-content ad code inside the div below -->
+  <div class="ad-slot" data-ad="incontent"></div>
+
+  <div class="info-grid">
+    <div class="info-card">
+      <h2>📖 How to use</h2>
+      <ol><li>Enter the vehicle price, down payment and trade-in value.</li><li>Set the APR and loan term in months.</li><li>Read your monthly payment, total interest and total cost instantly.</li></ol>
+    </div>
+    <div class="info-card">
+      <h2>❓ Frequently asked questions</h2>
+      <div class="faq"><details><summary>How is the monthly payment calculated?</summary><p>With the standard amortizing formula M = P·r(1+r)^n / ((1+r)^n − 1) on the financed amount (price minus down payment and trade-in).</p></details><details><summary>Does this include taxes and fees?</summary><p>No — add your local sales tax, title and dealer fees to the vehicle price first for a true out-the-door number.</p></details><details><summary>Is a longer term better?</summary><p>It lowers the monthly payment but raises total interest and the risk of owing more than the car is worth.</p></details></div>
+    </div>
+  </div>
+
+  <section class="section">
+    <h2>🔗 Related tools</h2>
+    <div class="tool-grid"><a class="tool-link" href="/tools/budget-50-30-20-calculator/" data-search="50/30/20 budget calculator split your take-home pay into needs (50%), wants (30%) and savings (20%), then compare with your actual spending. 50 30 20 budget budget calculator needs wants savings monthly budget planner budget rule calculator"><span class="t-ico">💰</span><span class="t-body"><b>50/30/20 Budget Calculator</b><small>Split your take-home pay into needs (50%), wants (30%) and savings (20%), then compare with …</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/compound-interest-calculator/" data-search="compound interest calculator project how your savings grow over time with compound interest, regular monthly contributions and your choice of compounding frequency. compound interest calculator savings growth calculator compound interest with contributions"><span class="t-ico">💰</span><span class="t-body"><b>Compound Interest Calculator</b><small>Project how your savings grow over time with compound interest, regular monthly contribution…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/credit-card-validator/" data-search="credit card validator check any card number with the luhn algorithm and detect its brand — a format check only, never a real-card check. credit card validator luhn check card number checker card brand detector"><span class="t-ico">💰</span><span class="t-body"><b>Credit Card Validator</b><small>Check any card number with the Luhn algorithm and detect its brand — a format check only, ne…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/crypto-profit-calculator/" data-search="crypto profit calculator calculate profit, loss and roi on any crypto trade with buy/sell fees included. crypto profit calculator bitcoin profit calculator crypto roi calculator trading profit calculator coin profit loss"><span class="t-ico">💰</span><span class="t-body"><b>Crypto Profit Calculator</b><small>Calculate profit, loss and ROI on any crypto trade with buy/sell fees included.</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/debt-payoff-calculator/" data-search="debt payoff planner build an avalanche payoff plan for up to 8 debts: payoff order, months to debt-free and total interest paid. debt payoff calculator debt avalanche calculator pay off debt planner"><span class="t-ico">💰</span><span class="t-body"><b>Debt Payoff Planner</b><small>Build an avalanche payoff plan for up to 8 debts: payoff order, months to debt-free and tota…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/dividend-yield-calculator/" data-search="dividend yield calculator calculate dividend yield percentage and annual, quarterly and monthly income from any dividend stock. dividend yield calculator dividend income calculator stock yield calculator dividend return yield on cost"><span class="t-ico">💰</span><span class="t-body"><b>Dividend Yield Calculator</b><small>Calculate dividend yield percentage and annual, quarterly and monthly income from any divide…</small></span><span class="t-arrow">→</span></a></div>
+  </section>
+</main>
+
+<!-- ADSTERRA-FOOTER: paste your Adsterra footer/banner ad code inside the div below -->
+<div class="container"><div class="ad-slot" data-ad="footer"></div></div>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="f-grid">
+      <div>
+        <span class="brandline"><span class="logo-mark">T</span> ToolNest</span>
+        <p>Free online tools that actually work. No sign-up, no watermarks — and your files never leave your device for client-side tools.</p>
+      </div>
+      <div>
+        <h4>Popular</h4>
+        <a href="/tools/qr-code-generator/">QR Code Generator</a>
+        <a href="/tools/background-remover/">Background Remover</a>
+        <a href="/tools/pdf-merger/">PDF Merger</a>
+        <a href="/tools/word-counter/">Word Counter</a>
+      </div>
+      <div>
+        <h4>Categories</h4>
+        <a href="/#image">Image Tools</a>
+        <a href="/#pdf">PDF &amp; Documents</a>
+        <a href="/#calculators">Calculators</a>
+        <a href="/#developer">Developer Tools</a>
+      </div>
+      <div>
+        <h4>Site</h4>
+        <a href="/">Home</a>
+        <a href="/#all-tools">All Tools</a>
+        <a href="/sitemap.xml">Sitemap</a>
+      </div>
+    </div>
+    <div class="f-bottom">© 2026 ToolNest · Free tools for everyone · Made with care</div>
+  </div>
+</footer>
+
+<script src="/assets/site.js?v=5"></script>
+
+<script>
+(function () {
+  'use strict';
+  var ERR = 'car-loan-calculator-error';
+  function money(n) { try { return '$' + n.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 }); } catch (e) { return '$' + (Math.round(n * 100) / 100); } }
+  function calc() {
+    if (!TN.el('car-price')) return;
+    TN.clearErr(ERR);
+    var price = parseFloat(TN.el('car-price').value);
+    var down = parseFloat(TN.el('car-down').value) || 0;
+    var trade = parseFloat(TN.el('car-trade').value) || 0;
+    var rate = parseFloat(TN.el('car-rate').value);
+    var term = parseInt(TN.el('car-term').value, 10);
+    if (!(price > 0)) { TN.setErr(ERR, 'Enter a vehicle price greater than 0.'); return; }
+    if (down < 0 || trade < 0) { TN.setErr(ERR, 'Down payment and trade-in cannot be negative.'); return; }
+    if (down + trade >= price) { TN.setErr(ERR, 'Down payment plus trade-in must be less than the price.'); return; }
+    if (isNaN(rate) || rate < 0 || rate > 30) { TN.setErr(ERR, 'Enter an APR between 0 and 30%.'); return; }
+    if (!(term >= 1 && term <= 120)) { TN.setErr(ERR, 'Enter a term between 1 and 120 months.'); return; }
+    var P = price - down - trade;
+    var r = rate / 100 / 12;
+    var M = r === 0 ? P / term : P * r * Math.pow(1 + r, term) / (Math.pow(1 + r, term) - 1);
+    var totalPaid = M * term;
+    var interest = totalPaid - P;
+    TN.el('car-payment').textContent = money(M);
+    TN.el('car-interest').textContent = money(interest);
+    TN.el('car-total').textContent = money(down + trade + totalPaid);
+    TN.el('car-body').innerHTML =
+      '<tr><td>Amount financed</td><td>' + money(P) + '</td></tr>' +
+      '<tr><td>Monthly payment × ' + term + '</td><td>' + money(M) + '</td></tr>' +
+      '<tr><td>Total interest</td><td>' + money(interest) + '</td></tr>' +
+      '<tr><td><strong>Total cost of car</strong></td><td><strong>' + money(down + trade + totalPaid) + '</strong></td></tr>';
+  }
+  try {
+    ['car-price', 'car-down', 'car-trade', 'car-rate', 'car-term'].forEach(function (id) { TN.on(id, 'input', calc); });
+    calc();
+  } catch (e) { /* never throw on load */ }
+})();
+</script>
+</body>
+</html>

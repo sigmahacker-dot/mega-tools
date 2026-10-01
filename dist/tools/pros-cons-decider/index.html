@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pros &amp; Cons Decider — Free Online | ToolNest</title>
+<meta name="description" content="Weigh any decision: list pros and cons with importance weights, get a scored verdict and a visual breakdown.">
+<meta name="keywords" content="pros and cons, decision maker, should i decider, pros cons list, decision helper">
+<link rel="canonical" href="https://toolnest.vercel.app/tools/pros-cons-decider/">
+<meta name="theme-color" content="#07070b">
+<meta property="og:title" content="Pros &amp; Cons Decider — Free Online | ToolNest">
+<meta property="og:description" content="Weigh any decision: list pros and cons with importance weights, get a scored verdict and a visual breakdown.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css?v=4">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%23e01111'/><text x='50' y='68' font-size='58' text-anchor='middle' fill='white' font-family='Arial' font-weight='bold'>T</text></svg>">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebApplication","name":"Pros & Cons Decider","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0"},"url":"https://toolnest.vercel.app/tools/pros-cons-decider/","description":"Weigh any decision: list pros and cons with importance weights, get a scored verdict and a visual breakdown."},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How is the decision scored?","acceptedAnswer":{"@type":"Answer","text":"Each pro and con gets a weight from 1 (minor) to 5 (deal-breaker). Totals are compared to produce the verdict."}},{"@type":"Question","name":"What does 'toss-up' mean?","acceptedAnswer":{"@type":"Answer","text":"If the weighted totals are within 10% of each other, the result is a toss-up — the decision genuinely could go either way."}},{"@type":"Question","name":"Can I add more pros and cons?","acceptedAnswer":{"@type":"Answer","text":"Yes — add as many rows as you need on either side."}},{"@type":"Question","name":"Is this private?","acceptedAnswer":{"@type":"Answer","text":"Yes, everything runs locally in your browser."}}]}]}</script>
+</head>
+<body>
+<header class="site-header">
+  <div class="container">
+    <a class="logo" href="/"><span class="logo-mark">T</span> ToolNest</a>
+    <div class="header-right">
+      <form class="nav-search" action="/" method="get" role="search">
+        <span class="ns-icon">🔍</span>
+        <input type="search" name="q" placeholder="Search tools…" aria-label="Search tools" autocomplete="off">
+      </form>
+      <div class="menu-wrap">
+        <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="menuPanel" aria-label="Open menu"><span></span><span></span><span></span></button>
+        <nav class="menu-panel" id="menuPanel" aria-label="Site">
+          <a href="/">Home</a>
+          <a href="/#categories">Categories</a>
+          <a href="/#all-tools">All Tools</a>
+        </nav>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ADSTERRA-HEADER: paste your Adsterra banner ad code inside the div below -->
+<div class="container"><div class="ad-slot ad-leaderboard" data-ad="header"></div></div>
+
+<main class="container">
+  <nav class="crumbs"><a href="/">Home</a> &rsaquo; <a href="/#fun">Fun &amp; Lifestyle</a> &rsaquo; Pros &amp; Cons Decider</nav>
+  <div class="tool-hero">
+    <h1>Pros &amp; Cons Decider</h1>
+    <p>Weigh any decision: list pros and cons with importance weights, get a scored verdict and a visual breakdown.</p>
+  </div>
+
+  <div class="tool-card">
+  <div class="field"><label for="pc-topic">Decision</label><input type="text" class="input" id="pc-topic" placeholder="Should I adopt a dog?"></div>
+  <div class="grid2">
+    <div class="field"><label>Pros</label><div id="pc-pros"></div>
+      <div class="btn-row"><button class="btn btn-outline btn-sm" id="pc-add-pro" type="button">+ Add pro</button></div>
+    </div>
+    <div class="field"><label>Cons</label><div id="pc-cons"></div>
+      <div class="btn-row"><button class="btn btn-outline btn-sm" id="pc-add-con" type="button">+ Add con</button></div>
+    </div>
+  </div>
+  <div class="error" id="pros-cons-decider-error"></div>
+  <div class="result" id="pc-result">
+    <div class="stat-cards">
+      <div class="stat-card"><div class="v" id="pc-verdict" style="font-size:1.1rem">–</div><div class="l">Verdict</div></div>
+      <div class="stat-card"><div class="v" id="pc-pro-score" style="color:#4ade80">0</div><div class="l">Pros score</div></div>
+      <div class="stat-card"><div class="v" id="pc-con-score" style="color:#f87171">0</div><div class="l">Cons score</div></div>
+    </div>
+    <div style="height:14px;background:rgba(255,255,255,.08);border-radius:99px;overflow:hidden;display:flex">
+      <div id="pc-bar-pro" style="height:100%;background:#4ade80;width:50%"></div>
+      <div id="pc-bar-con" style="height:100%;background:#f87171;width:50%"></div>
+    </div>
+    <p class="note" id="pc-note">Add pros and cons with weights to get a verdict.</p>
+  </div>
+</div>
+
+  <!-- ADSTERRA-INCONTENT: paste your Adsterra native/in-content ad code inside the div below -->
+  <div class="ad-slot" data-ad="incontent"></div>
+
+  <div class="info-grid">
+    <div class="info-card">
+      <h2>📖 How to use</h2>
+      <ol><li>Type the decision you are weighing.</li><li>Add pros and cons, each with an importance weight of 1–5.</li><li>Read the verdict and the weighted score breakdown.</li></ol>
+    </div>
+    <div class="info-card">
+      <h2>❓ Frequently asked questions</h2>
+      <div class="faq"><details><summary>How is the decision scored?</summary><p>Each pro and con gets a weight from 1 (minor) to 5 (deal-breaker). Totals are compared to produce the verdict.</p></details><details><summary>What does &#39;toss-up&#39; mean?</summary><p>If the weighted totals are within 10% of each other, the result is a toss-up — the decision genuinely could go either way.</p></details><details><summary>Can I add more pros and cons?</summary><p>Yes — add as many rows as you need on either side.</p></details><details><summary>Is this private?</summary><p>Yes, everything runs locally in your browser.</p></details></div>
+    </div>
+  </div>
+
+  <section class="section">
+    <h2>🔗 Related tools</h2>
+    <div class="tool-grid"><a class="tool-link" href="/tools/aim-trainer-game/" data-search="aim trainer game test and train your aim — targets pop up at random spots for 30 seconds. hits, misses and accuracy are tracked live. aim trainer aim test reaction test click speed test fps aim trainer"><span class="t-ico">🎲</span><span class="t-body"><b>Aim Trainer Game</b><small>Test and train your aim — targets pop up at random spots for 30 seconds. Hits, misses and ac…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/baby-name-generator/" data-search="baby name generator discover baby names by gender and origin — pakistani, arabic, western, indian or turkish — with meanings, random picks and tap-to-copy. baby name generator baby names with meanings muslim baby names boy girl names"><span class="t-ico">🎲</span><span class="t-body"><b>Baby Name Generator</b><small>Discover baby names by gender and origin — Pakistani, Arabic, Western, Indian or Turkish — w…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/battery-status-checker/" data-search="battery status checker check your device&#39;s battery level, charging status and estimated time remaining, with live updates — where your browser supports the battery api. battery status battery level checker laptop battery charging status"><span class="t-ico">🎲</span><span class="t-body"><b>Battery Status Checker</b><small>Check your device&#39;s battery level, charging status and estimated time remaining, with live u…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/birthday-countdown/" data-search="birthday countdown enter your birthday for a live countdown to your next one — days, hours, minutes and seconds — plus the age you&#39;ll turn and a fun message. birthday countdown countdown to birthday how old am i birthday timer"><span class="t-ico">🎲</span><span class="t-body"><b>Birthday Countdown</b><small>Enter your birthday for a live countdown to your next one — days, hours, minutes and seconds…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/calendar-generator/" data-search="calendar generator generate a monthly calendar for any month and year, with correct weekdays, leap years, today&#39;s date highlighted, and previous/next month navigation. calendar generator monthly calendar printable calendar month planner"><span class="t-ico">🎲</span><span class="t-body"><b>Calendar Generator</b><small>Generate a monthly calendar for any month and year, with correct weekdays, leap years, today…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/coin-flip/" data-search="coin flip flip a virtual coin with a fun animated toss. get instant heads or tails results, keep a running tally of both sides, and reset the count whenever you like. coin flip heads or tails coin toss random coin"><span class="t-ico">🎲</span><span class="t-body"><b>Coin Flip</b><small>Flip a virtual coin with a fun animated toss. Get instant Heads or Tails results, keep a run…</small></span><span class="t-arrow">→</span></a></div>
+  </section>
+</main>
+
+<!-- ADSTERRA-FOOTER: paste your Adsterra footer/banner ad code inside the div below -->
+<div class="container"><div class="ad-slot" data-ad="footer"></div></div>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="f-grid">
+      <div>
+        <span class="brandline"><span class="logo-mark">T</span> ToolNest</span>
+        <p>Free online tools that actually work. No sign-up, no watermarks — and your files never leave your device for client-side tools.</p>
+      </div>
+      <div>
+        <h4>Popular</h4>
+        <a href="/tools/qr-code-generator/">QR Code Generator</a>
+        <a href="/tools/background-remover/">Background Remover</a>
+        <a href="/tools/pdf-merger/">PDF Merger</a>
+        <a href="/tools/word-counter/">Word Counter</a>
+      </div>
+      <div>
+        <h4>Categories</h4>
+        <a href="/#image">Image Tools</a>
+        <a href="/#pdf">PDF &amp; Documents</a>
+        <a href="/#calculators">Calculators</a>
+        <a href="/#developer">Developer Tools</a>
+      </div>
+      <div>
+        <h4>Site</h4>
+        <a href="/">Home</a>
+        <a href="/#all-tools">All Tools</a>
+        <a href="/sitemap.xml">Sitemap</a>
+      </div>
+    </div>
+    <div class="f-bottom">© 2026 ToolNest · Free tools for everyone · Made with care</div>
+  </div>
+</footer>
+
+<script src="/assets/site.js?v=5"></script>
+
+<script>
+(function () {
+  'use strict';
+  var ERR = 'pros-cons-decider-error';
+  function addRow(boxId, text, weight) {
+    var box = TN.el(boxId);
+    var d = document.createElement('div');
+    d.style.cssText = 'display:grid;grid-template-columns:1fr 64px 34px;gap:8px;margin-bottom:8px;';
+    d.innerHTML = '<input type="text" class="input pc-text" placeholder="Reason">' +
+      '<select class="select pc-w"><option value="1">1</option><option value="2">2</option><option value="3" selected>3</option><option value="4">4</option><option value="5">5</option></select>' +
+      '<button type="button" class="btn btn-danger btn-sm pc-del" title="Remove">✕</button>';
+    if (text) d.querySelector('.pc-text').value = text;
+    if (weight) d.querySelector('.pc-w').value = String(weight);
+    box.appendChild(d);
+    d.querySelector('.pc-text').addEventListener('input', update);
+    d.querySelector('.pc-w').addEventListener('change', update);
+    d.querySelector('.pc-del').addEventListener('click', function () { d.remove(); update(); });
+  }
+  function score(boxId) {
+    var total = 0, n = 0;
+    TN.qsa('#' + boxId + ' .pc-text').forEach(function (el) {
+      var t = el.value.trim();
+      if (!t) return;
+      var w = parseInt(el.parentElement.querySelector('.pc-w').value, 10) || 1;
+      total += w; n++;
+    });
+    return { total: total, n: n };
+  }
+  function update() {
+    if (!TN.el('pc-verdict')) return;
+    TN.clearErr(ERR);
+    var p = score('pc-pros'), c = score('pc-cons');
+    TN.el('pc-pro-score').textContent = p.total;
+    TN.el('pc-con-score').textContent = c.total;
+    var tot = p.total + c.total;
+    TN.el('pc-bar-pro').style.width = (tot ? p.total / tot * 100 : 50) + '%';
+    TN.el('pc-bar-con').style.width = (tot ? c.total / tot * 100 : 50) + '%';
+    var v = TN.el('pc-verdict'), note = TN.el('pc-note');
+    if (!p.n && !c.n) {
+      v.textContent = '–'; v.style.color = '';
+      note.textContent = 'Add pros and cons with weights to get a verdict.';
+      return;
+    }
+    var diff = p.total - c.total, rel = tot ? Math.abs(diff) / tot : 0;
+    if (rel < 0.1) {
+      v.textContent = '⚖️ Toss-up'; v.style.color = '#fcd34d';
+      note.textContent = 'The weighted scores are nearly tied — gather more information or go with your gut.';
+    } else if (diff > 0) {
+      v.textContent = '✅ Go for it'; v.style.color = '#4ade80';
+      note.textContent = 'Pros outweigh cons by ' + diff + ' weighted point' + (diff === 1 ? '' : 's') + '.';
+    } else {
+      v.textContent = '🛑 Hold off'; v.style.color = '#f87171';
+      note.textContent = 'Cons outweigh pros by ' + (-diff) + ' weighted point' + (diff === -1 ? '' : 's') + '.';
+    }
+  }
+  try {
+    TN.on('pc-add-pro', 'click', function () { addRow('pc-pros'); });
+    TN.on('pc-add-con', 'click', function () { addRow('pc-cons'); });
+    TN.on('pc-topic', 'input', update);
+    addRow('pc-pros', 'Companionship', 5);
+    addRow('pc-pros', 'Daily exercise', 3);
+    addRow('pc-cons', 'Time commitment', 4);
+    update();
+  } catch (e) { /* never throw on load */ }
+})();
+</script>
+</body>
+</html>

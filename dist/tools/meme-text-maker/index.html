@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Meme Text Maker — Free Online | ToolNest</title>
+<meta name="description" content="Make classic memes — upload any image, add top and bottom Impact-style captions with outline, and download the finished meme.">
+<meta name="keywords" content="meme maker, meme generator, meme text, impact meme, make meme online">
+<link rel="canonical" href="https://toolnest.vercel.app/tools/meme-text-maker/">
+<meta name="theme-color" content="#07070b">
+<meta property="og:title" content="Meme Text Maker — Free Online | ToolNest">
+<meta property="og:description" content="Make classic memes — upload any image, add top and bottom Impact-style captions with outline, and download the finished meme.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css?v=4">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%23e01111'/><text x='50' y='68' font-size='58' text-anchor='middle' fill='white' font-family='Arial' font-weight='bold'>T</text></svg>">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebApplication","name":"Meme Text Maker","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0"},"url":"https://toolnest.vercel.app/tools/meme-text-maker/","description":"Make classic memes — upload any image, add top and bottom Impact-style captions with outline, and download the finished meme."},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What does the text look like?","acceptedAnswer":{"@type":"Answer","text":"Classic white Impact with a black outline — the authentic meme look — with size and position controls."}},{"@type":"Question","name":"Can I adjust the text size and position?","acceptedAnswer":{"@type":"Answer","text":"Yes — drag the size slider and nudge each caption's vertical position."}},{"@type":"Question","name":"Which images work best?","acceptedAnswer":{"@type":"Answer","text":"JPG, PNG, WebP and GIF (first frame). Square images work best for the classic format."}},{"@type":"Question","name":"Is my image uploaded?","acceptedAnswer":{"@type":"Answer","text":"No — everything is rendered locally in your browser."}}]}]}</script>
+</head>
+<body>
+<header class="site-header">
+  <div class="container">
+    <a class="logo" href="/"><span class="logo-mark">T</span> ToolNest</a>
+    <div class="header-right">
+      <form class="nav-search" action="/" method="get" role="search">
+        <span class="ns-icon">🔍</span>
+        <input type="search" name="q" placeholder="Search tools…" aria-label="Search tools" autocomplete="off">
+      </form>
+      <div class="menu-wrap">
+        <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="menuPanel" aria-label="Open menu"><span></span><span></span><span></span></button>
+        <nav class="menu-panel" id="menuPanel" aria-label="Site">
+          <a href="/">Home</a>
+          <a href="/#categories">Categories</a>
+          <a href="/#all-tools">All Tools</a>
+        </nav>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ADSTERRA-HEADER: paste your Adsterra banner ad code inside the div below -->
+<div class="container"><div class="ad-slot ad-leaderboard" data-ad="header"></div></div>
+
+<main class="container">
+  <nav class="crumbs"><a href="/">Home</a> &rsaquo; <a href="/#generators">Generators</a> &rsaquo; Meme Text Maker</nav>
+  <div class="tool-hero">
+    <h1>Meme Text Maker</h1>
+    <p>Make classic memes — upload any image, add top and bottom Impact-style captions with outline, and download the finished meme.</p>
+  </div>
+
+  <div class="tool-card">
+  <div class="field">
+    <label for="meme-text-maker-file">Upload image</label>
+    <input type="file" class="input" id="meme-text-maker-file" accept="image/*">
+  </div>
+  <div class="grid2">
+    <div class="field">
+      <label for="meme-text-maker-top">Top text</label>
+      <input type="text" class="input" id="meme-text-maker-top" value="TOP TEXT" maxlength="120">
+    </div>
+    <div class="field">
+      <label for="meme-text-maker-bottom">Bottom text</label>
+      <input type="text" class="input" id="meme-text-maker-bottom" value="BOTTOM TEXT" maxlength="120">
+    </div>
+    <div class="field">
+      <label for="meme-text-maker-size">Text size (<span id="meme-text-maker-size-v">10</span>%)</label>
+      <input type="range" class="input" id="meme-text-maker-size" min="4" max="20" step="1" value="10">
+    </div>
+    <div class="field">
+      <label for="meme-text-maker-color">Text color</label>
+      <select class="input" id="meme-text-maker-color">
+        <option value="#ffffff">White (classic)</option>
+        <option value="#000000">Black</option>
+        <option value="#ffeb3b">Yellow</option>
+        <option value="#ff5252">Red</option>
+      </select>
+    </div>
+  </div>
+  <div class="btn-row" style="margin-top:12px">
+    <button class="btn btn-outline" id="meme-text-maker-dl" disabled>Download meme</button>
+  </div>
+  <div class="error" id="meme-text-maker-error"></div>
+  <div class="result" id="meme-text-maker-result" hidden>
+    <canvas id="meme-text-maker-canvas" style="max-width:100%;height:auto;border-radius:8px"></canvas>
+  </div>
+</div>
+
+
+  <!-- ADSTERRA-INCONTENT: paste your Adsterra native/in-content ad code inside the div below -->
+  <div class="ad-slot" data-ad="incontent"></div>
+
+  <div class="info-grid">
+    <div class="info-card">
+      <h2>📖 How to use</h2>
+      <ol><li>Upload an image.</li><li>Type the top and bottom captions.</li><li>Adjust size and vertical position of each line.</li><li>Download your meme as a PNG.</li></ol>
+    </div>
+    <div class="info-card">
+      <h2>❓ Frequently asked questions</h2>
+      <div class="faq"><details><summary>What does the text look like?</summary><p>Classic white Impact with a black outline — the authentic meme look — with size and position controls.</p></details><details><summary>Can I adjust the text size and position?</summary><p>Yes — drag the size slider and nudge each caption&#39;s vertical position.</p></details><details><summary>Which images work best?</summary><p>JPG, PNG, WebP and GIF (first frame). Square images work best for the classic format.</p></details><details><summary>Is my image uploaded?</summary><p>No — everything is rendered locally in your browser.</p></details></div>
+    </div>
+  </div>
+
+  <section class="section">
+    <h2>🔗 Related tools</h2>
+    <div class="tool-grid"><a class="tool-link" href="/tools/band-name-generator/" data-search="band name generator generate original band names by genre — rock, metal, pop, hip-hop, electronic, jazz, punk or indie — with one click and copy. band name generator rock band names metal band names cool band names music group name ideas"><span class="t-ico">⚙️</span><span class="t-body"><b>Band Name Generator</b><small>Generate original band names by genre — rock, metal, pop, hip-hop, electronic, jazz, punk or…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/barcode-generator/" data-search="barcode generator generate barcodes in common formats — code128, code39, ean-13, ean-8, upc and itf-14 — and download them as png or svg images. barcode generator barcode maker ean13 barcode upc barcode generator"><span class="t-ico">⚙️</span><span class="t-body"><b>Barcode Generator</b><small>Generate barcodes in common formats — CODE128, CODE39, EAN-13, EAN-8, UPC and ITF-14 — and d…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/bingo-card-generator/" data-search="bingo card generator create printable 5×5 bingo cards with classic b-i-n-g-o number ranges, an optional free space, or your own custom word list. bingo card generator printable bingo cards custom bingo cards bingo number generator free bingo cards"><span class="t-ico">⚙️</span><span class="t-body"><b>Bingo Card Generator</b><small>Create printable 5×5 bingo cards with classic B-I-N-G-O number ranges, an optional free spac…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/border-radius-generator/" data-search="border radius generator organic blob shapes with an 8-handle radius editor. border radius generator blob shape css border-radius css"><span class="t-ico">⚙️</span><span class="t-body"><b>Border Radius Generator</b><small>Organic blob shapes with an 8-handle radius editor.</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/box-shadow-generator/" data-search="box shadow generator visual css box-shadow builder with live preview. box shadow generator css shadow box-shadow css"><span class="t-ico">⚙️</span><span class="t-body"><b>Box Shadow Generator</b><small>Visual CSS box-shadow builder with live preview.</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/button-generator/" data-search="button generator design a custom button with your text, colors, border radius, padding and shadow — then copy the generated css and use it anywhere. button generator css button maker button css custom button design"><span class="t-ico">⚙️</span><span class="t-body"><b>Button Generator</b><small>Design a custom button with your text, colors, border radius, padding and shadow — then copy…</small></span><span class="t-arrow">→</span></a></div>
+  </section>
+</main>
+
+<!-- ADSTERRA-FOOTER: paste your Adsterra footer/banner ad code inside the div below -->
+<div class="container"><div class="ad-slot" data-ad="footer"></div></div>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="f-grid">
+      <div>
+        <span class="brandline"><span class="logo-mark">T</span> ToolNest</span>
+        <p>Free online tools that actually work. No sign-up, no watermarks — and your files never leave your device for client-side tools.</p>
+      </div>
+      <div>
+        <h4>Popular</h4>
+        <a href="/tools/qr-code-generator/">QR Code Generator</a>
+        <a href="/tools/background-remover/">Background Remover</a>
+        <a href="/tools/pdf-merger/">PDF Merger</a>
+        <a href="/tools/word-counter/">Word Counter</a>
+      </div>
+      <div>
+        <h4>Categories</h4>
+        <a href="/#image">Image Tools</a>
+        <a href="/#pdf">PDF &amp; Documents</a>
+        <a href="/#calculators">Calculators</a>
+        <a href="/#developer">Developer Tools</a>
+      </div>
+      <div>
+        <h4>Site</h4>
+        <a href="/">Home</a>
+        <a href="/#all-tools">All Tools</a>
+        <a href="/sitemap.xml">Sitemap</a>
+      </div>
+    </div>
+    <div class="f-bottom">© 2026 ToolNest · Free tools for everyone · Made with care</div>
+  </div>
+</footer>
+
+<script src="/assets/site.js?v=5"></script>
+
+<script>
+/* Meme Text Maker — Impact-style top/bottom captions, live preview, download. */
+(function () {
+  'use strict';
+  var SLUG = 'meme-text-maker';
+  var ERR = SLUG + '-error';
+  var img = null;
+
+  function $(id) { return document.getElementById(id); }
+  function val(id) { var e = $(id); return e ? e.value : ''; }
+
+  function wrapLines(ctx, text, maxW) {
+    var words = text.toUpperCase().split(/\s+/).filter(Boolean);
+    var lines = [], line = '';
+    words.forEach(function (w) {
+      var t = line ? line + ' ' + w : w;
+      if (ctx.measureText(t).width > maxW && line) { lines.push(line); line = w; }
+      else line = t;
+    });
+    if (line) lines.push(line);
+    return lines;
+  }
+
+  function drawCaption(ctx, text, W, H, fontPx, top) {
+    if (!text.trim()) return;
+    ctx.font = '900 ' + fontPx + 'px Impact, "Arial Black", sans-serif';
+    ctx.textAlign = 'center';
+    ctx.textBaseline = top ? 'top' : 'bottom';
+    var lines = wrapLines(ctx, text, W * 0.94);
+    var lineH = fontPx * 1.12;
+    var y = top ? H * 0.03 : H - H * 0.03 - lineH * (lines.length - 1);
+    ctx.lineWidth = Math.max(2, fontPx / 12);
+    ctx.strokeStyle = '#000';
+    ctx.fillStyle = val('meme-text-maker-color') || '#fff';
+    lines.forEach(function (ln, i) {
+      var yy = top ? y + i * lineH : y + i * lineH;
+      ctx.strokeText(ln, W / 2, yy);
+      ctx.fillText(ln, W / 2, yy);
+    });
+  }
+
+  function render() {
+    if (!img) return;
+    TN.clearErr(ERR);
+    var cv = $('meme-text-maker-canvas');
+    cv.width = img.naturalWidth;
+    cv.height = img.naturalHeight;
+    var ctx = cv.getContext('2d');
+    ctx.drawImage(img, 0, 0);
+    var sizePct = parseInt(val('meme-text-maker-size'), 10) || 10;
+    $('meme-text-maker-size-v').textContent = sizePct;
+    var fontPx = Math.round(cv.width * sizePct / 100);
+    drawCaption(ctx, val('meme-text-maker-top'), cv.width, cv.height, fontPx, true);
+    drawCaption(ctx, val('meme-text-maker-bottom'), cv.width, cv.height, fontPx, false);
+    $('meme-text-maker-result').hidden = false;
+    $('meme-text-maker-dl').disabled = false;
+  }
+
+  try {
+    TN.on('meme-text-maker-file', 'change', function (e) {
+      var f = e.target.files && e.target.files[0];
+      if (!f) return;
+      var url = URL.createObjectURL(f);
+      var im = new Image();
+      im.onload = function () { img = im; URL.revokeObjectURL(url); render(); };
+      im.onerror = function () { URL.revokeObjectURL(url); TN.setErr(ERR, 'Could not read that file as an image.'); };
+      im.src = url;
+    });
+    ['meme-text-maker-top', 'meme-text-maker-bottom', 'meme-text-maker-size', 'meme-text-maker-color'].forEach(function (id) {
+      TN.on(id, 'input', render);
+      TN.on(id, 'change', render);
+    });
+    TN.on('meme-text-maker-dl', 'click', function () {
+      $('meme-text-maker-canvas').toBlob(function (b) {
+        if (!b) { TN.setErr(ERR, 'Could not export the meme.'); return; }
+        var a = document.createElement('a');
+        a.href = URL.createObjectURL(b);
+        a.download = 'meme.png';
+        document.body.appendChild(a); a.click();
+        setTimeout(function () { document.body.removeChild(a); }, 100);
+      }, 'image/png');
+    });
+  } catch (e) { /* never throw on load */ }
+})();
+
+</script>
+</body>
+</html>

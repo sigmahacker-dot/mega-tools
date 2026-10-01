@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Twitter / X Character Counter — Free Online | ToolNest</title>
+<meta name="description" content="A composer with Twitter&#39;s real weighted counting — every URL counts as exactly 23 characters, like t.co wrapping.">
+<meta name="keywords" content="twitter character counter, tweet length checker, x post character count, twitter counter 280">
+<link rel="canonical" href="https://toolnest.vercel.app/tools/twitter-counter/">
+<meta name="theme-color" content="#07070b">
+<meta property="og:title" content="Twitter / X Character Counter — Free Online | ToolNest">
+<meta property="og:description" content="A composer with Twitter&#39;s real weighted counting — every URL counts as exactly 23 characters, like t.co wrapping.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css?v=4">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%23e01111'/><text x='50' y='68' font-size='58' text-anchor='middle' fill='white' font-family='Arial' font-weight='bold'>T</text></svg>">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebApplication","name":"Twitter / X Character Counter","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0"},"url":"https://toolnest.vercel.app/tools/twitter-counter/","description":"A composer with Twitter's real weighted counting — every URL counts as exactly 23 characters, like t.co wrapping."},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Why do links count as 23 characters?","acceptedAnswer":{"@type":"Answer","text":"X wraps every URL in t.co, which always occupies 23 characters of the 280 limit no matter how long the real link is. This tool replicates that rule."}},{"@type":"Question","name":"What about images and polls?","acceptedAnswer":{"@type":"Answer","text":"Media attachments (images, video, GIFs, polls) do not consume characters — only the text counts, which is what this tool measures."}},{"@type":"Question","name":"Is the limit still 280?","acceptedAnswer":{"@type":"Answer","text":"Yes for standard posts. X Premium users can post longer, but 280 is the universal limit this counter enforces."}}]}]}</script>
+</head>
+<body>
+<header class="site-header">
+  <div class="container">
+    <a class="logo" href="/"><span class="logo-mark">T</span> ToolNest</a>
+    <div class="header-right">
+      <form class="nav-search" action="/" method="get" role="search">
+        <span class="ns-icon">🔍</span>
+        <input type="search" name="q" placeholder="Search tools…" aria-label="Search tools" autocomplete="off">
+      </form>
+      <div class="menu-wrap">
+        <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="menuPanel" aria-label="Open menu"><span></span><span></span><span></span></button>
+        <nav class="menu-panel" id="menuPanel" aria-label="Site">
+          <a href="/">Home</a>
+          <a href="/#categories">Categories</a>
+          <a href="/#all-tools">All Tools</a>
+        </nav>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ADSTERRA-HEADER: paste your Adsterra banner ad code inside the div below -->
+<div class="container"><div class="ad-slot ad-leaderboard" data-ad="header"></div></div>
+
+<main class="container">
+  <nav class="crumbs"><a href="/">Home</a> &rsaquo; <a href="/#social">Social Media</a> &rsaquo; Twitter / X Character Counter</nav>
+  <div class="tool-hero">
+    <h1>Twitter / X Character Counter</h1>
+    <p>A composer with Twitter&#39;s real weighted counting — every URL counts as exactly 23 characters, like t.co wrapping.</p>
+  </div>
+
+  <div class="tool-card">
+  <div class="field">
+    <label for="twitter-counter-input">Compose your post</label>
+    <textarea class="textarea" id="twitter-counter-input" rows="5" placeholder="What's happening?" maxlength="2000"></textarea>
+  </div>
+  <div class="error" id="twitter-counter-error"></div>
+  <div class="stat-cards mt">
+    <div class="stat-card"><div class="v" id="twitter-counter-weighted">0</div><div class="l">Weighted chars / 280</div></div>
+    <div class="stat-card"><div class="v" id="twitter-counter-left">280</div><div class="l">Remaining</div></div>
+    <div class="stat-card"><div class="v" id="twitter-counter-urls">0</div><div class="l">URLs (×23)</div></div>
+  </div>
+  <div class="result mt">
+    <div class="field">
+      <label>Limit usage</label>
+      <div style="background:rgba(0,0,0,.12);border-radius:8px;height:14px;overflow:hidden;"><div id="twitter-counter-bar" style="height:100%;width:0%;background:#1d9bf0;transition:width .15s;"></div></div>
+    </div>
+    <p class="note">Weighted count = text with each URL replaced by 23 chars (t.co rule). Emoji count by their UTF-16 code units, as X does.</p>
+  </div>
+</div>
+
+
+  <!-- ADSTERRA-INCONTENT: paste your Adsterra native/in-content ad code inside the div below -->
+  <div class="ad-slot" data-ad="incontent"></div>
+
+  <div class="info-grid">
+    <div class="info-card">
+      <h2>📖 How to use</h2>
+      <ol><li>Type your tweet as you would post it.</li><li>URLs are auto-counted as 23 characters each (t.co wrapping), everything else counts normally.</li><li>The ring shows usage vs 280; red means it will not fit.</li></ol>
+    </div>
+    <div class="info-card">
+      <h2>❓ Frequently asked questions</h2>
+      <div class="faq"><details><summary>Why do links count as 23 characters?</summary><p>X wraps every URL in t.co, which always occupies 23 characters of the 280 limit no matter how long the real link is. This tool replicates that rule.</p></details><details><summary>What about images and polls?</summary><p>Media attachments (images, video, GIFs, polls) do not consume characters — only the text counts, which is what this tool measures.</p></details><details><summary>Is the limit still 280?</summary><p>Yes for standard posts. X Premium users can post longer, but 280 is the universal limit this counter enforces.</p></details></div>
+    </div>
+  </div>
+
+  <section class="section">
+    <h2>🔗 Related tools</h2>
+    <div class="tool-grid"><a class="tool-link" href="/tools/bio-generator/" data-search="bio generator create 4 polished social-media bios from your name, profession and interests in professional, funny, minimalist or inspirational tones. click to copy. bio generator instagram bio ideas social media bio"><span class="t-ico">📣</span><span class="t-body"><b>Bio Generator</b><small>Create 4 polished social-media bios from your name, profession and interests in Professional…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/caption-counter/" data-search="instagram caption counter write instagram captions with live stats — characters vs the 2,200 limit, hashtags, mentions and the 125-char fold preview. instagram caption counter caption character limit hashtag counter instagram caption length"><span class="t-ico">📣</span><span class="t-body"><b>Instagram Caption Counter</b><small>Write Instagram captions with live stats — characters vs the 2,200 limit, hashtags, mentions…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/caption-generator/" data-search="caption generator get 6 engaging captions for any topic in funny, aesthetic, motivational, savage or cute moods, plus a matching hashtag line. one-tap copy included. caption generator instagram captions social media captions"><span class="t-ico">📣</span><span class="t-body"><b>Caption Generator</b><small>Get 6 engaging captions for any topic in Funny, Aesthetic, Motivational, Savage or Cute mood…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/fancy-text-generator/" data-search="fancy text generator turn plain text into 24 stylish unicode fonts and emoji styles — bold, italic, script, fraktur, monospace, circled, upside-down, sparkle-wrapped, emoji-framed and more — with one-tap copy on each style. fancy text generator stylish text unicode text styles"><span class="t-ico">📣</span><span class="t-body"><b>Fancy Text Generator</b><small>Turn plain text into 24 stylish Unicode fonts and emoji styles — bold, italic, script, frakt…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/linkedin-character-counter/" data-search="linkedin character counter check text against linkedin&#39;s real limits — posts (3,000), headlines (220), about (2,600) and more — with live remaining. linkedin character counter linkedin post limit linkedin headline character limit linkedin about section length"><span class="t-ico">📣</span><span class="t-body"><b>LinkedIn Character Counter</b><small>Check text against LinkedIn&#39;s real limits — posts (3,000), headlines (220), About (2,600) an…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/linkedin-text-formatter/" data-search="linkedin text formatter style linkedin posts with unicode bold and italic text variants. linkedin text formatter bold text linkedin unicode bold italic"><span class="t-ico">📣</span><span class="t-body"><b>LinkedIn Text Formatter</b><small>Style LinkedIn posts with Unicode bold and italic text variants.</small></span><span class="t-arrow">→</span></a></div>
+  </section>
+</main>
+
+<!-- ADSTERRA-FOOTER: paste your Adsterra footer/banner ad code inside the div below -->
+<div class="container"><div class="ad-slot" data-ad="footer"></div></div>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="f-grid">
+      <div>
+        <span class="brandline"><span class="logo-mark">T</span> ToolNest</span>
+        <p>Free online tools that actually work. No sign-up, no watermarks — and your files never leave your device for client-side tools.</p>
+      </div>
+      <div>
+        <h4>Popular</h4>
+        <a href="/tools/qr-code-generator/">QR Code Generator</a>
+        <a href="/tools/background-remover/">Background Remover</a>
+        <a href="/tools/pdf-merger/">PDF Merger</a>
+        <a href="/tools/word-counter/">Word Counter</a>
+      </div>
+      <div>
+        <h4>Categories</h4>
+        <a href="/#image">Image Tools</a>
+        <a href="/#pdf">PDF &amp; Documents</a>
+        <a href="/#calculators">Calculators</a>
+        <a href="/#developer">Developer Tools</a>
+      </div>
+      <div>
+        <h4>Site</h4>
+        <a href="/">Home</a>
+        <a href="/#all-tools">All Tools</a>
+        <a href="/sitemap.xml">Sitemap</a>
+      </div>
+    </div>
+    <div class="f-bottom">© 2026 ToolNest · Free tools for everyone · Made with care</div>
+  </div>
+</footer>
+
+<script src="/assets/site.js?v=5"></script>
+
+<script>
+(function () {
+  'use strict';
+  var P = 'twitter-counter-', ERR = P + 'error';
+  var URL_RE = /https?:\/\/[^\s<>"']+/gi;
+  function update() {
+    try {
+      TN.clearErr(ERR);
+      var t = TN.el(P + 'input').value || '';
+      var urls = t.match(URL_RE) || [];
+      var weighted = t.replace(URL_RE, '12345678901234567890123').length;
+      var left = 280 - weighted;
+      TN.el(P + 'weighted').textContent = weighted.toLocaleString('en-US');
+      var le = TN.el(P + 'left');
+      le.textContent = left.toLocaleString('en-US');
+      le.style.color = left < 0 ? '#dc2626' : '';
+      TN.el(P + 'urls').textContent = urls.length;
+      var bar = TN.el(P + 'bar');
+      bar.style.width = Math.min(100, weighted / 280 * 100) + '%';
+      bar.style.background = left < 0 ? '#dc2626' : (weighted > 260 ? '#d97706' : '#1d9bf0');
+      if (left < 0) TN.setErr(ERR, 'Over the limit by ' + (-left) + ' characters — shorten the text or remove a URL.');
+    } catch (e) { TN.setErr(ERR, 'Could not count the post. Please try again.'); }
+  }
+  try {
+    TN.on(P + 'input', 'input', TN.debounce(update, 80));
+    update();
+  } catch (e) { /* never throw on load */ }
+})();
+
+</script>
+</body>
+</html>

@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gradient Text Generator — Free Online | ToolNest</title>
+<meta name="description" content="Make gradient-filled text with background-clip — pick colors and angle, preview live, copy the CSS snippet.">
+<meta name="keywords" content="gradient text generator, css gradient text, background clip text, colorful text css">
+<link rel="canonical" href="https://toolnest.vercel.app/tools/gradient-text-generator/">
+<meta name="theme-color" content="#07070b">
+<meta property="og:title" content="Gradient Text Generator — Free Online | ToolNest">
+<meta property="og:description" content="Make gradient-filled text with background-clip — pick colors and angle, preview live, copy the CSS snippet.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css?v=4">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%23e01111'/><text x='50' y='68' font-size='58' text-anchor='middle' fill='white' font-family='Arial' font-weight='bold'>T</text></svg>">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebApplication","name":"Gradient Text Generator","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0"},"url":"https://toolnest.vercel.app/tools/gradient-text-generator/","description":"Make gradient-filled text with background-clip — pick colors and angle, preview live, copy the CSS snippet."},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How does gradient text work in CSS?","acceptedAnswer":{"@type":"Answer","text":"The gradient is painted as the element background, then background-clip: text with transparent color cuts the background to the glyph shapes."}},{"@type":"Question","name":"Does it work in all browsers?","acceptedAnswer":{"@type":"Answer","text":"All modern browsers support background-clip: text (with -webkit- prefix for Safari/Chrome). The generated snippet includes both."}},{"@type":"Question","name":"Can screen readers read it?","acceptedAnswer":{"@type":"Answer","text":"Yes — it is real text, not an image, so assistive tech reads it normally. Keep contrast reasonable for low-vision users."}}]}]}</script>
+</head>
+<body>
+<header class="site-header">
+  <div class="container">
+    <a class="logo" href="/"><span class="logo-mark">T</span> ToolNest</a>
+    <div class="header-right">
+      <form class="nav-search" action="/" method="get" role="search">
+        <span class="ns-icon">🔍</span>
+        <input type="search" name="q" placeholder="Search tools…" aria-label="Search tools" autocomplete="off">
+      </form>
+      <div class="menu-wrap">
+        <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="menuPanel" aria-label="Open menu"><span></span><span></span><span></span></button>
+        <nav class="menu-panel" id="menuPanel" aria-label="Site">
+          <a href="/">Home</a>
+          <a href="/#categories">Categories</a>
+          <a href="/#all-tools">All Tools</a>
+        </nav>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ADSTERRA-HEADER: paste your Adsterra banner ad code inside the div below -->
+<div class="container"><div class="ad-slot ad-leaderboard" data-ad="header"></div></div>
+
+<main class="container">
+  <nav class="crumbs"><a href="/">Home</a> &rsaquo; <a href="/#color">Color Tools</a> &rsaquo; Gradient Text Generator</nav>
+  <div class="tool-hero">
+    <h1>Gradient Text Generator</h1>
+    <p>Make gradient-filled text with background-clip — pick colors and angle, preview live, copy the CSS snippet.</p>
+  </div>
+
+  <div class="tool-card">
+  <div class="field">
+    <label for="gradient-text-generator-text">Your text</label>
+    <input type="text" class="input" id="gradient-text-generator-text" value="Gradient Text" maxlength="60">
+  </div>
+  <div class="grid2">
+    <div class="field"><label for="gradient-text-generator-c1">Color 1</label><input type="color" class="input" id="gradient-text-generator-c1" value="#f59e0b" style="height:40px;padding:4px;"></div>
+    <div class="field"><label for="gradient-text-generator-c2">Color 2</label><input type="color" class="input" id="gradient-text-generator-c2" value="#ef4444" style="height:40px;padding:4px;"></div>
+    <div class="field"><label for="gradient-text-generator-c3">Color 3</label><input type="color" class="input" id="gradient-text-generator-c3" value="#8b5cf6" style="height:40px;padding:4px;"></div>
+    <div class="field"><label for="gradient-text-generator-angle">Angle: <span id="gradient-text-generator-angle-v">90</span>°</label><input type="range" id="gradient-text-generator-angle" min="0" max="360" value="90"></div>
+  </div>
+  <div class="error" id="gradient-text-generator-error"></div>
+  <div class="result mt">
+    <div id="gradient-text-generator-preview" style="text-align:center;font-size:3rem;font-weight:900;padding:24px 8px;">Gradient Text</div>
+    <div class="field">
+      <label for="gradient-text-generator-css">CSS</label>
+      <textarea class="textarea" id="gradient-text-generator-css" rows="6" readonly style="font-family:ui-monospace,monospace;font-size:.85rem;"></textarea>
+    </div>
+    <div class="btn-row">
+      <button class="btn btn-outline btn-sm" id="gradient-text-generator-copy" type="button">Copy CSS</button>
+    </div>
+  </div>
+</div>
+
+
+  <!-- ADSTERRA-INCONTENT: paste your Adsterra native/in-content ad code inside the div below -->
+  <div class="ad-slot" data-ad="incontent"></div>
+
+  <div class="info-grid">
+    <div class="info-card">
+      <h2>📖 How to use</h2>
+      <ol><li>Type your text.</li><li>Pick two (or three) gradient colors and an angle.</li><li>Copy the CSS — it uses background: linear-gradient + background-clip: text.</li></ol>
+    </div>
+    <div class="info-card">
+      <h2>❓ Frequently asked questions</h2>
+      <div class="faq"><details><summary>How does gradient text work in CSS?</summary><p>The gradient is painted as the element background, then background-clip: text with transparent color cuts the background to the glyph shapes.</p></details><details><summary>Does it work in all browsers?</summary><p>All modern browsers support background-clip: text (with -webkit- prefix for Safari/Chrome). The generated snippet includes both.</p></details><details><summary>Can screen readers read it?</summary><p>Yes — it is real text, not an image, so assistive tech reads it normally. Keep contrast reasonable for low-vision users.</p></details></div>
+    </div>
+  </div>
+
+  <section class="section">
+    <h2>🔗 Related tools</h2>
+    <div class="tool-grid"><a class="tool-link" href="/tools/color-blindness-simulator/" data-search="color blindness simulator see colors and images as color-blind viewers do. color blindness simulator protanopia simulator deuteranopia test"><span class="t-ico">🎨</span><span class="t-body"><b>Color Blindness Simulator</b><small>See colors and images as color-blind viewers do.</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/color-harmony-generator/" data-search="color harmony generator build complementary, analogous, triadic, tetradic and split-complementary palettes from any base color using real hsl math. color harmony generator complementary color finder analogous colors triadic color scheme"><span class="t-ico">🎨</span><span class="t-body"><b>Color Harmony Generator</b><small>Build complementary, analogous, triadic, tetradic and split-complementary palettes from any …</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/color-mixer/" data-search="color mixer blend any two colors with a ratio slider — see the real mixed result as hex and rgb with a live preview. color mixer blend two colors mix colors online color blender tool"><span class="t-ico">🎨</span><span class="t-body"><b>Color Mixer</b><small>Blend any two colors with a ratio slider — see the real mixed result as HEX and RGB with a l…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/color-temperature-converter/" data-search="color temperature converter convert light color temperature (kelvin) to its approximate on-screen color — real blackbody math with warm/cool labels. kelvin to rgb color temperature converter kelvin to hex light temperature color"><span class="t-ico">🎨</span><span class="t-body"><b>Color Temperature Converter</b><small>Convert light color temperature (Kelvin) to its approximate on-screen color — real blackbody…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/contrast-checker/" data-search="color contrast checker wcag contrast ratio with aa/aaa verdicts. contrast checker wcag contrast color contrast ratio"><span class="t-ico">🎨</span><span class="t-body"><b>Color Contrast Checker</b><small>WCAG contrast ratio with AA/AAA verdicts.</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/css-clamp-generator/" data-search="css clamp generator generate fluid clamp() typography and spacing — the exact math from your min/max sizes and viewport range, with a live demo. css clamp generator fluid typography calculator clamp css generator responsive font size"><span class="t-ico">🎨</span><span class="t-body"><b>CSS Clamp Generator</b><small>Generate fluid clamp() typography and spacing — the exact math from your min/max sizes and v…</small></span><span class="t-arrow">→</span></a></div>
+  </section>
+</main>
+
+<!-- ADSTERRA-FOOTER: paste your Adsterra footer/banner ad code inside the div below -->
+<div class="container"><div class="ad-slot" data-ad="footer"></div></div>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="f-grid">
+      <div>
+        <span class="brandline"><span class="logo-mark">T</span> ToolNest</span>
+        <p>Free online tools that actually work. No sign-up, no watermarks — and your files never leave your device for client-side tools.</p>
+      </div>
+      <div>
+        <h4>Popular</h4>
+        <a href="/tools/qr-code-generator/">QR Code Generator</a>
+        <a href="/tools/background-remover/">Background Remover</a>
+        <a href="/tools/pdf-merger/">PDF Merger</a>
+        <a href="/tools/word-counter/">Word Counter</a>
+      </div>
+      <div>
+        <h4>Categories</h4>
+        <a href="/#image">Image Tools</a>
+        <a href="/#pdf">PDF &amp; Documents</a>
+        <a href="/#calculators">Calculators</a>
+        <a href="/#developer">Developer Tools</a>
+      </div>
+      <div>
+        <h4>Site</h4>
+        <a href="/">Home</a>
+        <a href="/#all-tools">All Tools</a>
+        <a href="/sitemap.xml">Sitemap</a>
+      </div>
+    </div>
+    <div class="f-bottom">© 2026 ToolNest · Free tools for everyone · Made with care</div>
+  </div>
+</footer>
+
+<script src="/assets/site.js?v=5"></script>
+
+<script>
+(function () {
+  'use strict';
+  var P = 'gradient-text-generator-', ERR = P + 'error';
+  function update() {
+    try {
+      TN.clearErr(ERR);
+      var text = TN.el(P + 'text').value || 'Gradient Text';
+      var c1 = TN.el(P + 'c1').value, c2 = TN.el(P + 'c2').value, c3 = TN.el(P + 'c3').value;
+      var angle = parseInt(TN.el(P + 'angle').value, 10);
+      TN.el(P + 'angle-v').textContent = angle;
+      var grad = 'linear-gradient(' + angle + 'deg, ' + c1 + ', ' + c2 + ', ' + c3 + ')';
+      var prev = TN.el(P + 'preview');
+      prev.textContent = text;
+      prev.style.background = grad;
+      prev.style.webkitBackgroundClip = 'text';
+      prev.style.backgroundClip = 'text';
+      prev.style.webkitTextFillColor = 'transparent';
+      prev.style.color = 'transparent';
+      TN.el(P + 'css').value =
+        '.gradient-text {\n' +
+        '  background: ' + grad + ';\n' +
+        '  -webkit-background-clip: text;\n' +
+        '  background-clip: text;\n' +
+        '  -webkit-text-fill-color: transparent;\n' +
+        '  color: transparent;\n' +
+        '}';
+    } catch (e) { TN.setErr(ERR, 'Could not build the gradient text. Please try again.'); }
+  }
+  try {
+    ['text', 'c1', 'c2', 'c3', 'angle'].forEach(function (k) { TN.on(P + k, 'input', update); TN.on(P + k, 'change', update); });
+    TN.on(P + 'copy', 'click', function () {
+      TN.clearErr(ERR);
+      TN.copy(TN.el(P + 'css').value).then(function (ok) {
+        var b = TN.el(P + 'copy');
+        b.textContent = ok ? 'Copied!' : 'Copy failed';
+        setTimeout(function () { b.textContent = 'Copy CSS'; }, 1200);
+      });
+    });
+    update();
+  } catch (e) { /* never throw on load */ }
+})();
+
+</script>
+</body>
+</html>

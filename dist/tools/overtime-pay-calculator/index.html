@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Overtime Pay Calculator — Free Online | ToolNest</title>
+<meta name="description" content="Calculate gross pay with regular hours, time-and-a-half overtime and double-time hours.">
+<meta name="keywords" content="overtime pay calculator, time and a half calculator, overtime wage calculator, double time pay, hourly overtime pay">
+<link rel="canonical" href="https://toolnest.vercel.app/tools/overtime-pay-calculator/">
+<meta name="theme-color" content="#07070b">
+<meta property="og:title" content="Overtime Pay Calculator — Free Online | ToolNest">
+<meta property="og:description" content="Calculate gross pay with regular hours, time-and-a-half overtime and double-time hours.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css?v=4">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%23e01111'/><text x='50' y='68' font-size='58' text-anchor='middle' fill='white' font-family='Arial' font-weight='bold'>T</text></svg>">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebApplication","name":"Overtime Pay Calculator","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0"},"url":"https://toolnest.vercel.app/tools/overtime-pay-calculator/","description":"Calculate gross pay with regular hours, time-and-a-half overtime and double-time hours."},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"When does overtime apply?","acceptedAnswer":{"@type":"Answer","text":"In the US, the FLSA requires 1.5× pay for hours over 40 in a workweek for non-exempt workers. Some states add daily overtime rules."}},{"@type":"Question","name":"What is double time?","acceptedAnswer":{"@type":"Answer","text":"2× the regular rate, required in some states (e.g. California for hours over 12 in a day) or by union contracts."}},{"@type":"Question","name":"Is overtime taxed differently?","acceptedAnswer":{"@type":"Answer","text":"No — it is taxed as ordinary income. Withholding may look higher on a big check, but the tax rate is the same."}}]}]}</script>
+</head>
+<body>
+<header class="site-header">
+  <div class="container">
+    <a class="logo" href="/"><span class="logo-mark">T</span> ToolNest</a>
+    <div class="header-right">
+      <form class="nav-search" action="/" method="get" role="search">
+        <span class="ns-icon">🔍</span>
+        <input type="search" name="q" placeholder="Search tools…" aria-label="Search tools" autocomplete="off">
+      </form>
+      <div class="menu-wrap">
+        <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="menuPanel" aria-label="Open menu"><span></span><span></span><span></span></button>
+        <nav class="menu-panel" id="menuPanel" aria-label="Site">
+          <a href="/">Home</a>
+          <a href="/#categories">Categories</a>
+          <a href="/#all-tools">All Tools</a>
+        </nav>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ADSTERRA-HEADER: paste your Adsterra banner ad code inside the div below -->
+<div class="container"><div class="ad-slot ad-leaderboard" data-ad="header"></div></div>
+
+<main class="container">
+  <nav class="crumbs"><a href="/">Home</a> &rsaquo; <a href="/#finance">Finance &amp; Money</a> &rsaquo; Overtime Pay Calculator</nav>
+  <div class="tool-hero">
+    <h1>Overtime Pay Calculator</h1>
+    <p>Calculate gross pay with regular hours, time-and-a-half overtime and double-time hours.</p>
+  </div>
+
+  <div class="tool-card">
+  <div class="grid2">
+    <div class="field"><label for="ot-rate">Hourly rate ($)</label><input type="number" class="input" id="ot-rate" min="0" step="any" placeholder="20"></div>
+    <div class="field"><label for="ot-reg">Regular hours</label><input type="number" class="input" id="ot-reg" min="0" max="168" step="any" placeholder="40"></div>
+    <div class="field"><label for="ot-over">Overtime hours (1.5×)</label><input type="number" class="input" id="ot-over" min="0" max="168" step="any" placeholder="5"></div>
+    <div class="field"><label for="ot-double">Double-time hours (2×)</label><input type="number" class="input" id="ot-double" min="0" max="168" step="any" placeholder="0"></div>
+  </div>
+  <div class="error" id="overtime-pay-calculator-error"></div>
+  <div class="result" id="ot-result">
+    <div class="stat-cards">
+      <div class="stat-card"><div class="v" id="ot-gross">–</div><div class="l">Gross pay</div></div>
+      <div class="stat-card"><div class="v" id="ot-extra">–</div><div class="l">Overtime premium</div></div>
+      <div class="stat-card"><div class="v" id="ot-eff">–</div><div class="l">Effective hourly</div></div>
+    </div>
+    <table class="data">
+      <thead><tr><th>Pay type</th><th>Hours</th><th>Rate</th><th>Amount</th></tr></thead>
+      <tbody id="ot-body"><tr><td colspan="4" class="muted">Enter your hours to calculate.</td></tr></tbody>
+    </table>
+  </div>
+</div>
+
+  <!-- ADSTERRA-INCONTENT: paste your Adsterra native/in-content ad code inside the div below -->
+  <div class="ad-slot" data-ad="incontent"></div>
+
+  <div class="info-grid">
+    <div class="info-card">
+      <h2>📖 How to use</h2>
+      <ol><li>Enter your hourly rate and regular hours.</li><li>Add overtime hours (1.5×) and double-time hours (2×) if any.</li><li>Read the full pay breakdown and your effective hourly rate.</li></ol>
+    </div>
+    <div class="info-card">
+      <h2>❓ Frequently asked questions</h2>
+      <div class="faq"><details><summary>When does overtime apply?</summary><p>In the US, the FLSA requires 1.5× pay for hours over 40 in a workweek for non-exempt workers. Some states add daily overtime rules.</p></details><details><summary>What is double time?</summary><p>2× the regular rate, required in some states (e.g. California for hours over 12 in a day) or by union contracts.</p></details><details><summary>Is overtime taxed differently?</summary><p>No — it is taxed as ordinary income. Withholding may look higher on a big check, but the tax rate is the same.</p></details></div>
+    </div>
+  </div>
+
+  <section class="section">
+    <h2>🔗 Related tools</h2>
+    <div class="tool-grid"><a class="tool-link" href="/tools/budget-50-30-20-calculator/" data-search="50/30/20 budget calculator split your take-home pay into needs (50%), wants (30%) and savings (20%), then compare with your actual spending. 50 30 20 budget budget calculator needs wants savings monthly budget planner budget rule calculator"><span class="t-ico">💰</span><span class="t-body"><b>50/30/20 Budget Calculator</b><small>Split your take-home pay into needs (50%), wants (30%) and savings (20%), then compare with …</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/car-loan-calculator/" data-search="car loan calculator compute monthly car payments, total interest and full cost from price, down payment, trade-in, rate and term. car loan calculator auto loan calculator monthly car payment car finance calculator vehicle loan estimator"><span class="t-ico">💰</span><span class="t-body"><b>Car Loan Calculator</b><small>Compute monthly car payments, total interest and full cost from price, down payment, trade-i…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/compound-interest-calculator/" data-search="compound interest calculator project how your savings grow over time with compound interest, regular monthly contributions and your choice of compounding frequency. compound interest calculator savings growth calculator compound interest with contributions"><span class="t-ico">💰</span><span class="t-body"><b>Compound Interest Calculator</b><small>Project how your savings grow over time with compound interest, regular monthly contribution…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/credit-card-validator/" data-search="credit card validator check any card number with the luhn algorithm and detect its brand — a format check only, never a real-card check. credit card validator luhn check card number checker card brand detector"><span class="t-ico">💰</span><span class="t-body"><b>Credit Card Validator</b><small>Check any card number with the Luhn algorithm and detect its brand — a format check only, ne…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/crypto-profit-calculator/" data-search="crypto profit calculator calculate profit, loss and roi on any crypto trade with buy/sell fees included. crypto profit calculator bitcoin profit calculator crypto roi calculator trading profit calculator coin profit loss"><span class="t-ico">💰</span><span class="t-body"><b>Crypto Profit Calculator</b><small>Calculate profit, loss and ROI on any crypto trade with buy/sell fees included.</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/debt-payoff-calculator/" data-search="debt payoff planner build an avalanche payoff plan for up to 8 debts: payoff order, months to debt-free and total interest paid. debt payoff calculator debt avalanche calculator pay off debt planner"><span class="t-ico">💰</span><span class="t-body"><b>Debt Payoff Planner</b><small>Build an avalanche payoff plan for up to 8 debts: payoff order, months to debt-free and tota…</small></span><span class="t-arrow">→</span></a></div>
+  </section>
+</main>
+
+<!-- ADSTERRA-FOOTER: paste your Adsterra footer/banner ad code inside the div below -->
+<div class="container"><div class="ad-slot" data-ad="footer"></div></div>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="f-grid">
+      <div>
+        <span class="brandline"><span class="logo-mark">T</span> ToolNest</span>
+        <p>Free online tools that actually work. No sign-up, no watermarks — and your files never leave your device for client-side tools.</p>
+      </div>
+      <div>
+        <h4>Popular</h4>
+        <a href="/tools/qr-code-generator/">QR Code Generator</a>
+        <a href="/tools/background-remover/">Background Remover</a>
+        <a href="/tools/pdf-merger/">PDF Merger</a>
+        <a href="/tools/word-counter/">Word Counter</a>
+      </div>
+      <div>
+        <h4>Categories</h4>
+        <a href="/#image">Image Tools</a>
+        <a href="/#pdf">PDF &amp; Documents</a>
+        <a href="/#calculators">Calculators</a>
+        <a href="/#developer">Developer Tools</a>
+      </div>
+      <div>
+        <h4>Site</h4>
+        <a href="/">Home</a>
+        <a href="/#all-tools">All Tools</a>
+        <a href="/sitemap.xml">Sitemap</a>
+      </div>
+    </div>
+    <div class="f-bottom">© 2026 ToolNest · Free tools for everyone · Made with care</div>
+  </div>
+</footer>
+
+<script src="/assets/site.js?v=5"></script>
+
+<script>
+(function () {
+  'use strict';
+  var ERR = 'overtime-pay-calculator-error';
+  function money(n) { try { return '$' + n.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 }); } catch (e) { return '$' + (Math.round(n * 100) / 100); } }
+  function calc() {
+    if (!TN.el('ot-rate')) return;
+    TN.clearErr(ERR);
+    var rate = parseFloat(TN.el('ot-rate').value);
+    var reg = parseFloat(TN.el('ot-reg').value) || 0;
+    var over = parseFloat(TN.el('ot-over').value) || 0;
+    var dbl = parseFloat(TN.el('ot-double').value) || 0;
+    if (!(rate >= 0)) { TN.setErr(ERR, 'Enter a valid hourly rate (0 or more).'); return; }
+    if (reg < 0 || over < 0 || dbl < 0 || reg > 168 || over > 168 || dbl > 168) { TN.setErr(ERR, 'Hours must be between 0 and 168.'); return; }
+    var regPay = reg * rate, otPay = over * rate * 1.5, dtPay = dbl * rate * 2;
+    var gross = regPay + otPay + dtPay;
+    var totH = reg + over + dbl;
+    TN.el('ot-gross').textContent = money(gross);
+    TN.el('ot-extra').textContent = money(over * rate * 0.5 + dbl * rate);
+    TN.el('ot-eff').textContent = totH > 0 ? money(gross / totH) : '–';
+    TN.el('ot-body').innerHTML =
+      '<tr><td>Regular</td><td>' + reg + '</td><td>' + money(rate) + '</td><td>' + money(regPay) + '</td></tr>' +
+      '<tr><td>Overtime 1.5×</td><td>' + over + '</td><td>' + money(rate * 1.5) + '</td><td>' + money(otPay) + '</td></tr>' +
+      '<tr><td>Double time 2×</td><td>' + dbl + '</td><td>' + money(rate * 2) + '</td><td>' + money(dtPay) + '</td></tr>' +
+      '<tr><td><strong>Total</strong></td><td><strong>' + totH + '</strong></td><td></td><td><strong>' + money(gross) + '</strong></td></tr>';
+  }
+  try {
+    ['ot-rate', 'ot-reg', 'ot-over', 'ot-double'].forEach(function (id) { TN.on(id, 'input', calc); });
+    calc();
+  } catch (e) { /* never throw on load */ }
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Checklist App — Free Online | ToolNest</title>
+<meta name="description" content="A simple checklist app that saves automatically — add tasks, check them off, track your progress bar, and clear completed items.">
+<meta name="keywords" content="checklist app, todo list, task list, checklist maker, to do app">
+<link rel="canonical" href="https://toolnest.vercel.app/tools/checklist-app/">
+<meta name="theme-color" content="#07070b">
+<meta property="og:title" content="Checklist App — Free Online | ToolNest">
+<meta property="og:description" content="A simple checklist app that saves automatically — add tasks, check them off, track your progress bar, and clear completed items.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css?v=4">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%23e01111'/><text x='50' y='68' font-size='58' text-anchor='middle' fill='white' font-family='Arial' font-weight='bold'>T</text></svg>">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebApplication","name":"Checklist App","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0"},"url":"https://toolnest.vercel.app/tools/checklist-app/","description":"A simple checklist app that saves automatically — add tasks, check them off, track your progress bar, and clear completed items."},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Is my checklist saved?","acceptedAnswer":{"@type":"Answer","text":"Yes — your list is saved in this browser's localStorage and restored on every visit."}},{"@type":"Question","name":"Does it track progress?","acceptedAnswer":{"@type":"Answer","text":"The progress bar and counts update live as you check items off."}},{"@type":"Question","name":"Can I clear completed tasks?","acceptedAnswer":{"@type":"Answer","text":"Yes — one button removes all checked items at once."}},{"@type":"Question","name":"Does it work on mobile?","acceptedAnswer":{"@type":"Answer","text":"Yes — fully mobile friendly."}}]}]}</script>
+</head>
+<body>
+<header class="site-header">
+  <div class="container">
+    <a class="logo" href="/"><span class="logo-mark">T</span> ToolNest</a>
+    <div class="header-right">
+      <form class="nav-search" action="/" method="get" role="search">
+        <span class="ns-icon">🔍</span>
+        <input type="search" name="q" placeholder="Search tools…" aria-label="Search tools" autocomplete="off">
+      </form>
+      <div class="menu-wrap">
+        <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="menuPanel" aria-label="Open menu"><span></span><span></span><span></span></button>
+        <nav class="menu-panel" id="menuPanel" aria-label="Site">
+          <a href="/">Home</a>
+          <a href="/#categories">Categories</a>
+          <a href="/#all-tools">All Tools</a>
+        </nav>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ADSTERRA-HEADER: paste your Adsterra banner ad code inside the div below -->
+<div class="container"><div class="ad-slot ad-leaderboard" data-ad="header"></div></div>
+
+<main class="container">
+  <nav class="crumbs"><a href="/">Home</a> &rsaquo; <a href="/#generators">Generators</a> &rsaquo; Checklist App</nav>
+  <div class="tool-hero">
+    <h1>Checklist App</h1>
+    <p>A simple checklist app that saves automatically — add tasks, check them off, track your progress bar, and clear completed items.</p>
+  </div>
+
+  <div class="tool-card">
+  <div class="field">
+    <label for="checklist-app-input">New task</label>
+    <div style="display:flex;gap:8px">
+      <input type="text" class="input" id="checklist-app-input" placeholder="What needs doing?" maxlength="200" style="flex:1">
+      <button class="btn" id="checklist-app-add">Add</button>
+    </div>
+  </div>
+  <div class="error" id="checklist-app-error"></div>
+  <div class="result" id="checklist-app-result">
+    <p class="muted" id="checklist-app-counts"></p>
+    <div style="background:#eee;border-radius:8px;height:14px;margin-bottom:12px">
+      <div id="checklist-app-bar" style="height:100%;background:#43a047;border-radius:8px;width:0%;transition:width .3s"></div>
+    </div>
+    <ul id="checklist-app-list" style="list-style:none;padding:0"></ul>
+    <div class="btn-row" style="margin-top:12px">
+      <button class="btn btn-sm btn-outline" id="checklist-app-clear">Clear completed</button>
+      <button class="btn btn-sm btn-outline" id="checklist-app-clearall">Clear all</button>
+    </div>
+  </div>
+</div>
+
+
+  <!-- ADSTERRA-INCONTENT: paste your Adsterra native/in-content ad code inside the div below -->
+  <div class="ad-slot" data-ad="incontent"></div>
+
+  <div class="info-grid">
+    <div class="info-card">
+      <h2>📖 How to use</h2>
+      <ol><li>Type a task and press Add (or Enter).</li><li>Check items off as you finish them.</li><li>Watch the progress bar fill up.</li><li>Clear completed items when done.</li></ol>
+    </div>
+    <div class="info-card">
+      <h2>❓ Frequently asked questions</h2>
+      <div class="faq"><details><summary>Is my checklist saved?</summary><p>Yes — your list is saved in this browser&#39;s localStorage and restored on every visit.</p></details><details><summary>Does it track progress?</summary><p>The progress bar and counts update live as you check items off.</p></details><details><summary>Can I clear completed tasks?</summary><p>Yes — one button removes all checked items at once.</p></details><details><summary>Does it work on mobile?</summary><p>Yes — fully mobile friendly.</p></details></div>
+    </div>
+  </div>
+
+  <section class="section">
+    <h2>🔗 Related tools</h2>
+    <div class="tool-grid"><a class="tool-link" href="/tools/band-name-generator/" data-search="band name generator generate original band names by genre — rock, metal, pop, hip-hop, electronic, jazz, punk or indie — with one click and copy. band name generator rock band names metal band names cool band names music group name ideas"><span class="t-ico">⚙️</span><span class="t-body"><b>Band Name Generator</b><small>Generate original band names by genre — rock, metal, pop, hip-hop, electronic, jazz, punk or…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/barcode-generator/" data-search="barcode generator generate barcodes in common formats — code128, code39, ean-13, ean-8, upc and itf-14 — and download them as png or svg images. barcode generator barcode maker ean13 barcode upc barcode generator"><span class="t-ico">⚙️</span><span class="t-body"><b>Barcode Generator</b><small>Generate barcodes in common formats — CODE128, CODE39, EAN-13, EAN-8, UPC and ITF-14 — and d…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/bingo-card-generator/" data-search="bingo card generator create printable 5×5 bingo cards with classic b-i-n-g-o number ranges, an optional free space, or your own custom word list. bingo card generator printable bingo cards custom bingo cards bingo number generator free bingo cards"><span class="t-ico">⚙️</span><span class="t-body"><b>Bingo Card Generator</b><small>Create printable 5×5 bingo cards with classic B-I-N-G-O number ranges, an optional free spac…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/border-radius-generator/" data-search="border radius generator organic blob shapes with an 8-handle radius editor. border radius generator blob shape css border-radius css"><span class="t-ico">⚙️</span><span class="t-body"><b>Border Radius Generator</b><small>Organic blob shapes with an 8-handle radius editor.</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/box-shadow-generator/" data-search="box shadow generator visual css box-shadow builder with live preview. box shadow generator css shadow box-shadow css"><span class="t-ico">⚙️</span><span class="t-body"><b>Box Shadow Generator</b><small>Visual CSS box-shadow builder with live preview.</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/button-generator/" data-search="button generator design a custom button with your text, colors, border radius, padding and shadow — then copy the generated css and use it anywhere. button generator css button maker button css custom button design"><span class="t-ico">⚙️</span><span class="t-body"><b>Button Generator</b><small>Design a custom button with your text, colors, border radius, padding and shadow — then copy…</small></span><span class="t-arrow">→</span></a></div>
+  </section>
+</main>
+
+<!-- ADSTERRA-FOOTER: paste your Adsterra footer/banner ad code inside the div below -->
+<div class="container"><div class="ad-slot" data-ad="footer"></div></div>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="f-grid">
+      <div>
+        <span class="brandline"><span class="logo-mark">T</span> ToolNest</span>
+        <p>Free online tools that actually work. No sign-up, no watermarks — and your files never leave your device for client-side tools.</p>
+      </div>
+      <div>
+        <h4>Popular</h4>
+        <a href="/tools/qr-code-generator/">QR Code Generator</a>
+        <a href="/tools/background-remover/">Background Remover</a>
+        <a href="/tools/pdf-merger/">PDF Merger</a>
+        <a href="/tools/word-counter/">Word Counter</a>
+      </div>
+      <div>
+        <h4>Categories</h4>
+        <a href="/#image">Image Tools</a>
+        <a href="/#pdf">PDF &amp; Documents</a>
+        <a href="/#calculators">Calculators</a>
+        <a href="/#developer">Developer Tools</a>
+      </div>
+      <div>
+        <h4>Site</h4>
+        <a href="/">Home</a>
+        <a href="/#all-tools">All Tools</a>
+        <a href="/sitemap.xml">Sitemap</a>
+      </div>
+    </div>
+    <div class="f-bottom">© 2026 ToolNest · Free tools for everyone · Made with care</div>
+  </div>
+</footer>
+
+<script src="/assets/site.js?v=5"></script>
+
+<script>
+/* Checklist App — persistent tasks, progress bar, clear completed. */
+(function () {
+  'use strict';
+  var SLUG = 'checklist-app';
+  var ERR = SLUG + '-error';
+  var KEY = 'checklist-app-items';
+  var items = []; // {text, done}
+
+  function $(id) { return document.getElementById(id); }
+
+  function load() {
+    try { items = JSON.parse(localStorage.getItem(KEY) || '[]'); } catch (e) { items = []; }
+    if (!Array.isArray(items)) items = [];
+  }
+  function save() {
+    try { localStorage.setItem(KEY, JSON.stringify(items)); } catch (e) {}
+  }
+
+  function render() {
+    var ul = $('checklist-app-list');
+    ul.innerHTML = '';
+    var done = 0;
+    items.forEach(function (it, i) {
+      if (it.done) done++;
+      var li = document.createElement('li');
+      li.style.cssText = 'display:flex;align-items:center;gap:10px;padding:10px 12px;border:1px solid #ddd;border-radius:8px;margin-bottom:8px;background:' + (it.done ? '#f1f8e9' : '#fff');
+      var cb = document.createElement('input');
+      cb.type = 'checkbox';
+      cb.checked = !!it.done;
+      cb.style.cssText = 'width:20px;height:20px;cursor:pointer';
+      cb.setAttribute('aria-label', 'Done: ' + it.text);
+      cb.addEventListener('change', function () { items[i].done = cb.checked; save(); render(); });
+      var sp = document.createElement('span');
+      sp.style.cssText = 'flex:1;' + (it.done ? 'text-decoration:line-through;color:#888' : '');
+      sp.textContent = it.text;
+      var del = document.createElement('button');
+      del.className = 'btn btn-sm btn-outline';
+      del.textContent = '✕';
+      del.title = 'Delete';
+      del.addEventListener('click', function () { items.splice(i, 1); save(); render(); });
+      li.appendChild(cb); li.appendChild(sp); li.appendChild(del);
+      ul.appendChild(li);
+    });
+    var total = items.length;
+    var pct = total ? Math.round(done / total * 100) : 0;
+    $('checklist-app-bar').style.width = pct + '%';
+    $('checklist-app-counts').textContent = total
+      ? done + ' of ' + total + ' done (' + pct + '%)'
+      : 'Your list is empty — add a task above.';
+  }
+
+  function add() {
+    var v = $('checklist-app-input').value.trim();
+    if (!v) { TN.setErr(ERR, 'Type a task first.'); return; }
+    TN.clearErr(ERR);
+    items.push({ text: v, done: false });
+    $('checklist-app-input').value = '';
+    save(); render();
+    $('checklist-app-input').focus();
+  }
+
+  try {
+    load();
+    render();
+    TN.on('checklist-app-add', 'click', add);
+    TN.on('checklist-app-input', 'keydown', function (e) { if (e.key === 'Enter') add(); });
+    TN.on('checklist-app-clear', 'click', function () {
+      items = items.filter(function (it) { return !it.done; });
+      save(); render();
+    });
+    TN.on('checklist-app-clearall', 'click', function () {
+      items = [];
+      save(); render();
+    });
+  } catch (e) { /* never throw on load */ }
+})();
+
+</script>
+</body>
+</html>

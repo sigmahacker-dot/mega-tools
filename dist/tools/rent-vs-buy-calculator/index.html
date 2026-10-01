@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rent vs Buy Calculator — Free Online | ToolNest</title>
+<meta name="description" content="Compare the true long-term cost of renting vs buying with a year-by-year breakeven analysis.">
+<meta name="keywords" content="rent vs buy calculator, should i rent or buy, buying vs renting, breakeven home buying, rent or buy house">
+<link rel="canonical" href="https://toolnest.vercel.app/tools/rent-vs-buy-calculator/">
+<meta name="theme-color" content="#07070b">
+<meta property="og:title" content="Rent vs Buy Calculator — Free Online | ToolNest">
+<meta property="og:description" content="Compare the true long-term cost of renting vs buying with a year-by-year breakeven analysis.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css?v=4">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%23e01111'/><text x='50' y='68' font-size='58' text-anchor='middle' fill='white' font-family='Arial' font-weight='bold'>T</text></svg>">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebApplication","name":"Rent vs Buy Calculator","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0"},"url":"https://toolnest.vercel.app/tools/rent-vs-buy-calculator/","description":"Compare the true long-term cost of renting vs buying with a year-by-year breakeven analysis."},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What counts as the cost of buying?","acceptedAnswer":{"@type":"Answer","text":"Down payment, ~2% closing costs, mortgage principal + interest, plus ~1.2%/yr for property tax, insurance and maintenance — minus the equity you build (appreciation + principal paid)."}},{"@type":"Question","name":"What is the breakeven year?","acceptedAnswer":{"@type":"Answer","text":"The first year the net cost of buying drops below the cumulative cost of renting. Before that year, renting is cheaper."}},{"@type":"Question","name":"Why might renting win long term?","acceptedAnswer":{"@type":"Answer","text":"In expensive markets with low appreciation, rent growth below mortgage costs, or short stays, renting can stay cheaper for decades."}}]}]}</script>
+</head>
+<body>
+<header class="site-header">
+  <div class="container">
+    <a class="logo" href="/"><span class="logo-mark">T</span> ToolNest</a>
+    <div class="header-right">
+      <form class="nav-search" action="/" method="get" role="search">
+        <span class="ns-icon">🔍</span>
+        <input type="search" name="q" placeholder="Search tools…" aria-label="Search tools" autocomplete="off">
+      </form>
+      <div class="menu-wrap">
+        <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="menuPanel" aria-label="Open menu"><span></span><span></span><span></span></button>
+        <nav class="menu-panel" id="menuPanel" aria-label="Site">
+          <a href="/">Home</a>
+          <a href="/#categories">Categories</a>
+          <a href="/#all-tools">All Tools</a>
+        </nav>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ADSTERRA-HEADER: paste your Adsterra banner ad code inside the div below -->
+<div class="container"><div class="ad-slot ad-leaderboard" data-ad="header"></div></div>
+
+<main class="container">
+  <nav class="crumbs"><a href="/">Home</a> &rsaquo; <a href="/#finance">Finance &amp; Money</a> &rsaquo; Rent vs Buy Calculator</nav>
+  <div class="tool-hero">
+    <h1>Rent vs Buy Calculator</h1>
+    <p>Compare the true long-term cost of renting vs buying with a year-by-year breakeven analysis.</p>
+  </div>
+
+  <div class="tool-card">
+  <div class="grid2">
+    <div class="field"><label for="rvb-rent">Monthly rent ($)</label><input type="number" class="input" id="rvb-rent" min="0" step="any" placeholder="1800"></div>
+    <div class="field"><label for="rvb-price">Home price ($)</label><input type="number" class="input" id="rvb-price" min="0" step="any" placeholder="350000"></div>
+    <div class="field"><label for="rvb-down">Down payment (%)</label><input type="number" class="input" id="rvb-down" min="0" max="100" step="any" placeholder="20"></div>
+    <div class="field"><label for="rvb-rate">Mortgage rate (%)</label><input type="number" class="input" id="rvb-rate" min="0" max="20" step="any" placeholder="6.5"></div>
+    <div class="field"><label for="rvb-term">Loan term (years)</label><input type="number" class="input" id="rvb-term" min="1" max="50" step="1" placeholder="30"></div>
+    <div class="field"><label for="rvb-years">Compare over (years)</label><input type="number" class="input" id="rvb-years" min="1" max="30" step="1" placeholder="10"></div>
+    <div class="field"><label for="rvb-appr">Home appreciation (%/yr)</label><input type="number" class="input" id="rvb-appr" min="-10" max="20" step="any" placeholder="3"></div>
+    <div class="field"><label for="rvb-rentgrow">Rent growth (%/yr)</label><input type="number" class="input" id="rvb-rentgrow" min="-10" max="20" step="any" placeholder="3"></div>
+  </div>
+  <div class="error" id="rent-vs-buy-calculator-error"></div>
+  <div class="result" id="rvb-result">
+    <div class="stat-cards">
+      <div class="stat-card"><div class="v" id="rvb-verdict">–</div><div class="l">Verdict</div></div>
+      <div class="stat-card"><div class="v" id="rvb-breakeven">–</div><div class="l">Breakeven year</div></div>
+      <div class="stat-card"><div class="v" id="rvb-diff">–</div><div class="l" id="rvb-diff-label">Difference</div></div>
+    </div>
+    <table class="data">
+      <thead><tr><th>Year</th><th>Net cost: buy</th><th>Net cost: rent</th><th>Cheaper</th></tr></thead>
+      <tbody id="rvb-body"><tr><td colspan="4" class="muted">Enter details to compare.</td></tr></tbody>
+    </table>
+    <p class="note">Simplified model: 2% closing costs, ~1.2%/yr tax + insurance + maintenance. Opportunity cost of the down payment is not modeled.</p>
+  </div>
+</div>
+
+  <!-- ADSTERRA-INCONTENT: paste your Adsterra native/in-content ad code inside the div below -->
+  <div class="ad-slot" data-ad="incontent"></div>
+
+  <div class="info-grid">
+    <div class="info-card">
+      <h2>📖 How to use</h2>
+      <ol><li>Enter your rent, the home price, down payment, mortgage rate and loan term.</li><li>Set expected home appreciation and rent growth.</li><li>Read the year-by-year table and the breakeven year.</li></ol>
+    </div>
+    <div class="info-card">
+      <h2>❓ Frequently asked questions</h2>
+      <div class="faq"><details><summary>What counts as the cost of buying?</summary><p>Down payment, ~2% closing costs, mortgage principal + interest, plus ~1.2%/yr for property tax, insurance and maintenance — minus the equity you build (appreciation + principal paid).</p></details><details><summary>What is the breakeven year?</summary><p>The first year the net cost of buying drops below the cumulative cost of renting. Before that year, renting is cheaper.</p></details><details><summary>Why might renting win long term?</summary><p>In expensive markets with low appreciation, rent growth below mortgage costs, or short stays, renting can stay cheaper for decades.</p></details></div>
+    </div>
+  </div>
+
+  <section class="section">
+    <h2>🔗 Related tools</h2>
+    <div class="tool-grid"><a class="tool-link" href="/tools/budget-50-30-20-calculator/" data-search="50/30/20 budget calculator split your take-home pay into needs (50%), wants (30%) and savings (20%), then compare with your actual spending. 50 30 20 budget budget calculator needs wants savings monthly budget planner budget rule calculator"><span class="t-ico">💰</span><span class="t-body"><b>50/30/20 Budget Calculator</b><small>Split your take-home pay into needs (50%), wants (30%) and savings (20%), then compare with …</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/car-loan-calculator/" data-search="car loan calculator compute monthly car payments, total interest and full cost from price, down payment, trade-in, rate and term. car loan calculator auto loan calculator monthly car payment car finance calculator vehicle loan estimator"><span class="t-ico">💰</span><span class="t-body"><b>Car Loan Calculator</b><small>Compute monthly car payments, total interest and full cost from price, down payment, trade-i…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/compound-interest-calculator/" data-search="compound interest calculator project how your savings grow over time with compound interest, regular monthly contributions and your choice of compounding frequency. compound interest calculator savings growth calculator compound interest with contributions"><span class="t-ico">💰</span><span class="t-body"><b>Compound Interest Calculator</b><small>Project how your savings grow over time with compound interest, regular monthly contribution…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/credit-card-validator/" data-search="credit card validator check any card number with the luhn algorithm and detect its brand — a format check only, never a real-card check. credit card validator luhn check card number checker card brand detector"><span class="t-ico">💰</span><span class="t-body"><b>Credit Card Validator</b><small>Check any card number with the Luhn algorithm and detect its brand — a format check only, ne…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/crypto-profit-calculator/" data-search="crypto profit calculator calculate profit, loss and roi on any crypto trade with buy/sell fees included. crypto profit calculator bitcoin profit calculator crypto roi calculator trading profit calculator coin profit loss"><span class="t-ico">💰</span><span class="t-body"><b>Crypto Profit Calculator</b><small>Calculate profit, loss and ROI on any crypto trade with buy/sell fees included.</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/debt-payoff-calculator/" data-search="debt payoff planner build an avalanche payoff plan for up to 8 debts: payoff order, months to debt-free and total interest paid. debt payoff calculator debt avalanche calculator pay off debt planner"><span class="t-ico">💰</span><span class="t-body"><b>Debt Payoff Planner</b><small>Build an avalanche payoff plan for up to 8 debts: payoff order, months to debt-free and tota…</small></span><span class="t-arrow">→</span></a></div>
+  </section>
+</main>
+
+<!-- ADSTERRA-FOOTER: paste your Adsterra footer/banner ad code inside the div below -->
+<div class="container"><div class="ad-slot" data-ad="footer"></div></div>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="f-grid">
+      <div>
+        <span class="brandline"><span class="logo-mark">T</span> ToolNest</span>
+        <p>Free online tools that actually work. No sign-up, no watermarks — and your files never leave your device for client-side tools.</p>
+      </div>
+      <div>
+        <h4>Popular</h4>
+        <a href="/tools/qr-code-generator/">QR Code Generator</a>
+        <a href="/tools/background-remover/">Background Remover</a>
+        <a href="/tools/pdf-merger/">PDF Merger</a>
+        <a href="/tools/word-counter/">Word Counter</a>
+      </div>
+      <div>
+        <h4>Categories</h4>
+        <a href="/#image">Image Tools</a>
+        <a href="/#pdf">PDF &amp; Documents</a>
+        <a href="/#calculators">Calculators</a>
+        <a href="/#developer">Developer Tools</a>
+      </div>
+      <div>
+        <h4>Site</h4>
+        <a href="/">Home</a>
+        <a href="/#all-tools">All Tools</a>
+        <a href="/sitemap.xml">Sitemap</a>
+      </div>
+    </div>
+    <div class="f-bottom">© 2026 ToolNest · Free tools for everyone · Made with care</div>
+  </div>
+</footer>
+
+<script src="/assets/site.js?v=5"></script>
+
+<script>
+(function () {
+  'use strict';
+  var ERR = 'rent-vs-buy-calculator-error';
+  function money(n) { try { return '$' + Math.round(n).toLocaleString('en-US'); } catch (e) { return '$' + Math.round(n); } }
+  function calc() {
+    if (!TN.el('rvb-rent')) return;
+    TN.clearErr(ERR);
+    var rent0 = parseFloat(TN.el('rvb-rent').value);
+    var price = parseFloat(TN.el('rvb-price').value);
+    var downPct = parseFloat(TN.el('rvb-down').value);
+    var rate = parseFloat(TN.el('rvb-rate').value);
+    var termY = parseInt(TN.el('rvb-term').value, 10);
+    var years = parseInt(TN.el('rvb-years').value, 10);
+    var appr = parseFloat(TN.el('rvb-appr').value);
+    var rgrow = parseFloat(TN.el('rvb-rentgrow').value);
+    if (!(rent0 >= 0)) { TN.setErr(ERR, 'Enter a valid monthly rent (0 or more).'); return; }
+    if (!(price > 0)) { TN.setErr(ERR, 'Enter a home price greater than 0.'); return; }
+    if (isNaN(downPct) || downPct < 0 || downPct > 100) { TN.setErr(ERR, 'Enter a down payment between 0 and 100%.'); return; }
+    if (isNaN(rate) || rate < 0 || rate > 20) { TN.setErr(ERR, 'Enter a mortgage rate between 0 and 20%.'); return; }
+    if (!(termY >= 1 && termY <= 50)) { TN.setErr(ERR, 'Enter a loan term between 1 and 50 years.'); return; }
+    if (!(years >= 1 && years <= 30)) { TN.setErr(ERR, 'Enter a comparison period of 1–30 years.'); return; }
+    if (isNaN(appr) || appr < -10 || appr > 20) { TN.setErr(ERR, 'Enter appreciation between −10 and 20%.'); return; }
+    if (isNaN(rgrow) || rgrow < -10 || rgrow > 20) { TN.setErr(ERR, 'Enter rent growth between −10 and 20%.'); return; }
+    var down = price * downPct / 100;
+    var P = price - down;
+    var r = rate / 100 / 12;
+    var n = termY * 12;
+    var M = r === 0 ? P / n : P * r * Math.pow(1 + r, n) / (Math.pow(1 + r, n) - 1);
+    var bal = P, homeVal = price, rentMo = rent0;
+    var buyCum = down + price * 0.02, rentCum = 0, rows = [], breakeven = null;
+    for (var y = 1; y <= years; y++) {
+      for (var m = 0; m < 12 && bal > 0; m++) {
+        var i = bal * r;
+        var pmt = Math.min(M, bal + i);
+        buyCum += pmt;
+        bal -= (pmt - i);
+        if (bal < 0.005) bal = 0;
+      }
+      buyCum += homeVal * 0.012;
+      rentCum += rentMo * 12;
+      homeVal *= (1 + appr / 100);
+      rentMo *= (1 + rgrow / 100);
+      var buyNet = buyCum - (homeVal - bal);
+      var winner = buyNet < rentCum ? 'Buy' : 'Rent';
+      if (breakeven === null && buyNet < rentCum) breakeven = y;
+      rows.push('<tr><td>' + y + '</td><td>' + money(buyNet) + '</td><td>' + money(rentCum) + '</td><td>' + winner + '</td></tr>');
+    }
+    var finalBuy = buyCum - (homeVal - bal);
+    var diff = rentCum - finalBuy;
+    TN.el('rvb-verdict').textContent = diff > 0 ? 'Buying wins' : (diff < 0 ? 'Renting wins' : 'Tie');
+    TN.el('rvb-breakeven').textContent = breakeven === null ? 'Never' : 'Year ' + breakeven;
+    TN.el('rvb-diff-label').textContent = diff >= 0 ? 'Buying saves' : 'Renting saves';
+    TN.el('rvb-diff').textContent = money(Math.abs(diff));
+    TN.el('rvb-body').innerHTML = rows.join('');
+  }
+  try {
+    ['rvb-rent', 'rvb-price', 'rvb-down', 'rvb-rate', 'rvb-term', 'rvb-years', 'rvb-appr', 'rvb-rentgrow'].forEach(function (id) { TN.on(id, 'input', calc); });
+    calc();
+  } catch (e) { /* never throw on load */ }
+})();
+</script>
+</body>
+</html>

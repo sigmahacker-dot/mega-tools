@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Social Image Sizer — Free Online | ToolNest</title>
+<meta name="description" content="Resize any image to exact social media dimensions — Instagram post, story, Facebook cover, X header, YouTube thumbnail, LinkedIn and more — with cover or fit modes.">
+<meta name="keywords" content="social media image resizer, instagram size, facebook cover size, youtube thumbnail size, image dimensions">
+<link rel="canonical" href="https://toolnest.vercel.app/tools/social-image-sizer/">
+<meta name="theme-color" content="#07070b">
+<meta property="og:title" content="Social Image Sizer — Free Online | ToolNest">
+<meta property="og:description" content="Resize any image to exact social media dimensions — Instagram post, story, Facebook cover, X header, YouTube thumbnail, LinkedIn and more — with cover or fit modes.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css?v=4">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%23e01111'/><text x='50' y='68' font-size='58' text-anchor='middle' fill='white' font-family='Arial' font-weight='bold'>T</text></svg>">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebApplication","name":"Social Image Sizer","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0"},"url":"https://toolnest.vercel.app/tools/social-image-sizer/","description":"Resize any image to exact social media dimensions — Instagram post, story, Facebook cover, X header, YouTube thumbnail, LinkedIn and more — with cover or fit modes."},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Which presets are included?","acceptedAnswer":{"@type":"Answer","text":"Instagram Post (1080×1080), Instagram Story/Reel (1080×1920), Facebook Post (1200×630), Facebook Cover (820×312), X Header (1500×500), X Post (1200×675), YouTube Thumbnail (1280×720), LinkedIn Post (1200×627) and Pinterest Pin (1000×1500)."}},{"@type":"Question","name":"What is the difference between Cover and Fit?","acceptedAnswer":{"@type":"Answer","text":"“Cover” fills the whole frame and crops the overflow (best for backgrounds). “Fit” shows the entire image with blurred padding filling the rest."}},{"@type":"Question","name":"Can I set a custom size?","acceptedAnswer":{"@type":"Answer","text":"Yes — a custom width and height option lets you set any size."}},{"@type":"Question","name":"Is my image uploaded?","acceptedAnswer":{"@type":"Answer","text":"No — resizing happens entirely in your browser."}}]}]}</script>
+</head>
+<body>
+<header class="site-header">
+  <div class="container">
+    <a class="logo" href="/"><span class="logo-mark">T</span> ToolNest</a>
+    <div class="header-right">
+      <form class="nav-search" action="/" method="get" role="search">
+        <span class="ns-icon">🔍</span>
+        <input type="search" name="q" placeholder="Search tools…" aria-label="Search tools" autocomplete="off">
+      </form>
+      <div class="menu-wrap">
+        <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="menuPanel" aria-label="Open menu"><span></span><span></span><span></span></button>
+        <nav class="menu-panel" id="menuPanel" aria-label="Site">
+          <a href="/">Home</a>
+          <a href="/#categories">Categories</a>
+          <a href="/#all-tools">All Tools</a>
+        </nav>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ADSTERRA-HEADER: paste your Adsterra banner ad code inside the div below -->
+<div class="container"><div class="ad-slot ad-leaderboard" data-ad="header"></div></div>
+
+<main class="container">
+  <nav class="crumbs"><a href="/">Home</a> &rsaquo; <a href="/#image">Image Tools</a> &rsaquo; Social Image Sizer</nav>
+  <div class="tool-hero">
+    <h1>Social Image Sizer</h1>
+    <p>Resize any image to exact social media dimensions — Instagram post, story, Facebook cover, X header, YouTube thumbnail, LinkedIn and more — with cover or fit modes.</p>
+  </div>
+
+  <div class="tool-card">
+  <div class="field">
+    <label for="social-image-sizer-file">Upload image</label>
+    <input type="file" class="input" id="social-image-sizer-file" accept="image/*">
+  </div>
+  <div class="grid2">
+    <div class="field">
+      <label for="social-image-sizer-preset">Preset</label>
+      <select class="input" id="social-image-sizer-preset">
+        <option value="1080x1080">Instagram Post — 1080×1080</option>
+        <option value="1080x1920">Instagram Story / Reel — 1080×1920</option>
+        <option value="1200x630">Facebook Post — 1200×630</option>
+        <option value="820x312">Facebook Cover — 820×312</option>
+        <option value="1200x675">X Post — 1200×675</option>
+        <option value="1500x500">X Header — 1500×500</option>
+        <option value="1280x720">YouTube Thumbnail — 1280×720</option>
+        <option value="1200x627">LinkedIn Post — 1200×627</option>
+        <option value="1000x1500">Pinterest Pin — 1000×1500</option>
+        <option value="custom">Custom size…</option>
+      </select>
+    </div>
+    <div class="field">
+      <label for="social-image-sizer-mode">Mode</label>
+      <select class="input" id="social-image-sizer-mode">
+        <option value="cover">Cover — crop to fill</option>
+        <option value="fit">Fit — whole image + blurred padding</option>
+      </select>
+    </div>
+    <div class="field" id="social-image-sizer-cw-wrap" hidden>
+      <label for="social-image-sizer-cw">Custom width (px)</label>
+      <input type="number" class="input" id="social-image-sizer-cw" min="1" max="8000" value="1080">
+    </div>
+    <div class="field" id="social-image-sizer-ch-wrap" hidden>
+      <label for="social-image-sizer-ch">Custom height (px)</label>
+      <input type="number" class="input" id="social-image-sizer-ch" min="1" max="8000" value="1080">
+    </div>
+  </div>
+  <div class="btn-row" style="margin-top:12px">
+    <button class="btn" id="social-image-sizer-go" disabled>Resize &amp; preview</button>
+    <button class="btn btn-outline" id="social-image-sizer-dl" disabled>Download PNG</button>
+  </div>
+  <div class="error" id="social-image-sizer-error"></div>
+  <div class="result" id="social-image-sizer-result" hidden>
+    <p class="muted" id="social-image-sizer-info"></p>
+    <img id="social-image-sizer-preview" alt="Resized preview" style="max-width:100%;height:auto;border-radius:8px;border:1px solid #ddd">
+  </div>
+</div>
+
+
+  <!-- ADSTERRA-INCONTENT: paste your Adsterra native/in-content ad code inside the div below -->
+  <div class="ad-slot" data-ad="incontent"></div>
+
+  <div class="info-grid">
+    <div class="info-card">
+      <h2>📖 How to use</h2>
+      <ol><li>Upload your image.</li><li>Pick a social platform preset (or enter a custom size).</li><li>Choose Cover (crop to fill) or Fit (whole image, blurred padding).</li><li>Download the perfectly-sized PNG.</li></ol>
+    </div>
+    <div class="info-card">
+      <h2>❓ Frequently asked questions</h2>
+      <div class="faq"><details><summary>Which presets are included?</summary><p>Instagram Post (1080×1080), Instagram Story/Reel (1080×1920), Facebook Post (1200×630), Facebook Cover (820×312), X Header (1500×500), X Post (1200×675), YouTube Thumbnail (1280×720), LinkedIn Post (1200×627) and Pinterest Pin (1000×1500).</p></details><details><summary>What is the difference between Cover and Fit?</summary><p>“Cover” fills the whole frame and crops the overflow (best for backgrounds). “Fit” shows the entire image with blurred padding filling the rest.</p></details><details><summary>Can I set a custom size?</summary><p>Yes — a custom width and height option lets you set any size.</p></details><details><summary>Is my image uploaded?</summary><p>No — resizing happens entirely in your browser.</p></details></div>
+    </div>
+  </div>
+
+  <section class="section">
+    <h2>🔗 Related tools</h2>
+    <div class="tool-grid"><a class="tool-link" href="/tools/app-icon-resizer/" data-search="app icon resizer generate every common app icon size from one image — 16, 32, 48, 180, 192 and 512 px — with instant preview and one-click png downloads. app icon resizer icon generator favicon sizes pwa icon apple touch icon generator"><span class="t-ico">🖼️</span><span class="t-body"><b>App Icon Resizer</b><small>Generate every common app icon size from one image — 16, 32, 48, 180, 192 and 512 px — with …</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/background-remover/" data-search="background remover remove the background from any photo with real on-device ai and download a transparent png. free, private and unlimited — no sign-up needed. background remover remove image background transparent png maker"><span class="t-ico">🖼️</span><span class="t-body"><b>Background Remover</b><small>Remove the background from any photo with real on-device AI and download a transparent PNG. …</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/favicon-generator/" data-search="favicon generator generate a complete png favicon set (16–512 px) from your logo in one click, download it as a zip, and copy the ready-to-paste html link tags. favicon generator favicon maker png favicon"><span class="t-ico">🖼️</span><span class="t-body"><b>Favicon Generator</b><small>Generate a complete PNG favicon set (16–512 px) from your logo in one click, download it as …</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/image-border-adder/" data-search="image border adder add a clean border or frame to any image — set thickness, color, and corner style, preview instantly, and download the framed png. add border to image photo frame image border maker picture frame online photo border"><span class="t-ico">🖼️</span><span class="t-body"><b>Image Border Adder</b><small>Add a clean border or frame to any image — set thickness, color, and corner style, preview i…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/image-compressor/" data-search="image compressor shrink jpg, png and webp images right in your browser with an adjustable quality slider. compare before/after sizes, download each file or grab everything as a zip. image compressor compress jpg reduce image size"><span class="t-ico">🖼️</span><span class="t-body"><b>Image Compressor</b><small>Shrink JPG, PNG and WebP images right in your browser with an adjustable quality slider. Com…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/image-cropper/" data-search="image cropper crop any image by dragging a selection box over it — with optional fixed aspect ratios — then preview and download the cropped result. crop image image cropper crop photo online free crop tool crop picture"><span class="t-ico">🖼️</span><span class="t-body"><b>Image Cropper</b><small>Crop any image by dragging a selection box over it — with optional fixed aspect ratios — the…</small></span><span class="t-arrow">→</span></a></div>
+  </section>
+</main>
+
+<!-- ADSTERRA-FOOTER: paste your Adsterra footer/banner ad code inside the div below -->
+<div class="container"><div class="ad-slot" data-ad="footer"></div></div>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="f-grid">
+      <div>
+        <span class="brandline"><span class="logo-mark">T</span> ToolNest</span>
+        <p>Free online tools that actually work. No sign-up, no watermarks — and your files never leave your device for client-side tools.</p>
+      </div>
+      <div>
+        <h4>Popular</h4>
+        <a href="/tools/qr-code-generator/">QR Code Generator</a>
+        <a href="/tools/background-remover/">Background Remover</a>
+        <a href="/tools/pdf-merger/">PDF Merger</a>
+        <a href="/tools/word-counter/">Word Counter</a>
+      </div>
+      <div>
+        <h4>Categories</h4>
+        <a href="/#image">Image Tools</a>
+        <a href="/#pdf">PDF &amp; Documents</a>
+        <a href="/#calculators">Calculators</a>
+        <a href="/#developer">Developer Tools</a>
+      </div>
+      <div>
+        <h4>Site</h4>
+        <a href="/">Home</a>
+        <a href="/#all-tools">All Tools</a>
+        <a href="/sitemap.xml">Sitemap</a>
+      </div>
+    </div>
+    <div class="f-bottom">© 2026 ToolNest · Free tools for everyone · Made with care</div>
+  </div>
+</footer>
+
+<script src="/assets/site.js?v=5"></script>
+
+<script>
+/* Social Image Sizer — resize to exact social platform dimensions, cover/fit modes. */
+(function () {
+  'use strict';
+  var SLUG = 'social-image-sizer';
+  var ERR = SLUG + '-error';
+  var img = null;
+  var outUrl = null;
+
+  function $(id) { return document.getElementById(id); }
+
+  function dims() {
+    var p = $('social-image-sizer-preset').value;
+    if (p === 'custom') {
+      var w = parseInt($('social-image-sizer-cw').value, 10);
+      var h = parseInt($('social-image-sizer-ch').value, 10);
+      return { w: w, h: h };
+    }
+    var parts = p.split('x');
+    return { w: parseInt(parts[0], 10), h: parseInt(parts[1], 10) };
+  }
+
+  function render() {
+    if (!img) return;
+    var d = dims();
+    if (!(d.w > 0 && d.h > 0 && d.w <= 8000 && d.h <= 8000)) {
+      TN.setErr(ERR, 'Enter a valid custom width and height (1–8000 px).');
+      return;
+    }
+    TN.clearErr(ERR);
+    var cv = document.createElement('canvas');
+    cv.width = d.w; cv.height = d.h;
+    var ctx = cv.getContext('2d');
+    ctx.imageSmoothingQuality = 'high';
+    var iw = img.naturalWidth, ih = img.naturalHeight;
+    var mode = $('social-image-sizer-mode').value;
+    if (mode === 'cover') {
+      var s = Math.max(d.w / iw, d.h / ih);
+      var dw = iw * s, dh = ih * s;
+      ctx.drawImage(img, (d.w - dw) / 2, (d.h - dh) / 2, dw, dh);
+    } else {
+      // blurred padding background
+      ctx.save();
+      ctx.filter = 'blur(24px) brightness(0.85)';
+      ctx.drawImage(img, 0, 0, d.w, d.h);
+      ctx.restore();
+      var s2 = Math.min(d.w / iw, d.h / ih);
+      var dw2 = iw * s2, dh2 = ih * s2;
+      ctx.drawImage(img, (d.w - dw2) / 2, (d.h - dh2) / 2, dw2, dh2);
+    }
+    if (outUrl) URL.revokeObjectURL(outUrl);
+    cv.toBlob(function (b) {
+      if (!b) { TN.setErr(ERR, 'Could not export the image.'); return; }
+      outUrl = URL.createObjectURL(b);
+      $('social-image-sizer-preview').src = outUrl;
+      $('social-image-sizer-info').textContent = 'Output: ' + d.w + '×' + d.h + ' px (' + $('social-image-sizer-preset').selectedOptions[0].text + ')';
+      $('social-image-sizer-result').hidden = false;
+      $('social-image-sizer-dl').disabled = false;
+    }, 'image/png');
+  }
+
+  try {
+    TN.on('social-image-sizer-file', 'change', function (e) {
+      var f = e.target.files && e.target.files[0];
+      if (!f) return;
+      var url = URL.createObjectURL(f);
+      var im = new Image();
+      im.onload = function () {
+        img = im; URL.revokeObjectURL(url);
+        $('social-image-sizer-go').disabled = false;
+        TN.clearErr(ERR);
+      };
+      im.onerror = function () { URL.revokeObjectURL(url); TN.setErr(ERR, 'Could not read that file as an image.'); };
+      im.src = url;
+    });
+    TN.on('social-image-sizer-preset', 'change', function () {
+      var custom = $('social-image-sizer-preset').value === 'custom';
+      $('social-image-sizer-cw-wrap').hidden = !custom;
+      $('social-image-sizer-ch-wrap').hidden = !custom;
+      if (img) render();
+    });
+    TN.on('social-image-sizer-mode', 'change', function () { if (img) render(); });
+    TN.on('social-image-sizer-cw', 'input', function () { if (img) render(); });
+    TN.on('social-image-sizer-ch', 'input', function () { if (img) render(); });
+    TN.on('social-image-sizer-go', 'click', render);
+    TN.on('social-image-sizer-dl', 'click', function () {
+      if (!outUrl) return;
+      var a = document.createElement('a');
+      a.href = outUrl;
+      a.download = 'social-' + dims().w + 'x' + dims().h + '.png';
+      document.body.appendChild(a); a.click();
+      setTimeout(function () { document.body.removeChild(a); }, 100);
+    });
+  } catch (e) { /* never throw on load */ }
+})();
+
+</script>
+</body>
+</html>

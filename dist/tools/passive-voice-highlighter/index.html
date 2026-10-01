@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Passive Voice Highlighter — Free Online | ToolNest</title>
+<meta name="description" content="Find likely passive-voice constructions in your writing with a regex highlighter — &quot;was written&quot;, &quot;has been taken&quot; and more.">
+<meta name="keywords" content="passive voice checker, passive voice finder, passive voice highlighter, active vs passive voice">
+<link rel="canonical" href="https://toolnest.vercel.app/tools/passive-voice-highlighter/">
+<meta name="theme-color" content="#07070b">
+<meta property="og:title" content="Passive Voice Highlighter — Free Online | ToolNest">
+<meta property="og:description" content="Find likely passive-voice constructions in your writing with a regex highlighter — &quot;was written&quot;, &quot;has been taken&quot; and more.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css?v=4">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%23e01111'/><text x='50' y='68' font-size='58' text-anchor='middle' fill='white' font-family='Arial' font-weight='bold'>T</text></svg>">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebApplication","name":"Passive Voice Highlighter","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0"},"url":"https://toolnest.vercel.app/tools/passive-voice-highlighter/","description":"Find likely passive-voice constructions in your writing with a regex highlighter — \"was written\", \"has been taken\" and more."},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How does the detection work?","acceptedAnswer":{"@type":"Answer","text":"It finds a form of \"be\" (am, is, are, was, were, be, being, been) followed by a past participle — a word ending in -ed/-en or a known irregular participle like \"written\" or \"taken\"."}},{"@type":"Question","name":"Is it always right?","acceptedAnswer":{"@type":"Answer","text":"No. It is a fast heuristic, not a grammar engine: \"was tired\" is an adjective use, not passive. Use the highlights as prompts to review, not as verdicts."}},{"@type":"Question","name":"Why avoid passive voice?","acceptedAnswer":{"@type":"Answer","text":"Active voice is usually shorter and clearer: \"The team shipped the update\" beats \"The update was shipped by the team\". Some passive use is fine and intentional."}}]}]}</script>
+</head>
+<body>
+<header class="site-header">
+  <div class="container">
+    <a class="logo" href="/"><span class="logo-mark">T</span> ToolNest</a>
+    <div class="header-right">
+      <form class="nav-search" action="/" method="get" role="search">
+        <span class="ns-icon">🔍</span>
+        <input type="search" name="q" placeholder="Search tools…" aria-label="Search tools" autocomplete="off">
+      </form>
+      <div class="menu-wrap">
+        <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="menuPanel" aria-label="Open menu"><span></span><span></span><span></span></button>
+        <nav class="menu-panel" id="menuPanel" aria-label="Site">
+          <a href="/">Home</a>
+          <a href="/#categories">Categories</a>
+          <a href="/#all-tools">All Tools</a>
+        </nav>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ADSTERRA-HEADER: paste your Adsterra banner ad code inside the div below -->
+<div class="container"><div class="ad-slot ad-leaderboard" data-ad="header"></div></div>
+
+<main class="container">
+  <nav class="crumbs"><a href="/">Home</a> &rsaquo; <a href="/#text">Text &amp; Writing</a> &rsaquo; Passive Voice Highlighter</nav>
+  <div class="tool-hero">
+    <h1>Passive Voice Highlighter</h1>
+    <p>Find likely passive-voice constructions in your writing with a regex highlighter — &quot;was written&quot;, &quot;has been taken&quot; and more.</p>
+  </div>
+
+  <div class="tool-card">
+  <div class="field">
+    <label for="passive-voice-highlighter-input">Your text</label>
+    <textarea class="textarea" id="passive-voice-highlighter-input" rows="8" placeholder="Paste your writing here..."></textarea>
+  </div>
+  <div class="error" id="passive-voice-highlighter-error"></div>
+  <div class="stat-cards mt">
+    <div class="stat-card"><div class="v" id="passive-voice-highlighter-count">0</div><div class="l">Passive hits</div></div>
+    <div class="stat-card"><div class="v" id="passive-voice-highlighter-ratio">0%</div><div class="l">Of sentences flagged</div></div>
+  </div>
+  <div class="result mt">
+    <div id="passive-voice-highlighter-out" class="muted" style="white-space:pre-wrap;line-height:1.8;">Highlights appear here as you type.</div>
+    <p class="note">Heuristic highlighter: a form of "be" + past participle (-ed/-en ending or a known irregular like "written"). Review each hit — adjectives such as "was tired" can be false positives.</p>
+  </div>
+</div>
+
+
+  <!-- ADSTERRA-INCONTENT: paste your Adsterra native/in-content ad code inside the div below -->
+  <div class="ad-slot" data-ad="incontent"></div>
+
+  <div class="info-grid">
+    <div class="info-card">
+      <h2>📖 How to use</h2>
+      <ol><li>Paste your text into the box.</li><li>Likely passive constructions (a form of &quot;be&quot; + past participle) are highlighted in yellow.</li><li>Click any highlight count to jump through matches; rewrite flagged spots in active voice.</li></ol>
+    </div>
+    <div class="info-card">
+      <h2>❓ Frequently asked questions</h2>
+      <div class="faq"><details><summary>How does the detection work?</summary><p>It finds a form of &quot;be&quot; (am, is, are, was, were, be, being, been) followed by a past participle — a word ending in -ed/-en or a known irregular participle like &quot;written&quot; or &quot;taken&quot;.</p></details><details><summary>Is it always right?</summary><p>No. It is a fast heuristic, not a grammar engine: &quot;was tired&quot; is an adjective use, not passive. Use the highlights as prompts to review, not as verdicts.</p></details><details><summary>Why avoid passive voice?</summary><p>Active voice is usually shorter and clearer: &quot;The team shipped the update&quot; beats &quot;The update was shipped by the team&quot;. Some passive use is fine and intentional.</p></details></div>
+    </div>
+  </div>
+
+  <section class="section">
+    <h2>🔗 Related tools</h2>
+    <div class="tool-grid"><a class="tool-link" href="/tools/acronym-generator/" data-search="acronym generator turn any phrase into an acronym instantly — first letters, with options to skip small words, add periods and force uppercase. acronym generator make acronym from words initialism generator phrase to acronym"><span class="t-ico">✍️</span><span class="t-body"><b>Acronym Generator</b><small>Turn any phrase into an acronym instantly — first letters, with options to skip small words,…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/aes-text-encryptor/" data-search="aes text encryptor encrypt text with real aes-256-gcm using a password-derived key (pbkdf2), fully in your browser. aes encrypt text encrypt message password aes-gcm online"><span class="t-ico">✍️</span><span class="t-body"><b>AES Text Encryptor</b><small>Encrypt text with real AES-256-GCM using a password-derived key (PBKDF2), fully in your brow…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/article-rewriter/" data-search="article rewriter rewrite articles with a built-in synonym engine covering 130+ common english words. whole-word replacement with capitalization preserved and a change report. article rewriter paraphrasing tool rewrite text online"><span class="t-ico">✍️</span><span class="t-body"><b>Article Rewriter</b><small>Rewrite articles with a built-in synonym engine covering 130+ common English words. Whole-wo…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/case-converter/" data-search="case converter convert text to uppercase, lowercase, title case, sentence case, alternating case and inverse case instantly, then copy or download the result. case converter uppercase lowercase converter title case converter"><span class="t-ico">✍️</span><span class="t-body"><b>Case Converter</b><small>Convert text to UPPERCASE, lowercase, Title Case, Sentence case, aLtErNaTiNg cAsE and iNVERS…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/case-style-converter/" data-search="case style converter convert text between camelcase, pascalcase, snake_case, kebab-case and more. case converter camelcase to snakecase kebab case converter"><span class="t-ico">✍️</span><span class="t-body"><b>Case Style Converter</b><small>Convert text between camelCase, PascalCase, snake_case, kebab-case and more.</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/character-counter/" data-search="character counter count characters with and without spaces, words and lines in real time, with a live x/twitter 280-character limit gauge and sms segment indicator. character counter twitter character count count characters online"><span class="t-ico">✍️</span><span class="t-body"><b>Character Counter</b><small>Count characters with and without spaces, words and lines in real time, with a live X/Twitte…</small></span><span class="t-arrow">→</span></a></div>
+  </section>
+</main>
+
+<!-- ADSTERRA-FOOTER: paste your Adsterra footer/banner ad code inside the div below -->
+<div class="container"><div class="ad-slot" data-ad="footer"></div></div>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="f-grid">
+      <div>
+        <span class="brandline"><span class="logo-mark">T</span> ToolNest</span>
+        <p>Free online tools that actually work. No sign-up, no watermarks — and your files never leave your device for client-side tools.</p>
+      </div>
+      <div>
+        <h4>Popular</h4>
+        <a href="/tools/qr-code-generator/">QR Code Generator</a>
+        <a href="/tools/background-remover/">Background Remover</a>
+        <a href="/tools/pdf-merger/">PDF Merger</a>
+        <a href="/tools/word-counter/">Word Counter</a>
+      </div>
+      <div>
+        <h4>Categories</h4>
+        <a href="/#image">Image Tools</a>
+        <a href="/#pdf">PDF &amp; Documents</a>
+        <a href="/#calculators">Calculators</a>
+        <a href="/#developer">Developer Tools</a>
+      </div>
+      <div>
+        <h4>Site</h4>
+        <a href="/">Home</a>
+        <a href="/#all-tools">All Tools</a>
+        <a href="/sitemap.xml">Sitemap</a>
+      </div>
+    </div>
+    <div class="f-bottom">© 2026 ToolNest · Free tools for everyone · Made with care</div>
+  </div>
+</footer>
+
+<script src="/assets/site.js?v=5"></script>
+
+<script>
+(function () {
+  'use strict';
+  var P = 'passive-voice-highlighter-', ERR = P + 'error';
+  var IRR = 'written|taken|broken|spoken|chosen|driven|eaten|fallen|forgotten|frozen|given|hidden|ridden|risen|shaken|stolen|worn|torn|born|built|sent|spent|dealt|felt|kept|left|slept|swept|taught|thought|brought|bought|caught|fought|sought|done|gone|grown|known|shown|thrown|drawn|begun|drunk|sung|sunk|rung|swum|become|overcome|understood|paid|said|heard|made|had|laid|paid|found|wound|bound|ground|meant|dreamt|learnt|burnt|spelt|smelt|knelt|leapt|wept|crept|slept|lost|shot|cut|put|set|hit|hurt|split|spread|shut|cast|burst|cost|bid|upset|broadcast|forecast|overheard|misunderstood|withdrawn|overdone|redone|undone|forgiven|mistaken|overtaken|undergone|withstood|withheld|upheld|beheld';
+  var RE = new RegExp('\\b(am|is|are|was|were|be|being|been)\\b(\\s+(?:\\w+\\s+){0,2}?)\\b([a-z]+(?:ed|en|ne)\\b|' + IRR + '\\b)', 'gi');
+  function update() {
+    try {
+      TN.clearErr(ERR);
+      var t = TN.el(P + 'input').value || '';
+      var out = TN.el(P + 'out');
+      if (!t.trim()) {
+        out.textContent = 'Highlights appear here as you type.';
+        out.className = 'muted';
+        TN.el(P + 'count').textContent = '0';
+        TN.el(P + 'ratio').textContent = '0%';
+        return;
+      }
+      var count = 0;
+      var html = TN.esc(t).replace(RE, function (m) { count++; return '<mark>' + m + '</mark>'; });
+      out.innerHTML = html;
+      out.className = '';
+      var sents = (t.match(/[^.!?…]+[.!?…]+/g) || []).filter(function (s) { return /[A-Za-z0-9]/.test(s); }).length;
+      TN.el(P + 'count').textContent = count;
+      TN.el(P + 'ratio').textContent = sents ? Math.round(100 * count / sents) + '%' : '0%';
+    } catch (e) { TN.setErr(ERR, 'Could not highlight the text. Please try again.'); }
+  }
+  try {
+    TN.on(P + 'input', 'input', TN.debounce(update, 150));
+    update();
+  } catch (e) { /* never throw on load */ }
+})();
+
+</script>
+</body>
+</html>

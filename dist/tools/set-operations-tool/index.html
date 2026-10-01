@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Set Operations Calculator — Free Online | ToolNest</title>
+<meta name="description" content="Enter two sets and compute their union, intersection, differences and symmetric difference instantly, with subset and equality checks.">
+<meta name="keywords" content="set operations calculator, union intersection calculator, set difference calculator, symmetric difference, venn set tool">
+<link rel="canonical" href="https://toolnest.vercel.app/tools/set-operations-tool/">
+<meta name="theme-color" content="#07070b">
+<meta property="og:title" content="Set Operations Calculator — Free Online | ToolNest">
+<meta property="og:description" content="Enter two sets and compute their union, intersection, differences and symmetric difference instantly, with subset and equality checks.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css?v=4">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%23e01111'/><text x='50' y='68' font-size='58' text-anchor='middle' fill='white' font-family='Arial' font-weight='bold'>T</text></svg>">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebApplication","name":"Set Operations Calculator","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0"},"url":"https://toolnest.vercel.app/tools/set-operations-tool/","description":"Enter two sets and compute their union, intersection, differences and symmetric difference instantly, with subset and equality checks."},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How do I enter a set?","acceptedAnswer":{"@type":"Answer","text":"Type elements separated by commas, semicolons, spaces or new lines — for example: apple, banana, cherry. Duplicates are removed automatically."}},{"@type":"Question","name":"What is the symmetric difference?","acceptedAnswer":{"@type":"Answer","text":"The symmetric difference A △ B contains elements that are in exactly one of the two sets — everything in the union except the intersection."}},{"@type":"Question","name":"Are elements case-sensitive?","acceptedAnswer":{"@type":"Answer","text":"Yes. 'Apple' and 'apple' are treated as different elements, because sets distinguish values exactly as typed."}}]}]}</script>
+</head>
+<body>
+<header class="site-header">
+  <div class="container">
+    <a class="logo" href="/"><span class="logo-mark">T</span> ToolNest</a>
+    <div class="header-right">
+      <form class="nav-search" action="/" method="get" role="search">
+        <span class="ns-icon">🔍</span>
+        <input type="search" name="q" placeholder="Search tools…" aria-label="Search tools" autocomplete="off">
+      </form>
+      <div class="menu-wrap">
+        <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="menuPanel" aria-label="Open menu"><span></span><span></span><span></span></button>
+        <nav class="menu-panel" id="menuPanel" aria-label="Site">
+          <a href="/">Home</a>
+          <a href="/#categories">Categories</a>
+          <a href="/#all-tools">All Tools</a>
+        </nav>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ADSTERRA-HEADER: paste your Adsterra banner ad code inside the div below -->
+<div class="container"><div class="ad-slot ad-leaderboard" data-ad="header"></div></div>
+
+<main class="container">
+  <nav class="crumbs"><a href="/">Home</a> &rsaquo; <a href="/#math">Math &amp; Numbers</a> &rsaquo; Set Operations Calculator</nav>
+  <div class="tool-hero">
+    <h1>Set Operations Calculator</h1>
+    <p>Enter two sets and compute their union, intersection, differences and symmetric difference instantly, with subset and equality checks.</p>
+  </div>
+
+  <div class="tool-card">
+  <div class="grid2">
+    <div class="field">
+      <label for="set-operations-tool-a">Set A (comma or line separated)</label>
+      <textarea class="input textarea" id="set-operations-tool-a" rows="3" placeholder="e.g. 1, 2, 3, 4" spellcheck="false"></textarea>
+    </div>
+    <div class="field">
+      <label for="set-operations-tool-b">Set B (comma or line separated)</label>
+      <textarea class="input textarea" id="set-operations-tool-b" rows="3" placeholder="e.g. 3, 4, 5, 6" spellcheck="false"></textarea>
+    </div>
+  </div>
+  <div class="error" id="set-operations-tool-error"></div>
+  <div class="result" id="set-operations-tool-result">
+    <div class="stat-cards">
+      <div class="stat-card"><div class="v" id="set-operations-tool-ca">–</div><div class="l">|A|</div></div>
+      <div class="stat-card"><div class="v" id="set-operations-tool-cb">–</div><div class="l">|B|</div></div>
+      <div class="stat-card"><div class="v" id="set-operations-tool-sub">–</div><div class="l">Subset / equality</div></div>
+    </div>
+    <table class="data">
+      <thead><tr><th>Operation</th><th>Result</th><th>Count</th></tr></thead>
+      <tbody id="set-operations-tool-body">
+        <tr><td colspan="3" class="muted">Enter both sets to see all operations.</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+
+  <!-- ADSTERRA-INCONTENT: paste your Adsterra native/in-content ad code inside the div below -->
+  <div class="ad-slot" data-ad="incontent"></div>
+
+  <div class="info-grid">
+    <div class="info-card">
+      <h2>📖 How to use</h2>
+      <ol><li>Type the elements of set A, separated by commas or new lines.</li><li>Type the elements of set B the same way.</li><li>All six operations — union, intersection, both differences, symmetric difference and cardinality — update instantly.</li><li>Check whether one set is a subset of the other or whether the sets are equal.</li></ol>
+    </div>
+    <div class="info-card">
+      <h2>❓ Frequently asked questions</h2>
+      <div class="faq"><details><summary>How do I enter a set?</summary><p>Type elements separated by commas, semicolons, spaces or new lines — for example: apple, banana, cherry. Duplicates are removed automatically.</p></details><details><summary>What is the symmetric difference?</summary><p>The symmetric difference A △ B contains elements that are in exactly one of the two sets — everything in the union except the intersection.</p></details><details><summary>Are elements case-sensitive?</summary><p>Yes. &#39;Apple&#39; and &#39;apple&#39; are treated as different elements, because sets distinguish values exactly as typed.</p></details></div>
+    </div>
+  </div>
+
+  <section class="section">
+    <h2>🔗 Related tools</h2>
+    <div class="tool-grid"><a class="tool-link" href="/tools/complex-number-calculator/" data-search="complex number calculator add, subtract, multiply and divide complex numbers. see the result in a+bi form with modulus, argument and conjugates. complex number calculator imaginary number calculator complex division a+bi calculator complex arithmetic"><span class="t-ico">📐</span><span class="t-body"><b>Complex Number Calculator</b><small>Add, subtract, multiply and divide complex numbers. See the result in a+bi form with modulus…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/exponent-calculator/" data-search="exponent calculator raise any base to any exponent. get base^exponent instantly with the expanded multiplication shown step by step for integer powers. exponent calculator power calculator base to the power exponential calculation x to the power of n"><span class="t-ico">📐</span><span class="t-body"><b>Exponent Calculator</b><small>Raise any base to any exponent. Get base^exponent instantly with the expanded multiplication…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/factorial-calculator/" data-search="factorial calculator compute n! for any n from 0 to 170. see the exact value, scientific notation, the multiplication expanded step by step and the count of trailing zeros. factorial calculator n factorial compute n! trailing zeros factorial factorial value"><span class="t-ico">📐</span><span class="t-body"><b>Factorial Calculator</b><small>Compute n! for any n from 0 to 170. See the exact value, scientific notation, the multiplica…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/fraction-calculator/" data-search="fraction calculator add, subtract, multiply and divide fractions with simplification. fraction calculator add fractions simplify fraction"><span class="t-ico">📐</span><span class="t-body"><b>Fraction Calculator</b><small>Add, subtract, multiply and divide fractions with simplification.</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/gcf-lcm-calculator/" data-search="gcf &amp; lcm calculator greatest common factor and least common multiple of any list. gcf calculator lcm calculator greatest common factor"><span class="t-ico">📐</span><span class="t-body"><b>GCF &amp; LCM Calculator</b><small>Greatest common factor and least common multiple of any list.</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/logarithm-calculator/" data-search="logarithm calculator compute logarithms to any base using the change-of-base formula. get log, natural log (ln), log10 and log2 of any positive number. logarithm calculator log base calculator natural log calculator change of base formula log10 log2 calculator"><span class="t-ico">📐</span><span class="t-body"><b>Logarithm Calculator</b><small>Compute logarithms to any base using the change-of-base formula. Get log, natural log (ln), …</small></span><span class="t-arrow">→</span></a></div>
+  </section>
+</main>
+
+<!-- ADSTERRA-FOOTER: paste your Adsterra footer/banner ad code inside the div below -->
+<div class="container"><div class="ad-slot" data-ad="footer"></div></div>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="f-grid">
+      <div>
+        <span class="brandline"><span class="logo-mark">T</span> ToolNest</span>
+        <p>Free online tools that actually work. No sign-up, no watermarks — and your files never leave your device for client-side tools.</p>
+      </div>
+      <div>
+        <h4>Popular</h4>
+        <a href="/tools/qr-code-generator/">QR Code Generator</a>
+        <a href="/tools/background-remover/">Background Remover</a>
+        <a href="/tools/pdf-merger/">PDF Merger</a>
+        <a href="/tools/word-counter/">Word Counter</a>
+      </div>
+      <div>
+        <h4>Categories</h4>
+        <a href="/#image">Image Tools</a>
+        <a href="/#pdf">PDF &amp; Documents</a>
+        <a href="/#calculators">Calculators</a>
+        <a href="/#developer">Developer Tools</a>
+      </div>
+      <div>
+        <h4>Site</h4>
+        <a href="/">Home</a>
+        <a href="/#all-tools">All Tools</a>
+        <a href="/sitemap.xml">Sitemap</a>
+      </div>
+    </div>
+    <div class="f-bottom">© 2026 ToolNest · Free tools for everyone · Made with care</div>
+  </div>
+</footer>
+
+<script src="/assets/site.js?v=5"></script>
+
+<script>
+(function () {
+  'use strict';
+  var P = 'set-operations-tool-';
+  var ERR = P + 'error';
+  function g(id) { return document.getElementById(P + id); }
+  function set(id, v) { var el = g(id); if (el) el.textContent = v; }
+  function parseSet(raw) {
+    var seen = {}, out = [];
+    String(raw).split(/[,;\n]+/).forEach(function (t) {
+      t = t.trim().replace(/\s+/g, ' ');
+      if (t !== '' && !seen.hasOwnProperty(t)) { seen[t] = 1; out.push(t); }
+    });
+    return out;
+  }
+  function fmtSet(arr) {
+    return arr.length ? '{ ' + arr.map(function (x) { return TN.esc(x); }).join(', ') + ' }' : '<span class="muted">∅ (empty set)</span>';
+  }
+  function row(name, arr) {
+    return '<tr><td>' + name + '</td><td>' + fmtSet(arr) + '</td><td>' + arr.length + '</td></tr>';
+  }
+  function blank() {
+    set('ca', '–'); set('cb', '–'); set('sub', '–');
+    g('body').innerHTML = '<tr><td colspan="3" class="muted">Enter both sets to see all operations.</td></tr>';
+  }
+  function calc() {
+    if (!g('a')) return;
+    TN.clearErr(ERR);
+    var A = parseSet(g('a').value), B = parseSet(g('b').value);
+    if (!A.length && !B.length) { blank(); return; }
+    var inB = {}, inA = {};
+    B.forEach(function (x) { inB[x] = 1; });
+    A.forEach(function (x) { inA[x] = 1; });
+    var union = A.concat(B.filter(function (x) { return !inA[x]; }));
+    var inter = A.filter(function (x) { return inB[x]; });
+    var diffAB = A.filter(function (x) { return !inB[x]; });
+    var diffBA = B.filter(function (x) { return !inA[x]; });
+    var sym = diffAB.concat(diffBA);
+    set('ca', String(A.length));
+    set('cb', String(B.length));
+    var aSubB = diffAB.length === 0, bSubA = diffBA.length === 0;
+    set('sub', (aSubB && bSubA) ? 'A = B' : (aSubB ? 'A ⊆ B' : (bSubA ? 'B ⊆ A' : 'Neither ⊆')));
+    g('body').innerHTML =
+      row('A ∪ B (union)', union) +
+      row('A ∩ B (intersection)', inter) +
+      row('A − B (difference)', diffAB) +
+      row('B − A (difference)', diffBA) +
+      row('A △ B (symmetric difference)', sym);
+  }
+  try {
+    TN.on(P + 'a', 'input', calc);
+    TN.on(P + 'b', 'input', calc);
+    calc();
+  } catch (e) { /* never throw on load */ }
+})();
+
+</script>
+</body>
+</html>

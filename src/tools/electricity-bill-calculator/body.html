@@ -1,0 +1,21 @@
+<div class="tool-card">
+  <div class="grid2">
+    <div class="field"><label for="elec-kwh">Electricity used (kWh)</label><input type="number" class="input" id="elec-kwh" min="0" step="any" placeholder="450"></div>
+    <div class="field"><label for="elec-rate">Rate per kWh ($)</label><input type="number" class="input" id="elec-rate" min="0" step="any" placeholder="0.14"></div>
+    <div class="field"><label for="elec-fixed">Fixed monthly charge ($)</label><input type="number" class="input" id="elec-fixed" min="0" step="any" placeholder="8"></div>
+    <div class="field"><label for="elec-tax">Tax / surcharge (%)</label><input type="number" class="input" id="elec-tax" min="0" max="100" step="any" placeholder="5"></div>
+  </div>
+  <div class="error" id="electricity-bill-calculator-error"></div>
+  <div class="result" id="elec-result">
+    <div class="stat-cards">
+      <div class="stat-card"><div class="v" id="elec-total">–</div><div class="l">Estimated bill</div></div>
+      <div class="stat-card"><div class="v" id="elec-energy">–</div><div class="l">Energy charge</div></div>
+      <div class="stat-card"><div class="v" id="elec-daily">–</div><div class="l">Avg. per day</div></div>
+    </div>
+    <table class="data">
+      <thead><tr><th>Component</th><th>Amount</th></tr></thead>
+      <tbody id="elec-body"><tr><td colspan="2" class="muted">Enter your usage to see the breakdown.</td></tr></tbody>
+    </table>
+    <p class="note">Flat-rate estimate. Tiered or time-of-use tariffs will differ.</p>
+  </div>
+</div>

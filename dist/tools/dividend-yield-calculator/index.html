@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dividend Yield Calculator — Free Online | ToolNest</title>
+<meta name="description" content="Calculate dividend yield percentage and annual, quarterly and monthly income from any dividend stock.">
+<meta name="keywords" content="dividend yield calculator, dividend income calculator, stock yield calculator, dividend return, yield on cost">
+<link rel="canonical" href="https://toolnest.vercel.app/tools/dividend-yield-calculator/">
+<meta name="theme-color" content="#07070b">
+<meta property="og:title" content="Dividend Yield Calculator — Free Online | ToolNest">
+<meta property="og:description" content="Calculate dividend yield percentage and annual, quarterly and monthly income from any dividend stock.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css?v=4">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%23e01111'/><text x='50' y='68' font-size='58' text-anchor='middle' fill='white' font-family='Arial' font-weight='bold'>T</text></svg>">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebApplication","name":"Dividend Yield Calculator","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0"},"url":"https://toolnest.vercel.app/tools/dividend-yield-calculator/","description":"Calculate dividend yield percentage and annual, quarterly and monthly income from any dividend stock."},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How is dividend yield calculated?","acceptedAnswer":{"@type":"Answer","text":"Annual dividend per share ÷ share price × 100. A $2 dividend on a $50 stock is a 4% yield."}},{"@type":"Question","name":"Does yield change if the price moves?","acceptedAnswer":{"@type":"Answer","text":"Yes — yield and price move inversely. A falling price raises the yield on new purchases but may signal a coming dividend cut."}},{"@type":"Question","name":"Is a high yield always better?","acceptedAnswer":{"@type":"Answer","text":"No. Very high yields can mean the market expects the dividend to be cut. Check payout ratio and company health too."}}]}]}</script>
+</head>
+<body>
+<header class="site-header">
+  <div class="container">
+    <a class="logo" href="/"><span class="logo-mark">T</span> ToolNest</a>
+    <div class="header-right">
+      <form class="nav-search" action="/" method="get" role="search">
+        <span class="ns-icon">🔍</span>
+        <input type="search" name="q" placeholder="Search tools…" aria-label="Search tools" autocomplete="off">
+      </form>
+      <div class="menu-wrap">
+        <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="menuPanel" aria-label="Open menu"><span></span><span></span><span></span></button>
+        <nav class="menu-panel" id="menuPanel" aria-label="Site">
+          <a href="/">Home</a>
+          <a href="/#categories">Categories</a>
+          <a href="/#all-tools">All Tools</a>
+        </nav>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ADSTERRA-HEADER: paste your Adsterra banner ad code inside the div below -->
+<div class="container"><div class="ad-slot ad-leaderboard" data-ad="header"></div></div>
+
+<main class="container">
+  <nav class="crumbs"><a href="/">Home</a> &rsaquo; <a href="/#finance">Finance &amp; Money</a> &rsaquo; Dividend Yield Calculator</nav>
+  <div class="tool-hero">
+    <h1>Dividend Yield Calculator</h1>
+    <p>Calculate dividend yield percentage and annual, quarterly and monthly income from any dividend stock.</p>
+  </div>
+
+  <div class="tool-card">
+  <div class="grid2">
+    <div class="field"><label for="dy-div">Annual dividend per share ($)</label><input type="number" class="input" id="dy-div" min="0" step="any" placeholder="2.00"></div>
+    <div class="field"><label for="dy-price">Share price ($)</label><input type="number" class="input" id="dy-price" min="0" step="any" placeholder="50"></div>
+    <div class="field"><label for="dy-shares">Shares owned</label><input type="number" class="input" id="dy-shares" min="0" step="any" placeholder="100"></div>
+  </div>
+  <div class="error" id="dividend-yield-calculator-error"></div>
+  <div class="result" id="dy-result">
+    <div class="stat-cards">
+      <div class="stat-card"><div class="v" id="dy-yield">–</div><div class="l">Dividend yield</div></div>
+      <div class="stat-card"><div class="v" id="dy-annual">–</div><div class="l">Annual income</div></div>
+      <div class="stat-card"><div class="v" id="dy-monthly">–</div><div class="l">Monthly income</div></div>
+    </div>
+    <table class="data">
+      <thead><tr><th>Period</th><th>Dividend income</th></tr></thead>
+      <tbody id="dy-body"><tr><td colspan="2" class="muted">Enter dividend details.</td></tr></tbody>
+    </table>
+    <p class="note">Before taxes and fees. Dividends are not guaranteed and can be cut.</p>
+  </div>
+</div>
+
+  <!-- ADSTERRA-INCONTENT: paste your Adsterra native/in-content ad code inside the div below -->
+  <div class="ad-slot" data-ad="incontent"></div>
+
+  <div class="info-grid">
+    <div class="info-card">
+      <h2>📖 How to use</h2>
+      <ol><li>Enter the annual dividend per share and the current share price.</li><li>Enter how many shares you own.</li><li>Read the yield and your income per year, quarter and month.</li></ol>
+    </div>
+    <div class="info-card">
+      <h2>❓ Frequently asked questions</h2>
+      <div class="faq"><details><summary>How is dividend yield calculated?</summary><p>Annual dividend per share ÷ share price × 100. A $2 dividend on a $50 stock is a 4% yield.</p></details><details><summary>Does yield change if the price moves?</summary><p>Yes — yield and price move inversely. A falling price raises the yield on new purchases but may signal a coming dividend cut.</p></details><details><summary>Is a high yield always better?</summary><p>No. Very high yields can mean the market expects the dividend to be cut. Check payout ratio and company health too.</p></details></div>
+    </div>
+  </div>
+
+  <section class="section">
+    <h2>🔗 Related tools</h2>
+    <div class="tool-grid"><a class="tool-link" href="/tools/budget-50-30-20-calculator/" data-search="50/30/20 budget calculator split your take-home pay into needs (50%), wants (30%) and savings (20%), then compare with your actual spending. 50 30 20 budget budget calculator needs wants savings monthly budget planner budget rule calculator"><span class="t-ico">💰</span><span class="t-body"><b>50/30/20 Budget Calculator</b><small>Split your take-home pay into needs (50%), wants (30%) and savings (20%), then compare with …</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/car-loan-calculator/" data-search="car loan calculator compute monthly car payments, total interest and full cost from price, down payment, trade-in, rate and term. car loan calculator auto loan calculator monthly car payment car finance calculator vehicle loan estimator"><span class="t-ico">💰</span><span class="t-body"><b>Car Loan Calculator</b><small>Compute monthly car payments, total interest and full cost from price, down payment, trade-i…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/compound-interest-calculator/" data-search="compound interest calculator project how your savings grow over time with compound interest, regular monthly contributions and your choice of compounding frequency. compound interest calculator savings growth calculator compound interest with contributions"><span class="t-ico">💰</span><span class="t-body"><b>Compound Interest Calculator</b><small>Project how your savings grow over time with compound interest, regular monthly contribution…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/credit-card-validator/" data-search="credit card validator check any card number with the luhn algorithm and detect its brand — a format check only, never a real-card check. credit card validator luhn check card number checker card brand detector"><span class="t-ico">💰</span><span class="t-body"><b>Credit Card Validator</b><small>Check any card number with the Luhn algorithm and detect its brand — a format check only, ne…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/crypto-profit-calculator/" data-search="crypto profit calculator calculate profit, loss and roi on any crypto trade with buy/sell fees included. crypto profit calculator bitcoin profit calculator crypto roi calculator trading profit calculator coin profit loss"><span class="t-ico">💰</span><span class="t-body"><b>Crypto Profit Calculator</b><small>Calculate profit, loss and ROI on any crypto trade with buy/sell fees included.</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/debt-payoff-calculator/" data-search="debt payoff planner build an avalanche payoff plan for up to 8 debts: payoff order, months to debt-free and total interest paid. debt payoff calculator debt avalanche calculator pay off debt planner"><span class="t-ico">💰</span><span class="t-body"><b>Debt Payoff Planner</b><small>Build an avalanche payoff plan for up to 8 debts: payoff order, months to debt-free and tota…</small></span><span class="t-arrow">→</span></a></div>
+  </section>
+</main>
+
+<!-- ADSTERRA-FOOTER: paste your Adsterra footer/banner ad code inside the div below -->
+<div class="container"><div class="ad-slot" data-ad="footer"></div></div>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="f-grid">
+      <div>
+        <span class="brandline"><span class="logo-mark">T</span> ToolNest</span>
+        <p>Free online tools that actually work. No sign-up, no watermarks — and your files never leave your device for client-side tools.</p>
+      </div>
+      <div>
+        <h4>Popular</h4>
+        <a href="/tools/qr-code-generator/">QR Code Generator</a>
+        <a href="/tools/background-remover/">Background Remover</a>
+        <a href="/tools/pdf-merger/">PDF Merger</a>
+        <a href="/tools/word-counter/">Word Counter</a>
+      </div>
+      <div>
+        <h4>Categories</h4>
+        <a href="/#image">Image Tools</a>
+        <a href="/#pdf">PDF &amp; Documents</a>
+        <a href="/#calculators">Calculators</a>
+        <a href="/#developer">Developer Tools</a>
+      </div>
+      <div>
+        <h4>Site</h4>
+        <a href="/">Home</a>
+        <a href="/#all-tools">All Tools</a>
+        <a href="/sitemap.xml">Sitemap</a>
+      </div>
+    </div>
+    <div class="f-bottom">© 2026 ToolNest · Free tools for everyone · Made with care</div>
+  </div>
+</footer>
+
+<script src="/assets/site.js?v=5"></script>
+
+<script>
+(function () {
+  'use strict';
+  var ERR = 'dividend-yield-calculator-error';
+  function money(n) { try { return '$' + n.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 }); } catch (e) { return '$' + (Math.round(n * 100) / 100); } }
+  function calc() {
+    if (!TN.el('dy-div')) return;
+    TN.clearErr(ERR);
+    var div = parseFloat(TN.el('dy-div').value);
+    var price = parseFloat(TN.el('dy-price').value);
+    var shares = parseFloat(TN.el('dy-shares').value);
+    if (!(div >= 0)) { TN.setErr(ERR, 'Enter a valid dividend (0 or more).'); return; }
+    if (!(price > 0)) { TN.setErr(ERR, 'Enter a share price greater than 0.'); return; }
+    if (!(shares >= 0)) { TN.setErr(ERR, 'Enter valid shares owned (0 or more).'); return; }
+    var yld = div / price * 100;
+    var annual = div * shares;
+    TN.el('dy-yield').textContent = yld.toFixed(2) + '%';
+    TN.el('dy-annual').textContent = money(annual);
+    TN.el('dy-monthly').textContent = money(annual / 12);
+    TN.el('dy-body').innerHTML =
+      '<tr><td>Annual</td><td>' + money(annual) + '</td></tr>' +
+      '<tr><td>Quarterly</td><td>' + money(annual / 4) + '</td></tr>' +
+      '<tr><td>Monthly</td><td>' + money(annual / 12) + '</td></tr>' +
+      '<tr><td>Per share</td><td>' + money(div) + '</td></tr>';
+  }
+  try {
+    ['dy-div', 'dy-price', 'dy-shares'].forEach(function (id) { TN.on(id, 'input', calc); });
+    calc();
+  } catch (e) { /* never throw on load */ }
+})();
+</script>
+</body>
+</html>

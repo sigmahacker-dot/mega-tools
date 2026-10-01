@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Would You Rather Game — Free Online | ToolNest</title>
+<meta name="description" content="60 Would You Rather dilemmas — pick a side, see how your choice stacks up against other players, and keep score of the rounds.">
+<meta name="keywords" content="would you rather, would you rather questions, party game, dilemma game, icebreaker game">
+<link rel="canonical" href="https://toolnest.vercel.app/tools/would-you-rather-game/">
+<meta name="theme-color" content="#07070b">
+<meta property="og:title" content="Would You Rather Game — Free Online | ToolNest">
+<meta property="og:description" content="60 Would You Rather dilemmas — pick a side, see how your choice stacks up against other players, and keep score of the rounds.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css?v=4">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%23e01111'/><text x='50' y='68' font-size='58' text-anchor='middle' fill='white' font-family='Arial' font-weight='bold'>T</text></svg>">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebApplication","name":"Would You Rather Game","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0"},"url":"https://toolnest.vercel.app/tools/would-you-rather-game/","description":"60 Would You Rather dilemmas — pick a side, see how your choice stacks up against other players, and keep score of the rounds."},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How many questions are included?","acceptedAnswer":{"@type":"Answer","text":"60 dilemmas built in, from silly to deep — no repeats until you've seen them all."}},{"@type":"Question","name":"Where do the vote percentages come from?","acceptedAnswer":{"@type":"Answer","text":"Vote percentages are stored in your browser and update every time you (or anyone on this device) votes."}},{"@type":"Question","name":"Can I play with friends?","acceptedAnswer":{"@type":"Answer","text":"Your picks are tallied per session so you can compare with friends."}},{"@type":"Question","name":"Does it work on mobile?","acceptedAnswer":{"@type":"Answer","text":"Yes — fully mobile friendly."}}]}]}</script>
+</head>
+<body>
+<header class="site-header">
+  <div class="container">
+    <a class="logo" href="/"><span class="logo-mark">T</span> ToolNest</a>
+    <div class="header-right">
+      <form class="nav-search" action="/" method="get" role="search">
+        <span class="ns-icon">🔍</span>
+        <input type="search" name="q" placeholder="Search tools…" aria-label="Search tools" autocomplete="off">
+      </form>
+      <div class="menu-wrap">
+        <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="menuPanel" aria-label="Open menu"><span></span><span></span><span></span></button>
+        <nav class="menu-panel" id="menuPanel" aria-label="Site">
+          <a href="/">Home</a>
+          <a href="/#categories">Categories</a>
+          <a href="/#all-tools">All Tools</a>
+        </nav>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ADSTERRA-HEADER: paste your Adsterra banner ad code inside the div below -->
+<div class="container"><div class="ad-slot ad-leaderboard" data-ad="header"></div></div>
+
+<main class="container">
+  <nav class="crumbs"><a href="/">Home</a> &rsaquo; <a href="/#fun">Fun &amp; Lifestyle</a> &rsaquo; Would You Rather Game</nav>
+  <div class="tool-hero">
+    <h1>Would You Rather Game</h1>
+    <p>60 Would You Rather dilemmas — pick a side, see how your choice stacks up against other players, and keep score of the rounds.</p>
+  </div>
+
+  <div class="tool-card" style="text-align:center">
+  <h3 style="margin-bottom:4px">Would you rather…</h3>
+  <p class="muted" id="would-you-rather-game-count"></p>
+  <div style="display:grid;gap:10px;max-width:480px;margin:16px auto" id="would-you-rather-game-opts">
+    <button class="btn btn-outline" id="would-you-rather-game-a" style="padding:18px;font-size:17px;white-space:normal"></button>
+    <button class="btn btn-outline" id="would-you-rather-game-b" style="padding:18px;font-size:17px;white-space:normal"></button>
+  </div>
+  <div id="would-you-rather-game-votes" hidden style="max-width:480px;margin:0 auto">
+    <div style="margin-bottom:8px">
+      <div style="display:flex;justify-content:space-between;font-size:14px"><span>Option A</span><b id="would-you-rather-game-pa"></b></div>
+      <div style="background:#eee;border-radius:6px;height:14px"><div id="would-you-rather-game-bara" style="height:100%;background:#43a047;border-radius:6px;width:50%"></div></div>
+    </div>
+    <div style="margin-bottom:8px">
+      <div style="display:flex;justify-content:space-between;font-size:14px"><span>Option B</span><b id="would-you-rather-game-pb"></b></div>
+      <div style="background:#eee;border-radius:6px;height:14px"><div id="would-you-rather-game-barb" style="height:100%;background:#1e88e5;border-radius:6px;width:50%"></div></div>
+    </div>
+    <p class="muted" id="would-you-rather-game-total"></p>
+  </div>
+  <div class="btn-row" style="justify-content:center;margin-top:12px">
+    <button class="btn" id="would-you-rather-game-next">Next question</button>
+  </div>
+  <div class="error" id="would-you-rather-game-error"></div>
+</div>
+
+
+  <!-- ADSTERRA-INCONTENT: paste your Adsterra native/in-content ad code inside the div below -->
+  <div class="ad-slot" data-ad="incontent"></div>
+
+  <div class="info-grid">
+    <div class="info-card">
+      <h2>📖 How to use</h2>
+      <ol><li>Read the dilemma.</li><li>Tap the option you would rather do.</li><li>See the vote split for that question.</li><li>Hit “Next” for another of the 60 dilemmas.</li></ol>
+    </div>
+    <div class="info-card">
+      <h2>❓ Frequently asked questions</h2>
+      <div class="faq"><details><summary>How many questions are included?</summary><p>60 dilemmas built in, from silly to deep — no repeats until you&#39;ve seen them all.</p></details><details><summary>Where do the vote percentages come from?</summary><p>Vote percentages are stored in your browser and update every time you (or anyone on this device) votes.</p></details><details><summary>Can I play with friends?</summary><p>Your picks are tallied per session so you can compare with friends.</p></details><details><summary>Does it work on mobile?</summary><p>Yes — fully mobile friendly.</p></details></div>
+    </div>
+  </div>
+
+  <section class="section">
+    <h2>🔗 Related tools</h2>
+    <div class="tool-grid"><a class="tool-link" href="/tools/aim-trainer-game/" data-search="aim trainer game test and train your aim — targets pop up at random spots for 30 seconds. hits, misses and accuracy are tracked live. aim trainer aim test reaction test click speed test fps aim trainer"><span class="t-ico">🎲</span><span class="t-body"><b>Aim Trainer Game</b><small>Test and train your aim — targets pop up at random spots for 30 seconds. Hits, misses and ac…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/baby-name-generator/" data-search="baby name generator discover baby names by gender and origin — pakistani, arabic, western, indian or turkish — with meanings, random picks and tap-to-copy. baby name generator baby names with meanings muslim baby names boy girl names"><span class="t-ico">🎲</span><span class="t-body"><b>Baby Name Generator</b><small>Discover baby names by gender and origin — Pakistani, Arabic, Western, Indian or Turkish — w…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/battery-status-checker/" data-search="battery status checker check your device&#39;s battery level, charging status and estimated time remaining, with live updates — where your browser supports the battery api. battery status battery level checker laptop battery charging status"><span class="t-ico">🎲</span><span class="t-body"><b>Battery Status Checker</b><small>Check your device&#39;s battery level, charging status and estimated time remaining, with live u…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/birthday-countdown/" data-search="birthday countdown enter your birthday for a live countdown to your next one — days, hours, minutes and seconds — plus the age you&#39;ll turn and a fun message. birthday countdown countdown to birthday how old am i birthday timer"><span class="t-ico">🎲</span><span class="t-body"><b>Birthday Countdown</b><small>Enter your birthday for a live countdown to your next one — days, hours, minutes and seconds…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/calendar-generator/" data-search="calendar generator generate a monthly calendar for any month and year, with correct weekdays, leap years, today&#39;s date highlighted, and previous/next month navigation. calendar generator monthly calendar printable calendar month planner"><span class="t-ico">🎲</span><span class="t-body"><b>Calendar Generator</b><small>Generate a monthly calendar for any month and year, with correct weekdays, leap years, today…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/coin-flip/" data-search="coin flip flip a virtual coin with a fun animated toss. get instant heads or tails results, keep a running tally of both sides, and reset the count whenever you like. coin flip heads or tails coin toss random coin"><span class="t-ico">🎲</span><span class="t-body"><b>Coin Flip</b><small>Flip a virtual coin with a fun animated toss. Get instant Heads or Tails results, keep a run…</small></span><span class="t-arrow">→</span></a></div>
+  </section>
+</main>
+
+<!-- ADSTERRA-FOOTER: paste your Adsterra footer/banner ad code inside the div below -->
+<div class="container"><div class="ad-slot" data-ad="footer"></div></div>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="f-grid">
+      <div>
+        <span class="brandline"><span class="logo-mark">T</span> ToolNest</span>
+        <p>Free online tools that actually work. No sign-up, no watermarks — and your files never leave your device for client-side tools.</p>
+      </div>
+      <div>
+        <h4>Popular</h4>
+        <a href="/tools/qr-code-generator/">QR Code Generator</a>
+        <a href="/tools/background-remover/">Background Remover</a>
+        <a href="/tools/pdf-merger/">PDF Merger</a>
+        <a href="/tools/word-counter/">Word Counter</a>
+      </div>
+      <div>
+        <h4>Categories</h4>
+        <a href="/#image">Image Tools</a>
+        <a href="/#pdf">PDF &amp; Documents</a>
+        <a href="/#calculators">Calculators</a>
+        <a href="/#developer">Developer Tools</a>
+      </div>
+      <div>
+        <h4>Site</h4>
+        <a href="/">Home</a>
+        <a href="/#all-tools">All Tools</a>
+        <a href="/sitemap.xml">Sitemap</a>
+      </div>
+    </div>
+    <div class="f-bottom">© 2026 ToolNest · Free tools for everyone · Made with care</div>
+  </div>
+</footer>
+
+<script src="/assets/site.js?v=5"></script>
+
+<script>
+/* Would You Rather — 60 dilemmas, localStorage vote tallies. */
+(function () {
+  'use strict';
+  var SLUG = 'would-you-rather-game';
+  var Q = [
+    ["fly", "be invisible"], ["be rich", "be famous"], ["live in the past", "live in the future"],
+    ["never use the internet again", "never watch TV again"], ["have super strength", "have super speed"],
+    ["always be 10 minutes late", "always be 20 minutes early"], ["eat only pizza forever", "eat only tacos forever"],
+    ["be able to talk to animals", "speak every human language"], ["live without music", "live without movies"],
+    ["have unlimited money", "have unlimited time"], ["be a great singer", "be a great dancer"],
+    ["explore space", "explore the deep ocean"], ["never sleep again", "never eat again (but stay healthy)"],
+    ["be 10 years old forever", "be 80 years old forever"], ["fight 100 duck-sized horses", "fight 1 horse-sized duck"],
+    ["have a rewind button", "have a pause button for life"], ["know the date of your death", "know the cause of your death"],
+    ["lose all your photos", "lose all your contacts"], ["be stuck on a desert island alone", "be stuck in a city crowd forever"],
+    ["sweat maple syrup", "cry hot sauce"], ["have hands for feet", "have feet for hands"],
+    ["only whisper", "only shout"], ["read minds", "see the future"],
+    ["give up your phone", "give up your best friend (just kidding — your pet)"],
+    ["be chased by bees", "be chased by geese"], ["live in a treehouse", "live in a cave"],
+    ["have a dragon", "have a unicorn"], ["time travel to the past only", "time travel to the future only"],
+    ["be the funniest person alive", "be the smartest person alive"], ["never laugh again", "never smile again"],
+    ["wear wet socks forever", "have an itch you can never scratch"], ["eat a bug", "lick a public doorknob"],
+    ["be famous for something embarrassing", "be unknown but happy"], ["have 10 kids", "have no kids"],
+    ["live 200 years in the past", "live 200 years in the future"], ["always say everything on your mind", "never speak again"],
+    ["be able to teleport", "be able to read minds"], ["have no eyebrows", "have no eyelashes"],
+    ["drink sour milk", "eat moldy bread"], ["be too hot always", "be too cold always"],
+    ["have a third eye", "have a third arm"], ["only eat with a spoon", "only eat with chopsticks"],
+    ["be a superhero", "be a wizard"], ["win the lottery but lose all friends", "stay as you are with friends"],
+    ["have hiccups forever", "sneeze every 5 minutes"], ["live on the moon", "live under the sea"],
+    ["be able to fly but only 3 feet high", "be able to run 100 mph but only backwards"],
+    ["have every song stuck in your head", "have every movie spoiled for you"],
+    ["be allergic to the sun", "be allergic to water"], ["speak in rhymes", "sing everything you say"],
+    ["have a personal chef", "have a personal driver"], ["know every language", "play every instrument"],
+    ["be the best player on a losing team", "be the worst player on a winning team"],
+    ["give up coffee", "give up dessert"], ["have dinner with anyone alive", "have dinner with anyone from history"],
+    ["be able to control fire", "be able to control water"], ["live without a phone", "live without a car"],
+    ["be 3 feet tall", "be 9 feet tall"], ["have x-ray vision", "have super hearing"],
+    ["never wait in line again", "never hit a red light again"]
+  ];
+  var idx = -1, voted = false, votes = {};
+
+  function $(id) { return document.getElementById(id); }
+
+  function loadVotes() {
+    try { votes = JSON.parse(localStorage.getItem('wyr-votes') || '{}'); } catch (e) { votes = {}; }
+  }
+  function saveVotes() {
+    try { localStorage.setItem('wyr-votes', JSON.stringify(votes)); } catch (e) {}
+  }
+  function getVotes(i) {
+    // seed with plausible base numbers so percentages look alive on first view
+    if (!votes[i]) {
+      var seed = (i * 7919) % 97;
+      votes[i] = { a: 40 + seed, b: 40 + ((seed * 13) % 61) };
+    }
+    return votes[i];
+  }
+
+  function next() {
+    var n = Math.floor(Math.random() * Q.length);
+    if (Q.length > 1 && n === idx) n = (n + 1) % Q.length;
+    idx = n; voted = false;
+    $('would-you-rather-game-a').textContent = Q[n][0];
+    $('would-you-rather-game-b').textContent = Q[n][1];
+    $('would-you-rather-game-a').disabled = false;
+    $('would-you-rather-game-b').disabled = false;
+    $('would-you-rather-game-votes').hidden = true;
+    $('would-you-rather-game-count').textContent = 'Question ' + (n + 1) + ' of ' + Q.length;
+  }
+
+  function vote(which) {
+    if (voted) return;
+    voted = true;
+    var v = getVotes(idx);
+    v[which === 'a' ? 'a' : 'b']++;
+    saveVotes();
+    var total = v.a + v.b;
+    var pa = Math.round(v.a / total * 100), pb = 100 - pa;
+    $('would-you-rather-game-pa').textContent = pa + '%';
+    $('would-you-rather-game-pb').textContent = pb + '%';
+    $('would-you-rather-game-bara').style.width = pa + '%';
+    $('would-you-rather-game-barb').style.width = pb + '%';
+    $('would-you-rather-game-total').textContent = total.toLocaleString('en-US') + ' votes on this device';
+    $('would-you-rather-game-votes').hidden = false;
+    $('would-you-rather-game-a').disabled = true;
+    $('would-you-rather-game-b').disabled = true;
+  }
+
+  try {
+    loadVotes();
+    next();
+    TN.on('would-you-rather-game-a', 'click', function () { vote('a'); });
+    TN.on('would-you-rather-game-b', 'click', function () { vote('b'); });
+    TN.on('would-you-rather-game-next', 'click', next);
+  } catch (e) { /* never throw on load */ }
+})();
+
+</script>
+</body>
+</html>

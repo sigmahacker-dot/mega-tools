@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tone Frequency Generator — Free Online | ToolNest</title>
+<meta name="description" content="Generate a pure tone at any frequency from 20 Hz to 20 kHz — choose sine, square, sawtooth or triangle waves, with volume control.">
+<meta name="keywords" content="tone generator, frequency generator, sine wave generator, test tone, hz generator">
+<link rel="canonical" href="https://toolnest.vercel.app/tools/tone-frequency-generator/">
+<meta name="theme-color" content="#07070b">
+<meta property="og:title" content="Tone Frequency Generator — Free Online | ToolNest">
+<meta property="og:description" content="Generate a pure tone at any frequency from 20 Hz to 20 kHz — choose sine, square, sawtooth or triangle waves, with volume control.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css?v=4">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%23e01111'/><text x='50' y='68' font-size='58' text-anchor='middle' fill='white' font-family='Arial' font-weight='bold'>T</text></svg>">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebApplication","name":"Tone Frequency Generator","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0"},"url":"https://toolnest.vercel.app/tools/tone-frequency-generator/","description":"Generate a pure tone at any frequency from 20 Hz to 20 kHz — choose sine, square, sawtooth or triangle waves, with volume control."},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What frequency range is supported?","acceptedAnswer":{"@type":"Answer","text":"20 Hz to 20,000 Hz — the full range of human hearing — set by slider or exact number."}},{"@type":"Question","name":"Which waveforms are available?","acceptedAnswer":{"@type":"Answer","text":"Sine (pure), triangle (soft), square (hollow) and sawtooth (buzzy)."}},{"@type":"Question","name":"Can I sweep the frequency live?","acceptedAnswer":{"@type":"Answer","text":"Slide the frequency while playing to sweep — useful for finding rattles or testing speakers."}},{"@type":"Question","name":"Is it safe for my ears?","acceptedAnswer":{"@type":"Answer","text":"Keep the volume low, especially with headphones, and avoid long exposure to very high volumes."}}]}]}</script>
+</head>
+<body>
+<header class="site-header">
+  <div class="container">
+    <a class="logo" href="/"><span class="logo-mark">T</span> ToolNest</a>
+    <div class="header-right">
+      <form class="nav-search" action="/" method="get" role="search">
+        <span class="ns-icon">🔍</span>
+        <input type="search" name="q" placeholder="Search tools…" aria-label="Search tools" autocomplete="off">
+      </form>
+      <div class="menu-wrap">
+        <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="menuPanel" aria-label="Open menu"><span></span><span></span><span></span></button>
+        <nav class="menu-panel" id="menuPanel" aria-label="Site">
+          <a href="/">Home</a>
+          <a href="/#categories">Categories</a>
+          <a href="/#all-tools">All Tools</a>
+        </nav>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ADSTERRA-HEADER: paste your Adsterra banner ad code inside the div below -->
+<div class="container"><div class="ad-slot ad-leaderboard" data-ad="header"></div></div>
+
+<main class="container">
+  <nav class="crumbs"><a href="/">Home</a> &rsaquo; <a href="/#video-audio">Video &amp; Audio</a> &rsaquo; Tone Frequency Generator</nav>
+  <div class="tool-hero">
+    <h1>Tone Frequency Generator</h1>
+    <p>Generate a pure tone at any frequency from 20 Hz to 20 kHz — choose sine, square, sawtooth or triangle waves, with volume control.</p>
+  </div>
+
+  <div class="tool-card" style="text-align:center">
+  <div style="font-size:56px;font-weight:800"><span id="tone-frequency-generator-f-v">440</span><span style="font-size:24px" class="muted"> Hz</span></div>
+  <div class="field" style="max-width:480px;margin:12px auto;text-align:left">
+    <label for="tone-frequency-generator-f">Frequency (log scale, 20–20000 Hz)</label>
+    <input type="range" class="input" id="tone-frequency-generator-f" min="0" max="1000" step="1" value="627">
+  </div>
+  <div class="grid2" style="max-width:480px;margin:0 auto;text-align:left">
+    <div class="field">
+      <label for="tone-frequency-generator-exact">Exact frequency (Hz)</label>
+      <input type="number" class="input" id="tone-frequency-generator-exact" min="20" max="20000" step="any" value="440">
+    </div>
+    <div class="field">
+      <label for="tone-frequency-generator-wave">Waveform</label>
+      <select class="input" id="tone-frequency-generator-wave">
+        <option value="sine">Sine — pure</option>
+        <option value="triangle">Triangle — soft</option>
+        <option value="square">Square — hollow</option>
+        <option value="sawtooth">Sawtooth — buzzy</option>
+      </select>
+    </div>
+    <div class="field">
+      <label for="tone-frequency-generator-vol">Volume (<span id="tone-frequency-generator-vol-v">30</span>%)</label>
+      <input type="range" class="input" id="tone-frequency-generator-vol" min="0" max="100" step="1" value="30">
+    </div>
+    <div class="field">
+      <label>&nbsp;</label>
+      <button class="btn" id="tone-frequency-generator-toggle" style="width:100%">▶ Play tone</button>
+    </div>
+  </div>
+  <p class="note">⚠️ Start at low volume, especially with headphones.</p>
+  <div class="error" id="tone-frequency-generator-error"></div>
+</div>
+
+
+  <!-- ADSTERRA-INCONTENT: paste your Adsterra native/in-content ad code inside the div below -->
+  <div class="ad-slot" data-ad="incontent"></div>
+
+  <div class="info-grid">
+    <div class="info-card">
+      <h2>📖 How to use</h2>
+      <ol><li>Set the frequency with the slider or type it exactly.</li><li>Pick a waveform.</li><li>Press Play and adjust the volume.</li><li>Slide the frequency live to sweep.</li></ol>
+    </div>
+    <div class="info-card">
+      <h2>❓ Frequently asked questions</h2>
+      <div class="faq"><details><summary>What frequency range is supported?</summary><p>20 Hz to 20,000 Hz — the full range of human hearing — set by slider or exact number.</p></details><details><summary>Which waveforms are available?</summary><p>Sine (pure), triangle (soft), square (hollow) and sawtooth (buzzy).</p></details><details><summary>Can I sweep the frequency live?</summary><p>Slide the frequency while playing to sweep — useful for finding rattles or testing speakers.</p></details><details><summary>Is it safe for my ears?</summary><p>Keep the volume low, especially with headphones, and avoid long exposure to very high volumes.</p></details></div>
+    </div>
+  </div>
+
+  <section class="section">
+    <h2>🔗 Related tools</h2>
+    <div class="tool-grid"><a class="tool-link" href="/tools/audio-cutter/" data-search="audio cutter cut a section out of any audio file in your browser. set start and end times, preview the selection, then download it as an mp3. audio cutter cut audio online trim mp3 audio trimmer mp3 cutter"><span class="t-ico">🎬</span><span class="t-body"><b>Audio Cutter</b><small>Cut a section out of any audio file in your browser. Set start and end times, preview the se…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/audio-voice-recorder/" data-search="voice recorder record audio with your microphone, play it back and download it as a file. voice recorder record audio online microphone recorder"><span class="t-ico">🎬</span><span class="t-body"><b>Voice Recorder</b><small>Record audio with your microphone, play it back and download it as a file.</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/bpm-tap-tempo/" data-search="bpm tap tempo find the tempo of any song — tap along to the beat and get a live bpm readout with beat-interval stats. tap tempo bpm tap find bpm of song tempo finder beats per minute tap"><span class="t-ico">🎬</span><span class="t-body"><b>BPM Tap Tempo</b><small>Find the tempo of any song — tap along to the beat and get a live BPM readout with beat-inte…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/metronome-tool/" data-search="metronome tool a precise metronome with webaudio clicks — set any bpm, beats per bar and subdivision, with tap tempo and a visual pulse. metronome online metronome bpm metronome music practice tempo tool"><span class="t-ico">🎬</span><span class="t-body"><b>Metronome Tool</b><small>A precise metronome with WebAudio clicks — set any BPM, beats per bar and subdivision, with …</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/online-guitar-tuner/" data-search="online guitar tuner tune your guitar with real pitch detection — the mic listens, autocorrelation finds your note, and the needle shows how many cents sharp or flat you are. guitar tuner online guitar tuner pitch detection tune guitar chromatic tuner"><span class="t-ico">🎬</span><span class="t-body"><b>Online Guitar Tuner</b><small>Tune your guitar with real pitch detection — the mic listens, autocorrelation finds your not…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/pitch-pipe-tool/" data-search="pitch pipe tool a chromatic pitch pipe — tap any note from c to b across two octaves to hear a pure reference tone for tuning and singing. pitch pipe online pitch pipe tuning note reference pitch chromatic tuner note"><span class="t-ico">🎬</span><span class="t-body"><b>Pitch Pipe Tool</b><small>A chromatic pitch pipe — tap any note from C to B across two octaves to hear a pure referenc…</small></span><span class="t-arrow">→</span></a></div>
+  </section>
+</main>
+
+<!-- ADSTERRA-FOOTER: paste your Adsterra footer/banner ad code inside the div below -->
+<div class="container"><div class="ad-slot" data-ad="footer"></div></div>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="f-grid">
+      <div>
+        <span class="brandline"><span class="logo-mark">T</span> ToolNest</span>
+        <p>Free online tools that actually work. No sign-up, no watermarks — and your files never leave your device for client-side tools.</p>
+      </div>
+      <div>
+        <h4>Popular</h4>
+        <a href="/tools/qr-code-generator/">QR Code Generator</a>
+        <a href="/tools/background-remover/">Background Remover</a>
+        <a href="/tools/pdf-merger/">PDF Merger</a>
+        <a href="/tools/word-counter/">Word Counter</a>
+      </div>
+      <div>
+        <h4>Categories</h4>
+        <a href="/#image">Image Tools</a>
+        <a href="/#pdf">PDF &amp; Documents</a>
+        <a href="/#calculators">Calculators</a>
+        <a href="/#developer">Developer Tools</a>
+      </div>
+      <div>
+        <h4>Site</h4>
+        <a href="/">Home</a>
+        <a href="/#all-tools">All Tools</a>
+        <a href="/sitemap.xml">Sitemap</a>
+      </div>
+    </div>
+    <div class="f-bottom">© 2026 ToolNest · Free tools for everyone · Made with care</div>
+  </div>
+</footer>
+
+<script src="/assets/site.js?v=5"></script>
+
+<script>
+/* Tone Frequency Generator — 20Hz–20kHz oscillator, 4 waveforms, live sweep. */
+(function () {
+  'use strict';
+  var SLUG = 'tone-frequency-generator';
+  var ERR = SLUG + '-error';
+  var actx = null, osc = null, gain = null;
+  var playing = false;
+
+  function $(id) { return document.getElementById(id); }
+
+  function sliderToFreq(s) { return Math.round(20 * Math.pow(1000, s / 1000)); }
+  function freqToSlider(f) { return Math.round(1000 * Math.log(f / 20) / Math.log(1000)); }
+
+  function ctx() {
+    if (!actx) {
+      try { actx = new (window.AudioContext || window.webkitAudioContext)(); }
+      catch (e) { TN.setErr(ERR, 'Web Audio is not supported in this browser.'); return null; }
+    }
+    if (actx.state === 'suspended') actx.resume();
+    return actx;
+  }
+
+  function setFreq(f, fromSlider) {
+    f = Math.max(20, Math.min(20000, Math.round(f)));
+    $('tone-frequency-generator-f-v').textContent = f.toLocaleString('en-US');
+    if (!fromSlider) $('tone-frequency-generator-f').value = freqToSlider(f);
+    if (fromSlider) $('tone-frequency-generator-exact').value = f;
+    if (osc && actx) osc.frequency.setTargetAtTime(f, actx.currentTime, 0.01);
+  }
+
+  function start() {
+    var c = ctx();
+    if (!c) return;
+    stop();
+    osc = c.createOscillator();
+    gain = c.createGain();
+    osc.type = $('tone-frequency-generator-wave').value;
+    osc.frequency.value = parseFloat($('tone-frequency-generator-exact').value) || 440;
+    var v = (parseInt($('tone-frequency-generator-vol').value, 10) || 30) / 100;
+    gain.gain.value = v * 0.4;
+    osc.connect(gain); gain.connect(c.destination);
+    osc.start();
+    playing = true;
+    $('tone-frequency-generator-toggle').textContent = '⏹ Stop';
+    TN.clearErr(ERR);
+  }
+
+  function stop() {
+    if (osc) {
+      try { osc.stop(); } catch (e) {}
+      try { osc.disconnect(); } catch (e) {}
+      osc = null;
+    }
+    if (gain) { try { gain.disconnect(); } catch (e) {} gain = null; }
+    playing = false;
+    $('tone-frequency-generator-toggle').textContent = '▶ Play tone';
+  }
+
+  try {
+    setFreq(440, false);
+    TN.on('tone-frequency-generator-f', 'input', function () {
+      setFreq(sliderToFreq(parseInt($('tone-frequency-generator-f').value, 10)), true);
+    });
+    TN.on('tone-frequency-generator-exact', 'input', function () {
+      var f = parseFloat($('tone-frequency-generator-exact').value);
+      if (f >= 20 && f <= 20000) setFreq(f, false);
+    });
+    TN.on('tone-frequency-generator-wave', 'change', function () {
+      if (osc) osc.type = $('tone-frequency-generator-wave').value;
+    });
+    TN.on('tone-frequency-generator-vol', 'input', function () {
+      $('tone-frequency-generator-vol-v').textContent = $('tone-frequency-generator-vol').value;
+      if (gain && actx) gain.gain.setTargetAtTime((parseInt($('tone-frequency-generator-vol').value, 10) / 100) * 0.4, actx.currentTime, 0.01);
+    });
+    TN.on('tone-frequency-generator-toggle', 'click', function () { playing ? stop() : start(); });
+  } catch (e) { /* never throw on load */ }
+})();
+
+</script>
+</body>
+</html>

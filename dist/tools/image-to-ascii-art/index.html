@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Image to ASCII Art — Free Online | ToolNest</title>
+<meta name="description" content="Turn any photo into ASCII art — sample real pixel brightness, tweak width, contrast and character set, then copy or download the text.">
+<meta name="keywords" content="image to ascii, ascii art generator, photo to ascii, text art, ascii converter">
+<link rel="canonical" href="https://toolnest.vercel.app/tools/image-to-ascii-art/">
+<meta name="theme-color" content="#07070b">
+<meta property="og:title" content="Image to ASCII Art — Free Online | ToolNest">
+<meta property="og:description" content="Turn any photo into ASCII art — sample real pixel brightness, tweak width, contrast and character set, then copy or download the text.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css?v=4">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%23e01111'/><text x='50' y='68' font-size='58' text-anchor='middle' fill='white' font-family='Arial' font-weight='bold'>T</text></svg>">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebApplication","name":"Image to ASCII Art","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0"},"url":"https://toolnest.vercel.app/tools/image-to-ascii-art/","description":"Turn any photo into ASCII art — sample real pixel brightness, tweak width, contrast and character set, then copy or download the text."},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Does it actually look like my image?","acceptedAnswer":{"@type":"Answer","text":"Characters are picked by real sampled brightness from your image, so the art genuinely resembles the photo."}},{"@type":"Question","name":"Which character sets are available?","acceptedAnswer":{"@type":"Answer","text":"Standard ramps from sparse to dense, an inverted ramp for dark backgrounds, and a blocks-only set."}},{"@type":"Question","name":"Why does it need a monospace font?","acceptedAnswer":{"@type":"Answer","text":"Monospace fonts (like the preview) line characters up in a grid. Proportional fonts break the art."}},{"@type":"Question","name":"Is my image uploaded?","acceptedAnswer":{"@type":"Answer","text":"No — conversion happens entirely in your browser."}}]}]}</script>
+</head>
+<body>
+<header class="site-header">
+  <div class="container">
+    <a class="logo" href="/"><span class="logo-mark">T</span> ToolNest</a>
+    <div class="header-right">
+      <form class="nav-search" action="/" method="get" role="search">
+        <span class="ns-icon">🔍</span>
+        <input type="search" name="q" placeholder="Search tools…" aria-label="Search tools" autocomplete="off">
+      </form>
+      <div class="menu-wrap">
+        <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="menuPanel" aria-label="Open menu"><span></span><span></span><span></span></button>
+        <nav class="menu-panel" id="menuPanel" aria-label="Site">
+          <a href="/">Home</a>
+          <a href="/#categories">Categories</a>
+          <a href="/#all-tools">All Tools</a>
+        </nav>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ADSTERRA-HEADER: paste your Adsterra banner ad code inside the div below -->
+<div class="container"><div class="ad-slot ad-leaderboard" data-ad="header"></div></div>
+
+<main class="container">
+  <nav class="crumbs"><a href="/">Home</a> &rsaquo; <a href="/#image">Image Tools</a> &rsaquo; Image to ASCII Art</nav>
+  <div class="tool-hero">
+    <h1>Image to ASCII Art</h1>
+    <p>Turn any photo into ASCII art — sample real pixel brightness, tweak width, contrast and character set, then copy or download the text.</p>
+  </div>
+
+  <div class="tool-card">
+  <div class="field">
+    <label for="image-to-ascii-art-file">Upload image</label>
+    <input type="file" class="input" id="image-to-ascii-art-file" accept="image/*">
+  </div>
+  <div class="grid2">
+    <div class="field">
+      <label for="image-to-ascii-art-width">Width (<span id="image-to-ascii-art-width-v">100</span> chars)</label>
+      <input type="range" class="input" id="image-to-ascii-art-width" min="20" max="220" step="1" value="100">
+    </div>
+    <div class="field">
+      <label for="image-to-ascii-art-ramp">Character set</label>
+      <select class="input" id="image-to-ascii-art-ramp">
+        <option value="standard">Standard ( .:-=+*#%@)</option>
+        <option value="dense">Dense ($@B%8&amp;WM#*oahkbdpqwmZO0QLCJUYXzcvunxrjft/\\|()1{}[]?-_+~&lt;&gt;i!lI;:,. )</option>
+        <option value="inverted">Inverted (for dark backgrounds)</option>
+        <option value="blocks">Blocks ( ░▒▓█)</option>
+      </select>
+    </div>
+    <div class="field">
+      <label for="image-to-ascii-art-bright">Brightness (<span id="image-to-ascii-art-bright-v">0</span>)</label>
+      <input type="range" class="input" id="image-to-ascii-art-bright" min="-100" max="100" step="1" value="0">
+    </div>
+    <div class="field">
+      <label for="image-to-ascii-art-contrast">Contrast (<span id="image-to-ascii-art-contrast-v">0</span>)</label>
+      <input type="range" class="input" id="image-to-ascii-art-contrast" min="-100" max="100" step="1" value="0">
+    </div>
+  </div>
+  <div class="btn-row" style="margin-top:12px">
+    <button class="btn btn-outline" id="image-to-ascii-art-copy" disabled>Copy ASCII</button>
+    <button class="btn btn-outline" id="image-to-ascii-art-dl" disabled>Download .txt</button>
+  </div>
+  <div class="error" id="image-to-ascii-art-error"></div>
+  <div class="result" id="image-to-ascii-art-result" hidden>
+    <pre id="image-to-ascii-art-out" style="font-family:monospace;font-size:7px;line-height:1;white-space:pre;overflow:auto;background:#111;color:#eee;padding:12px;border-radius:8px;max-height:480px"></pre>
+  </div>
+</div>
+
+
+  <!-- ADSTERRA-INCONTENT: paste your Adsterra native/in-content ad code inside the div below -->
+  <div class="ad-slot" data-ad="incontent"></div>
+
+  <div class="info-grid">
+    <div class="info-card">
+      <h2>📖 How to use</h2>
+      <ol><li>Upload an image.</li><li>Set the output width in characters and pick a character ramp.</li><li>Adjust brightness/contrast if the art looks flat.</li><li>Copy the ASCII art or download it as a .txt file.</li></ol>
+    </div>
+    <div class="info-card">
+      <h2>❓ Frequently asked questions</h2>
+      <div class="faq"><details><summary>Does it actually look like my image?</summary><p>Characters are picked by real sampled brightness from your image, so the art genuinely resembles the photo.</p></details><details><summary>Which character sets are available?</summary><p>Standard ramps from sparse to dense, an inverted ramp for dark backgrounds, and a blocks-only set.</p></details><details><summary>Why does it need a monospace font?</summary><p>Monospace fonts (like the preview) line characters up in a grid. Proportional fonts break the art.</p></details><details><summary>Is my image uploaded?</summary><p>No — conversion happens entirely in your browser.</p></details></div>
+    </div>
+  </div>
+
+  <section class="section">
+    <h2>🔗 Related tools</h2>
+    <div class="tool-grid"><a class="tool-link" href="/tools/app-icon-resizer/" data-search="app icon resizer generate every common app icon size from one image — 16, 32, 48, 180, 192 and 512 px — with instant preview and one-click png downloads. app icon resizer icon generator favicon sizes pwa icon apple touch icon generator"><span class="t-ico">🖼️</span><span class="t-body"><b>App Icon Resizer</b><small>Generate every common app icon size from one image — 16, 32, 48, 180, 192 and 512 px — with …</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/background-remover/" data-search="background remover remove the background from any photo with real on-device ai and download a transparent png. free, private and unlimited — no sign-up needed. background remover remove image background transparent png maker"><span class="t-ico">🖼️</span><span class="t-body"><b>Background Remover</b><small>Remove the background from any photo with real on-device AI and download a transparent PNG. …</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/favicon-generator/" data-search="favicon generator generate a complete png favicon set (16–512 px) from your logo in one click, download it as a zip, and copy the ready-to-paste html link tags. favicon generator favicon maker png favicon"><span class="t-ico">🖼️</span><span class="t-body"><b>Favicon Generator</b><small>Generate a complete PNG favicon set (16–512 px) from your logo in one click, download it as …</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/image-border-adder/" data-search="image border adder add a clean border or frame to any image — set thickness, color, and corner style, preview instantly, and download the framed png. add border to image photo frame image border maker picture frame online photo border"><span class="t-ico">🖼️</span><span class="t-body"><b>Image Border Adder</b><small>Add a clean border or frame to any image — set thickness, color, and corner style, preview i…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/image-compressor/" data-search="image compressor shrink jpg, png and webp images right in your browser with an adjustable quality slider. compare before/after sizes, download each file or grab everything as a zip. image compressor compress jpg reduce image size"><span class="t-ico">🖼️</span><span class="t-body"><b>Image Compressor</b><small>Shrink JPG, PNG and WebP images right in your browser with an adjustable quality slider. Com…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/image-cropper/" data-search="image cropper crop any image by dragging a selection box over it — with optional fixed aspect ratios — then preview and download the cropped result. crop image image cropper crop photo online free crop tool crop picture"><span class="t-ico">🖼️</span><span class="t-body"><b>Image Cropper</b><small>Crop any image by dragging a selection box over it — with optional fixed aspect ratios — the…</small></span><span class="t-arrow">→</span></a></div>
+  </section>
+</main>
+
+<!-- ADSTERRA-FOOTER: paste your Adsterra footer/banner ad code inside the div below -->
+<div class="container"><div class="ad-slot" data-ad="footer"></div></div>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="f-grid">
+      <div>
+        <span class="brandline"><span class="logo-mark">T</span> ToolNest</span>
+        <p>Free online tools that actually work. No sign-up, no watermarks — and your files never leave your device for client-side tools.</p>
+      </div>
+      <div>
+        <h4>Popular</h4>
+        <a href="/tools/qr-code-generator/">QR Code Generator</a>
+        <a href="/tools/background-remover/">Background Remover</a>
+        <a href="/tools/pdf-merger/">PDF Merger</a>
+        <a href="/tools/word-counter/">Word Counter</a>
+      </div>
+      <div>
+        <h4>Categories</h4>
+        <a href="/#image">Image Tools</a>
+        <a href="/#pdf">PDF &amp; Documents</a>
+        <a href="/#calculators">Calculators</a>
+        <a href="/#developer">Developer Tools</a>
+      </div>
+      <div>
+        <h4>Site</h4>
+        <a href="/">Home</a>
+        <a href="/#all-tools">All Tools</a>
+        <a href="/sitemap.xml">Sitemap</a>
+      </div>
+    </div>
+    <div class="f-bottom">© 2026 ToolNest · Free tools for everyone · Made with care</div>
+  </div>
+</footer>
+
+<script src="/assets/site.js?v=5"></script>
+
+<script>
+/* Image to ASCII Art — sample real pixel brightness into text art. */
+(function () {
+  'use strict';
+  var SLUG = 'image-to-ascii-art';
+  var ERR = SLUG + '-error';
+  var img = null;
+  var ascii = '';
+
+  var RAMPS = {
+    standard: ' .:-=+*#%@',
+    dense: '$@B%8&WM#*oahkbdpqwmZO0QLCJUYXzcvunxrjft/\\|()1{}[]?-_+~<>i!lI;:,. ',
+    inverted: '@%#*+=-:. ',
+    blocks: ' ░▒▓█'
+  };
+
+  function $(id) { return document.getElementById(id); }
+
+  function render() {
+    if (!img) return;
+    TN.clearErr(ERR);
+    var cols = parseInt($('image-to-ascii-art-width').value, 10) || 100;
+    var rampKey = $('image-to-ascii-art-ramp').value;
+    var ramp = RAMPS[rampKey] || RAMPS.standard;
+    var bright = parseInt($('image-to-ascii-art-bright').value, 10) || 0;
+    var contrast = parseInt($('image-to-ascii-art-contrast').value, 10) || 0;
+    $('image-to-ascii-art-width-v').textContent = cols;
+    $('image-to-ascii-art-bright-v').textContent = bright;
+    $('image-to-ascii-art-contrast-v').textContent = contrast;
+    // characters are ~2x tall as wide
+    var rows = Math.round(cols * (img.naturalHeight / img.naturalWidth) / 2);
+    rows = Math.max(4, Math.min(400, rows));
+    var cv = document.createElement('canvas');
+    cv.width = cols; cv.height = rows;
+    var ctx = cv.getContext('2d');
+    ctx.drawImage(img, 0, 0, cols, rows);
+    var data;
+    try { data = ctx.getImageData(0, 0, cols, rows).data; }
+    catch (e) { TN.setErr(ERR, 'Could not read image pixels (CORS). Try another image.'); return; }
+    var cFactor = (259 * (contrast + 255)) / (255 * (259 - contrast));
+    var lines = [];
+    for (var y = 0; y < rows; y++) {
+      var line = '';
+      for (var x = 0; x < cols; x++) {
+        var i = (y * cols + x) * 4;
+        var lum = 0.299 * data[i] + 0.587 * data[i + 1] + 0.114 * data[i + 2];
+        lum = cFactor * (lum - 128) + 128 + bright;
+        lum = Math.max(0, Math.min(255, lum));
+        var idx = Math.floor((lum / 256) * ramp.length);
+        if (idx >= ramp.length) idx = ramp.length - 1;
+        line += ramp[idx];
+      }
+      lines.push(line);
+    }
+    ascii = lines.join('\n');
+    $('image-to-ascii-art-out').textContent = ascii;
+    $('image-to-ascii-art-result').hidden = false;
+    $('image-to-ascii-art-copy').disabled = false;
+    $('image-to-ascii-art-dl').disabled = false;
+  }
+
+  try {
+    TN.on('image-to-ascii-art-file', 'change', function (e) {
+      var f = e.target.files && e.target.files[0];
+      if (!f) return;
+      var url = URL.createObjectURL(f);
+      var im = new Image();
+      im.onload = function () { img = im; URL.revokeObjectURL(url); render(); };
+      im.onerror = function () { URL.revokeObjectURL(url); TN.setErr(ERR, 'Could not read that file as an image.'); };
+      im.src = url;
+    });
+    ['image-to-ascii-art-width', 'image-to-ascii-art-ramp', 'image-to-ascii-art-bright', 'image-to-ascii-art-contrast'].forEach(function (id) {
+      TN.on(id, 'input', render);
+      TN.on(id, 'change', render);
+    });
+    TN.on('image-to-ascii-art-copy', 'click', function () {
+      if (!ascii) return;
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(ascii).then(function () { TN.clearErr(ERR); }, function () { TN.setErr(ERR, 'Copy failed — select the art and copy manually.'); });
+      } else { TN.setErr(ERR, 'Clipboard not available — select the art and copy manually.'); }
+    });
+    TN.on('image-to-ascii-art-dl', 'click', function () {
+      if (!ascii) return;
+      var blob = new Blob([ascii], { type: 'text/plain' });
+      var a = document.createElement('a');
+      a.href = URL.createObjectURL(blob);
+      a.download = 'ascii-art.txt';
+      document.body.appendChild(a); a.click();
+      setTimeout(function () { document.body.removeChild(a); }, 100);
+    });
+  } catch (e) { /* never throw on load */ }
+})();
+
+</script>
+</body>
+</html>

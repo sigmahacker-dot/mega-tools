@@ -1,0 +1,28 @@
+<div class="tool-card">
+  <div class="grid2">
+    <div class="field"><label for="cal-title">Event title</label><input type="text" class="input" id="cal-title" placeholder="Team standup"></div>
+    <div class="field"><label for="cal-location">Location</label><input type="text" class="input" id="cal-location" placeholder="Conference room B / Zoom"></div>
+    <div class="field"><label for="cal-start">Start</label><input type="datetime-local" class="input" id="cal-start"></div>
+    <div class="field"><label for="cal-end">End</label><input type="datetime-local" class="input" id="cal-end"></div>
+    <div class="field"><label for="cal-reminder">Reminder</label>
+      <select class="select" id="cal-reminder">
+        <option value="none">No reminder</option>
+        <option value="PT5M">5 minutes before</option>
+        <option value="PT15M" selected>15 minutes before</option>
+        <option value="PT30M">30 minutes before</option>
+        <option value="PT1H">1 hour before</option>
+        <option value="P1D">1 day before</option>
+      </select>
+    </div>
+    <div class="field"><label for="cal-desc">Description</label><textarea class="textarea" id="cal-desc" rows="3" placeholder="Agenda, links, notes..."></textarea></div>
+  </div>
+  <div class="checkbox-row"><input type="checkbox" id="cal-allday"><label for="cal-allday">All-day event</label></div>
+  <div class="error" id="calendar-event-generator-error"></div>
+  <div class="result" id="cal-result">
+    <div class="field"><label for="cal-out">ICS file content</label><textarea class="textarea" id="cal-out" rows="12" readonly></textarea></div>
+    <div class="btn-row">
+      <button class="btn btn-primary" id="cal-dl" type="button">Download .ics</button>
+      <button class="btn btn-outline" id="cal-copy" type="button">Copy text</button>
+    </div>
+  </div>
+</div>

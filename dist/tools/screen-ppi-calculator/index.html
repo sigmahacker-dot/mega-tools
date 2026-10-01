@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Screen PPI Calculator — Free Online | ToolNest</title>
+<meta name="description" content="Calculate a display&#39;s pixels-per-inch (PPI) from its diagonal size and resolution, plus megapixels and aspect ratio.">
+<meta name="keywords" content="ppi calculator, pixels per inch calculator, screen density calculator, display ppi, resolution ppi calculator">
+<link rel="canonical" href="https://toolnest.vercel.app/tools/screen-ppi-calculator/">
+<meta name="theme-color" content="#07070b">
+<meta property="og:title" content="Screen PPI Calculator — Free Online | ToolNest">
+<meta property="og:description" content="Calculate a display&#39;s pixels-per-inch (PPI) from its diagonal size and resolution, plus megapixels and aspect ratio.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css?v=4">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%23e01111'/><text x='50' y='68' font-size='58' text-anchor='middle' fill='white' font-family='Arial' font-weight='bold'>T</text></svg>">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebApplication","name":"Screen PPI Calculator","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0"},"url":"https://toolnest.vercel.app/tools/screen-ppi-calculator/","description":"Calculate a display's pixels-per-inch (PPI) from its diagonal size and resolution, plus megapixels and aspect ratio."},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What is PPI?","acceptedAnswer":{"@type":"Answer","text":"Pixels per inch: the diagonal pixel count (by Pythagoras) divided by the diagonal screen size in inches. Higher PPI means sharper text and images."}},{"@type":"Question","name":"What is a good PPI?","acceptedAnswer":{"@type":"Answer","text":"Phones are usually 300-500 PPI, laptops 150-250 PPI, and desktop monitors 90-160 PPI. Above ~300 PPI at phone distance, pixels are invisible to most eyes."}},{"@type":"Question","name":"Does PPI affect performance?","acceptedAnswer":{"@type":"Answer","text":"Yes. Rendering more pixels costs GPU power, which is why games offer resolution scaling."}}]}]}</script>
+</head>
+<body>
+<header class="site-header">
+  <div class="container">
+    <a class="logo" href="/"><span class="logo-mark">T</span> ToolNest</a>
+    <div class="header-right">
+      <form class="nav-search" action="/" method="get" role="search">
+        <span class="ns-icon">🔍</span>
+        <input type="search" name="q" placeholder="Search tools…" aria-label="Search tools" autocomplete="off">
+      </form>
+      <div class="menu-wrap">
+        <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="menuPanel" aria-label="Open menu"><span></span><span></span><span></span></button>
+        <nav class="menu-panel" id="menuPanel" aria-label="Site">
+          <a href="/">Home</a>
+          <a href="/#categories">Categories</a>
+          <a href="/#all-tools">All Tools</a>
+        </nav>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ADSTERRA-HEADER: paste your Adsterra banner ad code inside the div below -->
+<div class="container"><div class="ad-slot ad-leaderboard" data-ad="header"></div></div>
+
+<main class="container">
+  <nav class="crumbs"><a href="/">Home</a> &rsaquo; <a href="/#calculators">Calculators</a> &rsaquo; Screen PPI Calculator</nav>
+  <div class="tool-hero">
+    <h1>Screen PPI Calculator</h1>
+    <p>Calculate a display&#39;s pixels-per-inch (PPI) from its diagonal size and resolution, plus megapixels and aspect ratio.</p>
+  </div>
+
+  <div class="tool-card">
+  <div class="grid2">
+    <div class="field"><label for="ppi-diag">Diagonal size (inches)</label><input type="number" class="input" id="ppi-diag" min="0" step="any" placeholder="6.1"></div>
+    <div class="field"><label for="ppi-w">Resolution width (px)</label><input type="number" class="input" id="ppi-w" min="1" step="1" placeholder="1170"></div>
+    <div class="field"><label for="ppi-h">Resolution height (px)</label><input type="number" class="input" id="ppi-h" min="1" step="1" placeholder="2532"></div>
+  </div>
+  <div class="error" id="screen-ppi-calculator-error"></div>
+  <div class="result" id="ppi-result">
+    <div class="stat-cards">
+      <div class="stat-card"><div class="v" id="ppi-value">–</div><div class="l">Pixels per inch</div></div>
+      <div class="stat-card"><div class="v" id="ppi-mp">–</div><div class="l">Megapixels</div></div>
+      <div class="stat-card"><div class="v" id="ppi-ratio">–</div><div class="l">Aspect ratio</div></div>
+    </div>
+    <p class="note">PPI = √(w² + h²) ÷ diagonal inches.</p>
+  </div>
+</div>
+
+  <!-- ADSTERRA-INCONTENT: paste your Adsterra native/in-content ad code inside the div below -->
+  <div class="ad-slot" data-ad="incontent"></div>
+
+  <div class="info-grid">
+    <div class="info-card">
+      <h2>📖 How to use</h2>
+      <ol><li>Enter the screen diagonal in inches.</li><li>Enter the horizontal and vertical resolution in pixels.</li><li>Read the PPI, total megapixels and simplified aspect ratio.</li></ol>
+    </div>
+    <div class="info-card">
+      <h2>❓ Frequently asked questions</h2>
+      <div class="faq"><details><summary>What is PPI?</summary><p>Pixels per inch: the diagonal pixel count (by Pythagoras) divided by the diagonal screen size in inches. Higher PPI means sharper text and images.</p></details><details><summary>What is a good PPI?</summary><p>Phones are usually 300-500 PPI, laptops 150-250 PPI, and desktop monitors 90-160 PPI. Above ~300 PPI at phone distance, pixels are invisible to most eyes.</p></details><details><summary>Does PPI affect performance?</summary><p>Yes. Rendering more pixels costs GPU power, which is why games offer resolution scaling.</p></details></div>
+    </div>
+  </div>
+
+  <section class="section">
+    <h2>🔗 Related tools</h2>
+    <div class="tool-grid"><a class="tool-link" href="/tools/age-calculator/" data-search="age calculator enter your date of birth to get your exact age in years, months and days, plus total weeks, days, hours, the weekday you were born, and days until your next birthday. age calculator calculate age date of birth age"><span class="t-ico">🧮</span><span class="t-body"><b>Age Calculator</b><small>Enter your date of birth to get your exact age in years, months and days, plus total weeks, …</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/aspect-ratio-calculator/" data-search="aspect ratio calculator reduce any width × height to its simplest aspect ratio, or find the missing side from a ratio. aspect ratio calculator reduce aspect ratio 16:9 calculator missing side calculator ratio simplifier"><span class="t-ico">🧮</span><span class="t-body"><b>Aspect Ratio Calculator</b><small>Reduce any width × height to its simplest aspect ratio, or find the missing side from a rati…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/bmi-calculator/" data-search="bmi calculator calculate your body mass index from height and weight in metric or imperial units. get your bmi value, weight category and the healthy weight range for your height. bmi calculator body mass index healthy weight calculator"><span class="t-ico">🧮</span><span class="t-body"><b>BMI Calculator</b><small>Calculate your Body Mass Index from height and weight in metric or imperial units. Get your …</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/concrete-calculator/" data-search="concrete calculator calculate cubic yards of concrete for any slab, plus how many 60 lb or 80 lb bags that equals. concrete calculator cubic yards concrete concrete bags calculator slab concrete estimator how much concrete"><span class="t-ico">🧮</span><span class="t-body"><b>Concrete Calculator</b><small>Calculate cubic yards of concrete for any slab, plus how many 60 lb or 80 lb bags that equal…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/cooking-measurement-scaler/" data-search="cooking measurement scaler scale any recipe up or down: enter servings and ingredients, get rescaled amounts with metric equivalents. recipe scaler scale recipe calculator cooking measurement converter adjust recipe servings ingredient scaler"><span class="t-ico">🧮</span><span class="t-body"><b>Cooking Measurement Scaler</b><small>Scale any recipe up or down: enter servings and ingredients, get rescaled amounts with metri…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/currency-converter/" data-search="currency converter convert any amount between 30+ world currencies with live exchange rates. pick source and target currencies, convert instantly, and see the rate and last update date. currency converter exchange rate converter usd to pkr converter"><span class="t-ico">🧮</span><span class="t-body"><b>Currency Converter</b><small>Convert any amount between 30+ world currencies with live exchange rates. Pick source and ta…</small></span><span class="t-arrow">→</span></a></div>
+  </section>
+</main>
+
+<!-- ADSTERRA-FOOTER: paste your Adsterra footer/banner ad code inside the div below -->
+<div class="container"><div class="ad-slot" data-ad="footer"></div></div>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="f-grid">
+      <div>
+        <span class="brandline"><span class="logo-mark">T</span> ToolNest</span>
+        <p>Free online tools that actually work. No sign-up, no watermarks — and your files never leave your device for client-side tools.</p>
+      </div>
+      <div>
+        <h4>Popular</h4>
+        <a href="/tools/qr-code-generator/">QR Code Generator</a>
+        <a href="/tools/background-remover/">Background Remover</a>
+        <a href="/tools/pdf-merger/">PDF Merger</a>
+        <a href="/tools/word-counter/">Word Counter</a>
+      </div>
+      <div>
+        <h4>Categories</h4>
+        <a href="/#image">Image Tools</a>
+        <a href="/#pdf">PDF &amp; Documents</a>
+        <a href="/#calculators">Calculators</a>
+        <a href="/#developer">Developer Tools</a>
+      </div>
+      <div>
+        <h4>Site</h4>
+        <a href="/">Home</a>
+        <a href="/#all-tools">All Tools</a>
+        <a href="/sitemap.xml">Sitemap</a>
+      </div>
+    </div>
+    <div class="f-bottom">© 2026 ToolNest · Free tools for everyone · Made with care</div>
+  </div>
+</footer>
+
+<script src="/assets/site.js?v=5"></script>
+
+<script>
+(function () {
+  'use strict';
+  var ERR = 'screen-ppi-calculator-error';
+  function gcd(a, b) { a = Math.abs(a); b = Math.abs(b); while (b) { var t = b; b = a % b; a = t; } return a || 1; }
+  function calc() {
+    if (!TN.el('ppi-diag')) return;
+    TN.clearErr(ERR);
+    var d = parseFloat(TN.el('ppi-diag').value);
+    var w = parseInt(TN.el('ppi-w').value, 10);
+    var h = parseInt(TN.el('ppi-h').value, 10);
+    if (!(d > 0)) { TN.setErr(ERR, 'Enter a diagonal size greater than 0 inches.'); return; }
+    if (!(w >= 1)) { TN.setErr(ERR, 'Enter a resolution width of at least 1 px.'); return; }
+    if (!(h >= 1)) { TN.setErr(ERR, 'Enter a resolution height of at least 1 px.'); return; }
+    var diagPx = Math.sqrt(w * w + h * h);
+    var ppi = diagPx / d;
+    var g = gcd(w, h);
+    TN.el('ppi-value').textContent = ppi.toFixed(1) + ' PPI';
+    TN.el('ppi-mp').textContent = (w * h / 1e6).toFixed(2) + ' MP';
+    TN.el('ppi-ratio').textContent = (w / g) + ':' + (h / g);
+  }
+  try {
+    TN.on('ppi-diag', 'input', calc);
+    TN.on('ppi-w', 'input', calc);
+    TN.on('ppi-h', 'input', calc);
+    calc();
+  } catch (e) { /* never throw on load */ }
+})();
+</script>
+</body>
+</html>

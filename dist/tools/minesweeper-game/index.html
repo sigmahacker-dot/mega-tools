@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Minesweeper Game — Free Online | ToolNest</title>
+<meta name="description" content="A full Minesweeper game — three difficulties, real mine placement, flood-fill reveals, flagging, and win/lose detection.">
+<meta name="keywords" content="minesweeper, minesweeper game, mine game, classic minesweeper, puzzle game">
+<link rel="canonical" href="https://toolnest.vercel.app/tools/minesweeper-game/">
+<meta name="theme-color" content="#07070b">
+<meta property="og:title" content="Minesweeper Game — Free Online | ToolNest">
+<meta property="og:description" content="A full Minesweeper game — three difficulties, real mine placement, flood-fill reveals, flagging, and win/lose detection.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css?v=4">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%23e01111'/><text x='50' y='68' font-size='58' text-anchor='middle' fill='white' font-family='Arial' font-weight='bold'>T</text></svg>">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebApplication","name":"Minesweeper Game","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0"},"url":"https://toolnest.vercel.app/tools/minesweeper-game/","description":"A full Minesweeper game — three difficulties, real mine placement, flood-fill reveals, flagging, and win/lose detection."},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Which difficulties are available?","acceptedAnswer":{"@type":"Answer","text":"Beginner (9×9, 10 mines), Intermediate (16×16, 40 mines) and Expert (16×30, 99 mines)."}},{"@type":"Question","name":"How do I flag a mine?","acceptedAnswer":{"@type":"Answer","text":"Left-click (or tap) reveals a cell; right-click (or long-press / the 🚩 toggle) places a flag."}},{"@type":"Question","name":"Is the first click always safe?","acceptedAnswer":{"@type":"Answer","text":"Yes — the first cell you reveal is always safe, along with its neighbors."}},{"@type":"Question","name":"How do I win?","acceptedAnswer":{"@type":"Answer","text":"You win by revealing every non-mine cell. Flagging all mines is not required."}}]}]}</script>
+</head>
+<body>
+<header class="site-header">
+  <div class="container">
+    <a class="logo" href="/"><span class="logo-mark">T</span> ToolNest</a>
+    <div class="header-right">
+      <form class="nav-search" action="/" method="get" role="search">
+        <span class="ns-icon">🔍</span>
+        <input type="search" name="q" placeholder="Search tools…" aria-label="Search tools" autocomplete="off">
+      </form>
+      <div class="menu-wrap">
+        <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="menuPanel" aria-label="Open menu"><span></span><span></span><span></span></button>
+        <nav class="menu-panel" id="menuPanel" aria-label="Site">
+          <a href="/">Home</a>
+          <a href="/#categories">Categories</a>
+          <a href="/#all-tools">All Tools</a>
+        </nav>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ADSTERRA-HEADER: paste your Adsterra banner ad code inside the div below -->
+<div class="container"><div class="ad-slot ad-leaderboard" data-ad="header"></div></div>
+
+<main class="container">
+  <nav class="crumbs"><a href="/">Home</a> &rsaquo; <a href="/#fun">Fun &amp; Lifestyle</a> &rsaquo; Minesweeper Game</nav>
+  <div class="tool-hero">
+    <h1>Minesweeper Game</h1>
+    <p>A full Minesweeper game — three difficulties, real mine placement, flood-fill reveals, flagging, and win/lose detection.</p>
+  </div>
+
+  <div class="tool-card" style="text-align:center">
+  <div class="grid2" style="max-width:420px;margin:0 auto 12px">
+    <div class="field" style="text-align:left">
+      <label for="minesweeper-game-diff">Difficulty</label>
+      <select class="input" id="minesweeper-game-diff">
+        <option value="9,9,10">Beginner — 9×9, 10 mines</option>
+        <option value="16,16,40">Intermediate — 16×16, 40 mines</option>
+        <option value="16,30,99">Expert — 16×30, 99 mines</option>
+      </select>
+    </div>
+    <div class="field" style="text-align:left">
+      <label for="minesweeper-game-flagmode">Tap mode</label>
+      <select class="input" id="minesweeper-game-flagmode">
+        <option value="dig">⛏️ Reveal</option>
+        <option value="flag">🚩 Flag</option>
+      </select>
+    </div>
+  </div>
+  <div class="stat-cards" style="max-width:420px;margin:0 auto 12px">
+    <div class="stat-card"><div class="v" id="minesweeper-game-mines">10</div><div class="l">Mines left</div></div>
+    <div class="stat-card"><div class="v" id="minesweeper-game-time">0</div><div class="l">Seconds</div></div>
+  </div>
+  <p class="muted" id="minesweeper-game-msg" style="min-height:24px">Right-click (or 🚩 mode) to flag.</p>
+  <div style="overflow:auto;display:inline-block;max-width:100%">
+    <div id="minesweeper-game-board" style="display:inline-grid;gap:2px;background:#9e9e9e;padding:4px;border-radius:6px"></div>
+  </div>
+  <div class="btn-row" style="justify-content:center;margin-top:12px">
+    <button class="btn" id="minesweeper-game-new">New game</button>
+  </div>
+  <div class="error" id="minesweeper-game-error"></div>
+</div>
+
+
+  <!-- ADSTERRA-INCONTENT: paste your Adsterra native/in-content ad code inside the div below -->
+  <div class="ad-slot" data-ad="incontent"></div>
+
+  <div class="info-grid">
+    <div class="info-card">
+      <h2>📖 How to use</h2>
+      <ol><li>Pick a difficulty and press New game.</li><li>Click cells to reveal — numbers show adjacent mines.</li><li>Right-click (or toggle 🚩 mode) to flag suspected mines.</li><li>Reveal every safe cell to win. Avoid the 💣!</li></ol>
+    </div>
+    <div class="info-card">
+      <h2>❓ Frequently asked questions</h2>
+      <div class="faq"><details><summary>Which difficulties are available?</summary><p>Beginner (9×9, 10 mines), Intermediate (16×16, 40 mines) and Expert (16×30, 99 mines).</p></details><details><summary>How do I flag a mine?</summary><p>Left-click (or tap) reveals a cell; right-click (or long-press / the 🚩 toggle) places a flag.</p></details><details><summary>Is the first click always safe?</summary><p>Yes — the first cell you reveal is always safe, along with its neighbors.</p></details><details><summary>How do I win?</summary><p>You win by revealing every non-mine cell. Flagging all mines is not required.</p></details></div>
+    </div>
+  </div>
+
+  <section class="section">
+    <h2>🔗 Related tools</h2>
+    <div class="tool-grid"><a class="tool-link" href="/tools/aim-trainer-game/" data-search="aim trainer game test and train your aim — targets pop up at random spots for 30 seconds. hits, misses and accuracy are tracked live. aim trainer aim test reaction test click speed test fps aim trainer"><span class="t-ico">🎲</span><span class="t-body"><b>Aim Trainer Game</b><small>Test and train your aim — targets pop up at random spots for 30 seconds. Hits, misses and ac…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/baby-name-generator/" data-search="baby name generator discover baby names by gender and origin — pakistani, arabic, western, indian or turkish — with meanings, random picks and tap-to-copy. baby name generator baby names with meanings muslim baby names boy girl names"><span class="t-ico">🎲</span><span class="t-body"><b>Baby Name Generator</b><small>Discover baby names by gender and origin — Pakistani, Arabic, Western, Indian or Turkish — w…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/battery-status-checker/" data-search="battery status checker check your device&#39;s battery level, charging status and estimated time remaining, with live updates — where your browser supports the battery api. battery status battery level checker laptop battery charging status"><span class="t-ico">🎲</span><span class="t-body"><b>Battery Status Checker</b><small>Check your device&#39;s battery level, charging status and estimated time remaining, with live u…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/birthday-countdown/" data-search="birthday countdown enter your birthday for a live countdown to your next one — days, hours, minutes and seconds — plus the age you&#39;ll turn and a fun message. birthday countdown countdown to birthday how old am i birthday timer"><span class="t-ico">🎲</span><span class="t-body"><b>Birthday Countdown</b><small>Enter your birthday for a live countdown to your next one — days, hours, minutes and seconds…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/calendar-generator/" data-search="calendar generator generate a monthly calendar for any month and year, with correct weekdays, leap years, today&#39;s date highlighted, and previous/next month navigation. calendar generator monthly calendar printable calendar month planner"><span class="t-ico">🎲</span><span class="t-body"><b>Calendar Generator</b><small>Generate a monthly calendar for any month and year, with correct weekdays, leap years, today…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/coin-flip/" data-search="coin flip flip a virtual coin with a fun animated toss. get instant heads or tails results, keep a running tally of both sides, and reset the count whenever you like. coin flip heads or tails coin toss random coin"><span class="t-ico">🎲</span><span class="t-body"><b>Coin Flip</b><small>Flip a virtual coin with a fun animated toss. Get instant Heads or Tails results, keep a run…</small></span><span class="t-arrow">→</span></a></div>
+  </section>
+</main>
+
+<!-- ADSTERRA-FOOTER: paste your Adsterra footer/banner ad code inside the div below -->
+<div class="container"><div class="ad-slot" data-ad="footer"></div></div>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="f-grid">
+      <div>
+        <span class="brandline"><span class="logo-mark">T</span> ToolNest</span>
+        <p>Free online tools that actually work. No sign-up, no watermarks — and your files never leave your device for client-side tools.</p>
+      </div>
+      <div>
+        <h4>Popular</h4>
+        <a href="/tools/qr-code-generator/">QR Code Generator</a>
+        <a href="/tools/background-remover/">Background Remover</a>
+        <a href="/tools/pdf-merger/">PDF Merger</a>
+        <a href="/tools/word-counter/">Word Counter</a>
+      </div>
+      <div>
+        <h4>Categories</h4>
+        <a href="/#image">Image Tools</a>
+        <a href="/#pdf">PDF &amp; Documents</a>
+        <a href="/#calculators">Calculators</a>
+        <a href="/#developer">Developer Tools</a>
+      </div>
+      <div>
+        <h4>Site</h4>
+        <a href="/">Home</a>
+        <a href="/#all-tools">All Tools</a>
+        <a href="/sitemap.xml">Sitemap</a>
+      </div>
+    </div>
+    <div class="f-bottom">© 2026 ToolNest · Free tools for everyone · Made with care</div>
+  </div>
+</footer>
+
+<script src="/assets/site.js?v=5"></script>
+
+<script>
+/* Minesweeper — real mines, flood fill, flags, win/lose, 3 difficulties. */
+(function () {
+  'use strict';
+  var SLUG = 'minesweeper-game';
+  var rows = 9, cols = 9, mineTotal = 10;
+  var mines = [], revealed = [], flagged = [];
+  var over = false, won = false, started = false;
+  var flagsPlaced = 0, revealedCount = 0;
+  var timerId = null, elapsed = 0;
+  var NUMC = ['', '#1976d2', '#388e3c', '#d32f2f', '#7b1fa2', '#ff8f00', '#00838f', '#5d4037', '#000'];
+
+  function $(id) { return document.getElementById(id); }
+  function idx(r, c) { return r * cols + c; }
+  function inB(r, c) { return r >= 0 && r < rows && c >= 0 && c < cols; }
+
+  function neighbors(r, c) {
+    var out = [];
+    for (var dr = -1; dr <= 1; dr++) for (var dc = -1; dc <= 1; dc++) {
+      if (!dr && !dc) continue;
+      if (inB(r + dr, c + dc)) out.push([r + dr, c + dc]);
+    }
+    return out;
+  }
+
+  function placeMines(safeR, safeC) {
+    mines = new Array(rows * cols).fill(false);
+    var safe = {};
+    safe[idx(safeR, safeC)] = true;
+    neighbors(safeR, safeC).forEach(function (p) { safe[idx(p[0], p[1])] = true; });
+    var placed = 0, guard = 0;
+    while (placed < mineTotal && guard < 100000) {
+      guard++;
+      var i = Math.floor(Math.random() * rows * cols);
+      if (mines[i] || safe[i]) continue;
+      mines[i] = true;
+      placed++;
+    }
+  }
+
+  function adjCount(r, c) {
+    var n = 0;
+    neighbors(r, c).forEach(function (p) { if (mines[idx(p[0], p[1])]) n++; });
+    return n;
+  }
+
+  function startTimer() {
+    stopTimer();
+    elapsed = 0;
+    $('minesweeper-game-time').textContent = '0';
+    timerId = setInterval(function () {
+      elapsed++;
+      $('minesweeper-game-time').textContent = elapsed;
+    }, 1000);
+  }
+  function stopTimer() { if (timerId) { clearInterval(timerId); timerId = null; } }
+
+  function build() {
+    revealed = new Array(rows * cols).fill(false);
+    flagged = new Array(rows * cols).fill(false);
+    over = false; won = false; started = false;
+    flagsPlaced = 0; revealedCount = 0;
+    stopTimer();
+    $('minesweeper-game-time').textContent = '0';
+    $('minesweeper-game-mines').textContent = mineTotal;
+    $('minesweeper-game-msg').textContent = 'Right-click (or 🚩 mode) to flag.';
+    var b = $('minesweeper-game-board');
+    b.innerHTML = '';
+    b.style.gridTemplateColumns = 'repeat(' + cols + ', 26px)';
+    for (var r = 0; r < rows; r++) {
+      for (var c = 0; c < cols; c++) {
+        (function (rr, cc) {
+          var d = document.createElement('button');
+          d.id = SLUG + '-cell-' + rr + '-' + cc;
+          d.style.cssText = 'width:26px;height:26px;font-size:14px;font-weight:bold;border:none;border-radius:3px;background:#bdbdbd;cursor:pointer;line-height:1;padding:0';
+          d.addEventListener('click', function (e) { e.preventDefault(); tap(rr, cc); });
+          d.addEventListener('contextmenu', function (e) { e.preventDefault(); toggleFlag(rr, cc); });
+          b.appendChild(d);
+        })(r, c);
+      }
+    }
+  }
+
+  function cellEl(r, c) { return $(SLUG + '-cell-' + r + '-' + c); }
+
+  function tap(r, c) {
+    if (over || won) return;
+    var i = idx(r, c);
+    if (revealed[i]) { chord(r, c); return; }
+    if ($('minesweeper-game-flagmode').value === 'flag') { toggleFlag(r, c); return; }
+    if (flagged[i]) return;
+    if (!started) { placeMines(r, c); started = true; startTimer(); }
+    reveal(r, c);
+    checkWin();
+  }
+
+  function chord(r, c) {
+    // reveal neighbors when flags match number
+    var n = adjCount(r, c);
+    var fl = 0;
+    neighbors(r, c).forEach(function (p) { if (flagged[idx(p[0], p[1])]) fl++; });
+    if (fl !== n) return;
+    neighbors(r, c).forEach(function (p) {
+      var i = idx(p[0], p[1]);
+      if (!revealed[i] && !flagged[i]) reveal(p[0], p[1]);
+    });
+    checkWin();
+  }
+
+  function reveal(r, c) {
+    var stack = [[r, c]];
+    while (stack.length) {
+      var p = stack.pop();
+      var rr = p[0], cc = p[1], i = idx(rr, cc);
+      if (!inB(rr, cc) || revealed[i] || flagged[i]) continue;
+      if (mines[i]) { explode(rr, cc); return; }
+      revealed[i] = true;
+      revealedCount++;
+      var n = adjCount(rr, cc);
+      var el = cellEl(rr, cc);
+      el.style.background = '#e0e0e0';
+      el.style.cursor = 'default';
+      if (n > 0) { el.textContent = n; el.style.color = NUMC[n] || '#000'; }
+      else neighbors(rr, cc).forEach(function (q) { stack.push(q); });
+    }
+  }
+
+  function explode(r, c) {
+    over = true;
+    stopTimer();
+    for (var i = 0; i < rows * cols; i++) {
+      if (mines[i]) {
+        var rr = Math.floor(i / cols), cc = i % cols;
+        var el = cellEl(rr, cc);
+        el.textContent = '💣';
+        el.style.background = i === idx(r, c) ? '#ef5350' : '#e0e0e0';
+      } else if (flagged[i]) {
+        var rr2 = Math.floor(i / cols), cc2 = i % cols;
+        cellEl(rr2, cc2).textContent = '❌';
+      }
+    }
+    $('minesweeper-game-msg').textContent = '💥 Boom! You hit a mine. Press New game to retry.';
+  }
+
+  function toggleFlag(r, c) {
+    if (over || won) return;
+    var i = idx(r, c);
+    if (revealed[i]) return;
+    flagged[i] = !flagged[i];
+    flagsPlaced += flagged[i] ? 1 : -1;
+    var el = cellEl(r, c);
+    el.textContent = flagged[i] ? '🚩' : '';
+    $('minesweeper-game-mines').textContent = mineTotal - flagsPlaced;
+  }
+
+  function checkWin() {
+    if (over || won) return;
+    if (revealedCount === rows * cols - mineTotal) {
+      won = true;
+      stopTimer();
+      // auto-flag remaining mines
+      for (var i = 0; i < rows * cols; i++) {
+        if (mines[i] && !flagged[i]) {
+          flagged[i] = true;
+          cellEl(Math.floor(i / cols), i % cols).textContent = '🚩';
+        }
+      }
+      $('minesweeper-game-mines').textContent = '0';
+      $('minesweeper-game-msg').textContent = '🏆 You win! Cleared in ' + elapsed + ' seconds.';
+    }
+  }
+
+  function newGame() {
+    var parts = $('minesweeper-game-diff').value.split(',');
+    rows = parseInt(parts[0], 10); cols = parseInt(parts[1], 10); mineTotal = parseInt(parts[2], 10);
+    build();
+  }
+
+  try {
+    TN.on('minesweeper-game-new', 'click', newGame);
+    TN.on('minesweeper-game-diff', 'change', newGame);
+    newGame();
+  } catch (e) { /* never throw on load */ }
+})();
+
+</script>
+</body>
+</html>

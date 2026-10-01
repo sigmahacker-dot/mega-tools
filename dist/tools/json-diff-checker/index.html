@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>JSON Diff Checker — Free Online | ToolNest</title>
+<meta name="description" content="Deep-compare two JSON documents: see added, removed and changed values with JSON paths, color-coded and counted.">
+<meta name="keywords" content="json diff, compare json, json diff checker, json difference, json compare tool">
+<link rel="canonical" href="https://toolnest.vercel.app/tools/json-diff-checker/">
+<meta name="theme-color" content="#07070b">
+<meta property="og:title" content="JSON Diff Checker — Free Online | ToolNest">
+<meta property="og:description" content="Deep-compare two JSON documents: see added, removed and changed values with JSON paths, color-coded and counted.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css?v=4">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%23e01111'/><text x='50' y='68' font-size='58' text-anchor='middle' fill='white' font-family='Arial' font-weight='bold'>T</text></svg>">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebApplication","name":"JSON Diff Checker","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0"},"url":"https://toolnest.vercel.app/tools/json-diff-checker/","description":"Deep-compare two JSON documents: see added, removed and changed values with JSON paths, color-coded and counted."},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How does the comparison work?","acceptedAnswer":{"@type":"Answer","text":"Objects are compared key by key, arrays element by element (by index), and every difference is reported with its JSON path like $.user.address.city."}},{"@type":"Question","name":"How are arrays compared?","acceptedAnswer":{"@type":"Answer","text":"Arrays compare by index: a changed element at index 2 is reported as changed at $[2], not as remove+add."}},{"@type":"Question","name":"Is the diff live?","acceptedAnswer":{"@type":"Answer","text":"Yes — the diff updates live as you type, with per-side syntax error messages."}},{"@type":"Question","name":"Is this private?","acceptedAnswer":{"@type":"Answer","text":"Yes, everything runs locally in your browser."}}]}]}</script>
+</head>
+<body>
+<header class="site-header">
+  <div class="container">
+    <a class="logo" href="/"><span class="logo-mark">T</span> ToolNest</a>
+    <div class="header-right">
+      <form class="nav-search" action="/" method="get" role="search">
+        <span class="ns-icon">🔍</span>
+        <input type="search" name="q" placeholder="Search tools…" aria-label="Search tools" autocomplete="off">
+      </form>
+      <div class="menu-wrap">
+        <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="menuPanel" aria-label="Open menu"><span></span><span></span><span></span></button>
+        <nav class="menu-panel" id="menuPanel" aria-label="Site">
+          <a href="/">Home</a>
+          <a href="/#categories">Categories</a>
+          <a href="/#all-tools">All Tools</a>
+        </nav>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ADSTERRA-HEADER: paste your Adsterra banner ad code inside the div below -->
+<div class="container"><div class="ad-slot ad-leaderboard" data-ad="header"></div></div>
+
+<main class="container">
+  <nav class="crumbs"><a href="/">Home</a> &rsaquo; <a href="/#developer">Developer Tools</a> &rsaquo; JSON Diff Checker</nav>
+  <div class="tool-hero">
+    <h1>JSON Diff Checker</h1>
+    <p>Deep-compare two JSON documents: see added, removed and changed values with JSON paths, color-coded and counted.</p>
+  </div>
+
+  <div class="tool-card">
+  <div class="grid2">
+    <div class="field"><label for="jd-a">Original JSON</label><textarea class="textarea" id="jd-a" rows="10" placeholder='{"name":"Ada","tags":["a","b"]}'></textarea></div>
+    <div class="field"><label for="jd-b">Modified JSON</label><textarea class="textarea" id="jd-b" rows="10" placeholder='{"name":"Ada","tags":["a","c"]}'></textarea></div>
+  </div>
+  <div class="error" id="json-diff-checker-error"></div>
+  <div class="result" id="jd-result">
+    <div class="stat-cards">
+      <div class="stat-card"><div class="v" id="jd-added" style="color:#4ade80">0</div><div class="l">Added</div></div>
+      <div class="stat-card"><div class="v" id="jd-removed" style="color:#f87171">0</div><div class="l">Removed</div></div>
+      <div class="stat-card"><div class="v" id="jd-changed" style="color:#fcd34d">0</div><div class="l">Changed</div></div>
+    </div>
+    <div style="max-height:380px;overflow-y:auto">
+      <table class="data"><thead><tr><th>Path</th><th>Type</th><th>Old</th><th>New</th></tr></thead><tbody id="jd-body"></tbody></table>
+    </div>
+    <div class="btn-row">
+      <button class="btn btn-outline" id="jd-copy" type="button">Copy report</button>
+      <button class="btn btn-outline" id="jd-swap" type="button">Swap sides</button>
+    </div>
+  </div>
+</div>
+
+  <!-- ADSTERRA-INCONTENT: paste your Adsterra native/in-content ad code inside the div below -->
+  <div class="ad-slot" data-ad="incontent"></div>
+
+  <div class="info-grid">
+    <div class="info-card">
+      <h2>📖 How to use</h2>
+      <ol><li>Paste the original JSON on the left and the modified JSON on the right.</li><li>Differences appear live, grouped as added, removed or changed.</li><li>Click Copy report for a plain-text summary of every difference.</li></ol>
+    </div>
+    <div class="info-card">
+      <h2>❓ Frequently asked questions</h2>
+      <div class="faq"><details><summary>How does the comparison work?</summary><p>Objects are compared key by key, arrays element by element (by index), and every difference is reported with its JSON path like $.user.address.city.</p></details><details><summary>How are arrays compared?</summary><p>Arrays compare by index: a changed element at index 2 is reported as changed at $[2], not as remove+add.</p></details><details><summary>Is the diff live?</summary><p>Yes — the diff updates live as you type, with per-side syntax error messages.</p></details><details><summary>Is this private?</summary><p>Yes, everything runs locally in your browser.</p></details></div>
+    </div>
+  </div>
+
+  <section class="section">
+    <h2>🔗 Related tools</h2>
+    <div class="tool-grid"><a class="tool-link" href="/tools/ascii-table-reference/" data-search="ascii table reference full ascii table 0–127: decimal, hex, octal, character, control-code names and html entities — searchable. ascii table ascii codes ascii chart control characters ascii reference"><span class="t-ico">💻</span><span class="t-body"><b>ASCII Table Reference</b><small>Full ASCII table 0–127: decimal, hex, octal, character, control-code names and HTML entities…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/base64-encoder-decoder/" data-search="base64 encoder / decoder encode text to base64 or decode base64 back to text, with full utf-8 support and a file-to-data-url converter. base64 encoder base64 decoder base64 encode base64 decode file to base64"><span class="t-ico">💻</span><span class="t-body"><b>Base64 Encoder / Decoder</b><small>Encode text to Base64 or decode Base64 back to text, with full UTF-8 support and a file-to-d…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/binary-text-converter/" data-search="binary and text converter convert text to binary or hex and back, with full utf-8 awareness and strict input validation. binary to text text to binary hex to text converter"><span class="t-ico">💻</span><span class="t-body"><b>Binary and Text Converter</b><small>Convert text to binary or hex and back, with full UTF-8 awareness and strict input validatio…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/color-code-converter/" data-search="color code converter type a color in hex, rgb or hsl format and instantly see it converted to all three formats with a preview swatch. color converter hex to rgb rgb to hex hsl converter color code"><span class="t-ico">💻</span><span class="t-body"><b>Color Code Converter</b><small>Type a color in HEX, RGB or HSL format and instantly see it converted to all three formats w…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/css-minifier/" data-search="css minifier compress css by stripping comments, collapsing whitespace and removing redundant semicolons, with before/after byte stats. css minifier minify css css compressor reduce css size"><span class="t-ico">💻</span><span class="t-body"><b>CSS Minifier</b><small>Compress CSS by stripping comments, collapsing whitespace and removing redundant semicolons,…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/css-specificity-calculator/" data-search="css specificity calculator calculate css selector specificity as (a,b,c) with a full breakdown — handles ids, classes, attributes, pseudo-classes, :not(), :is(), :where() and pseudo-elements. css specificity calculator specificity calculator css selector weight calculate specificity css cascade"><span class="t-ico">💻</span><span class="t-body"><b>CSS Specificity Calculator</b><small>Calculate CSS selector specificity as (a,b,c) with a full breakdown — handles IDs, classes, …</small></span><span class="t-arrow">→</span></a></div>
+  </section>
+</main>
+
+<!-- ADSTERRA-FOOTER: paste your Adsterra footer/banner ad code inside the div below -->
+<div class="container"><div class="ad-slot" data-ad="footer"></div></div>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="f-grid">
+      <div>
+        <span class="brandline"><span class="logo-mark">T</span> ToolNest</span>
+        <p>Free online tools that actually work. No sign-up, no watermarks — and your files never leave your device for client-side tools.</p>
+      </div>
+      <div>
+        <h4>Popular</h4>
+        <a href="/tools/qr-code-generator/">QR Code Generator</a>
+        <a href="/tools/background-remover/">Background Remover</a>
+        <a href="/tools/pdf-merger/">PDF Merger</a>
+        <a href="/tools/word-counter/">Word Counter</a>
+      </div>
+      <div>
+        <h4>Categories</h4>
+        <a href="/#image">Image Tools</a>
+        <a href="/#pdf">PDF &amp; Documents</a>
+        <a href="/#calculators">Calculators</a>
+        <a href="/#developer">Developer Tools</a>
+      </div>
+      <div>
+        <h4>Site</h4>
+        <a href="/">Home</a>
+        <a href="/#all-tools">All Tools</a>
+        <a href="/sitemap.xml">Sitemap</a>
+      </div>
+    </div>
+    <div class="f-bottom">© 2026 ToolNest · Free tools for everyone · Made with care</div>
+  </div>
+</footer>
+
+<script src="/assets/site.js?v=5"></script>
+
+<script>
+(function () {
+  'use strict';
+  var ERR = 'json-diff-checker-error';
+  var lastDiffs = [];
+  function esc(s) {
+    return String(s).replace(/[&<>"']/g, function (c) {
+      return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c];
+    });
+  }
+  function short(v) {
+    var s = JSON.stringify(v);
+    if (s === undefined) return 'undefined';
+    return s.length > 60 ? s.slice(0, 57) + '...' : s;
+  }
+  function isObj(v) { return v !== null && typeof v === 'object' && !Array.isArray(v); }
+  function diff(a, b, path, out) {
+    if (isObj(a) && isObj(b)) {
+      var keys = {};
+      Object.keys(a).forEach(function (k) { keys[k] = 1; });
+      Object.keys(b).forEach(function (k) { keys[k] = 1; });
+      Object.keys(keys).forEach(function (k) {
+        var p = path + '.' + k;
+        if (!(k in a)) out.push({ path: p, type: 'added', oldV: undefined, newV: b[k] });
+        else if (!(k in b)) out.push({ path: p, type: 'removed', oldV: a[k], newV: undefined });
+        else diff(a[k], b[k], p, out);
+      });
+      return;
+    }
+    if (Array.isArray(a) && Array.isArray(b)) {
+      var n = Math.max(a.length, b.length);
+      for (var i = 0; i < n; i++) {
+        var p = path + '[' + i + ']';
+        if (i >= a.length) out.push({ path: p, type: 'added', oldV: undefined, newV: b[i] });
+        else if (i >= b.length) out.push({ path: p, type: 'removed', oldV: a[i], newV: undefined });
+        else diff(a[i], b[i], p, out);
+      }
+      return;
+    }
+    if (JSON.stringify(a) !== JSON.stringify(b)) {
+      out.push({ path: path || '$', type: 'changed', oldV: a, newV: b });
+    }
+  }
+  var TYPE_STYLE = {
+    added: '<span style="color:#4ade80">added</span>',
+    removed: '<span style="color:#f87171">removed</span>',
+    changed: '<span style="color:#fcd34d">changed</span>'
+  };
+  function update() {
+    if (!TN.el('jd-body')) return;
+    TN.clearErr(ERR);
+    var ta = TN.el('jd-a').value.trim(), tb = TN.el('jd-b').value.trim();
+    if (!ta && !tb) {
+      TN.el('jd-body').innerHTML = '<tr><td colspan="4" class="muted">Paste JSON on both sides to compare.</td></tr>';
+      TN.el('jd-added').textContent = '0'; TN.el('jd-removed').textContent = '0'; TN.el('jd-changed').textContent = '0';
+      lastDiffs = [];
+      return;
+    }
+    var a, b;
+    try { a = ta ? JSON.parse(ta) : undefined; }
+    catch (e) { TN.setErr(ERR, 'Left side is not valid JSON: ' + e.message); return; }
+    try { b = tb ? JSON.parse(tb) : undefined; }
+    catch (e) { TN.setErr(ERR, 'Right side is not valid JSON: ' + e.message); return; }
+    var out = [];
+    if (a === undefined && b !== undefined) out.push({ path: '$', type: 'added', oldV: undefined, newV: b });
+    else if (b === undefined && a !== undefined) out.push({ path: '$', type: 'removed', oldV: a, newV: undefined });
+    else diff(a, b, '$', out);
+    lastDiffs = out;
+    var na = 0, nr = 0, nc = 0;
+    out.forEach(function (d) { if (d.type === 'added') na++; else if (d.type === 'removed') nr++; else nc++; });
+    TN.el('jd-added').textContent = na;
+    TN.el('jd-removed').textContent = nr;
+    TN.el('jd-changed').textContent = nc;
+    if (!out.length) {
+      TN.el('jd-body').innerHTML = '<tr><td colspan="4" class="muted">✓ The two documents are identical.</td></tr>';
+      return;
+    }
+    TN.el('jd-body').innerHTML = out.map(function (d) {
+      return '<tr><td style="font-family:ui-monospace,monospace">' + esc(d.path) + '</td><td>' + TYPE_STYLE[d.type] + '</td>' +
+        '<td style="font-family:ui-monospace,monospace;font-size:.82rem">' + (d.type === 'added' ? '<span class="muted">—</span>' : esc(short(d.oldV))) + '</td>' +
+        '<td style="font-family:ui-monospace,monospace;font-size:.82rem">' + (d.type === 'removed' ? '<span class="muted">—</span>' : esc(short(d.newV))) + '</td></tr>';
+    }).join('');
+  }
+  try {
+    TN.on('jd-a', 'input', update);
+    TN.on('jd-b', 'input', update);
+    TN.on('jd-swap', 'click', function () {
+      var t = TN.el('jd-a').value;
+      TN.el('jd-a').value = TN.el('jd-b').value;
+      TN.el('jd-b').value = t;
+      update();
+    });
+    TN.on('jd-copy', 'click', function () {
+      if (!lastDiffs.length) { TN.setErr(ERR, 'Nothing to report — run a comparison first.'); return; }
+      TN.clearErr(ERR);
+      var txt = lastDiffs.map(function (d) {
+        return d.type.toUpperCase() + ' ' + d.path +
+          (d.type === 'added' ? ' = ' + JSON.stringify(d.newV) :
+            d.type === 'removed' ? ' was ' + JSON.stringify(d.oldV) :
+              ': ' + JSON.stringify(d.oldV) + ' -> ' + JSON.stringify(d.newV));
+      }).join('\n');
+      if (TN.copy) TN.copy(txt);
+    });
+    TN.el('jd-a').value = '{\n  "name": "Ada",\n  "role": "admin",\n  "tags": ["a", "b"],\n  "limits": { "cpu": 2, "ram": 8 }\n}';
+    TN.el('jd-b').value = '{\n  "name": "Ada Lovelace",\n  "tags": ["a", "c"],\n  "limits": { "cpu": 4, "ram": 8 },\n  "active": true\n}';
+    update();
+  } catch (e) { /* never throw on load */ }
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,34 @@
+<div class="tool-card">
+  <div class="field"><label>Subjects</label><div id="study-subjects"></div>
+    <div class="btn-row"><button class="btn btn-outline btn-sm" id="study-add" type="button">+ Add subject</button></div>
+  </div>
+  <div class="grid2">
+    <div class="field"><label>Available days</label>
+      <div id="study-days">
+        <div class="checkbox-row"><input type="checkbox" id="study-d0" checked><label for="study-d0">Monday</label></div>
+        <div class="checkbox-row"><input type="checkbox" id="study-d1" checked><label for="study-d1">Tuesday</label></div>
+        <div class="checkbox-row"><input type="checkbox" id="study-d2" checked><label for="study-d2">Wednesday</label></div>
+        <div class="checkbox-row"><input type="checkbox" id="study-d3" checked><label for="study-d3">Thursday</label></div>
+        <div class="checkbox-row"><input type="checkbox" id="study-d4" checked><label for="study-d4">Friday</label></div>
+        <div class="checkbox-row"><input type="checkbox" id="study-d5"><label for="study-d5">Saturday</label></div>
+        <div class="checkbox-row"><input type="checkbox" id="study-d6"><label for="study-d6">Sunday</label></div>
+      </div>
+    </div>
+    <div class="field"><label for="study-session">Session length (minutes)</label>
+      <select class="select" id="study-session"><option>25</option><option selected>45</option><option>60</option><option>90</option></select>
+      <p class="note">Sessions are dealt round-robin across your days so the load stays balanced.</p>
+    </div>
+  </div>
+  <div class="error" id="study-plan-generator-error"></div>
+  <div class="result" id="study-result">
+    <div class="stat-cards">
+      <div class="stat-card"><div class="v" id="study-total-h">–</div><div class="l">Hours / week</div></div>
+      <div class="stat-card"><div class="v" id="study-total-s">–</div><div class="l">Sessions</div></div>
+    </div>
+    <div id="study-plan"></div>
+    <div class="btn-row">
+      <button class="btn btn-primary" id="study-go" type="button">Build plan</button>
+      <button class="btn btn-outline" id="study-dl" type="button">Download .txt</button>
+    </div>
+  </div>
+</div>

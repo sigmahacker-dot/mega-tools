@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Logarithm Calculator — Free Online | ToolNest</title>
+<meta name="description" content="Compute logarithms to any base using the change-of-base formula. Get log, natural log (ln), log10 and log2 of any positive number.">
+<meta name="keywords" content="logarithm calculator, log base calculator, natural log calculator, change of base formula, log10 log2 calculator">
+<link rel="canonical" href="https://toolnest.vercel.app/tools/logarithm-calculator/">
+<meta name="theme-color" content="#07070b">
+<meta property="og:title" content="Logarithm Calculator — Free Online | ToolNest">
+<meta property="og:description" content="Compute logarithms to any base using the change-of-base formula. Get log, natural log (ln), log10 and log2 of any positive number.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css?v=4">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%23e01111'/><text x='50' y='68' font-size='58' text-anchor='middle' fill='white' font-family='Arial' font-weight='bold'>T</text></svg>">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebApplication","name":"Logarithm Calculator","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0"},"url":"https://toolnest.vercel.app/tools/logarithm-calculator/","description":"Compute logarithms to any base using the change-of-base formula. Get log, natural log (ln), log10 and log2 of any positive number."},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What is a logarithm?","acceptedAnswer":{"@type":"Answer","text":"log_b(x) answers the question: to what power must the base b be raised to get x? For example, log_2(8) = 3 because 2^3 = 8."}},{"@type":"Question","name":"Why must the input be positive?","acceptedAnswer":{"@type":"Answer","text":"Real-valued logarithms are only defined for positive numbers, and the base must be positive and not equal to 1. This is a property of the exponential function, not a limitation of the tool."}},{"@type":"Question","name":"What is the natural logarithm (ln)?","acceptedAnswer":{"@type":"Answer","text":"The natural logarithm uses base e (approximately 2.71828). It appears throughout calculus, compound growth and science, and this tool shows it alongside every result."}},{"@type":"Question","name":"How is a custom base computed?","acceptedAnswer":{"@type":"Answer","text":"With the change-of-base formula: log_b(x) = ln(x) / ln(b). This is exactly how the calculator evaluates any base you enter."}}]}]}</script>
+</head>
+<body>
+<header class="site-header">
+  <div class="container">
+    <a class="logo" href="/"><span class="logo-mark">T</span> ToolNest</a>
+    <div class="header-right">
+      <form class="nav-search" action="/" method="get" role="search">
+        <span class="ns-icon">🔍</span>
+        <input type="search" name="q" placeholder="Search tools…" aria-label="Search tools" autocomplete="off">
+      </form>
+      <div class="menu-wrap">
+        <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="menuPanel" aria-label="Open menu"><span></span><span></span><span></span></button>
+        <nav class="menu-panel" id="menuPanel" aria-label="Site">
+          <a href="/">Home</a>
+          <a href="/#categories">Categories</a>
+          <a href="/#all-tools">All Tools</a>
+        </nav>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ADSTERRA-HEADER: paste your Adsterra banner ad code inside the div below -->
+<div class="container"><div class="ad-slot ad-leaderboard" data-ad="header"></div></div>
+
+<main class="container">
+  <nav class="crumbs"><a href="/">Home</a> &rsaquo; <a href="/#math">Math &amp; Numbers</a> &rsaquo; Logarithm Calculator</nav>
+  <div class="tool-hero">
+    <h1>Logarithm Calculator</h1>
+    <p>Compute logarithms to any base using the change-of-base formula. Get log, natural log (ln), log10 and log2 of any positive number.</p>
+  </div>
+
+  <div class="tool-card">
+  <div class="grid2">
+    <div class="field">
+      <label for="logarithm-calculator-x">Number (x)</label>
+      <input type="number" class="input" id="logarithm-calculator-x" step="any" min="0" placeholder="e.g. 100">
+    </div>
+    <div class="field">
+      <label for="logarithm-calculator-base">Logarithm base</label>
+      <select class="select" id="logarithm-calculator-base">
+        <option value="10">10 (common log)</option>
+        <option value="e">e ≈ 2.71828 (natural log)</option>
+        <option value="2">2 (binary log)</option>
+        <option value="custom">Custom base…</option>
+      </select>
+    </div>
+    <div class="field" id="logarithm-calculator-customwrap" style="display:none;">
+      <label for="logarithm-calculator-custom">Custom base</label>
+      <input type="number" class="input" id="logarithm-calculator-custom" step="any" min="0" placeholder="e.g. 5">
+    </div>
+  </div>
+  <div class="error" id="logarithm-calculator-error"></div>
+  <div class="result" id="logarithm-calculator-result">
+    <div class="stat-cards">
+      <div class="stat-card"><div class="v" id="logarithm-calculator-main">–</div><div class="l" id="logarithm-calculator-mainlabel">log₁₀(x)</div></div>
+      <div class="stat-card"><div class="v" id="logarithm-calculator-ln">–</div><div class="l">ln(x)</div></div>
+      <div class="stat-card"><div class="v" id="logarithm-calculator-log2">–</div><div class="l">log₂(x)</div></div>
+    </div>
+    <p class="note" id="logarithm-calculator-steps">Enter a positive number to compute its logarithm.</p>
+  </div>
+</div>
+
+
+  <!-- ADSTERRA-INCONTENT: paste your Adsterra native/in-content ad code inside the div below -->
+  <div class="ad-slot" data-ad="incontent"></div>
+
+  <div class="info-grid">
+    <div class="info-card">
+      <h2>📖 How to use</h2>
+      <ol><li>Enter the positive number x you want the logarithm of.</li><li>Choose a base: 10, e, 2, or type your own custom base.</li><li>Read log_b(x) instantly, plus ln(x), log10(x) and log2(x) for reference.</li><li>The change-of-base working is shown so you can verify the result.</li></ol>
+    </div>
+    <div class="info-card">
+      <h2>❓ Frequently asked questions</h2>
+      <div class="faq"><details><summary>What is a logarithm?</summary><p>log_b(x) answers the question: to what power must the base b be raised to get x? For example, log_2(8) = 3 because 2^3 = 8.</p></details><details><summary>Why must the input be positive?</summary><p>Real-valued logarithms are only defined for positive numbers, and the base must be positive and not equal to 1. This is a property of the exponential function, not a limitation of the tool.</p></details><details><summary>What is the natural logarithm (ln)?</summary><p>The natural logarithm uses base e (approximately 2.71828). It appears throughout calculus, compound growth and science, and this tool shows it alongside every result.</p></details><details><summary>How is a custom base computed?</summary><p>With the change-of-base formula: log_b(x) = ln(x) / ln(b). This is exactly how the calculator evaluates any base you enter.</p></details></div>
+    </div>
+  </div>
+
+  <section class="section">
+    <h2>🔗 Related tools</h2>
+    <div class="tool-grid"><a class="tool-link" href="/tools/complex-number-calculator/" data-search="complex number calculator add, subtract, multiply and divide complex numbers. see the result in a+bi form with modulus, argument and conjugates. complex number calculator imaginary number calculator complex division a+bi calculator complex arithmetic"><span class="t-ico">📐</span><span class="t-body"><b>Complex Number Calculator</b><small>Add, subtract, multiply and divide complex numbers. See the result in a+bi form with modulus…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/exponent-calculator/" data-search="exponent calculator raise any base to any exponent. get base^exponent instantly with the expanded multiplication shown step by step for integer powers. exponent calculator power calculator base to the power exponential calculation x to the power of n"><span class="t-ico">📐</span><span class="t-body"><b>Exponent Calculator</b><small>Raise any base to any exponent. Get base^exponent instantly with the expanded multiplication…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/factorial-calculator/" data-search="factorial calculator compute n! for any n from 0 to 170. see the exact value, scientific notation, the multiplication expanded step by step and the count of trailing zeros. factorial calculator n factorial compute n! trailing zeros factorial factorial value"><span class="t-ico">📐</span><span class="t-body"><b>Factorial Calculator</b><small>Compute n! for any n from 0 to 170. See the exact value, scientific notation, the multiplica…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/fraction-calculator/" data-search="fraction calculator add, subtract, multiply and divide fractions with simplification. fraction calculator add fractions simplify fraction"><span class="t-ico">📐</span><span class="t-body"><b>Fraction Calculator</b><small>Add, subtract, multiply and divide fractions with simplification.</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/gcf-lcm-calculator/" data-search="gcf &amp; lcm calculator greatest common factor and least common multiple of any list. gcf calculator lcm calculator greatest common factor"><span class="t-ico">📐</span><span class="t-body"><b>GCF &amp; LCM Calculator</b><small>Greatest common factor and least common multiple of any list.</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/matrix-calculator/" data-search="matrix calculator add, multiply, invert and transpose 2x2 and 3x3 matrices. matrix calculator matrix inverse matrix multiplication"><span class="t-ico">📐</span><span class="t-body"><b>Matrix Calculator</b><small>Add, multiply, invert and transpose 2x2 and 3x3 matrices.</small></span><span class="t-arrow">→</span></a></div>
+  </section>
+</main>
+
+<!-- ADSTERRA-FOOTER: paste your Adsterra footer/banner ad code inside the div below -->
+<div class="container"><div class="ad-slot" data-ad="footer"></div></div>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="f-grid">
+      <div>
+        <span class="brandline"><span class="logo-mark">T</span> ToolNest</span>
+        <p>Free online tools that actually work. No sign-up, no watermarks — and your files never leave your device for client-side tools.</p>
+      </div>
+      <div>
+        <h4>Popular</h4>
+        <a href="/tools/qr-code-generator/">QR Code Generator</a>
+        <a href="/tools/background-remover/">Background Remover</a>
+        <a href="/tools/pdf-merger/">PDF Merger</a>
+        <a href="/tools/word-counter/">Word Counter</a>
+      </div>
+      <div>
+        <h4>Categories</h4>
+        <a href="/#image">Image Tools</a>
+        <a href="/#pdf">PDF &amp; Documents</a>
+        <a href="/#calculators">Calculators</a>
+        <a href="/#developer">Developer Tools</a>
+      </div>
+      <div>
+        <h4>Site</h4>
+        <a href="/">Home</a>
+        <a href="/#all-tools">All Tools</a>
+        <a href="/sitemap.xml">Sitemap</a>
+      </div>
+    </div>
+    <div class="f-bottom">© 2026 ToolNest · Free tools for everyone · Made with care</div>
+  </div>
+</footer>
+
+<script src="/assets/site.js?v=5"></script>
+
+<script>
+(function () {
+  'use strict';
+  var P = 'logarithm-calculator-';
+  var ERR = P + 'error';
+  function g(id) { return document.getElementById(P + id); }
+  function set(id, v) { var el = g(id); if (el) el.textContent = v; }
+  function fmt(n) { if (!isFinite(n)) return '–'; return String(Number(n.toFixed(10))); }
+  function baseName(b) {
+    if (Math.abs(b - 10) < 1e-12) return 'log₁₀(x)';
+    if (Math.abs(b - Math.E) < 1e-12) return 'ln(x)';
+    if (Math.abs(b - 2) < 1e-12) return 'log₂(x)';
+    return 'log(' + fmt(b) + ', x)';
+  }
+  function blank() {
+    set('main', '–'); set('ln', '–'); set('log2', '–');
+    set('steps', 'Enter a positive number to compute its logarithm.');
+  }
+  function calc() {
+    if (!g('x')) return;
+    TN.clearErr(ERR);
+    var sel = g('base').value;
+    var wrap = g('customwrap');
+    if (wrap) wrap.style.display = sel === 'custom' ? '' : 'none';
+    var b = sel === 'custom' ? parseFloat(g('custom').value) : (sel === 'e' ? Math.E : parseFloat(sel));
+    var xv = g('x').value;
+    if (xv === '') { blank(); return; }
+    var x = parseFloat(xv);
+    if (isNaN(x) || x <= 0) { TN.setErr(ERR, 'x must be a positive number.'); blank(); return; }
+    if (sel === 'custom' && (isNaN(b) || b <= 0 || b === 1)) {
+      TN.setErr(ERR, 'The logarithm base must be positive and not equal to 1.');
+      blank(); return;
+    }
+    var main = Math.log(x) / Math.log(b);
+    set('main', fmt(main));
+    set('mainlabel', baseName(b));
+    set('ln', fmt(Math.log(x)));
+    set('log2', fmt(Math.log2(x)));
+    set('steps', 'Change-of-base: log(' + fmt(b) + ', ' + fmt(x) + ') = ln(' + fmt(x) + ') ÷ ln(' + fmt(b) + ') = ' +
+      fmt(Math.log(x)) + ' ÷ ' + fmt(Math.log(b)) + ' = ' + fmt(main) + '. Check: ' + fmt(b) + '^' + fmt(main) + ' ≈ ' + fmt(Math.pow(b, main)) + '.');
+  }
+  try {
+    TN.on(P + 'x', 'input', calc);
+    TN.on(P + 'custom', 'input', calc);
+    TN.on(P + 'base', 'change', calc);
+    calc();
+  } catch (e) { /* never throw on load */ }
+})();
+
+</script>
+</body>
+</html>

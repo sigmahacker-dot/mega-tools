@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Vector Calculator — Free Online | ToolNest</title>
+<meta name="description" content="Add, subtract, dot and cross 2D/3D vectors. Get magnitudes, the angle between vectors and step-by-step component working.">
+<meta name="keywords" content="vector calculator, dot product calculator, cross product calculator, vector addition, angle between vectors">
+<link rel="canonical" href="https://toolnest.vercel.app/tools/vector-calculator/">
+<meta name="theme-color" content="#07070b">
+<meta property="og:title" content="Vector Calculator — Free Online | ToolNest">
+<meta property="og:description" content="Add, subtract, dot and cross 2D/3D vectors. Get magnitudes, the angle between vectors and step-by-step component working.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css?v=4">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%23e01111'/><text x='50' y='68' font-size='58' text-anchor='middle' fill='white' font-family='Arial' font-weight='bold'>T</text></svg>">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebApplication","name":"Vector Calculator","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0"},"url":"https://toolnest.vercel.app/tools/vector-calculator/","description":"Add, subtract, dot and cross 2D/3D vectors. Get magnitudes, the angle between vectors and step-by-step component working."},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What is the dot product?","acceptedAnswer":{"@type":"Answer","text":"The dot product v·w = x₁x₂ + y₁y₂ + z₁z₂ is a scalar measuring how much two vectors point in the same direction. It is zero exactly when the vectors are perpendicular."}},{"@type":"Question","name":"What is the cross product?","acceptedAnswer":{"@type":"Answer","text":"The cross product v×w is a vector perpendicular to both inputs, with magnitude |v||w|sin θ. For 2D vectors the tool returns the scalar z-component."}},{"@type":"Question","name":"How is the angle between vectors found?","acceptedAnswer":{"@type":"Answer","text":"From cos θ = (v·w) / (|v| × |w|). The tool reports θ in degrees."}}]}]}</script>
+</head>
+<body>
+<header class="site-header">
+  <div class="container">
+    <a class="logo" href="/"><span class="logo-mark">T</span> ToolNest</a>
+    <div class="header-right">
+      <form class="nav-search" action="/" method="get" role="search">
+        <span class="ns-icon">🔍</span>
+        <input type="search" name="q" placeholder="Search tools…" aria-label="Search tools" autocomplete="off">
+      </form>
+      <div class="menu-wrap">
+        <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="menuPanel" aria-label="Open menu"><span></span><span></span><span></span></button>
+        <nav class="menu-panel" id="menuPanel" aria-label="Site">
+          <a href="/">Home</a>
+          <a href="/#categories">Categories</a>
+          <a href="/#all-tools">All Tools</a>
+        </nav>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ADSTERRA-HEADER: paste your Adsterra banner ad code inside the div below -->
+<div class="container"><div class="ad-slot ad-leaderboard" data-ad="header"></div></div>
+
+<main class="container">
+  <nav class="crumbs"><a href="/">Home</a> &rsaquo; <a href="/#math">Math &amp; Numbers</a> &rsaquo; Vector Calculator</nav>
+  <div class="tool-hero">
+    <h1>Vector Calculator</h1>
+    <p>Add, subtract, dot and cross 2D/3D vectors. Get magnitudes, the angle between vectors and step-by-step component working.</p>
+  </div>
+
+  <div class="tool-card">
+  <div class="grid2">
+    <div class="field">
+      <label for="vector-calculator-dim">Dimension</label>
+      <select class="select" id="vector-calculator-dim">
+        <option value="2">2D (x, y)</option>
+        <option value="3" selected>3D (x, y, z)</option>
+      </select>
+    </div>
+    <div class="field">
+      <label for="vector-calculator-op">Operation</label>
+      <select class="select" id="vector-calculator-op">
+        <option value="add">v + w (add)</option>
+        <option value="sub">v − w (subtract)</option>
+        <option value="dot" selected>v · w (dot product)</option>
+        <option value="cross">v × w (cross product)</option>
+        <option value="angle">Angle between v and w</option>
+        <option value="mag">Magnitudes |v| and |w|</option>
+      </select>
+    </div>
+    <div class="field">
+      <label for="vector-calculator-x1">v — x</label>
+      <input type="number" class="input" id="vector-calculator-x1" step="any" placeholder="e.g. 3">
+    </div>
+    <div class="field">
+      <label for="vector-calculator-y1">v — y</label>
+      <input type="number" class="input" id="vector-calculator-y1" step="any" placeholder="e.g. -2">
+    </div>
+    <div class="field" id="vector-calculator-z1w">
+      <label for="vector-calculator-z1">v — z</label>
+      <input type="number" class="input" id="vector-calculator-z1" step="any" placeholder="e.g. 5">
+    </div>
+    <div class="field">
+      <label for="vector-calculator-x2">w — x</label>
+      <input type="number" class="input" id="vector-calculator-x2" step="any" placeholder="e.g. 1">
+    </div>
+    <div class="field">
+      <label for="vector-calculator-y2">w — y</label>
+      <input type="number" class="input" id="vector-calculator-y2" step="any" placeholder="e.g. 4">
+    </div>
+    <div class="field" id="vector-calculator-z2w">
+      <label for="vector-calculator-z2">w — z</label>
+      <input type="number" class="input" id="vector-calculator-z2" step="any" placeholder="e.g. -1">
+    </div>
+  </div>
+  <div class="error" id="vector-calculator-error"></div>
+  <div class="result" id="vector-calculator-result">
+    <div class="stat-cards">
+      <div class="stat-card"><div class="v" id="vector-calculator-res">–</div><div class="l" id="vector-calculator-reslab">Result</div></div>
+      <div class="stat-card"><div class="v" id="vector-calculator-m1">–</div><div class="l">|v|</div></div>
+      <div class="stat-card"><div class="v" id="vector-calculator-m2">–</div><div class="l">|w|</div></div>
+    </div>
+    <p class="note" id="vector-calculator-steps">Enter both vectors to calculate.</p>
+  </div>
+</div>
+
+
+  <!-- ADSTERRA-INCONTENT: paste your Adsterra native/in-content ad code inside the div below -->
+  <div class="ad-slot" data-ad="incontent"></div>
+
+  <div class="info-grid">
+    <div class="info-card">
+      <h2>📖 How to use</h2>
+      <ol><li>Choose 2D or 3D vectors.</li><li>Enter the components of vector v and vector w.</li><li>Pick an operation: add, subtract, dot product, cross product, angle or magnitude.</li><li>Read the result with the component-by-component working.</li></ol>
+    </div>
+    <div class="info-card">
+      <h2>❓ Frequently asked questions</h2>
+      <div class="faq"><details><summary>What is the dot product?</summary><p>The dot product v·w = x₁x₂ + y₁y₂ + z₁z₂ is a scalar measuring how much two vectors point in the same direction. It is zero exactly when the vectors are perpendicular.</p></details><details><summary>What is the cross product?</summary><p>The cross product v×w is a vector perpendicular to both inputs, with magnitude |v||w|sin θ. For 2D vectors the tool returns the scalar z-component.</p></details><details><summary>How is the angle between vectors found?</summary><p>From cos θ = (v·w) / (|v| × |w|). The tool reports θ in degrees.</p></details></div>
+    </div>
+  </div>
+
+  <section class="section">
+    <h2>🔗 Related tools</h2>
+    <div class="tool-grid"><a class="tool-link" href="/tools/complex-number-calculator/" data-search="complex number calculator add, subtract, multiply and divide complex numbers. see the result in a+bi form with modulus, argument and conjugates. complex number calculator imaginary number calculator complex division a+bi calculator complex arithmetic"><span class="t-ico">📐</span><span class="t-body"><b>Complex Number Calculator</b><small>Add, subtract, multiply and divide complex numbers. See the result in a+bi form with modulus…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/exponent-calculator/" data-search="exponent calculator raise any base to any exponent. get base^exponent instantly with the expanded multiplication shown step by step for integer powers. exponent calculator power calculator base to the power exponential calculation x to the power of n"><span class="t-ico">📐</span><span class="t-body"><b>Exponent Calculator</b><small>Raise any base to any exponent. Get base^exponent instantly with the expanded multiplication…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/factorial-calculator/" data-search="factorial calculator compute n! for any n from 0 to 170. see the exact value, scientific notation, the multiplication expanded step by step and the count of trailing zeros. factorial calculator n factorial compute n! trailing zeros factorial factorial value"><span class="t-ico">📐</span><span class="t-body"><b>Factorial Calculator</b><small>Compute n! for any n from 0 to 170. See the exact value, scientific notation, the multiplica…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/fraction-calculator/" data-search="fraction calculator add, subtract, multiply and divide fractions with simplification. fraction calculator add fractions simplify fraction"><span class="t-ico">📐</span><span class="t-body"><b>Fraction Calculator</b><small>Add, subtract, multiply and divide fractions with simplification.</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/gcf-lcm-calculator/" data-search="gcf &amp; lcm calculator greatest common factor and least common multiple of any list. gcf calculator lcm calculator greatest common factor"><span class="t-ico">📐</span><span class="t-body"><b>GCF &amp; LCM Calculator</b><small>Greatest common factor and least common multiple of any list.</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/logarithm-calculator/" data-search="logarithm calculator compute logarithms to any base using the change-of-base formula. get log, natural log (ln), log10 and log2 of any positive number. logarithm calculator log base calculator natural log calculator change of base formula log10 log2 calculator"><span class="t-ico">📐</span><span class="t-body"><b>Logarithm Calculator</b><small>Compute logarithms to any base using the change-of-base formula. Get log, natural log (ln), …</small></span><span class="t-arrow">→</span></a></div>
+  </section>
+</main>
+
+<!-- ADSTERRA-FOOTER: paste your Adsterra footer/banner ad code inside the div below -->
+<div class="container"><div class="ad-slot" data-ad="footer"></div></div>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="f-grid">
+      <div>
+        <span class="brandline"><span class="logo-mark">T</span> ToolNest</span>
+        <p>Free online tools that actually work. No sign-up, no watermarks — and your files never leave your device for client-side tools.</p>
+      </div>
+      <div>
+        <h4>Popular</h4>
+        <a href="/tools/qr-code-generator/">QR Code Generator</a>
+        <a href="/tools/background-remover/">Background Remover</a>
+        <a href="/tools/pdf-merger/">PDF Merger</a>
+        <a href="/tools/word-counter/">Word Counter</a>
+      </div>
+      <div>
+        <h4>Categories</h4>
+        <a href="/#image">Image Tools</a>
+        <a href="/#pdf">PDF &amp; Documents</a>
+        <a href="/#calculators">Calculators</a>
+        <a href="/#developer">Developer Tools</a>
+      </div>
+      <div>
+        <h4>Site</h4>
+        <a href="/">Home</a>
+        <a href="/#all-tools">All Tools</a>
+        <a href="/sitemap.xml">Sitemap</a>
+      </div>
+    </div>
+    <div class="f-bottom">© 2026 ToolNest · Free tools for everyone · Made with care</div>
+  </div>
+</footer>
+
+<script src="/assets/site.js?v=5"></script>
+
+<script>
+(function () {
+  'use strict';
+  var P = 'vector-calculator-';
+  var ERR = P + 'error';
+  function g(id) { return document.getElementById(P + id); }
+  function set(id, v) { var el = g(id); if (el) el.textContent = v; }
+  function fmt(n) { if (!isFinite(n)) return '–'; return String(Number(n.toFixed(6))); }
+  function vfmt(v) { return '⟨' + v.map(fmt).join(', ') + '⟩'; }
+  function blank() {
+    set('res', '–'); set('reslab', 'Result'); set('m1', '–'); set('m2', '–');
+    set('steps', 'Enter both vectors to calculate.');
+  }
+  function calc() {
+    if (!g('x1')) return;
+    TN.clearErr(ERR);
+    var dim = parseInt(g('dim').value, 10);
+    g('z1w').style.display = dim === 3 ? '' : 'none';
+    g('z2w').style.display = dim === 3 ? '' : 'none';
+    var keys = dim === 3 ? ['x1', 'y1', 'z1', 'x2', 'y2', 'z2'] : ['x1', 'y1', 'x2', 'y2'];
+    var vals = {};
+    for (var i = 0; i < keys.length; i++) {
+      var raw = g(keys[i]).value;
+      if (raw === '') { blank(); return; }
+      var v = parseFloat(raw);
+      if (isNaN(v)) { TN.setErr(ERR, 'Enter valid numbers for all vector components.'); blank(); return; }
+      vals[keys[i]] = v;
+    }
+    var v = [vals.x1, vals.y1], w = [vals.x2, vals.y2];
+    if (dim === 3) { v.push(vals.z1); w.push(vals.z2); }
+    function mag(a) { return Math.sqrt(a.reduce(function (s, x) { return s + x * x; }, 0)); }
+    function dot(a, b) { var s = 0; for (var k = 0; k < a.length; k++) s += a[k] * b[k]; return s; }
+    var m1 = mag(v), m2 = mag(w);
+    set('m1', fmt(m1)); set('m2', fmt(m2));
+    var op = g('op').value, res, lab, steps;
+    if (op === 'add') {
+      res = v.map(function (x, k) { return x + w[k]; });
+      lab = 'v + w'; set('res', vfmt(res)); set('reslab', lab);
+      steps = vfmt(v) + ' + ' + vfmt(w) + ' = ' + vfmt(res) + ' (add matching components).';
+    } else if (op === 'sub') {
+      res = v.map(function (x, k) { return x - w[k]; });
+      lab = 'v − w'; set('res', vfmt(res)); set('reslab', lab);
+      steps = vfmt(v) + ' − ' + vfmt(w) + ' = ' + vfmt(res) + ' (subtract matching components).';
+    } else if (op === 'dot') {
+      var d = dot(v, w);
+      set('res', fmt(d)); set('reslab', 'v · w');
+      steps = 'v · w = ' + v.map(function (x, k) { return fmt(x) + '×' + fmt(w[k]); }).join(' + ') + ' = ' + fmt(d) + '.';
+    } else if (op === 'cross') {
+      if (dim === 2) {
+        var z = v[0] * w[1] - v[1] * w[0];
+        set('res', fmt(z)); set('reslab', 'v × w (z-scalar)');
+        steps = 'For 2D vectors, v × w = vₓw_y − v_ywₓ = ' + fmt(v[0]) + '×' + fmt(w[1]) + ' − ' + fmt(v[1]) + '×' + fmt(w[0]) + ' = ' + fmt(z) + '.';
+      } else {
+        var cr = [v[1] * w[2] - v[2] * w[1], v[2] * w[0] - v[0] * w[2], v[0] * w[1] - v[1] * w[0]];
+        set('res', vfmt(cr)); set('reslab', 'v × w');
+        steps = 'v × w = ⟨v_yw_z − v_zw_y, v_zwₓ − vₓw_z, vₓw_y − v_ywₓ⟩ = ' + vfmt(cr) + '.';
+      }
+    } else if (op === 'angle') {
+      if (m1 === 0 || m2 === 0) { TN.setErr(ERR, 'The angle is undefined for a zero vector.'); set('res', '–'); set('reslab', 'Angle θ'); return; }
+      var cos = Math.max(-1, Math.min(1, dot(v, w) / (m1 * m2)));
+      var deg = Math.acos(cos) * 180 / Math.PI;
+      set('res', fmt(deg) + '°'); set('reslab', 'Angle θ');
+      steps = 'cos θ = (v·w) ÷ (|v|×|w|) = ' + fmt(dot(v, w)) + ' ÷ ' + fmt(m1 * m2) + ' = ' + fmt(cos) + ', so θ = ' + fmt(deg) + '°.';
+    } else {
+      set('res', fmt(m1)); set('reslab', '|v|');
+      steps = '|v| = √(' + v.map(function (x) { return fmt(x) + '²'; }).join(' + ') + ') = ' + fmt(m1) + '; |w| = √(' + w.map(function (x) { return fmt(x) + '²'; }).join(' + ') + ') = ' + fmt(m2) + '.';
+    }
+    set('steps', steps);
+  }
+  try {
+    ['x1', 'y1', 'z1', 'x2', 'y2', 'z2'].forEach(function (k) { TN.on(P + k, 'input', calc); });
+    TN.on(P + 'dim', 'change', calc);
+    TN.on(P + 'op', 'change', calc);
+    calc();
+  } catch (e) { /* never throw on load */ }
+})();
+
+</script>
+</body>
+</html>

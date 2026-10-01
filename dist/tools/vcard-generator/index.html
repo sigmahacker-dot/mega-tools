@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>vCard Generator — Free Online | ToolNest</title>
+<meta name="description" content="Create a downloadable vCard (.vcf) contact file from name, phone, email and address — import it into any phone or address book.">
+<meta name="keywords" content="vcard generator, vcf file maker, contact card generator, create vcf file, digital business card">
+<link rel="canonical" href="https://toolnest.vercel.app/tools/vcard-generator/">
+<meta name="theme-color" content="#07070b">
+<meta property="og:title" content="vCard Generator — Free Online | ToolNest">
+<meta property="og:description" content="Create a downloadable vCard (.vcf) contact file from name, phone, email and address — import it into any phone or address book.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css?v=4">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%23e01111'/><text x='50' y='68' font-size='58' text-anchor='middle' fill='white' font-family='Arial' font-weight='bold'>T</text></svg>">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebApplication","name":"vCard Generator","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0"},"url":"https://toolnest.vercel.app/tools/vcard-generator/","description":"Create a downloadable vCard (.vcf) contact file from name, phone, email and address — import it into any phone or address book."},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What is a vCard file?","acceptedAnswer":{"@type":"Answer","text":"A vCard (.vcf) is the standard file format for electronic business cards. Opening one on a phone or in an email app imports the contact automatically."}},{"@type":"Question","name":"Which vCard version is generated?","acceptedAnswer":{"@type":"Answer","text":"Version 3.0, which is supported by iPhone, Android, Gmail, Outlook and virtually every address-book app."}},{"@type":"Question","name":"Is my contact data uploaded anywhere?","acceptedAnswer":{"@type":"Answer","text":"No. The vCard is generated entirely in your browser and never leaves your device."}}]}]}</script>
+</head>
+<body>
+<header class="site-header">
+  <div class="container">
+    <a class="logo" href="/"><span class="logo-mark">T</span> ToolNest</a>
+    <div class="header-right">
+      <form class="nav-search" action="/" method="get" role="search">
+        <span class="ns-icon">🔍</span>
+        <input type="search" name="q" placeholder="Search tools…" aria-label="Search tools" autocomplete="off">
+      </form>
+      <div class="menu-wrap">
+        <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="menuPanel" aria-label="Open menu"><span></span><span></span><span></span></button>
+        <nav class="menu-panel" id="menuPanel" aria-label="Site">
+          <a href="/">Home</a>
+          <a href="/#categories">Categories</a>
+          <a href="/#all-tools">All Tools</a>
+        </nav>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ADSTERRA-HEADER: paste your Adsterra banner ad code inside the div below -->
+<div class="container"><div class="ad-slot ad-leaderboard" data-ad="header"></div></div>
+
+<main class="container">
+  <nav class="crumbs"><a href="/">Home</a> &rsaquo; <a href="/#generators">Generators</a> &rsaquo; vCard Generator</nav>
+  <div class="tool-hero">
+    <h1>vCard Generator</h1>
+    <p>Create a downloadable vCard (.vcf) contact file from name, phone, email and address — import it into any phone or address book.</p>
+  </div>
+
+  <div class="tool-card">
+  <div class="grid2">
+    <div class="field"><label for="vcard-first">First name</label><input type="text" class="input" id="vcard-first" placeholder="Ada"></div>
+    <div class="field"><label for="vcard-last">Last name</label><input type="text" class="input" id="vcard-last" placeholder="Lovelace"></div>
+    <div class="field"><label for="vcard-org">Company</label><input type="text" class="input" id="vcard-org" placeholder="Analytical Engines Ltd"></div>
+    <div class="field"><label for="vcard-title">Job title</label><input type="text" class="input" id="vcard-title" placeholder="Mathematician"></div>
+    <div class="field"><label for="vcard-phone">Work phone</label><input type="tel" class="input" id="vcard-phone" placeholder="+1 555 010 2030"></div>
+    <div class="field"><label for="vcard-mobile">Mobile</label><input type="tel" class="input" id="vcard-mobile" placeholder="+1 555 010 7788"></div>
+    <div class="field"><label for="vcard-email">Email</label><input type="email" class="input" id="vcard-email" placeholder="ada@example.com"></div>
+    <div class="field"><label for="vcard-web">Website</label><input type="url" class="input" id="vcard-web" placeholder="https://example.com"></div>
+    <div class="field"><label for="vcard-addr">Address</label><input type="text" class="input" id="vcard-addr" placeholder="12 Algorithm Ave, London"></div>
+    <div class="field"><label for="vcard-note">Note</label><input type="text" class="input" id="vcard-note" placeholder="Met at the conference"></div>
+  </div>
+  <div class="error" id="vcard-generator-error"></div>
+  <div class="result" id="vcard-result">
+    <div class="field"><label for="vcard-out">vCard 3.0 output</label><textarea class="textarea" id="vcard-out" rows="12" readonly></textarea></div>
+    <div class="btn-row">
+      <button class="btn btn-primary" id="vcard-dl" type="button">Download .vcf</button>
+      <button class="btn btn-outline" id="vcard-copy" type="button">Copy text</button>
+    </div>
+  </div>
+</div>
+
+  <!-- ADSTERRA-INCONTENT: paste your Adsterra native/in-content ad code inside the div below -->
+  <div class="ad-slot" data-ad="incontent"></div>
+
+  <div class="info-grid">
+    <div class="info-card">
+      <h2>📖 How to use</h2>
+      <ol><li>Enter the contact&#39;s name, phone numbers, email and address.</li><li>The valid vCard 3.0 text is generated instantly in the preview box.</li><li>Click Download .vcf to save the file, then open it on your phone to import the contact.</li></ol>
+    </div>
+    <div class="info-card">
+      <h2>❓ Frequently asked questions</h2>
+      <div class="faq"><details><summary>What is a vCard file?</summary><p>A vCard (.vcf) is the standard file format for electronic business cards. Opening one on a phone or in an email app imports the contact automatically.</p></details><details><summary>Which vCard version is generated?</summary><p>Version 3.0, which is supported by iPhone, Android, Gmail, Outlook and virtually every address-book app.</p></details><details><summary>Is my contact data uploaded anywhere?</summary><p>No. The vCard is generated entirely in your browser and never leaves your device.</p></details></div>
+    </div>
+  </div>
+
+  <section class="section">
+    <h2>🔗 Related tools</h2>
+    <div class="tool-grid"><a class="tool-link" href="/tools/band-name-generator/" data-search="band name generator generate original band names by genre — rock, metal, pop, hip-hop, electronic, jazz, punk or indie — with one click and copy. band name generator rock band names metal band names cool band names music group name ideas"><span class="t-ico">⚙️</span><span class="t-body"><b>Band Name Generator</b><small>Generate original band names by genre — rock, metal, pop, hip-hop, electronic, jazz, punk or…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/barcode-generator/" data-search="barcode generator generate barcodes in common formats — code128, code39, ean-13, ean-8, upc and itf-14 — and download them as png or svg images. barcode generator barcode maker ean13 barcode upc barcode generator"><span class="t-ico">⚙️</span><span class="t-body"><b>Barcode Generator</b><small>Generate barcodes in common formats — CODE128, CODE39, EAN-13, EAN-8, UPC and ITF-14 — and d…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/bingo-card-generator/" data-search="bingo card generator create printable 5×5 bingo cards with classic b-i-n-g-o number ranges, an optional free space, or your own custom word list. bingo card generator printable bingo cards custom bingo cards bingo number generator free bingo cards"><span class="t-ico">⚙️</span><span class="t-body"><b>Bingo Card Generator</b><small>Create printable 5×5 bingo cards with classic B-I-N-G-O number ranges, an optional free spac…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/border-radius-generator/" data-search="border radius generator organic blob shapes with an 8-handle radius editor. border radius generator blob shape css border-radius css"><span class="t-ico">⚙️</span><span class="t-body"><b>Border Radius Generator</b><small>Organic blob shapes with an 8-handle radius editor.</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/box-shadow-generator/" data-search="box shadow generator visual css box-shadow builder with live preview. box shadow generator css shadow box-shadow css"><span class="t-ico">⚙️</span><span class="t-body"><b>Box Shadow Generator</b><small>Visual CSS box-shadow builder with live preview.</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/button-generator/" data-search="button generator design a custom button with your text, colors, border radius, padding and shadow — then copy the generated css and use it anywhere. button generator css button maker button css custom button design"><span class="t-ico">⚙️</span><span class="t-body"><b>Button Generator</b><small>Design a custom button with your text, colors, border radius, padding and shadow — then copy…</small></span><span class="t-arrow">→</span></a></div>
+  </section>
+</main>
+
+<!-- ADSTERRA-FOOTER: paste your Adsterra footer/banner ad code inside the div below -->
+<div class="container"><div class="ad-slot" data-ad="footer"></div></div>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="f-grid">
+      <div>
+        <span class="brandline"><span class="logo-mark">T</span> ToolNest</span>
+        <p>Free online tools that actually work. No sign-up, no watermarks — and your files never leave your device for client-side tools.</p>
+      </div>
+      <div>
+        <h4>Popular</h4>
+        <a href="/tools/qr-code-generator/">QR Code Generator</a>
+        <a href="/tools/background-remover/">Background Remover</a>
+        <a href="/tools/pdf-merger/">PDF Merger</a>
+        <a href="/tools/word-counter/">Word Counter</a>
+      </div>
+      <div>
+        <h4>Categories</h4>
+        <a href="/#image">Image Tools</a>
+        <a href="/#pdf">PDF &amp; Documents</a>
+        <a href="/#calculators">Calculators</a>
+        <a href="/#developer">Developer Tools</a>
+      </div>
+      <div>
+        <h4>Site</h4>
+        <a href="/">Home</a>
+        <a href="/#all-tools">All Tools</a>
+        <a href="/sitemap.xml">Sitemap</a>
+      </div>
+    </div>
+    <div class="f-bottom">© 2026 ToolNest · Free tools for everyone · Made with care</div>
+  </div>
+</footer>
+
+<script src="/assets/site.js?v=5"></script>
+
+<script>
+(function () {
+  'use strict';
+  var ERR = 'vcard-generator-error';
+  function val(id) { var e = TN.el(id); return e ? e.value.trim() : ''; }
+  function vesc(s) {
+    return String(s).replace(/\\/g, '\\\\').replace(/\r\n|\r|\n/g, '\\n').replace(/;/g, '\\;').replace(/,/g, '\\,');
+  }
+  function fold(line) {
+    if (line.length <= 75) return line;
+    var out = '', i = 0;
+    while (i < line.length) { out += (i ? '\r\n ' : '') + line.slice(i, i + 75); i += 75; }
+    return out;
+  }
+  function build() {
+    var first = val('vcard-first'), last = val('vcard-last');
+    var lines = ['BEGIN:VCARD', 'VERSION:3.0'];
+    lines.push('N:' + vesc(last) + ';' + vesc(first) + ';;;');
+    var fn = (first + ' ' + last).trim() || 'Unnamed Contact';
+    lines.push('FN:' + vesc(fn));
+    if (val('vcard-org')) lines.push('ORG:' + vesc(val('vcard-org')));
+    if (val('vcard-title')) lines.push('TITLE:' + vesc(val('vcard-title')));
+    if (val('vcard-phone')) lines.push('TEL;TYPE=WORK,VOICE:' + vesc(val('vcard-phone')));
+    if (val('vcard-mobile')) lines.push('TEL;TYPE=CELL,VOICE:' + vesc(val('vcard-mobile')));
+    if (val('vcard-email')) lines.push('EMAIL;TYPE=INTERNET:' + vesc(val('vcard-email')));
+    if (val('vcard-web')) lines.push('URL:' + vesc(val('vcard-web')));
+    if (val('vcard-addr')) lines.push('ADR;TYPE=WORK:;;' + vesc(val('vcard-addr')) + ';;;;');
+    if (val('vcard-note')) lines.push('NOTE:' + vesc(val('vcard-note')));
+    lines.push('END:VCARD');
+    return lines.map(fold).join('\r\n');
+  }
+  function dl(text, name) {
+    var b = new Blob([text], { type: 'text/vcard;charset=utf-8' });
+    var a = document.createElement('a');
+    a.href = URL.createObjectURL(b);
+    a.download = name;
+    document.body.appendChild(a);
+    a.click();
+    setTimeout(function () { URL.revokeObjectURL(a.href); a.remove(); }, 400);
+  }
+  function update() {
+    if (!TN.el('vcard-out')) return;
+    TN.clearErr(ERR);
+    TN.el('vcard-out').value = build();
+  }
+  try {
+    ['vcard-first', 'vcard-last', 'vcard-org', 'vcard-title', 'vcard-phone', 'vcard-mobile', 'vcard-email', 'vcard-web', 'vcard-addr', 'vcard-note']
+      .forEach(function (id) { TN.on(id, 'input', update); });
+    TN.on('vcard-dl', 'click', function () {
+      if (!val('vcard-first') && !val('vcard-last') && !val('vcard-email') && !val('vcard-phone') && !val('vcard-mobile')) {
+        TN.setErr(ERR, 'Enter at least a name, email or phone number first.');
+        return;
+      }
+      TN.clearErr(ERR);
+      var fn = (val('vcard-first') + '_' + val('vcard-last')).replace(/[^a-zA-Z0-9_-]+/g, '').replace(/^_+|_+$/g, '') || 'contact';
+      dl(build(), fn + '.vcf');
+    });
+    TN.on('vcard-copy', 'click', function () { if (TN.copy) TN.copy(TN.el('vcard-out').value); });
+    update();
+  } catch (e) { /* never throw on load */ }
+})();
+</script>
+</body>
+</html>

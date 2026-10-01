@@ -1,0 +1,32 @@
+<div class="tool-card" style="text-align:center">
+  <div style="font-size:56px;font-weight:800"><span id="tone-frequency-generator-f-v">440</span><span style="font-size:24px" class="muted"> Hz</span></div>
+  <div class="field" style="max-width:480px;margin:12px auto;text-align:left">
+    <label for="tone-frequency-generator-f">Frequency (log scale, 20–20000 Hz)</label>
+    <input type="range" class="input" id="tone-frequency-generator-f" min="0" max="1000" step="1" value="627">
+  </div>
+  <div class="grid2" style="max-width:480px;margin:0 auto;text-align:left">
+    <div class="field">
+      <label for="tone-frequency-generator-exact">Exact frequency (Hz)</label>
+      <input type="number" class="input" id="tone-frequency-generator-exact" min="20" max="20000" step="any" value="440">
+    </div>
+    <div class="field">
+      <label for="tone-frequency-generator-wave">Waveform</label>
+      <select class="input" id="tone-frequency-generator-wave">
+        <option value="sine">Sine — pure</option>
+        <option value="triangle">Triangle — soft</option>
+        <option value="square">Square — hollow</option>
+        <option value="sawtooth">Sawtooth — buzzy</option>
+      </select>
+    </div>
+    <div class="field">
+      <label for="tone-frequency-generator-vol">Volume (<span id="tone-frequency-generator-vol-v">30</span>%)</label>
+      <input type="range" class="input" id="tone-frequency-generator-vol" min="0" max="100" step="1" value="30">
+    </div>
+    <div class="field">
+      <label>&nbsp;</label>
+      <button class="btn" id="tone-frequency-generator-toggle" style="width:100%">▶ Play tone</button>
+    </div>
+  </div>
+  <p class="note">⚠️ Start at low volume, especially with headphones.</p>
+  <div class="error" id="tone-frequency-generator-error"></div>
+</div>

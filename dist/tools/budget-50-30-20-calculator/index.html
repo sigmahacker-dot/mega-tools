@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>50/30/20 Budget Calculator — Free Online | ToolNest</title>
+<meta name="description" content="Split your take-home pay into needs (50%), wants (30%) and savings (20%), then compare with your actual spending.">
+<meta name="keywords" content="50 30 20 budget, budget calculator, needs wants savings, monthly budget planner, budget rule calculator">
+<link rel="canonical" href="https://toolnest.vercel.app/tools/budget-50-30-20-calculator/">
+<meta name="theme-color" content="#07070b">
+<meta property="og:title" content="50/30/20 Budget Calculator — Free Online | ToolNest">
+<meta property="og:description" content="Split your take-home pay into needs (50%), wants (30%) and savings (20%), then compare with your actual spending.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css?v=4">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%23e01111'/><text x='50' y='68' font-size='58' text-anchor='middle' fill='white' font-family='Arial' font-weight='bold'>T</text></svg>">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebApplication","name":"50/30/20 Budget Calculator","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0"},"url":"https://toolnest.vercel.app/tools/budget-50-30-20-calculator/","description":"Split your take-home pay into needs (50%), wants (30%) and savings (20%), then compare with your actual spending."},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What counts as needs vs wants?","acceptedAnswer":{"@type":"Answer","text":"Needs: housing, food, transport, insurance, minimum debt payments. Wants: dining out, hobbies, subscriptions, travel. Savings: emergency fund, investing, extra debt payoff."}},{"@type":"Question","name":"What if my needs exceed 50%?","acceptedAnswer":{"@type":"Answer","text":"Common in expensive cities. Aim to trim wants first, then look at bigger levers like housing or transport."}},{"@type":"Question","name":"Is 50/30/20 a strict rule?","acceptedAnswer":{"@type":"Answer","text":"No — it is a starting framework. Adjust the split to your goals, e.g. 50/20/30 to save aggressively."}}]}]}</script>
+</head>
+<body>
+<header class="site-header">
+  <div class="container">
+    <a class="logo" href="/"><span class="logo-mark">T</span> ToolNest</a>
+    <div class="header-right">
+      <form class="nav-search" action="/" method="get" role="search">
+        <span class="ns-icon">🔍</span>
+        <input type="search" name="q" placeholder="Search tools…" aria-label="Search tools" autocomplete="off">
+      </form>
+      <div class="menu-wrap">
+        <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="menuPanel" aria-label="Open menu"><span></span><span></span><span></span></button>
+        <nav class="menu-panel" id="menuPanel" aria-label="Site">
+          <a href="/">Home</a>
+          <a href="/#categories">Categories</a>
+          <a href="/#all-tools">All Tools</a>
+        </nav>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ADSTERRA-HEADER: paste your Adsterra banner ad code inside the div below -->
+<div class="container"><div class="ad-slot ad-leaderboard" data-ad="header"></div></div>
+
+<main class="container">
+  <nav class="crumbs"><a href="/">Home</a> &rsaquo; <a href="/#finance">Finance &amp; Money</a> &rsaquo; 50/30/20 Budget Calculator</nav>
+  <div class="tool-hero">
+    <h1>50/30/20 Budget Calculator</h1>
+    <p>Split your take-home pay into needs (50%), wants (30%) and savings (20%), then compare with your actual spending.</p>
+  </div>
+
+  <div class="tool-card">
+  <div class="grid2">
+    <div class="field"><label for="b50-income">Monthly take-home pay ($)</label><input type="number" class="input" id="b50-income" min="0" step="any" placeholder="4000"></div>
+    <div class="field"><label for="b50-aneeds">Actual needs spending ($) — optional</label><input type="number" class="input" id="b50-aneeds" min="0" step="any" placeholder=""></div>
+    <div class="field"><label for="b50-awants">Actual wants spending ($) — optional</label><input type="number" class="input" id="b50-awants" min="0" step="any" placeholder=""></div>
+    <div class="field"><label for="b50-asave">Actual savings ($) — optional</label><input type="number" class="input" id="b50-asave" min="0" step="any" placeholder=""></div>
+  </div>
+  <div class="error" id="budget-50-30-20-calculator-error"></div>
+  <div class="result" id="b50-result">
+    <div class="stat-cards">
+      <div class="stat-card"><div class="v" id="b50-needs">–</div><div class="l">Needs (50%)</div></div>
+      <div class="stat-card"><div class="v" id="b50-wants">–</div><div class="l">Wants (30%)</div></div>
+      <div class="stat-card"><div class="v" id="b50-save">–</div><div class="l">Savings (20%)</div></div>
+    </div>
+    <table class="data">
+      <thead><tr><th>Bucket</th><th>Target</th><th>Actual</th><th>Difference</th></tr></thead>
+      <tbody id="b50-body"><tr><td colspan="4" class="muted">Enter your take-home pay.</td></tr></tbody>
+    </table>
+    <p class="note">Actuals are optional — leave blank to see targets only.</p>
+  </div>
+</div>
+
+  <!-- ADSTERRA-INCONTENT: paste your Adsterra native/in-content ad code inside the div below -->
+  <div class="ad-slot" data-ad="incontent"></div>
+
+  <div class="info-grid">
+    <div class="info-card">
+      <h2>📖 How to use</h2>
+      <ol><li>Enter your monthly take-home pay.</li><li>Read your 50/30/20 targets instantly.</li><li>Optionally enter actual spending per bucket to see over/under.</li></ol>
+    </div>
+    <div class="info-card">
+      <h2>❓ Frequently asked questions</h2>
+      <div class="faq"><details><summary>What counts as needs vs wants?</summary><p>Needs: housing, food, transport, insurance, minimum debt payments. Wants: dining out, hobbies, subscriptions, travel. Savings: emergency fund, investing, extra debt payoff.</p></details><details><summary>What if my needs exceed 50%?</summary><p>Common in expensive cities. Aim to trim wants first, then look at bigger levers like housing or transport.</p></details><details><summary>Is 50/30/20 a strict rule?</summary><p>No — it is a starting framework. Adjust the split to your goals, e.g. 50/20/30 to save aggressively.</p></details></div>
+    </div>
+  </div>
+
+  <section class="section">
+    <h2>🔗 Related tools</h2>
+    <div class="tool-grid"><a class="tool-link" href="/tools/car-loan-calculator/" data-search="car loan calculator compute monthly car payments, total interest and full cost from price, down payment, trade-in, rate and term. car loan calculator auto loan calculator monthly car payment car finance calculator vehicle loan estimator"><span class="t-ico">💰</span><span class="t-body"><b>Car Loan Calculator</b><small>Compute monthly car payments, total interest and full cost from price, down payment, trade-i…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/compound-interest-calculator/" data-search="compound interest calculator project how your savings grow over time with compound interest, regular monthly contributions and your choice of compounding frequency. compound interest calculator savings growth calculator compound interest with contributions"><span class="t-ico">💰</span><span class="t-body"><b>Compound Interest Calculator</b><small>Project how your savings grow over time with compound interest, regular monthly contribution…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/credit-card-validator/" data-search="credit card validator check any card number with the luhn algorithm and detect its brand — a format check only, never a real-card check. credit card validator luhn check card number checker card brand detector"><span class="t-ico">💰</span><span class="t-body"><b>Credit Card Validator</b><small>Check any card number with the Luhn algorithm and detect its brand — a format check only, ne…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/crypto-profit-calculator/" data-search="crypto profit calculator calculate profit, loss and roi on any crypto trade with buy/sell fees included. crypto profit calculator bitcoin profit calculator crypto roi calculator trading profit calculator coin profit loss"><span class="t-ico">💰</span><span class="t-body"><b>Crypto Profit Calculator</b><small>Calculate profit, loss and ROI on any crypto trade with buy/sell fees included.</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/debt-payoff-calculator/" data-search="debt payoff planner build an avalanche payoff plan for up to 8 debts: payoff order, months to debt-free and total interest paid. debt payoff calculator debt avalanche calculator pay off debt planner"><span class="t-ico">💰</span><span class="t-body"><b>Debt Payoff Planner</b><small>Build an avalanche payoff plan for up to 8 debts: payoff order, months to debt-free and tota…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/dividend-yield-calculator/" data-search="dividend yield calculator calculate dividend yield percentage and annual, quarterly and monthly income from any dividend stock. dividend yield calculator dividend income calculator stock yield calculator dividend return yield on cost"><span class="t-ico">💰</span><span class="t-body"><b>Dividend Yield Calculator</b><small>Calculate dividend yield percentage and annual, quarterly and monthly income from any divide…</small></span><span class="t-arrow">→</span></a></div>
+  </section>
+</main>
+
+<!-- ADSTERRA-FOOTER: paste your Adsterra footer/banner ad code inside the div below -->
+<div class="container"><div class="ad-slot" data-ad="footer"></div></div>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="f-grid">
+      <div>
+        <span class="brandline"><span class="logo-mark">T</span> ToolNest</span>
+        <p>Free online tools that actually work. No sign-up, no watermarks — and your files never leave your device for client-side tools.</p>
+      </div>
+      <div>
+        <h4>Popular</h4>
+        <a href="/tools/qr-code-generator/">QR Code Generator</a>
+        <a href="/tools/background-remover/">Background Remover</a>
+        <a href="/tools/pdf-merger/">PDF Merger</a>
+        <a href="/tools/word-counter/">Word Counter</a>
+      </div>
+      <div>
+        <h4>Categories</h4>
+        <a href="/#image">Image Tools</a>
+        <a href="/#pdf">PDF &amp; Documents</a>
+        <a href="/#calculators">Calculators</a>
+        <a href="/#developer">Developer Tools</a>
+      </div>
+      <div>
+        <h4>Site</h4>
+        <a href="/">Home</a>
+        <a href="/#all-tools">All Tools</a>
+        <a href="/sitemap.xml">Sitemap</a>
+      </div>
+    </div>
+    <div class="f-bottom">© 2026 ToolNest · Free tools for everyone · Made with care</div>
+  </div>
+</footer>
+
+<script src="/assets/site.js?v=5"></script>
+
+<script>
+(function () {
+  'use strict';
+  var ERR = 'budget-50-30-20-calculator-error';
+  function money(n) { try { return '$' + n.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 }); } catch (e) { return '$' + (Math.round(n * 100) / 100); } }
+  function calc() {
+    if (!TN.el('b50-income')) return;
+    TN.clearErr(ERR);
+    var inc = parseFloat(TN.el('b50-income').value);
+    if (!(inc > 0)) { TN.setErr(ERR, 'Enter take-home pay greater than 0.'); return; }
+    var needs = inc * 0.5, wants = inc * 0.3, save = inc * 0.2;
+    TN.el('b50-needs').textContent = money(needs);
+    TN.el('b50-wants').textContent = money(wants);
+    TN.el('b50-save').textContent = money(save);
+    var an = parseFloat(TN.el('b50-aneeds').value);
+    var aw = parseFloat(TN.el('b50-awants').value);
+    var as = parseFloat(TN.el('b50-asave').value);
+    if ((isNaN(an) || an < 0) && TN.el('b50-aneeds').value !== '') { TN.setErr(ERR, 'Actual needs spending cannot be negative.'); return; }
+    if ((isNaN(aw) || aw < 0) && TN.el('b50-awants').value !== '') { TN.setErr(ERR, 'Actual wants spending cannot be negative.'); return; }
+    if ((isNaN(as) || as < 0) && TN.el('b50-asave').value !== '') { TN.setErr(ERR, 'Actual savings cannot be negative.'); return; }
+    function diff(target, actual) {
+      if (isNaN(actual)) return '–';
+      var d = target - actual;
+      var label = d >= 0 ? 'under by ' : 'over by ';
+      return label + money(Math.abs(d));
+    }
+    function cell(x) { return isNaN(x) ? '–' : money(x); }
+    TN.el('b50-body').innerHTML =
+      '<tr><td>Needs (50%)</td><td>' + money(needs) + '</td><td>' + cell(an) + '</td><td>' + diff(needs, an) + '</td></tr>' +
+      '<tr><td>Wants (30%)</td><td>' + money(wants) + '</td><td>' + cell(aw) + '</td><td>' + diff(wants, aw) + '</td></tr>' +
+      '<tr><td>Savings (20%)</td><td>' + money(save) + '</td><td>' + cell(as) + '</td><td>' + (isNaN(as) ? '–' : (as >= save ? 'on track (+' + money(as - save) + ')' : 'short by ' + money(save - as))) + '</td></tr>';
+  }
+  try {
+    ['b50-income', 'b50-aneeds', 'b50-awants', 'b50-asave'].forEach(function (id) { TN.on(id, 'input', calc); });
+    calc();
+  } catch (e) { /* never throw on load */ }
+})();
+</script>
+</body>
+</html>

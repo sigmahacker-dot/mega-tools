@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Watermark Adder — Free Online | ToolNest</title>
+<meta name="description" content="Add a customizable text watermark to any photo — choose position, opacity, size, color and angle, preview live, then download.">
+<meta name="keywords" content="watermark photos, add text watermark, image watermark maker, protect images, watermark adder">
+<link rel="canonical" href="https://toolnest.vercel.app/tools/watermark-adder/">
+<meta name="theme-color" content="#07070b">
+<meta property="og:title" content="Watermark Adder — Free Online | ToolNest">
+<meta property="og:description" content="Add a customizable text watermark to any photo — choose position, opacity, size, color and angle, preview live, then download.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css?v=4">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%23e01111'/><text x='50' y='68' font-size='58' text-anchor='middle' fill='white' font-family='Arial' font-weight='bold'>T</text></svg>">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebApplication","name":"Watermark Adder","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0"},"url":"https://toolnest.vercel.app/tools/watermark-adder/","description":"Add a customizable text watermark to any photo — choose position, opacity, size, color and angle, preview live, then download."},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Where can the watermark be placed?","acceptedAnswer":{"@type":"Answer","text":"Nine anchor positions (corners, edges, center) plus fine-tune offsets. Drag-and-drop is not needed — the grid covers the common cases."}},{"@type":"Question","name":"Can I rotate or repeat the watermark?","acceptedAnswer":{"@type":"Answer","text":"Yes — the angle slider rotates the watermark from -90° to 90°, and the tile option repeats it across the whole image for stronger protection."}},{"@type":"Question","name":"What makes a watermark hard to remove?","acceptedAnswer":{"@type":"Answer","text":"A diagonal tiled watermark at low opacity is the hardest to remove. Corners at high opacity also work well."}},{"@type":"Question","name":"Is my image uploaded?","acceptedAnswer":{"@type":"Answer","text":"No — the watermark is drawn and saved locally in your browser."}}]}]}</script>
+</head>
+<body>
+<header class="site-header">
+  <div class="container">
+    <a class="logo" href="/"><span class="logo-mark">T</span> ToolNest</a>
+    <div class="header-right">
+      <form class="nav-search" action="/" method="get" role="search">
+        <span class="ns-icon">🔍</span>
+        <input type="search" name="q" placeholder="Search tools…" aria-label="Search tools" autocomplete="off">
+      </form>
+      <div class="menu-wrap">
+        <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="menuPanel" aria-label="Open menu"><span></span><span></span><span></span></button>
+        <nav class="menu-panel" id="menuPanel" aria-label="Site">
+          <a href="/">Home</a>
+          <a href="/#categories">Categories</a>
+          <a href="/#all-tools">All Tools</a>
+        </nav>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ADSTERRA-HEADER: paste your Adsterra banner ad code inside the div below -->
+<div class="container"><div class="ad-slot ad-leaderboard" data-ad="header"></div></div>
+
+<main class="container">
+  <nav class="crumbs"><a href="/">Home</a> &rsaquo; <a href="/#image">Image Tools</a> &rsaquo; Watermark Adder</nav>
+  <div class="tool-hero">
+    <h1>Watermark Adder</h1>
+    <p>Add a customizable text watermark to any photo — choose position, opacity, size, color and angle, preview live, then download.</p>
+  </div>
+
+  <div class="tool-card">
+  <div class="field">
+    <label for="watermark-adder-file">Upload image</label>
+    <input type="file" class="input" id="watermark-adder-file" accept="image/*">
+  </div>
+  <div class="grid2">
+    <div class="field">
+      <label for="watermark-adder-text">Watermark text</label>
+      <input type="text" class="input" id="watermark-adder-text" value="© Your Name" maxlength="80">
+    </div>
+    <div class="field">
+      <label for="watermark-adder-pos">Position</label>
+      <select class="input" id="watermark-adder-pos">
+        <option value="tl">Top-left</option>
+        <option value="tc">Top-center</option>
+        <option value="tr">Top-right</option>
+        <option value="ml">Middle-left</option>
+        <option value="mc">Center</option>
+        <option value="mr">Middle-right</option>
+        <option value="bl">Bottom-left</option>
+        <option value="bc" selected>Bottom-center</option>
+        <option value="br">Bottom-right</option>
+      </select>
+    </div>
+    <div class="field">
+      <label for="watermark-adder-size">Font size (<span id="watermark-adder-size-v">48</span> px)</label>
+      <input type="range" class="input" id="watermark-adder-size" min="12" max="200" step="1" value="48">
+    </div>
+    <div class="field">
+      <label for="watermark-adder-opacity">Opacity (<span id="watermark-adder-opacity-v">60</span>%)</label>
+      <input type="range" class="input" id="watermark-adder-opacity" min="5" max="100" step="1" value="60">
+    </div>
+    <div class="field">
+      <label for="watermark-adder-color">Color</label>
+      <input type="color" class="input" id="watermark-adder-color" value="#ffffff">
+    </div>
+    <div class="field">
+      <label for="watermark-adder-angle">Angle (<span id="watermark-adder-angle-v">0</span>°)</label>
+      <input type="range" class="input" id="watermark-adder-angle" min="-90" max="90" step="1" value="0">
+    </div>
+  </div>
+  <div class="field" style="margin-top:8px">
+    <label><input type="checkbox" id="watermark-adder-tile"> Tile watermark across the whole image</label>
+  </div>
+  <div class="btn-row" style="margin-top:12px">
+    <button class="btn btn-outline" id="watermark-adder-dl" disabled>Download watermarked PNG</button>
+  </div>
+  <div class="error" id="watermark-adder-error"></div>
+  <div class="result" id="watermark-adder-result" hidden>
+    <canvas id="watermark-adder-canvas" style="max-width:100%;height:auto;border-radius:8px;border:1px solid #ddd"></canvas>
+  </div>
+</div>
+
+
+  <!-- ADSTERRA-INCONTENT: paste your Adsterra native/in-content ad code inside the div below -->
+  <div class="ad-slot" data-ad="incontent"></div>
+
+  <div class="info-grid">
+    <div class="info-card">
+      <h2>📖 How to use</h2>
+      <ol><li>Upload your photo.</li><li>Type your watermark text and pick a position.</li><li>Adjust opacity, font size, color and angle (or enable tiling).</li><li>Preview live, then download the watermarked PNG.</li></ol>
+    </div>
+    <div class="info-card">
+      <h2>❓ Frequently asked questions</h2>
+      <div class="faq"><details><summary>Where can the watermark be placed?</summary><p>Nine anchor positions (corners, edges, center) plus fine-tune offsets. Drag-and-drop is not needed — the grid covers the common cases.</p></details><details><summary>Can I rotate or repeat the watermark?</summary><p>Yes — the angle slider rotates the watermark from -90° to 90°, and the tile option repeats it across the whole image for stronger protection.</p></details><details><summary>What makes a watermark hard to remove?</summary><p>A diagonal tiled watermark at low opacity is the hardest to remove. Corners at high opacity also work well.</p></details><details><summary>Is my image uploaded?</summary><p>No — the watermark is drawn and saved locally in your browser.</p></details></div>
+    </div>
+  </div>
+
+  <section class="section">
+    <h2>🔗 Related tools</h2>
+    <div class="tool-grid"><a class="tool-link" href="/tools/app-icon-resizer/" data-search="app icon resizer generate every common app icon size from one image — 16, 32, 48, 180, 192 and 512 px — with instant preview and one-click png downloads. app icon resizer icon generator favicon sizes pwa icon apple touch icon generator"><span class="t-ico">🖼️</span><span class="t-body"><b>App Icon Resizer</b><small>Generate every common app icon size from one image — 16, 32, 48, 180, 192 and 512 px — with …</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/background-remover/" data-search="background remover remove the background from any photo with real on-device ai and download a transparent png. free, private and unlimited — no sign-up needed. background remover remove image background transparent png maker"><span class="t-ico">🖼️</span><span class="t-body"><b>Background Remover</b><small>Remove the background from any photo with real on-device AI and download a transparent PNG. …</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/favicon-generator/" data-search="favicon generator generate a complete png favicon set (16–512 px) from your logo in one click, download it as a zip, and copy the ready-to-paste html link tags. favicon generator favicon maker png favicon"><span class="t-ico">🖼️</span><span class="t-body"><b>Favicon Generator</b><small>Generate a complete PNG favicon set (16–512 px) from your logo in one click, download it as …</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/image-border-adder/" data-search="image border adder add a clean border or frame to any image — set thickness, color, and corner style, preview instantly, and download the framed png. add border to image photo frame image border maker picture frame online photo border"><span class="t-ico">🖼️</span><span class="t-body"><b>Image Border Adder</b><small>Add a clean border or frame to any image — set thickness, color, and corner style, preview i…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/image-compressor/" data-search="image compressor shrink jpg, png and webp images right in your browser with an adjustable quality slider. compare before/after sizes, download each file or grab everything as a zip. image compressor compress jpg reduce image size"><span class="t-ico">🖼️</span><span class="t-body"><b>Image Compressor</b><small>Shrink JPG, PNG and WebP images right in your browser with an adjustable quality slider. Com…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/image-cropper/" data-search="image cropper crop any image by dragging a selection box over it — with optional fixed aspect ratios — then preview and download the cropped result. crop image image cropper crop photo online free crop tool crop picture"><span class="t-ico">🖼️</span><span class="t-body"><b>Image Cropper</b><small>Crop any image by dragging a selection box over it — with optional fixed aspect ratios — the…</small></span><span class="t-arrow">→</span></a></div>
+  </section>
+</main>
+
+<!-- ADSTERRA-FOOTER: paste your Adsterra footer/banner ad code inside the div below -->
+<div class="container"><div class="ad-slot" data-ad="footer"></div></div>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="f-grid">
+      <div>
+        <span class="brandline"><span class="logo-mark">T</span> ToolNest</span>
+        <p>Free online tools that actually work. No sign-up, no watermarks — and your files never leave your device for client-side tools.</p>
+      </div>
+      <div>
+        <h4>Popular</h4>
+        <a href="/tools/qr-code-generator/">QR Code Generator</a>
+        <a href="/tools/background-remover/">Background Remover</a>
+        <a href="/tools/pdf-merger/">PDF Merger</a>
+        <a href="/tools/word-counter/">Word Counter</a>
+      </div>
+      <div>
+        <h4>Categories</h4>
+        <a href="/#image">Image Tools</a>
+        <a href="/#pdf">PDF &amp; Documents</a>
+        <a href="/#calculators">Calculators</a>
+        <a href="/#developer">Developer Tools</a>
+      </div>
+      <div>
+        <h4>Site</h4>
+        <a href="/">Home</a>
+        <a href="/#all-tools">All Tools</a>
+        <a href="/sitemap.xml">Sitemap</a>
+      </div>
+    </div>
+    <div class="f-bottom">© 2026 ToolNest · Free tools for everyone · Made with care</div>
+  </div>
+</footer>
+
+<script src="/assets/site.js?v=5"></script>
+
+<script>
+/* Watermark Adder — text watermark with position/opacity/angle/tile, live preview. */
+(function () {
+  'use strict';
+  var SLUG = 'watermark-adder';
+  var ERR = SLUG + '-error';
+  var img = null;
+
+  function $(id) { return document.getElementById(id); }
+  function val(id) { var e = $(id); return e ? e.value : ''; }
+
+  function hexToRgb(h) {
+    h = (h || '#ffffff').replace('#', '');
+    if (h.length === 3) h = h[0] + h[0] + h[1] + h[1] + h[2] + h[2];
+    return [parseInt(h.substr(0, 2), 16), parseInt(h.substr(2, 2), 16), parseInt(h.substr(4, 2), 16)];
+  }
+
+  function drawMark(ctx, text, x, y, size, rgb, alpha, angle) {
+    ctx.save();
+    ctx.translate(x, y);
+    ctx.rotate(angle * Math.PI / 180);
+    ctx.globalAlpha = alpha;
+    ctx.font = 'bold ' + size + 'px Arial, sans-serif';
+    ctx.textAlign = 'center';
+    ctx.textBaseline = 'middle';
+    ctx.fillStyle = 'rgba(' + rgb[0] + ',' + rgb[1] + ',' + rgb[2] + ',1)';
+    // subtle dark outline for readability on light backgrounds
+    ctx.strokeStyle = 'rgba(0,0,0,' + (alpha * 0.6) + ')';
+    ctx.lineWidth = Math.max(1, size / 24);
+    ctx.strokeText(text, 0, 0);
+    ctx.fillText(text, 0, 0);
+    ctx.restore();
+  }
+
+  function render() {
+    if (!img) return;
+    var text = val('watermark-adder-text') || '';
+    if (!text.trim()) { TN.setErr(ERR, 'Type some watermark text first.'); return; }
+    TN.clearErr(ERR);
+    var cv = $('watermark-adder-canvas');
+    cv.width = img.naturalWidth;
+    cv.height = img.naturalHeight;
+    var ctx = cv.getContext('2d');
+    ctx.drawImage(img, 0, 0);
+    var size = parseInt(val('watermark-adder-size'), 10) || 48;
+    var opacity = (parseInt(val('watermark-adder-opacity'), 10) || 60) / 100;
+    var angle = parseInt(val('watermark-adder-angle'), 10) || 0;
+    var rgb = hexToRgb(val('watermark-adder-color'));
+    var W = cv.width, H = cv.height;
+    if ($('watermark-adder-tile').checked) {
+      ctx.font = 'bold ' + size + 'px Arial, sans-serif';
+      var tw = ctx.measureText(text).width;
+      var stepX = tw + size * 1.5, stepY = size * 3;
+      for (var y = stepY / 2; y < H + stepY; y += stepY) {
+        for (var x = stepX / 2; x < W + stepX; x += stepX) {
+          drawMark(ctx, text, x, y, size, rgb, opacity, angle || -30);
+        }
+      }
+    } else {
+      var pos = val('watermark-adder-pos');
+      var pad = size * 0.6;
+      var x = W / 2, y = H / 2;
+      if (pos[0] === 't') y = pad; else if (pos[0] === 'b') y = H - pad;
+      if (pos[1] === 'l') x = pad; else if (pos[1] === 'r') x = W - pad;
+      else if (pos[1] === 'c' && pos.length === 2) x = W / 2;
+      drawMark(ctx, text, x, y, size, rgb, opacity, angle);
+    }
+    $('watermark-adder-result').hidden = false;
+    $('watermark-adder-dl').disabled = false;
+  }
+
+  try {
+    ['watermark-adder-text', 'watermark-adder-pos', 'watermark-adder-size',
+     'watermark-adder-opacity', 'watermark-adder-color', 'watermark-adder-angle'
+    ].forEach(function (id) {
+      TN.on(id, 'input', function () {
+        var map = { 'watermark-adder-size': 'watermark-adder-size-v', 'watermark-adder-opacity': 'watermark-adder-opacity-v', 'watermark-adder-angle': 'watermark-adder-angle-v' };
+        if (map[id]) $(map[id]).textContent = $(id).value;
+        render();
+      });
+      TN.on(id, 'change', render);
+    });
+    TN.on('watermark-adder-tile', 'change', render);
+    TN.on('watermark-adder-file', 'change', function (e) {
+      var f = e.target.files && e.target.files[0];
+      if (!f) return;
+      var url = URL.createObjectURL(f);
+      var im = new Image();
+      im.onload = function () { img = im; URL.revokeObjectURL(url); TN.clearErr(ERR); render(); };
+      im.onerror = function () { URL.revokeObjectURL(url); TN.setErr(ERR, 'Could not read that file as an image.'); };
+      im.src = url;
+    });
+    TN.on('watermark-adder-dl', 'click', function () {
+      var cv = $('watermark-adder-canvas');
+      cv.toBlob(function (b) {
+        if (!b) { TN.setErr(ERR, 'Could not export the image.'); return; }
+        var a = document.createElement('a');
+        a.href = URL.createObjectURL(b);
+        a.download = 'watermarked.png';
+        document.body.appendChild(a); a.click();
+        setTimeout(function () { document.body.removeChild(a); }, 100);
+      }, 'image/png');
+    });
+  } catch (e) { /* never throw on load */ }
+})();
+
+</script>
+</body>
+</html>

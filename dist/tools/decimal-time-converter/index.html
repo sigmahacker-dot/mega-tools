@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Decimal Time Converter — Free Online | ToolNest</title>
+<meta name="description" content="Convert decimal hours (8.75) to hours:minutes:seconds (8:45:00) and back. Built for timesheets, payroll and work-hour tracking.">
+<meta name="keywords" content="decimal time converter, hours to decimal, decimal hours to minutes, timesheet decimal time, H:MM to decimal">
+<link rel="canonical" href="https://toolnest.vercel.app/tools/decimal-time-converter/">
+<meta name="theme-color" content="#07070b">
+<meta property="og:title" content="Decimal Time Converter — Free Online | ToolNest">
+<meta property="og:description" content="Convert decimal hours (8.75) to hours:minutes:seconds (8:45:00) and back. Built for timesheets, payroll and work-hour tracking.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css?v=4">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%23e01111'/><text x='50' y='68' font-size='58' text-anchor='middle' fill='white' font-family='Arial' font-weight='bold'>T</text></svg>">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebApplication","name":"Decimal Time Converter","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0"},"url":"https://toolnest.vercel.app/tools/decimal-time-converter/","description":"Convert decimal hours (8.75) to hours:minutes:seconds (8:45:00) and back. Built for timesheets, payroll and work-hour tracking."},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What is decimal time?","acceptedAnswer":{"@type":"Answer","text":"Time expressed as a fraction of an hour: 8.5 hours = 8 hours 30 minutes. Payroll systems and timesheets commonly use it."}},{"@type":"Question","name":"How do I convert 45 minutes to decimal hours?","acceptedAnswer":{"@type":"Answer","text":"Divide by 60: 45 ÷ 60 = 0.75 hours. This tool does it both ways live."}},{"@type":"Question","name":"What formats does the H:MM input accept?","acceptedAnswer":{"@type":"Answer","text":"H:MM or H:MM:SS, for example 8:45 or 8:45:30. Either direction updates the other field instantly."}}]}]}</script>
+</head>
+<body>
+<header class="site-header">
+  <div class="container">
+    <a class="logo" href="/"><span class="logo-mark">T</span> ToolNest</a>
+    <div class="header-right">
+      <form class="nav-search" action="/" method="get" role="search">
+        <span class="ns-icon">🔍</span>
+        <input type="search" name="q" placeholder="Search tools…" aria-label="Search tools" autocomplete="off">
+      </form>
+      <div class="menu-wrap">
+        <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="menuPanel" aria-label="Open menu"><span></span><span></span><span></span></button>
+        <nav class="menu-panel" id="menuPanel" aria-label="Site">
+          <a href="/">Home</a>
+          <a href="/#categories">Categories</a>
+          <a href="/#all-tools">All Tools</a>
+        </nav>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ADSTERRA-HEADER: paste your Adsterra banner ad code inside the div below -->
+<div class="container"><div class="ad-slot ad-leaderboard" data-ad="header"></div></div>
+
+<main class="container">
+  <nav class="crumbs"><a href="/">Home</a> &rsaquo; <a href="/#converters">Converters</a> &rsaquo; Decimal Time Converter</nav>
+  <div class="tool-hero">
+    <h1>Decimal Time Converter</h1>
+    <p>Convert decimal hours (8.75) to hours:minutes:seconds (8:45:00) and back. Built for timesheets, payroll and work-hour tracking.</p>
+  </div>
+
+  <div class="tool-card">
+  <div class="grid2">
+    <div class="field">
+      <label for="decimal-time-converter-dec">Decimal hours</label>
+      <input type="number" class="input" id="decimal-time-converter-dec" step="any" min="0" placeholder="e.g. 8.75" autocomplete="off">
+    </div>
+    <div class="field">
+      <label for="decimal-time-converter-hms">Hours : minutes [: seconds]</label>
+      <input type="text" class="input" id="decimal-time-converter-hms" placeholder="e.g. 8:45" autocomplete="off" spellcheck="false">
+    </div>
+  </div>
+  <div class="error" id="decimal-time-converter-error"></div>
+  <div class="result" id="decimal-time-converter-result">
+    <div class="stat-cards">
+      <div class="stat-card"><div class="v" id="decimal-time-converter-mins">–</div><div class="l">Total minutes</div></div>
+      <div class="stat-card"><div class="v" id="decimal-time-converter-secs">–</div><div class="l">Total seconds</div></div>
+      <div class="stat-card"><div class="v" id="decimal-time-converter-day">–</div><div class="l">Fraction of a day</div></div>
+    </div>
+    <p class="note">Payroll style: 0.25 h = 15 min, 0.5 h = 30 min, 0.75 h = 45 min.</p>
+  </div>
+</div>
+
+
+  <!-- ADSTERRA-INCONTENT: paste your Adsterra native/in-content ad code inside the div below -->
+  <div class="ad-slot" data-ad="incontent"></div>
+
+  <div class="info-grid">
+    <div class="info-card">
+      <h2>📖 How to use</h2>
+      <ol><li>Type decimal hours (e.g. 8.75) to see H:MM:SS instantly.</li><li>Or type H:MM or H:MM:SS (e.g. 8:45) to see decimal hours.</li><li>Both fields stay in sync as you type.</li><li>Use the totals for minutes, seconds and fraction of a day.</li></ol>
+    </div>
+    <div class="info-card">
+      <h2>❓ Frequently asked questions</h2>
+      <div class="faq"><details><summary>What is decimal time?</summary><p>Time expressed as a fraction of an hour: 8.5 hours = 8 hours 30 minutes. Payroll systems and timesheets commonly use it.</p></details><details><summary>How do I convert 45 minutes to decimal hours?</summary><p>Divide by 60: 45 ÷ 60 = 0.75 hours. This tool does it both ways live.</p></details><details><summary>What formats does the H:MM input accept?</summary><p>H:MM or H:MM:SS, for example 8:45 or 8:45:30. Either direction updates the other field instantly.</p></details></div>
+    </div>
+  </div>
+
+  <section class="section">
+    <h2>🔗 Related tools</h2>
+    <div class="tool-grid"><a class="tool-link" href="/tools/angle-converter/" data-search="angle converter convert angles between degrees, radians, gradians, turns, arcminutes, arcseconds and mils. enter a value once and see it in every unit instantly. angle converter degrees to radians radians to degrees gradians converter mils to degrees"><span class="t-ico">🔄</span><span class="t-body"><b>Angle Converter</b><small>Convert angles between degrees, radians, gradians, turns, arcminutes, arcseconds and mils. E…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/area-converter/" data-search="area converter square millimeters to square miles. area converter square feet to square meters acres to hectares"><span class="t-ico">🔄</span><span class="t-body"><b>Area Converter</b><small>Square millimeters to square miles.</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/clothing-size-converter/" data-search="clothing size converter convert clothing and shoe sizes between us, uk, eu and international systems for men&#39;s tops, pants, women&#39;s dresses and footwear. clothing size converter us to eu size uk to us shoe size dress size conversion pant size converter"><span class="t-ico">🔄</span><span class="t-body"><b>Clothing Size Converter</b><small>Convert clothing and shoe sizes between US, UK, EU and international systems for men&#39;s tops,…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/cooking-converter/" data-search="cooking converter cups, spoons and milliliters — plus grams via ingredient density. cooking converter cups to grams cups to ml"><span class="t-ico">🔄</span><span class="t-body"><b>Cooking Converter</b><small>Cups, spoons and milliliters — plus grams via ingredient density.</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/data-storage-converter/" data-search="data storage converter bits to petabytes, decimal and binary modes. data converter bytes to mb gb to mb"><span class="t-ico">🔄</span><span class="t-body"><b>Data Storage Converter</b><small>Bits to petabytes, decimal and binary modes.</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/data-transfer-time-calculator/" data-search="data transfer time calculator calculate how long a file takes to download or upload at a given connection speed. enter file size and transfer rate — get days, hours, minutes and seconds. download time calculator file transfer time how long to download upload time calculator bandwidth time calculator"><span class="t-ico">🔄</span><span class="t-body"><b>Data Transfer Time Calculator</b><small>Calculate how long a file takes to download or upload at a given connection speed. Enter fil…</small></span><span class="t-arrow">→</span></a></div>
+  </section>
+</main>
+
+<!-- ADSTERRA-FOOTER: paste your Adsterra footer/banner ad code inside the div below -->
+<div class="container"><div class="ad-slot" data-ad="footer"></div></div>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="f-grid">
+      <div>
+        <span class="brandline"><span class="logo-mark">T</span> ToolNest</span>
+        <p>Free online tools that actually work. No sign-up, no watermarks — and your files never leave your device for client-side tools.</p>
+      </div>
+      <div>
+        <h4>Popular</h4>
+        <a href="/tools/qr-code-generator/">QR Code Generator</a>
+        <a href="/tools/background-remover/">Background Remover</a>
+        <a href="/tools/pdf-merger/">PDF Merger</a>
+        <a href="/tools/word-counter/">Word Counter</a>
+      </div>
+      <div>
+        <h4>Categories</h4>
+        <a href="/#image">Image Tools</a>
+        <a href="/#pdf">PDF &amp; Documents</a>
+        <a href="/#calculators">Calculators</a>
+        <a href="/#developer">Developer Tools</a>
+      </div>
+      <div>
+        <h4>Site</h4>
+        <a href="/">Home</a>
+        <a href="/#all-tools">All Tools</a>
+        <a href="/sitemap.xml">Sitemap</a>
+      </div>
+    </div>
+    <div class="f-bottom">© 2026 ToolNest · Free tools for everyone · Made with care</div>
+  </div>
+</footer>
+
+<script src="/assets/site.js?v=5"></script>
+
+<script>
+(function () {
+  'use strict';
+  var P = 'decimal-time-converter-';
+  var ERR = P + 'error';
+  function g(id) { return document.getElementById(P + id); }
+  function set(id, v) { var el = g(id); if (el) el.textContent = v; }
+  var updating = false;
+  function pad(n) { return (n < 10 ? '0' : '') + n; }
+  function decToHms(d) {
+    var h = Math.floor(d), m = Math.floor((d - h) * 60), s = Math.round(((d - h) * 60 - m) * 60);
+    if (s === 60) { s = 0; m++; }
+    if (m === 60) { m = 0; h++; }
+    return h + ':' + pad(m) + ':' + pad(s);
+  }
+  function hmsToDec(str) {
+    var m = String(str).trim().match(/^(\d+):([0-5]?\d)(?::([0-5]?\d))?$/);
+    if (!m) return NaN;
+    return parseInt(m[1], 10) + parseInt(m[2], 10) / 60 + (m[3] ? parseInt(m[3], 10) / 3600 : 0);
+  }
+  function stats(d) {
+    set('mins', String(Number((d * 60).toFixed(4))));
+    set('secs', String(Number((d * 3600).toFixed(2))));
+    set('day', (d / 24).toFixed(6));
+  }
+  function blankStats() { set('mins', '–'); set('secs', '–'); set('day', '–'); }
+  function fromDec() {
+    if (updating) return;
+    TN.clearErr(ERR);
+    var raw = g('dec').value;
+    if (raw === '') { blankStats(); return; }
+    var d = parseFloat(raw);
+    if (isNaN(d) || d < 0) { TN.setErr(ERR, 'Enter a non-negative number of decimal hours.'); blankStats(); return; }
+    updating = true;
+    g('hms').value = decToHms(d);
+    updating = false;
+    stats(d);
+  }
+  function fromHms() {
+    if (updating) return;
+    TN.clearErr(ERR);
+    var raw = g('hms').value;
+    if (raw.trim() === '') { blankStats(); return; }
+    var d = hmsToDec(raw);
+    if (isNaN(d)) { TN.setErr(ERR, 'Use the format H:MM or H:MM:SS, e.g. 8:45 or 8:45:30.'); blankStats(); return; }
+    updating = true;
+    g('dec').value = String(Number(d.toFixed(6)));
+    updating = false;
+    stats(d);
+  }
+  try {
+    TN.on(P + 'dec', 'input', fromDec);
+    TN.on(P + 'hms', 'input', fromHms);
+  } catch (e) { /* never throw on load */ }
+})();
+
+</script>
+</body>
+</html>

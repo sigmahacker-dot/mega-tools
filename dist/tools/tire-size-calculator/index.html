@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tire Size Calculator — Free Online | ToolNest</title>
+<meta name="description" content="Compare two tire sizes (e.g. 205/55R16 vs 225/45R17): overall diameter, circumference, revolutions per km and speedometer error.">
+<meta name="keywords" content="tire size calculator, tyre size comparison, 205/55R16 diameter, speedometer error calculator, tire circumference">
+<link rel="canonical" href="https://toolnest.vercel.app/tools/tire-size-calculator/">
+<meta name="theme-color" content="#07070b">
+<meta property="og:title" content="Tire Size Calculator — Free Online | ToolNest">
+<meta property="og:description" content="Compare two tire sizes (e.g. 205/55R16 vs 225/45R17): overall diameter, circumference, revolutions per km and speedometer error.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css?v=4">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%23e01111'/><text x='50' y='68' font-size='58' text-anchor='middle' fill='white' font-family='Arial' font-weight='bold'>T</text></svg>">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebApplication","name":"Tire Size Calculator","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0"},"url":"https://toolnest.vercel.app/tools/tire-size-calculator/","description":"Compare two tire sizes (e.g. 205/55R16 vs 225/45R17): overall diameter, circumference, revolutions per km and speedometer error."},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How do I read a tire size like 205/55R16?","acceptedAnswer":{"@type":"Answer","text":"205 is the tread width in mm, 55 is the aspect ratio (sidewall height as a percentage of width), R means radial construction, and 16 is the wheel rim diameter in inches."}},{"@type":"Question","name":"How is speedometer error computed?","acceptedAnswer":{"@type":"Answer","text":"Your speedometer is calibrated to the old tire's circumference. True speed = indicated speed × (new circumference ÷ old circumference). A larger new tire makes the speedo read low."}},{"@type":"Question","name":"How much diameter change is safe?","acceptedAnswer":{"@type":"Answer","text":"Most manufacturers recommend staying within ±3% of the original overall diameter to keep gearing, clearance and speedometer accuracy safe."}}]}]}</script>
+</head>
+<body>
+<header class="site-header">
+  <div class="container">
+    <a class="logo" href="/"><span class="logo-mark">T</span> ToolNest</a>
+    <div class="header-right">
+      <form class="nav-search" action="/" method="get" role="search">
+        <span class="ns-icon">🔍</span>
+        <input type="search" name="q" placeholder="Search tools…" aria-label="Search tools" autocomplete="off">
+      </form>
+      <div class="menu-wrap">
+        <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="menuPanel" aria-label="Open menu"><span></span><span></span><span></span></button>
+        <nav class="menu-panel" id="menuPanel" aria-label="Site">
+          <a href="/">Home</a>
+          <a href="/#categories">Categories</a>
+          <a href="/#all-tools">All Tools</a>
+        </nav>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ADSTERRA-HEADER: paste your Adsterra banner ad code inside the div below -->
+<div class="container"><div class="ad-slot ad-leaderboard" data-ad="header"></div></div>
+
+<main class="container">
+  <nav class="crumbs"><a href="/">Home</a> &rsaquo; <a href="/#converters">Converters</a> &rsaquo; Tire Size Calculator</nav>
+  <div class="tool-hero">
+    <h1>Tire Size Calculator</h1>
+    <p>Compare two tire sizes (e.g. 205/55R16 vs 225/45R17): overall diameter, circumference, revolutions per km and speedometer error.</p>
+  </div>
+
+  <div class="tool-card">
+  <div class="grid2">
+    <div class="field">
+      <label for="tire-size-calculator-w1">Current — width (mm)</label>
+      <input type="number" class="input" id="tire-size-calculator-w1" step="any" min="1" placeholder="e.g. 205">
+    </div>
+    <div class="field">
+      <label for="tire-size-calculator-a1">Current — aspect ratio (%)</label>
+      <input type="number" class="input" id="tire-size-calculator-a1" step="any" min="1" placeholder="e.g. 55">
+    </div>
+    <div class="field">
+      <label for="tire-size-calculator-r1">Current — rim (inches)</label>
+      <input type="number" class="input" id="tire-size-calculator-r1" step="any" min="1" placeholder="e.g. 16">
+    </div>
+    <div class="field">
+      <label for="tire-size-calculator-w2">New — width (mm)</label>
+      <input type="number" class="input" id="tire-size-calculator-w2" step="any" min="1" placeholder="e.g. 225">
+    </div>
+    <div class="field">
+      <label for="tire-size-calculator-a2">New — aspect ratio (%)</label>
+      <input type="number" class="input" id="tire-size-calculator-a2" step="any" min="1" placeholder="e.g. 45">
+    </div>
+    <div class="field">
+      <label for="tire-size-calculator-r2">New — rim (inches)</label>
+      <input type="number" class="input" id="tire-size-calculator-r2" step="any" min="1" placeholder="e.g. 17">
+    </div>
+  </div>
+  <div class="error" id="tire-size-calculator-error"></div>
+  <div class="result" id="tire-size-calculator-result">
+    <div class="stat-cards">
+      <div class="stat-card"><div class="v" id="tire-size-calculator-diff">–</div><div class="l">Diameter difference</div></div>
+      <div class="stat-card"><div class="v" id="tire-size-calculator-speedo">–</div><div class="l">True speed at 100 km/h indicated</div></div>
+      <div class="stat-card"><div class="v" id="tire-size-calculator-safe">–</div><div class="l">Within ±3%?</div></div>
+    </div>
+    <table class="data">
+      <thead><tr><th>Spec</th><th>Current tire</th><th>New tire</th></tr></thead>
+      <tbody id="tire-size-calculator-body">
+        <tr><td colspan="3" class="muted">Enter both tire sizes to compare.</td></tr>
+      </tbody>
+    </table>
+    <p class="note">Speedometer assumes the current tire. A larger new tire makes the speedo read lower than your true speed.</p>
+  </div>
+</div>
+
+
+  <!-- ADSTERRA-INCONTENT: paste your Adsterra native/in-content ad code inside the div below -->
+  <div class="ad-slot" data-ad="incontent"></div>
+
+  <div class="info-grid">
+    <div class="info-card">
+      <h2>📖 How to use</h2>
+      <ol><li>Enter your current tire size: width, aspect ratio and rim diameter.</li><li>Enter the new tire size you are considering.</li><li>Compare overall diameter, sidewall height and circumference side by side.</li><li>Check the diameter difference % and the speedometer error before buying.</li></ol>
+    </div>
+    <div class="info-card">
+      <h2>❓ Frequently asked questions</h2>
+      <div class="faq"><details><summary>How do I read a tire size like 205/55R16?</summary><p>205 is the tread width in mm, 55 is the aspect ratio (sidewall height as a percentage of width), R means radial construction, and 16 is the wheel rim diameter in inches.</p></details><details><summary>How is speedometer error computed?</summary><p>Your speedometer is calibrated to the old tire&#39;s circumference. True speed = indicated speed × (new circumference ÷ old circumference). A larger new tire makes the speedo read low.</p></details><details><summary>How much diameter change is safe?</summary><p>Most manufacturers recommend staying within ±3% of the original overall diameter to keep gearing, clearance and speedometer accuracy safe.</p></details></div>
+    </div>
+  </div>
+
+  <section class="section">
+    <h2>🔗 Related tools</h2>
+    <div class="tool-grid"><a class="tool-link" href="/tools/angle-converter/" data-search="angle converter convert angles between degrees, radians, gradians, turns, arcminutes, arcseconds and mils. enter a value once and see it in every unit instantly. angle converter degrees to radians radians to degrees gradians converter mils to degrees"><span class="t-ico">🔄</span><span class="t-body"><b>Angle Converter</b><small>Convert angles between degrees, radians, gradians, turns, arcminutes, arcseconds and mils. E…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/area-converter/" data-search="area converter square millimeters to square miles. area converter square feet to square meters acres to hectares"><span class="t-ico">🔄</span><span class="t-body"><b>Area Converter</b><small>Square millimeters to square miles.</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/clothing-size-converter/" data-search="clothing size converter convert clothing and shoe sizes between us, uk, eu and international systems for men&#39;s tops, pants, women&#39;s dresses and footwear. clothing size converter us to eu size uk to us shoe size dress size conversion pant size converter"><span class="t-ico">🔄</span><span class="t-body"><b>Clothing Size Converter</b><small>Convert clothing and shoe sizes between US, UK, EU and international systems for men&#39;s tops,…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/cooking-converter/" data-search="cooking converter cups, spoons and milliliters — plus grams via ingredient density. cooking converter cups to grams cups to ml"><span class="t-ico">🔄</span><span class="t-body"><b>Cooking Converter</b><small>Cups, spoons and milliliters — plus grams via ingredient density.</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/data-storage-converter/" data-search="data storage converter bits to petabytes, decimal and binary modes. data converter bytes to mb gb to mb"><span class="t-ico">🔄</span><span class="t-body"><b>Data Storage Converter</b><small>Bits to petabytes, decimal and binary modes.</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/data-transfer-time-calculator/" data-search="data transfer time calculator calculate how long a file takes to download or upload at a given connection speed. enter file size and transfer rate — get days, hours, minutes and seconds. download time calculator file transfer time how long to download upload time calculator bandwidth time calculator"><span class="t-ico">🔄</span><span class="t-body"><b>Data Transfer Time Calculator</b><small>Calculate how long a file takes to download or upload at a given connection speed. Enter fil…</small></span><span class="t-arrow">→</span></a></div>
+  </section>
+</main>
+
+<!-- ADSTERRA-FOOTER: paste your Adsterra footer/banner ad code inside the div below -->
+<div class="container"><div class="ad-slot" data-ad="footer"></div></div>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="f-grid">
+      <div>
+        <span class="brandline"><span class="logo-mark">T</span> ToolNest</span>
+        <p>Free online tools that actually work. No sign-up, no watermarks — and your files never leave your device for client-side tools.</p>
+      </div>
+      <div>
+        <h4>Popular</h4>
+        <a href="/tools/qr-code-generator/">QR Code Generator</a>
+        <a href="/tools/background-remover/">Background Remover</a>
+        <a href="/tools/pdf-merger/">PDF Merger</a>
+        <a href="/tools/word-counter/">Word Counter</a>
+      </div>
+      <div>
+        <h4>Categories</h4>
+        <a href="/#image">Image Tools</a>
+        <a href="/#pdf">PDF &amp; Documents</a>
+        <a href="/#calculators">Calculators</a>
+        <a href="/#developer">Developer Tools</a>
+      </div>
+      <div>
+        <h4>Site</h4>
+        <a href="/">Home</a>
+        <a href="/#all-tools">All Tools</a>
+        <a href="/sitemap.xml">Sitemap</a>
+      </div>
+    </div>
+    <div class="f-bottom">© 2026 ToolNest · Free tools for everyone · Made with care</div>
+  </div>
+</footer>
+
+<script src="/assets/site.js?v=5"></script>
+
+<script>
+(function () {
+  'use strict';
+  var P = 'tire-size-calculator-';
+  var ERR = P + 'error';
+  function g(id) { return document.getElementById(P + id); }
+  function set(id, v) { var el = g(id); if (el) el.textContent = v; }
+  function f1(n) { return String(Number(n.toFixed(1))); }
+  function f2(n) { return String(Number(n.toFixed(2))); }
+  function tire(w, a, r) {
+    var sidewall = w * a / 100;              /* mm */
+    var diaIn = r + 2 * sidewall / 25.4;     /* inches */
+    var diaMm = diaIn * 25.4;                /* mm */
+    var circMm = Math.PI * diaMm;            /* mm */
+    return { sidewall: sidewall, diaIn: diaIn, diaMm: diaMm, circMm: circMm, revKm: 1e6 / circMm };
+  }
+  function blank() {
+    set('diff', '–'); set('speedo', '–'); set('safe', '–');
+    g('body').innerHTML = '<tr><td colspan="3" class="muted">Enter both tire sizes to compare.</td></tr>';
+  }
+  function calc() {
+    if (!g('w1')) return;
+    TN.clearErr(ERR);
+    var keys = ['w1', 'a1', 'r1', 'w2', 'a2', 'r2'];
+    var vals = {};
+    for (var i = 0; i < keys.length; i++) {
+      var raw = g(keys[i]).value;
+      if (raw === '') { blank(); return; }
+      var v = parseFloat(raw);
+      if (isNaN(v) || v <= 0) { TN.setErr(ERR, 'Enter positive numbers for width, aspect ratio and rim.'); blank(); return; }
+      vals[keys[i]] = v;
+    }
+    var t1 = tire(vals.w1, vals.a1, vals.r1);
+    var t2 = tire(vals.w2, vals.a2, vals.r2);
+    var diffPct = (t2.diaMm - t1.diaMm) / t1.diaMm * 100;
+    var trueSpeed = 100 * t2.circMm / t1.circMm;
+    set('diff', (diffPct >= 0 ? '+' : '') + f2(diffPct) + '%');
+    set('speedo', f1(trueSpeed) + ' km/h');
+    set('safe', Math.abs(diffPct) <= 3 ? 'Yes ✓' : 'No ✗');
+    var rows = [
+      ['Size label', vals.w1 + '/' + vals.a1 + 'R' + vals.r1, vals.w2 + '/' + vals.a2 + 'R' + vals.r2],
+      ['Sidewall height', f1(t1.sidewall) + ' mm', f1(t2.sidewall) + ' mm'],
+      ['Overall diameter', f2(t1.diaIn) + ' in (' + f1(t1.diaMm) + ' mm)', f2(t2.diaIn) + ' in (' + f1(t2.diaMm) + ' mm)'],
+      ['Circumference', f1(t1.circMm) + ' mm', f1(t2.circMm) + ' mm'],
+      ['Revolutions per km', f1(t1.revKm), f1(t2.revKm)]
+    ];
+    var html = '';
+    rows.forEach(function (r) {
+      html += '<tr><td>' + TN.esc(r[0]) + '</td><td>' + TN.esc(r[1]) + '</td><td>' + TN.esc(r[2]) + '</td></tr>';
+    });
+    g('body').innerHTML = html;
+  }
+  try {
+    ['w1', 'a1', 'r1', 'w2', 'a2', 'r2'].forEach(function (k) { TN.on(P + k, 'input', calc); });
+    calc();
+  } catch (e) { /* never throw on load */ }
+})();
+
+</script>
+</body>
+</html>

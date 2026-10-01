@@ -1,0 +1,37 @@
+<div class="tool-card">
+  <div class="field">
+    <label for="image-to-ascii-art-file">Upload image</label>
+    <input type="file" class="input" id="image-to-ascii-art-file" accept="image/*">
+  </div>
+  <div class="grid2">
+    <div class="field">
+      <label for="image-to-ascii-art-width">Width (<span id="image-to-ascii-art-width-v">100</span> chars)</label>
+      <input type="range" class="input" id="image-to-ascii-art-width" min="20" max="220" step="1" value="100">
+    </div>
+    <div class="field">
+      <label for="image-to-ascii-art-ramp">Character set</label>
+      <select class="input" id="image-to-ascii-art-ramp">
+        <option value="standard">Standard ( .:-=+*#%@)</option>
+        <option value="dense">Dense ($@B%8&amp;WM#*oahkbdpqwmZO0QLCJUYXzcvunxrjft/\\|()1{}[]?-_+~&lt;&gt;i!lI;:,. )</option>
+        <option value="inverted">Inverted (for dark backgrounds)</option>
+        <option value="blocks">Blocks ( ░▒▓█)</option>
+      </select>
+    </div>
+    <div class="field">
+      <label for="image-to-ascii-art-bright">Brightness (<span id="image-to-ascii-art-bright-v">0</span>)</label>
+      <input type="range" class="input" id="image-to-ascii-art-bright" min="-100" max="100" step="1" value="0">
+    </div>
+    <div class="field">
+      <label for="image-to-ascii-art-contrast">Contrast (<span id="image-to-ascii-art-contrast-v">0</span>)</label>
+      <input type="range" class="input" id="image-to-ascii-art-contrast" min="-100" max="100" step="1" value="0">
+    </div>
+  </div>
+  <div class="btn-row" style="margin-top:12px">
+    <button class="btn btn-outline" id="image-to-ascii-art-copy" disabled>Copy ASCII</button>
+    <button class="btn btn-outline" id="image-to-ascii-art-dl" disabled>Download .txt</button>
+  </div>
+  <div class="error" id="image-to-ascii-art-error"></div>
+  <div class="result" id="image-to-ascii-art-result" hidden>
+    <pre id="image-to-ascii-art-out" style="font-family:monospace;font-size:7px;line-height:1;white-space:pre;overflow:auto;background:#111;color:#eee;padding:12px;border-radius:8px;max-height:480px"></pre>
+  </div>
+</div>

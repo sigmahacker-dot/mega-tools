@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Carb Cycling Calculator — Free Online | ToolNest</title>
+<meta name="description" content="Build high, medium and low carb day macros from your TDEE using the Mifflin-St Jeor equation.">
+<meta name="keywords" content="carb cycling calculator, macro cycling, high low carb days, tdee macro calculator, carb cycle plan">
+<link rel="canonical" href="https://toolnest.vercel.app/tools/carb-cycling-calculator/">
+<meta name="theme-color" content="#07070b">
+<meta property="og:title" content="Carb Cycling Calculator — Free Online | ToolNest">
+<meta property="og:description" content="Build high, medium and low carb day macros from your TDEE using the Mifflin-St Jeor equation.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css?v=4">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%23e01111'/><text x='50' y='68' font-size='58' text-anchor='middle' fill='white' font-family='Arial' font-weight='bold'>T</text></svg>">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebApplication","name":"Carb Cycling Calculator","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0"},"url":"https://toolnest.vercel.app/tools/carb-cycling-calculator/","description":"Build high, medium and low carb day macros from your TDEE using the Mifflin-St Jeor equation."},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What is carb cycling?","acceptedAnswer":{"@type":"Answer","text":"Alternating high-carb days (around training) with low-carb days. Protein stays constant; carbs and fats trade off to hit the calorie target."}},{"@type":"Question","name":"How is TDEE calculated?","acceptedAnswer":{"@type":"Answer","text":"BMR from the Mifflin-St Jeor equation (weight, height, age, sex) multiplied by an activity factor from 1.2 (sedentary) to 1.9 (very active)."}},{"@type":"Question","name":"Which days should be high carb?","acceptedAnswer":{"@type":"Answer","text":"Put high-carb days on your hardest training days and low-carb days on rest days."}}]}]}</script>
+</head>
+<body>
+<header class="site-header">
+  <div class="container">
+    <a class="logo" href="/"><span class="logo-mark">T</span> ToolNest</a>
+    <div class="header-right">
+      <form class="nav-search" action="/" method="get" role="search">
+        <span class="ns-icon">🔍</span>
+        <input type="search" name="q" placeholder="Search tools…" aria-label="Search tools" autocomplete="off">
+      </form>
+      <div class="menu-wrap">
+        <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="menuPanel" aria-label="Open menu"><span></span><span></span><span></span></button>
+        <nav class="menu-panel" id="menuPanel" aria-label="Site">
+          <a href="/">Home</a>
+          <a href="/#categories">Categories</a>
+          <a href="/#all-tools">All Tools</a>
+        </nav>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ADSTERRA-HEADER: paste your Adsterra banner ad code inside the div below -->
+<div class="container"><div class="ad-slot ad-leaderboard" data-ad="header"></div></div>
+
+<main class="container">
+  <nav class="crumbs"><a href="/">Home</a> &rsaquo; <a href="/#health">Health &amp; Fitness</a> &rsaquo; Carb Cycling Calculator</nav>
+  <div class="tool-hero">
+    <h1>Carb Cycling Calculator</h1>
+    <p>Build high, medium and low carb day macros from your TDEE using the Mifflin-St Jeor equation.</p>
+  </div>
+
+  <div class="tool-card">
+  <div class="grid2">
+    <div class="field"><label for="cc-weight">Weight (lb)</label><input type="number" class="input" id="cc-weight" min="0" step="any" placeholder="170"></div>
+    <div class="field"><label for="cc-height">Height (inches)</label><input type="number" class="input" id="cc-height" min="0" step="any" placeholder="70"></div>
+    <div class="field"><label for="cc-age">Age (years)</label><input type="number" class="input" id="cc-age" min="10" max="100" step="1" placeholder="30"></div>
+    <div class="field"><label for="cc-sex">Sex</label>
+      <select class="input" id="cc-sex"><option value="m">Male</option><option value="f">Female</option></select>
+    </div>
+    <div class="field"><label for="cc-activity">Activity level</label>
+      <select class="input" id="cc-activity">
+        <option value="1.2">Sedentary</option>
+        <option value="1.375" selected>Lightly active</option>
+        <option value="1.55">Moderately active</option>
+        <option value="1.725">Very active</option>
+        <option value="1.9">Extremely active</option>
+      </select>
+    </div>
+    <div class="field"><label for="cc-goal">Goal</label>
+      <select class="input" id="cc-goal"><option value="0.8">Cut (−20%)</option><option value="1" selected>Maintain</option><option value="1.1">Lean gain (+10%)</option></select>
+    </div>
+  </div>
+  <div class="error" id="carb-cycling-calculator-error"></div>
+  <div class="result" id="cc-result">
+    <div class="stat-cards">
+      <div class="stat-card"><div class="v" id="cc-tdee">–</div><div class="l">Daily target cal</div></div>
+      <div class="stat-card"><div class="v" id="cc-protein">–</div><div class="l">Protein (daily)</div></div>
+    </div>
+    <table class="data">
+      <thead><tr><th>Day type</th><th>Carbs</th><th>Fat</th><th>Calories</th></tr></thead>
+      <tbody id="cc-body"><tr><td colspan="4" class="muted">Enter your stats to build the plan.</td></tr></tbody>
+    </table>
+    <p class="note">Protein fixed at 1 g/lb. General fitness guidance, not medical advice.</p>
+  </div>
+</div>
+
+  <!-- ADSTERRA-INCONTENT: paste your Adsterra native/in-content ad code inside the div below -->
+  <div class="ad-slot" data-ad="incontent"></div>
+
+  <div class="info-grid">
+    <div class="info-card">
+      <h2>📖 How to use</h2>
+      <ol><li>Enter your stats and activity level.</li><li>Pick your goal (cut, maintain or gain).</li><li>Read your high, medium and low day calories and macros.</li></ol>
+    </div>
+    <div class="info-card">
+      <h2>❓ Frequently asked questions</h2>
+      <div class="faq"><details><summary>What is carb cycling?</summary><p>Alternating high-carb days (around training) with low-carb days. Protein stays constant; carbs and fats trade off to hit the calorie target.</p></details><details><summary>How is TDEE calculated?</summary><p>BMR from the Mifflin-St Jeor equation (weight, height, age, sex) multiplied by an activity factor from 1.2 (sedentary) to 1.9 (very active).</p></details><details><summary>Which days should be high carb?</summary><p>Put high-carb days on your hardest training days and low-carb days on rest days.</p></details></div>
+    </div>
+  </div>
+
+  <section class="section">
+    <h2>🔗 Related tools</h2>
+    <div class="tool-grid"><a class="tool-link" href="/tools/blood-pressure-tracker/" data-search="blood pressure tracker log blood pressure readings with automatic aha category classification, averages and history saved in your browser. blood pressure tracker bp log blood pressure chart hypertension tracker bp monitor log"><span class="t-ico">❤️</span><span class="t-body"><b>Blood Pressure Tracker</b><small>Log blood pressure readings with automatic AHA category classification, averages and history…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/body-fat-calculator/" data-search="body fat calculator estimate body fat percentage with the us navy tape-measure method and see your fitness category. body fat calculator us navy body fat body fat percentage calculator"><span class="t-ico">❤️</span><span class="t-body"><b>Body Fat Calculator</b><small>Estimate body fat percentage with the US Navy tape-measure method and see your fitness categ…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/calorie-calculator/" data-search="tdee calorie calculator estimate your daily calorie needs with the mifflin-st jeor equation and get targets for losing, maintaining or gaining weight. tdee calculator calorie calculator mifflin st jeor daily calorie needs"><span class="t-ico">❤️</span><span class="t-body"><b>TDEE Calorie Calculator</b><small>Estimate your daily calorie needs with the Mifflin-St Jeor equation and get targets for losi…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/eye-strain-timer/" data-search="eye strain timer (20-20-20) a 20-20-20 rule timer for screen workers: work 20 minutes, then rest your eyes 20 seconds looking 20 feet away. 20-20-20 timer eye strain timer eye break reminder screen break timer eye rest timer"><span class="t-ico">❤️</span><span class="t-body"><b>Eye Strain Timer (20-20-20)</b><small>A 20-20-20 rule timer for screen workers: work 20 minutes, then rest your eyes 20 seconds lo…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/five-k-pace-calculator/" data-search="5k pace calculator turn a 5k goal time into pace per km, per mile and a full kilometer-by-kilometer split plan. 5k pace calculator 5k goal time running splits calculator 5k training pace pace chart 5k"><span class="t-ico">❤️</span><span class="t-body"><b>5K Pace Calculator</b><small>Turn a 5K goal time into pace per km, per mile and a full kilometer-by-kilometer split plan.</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/heart-rate-zone-calculator/" data-search="heart rate zone calculator find your five karvonen heart-rate training zones from your age and resting heart rate, with bpm ranges. heart rate zones calculator karvonen calculator training zones bpm"><span class="t-ico">❤️</span><span class="t-body"><b>Heart Rate Zone Calculator</b><small>Find your five Karvonen heart-rate training zones from your age and resting heart rate, with…</small></span><span class="t-arrow">→</span></a></div>
+  </section>
+</main>
+
+<!-- ADSTERRA-FOOTER: paste your Adsterra footer/banner ad code inside the div below -->
+<div class="container"><div class="ad-slot" data-ad="footer"></div></div>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="f-grid">
+      <div>
+        <span class="brandline"><span class="logo-mark">T</span> ToolNest</span>
+        <p>Free online tools that actually work. No sign-up, no watermarks — and your files never leave your device for client-side tools.</p>
+      </div>
+      <div>
+        <h4>Popular</h4>
+        <a href="/tools/qr-code-generator/">QR Code Generator</a>
+        <a href="/tools/background-remover/">Background Remover</a>
+        <a href="/tools/pdf-merger/">PDF Merger</a>
+        <a href="/tools/word-counter/">Word Counter</a>
+      </div>
+      <div>
+        <h4>Categories</h4>
+        <a href="/#image">Image Tools</a>
+        <a href="/#pdf">PDF &amp; Documents</a>
+        <a href="/#calculators">Calculators</a>
+        <a href="/#developer">Developer Tools</a>
+      </div>
+      <div>
+        <h4>Site</h4>
+        <a href="/">Home</a>
+        <a href="/#all-tools">All Tools</a>
+        <a href="/sitemap.xml">Sitemap</a>
+      </div>
+    </div>
+    <div class="f-bottom">© 2026 ToolNest · Free tools for everyone · Made with care</div>
+  </div>
+</footer>
+
+<script src="/assets/site.js?v=5"></script>
+
+<script>
+(function () {
+  'use strict';
+  var ERR = 'carb-cycling-calculator-error';
+  function calc() {
+    if (!TN.el('cc-weight')) return;
+    TN.clearErr(ERR);
+    var wlb = parseFloat(TN.el('cc-weight').value);
+    var hin = parseFloat(TN.el('cc-height').value);
+    var age = parseInt(TN.el('cc-age').value, 10);
+    var sex = TN.el('cc-sex').value;
+    var act = parseFloat(TN.el('cc-activity').value);
+    var goal = parseFloat(TN.el('cc-goal').value);
+    if (!(wlb > 0)) { TN.setErr(ERR, 'Enter a weight greater than 0 lb.'); return; }
+    if (!(hin > 0)) { TN.setErr(ERR, 'Enter a height greater than 0 inches.'); return; }
+    if (!(age >= 10 && age <= 100)) { TN.setErr(ERR, 'Enter an age between 10 and 100.'); return; }
+    var wkg = wlb / 2.20462, hcm = hin * 2.54;
+    var bmr = 10 * wkg + 6.25 * hcm - 5 * age + (sex === 'm' ? 5 : -161);
+    var target = bmr * act * goal;
+    var protein = wlb * 1;
+    function day(label, carbPerLb) {
+      var carbs = wlb * carbPerLb;
+      var fat = Math.max(wlb * 0.3, (target - protein * 4 - carbs * 4) / 9);
+      var cals = protein * 4 + carbs * 4 + fat * 9;
+      return '<tr><td>' + label + '</td><td>' + Math.round(carbs) + ' g</td><td>' + Math.round(fat) + ' g</td><td>' + Math.round(cals) + '</td></tr>';
+    }
+    TN.el('cc-tdee').textContent = Math.round(target) + ' cal';
+    TN.el('cc-protein').textContent = Math.round(protein) + ' g';
+    TN.el('cc-body').innerHTML = day('High carb (training)', 2) + day('Medium carb', 1.25) + day('Low carb (rest)', 0.5);
+  }
+  try {
+    ['cc-weight', 'cc-height', 'cc-age'].forEach(function (id) { TN.on(id, 'input', calc); });
+    ['cc-sex', 'cc-activity', 'cc-goal'].forEach(function (id) { TN.on(id, 'change', calc); });
+    calc();
+  } catch (e) { /* never throw on load */ }
+})();
+</script>
+</body>
+</html>

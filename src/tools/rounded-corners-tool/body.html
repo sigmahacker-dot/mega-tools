@@ -1,0 +1,26 @@
+<div class="tool-card">
+  <div class="field">
+    <label for="rounded-corners-tool-file">Upload image</label>
+    <input type="file" class="input" id="rounded-corners-tool-file" accept="image/*">
+  </div>
+  <div class="field">
+    <label for="rounded-corners-tool-radius">Corner radius (<span id="rounded-corners-tool-radius-v">25</span>%)</label>
+    <input type="range" class="input" id="rounded-corners-tool-radius" min="0" max="50" step="1" value="25">
+  </div>
+  <div class="field">
+    <label for="rounded-corners-tool-bg">Background behind corners</label>
+    <select class="input" id="rounded-corners-tool-bg">
+      <option value="transparent">Transparent (recommended)</option>
+      <option value="#ffffff">White</option>
+      <option value="#000000">Black</option>
+    </select>
+  </div>
+  <div class="btn-row" style="margin-top:12px">
+    <button class="btn btn-outline" id="rounded-corners-tool-dl" disabled>Download PNG</button>
+  </div>
+  <div class="error" id="rounded-corners-tool-error"></div>
+  <div class="result" id="rounded-corners-tool-result" hidden>
+    <canvas id="rounded-corners-tool-canvas" style="max-width:100%;height:auto"></canvas>
+    <p class="note">Checkerboard in the preview means transparency.</p>
+  </div>
+</div>

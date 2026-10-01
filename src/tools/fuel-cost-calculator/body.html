@@ -1,0 +1,22 @@
+<div class="tool-card">
+  <div class="grid2">
+    <div class="field"><label for="fuel-system">Unit system</label>
+      <select class="input" id="fuel-system">
+        <option value="imp">Miles · MPG · $/gallon</option>
+        <option value="met">Km · L/100km · $/liter</option>
+      </select>
+    </div>
+    <div class="field"><label for="fuel-distance" id="fuel-distance-label">Distance (miles)</label><input type="number" class="input" id="fuel-distance" min="0" step="any" placeholder="250"></div>
+    <div class="field"><label for="fuel-eff" id="fuel-eff-label">Efficiency (MPG)</label><input type="number" class="input" id="fuel-eff" min="0" step="any" placeholder="30"></div>
+    <div class="field"><label for="fuel-price" id="fuel-price-label">Fuel price ($/gallon)</label><input type="number" class="input" id="fuel-price" min="0" step="any" placeholder="3.50"></div>
+  </div>
+  <div class="error" id="fuel-cost-calculator-error"></div>
+  <div class="result" id="fuel-result">
+    <div class="stat-cards">
+      <div class="stat-card"><div class="v" id="fuel-needed">–</div><div class="l" id="fuel-needed-label">Fuel needed (gal)</div></div>
+      <div class="stat-card"><div class="v" id="fuel-cost">–</div><div class="l">Total fuel cost</div></div>
+      <div class="stat-card"><div class="v" id="fuel-perdist">–</div><div class="l" id="fuel-perdist-label">Cost per mile</div></div>
+    </div>
+    <p class="note">Assumes steady efficiency for the whole trip. City driving and hills will use more.</p>
+  </div>
+</div>

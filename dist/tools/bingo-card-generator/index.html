@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bingo Card Generator — Free Online | ToolNest</title>
+<meta name="description" content="Create printable 5×5 bingo cards with classic B-I-N-G-O number ranges, an optional free space, or your own custom word list.">
+<meta name="keywords" content="bingo card generator, printable bingo cards, custom bingo cards, bingo number generator, free bingo cards">
+<link rel="canonical" href="https://toolnest.vercel.app/tools/bingo-card-generator/">
+<meta name="theme-color" content="#07070b">
+<meta property="og:title" content="Bingo Card Generator — Free Online | ToolNest">
+<meta property="og:description" content="Create printable 5×5 bingo cards with classic B-I-N-G-O number ranges, an optional free space, or your own custom word list.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css?v=4">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%23e01111'/><text x='50' y='68' font-size='58' text-anchor='middle' fill='white' font-family='Arial' font-weight='bold'>T</text></svg>">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebApplication","name":"Bingo Card Generator","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0"},"url":"https://toolnest.vercel.app/tools/bingo-card-generator/","description":"Create printable 5×5 bingo cards with classic B-I-N-G-O number ranges, an optional free space, or your own custom word list."},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Does it use standard bingo number ranges?","acceptedAnswer":{"@type":"Answer","text":"Yes — the classic ranges are used: B 1–15, I 16–30, N 31–45, G 46–60, O 61–75, with no repeats on a card."}},{"@type":"Question","name":"Can I include a free space?","acceptedAnswer":{"@type":"Answer","text":"Leave the free-space box ticked for the classic center star, or untick it for a full 25-cell card."}},{"@type":"Question","name":"Can I make bingo cards with words instead of numbers?","acceptedAnswer":{"@type":"Answer","text":"Choose the custom-words mode and paste up to 24 words — they are shuffled into the grid."}},{"@type":"Question","name":"How do I print multiple cards?","acceptedAnswer":{"@type":"Answer","text":"Press New card as many times as you like, then use the Print button for a clean print layout."}}]}]}</script>
+</head>
+<body>
+<header class="site-header">
+  <div class="container">
+    <a class="logo" href="/"><span class="logo-mark">T</span> ToolNest</a>
+    <div class="header-right">
+      <form class="nav-search" action="/" method="get" role="search">
+        <span class="ns-icon">🔍</span>
+        <input type="search" name="q" placeholder="Search tools…" aria-label="Search tools" autocomplete="off">
+      </form>
+      <div class="menu-wrap">
+        <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="menuPanel" aria-label="Open menu"><span></span><span></span><span></span></button>
+        <nav class="menu-panel" id="menuPanel" aria-label="Site">
+          <a href="/">Home</a>
+          <a href="/#categories">Categories</a>
+          <a href="/#all-tools">All Tools</a>
+        </nav>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ADSTERRA-HEADER: paste your Adsterra banner ad code inside the div below -->
+<div class="container"><div class="ad-slot ad-leaderboard" data-ad="header"></div></div>
+
+<main class="container">
+  <nav class="crumbs"><a href="/">Home</a> &rsaquo; <a href="/#generators">Generators</a> &rsaquo; Bingo Card Generator</nav>
+  <div class="tool-hero">
+    <h1>Bingo Card Generator</h1>
+    <p>Create printable 5×5 bingo cards with classic B-I-N-G-O number ranges, an optional free space, or your own custom word list.</p>
+  </div>
+
+  <div class="tool-card">
+  <div class="grid2">
+    <div class="field"><label for="bingo-mode">Card type</label>
+      <select class="select" id="bingo-mode"><option value="numbers">Classic numbers (1–75)</option><option value="words">Custom words</option></select>
+    </div>
+    <div class="field"><label for="bingo-title">Card title</label><input type="text" class="input" id="bingo-title" placeholder="Family Bingo Night"></div>
+  </div>
+  <div class="field" id="bingo-words-wrap" style="display:none"><label for="bingo-words">Custom words <span class="hint">(one per line, up to 24)</span></label><textarea class="textarea" id="bingo-words" rows="4" placeholder="apple&#10;balloon&#10;..."></textarea></div>
+  <div class="checkbox-row"><input type="checkbox" id="bingo-free" checked><label for="bingo-free">Free space in the center</label></div>
+  <div class="error" id="bingo-card-generator-error"></div>
+  <div class="result" id="bingo-result">
+    <h3 id="bingo-head" style="text-align:center;margin:4px 0 10px"></h3>
+    <div id="bingo-card" style="overflow-x:auto"></div>
+    <div class="btn-row">
+      <button class="btn btn-primary" id="bingo-go" type="button">New card</button>
+      <button class="btn btn-outline" id="bingo-print" type="button">Print card</button>
+    </div>
+  </div>
+</div>
+
+  <!-- ADSTERRA-INCONTENT: paste your Adsterra native/in-content ad code inside the div below -->
+  <div class="ad-slot" data-ad="incontent"></div>
+
+  <div class="info-grid">
+    <div class="info-card">
+      <h2>📖 How to use</h2>
+      <ol><li>Pick number mode or paste custom words.</li><li>Toggle the free space on or off.</li><li>Press New card, then Print for a clean paper copy.</li></ol>
+    </div>
+    <div class="info-card">
+      <h2>❓ Frequently asked questions</h2>
+      <div class="faq"><details><summary>Does it use standard bingo number ranges?</summary><p>Yes — the classic ranges are used: B 1–15, I 16–30, N 31–45, G 46–60, O 61–75, with no repeats on a card.</p></details><details><summary>Can I include a free space?</summary><p>Leave the free-space box ticked for the classic center star, or untick it for a full 25-cell card.</p></details><details><summary>Can I make bingo cards with words instead of numbers?</summary><p>Choose the custom-words mode and paste up to 24 words — they are shuffled into the grid.</p></details><details><summary>How do I print multiple cards?</summary><p>Press New card as many times as you like, then use the Print button for a clean print layout.</p></details></div>
+    </div>
+  </div>
+
+  <section class="section">
+    <h2>🔗 Related tools</h2>
+    <div class="tool-grid"><a class="tool-link" href="/tools/band-name-generator/" data-search="band name generator generate original band names by genre — rock, metal, pop, hip-hop, electronic, jazz, punk or indie — with one click and copy. band name generator rock band names metal band names cool band names music group name ideas"><span class="t-ico">⚙️</span><span class="t-body"><b>Band Name Generator</b><small>Generate original band names by genre — rock, metal, pop, hip-hop, electronic, jazz, punk or…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/barcode-generator/" data-search="barcode generator generate barcodes in common formats — code128, code39, ean-13, ean-8, upc and itf-14 — and download them as png or svg images. barcode generator barcode maker ean13 barcode upc barcode generator"><span class="t-ico">⚙️</span><span class="t-body"><b>Barcode Generator</b><small>Generate barcodes in common formats — CODE128, CODE39, EAN-13, EAN-8, UPC and ITF-14 — and d…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/border-radius-generator/" data-search="border radius generator organic blob shapes with an 8-handle radius editor. border radius generator blob shape css border-radius css"><span class="t-ico">⚙️</span><span class="t-body"><b>Border Radius Generator</b><small>Organic blob shapes with an 8-handle radius editor.</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/box-shadow-generator/" data-search="box shadow generator visual css box-shadow builder with live preview. box shadow generator css shadow box-shadow css"><span class="t-ico">⚙️</span><span class="t-body"><b>Box Shadow Generator</b><small>Visual CSS box-shadow builder with live preview.</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/button-generator/" data-search="button generator design a custom button with your text, colors, border radius, padding and shadow — then copy the generated css and use it anywhere. button generator css button maker button css custom button design"><span class="t-ico">⚙️</span><span class="t-body"><b>Button Generator</b><small>Design a custom button with your text, colors, border radius, padding and shadow — then copy…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/calendar-event-generator/" data-search="calendar event generator build a valid rfc 5545 .ics calendar file with title, dates, location, description and reminder — imports into google, apple and outlook calendars. ics file generator calendar event generator create ics file ical event maker calendar invite generator"><span class="t-ico">⚙️</span><span class="t-body"><b>Calendar Event Generator</b><small>Build a valid RFC 5545 .ics calendar file with title, dates, location, description and remin…</small></span><span class="t-arrow">→</span></a></div>
+  </section>
+</main>
+
+<!-- ADSTERRA-FOOTER: paste your Adsterra footer/banner ad code inside the div below -->
+<div class="container"><div class="ad-slot" data-ad="footer"></div></div>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="f-grid">
+      <div>
+        <span class="brandline"><span class="logo-mark">T</span> ToolNest</span>
+        <p>Free online tools that actually work. No sign-up, no watermarks — and your files never leave your device for client-side tools.</p>
+      </div>
+      <div>
+        <h4>Popular</h4>
+        <a href="/tools/qr-code-generator/">QR Code Generator</a>
+        <a href="/tools/background-remover/">Background Remover</a>
+        <a href="/tools/pdf-merger/">PDF Merger</a>
+        <a href="/tools/word-counter/">Word Counter</a>
+      </div>
+      <div>
+        <h4>Categories</h4>
+        <a href="/#image">Image Tools</a>
+        <a href="/#pdf">PDF &amp; Documents</a>
+        <a href="/#calculators">Calculators</a>
+        <a href="/#developer">Developer Tools</a>
+      </div>
+      <div>
+        <h4>Site</h4>
+        <a href="/">Home</a>
+        <a href="/#all-tools">All Tools</a>
+        <a href="/sitemap.xml">Sitemap</a>
+      </div>
+    </div>
+    <div class="f-bottom">© 2026 ToolNest · Free tools for everyone · Made with care</div>
+  </div>
+</footer>
+
+<script src="/assets/site.js?v=5"></script>
+
+<script>
+(function () {
+  'use strict';
+  var ERR = 'bingo-card-generator-error';
+  var lastGrid = null;
+  function esc(s) {
+    return String(s).replace(/[&<>"']/g, function (c) {
+      return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c];
+    });
+  }
+  function shuffle(arr) {
+    for (var i = arr.length - 1; i > 0; i--) {
+      var j = Math.floor(Math.random() * (i + 1));
+      var t = arr[i]; arr[i] = arr[j]; arr[j] = t;
+    }
+    return arr;
+  }
+  function sampleRange(lo, hi, n) {
+    var pool = [];
+    for (var i = lo; i <= hi; i++) pool.push(i);
+    shuffle(pool);
+    return pool.slice(0, n);
+  }
+  function generate() {
+    TN.clearErr(ERR);
+    var mode = TN.el('bingo-mode').value;
+    var free = TN.el('bingo-free').checked;
+    var grid = [[], [], [], [], []];
+    if (mode === 'numbers') {
+      var cols = [sampleRange(1, 15, 5), sampleRange(16, 30, 5), sampleRange(31, 45, 5), sampleRange(46, 60, 5), sampleRange(61, 75, 5)];
+      for (var c = 0; c < 5; c++) for (var r = 0; r < 5; r++) grid[r][c] = String(cols[c][r]);
+    } else {
+      var words = TN.el('bingo-words').value.split(/\r?\n/).map(function (x) { return x.trim(); }).filter(function (x) { return x.length; });
+      if (words.length < (free ? 24 : 25)) { TN.setErr(ERR, 'Enter at least ' + (free ? 24 : 25) + ' words for this card.'); return; }
+      var w = shuffle(words.slice()).slice(0, 25);
+      for (var r2 = 0; r2 < 5; r2++) for (var c2 = 0; c2 < 5; c2++) grid[r2][c2] = w[r2 * 5 + c2];
+    }
+    if (free) grid[2][2] = '★ FREE';
+    lastGrid = grid;
+    TN.el('bingo-head').textContent = TN.el('bingo-title').value.trim() || 'BINGO';
+    var letters = ['B', 'I', 'N', 'G', 'O'];
+    var html = '<table class="data" style="table-layout:fixed;text-align:center"><thead><tr>';
+    letters.forEach(function (l) { html += '<th style="text-align:center;font-size:1.3rem">' + l + '</th>'; });
+    html += '</tr></thead><tbody>';
+    for (var r3 = 0; r3 < 5; r3++) {
+      html += '<tr>';
+      for (var c3 = 0; c3 < 5; c3++) {
+        var isFree = free && r3 === 2 && c3 === 2;
+        html += '<td style="text-align:center;height:56px;font-weight:600' + (isFree ? ';color:#fcd34d' : '') + '">' + esc(grid[r3][c3]) + '</td>';
+      }
+      html += '</tr>';
+    }
+    TN.el('bingo-card').innerHTML = html + '</tbody></table>';
+  }
+  function escHtml(s) {
+    return String(s).replace(/[&<>"']/g, function (c) {
+      return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c];
+    });
+  }
+  try {
+    TN.on('bingo-mode', 'change', function () {
+      TN.el('bingo-words-wrap').style.display = TN.el('bingo-mode').value === 'words' ? '' : 'none';
+      generate();
+    });
+    TN.on('bingo-go', 'click', generate);
+    TN.on('bingo-free', 'change', generate);
+    TN.on('bingo-title', 'input', function () { TN.el('bingo-head').textContent = TN.el('bingo-title').value.trim() || 'BINGO'; });
+    TN.on('bingo-print', 'click', function () {
+      if (!lastGrid) { TN.setErr(ERR, 'Generate a card first.'); return; }
+      TN.clearErr(ERR);
+      var w = window.open('', '_blank', 'width=600,height=700');
+      if (!w) { TN.setErr(ERR, 'Popup blocked — allow popups to print the card.'); return; }
+      var letters = ['B', 'I', 'N', 'G', 'O'];
+      var t = '<table border="1" cellspacing="0" cellpadding="0" style="border-collapse:collapse;width:100%;text-align:center;font-family:sans-serif">';
+      t += '<tr>' + letters.map(function (l) { return '<th style="padding:10px;font-size:28px;background:#eee">' + l + '</th>'; }).join('') + '</tr>';
+      for (var r = 0; r < 5; r++) {
+        t += '<tr>';
+        for (var c = 0; c < 5; c++) t += '<td style="padding:18px;font-size:18px;font-weight:bold">' + escHtml(lastGrid[r][c]) + '</td>';
+        t += '</tr>';
+      }
+      w.document.write('<!DOCTYPE html><html><head><title>Bingo Card</title></head><body><h2 style="text-align:center;font-family:sans-serif">' +
+        escHtml(TN.el('bingo-head').textContent) + '</h2>' + t + '</table><scr' + 'ipt>window.onload=function(){window.print();}</scr' + 'ipt></body></html>');
+      w.document.close();
+    });
+    generate();
+  } catch (e) { /* never throw on load */ }
+})();
+</script>
+</body>
+</html>

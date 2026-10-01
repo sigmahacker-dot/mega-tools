@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PDF Page Rotator — Free Online | ToolNest</title>
+<meta name="description" content="Rotate PDF pages that came out sideways — rotate selected pages or the whole document by 90°, 180° or 270°, then download the fixed PDF.">
+<meta name="keywords" content="rotate pdf pages, pdf rotator, fix sideways pdf, rotate pdf 90 degrees, pdf page rotation">
+<link rel="canonical" href="https://toolnest.vercel.app/tools/pdf-page-rotator/">
+<meta name="theme-color" content="#07070b">
+<meta property="og:title" content="PDF Page Rotator — Free Online | ToolNest">
+<meta property="og:description" content="Rotate PDF pages that came out sideways — rotate selected pages or the whole document by 90°, 180° or 270°, then download the fixed PDF.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css?v=4">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%23e01111'/><text x='50' y='68' font-size='58' text-anchor='middle' fill='white' font-family='Arial' font-weight='bold'>T</text></svg>">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebApplication","name":"PDF Page Rotator","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0"},"url":"https://toolnest.vercel.app/tools/pdf-page-rotator/","description":"Rotate PDF pages that came out sideways — rotate selected pages or the whole document by 90°, 180° or 270°, then download the fixed PDF."},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Is the rotation permanent?","acceptedAnswer":{"@type":"Answer","text":"The rotation is written into the PDF file itself, so it stays fixed in every reader and printer."}},{"@type":"Question","name":"Can I rotate only some pages?","acceptedAnswer":{"@type":"Answer","text":"Yes — specify individual pages or ranges like “1, 4-6”, or choose “All pages”."}},{"@type":"Question","name":"Does rotating reduce quality?","acceptedAnswer":{"@type":"Answer","text":"pdf-lib adds the rotation to each page's existing rotation value, so two 90° turns equal 180° — it never degrades quality."}},{"@type":"Question","name":"Is my PDF uploaded?","acceptedAnswer":{"@type":"Answer","text":"No — your PDF never leaves your device."}}]}]}</script>
+</head>
+<body>
+<header class="site-header">
+  <div class="container">
+    <a class="logo" href="/"><span class="logo-mark">T</span> ToolNest</a>
+    <div class="header-right">
+      <form class="nav-search" action="/" method="get" role="search">
+        <span class="ns-icon">🔍</span>
+        <input type="search" name="q" placeholder="Search tools…" aria-label="Search tools" autocomplete="off">
+      </form>
+      <div class="menu-wrap">
+        <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="menuPanel" aria-label="Open menu"><span></span><span></span><span></span></button>
+        <nav class="menu-panel" id="menuPanel" aria-label="Site">
+          <a href="/">Home</a>
+          <a href="/#categories">Categories</a>
+          <a href="/#all-tools">All Tools</a>
+        </nav>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ADSTERRA-HEADER: paste your Adsterra banner ad code inside the div below -->
+<div class="container"><div class="ad-slot ad-leaderboard" data-ad="header"></div></div>
+
+<main class="container">
+  <nav class="crumbs"><a href="/">Home</a> &rsaquo; <a href="/#pdf">PDF &amp; Documents</a> &rsaquo; PDF Page Rotator</nav>
+  <div class="tool-hero">
+    <h1>PDF Page Rotator</h1>
+    <p>Rotate PDF pages that came out sideways — rotate selected pages or the whole document by 90°, 180° or 270°, then download the fixed PDF.</p>
+  </div>
+
+  <div class="tool-card">
+  <div class="field">
+    <label for="pdf-page-rotator-file">Upload PDF</label>
+    <input type="file" class="input" id="pdf-page-rotator-file" accept="application/pdf,.pdf">
+  </div>
+  <div id="pdf-page-rotator-form" hidden>
+    <div class="grid2">
+      <div class="field">
+        <label for="pdf-page-rotator-scope">Pages</label>
+        <select class="input" id="pdf-page-rotator-scope">
+          <option value="all">All pages</option>
+          <option value="some">Selected pages…</option>
+        </select>
+      </div>
+      <div class="field">
+        <label for="pdf-page-rotator-deg">Rotate</label>
+        <select class="input" id="pdf-page-rotator-deg">
+          <option value="90">90° clockwise</option>
+          <option value="180">180°</option>
+          <option value="270">270° clockwise (90° counter-clockwise)</option>
+        </select>
+      </div>
+    </div>
+    <div class="field" id="pdf-page-rotator-pages-wrap" hidden>
+      <label for="pdf-page-rotator-pages">Page numbers / ranges (e.g. 1, 4-6)</label>
+      <input type="text" class="input" id="pdf-page-rotator-pages" placeholder="1, 4-6">
+    </div>
+  </div>
+  <div class="btn-row" style="margin-top:12px">
+    <button class="btn" id="pdf-page-rotator-go" disabled>Rotate &amp; download</button>
+  </div>
+  <div class="error" id="pdf-page-rotator-error"></div>
+  <div class="result" id="pdf-page-rotator-result" hidden>
+    <p class="muted" id="pdf-page-rotator-info"></p>
+  </div>
+</div>
+
+
+  <!-- ADSTERRA-INCONTENT: paste your Adsterra native/in-content ad code inside the div below -->
+  <div class="ad-slot" data-ad="incontent"></div>
+
+  <div class="info-grid">
+    <div class="info-card">
+      <h2>📖 How to use</h2>
+      <ol><li>Upload your PDF.</li><li>Choose which pages to rotate (or all pages).</li><li>Pick 90°, 180° or 270° clockwise.</li><li>Click “Rotate &amp; download” to save the fixed PDF.</li></ol>
+    </div>
+    <div class="info-card">
+      <h2>❓ Frequently asked questions</h2>
+      <div class="faq"><details><summary>Is the rotation permanent?</summary><p>The rotation is written into the PDF file itself, so it stays fixed in every reader and printer.</p></details><details><summary>Can I rotate only some pages?</summary><p>Yes — specify individual pages or ranges like “1, 4-6”, or choose “All pages”.</p></details><details><summary>Does rotating reduce quality?</summary><p>pdf-lib adds the rotation to each page&#39;s existing rotation value, so two 90° turns equal 180° — it never degrades quality.</p></details><details><summary>Is my PDF uploaded?</summary><p>No — your PDF never leaves your device.</p></details></div>
+    </div>
+  </div>
+
+  <section class="section">
+    <h2>🔗 Related tools</h2>
+    <div class="tool-grid"><a class="tool-link" href="/tools/esign-pdf/" data-search="esign pdf draw your signature and stamp it onto any page of a pdf. choose the page, position and size with sliders, then download the signed document. esign pdf sign pdf online electronic signature pdf"><span class="t-ico">📄</span><span class="t-body"><b>eSign PDF</b><small>Draw your signature and stamp it onto any page of a PDF. Choose the page, position and size …</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/pdf-blank-page-adder/" data-search="pdf blank page adder insert blank pages into a pdf — at the start, at the end, or after any page. choose page size and how many to add. add blank pages pdf insert blank page pdf pdf blank page add pages to pdf pdf insert pages"><span class="t-ico">📄</span><span class="t-body"><b>PDF Blank Page Adder</b><small>Insert blank pages into a PDF — at the start, at the end, or after any page. Choose page siz…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/pdf-compressor/" data-search="pdf compressor shrink a pdf&#39;s file size by re-rendering its pages as compressed images. choose low, medium or high quality and compare sizes before downloading. compress pdf reduce pdf size shrink pdf"><span class="t-ico">📄</span><span class="t-body"><b>PDF Compressor</b><small>Shrink a PDF&#39;s file size by re-rendering its pages as compressed images. Choose Low, Medium …</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/pdf-merger/" data-search="pdf merger combine multiple pdf files into one document. arrange the files in any order, preview each file&#39;s page count, then merge and download the result. merge pdf combine pdf join pdf files"><span class="t-ico">📄</span><span class="t-body"><b>PDF Merger</b><small>Combine multiple PDF files into one document. Arrange the files in any order, preview each f…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/pdf-metadata-editor/" data-search="pdf metadata editor read and edit a pdf&#39;s title, author, subject and keywords metadata. edit pdf metadata pdf title author pdf properties editor"><span class="t-ico">📄</span><span class="t-body"><b>PDF Metadata Editor</b><small>Read and edit a PDF&#39;s title, author, subject and keywords metadata.</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/pdf-page-counter/" data-search="pdf page counter count the pages in any pdf instantly — plus file size, page dimensions, version and encryption status, all read locally. pdf page counter count pdf pages how many pages in pdf pdf info pdf metadata"><span class="t-ico">📄</span><span class="t-body"><b>PDF Page Counter</b><small>Count the pages in any PDF instantly — plus file size, page dimensions, version and encrypti…</small></span><span class="t-arrow">→</span></a></div>
+  </section>
+</main>
+
+<!-- ADSTERRA-FOOTER: paste your Adsterra footer/banner ad code inside the div below -->
+<div class="container"><div class="ad-slot" data-ad="footer"></div></div>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="f-grid">
+      <div>
+        <span class="brandline"><span class="logo-mark">T</span> ToolNest</span>
+        <p>Free online tools that actually work. No sign-up, no watermarks — and your files never leave your device for client-side tools.</p>
+      </div>
+      <div>
+        <h4>Popular</h4>
+        <a href="/tools/qr-code-generator/">QR Code Generator</a>
+        <a href="/tools/background-remover/">Background Remover</a>
+        <a href="/tools/pdf-merger/">PDF Merger</a>
+        <a href="/tools/word-counter/">Word Counter</a>
+      </div>
+      <div>
+        <h4>Categories</h4>
+        <a href="/#image">Image Tools</a>
+        <a href="/#pdf">PDF &amp; Documents</a>
+        <a href="/#calculators">Calculators</a>
+        <a href="/#developer">Developer Tools</a>
+      </div>
+      <div>
+        <h4>Site</h4>
+        <a href="/">Home</a>
+        <a href="/#all-tools">All Tools</a>
+        <a href="/sitemap.xml">Sitemap</a>
+      </div>
+    </div>
+    <div class="f-bottom">© 2026 ToolNest · Free tools for everyone · Made with care</div>
+  </div>
+</footer>
+
+<script src="/assets/site.js?v=5"></script>
+<script src="https://cdn.jsdelivr.net/npm/pdf-lib@1.17.1/dist/pdf-lib.min.js" defer></script>
+<script>
+/* PDF Page Rotator — rotate selected pages with pdf-lib (lossless metadata rotation). */
+(function () {
+  'use strict';
+  var SLUG = 'pdf-page-rotator';
+  var ERR = SLUG + '-error';
+  var buf = null;
+  var pageCount = 0;
+  var pdfName = 'document.pdf';
+
+  function $(id) { return document.getElementById(id); }
+
+  function parsePages(spec, max) {
+    var set = {};
+    var parts = (spec || '').split(',');
+    for (var i = 0; i < parts.length; i++) {
+      var p = parts[i].trim();
+      if (!p) continue;
+      var m = p.match(/^(\d+)\s*-\s*(\d+)$/);
+      if (m) {
+        var a = parseInt(m[1], 10), b = parseInt(m[2], 10);
+        if (a > b) { var t = a; a = b; b = t; }
+        for (var n = a; n <= b; n++) { if (n >= 1 && n <= max) set[n] = true; }
+      } else if (/^\d+$/.test(p)) {
+        var v = parseInt(p, 10);
+        if (v >= 1 && v <= max) set[v] = true;
+      } else { return null; }
+    }
+    return Object.keys(set).map(Number).sort(function (x, y) { return x - y; });
+  }
+
+  function go() {
+    if (typeof PDFLib === 'undefined') { TN.setErr(ERR, 'PDF engine failed to load. Check your connection and reload.'); return; }
+    if (!buf) { TN.setErr(ERR, 'Upload a PDF first.'); return; }
+    var deg = parseInt($('pdf-page-rotator-deg').value, 10) || 90;
+    var targets;
+    if ($('pdf-page-rotator-scope').value === 'all') {
+      targets = [];
+      for (var i = 0; i < pageCount; i++) targets.push(i);
+    } else {
+      var pages = parsePages($('pdf-page-rotator-pages').value, pageCount);
+      if (pages === null) { TN.setErr(ERR, 'Invalid page specification. Use numbers and ranges like “1, 4-6”.'); return; }
+      if (!pages.length) { TN.setErr(ERR, 'No valid pages selected.'); return; }
+      targets = pages.map(function (p) { return p - 1; });
+    }
+    TN.clearErr(ERR);
+    PDFLib.PDFDocument.load(buf.slice(0)).then(function (doc) {
+      targets.forEach(function (idx) {
+        var page = doc.getPage(idx);
+        var cur = page.getRotation().angle || 0;
+        page.setRotation(PDFLib.degrees((cur + deg) % 360));
+      });
+      return doc.save();
+    }).then(function (bytes) {
+      var blob = new Blob([bytes], { type: 'application/pdf' });
+      var a = document.createElement('a');
+      a.href = URL.createObjectURL(blob);
+      a.download = pdfName.replace(/\.pdf$/i, '') + '-rotated.pdf';
+      document.body.appendChild(a); a.click();
+      setTimeout(function () { document.body.removeChild(a); }, 100);
+      TN.clearErr(ERR);
+    }).catch(function () {
+      TN.setErr(ERR, 'Could not process that PDF. It may be encrypted or corrupted.');
+    });
+  }
+
+  try {
+    TN.on('pdf-page-rotator-file', 'change', function (e) {
+      var f = e.target.files && e.target.files[0];
+      if (!f) return;
+      pdfName = f.name || pdfName;
+      var r = new FileReader();
+      r.onload = function () {
+        buf = r.result;
+        if (typeof PDFLib === 'undefined') { TN.setErr(ERR, 'PDF engine failed to load. Check your connection and reload.'); return; }
+        PDFLib.PDFDocument.load(buf.slice(0)).then(function (doc) {
+          pageCount = doc.getPageCount();
+          $('pdf-page-rotator-form').hidden = false;
+          $('pdf-page-rotator-result').hidden = false;
+          $('pdf-page-rotator-info').textContent = 'Loaded ' + pageCount + ' page' + (pageCount === 1 ? '' : 's') + '.';
+          $('pdf-page-rotator-go').disabled = false;
+          TN.clearErr(ERR);
+        }).catch(function () { TN.setErr(ERR, 'Could not read that PDF. It may be encrypted or corrupted.'); });
+      };
+      r.onerror = function () { TN.setErr(ERR, 'Could not read the file.'); };
+      r.readAsArrayBuffer(f);
+    });
+    TN.on('pdf-page-rotator-scope', 'change', function () {
+      $('pdf-page-rotator-pages-wrap').hidden = $('pdf-page-rotator-scope').value !== 'some';
+    });
+    TN.on('pdf-page-rotator-go', 'click', go);
+  } catch (e) { /* never throw on load */ }
+})();
+
+</script>
+</body>
+</html>

@@ -1,0 +1,20 @@
+<div class="tool-card">
+  <div class="grid2">
+    <div class="field"><label for="ot-rate">Hourly rate ($)</label><input type="number" class="input" id="ot-rate" min="0" step="any" placeholder="20"></div>
+    <div class="field"><label for="ot-reg">Regular hours</label><input type="number" class="input" id="ot-reg" min="0" max="168" step="any" placeholder="40"></div>
+    <div class="field"><label for="ot-over">Overtime hours (1.5×)</label><input type="number" class="input" id="ot-over" min="0" max="168" step="any" placeholder="5"></div>
+    <div class="field"><label for="ot-double">Double-time hours (2×)</label><input type="number" class="input" id="ot-double" min="0" max="168" step="any" placeholder="0"></div>
+  </div>
+  <div class="error" id="overtime-pay-calculator-error"></div>
+  <div class="result" id="ot-result">
+    <div class="stat-cards">
+      <div class="stat-card"><div class="v" id="ot-gross">–</div><div class="l">Gross pay</div></div>
+      <div class="stat-card"><div class="v" id="ot-extra">–</div><div class="l">Overtime premium</div></div>
+      <div class="stat-card"><div class="v" id="ot-eff">–</div><div class="l">Effective hourly</div></div>
+    </div>
+    <table class="data">
+      <thead><tr><th>Pay type</th><th>Hours</th><th>Rate</th><th>Amount</th></tr></thead>
+      <tbody id="ot-body"><tr><td colspan="4" class="muted">Enter your hours to calculate.</td></tr></tbody>
+    </table>
+  </div>
+</div>

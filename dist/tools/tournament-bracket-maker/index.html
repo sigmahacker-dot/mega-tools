@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tournament Bracket Maker — Free Online | ToolNest</title>
+<meta name="description" content="Build a single-elimination tournament bracket from any list of players or teams — automatic seeding, byes and round-by-round matchups.">
+<meta name="keywords" content="tournament bracket maker, bracket generator, single elimination bracket, tournament draw, playoff bracket maker">
+<link rel="canonical" href="https://toolnest.vercel.app/tools/tournament-bracket-maker/">
+<meta name="theme-color" content="#07070b">
+<meta property="og:title" content="Tournament Bracket Maker — Free Online | ToolNest">
+<meta property="og:description" content="Build a single-elimination tournament bracket from any list of players or teams — automatic seeding, byes and round-by-round matchups.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css?v=4">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%23e01111'/><text x='50' y='68' font-size='58' text-anchor='middle' fill='white' font-family='Arial' font-weight='bold'>T</text></svg>">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebApplication","name":"Tournament Bracket Maker","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0"},"url":"https://toolnest.vercel.app/tools/tournament-bracket-maker/","description":"Build a single-elimination tournament bracket from any list of players or teams — automatic seeding, byes and round-by-round matchups."},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What if my player count is not a power of 2?","acceptedAnswer":{"@type":"Answer","text":"Yes — the field is padded up to the next power of 2, and the extra slots become byes so top seeds advance automatically."}},{"@type":"Question","name":"Can I randomize the seeding?","acceptedAnswer":{"@type":"Answer","text":"Tick the shuffle box to randomize seeds, or leave it off to keep your entry order as seeds 1, 2, 3..."}},{"@type":"Question","name":"What format is the bracket?","acceptedAnswer":{"@type":"Answer","text":"Single elimination: lose once and you are out. The bracket shows every round through to the final."}},{"@type":"Question","name":"Is this private?","acceptedAnswer":{"@type":"Answer","text":"Yes, everything is generated locally in your browser."}}]}]}</script>
+</head>
+<body>
+<header class="site-header">
+  <div class="container">
+    <a class="logo" href="/"><span class="logo-mark">T</span> ToolNest</a>
+    <div class="header-right">
+      <form class="nav-search" action="/" method="get" role="search">
+        <span class="ns-icon">🔍</span>
+        <input type="search" name="q" placeholder="Search tools…" aria-label="Search tools" autocomplete="off">
+      </form>
+      <div class="menu-wrap">
+        <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="menuPanel" aria-label="Open menu"><span></span><span></span><span></span></button>
+        <nav class="menu-panel" id="menuPanel" aria-label="Site">
+          <a href="/">Home</a>
+          <a href="/#categories">Categories</a>
+          <a href="/#all-tools">All Tools</a>
+        </nav>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ADSTERRA-HEADER: paste your Adsterra banner ad code inside the div below -->
+<div class="container"><div class="ad-slot ad-leaderboard" data-ad="header"></div></div>
+
+<main class="container">
+  <nav class="crumbs"><a href="/">Home</a> &rsaquo; <a href="/#generators">Generators</a> &rsaquo; Tournament Bracket Maker</nav>
+  <div class="tool-hero">
+    <h1>Tournament Bracket Maker</h1>
+    <p>Build a single-elimination tournament bracket from any list of players or teams — automatic seeding, byes and round-by-round matchups.</p>
+  </div>
+
+  <div class="tool-card">
+  <div class="field"><label for="bracket-names">Players / teams <span class="hint">(one per line)</span></label><textarea class="textarea" id="bracket-names" rows="6" placeholder="Team A&#10;Team B&#10;Team C&#10;Team D&#10;..."></textarea></div>
+  <div class="checkbox-row"><input type="checkbox" id="bracket-shuffle" checked><label for="bracket-shuffle">Shuffle seeds randomly</label></div>
+  <div class="error" id="tournament-bracket-maker-error"></div>
+  <div class="result" id="bracket-result">
+    <div class="stat-cards">
+      <div class="stat-card"><div class="v" id="bracket-players">–</div><div class="l">Entrants</div></div>
+      <div class="stat-card"><div class="v" id="bracket-rounds">–</div><div class="l">Rounds</div></div>
+      <div class="stat-card"><div class="v" id="bracket-byes">–</div><div class="l">Byes</div></div>
+    </div>
+    <div id="bracket-list"></div>
+    <div class="btn-row">
+      <button class="btn btn-primary" id="bracket-go" type="button">Build bracket</button>
+      <button class="btn btn-outline" id="bracket-dl" type="button">Download .txt</button>
+    </div>
+  </div>
+</div>
+
+  <!-- ADSTERRA-INCONTENT: paste your Adsterra native/in-content ad code inside the div below -->
+  <div class="ad-slot" data-ad="incontent"></div>
+
+  <div class="info-grid">
+    <div class="info-card">
+      <h2>📖 How to use</h2>
+      <ol><li>Enter one player or team per line.</li><li>Choose whether to shuffle the seeds.</li><li>Press Build bracket to see every round from Round 1 to the Final.</li></ol>
+    </div>
+    <div class="info-card">
+      <h2>❓ Frequently asked questions</h2>
+      <div class="faq"><details><summary>What if my player count is not a power of 2?</summary><p>Yes — the field is padded up to the next power of 2, and the extra slots become byes so top seeds advance automatically.</p></details><details><summary>Can I randomize the seeding?</summary><p>Tick the shuffle box to randomize seeds, or leave it off to keep your entry order as seeds 1, 2, 3...</p></details><details><summary>What format is the bracket?</summary><p>Single elimination: lose once and you are out. The bracket shows every round through to the final.</p></details><details><summary>Is this private?</summary><p>Yes, everything is generated locally in your browser.</p></details></div>
+    </div>
+  </div>
+
+  <section class="section">
+    <h2>🔗 Related tools</h2>
+    <div class="tool-grid"><a class="tool-link" href="/tools/band-name-generator/" data-search="band name generator generate original band names by genre — rock, metal, pop, hip-hop, electronic, jazz, punk or indie — with one click and copy. band name generator rock band names metal band names cool band names music group name ideas"><span class="t-ico">⚙️</span><span class="t-body"><b>Band Name Generator</b><small>Generate original band names by genre — rock, metal, pop, hip-hop, electronic, jazz, punk or…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/barcode-generator/" data-search="barcode generator generate barcodes in common formats — code128, code39, ean-13, ean-8, upc and itf-14 — and download them as png or svg images. barcode generator barcode maker ean13 barcode upc barcode generator"><span class="t-ico">⚙️</span><span class="t-body"><b>Barcode Generator</b><small>Generate barcodes in common formats — CODE128, CODE39, EAN-13, EAN-8, UPC and ITF-14 — and d…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/bingo-card-generator/" data-search="bingo card generator create printable 5×5 bingo cards with classic b-i-n-g-o number ranges, an optional free space, or your own custom word list. bingo card generator printable bingo cards custom bingo cards bingo number generator free bingo cards"><span class="t-ico">⚙️</span><span class="t-body"><b>Bingo Card Generator</b><small>Create printable 5×5 bingo cards with classic B-I-N-G-O number ranges, an optional free spac…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/border-radius-generator/" data-search="border radius generator organic blob shapes with an 8-handle radius editor. border radius generator blob shape css border-radius css"><span class="t-ico">⚙️</span><span class="t-body"><b>Border Radius Generator</b><small>Organic blob shapes with an 8-handle radius editor.</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/box-shadow-generator/" data-search="box shadow generator visual css box-shadow builder with live preview. box shadow generator css shadow box-shadow css"><span class="t-ico">⚙️</span><span class="t-body"><b>Box Shadow Generator</b><small>Visual CSS box-shadow builder with live preview.</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/button-generator/" data-search="button generator design a custom button with your text, colors, border radius, padding and shadow — then copy the generated css and use it anywhere. button generator css button maker button css custom button design"><span class="t-ico">⚙️</span><span class="t-body"><b>Button Generator</b><small>Design a custom button with your text, colors, border radius, padding and shadow — then copy…</small></span><span class="t-arrow">→</span></a></div>
+  </section>
+</main>
+
+<!-- ADSTERRA-FOOTER: paste your Adsterra footer/banner ad code inside the div below -->
+<div class="container"><div class="ad-slot" data-ad="footer"></div></div>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="f-grid">
+      <div>
+        <span class="brandline"><span class="logo-mark">T</span> ToolNest</span>
+        <p>Free online tools that actually work. No sign-up, no watermarks — and your files never leave your device for client-side tools.</p>
+      </div>
+      <div>
+        <h4>Popular</h4>
+        <a href="/tools/qr-code-generator/">QR Code Generator</a>
+        <a href="/tools/background-remover/">Background Remover</a>
+        <a href="/tools/pdf-merger/">PDF Merger</a>
+        <a href="/tools/word-counter/">Word Counter</a>
+      </div>
+      <div>
+        <h4>Categories</h4>
+        <a href="/#image">Image Tools</a>
+        <a href="/#pdf">PDF &amp; Documents</a>
+        <a href="/#calculators">Calculators</a>
+        <a href="/#developer">Developer Tools</a>
+      </div>
+      <div>
+        <h4>Site</h4>
+        <a href="/">Home</a>
+        <a href="/#all-tools">All Tools</a>
+        <a href="/sitemap.xml">Sitemap</a>
+      </div>
+    </div>
+    <div class="f-bottom">© 2026 ToolNest · Free tools for everyone · Made with care</div>
+  </div>
+</footer>
+
+<script src="/assets/site.js?v=5"></script>
+
+<script>
+(function () {
+  'use strict';
+  var ERR = 'tournament-bracket-maker-error';
+  var lastRounds = [];
+  function esc(s) {
+    return String(s).replace(/[&<>"']/g, function (c) {
+      return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c];
+    });
+  }
+  function shuffle(arr) {
+    for (var i = arr.length - 1; i > 0; i--) {
+      var j = Math.floor(Math.random() * (i + 1));
+      var t = arr[i]; arr[i] = arr[j]; arr[j] = t;
+    }
+    return arr;
+  }
+  function roundName(r, total) {
+    if (r === total) return 'Final';
+    if (r === total - 1) return 'Semi-finals';
+    if (r === total - 2) return 'Quarter-finals';
+    return 'Round ' + r;
+  }
+  function build() {
+    TN.clearErr(ERR);
+    var ns = TN.el('bracket-names').value.split(/\r?\n/).map(function (x) { return x.trim(); }).filter(function (x) { return x.length; });
+    if (ns.length < 2) { TN.setErr(ERR, 'Enter at least 2 players or teams.'); return; }
+    if (ns.length > 128) { TN.setErr(ERR, 'Maximum 128 entrants.'); return; }
+    var seeds = TN.el('bracket-shuffle').checked ? shuffle(ns.slice()) : ns.slice();
+    var size = 1;
+    while (size < seeds.length) size *= 2;
+    var byes = size - seeds.length;
+    var field = seeds.concat([]);
+    for (var b = 0; b < byes; b++) field.push(null); // null = bye
+    // Standard seeding: pair 1vN across the field for round 1 using snake placement
+    var rounds = [];
+    var r1 = [];
+    for (var i = 0; i < size / 2; i++) {
+      r1.push([field[i], field[size - 1 - i]]);
+    }
+    rounds.push(r1);
+    var prevCount = r1.length, r = 2;
+    while (prevCount > 1) {
+      var cur = [];
+      for (var m = 0; m < prevCount / 2; m++) {
+        cur.push(['Winner of R' + (r - 1) + ' M' + (m * 2 + 1), 'Winner of R' + (r - 1) + ' M' + (m * 2 + 2)]);
+      }
+      rounds.push(cur);
+      prevCount = cur.length;
+      r++;
+    }
+    lastRounds = rounds;
+    var total = rounds.length;
+    TN.el('bracket-players').textContent = seeds.length;
+    TN.el('bracket-rounds').textContent = total;
+    TN.el('bracket-byes').textContent = byes;
+    var html = '';
+    rounds.forEach(function (matches, ri) {
+      html += '<h4 style="margin:16px 0 6px">' + esc(roundName(ri + 1, total)) + '</h4>';
+      html += '<table class="data"><tbody>';
+      matches.forEach(function (mt, mi) {
+        var a = mt[0] === null ? '<span class="muted">BYE</span>' : esc(mt[0]);
+        var c = mt[1] === null ? '<span class="muted">BYE</span>' : esc(mt[1]);
+        var note = (mt[0] === null || mt[1] === null) ? ' <span class="muted">(advances)</span>' : '';
+        html += '<tr><td style="width:40px">M' + (mi + 1) + '</td><td>' + a + ' <span class="muted">vs</span> ' + c + note + '</td></tr>';
+      });
+      html += '</tbody></table>';
+    });
+    html += '<h4 style="margin:16px 0 6px">Champion</h4><p class="muted">Winner of the Final</p>';
+    TN.el('bracket-list').innerHTML = html;
+  }
+  try {
+    TN.on('bracket-go', 'click', build);
+    TN.on('bracket-dl', 'click', function () {
+      if (!lastRounds.length) { TN.setErr(ERR, 'Build a bracket first.'); return; }
+      TN.clearErr(ERR);
+      var total = lastRounds.length, lines = ['TOURNAMENT BRACKET', ''];
+      lastRounds.forEach(function (matches, ri) {
+        lines.push(roundName(ri + 1, total).toUpperCase());
+        matches.forEach(function (mt, mi) {
+          var a = mt[0] === null ? 'BYE' : mt[0];
+          var c = mt[1] === null ? 'BYE' : mt[1];
+          lines.push('  M' + (mi + 1) + ': ' + a + ' vs ' + c);
+        });
+        lines.push('');
+      });
+      var b = new Blob([lines.join('\n')], { type: 'text/plain;charset=utf-8' });
+      var a = document.createElement('a');
+      a.href = URL.createObjectURL(b); a.download = 'tournament-bracket.txt';
+      document.body.appendChild(a); a.click();
+      setTimeout(function () { URL.revokeObjectURL(a.href); a.remove(); }, 400);
+    });
+    TN.el('bracket-list').innerHTML = '<p class="muted">Enter players and press Build bracket.</p>';
+  } catch (e) { /* never throw on load */ }
+})();
+</script>
+</body>
+</html>

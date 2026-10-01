@@ -1,0 +1,25 @@
+<div class="tool-card">
+  <div class="grid2">
+    <div class="field"><label for="sub-name">Service</label><input type="text" class="input" id="sub-name" placeholder="Netflix"></div>
+    <div class="field"><label for="sub-cost">Cost ($)</label><input type="number" class="input" id="sub-cost" min="0" step="any" placeholder="15.99"></div>
+    <div class="field"><label for="sub-cycle">Billing cycle</label>
+      <select class="select" id="sub-cycle">
+        <option value="weekly">Weekly</option>
+        <option value="monthly" selected>Monthly</option>
+        <option value="quarterly">Quarterly</option>
+        <option value="yearly">Yearly</option>
+      </select>
+    </div>
+    <div class="field"><label for="sub-renew">Next renewal</label><input type="date" class="input" id="sub-renew"></div>
+  </div>
+  <div class="btn-row"><button class="btn btn-primary btn-sm" id="sub-add" type="button">Add subscription</button></div>
+  <div class="error" id="subscription-tracker-error"></div>
+  <div class="result" id="sub-result">
+    <div class="stat-cards">
+      <div class="stat-card"><div class="v" id="sub-monthly">$0</div><div class="l">Per month</div></div>
+      <div class="stat-card"><div class="v" id="sub-yearly">$0</div><div class="l">Per year</div></div>
+      <div class="stat-card"><div class="v" id="sub-count">0</div><div class="l">Subscriptions</div></div>
+    </div>
+    <table class="data"><thead><tr><th>Service</th><th>Cost</th><th>Cycle</th><th>Monthly equiv.</th><th>Renews in</th><th></th></tr></thead><tbody id="sub-body"></tbody></table>
+  </div>
+</div>

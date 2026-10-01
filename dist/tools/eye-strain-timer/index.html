@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Eye Strain Timer (20-20-20) — Free Online | ToolNest</title>
+<meta name="description" content="A 20-20-20 rule timer for screen workers: work 20 minutes, then rest your eyes 20 seconds looking 20 feet away.">
+<meta name="keywords" content="20-20-20 timer, eye strain timer, eye break reminder, screen break timer, eye rest timer">
+<link rel="canonical" href="https://toolnest.vercel.app/tools/eye-strain-timer/">
+<meta name="theme-color" content="#07070b">
+<meta property="og:title" content="Eye Strain Timer (20-20-20) — Free Online | ToolNest">
+<meta property="og:description" content="A 20-20-20 rule timer for screen workers: work 20 minutes, then rest your eyes 20 seconds looking 20 feet away.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css?v=4">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%23e01111'/><text x='50' y='68' font-size='58' text-anchor='middle' fill='white' font-family='Arial' font-weight='bold'>T</text></svg>">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebApplication","name":"Eye Strain Timer (20-20-20)","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0"},"url":"https://toolnest.vercel.app/tools/eye-strain-timer/","description":"A 20-20-20 rule timer for screen workers: work 20 minutes, then rest your eyes 20 seconds looking 20 feet away."},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What is the 20-20-20 rule?","acceptedAnswer":{"@type":"Answer","text":"Every 20 minutes, look at something 20 feet (6 m) away for 20 seconds. It relaxes the focusing muscle and reminds you to blink."}},{"@type":"Question","name":"Can I change the 20-minute interval?","acceptedAnswer":{"@type":"Answer","text":"Yes — use the focus-length field if your workflow needs 25 or 30 minute blocks. The 20-second rest stays per the rule."}},{"@type":"Question","name":"Does this replace eye drops or glasses?","acceptedAnswer":{"@type":"Answer","text":"No. It reduces strain but persistent dryness, headaches or blurred vision deserve an eye exam."}}]}]}</script>
+</head>
+<body>
+<header class="site-header">
+  <div class="container">
+    <a class="logo" href="/"><span class="logo-mark">T</span> ToolNest</a>
+    <div class="header-right">
+      <form class="nav-search" action="/" method="get" role="search">
+        <span class="ns-icon">🔍</span>
+        <input type="search" name="q" placeholder="Search tools…" aria-label="Search tools" autocomplete="off">
+      </form>
+      <div class="menu-wrap">
+        <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="menuPanel" aria-label="Open menu"><span></span><span></span><span></span></button>
+        <nav class="menu-panel" id="menuPanel" aria-label="Site">
+          <a href="/">Home</a>
+          <a href="/#categories">Categories</a>
+          <a href="/#all-tools">All Tools</a>
+        </nav>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ADSTERRA-HEADER: paste your Adsterra banner ad code inside the div below -->
+<div class="container"><div class="ad-slot ad-leaderboard" data-ad="header"></div></div>
+
+<main class="container">
+  <nav class="crumbs"><a href="/">Home</a> &rsaquo; <a href="/#health">Health &amp; Fitness</a> &rsaquo; Eye Strain Timer (20-20-20)</nav>
+  <div class="tool-hero">
+    <h1>Eye Strain Timer (20-20-20)</h1>
+    <p>A 20-20-20 rule timer for screen workers: work 20 minutes, then rest your eyes 20 seconds looking 20 feet away.</p>
+  </div>
+
+  <div class="tool-card">
+  <div class="grid2">
+    <div class="field"><label for="eye-focus">Focus block (minutes)</label><input type="number" class="input" id="eye-focus" min="1" max="120" step="1" placeholder="20"></div>
+    <div class="field"><label>&nbsp;</label>
+      <div>
+        <button class="btn" id="eye-start">Start</button>
+        <button class="btn" id="eye-pause">Pause</button>
+        <button class="btn" id="eye-reset">Reset</button>
+      </div>
+    </div>
+  </div>
+  <div class="error" id="eye-strain-timer-error"></div>
+  <div class="result" id="eye-result">
+    <div class="stat-cards">
+      <div class="stat-card"><div class="v" id="eye-phase">Ready</div><div class="l">Phase</div></div>
+      <div class="stat-card"><div class="v" id="eye-time">–</div><div class="l">Time left</div></div>
+      <div class="stat-card"><div class="v" id="eye-count">0</div><div class="l">Breaks today</div></div>
+    </div>
+    <div class="field"><label for="eye-bar">Progress</label><progress class="input" id="eye-bar" max="100" value="0" style="width:100%"></progress></div>
+    <p class="muted" id="eye-detail">Press Start to begin a focus block.</p>
+  </div>
+</div>
+
+  <!-- ADSTERRA-INCONTENT: paste your Adsterra native/in-content ad code inside the div below -->
+  <div class="ad-slot" data-ad="incontent"></div>
+
+  <div class="info-grid">
+    <div class="info-card">
+      <h2>📖 How to use</h2>
+      <ol><li>Press Start to begin a 20-minute focus block.</li><li>When it ends, look at something 20 feet away for the 20-second rest.</li><li>The cycle repeats automatically; completed breaks are counted.</li></ol>
+    </div>
+    <div class="info-card">
+      <h2>❓ Frequently asked questions</h2>
+      <div class="faq"><details><summary>What is the 20-20-20 rule?</summary><p>Every 20 minutes, look at something 20 feet (6 m) away for 20 seconds. It relaxes the focusing muscle and reminds you to blink.</p></details><details><summary>Can I change the 20-minute interval?</summary><p>Yes — use the focus-length field if your workflow needs 25 or 30 minute blocks. The 20-second rest stays per the rule.</p></details><details><summary>Does this replace eye drops or glasses?</summary><p>No. It reduces strain but persistent dryness, headaches or blurred vision deserve an eye exam.</p></details></div>
+    </div>
+  </div>
+
+  <section class="section">
+    <h2>🔗 Related tools</h2>
+    <div class="tool-grid"><a class="tool-link" href="/tools/blood-pressure-tracker/" data-search="blood pressure tracker log blood pressure readings with automatic aha category classification, averages and history saved in your browser. blood pressure tracker bp log blood pressure chart hypertension tracker bp monitor log"><span class="t-ico">❤️</span><span class="t-body"><b>Blood Pressure Tracker</b><small>Log blood pressure readings with automatic AHA category classification, averages and history…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/body-fat-calculator/" data-search="body fat calculator estimate body fat percentage with the us navy tape-measure method and see your fitness category. body fat calculator us navy body fat body fat percentage calculator"><span class="t-ico">❤️</span><span class="t-body"><b>Body Fat Calculator</b><small>Estimate body fat percentage with the US Navy tape-measure method and see your fitness categ…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/calorie-calculator/" data-search="tdee calorie calculator estimate your daily calorie needs with the mifflin-st jeor equation and get targets for losing, maintaining or gaining weight. tdee calculator calorie calculator mifflin st jeor daily calorie needs"><span class="t-ico">❤️</span><span class="t-body"><b>TDEE Calorie Calculator</b><small>Estimate your daily calorie needs with the Mifflin-St Jeor equation and get targets for losi…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/carb-cycling-calculator/" data-search="carb cycling calculator build high, medium and low carb day macros from your tdee using the mifflin-st jeor equation. carb cycling calculator macro cycling high low carb days tdee macro calculator carb cycle plan"><span class="t-ico">❤️</span><span class="t-body"><b>Carb Cycling Calculator</b><small>Build high, medium and low carb day macros from your TDEE using the Mifflin-St Jeor equation…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/five-k-pace-calculator/" data-search="5k pace calculator turn a 5k goal time into pace per km, per mile and a full kilometer-by-kilometer split plan. 5k pace calculator 5k goal time running splits calculator 5k training pace pace chart 5k"><span class="t-ico">❤️</span><span class="t-body"><b>5K Pace Calculator</b><small>Turn a 5K goal time into pace per km, per mile and a full kilometer-by-kilometer split plan.</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/heart-rate-zone-calculator/" data-search="heart rate zone calculator find your five karvonen heart-rate training zones from your age and resting heart rate, with bpm ranges. heart rate zones calculator karvonen calculator training zones bpm"><span class="t-ico">❤️</span><span class="t-body"><b>Heart Rate Zone Calculator</b><small>Find your five Karvonen heart-rate training zones from your age and resting heart rate, with…</small></span><span class="t-arrow">→</span></a></div>
+  </section>
+</main>
+
+<!-- ADSTERRA-FOOTER: paste your Adsterra footer/banner ad code inside the div below -->
+<div class="container"><div class="ad-slot" data-ad="footer"></div></div>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="f-grid">
+      <div>
+        <span class="brandline"><span class="logo-mark">T</span> ToolNest</span>
+        <p>Free online tools that actually work. No sign-up, no watermarks — and your files never leave your device for client-side tools.</p>
+      </div>
+      <div>
+        <h4>Popular</h4>
+        <a href="/tools/qr-code-generator/">QR Code Generator</a>
+        <a href="/tools/background-remover/">Background Remover</a>
+        <a href="/tools/pdf-merger/">PDF Merger</a>
+        <a href="/tools/word-counter/">Word Counter</a>
+      </div>
+      <div>
+        <h4>Categories</h4>
+        <a href="/#image">Image Tools</a>
+        <a href="/#pdf">PDF &amp; Documents</a>
+        <a href="/#calculators">Calculators</a>
+        <a href="/#developer">Developer Tools</a>
+      </div>
+      <div>
+        <h4>Site</h4>
+        <a href="/">Home</a>
+        <a href="/#all-tools">All Tools</a>
+        <a href="/sitemap.xml">Sitemap</a>
+      </div>
+    </div>
+    <div class="f-bottom">© 2026 ToolNest · Free tools for everyone · Made with care</div>
+  </div>
+</footer>
+
+<script src="/assets/site.js?v=5"></script>
+
+<script>
+(function () {
+  'use strict';
+  var ERR = 'eye-strain-timer-error';
+  var KEY = 'tn-eye-strain-timer';
+  var timer = null, phase = 'idle', left = 0, total = 1, paused = false;
+  function pad(n) { return (n < 10 ? '0' : '') + n; }
+  function fmt(s) { s = Math.max(0, Math.ceil(s)); return pad(Math.floor(s / 60)) + ':' + pad(s % 60); }
+  function beep(n) {
+    try {
+      var C = window.AudioContext || window.webkitAudioContext;
+      if (!C) return;
+      var ctx = new C();
+      for (var i = 0; i < n; i++) {
+        (function (i) {
+          var o = ctx.createOscillator(), g = ctx.createGain();
+          o.connect(g); g.connect(ctx.destination);
+          var t = ctx.currentTime + i * 0.28;
+          o.frequency.value = i % 2 ? 660 : 880;
+          g.gain.setValueAtTime(0.001, t);
+          g.gain.exponentialRampToValueAtTime(0.4, t + 0.02);
+          g.gain.exponentialRampToValueAtTime(0.001, t + 0.22);
+          o.start(t); o.stop(t + 0.24);
+        })(i);
+      }
+      setTimeout(function () { try { ctx.close(); } catch (e) {} }, n * 300 + 200);
+    } catch (e) {}
+  }
+  function todayKey() { var d = new Date(); return d.getFullYear() + '-' + (d.getMonth() + 1) + '-' + d.getDate(); }
+  function getCount() { try { var s = localStorage.getItem(KEY); if (!s) return 0; var o = JSON.parse(s); return o.day === todayKey() ? (o.n || 0) : 0; } catch (e) { return 0; } }
+  function bumpCount() { try { var n = getCount() + 1; localStorage.setItem(KEY, JSON.stringify({ day: todayKey(), n: n })); } catch (e) {} }
+  function render() {
+    TN.el('eye-phase').textContent = phase === 'idle' ? 'Ready' : (phase === 'focus' ? 'FOCUS' : 'REST EYES');
+    TN.el('eye-time').textContent = phase === 'idle' ? '–' : fmt(left);
+    TN.el('eye-count').textContent = getCount();
+    TN.el('eye-bar').value = total > 0 ? Math.min(100, Math.max(0, (total - left) / total * 100)) : 0;
+  }
+  function tick() {
+    if (paused) return;
+    left -= 1;
+    if (left <= 0) {
+      if (phase === 'focus') {
+        phase = 'rest'; left = 20; total = 20; beep(3);
+        TN.el('eye-detail').textContent = 'Look at something 20 feet away for 20 seconds. Blink!';
+      } else {
+        bumpCount();
+        var mins = parseInt(TN.el('eye-focus').value, 10) || 20;
+        phase = 'focus'; left = mins * 60; total = mins * 60; beep(1);
+        TN.el('eye-detail').textContent = 'Break logged. Back to focus for ' + mins + ' minutes.';
+      }
+    }
+    render();
+  }
+  function start() {
+    TN.clearErr(ERR);
+    var mins = parseInt(TN.el('eye-focus').value, 10);
+    if (!(mins >= 1 && mins <= 120)) { TN.setErr(ERR, 'Focus block must be 1–120 minutes.'); return; }
+    if (timer) clearInterval(timer);
+    paused = false; phase = 'focus'; left = mins * 60; total = mins * 60;
+    TN.el('eye-detail').textContent = 'Focusing for ' + mins + ' minutes…';
+    timer = setInterval(tick, 1000);
+    render();
+  }
+  function pause() { paused = !paused; TN.el('eye-detail').textContent = paused ? 'Paused.' : 'Resumed.'; }
+  function reset() { if (timer) { clearInterval(timer); timer = null; } phase = 'idle'; paused = false; TN.el('eye-detail').textContent = 'Press Start to begin a focus block.'; render(); }
+  try {
+    TN.on('eye-start', 'click', start);
+    TN.on('eye-pause', 'click', pause);
+    TN.on('eye-reset', 'click', reset);
+    render();
+  } catch (e) { /* never throw on load */ }
+})();
+</script>
+</body>
+</html>

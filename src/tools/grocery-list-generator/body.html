@@ -1,0 +1,39 @@
+<div class="tool-card">
+  <div class="grid2">
+    <div class="field"><label for="groc-people">People</label><input type="number" class="input" id="groc-people" min="1" max="30" value="2"></div>
+    <div class="field"><label for="groc-days">Days</label><input type="number" class="input" id="groc-days" min="1" max="60" value="7"></div>
+    <div class="field"><label for="groc-diet">Diet</label>
+      <select class="select" id="groc-diet">
+        <option value="any">No restriction</option>
+        <option value="veg">Vegetarian</option>
+        <option value="vegan">Vegan</option>
+      </select>
+    </div>
+    <div class="field"><label>Meals to cover</label>
+      <div class="checkbox-row"><input type="checkbox" id="groc-m-bf" checked><label for="groc-m-bf">Breakfast</label></div>
+      <div class="checkbox-row"><input type="checkbox" id="groc-m-ln" checked><label for="groc-m-ln">Lunch</label></div>
+      <div class="checkbox-row"><input type="checkbox" id="groc-m-dn" checked><label for="groc-m-dn">Dinner</label></div>
+      <div class="checkbox-row"><input type="checkbox" id="groc-m-sn" checked><label for="groc-m-sn">Snacks</label></div>
+    </div>
+  </div>
+  <div class="grid2">
+    <div class="field"><label for="groc-custom">Custom item</label><input type="text" class="input" id="groc-custom" placeholder="Dark chocolate"></div>
+    <div class="field"><label for="groc-custom-qty">Quantity</label>
+      <div style="display:flex;gap:8px"><input type="text" class="input" id="groc-custom-qty" placeholder="2 bars">
+      <button class="btn btn-outline btn-sm" id="groc-add" type="button">Add</button></div>
+    </div>
+  </div>
+  <div class="error" id="grocery-list-generator-error"></div>
+  <div class="result" id="groc-result">
+    <div class="stat-cards">
+      <div class="stat-card"><div class="v" id="groc-count">–</div><div class="l">Items</div></div>
+      <div class="stat-card"><div class="v" id="groc-est">–</div><div class="l">Est. produce (kg)</div></div>
+    </div>
+    <div id="groc-list"></div>
+    <div class="btn-row">
+      <button class="btn btn-primary" id="groc-gen" type="button">Generate list</button>
+      <button class="btn btn-outline" id="groc-dl" type="button">Download .txt</button>
+      <button class="btn btn-outline" id="groc-copy" type="button">Copy list</button>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CSS Specificity Calculator — Free Online | ToolNest</title>
+<meta name="description" content="Calculate CSS selector specificity as (a,b,c) with a full breakdown — handles IDs, classes, attributes, pseudo-classes, :not(), :is(), :where() and pseudo-elements.">
+<meta name="keywords" content="css specificity calculator, specificity calculator, css selector weight, calculate specificity, css cascade">
+<link rel="canonical" href="https://toolnest.vercel.app/tools/css-specificity-calculator/">
+<meta name="theme-color" content="#07070b">
+<meta property="og:title" content="CSS Specificity Calculator — Free Online | ToolNest">
+<meta property="og:description" content="Calculate CSS selector specificity as (a,b,c) with a full breakdown — handles IDs, classes, attributes, pseudo-classes, :not(), :is(), :where() and pseudo-elements.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css?v=4">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%23e01111'/><text x='50' y='68' font-size='58' text-anchor='middle' fill='white' font-family='Arial' font-weight='bold'>T</text></svg>">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebApplication","name":"CSS Specificity Calculator","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0"},"url":"https://toolnest.vercel.app/tools/css-specificity-calculator/","description":"Calculate CSS selector specificity as (a,b,c) with a full breakdown — handles IDs, classes, attributes, pseudo-classes, :not(), :is(), :where() and pseudo-elements."},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How is specificity calculated?","acceptedAnswer":{"@type":"Answer","text":"Count ID selectors (#), then classes/attributes/pseudo-classes (.), then elements/pseudo-elements — written as (a,b,c). A higher component always beats lower ones combined."}},{"@type":"Question","name":"How do :not() and :where() count?","acceptedAnswer":{"@type":"Answer","text":":not(), :is() and :has() take the specificity of their most specific argument; :where() always contributes 0."}},{"@type":"Question","name":"Does (0,0,12) beat (0,1,0)?","acceptedAnswer":{"@type":"Answer","text":"No — (0,1,0) beats (0,0,11): a single class outranks any number of elements. Compare component by component."}},{"@type":"Question","name":"Is this private?","acceptedAnswer":{"@type":"Answer","text":"Yes, everything runs locally in your browser."}}]}]}</script>
+</head>
+<body>
+<header class="site-header">
+  <div class="container">
+    <a class="logo" href="/"><span class="logo-mark">T</span> ToolNest</a>
+    <div class="header-right">
+      <form class="nav-search" action="/" method="get" role="search">
+        <span class="ns-icon">🔍</span>
+        <input type="search" name="q" placeholder="Search tools…" aria-label="Search tools" autocomplete="off">
+      </form>
+      <div class="menu-wrap">
+        <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="menuPanel" aria-label="Open menu"><span></span><span></span><span></span></button>
+        <nav class="menu-panel" id="menuPanel" aria-label="Site">
+          <a href="/">Home</a>
+          <a href="/#categories">Categories</a>
+          <a href="/#all-tools">All Tools</a>
+        </nav>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ADSTERRA-HEADER: paste your Adsterra banner ad code inside the div below -->
+<div class="container"><div class="ad-slot ad-leaderboard" data-ad="header"></div></div>
+
+<main class="container">
+  <nav class="crumbs"><a href="/">Home</a> &rsaquo; <a href="/#developer">Developer Tools</a> &rsaquo; CSS Specificity Calculator</nav>
+  <div class="tool-hero">
+    <h1>CSS Specificity Calculator</h1>
+    <p>Calculate CSS selector specificity as (a,b,c) with a full breakdown — handles IDs, classes, attributes, pseudo-classes, :not(), :is(), :where() and pseudo-elements.</p>
+  </div>
+
+  <div class="tool-card">
+  <div class="field"><label for="spec-sel">CSS selector</label><input type="text" class="input" id="spec-sel" placeholder="e.g. #nav ul.menu li a:hover::before" style="font-family:ui-monospace,monospace"></div>
+  <div class="error" id="css-specificity-calculator-error"></div>
+  <div class="result" id="spec-result">
+    <div class="stat-cards">
+      <div class="stat-card"><div class="v" id="spec-abc" style="font-family:ui-monospace,monospace">–</div><div class="l">Specificity (a, b, c)</div></div>
+      <div class="stat-card"><div class="v" id="spec-score">–</div><div class="l">Score</div></div>
+    </div>
+    <table class="data"><thead><tr><th>Component</th><th>Count</th><th>Matched</th></tr></thead><tbody id="spec-body"></tbody></table>
+    <p class="note">Compare left to right: (1,0,0) beats (0,99,99). <span class="muted">:where()</span> always contributes 0; <span class="muted">:not() / :is() / :has()</span> take their most specific argument.</p>
+  </div>
+</div>
+
+  <!-- ADSTERRA-INCONTENT: paste your Adsterra native/in-content ad code inside the div below -->
+  <div class="ad-slot" data-ad="incontent"></div>
+
+  <div class="info-grid">
+    <div class="info-card">
+      <h2>📖 How to use</h2>
+      <ol><li>Type any CSS selector.</li><li>See its (a,b,c) specificity and score instantly.</li><li>Read the breakdown to see exactly what each part contributes.</li></ol>
+    </div>
+    <div class="info-card">
+      <h2>❓ Frequently asked questions</h2>
+      <div class="faq"><details><summary>How is specificity calculated?</summary><p>Count ID selectors (#), then classes/attributes/pseudo-classes (.), then elements/pseudo-elements — written as (a,b,c). A higher component always beats lower ones combined.</p></details><details><summary>How do :not() and :where() count?</summary><p>:not(), :is() and :has() take the specificity of their most specific argument; :where() always contributes 0.</p></details><details><summary>Does (0,0,12) beat (0,1,0)?</summary><p>No — (0,1,0) beats (0,0,11): a single class outranks any number of elements. Compare component by component.</p></details><details><summary>Is this private?</summary><p>Yes, everything runs locally in your browser.</p></details></div>
+    </div>
+  </div>
+
+  <section class="section">
+    <h2>🔗 Related tools</h2>
+    <div class="tool-grid"><a class="tool-link" href="/tools/ascii-table-reference/" data-search="ascii table reference full ascii table 0–127: decimal, hex, octal, character, control-code names and html entities — searchable. ascii table ascii codes ascii chart control characters ascii reference"><span class="t-ico">💻</span><span class="t-body"><b>ASCII Table Reference</b><small>Full ASCII table 0–127: decimal, hex, octal, character, control-code names and HTML entities…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/base64-encoder-decoder/" data-search="base64 encoder / decoder encode text to base64 or decode base64 back to text, with full utf-8 support and a file-to-data-url converter. base64 encoder base64 decoder base64 encode base64 decode file to base64"><span class="t-ico">💻</span><span class="t-body"><b>Base64 Encoder / Decoder</b><small>Encode text to Base64 or decode Base64 back to text, with full UTF-8 support and a file-to-d…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/binary-text-converter/" data-search="binary and text converter convert text to binary or hex and back, with full utf-8 awareness and strict input validation. binary to text text to binary hex to text converter"><span class="t-ico">💻</span><span class="t-body"><b>Binary and Text Converter</b><small>Convert text to binary or hex and back, with full UTF-8 awareness and strict input validatio…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/color-code-converter/" data-search="color code converter type a color in hex, rgb or hsl format and instantly see it converted to all three formats with a preview swatch. color converter hex to rgb rgb to hex hsl converter color code"><span class="t-ico">💻</span><span class="t-body"><b>Color Code Converter</b><small>Type a color in HEX, RGB or HSL format and instantly see it converted to all three formats w…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/css-minifier/" data-search="css minifier compress css by stripping comments, collapsing whitespace and removing redundant semicolons, with before/after byte stats. css minifier minify css css compressor reduce css size"><span class="t-ico">💻</span><span class="t-body"><b>CSS Minifier</b><small>Compress CSS by stripping comments, collapsing whitespace and removing redundant semicolons,…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/css-unit-converter/" data-search="css unit converter convert between px, rem, em, %, pt, in, cm, mm, vw, vh and more — with live viewport and font-size context. css unit converter px to em rem to px vw to px css units converter"><span class="t-ico">💻</span><span class="t-body"><b>CSS Unit Converter</b><small>Convert between px, rem, em, %, pt, in, cm, mm, vw, vh and more — with live viewport and fon…</small></span><span class="t-arrow">→</span></a></div>
+  </section>
+</main>
+
+<!-- ADSTERRA-FOOTER: paste your Adsterra footer/banner ad code inside the div below -->
+<div class="container"><div class="ad-slot" data-ad="footer"></div></div>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="f-grid">
+      <div>
+        <span class="brandline"><span class="logo-mark">T</span> ToolNest</span>
+        <p>Free online tools that actually work. No sign-up, no watermarks — and your files never leave your device for client-side tools.</p>
+      </div>
+      <div>
+        <h4>Popular</h4>
+        <a href="/tools/qr-code-generator/">QR Code Generator</a>
+        <a href="/tools/background-remover/">Background Remover</a>
+        <a href="/tools/pdf-merger/">PDF Merger</a>
+        <a href="/tools/word-counter/">Word Counter</a>
+      </div>
+      <div>
+        <h4>Categories</h4>
+        <a href="/#image">Image Tools</a>
+        <a href="/#pdf">PDF &amp; Documents</a>
+        <a href="/#calculators">Calculators</a>
+        <a href="/#developer">Developer Tools</a>
+      </div>
+      <div>
+        <h4>Site</h4>
+        <a href="/">Home</a>
+        <a href="/#all-tools">All Tools</a>
+        <a href="/sitemap.xml">Sitemap</a>
+      </div>
+    </div>
+    <div class="f-bottom">© 2026 ToolNest · Free tools for everyone · Made with care</div>
+  </div>
+</footer>
+
+<script src="/assets/site.js?v=5"></script>
+
+<script>
+(function () {
+  'use strict';
+  var ERR = 'css-specificity-calculator-error';
+  var LEGACY_PE = /:(before|after|first-line|first-letter|selection|placeholder|marker|backdrop|spelling-error|grammar-error)\b/g;
+  function esc(s) {
+    return String(s).replace(/[&<>"']/g, function (c) {
+      return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c];
+    });
+  }
+  function maxSpec(x, y) {
+    for (var i = 0; i < 3; i++) { if (x[i] !== y[i]) return x[i] > y[i] ? x : y; }
+    return x;
+  }
+  function add(dst, src) { dst[0] += src[0]; dst[1] += src[1]; dst[2] += src[2]; }
+  // Compute specificity of a single compound-free selector string (no functional pseudos left).
+  function baseSpec(sel, detail) {
+    var a = 0, b = 0, c = 0, s = sel;
+    var m;
+    var attrs = s.match(/\[[^\]]*\]/g) || [];
+    b += attrs.length;
+    (attrs).forEach(function (x) { if (detail) detail.attrs.push(x); });
+    s = s.replace(/\[[^\]]*\]/g, ' ');
+    var pes = s.match(/::[\w-]+/g) || [];
+    c += pes.length;
+    pes.forEach(function (x) { if (detail) detail.pseudoEl.push(x); });
+    s = s.replace(/::[\w-]+/g, ' ');
+    s = s.replace(LEGACY_PE, function (x) { c++; if (detail) detail.pseudoEl.push(x); return ' '; });
+    var ids = s.match(/#[\w-]+/g) || [];
+    a += ids.length;
+    ids.forEach(function (x) { if (detail) detail.ids.push(x); });
+    s = s.replace(/#[\w-]+/g, ' ');
+    var cls = s.match(/\.[\w-]+/g) || [];
+    b += cls.length;
+    cls.forEach(function (x) { if (detail) detail.classes.push(x); });
+    s = s.replace(/\.[\w-]+/g, ' ');
+    var pcs = s.match(/:[\w-]+(\([^()]*\))?/g) || [];
+    b += pcs.length;
+    pcs.forEach(function (x) { if (detail) detail.pseudoCl.push(x); });
+    s = s.replace(/:[\w-]+(\([^()]*\))?/g, ' ');
+    var parts = s.split(/[\s>+~]+/);
+    parts.forEach(function (p) {
+      p = p.trim();
+      if (!p || p === '*' || p === '|*') return;
+      var el = p.split('|').pop();
+      if (/^[a-zA-Z][\w-]*$/.test(el)) { c++; if (detail) detail.elements.push(el); }
+    });
+    return [a, b, c];
+  }
+  function fullSpec(selector, detail) {
+    var total = [0, 0, 0], s = selector;
+    var guard = 0, m;
+    var re = /:(not|is|where|has)\(([^()]*)\)/g;
+    while (guard++ < 50 && (m = re.exec(s))) {
+      var kind = m[1], arg = m[2];
+      if (kind !== 'where') {
+        var best = [0, 0, 0];
+        arg.split(',').forEach(function (part) {
+          best = maxSpec(best, fullSpec(part.trim(), null));
+        });
+        add(total, best);
+        if (detail) detail.func.push(':' + kind + '(' + arg + ') → (' + best.join(', ') + ')');
+      } else if (detail) detail.func.push(':where(' + arg + ') → (0, 0, 0)');
+      s = s.slice(0, m.index) + ' ' + s.slice(m.index + m[0].length);
+      re.lastIndex = 0;
+    }
+    add(total, baseSpec(s, detail));
+    return total;
+  }
+  function update() {
+    if (!TN.el('spec-sel')) return;
+    TN.clearErr(ERR);
+    var sel = TN.el('spec-sel').value.trim();
+    if (!sel) {
+      TN.el('spec-abc').textContent = '–'; TN.el('spec-score').textContent = '–';
+      TN.el('spec-body').innerHTML = '<tr><td colspan="3" class="muted">Type a selector to analyze it.</td></tr>';
+      return;
+    }
+    try {
+      var detail = { ids: [], classes: [], attrs: [], pseudoCl: [], pseudoEl: [], elements: [], func: [] };
+      var sp = fullSpec(sel, detail);
+      TN.el('spec-abc').textContent = '(' + sp.join(', ') + ')';
+      TN.el('spec-score').textContent = sp[0] * 100 + sp[1] * 10 + sp[2];
+      var rows = [
+        ['IDs (#id)', sp[0], detail.ids],
+        ['Classes (.c), attributes ([a]), pseudo-classes (:hover)', sp[1], detail.classes.concat(detail.attrs, detail.pseudoCl)],
+        ['Elements (div), pseudo-elements (::before)', sp[2], detail.elements.concat(detail.pseudoEl)],
+        ['Functional (:not/:is/:has — max of argument)', '—', detail.func]
+      ];
+      TN.el('spec-body').innerHTML = rows.map(function (r) {
+        return '<tr><td><strong>' + esc(r[0]) + '</strong></td><td>' + r[1] + '</td><td style="font-family:ui-monospace,monospace;font-size:.85rem">' +
+          (r[2].length ? esc(r[2].join(' ')) : '<span class="muted">—</span>') + '</td></tr>';
+      }).join('');
+    } catch (e) {
+      TN.setErr(ERR, 'Could not parse that selector.');
+    }
+  }
+  try {
+    TN.on('spec-sel', 'input', update);
+    update();
+  } catch (e) { /* never throw on load */ }
+})();
+</script>
+</body>
+</html>

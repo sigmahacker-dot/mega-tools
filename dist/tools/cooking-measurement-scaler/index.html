@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cooking Measurement Scaler — Free Online | ToolNest</title>
+<meta name="description" content="Scale any recipe up or down: enter servings and ingredients, get rescaled amounts with metric equivalents.">
+<meta name="keywords" content="recipe scaler, scale recipe calculator, cooking measurement converter, adjust recipe servings, ingredient scaler">
+<link rel="canonical" href="https://toolnest.vercel.app/tools/cooking-measurement-scaler/">
+<meta name="theme-color" content="#07070b">
+<meta property="og:title" content="Cooking Measurement Scaler — Free Online | ToolNest">
+<meta property="og:description" content="Scale any recipe up or down: enter servings and ingredients, get rescaled amounts with metric equivalents.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css?v=4">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%23e01111'/><text x='50' y='68' font-size='58' text-anchor='middle' fill='white' font-family='Arial' font-weight='bold'>T</text></svg>">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebApplication","name":"Cooking Measurement Scaler","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0"},"url":"https://toolnest.vercel.app/tools/cooking-measurement-scaler/","description":"Scale any recipe up or down: enter servings and ingredients, get rescaled amounts with metric equivalents."},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Do spices scale linearly?","acceptedAnswer":{"@type":"Answer","text":"Mostly, but strong spices, salt, leavening and alcohol are best scaled to taste — start with 75% of the scaled amount and adjust."}},{"@type":"Question","name":"What about cooking time and temperature?","acceptedAnswer":{"@type":"Answer","text":"Temperature stays the same. Time changes with pan size and thickness, not servings — check for doneness, not the clock."}},{"@type":"Question","name":"How are amounts rounded?","acceptedAnswer":{"@type":"Answer","text":"To two decimals for readability. For cups and spoons, round to the nearest practical measure (¼, ⅓, ½) when cooking."}}]}]}</script>
+</head>
+<body>
+<header class="site-header">
+  <div class="container">
+    <a class="logo" href="/"><span class="logo-mark">T</span> ToolNest</a>
+    <div class="header-right">
+      <form class="nav-search" action="/" method="get" role="search">
+        <span class="ns-icon">🔍</span>
+        <input type="search" name="q" placeholder="Search tools…" aria-label="Search tools" autocomplete="off">
+      </form>
+      <div class="menu-wrap">
+        <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="menuPanel" aria-label="Open menu"><span></span><span></span><span></span></button>
+        <nav class="menu-panel" id="menuPanel" aria-label="Site">
+          <a href="/">Home</a>
+          <a href="/#categories">Categories</a>
+          <a href="/#all-tools">All Tools</a>
+        </nav>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ADSTERRA-HEADER: paste your Adsterra banner ad code inside the div below -->
+<div class="container"><div class="ad-slot ad-leaderboard" data-ad="header"></div></div>
+
+<main class="container">
+  <nav class="crumbs"><a href="/">Home</a> &rsaquo; <a href="/#calculators">Calculators</a> &rsaquo; Cooking Measurement Scaler</nav>
+  <div class="tool-hero">
+    <h1>Cooking Measurement Scaler</h1>
+    <p>Scale any recipe up or down: enter servings and ingredients, get rescaled amounts with metric equivalents.</p>
+  </div>
+
+  <div class="tool-card">
+  <div class="grid2">
+    <div class="field"><label for="cook-orig">Original servings</label><input type="number" class="input" id="cook-orig" min="0" step="any" placeholder="4"></div>
+    <div class="field"><label for="cook-want">Desired servings</label><input type="number" class="input" id="cook-want" min="0" step="any" placeholder="6"></div>
+  </div>
+  <table class="data">
+    <thead><tr><th>Amount</th><th>Unit</th><th>Ingredient</th></tr></thead>
+    <tbody id="cook-rows"></tbody>
+  </table>
+  <div class="error" id="cooking-measurement-scaler-error"></div>
+  <div class="result" id="cook-result">
+    <div class="stat-cards">
+      <div class="stat-card"><div class="v" id="cook-factor">–</div><div class="l">Scale factor</div></div>
+    </div>
+    <table class="data">
+      <thead><tr><th>Ingredient</th><th>Scaled amount</th><th>Metric equiv.</th></tr></thead>
+      <tbody id="cook-body"><tr><td colspan="3" class="muted">Enter servings and at least one ingredient.</td></tr></tbody>
+    </table>
+    <p class="note">Seasonings, leavening and cooking time do not scale perfectly — adjust to taste.</p>
+  </div>
+</div>
+
+  <!-- ADSTERRA-INCONTENT: paste your Adsterra native/in-content ad code inside the div below -->
+  <div class="ad-slot" data-ad="incontent"></div>
+
+  <div class="info-grid">
+    <div class="info-card">
+      <h2>📖 How to use</h2>
+      <ol><li>Enter the original servings and how many servings you want.</li><li>Add each ingredient: amount, unit and name (up to 8).</li><li>Read the scaled amounts, each with a metric equivalent.</li></ol>
+    </div>
+    <div class="info-card">
+      <h2>❓ Frequently asked questions</h2>
+      <div class="faq"><details><summary>Do spices scale linearly?</summary><p>Mostly, but strong spices, salt, leavening and alcohol are best scaled to taste — start with 75% of the scaled amount and adjust.</p></details><details><summary>What about cooking time and temperature?</summary><p>Temperature stays the same. Time changes with pan size and thickness, not servings — check for doneness, not the clock.</p></details><details><summary>How are amounts rounded?</summary><p>To two decimals for readability. For cups and spoons, round to the nearest practical measure (¼, ⅓, ½) when cooking.</p></details></div>
+    </div>
+  </div>
+
+  <section class="section">
+    <h2>🔗 Related tools</h2>
+    <div class="tool-grid"><a class="tool-link" href="/tools/age-calculator/" data-search="age calculator enter your date of birth to get your exact age in years, months and days, plus total weeks, days, hours, the weekday you were born, and days until your next birthday. age calculator calculate age date of birth age"><span class="t-ico">🧮</span><span class="t-body"><b>Age Calculator</b><small>Enter your date of birth to get your exact age in years, months and days, plus total weeks, …</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/aspect-ratio-calculator/" data-search="aspect ratio calculator reduce any width × height to its simplest aspect ratio, or find the missing side from a ratio. aspect ratio calculator reduce aspect ratio 16:9 calculator missing side calculator ratio simplifier"><span class="t-ico">🧮</span><span class="t-body"><b>Aspect Ratio Calculator</b><small>Reduce any width × height to its simplest aspect ratio, or find the missing side from a rati…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/bmi-calculator/" data-search="bmi calculator calculate your body mass index from height and weight in metric or imperial units. get your bmi value, weight category and the healthy weight range for your height. bmi calculator body mass index healthy weight calculator"><span class="t-ico">🧮</span><span class="t-body"><b>BMI Calculator</b><small>Calculate your Body Mass Index from height and weight in metric or imperial units. Get your …</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/concrete-calculator/" data-search="concrete calculator calculate cubic yards of concrete for any slab, plus how many 60 lb or 80 lb bags that equals. concrete calculator cubic yards concrete concrete bags calculator slab concrete estimator how much concrete"><span class="t-ico">🧮</span><span class="t-body"><b>Concrete Calculator</b><small>Calculate cubic yards of concrete for any slab, plus how many 60 lb or 80 lb bags that equal…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/currency-converter/" data-search="currency converter convert any amount between 30+ world currencies with live exchange rates. pick source and target currencies, convert instantly, and see the rate and last update date. currency converter exchange rate converter usd to pkr converter"><span class="t-ico">🧮</span><span class="t-body"><b>Currency Converter</b><small>Convert any amount between 30+ world currencies with live exchange rates. Pick source and ta…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/discount-calculator/" data-search="discount calculator calculate the final price after a discount, with support for a second discount and a coupon amount. see the final price, total savings and effective savings percentage. discount calculator sale price calculator savings calculator"><span class="t-ico">🧮</span><span class="t-body"><b>Discount Calculator</b><small>Calculate the final price after a discount, with support for a second discount and a coupon …</small></span><span class="t-arrow">→</span></a></div>
+  </section>
+</main>
+
+<!-- ADSTERRA-FOOTER: paste your Adsterra footer/banner ad code inside the div below -->
+<div class="container"><div class="ad-slot" data-ad="footer"></div></div>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="f-grid">
+      <div>
+        <span class="brandline"><span class="logo-mark">T</span> ToolNest</span>
+        <p>Free online tools that actually work. No sign-up, no watermarks — and your files never leave your device for client-side tools.</p>
+      </div>
+      <div>
+        <h4>Popular</h4>
+        <a href="/tools/qr-code-generator/">QR Code Generator</a>
+        <a href="/tools/background-remover/">Background Remover</a>
+        <a href="/tools/pdf-merger/">PDF Merger</a>
+        <a href="/tools/word-counter/">Word Counter</a>
+      </div>
+      <div>
+        <h4>Categories</h4>
+        <a href="/#image">Image Tools</a>
+        <a href="/#pdf">PDF &amp; Documents</a>
+        <a href="/#calculators">Calculators</a>
+        <a href="/#developer">Developer Tools</a>
+      </div>
+      <div>
+        <h4>Site</h4>
+        <a href="/">Home</a>
+        <a href="/#all-tools">All Tools</a>
+        <a href="/sitemap.xml">Sitemap</a>
+      </div>
+    </div>
+    <div class="f-bottom">© 2026 ToolNest · Free tools for everyone · Made with care</div>
+  </div>
+</footer>
+
+<script src="/assets/site.js?v=5"></script>
+
+<script>
+(function () {
+  'use strict';
+  var ERR = 'cooking-measurement-scaler-error';
+  var UNITS = ['cup', 'tbsp', 'tsp', 'fl oz', 'ml', 'L', 'g', 'kg', 'oz', 'lb', 'piece'];
+  var TOML = { 'cup': 236.588, 'tbsp': 14.7868, 'tsp': 4.92892, 'fl oz': 29.5735, 'ml': 1, 'L': 1000 };
+  var TOG = { 'g': 1, 'kg': 1000, 'oz': 28.3495, 'lb': 453.592 };
+  function esc(s) { return String(s).replace(/[&<>"']/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]; }); }
+  function fmt(n) { return String(Math.round(n * 100) / 100); }
+  function buildRows() {
+    var tb = TN.el('cook-rows');
+    var html = '';
+    for (var i = 0; i < 8; i++) {
+      html += '<tr><td><input type="number" class="input" id="cook-amt' + i + '" min="0" step="any" style="min-width:80px"></td>' +
+        '<td><select class="input" id="cook-unit' + i + '">' + UNITS.map(function (u) { return '<option>' + u + '</option>'; }).join('') + '</select></td>' +
+        '<td><input type="text" class="input" id="cook-name' + i + '" placeholder="e.g. flour" style="min-width:120px"></td></tr>';
+    }
+    tb.innerHTML = html;
+    for (var j = 0; j < 8; j++) { TN.on('cook-amt' + j, 'input', calc); TN.on('cook-unit' + j, 'change', calc); TN.on('cook-name' + j, 'input', calc); }
+  }
+  function calc() {
+    if (!TN.el('cook-orig')) return;
+    TN.clearErr(ERR);
+    var orig = parseFloat(TN.el('cook-orig').value);
+    var want = parseFloat(TN.el('cook-want').value);
+    if (!(orig > 0)) { TN.setErr(ERR, 'Enter original servings greater than 0.'); return; }
+    if (!(want > 0)) { TN.setErr(ERR, 'Enter desired servings greater than 0.'); return; }
+    var f = want / orig;
+    TN.el('cook-factor').textContent = '×' + fmt(f);
+    var rows = [];
+    for (var i = 0; i < 8; i++) {
+      var a = parseFloat(TN.el('cook-amt' + i).value);
+      if (!(a > 0)) continue;
+      var u = TN.el('cook-unit' + i).value;
+      var name = (TN.el('cook-name' + i).value || '').trim() || ('Ingredient ' + (i + 1));
+      var scaled = a * f;
+      var equiv = '–';
+      if (TOML[u]) { var ml = scaled * TOML[u]; equiv = ml >= 1000 ? fmt(ml / 1000) + ' L' : fmt(ml) + ' ml'; }
+      else if (TOG[u]) { var g = scaled * TOG[u]; equiv = g >= 1000 ? fmt(g / 1000) + ' kg' : fmt(g) + ' g'; }
+      rows.push('<tr><td>' + esc(name) + '</td><td>' + fmt(scaled) + ' ' + u + '</td><td>' + equiv + '</td></tr>');
+    }
+    TN.el('cook-body').innerHTML = rows.length ? rows.join('') : '<tr><td colspan="3" class="muted">Enter at least one ingredient.</td></tr>';
+  }
+  try {
+    buildRows();
+    TN.on('cook-orig', 'input', calc);
+    TN.on('cook-want', 'input', calc);
+    calc();
+  } catch (e) { /* never throw on load */ }
+})();
+</script>
+</body>
+</html>

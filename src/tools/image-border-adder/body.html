@@ -1,0 +1,35 @@
+<div class="tool-card">
+  <div class="field">
+    <label for="image-border-adder-file">Upload image</label>
+    <input type="file" class="input" id="image-border-adder-file" accept="image/*">
+  </div>
+  <div class="grid2">
+    <div class="field">
+      <label for="image-border-adder-width">Border thickness (<span id="image-border-adder-width-v">24</span> px)</label>
+      <input type="range" class="input" id="image-border-adder-width" min="1" max="200" step="1" value="24">
+    </div>
+    <div class="field">
+      <label for="image-border-adder-color">Border color</label>
+      <input type="color" class="input" id="image-border-adder-color" value="#ffffff">
+    </div>
+    <div class="field">
+      <label for="image-border-adder-radius">Corner roundness (<span id="image-border-adder-radius-v">0</span> px)</label>
+      <input type="range" class="input" id="image-border-adder-radius" min="0" max="200" step="1" value="0">
+    </div>
+    <div class="field">
+      <label for="image-border-adder-bg">Outside corners</label>
+      <select class="input" id="image-border-adder-bg">
+        <option value="color">Fill with border color</option>
+        <option value="transparent">Transparent</option>
+      </select>
+    </div>
+  </div>
+  <div class="btn-row" style="margin-top:12px">
+    <button class="btn btn-outline" id="image-border-adder-dl" disabled>Download framed PNG</button>
+  </div>
+  <div class="error" id="image-border-adder-error"></div>
+  <div class="result" id="image-border-adder-result" hidden>
+    <p class="muted" id="image-border-adder-info"></p>
+    <canvas id="image-border-adder-canvas" style="max-width:100%;height:auto;border-radius:8px"></canvas>
+  </div>
+</div>

@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Zigzag Text Generator — Free Online | ToolNest</title>
+<meta name="description" content="Render your text in a diagonal zigzag (rail-fence) pattern — real ASCII art with adjustable rows and spacing.">
+<meta name="keywords" content="zigzag text generator, diagonal text art, rail fence text, wavy text ascii">
+<link rel="canonical" href="https://toolnest.vercel.app/tools/zigzag-text-generator/">
+<meta name="theme-color" content="#07070b">
+<meta property="og:title" content="Zigzag Text Generator — Free Online | ToolNest">
+<meta property="og:description" content="Render your text in a diagonal zigzag (rail-fence) pattern — real ASCII art with adjustable rows and spacing.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css?v=4">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%23e01111'/><text x='50' y='68' font-size='58' text-anchor='middle' fill='white' font-family='Arial' font-weight='bold'>T</text></svg>">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebApplication","name":"Zigzag Text Generator","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0"},"url":"https://toolnest.vercel.app/tools/zigzag-text-generator/","description":"Render your text in a diagonal zigzag (rail-fence) pattern — real ASCII art with adjustable rows and spacing."},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What is a zigzag pattern?","acceptedAnswer":{"@type":"Answer","text":"The letters bounce diagonally between rows like a \"W\" repeated — the same layout as the rail-fence cipher, rendered as fixed-width ASCII art."}},{"@type":"Question","name":"Why does my long text look cramped?","acceptedAnswer":{"@type":"Answer","text":"Zigzag art needs horizontal room. Use fewer rows, shorter text, or copy it into a wider area (a code block or document)."}},{"@type":"Question","name":"Does it work with any characters?","acceptedAnswer":{"@type":"Answer","text":"Yes — letters, digits and symbols all follow the zigzag path. Emoji may misalign because they are wider than one column."}}]}]}</script>
+</head>
+<body>
+<header class="site-header">
+  <div class="container">
+    <a class="logo" href="/"><span class="logo-mark">T</span> ToolNest</a>
+    <div class="header-right">
+      <form class="nav-search" action="/" method="get" role="search">
+        <span class="ns-icon">🔍</span>
+        <input type="search" name="q" placeholder="Search tools…" aria-label="Search tools" autocomplete="off">
+      </form>
+      <div class="menu-wrap">
+        <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="menuPanel" aria-label="Open menu"><span></span><span></span><span></span></button>
+        <nav class="menu-panel" id="menuPanel" aria-label="Site">
+          <a href="/">Home</a>
+          <a href="/#categories">Categories</a>
+          <a href="/#all-tools">All Tools</a>
+        </nav>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ADSTERRA-HEADER: paste your Adsterra banner ad code inside the div below -->
+<div class="container"><div class="ad-slot ad-leaderboard" data-ad="header"></div></div>
+
+<main class="container">
+  <nav class="crumbs"><a href="/">Home</a> &rsaquo; <a href="/#text">Text &amp; Writing</a> &rsaquo; Zigzag Text Generator</nav>
+  <div class="tool-hero">
+    <h1>Zigzag Text Generator</h1>
+    <p>Render your text in a diagonal zigzag (rail-fence) pattern — real ASCII art with adjustable rows and spacing.</p>
+  </div>
+
+  <div class="tool-card">
+  <div class="field">
+    <label for="zigzag-text-generator-input">Your text</label>
+    <input type="text" class="input" id="zigzag-text-generator-input" placeholder="e.g. ZIGZAG" maxlength="60" value="ZIGZAG">
+  </div>
+  <div class="grid2">
+    <div class="field">
+      <label for="zigzag-text-generator-rows">Rows: <span id="zigzag-text-generator-rows-v">3</span></label>
+      <input type="range" id="zigzag-text-generator-rows" min="2" max="6" value="3">
+    </div>
+    <div class="field">
+      <label for="zigzag-text-generator-gap">Letter spacing: <span id="zigzag-text-generator-gap-v">1</span></label>
+      <input type="range" id="zigzag-text-generator-gap" min="0" max="4" value="1">
+    </div>
+  </div>
+  <div class="error" id="zigzag-text-generator-error"></div>
+  <div class="result mt">
+    <pre id="zigzag-text-generator-out" style="font-family:ui-monospace,monospace;line-height:1.5;overflow-x:auto;background:rgba(0,0,0,.35);border-radius:10px;padding:14px;"></pre>
+    <div class="btn-row mt">
+      <button class="btn btn-outline btn-sm" id="zigzag-text-generator-copy" type="button">Copy art</button>
+    </div>
+  </div>
+</div>
+
+
+  <!-- ADSTERRA-INCONTENT: paste your Adsterra native/in-content ad code inside the div below -->
+  <div class="ad-slot" data-ad="incontent"></div>
+
+  <div class="info-grid">
+    <div class="info-card">
+      <h2>📖 How to use</h2>
+      <ol><li>Type your text (short phrases work best).</li><li>Set the number of zigzag rows and the spacing between letters.</li><li>Copy the ASCII-art result from the preview box.</li></ol>
+    </div>
+    <div class="info-card">
+      <h2>❓ Frequently asked questions</h2>
+      <div class="faq"><details><summary>What is a zigzag pattern?</summary><p>The letters bounce diagonally between rows like a &quot;W&quot; repeated — the same layout as the rail-fence cipher, rendered as fixed-width ASCII art.</p></details><details><summary>Why does my long text look cramped?</summary><p>Zigzag art needs horizontal room. Use fewer rows, shorter text, or copy it into a wider area (a code block or document).</p></details><details><summary>Does it work with any characters?</summary><p>Yes — letters, digits and symbols all follow the zigzag path. Emoji may misalign because they are wider than one column.</p></details></div>
+    </div>
+  </div>
+
+  <section class="section">
+    <h2>🔗 Related tools</h2>
+    <div class="tool-grid"><a class="tool-link" href="/tools/acronym-generator/" data-search="acronym generator turn any phrase into an acronym instantly — first letters, with options to skip small words, add periods and force uppercase. acronym generator make acronym from words initialism generator phrase to acronym"><span class="t-ico">✍️</span><span class="t-body"><b>Acronym Generator</b><small>Turn any phrase into an acronym instantly — first letters, with options to skip small words,…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/aes-text-encryptor/" data-search="aes text encryptor encrypt text with real aes-256-gcm using a password-derived key (pbkdf2), fully in your browser. aes encrypt text encrypt message password aes-gcm online"><span class="t-ico">✍️</span><span class="t-body"><b>AES Text Encryptor</b><small>Encrypt text with real AES-256-GCM using a password-derived key (PBKDF2), fully in your brow…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/article-rewriter/" data-search="article rewriter rewrite articles with a built-in synonym engine covering 130+ common english words. whole-word replacement with capitalization preserved and a change report. article rewriter paraphrasing tool rewrite text online"><span class="t-ico">✍️</span><span class="t-body"><b>Article Rewriter</b><small>Rewrite articles with a built-in synonym engine covering 130+ common English words. Whole-wo…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/case-converter/" data-search="case converter convert text to uppercase, lowercase, title case, sentence case, alternating case and inverse case instantly, then copy or download the result. case converter uppercase lowercase converter title case converter"><span class="t-ico">✍️</span><span class="t-body"><b>Case Converter</b><small>Convert text to UPPERCASE, lowercase, Title Case, Sentence case, aLtErNaTiNg cAsE and iNVERS…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/case-style-converter/" data-search="case style converter convert text between camelcase, pascalcase, snake_case, kebab-case and more. case converter camelcase to snakecase kebab case converter"><span class="t-ico">✍️</span><span class="t-body"><b>Case Style Converter</b><small>Convert text between camelCase, PascalCase, snake_case, kebab-case and more.</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/character-counter/" data-search="character counter count characters with and without spaces, words and lines in real time, with a live x/twitter 280-character limit gauge and sms segment indicator. character counter twitter character count count characters online"><span class="t-ico">✍️</span><span class="t-body"><b>Character Counter</b><small>Count characters with and without spaces, words and lines in real time, with a live X/Twitte…</small></span><span class="t-arrow">→</span></a></div>
+  </section>
+</main>
+
+<!-- ADSTERRA-FOOTER: paste your Adsterra footer/banner ad code inside the div below -->
+<div class="container"><div class="ad-slot" data-ad="footer"></div></div>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="f-grid">
+      <div>
+        <span class="brandline"><span class="logo-mark">T</span> ToolNest</span>
+        <p>Free online tools that actually work. No sign-up, no watermarks — and your files never leave your device for client-side tools.</p>
+      </div>
+      <div>
+        <h4>Popular</h4>
+        <a href="/tools/qr-code-generator/">QR Code Generator</a>
+        <a href="/tools/background-remover/">Background Remover</a>
+        <a href="/tools/pdf-merger/">PDF Merger</a>
+        <a href="/tools/word-counter/">Word Counter</a>
+      </div>
+      <div>
+        <h4>Categories</h4>
+        <a href="/#image">Image Tools</a>
+        <a href="/#pdf">PDF &amp; Documents</a>
+        <a href="/#calculators">Calculators</a>
+        <a href="/#developer">Developer Tools</a>
+      </div>
+      <div>
+        <h4>Site</h4>
+        <a href="/">Home</a>
+        <a href="/#all-tools">All Tools</a>
+        <a href="/sitemap.xml">Sitemap</a>
+      </div>
+    </div>
+    <div class="f-bottom">© 2026 ToolNest · Free tools for everyone · Made with care</div>
+  </div>
+</footer>
+
+<script src="/assets/site.js?v=5"></script>
+
+<script>
+(function () {
+  'use strict';
+  var P = 'zigzag-text-generator-', ERR = P + 'error';
+  function zigzag(text, rows, gap) {
+    var chars = text.split('');
+    if (chars.length <= 1 || rows < 2) return text;
+    var cols = chars.length * (gap + 1);
+    var grid = [];
+    for (var r = 0; r < rows; r++) { grid.push(new Array(cols).fill(' ')); }
+    var row = 0, dir = 1;
+    for (var i = 0; i < chars.length; i++) {
+      grid[row][i * (gap + 1)] = chars[i];
+      if (row === 0) dir = 1;
+      else if (row === rows - 1) dir = -1;
+      row += dir;
+    }
+    return grid.map(function (line) { return line.join('').replace(/\s+$/, ''); }).join('\n');
+  }
+  function update() {
+    try {
+      TN.clearErr(ERR);
+      var text = TN.el(P + 'input').value || '';
+      var rows = parseInt(TN.el(P + 'rows').value, 10);
+      var gap = parseInt(TN.el(P + 'gap').value, 10);
+      TN.el(P + 'rows-v').textContent = rows;
+      TN.el(P + 'gap-v').textContent = gap;
+      TN.el(P + 'out').textContent = text ? zigzag(text, rows, gap) : 'Type something to see the zigzag…';
+    } catch (e) { TN.setErr(ERR, 'Could not render the zigzag. Please try again.'); }
+  }
+  try {
+    TN.on(P + 'input', 'input', TN.debounce(update, 100));
+    TN.on(P + 'rows', 'input', update);
+    TN.on(P + 'gap', 'input', update);
+    TN.on(P + 'copy', 'click', function () {
+      var v = TN.el(P + 'out').textContent;
+      if (!v || !TN.el(P + 'input').value) { TN.setErr(ERR, 'Nothing to copy yet.'); return; }
+      TN.clearErr(ERR);
+      TN.copy(v).then(function (ok) {
+        var b = TN.el(P + 'copy');
+        b.textContent = ok ? 'Copied!' : 'Copy failed';
+        setTimeout(function () { b.textContent = 'Copy art'; }, 1200);
+      });
+    });
+    update();
+  } catch (e) { /* never throw on load */ }
+})();
+
+</script>
+</body>
+</html>

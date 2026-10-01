@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Modular Scale Calculator — Free Online | ToolNest</title>
+<meta name="description" content="Generate a harmonious type scale from a base size and ratio — every step computed live with px values and a preview.">
+<meta name="keywords" content="modular scale calculator, type scale generator, font size scale, typography scale tool">
+<link rel="canonical" href="https://toolnest.vercel.app/tools/modular-scale-calculator/">
+<meta name="theme-color" content="#07070b">
+<meta property="og:title" content="Modular Scale Calculator — Free Online | ToolNest">
+<meta property="og:description" content="Generate a harmonious type scale from a base size and ratio — every step computed live with px values and a preview.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css?v=4">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%23e01111'/><text x='50' y='68' font-size='58' text-anchor='middle' fill='white' font-family='Arial' font-weight='bold'>T</text></svg>">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebApplication","name":"Modular Scale Calculator","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0"},"url":"https://toolnest.vercel.app/tools/modular-scale-calculator/","description":"Generate a harmonious type scale from a base size and ratio — every step computed live with px values and a preview."},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What is a modular scale?","acceptedAnswer":{"@type":"Answer","text":"A sequence of sizes where each step = base × ratioⁿ. Using one ratio keeps headings, subheads and body in visual harmony."}},{"@type":"Question","name":"Which ratio should I pick?","acceptedAnswer":{"@type":"Answer","text":"1.125–1.200 for subtle UI type, 1.250–1.333 for editorial, 1.414–1.618 for dramatic display hierarchies."}},{"@type":"Question","name":"How many steps are shown?","acceptedAnswer":{"@type":"Answer","text":"Six steps up and three down from the base, labeled like a type scale (e.g. step +3 ≈ h3 territory)."}}]}]}</script>
+</head>
+<body>
+<header class="site-header">
+  <div class="container">
+    <a class="logo" href="/"><span class="logo-mark">T</span> ToolNest</a>
+    <div class="header-right">
+      <form class="nav-search" action="/" method="get" role="search">
+        <span class="ns-icon">🔍</span>
+        <input type="search" name="q" placeholder="Search tools…" aria-label="Search tools" autocomplete="off">
+      </form>
+      <div class="menu-wrap">
+        <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="menuPanel" aria-label="Open menu"><span></span><span></span><span></span></button>
+        <nav class="menu-panel" id="menuPanel" aria-label="Site">
+          <a href="/">Home</a>
+          <a href="/#categories">Categories</a>
+          <a href="/#all-tools">All Tools</a>
+        </nav>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ADSTERRA-HEADER: paste your Adsterra banner ad code inside the div below -->
+<div class="container"><div class="ad-slot ad-leaderboard" data-ad="header"></div></div>
+
+<main class="container">
+  <nav class="crumbs"><a href="/">Home</a> &rsaquo; <a href="/#color">Color Tools</a> &rsaquo; Modular Scale Calculator</nav>
+  <div class="tool-hero">
+    <h1>Modular Scale Calculator</h1>
+    <p>Generate a harmonious type scale from a base size and ratio — every step computed live with px values and a preview.</p>
+  </div>
+
+  <div class="tool-card">
+  <div class="grid2">
+    <div class="field">
+      <label for="modular-scale-calculator-base">Base size (px)</label>
+      <input type="number" class="input" id="modular-scale-calculator-base" value="16" min="1" step="any">
+    </div>
+    <div class="field">
+      <label for="modular-scale-calculator-ratio">Ratio</label>
+      <select class="select" id="modular-scale-calculator-ratio">
+        <option value="1.067">1.067 — Minor second</option>
+        <option value="1.125">1.125 — Major second</option>
+        <option value="1.2">1.200 — Minor third</option>
+        <option value="1.25" selected>1.250 — Major third</option>
+        <option value="1.333">1.333 — Perfect fourth</option>
+        <option value="1.414">1.414 — Augmented fourth</option>
+        <option value="1.5">1.500 — Perfect fifth</option>
+        <option value="1.618">1.618 — Golden ratio</option>
+      </select>
+    </div>
+  </div>
+  <div class="error" id="modular-scale-calculator-error"></div>
+  <div class="result mt">
+    <table class="data">
+      <thead><tr><th>Step</th><th>Size</th><th>Preview</th><th></th></tr></thead>
+      <tbody id="modular-scale-calculator-body"></tbody>
+    </table>
+  </div>
+</div>
+
+
+  <!-- ADSTERRA-INCONTENT: paste your Adsterra native/in-content ad code inside the div below -->
+  <div class="ad-slot" data-ad="incontent"></div>
+
+  <div class="info-grid">
+    <div class="info-card">
+      <h2>📖 How to use</h2>
+      <ol><li>Enter your base font size (usually body text, e.g. 16px).</li><li>Pick a scale ratio — 1.250 (major third), 1.618 (golden ratio) and more.</li><li>Copy any step value; the preview shows the steps at real size.</li></ol>
+    </div>
+    <div class="info-card">
+      <h2>❓ Frequently asked questions</h2>
+      <div class="faq"><details><summary>What is a modular scale?</summary><p>A sequence of sizes where each step = base × ratioⁿ. Using one ratio keeps headings, subheads and body in visual harmony.</p></details><details><summary>Which ratio should I pick?</summary><p>1.125–1.200 for subtle UI type, 1.250–1.333 for editorial, 1.414–1.618 for dramatic display hierarchies.</p></details><details><summary>How many steps are shown?</summary><p>Six steps up and three down from the base, labeled like a type scale (e.g. step +3 ≈ h3 territory).</p></details></div>
+    </div>
+  </div>
+
+  <section class="section">
+    <h2>🔗 Related tools</h2>
+    <div class="tool-grid"><a class="tool-link" href="/tools/color-blindness-simulator/" data-search="color blindness simulator see colors and images as color-blind viewers do. color blindness simulator protanopia simulator deuteranopia test"><span class="t-ico">🎨</span><span class="t-body"><b>Color Blindness Simulator</b><small>See colors and images as color-blind viewers do.</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/color-harmony-generator/" data-search="color harmony generator build complementary, analogous, triadic, tetradic and split-complementary palettes from any base color using real hsl math. color harmony generator complementary color finder analogous colors triadic color scheme"><span class="t-ico">🎨</span><span class="t-body"><b>Color Harmony Generator</b><small>Build complementary, analogous, triadic, tetradic and split-complementary palettes from any …</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/color-mixer/" data-search="color mixer blend any two colors with a ratio slider — see the real mixed result as hex and rgb with a live preview. color mixer blend two colors mix colors online color blender tool"><span class="t-ico">🎨</span><span class="t-body"><b>Color Mixer</b><small>Blend any two colors with a ratio slider — see the real mixed result as HEX and RGB with a l…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/color-temperature-converter/" data-search="color temperature converter convert light color temperature (kelvin) to its approximate on-screen color — real blackbody math with warm/cool labels. kelvin to rgb color temperature converter kelvin to hex light temperature color"><span class="t-ico">🎨</span><span class="t-body"><b>Color Temperature Converter</b><small>Convert light color temperature (Kelvin) to its approximate on-screen color — real blackbody…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/contrast-checker/" data-search="color contrast checker wcag contrast ratio with aa/aaa verdicts. contrast checker wcag contrast color contrast ratio"><span class="t-ico">🎨</span><span class="t-body"><b>Color Contrast Checker</b><small>WCAG contrast ratio with AA/AAA verdicts.</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/css-clamp-generator/" data-search="css clamp generator generate fluid clamp() typography and spacing — the exact math from your min/max sizes and viewport range, with a live demo. css clamp generator fluid typography calculator clamp css generator responsive font size"><span class="t-ico">🎨</span><span class="t-body"><b>CSS Clamp Generator</b><small>Generate fluid clamp() typography and spacing — the exact math from your min/max sizes and v…</small></span><span class="t-arrow">→</span></a></div>
+  </section>
+</main>
+
+<!-- ADSTERRA-FOOTER: paste your Adsterra footer/banner ad code inside the div below -->
+<div class="container"><div class="ad-slot" data-ad="footer"></div></div>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="f-grid">
+      <div>
+        <span class="brandline"><span class="logo-mark">T</span> ToolNest</span>
+        <p>Free online tools that actually work. No sign-up, no watermarks — and your files never leave your device for client-side tools.</p>
+      </div>
+      <div>
+        <h4>Popular</h4>
+        <a href="/tools/qr-code-generator/">QR Code Generator</a>
+        <a href="/tools/background-remover/">Background Remover</a>
+        <a href="/tools/pdf-merger/">PDF Merger</a>
+        <a href="/tools/word-counter/">Word Counter</a>
+      </div>
+      <div>
+        <h4>Categories</h4>
+        <a href="/#image">Image Tools</a>
+        <a href="/#pdf">PDF &amp; Documents</a>
+        <a href="/#calculators">Calculators</a>
+        <a href="/#developer">Developer Tools</a>
+      </div>
+      <div>
+        <h4>Site</h4>
+        <a href="/">Home</a>
+        <a href="/#all-tools">All Tools</a>
+        <a href="/sitemap.xml">Sitemap</a>
+      </div>
+    </div>
+    <div class="f-bottom">© 2026 ToolNest · Free tools for everyone · Made with care</div>
+  </div>
+</footer>
+
+<script src="/assets/site.js?v=5"></script>
+
+<script>
+(function () {
+  'use strict';
+  var P = 'modular-scale-calculator-', ERR = P + 'error';
+  function update() {
+    try {
+      TN.clearErr(ERR);
+      var base = parseFloat(TN.el(P + 'base').value);
+      var ratio = parseFloat(TN.el(P + 'ratio').value);
+      if (!(base > 0)) { TN.setErr(ERR, 'Enter a base size greater than 0.'); return; }
+      if (!(ratio > 1)) { TN.setErr(ERR, 'Ratio must be greater than 1.'); return; }
+      var html = '';
+      for (var n = 6; n >= -3; n--) {
+        var size = base * Math.pow(ratio, n);
+        var label = n === 0 ? 'base' : (n > 0 ? '+' + n : String(n));
+        html += '<tr><td>' + label + '</td><td><code>' + size.toFixed(2) + 'px</code></td>' +
+          '<td><span style="font-size:' + Math.min(size, 72) + 'px;line-height:1.2;">Ag</span></td>' +
+          '<td><button type="button" class="btn btn-outline btn-sm" data-size="' + size.toFixed(2) + '">Copy</button></td></tr>';
+      }
+      var body = TN.el(P + 'body');
+      body.innerHTML = html;
+      var btns = body.querySelectorAll('button[data-size]');
+      for (var i = 0; i < btns.length; i++) {
+        (function (b) {
+          TN.on(b, 'click', function () {
+            TN.copy(b.getAttribute('data-size') + 'px').then(function () {
+              b.textContent = 'Copied';
+              setTimeout(function () { b.textContent = 'Copy'; }, 1000);
+            });
+          });
+        })(btns[i]);
+      }
+    } catch (e) { TN.setErr(ERR, 'Could not build the scale. Please try again.'); }
+  }
+  try {
+    TN.on(P + 'base', 'input', update);
+    TN.on(P + 'ratio', 'change', update);
+    update();
+  } catch (e) { /* never throw on load */ }
+})();
+
+</script>
+</body>
+</html>

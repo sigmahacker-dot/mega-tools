@@ -1,0 +1,26 @@
+<div class="tool-card">
+  <div class="field">
+    <label for="invisible-character-finder-input">Your text</label>
+    <textarea class="textarea" id="invisible-character-finder-input" rows="6" placeholder="Paste suspicious text here..."></textarea>
+  </div>
+  <div class="error" id="invisible-character-finder-error"></div>
+  <div class="stat-cards mt">
+    <div class="stat-card"><div class="v" id="invisible-character-finder-count">0</div><div class="l">Invisible chars</div></div>
+    <div class="stat-card"><div class="v" id="invisible-character-finder-types">0</div><div class="l">Distinct types</div></div>
+  </div>
+  <div class="result mt">
+    <div class="field">
+      <label>Revealed view <span class="muted">(invisible chars shown as red tags)</span></label>
+      <div id="invisible-character-finder-out" class="muted" style="white-space:pre-wrap;word-break:break-all;line-height:2;border:1px solid var(--line);border-radius:10px;padding:12px;">Paste text above to scan it.</div>
+    </div>
+    <table class="data mt">
+      <thead><tr><th>Character</th><th>Code point</th><th>Count</th><th>Positions</th></tr></thead>
+      <tbody id="invisible-character-finder-body"><tr><td colspan="4" class="muted">No invisible characters found.</td></tr></tbody>
+    </table>
+    <div class="btn-row mt">
+      <button class="btn btn-outline btn-sm" id="invisible-character-finder-strip" type="button">Strip &amp; copy clean text</button>
+      <button class="btn btn-outline btn-sm" id="invisible-character-finder-clear" type="button">Clear</button>
+    </div>
+    <p class="note">Stripping removes all detected invisible characters. Zero-width joiners inside emoji sequences will be removed too.</p>
+  </div>
+</div>

@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Workout Plan Generator — Free Online | ToolNest</title>
+<meta name="description" content="Generate a weekly workout program by goal, training days, equipment and level — with exercises, sets, reps and rest times.">
+<meta name="keywords" content="workout plan generator, weekly workout program, exercise plan maker, gym workout generator, training split planner">
+<link rel="canonical" href="https://toolnest.vercel.app/tools/workout-plan-generator/">
+<meta name="theme-color" content="#07070b">
+<meta property="og:title" content="Workout Plan Generator — Free Online | ToolNest">
+<meta property="og:description" content="Generate a weekly workout program by goal, training days, equipment and level — with exercises, sets, reps and rest times.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css?v=4">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%23e01111'/><text x='50' y='68' font-size='58' text-anchor='middle' fill='white' font-family='Arial' font-weight='bold'>T</text></svg>">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebApplication","name":"Workout Plan Generator","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0"},"url":"https://toolnest.vercel.app/tools/workout-plan-generator/","description":"Generate a weekly workout program by goal, training days, equipment and level — with exercises, sets, reps and rest times."},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How is the program built?","acceptedAnswer":{"@type":"Answer","text":"Pick Build strength, Build muscle, Lose fat or Endurance, then your days per week, available equipment and experience level."}},{"@type":"Question","name":"Do sets and reps change with the goal?","acceptedAnswer":{"@type":"Answer","text":"Strength uses heavy 5×5 compounds, muscle uses 3–4×8–12, fat loss adds circuits and cardio finishers, endurance uses higher reps and shorter rest."}},{"@type":"Question","name":"What equipment do I need?","acceptedAnswer":{"@type":"Answer","text":"Full gym, dumbbells-only, or bodyweight — the exercise pool adapts to what you have."}},{"@type":"Question","name":"Is this private?","acceptedAnswer":{"@type":"Answer","text":"Yes, everything is generated locally in your browser."}}]}]}</script>
+</head>
+<body>
+<header class="site-header">
+  <div class="container">
+    <a class="logo" href="/"><span class="logo-mark">T</span> ToolNest</a>
+    <div class="header-right">
+      <form class="nav-search" action="/" method="get" role="search">
+        <span class="ns-icon">🔍</span>
+        <input type="search" name="q" placeholder="Search tools…" aria-label="Search tools" autocomplete="off">
+      </form>
+      <div class="menu-wrap">
+        <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="menuPanel" aria-label="Open menu"><span></span><span></span><span></span></button>
+        <nav class="menu-panel" id="menuPanel" aria-label="Site">
+          <a href="/">Home</a>
+          <a href="/#categories">Categories</a>
+          <a href="/#all-tools">All Tools</a>
+        </nav>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ADSTERRA-HEADER: paste your Adsterra banner ad code inside the div below -->
+<div class="container"><div class="ad-slot ad-leaderboard" data-ad="header"></div></div>
+
+<main class="container">
+  <nav class="crumbs"><a href="/">Home</a> &rsaquo; <a href="/#generators">Generators</a> &rsaquo; Workout Plan Generator</nav>
+  <div class="tool-hero">
+    <h1>Workout Plan Generator</h1>
+    <p>Generate a weekly workout program by goal, training days, equipment and level — with exercises, sets, reps and rest times.</p>
+  </div>
+
+  <div class="tool-card">
+  <div class="grid2">
+    <div class="field"><label for="wo-goal">Goal</label>
+      <select class="select" id="wo-goal">
+        <option value="strength">Build strength</option>
+        <option value="muscle">Build muscle</option>
+        <option value="fat">Lose fat</option>
+        <option value="endurance">Endurance</option>
+      </select>
+    </div>
+    <div class="field"><label for="wo-days">Training days / week</label>
+      <select class="select" id="wo-days"><option>2</option><option>3</option><option selected>4</option><option>5</option><option>6</option></select>
+    </div>
+    <div class="field"><label for="wo-equip">Equipment</label>
+      <select class="select" id="wo-equip">
+        <option value="gym">Full gym</option>
+        <option value="dumbbell">Dumbbells only</option>
+        <option value="body">Bodyweight</option>
+      </select>
+    </div>
+    <div class="field"><label for="wo-level">Level</label>
+      <select class="select" id="wo-level"><option value="beginner">Beginner</option><option value="inter">Intermediate</option></select>
+    </div>
+  </div>
+  <div class="error" id="workout-plan-generator-error"></div>
+  <div class="result" id="wo-result">
+    <div id="wo-plan"></div>
+    <div class="btn-row">
+      <button class="btn btn-primary" id="wo-go" type="button">Generate program</button>
+      <button class="btn btn-outline" id="wo-dl" type="button">Download .txt</button>
+    </div>
+  </div>
+</div>
+
+  <!-- ADSTERRA-INCONTENT: paste your Adsterra native/in-content ad code inside the div below -->
+  <div class="ad-slot" data-ad="incontent"></div>
+
+  <div class="info-grid">
+    <div class="info-card">
+      <h2>📖 How to use</h2>
+      <ol><li>Choose your goal, training days per week, equipment and level.</li><li>Press Generate program.</li><li>Follow the day-by-day plan with sets, reps and rest.</li></ol>
+    </div>
+    <div class="info-card">
+      <h2>❓ Frequently asked questions</h2>
+      <div class="faq"><details><summary>How is the program built?</summary><p>Pick Build strength, Build muscle, Lose fat or Endurance, then your days per week, available equipment and experience level.</p></details><details><summary>Do sets and reps change with the goal?</summary><p>Strength uses heavy 5×5 compounds, muscle uses 3–4×8–12, fat loss adds circuits and cardio finishers, endurance uses higher reps and shorter rest.</p></details><details><summary>What equipment do I need?</summary><p>Full gym, dumbbells-only, or bodyweight — the exercise pool adapts to what you have.</p></details><details><summary>Is this private?</summary><p>Yes, everything is generated locally in your browser.</p></details></div>
+    </div>
+  </div>
+
+  <section class="section">
+    <h2>🔗 Related tools</h2>
+    <div class="tool-grid"><a class="tool-link" href="/tools/band-name-generator/" data-search="band name generator generate original band names by genre — rock, metal, pop, hip-hop, electronic, jazz, punk or indie — with one click and copy. band name generator rock band names metal band names cool band names music group name ideas"><span class="t-ico">⚙️</span><span class="t-body"><b>Band Name Generator</b><small>Generate original band names by genre — rock, metal, pop, hip-hop, electronic, jazz, punk or…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/barcode-generator/" data-search="barcode generator generate barcodes in common formats — code128, code39, ean-13, ean-8, upc and itf-14 — and download them as png or svg images. barcode generator barcode maker ean13 barcode upc barcode generator"><span class="t-ico">⚙️</span><span class="t-body"><b>Barcode Generator</b><small>Generate barcodes in common formats — CODE128, CODE39, EAN-13, EAN-8, UPC and ITF-14 — and d…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/bingo-card-generator/" data-search="bingo card generator create printable 5×5 bingo cards with classic b-i-n-g-o number ranges, an optional free space, or your own custom word list. bingo card generator printable bingo cards custom bingo cards bingo number generator free bingo cards"><span class="t-ico">⚙️</span><span class="t-body"><b>Bingo Card Generator</b><small>Create printable 5×5 bingo cards with classic B-I-N-G-O number ranges, an optional free spac…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/border-radius-generator/" data-search="border radius generator organic blob shapes with an 8-handle radius editor. border radius generator blob shape css border-radius css"><span class="t-ico">⚙️</span><span class="t-body"><b>Border Radius Generator</b><small>Organic blob shapes with an 8-handle radius editor.</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/box-shadow-generator/" data-search="box shadow generator visual css box-shadow builder with live preview. box shadow generator css shadow box-shadow css"><span class="t-ico">⚙️</span><span class="t-body"><b>Box Shadow Generator</b><small>Visual CSS box-shadow builder with live preview.</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/button-generator/" data-search="button generator design a custom button with your text, colors, border radius, padding and shadow — then copy the generated css and use it anywhere. button generator css button maker button css custom button design"><span class="t-ico">⚙️</span><span class="t-body"><b>Button Generator</b><small>Design a custom button with your text, colors, border radius, padding and shadow — then copy…</small></span><span class="t-arrow">→</span></a></div>
+  </section>
+</main>
+
+<!-- ADSTERRA-FOOTER: paste your Adsterra footer/banner ad code inside the div below -->
+<div class="container"><div class="ad-slot" data-ad="footer"></div></div>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="f-grid">
+      <div>
+        <span class="brandline"><span class="logo-mark">T</span> ToolNest</span>
+        <p>Free online tools that actually work. No sign-up, no watermarks — and your files never leave your device for client-side tools.</p>
+      </div>
+      <div>
+        <h4>Popular</h4>
+        <a href="/tools/qr-code-generator/">QR Code Generator</a>
+        <a href="/tools/background-remover/">Background Remover</a>
+        <a href="/tools/pdf-merger/">PDF Merger</a>
+        <a href="/tools/word-counter/">Word Counter</a>
+      </div>
+      <div>
+        <h4>Categories</h4>
+        <a href="/#image">Image Tools</a>
+        <a href="/#pdf">PDF &amp; Documents</a>
+        <a href="/#calculators">Calculators</a>
+        <a href="/#developer">Developer Tools</a>
+      </div>
+      <div>
+        <h4>Site</h4>
+        <a href="/">Home</a>
+        <a href="/#all-tools">All Tools</a>
+        <a href="/sitemap.xml">Sitemap</a>
+      </div>
+    </div>
+    <div class="f-bottom">© 2026 ToolNest · Free tools for everyone · Made with care</div>
+  </div>
+</footer>
+
+<script src="/assets/site.js?v=5"></script>
+
+<script>
+(function () {
+  'use strict';
+  var ERR = 'workout-plan-generator-error';
+  var lastPlan = null;
+  var EX = {
+    gym: {
+      push: ['Barbell Bench Press', 'Overhead Press', 'Incline Dumbbell Press', 'Dips', 'Cable Fly'],
+      pull: ['Deadlift', 'Pull-ups', 'Barbell Row', 'Lat Pulldown', 'Face Pulls', 'Barbell Curl'],
+      legs: ['Back Squat', 'Romanian Deadlift', 'Leg Press', 'Walking Lunges', 'Standing Calf Raise', 'Leg Curl'],
+      core: ['Hanging Leg Raise', 'Cable Crunch', 'Plank'],
+      cardio: ['Treadmill Intervals', 'Rowing Machine', 'Assault Bike']
+    },
+    dumbbell: {
+      push: ['Dumbbell Bench Press', 'Standing Dumbbell Press', 'Push-ups', 'Dumbbell Fly'],
+      pull: ['One-Arm Dumbbell Row', 'Dumbbell Pullover', 'Reverse Fly', 'Dumbbell Curl', 'Hammer Curl'],
+      legs: ['Goblet Squat', 'Dumbbell Romanian Deadlift', 'Dumbbell Lunges', 'Dumbbell Step-ups', 'Dumbbell Calf Raise'],
+      core: ['Dumbbell Russian Twist', 'Weighted Sit-ups', 'Plank'],
+      cardio: ['Dumbbell Thrusters', 'Burpees', 'Jump Rope']
+    },
+    body: {
+      push: ['Push-ups', 'Pike Push-ups', 'Diamond Push-ups', 'Dips (chair)'],
+      pull: ['Pull-ups / Doorway Rows', 'Superman Pulls', 'Towel Rows'],
+      legs: ['Bodyweight Squats', 'Walking Lunges', 'Glute Bridges', 'Calf Raises', 'Wall Sit'],
+      core: ['Plank', 'Mountain Climbers', 'Bicycle Crunches', 'Leg Raises'],
+      cardio: ['Burpees', 'Jumping Jacks', 'High Knees', 'Jump Rope']
+    }
+  };
+  function esc(s) {
+    return String(s).replace(/[&<>"']/g, function (c) {
+      return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c];
+    });
+  }
+  var SPLITS = {
+    2: ['Full Body A', 'Full Body B'],
+    3: ['Full Body A', 'Full Body B', 'Full Body C'],
+    4: ['Upper', 'Lower', 'Push', 'Pull'],
+    5: ['Push', 'Pull', 'Legs', 'Upper', 'Lower'],
+    6: ['Push', 'Pull', 'Legs', 'Push', 'Pull', 'Legs']
+  };
+  function scheme(goal, level) {
+    var base = { strength: { sets: 5, reps: '5', rest: '3 min' }, muscle: { sets: 4, reps: '8–12', rest: '90 sec' }, fat: { sets: 3, reps: '12–15', rest: '45 sec' }, endurance: { sets: 3, reps: '15–20', rest: '30 sec' } }[goal];
+    if (level === 'beginner') return { sets: Math.max(2, base.sets - 1), reps: base.reps, rest: base.rest };
+    return base;
+  }
+  function pick(pool, n) {
+    var c = pool.slice();
+    for (var i = c.length - 1; i > 0; i--) { var j = Math.floor(Math.random() * (i + 1)); var t = c[i]; c[i] = c[j]; c[j] = t; }
+    return c.slice(0, Math.min(n, c.length));
+  }
+  function dayExercises(kind, equip, goal, n) {
+    var E = EX[equip], out = [];
+    if (kind === 'Full Body A' || kind === 'Full Body B' || kind === 'Full Body C') {
+      out = out.concat(pick(E.push, 1), pick(E.legs, 2), pick(E.pull, 1), pick(E.core, 1));
+    } else if (kind === 'Upper') {
+      out = out.concat(pick(E.push, 2), pick(E.pull, 2), pick(E.core, 1));
+    } else if (kind === 'Lower') {
+      out = out.concat(pick(E.legs, 4), pick(E.core, 1));
+    } else if (kind === 'Push') {
+      out = out.concat(pick(E.push, 3), pick(E.core, 1));
+    } else if (kind === 'Pull') {
+      out = out.concat(pick(E.pull, 3), pick(E.core, 1));
+    } else if (kind === 'Legs') {
+      out = out.concat(pick(E.legs, 4), pick(E.core, 1));
+    }
+    if (goal === 'fat') out = out.concat(pick(E.cardio, 1).map(function (x) { return x + ' (finisher)'; }));
+    return out.slice(0, n || 6);
+  }
+  function generate() {
+    TN.clearErr(ERR);
+    var goal = TN.el('wo-goal').value, days = parseInt(TN.el('wo-days').value, 10),
+        equip = TN.el('wo-equip').value, level = TN.el('wo-level').value;
+    var s = scheme(goal, level);
+    var kinds = SPLITS[days];
+    var plan = kinds.map(function (kind) {
+      return { kind: kind, ex: dayExercises(kind, equip, goal, level === 'beginner' ? 5 : 6) };
+    });
+    lastPlan = { plan: plan, s: s, goal: goal, days: days, equip: equip, level: level };
+    var goalName = TN.el('wo-goal').options[TN.el('wo-goal').selectedIndex].text;
+    var html = '<p><strong>' + esc(goalName) + '</strong> <span class="muted">· ' + days + ' days/week · ' +
+      esc(TN.el('wo-equip').options[TN.el('wo-equip').selectedIndex].text) + ' · ' + esc(level) + '</span></p>';
+    plan.forEach(function (d, i) {
+      html += '<h4 style="margin:14px 0 6px">Day ' + (i + 1) + ' — ' + esc(d.kind) + '</h4>';
+      html += '<table class="data"><thead><tr><th>Exercise</th><th>Sets</th><th>Reps</th><th>Rest</th></tr></thead><tbody>';
+      d.ex.forEach(function (e) {
+        html += '<tr><td>' + esc(e) + '</td><td>' + s.sets + '</td><td>' + s.reps + '</td><td>' + s.rest + '</td></tr>';
+      });
+      html += '</tbody></table>';
+    });
+    html += '<p class="note">Warm up 5–10 minutes before each session and progress the weight or reps a little every week.</p>';
+    TN.el('wo-plan').innerHTML = html;
+  }
+  try {
+    TN.on('wo-go', 'click', generate);
+    TN.on('wo-dl', 'click', function () {
+      if (!lastPlan) { TN.setErr(ERR, 'Generate a program first.'); return; }
+      TN.clearErr(ERR);
+      var lines = ['WORKOUT PROGRAM', 'Goal: ' + lastPlan.goal + ' | ' + lastPlan.days + ' days/week | ' + lastPlan.equip + ' | ' + lastPlan.level, ''];
+      lastPlan.plan.forEach(function (d, i) {
+        lines.push('DAY ' + (i + 1) + ' — ' + d.kind.toUpperCase());
+        d.ex.forEach(function (e) { lines.push('  ' + lastPlan.s.sets + ' x ' + lastPlan.s.reps + '  ' + e + '  (rest ' + lastPlan.s.rest + ')'); });
+        lines.push('');
+      });
+      var b = new Blob([lines.join('\n')], { type: 'text/plain;charset=utf-8' });
+      var a = document.createElement('a');
+      a.href = URL.createObjectURL(b); a.download = 'workout-program.txt';
+      document.body.appendChild(a); a.click();
+      setTimeout(function () { URL.revokeObjectURL(a.href); a.remove(); }, 400);
+    });
+    TN.el('wo-plan').innerHTML = '<p class="muted">Choose your settings and press Generate program.</p>';
+  } catch (e) { /* never throw on load */ }
+})();
+</script>
+</body>
+</html>

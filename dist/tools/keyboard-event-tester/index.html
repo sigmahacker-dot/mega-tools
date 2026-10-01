@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Keyboard Event Tester — Free Online | ToolNest</title>
+<meta name="description" content="Test keyboard events live: press any key to see its key, code, keyCode, location and modifiers, with a full event history log.">
+<meta name="keywords" content="keyboard event tester, javascript keycode, key event test, key code checker, keyboard input tester">
+<link rel="canonical" href="https://toolnest.vercel.app/tools/keyboard-event-tester/">
+<meta name="theme-color" content="#07070b">
+<meta property="og:title" content="Keyboard Event Tester — Free Online | ToolNest">
+<meta property="og:description" content="Test keyboard events live: press any key to see its key, code, keyCode, location and modifiers, with a full event history log.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css?v=4">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%23e01111'/><text x='50' y='68' font-size='58' text-anchor='middle' fill='white' font-family='Arial' font-weight='bold'>T</text></svg>">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebApplication","name":"Keyboard Event Tester","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0"},"url":"https://toolnest.vercel.app/tools/keyboard-event-tester/","description":"Test keyboard events live: press any key to see its key, code, keyCode, location and modifiers, with a full event history log."},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What is the difference between key and code?","acceptedAnswer":{"@type":"Answer","text":"key is the character produced (affected by layout and modifiers), while code is the physical key position (e.g. KeyA) — code stays the same across layouts."}},{"@type":"Question","name":"What is keyCode?","acceptedAnswer":{"@type":"Answer","text":"keyCode is a legacy numeric code (e.g. 13 for Enter). Prefer key and code in new code; keyCode is shown here for debugging older scripts."}},{"@type":"Question","name":"Can I prevent default browser shortcuts?","acceptedAnswer":{"@type":"Answer","text":"Yes — tick preventDefault to stop the browser's default action, e.g. to test that Space does not scroll the page."}},{"@type":"Question","name":"Is this private?","acceptedAnswer":{"@type":"Answer","text":"Yes, everything runs locally in your browser."}}]}]}</script>
+</head>
+<body>
+<header class="site-header">
+  <div class="container">
+    <a class="logo" href="/"><span class="logo-mark">T</span> ToolNest</a>
+    <div class="header-right">
+      <form class="nav-search" action="/" method="get" role="search">
+        <span class="ns-icon">🔍</span>
+        <input type="search" name="q" placeholder="Search tools…" aria-label="Search tools" autocomplete="off">
+      </form>
+      <div class="menu-wrap">
+        <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="menuPanel" aria-label="Open menu"><span></span><span></span><span></span></button>
+        <nav class="menu-panel" id="menuPanel" aria-label="Site">
+          <a href="/">Home</a>
+          <a href="/#categories">Categories</a>
+          <a href="/#all-tools">All Tools</a>
+        </nav>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ADSTERRA-HEADER: paste your Adsterra banner ad code inside the div below -->
+<div class="container"><div class="ad-slot ad-leaderboard" data-ad="header"></div></div>
+
+<main class="container">
+  <nav class="crumbs"><a href="/">Home</a> &rsaquo; <a href="/#developer">Developer Tools</a> &rsaquo; Keyboard Event Tester</nav>
+  <div class="tool-hero">
+    <h1>Keyboard Event Tester</h1>
+    <p>Test keyboard events live: press any key to see its key, code, keyCode, location and modifiers, with a full event history log.</p>
+  </div>
+
+  <div class="tool-card">
+  <div class="field"><label>Test area <span class="hint">(click to focus, then press keys)</span></label>
+    <div id="kb-box" tabindex="0" style="border:2px dashed rgba(255,255,255,.25);border-radius:14px;padding:36px;text-align:center;cursor:text;outline:none">
+      <div style="font-size:2rem" id="kb-big">Press any key…</div>
+      <div class="muted" id="kb-sub">keydown / keyup are captured here</div>
+    </div>
+  </div>
+  <div class="grid2">
+    <div class="checkbox-row"><input type="checkbox" id="kb-prevent"><label for="kb-prevent">preventDefault() (block browser shortcuts)</label></div>
+    <div class="checkbox-row"><input type="checkbox" id="kb-global"><label for="kb-global">Listen on whole window (no focus needed)</label></div>
+  </div>
+  <div class="error" id="keyboard-event-tester-error"></div>
+  <div class="result" id="kb-result">
+    <div class="stat-cards">
+      <div class="stat-card"><div class="v" id="kb-key">–</div><div class="l">key</div></div>
+      <div class="stat-card"><div class="v" id="kb-code">–</div><div class="l">code</div></div>
+      <div class="stat-card"><div class="v" id="kb-keycode">–</div><div class="l">keyCode</div></div>
+      <div class="stat-card"><div class="v" id="kb-which">–</div><div class="l">which</div></div>
+    </div>
+    <table class="data">
+      <thead><tr><th>Time</th><th>Event</th><th>key</th><th>code</th><th>keyCode</th><th>Modifiers</th></tr></thead>
+      <tbody id="kb-history"><tr><td colspan="6" class="muted">No events yet.</td></tr></tbody>
+    </table>
+    <div class="btn-row">
+      <button class="btn btn-outline btn-sm" id="kb-clear" type="button">Clear history</button>
+    </div>
+    <p class="note">Location: 0 = standard, 1 = left, 2 = right, 3 = numpad. Modifiers show Ctrl / Shift / Alt / Meta held during the press.</p>
+  </div>
+</div>
+
+  <!-- ADSTERRA-INCONTENT: paste your Adsterra native/in-content ad code inside the div below -->
+  <div class="ad-slot" data-ad="incontent"></div>
+
+  <div class="info-grid">
+    <div class="info-card">
+      <h2>📖 How to use</h2>
+      <ol><li>Click inside the test box to focus it.</li><li>Press any keys — key, code, keyCode, location and modifiers appear live.</li><li>Review the history table or clear it to start over.</li></ol>
+    </div>
+    <div class="info-card">
+      <h2>❓ Frequently asked questions</h2>
+      <div class="faq"><details><summary>What is the difference between key and code?</summary><p>key is the character produced (affected by layout and modifiers), while code is the physical key position (e.g. KeyA) — code stays the same across layouts.</p></details><details><summary>What is keyCode?</summary><p>keyCode is a legacy numeric code (e.g. 13 for Enter). Prefer key and code in new code; keyCode is shown here for debugging older scripts.</p></details><details><summary>Can I prevent default browser shortcuts?</summary><p>Yes — tick preventDefault to stop the browser&#39;s default action, e.g. to test that Space does not scroll the page.</p></details><details><summary>Is this private?</summary><p>Yes, everything runs locally in your browser.</p></details></div>
+    </div>
+  </div>
+
+  <section class="section">
+    <h2>🔗 Related tools</h2>
+    <div class="tool-grid"><a class="tool-link" href="/tools/ascii-table-reference/" data-search="ascii table reference full ascii table 0–127: decimal, hex, octal, character, control-code names and html entities — searchable. ascii table ascii codes ascii chart control characters ascii reference"><span class="t-ico">💻</span><span class="t-body"><b>ASCII Table Reference</b><small>Full ASCII table 0–127: decimal, hex, octal, character, control-code names and HTML entities…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/base64-encoder-decoder/" data-search="base64 encoder / decoder encode text to base64 or decode base64 back to text, with full utf-8 support and a file-to-data-url converter. base64 encoder base64 decoder base64 encode base64 decode file to base64"><span class="t-ico">💻</span><span class="t-body"><b>Base64 Encoder / Decoder</b><small>Encode text to Base64 or decode Base64 back to text, with full UTF-8 support and a file-to-d…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/binary-text-converter/" data-search="binary and text converter convert text to binary or hex and back, with full utf-8 awareness and strict input validation. binary to text text to binary hex to text converter"><span class="t-ico">💻</span><span class="t-body"><b>Binary and Text Converter</b><small>Convert text to binary or hex and back, with full UTF-8 awareness and strict input validatio…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/color-code-converter/" data-search="color code converter type a color in hex, rgb or hsl format and instantly see it converted to all three formats with a preview swatch. color converter hex to rgb rgb to hex hsl converter color code"><span class="t-ico">💻</span><span class="t-body"><b>Color Code Converter</b><small>Type a color in HEX, RGB or HSL format and instantly see it converted to all three formats w…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/css-minifier/" data-search="css minifier compress css by stripping comments, collapsing whitespace and removing redundant semicolons, with before/after byte stats. css minifier minify css css compressor reduce css size"><span class="t-ico">💻</span><span class="t-body"><b>CSS Minifier</b><small>Compress CSS by stripping comments, collapsing whitespace and removing redundant semicolons,…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/css-specificity-calculator/" data-search="css specificity calculator calculate css selector specificity as (a,b,c) with a full breakdown — handles ids, classes, attributes, pseudo-classes, :not(), :is(), :where() and pseudo-elements. css specificity calculator specificity calculator css selector weight calculate specificity css cascade"><span class="t-ico">💻</span><span class="t-body"><b>CSS Specificity Calculator</b><small>Calculate CSS selector specificity as (a,b,c) with a full breakdown — handles IDs, classes, …</small></span><span class="t-arrow">→</span></a></div>
+  </section>
+</main>
+
+<!-- ADSTERRA-FOOTER: paste your Adsterra footer/banner ad code inside the div below -->
+<div class="container"><div class="ad-slot" data-ad="footer"></div></div>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="f-grid">
+      <div>
+        <span class="brandline"><span class="logo-mark">T</span> ToolNest</span>
+        <p>Free online tools that actually work. No sign-up, no watermarks — and your files never leave your device for client-side tools.</p>
+      </div>
+      <div>
+        <h4>Popular</h4>
+        <a href="/tools/qr-code-generator/">QR Code Generator</a>
+        <a href="/tools/background-remover/">Background Remover</a>
+        <a href="/tools/pdf-merger/">PDF Merger</a>
+        <a href="/tools/word-counter/">Word Counter</a>
+      </div>
+      <div>
+        <h4>Categories</h4>
+        <a href="/#image">Image Tools</a>
+        <a href="/#pdf">PDF &amp; Documents</a>
+        <a href="/#calculators">Calculators</a>
+        <a href="/#developer">Developer Tools</a>
+      </div>
+      <div>
+        <h4>Site</h4>
+        <a href="/">Home</a>
+        <a href="/#all-tools">All Tools</a>
+        <a href="/sitemap.xml">Sitemap</a>
+      </div>
+    </div>
+    <div class="f-bottom">© 2026 ToolNest · Free tools for everyone · Made with care</div>
+  </div>
+</footer>
+
+<script src="/assets/site.js?v=5"></script>
+
+<script>
+(function () {
+  'use strict';
+  var ERR = 'keyboard-event-tester-error';
+  var history = [];
+  function esc(s) {
+    return String(s).replace(/[&<>"']/g, function (c) {
+      return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c];
+    });
+  }
+  function keyLabel(k) {
+    if (k === ' ') return 'Space';
+    return k;
+  }
+  function handle(e) {
+    try {
+      if (TN.el('kb-prevent').checked) e.preventDefault();
+      var mods = [];
+      if (e.ctrlKey) mods.push('Ctrl');
+      if (e.shiftKey) mods.push('Shift');
+      if (e.altKey) mods.push('Alt');
+      if (e.metaKey) mods.push('Meta');
+      TN.el('kb-key').textContent = keyLabel(e.key);
+      TN.el('kb-code').textContent = e.code || '—';
+      TN.el('kb-keycode').textContent = e.keyCode;
+      TN.el('kb-which').textContent = e.which;
+      TN.el('kb-big').textContent = keyLabel(e.key);
+      TN.el('kb-sub').textContent = e.type + ' · code: ' + (e.code || '—') + ' · location: ' + e.location + (e.repeat ? ' · (auto-repeat)' : '');
+      history.unshift({
+        t: new Date().toLocaleTimeString(), type: e.type, key: keyLabel(e.key),
+        code: e.code || '—', kc: e.keyCode, mods: mods.join('+') || '—'
+      });
+      if (history.length > 50) history.length = 50;
+      var html = '';
+      history.forEach(function (h) {
+        html += '<tr><td>' + esc(h.t) + '</td><td>' + esc(h.type) + '</td><td>' + esc(h.key) + '</td><td>' +
+          esc(h.code) + '</td><td>' + h.kc + '</td><td>' + esc(h.mods) + '</td></tr>';
+      });
+      TN.el('kb-history').innerHTML = html;
+    } catch (err) { /* never throw */ }
+  }
+  try {
+    var box = TN.el('kb-box');
+    box.addEventListener('keydown', handle);
+    box.addEventListener('keyup', handle);
+    box.addEventListener('focus', function () { box.style.borderColor = 'rgba(255,90,90,.65)'; });
+    box.addEventListener('blur', function () { box.style.borderColor = 'rgba(255,255,255,.25)'; });
+    TN.on('kb-global', 'change', function () {
+      var on = TN.el('kb-global').checked;
+      if (on) {
+        window.addEventListener('keydown', handle);
+        window.addEventListener('keyup', handle);
+        TN.el('kb-sub').textContent = 'listening on whole window';
+      } else {
+        window.removeEventListener('keydown', handle);
+        window.removeEventListener('keyup', handle);
+        TN.el('kb-sub').textContent = 'keydown / keyup are captured here';
+      }
+    });
+    TN.on('kb-clear', 'click', function () {
+      history = [];
+      TN.el('kb-history').innerHTML = '<tr><td colspan="6" class="muted">No events yet.</td></tr>';
+      TN.el('kb-key').textContent = '–'; TN.el('kb-code').textContent = '–';
+      TN.el('kb-keycode').textContent = '–'; TN.el('kb-which').textContent = '–';
+      TN.el('kb-big').textContent = 'Press any key…';
+    });
+  } catch (e) { /* never throw on load */ }
+})();
+</script>
+</body>
+</html>

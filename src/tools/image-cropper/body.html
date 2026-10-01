@@ -1,0 +1,27 @@
+<div class="tool-card">
+  <div class="field">
+    <label for="image-cropper-file">Upload image</label>
+    <input type="file" class="input" id="image-cropper-file" accept="image/*">
+  </div>
+  <div class="field">
+    <label for="image-cropper-ratio">Aspect ratio</label>
+    <select class="input" id="image-cropper-ratio">
+      <option value="free">Free-form</option>
+      <option value="1">1 : 1 (square)</option>
+      <option value="1.3333">4 : 3</option>
+      <option value="1.5">3 : 2</option>
+      <option value="1.7778">16 : 9</option>
+      <option value="0.5625">9 : 16 (story)</option>
+    </select>
+  </div>
+  <div class="error" id="image-cropper-error"></div>
+  <div class="result" id="image-cropper-result" hidden>
+    <p class="muted">Drag on the image to select a crop area. Drag a corner handle to resize.</p>
+    <canvas id="image-cropper-canvas" style="max-width:100%;height:auto;border-radius:8px;touch-action:none;cursor:crosshair"></canvas>
+    <div class="btn-row" style="margin-top:12px">
+      <button class="btn" id="image-cropper-go">Crop &amp; download</button>
+      <button class="btn btn-outline" id="image-cropper-reset">Reset selection</button>
+    </div>
+    <p class="muted" id="image-cropper-info"></p>
+  </div>
+</div>

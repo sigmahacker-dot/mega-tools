@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Text Shadow Generator — Free Online | ToolNest</title>
+<meta name="description" content="Design CSS text-shadows with sliders — offsets, blur, color and opacity — with a live preview and copyable code.">
+<meta name="keywords" content="text shadow generator, css text shadow, text-shadow css maker, shadow text effect">
+<link rel="canonical" href="https://toolnest.vercel.app/tools/text-shadow-generator/">
+<meta name="theme-color" content="#07070b">
+<meta property="og:title" content="Text Shadow Generator — Free Online | ToolNest">
+<meta property="og:description" content="Design CSS text-shadows with sliders — offsets, blur, color and opacity — with a live preview and copyable code.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css?v=4">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%23e01111'/><text x='50' y='68' font-size='58' text-anchor='middle' fill='white' font-family='Arial' font-weight='bold'>T</text></svg>">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebApplication","name":"Text Shadow Generator","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0"},"url":"https://toolnest.vercel.app/tools/text-shadow-generator/","description":"Design CSS text-shadows with sliders — offsets, blur, color and opacity — with a live preview and copyable code."},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What CSS is generated?","acceptedAnswer":{"@type":"Answer","text":"A standard text-shadow declaration, e.g. text-shadow: 2px 2px 4px rgba(0,0,0,0.5); — with your exact values."}},{"@type":"Question","name":"How is opacity applied?","acceptedAnswer":{"@type":"Answer","text":"The picked color is converted to rgba() with your opacity value, so the shadow blends realistically over backgrounds."}},{"@type":"Question","name":"Can I preview on a dark background?","acceptedAnswer":{"@type":"Answer","text":"Yes — toggle the dark preview to check how the shadow reads on both light and dark surfaces."}}]}]}</script>
+</head>
+<body>
+<header class="site-header">
+  <div class="container">
+    <a class="logo" href="/"><span class="logo-mark">T</span> ToolNest</a>
+    <div class="header-right">
+      <form class="nav-search" action="/" method="get" role="search">
+        <span class="ns-icon">🔍</span>
+        <input type="search" name="q" placeholder="Search tools…" aria-label="Search tools" autocomplete="off">
+      </form>
+      <div class="menu-wrap">
+        <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="menuPanel" aria-label="Open menu"><span></span><span></span><span></span></button>
+        <nav class="menu-panel" id="menuPanel" aria-label="Site">
+          <a href="/">Home</a>
+          <a href="/#categories">Categories</a>
+          <a href="/#all-tools">All Tools</a>
+        </nav>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ADSTERRA-HEADER: paste your Adsterra banner ad code inside the div below -->
+<div class="container"><div class="ad-slot ad-leaderboard" data-ad="header"></div></div>
+
+<main class="container">
+  <nav class="crumbs"><a href="/">Home</a> &rsaquo; <a href="/#color">Color Tools</a> &rsaquo; Text Shadow Generator</nav>
+  <div class="tool-hero">
+    <h1>Text Shadow Generator</h1>
+    <p>Design CSS text-shadows with sliders — offsets, blur, color and opacity — with a live preview and copyable code.</p>
+  </div>
+
+  <div class="tool-card">
+  <div class="field">
+    <label for="text-shadow-generator-text">Sample text</label>
+    <input type="text" class="input" id="text-shadow-generator-text" value="Shadow Text" maxlength="40">
+  </div>
+  <div class="grid2">
+    <div class="field"><label for="text-shadow-generator-x">X offset: <span id="text-shadow-generator-x-v">2</span>px</label><input type="range" id="text-shadow-generator-x" min="-50" max="50" value="2"></div>
+    <div class="field"><label for="text-shadow-generator-y">Y offset: <span id="text-shadow-generator-y-v">2</span>px</label><input type="range" id="text-shadow-generator-y" min="-50" max="50" value="2"></div>
+    <div class="field"><label for="text-shadow-generator-blur">Blur: <span id="text-shadow-generator-blur-v">4</span>px</label><input type="range" id="text-shadow-generator-blur" min="0" max="50" value="4"></div>
+    <div class="field"><label for="text-shadow-generator-opacity">Opacity: <span id="text-shadow-generator-opacity-v">50</span>%</label><input type="range" id="text-shadow-generator-opacity" min="0" max="100" value="50"></div>
+    <div class="field"><label for="text-shadow-generator-color">Shadow color</label><input type="color" class="input" id="text-shadow-generator-color" value="#000000" style="height:40px;padding:4px;"></div>
+    <div class="checkbox-row" style="align-self:end;"><input type="checkbox" id="text-shadow-generator-dark"> <label for="text-shadow-generator-dark">Dark preview background</label></div>
+  </div>
+  <div class="error" id="text-shadow-generator-error"></div>
+  <div class="result mt">
+    <div id="text-shadow-generator-preview" style="border:1px solid var(--line);border-radius:12px;padding:32px 16px;text-align:center;font-size:3rem;font-weight:800;">Shadow Text</div>
+    <div class="field mt">
+      <label for="text-shadow-generator-css">CSS</label>
+      <input type="text" class="input" id="text-shadow-generator-css" readonly style="font-family:ui-monospace,monospace;">
+    </div>
+    <div class="btn-row">
+      <button class="btn btn-outline btn-sm" id="text-shadow-generator-copy" type="button">Copy CSS</button>
+    </div>
+  </div>
+</div>
+
+
+  <!-- ADSTERRA-INCONTENT: paste your Adsterra native/in-content ad code inside the div below -->
+  <div class="ad-slot" data-ad="incontent"></div>
+
+  <div class="info-grid">
+    <div class="info-card">
+      <h2>📖 How to use</h2>
+      <ol><li>Type your sample text (or keep the default).</li><li>Drag the offset, blur and opacity sliders and pick a shadow color.</li><li>Copy the generated text-shadow CSS.</li></ol>
+    </div>
+    <div class="info-card">
+      <h2>❓ Frequently asked questions</h2>
+      <div class="faq"><details><summary>What CSS is generated?</summary><p>A standard text-shadow declaration, e.g. text-shadow: 2px 2px 4px rgba(0,0,0,0.5); — with your exact values.</p></details><details><summary>How is opacity applied?</summary><p>The picked color is converted to rgba() with your opacity value, so the shadow blends realistically over backgrounds.</p></details><details><summary>Can I preview on a dark background?</summary><p>Yes — toggle the dark preview to check how the shadow reads on both light and dark surfaces.</p></details></div>
+    </div>
+  </div>
+
+  <section class="section">
+    <h2>🔗 Related tools</h2>
+    <div class="tool-grid"><a class="tool-link" href="/tools/color-blindness-simulator/" data-search="color blindness simulator see colors and images as color-blind viewers do. color blindness simulator protanopia simulator deuteranopia test"><span class="t-ico">🎨</span><span class="t-body"><b>Color Blindness Simulator</b><small>See colors and images as color-blind viewers do.</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/color-harmony-generator/" data-search="color harmony generator build complementary, analogous, triadic, tetradic and split-complementary palettes from any base color using real hsl math. color harmony generator complementary color finder analogous colors triadic color scheme"><span class="t-ico">🎨</span><span class="t-body"><b>Color Harmony Generator</b><small>Build complementary, analogous, triadic, tetradic and split-complementary palettes from any …</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/color-mixer/" data-search="color mixer blend any two colors with a ratio slider — see the real mixed result as hex and rgb with a live preview. color mixer blend two colors mix colors online color blender tool"><span class="t-ico">🎨</span><span class="t-body"><b>Color Mixer</b><small>Blend any two colors with a ratio slider — see the real mixed result as HEX and RGB with a l…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/color-temperature-converter/" data-search="color temperature converter convert light color temperature (kelvin) to its approximate on-screen color — real blackbody math with warm/cool labels. kelvin to rgb color temperature converter kelvin to hex light temperature color"><span class="t-ico">🎨</span><span class="t-body"><b>Color Temperature Converter</b><small>Convert light color temperature (Kelvin) to its approximate on-screen color — real blackbody…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/contrast-checker/" data-search="color contrast checker wcag contrast ratio with aa/aaa verdicts. contrast checker wcag contrast color contrast ratio"><span class="t-ico">🎨</span><span class="t-body"><b>Color Contrast Checker</b><small>WCAG contrast ratio with AA/AAA verdicts.</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/css-clamp-generator/" data-search="css clamp generator generate fluid clamp() typography and spacing — the exact math from your min/max sizes and viewport range, with a live demo. css clamp generator fluid typography calculator clamp css generator responsive font size"><span class="t-ico">🎨</span><span class="t-body"><b>CSS Clamp Generator</b><small>Generate fluid clamp() typography and spacing — the exact math from your min/max sizes and v…</small></span><span class="t-arrow">→</span></a></div>
+  </section>
+</main>
+
+<!-- ADSTERRA-FOOTER: paste your Adsterra footer/banner ad code inside the div below -->
+<div class="container"><div class="ad-slot" data-ad="footer"></div></div>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="f-grid">
+      <div>
+        <span class="brandline"><span class="logo-mark">T</span> ToolNest</span>
+        <p>Free online tools that actually work. No sign-up, no watermarks — and your files never leave your device for client-side tools.</p>
+      </div>
+      <div>
+        <h4>Popular</h4>
+        <a href="/tools/qr-code-generator/">QR Code Generator</a>
+        <a href="/tools/background-remover/">Background Remover</a>
+        <a href="/tools/pdf-merger/">PDF Merger</a>
+        <a href="/tools/word-counter/">Word Counter</a>
+      </div>
+      <div>
+        <h4>Categories</h4>
+        <a href="/#image">Image Tools</a>
+        <a href="/#pdf">PDF &amp; Documents</a>
+        <a href="/#calculators">Calculators</a>
+        <a href="/#developer">Developer Tools</a>
+      </div>
+      <div>
+        <h4>Site</h4>
+        <a href="/">Home</a>
+        <a href="/#all-tools">All Tools</a>
+        <a href="/sitemap.xml">Sitemap</a>
+      </div>
+    </div>
+    <div class="f-bottom">© 2026 ToolNest · Free tools for everyone · Made with care</div>
+  </div>
+</footer>
+
+<script src="/assets/site.js?v=5"></script>
+
+<script>
+(function () {
+  'use strict';
+  var P = 'text-shadow-generator-', ERR = P + 'error';
+  function update() {
+    try {
+      TN.clearErr(ERR);
+      var text = TN.el(P + 'text').value || 'Shadow Text';
+      var x = parseInt(TN.el(P + 'x').value, 10), y = parseInt(TN.el(P + 'y').value, 10);
+      var blur = parseInt(TN.el(P + 'blur').value, 10), op = parseInt(TN.el(P + 'opacity').value, 10);
+      var c = TN.el(P + 'color').value;
+      TN.el(P + 'x-v').textContent = x; TN.el(P + 'y-v').textContent = y;
+      TN.el(P + 'blur-v').textContent = blur; TN.el(P + 'opacity-v').textContent = op;
+      var r = parseInt(c.slice(1, 3), 16), g = parseInt(c.slice(3, 5), 16), b = parseInt(c.slice(5, 7), 16);
+      var css = 'text-shadow: ' + x + 'px ' + y + 'px ' + blur + 'px rgba(' + r + ', ' + g + ', ' + b + ', ' + (op / 100).toFixed(2) + ');';
+      var prev = TN.el(P + 'preview');
+      prev.textContent = text;
+      prev.style.textShadow = x + 'px ' + y + 'px ' + blur + 'px rgba(' + r + ',' + g + ',' + b + ',' + (op / 100).toFixed(2) + ')';
+      var dark = TN.el(P + 'dark').checked;
+      prev.style.background = dark ? '#111827' : 'transparent';
+      prev.style.color = dark ? '#f9fafb' : '';
+      TN.el(P + 'css').value = css;
+    } catch (e) { TN.setErr(ERR, 'Could not build the shadow. Please try again.'); }
+  }
+  try {
+    ['text', 'x', 'y', 'blur', 'opacity', 'color'].forEach(function (k) { TN.on(P + k, 'input', update); TN.on(P + k, 'change', update); });
+    TN.on(P + 'dark', 'change', update);
+    TN.on(P + 'copy', 'click', function () {
+      TN.clearErr(ERR);
+      TN.copy(TN.el(P + 'css').value).then(function (ok) {
+        var b = TN.el(P + 'copy');
+        b.textContent = ok ? 'Copied!' : 'Copy failed';
+        setTimeout(function () { b.textContent = 'Copy CSS'; }, 1200);
+      });
+    });
+    update();
+  } catch (e) { /* never throw on load */ }
+})();
+
+</script>
+</body>
+</html>

@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fuel Cost Calculator — Free Online | ToolNest</title>
+<meta name="description" content="Estimate fuel needed and total cost for any trip from distance, fuel efficiency and current fuel price.">
+<meta name="keywords" content="fuel cost calculator, trip fuel cost, gas cost calculator, mpg calculator, fuel consumption calculator">
+<link rel="canonical" href="https://toolnest.vercel.app/tools/fuel-cost-calculator/">
+<meta name="theme-color" content="#07070b">
+<meta property="og:title" content="Fuel Cost Calculator — Free Online | ToolNest">
+<meta property="og:description" content="Estimate fuel needed and total cost for any trip from distance, fuel efficiency and current fuel price.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css?v=4">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%23e01111'/><text x='50' y='68' font-size='58' text-anchor='middle' fill='white' font-family='Arial' font-weight='bold'>T</text></svg>">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebApplication","name":"Fuel Cost Calculator","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0"},"url":"https://toolnest.vercel.app/tools/fuel-cost-calculator/","description":"Estimate fuel needed and total cost for any trip from distance, fuel efficiency and current fuel price."},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What is the difference between MPG and L/100km?","acceptedAnswer":{"@type":"Answer","text":"MPG (miles per gallon) rises with efficiency; L/100km falls with efficiency. Pick whichever your car's dashboard shows."}},{"@type":"Question","name":"How do I convert my car's numbers?","acceptedAnswer":{"@type":"Answer","text":"L/100km = 235.214 ÷ MPG, and MPG = 235.214 ÷ L/100km. The tool handles each system separately."}},{"@type":"Question","name":"Does this include tolls or wear and tear?","acceptedAnswer":{"@type":"Answer","text":"No, only fuel. Tolls, depreciation and maintenance are extra."}}]}]}</script>
+</head>
+<body>
+<header class="site-header">
+  <div class="container">
+    <a class="logo" href="/"><span class="logo-mark">T</span> ToolNest</a>
+    <div class="header-right">
+      <form class="nav-search" action="/" method="get" role="search">
+        <span class="ns-icon">🔍</span>
+        <input type="search" name="q" placeholder="Search tools…" aria-label="Search tools" autocomplete="off">
+      </form>
+      <div class="menu-wrap">
+        <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="menuPanel" aria-label="Open menu"><span></span><span></span><span></span></button>
+        <nav class="menu-panel" id="menuPanel" aria-label="Site">
+          <a href="/">Home</a>
+          <a href="/#categories">Categories</a>
+          <a href="/#all-tools">All Tools</a>
+        </nav>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ADSTERRA-HEADER: paste your Adsterra banner ad code inside the div below -->
+<div class="container"><div class="ad-slot ad-leaderboard" data-ad="header"></div></div>
+
+<main class="container">
+  <nav class="crumbs"><a href="/">Home</a> &rsaquo; <a href="/#calculators">Calculators</a> &rsaquo; Fuel Cost Calculator</nav>
+  <div class="tool-hero">
+    <h1>Fuel Cost Calculator</h1>
+    <p>Estimate fuel needed and total cost for any trip from distance, fuel efficiency and current fuel price.</p>
+  </div>
+
+  <div class="tool-card">
+  <div class="grid2">
+    <div class="field"><label for="fuel-system">Unit system</label>
+      <select class="input" id="fuel-system">
+        <option value="imp">Miles · MPG · $/gallon</option>
+        <option value="met">Km · L/100km · $/liter</option>
+      </select>
+    </div>
+    <div class="field"><label for="fuel-distance" id="fuel-distance-label">Distance (miles)</label><input type="number" class="input" id="fuel-distance" min="0" step="any" placeholder="250"></div>
+    <div class="field"><label for="fuel-eff" id="fuel-eff-label">Efficiency (MPG)</label><input type="number" class="input" id="fuel-eff" min="0" step="any" placeholder="30"></div>
+    <div class="field"><label for="fuel-price" id="fuel-price-label">Fuel price ($/gallon)</label><input type="number" class="input" id="fuel-price" min="0" step="any" placeholder="3.50"></div>
+  </div>
+  <div class="error" id="fuel-cost-calculator-error"></div>
+  <div class="result" id="fuel-result">
+    <div class="stat-cards">
+      <div class="stat-card"><div class="v" id="fuel-needed">–</div><div class="l" id="fuel-needed-label">Fuel needed (gal)</div></div>
+      <div class="stat-card"><div class="v" id="fuel-cost">–</div><div class="l">Total fuel cost</div></div>
+      <div class="stat-card"><div class="v" id="fuel-perdist">–</div><div class="l" id="fuel-perdist-label">Cost per mile</div></div>
+    </div>
+    <p class="note">Assumes steady efficiency for the whole trip. City driving and hills will use more.</p>
+  </div>
+</div>
+
+  <!-- ADSTERRA-INCONTENT: paste your Adsterra native/in-content ad code inside the div below -->
+  <div class="ad-slot" data-ad="incontent"></div>
+
+  <div class="info-grid">
+    <div class="info-card">
+      <h2>📖 How to use</h2>
+      <ol><li>Pick metric or imperial units.</li><li>Enter your trip distance, vehicle efficiency and fuel price.</li><li>Read the fuel needed, total trip cost and cost per mile/km instantly.</li></ol>
+    </div>
+    <div class="info-card">
+      <h2>❓ Frequently asked questions</h2>
+      <div class="faq"><details><summary>What is the difference between MPG and L/100km?</summary><p>MPG (miles per gallon) rises with efficiency; L/100km falls with efficiency. Pick whichever your car&#39;s dashboard shows.</p></details><details><summary>How do I convert my car&#39;s numbers?</summary><p>L/100km = 235.214 ÷ MPG, and MPG = 235.214 ÷ L/100km. The tool handles each system separately.</p></details><details><summary>Does this include tolls or wear and tear?</summary><p>No, only fuel. Tolls, depreciation and maintenance are extra.</p></details></div>
+    </div>
+  </div>
+
+  <section class="section">
+    <h2>🔗 Related tools</h2>
+    <div class="tool-grid"><a class="tool-link" href="/tools/age-calculator/" data-search="age calculator enter your date of birth to get your exact age in years, months and days, plus total weeks, days, hours, the weekday you were born, and days until your next birthday. age calculator calculate age date of birth age"><span class="t-ico">🧮</span><span class="t-body"><b>Age Calculator</b><small>Enter your date of birth to get your exact age in years, months and days, plus total weeks, …</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/aspect-ratio-calculator/" data-search="aspect ratio calculator reduce any width × height to its simplest aspect ratio, or find the missing side from a ratio. aspect ratio calculator reduce aspect ratio 16:9 calculator missing side calculator ratio simplifier"><span class="t-ico">🧮</span><span class="t-body"><b>Aspect Ratio Calculator</b><small>Reduce any width × height to its simplest aspect ratio, or find the missing side from a rati…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/bmi-calculator/" data-search="bmi calculator calculate your body mass index from height and weight in metric or imperial units. get your bmi value, weight category and the healthy weight range for your height. bmi calculator body mass index healthy weight calculator"><span class="t-ico">🧮</span><span class="t-body"><b>BMI Calculator</b><small>Calculate your Body Mass Index from height and weight in metric or imperial units. Get your …</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/concrete-calculator/" data-search="concrete calculator calculate cubic yards of concrete for any slab, plus how many 60 lb or 80 lb bags that equals. concrete calculator cubic yards concrete concrete bags calculator slab concrete estimator how much concrete"><span class="t-ico">🧮</span><span class="t-body"><b>Concrete Calculator</b><small>Calculate cubic yards of concrete for any slab, plus how many 60 lb or 80 lb bags that equal…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/cooking-measurement-scaler/" data-search="cooking measurement scaler scale any recipe up or down: enter servings and ingredients, get rescaled amounts with metric equivalents. recipe scaler scale recipe calculator cooking measurement converter adjust recipe servings ingredient scaler"><span class="t-ico">🧮</span><span class="t-body"><b>Cooking Measurement Scaler</b><small>Scale any recipe up or down: enter servings and ingredients, get rescaled amounts with metri…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/currency-converter/" data-search="currency converter convert any amount between 30+ world currencies with live exchange rates. pick source and target currencies, convert instantly, and see the rate and last update date. currency converter exchange rate converter usd to pkr converter"><span class="t-ico">🧮</span><span class="t-body"><b>Currency Converter</b><small>Convert any amount between 30+ world currencies with live exchange rates. Pick source and ta…</small></span><span class="t-arrow">→</span></a></div>
+  </section>
+</main>
+
+<!-- ADSTERRA-FOOTER: paste your Adsterra footer/banner ad code inside the div below -->
+<div class="container"><div class="ad-slot" data-ad="footer"></div></div>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="f-grid">
+      <div>
+        <span class="brandline"><span class="logo-mark">T</span> ToolNest</span>
+        <p>Free online tools that actually work. No sign-up, no watermarks — and your files never leave your device for client-side tools.</p>
+      </div>
+      <div>
+        <h4>Popular</h4>
+        <a href="/tools/qr-code-generator/">QR Code Generator</a>
+        <a href="/tools/background-remover/">Background Remover</a>
+        <a href="/tools/pdf-merger/">PDF Merger</a>
+        <a href="/tools/word-counter/">Word Counter</a>
+      </div>
+      <div>
+        <h4>Categories</h4>
+        <a href="/#image">Image Tools</a>
+        <a href="/#pdf">PDF &amp; Documents</a>
+        <a href="/#calculators">Calculators</a>
+        <a href="/#developer">Developer Tools</a>
+      </div>
+      <div>
+        <h4>Site</h4>
+        <a href="/">Home</a>
+        <a href="/#all-tools">All Tools</a>
+        <a href="/sitemap.xml">Sitemap</a>
+      </div>
+    </div>
+    <div class="f-bottom">© 2026 ToolNest · Free tools for everyone · Made with care</div>
+  </div>
+</footer>
+
+<script src="/assets/site.js?v=5"></script>
+
+<script>
+(function () {
+  'use strict';
+  var ERR = 'fuel-cost-calculator-error';
+  function money(n) { try { return '$' + n.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 }); } catch (e) { return '$' + (Math.round(n * 100) / 100); } }
+  function calc() {
+    if (!TN.el('fuel-distance')) return;
+    TN.clearErr(ERR);
+    var sys = TN.el('fuel-system').value;
+    var dist = parseFloat(TN.el('fuel-distance').value);
+    var eff = parseFloat(TN.el('fuel-eff').value);
+    var price = parseFloat(TN.el('fuel-price').value);
+    if (!(dist > 0)) { TN.setErr(ERR, 'Enter a trip distance greater than 0.'); return; }
+    if (!(eff > 0)) { TN.setErr(ERR, 'Enter a fuel efficiency greater than 0.'); return; }
+    if (!(price >= 0)) { TN.setErr(ERR, 'Enter a valid fuel price (0 or more).'); return; }
+    var needed, unit, perLabel;
+    if (sys === 'imp') {
+      needed = dist / eff; unit = 'gal'; perLabel = 'Cost per mile';
+      TN.el('fuel-distance-label').textContent = 'Distance (miles)';
+      TN.el('fuel-eff-label').textContent = 'Efficiency (MPG)';
+      TN.el('fuel-price-label').textContent = 'Fuel price ($/gallon)';
+      TN.el('fuel-needed-label').textContent = 'Fuel needed (gal)';
+    } else {
+      needed = dist * eff / 100; unit = 'L'; perLabel = 'Cost per km';
+      TN.el('fuel-distance-label').textContent = 'Distance (km)';
+      TN.el('fuel-eff-label').textContent = 'Efficiency (L/100km)';
+      TN.el('fuel-price-label').textContent = 'Fuel price ($/liter)';
+      TN.el('fuel-needed-label').textContent = 'Fuel needed (L)';
+    }
+    var cost = needed * price;
+    TN.el('fuel-needed').textContent = needed.toFixed(2) + ' ' + unit;
+    TN.el('fuel-cost').textContent = money(cost);
+    TN.el('fuel-perdist-label').textContent = perLabel;
+    TN.el('fuel-perdist').textContent = money(cost / dist);
+  }
+  try {
+    TN.on('fuel-system', 'change', calc);
+    TN.on('fuel-distance', 'input', calc);
+    TN.on('fuel-eff', 'input', calc);
+    TN.on('fuel-price', 'input', calc);
+    calc();
+  } catch (e) { /* never throw on load */ }
+})();
+</script>
+</body>
+</html>

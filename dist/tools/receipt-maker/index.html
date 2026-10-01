@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Receipt Maker — Free Online | ToolNest</title>
+<meta name="description" content="Make a professional sales receipt: add line items, tax and discount, see the total live, then download or print it.">
+<meta name="keywords" content="receipt maker, sales receipt generator, free receipt template, printable receipt, invoice receipt maker">
+<link rel="canonical" href="https://toolnest.vercel.app/tools/receipt-maker/">
+<meta name="theme-color" content="#07070b">
+<meta property="og:title" content="Receipt Maker — Free Online | ToolNest">
+<meta property="og:description" content="Make a professional sales receipt: add line items, tax and discount, see the total live, then download or print it.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css?v=4">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%23e01111'/><text x='50' y='68' font-size='58' text-anchor='middle' fill='white' font-family='Arial' font-weight='bold'>T</text></svg>">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebApplication","name":"Receipt Maker","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0"},"url":"https://toolnest.vercel.app/tools/receipt-maker/","description":"Make a professional sales receipt: add line items, tax and discount, see the total live, then download or print it."},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Can I list multiple items?","acceptedAnswer":{"@type":"Answer","text":"Yes. Enter each sold item with quantity and price, set the tax rate, and the receipt shows itemized lines, subtotal, tax and grand total."}},{"@type":"Question","name":"What format is the receipt?","acceptedAnswer":{"@type":"Answer","text":"The download is a plain-text (.txt) receipt with clean monospace formatting, and the print button opens a print-ready page."}},{"@type":"Question","name":"Is my business data uploaded anywhere?","acceptedAnswer":{"@type":"Answer","text":"No — it is generated entirely in your browser and never leaves your device."}},{"@type":"Question","name":"How do discounts work?","acceptedAnswer":{"@type":"Answer","text":"Enter a negative-style discount as a percentage (0–100) in the discount field; it is subtracted after tax is added to the subtotal."}}]}]}</script>
+</head>
+<body>
+<header class="site-header">
+  <div class="container">
+    <a class="logo" href="/"><span class="logo-mark">T</span> ToolNest</a>
+    <div class="header-right">
+      <form class="nav-search" action="/" method="get" role="search">
+        <span class="ns-icon">🔍</span>
+        <input type="search" name="q" placeholder="Search tools…" aria-label="Search tools" autocomplete="off">
+      </form>
+      <div class="menu-wrap">
+        <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="menuPanel" aria-label="Open menu"><span></span><span></span><span></span></button>
+        <nav class="menu-panel" id="menuPanel" aria-label="Site">
+          <a href="/">Home</a>
+          <a href="/#categories">Categories</a>
+          <a href="/#all-tools">All Tools</a>
+        </nav>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ADSTERRA-HEADER: paste your Adsterra banner ad code inside the div below -->
+<div class="container"><div class="ad-slot ad-leaderboard" data-ad="header"></div></div>
+
+<main class="container">
+  <nav class="crumbs"><a href="/">Home</a> &rsaquo; <a href="/#generators">Generators</a> &rsaquo; Receipt Maker</nav>
+  <div class="tool-hero">
+    <h1>Receipt Maker</h1>
+    <p>Make a professional sales receipt: add line items, tax and discount, see the total live, then download or print it.</p>
+  </div>
+
+  <div class="tool-card">
+  <div class="grid2">
+    <div class="field"><label for="rcpt-biz">Business name</label><input type="text" class="input" id="rcpt-biz" placeholder="Corner Store"></div>
+    <div class="field"><label for="rcpt-addr">Business address <span class="hint">(optional)</span></label><input type="text" class="input" id="rcpt-addr" placeholder="123 Main St"></div>
+    <div class="field"><label for="rcpt-tax">Tax rate (%)</label><input type="number" class="input" id="rcpt-tax" min="0" max="100" step="any" value="0"></div>
+    <div class="field"><label for="rcpt-disc">Discount (%)</label><input type="number" class="input" id="rcpt-disc" min="0" max="100" step="any" value="0"></div>
+    <div class="field"><label for="rcpt-pay">Payment method</label>
+      <select class="select" id="rcpt-pay">
+        <option>Cash</option><option>Card</option><option>Bank transfer</option><option>Mobile wallet</option><option>Other</option>
+      </select>
+    </div>
+    <div class="field"><label for="rcpt-num">Receipt no. <span class="hint">(optional)</span></label><input type="text" class="input" id="rcpt-num" placeholder="001"></div>
+  </div>
+  <div class="field"><label>Items</label><div id="rcpt-items"></div>
+    <div class="btn-row"><button class="btn btn-outline btn-sm" id="rcpt-add" type="button">+ Add item</button></div>
+  </div>
+  <div class="error" id="receipt-maker-error"></div>
+  <div class="result" id="rcpt-result">
+    <div class="field"><label for="rcpt-out">Receipt preview</label><textarea class="textarea" id="rcpt-out" rows="16" readonly style="font-family:ui-monospace,Menlo,Consolas,monospace"></textarea></div>
+    <div class="btn-row">
+      <button class="btn btn-primary" id="rcpt-dl" type="button">Download .txt</button>
+      <button class="btn btn-outline" id="rcpt-print" type="button">Print receipt</button>
+    </div>
+  </div>
+</div>
+
+  <!-- ADSTERRA-INCONTENT: paste your Adsterra native/in-content ad code inside the div below -->
+  <div class="ad-slot" data-ad="incontent"></div>
+
+  <div class="info-grid">
+    <div class="info-card">
+      <h2>📖 How to use</h2>
+      <ol><li>Enter your business name and add receipt line items with quantity and price.</li><li>Set the tax rate and any discount percentage.</li><li>Download the .txt receipt or click Print receipt for a paper copy.</li></ol>
+    </div>
+    <div class="info-card">
+      <h2>❓ Frequently asked questions</h2>
+      <div class="faq"><details><summary>Can I list multiple items?</summary><p>Yes. Enter each sold item with quantity and price, set the tax rate, and the receipt shows itemized lines, subtotal, tax and grand total.</p></details><details><summary>What format is the receipt?</summary><p>The download is a plain-text (.txt) receipt with clean monospace formatting, and the print button opens a print-ready page.</p></details><details><summary>Is my business data uploaded anywhere?</summary><p>No — it is generated entirely in your browser and never leaves your device.</p></details><details><summary>How do discounts work?</summary><p>Enter a negative-style discount as a percentage (0–100) in the discount field; it is subtracted after tax is added to the subtotal.</p></details></div>
+    </div>
+  </div>
+
+  <section class="section">
+    <h2>🔗 Related tools</h2>
+    <div class="tool-grid"><a class="tool-link" href="/tools/band-name-generator/" data-search="band name generator generate original band names by genre — rock, metal, pop, hip-hop, electronic, jazz, punk or indie — with one click and copy. band name generator rock band names metal band names cool band names music group name ideas"><span class="t-ico">⚙️</span><span class="t-body"><b>Band Name Generator</b><small>Generate original band names by genre — rock, metal, pop, hip-hop, electronic, jazz, punk or…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/barcode-generator/" data-search="barcode generator generate barcodes in common formats — code128, code39, ean-13, ean-8, upc and itf-14 — and download them as png or svg images. barcode generator barcode maker ean13 barcode upc barcode generator"><span class="t-ico">⚙️</span><span class="t-body"><b>Barcode Generator</b><small>Generate barcodes in common formats — CODE128, CODE39, EAN-13, EAN-8, UPC and ITF-14 — and d…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/bingo-card-generator/" data-search="bingo card generator create printable 5×5 bingo cards with classic b-i-n-g-o number ranges, an optional free space, or your own custom word list. bingo card generator printable bingo cards custom bingo cards bingo number generator free bingo cards"><span class="t-ico">⚙️</span><span class="t-body"><b>Bingo Card Generator</b><small>Create printable 5×5 bingo cards with classic B-I-N-G-O number ranges, an optional free spac…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/border-radius-generator/" data-search="border radius generator organic blob shapes with an 8-handle radius editor. border radius generator blob shape css border-radius css"><span class="t-ico">⚙️</span><span class="t-body"><b>Border Radius Generator</b><small>Organic blob shapes with an 8-handle radius editor.</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/box-shadow-generator/" data-search="box shadow generator visual css box-shadow builder with live preview. box shadow generator css shadow box-shadow css"><span class="t-ico">⚙️</span><span class="t-body"><b>Box Shadow Generator</b><small>Visual CSS box-shadow builder with live preview.</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/button-generator/" data-search="button generator design a custom button with your text, colors, border radius, padding and shadow — then copy the generated css and use it anywhere. button generator css button maker button css custom button design"><span class="t-ico">⚙️</span><span class="t-body"><b>Button Generator</b><small>Design a custom button with your text, colors, border radius, padding and shadow — then copy…</small></span><span class="t-arrow">→</span></a></div>
+  </section>
+</main>
+
+<!-- ADSTERRA-FOOTER: paste your Adsterra footer/banner ad code inside the div below -->
+<div class="container"><div class="ad-slot" data-ad="footer"></div></div>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="f-grid">
+      <div>
+        <span class="brandline"><span class="logo-mark">T</span> ToolNest</span>
+        <p>Free online tools that actually work. No sign-up, no watermarks — and your files never leave your device for client-side tools.</p>
+      </div>
+      <div>
+        <h4>Popular</h4>
+        <a href="/tools/qr-code-generator/">QR Code Generator</a>
+        <a href="/tools/background-remover/">Background Remover</a>
+        <a href="/tools/pdf-merger/">PDF Merger</a>
+        <a href="/tools/word-counter/">Word Counter</a>
+      </div>
+      <div>
+        <h4>Categories</h4>
+        <a href="/#image">Image Tools</a>
+        <a href="/#pdf">PDF &amp; Documents</a>
+        <a href="/#calculators">Calculators</a>
+        <a href="/#developer">Developer Tools</a>
+      </div>
+      <div>
+        <h4>Site</h4>
+        <a href="/">Home</a>
+        <a href="/#all-tools">All Tools</a>
+        <a href="/sitemap.xml">Sitemap</a>
+      </div>
+    </div>
+    <div class="f-bottom">© 2026 ToolNest · Free tools for everyone · Made with care</div>
+  </div>
+</footer>
+
+<script src="/assets/site.js?v=5"></script>
+
+<script>
+(function () {
+  'use strict';
+  var ERR = 'receipt-maker-error';
+  function val(id) { var e = TN.el(id); return e ? e.value.trim() : ''; }
+  function money(n) { return '$' + n.toFixed(2); }
+  function itemRows() { return TN.qsa('#rcpt-items .rcpt-row'); }
+  function addRow(name, qty, price) {
+    var box = TN.el('rcpt-items');
+    var d = document.createElement('div');
+    d.className = 'rcpt-row';
+    d.style.cssText = 'display:grid;grid-template-columns:1fr 70px 90px 34px;gap:8px;margin-bottom:8px;';
+    d.innerHTML = '<input type="text" class="input rcpt-name" placeholder="Item name" value="">' +
+      '<input type="number" class="input rcpt-qty" min="0" step="any" placeholder="Qty" value="">' +
+      '<input type="number" class="input rcpt-price" min="0" step="any" placeholder="Price" value="">' +
+      '<button type="button" class="btn btn-danger btn-sm rcpt-del" title="Remove">✕</button>';
+    if (name) d.querySelector('.rcpt-name').value = name;
+    if (qty) d.querySelector('.rcpt-qty').value = qty;
+    if (price) d.querySelector('.rcpt-price').value = price;
+    box.appendChild(d);
+    d.querySelector('.rcpt-name').addEventListener('input', update);
+    d.querySelector('.rcpt-qty').addEventListener('input', update);
+    d.querySelector('.rcpt-price').addEventListener('input', update);
+    d.querySelector('.rcpt-del').addEventListener('click', function () { d.remove(); update(); });
+  }
+  function getItems() {
+    var out = [];
+    itemRows().forEach(function (r) {
+      var n = r.querySelector('.rcpt-name').value.trim();
+      var q = parseFloat(r.querySelector('.rcpt-qty').value) || 0;
+      var p = parseFloat(r.querySelector('.rcpt-price').value) || 0;
+      if (n || q > 0 || p > 0) out.push({ name: n || 'Item', qty: q, price: p });
+    });
+    return out;
+  }
+  function totals() {
+    var items = getItems();
+    var sub = 0;
+    items.forEach(function (i) { sub += i.qty * i.price; });
+    var taxR = Math.min(100, Math.max(0, parseFloat(val('rcpt-tax')) || 0));
+    var discR = Math.min(100, Math.max(0, parseFloat(val('rcpt-disc')) || 0));
+    var tax = sub * taxR / 100;
+    var disc = (sub + tax) * discR / 100;
+    return { items: items, sub: sub, tax: tax, disc: disc, total: sub + tax - disc, taxR: taxR, discR: discR };
+  }
+  function center(s, w) {
+    s = String(s);
+    if (s.length >= w) return s;
+    var l = Math.floor((w - s.length) / 2);
+    return new Array(l + 1).join(' ') + s;
+  }
+  function build() {
+    var t = totals();
+    var W = 40, L = [];
+    L.push(center(val('rcpt-biz') || 'RECEIPT', W));
+    if (val('rcpt-addr')) L.push(center(val('rcpt-addr'), W));
+    var now = new Date();
+    L.push(center(now.toLocaleString(), W));
+    if (val('rcpt-num')) L.push(center('Receipt #' + val('rcpt-num'), W));
+    L.push(new Array(W + 1).join('-'));
+    t.items.forEach(function (i) {
+      var line = i.qty + ' x ' + i.name;
+      var amt = money(i.qty * i.price);
+      L.push(line.length + amt.length > W ? line + '\n' + new Array(W - amt.length + 1).join(' ') + amt
+        : line + new Array(W - line.length - amt.length + 1).join(' ') + amt);
+    });
+    if (!t.items.length) L.push('(no items)');
+    L.push(new Array(W + 1).join('-'));
+    function row(label, v) { L.push(label + new Array(W - label.length - money(v).length + 1).join(' ') + money(v)); }
+    row('Subtotal', t.sub);
+    if (t.taxR) row('Tax (' + t.taxR + '%)', t.tax);
+    if (t.discR) row('Discount (' + t.discR + '%)', -t.disc);
+    row('TOTAL', t.total);
+    L.push(new Array(W + 1).join('='));
+    L.push(center('Paid by ' + val('rcpt-pay'), W));
+    L.push(center('Thank you!', W));
+    return { text: L.join('\n'), total: t.total, count: t.items.length };
+  }
+  function update() {
+    if (!TN.el('rcpt-out')) return;
+    TN.clearErr(ERR);
+    TN.el('rcpt-out').value = build().text;
+  }
+  function escHtml(s) {
+    return String(s).replace(/[&<>"']/g, function (c) {
+      return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c];
+    });
+  }
+  try {
+    ['rcpt-biz', 'rcpt-addr', 'rcpt-tax', 'rcpt-disc', 'rcpt-pay', 'rcpt-num'].forEach(function (id) {
+      TN.on(id, 'input', update); TN.on(id, 'change', update);
+    });
+    TN.on('rcpt-add', 'click', function () { addRow(); });
+    TN.on('rcpt-dl', 'click', function () {
+      var r = build();
+      if (!r.count) { TN.setErr(ERR, 'Add at least one item to the receipt first.'); return; }
+      TN.clearErr(ERR);
+      var b = new Blob([r.text], { type: 'text/plain;charset=utf-8' });
+      var a = document.createElement('a');
+      a.href = URL.createObjectURL(b);
+      a.download = 'receipt' + (val('rcpt-num') ? '-' + val('rcpt-num') : '') + '.txt';
+      document.body.appendChild(a); a.click();
+      setTimeout(function () { URL.revokeObjectURL(a.href); a.remove(); }, 400);
+    });
+    TN.on('rcpt-print', 'click', function () {
+      var r = build();
+      if (!r.count) { TN.setErr(ERR, 'Add at least one item to the receipt first.'); return; }
+      TN.clearErr(ERR);
+      var w = window.open('', '_blank', 'width=420,height=700');
+      if (!w) { TN.setErr(ERR, 'Popup blocked — allow popups to print the receipt.'); return; }
+      w.document.write('<!DOCTYPE html><html><head><title>Receipt</title><style>body{font-family:monospace;white-space:pre;max-width:380px;margin:20px auto}</style></head><body>' +
+        escHtml(r.text) + '<scr' + 'ipt>window.onload=function(){window.print();}</scr' + 'ipt></body></html>');
+      w.document.close();
+    });
+    addRow('Coffee', 2, 3.50);
+    addRow('Sandwich', 1, 7.99);
+    update();
+  } catch (e) { /* never throw on load */ }
+})();
+</script>
+</body>
+</html>

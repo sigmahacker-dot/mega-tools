@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Wallpaper Calculator — Free Online | ToolNest</title>
+<meta name="description" content="Calculate how many wallpaper rolls you need for any wall from its size and the roll coverage.">
+<meta name="keywords" content="wallpaper calculator, how many rolls of wallpaper, wallpaper rolls needed, wall coverage calculator, wallpaper estimator">
+<link rel="canonical" href="https://toolnest.vercel.app/tools/wallpaper-calculator/">
+<meta name="theme-color" content="#07070b">
+<meta property="og:title" content="Wallpaper Calculator — Free Online | ToolNest">
+<meta property="og:description" content="Calculate how many wallpaper rolls you need for any wall from its size and the roll coverage.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css?v=4">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%23e01111'/><text x='50' y='68' font-size='58' text-anchor='middle' fill='white' font-family='Arial' font-weight='bold'>T</text></svg>">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebApplication","name":"Wallpaper Calculator","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0"},"url":"https://toolnest.vercel.app/tools/wallpaper-calculator/","description":"Calculate how many wallpaper rolls you need for any wall from its size and the roll coverage."},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What is the coverage of one roll?","acceptedAnswer":{"@type":"Answer","text":"A standard US double roll is about 20.5 in × 33 ft, covering roughly 56 sq ft. European rolls are usually 10.05 m × 0.53 m (about 57 sq ft). Check your roll label."}},{"@type":"Question","name":"Does pattern repeat change the count?","acceptedAnswer":{"@type":"Answer","text":"Yes. Large repeats waste paper because each strip must start at the same point in the pattern. Add 1 extra roll for repeats over 12 inches."}},{"@type":"Question","name":"Should I subtract doors and windows?","acceptedAnswer":{"@type":"Answer","text":"For small openings, no — the leftover strips are useful for above and below them. For large openings, subtract the area."}}]}]}</script>
+</head>
+<body>
+<header class="site-header">
+  <div class="container">
+    <a class="logo" href="/"><span class="logo-mark">T</span> ToolNest</a>
+    <div class="header-right">
+      <form class="nav-search" action="/" method="get" role="search">
+        <span class="ns-icon">🔍</span>
+        <input type="search" name="q" placeholder="Search tools…" aria-label="Search tools" autocomplete="off">
+      </form>
+      <div class="menu-wrap">
+        <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="menuPanel" aria-label="Open menu"><span></span><span></span><span></span></button>
+        <nav class="menu-panel" id="menuPanel" aria-label="Site">
+          <a href="/">Home</a>
+          <a href="/#categories">Categories</a>
+          <a href="/#all-tools">All Tools</a>
+        </nav>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ADSTERRA-HEADER: paste your Adsterra banner ad code inside the div below -->
+<div class="container"><div class="ad-slot ad-leaderboard" data-ad="header"></div></div>
+
+<main class="container">
+  <nav class="crumbs"><a href="/">Home</a> &rsaquo; <a href="/#calculators">Calculators</a> &rsaquo; Wallpaper Calculator</nav>
+  <div class="tool-hero">
+    <h1>Wallpaper Calculator</h1>
+    <p>Calculate how many wallpaper rolls you need for any wall from its size and the roll coverage.</p>
+  </div>
+
+  <div class="tool-card">
+  <div class="grid2">
+    <div class="field"><label for="wall-length">Total wall length (ft)</label><input type="number" class="input" id="wall-length" min="0" step="any" placeholder="40"></div>
+    <div class="field"><label for="wall-height">Wall height (ft)</label><input type="number" class="input" id="wall-height" min="0" step="any" placeholder="8"></div>
+    <div class="field"><label for="wall-coverage">Coverage per roll (sq ft)</label><input type="number" class="input" id="wall-coverage" min="0" step="any" placeholder="56"></div>
+    <div class="field"><label for="wall-repeat">Large pattern repeat?</label>
+      <select class="input" id="wall-repeat"><option value="no">No / small repeat</option><option value="yes">Yes, add 1 spare roll</option></select>
+    </div>
+  </div>
+  <div class="error" id="wallpaper-calculator-error"></div>
+  <div class="result" id="wall-result">
+    <div class="stat-cards">
+      <div class="stat-card"><div class="v" id="wall-rolls">–</div><div class="l">Rolls to buy</div></div>
+      <div class="stat-card"><div class="v" id="wall-area">–</div><div class="l">Wall area</div></div>
+      <div class="stat-card"><div class="v" id="wall-strips">–</div><div class="l">Strips needed</div></div>
+    </div>
+    <p class="note">Strips assume a 27 in (2.25 ft) wide roll. Always buy all rolls from the same dye lot.</p>
+  </div>
+</div>
+
+  <!-- ADSTERRA-INCONTENT: paste your Adsterra native/in-content ad code inside the div below -->
+  <div class="ad-slot" data-ad="incontent"></div>
+
+  <div class="info-grid">
+    <div class="info-card">
+      <h2>📖 How to use</h2>
+      <ol><li>Enter the total wall length and the ceiling height.</li><li>Enter your roll coverage (a US double roll covers about 56 sq ft).</li><li>Read the rolls to buy, rounded up.</li></ol>
+    </div>
+    <div class="info-card">
+      <h2>❓ Frequently asked questions</h2>
+      <div class="faq"><details><summary>What is the coverage of one roll?</summary><p>A standard US double roll is about 20.5 in × 33 ft, covering roughly 56 sq ft. European rolls are usually 10.05 m × 0.53 m (about 57 sq ft). Check your roll label.</p></details><details><summary>Does pattern repeat change the count?</summary><p>Yes. Large repeats waste paper because each strip must start at the same point in the pattern. Add 1 extra roll for repeats over 12 inches.</p></details><details><summary>Should I subtract doors and windows?</summary><p>For small openings, no — the leftover strips are useful for above and below them. For large openings, subtract the area.</p></details></div>
+    </div>
+  </div>
+
+  <section class="section">
+    <h2>🔗 Related tools</h2>
+    <div class="tool-grid"><a class="tool-link" href="/tools/age-calculator/" data-search="age calculator enter your date of birth to get your exact age in years, months and days, plus total weeks, days, hours, the weekday you were born, and days until your next birthday. age calculator calculate age date of birth age"><span class="t-ico">🧮</span><span class="t-body"><b>Age Calculator</b><small>Enter your date of birth to get your exact age in years, months and days, plus total weeks, …</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/aspect-ratio-calculator/" data-search="aspect ratio calculator reduce any width × height to its simplest aspect ratio, or find the missing side from a ratio. aspect ratio calculator reduce aspect ratio 16:9 calculator missing side calculator ratio simplifier"><span class="t-ico">🧮</span><span class="t-body"><b>Aspect Ratio Calculator</b><small>Reduce any width × height to its simplest aspect ratio, or find the missing side from a rati…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/bmi-calculator/" data-search="bmi calculator calculate your body mass index from height and weight in metric or imperial units. get your bmi value, weight category and the healthy weight range for your height. bmi calculator body mass index healthy weight calculator"><span class="t-ico">🧮</span><span class="t-body"><b>BMI Calculator</b><small>Calculate your Body Mass Index from height and weight in metric or imperial units. Get your …</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/concrete-calculator/" data-search="concrete calculator calculate cubic yards of concrete for any slab, plus how many 60 lb or 80 lb bags that equals. concrete calculator cubic yards concrete concrete bags calculator slab concrete estimator how much concrete"><span class="t-ico">🧮</span><span class="t-body"><b>Concrete Calculator</b><small>Calculate cubic yards of concrete for any slab, plus how many 60 lb or 80 lb bags that equal…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/cooking-measurement-scaler/" data-search="cooking measurement scaler scale any recipe up or down: enter servings and ingredients, get rescaled amounts with metric equivalents. recipe scaler scale recipe calculator cooking measurement converter adjust recipe servings ingredient scaler"><span class="t-ico">🧮</span><span class="t-body"><b>Cooking Measurement Scaler</b><small>Scale any recipe up or down: enter servings and ingredients, get rescaled amounts with metri…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/currency-converter/" data-search="currency converter convert any amount between 30+ world currencies with live exchange rates. pick source and target currencies, convert instantly, and see the rate and last update date. currency converter exchange rate converter usd to pkr converter"><span class="t-ico">🧮</span><span class="t-body"><b>Currency Converter</b><small>Convert any amount between 30+ world currencies with live exchange rates. Pick source and ta…</small></span><span class="t-arrow">→</span></a></div>
+  </section>
+</main>
+
+<!-- ADSTERRA-FOOTER: paste your Adsterra footer/banner ad code inside the div below -->
+<div class="container"><div class="ad-slot" data-ad="footer"></div></div>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="f-grid">
+      <div>
+        <span class="brandline"><span class="logo-mark">T</span> ToolNest</span>
+        <p>Free online tools that actually work. No sign-up, no watermarks — and your files never leave your device for client-side tools.</p>
+      </div>
+      <div>
+        <h4>Popular</h4>
+        <a href="/tools/qr-code-generator/">QR Code Generator</a>
+        <a href="/tools/background-remover/">Background Remover</a>
+        <a href="/tools/pdf-merger/">PDF Merger</a>
+        <a href="/tools/word-counter/">Word Counter</a>
+      </div>
+      <div>
+        <h4>Categories</h4>
+        <a href="/#image">Image Tools</a>
+        <a href="/#pdf">PDF &amp; Documents</a>
+        <a href="/#calculators">Calculators</a>
+        <a href="/#developer">Developer Tools</a>
+      </div>
+      <div>
+        <h4>Site</h4>
+        <a href="/">Home</a>
+        <a href="/#all-tools">All Tools</a>
+        <a href="/sitemap.xml">Sitemap</a>
+      </div>
+    </div>
+    <div class="f-bottom">© 2026 ToolNest · Free tools for everyone · Made with care</div>
+  </div>
+</footer>
+
+<script src="/assets/site.js?v=5"></script>
+
+<script>
+(function () {
+  'use strict';
+  var ERR = 'wallpaper-calculator-error';
+  function calc() {
+    if (!TN.el('wall-length')) return;
+    TN.clearErr(ERR);
+    var L = parseFloat(TN.el('wall-length').value);
+    var H = parseFloat(TN.el('wall-height').value);
+    var cov = parseFloat(TN.el('wall-coverage').value);
+    var rep = TN.el('wall-repeat').value;
+    if (!(L > 0)) { TN.setErr(ERR, 'Enter a wall length greater than 0 ft.'); return; }
+    if (!(H > 0)) { TN.setErr(ERR, 'Enter a wall height greater than 0 ft.'); return; }
+    if (!(cov > 0)) { TN.setErr(ERR, 'Enter roll coverage greater than 0 sq ft.'); return; }
+    var area = L * H;
+    var rolls = Math.ceil(area / cov - 1e-9) + (rep === 'yes' ? 1 : 0);
+    var strips = Math.ceil(L / 2.25 - 1e-9);
+    TN.el('wall-rolls').textContent = rolls;
+    TN.el('wall-area').textContent = area.toFixed(1) + ' sq ft';
+    TN.el('wall-strips').textContent = strips;
+  }
+  try {
+    TN.on('wall-length', 'input', calc);
+    TN.on('wall-height', 'input', calc);
+    TN.on('wall-coverage', 'input', calc);
+    TN.on('wall-repeat', 'change', calc);
+    calc();
+  } catch (e) { /* never throw on load */ }
+})();
+</script>
+</body>
+</html>

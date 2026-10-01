@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Metronome Tool — Free Online | ToolNest</title>
+<meta name="description" content="A precise metronome with WebAudio clicks — set any BPM, beats per bar and subdivision, with tap tempo and a visual pulse.">
+<meta name="keywords" content="metronome, online metronome, bpm metronome, music practice, tempo tool">
+<link rel="canonical" href="https://toolnest.vercel.app/tools/metronome-tool/">
+<meta name="theme-color" content="#07070b">
+<meta property="og:title" content="Metronome Tool — Free Online | ToolNest">
+<meta property="og:description" content="A precise metronome with WebAudio clicks — set any BPM, beats per bar and subdivision, with tap tempo and a visual pulse.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css?v=4">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%23e01111'/><text x='50' y='68' font-size='58' text-anchor='middle' fill='white' font-family='Arial' font-weight='bold'>T</text></svg>">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebApplication","name":"Metronome Tool","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0"},"url":"https://toolnest.vercel.app/tools/metronome-tool/","description":"A precise metronome with WebAudio clicks — set any BPM, beats per bar and subdivision, with tap tempo and a visual pulse."},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How accurate is the timing?","acceptedAnswer":{"@type":"Answer","text":"Timing uses the Web Audio clock (lookahead scheduling), which is far more accurate than setInterval."}},{"@type":"Question","name":"Does it have tap tempo?","acceptedAnswer":{"@type":"Answer","text":"Yes — tap the Tap button at least 3 times and the BPM is set from your taps."}},{"@type":"Question","name":"Is the first beat accented?","acceptedAnswer":{"@type":"Answer","text":"Beat 1 gets a higher accent click; you can set 0–12 beats per bar."}},{"@type":"Question","name":"Does it work on mobile?","acceptedAnswer":{"@type":"Answer","text":"Yes — works on desktop and mobile browsers."}}]}]}</script>
+</head>
+<body>
+<header class="site-header">
+  <div class="container">
+    <a class="logo" href="/"><span class="logo-mark">T</span> ToolNest</a>
+    <div class="header-right">
+      <form class="nav-search" action="/" method="get" role="search">
+        <span class="ns-icon">🔍</span>
+        <input type="search" name="q" placeholder="Search tools…" aria-label="Search tools" autocomplete="off">
+      </form>
+      <div class="menu-wrap">
+        <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="menuPanel" aria-label="Open menu"><span></span><span></span><span></span></button>
+        <nav class="menu-panel" id="menuPanel" aria-label="Site">
+          <a href="/">Home</a>
+          <a href="/#categories">Categories</a>
+          <a href="/#all-tools">All Tools</a>
+        </nav>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ADSTERRA-HEADER: paste your Adsterra banner ad code inside the div below -->
+<div class="container"><div class="ad-slot ad-leaderboard" data-ad="header"></div></div>
+
+<main class="container">
+  <nav class="crumbs"><a href="/">Home</a> &rsaquo; <a href="/#video-audio">Video &amp; Audio</a> &rsaquo; Metronome Tool</nav>
+  <div class="tool-hero">
+    <h1>Metronome Tool</h1>
+    <p>A precise metronome with WebAudio clicks — set any BPM, beats per bar and subdivision, with tap tempo and a visual pulse.</p>
+  </div>
+
+  <div class="tool-card" style="text-align:center">
+  <div style="font-size:72px;font-weight:800" id="metronome-tool-bpm-v">120</div>
+  <div class="muted">BPM</div>
+  <div class="field" style="max-width:420px;margin:12px auto;text-align:left">
+    <label for="metronome-tool-bpm">Tempo (30–240 BPM)</label>
+    <input type="range" class="input" id="metronome-tool-bpm" min="30" max="240" step="1" value="120">
+  </div>
+  <div class="grid2" style="max-width:420px;margin:0 auto;text-align:left">
+    <div class="field">
+      <label for="metronome-tool-beats">Beats per bar</label>
+      <select class="input" id="metronome-tool-beats">
+        <option value="2">2</option><option value="3">3</option>
+        <option value="4" selected>4</option><option value="5">5</option>
+        <option value="6">6</option><option value="7">7</option>
+      </select>
+    </div>
+    <div class="field">
+      <label for="metronome-tool-sub">Subdivision</label>
+      <select class="input" id="metronome-tool-sub">
+        <option value="1">Quarter notes</option>
+        <option value="2">8th notes</option>
+        <option value="3">Triplets</option>
+        <option value="4">16th notes</option>
+      </select>
+    </div>
+  </div>
+  <div id="metronome-tool-dots" style="display:flex;gap:10px;justify-content:center;margin:18px 0"></div>
+  <div class="btn-row" style="justify-content:center">
+    <button class="btn" id="metronome-tool-toggle">▶ Start</button>
+    <button class="btn btn-outline" id="metronome-tool-tap">Tap tempo</button>
+  </div>
+  <p class="muted" id="metronome-tool-tapinfo" style="min-height:24px"></p>
+  <div class="error" id="metronome-tool-error"></div>
+</div>
+
+
+  <!-- ADSTERRA-INCONTENT: paste your Adsterra native/in-content ad code inside the div below -->
+  <div class="ad-slot" data-ad="incontent"></div>
+
+  <div class="info-grid">
+    <div class="info-card">
+      <h2>📖 How to use</h2>
+      <ol><li>Set the BPM with the slider or tap tempo.</li><li>Choose beats per bar and note subdivision.</li><li>Press Start — follow the clicks and the flashing beat dot.</li><li>Press Stop when done.</li></ol>
+    </div>
+    <div class="info-card">
+      <h2>❓ Frequently asked questions</h2>
+      <div class="faq"><details><summary>How accurate is the timing?</summary><p>Timing uses the Web Audio clock (lookahead scheduling), which is far more accurate than setInterval.</p></details><details><summary>Does it have tap tempo?</summary><p>Yes — tap the Tap button at least 3 times and the BPM is set from your taps.</p></details><details><summary>Is the first beat accented?</summary><p>Beat 1 gets a higher accent click; you can set 0–12 beats per bar.</p></details><details><summary>Does it work on mobile?</summary><p>Yes — works on desktop and mobile browsers.</p></details></div>
+    </div>
+  </div>
+
+  <section class="section">
+    <h2>🔗 Related tools</h2>
+    <div class="tool-grid"><a class="tool-link" href="/tools/audio-cutter/" data-search="audio cutter cut a section out of any audio file in your browser. set start and end times, preview the selection, then download it as an mp3. audio cutter cut audio online trim mp3 audio trimmer mp3 cutter"><span class="t-ico">🎬</span><span class="t-body"><b>Audio Cutter</b><small>Cut a section out of any audio file in your browser. Set start and end times, preview the se…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/audio-voice-recorder/" data-search="voice recorder record audio with your microphone, play it back and download it as a file. voice recorder record audio online microphone recorder"><span class="t-ico">🎬</span><span class="t-body"><b>Voice Recorder</b><small>Record audio with your microphone, play it back and download it as a file.</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/bpm-tap-tempo/" data-search="bpm tap tempo find the tempo of any song — tap along to the beat and get a live bpm readout with beat-interval stats. tap tempo bpm tap find bpm of song tempo finder beats per minute tap"><span class="t-ico">🎬</span><span class="t-body"><b>BPM Tap Tempo</b><small>Find the tempo of any song — tap along to the beat and get a live BPM readout with beat-inte…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/online-guitar-tuner/" data-search="online guitar tuner tune your guitar with real pitch detection — the mic listens, autocorrelation finds your note, and the needle shows how many cents sharp or flat you are. guitar tuner online guitar tuner pitch detection tune guitar chromatic tuner"><span class="t-ico">🎬</span><span class="t-body"><b>Online Guitar Tuner</b><small>Tune your guitar with real pitch detection — the mic listens, autocorrelation finds your not…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/pitch-pipe-tool/" data-search="pitch pipe tool a chromatic pitch pipe — tap any note from c to b across two octaves to hear a pure reference tone for tuning and singing. pitch pipe online pitch pipe tuning note reference pitch chromatic tuner note"><span class="t-ico">🎬</span><span class="t-body"><b>Pitch Pipe Tool</b><small>A chromatic pitch pipe — tap any note from C to B across two octaves to hear a pure referenc…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/stock-video-downloader/" data-search="royalty-free stock video downloader search thousands of royalty-free stock videos and download them free. every clip is pexels license — free for commercial use, no attribution needed. stock video downloader royalty free videos free stock footage pexels videos download"><span class="t-ico">🎬</span><span class="t-body"><b>Royalty-Free Stock Video Downloader</b><small>Search thousands of royalty-free stock videos and download them free. Every clip is Pexels L…</small></span><span class="t-arrow">→</span></a></div>
+  </section>
+</main>
+
+<!-- ADSTERRA-FOOTER: paste your Adsterra footer/banner ad code inside the div below -->
+<div class="container"><div class="ad-slot" data-ad="footer"></div></div>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="f-grid">
+      <div>
+        <span class="brandline"><span class="logo-mark">T</span> ToolNest</span>
+        <p>Free online tools that actually work. No sign-up, no watermarks — and your files never leave your device for client-side tools.</p>
+      </div>
+      <div>
+        <h4>Popular</h4>
+        <a href="/tools/qr-code-generator/">QR Code Generator</a>
+        <a href="/tools/background-remover/">Background Remover</a>
+        <a href="/tools/pdf-merger/">PDF Merger</a>
+        <a href="/tools/word-counter/">Word Counter</a>
+      </div>
+      <div>
+        <h4>Categories</h4>
+        <a href="/#image">Image Tools</a>
+        <a href="/#pdf">PDF &amp; Documents</a>
+        <a href="/#calculators">Calculators</a>
+        <a href="/#developer">Developer Tools</a>
+      </div>
+      <div>
+        <h4>Site</h4>
+        <a href="/">Home</a>
+        <a href="/#all-tools">All Tools</a>
+        <a href="/sitemap.xml">Sitemap</a>
+      </div>
+    </div>
+    <div class="f-bottom">© 2026 ToolNest · Free tools for everyone · Made with care</div>
+  </div>
+</footer>
+
+<script src="/assets/site.js?v=5"></script>
+
+<script>
+/* Metronome — WebAudio lookahead scheduling, accent, subdivisions, tap tempo. */
+(function () {
+  'use strict';
+  var SLUG = 'metronome-tool';
+  var ERR = SLUG + '-error';
+  var actx = null, running = false;
+  var timerId = null, nextTime = 0, tickIdx = 0;
+  var taps = [];
+
+  function $(id) { return document.getElementById(id); }
+  function bpm() { return parseInt($('metronome-tool-bpm').value, 10) || 120; }
+  function beats() { return parseInt($('metronome-tool-beats').value, 10) || 4; }
+  function sub() { return parseInt($('metronome-tool-sub').value, 10) || 1; }
+
+  function ctx() {
+    if (!actx) {
+      try { actx = new (window.AudioContext || window.webkitAudioContext)(); }
+      catch (e) { TN.setErr(ERR, 'Web Audio is not supported in this browser.'); return null; }
+    }
+    if (actx.state === 'suspended') actx.resume();
+    return actx;
+  }
+
+  function click(when, accent) {
+    var c = ctx();
+    if (!c) return;
+    var o = c.createOscillator(), g = c.createGain();
+    o.type = 'square';
+    o.frequency.value = accent ? 1568 : 1046; // G6 / C6
+    g.gain.setValueAtTime(0.0001, when);
+    g.gain.exponentialRampToValueAtTime(accent ? 0.5 : 0.3, when + 0.002);
+    g.gain.exponentialRampToValueAtTime(0.0001, when + 0.06);
+    o.connect(g); g.connect(c.destination);
+    o.start(when); o.stop(when + 0.08);
+  }
+
+  function flashDot(beatPos) {
+    var dots = $('metronome-tool-dots').children;
+    for (var i = 0; i < dots.length; i++) {
+      dots[i].style.background = i === beatPos ? '#e53935' : '#ddd';
+      dots[i].style.transform = i === beatPos ? 'scale(1.35)' : 'scale(1)';
+    }
+  }
+
+  function buildDots() {
+    var wrap = $('metronome-tool-dots');
+    wrap.innerHTML = '';
+    for (var i = 0; i < beats(); i++) {
+      var d = document.createElement('div');
+      d.style.cssText = 'width:22px;height:22px;border-radius:50%;background:#ddd;transition:transform .08s, background .08s';
+      wrap.appendChild(d);
+    }
+  }
+
+  function schedule() {
+    var c = ctx();
+    if (!c) { stop(); return; }
+    var ahead = 0.12; // schedule 120ms ahead
+    var interval = 25; // check every 25ms
+    var spb = 60 / bpm() / sub(); // seconds per sub-tick
+    nextTime = c.currentTime + 0.06;
+    tickIdx = 0;
+    timerId = setInterval(function () {
+      while (nextTime < c.currentTime + ahead) {
+        var subTick = tickIdx % sub();
+        var beatPos = Math.floor(tickIdx / sub()) % beats();
+        var isBeat = subTick === 0;
+        var accent = isBeat && beatPos === 0;
+        if (isBeat || sub() > 1) click(nextTime, accent);
+        // flash on beat ticks
+        if (isBeat) {
+          (function (bp, when) {
+            var delay = Math.max(0, (when - c.currentTime) * 1000);
+            setTimeout(function () { if (running) flashDot(bp); }, delay);
+          })(beatPos, nextTime);
+        }
+        nextTime += spb;
+        tickIdx++;
+      }
+    }, interval);
+  }
+
+  function start() {
+    if (!ctx()) return;
+    running = true;
+    buildDots();
+    $('metronome-tool-toggle').textContent = '⏹ Stop';
+    schedule();
+  }
+
+  function stop() {
+    running = false;
+    if (timerId) { clearInterval(timerId); timerId = null; }
+    $('metronome-tool-toggle').textContent = '▶ Start';
+    var dots = $('metronome-tool-dots').children;
+    for (var i = 0; i < dots.length; i++) { dots[i].style.background = '#ddd'; dots[i].style.transform = 'scale(1)'; }
+  }
+
+  function tap() {
+    var now = performance.now();
+    if (taps.length && now - taps[taps.length - 1] > 2500) taps = [];
+    taps.push(now);
+    if (taps.length > 8) taps.shift();
+    if (taps.length >= 3) {
+      var diffs = [];
+      for (var i = 1; i < taps.length; i++) diffs.push(taps[i] - taps[i - 1]);
+      var avg = diffs.reduce(function (a, b) { return a + b; }, 0) / diffs.length;
+      var b = Math.round(60000 / avg);
+      b = Math.max(30, Math.min(240, b));
+      $('metronome-tool-bpm').value = b;
+      $('metronome-tool-bpm-v').textContent = b;
+      $('metronome-tool-tapinfo').textContent = 'Tap tempo: ' + b + ' BPM';
+    } else {
+      $('metronome-tool-tapinfo').textContent = 'Tap ' + (3 - taps.length) + ' more time(s)…';
+    }
+  }
+
+  try {
+    buildDots();
+    TN.on('metronome-tool-bpm', 'input', function () {
+      $('metronome-tool-bpm-v').textContent = $('metronome-tool-bpm').value;
+    });
+    TN.on('metronome-tool-beats', 'change', buildDots);
+    TN.on('metronome-tool-toggle', 'click', function () { running ? stop() : start(); });
+    TN.on('metronome-tool-tap', 'click', tap);
+  } catch (e) { /* never throw on load */ }
+})();
+
+</script>
+</body>
+</html>

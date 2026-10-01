@@ -1,0 +1,33 @@
+<div class="tool-card">
+  <div class="grid2">
+    <div class="field">
+      <label for="pomodoro-timer-focus">Focus (minutes)</label>
+      <input type="number" class="input" id="pomodoro-timer-focus" min="1" max="180" step="1" value="25">
+    </div>
+    <div class="field">
+      <label for="pomodoro-timer-short">Short break (minutes)</label>
+      <input type="number" class="input" id="pomodoro-timer-short" min="1" max="60" step="1" value="5">
+    </div>
+    <div class="field">
+      <label for="pomodoro-timer-long">Long break (minutes)</label>
+      <input type="number" class="input" id="pomodoro-timer-long" min="1" max="90" step="1" value="15">
+    </div>
+    <div class="field">
+      <label for="pomodoro-timer-rounds">Focus sessions per cycle</label>
+      <input type="number" class="input" id="pomodoro-timer-rounds" min="1" max="12" step="1" value="4">
+    </div>
+  </div>
+  <div style="text-align:center;margin:18px 0 6px;">
+    <div class="muted" id="pomodoro-timer-phase" style="font-size:1rem;">Ready</div>
+    <div id="pomodoro-timer-display" style="font-size:3.2rem;font-weight:700;font-variant-numeric:tabular-nums;letter-spacing:.05em;">25:00</div>
+    <div class="muted" id="pomodoro-timer-dots" style="font-size:1.3rem;letter-spacing:.3em;">○○○○</div>
+    <div class="muted" id="pomodoro-timer-cycle">Cycle 1</div>
+  </div>
+  <div class="btn-row" style="justify-content:center;">
+    <button class="btn btn-primary" id="pomodoro-timer-start" type="button">Start</button>
+    <button class="btn btn-outline" id="pomodoro-timer-skip" type="button">Skip</button>
+    <button class="btn btn-outline" id="pomodoro-timer-reset" type="button">Reset</button>
+  </div>
+  <div class="error" id="pomodoro-timer-error"></div>
+  <p class="note" style="text-align:center;">A chime sounds on every phase change. The timer stays accurate in background tabs.</p>
+</div>

@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>User Agent Parser — Free Online | ToolNest</title>
+<meta name="description" content="Parse any user-agent string into browser, version, OS, device type and engine — live-parses your own UA or any string you paste.">
+<meta name="keywords" content="user agent parser, parse user agent, browser detection, ua string analyzer, user agent checker">
+<link rel="canonical" href="https://toolnest.vercel.app/tools/user-agent-parser/">
+<meta name="theme-color" content="#07070b">
+<meta property="og:title" content="User Agent Parser — Free Online | ToolNest">
+<meta property="og:description" content="Parse any user-agent string into browser, version, OS, device type and engine — live-parses your own UA or any string you paste.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css?v=4">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%23e01111'/><text x='50' y='68' font-size='58' text-anchor='middle' fill='white' font-family='Arial' font-weight='bold'>T</text></svg>">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebApplication","name":"User Agent Parser","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0"},"url":"https://toolnest.vercel.app/tools/user-agent-parser/","description":"Parse any user-agent string into browser, version, OS, device type and engine — live-parses your own UA or any string you paste."},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How does browser detection work?","acceptedAnswer":{"@type":"Answer","text":"Detection order matters: Edge and Opera both contain 'Chrome' in their UA, so the parser checks Edg/OPR tokens before Chrome, and CriOS/FxiOS for iOS variants."}},{"@type":"Question","name":"Is UA parsing 100% reliable?","acceptedAnswer":{"@type":"Answer","text":"No. User-agent strings can be spoofed or frozen (Chrome's UA reduction), so treat the result as a hint, not proof."}},{"@type":"Question","name":"Can I parse a different UA string?","acceptedAnswer":{"@type":"Answer","text":"Yes — paste any UA string into the box and the parse updates live."}},{"@type":"Question","name":"Is this private?","acceptedAnswer":{"@type":"Answer","text":"Yes, everything runs locally in your browser."}}]}]}</script>
+</head>
+<body>
+<header class="site-header">
+  <div class="container">
+    <a class="logo" href="/"><span class="logo-mark">T</span> ToolNest</a>
+    <div class="header-right">
+      <form class="nav-search" action="/" method="get" role="search">
+        <span class="ns-icon">🔍</span>
+        <input type="search" name="q" placeholder="Search tools…" aria-label="Search tools" autocomplete="off">
+      </form>
+      <div class="menu-wrap">
+        <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="menuPanel" aria-label="Open menu"><span></span><span></span><span></span></button>
+        <nav class="menu-panel" id="menuPanel" aria-label="Site">
+          <a href="/">Home</a>
+          <a href="/#categories">Categories</a>
+          <a href="/#all-tools">All Tools</a>
+        </nav>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ADSTERRA-HEADER: paste your Adsterra banner ad code inside the div below -->
+<div class="container"><div class="ad-slot ad-leaderboard" data-ad="header"></div></div>
+
+<main class="container">
+  <nav class="crumbs"><a href="/">Home</a> &rsaquo; <a href="/#developer">Developer Tools</a> &rsaquo; User Agent Parser</nav>
+  <div class="tool-hero">
+    <h1>User Agent Parser</h1>
+    <p>Parse any user-agent string into browser, version, OS, device type and engine — live-parses your own UA or any string you paste.</p>
+  </div>
+
+  <div class="tool-card">
+  <div class="field"><label for="ua-input">User-agent string</label><textarea class="textarea" id="ua-input" rows="3"></textarea></div>
+  <div class="error" id="user-agent-parser-error"></div>
+  <div class="result" id="ua-result">
+    <div class="stat-cards">
+      <div class="stat-card"><div class="v" id="ua-browser">–</div><div class="l">Browser</div></div>
+      <div class="stat-card"><div class="v" id="ua-os">–</div><div class="l">OS</div></div>
+      <div class="stat-card"><div class="v" id="ua-device">–</div><div class="l">Device</div></div>
+    </div>
+    <table class="data"><tbody id="ua-body"></tbody></table>
+    <div class="btn-row">
+      <button class="btn btn-outline" id="ua-reset" type="button">Reset to my UA</button>
+      <button class="btn btn-outline" id="ua-copy" type="button">Copy UA string</button>
+    </div>
+  </div>
+</div>
+
+  <!-- ADSTERRA-INCONTENT: paste your Adsterra native/in-content ad code inside the div below -->
+  <div class="ad-slot" data-ad="incontent"></div>
+
+  <div class="info-grid">
+    <div class="info-card">
+      <h2>📖 How to use</h2>
+      <ol><li>Your own user-agent string is parsed automatically on load.</li><li>Paste any other UA string to parse it instead.</li><li>Read the browser, version, OS, device and engine breakdown.</li></ol>
+    </div>
+    <div class="info-card">
+      <h2>❓ Frequently asked questions</h2>
+      <div class="faq"><details><summary>How does browser detection work?</summary><p>Detection order matters: Edge and Opera both contain &#39;Chrome&#39; in their UA, so the parser checks Edg/OPR tokens before Chrome, and CriOS/FxiOS for iOS variants.</p></details><details><summary>Is UA parsing 100% reliable?</summary><p>No. User-agent strings can be spoofed or frozen (Chrome&#39;s UA reduction), so treat the result as a hint, not proof.</p></details><details><summary>Can I parse a different UA string?</summary><p>Yes — paste any UA string into the box and the parse updates live.</p></details><details><summary>Is this private?</summary><p>Yes, everything runs locally in your browser.</p></details></div>
+    </div>
+  </div>
+
+  <section class="section">
+    <h2>🔗 Related tools</h2>
+    <div class="tool-grid"><a class="tool-link" href="/tools/ascii-table-reference/" data-search="ascii table reference full ascii table 0–127: decimal, hex, octal, character, control-code names and html entities — searchable. ascii table ascii codes ascii chart control characters ascii reference"><span class="t-ico">💻</span><span class="t-body"><b>ASCII Table Reference</b><small>Full ASCII table 0–127: decimal, hex, octal, character, control-code names and HTML entities…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/base64-encoder-decoder/" data-search="base64 encoder / decoder encode text to base64 or decode base64 back to text, with full utf-8 support and a file-to-data-url converter. base64 encoder base64 decoder base64 encode base64 decode file to base64"><span class="t-ico">💻</span><span class="t-body"><b>Base64 Encoder / Decoder</b><small>Encode text to Base64 or decode Base64 back to text, with full UTF-8 support and a file-to-d…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/binary-text-converter/" data-search="binary and text converter convert text to binary or hex and back, with full utf-8 awareness and strict input validation. binary to text text to binary hex to text converter"><span class="t-ico">💻</span><span class="t-body"><b>Binary and Text Converter</b><small>Convert text to binary or hex and back, with full UTF-8 awareness and strict input validatio…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/color-code-converter/" data-search="color code converter type a color in hex, rgb or hsl format and instantly see it converted to all three formats with a preview swatch. color converter hex to rgb rgb to hex hsl converter color code"><span class="t-ico">💻</span><span class="t-body"><b>Color Code Converter</b><small>Type a color in HEX, RGB or HSL format and instantly see it converted to all three formats w…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/css-minifier/" data-search="css minifier compress css by stripping comments, collapsing whitespace and removing redundant semicolons, with before/after byte stats. css minifier minify css css compressor reduce css size"><span class="t-ico">💻</span><span class="t-body"><b>CSS Minifier</b><small>Compress CSS by stripping comments, collapsing whitespace and removing redundant semicolons,…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/css-specificity-calculator/" data-search="css specificity calculator calculate css selector specificity as (a,b,c) with a full breakdown — handles ids, classes, attributes, pseudo-classes, :not(), :is(), :where() and pseudo-elements. css specificity calculator specificity calculator css selector weight calculate specificity css cascade"><span class="t-ico">💻</span><span class="t-body"><b>CSS Specificity Calculator</b><small>Calculate CSS selector specificity as (a,b,c) with a full breakdown — handles IDs, classes, …</small></span><span class="t-arrow">→</span></a></div>
+  </section>
+</main>
+
+<!-- ADSTERRA-FOOTER: paste your Adsterra footer/banner ad code inside the div below -->
+<div class="container"><div class="ad-slot" data-ad="footer"></div></div>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="f-grid">
+      <div>
+        <span class="brandline"><span class="logo-mark">T</span> ToolNest</span>
+        <p>Free online tools that actually work. No sign-up, no watermarks — and your files never leave your device for client-side tools.</p>
+      </div>
+      <div>
+        <h4>Popular</h4>
+        <a href="/tools/qr-code-generator/">QR Code Generator</a>
+        <a href="/tools/background-remover/">Background Remover</a>
+        <a href="/tools/pdf-merger/">PDF Merger</a>
+        <a href="/tools/word-counter/">Word Counter</a>
+      </div>
+      <div>
+        <h4>Categories</h4>
+        <a href="/#image">Image Tools</a>
+        <a href="/#pdf">PDF &amp; Documents</a>
+        <a href="/#calculators">Calculators</a>
+        <a href="/#developer">Developer Tools</a>
+      </div>
+      <div>
+        <h4>Site</h4>
+        <a href="/">Home</a>
+        <a href="/#all-tools">All Tools</a>
+        <a href="/sitemap.xml">Sitemap</a>
+      </div>
+    </div>
+    <div class="f-bottom">© 2026 ToolNest · Free tools for everyone · Made with care</div>
+  </div>
+</footer>
+
+<script src="/assets/site.js?v=5"></script>
+
+<script>
+(function () {
+  'use strict';
+  var ERR = 'user-agent-parser-error';
+  function esc(s) {
+    return String(s).replace(/[&<>"']/g, function (c) {
+      return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c];
+    });
+  }
+  function parse(ua) {
+    var browser = 'Unknown', version = '', os = 'Unknown', engine = 'Unknown';
+    var b =
+      /EdgA?\/([\d.]+)/.exec(ua) ? ['Edge', /EdgA?\/([\d.]+)/.exec(ua)[1]] :
+      /OPR\/([\d.]+)/.exec(ua) ? ['Opera', /OPR\/([\d.]+)/.exec(ua)[1]] :
+      /Vivaldi\/([\d.]+)/.exec(ua) ? ['Vivaldi', /Vivaldi\/([\d.]+)/.exec(ua)[1]] :
+      /Brave\/([\d.]+)/.exec(ua) ? ['Brave', /Brave\/([\d.]+)/.exec(ua)[1]] :
+      /SamsungBrowser\/([\d.]+)/.exec(ua) ? ['Samsung Internet', /SamsungBrowser\/([\d.]+)/.exec(ua)[1]] :
+      /CriOS\/([\d.]+)/.exec(ua) ? ['Chrome (iOS)', /CriOS\/([\d.]+)/.exec(ua)[1]] :
+      /FxiOS\/([\d.]+)/.exec(ua) ? ['Firefox (iOS)', /FxiOS\/([\d.]+)/.exec(ua)[1]] :
+      /EdgiOS\/([\d.]+)/.exec(ua) ? ['Edge (iOS)', /EdgiOS\/([\d.]+)/.exec(ua)[1]] :
+      /Firefox\/([\d.]+)/.exec(ua) ? ['Firefox', /Firefox\/([\d.]+)/.exec(ua)[1]] :
+      /Chrome\/([\d.]+)/.exec(ua) ? ['Chrome', /Chrome\/([\d.]+)/.exec(ua)[1]] :
+      /Version\/([\d.]+).*Safari\//.exec(ua) ? ['Safari', /Version\/([\d.]+)/.exec(ua)[1]] :
+      /Safari\/([\d.]+)/.exec(ua) ? ['Safari', /Version\/([\d.]+)/.exec(ua) ? /Version\/([\d.]+)/.exec(ua)[1] : ''] :
+      /MSIE ([\d.]+)/.exec(ua) ? ['Internet Explorer', /MSIE ([\d.]+)/.exec(ua)[1]] :
+      /Trident\/.*rv:([\d.]+)/.exec(ua) ? ['Internet Explorer', /rv:([\d.]+)/.exec(ua)[1]] : null;
+    if (b) { browser = b[0]; version = b[1] || ''; }
+    var o =
+      /Windows NT 10/.test(ua) ? 'Windows 10 / 11' :
+      /Windows NT 6\.3/.test(ua) ? 'Windows 8.1' :
+      /Windows NT 6\.2/.test(ua) ? 'Windows 8' :
+      /Windows NT 6\.1/.test(ua) ? 'Windows 7' :
+      /Windows/.test(ua) ? 'Windows' :
+      /iPhone|iPad/.test(ua) ? 'iOS ' + ((/OS ([\d_]+)/.exec(ua) || [])[1] || '').replace(/_/g, '.') :
+      /Mac OS X ([\d_]+)/.test(ua) ? 'macOS ' + (/Mac OS X ([\d_]+)/.exec(ua)[1] || '').replace(/_/g, '.') :
+      /Android ([\d.]+)/.test(ua) ? 'Android ' + /Android ([\d.]+)/.exec(ua)[1] :
+      /CrOS/.test(ua) ? 'ChromeOS' :
+      /Linux/.test(ua) ? 'Linux' : null;
+    if (o) os = o;
+    var device = /Mobi|Android|iPhone|iPod/.test(ua) ? 'Mobile' : /Tablet|iPad/.test(ua) ? 'Tablet' : 'Desktop';
+    if (/Gecko\//.test(ua) && !/like Gecko/.test(ua)) engine = 'Gecko';
+    else if (/AppleWebKit/.test(ua) && /Chrome|Chromium|Edg|OPR/.test(ua)) engine = 'Blink';
+    else if (/AppleWebKit/.test(ua)) engine = 'WebKit';
+    else if (/Trident/.test(ua)) engine = 'Trident';
+    return { browser: browser, version: version, os: os, device: device, engine: engine };
+  }
+  function update() {
+    if (!TN.el('ua-input')) return;
+    TN.clearErr(ERR);
+    var ua = TN.el('ua-input').value;
+    if (!ua.trim()) { TN.setErr(ERR, 'Paste a user-agent string first.'); return; }
+    var p = parse(ua);
+    TN.el('ua-browser').textContent = p.browser + (p.version ? ' ' + p.version : '');
+    TN.el('ua-os').textContent = p.os;
+    TN.el('ua-device').textContent = p.device;
+    var rows = [
+      ['Browser', p.browser], ['Version', p.version || '—'], ['Operating system', p.os],
+      ['Device type', p.device], ['Layout engine', p.engine],
+      ['Platform', navigator.platform || '—'],
+      ['Languages', (navigator.languages || []).join(', ') || navigator.language || '—'],
+      ['CPU cores', navigator.hardwareConcurrency || '—'],
+      ['Touch points', ('maxTouchPoints' in navigator) ? navigator.maxTouchPoints : '—'],
+      ['Cookies enabled', navigator.cookieEnabled ? 'Yes' : 'No'],
+      ['Online', navigator.onLine ? 'Yes' : 'No']
+    ];
+    TN.el('ua-body').innerHTML = rows.map(function (r) {
+      return '<tr><td style="width:40%"><strong>' + esc(r[0]) + '</strong></td><td>' + esc(String(r[1])) + '</td></tr>';
+    }).join('');
+  }
+  try {
+    TN.el('ua-input').value = navigator.userAgent || '';
+    TN.on('ua-input', 'input', update);
+    TN.on('ua-reset', 'click', function () { TN.el('ua-input').value = navigator.userAgent || ''; update(); });
+    TN.on('ua-copy', 'click', function () { if (TN.copy) TN.copy(TN.el('ua-input').value); });
+    update();
+  } catch (e) { /* never throw on load */ }
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pomodoro Timer — Free Online | ToolNest</title>
+<meta name="description" content="A full Pomodoro timer: configurable focus sessions, short and long breaks, session dots, cycle counter and an audible chime on every phase change.">
+<meta name="keywords" content="pomodoro timer, focus timer, 25 minute timer, study timer, productivity timer">
+<link rel="canonical" href="https://toolnest.vercel.app/tools/pomodoro-timer/">
+<meta name="theme-color" content="#07070b">
+<meta property="og:title" content="Pomodoro Timer — Free Online | ToolNest">
+<meta property="og:description" content="A full Pomodoro timer: configurable focus sessions, short and long breaks, session dots, cycle counter and an audible chime on every phase change.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css?v=4">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%23e01111'/><text x='50' y='68' font-size='58' text-anchor='middle' fill='white' font-family='Arial' font-weight='bold'>T</text></svg>">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebApplication","name":"Pomodoro Timer","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0"},"url":"https://toolnest.vercel.app/tools/pomodoro-timer/","description":"A full Pomodoro timer: configurable focus sessions, short and long breaks, session dots, cycle counter and an audible chime on every phase change."},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What is the Pomodoro technique?","acceptedAnswer":{"@type":"Answer","text":"Work in focused 25-minute blocks separated by 5-minute breaks; after 4 blocks take a longer 15–30 minute break. All durations are configurable here."}},{"@type":"Question","name":"Does the timer keep running if I switch tabs?","acceptedAnswer":{"@type":"Answer","text":"Yes — it is driven by wall-clock timestamps, not by counting ticks, so it stays accurate even in a background tab."}},{"@type":"Question","name":"Can I change the durations?","acceptedAnswer":{"@type":"Answer","text":"Yes: focus length, short break, long break and how many focus sessions come before a long break are all adjustable."}}]}]}</script>
+</head>
+<body>
+<header class="site-header">
+  <div class="container">
+    <a class="logo" href="/"><span class="logo-mark">T</span> ToolNest</a>
+    <div class="header-right">
+      <form class="nav-search" action="/" method="get" role="search">
+        <span class="ns-icon">🔍</span>
+        <input type="search" name="q" placeholder="Search tools…" aria-label="Search tools" autocomplete="off">
+      </form>
+      <div class="menu-wrap">
+        <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="menuPanel" aria-label="Open menu"><span></span><span></span><span></span></button>
+        <nav class="menu-panel" id="menuPanel" aria-label="Site">
+          <a href="/">Home</a>
+          <a href="/#categories">Categories</a>
+          <a href="/#all-tools">All Tools</a>
+        </nav>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ADSTERRA-HEADER: paste your Adsterra banner ad code inside the div below -->
+<div class="container"><div class="ad-slot ad-leaderboard" data-ad="header"></div></div>
+
+<main class="container">
+  <nav class="crumbs"><a href="/">Home</a> &rsaquo; <a href="/#time">Time &amp; Date</a> &rsaquo; Pomodoro Timer</nav>
+  <div class="tool-hero">
+    <h1>Pomodoro Timer</h1>
+    <p>A full Pomodoro timer: configurable focus sessions, short and long breaks, session dots, cycle counter and an audible chime on every phase change.</p>
+  </div>
+
+  <div class="tool-card">
+  <div class="grid2">
+    <div class="field">
+      <label for="pomodoro-timer-focus">Focus (minutes)</label>
+      <input type="number" class="input" id="pomodoro-timer-focus" min="1" max="180" step="1" value="25">
+    </div>
+    <div class="field">
+      <label for="pomodoro-timer-short">Short break (minutes)</label>
+      <input type="number" class="input" id="pomodoro-timer-short" min="1" max="60" step="1" value="5">
+    </div>
+    <div class="field">
+      <label for="pomodoro-timer-long">Long break (minutes)</label>
+      <input type="number" class="input" id="pomodoro-timer-long" min="1" max="90" step="1" value="15">
+    </div>
+    <div class="field">
+      <label for="pomodoro-timer-rounds">Focus sessions per cycle</label>
+      <input type="number" class="input" id="pomodoro-timer-rounds" min="1" max="12" step="1" value="4">
+    </div>
+  </div>
+  <div style="text-align:center;margin:18px 0 6px;">
+    <div class="muted" id="pomodoro-timer-phase" style="font-size:1rem;">Ready</div>
+    <div id="pomodoro-timer-display" style="font-size:3.2rem;font-weight:700;font-variant-numeric:tabular-nums;letter-spacing:.05em;">25:00</div>
+    <div class="muted" id="pomodoro-timer-dots" style="font-size:1.3rem;letter-spacing:.3em;">○○○○</div>
+    <div class="muted" id="pomodoro-timer-cycle">Cycle 1</div>
+  </div>
+  <div class="btn-row" style="justify-content:center;">
+    <button class="btn btn-primary" id="pomodoro-timer-start" type="button">Start</button>
+    <button class="btn btn-outline" id="pomodoro-timer-skip" type="button">Skip</button>
+    <button class="btn btn-outline" id="pomodoro-timer-reset" type="button">Reset</button>
+  </div>
+  <div class="error" id="pomodoro-timer-error"></div>
+  <p class="note" style="text-align:center;">A chime sounds on every phase change. The timer stays accurate in background tabs.</p>
+</div>
+
+
+  <!-- ADSTERRA-INCONTENT: paste your Adsterra native/in-content ad code inside the div below -->
+  <div class="ad-slot" data-ad="incontent"></div>
+
+  <div class="info-grid">
+    <div class="info-card">
+      <h2>📖 How to use</h2>
+      <ol><li>Set your focus, short-break and long-break lengths (defaults 25 / 5 / 15).</li><li>Choose how many focus sessions come before a long break.</li><li>Press Start — the timer runs Focus → Short break → … → Long break automatically.</li><li>Skip a phase any time, or Reset to start a fresh cycle.</li></ol>
+    </div>
+    <div class="info-card">
+      <h2>❓ Frequently asked questions</h2>
+      <div class="faq"><details><summary>What is the Pomodoro technique?</summary><p>Work in focused 25-minute blocks separated by 5-minute breaks; after 4 blocks take a longer 15–30 minute break. All durations are configurable here.</p></details><details><summary>Does the timer keep running if I switch tabs?</summary><p>Yes — it is driven by wall-clock timestamps, not by counting ticks, so it stays accurate even in a background tab.</p></details><details><summary>Can I change the durations?</summary><p>Yes: focus length, short break, long break and how many focus sessions come before a long break are all adjustable.</p></details></div>
+    </div>
+  </div>
+
+  <section class="section">
+    <h2>🔗 Related tools</h2>
+    <div class="tool-grid"><a class="tool-link" href="/tools/add-subtract-days-calculator/" data-search="add / subtract days calculator add or subtract days, weeks, months or years from any date. optional business-days-only mode skips weekends automatically. add days to date subtract days calculator date plus days business days calculator date arithmetic"><span class="t-ico">⏰</span><span class="t-body"><b>Add / Subtract Days Calculator</b><small>Add or subtract days, weeks, months or years from any date. Optional business-days-only mode…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/anniversary-calculator/" data-search="anniversary calculator track any anniversary: days until the next one, which number it is (10th, 25th…), total days together and the weekday it falls on. anniversary calculator wedding anniversary countdown how many days until anniversary anniversary date tracker years together calculator"><span class="t-ico">⏰</span><span class="t-body"><b>Anniversary Calculator</b><small>Track any anniversary: days until the next one, which number it is (10th, 25th…), total days…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/date-duration-calculator/" data-search="date duration calculator exact duration between two dates, plus business days. date duration calculator days between dates business days calculator"><span class="t-ico">⏰</span><span class="t-body"><b>Date Duration Calculator</b><small>Exact duration between two dates, plus business days.</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/event-countdown/" data-search="event countdown timer live ticking countdown to any future date and time. countdown timer event countdown countdown to date"><span class="t-ico">⏰</span><span class="t-body"><b>Event Countdown Timer</b><small>Live ticking countdown to any future date and time.</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/fiscal-quarter-finder/" data-search="fiscal quarter finder find the fiscal quarter for any date with any fiscal year start month. get the fy label, quarter start/end dates and days remaining. fiscal quarter finder what quarter are we in financial quarter calculator fy quarter dates fiscal year calculator"><span class="t-ico">⏰</span><span class="t-body"><b>Fiscal Quarter Finder</b><small>Find the fiscal quarter for any date with any fiscal year start month. Get the FY label, qua…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/meeting-cost-calculator/" data-search="meeting cost calculator calculate what meetings really cost: enter attendees, average hourly rate and duration to see the cost per meeting, per week, per month and per year. meeting cost calculator cost of meetings meeting time cost how much do meetings cost meeting roi calculator"><span class="t-ico">⏰</span><span class="t-body"><b>Meeting Cost Calculator</b><small>Calculate what meetings really cost: enter attendees, average hourly rate and duration to se…</small></span><span class="t-arrow">→</span></a></div>
+  </section>
+</main>
+
+<!-- ADSTERRA-FOOTER: paste your Adsterra footer/banner ad code inside the div below -->
+<div class="container"><div class="ad-slot" data-ad="footer"></div></div>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="f-grid">
+      <div>
+        <span class="brandline"><span class="logo-mark">T</span> ToolNest</span>
+        <p>Free online tools that actually work. No sign-up, no watermarks — and your files never leave your device for client-side tools.</p>
+      </div>
+      <div>
+        <h4>Popular</h4>
+        <a href="/tools/qr-code-generator/">QR Code Generator</a>
+        <a href="/tools/background-remover/">Background Remover</a>
+        <a href="/tools/pdf-merger/">PDF Merger</a>
+        <a href="/tools/word-counter/">Word Counter</a>
+      </div>
+      <div>
+        <h4>Categories</h4>
+        <a href="/#image">Image Tools</a>
+        <a href="/#pdf">PDF &amp; Documents</a>
+        <a href="/#calculators">Calculators</a>
+        <a href="/#developer">Developer Tools</a>
+      </div>
+      <div>
+        <h4>Site</h4>
+        <a href="/">Home</a>
+        <a href="/#all-tools">All Tools</a>
+        <a href="/sitemap.xml">Sitemap</a>
+      </div>
+    </div>
+    <div class="f-bottom">© 2026 ToolNest · Free tools for everyone · Made with care</div>
+  </div>
+</footer>
+
+<script src="/assets/site.js?v=5"></script>
+
+<script>
+(function () {
+  'use strict';
+  var P = 'pomodoro-timer-';
+  var ERR = P + 'error';
+  function g(id) { return document.getElementById(P + id); }
+  function set(id, v) { var el = g(id); if (el) el.textContent = v; }
+  var phases = [], idx = 0, cycle = 1;
+  var running = false, remainingMs = 0, endStamp = 0, timerId = null;
+  function pad(n) { return (n < 10 ? '0' : '') + n; }
+  function fmtMs(ms) {
+    var s = Math.max(0, Math.ceil(ms / 1000));
+    return pad(Math.floor(s / 60)) + ':' + pad(s % 60);
+  }
+  function beep() {
+    try {
+      var AC = window.AudioContext || window.webkitAudioContext;
+      if (!AC) return;
+      var ctx = new AC(), o = ctx.createOscillator(), gn = ctx.createGain();
+      o.connect(gn); gn.connect(ctx.destination);
+      o.type = 'sine'; o.frequency.value = 880;
+      gn.gain.setValueAtTime(0.001, ctx.currentTime);
+      gn.gain.exponentialRampToValueAtTime(0.4, ctx.currentTime + 0.03);
+      gn.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.7);
+      o.start(); o.stop(ctx.currentTime + 0.75);
+    } catch (e) { /* audio unavailable */ }
+  }
+  function readSettings() {
+    var f = parseInt(g('focus').value, 10), s = parseInt(g('short').value, 10),
+        l = parseInt(g('long').value, 10), r = parseInt(g('rounds').value, 10);
+    if ([f, s, l, r].some(isNaN) || f < 1 || f > 180 || s < 1 || s > 60 || l < 1 || l > 90 || r < 1 || r > 12) {
+      TN.setErr(ERR, 'Check the settings: focus 1–180, short break 1–60, long break 1–90, sessions 1–12.');
+      return null;
+    }
+    TN.clearErr(ERR);
+    return { f: f, s: s, l: l, r: r };
+  }
+  function build() {
+    var st = readSettings();
+    if (!st) return false;
+    phases = [];
+    for (var i = 1; i <= st.r; i++) {
+      phases.push({ label: 'Focus ' + i + ' of ' + st.r, secs: st.f * 60, focus: true, n: i });
+      if (i < st.r) phases.push({ label: 'Short break', secs: st.s * 60, focus: false });
+    }
+    phases.push({ label: 'Long break', secs: st.l * 60, focus: false, long: true });
+    return true;
+  }
+  function dots() {
+    var r = parseInt(g('rounds').value, 10) || 4;
+    var done = 0;
+    for (var i = 0; i <= idx && i < phases.length; i++) if (phases[i].focus) done = phases[i].n;
+    if (phases[idx] && phases[idx].long) done = r;
+    var s = '';
+    for (var j = 1; j <= r; j++) s += j <= done ? '●' : '○';
+    return s;
+  }
+  function render() {
+    if (!phases.length) return;
+    set('phase', phases[idx].label);
+    set('display', fmtMs(remainingMs));
+    set('dots', dots());
+    set('cycle', 'Cycle ' + cycle);
+    g('start').textContent = running ? 'Pause' : 'Start';
+  }
+  function tick() {
+    var rem = endStamp - Date.now();
+    if (rem <= 0) { advance(); return; }
+    remainingMs = rem;
+    set('display', fmtMs(rem));
+  }
+  function advance() {
+    beep();
+    idx++;
+    if (idx >= phases.length) { idx = 0; cycle++; }
+    remainingMs = phases[idx].secs * 1000;
+    if (running) endStamp = Date.now() + remainingMs;
+    render();
+  }
+  function stopTimer() {
+    if (timerId !== null) { clearInterval(timerId); timerId = null; }
+    running = false;
+  }
+  function startPause() {
+    if (!phases.length && !build()) return;
+    if (running) {
+      remainingMs = Math.max(0, endStamp - Date.now());
+      stopTimer(); render(); return;
+    }
+    if (!readSettings()) return;
+    endStamp = Date.now() + remainingMs;
+    running = true;
+    timerId = setInterval(tick, 250);
+    render();
+  }
+  function reset() {
+    stopTimer();
+    if (!build()) return;
+    idx = 0; cycle = 1;
+    remainingMs = phases[0].secs * 1000;
+    set('phase', 'Ready');
+    render();
+  }
+  try {
+    if (!build()) { phases = [{ label: 'Focus 1 of 4', secs: 1500, focus: true, n: 1 }]; }
+    idx = 0; cycle = 1;
+    remainingMs = phases[0].secs * 1000;
+    render();
+    TN.on(P + 'start', 'click', startPause);
+    TN.on(P + 'skip', 'click', function () { if (!phases.length && !build()) return; advance(); });
+    TN.on(P + 'reset', 'click', reset);
+    ['focus', 'short', 'long', 'rounds'].forEach(function (k) {
+      TN.on(P + k, 'change', function () { reset(); });
+    });
+  } catch (e) { /* never throw on load */ }
+})();
+
+</script>
+</body>
+</html>

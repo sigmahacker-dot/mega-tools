@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Medication Reminder — Free Online | ToolNest</title>
+<meta name="description" content="Keep a daily medication schedule with countdowns to your next dose, saved in your browser.">
+<meta name="keywords" content="medication reminder, pill reminder, medicine tracker, dose reminder, medication schedule">
+<link rel="canonical" href="https://toolnest.vercel.app/tools/medication-reminder/">
+<meta name="theme-color" content="#07070b">
+<meta property="og:title" content="Medication Reminder — Free Online | ToolNest">
+<meta property="og:description" content="Keep a daily medication schedule with countdowns to your next dose, saved in your browser.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css?v=4">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%23e01111'/><text x='50' y='68' font-size='58' text-anchor='middle' fill='white' font-family='Arial' font-weight='bold'>T</text></svg>">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebApplication","name":"Medication Reminder","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0"},"url":"https://toolnest.vercel.app/tools/medication-reminder/","description":"Keep a daily medication schedule with countdowns to your next dose, saved in your browser."},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Does this remind me if the tab is closed?","acceptedAnswer":{"@type":"Answer","text":"No — countdowns only run while the page is open. Keep the tab open or use your phone alarm for critical medication."}},{"@type":"Question","name":"What happens after I press Taken?","acceptedAnswer":{"@type":"Answer","text":"The dose is marked with a timestamp and the countdown moves to the next scheduled time (tomorrow if today's time passed)."}},{"@type":"Question","name":"Is my medication list private?","acceptedAnswer":{"@type":"Answer","text":"Yes. It is stored only in this browser's local storage and never sent anywhere."}}]}]}</script>
+</head>
+<body>
+<header class="site-header">
+  <div class="container">
+    <a class="logo" href="/"><span class="logo-mark">T</span> ToolNest</a>
+    <div class="header-right">
+      <form class="nav-search" action="/" method="get" role="search">
+        <span class="ns-icon">🔍</span>
+        <input type="search" name="q" placeholder="Search tools…" aria-label="Search tools" autocomplete="off">
+      </form>
+      <div class="menu-wrap">
+        <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="menuPanel" aria-label="Open menu"><span></span><span></span><span></span></button>
+        <nav class="menu-panel" id="menuPanel" aria-label="Site">
+          <a href="/">Home</a>
+          <a href="/#categories">Categories</a>
+          <a href="/#all-tools">All Tools</a>
+        </nav>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ADSTERRA-HEADER: paste your Adsterra banner ad code inside the div below -->
+<div class="container"><div class="ad-slot ad-leaderboard" data-ad="header"></div></div>
+
+<main class="container">
+  <nav class="crumbs"><a href="/">Home</a> &rsaquo; <a href="/#health">Health &amp; Fitness</a> &rsaquo; Medication Reminder</nav>
+  <div class="tool-hero">
+    <h1>Medication Reminder</h1>
+    <p>Keep a daily medication schedule with countdowns to your next dose, saved in your browser.</p>
+  </div>
+
+  <div class="tool-card">
+  <div class="grid2">
+    <div class="field"><label for="med-name">Medication name</label><input type="text" class="input" id="med-name" placeholder="e.g. Vitamin D"></div>
+    <div class="field"><label for="med-time">Dose time</label><input type="time" class="input" id="med-time" value="08:00"></div>
+    <div class="field"><label>&nbsp;</label><button class="btn" id="med-add">Add medication</button></div>
+  </div>
+  <div class="error" id="medication-reminder-error"></div>
+  <div class="result" id="med-result">
+    <div class="stat-cards">
+      <div class="stat-card"><div class="v" id="med-count">–</div><div class="l">Medications</div></div>
+      <div class="stat-card"><div class="v" id="med-next">–</div><div class="l">Next dose in</div></div>
+    </div>
+    <table class="data">
+      <thead><tr><th>Medication</th><th>Time</th><th>Next dose</th><th>Status</th><th></th></tr></thead>
+      <tbody id="med-body"><tr><td colspan="5" class="muted">No medications added yet.</td></tr></tbody>
+    </table>
+    <p class="note">Keep this tab open for live countdowns. For critical medication, also set a phone alarm.</p>
+  </div>
+</div>
+
+  <!-- ADSTERRA-INCONTENT: paste your Adsterra native/in-content ad code inside the div below -->
+  <div class="ad-slot" data-ad="incontent"></div>
+
+  <div class="info-grid">
+    <div class="info-card">
+      <h2>📖 How to use</h2>
+      <ol><li>Add each medication with its daily dose time.</li><li>The list shows a live countdown to every next dose.</li><li>Press Taken when you take it, or delete old entries.</li></ol>
+    </div>
+    <div class="info-card">
+      <h2>❓ Frequently asked questions</h2>
+      <div class="faq"><details><summary>Does this remind me if the tab is closed?</summary><p>No — countdowns only run while the page is open. Keep the tab open or use your phone alarm for critical medication.</p></details><details><summary>What happens after I press Taken?</summary><p>The dose is marked with a timestamp and the countdown moves to the next scheduled time (tomorrow if today&#39;s time passed).</p></details><details><summary>Is my medication list private?</summary><p>Yes. It is stored only in this browser&#39;s local storage and never sent anywhere.</p></details></div>
+    </div>
+  </div>
+
+  <section class="section">
+    <h2>🔗 Related tools</h2>
+    <div class="tool-grid"><a class="tool-link" href="/tools/blood-pressure-tracker/" data-search="blood pressure tracker log blood pressure readings with automatic aha category classification, averages and history saved in your browser. blood pressure tracker bp log blood pressure chart hypertension tracker bp monitor log"><span class="t-ico">❤️</span><span class="t-body"><b>Blood Pressure Tracker</b><small>Log blood pressure readings with automatic AHA category classification, averages and history…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/body-fat-calculator/" data-search="body fat calculator estimate body fat percentage with the us navy tape-measure method and see your fitness category. body fat calculator us navy body fat body fat percentage calculator"><span class="t-ico">❤️</span><span class="t-body"><b>Body Fat Calculator</b><small>Estimate body fat percentage with the US Navy tape-measure method and see your fitness categ…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/calorie-calculator/" data-search="tdee calorie calculator estimate your daily calorie needs with the mifflin-st jeor equation and get targets for losing, maintaining or gaining weight. tdee calculator calorie calculator mifflin st jeor daily calorie needs"><span class="t-ico">❤️</span><span class="t-body"><b>TDEE Calorie Calculator</b><small>Estimate your daily calorie needs with the Mifflin-St Jeor equation and get targets for losi…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/carb-cycling-calculator/" data-search="carb cycling calculator build high, medium and low carb day macros from your tdee using the mifflin-st jeor equation. carb cycling calculator macro cycling high low carb days tdee macro calculator carb cycle plan"><span class="t-ico">❤️</span><span class="t-body"><b>Carb Cycling Calculator</b><small>Build high, medium and low carb day macros from your TDEE using the Mifflin-St Jeor equation…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/eye-strain-timer/" data-search="eye strain timer (20-20-20) a 20-20-20 rule timer for screen workers: work 20 minutes, then rest your eyes 20 seconds looking 20 feet away. 20-20-20 timer eye strain timer eye break reminder screen break timer eye rest timer"><span class="t-ico">❤️</span><span class="t-body"><b>Eye Strain Timer (20-20-20)</b><small>A 20-20-20 rule timer for screen workers: work 20 minutes, then rest your eyes 20 seconds lo…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/five-k-pace-calculator/" data-search="5k pace calculator turn a 5k goal time into pace per km, per mile and a full kilometer-by-kilometer split plan. 5k pace calculator 5k goal time running splits calculator 5k training pace pace chart 5k"><span class="t-ico">❤️</span><span class="t-body"><b>5K Pace Calculator</b><small>Turn a 5K goal time into pace per km, per mile and a full kilometer-by-kilometer split plan.</small></span><span class="t-arrow">→</span></a></div>
+  </section>
+</main>
+
+<!-- ADSTERRA-FOOTER: paste your Adsterra footer/banner ad code inside the div below -->
+<div class="container"><div class="ad-slot" data-ad="footer"></div></div>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="f-grid">
+      <div>
+        <span class="brandline"><span class="logo-mark">T</span> ToolNest</span>
+        <p>Free online tools that actually work. No sign-up, no watermarks — and your files never leave your device for client-side tools.</p>
+      </div>
+      <div>
+        <h4>Popular</h4>
+        <a href="/tools/qr-code-generator/">QR Code Generator</a>
+        <a href="/tools/background-remover/">Background Remover</a>
+        <a href="/tools/pdf-merger/">PDF Merger</a>
+        <a href="/tools/word-counter/">Word Counter</a>
+      </div>
+      <div>
+        <h4>Categories</h4>
+        <a href="/#image">Image Tools</a>
+        <a href="/#pdf">PDF &amp; Documents</a>
+        <a href="/#calculators">Calculators</a>
+        <a href="/#developer">Developer Tools</a>
+      </div>
+      <div>
+        <h4>Site</h4>
+        <a href="/">Home</a>
+        <a href="/#all-tools">All Tools</a>
+        <a href="/sitemap.xml">Sitemap</a>
+      </div>
+    </div>
+    <div class="f-bottom">© 2026 ToolNest · Free tools for everyone · Made with care</div>
+  </div>
+</footer>
+
+<script src="/assets/site.js?v=5"></script>
+
+<script>
+(function () {
+  'use strict';
+  var ERR = 'medication-reminder-error';
+  var KEY = 'tn-medication-reminder';
+  var tick = null;
+  function esc(s) { return String(s).replace(/[&<>"']/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]; }); }
+  function load() { try { var s = localStorage.getItem(KEY); var a = s ? JSON.parse(s) : []; return Array.isArray(a) ? a : []; } catch (e) { return []; } }
+  function save(a) { try { localStorage.setItem(KEY, JSON.stringify(a)); } catch (e) {} }
+  function nextDose(timeStr) {
+    var parts = String(timeStr).split(':');
+    var d = new Date();
+    d.setHours(parseInt(parts[0], 10) || 0, parseInt(parts[1], 10) || 0, 0, 0);
+    if (d.getTime() <= Date.now()) d.setDate(d.getDate() + 1);
+    return d.getTime();
+  }
+  function fmtDur(ms) {
+    ms = Math.max(0, ms);
+    var m = Math.floor(ms / 60000);
+    var h = Math.floor(m / 60);
+    if (h > 0) return h + 'h ' + (m % 60) + 'm';
+    return m + 'm';
+  }
+  function render() {
+    var a = load();
+    TN.el('med-count').textContent = a.length;
+    if (!a.length) {
+      TN.el('med-next').textContent = '–';
+      TN.el('med-body').innerHTML = '<tr><td colspan="5" class="muted">No medications added yet.</td></tr>';
+      return;
+    }
+    var soonest = Infinity;
+    var rows = a.map(function (r, i) {
+      var nd = nextDose(r.time);
+      if (nd < soonest) soonest = nd;
+      var status = r.taken ? 'Taken ' + r.taken : 'Pending';
+      return '<tr><td>' + esc(r.name) + '</td><td>' + esc(r.time) + '</td><td>' + fmtDur(nd - Date.now()) + '</td><td>' + esc(status) + '</td>' +
+        '<td><button class="btn" data-take="' + i + '">Taken</button> <button class="btn" data-del="' + i + '">Delete</button></td></tr>';
+    });
+    TN.el('med-next').textContent = fmtDur(soonest - Date.now());
+    TN.el('med-body').innerHTML = rows.join('');
+    var btns = TN.el('med-body').querySelectorAll('button');
+    for (var i = 0; i < btns.length; i++) {
+      (function (b) {
+        if (b.getAttribute('data-take') !== null) b.onclick = function () { take(parseInt(b.getAttribute('data-take'), 10)); };
+        else b.onclick = function () { del(parseInt(b.getAttribute('data-del'), 10)); };
+      })(btns[i]);
+    }
+  }
+  function take(i) {
+    var a = load();
+    if (!a[i]) return;
+    var t = '';
+    try { t = new Date().toLocaleTimeString([], { hour: 'numeric', minute: '2-digit' }); } catch (e) {}
+    a[i].taken = t;
+    save(a); render();
+  }
+  function del(i) { var a = load(); a.splice(i, 1); save(a); render(); }
+  function add() {
+    TN.clearErr(ERR);
+    var name = (TN.el('med-name').value || '').trim();
+    var time = TN.el('med-time').value;
+    if (!name) { TN.setErr(ERR, 'Enter a medication name.'); return; }
+    if (!time) { TN.setErr(ERR, 'Pick a dose time.'); return; }
+    var a = load();
+    a.push({ name: name, time: time, taken: '' });
+    save(a);
+    TN.el('med-name').value = '';
+    render();
+  }
+  try {
+    TN.on('med-add', 'click', add);
+    if (tick) clearInterval(tick);
+    tick = setInterval(render, 30000);
+    render();
+  } catch (e) { /* never throw on load */ }
+})();
+</script>
+</body>
+</html>

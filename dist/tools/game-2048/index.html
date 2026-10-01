@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>2048 Game — Free Online | ToolNest</title>
+<meta name="description" content="The real 2048 puzzle — slide tiles with arrows or swipe, merge matching numbers, and chase the 2048 tile. Score and best saved.">
+<meta name="keywords" content="2048 game, 2048 puzzle, slide puzzle, number puzzle game, 2048 online">
+<link rel="canonical" href="https://toolnest.vercel.app/tools/game-2048/">
+<meta name="theme-color" content="#07070b">
+<meta property="og:title" content="2048 Game — Free Online | ToolNest">
+<meta property="og:description" content="The real 2048 puzzle — slide tiles with arrows or swipe, merge matching numbers, and chase the 2048 tile. Score and best saved.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css?v=4">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%23e01111'/><text x='50' y='68' font-size='58' text-anchor='middle' fill='white' font-family='Arial' font-weight='bold'>T</text></svg>">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebApplication","name":"2048 Game","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0"},"url":"https://toolnest.vercel.app/tools/game-2048/","description":"The real 2048 puzzle — slide tiles with arrows or swipe, merge matching numbers, and chase the 2048 tile. Score and best saved."},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How do I play?","acceptedAnswer":{"@type":"Answer","text":"Arrow keys (or WASD) on desktop, swipe on mobile. Every move slides all tiles and merges matching pairs."}},{"@type":"Question","name":"How do I win?","acceptedAnswer":{"@type":"Answer","text":"You win when you create the 2048 tile — but you can keep playing for a higher score after that."}},{"@type":"Question","name":"Is my best score saved?","acceptedAnswer":{"@type":"Answer","text":"Your best score is saved in this browser."}},{"@type":"Question","name":"Does it work on mobile?","acceptedAnswer":{"@type":"Answer","text":"Yes — touch swipe is fully supported."}}]}]}</script>
+</head>
+<body>
+<header class="site-header">
+  <div class="container">
+    <a class="logo" href="/"><span class="logo-mark">T</span> ToolNest</a>
+    <div class="header-right">
+      <form class="nav-search" action="/" method="get" role="search">
+        <span class="ns-icon">🔍</span>
+        <input type="search" name="q" placeholder="Search tools…" aria-label="Search tools" autocomplete="off">
+      </form>
+      <div class="menu-wrap">
+        <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="menuPanel" aria-label="Open menu"><span></span><span></span><span></span></button>
+        <nav class="menu-panel" id="menuPanel" aria-label="Site">
+          <a href="/">Home</a>
+          <a href="/#categories">Categories</a>
+          <a href="/#all-tools">All Tools</a>
+        </nav>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ADSTERRA-HEADER: paste your Adsterra banner ad code inside the div below -->
+<div class="container"><div class="ad-slot ad-leaderboard" data-ad="header"></div></div>
+
+<main class="container">
+  <nav class="crumbs"><a href="/">Home</a> &rsaquo; <a href="/#fun">Fun &amp; Lifestyle</a> &rsaquo; 2048 Game</nav>
+  <div class="tool-hero">
+    <h1>2048 Game</h1>
+    <p>The real 2048 puzzle — slide tiles with arrows or swipe, merge matching numbers, and chase the 2048 tile. Score and best saved.</p>
+  </div>
+
+  <div class="tool-card" style="text-align:center">
+  <div class="stat-cards" style="max-width:420px;margin:0 auto 12px">
+    <div class="stat-card"><div class="v" id="game-2048-score">0</div><div class="l">Score</div></div>
+    <div class="stat-card"><div class="v" id="game-2048-best">0</div><div class="l">Best</div></div>
+  </div>
+  <div id="game-2048-board" style="display:grid;grid-template-columns:repeat(4,1fr);gap:8px;max-width:380px;margin:0 auto;background:#bbada0;padding:8px;border-radius:10px;touch-action:none"></div>
+  <p class="muted" id="game-2048-msg" style="min-height:24px;margin:12px 0">Use arrow keys / WASD or swipe.</p>
+  <div class="btn-row" style="justify-content:center">
+    <button class="btn" id="game-2048-new">New game</button>
+  </div>
+  <div class="error" id="game-2048-error"></div>
+</div>
+
+
+  <!-- ADSTERRA-INCONTENT: paste your Adsterra native/in-content ad code inside the div below -->
+  <div class="ad-slot" data-ad="incontent"></div>
+
+  <div class="info-grid">
+    <div class="info-card">
+      <h2>📖 How to use</h2>
+      <ol><li>Press New game.</li><li>Slide tiles with arrow keys or swipe.</li><li>Matching tiles merge into their sum.</li><li>Reach 2048 to win — then keep going!</li></ol>
+    </div>
+    <div class="info-card">
+      <h2>❓ Frequently asked questions</h2>
+      <div class="faq"><details><summary>How do I play?</summary><p>Arrow keys (or WASD) on desktop, swipe on mobile. Every move slides all tiles and merges matching pairs.</p></details><details><summary>How do I win?</summary><p>You win when you create the 2048 tile — but you can keep playing for a higher score after that.</p></details><details><summary>Is my best score saved?</summary><p>Your best score is saved in this browser.</p></details><details><summary>Does it work on mobile?</summary><p>Yes — touch swipe is fully supported.</p></details></div>
+    </div>
+  </div>
+
+  <section class="section">
+    <h2>🔗 Related tools</h2>
+    <div class="tool-grid"><a class="tool-link" href="/tools/aim-trainer-game/" data-search="aim trainer game test and train your aim — targets pop up at random spots for 30 seconds. hits, misses and accuracy are tracked live. aim trainer aim test reaction test click speed test fps aim trainer"><span class="t-ico">🎲</span><span class="t-body"><b>Aim Trainer Game</b><small>Test and train your aim — targets pop up at random spots for 30 seconds. Hits, misses and ac…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/baby-name-generator/" data-search="baby name generator discover baby names by gender and origin — pakistani, arabic, western, indian or turkish — with meanings, random picks and tap-to-copy. baby name generator baby names with meanings muslim baby names boy girl names"><span class="t-ico">🎲</span><span class="t-body"><b>Baby Name Generator</b><small>Discover baby names by gender and origin — Pakistani, Arabic, Western, Indian or Turkish — w…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/battery-status-checker/" data-search="battery status checker check your device&#39;s battery level, charging status and estimated time remaining, with live updates — where your browser supports the battery api. battery status battery level checker laptop battery charging status"><span class="t-ico">🎲</span><span class="t-body"><b>Battery Status Checker</b><small>Check your device&#39;s battery level, charging status and estimated time remaining, with live u…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/birthday-countdown/" data-search="birthday countdown enter your birthday for a live countdown to your next one — days, hours, minutes and seconds — plus the age you&#39;ll turn and a fun message. birthday countdown countdown to birthday how old am i birthday timer"><span class="t-ico">🎲</span><span class="t-body"><b>Birthday Countdown</b><small>Enter your birthday for a live countdown to your next one — days, hours, minutes and seconds…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/calendar-generator/" data-search="calendar generator generate a monthly calendar for any month and year, with correct weekdays, leap years, today&#39;s date highlighted, and previous/next month navigation. calendar generator monthly calendar printable calendar month planner"><span class="t-ico">🎲</span><span class="t-body"><b>Calendar Generator</b><small>Generate a monthly calendar for any month and year, with correct weekdays, leap years, today…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/coin-flip/" data-search="coin flip flip a virtual coin with a fun animated toss. get instant heads or tails results, keep a running tally of both sides, and reset the count whenever you like. coin flip heads or tails coin toss random coin"><span class="t-ico">🎲</span><span class="t-body"><b>Coin Flip</b><small>Flip a virtual coin with a fun animated toss. Get instant Heads or Tails results, keep a run…</small></span><span class="t-arrow">→</span></a></div>
+  </section>
+</main>
+
+<!-- ADSTERRA-FOOTER: paste your Adsterra footer/banner ad code inside the div below -->
+<div class="container"><div class="ad-slot" data-ad="footer"></div></div>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="f-grid">
+      <div>
+        <span class="brandline"><span class="logo-mark">T</span> ToolNest</span>
+        <p>Free online tools that actually work. No sign-up, no watermarks — and your files never leave your device for client-side tools.</p>
+      </div>
+      <div>
+        <h4>Popular</h4>
+        <a href="/tools/qr-code-generator/">QR Code Generator</a>
+        <a href="/tools/background-remover/">Background Remover</a>
+        <a href="/tools/pdf-merger/">PDF Merger</a>
+        <a href="/tools/word-counter/">Word Counter</a>
+      </div>
+      <div>
+        <h4>Categories</h4>
+        <a href="/#image">Image Tools</a>
+        <a href="/#pdf">PDF &amp; Documents</a>
+        <a href="/#calculators">Calculators</a>
+        <a href="/#developer">Developer Tools</a>
+      </div>
+      <div>
+        <h4>Site</h4>
+        <a href="/">Home</a>
+        <a href="/#all-tools">All Tools</a>
+        <a href="/sitemap.xml">Sitemap</a>
+      </div>
+    </div>
+    <div class="f-bottom">© 2026 ToolNest · Free tools for everyone · Made with care</div>
+  </div>
+</footer>
+
+<script src="/assets/site.js?v=5"></script>
+
+<script>
+/* 2048 — real slide/merge/spawn/game-over, keyboard + swipe. */
+(function () {
+  'use strict';
+  var SLUG = 'game-2048';
+  var SIZE = 4;
+  var grid = [];
+  var score = 0, best = 0, over = false, won = false, keepGoing = false;
+  var TILEC = { 2: '#eee4da', 4: '#ede0c8', 8: '#f2b179', 16: '#f59563', 32: '#f67c5f', 64: '#f65e3b', 128: '#edcf72', 256: '#edcc61', 512: '#edc850', 1024: '#edc53f', 2048: '#edc22e' };
+
+  function $(id) { return document.getElementById(id); }
+
+  function loadBest() {
+    try { best = parseInt(localStorage.getItem('t2048-best') || '0', 10) || 0; } catch (e) { best = 0; }
+    $('game-2048-best').textContent = best;
+  }
+
+  function empty() { grid = []; for (var i = 0; i < SIZE * SIZE; i++) grid.push(0); }
+
+  function empties() {
+    var out = [];
+    for (var i = 0; i < grid.length; i++) if (!grid[i]) out.push(i);
+    return out;
+  }
+
+  function spawn() {
+    var e = empties();
+    if (!e.length) return;
+    var i = e[Math.floor(Math.random() * e.length)];
+    grid[i] = Math.random() < 0.9 ? 2 : 4;
+  }
+
+  function slideRow(row) {
+    // returns {cells, gained, moved}
+    var cells = row.filter(function (v) { return v; });
+    var gained = 0, merged = [], moved = false;
+    for (var i = 0; i < cells.length - 1; i++) {
+      if (cells[i] === cells[i + 1]) {
+        cells[i] *= 2;
+        gained += cells[i];
+        cells.splice(i + 1, 1);
+      }
+    }
+    while (cells.length < SIZE) cells.push(0);
+    for (var j = 0; j < SIZE; j++) if (cells[j] !== row[j]) { moved = true; break; }
+    return { cells: cells, gained: gained, moved: moved };
+  }
+
+  function move(dir) {
+    // dir: 0=left,1=up,2=right,3=down
+    if (over) return;
+    var moved = false, gained = 0;
+    for (var l = 0; l < SIZE; l++) {
+      var line = [];
+      for (var k = 0; k < SIZE; k++) {
+        var r, c;
+        if (dir === 0) { r = l; c = k; }
+        else if (dir === 2) { r = l; c = SIZE - 1 - k; }
+        else if (dir === 1) { r = k; c = l; }
+        else { r = SIZE - 1 - k; c = l; }
+        line.push(grid[r * SIZE + c]);
+      }
+      var res = slideRow(line);
+      if (res.moved) moved = true;
+      gained += res.gained;
+      for (var k2 = 0; k2 < SIZE; k2++) {
+        var r2, c2;
+        if (dir === 0) { r2 = l; c2 = k2; }
+        else if (dir === 2) { r2 = l; c2 = SIZE - 1 - k2; }
+        else if (dir === 1) { r2 = k2; c2 = l; }
+        else { r2 = SIZE - 1 - k2; c2 = l; }
+        grid[r2 * SIZE + c2] = res.cells[k2];
+      }
+    }
+    if (!moved) return;
+    score += gained;
+    spawn();
+    render();
+    if (!won && grid.indexOf(2048) >= 0) {
+      won = true;
+      $('game-2048-msg').textContent = '🎉 You made 2048! Keep going for a higher score.';
+    }
+    if (empties().length === 0 && !canMove()) {
+      over = true;
+      $('game-2048-msg').textContent = '💀 Game over! Final score: ' + score + '. Press New game.';
+    }
+    if (score > best) {
+      best = score;
+      try { localStorage.setItem('t2048-best', String(best)); } catch (e) {}
+      $('game-2048-best').textContent = best;
+    }
+  }
+
+  function canMove() {
+    for (var r = 0; r < SIZE; r++) for (var c = 0; c < SIZE; c++) {
+      var v = grid[r * SIZE + c];
+      if (!v) return true;
+      if (c + 1 < SIZE && grid[r * SIZE + c + 1] === v) return true;
+      if (r + 1 < SIZE && grid[(r + 1) * SIZE + c] === v) return true;
+    }
+    return false;
+  }
+
+  function render() {
+    var b = $('game-2048-board');
+    b.innerHTML = '';
+    grid.forEach(function (v) {
+      var d = document.createElement('div');
+      d.style.cssText = 'aspect-ratio:1;display:flex;align-items:center;justify-content:center;border-radius:6px;font-weight:800;' +
+        'background:' + (TILEC[v] || '#3c3a32') + ';color:' + (v > 4 ? '#f9f6f2' : '#776e65') + ';' +
+        'font-size:' + (v >= 1024 ? '20px' : v >= 128 ? '24px' : '30px');
+      d.textContent = v || '';
+      if (!v) d.style.background = 'rgba(238,228,218,.35)';
+      b.appendChild(d);
+    });
+    $('game-2048-score').textContent = score;
+  }
+
+  function newGame() {
+    empty();
+    score = 0; over = false; won = false;
+    spawn(); spawn();
+    $('game-2048-score').textContent = '0';
+    $('game-2048-msg').textContent = 'Use arrow keys / WASD or swipe.';
+    render();
+  }
+
+  try {
+    loadBest();
+    TN.on('game-2048-new', 'click', newGame);
+    document.addEventListener('keydown', function (e) {
+      var board = $('game-2048-board');
+      if (!board || !board.offsetParent) return; // tool not visible
+      var map = { ArrowLeft: 0, a: 0, A: 0, ArrowUp: 1, w: 1, W: 1, ArrowRight: 2, d: 2, D: 2, ArrowDown: 3, s: 3, S: 3 };
+      if (e.key in map) { e.preventDefault(); move(map[e.key]); }
+    });
+    var sx = 0, sy = 0;
+    var bd = $('game-2048-board');
+    bd.addEventListener('touchstart', function (e) {
+      var t = e.touches[0];
+      sx = t.clientX; sy = t.clientY;
+    }, { passive: true });
+    bd.addEventListener('touchend', function (e) {
+      var t = e.changedTouches[0];
+      var dx = t.clientX - sx, dy = t.clientY - sy;
+      if (Math.abs(dx) < 24 && Math.abs(dy) < 24) return;
+      e.preventDefault();
+      if (Math.abs(dx) > Math.abs(dy)) move(dx > 0 ? 2 : 0);
+      else move(dy > 0 ? 3 : 1);
+    });
+    newGame();
+  } catch (e) { /* never throw on load */ }
+})();
+
+</script>
+</body>
+</html>

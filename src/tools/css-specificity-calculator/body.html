@@ -1,0 +1,12 @@
+<div class="tool-card">
+  <div class="field"><label for="spec-sel">CSS selector</label><input type="text" class="input" id="spec-sel" placeholder="e.g. #nav ul.menu li a:hover::before" style="font-family:ui-monospace,monospace"></div>
+  <div class="error" id="css-specificity-calculator-error"></div>
+  <div class="result" id="spec-result">
+    <div class="stat-cards">
+      <div class="stat-card"><div class="v" id="spec-abc" style="font-family:ui-monospace,monospace">–</div><div class="l">Specificity (a, b, c)</div></div>
+      <div class="stat-card"><div class="v" id="spec-score">–</div><div class="l">Score</div></div>
+    </div>
+    <table class="data"><thead><tr><th>Component</th><th>Count</th><th>Matched</th></tr></thead><tbody id="spec-body"></tbody></table>
+    <p class="note">Compare left to right: (1,0,0) beats (0,99,99). <span class="muted">:where()</span> always contributes 0; <span class="muted">:not() / :is() / :has()</span> take their most specific argument.</p>
+  </div>
+</div>

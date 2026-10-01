@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mulch &amp; Soil Calculator — Free Online | ToolNest</title>
+<meta name="description" content="Work out how many cubic yards or bags of mulch, soil or gravel you need for any bed or area.">
+<meta name="keywords" content="mulch calculator, soil calculator, cubic yards mulch, how many bags of mulch, garden soil estimator">
+<link rel="canonical" href="https://toolnest.vercel.app/tools/mulch-soil-calculator/">
+<meta name="theme-color" content="#07070b">
+<meta property="og:title" content="Mulch &amp; Soil Calculator — Free Online | ToolNest">
+<meta property="og:description" content="Work out how many cubic yards or bags of mulch, soil or gravel you need for any bed or area.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css?v=4">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%23e01111'/><text x='50' y='68' font-size='58' text-anchor='middle' fill='white' font-family='Arial' font-weight='bold'>T</text></svg>">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebApplication","name":"Mulch & Soil Calculator","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0"},"url":"https://toolnest.vercel.app/tools/mulch-soil-calculator/","description":"Work out how many cubic yards or bags of mulch, soil or gravel you need for any bed or area."},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How deep should mulch be?","acceptedAnswer":{"@type":"Answer","text":"2-4 inches is standard for weed control and moisture. Topsoil for planting beds is usually 4-6 inches deep."}},{"@type":"Question","name":"How many 2 cu ft bags make a cubic yard?","acceptedAnswer":{"@type":"Answer","text":"13.5 bags. A cubic yard is 27 cubic feet, so 27 ÷ 2 = 13.5."}},{"@type":"Question","name":"Does the material type change the math?","acceptedAnswer":{"@type":"Answer","text":"No. Cubic yards measure volume, which is the same for mulch, soil, sand or gravel. Only the weight differs."}}]}]}</script>
+</head>
+<body>
+<header class="site-header">
+  <div class="container">
+    <a class="logo" href="/"><span class="logo-mark">T</span> ToolNest</a>
+    <div class="header-right">
+      <form class="nav-search" action="/" method="get" role="search">
+        <span class="ns-icon">🔍</span>
+        <input type="search" name="q" placeholder="Search tools…" aria-label="Search tools" autocomplete="off">
+      </form>
+      <div class="menu-wrap">
+        <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="menuPanel" aria-label="Open menu"><span></span><span></span><span></span></button>
+        <nav class="menu-panel" id="menuPanel" aria-label="Site">
+          <a href="/">Home</a>
+          <a href="/#categories">Categories</a>
+          <a href="/#all-tools">All Tools</a>
+        </nav>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ADSTERRA-HEADER: paste your Adsterra banner ad code inside the div below -->
+<div class="container"><div class="ad-slot ad-leaderboard" data-ad="header"></div></div>
+
+<main class="container">
+  <nav class="crumbs"><a href="/">Home</a> &rsaquo; <a href="/#calculators">Calculators</a> &rsaquo; Mulch &amp; Soil Calculator</nav>
+  <div class="tool-hero">
+    <h1>Mulch &amp; Soil Calculator</h1>
+    <p>Work out how many cubic yards or bags of mulch, soil or gravel you need for any bed or area.</p>
+  </div>
+
+  <div class="tool-card">
+  <div class="grid2">
+    <div class="field"><label for="mulch-length">Length (ft)</label><input type="number" class="input" id="mulch-length" min="0" step="any" placeholder="20"></div>
+    <div class="field"><label for="mulch-width">Width (ft)</label><input type="number" class="input" id="mulch-width" min="0" step="any" placeholder="4"></div>
+    <div class="field"><label for="mulch-depth">Depth (inches)</label><input type="number" class="input" id="mulch-depth" min="0" step="any" placeholder="3"></div>
+  </div>
+  <div class="error" id="mulch-soil-calculator-error"></div>
+  <div class="result" id="mulch-result">
+    <div class="stat-cards">
+      <div class="stat-card"><div class="v" id="mulch-yards">–</div><div class="l">Cubic yards</div></div>
+      <div class="stat-card"><div class="v" id="mulch-bags">–</div><div class="l">2 cu ft bags</div></div>
+      <div class="stat-card"><div class="v" id="mulch-feet">–</div><div class="l">Cubic feet</div></div>
+    </div>
+    <p class="note">Volume = L × W × (depth ÷ 12) ft³ ÷ 27. Bag count is rounded up.</p>
+  </div>
+</div>
+
+  <!-- ADSTERRA-INCONTENT: paste your Adsterra native/in-content ad code inside the div below -->
+  <div class="ad-slot" data-ad="incontent"></div>
+
+  <div class="info-grid">
+    <div class="info-card">
+      <h2>📖 How to use</h2>
+      <ol><li>Enter the bed length and width in feet.</li><li>Enter the depth in inches (3 is standard for mulch).</li><li>Read the cubic yards needed and the equivalent bag count.</li></ol>
+    </div>
+    <div class="info-card">
+      <h2>❓ Frequently asked questions</h2>
+      <div class="faq"><details><summary>How deep should mulch be?</summary><p>2-4 inches is standard for weed control and moisture. Topsoil for planting beds is usually 4-6 inches deep.</p></details><details><summary>How many 2 cu ft bags make a cubic yard?</summary><p>13.5 bags. A cubic yard is 27 cubic feet, so 27 ÷ 2 = 13.5.</p></details><details><summary>Does the material type change the math?</summary><p>No. Cubic yards measure volume, which is the same for mulch, soil, sand or gravel. Only the weight differs.</p></details></div>
+    </div>
+  </div>
+
+  <section class="section">
+    <h2>🔗 Related tools</h2>
+    <div class="tool-grid"><a class="tool-link" href="/tools/age-calculator/" data-search="age calculator enter your date of birth to get your exact age in years, months and days, plus total weeks, days, hours, the weekday you were born, and days until your next birthday. age calculator calculate age date of birth age"><span class="t-ico">🧮</span><span class="t-body"><b>Age Calculator</b><small>Enter your date of birth to get your exact age in years, months and days, plus total weeks, …</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/aspect-ratio-calculator/" data-search="aspect ratio calculator reduce any width × height to its simplest aspect ratio, or find the missing side from a ratio. aspect ratio calculator reduce aspect ratio 16:9 calculator missing side calculator ratio simplifier"><span class="t-ico">🧮</span><span class="t-body"><b>Aspect Ratio Calculator</b><small>Reduce any width × height to its simplest aspect ratio, or find the missing side from a rati…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/bmi-calculator/" data-search="bmi calculator calculate your body mass index from height and weight in metric or imperial units. get your bmi value, weight category and the healthy weight range for your height. bmi calculator body mass index healthy weight calculator"><span class="t-ico">🧮</span><span class="t-body"><b>BMI Calculator</b><small>Calculate your Body Mass Index from height and weight in metric or imperial units. Get your …</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/concrete-calculator/" data-search="concrete calculator calculate cubic yards of concrete for any slab, plus how many 60 lb or 80 lb bags that equals. concrete calculator cubic yards concrete concrete bags calculator slab concrete estimator how much concrete"><span class="t-ico">🧮</span><span class="t-body"><b>Concrete Calculator</b><small>Calculate cubic yards of concrete for any slab, plus how many 60 lb or 80 lb bags that equal…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/cooking-measurement-scaler/" data-search="cooking measurement scaler scale any recipe up or down: enter servings and ingredients, get rescaled amounts with metric equivalents. recipe scaler scale recipe calculator cooking measurement converter adjust recipe servings ingredient scaler"><span class="t-ico">🧮</span><span class="t-body"><b>Cooking Measurement Scaler</b><small>Scale any recipe up or down: enter servings and ingredients, get rescaled amounts with metri…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/currency-converter/" data-search="currency converter convert any amount between 30+ world currencies with live exchange rates. pick source and target currencies, convert instantly, and see the rate and last update date. currency converter exchange rate converter usd to pkr converter"><span class="t-ico">🧮</span><span class="t-body"><b>Currency Converter</b><small>Convert any amount between 30+ world currencies with live exchange rates. Pick source and ta…</small></span><span class="t-arrow">→</span></a></div>
+  </section>
+</main>
+
+<!-- ADSTERRA-FOOTER: paste your Adsterra footer/banner ad code inside the div below -->
+<div class="container"><div class="ad-slot" data-ad="footer"></div></div>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="f-grid">
+      <div>
+        <span class="brandline"><span class="logo-mark">T</span> ToolNest</span>
+        <p>Free online tools that actually work. No sign-up, no watermarks — and your files never leave your device for client-side tools.</p>
+      </div>
+      <div>
+        <h4>Popular</h4>
+        <a href="/tools/qr-code-generator/">QR Code Generator</a>
+        <a href="/tools/background-remover/">Background Remover</a>
+        <a href="/tools/pdf-merger/">PDF Merger</a>
+        <a href="/tools/word-counter/">Word Counter</a>
+      </div>
+      <div>
+        <h4>Categories</h4>
+        <a href="/#image">Image Tools</a>
+        <a href="/#pdf">PDF &amp; Documents</a>
+        <a href="/#calculators">Calculators</a>
+        <a href="/#developer">Developer Tools</a>
+      </div>
+      <div>
+        <h4>Site</h4>
+        <a href="/">Home</a>
+        <a href="/#all-tools">All Tools</a>
+        <a href="/sitemap.xml">Sitemap</a>
+      </div>
+    </div>
+    <div class="f-bottom">© 2026 ToolNest · Free tools for everyone · Made with care</div>
+  </div>
+</footer>
+
+<script src="/assets/site.js?v=5"></script>
+
+<script>
+(function () {
+  'use strict';
+  var ERR = 'mulch-soil-calculator-error';
+  function calc() {
+    if (!TN.el('mulch-length')) return;
+    TN.clearErr(ERR);
+    var L = parseFloat(TN.el('mulch-length').value);
+    var W = parseFloat(TN.el('mulch-width').value);
+    var D = parseFloat(TN.el('mulch-depth').value);
+    if (!(L > 0)) { TN.setErr(ERR, 'Enter a length greater than 0 ft.'); return; }
+    if (!(W > 0)) { TN.setErr(ERR, 'Enter a width greater than 0 ft.'); return; }
+    if (!(D > 0)) { TN.setErr(ERR, 'Enter a depth greater than 0 inches.'); return; }
+    var ft3 = L * W * (D / 12);
+    var yd3 = ft3 / 27;
+    TN.el('mulch-yards').textContent = yd3.toFixed(2) + ' yd³';
+    TN.el('mulch-bags').textContent = Math.ceil(ft3 / 2);
+    TN.el('mulch-feet').textContent = ft3.toFixed(1) + ' ft³';
+  }
+  try {
+    TN.on('mulch-length', 'input', calc);
+    TN.on('mulch-width', 'input', calc);
+    TN.on('mulch-depth', 'input', calc);
+    calc();
+  } catch (e) { /* never throw on load */ }
+})();
+</script>
+</body>
+</html>

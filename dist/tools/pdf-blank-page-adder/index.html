@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PDF Blank Page Adder — Free Online | ToolNest</title>
+<meta name="description" content="Insert blank pages into a PDF — at the start, at the end, or after any page. Choose page size and how many to add.">
+<meta name="keywords" content="add blank pages pdf, insert blank page pdf, pdf blank page, add pages to pdf, pdf insert pages">
+<link rel="canonical" href="https://toolnest.vercel.app/tools/pdf-blank-page-adder/">
+<meta name="theme-color" content="#07070b">
+<meta property="og:title" content="PDF Blank Page Adder — Free Online | ToolNest">
+<meta property="og:description" content="Insert blank pages into a PDF — at the start, at the end, or after any page. Choose page size and how many to add.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css?v=4">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%23e01111'/><text x='50' y='68' font-size='58' text-anchor='middle' fill='white' font-family='Arial' font-weight='bold'>T</text></svg>">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebApplication","name":"PDF Blank Page Adder","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0"},"url":"https://toolnest.vercel.app/tools/pdf-blank-page-adder/","description":"Insert blank pages into a PDF — at the start, at the end, or after any page. Choose page size and how many to add."},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What blank page sizes are available?","acceptedAnswer":{"@type":"Answer","text":"Yes — Letter, A4, A3, Legal and Tabloid are available, or match the size of the PDF's first page."}},{"@type":"Question","name":"What does “after page N” mean?","acceptedAnswer":{"@type":"Answer","text":"Blank pages are inserted after that page number, pushing the rest of the document down."}},{"@type":"Question","name":"How many blank pages can I add?","acceptedAnswer":{"@type":"Answer","text":"Up to 100 blank pages per run — plenty for note-taking space."}},{"@type":"Question","name":"Is my PDF uploaded?","acceptedAnswer":{"@type":"Answer","text":"No — everything is processed locally in your browser."}}]}]}</script>
+</head>
+<body>
+<header class="site-header">
+  <div class="container">
+    <a class="logo" href="/"><span class="logo-mark">T</span> ToolNest</a>
+    <div class="header-right">
+      <form class="nav-search" action="/" method="get" role="search">
+        <span class="ns-icon">🔍</span>
+        <input type="search" name="q" placeholder="Search tools…" aria-label="Search tools" autocomplete="off">
+      </form>
+      <div class="menu-wrap">
+        <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="menuPanel" aria-label="Open menu"><span></span><span></span><span></span></button>
+        <nav class="menu-panel" id="menuPanel" aria-label="Site">
+          <a href="/">Home</a>
+          <a href="/#categories">Categories</a>
+          <a href="/#all-tools">All Tools</a>
+        </nav>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ADSTERRA-HEADER: paste your Adsterra banner ad code inside the div below -->
+<div class="container"><div class="ad-slot ad-leaderboard" data-ad="header"></div></div>
+
+<main class="container">
+  <nav class="crumbs"><a href="/">Home</a> &rsaquo; <a href="/#pdf">PDF &amp; Documents</a> &rsaquo; PDF Blank Page Adder</nav>
+  <div class="tool-hero">
+    <h1>PDF Blank Page Adder</h1>
+    <p>Insert blank pages into a PDF — at the start, at the end, or after any page. Choose page size and how many to add.</p>
+  </div>
+
+  <div class="tool-card">
+  <div class="field">
+    <label for="pdf-blank-page-adder-file">Upload PDF</label>
+    <input type="file" class="input" id="pdf-blank-page-adder-file" accept="application/pdf,.pdf">
+  </div>
+  <div id="pdf-blank-page-adder-form" hidden>
+    <div class="grid2">
+      <div class="field">
+        <label for="pdf-blank-page-adder-where">Insert</label>
+        <select class="input" id="pdf-blank-page-adder-where">
+          <option value="end">At the end</option>
+          <option value="start">At the start</option>
+          <option value="after">After page…</option>
+        </select>
+      </div>
+      <div class="field" id="pdf-blank-page-adder-after-wrap" hidden>
+        <label for="pdf-blank-page-adder-after">After page number</label>
+        <input type="number" class="input" id="pdf-blank-page-adder-after" min="1" step="1" value="1">
+      </div>
+      <div class="field">
+        <label for="pdf-blank-page-adder-size">Blank page size</label>
+        <select class="input" id="pdf-blank-page-adder-size">
+          <option value="match">Match first page</option>
+          <option value="612,792">Letter (8.5×11 in)</option>
+          <option value="595.28,841.89">A4</option>
+          <option value="841.89,1190.55">A3</option>
+          <option value="612,1008">Legal</option>
+          <option value="792,1224">Tabloid</option>
+        </select>
+      </div>
+      <div class="field">
+        <label for="pdf-blank-page-adder-count">How many (1–100)</label>
+        <input type="number" class="input" id="pdf-blank-page-adder-count" min="1" max="100" step="1" value="1">
+      </div>
+    </div>
+  </div>
+  <div class="btn-row" style="margin-top:12px">
+    <button class="btn" id="pdf-blank-page-adder-go" disabled>Add pages &amp; download</button>
+  </div>
+  <div class="error" id="pdf-blank-page-adder-error"></div>
+  <div class="result" id="pdf-blank-page-adder-result" hidden>
+    <p class="muted" id="pdf-blank-page-adder-info"></p>
+  </div>
+</div>
+
+
+  <!-- ADSTERRA-INCONTENT: paste your Adsterra native/in-content ad code inside the div below -->
+  <div class="ad-slot" data-ad="incontent"></div>
+
+  <div class="info-grid">
+    <div class="info-card">
+      <h2>📖 How to use</h2>
+      <ol><li>Upload your PDF.</li><li>Pick where to insert: start, end, or after a page.</li><li>Choose the blank page size and count.</li><li>Click “Add pages &amp; download” to save.</li></ol>
+    </div>
+    <div class="info-card">
+      <h2>❓ Frequently asked questions</h2>
+      <div class="faq"><details><summary>What blank page sizes are available?</summary><p>Yes — Letter, A4, A3, Legal and Tabloid are available, or match the size of the PDF&#39;s first page.</p></details><details><summary>What does “after page N” mean?</summary><p>Blank pages are inserted after that page number, pushing the rest of the document down.</p></details><details><summary>How many blank pages can I add?</summary><p>Up to 100 blank pages per run — plenty for note-taking space.</p></details><details><summary>Is my PDF uploaded?</summary><p>No — everything is processed locally in your browser.</p></details></div>
+    </div>
+  </div>
+
+  <section class="section">
+    <h2>🔗 Related tools</h2>
+    <div class="tool-grid"><a class="tool-link" href="/tools/esign-pdf/" data-search="esign pdf draw your signature and stamp it onto any page of a pdf. choose the page, position and size with sliders, then download the signed document. esign pdf sign pdf online electronic signature pdf"><span class="t-ico">📄</span><span class="t-body"><b>eSign PDF</b><small>Draw your signature and stamp it onto any page of a PDF. Choose the page, position and size …</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/pdf-compressor/" data-search="pdf compressor shrink a pdf&#39;s file size by re-rendering its pages as compressed images. choose low, medium or high quality and compare sizes before downloading. compress pdf reduce pdf size shrink pdf"><span class="t-ico">📄</span><span class="t-body"><b>PDF Compressor</b><small>Shrink a PDF&#39;s file size by re-rendering its pages as compressed images. Choose Low, Medium …</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/pdf-merger/" data-search="pdf merger combine multiple pdf files into one document. arrange the files in any order, preview each file&#39;s page count, then merge and download the result. merge pdf combine pdf join pdf files"><span class="t-ico">📄</span><span class="t-body"><b>PDF Merger</b><small>Combine multiple PDF files into one document. Arrange the files in any order, preview each f…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/pdf-metadata-editor/" data-search="pdf metadata editor read and edit a pdf&#39;s title, author, subject and keywords metadata. edit pdf metadata pdf title author pdf properties editor"><span class="t-ico">📄</span><span class="t-body"><b>PDF Metadata Editor</b><small>Read and edit a PDF&#39;s title, author, subject and keywords metadata.</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/pdf-page-counter/" data-search="pdf page counter count the pages in any pdf instantly — plus file size, page dimensions, version and encryption status, all read locally. pdf page counter count pdf pages how many pages in pdf pdf info pdf metadata"><span class="t-ico">📄</span><span class="t-body"><b>PDF Page Counter</b><small>Count the pages in any PDF instantly — plus file size, page dimensions, version and encrypti…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/pdf-page-deleter/" data-search="pdf page deleter delete pages from a pdf by number or range — preview the page list, select what to remove, and download the cleaned document. delete pdf pages remove pdf pages pdf page remover edit pdf pages pdf deleter"><span class="t-ico">📄</span><span class="t-body"><b>PDF Page Deleter</b><small>Delete pages from a PDF by number or range — preview the page list, select what to remove, a…</small></span><span class="t-arrow">→</span></a></div>
+  </section>
+</main>
+
+<!-- ADSTERRA-FOOTER: paste your Adsterra footer/banner ad code inside the div below -->
+<div class="container"><div class="ad-slot" data-ad="footer"></div></div>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="f-grid">
+      <div>
+        <span class="brandline"><span class="logo-mark">T</span> ToolNest</span>
+        <p>Free online tools that actually work. No sign-up, no watermarks — and your files never leave your device for client-side tools.</p>
+      </div>
+      <div>
+        <h4>Popular</h4>
+        <a href="/tools/qr-code-generator/">QR Code Generator</a>
+        <a href="/tools/background-remover/">Background Remover</a>
+        <a href="/tools/pdf-merger/">PDF Merger</a>
+        <a href="/tools/word-counter/">Word Counter</a>
+      </div>
+      <div>
+        <h4>Categories</h4>
+        <a href="/#image">Image Tools</a>
+        <a href="/#pdf">PDF &amp; Documents</a>
+        <a href="/#calculators">Calculators</a>
+        <a href="/#developer">Developer Tools</a>
+      </div>
+      <div>
+        <h4>Site</h4>
+        <a href="/">Home</a>
+        <a href="/#all-tools">All Tools</a>
+        <a href="/sitemap.xml">Sitemap</a>
+      </div>
+    </div>
+    <div class="f-bottom">© 2026 ToolNest · Free tools for everyone · Made with care</div>
+  </div>
+</footer>
+
+<script src="/assets/site.js?v=5"></script>
+<script src="https://cdn.jsdelivr.net/npm/pdf-lib@1.17.1/dist/pdf-lib.min.js" defer></script>
+<script>
+/* PDF Blank Page Adder — insert blank pages at start/end/after page N. */
+(function () {
+  'use strict';
+  var SLUG = 'pdf-blank-page-adder';
+  var ERR = SLUG + '-error';
+  var buf = null;
+  var pageCount = 0;
+  var pdfName = 'document.pdf';
+
+  function $(id) { return document.getElementById(id); }
+
+  function go() {
+    if (typeof PDFLib === 'undefined') { TN.setErr(ERR, 'PDF engine failed to load. Check your connection and reload.'); return; }
+    if (!buf) { TN.setErr(ERR, 'Upload a PDF first.'); return; }
+    var count = parseInt($('pdf-blank-page-adder-count').value, 10);
+    if (!(count >= 1 && count <= 100)) { TN.setErr(ERR, 'Enter a page count between 1 and 100.'); return; }
+    var where = $('pdf-blank-page-adder-where').value;
+    var after = parseInt($('pdf-blank-page-adder-after').value, 10) || 1;
+    if (where === 'after' && (after < 1 || after > pageCount)) {
+      TN.setErr(ERR, '“After page” must be between 1 and ' + pageCount + '.');
+      return;
+    }
+    TN.clearErr(ERR);
+    PDFLib.PDFDocument.load(buf.slice(0)).then(function (src) {
+      return PDFLib.PDFDocument.create().then(function (doc) {
+        return doc.copyPages(src, (function () { var a = []; for (var i = 0; i < pageCount; i++) a.push(i); return a; })()).then(function (copied) {
+          copied.forEach(function (p) { doc.addPage(p); });
+          // determine blank page size
+          var sizeOpt = $('pdf-blank-page-adder-size').value;
+          var w, h;
+          if (sizeOpt === 'match') {
+            var s = doc.getPage(0).getSize();
+            w = s.width; h = s.height;
+          } else {
+            var parts = sizeOpt.split(',');
+            w = parseFloat(parts[0]); h = parseFloat(parts[1]);
+          }
+          var at;
+          if (where === 'start') at = 0;
+          else if (where === 'after') at = after; // after page N (1-based) => index N
+          else at = doc.getPageCount();
+          for (var k = 0; k < count; k++) {
+            doc.insertPage(at + k, [w, h]);
+          }
+          return doc.save();
+        });
+      });
+    }).then(function (bytes) {
+      var blob = new Blob([bytes], { type: 'application/pdf' });
+      var a = document.createElement('a');
+      a.href = URL.createObjectURL(blob);
+      a.download = pdfName.replace(/\.pdf$/i, '') + '-with-blanks.pdf';
+      document.body.appendChild(a); a.click();
+      setTimeout(function () { document.body.removeChild(a); }, 100);
+      $('pdf-blank-page-adder-info').textContent = 'Added ' + count + ' blank page' + (count === 1 ? '' : 's') + ' — new total: ' + (pageCount + count) + ' pages.';
+      $('pdf-blank-page-adder-result').hidden = false;
+    }).catch(function () {
+      TN.setErr(ERR, 'Could not process that PDF. It may be encrypted or corrupted.');
+    });
+  }
+
+  try {
+    TN.on('pdf-blank-page-adder-file', 'change', function (e) {
+      var f = e.target.files && e.target.files[0];
+      if (!f) return;
+      pdfName = f.name || pdfName;
+      var r = new FileReader();
+      r.onload = function () {
+        buf = r.result;
+        if (typeof PDFLib === 'undefined') { TN.setErr(ERR, 'PDF engine failed to load. Check your connection and reload.'); return; }
+        PDFLib.PDFDocument.load(buf.slice(0)).then(function (doc) {
+          pageCount = doc.getPageCount();
+          $('pdf-blank-page-adder-form').hidden = false;
+          $('pdf-blank-page-adder-go').disabled = false;
+          TN.clearErr(ERR);
+        }).catch(function () { TN.setErr(ERR, 'Could not read that PDF. It may be encrypted or corrupted.'); });
+      };
+      r.onerror = function () { TN.setErr(ERR, 'Could not read the file.'); };
+      r.readAsArrayBuffer(f);
+    });
+    TN.on('pdf-blank-page-adder-where', 'change', function () {
+      $('pdf-blank-page-adder-after-wrap').hidden = $('pdf-blank-page-adder-where').value !== 'after';
+    });
+    TN.on('pdf-blank-page-adder-go', 'click', go);
+  } catch (e) { /* never throw on load */ }
+})();
+
+</script>
+</body>
+</html>

@@ -1,0 +1,44 @@
+<div class="tool-card">
+  <div class="grid2">
+    <div class="field">
+      <label for="passphrase-generator-words">Words (3–8)</label>
+      <input type="number" class="input" id="passphrase-generator-words" min="3" max="8" step="1" value="4">
+    </div>
+    <div class="field">
+      <label for="passphrase-generator-sep">Separator</label>
+      <select class="input" id="passphrase-generator-sep">
+        <option value="-">Hyphen (-)</option>
+        <option value=" ">Space ( )</option>
+        <option value="_">Underscore (_)</option>
+        <option value=".">Dot (.)</option>
+        <option value="">None</option>
+        <option value="random">Random digit</option>
+      </select>
+    </div>
+    <div class="field">
+      <label for="passphrase-generator-case">Capitalization</label>
+      <select class="input" id="passphrase-generator-case">
+        <option value="lower">all lowercase</option>
+        <option value="upper">ALL UPPERCASE</option>
+        <option value="title">Title Case</option>
+        <option value="random">rAnDoM cAsE</option>
+      </select>
+    </div>
+    <div class="field">
+      <label>&nbsp;</label>
+      <button class="btn" id="passphrase-generator-go" style="width:100%">Generate</button>
+    </div>
+  </div>
+  <div class="btn-row" style="margin-top:12px">
+    <button class="btn btn-outline" id="passphrase-generator-copy" disabled>Copy passphrase</button>
+  </div>
+  <div class="error" id="passphrase-generator-error"></div>
+  <div class="result" id="passphrase-generator-result" hidden>
+    <p id="passphrase-generator-out" style="font-family:monospace;font-size:22px;word-break:break-all;background:#f5f5f5;border-radius:8px;padding:16px"></p>
+    <div class="stat-cards">
+      <div class="stat-card"><div class="v" id="passphrase-generator-entropy">–</div><div class="l">Entropy (bits)</div></div>
+      <div class="stat-card"><div class="v" id="passphrase-generator-len">–</div><div class="l">Characters</div></div>
+    </div>
+    <p class="note">Store passphrases in a password manager — never reuse one across sites.</p>
+  </div>
+</div>

@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Emergency Fund Calculator — Free Online | ToolNest</title>
+<meta name="description" content="Set 3, 6 and 9 month emergency fund targets from your expenses and plan how fast you can get there.">
+<meta name="keywords" content="emergency fund calculator, how much emergency savings, rainy day fund, savings goal calculator, financial safety net">
+<link rel="canonical" href="https://toolnest.vercel.app/tools/emergency-fund-calculator/">
+<meta name="theme-color" content="#07070b">
+<meta property="og:title" content="Emergency Fund Calculator — Free Online | ToolNest">
+<meta property="og:description" content="Set 3, 6 and 9 month emergency fund targets from your expenses and plan how fast you can get there.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css?v=4">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%23e01111'/><text x='50' y='68' font-size='58' text-anchor='middle' fill='white' font-family='Arial' font-weight='bold'>T</text></svg>">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebApplication","name":"Emergency Fund Calculator","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0"},"url":"https://toolnest.vercel.app/tools/emergency-fund-calculator/","description":"Set 3, 6 and 9 month emergency fund targets from your expenses and plan how fast you can get there."},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How big should my emergency fund be?","acceptedAnswer":{"@type":"Answer","text":"3-6 months of essential expenses is the standard guidance; 9-12 months suits freelancers or single-income households."}},{"@type":"Question","name":"Where should I keep it?","acceptedAnswer":{"@type":"Answer","text":"Somewhere safe and liquid but slightly out of reach: a high-yield savings account, not invested in stocks."}},{"@type":"Question","name":"What counts as monthly expenses?","acceptedAnswer":{"@type":"Answer","text":"Housing, food, transport, insurance, utilities and minimum debt payments — the bills that continue if income stops."}}]}]}</script>
+</head>
+<body>
+<header class="site-header">
+  <div class="container">
+    <a class="logo" href="/"><span class="logo-mark">T</span> ToolNest</a>
+    <div class="header-right">
+      <form class="nav-search" action="/" method="get" role="search">
+        <span class="ns-icon">🔍</span>
+        <input type="search" name="q" placeholder="Search tools…" aria-label="Search tools" autocomplete="off">
+      </form>
+      <div class="menu-wrap">
+        <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="menuPanel" aria-label="Open menu"><span></span><span></span><span></span></button>
+        <nav class="menu-panel" id="menuPanel" aria-label="Site">
+          <a href="/">Home</a>
+          <a href="/#categories">Categories</a>
+          <a href="/#all-tools">All Tools</a>
+        </nav>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ADSTERRA-HEADER: paste your Adsterra banner ad code inside the div below -->
+<div class="container"><div class="ad-slot ad-leaderboard" data-ad="header"></div></div>
+
+<main class="container">
+  <nav class="crumbs"><a href="/">Home</a> &rsaquo; <a href="/#finance">Finance &amp; Money</a> &rsaquo; Emergency Fund Calculator</nav>
+  <div class="tool-hero">
+    <h1>Emergency Fund Calculator</h1>
+    <p>Set 3, 6 and 9 month emergency fund targets from your expenses and plan how fast you can get there.</p>
+  </div>
+
+  <div class="tool-card">
+  <div class="grid2">
+    <div class="field"><label for="ef-expenses">Monthly expenses ($)</label><input type="number" class="input" id="ef-expenses" min="0" step="any" placeholder="3000"></div>
+    <div class="field"><label for="ef-saved">Already saved ($)</label><input type="number" class="input" id="ef-saved" min="0" step="any" placeholder="2000"></div>
+    <div class="field"><label for="ef-monthly">Monthly contribution ($)</label><input type="number" class="input" id="ef-monthly" min="0" step="any" placeholder="400"></div>
+  </div>
+  <div class="error" id="emergency-fund-calculator-error"></div>
+  <div class="result" id="ef-result">
+    <div class="stat-cards">
+      <div class="stat-card"><div class="v" id="ef-target6">–</div><div class="l">6-month target</div></div>
+      <div class="stat-card"><div class="v" id="ef-pct">–</div><div class="l">Funded</div></div>
+      <div class="stat-card"><div class="v" id="ef-months">–</div><div class="l">Months to 6-month goal</div></div>
+    </div>
+    <div class="field"><label for="ef-bar">Progress to 6-month goal</label><progress class="input" id="ef-bar" max="100" value="0" style="width:100%"></progress></div>
+    <table class="data">
+      <thead><tr><th>Goal</th><th>Target</th><th>Still needed</th><th>Months away</th></tr></thead>
+      <tbody id="ef-body"><tr><td colspan="4" class="muted">Enter your expenses to plan.</td></tr></tbody>
+    </table>
+  </div>
+</div>
+
+  <!-- ADSTERRA-INCONTENT: paste your Adsterra native/in-content ad code inside the div below -->
+  <div class="ad-slot" data-ad="incontent"></div>
+
+  <div class="info-grid">
+    <div class="info-card">
+      <h2>📖 How to use</h2>
+      <ol><li>Enter your total monthly expenses.</li><li>Add your current emergency savings and monthly contribution.</li><li>Read your 3/6/9-month targets and months until each is funded.</li></ol>
+    </div>
+    <div class="info-card">
+      <h2>❓ Frequently asked questions</h2>
+      <div class="faq"><details><summary>How big should my emergency fund be?</summary><p>3-6 months of essential expenses is the standard guidance; 9-12 months suits freelancers or single-income households.</p></details><details><summary>Where should I keep it?</summary><p>Somewhere safe and liquid but slightly out of reach: a high-yield savings account, not invested in stocks.</p></details><details><summary>What counts as monthly expenses?</summary><p>Housing, food, transport, insurance, utilities and minimum debt payments — the bills that continue if income stops.</p></details></div>
+    </div>
+  </div>
+
+  <section class="section">
+    <h2>🔗 Related tools</h2>
+    <div class="tool-grid"><a class="tool-link" href="/tools/budget-50-30-20-calculator/" data-search="50/30/20 budget calculator split your take-home pay into needs (50%), wants (30%) and savings (20%), then compare with your actual spending. 50 30 20 budget budget calculator needs wants savings monthly budget planner budget rule calculator"><span class="t-ico">💰</span><span class="t-body"><b>50/30/20 Budget Calculator</b><small>Split your take-home pay into needs (50%), wants (30%) and savings (20%), then compare with …</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/car-loan-calculator/" data-search="car loan calculator compute monthly car payments, total interest and full cost from price, down payment, trade-in, rate and term. car loan calculator auto loan calculator monthly car payment car finance calculator vehicle loan estimator"><span class="t-ico">💰</span><span class="t-body"><b>Car Loan Calculator</b><small>Compute monthly car payments, total interest and full cost from price, down payment, trade-i…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/compound-interest-calculator/" data-search="compound interest calculator project how your savings grow over time with compound interest, regular monthly contributions and your choice of compounding frequency. compound interest calculator savings growth calculator compound interest with contributions"><span class="t-ico">💰</span><span class="t-body"><b>Compound Interest Calculator</b><small>Project how your savings grow over time with compound interest, regular monthly contribution…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/credit-card-validator/" data-search="credit card validator check any card number with the luhn algorithm and detect its brand — a format check only, never a real-card check. credit card validator luhn check card number checker card brand detector"><span class="t-ico">💰</span><span class="t-body"><b>Credit Card Validator</b><small>Check any card number with the Luhn algorithm and detect its brand — a format check only, ne…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/crypto-profit-calculator/" data-search="crypto profit calculator calculate profit, loss and roi on any crypto trade with buy/sell fees included. crypto profit calculator bitcoin profit calculator crypto roi calculator trading profit calculator coin profit loss"><span class="t-ico">💰</span><span class="t-body"><b>Crypto Profit Calculator</b><small>Calculate profit, loss and ROI on any crypto trade with buy/sell fees included.</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/debt-payoff-calculator/" data-search="debt payoff planner build an avalanche payoff plan for up to 8 debts: payoff order, months to debt-free and total interest paid. debt payoff calculator debt avalanche calculator pay off debt planner"><span class="t-ico">💰</span><span class="t-body"><b>Debt Payoff Planner</b><small>Build an avalanche payoff plan for up to 8 debts: payoff order, months to debt-free and tota…</small></span><span class="t-arrow">→</span></a></div>
+  </section>
+</main>
+
+<!-- ADSTERRA-FOOTER: paste your Adsterra footer/banner ad code inside the div below -->
+<div class="container"><div class="ad-slot" data-ad="footer"></div></div>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="f-grid">
+      <div>
+        <span class="brandline"><span class="logo-mark">T</span> ToolNest</span>
+        <p>Free online tools that actually work. No sign-up, no watermarks — and your files never leave your device for client-side tools.</p>
+      </div>
+      <div>
+        <h4>Popular</h4>
+        <a href="/tools/qr-code-generator/">QR Code Generator</a>
+        <a href="/tools/background-remover/">Background Remover</a>
+        <a href="/tools/pdf-merger/">PDF Merger</a>
+        <a href="/tools/word-counter/">Word Counter</a>
+      </div>
+      <div>
+        <h4>Categories</h4>
+        <a href="/#image">Image Tools</a>
+        <a href="/#pdf">PDF &amp; Documents</a>
+        <a href="/#calculators">Calculators</a>
+        <a href="/#developer">Developer Tools</a>
+      </div>
+      <div>
+        <h4>Site</h4>
+        <a href="/">Home</a>
+        <a href="/#all-tools">All Tools</a>
+        <a href="/sitemap.xml">Sitemap</a>
+      </div>
+    </div>
+    <div class="f-bottom">© 2026 ToolNest · Free tools for everyone · Made with care</div>
+  </div>
+</footer>
+
+<script src="/assets/site.js?v=5"></script>
+
+<script>
+(function () {
+  'use strict';
+  var ERR = 'emergency-fund-calculator-error';
+  function money(n) { try { return '$' + n.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 }); } catch (e) { return '$' + (Math.round(n * 100) / 100); } }
+  function calc() {
+    if (!TN.el('ef-expenses')) return;
+    TN.clearErr(ERR);
+    var exp = parseFloat(TN.el('ef-expenses').value);
+    var saved = parseFloat(TN.el('ef-saved').value) || 0;
+    var mo = parseFloat(TN.el('ef-monthly').value) || 0;
+    if (!(exp > 0)) { TN.setErr(ERR, 'Enter monthly expenses greater than 0.'); return; }
+    if (saved < 0) { TN.setErr(ERR, 'Savings cannot be negative.'); return; }
+    if (mo < 0) { TN.setErr(ERR, 'Monthly contribution cannot be negative.'); return; }
+    function row(months) {
+      var target = exp * months;
+      var need = Math.max(0, target - saved);
+      var mAway = need === 0 ? 0 : (mo > 0 ? Math.ceil(need / mo) : Infinity);
+      return '<tr><td>' + months + ' months</td><td>' + money(target) + '</td><td>' + money(need) + '</td><td>' + (mAway === Infinity ? '—' : mAway) + '</td></tr>';
+    }
+    var t6 = exp * 6;
+    var need6 = Math.max(0, t6 - saved);
+    TN.el('ef-target6').textContent = money(t6);
+    TN.el('ef-pct').textContent = Math.min(100, Math.round(saved / t6 * 100)) + '%';
+    TN.el('ef-months').textContent = need6 === 0 ? 'Done!' : (mo > 0 ? Math.ceil(need6 / mo) : '—');
+    TN.el('ef-bar').value = Math.min(100, saved / t6 * 100);
+    TN.el('ef-body').innerHTML = row(3) + row(6) + row(9);
+  }
+  try {
+    ['ef-expenses', 'ef-saved', 'ef-monthly'].forEach(function (id) { TN.on(id, 'input', calc); });
+    calc();
+  } catch (e) { /* never throw on load */ }
+})();
+</script>
+</body>
+</html>

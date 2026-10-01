@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Subscription Tracker — Free Online | ToolNest</title>
+<meta name="description" content="Track all your subscriptions in one place: monthly cost, yearly total, renewal countdowns — saved on this device.">
+<meta name="keywords" content="subscription tracker, recurring cost tracker, subscription manager, monthly subscriptions, cancel subscriptions">
+<link rel="canonical" href="https://toolnest.vercel.app/tools/subscription-tracker/">
+<meta name="theme-color" content="#07070b">
+<meta property="og:title" content="Subscription Tracker — Free Online | ToolNest">
+<meta property="og:description" content="Track all your subscriptions in one place: monthly cost, yearly total, renewal countdowns — saved on this device.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css?v=4">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%23e01111'/><text x='50' y='68' font-size='58' text-anchor='middle' fill='white' font-family='Arial' font-weight='bold'>T</text></svg>">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebApplication","name":"Subscription Tracker","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0"},"url":"https://toolnest.vercel.app/tools/subscription-tracker/","description":"Track all your subscriptions in one place: monthly cost, yearly total, renewal countdowns — saved on this device."},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How are costs compared?","acceptedAnswer":{"@type":"Answer","text":"Add each subscription with its cost and billing cycle. Weekly, quarterly and yearly costs are normalized to a monthly equivalent."}},{"@type":"Question","name":"How does the renewal countdown work?","acceptedAnswer":{"@type":"Answer","text":"Enter the next renewal date and the tool counts down the days remaining, highlighting renewals due within 7 days."}},{"@type":"Question","name":"Is my data saved?","acceptedAnswer":{"@type":"Answer","text":"Yes — your subscriptions are stored in the browser's localStorage on this device."}},{"@type":"Question","name":"Can I remove a subscription?","acceptedAnswer":{"@type":"Answer","text":"Use the ✕ button on any row to remove it."}},{"@type":"Question","name":"Is this private?","acceptedAnswer":{"@type":"Answer","text":"Yes — everything stays in your browser."}}]}]}</script>
+</head>
+<body>
+<header class="site-header">
+  <div class="container">
+    <a class="logo" href="/"><span class="logo-mark">T</span> ToolNest</a>
+    <div class="header-right">
+      <form class="nav-search" action="/" method="get" role="search">
+        <span class="ns-icon">🔍</span>
+        <input type="search" name="q" placeholder="Search tools…" aria-label="Search tools" autocomplete="off">
+      </form>
+      <div class="menu-wrap">
+        <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="menuPanel" aria-label="Open menu"><span></span><span></span><span></span></button>
+        <nav class="menu-panel" id="menuPanel" aria-label="Site">
+          <a href="/">Home</a>
+          <a href="/#categories">Categories</a>
+          <a href="/#all-tools">All Tools</a>
+        </nav>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ADSTERRA-HEADER: paste your Adsterra banner ad code inside the div below -->
+<div class="container"><div class="ad-slot ad-leaderboard" data-ad="header"></div></div>
+
+<main class="container">
+  <nav class="crumbs"><a href="/">Home</a> &rsaquo; <a href="/#fun">Fun &amp; Lifestyle</a> &rsaquo; Subscription Tracker</nav>
+  <div class="tool-hero">
+    <h1>Subscription Tracker</h1>
+    <p>Track all your subscriptions in one place: monthly cost, yearly total, renewal countdowns — saved on this device.</p>
+  </div>
+
+  <div class="tool-card">
+  <div class="grid2">
+    <div class="field"><label for="sub-name">Service</label><input type="text" class="input" id="sub-name" placeholder="Netflix"></div>
+    <div class="field"><label for="sub-cost">Cost ($)</label><input type="number" class="input" id="sub-cost" min="0" step="any" placeholder="15.99"></div>
+    <div class="field"><label for="sub-cycle">Billing cycle</label>
+      <select class="select" id="sub-cycle">
+        <option value="weekly">Weekly</option>
+        <option value="monthly" selected>Monthly</option>
+        <option value="quarterly">Quarterly</option>
+        <option value="yearly">Yearly</option>
+      </select>
+    </div>
+    <div class="field"><label for="sub-renew">Next renewal</label><input type="date" class="input" id="sub-renew"></div>
+  </div>
+  <div class="btn-row"><button class="btn btn-primary btn-sm" id="sub-add" type="button">Add subscription</button></div>
+  <div class="error" id="subscription-tracker-error"></div>
+  <div class="result" id="sub-result">
+    <div class="stat-cards">
+      <div class="stat-card"><div class="v" id="sub-monthly">$0</div><div class="l">Per month</div></div>
+      <div class="stat-card"><div class="v" id="sub-yearly">$0</div><div class="l">Per year</div></div>
+      <div class="stat-card"><div class="v" id="sub-count">0</div><div class="l">Subscriptions</div></div>
+    </div>
+    <table class="data"><thead><tr><th>Service</th><th>Cost</th><th>Cycle</th><th>Monthly equiv.</th><th>Renews in</th><th></th></tr></thead><tbody id="sub-body"></tbody></table>
+  </div>
+</div>
+
+  <!-- ADSTERRA-INCONTENT: paste your Adsterra native/in-content ad code inside the div below -->
+  <div class="ad-slot" data-ad="incontent"></div>
+
+  <div class="info-grid">
+    <div class="info-card">
+      <h2>📖 How to use</h2>
+      <ol><li>Add each subscription with cost, billing cycle and renewal date.</li><li>See monthly and yearly totals update live.</li><li>Watch the renewal countdown to avoid surprise charges.</li></ol>
+    </div>
+    <div class="info-card">
+      <h2>❓ Frequently asked questions</h2>
+      <div class="faq"><details><summary>How are costs compared?</summary><p>Add each subscription with its cost and billing cycle. Weekly, quarterly and yearly costs are normalized to a monthly equivalent.</p></details><details><summary>How does the renewal countdown work?</summary><p>Enter the next renewal date and the tool counts down the days remaining, highlighting renewals due within 7 days.</p></details><details><summary>Is my data saved?</summary><p>Yes — your subscriptions are stored in the browser&#39;s localStorage on this device.</p></details><details><summary>Can I remove a subscription?</summary><p>Use the ✕ button on any row to remove it.</p></details><details><summary>Is this private?</summary><p>Yes — everything stays in your browser.</p></details></div>
+    </div>
+  </div>
+
+  <section class="section">
+    <h2>🔗 Related tools</h2>
+    <div class="tool-grid"><a class="tool-link" href="/tools/aim-trainer-game/" data-search="aim trainer game test and train your aim — targets pop up at random spots for 30 seconds. hits, misses and accuracy are tracked live. aim trainer aim test reaction test click speed test fps aim trainer"><span class="t-ico">🎲</span><span class="t-body"><b>Aim Trainer Game</b><small>Test and train your aim — targets pop up at random spots for 30 seconds. Hits, misses and ac…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/baby-name-generator/" data-search="baby name generator discover baby names by gender and origin — pakistani, arabic, western, indian or turkish — with meanings, random picks and tap-to-copy. baby name generator baby names with meanings muslim baby names boy girl names"><span class="t-ico">🎲</span><span class="t-body"><b>Baby Name Generator</b><small>Discover baby names by gender and origin — Pakistani, Arabic, Western, Indian or Turkish — w…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/battery-status-checker/" data-search="battery status checker check your device&#39;s battery level, charging status and estimated time remaining, with live updates — where your browser supports the battery api. battery status battery level checker laptop battery charging status"><span class="t-ico">🎲</span><span class="t-body"><b>Battery Status Checker</b><small>Check your device&#39;s battery level, charging status and estimated time remaining, with live u…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/birthday-countdown/" data-search="birthday countdown enter your birthday for a live countdown to your next one — days, hours, minutes and seconds — plus the age you&#39;ll turn and a fun message. birthday countdown countdown to birthday how old am i birthday timer"><span class="t-ico">🎲</span><span class="t-body"><b>Birthday Countdown</b><small>Enter your birthday for a live countdown to your next one — days, hours, minutes and seconds…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/calendar-generator/" data-search="calendar generator generate a monthly calendar for any month and year, with correct weekdays, leap years, today&#39;s date highlighted, and previous/next month navigation. calendar generator monthly calendar printable calendar month planner"><span class="t-ico">🎲</span><span class="t-body"><b>Calendar Generator</b><small>Generate a monthly calendar for any month and year, with correct weekdays, leap years, today…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/coin-flip/" data-search="coin flip flip a virtual coin with a fun animated toss. get instant heads or tails results, keep a running tally of both sides, and reset the count whenever you like. coin flip heads or tails coin toss random coin"><span class="t-ico">🎲</span><span class="t-body"><b>Coin Flip</b><small>Flip a virtual coin with a fun animated toss. Get instant Heads or Tails results, keep a run…</small></span><span class="t-arrow">→</span></a></div>
+  </section>
+</main>
+
+<!-- ADSTERRA-FOOTER: paste your Adsterra footer/banner ad code inside the div below -->
+<div class="container"><div class="ad-slot" data-ad="footer"></div></div>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="f-grid">
+      <div>
+        <span class="brandline"><span class="logo-mark">T</span> ToolNest</span>
+        <p>Free online tools that actually work. No sign-up, no watermarks — and your files never leave your device for client-side tools.</p>
+      </div>
+      <div>
+        <h4>Popular</h4>
+        <a href="/tools/qr-code-generator/">QR Code Generator</a>
+        <a href="/tools/background-remover/">Background Remover</a>
+        <a href="/tools/pdf-merger/">PDF Merger</a>
+        <a href="/tools/word-counter/">Word Counter</a>
+      </div>
+      <div>
+        <h4>Categories</h4>
+        <a href="/#image">Image Tools</a>
+        <a href="/#pdf">PDF &amp; Documents</a>
+        <a href="/#calculators">Calculators</a>
+        <a href="/#developer">Developer Tools</a>
+      </div>
+      <div>
+        <h4>Site</h4>
+        <a href="/">Home</a>
+        <a href="/#all-tools">All Tools</a>
+        <a href="/sitemap.xml">Sitemap</a>
+      </div>
+    </div>
+    <div class="f-bottom">© 2026 ToolNest · Free tools for everyone · Made with care</div>
+  </div>
+</footer>
+
+<script src="/assets/site.js?v=5"></script>
+
+<script>
+(function () {
+  'use strict';
+  var ERR = 'subscription-tracker-error';
+  var KEY = 'tn_subscriptions';
+  var subs = [];
+  var FACTOR = { weekly: 52 / 12, monthly: 1, quarterly: 1 / 3, yearly: 1 / 12 };
+  function esc(s) {
+    return String(s).replace(/[&<>"']/g, function (c) {
+      return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c];
+    });
+  }
+  function money(n) { return '$' + (Math.round(n * 100) / 100).toFixed(2); }
+  function save() { try { localStorage.setItem(KEY, JSON.stringify(subs)); } catch (e) {} }
+  function load() {
+    try {
+      var raw = localStorage.getItem(KEY);
+      if (raw) subs = JSON.parse(raw) || [];
+    } catch (e) { subs = []; }
+  }
+  function daysUntil(dateStr) {
+    if (!dateStr) return null;
+    var now = new Date(); now.setHours(0, 0, 0, 0);
+    var d = new Date(dateStr + 'T00:00:00');
+    if (isNaN(d.getTime())) return null;
+    return Math.round((d - now) / 86400000);
+  }
+  function render() {
+    var monthly = 0;
+    subs.forEach(function (s) { monthly += (s.cost || 0) * (FACTOR[s.cycle] || 1); });
+    TN.el('sub-monthly').textContent = money(monthly);
+    TN.el('sub-yearly').textContent = money(monthly * 12);
+    TN.el('sub-count').textContent = subs.length;
+    var sorted = subs.map(function (s, i) { return { s: s, i: i }; });
+    sorted.sort(function (a, b) {
+      var da = daysUntil(a.s.renew), db = daysUntil(b.s.renew);
+      if (da === null) return 1;
+      if (db === null) return -1;
+      return da - db;
+    });
+    TN.el('sub-body').innerHTML = sorted.map(function (w) {
+      var s = w.s, i = w.i;
+      var meq = (s.cost || 0) * (FACTOR[s.cycle] || 1);
+      var d = daysUntil(s.renew), renewTxt, color = '';
+      if (d === null) { renewTxt = '<span class="muted">—</span>'; }
+      else if (d < 0) { renewTxt = Math.abs(d) + 'd overdue'; color = 'color:#f87171'; }
+      else if (d === 0) { renewTxt = 'today'; color = 'color:#fcd34d'; }
+      else { renewTxt = d + ' day' + (d === 1 ? '' : 's'); if (d <= 7) color = 'color:#fcd34d'; }
+      return '<tr><td><strong>' + esc(s.name) + '</strong></td><td>' + money(s.cost || 0) + '</td>' +
+        '<td>' + esc(s.cycle) + '</td><td>' + money(meq) + '/mo</td>' +
+        '<td style="' + color + '">' + renewTxt + '</td>' +
+        '<td style="text-align:right"><button type="button" class="btn btn-danger btn-sm sub-del" data-i="' + i + '">✕</button></td></tr>';
+    }).join('') || '<tr><td colspan="6" class="muted">No subscriptions yet — add your first one above.</td></tr>';
+    TN.qsa('#sub-body .sub-del').forEach(function (b) {
+      b.addEventListener('click', function () {
+        subs.splice(parseInt(b.getAttribute('data-i'), 10), 1);
+        save(); render();
+      });
+    });
+  }
+  try {
+    load(); render();
+    TN.on('sub-add', 'click', function () {
+      TN.clearErr(ERR);
+      var name = TN.el('sub-name').value.trim();
+      var cost = parseFloat(TN.el('sub-cost').value);
+      if (!name) { TN.setErr(ERR, 'Enter the service name.'); return; }
+      if (!(cost >= 0)) { TN.setErr(ERR, 'Enter a valid cost (0 or more).'); return; }
+      subs.push({ name: name, cost: cost, cycle: TN.el('sub-cycle').value, renew: TN.el('sub-renew').value });
+      TN.el('sub-name').value = ''; TN.el('sub-cost').value = ''; TN.el('sub-renew').value = '';
+      save(); render();
+    });
+  } catch (e) { /* never throw on load */ }
+})();
+</script>
+</body>
+</html>

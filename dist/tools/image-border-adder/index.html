@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Image Border Adder — Free Online | ToolNest</title>
+<meta name="description" content="Add a clean border or frame to any image — set thickness, color, and corner style, preview instantly, and download the framed PNG.">
+<meta name="keywords" content="add border to image, photo frame, image border maker, picture frame online, photo border">
+<link rel="canonical" href="https://toolnest.vercel.app/tools/image-border-adder/">
+<meta name="theme-color" content="#07070b">
+<meta property="og:title" content="Image Border Adder — Free Online | ToolNest">
+<meta property="og:description" content="Add a clean border or frame to any image — set thickness, color, and corner style, preview instantly, and download the framed PNG.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css?v=4">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%23e01111'/><text x='50' y='68' font-size='58' text-anchor='middle' fill='white' font-family='Arial' font-weight='bold'>T</text></svg>">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebApplication","name":"Image Border Adder","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0"},"url":"https://toolnest.vercel.app/tools/image-border-adder/","description":"Add a clean border or frame to any image — set thickness, color, and corner style, preview instantly, and download the framed PNG."},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How thick can the border be?","acceptedAnswer":{"@type":"Answer","text":"Up to 200 px, so both thin hairlines and thick poster-style frames are possible."}},{"@type":"Question","name":"Does the border cover part of my image?","acceptedAnswer":{"@type":"Answer","text":"The border expands the canvas outward, so your image is never covered or cropped."}},{"@type":"Question","name":"Can the corners be rounded?","acceptedAnswer":{"@type":"Answer","text":"Choose square corners for a classic frame, or round the outer corners for a softer look."}},{"@type":"Question","name":"Is my image uploaded?","acceptedAnswer":{"@type":"Answer","text":"No — everything happens locally in your browser."}}]}]}</script>
+</head>
+<body>
+<header class="site-header">
+  <div class="container">
+    <a class="logo" href="/"><span class="logo-mark">T</span> ToolNest</a>
+    <div class="header-right">
+      <form class="nav-search" action="/" method="get" role="search">
+        <span class="ns-icon">🔍</span>
+        <input type="search" name="q" placeholder="Search tools…" aria-label="Search tools" autocomplete="off">
+      </form>
+      <div class="menu-wrap">
+        <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="menuPanel" aria-label="Open menu"><span></span><span></span><span></span></button>
+        <nav class="menu-panel" id="menuPanel" aria-label="Site">
+          <a href="/">Home</a>
+          <a href="/#categories">Categories</a>
+          <a href="/#all-tools">All Tools</a>
+        </nav>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ADSTERRA-HEADER: paste your Adsterra banner ad code inside the div below -->
+<div class="container"><div class="ad-slot ad-leaderboard" data-ad="header"></div></div>
+
+<main class="container">
+  <nav class="crumbs"><a href="/">Home</a> &rsaquo; <a href="/#image">Image Tools</a> &rsaquo; Image Border Adder</nav>
+  <div class="tool-hero">
+    <h1>Image Border Adder</h1>
+    <p>Add a clean border or frame to any image — set thickness, color, and corner style, preview instantly, and download the framed PNG.</p>
+  </div>
+
+  <div class="tool-card">
+  <div class="field">
+    <label for="image-border-adder-file">Upload image</label>
+    <input type="file" class="input" id="image-border-adder-file" accept="image/*">
+  </div>
+  <div class="grid2">
+    <div class="field">
+      <label for="image-border-adder-width">Border thickness (<span id="image-border-adder-width-v">24</span> px)</label>
+      <input type="range" class="input" id="image-border-adder-width" min="1" max="200" step="1" value="24">
+    </div>
+    <div class="field">
+      <label for="image-border-adder-color">Border color</label>
+      <input type="color" class="input" id="image-border-adder-color" value="#ffffff">
+    </div>
+    <div class="field">
+      <label for="image-border-adder-radius">Corner roundness (<span id="image-border-adder-radius-v">0</span> px)</label>
+      <input type="range" class="input" id="image-border-adder-radius" min="0" max="200" step="1" value="0">
+    </div>
+    <div class="field">
+      <label for="image-border-adder-bg">Outside corners</label>
+      <select class="input" id="image-border-adder-bg">
+        <option value="color">Fill with border color</option>
+        <option value="transparent">Transparent</option>
+      </select>
+    </div>
+  </div>
+  <div class="btn-row" style="margin-top:12px">
+    <button class="btn btn-outline" id="image-border-adder-dl" disabled>Download framed PNG</button>
+  </div>
+  <div class="error" id="image-border-adder-error"></div>
+  <div class="result" id="image-border-adder-result" hidden>
+    <p class="muted" id="image-border-adder-info"></p>
+    <canvas id="image-border-adder-canvas" style="max-width:100%;height:auto;border-radius:8px"></canvas>
+  </div>
+</div>
+
+
+  <!-- ADSTERRA-INCONTENT: paste your Adsterra native/in-content ad code inside the div below -->
+  <div class="ad-slot" data-ad="incontent"></div>
+
+  <div class="info-grid">
+    <div class="info-card">
+      <h2>📖 How to use</h2>
+      <ol><li>Upload your image.</li><li>Set the border thickness and pick a color.</li><li>Optionally round the outer corners.</li><li>Download the framed PNG.</li></ol>
+    </div>
+    <div class="info-card">
+      <h2>❓ Frequently asked questions</h2>
+      <div class="faq"><details><summary>How thick can the border be?</summary><p>Up to 200 px, so both thin hairlines and thick poster-style frames are possible.</p></details><details><summary>Does the border cover part of my image?</summary><p>The border expands the canvas outward, so your image is never covered or cropped.</p></details><details><summary>Can the corners be rounded?</summary><p>Choose square corners for a classic frame, or round the outer corners for a softer look.</p></details><details><summary>Is my image uploaded?</summary><p>No — everything happens locally in your browser.</p></details></div>
+    </div>
+  </div>
+
+  <section class="section">
+    <h2>🔗 Related tools</h2>
+    <div class="tool-grid"><a class="tool-link" href="/tools/app-icon-resizer/" data-search="app icon resizer generate every common app icon size from one image — 16, 32, 48, 180, 192 and 512 px — with instant preview and one-click png downloads. app icon resizer icon generator favicon sizes pwa icon apple touch icon generator"><span class="t-ico">🖼️</span><span class="t-body"><b>App Icon Resizer</b><small>Generate every common app icon size from one image — 16, 32, 48, 180, 192 and 512 px — with …</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/background-remover/" data-search="background remover remove the background from any photo with real on-device ai and download a transparent png. free, private and unlimited — no sign-up needed. background remover remove image background transparent png maker"><span class="t-ico">🖼️</span><span class="t-body"><b>Background Remover</b><small>Remove the background from any photo with real on-device AI and download a transparent PNG. …</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/favicon-generator/" data-search="favicon generator generate a complete png favicon set (16–512 px) from your logo in one click, download it as a zip, and copy the ready-to-paste html link tags. favicon generator favicon maker png favicon"><span class="t-ico">🖼️</span><span class="t-body"><b>Favicon Generator</b><small>Generate a complete PNG favicon set (16–512 px) from your logo in one click, download it as …</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/image-compressor/" data-search="image compressor shrink jpg, png and webp images right in your browser with an adjustable quality slider. compare before/after sizes, download each file or grab everything as a zip. image compressor compress jpg reduce image size"><span class="t-ico">🖼️</span><span class="t-body"><b>Image Compressor</b><small>Shrink JPG, PNG and WebP images right in your browser with an adjustable quality slider. Com…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/image-cropper/" data-search="image cropper crop any image by dragging a selection box over it — with optional fixed aspect ratios — then preview and download the cropped result. crop image image cropper crop photo online free crop tool crop picture"><span class="t-ico">🖼️</span><span class="t-body"><b>Image Cropper</b><small>Crop any image by dragging a selection box over it — with optional fixed aspect ratios — the…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/image-metadata-viewer/" data-search="image metadata viewer file facts and pixel statistics for any image. image metadata viewer image info photo histogram"><span class="t-ico">🖼️</span><span class="t-body"><b>Image Metadata Viewer</b><small>File facts and pixel statistics for any image.</small></span><span class="t-arrow">→</span></a></div>
+  </section>
+</main>
+
+<!-- ADSTERRA-FOOTER: paste your Adsterra footer/banner ad code inside the div below -->
+<div class="container"><div class="ad-slot" data-ad="footer"></div></div>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="f-grid">
+      <div>
+        <span class="brandline"><span class="logo-mark">T</span> ToolNest</span>
+        <p>Free online tools that actually work. No sign-up, no watermarks — and your files never leave your device for client-side tools.</p>
+      </div>
+      <div>
+        <h4>Popular</h4>
+        <a href="/tools/qr-code-generator/">QR Code Generator</a>
+        <a href="/tools/background-remover/">Background Remover</a>
+        <a href="/tools/pdf-merger/">PDF Merger</a>
+        <a href="/tools/word-counter/">Word Counter</a>
+      </div>
+      <div>
+        <h4>Categories</h4>
+        <a href="/#image">Image Tools</a>
+        <a href="/#pdf">PDF &amp; Documents</a>
+        <a href="/#calculators">Calculators</a>
+        <a href="/#developer">Developer Tools</a>
+      </div>
+      <div>
+        <h4>Site</h4>
+        <a href="/">Home</a>
+        <a href="/#all-tools">All Tools</a>
+        <a href="/sitemap.xml">Sitemap</a>
+      </div>
+    </div>
+    <div class="f-bottom">© 2026 ToolNest · Free tools for everyone · Made with care</div>
+  </div>
+</footer>
+
+<script src="/assets/site.js?v=5"></script>
+
+<script>
+/* Image Border Adder — frame an image with a colored border, live preview. */
+(function () {
+  'use strict';
+  var SLUG = 'image-border-adder';
+  var ERR = SLUG + '-error';
+  var img = null;
+
+  function $(id) { return document.getElementById(id); }
+  function val(id) { var e = $(id); return e ? e.value : ''; }
+
+  function roundRect(ctx, x, y, w, h, r) {
+    r = Math.min(r, w / 2, h / 2);
+    ctx.beginPath();
+    ctx.moveTo(x + r, y);
+    ctx.arcTo(x + w, y, x + w, y + h, r);
+    ctx.arcTo(x + w, y + h, x, y + h, r);
+    ctx.arcTo(x, y + h, x, y, r);
+    ctx.arcTo(x, y, x + w, y, r);
+    ctx.closePath();
+  }
+
+  function render() {
+    if (!img) return;
+    TN.clearErr(ERR);
+    var bw = parseInt(val('image-border-adder-width'), 10) || 0;
+    var radius = parseInt(val('image-border-adder-radius'), 10) || 0;
+    var color = val('image-border-adder-color') || '#ffffff';
+    var transparent = val('image-border-adder-bg') === 'transparent';
+    var cv = $('image-border-adder-canvas');
+    cv.width = img.naturalWidth + bw * 2;
+    cv.height = img.naturalHeight + bw * 2;
+    var ctx = cv.getContext('2d');
+    ctx.clearRect(0, 0, cv.width, cv.height);
+    ctx.save();
+    if (radius > 0) { roundRect(ctx, 0, 0, cv.width, cv.height, radius); ctx.clip(); }
+    ctx.fillStyle = color;
+    ctx.fillRect(0, 0, cv.width, cv.height);
+    ctx.drawImage(img, bw, bw);
+    ctx.restore();
+    if (transparent && radius > 0) {
+      // punch transparent corners outside the rounded frame
+      var tmp = document.createElement('canvas');
+      tmp.width = cv.width; tmp.height = cv.height;
+      var tctx = tmp.getContext('2d');
+      roundRect(tctx, 0, 0, cv.width, cv.height, radius);
+      tctx.clip();
+      tctx.drawImage(cv, 0, 0);
+      ctx.clearRect(0, 0, cv.width, cv.height);
+      ctx.drawImage(tmp, 0, 0);
+    }
+    $('image-border-adder-info').textContent = 'Output: ' + cv.width + '×' + cv.height + ' px (border ' + bw + ' px)';
+    $('image-border-adder-result').hidden = false;
+    $('image-border-adder-dl').disabled = false;
+  }
+
+  try {
+    TN.on('image-border-adder-file', 'change', function (e) {
+      var f = e.target.files && e.target.files[0];
+      if (!f) return;
+      var url = URL.createObjectURL(f);
+      var im = new Image();
+      im.onload = function () { img = im; URL.revokeObjectURL(url); render(); };
+      im.onerror = function () { URL.revokeObjectURL(url); TN.setErr(ERR, 'Could not read that file as an image.'); };
+      im.src = url;
+    });
+    ['image-border-adder-width', 'image-border-adder-color', 'image-border-adder-radius', 'image-border-adder-bg'].forEach(function (id) {
+      TN.on(id, 'input', function () {
+        var map = { 'image-border-adder-width': 'image-border-adder-width-v', 'image-border-adder-radius': 'image-border-adder-radius-v' };
+        if (map[id]) $(map[id]).textContent = $(id).value;
+        render();
+      });
+      TN.on(id, 'change', render);
+    });
+    TN.on('image-border-adder-dl', 'click', function () {
+      $('image-border-adder-canvas').toBlob(function (b) {
+        if (!b) { TN.setErr(ERR, 'Could not export the image.'); return; }
+        var a = document.createElement('a');
+        a.href = URL.createObjectURL(b);
+        a.download = 'framed.png';
+        document.body.appendChild(a); a.click();
+        setTimeout(function () { document.body.removeChild(a); }, 100);
+      }, 'image/png');
+    });
+  } catch (e) { /* never throw on load */ }
+})();
+
+</script>
+</body>
+</html>

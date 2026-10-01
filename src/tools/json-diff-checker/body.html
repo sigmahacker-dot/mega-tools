@@ -1,0 +1,21 @@
+<div class="tool-card">
+  <div class="grid2">
+    <div class="field"><label for="jd-a">Original JSON</label><textarea class="textarea" id="jd-a" rows="10" placeholder='{"name":"Ada","tags":["a","b"]}'></textarea></div>
+    <div class="field"><label for="jd-b">Modified JSON</label><textarea class="textarea" id="jd-b" rows="10" placeholder='{"name":"Ada","tags":["a","c"]}'></textarea></div>
+  </div>
+  <div class="error" id="json-diff-checker-error"></div>
+  <div class="result" id="jd-result">
+    <div class="stat-cards">
+      <div class="stat-card"><div class="v" id="jd-added" style="color:#4ade80">0</div><div class="l">Added</div></div>
+      <div class="stat-card"><div class="v" id="jd-removed" style="color:#f87171">0</div><div class="l">Removed</div></div>
+      <div class="stat-card"><div class="v" id="jd-changed" style="color:#fcd34d">0</div><div class="l">Changed</div></div>
+    </div>
+    <div style="max-height:380px;overflow-y:auto">
+      <table class="data"><thead><tr><th>Path</th><th>Type</th><th>Old</th><th>New</th></tr></thead><tbody id="jd-body"></tbody></table>
+    </div>
+    <div class="btn-row">
+      <button class="btn btn-outline" id="jd-copy" type="button">Copy report</button>
+      <button class="btn btn-outline" id="jd-swap" type="button">Swap sides</button>
+    </div>
+  </div>
+</div>

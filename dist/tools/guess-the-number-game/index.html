@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Guess the Number Game — Free Online | ToolNest</title>
+<meta name="description" content="Guess the secret number between 1 and 100 — with hot/cold hints, attempt tracking and three difficulty ranges.">
+<meta name="keywords" content="guess the number, number guessing game, guessing game, hot cold game, number game">
+<link rel="canonical" href="https://toolnest.vercel.app/tools/guess-the-number-game/">
+<meta name="theme-color" content="#07070b">
+<meta property="og:title" content="Guess the Number Game — Free Online | ToolNest">
+<meta property="og:description" content="Guess the secret number between 1 and 100 — with hot/cold hints, attempt tracking and three difficulty ranges.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css?v=4">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%23e01111'/><text x='50' y='68' font-size='58' text-anchor='middle' fill='white' font-family='Arial' font-weight='bold'>T</text></svg>">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebApplication","name":"Guess the Number Game","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0"},"url":"https://toolnest.vercel.app/tools/guess-the-number-game/","description":"Guess the secret number between 1 and 100 — with hot/cold hints, attempt tracking and three difficulty ranges."},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Which difficulties are available?","acceptedAnswer":{"@type":"Answer","text":"Easy (1–50), Classic (1–100) or Hard (1–1000). Harder ranges give you more attempts."}},{"@type":"Question","name":"What hints do I get?","acceptedAnswer":{"@type":"Answer","text":"After each guess you are told 'too high' or 'too low', plus a hot/warm/cold proximity hint."}},{"@type":"Question","name":"Is my best score saved?","acceptedAnswer":{"@type":"Answer","text":"Your fewest-attempts record per difficulty is saved in this browser."}},{"@type":"Question","name":"Does it work on mobile?","acceptedAnswer":{"@type":"Answer","text":"Yes — fully mobile friendly."}}]}]}</script>
+</head>
+<body>
+<header class="site-header">
+  <div class="container">
+    <a class="logo" href="/"><span class="logo-mark">T</span> ToolNest</a>
+    <div class="header-right">
+      <form class="nav-search" action="/" method="get" role="search">
+        <span class="ns-icon">🔍</span>
+        <input type="search" name="q" placeholder="Search tools…" aria-label="Search tools" autocomplete="off">
+      </form>
+      <div class="menu-wrap">
+        <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="menuPanel" aria-label="Open menu"><span></span><span></span><span></span></button>
+        <nav class="menu-panel" id="menuPanel" aria-label="Site">
+          <a href="/">Home</a>
+          <a href="/#categories">Categories</a>
+          <a href="/#all-tools">All Tools</a>
+        </nav>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ADSTERRA-HEADER: paste your Adsterra banner ad code inside the div below -->
+<div class="container"><div class="ad-slot ad-leaderboard" data-ad="header"></div></div>
+
+<main class="container">
+  <nav class="crumbs"><a href="/">Home</a> &rsaquo; <a href="/#fun">Fun &amp; Lifestyle</a> &rsaquo; Guess the Number Game</nav>
+  <div class="tool-hero">
+    <h1>Guess the Number Game</h1>
+    <p>Guess the secret number between 1 and 100 — with hot/cold hints, attempt tracking and three difficulty ranges.</p>
+  </div>
+
+  <div class="tool-card" style="text-align:center">
+  <div class="grid2" style="max-width:420px;margin:0 auto 12px;text-align:left">
+    <div class="field">
+      <label for="guess-the-number-game-diff">Difficulty</label>
+      <select class="input" id="guess-the-number-game-diff">
+        <option value="50">Easy — 1 to 50</option>
+        <option value="100" selected>Classic — 1 to 100</option>
+        <option value="1000">Hard — 1 to 1000</option>
+      </select>
+    </div>
+    <div class="field">
+      <label for="guess-the-number-game-guess">Your guess</label>
+      <input type="number" class="input" id="guess-the-number-game-guess" min="1" step="1" placeholder="50">
+    </div>
+  </div>
+  <div class="stat-cards" style="max-width:420px;margin:0 auto 12px">
+    <div class="stat-card"><div class="v" id="guess-the-number-game-tries">0</div><div class="l">Attempts</div></div>
+    <div class="stat-card"><div class="v" id="guess-the-number-game-best">–</div><div class="l">Best</div></div>
+  </div>
+  <div style="font-size:56px;margin:8px 0" id="guess-the-number-game-face">🤔</div>
+  <p class="muted" id="guess-the-number-game-msg" style="min-height:24px">I'm thinking of a number…</p>
+  <div id="guess-the-number-game-hist" style="max-width:420px;margin:0 auto;max-height:120px;overflow:auto;font-size:14px" class="muted"></div>
+  <div class="btn-row" style="justify-content:center;margin-top:12px">
+    <button class="btn" id="guess-the-number-game-go">Guess</button>
+    <button class="btn btn-outline" id="guess-the-number-game-new">New game</button>
+  </div>
+  <div class="error" id="guess-the-number-game-error"></div>
+</div>
+
+
+  <!-- ADSTERRA-INCONTENT: paste your Adsterra native/in-content ad code inside the div below -->
+  <div class="ad-slot" data-ad="incontent"></div>
+
+  <div class="info-grid">
+    <div class="info-card">
+      <h2>📖 How to use</h2>
+      <ol><li>Pick a difficulty and press New game.</li><li>Enter your guess.</li><li>Follow the higher/lower and hot/cold hints.</li><li>Find the number in as few tries as you can!</li></ol>
+    </div>
+    <div class="info-card">
+      <h2>❓ Frequently asked questions</h2>
+      <div class="faq"><details><summary>Which difficulties are available?</summary><p>Easy (1–50), Classic (1–100) or Hard (1–1000). Harder ranges give you more attempts.</p></details><details><summary>What hints do I get?</summary><p>After each guess you are told &#39;too high&#39; or &#39;too low&#39;, plus a hot/warm/cold proximity hint.</p></details><details><summary>Is my best score saved?</summary><p>Your fewest-attempts record per difficulty is saved in this browser.</p></details><details><summary>Does it work on mobile?</summary><p>Yes — fully mobile friendly.</p></details></div>
+    </div>
+  </div>
+
+  <section class="section">
+    <h2>🔗 Related tools</h2>
+    <div class="tool-grid"><a class="tool-link" href="/tools/aim-trainer-game/" data-search="aim trainer game test and train your aim — targets pop up at random spots for 30 seconds. hits, misses and accuracy are tracked live. aim trainer aim test reaction test click speed test fps aim trainer"><span class="t-ico">🎲</span><span class="t-body"><b>Aim Trainer Game</b><small>Test and train your aim — targets pop up at random spots for 30 seconds. Hits, misses and ac…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/baby-name-generator/" data-search="baby name generator discover baby names by gender and origin — pakistani, arabic, western, indian or turkish — with meanings, random picks and tap-to-copy. baby name generator baby names with meanings muslim baby names boy girl names"><span class="t-ico">🎲</span><span class="t-body"><b>Baby Name Generator</b><small>Discover baby names by gender and origin — Pakistani, Arabic, Western, Indian or Turkish — w…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/battery-status-checker/" data-search="battery status checker check your device&#39;s battery level, charging status and estimated time remaining, with live updates — where your browser supports the battery api. battery status battery level checker laptop battery charging status"><span class="t-ico">🎲</span><span class="t-body"><b>Battery Status Checker</b><small>Check your device&#39;s battery level, charging status and estimated time remaining, with live u…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/birthday-countdown/" data-search="birthday countdown enter your birthday for a live countdown to your next one — days, hours, minutes and seconds — plus the age you&#39;ll turn and a fun message. birthday countdown countdown to birthday how old am i birthday timer"><span class="t-ico">🎲</span><span class="t-body"><b>Birthday Countdown</b><small>Enter your birthday for a live countdown to your next one — days, hours, minutes and seconds…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/calendar-generator/" data-search="calendar generator generate a monthly calendar for any month and year, with correct weekdays, leap years, today&#39;s date highlighted, and previous/next month navigation. calendar generator monthly calendar printable calendar month planner"><span class="t-ico">🎲</span><span class="t-body"><b>Calendar Generator</b><small>Generate a monthly calendar for any month and year, with correct weekdays, leap years, today…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/coin-flip/" data-search="coin flip flip a virtual coin with a fun animated toss. get instant heads or tails results, keep a running tally of both sides, and reset the count whenever you like. coin flip heads or tails coin toss random coin"><span class="t-ico">🎲</span><span class="t-body"><b>Coin Flip</b><small>Flip a virtual coin with a fun animated toss. Get instant Heads or Tails results, keep a run…</small></span><span class="t-arrow">→</span></a></div>
+  </section>
+</main>
+
+<!-- ADSTERRA-FOOTER: paste your Adsterra footer/banner ad code inside the div below -->
+<div class="container"><div class="ad-slot" data-ad="footer"></div></div>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="f-grid">
+      <div>
+        <span class="brandline"><span class="logo-mark">T</span> ToolNest</span>
+        <p>Free online tools that actually work. No sign-up, no watermarks — and your files never leave your device for client-side tools.</p>
+      </div>
+      <div>
+        <h4>Popular</h4>
+        <a href="/tools/qr-code-generator/">QR Code Generator</a>
+        <a href="/tools/background-remover/">Background Remover</a>
+        <a href="/tools/pdf-merger/">PDF Merger</a>
+        <a href="/tools/word-counter/">Word Counter</a>
+      </div>
+      <div>
+        <h4>Categories</h4>
+        <a href="/#image">Image Tools</a>
+        <a href="/#pdf">PDF &amp; Documents</a>
+        <a href="/#calculators">Calculators</a>
+        <a href="/#developer">Developer Tools</a>
+      </div>
+      <div>
+        <h4>Site</h4>
+        <a href="/">Home</a>
+        <a href="/#all-tools">All Tools</a>
+        <a href="/sitemap.xml">Sitemap</a>
+      </div>
+    </div>
+    <div class="f-bottom">© 2026 ToolNest · Free tools for everyone · Made with care</div>
+  </div>
+</footer>
+
+<script src="/assets/site.js?v=5"></script>
+
+<script>
+/* Guess the Number — higher/lower + hot/cold hints, per-difficulty best. */
+(function () {
+  'use strict';
+  var SLUG = 'guess-the-number-game';
+  var ERR = SLUG + '-error';
+  var secret = 0, maxN = 100, tries = 0, done = false;
+
+  function $(id) { return document.getElementById(id); }
+
+  function bestKey() { return 'guessnum-best-' + maxN; }
+  function loadBest() {
+    var b = null;
+    try { b = localStorage.getItem(bestKey()); } catch (e) {}
+    $('guess-the-number-game-best').textContent = b || '–';
+  }
+
+  function newGame() {
+    maxN = parseInt($('guess-the-number-game-diff').value, 10) || 100;
+    secret = 1 + Math.floor(Math.random() * maxN);
+    tries = 0; done = false;
+    $('guess-the-number-game-tries').textContent = '0';
+    $('guess-the-number-game-msg').textContent = "I'm thinking of a number between 1 and " + maxN + '…';
+    $('guess-the-number-game-face').textContent = '🤔';
+    $('guess-the-number-game-hist').innerHTML = '';
+    $('guess-the-number-game-guess').value = '';
+    $('guess-the-number-game-guess').max = maxN;
+    loadBest();
+    TN.clearErr(ERR);
+  }
+
+  function heat(diff) {
+    var r = diff / maxN;
+    if (r === 0) return '';
+    if (r <= 0.02) return '🔥 Burning hot!';
+    if (r <= 0.06) return '🥵 Very hot!';
+    if (r <= 0.12) return '🌡️ Warm.';
+    if (r <= 0.25) return '🧊 Cold.';
+    return '🥶 Freezing!';
+  }
+
+  function guess() {
+    if (done) { TN.setErr(ERR, 'Game over — press New game to play again.'); return; }
+    var g = parseInt($('guess-the-number-game-guess').value, 10);
+    if (!(g >= 1 && g <= maxN)) { TN.setErr(ERR, 'Enter a number between 1 and ' + maxN + '.'); return; }
+    TN.clearErr(ERR);
+    tries++;
+    $('guess-the-number-game-tries').textContent = tries;
+    var hist = $('guess-the-number-game-hist');
+    var line = document.createElement('div');
+    if (g === secret) {
+      done = true;
+      $('guess-the-number-game-face').textContent = '🎉';
+      $('guess-the-number-game-msg').textContent = 'Correct! The number was ' + secret + ' — found in ' + tries + ' tries!';
+      line.innerHTML = '<b>' + g + '</b> — ✓ correct!';
+      var prev = null;
+      try { prev = parseInt(localStorage.getItem(bestKey()) || '0', 10) || null; } catch (e) {}
+      if (!prev || tries < prev) {
+        try { localStorage.setItem(bestKey(), String(tries)); } catch (e) {}
+        $('guess-the-number-game-best').textContent = tries;
+        $('guess-the-number-game-msg').textContent += ' 🏆 New best!';
+      }
+    } else {
+      var dir = g < secret ? 'Too low ⬆️' : 'Too high ⬇️';
+      var h = heat(Math.abs(g - secret));
+      $('guess-the-number-game-face').textContent = g < secret ? '📈' : '📉';
+      $('guess-the-number-game-msg').textContent = dir + ' — ' + h;
+      line.textContent = g + ' — ' + dir;
+    }
+    hist.insertBefore(line, hist.firstChild);
+    $('guess-the-number-game-guess').value = '';
+    $('guess-the-number-game-guess').focus();
+  }
+
+  try {
+    TN.on('guess-the-number-game-go', 'click', guess);
+    TN.on('guess-the-number-game-new', 'click', newGame);
+    TN.on('guess-the-number-game-diff', 'change', newGame);
+    TN.on('guess-the-number-game-guess', 'keydown', function (e) { if (e.key === 'Enter') guess(); });
+    newGame();
+  } catch (e) { /* never throw on load */ }
+})();
+
+</script>
+</body>
+</html>

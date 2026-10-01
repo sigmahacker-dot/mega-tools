@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rule of 72 Calculator — Free Online | ToolNest</title>
+<meta name="description" content="Estimate how fast money doubles at any interest rate — or what rate you need to double in a target time.">
+<meta name="keywords" content="rule of 72, doubling time calculator, 72 rule finance, how long to double money, compound growth time">
+<link rel="canonical" href="https://toolnest.vercel.app/tools/rule-of-72-calculator/">
+<meta name="theme-color" content="#07070b">
+<meta property="og:title" content="Rule of 72 Calculator — Free Online | ToolNest">
+<meta property="og:description" content="Estimate how fast money doubles at any interest rate — or what rate you need to double in a target time.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css?v=4">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%23e01111'/><text x='50' y='68' font-size='58' text-anchor='middle' fill='white' font-family='Arial' font-weight='bold'>T</text></svg>">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebApplication","name":"Rule of 72 Calculator","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0"},"url":"https://toolnest.vercel.app/tools/rule-of-72-calculator/","description":"Estimate how fast money doubles at any interest rate — or what rate you need to double in a target time."},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What is the Rule of 72?","acceptedAnswer":{"@type":"Answer","text":"A mental shortcut: years to double ≈ 72 ÷ annual rate. At 8%, money doubles in about 9 years."}},{"@type":"Question","name":"How accurate is it?","acceptedAnswer":{"@type":"Answer","text":"Within a few percent for rates between 4% and 15%. It is an approximation of the exact ln(2)/ln(1+r) formula."}},{"@type":"Question","name":"What about the Rule of 114 and 144?","acceptedAnswer":{"@type":"Answer","text":"Same idea: 114 ÷ rate ≈ years to triple, 144 ÷ rate ≈ years to quadruple."}}]}]}</script>
+</head>
+<body>
+<header class="site-header">
+  <div class="container">
+    <a class="logo" href="/"><span class="logo-mark">T</span> ToolNest</a>
+    <div class="header-right">
+      <form class="nav-search" action="/" method="get" role="search">
+        <span class="ns-icon">🔍</span>
+        <input type="search" name="q" placeholder="Search tools…" aria-label="Search tools" autocomplete="off">
+      </form>
+      <div class="menu-wrap">
+        <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="menuPanel" aria-label="Open menu"><span></span><span></span><span></span></button>
+        <nav class="menu-panel" id="menuPanel" aria-label="Site">
+          <a href="/">Home</a>
+          <a href="/#categories">Categories</a>
+          <a href="/#all-tools">All Tools</a>
+        </nav>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ADSTERRA-HEADER: paste your Adsterra banner ad code inside the div below -->
+<div class="container"><div class="ad-slot ad-leaderboard" data-ad="header"></div></div>
+
+<main class="container">
+  <nav class="crumbs"><a href="/">Home</a> &rsaquo; <a href="/#finance">Finance &amp; Money</a> &rsaquo; Rule of 72 Calculator</nav>
+  <div class="tool-hero">
+    <h1>Rule of 72 Calculator</h1>
+    <p>Estimate how fast money doubles at any interest rate — or what rate you need to double in a target time.</p>
+  </div>
+
+  <div class="tool-card">
+  <div class="grid2">
+    <div class="field"><label for="r72-rate">Annual interest rate (%)</label><input type="number" class="input" id="r72-rate" min="0" step="any" placeholder="8"></div>
+    <div class="field"><label for="r72-years">Target years to double</label><input type="number" class="input" id="r72-years" min="0" step="any" placeholder="10"></div>
+  </div>
+  <div class="error" id="rule-of-72-calculator-error"></div>
+  <div class="result" id="r72-result">
+    <div class="stat-cards">
+      <div class="stat-card"><div class="v" id="r72-double">–</div><div class="l">Years to double</div></div>
+      <div class="stat-card"><div class="v" id="r72-triple">–</div><div class="l">Years to triple</div></div>
+      <div class="stat-card"><div class="v" id="r72-need">–</div><div class="l">Rate to double in target</div></div>
+    </div>
+    <table class="data">
+      <thead><tr><th>Milestone</th><th>Rule estimate</th><th>Exact</th></tr></thead>
+      <tbody id="r72-body"><tr><td colspan="3" class="muted">Enter a rate or a target time.</td></tr></tbody>
+    </table>
+    <p class="note">Rule estimates vs exact ln-based compounding. Assumes a constant annual rate.</p>
+  </div>
+</div>
+
+  <!-- ADSTERRA-INCONTENT: paste your Adsterra native/in-content ad code inside the div below -->
+  <div class="ad-slot" data-ad="incontent"></div>
+
+  <div class="info-grid">
+    <div class="info-card">
+      <h2>📖 How to use</h2>
+      <ol><li>Enter an annual interest rate to see doubling, tripling and quadrupling times.</li><li>Or enter a target number of years to find the required rate.</li><li>Both directions update live.</li></ol>
+    </div>
+    <div class="info-card">
+      <h2>❓ Frequently asked questions</h2>
+      <div class="faq"><details><summary>What is the Rule of 72?</summary><p>A mental shortcut: years to double ≈ 72 ÷ annual rate. At 8%, money doubles in about 9 years.</p></details><details><summary>How accurate is it?</summary><p>Within a few percent for rates between 4% and 15%. It is an approximation of the exact ln(2)/ln(1+r) formula.</p></details><details><summary>What about the Rule of 114 and 144?</summary><p>Same idea: 114 ÷ rate ≈ years to triple, 144 ÷ rate ≈ years to quadruple.</p></details></div>
+    </div>
+  </div>
+
+  <section class="section">
+    <h2>🔗 Related tools</h2>
+    <div class="tool-grid"><a class="tool-link" href="/tools/budget-50-30-20-calculator/" data-search="50/30/20 budget calculator split your take-home pay into needs (50%), wants (30%) and savings (20%), then compare with your actual spending. 50 30 20 budget budget calculator needs wants savings monthly budget planner budget rule calculator"><span class="t-ico">💰</span><span class="t-body"><b>50/30/20 Budget Calculator</b><small>Split your take-home pay into needs (50%), wants (30%) and savings (20%), then compare with …</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/car-loan-calculator/" data-search="car loan calculator compute monthly car payments, total interest and full cost from price, down payment, trade-in, rate and term. car loan calculator auto loan calculator monthly car payment car finance calculator vehicle loan estimator"><span class="t-ico">💰</span><span class="t-body"><b>Car Loan Calculator</b><small>Compute monthly car payments, total interest and full cost from price, down payment, trade-i…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/compound-interest-calculator/" data-search="compound interest calculator project how your savings grow over time with compound interest, regular monthly contributions and your choice of compounding frequency. compound interest calculator savings growth calculator compound interest with contributions"><span class="t-ico">💰</span><span class="t-body"><b>Compound Interest Calculator</b><small>Project how your savings grow over time with compound interest, regular monthly contribution…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/credit-card-validator/" data-search="credit card validator check any card number with the luhn algorithm and detect its brand — a format check only, never a real-card check. credit card validator luhn check card number checker card brand detector"><span class="t-ico">💰</span><span class="t-body"><b>Credit Card Validator</b><small>Check any card number with the Luhn algorithm and detect its brand — a format check only, ne…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/crypto-profit-calculator/" data-search="crypto profit calculator calculate profit, loss and roi on any crypto trade with buy/sell fees included. crypto profit calculator bitcoin profit calculator crypto roi calculator trading profit calculator coin profit loss"><span class="t-ico">💰</span><span class="t-body"><b>Crypto Profit Calculator</b><small>Calculate profit, loss and ROI on any crypto trade with buy/sell fees included.</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/debt-payoff-calculator/" data-search="debt payoff planner build an avalanche payoff plan for up to 8 debts: payoff order, months to debt-free and total interest paid. debt payoff calculator debt avalanche calculator pay off debt planner"><span class="t-ico">💰</span><span class="t-body"><b>Debt Payoff Planner</b><small>Build an avalanche payoff plan for up to 8 debts: payoff order, months to debt-free and tota…</small></span><span class="t-arrow">→</span></a></div>
+  </section>
+</main>
+
+<!-- ADSTERRA-FOOTER: paste your Adsterra footer/banner ad code inside the div below -->
+<div class="container"><div class="ad-slot" data-ad="footer"></div></div>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="f-grid">
+      <div>
+        <span class="brandline"><span class="logo-mark">T</span> ToolNest</span>
+        <p>Free online tools that actually work. No sign-up, no watermarks — and your files never leave your device for client-side tools.</p>
+      </div>
+      <div>
+        <h4>Popular</h4>
+        <a href="/tools/qr-code-generator/">QR Code Generator</a>
+        <a href="/tools/background-remover/">Background Remover</a>
+        <a href="/tools/pdf-merger/">PDF Merger</a>
+        <a href="/tools/word-counter/">Word Counter</a>
+      </div>
+      <div>
+        <h4>Categories</h4>
+        <a href="/#image">Image Tools</a>
+        <a href="/#pdf">PDF &amp; Documents</a>
+        <a href="/#calculators">Calculators</a>
+        <a href="/#developer">Developer Tools</a>
+      </div>
+      <div>
+        <h4>Site</h4>
+        <a href="/">Home</a>
+        <a href="/#all-tools">All Tools</a>
+        <a href="/sitemap.xml">Sitemap</a>
+      </div>
+    </div>
+    <div class="f-bottom">© 2026 ToolNest · Free tools for everyone · Made with care</div>
+  </div>
+</footer>
+
+<script src="/assets/site.js?v=5"></script>
+
+<script>
+(function () {
+  'use strict';
+  var ERR = 'rule-of-72-calculator-error';
+  function calc() {
+    if (!TN.el('r72-rate')) return;
+    TN.clearErr(ERR);
+    var rate = parseFloat(TN.el('r72-rate').value);
+    var years = parseFloat(TN.el('r72-years').value);
+    var hasRate = rate > 0, hasYears = years > 0;
+    if (!isNaN(rate) && !(rate >= 0)) { TN.setErr(ERR, 'Rate cannot be negative.'); return; }
+    if (!isNaN(years) && !(years >= 0)) { TN.setErr(ERR, 'Years cannot be negative.'); return; }
+    if (!hasRate && !hasYears) { TN.setErr(ERR, 'Enter a rate or a target number of years.'); return; }
+    if (hasRate) {
+      var dbl = 72 / rate, tpl = 114 / rate, qd = 144 / rate;
+      var rd = rate / 100;
+      var exD = Math.log(2) / Math.log(1 + rd), exT = Math.log(3) / Math.log(1 + rd), exQ = Math.log(4) / Math.log(1 + rd);
+      TN.el('r72-double').textContent = dbl.toFixed(1) + ' yrs';
+      TN.el('r72-triple').textContent = tpl.toFixed(1) + ' yrs';
+      TN.el('r72-body').innerHTML =
+        '<tr><td>Double (×2)</td><td>' + dbl.toFixed(1) + ' yrs</td><td>' + exD.toFixed(1) + ' yrs</td></tr>' +
+        '<tr><td>Triple (×3)</td><td>' + tpl.toFixed(1) + ' yrs</td><td>' + exT.toFixed(1) + ' yrs</td></tr>' +
+        '<tr><td>Quadruple (×4)</td><td>' + qd.toFixed(1) + ' yrs</td><td>' + exQ.toFixed(1) + ' yrs</td></tr>';
+    } else {
+      TN.el('r72-double').textContent = '–';
+      TN.el('r72-triple').textContent = '–';
+      TN.el('r72-body').innerHTML = '<tr><td colspan="3" class="muted">Enter a rate to see milestones.</td></tr>';
+    }
+    TN.el('r72-need').textContent = hasYears ? (72 / years).toFixed(2) + '%' : '–';
+  }
+  try {
+    TN.on('r72-rate', 'input', calc);
+    TN.on('r72-years', 'input', calc);
+    calc();
+  } catch (e) { /* never throw on load */ }
+})();
+</script>
+</body>
+</html>

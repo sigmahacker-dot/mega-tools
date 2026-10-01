@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PDF to Text Extractor — Free Online | ToolNest</title>
+<meta name="description" content="Extract all text from a PDF — page by page with PDF.js — then copy it or download it as a plain .txt file.">
+<meta name="keywords" content="pdf to text, extract text from pdf, pdf text extractor, pdf to txt, copy text from pdf">
+<link rel="canonical" href="https://toolnest.vercel.app/tools/pdf-to-text-extractor/">
+<meta name="theme-color" content="#07070b">
+<meta property="og:title" content="PDF to Text Extractor — Free Online | ToolNest">
+<meta property="og:description" content="Extract all text from a PDF — page by page with PDF.js — then copy it or download it as a plain .txt file.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css?v=4">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%23e01111'/><text x='50' y='68' font-size='58' text-anchor='middle' fill='white' font-family='Arial' font-weight='bold'>T</text></svg>">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebApplication","name":"PDF to Text Extractor","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0"},"url":"https://toolnest.vercel.app/tools/pdf-to-text-extractor/","description":"Extract all text from a PDF — page by page with PDF.js — then copy it or download it as a plain .txt file."},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Why is my scanned PDF's text empty?","acceptedAnswer":{"@type":"Answer","text":"Text-based PDFs (reports, ebooks, invoices) extract cleanly. Scanned image-only PDFs contain no text data, so nothing can be extracted."}},{"@type":"Question","name":"Is the text organized by page?","acceptedAnswer":{"@type":"Answer","text":"Yes — text is grouped by page with a “Page N” header, in the document's reading order."}},{"@type":"Question","name":"Why does the text order look odd?","acceptedAnswer":{"@type":"Answer","text":"Tables, columns and fancy layouts may extract out of visual order — that is how the text is stored in the PDF."}},{"@type":"Question","name":"Is my PDF uploaded?","acceptedAnswer":{"@type":"Answer","text":"No — extraction runs locally with PDF.js in your browser."}}]}]}</script>
+</head>
+<body>
+<header class="site-header">
+  <div class="container">
+    <a class="logo" href="/"><span class="logo-mark">T</span> ToolNest</a>
+    <div class="header-right">
+      <form class="nav-search" action="/" method="get" role="search">
+        <span class="ns-icon">🔍</span>
+        <input type="search" name="q" placeholder="Search tools…" aria-label="Search tools" autocomplete="off">
+      </form>
+      <div class="menu-wrap">
+        <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="menuPanel" aria-label="Open menu"><span></span><span></span><span></span></button>
+        <nav class="menu-panel" id="menuPanel" aria-label="Site">
+          <a href="/">Home</a>
+          <a href="/#categories">Categories</a>
+          <a href="/#all-tools">All Tools</a>
+        </nav>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ADSTERRA-HEADER: paste your Adsterra banner ad code inside the div below -->
+<div class="container"><div class="ad-slot ad-leaderboard" data-ad="header"></div></div>
+
+<main class="container">
+  <nav class="crumbs"><a href="/">Home</a> &rsaquo; <a href="/#pdf">PDF &amp; Documents</a> &rsaquo; PDF to Text Extractor</nav>
+  <div class="tool-hero">
+    <h1>PDF to Text Extractor</h1>
+    <p>Extract all text from a PDF — page by page with PDF.js — then copy it or download it as a plain .txt file.</p>
+  </div>
+
+  <div class="tool-card">
+  <div class="field">
+    <label for="pdf-to-text-extractor-file">Upload PDF</label>
+    <input type="file" class="input" id="pdf-to-text-extractor-file" accept="application/pdf,.pdf">
+  </div>
+  <div class="btn-row" style="margin-top:12px">
+    <button class="btn btn-outline" id="pdf-to-text-extractor-copy" disabled>Copy text</button>
+    <button class="btn btn-outline" id="pdf-to-text-extractor-dl" disabled>Download .txt</button>
+  </div>
+  <div class="error" id="pdf-to-text-extractor-error"></div>
+  <div class="result" id="pdf-to-text-extractor-result" hidden>
+    <div class="stat-cards">
+      <div class="stat-card"><div class="v" id="pdf-to-text-extractor-pages">–</div><div class="l">Pages</div></div>
+      <div class="stat-card"><div class="v" id="pdf-to-text-extractor-chars">–</div><div class="l">Characters</div></div>
+      <div class="stat-card"><div class="v" id="pdf-to-text-extractor-words">–</div><div class="l">Words</div></div>
+    </div>
+    <div class="field">
+      <label for="pdf-to-text-extractor-out">Extracted text</label>
+      <textarea class="input" id="pdf-to-text-extractor-out" rows="14" readonly style="font-family:monospace;white-space:pre-wrap"></textarea>
+    </div>
+  </div>
+</div>
+
+
+  <!-- ADSTERRA-INCONTENT: paste your Adsterra native/in-content ad code inside the div below -->
+  <div class="ad-slot" data-ad="incontent"></div>
+
+  <div class="info-grid">
+    <div class="info-card">
+      <h2>📖 How to use</h2>
+      <ol><li>Upload your PDF.</li><li>Wait for the text to be extracted page by page.</li><li>Read, search or copy the extracted text.</li><li>Download it as a .txt file if you need it.</li></ol>
+    </div>
+    <div class="info-card">
+      <h2>❓ Frequently asked questions</h2>
+      <div class="faq"><details><summary>Why is my scanned PDF&#39;s text empty?</summary><p>Text-based PDFs (reports, ebooks, invoices) extract cleanly. Scanned image-only PDFs contain no text data, so nothing can be extracted.</p></details><details><summary>Is the text organized by page?</summary><p>Yes — text is grouped by page with a “Page N” header, in the document&#39;s reading order.</p></details><details><summary>Why does the text order look odd?</summary><p>Tables, columns and fancy layouts may extract out of visual order — that is how the text is stored in the PDF.</p></details><details><summary>Is my PDF uploaded?</summary><p>No — extraction runs locally with PDF.js in your browser.</p></details></div>
+    </div>
+  </div>
+
+  <section class="section">
+    <h2>🔗 Related tools</h2>
+    <div class="tool-grid"><a class="tool-link" href="/tools/esign-pdf/" data-search="esign pdf draw your signature and stamp it onto any page of a pdf. choose the page, position and size with sliders, then download the signed document. esign pdf sign pdf online electronic signature pdf"><span class="t-ico">📄</span><span class="t-body"><b>eSign PDF</b><small>Draw your signature and stamp it onto any page of a PDF. Choose the page, position and size …</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/pdf-blank-page-adder/" data-search="pdf blank page adder insert blank pages into a pdf — at the start, at the end, or after any page. choose page size and how many to add. add blank pages pdf insert blank page pdf pdf blank page add pages to pdf pdf insert pages"><span class="t-ico">📄</span><span class="t-body"><b>PDF Blank Page Adder</b><small>Insert blank pages into a PDF — at the start, at the end, or after any page. Choose page siz…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/pdf-compressor/" data-search="pdf compressor shrink a pdf&#39;s file size by re-rendering its pages as compressed images. choose low, medium or high quality and compare sizes before downloading. compress pdf reduce pdf size shrink pdf"><span class="t-ico">📄</span><span class="t-body"><b>PDF Compressor</b><small>Shrink a PDF&#39;s file size by re-rendering its pages as compressed images. Choose Low, Medium …</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/pdf-merger/" data-search="pdf merger combine multiple pdf files into one document. arrange the files in any order, preview each file&#39;s page count, then merge and download the result. merge pdf combine pdf join pdf files"><span class="t-ico">📄</span><span class="t-body"><b>PDF Merger</b><small>Combine multiple PDF files into one document. Arrange the files in any order, preview each f…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/pdf-metadata-editor/" data-search="pdf metadata editor read and edit a pdf&#39;s title, author, subject and keywords metadata. edit pdf metadata pdf title author pdf properties editor"><span class="t-ico">📄</span><span class="t-body"><b>PDF Metadata Editor</b><small>Read and edit a PDF&#39;s title, author, subject and keywords metadata.</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/pdf-page-counter/" data-search="pdf page counter count the pages in any pdf instantly — plus file size, page dimensions, version and encryption status, all read locally. pdf page counter count pdf pages how many pages in pdf pdf info pdf metadata"><span class="t-ico">📄</span><span class="t-body"><b>PDF Page Counter</b><small>Count the pages in any PDF instantly — plus file size, page dimensions, version and encrypti…</small></span><span class="t-arrow">→</span></a></div>
+  </section>
+</main>
+
+<!-- ADSTERRA-FOOTER: paste your Adsterra footer/banner ad code inside the div below -->
+<div class="container"><div class="ad-slot" data-ad="footer"></div></div>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="f-grid">
+      <div>
+        <span class="brandline"><span class="logo-mark">T</span> ToolNest</span>
+        <p>Free online tools that actually work. No sign-up, no watermarks — and your files never leave your device for client-side tools.</p>
+      </div>
+      <div>
+        <h4>Popular</h4>
+        <a href="/tools/qr-code-generator/">QR Code Generator</a>
+        <a href="/tools/background-remover/">Background Remover</a>
+        <a href="/tools/pdf-merger/">PDF Merger</a>
+        <a href="/tools/word-counter/">Word Counter</a>
+      </div>
+      <div>
+        <h4>Categories</h4>
+        <a href="/#image">Image Tools</a>
+        <a href="/#pdf">PDF &amp; Documents</a>
+        <a href="/#calculators">Calculators</a>
+        <a href="/#developer">Developer Tools</a>
+      </div>
+      <div>
+        <h4>Site</h4>
+        <a href="/">Home</a>
+        <a href="/#all-tools">All Tools</a>
+        <a href="/sitemap.xml">Sitemap</a>
+      </div>
+    </div>
+    <div class="f-bottom">© 2026 ToolNest · Free tools for everyone · Made with care</div>
+  </div>
+</footer>
+
+<script src="/assets/site.js?v=5"></script>
+<script src="https://cdn.jsdelivr.net/npm/pdfjs-dist@3.11.174/build/pdf.min.js" defer></script>
+<script>
+/* PDF to Text Extractor — page-by-page text extraction with PDF.js. */
+(function () {
+  'use strict';
+  var SLUG = 'pdf-to-text-extractor';
+  var ERR = SLUG + '-error';
+  var WORKER = 'https://cdn.jsdelivr.net/npm/pdfjs-dist@3.11.174/build/pdf.worker.min.js';
+  var fullText = '';
+  var pdfName = 'document.pdf';
+
+  function $(id) { return document.getElementById(id); }
+
+  function ensureWorker() {
+    try {
+      if (typeof pdfjsLib !== 'undefined' && pdfjsLib.GlobalWorkerOptions) {
+        pdfjsLib.GlobalWorkerOptions.workerSrc = WORKER;
+      }
+    } catch (e) { /* ignore */ }
+  }
+
+  function extract(buf) {
+    ensureWorker();
+    if (typeof pdfjsLib === 'undefined') { TN.setErr(ERR, 'PDF engine failed to load. Check your connection and reload.'); return; }
+    TN.clearErr(ERR);
+    $('pdf-to-text-extractor-out').value = 'Extracting text…';
+    $('pdf-to-text-extractor-result').hidden = false;
+    pdfjsLib.getDocument({ data: buf }).promise.then(function (pdf) {
+      var n = pdf.numPages;
+      $('pdf-to-text-extractor-pages').textContent = n;
+      var parts = [];
+      var chain = Promise.resolve();
+      for (var i = 1; i <= n; i++) {
+        (function (pageNum) {
+          chain = chain.then(function () {
+            return pdf.getPage(pageNum).then(function (page) {
+              return page.getTextContent().then(function (tc) {
+                var strs = tc.items.map(function (it) { return it.str; });
+                parts.push('--- Page ' + pageNum + ' ---\n' + strs.join(' '));
+                $('pdf-to-text-extractor-out').value = 'Extracted ' + pageNum + ' / ' + n + ' pages…';
+              });
+            });
+          });
+        })(i);
+      }
+      return chain.then(function () {
+        fullText = parts.join('\n\n');
+        $('pdf-to-text-extractor-out').value = fullText || '(No text found — this PDF may be scanned images.)';
+        $('pdf-to-text-extractor-chars').textContent = fullText.length.toLocaleString('en-US');
+        $('pdf-to-text-extractor-words').textContent = (fullText.match(/\S+/g) || []).length.toLocaleString('en-US');
+        $('pdf-to-text-extractor-copy').disabled = !fullText;
+        $('pdf-to-text-extractor-dl').disabled = !fullText;
+      });
+    }).catch(function () {
+      TN.setErr(ERR, 'Could not read that PDF. It may be encrypted or corrupted.');
+    });
+  }
+
+  try {
+    TN.on('pdf-to-text-extractor-file', 'change', function (e) {
+      var f = e.target.files && e.target.files[0];
+      if (!f) return;
+      pdfName = f.name || pdfName;
+      fullText = '';
+      $('pdf-to-text-extractor-copy').disabled = true;
+      $('pdf-to-text-extractor-dl').disabled = true;
+      var r = new FileReader();
+      r.onload = function () { extract(r.result); };
+      r.onerror = function () { TN.setErr(ERR, 'Could not read the file.'); };
+      r.readAsArrayBuffer(f);
+    });
+    TN.on('pdf-to-text-extractor-copy', 'click', function () {
+      if (!fullText) return;
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(fullText).then(function () { TN.clearErr(ERR); }, function () { TN.setErr(ERR, 'Copy failed — select the text and copy manually.'); });
+      } else { TN.setErr(ERR, 'Clipboard not available — select the text and copy manually.'); }
+    });
+    TN.on('pdf-to-text-extractor-dl', 'click', function () {
+      if (!fullText) return;
+      var blob = new Blob([fullText], { type: 'text/plain' });
+      var a = document.createElement('a');
+      a.href = URL.createObjectURL(blob);
+      a.download = pdfName.replace(/\.pdf$/i, '') + '.txt';
+      document.body.appendChild(a); a.click();
+      setTimeout(function () { document.body.removeChild(a); }, 100);
+    });
+  } catch (e) { /* never throw on load */ }
+})();
+
+</script>
+</body>
+</html>

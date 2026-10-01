@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Image Splitter — Free Online | ToolNest</title>
+<meta name="description" content="Split any image into an even grid of tiles — pick rows and columns, preview every piece, and download the tiles individually as PNG files.">
+<meta name="keywords" content="image splitter, split image into grid, slice image, image tiles, cut image into pieces">
+<link rel="canonical" href="https://toolnest.vercel.app/tools/image-splitter/">
+<meta name="theme-color" content="#07070b">
+<meta property="og:title" content="Image Splitter — Free Online | ToolNest">
+<meta property="og:description" content="Split any image into an even grid of tiles — pick rows and columns, preview every piece, and download the tiles individually as PNG files.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css?v=4">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%23e01111'/><text x='50' y='68' font-size='58' text-anchor='middle' fill='white' font-family='Arial' font-weight='bold'>T</text></svg>">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebApplication","name":"Image Splitter","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0"},"url":"https://toolnest.vercel.app/tools/image-splitter/","description":"Split any image into an even grid of tiles — pick rows and columns, preview every piece, and download the tiles individually as PNG files."},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What format and quality are the tiles?","acceptedAnswer":{"@type":"Answer","text":"Each tile is saved as a PNG at the exact pixel size of its slice, so no quality is lost in the split."}},{"@type":"Question","name":"Can I use different numbers of rows and columns?","acceptedAnswer":{"@type":"Answer","text":"Yes — rows and columns can be set from 1 to 10 independently, so grids like 3×2 or 1×4 work fine."}},{"@type":"Question","name":"Is my image uploaded anywhere?","acceptedAnswer":{"@type":"Answer","text":"No. The image is loaded, sliced and saved entirely in your browser — nothing is uploaded."}}]}]}</script>
+</head>
+<body>
+<header class="site-header">
+  <div class="container">
+    <a class="logo" href="/"><span class="logo-mark">T</span> ToolNest</a>
+    <div class="header-right">
+      <form class="nav-search" action="/" method="get" role="search">
+        <span class="ns-icon">🔍</span>
+        <input type="search" name="q" placeholder="Search tools…" aria-label="Search tools" autocomplete="off">
+      </form>
+      <div class="menu-wrap">
+        <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="menuPanel" aria-label="Open menu"><span></span><span></span><span></span></button>
+        <nav class="menu-panel" id="menuPanel" aria-label="Site">
+          <a href="/">Home</a>
+          <a href="/#categories">Categories</a>
+          <a href="/#all-tools">All Tools</a>
+        </nav>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ADSTERRA-HEADER: paste your Adsterra banner ad code inside the div below -->
+<div class="container"><div class="ad-slot ad-leaderboard" data-ad="header"></div></div>
+
+<main class="container">
+  <nav class="crumbs"><a href="/">Home</a> &rsaquo; <a href="/#image">Image Tools</a> &rsaquo; Image Splitter</nav>
+  <div class="tool-hero">
+    <h1>Image Splitter</h1>
+    <p>Split any image into an even grid of tiles — pick rows and columns, preview every piece, and download the tiles individually as PNG files.</p>
+  </div>
+
+  <div class="tool-card">
+  <div class="field">
+    <label for="image-splitter-file">Upload image</label>
+    <input type="file" class="input" id="image-splitter-file" accept="image/*">
+  </div>
+  <div class="grid2">
+    <div class="field">
+      <label for="image-splitter-rows">Rows (1–10)</label>
+      <input type="number" class="input" id="image-splitter-rows" min="1" max="10" step="1" value="2">
+    </div>
+    <div class="field">
+      <label for="image-splitter-cols">Columns (1–10)</label>
+      <input type="number" class="input" id="image-splitter-cols" min="1" max="10" step="1" value="2">
+    </div>
+  </div>
+  <div class="btn-row" style="margin-top:12px">
+    <button class="btn" id="image-splitter-split">Split image</button>
+    <button class="btn btn-outline" id="image-splitter-all" disabled>Download all tiles</button>
+  </div>
+  <div class="error" id="image-splitter-error"></div>
+  <div class="result" id="image-splitter-result" hidden>
+    <p class="muted" id="image-splitter-info"></p>
+    <div id="image-splitter-grid" style="display:grid;gap:8px"></div>
+  </div>
+</div>
+
+
+  <!-- ADSTERRA-INCONTENT: paste your Adsterra native/in-content ad code inside the div below -->
+  <div class="ad-slot" data-ad="incontent"></div>
+
+  <div class="info-grid">
+    <div class="info-card">
+      <h2>📖 How to use</h2>
+      <ol><li>Upload an image (JPG, PNG, WebP…).</li><li>Choose how many rows and columns to split it into.</li><li>Click “Split” to preview every tile in the grid.</li><li>Download any tile individually, or all tiles at once.</li></ol>
+    </div>
+    <div class="info-card">
+      <h2>❓ Frequently asked questions</h2>
+      <div class="faq"><details><summary>What format and quality are the tiles?</summary><p>Each tile is saved as a PNG at the exact pixel size of its slice, so no quality is lost in the split.</p></details><details><summary>Can I use different numbers of rows and columns?</summary><p>Yes — rows and columns can be set from 1 to 10 independently, so grids like 3×2 or 1×4 work fine.</p></details><details><summary>Is my image uploaded anywhere?</summary><p>No. The image is loaded, sliced and saved entirely in your browser — nothing is uploaded.</p></details></div>
+    </div>
+  </div>
+
+  <section class="section">
+    <h2>🔗 Related tools</h2>
+    <div class="tool-grid"><a class="tool-link" href="/tools/app-icon-resizer/" data-search="app icon resizer generate every common app icon size from one image — 16, 32, 48, 180, 192 and 512 px — with instant preview and one-click png downloads. app icon resizer icon generator favicon sizes pwa icon apple touch icon generator"><span class="t-ico">🖼️</span><span class="t-body"><b>App Icon Resizer</b><small>Generate every common app icon size from one image — 16, 32, 48, 180, 192 and 512 px — with …</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/background-remover/" data-search="background remover remove the background from any photo with real on-device ai and download a transparent png. free, private and unlimited — no sign-up needed. background remover remove image background transparent png maker"><span class="t-ico">🖼️</span><span class="t-body"><b>Background Remover</b><small>Remove the background from any photo with real on-device AI and download a transparent PNG. …</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/favicon-generator/" data-search="favicon generator generate a complete png favicon set (16–512 px) from your logo in one click, download it as a zip, and copy the ready-to-paste html link tags. favicon generator favicon maker png favicon"><span class="t-ico">🖼️</span><span class="t-body"><b>Favicon Generator</b><small>Generate a complete PNG favicon set (16–512 px) from your logo in one click, download it as …</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/image-border-adder/" data-search="image border adder add a clean border or frame to any image — set thickness, color, and corner style, preview instantly, and download the framed png. add border to image photo frame image border maker picture frame online photo border"><span class="t-ico">🖼️</span><span class="t-body"><b>Image Border Adder</b><small>Add a clean border or frame to any image — set thickness, color, and corner style, preview i…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/image-compressor/" data-search="image compressor shrink jpg, png and webp images right in your browser with an adjustable quality slider. compare before/after sizes, download each file or grab everything as a zip. image compressor compress jpg reduce image size"><span class="t-ico">🖼️</span><span class="t-body"><b>Image Compressor</b><small>Shrink JPG, PNG and WebP images right in your browser with an adjustable quality slider. Com…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/image-cropper/" data-search="image cropper crop any image by dragging a selection box over it — with optional fixed aspect ratios — then preview and download the cropped result. crop image image cropper crop photo online free crop tool crop picture"><span class="t-ico">🖼️</span><span class="t-body"><b>Image Cropper</b><small>Crop any image by dragging a selection box over it — with optional fixed aspect ratios — the…</small></span><span class="t-arrow">→</span></a></div>
+  </section>
+</main>
+
+<!-- ADSTERRA-FOOTER: paste your Adsterra footer/banner ad code inside the div below -->
+<div class="container"><div class="ad-slot" data-ad="footer"></div></div>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="f-grid">
+      <div>
+        <span class="brandline"><span class="logo-mark">T</span> ToolNest</span>
+        <p>Free online tools that actually work. No sign-up, no watermarks — and your files never leave your device for client-side tools.</p>
+      </div>
+      <div>
+        <h4>Popular</h4>
+        <a href="/tools/qr-code-generator/">QR Code Generator</a>
+        <a href="/tools/background-remover/">Background Remover</a>
+        <a href="/tools/pdf-merger/">PDF Merger</a>
+        <a href="/tools/word-counter/">Word Counter</a>
+      </div>
+      <div>
+        <h4>Categories</h4>
+        <a href="/#image">Image Tools</a>
+        <a href="/#pdf">PDF &amp; Documents</a>
+        <a href="/#calculators">Calculators</a>
+        <a href="/#developer">Developer Tools</a>
+      </div>
+      <div>
+        <h4>Site</h4>
+        <a href="/">Home</a>
+        <a href="/#all-tools">All Tools</a>
+        <a href="/sitemap.xml">Sitemap</a>
+      </div>
+    </div>
+    <div class="f-bottom">© 2026 ToolNest · Free tools for everyone · Made with care</div>
+  </div>
+</footer>
+
+<script src="/assets/site.js?v=5"></script>
+
+<script>
+/* Image Splitter — slice an image into a rows×cols tile grid, download tiles. */
+(function () {
+  'use strict';
+  var SLUG = 'image-splitter';
+  var ERR = SLUG + '-error';
+  var img = null;
+  var tiles = []; // {url, name, w, h}
+
+  function $(id) { return document.getElementById(id); }
+  function errId() { return ERR; }
+
+  function loadImage(file) {
+    TN.clearErr(errId());
+    var url = URL.createObjectURL(file);
+    var im = new Image();
+    im.onload = function () {
+      img = im;
+      tiles.forEach(function (t) { URL.revokeObjectURL(t.url); });
+      tiles = [];
+      TN.clearErr(errId());
+    };
+    im.onerror = function () {
+      URL.revokeObjectURL(url);
+      TN.setErr(errId(), 'Could not read that file as an image.');
+    };
+    im.src = url;
+  }
+
+  function download(url, name) {
+    var a = document.createElement('a');
+    a.href = url;
+    a.download = name;
+    document.body.appendChild(a);
+    a.click();
+    setTimeout(function () { document.body.removeChild(a); }, 100);
+  }
+
+  function split() {
+    if (!img) { TN.setErr(errId(), 'Upload an image first.'); return; }
+    var rows = Math.max(1, Math.min(10, parseInt($('image-splitter-rows').value, 10) || 2));
+    var cols = Math.max(1, Math.min(10, parseInt($('image-splitter-cols').value, 10) || 2));
+    tiles.forEach(function (t) { URL.revokeObjectURL(t.url); });
+    tiles = [];
+    var tw = Math.floor(img.naturalWidth / cols);
+    var th = Math.floor(img.naturalHeight / rows);
+    var grid = $('image-splitter-grid');
+    grid.innerHTML = '';
+    grid.style.gridTemplateColumns = 'repeat(' + cols + ', 1fr)';
+    for (var r = 0; r < rows; r++) {
+      for (var c = 0; c < cols; c++) {
+        var cw = (c === cols - 1) ? img.naturalWidth - tw * c : tw;
+        var ch = (r === rows - 1) ? img.naturalHeight - th * r : th;
+        var cv = document.createElement('canvas');
+        cv.width = cw; cv.height = ch;
+        cv.getContext('2d').drawImage(img, tw * c, th * r, cw, ch, 0, 0, cw, ch);
+        (function (canvas, idx) {
+          canvas.toBlob(function (b) {
+            if (!b) return;
+            var url = URL.createObjectURL(b);
+            tiles[idx] = { url: url, name: 'tile-' + (idx + 1) + '.png', w: canvas.width, h: canvas.height };
+            var cell = $('image-splitter-cell-' + idx);
+            if (cell) {
+              var btn = cell.querySelector('button');
+              if (btn) { btn.disabled = false; btn.onclick = function () { download(url, 'tile-' + (idx + 1) + '.png'); }; }
+            }
+          }, 'image/png');
+        })(cv, r * cols + c);
+        var cell = document.createElement('div');
+        cell.id = 'image-splitter-cell-' + (r * cols + c);
+        cell.style.cssText = 'border:1px solid #ddd;border-radius:8px;overflow:hidden;background:#f8f8f8';
+        var im2 = document.createElement('img');
+        im2.src = cv.toDataURL('image/png');
+        im2.alt = 'Tile ' + (r * cols + c + 1);
+        im2.style.cssText = 'display:block;width:100%;height:auto';
+        var cap = document.createElement('div');
+        cap.style.cssText = 'display:flex;justify-content:space-between;align-items:center;padding:6px 8px;font-size:12px';
+        cap.innerHTML = '<span class="muted">Tile ' + (r * cols + c + 1) + ' · ' + cw + '×' + ch + '</span>';
+        var b = document.createElement('button');
+        b.className = 'btn btn-sm btn-outline';
+        b.textContent = 'Download';
+        b.disabled = true;
+        cap.appendChild(b);
+        cell.appendChild(im2);
+        cell.appendChild(cap);
+        grid.appendChild(cell);
+      }
+    }
+    $('image-splitter-info').textContent = img.naturalWidth + '×' + img.naturalHeight + ' px split into ' + (rows * cols) + ' tiles.';
+    $('image-splitter-result').hidden = false;
+    $('image-splitter-all').disabled = false;
+    TN.clearErr(errId());
+  }
+
+  try {
+    TN.on('image-splitter-file', 'change', function (e) {
+      var f = e.target.files && e.target.files[0];
+      if (f) loadImage(f);
+    });
+    TN.on('image-splitter-split', 'click', split);
+    TN.on('image-splitter-all', 'click', function () {
+      var i = 0;
+      tiles.forEach(function (t) {
+        if (!t) return;
+        setTimeout(function () { download(t.url, t.name); }, i * 350);
+        i++;
+      });
+    });
+  } catch (e) { /* never throw on load */ }
+})();
+
+</script>
+</body>
+</html>

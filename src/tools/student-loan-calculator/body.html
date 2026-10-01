@@ -1,0 +1,23 @@
+<div class="tool-card">
+  <div class="grid2">
+    <div class="field"><label for="sl-mode">Mode</label>
+      <select class="input" id="sl-mode">
+        <option value="payoff">Payoff time from payment</option>
+        <option value="payment">Payment from term</option>
+      </select>
+    </div>
+    <div class="field"><label for="sl-balance">Loan balance ($)</label><input type="number" class="input" id="sl-balance" min="0" step="any" placeholder="30000"></div>
+    <div class="field"><label for="sl-rate">Interest rate (APR %)</label><input type="number" class="input" id="sl-rate" min="0" max="30" step="any" placeholder="5.5"></div>
+    <div class="field"><label for="sl-payment">Monthly payment ($)</label><input type="number" class="input" id="sl-payment" min="0" step="any" placeholder="350"></div>
+    <div class="field"><label for="sl-term">Term (years)</label><input type="number" class="input" id="sl-term" min="1" max="40" step="1" placeholder="10"></div>
+  </div>
+  <div class="error" id="student-loan-calculator-error"></div>
+  <div class="result" id="sl-result">
+    <div class="stat-cards">
+      <div class="stat-card"><div class="v" id="sl-main">–</div><div class="l" id="sl-main-label">Months to payoff</div></div>
+      <div class="stat-card"><div class="v" id="sl-interest">–</div><div class="l">Total interest</div></div>
+      <div class="stat-card"><div class="v" id="sl-total">–</div><div class="l">Total paid</div></div>
+    </div>
+    <p class="note">Assumes fixed rate and on-time payments with no extra principal payments.</p>
+  </div>
+</div>

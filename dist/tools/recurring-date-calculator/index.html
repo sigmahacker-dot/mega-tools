@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Recurring Date Calculator — Free Online | ToolNest</title>
+<meta name="description" content="Generate a series of recurring dates: daily, weekly, monthly, quarterly or yearly from any start date. Perfect for billing cycles, reminders and schedules.">
+<meta name="keywords" content="recurring date calculator, repeating dates generator, schedule generator, billing dates calculator, recurrence calculator">
+<link rel="canonical" href="https://toolnest.vercel.app/tools/recurring-date-calculator/">
+<meta name="theme-color" content="#07070b">
+<meta property="og:title" content="Recurring Date Calculator — Free Online | ToolNest">
+<meta property="og:description" content="Generate a series of recurring dates: daily, weekly, monthly, quarterly or yearly from any start date. Perfect for billing cycles, reminders and schedules.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css?v=4">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%23e01111'/><text x='50' y='68' font-size='58' text-anchor='middle' fill='white' font-family='Arial' font-weight='bold'>T</text></svg>">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebApplication","name":"Recurring Date Calculator","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0"},"url":"https://toolnest.vercel.app/tools/recurring-date-calculator/","description":"Generate a series of recurring dates: daily, weekly, monthly, quarterly or yearly from any start date. Perfect for billing cycles, reminders and schedules."},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What happens with month-end dates?","acceptedAnswer":{"@type":"Answer","text":"They are clamped to the last valid day of each target month: starting Jan 31, the monthly series gives Feb 28 (Feb 29 in leap years), Mar 31, Apr 30, …"}},{"@type":"Question","name":"How many dates can it generate?","acceptedAnswer":{"@type":"Answer","text":"Between 1 and 60 occurrences — enough for a 5-year monthly plan or two months of daily reminders."}},{"@type":"Question","name":"Does it handle leap years?","acceptedAnswer":{"@type":"Answer","text":"Yes. A yearly series starting Feb 29, 2024 gives Feb 28 in non-leap years and Feb 29 again in 2028."}}]}]}</script>
+</head>
+<body>
+<header class="site-header">
+  <div class="container">
+    <a class="logo" href="/"><span class="logo-mark">T</span> ToolNest</a>
+    <div class="header-right">
+      <form class="nav-search" action="/" method="get" role="search">
+        <span class="ns-icon">🔍</span>
+        <input type="search" name="q" placeholder="Search tools…" aria-label="Search tools" autocomplete="off">
+      </form>
+      <div class="menu-wrap">
+        <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="menuPanel" aria-label="Open menu"><span></span><span></span><span></span></button>
+        <nav class="menu-panel" id="menuPanel" aria-label="Site">
+          <a href="/">Home</a>
+          <a href="/#categories">Categories</a>
+          <a href="/#all-tools">All Tools</a>
+        </nav>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ADSTERRA-HEADER: paste your Adsterra banner ad code inside the div below -->
+<div class="container"><div class="ad-slot ad-leaderboard" data-ad="header"></div></div>
+
+<main class="container">
+  <nav class="crumbs"><a href="/">Home</a> &rsaquo; <a href="/#time">Time &amp; Date</a> &rsaquo; Recurring Date Calculator</nav>
+  <div class="tool-hero">
+    <h1>Recurring Date Calculator</h1>
+    <p>Generate a series of recurring dates: daily, weekly, monthly, quarterly or yearly from any start date. Perfect for billing cycles, reminders and schedules.</p>
+  </div>
+
+  <div class="tool-card">
+  <div class="grid2">
+    <div class="field">
+      <label for="recurring-date-calculator-start">Start date</label>
+      <input type="date" class="input" id="recurring-date-calculator-start">
+    </div>
+    <div class="field">
+      <label for="recurring-date-calculator-freq">Frequency</label>
+      <select class="select" id="recurring-date-calculator-freq">
+        <option value="daily">Daily</option>
+        <option value="weekly">Weekly</option>
+        <option value="biweekly">Every 2 weeks</option>
+        <option value="monthly" selected>Monthly</option>
+        <option value="quarterly">Quarterly (every 3 months)</option>
+        <option value="yearly">Yearly</option>
+        <option value="ndays">Every N days…</option>
+      </select>
+    </div>
+    <div class="field" id="recurring-date-calculator-nwrap" style="display:none;">
+      <label for="recurring-date-calculator-n">Every N days</label>
+      <input type="number" class="input" id="recurring-date-calculator-n" min="1" max="3650" step="1" value="10">
+    </div>
+    <div class="field">
+      <label for="recurring-date-calculator-count">Occurrences (1–60)</label>
+      <input type="number" class="input" id="recurring-date-calculator-count" min="1" max="60" step="1" value="12">
+    </div>
+  </div>
+  <div class="error" id="recurring-date-calculator-error"></div>
+  <div class="result" id="recurring-date-calculator-result">
+    <div class="stat-cards">
+      <div class="stat-card"><div class="v" id="recurring-date-calculator-first">–</div><div class="l">First</div></div>
+      <div class="stat-card"><div class="v" id="recurring-date-calculator-last">–</div><div class="l">Last</div></div>
+      <div class="stat-card"><div class="v" id="recurring-date-calculator-span">–</div><div class="l">Span (days)</div></div>
+    </div>
+    <table class="data">
+      <thead><tr><th>#</th><th>Date</th><th>Day</th></tr></thead>
+      <tbody id="recurring-date-calculator-body">
+        <tr><td colspan="3" class="muted">Pick a start date to generate the series.</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+
+  <!-- ADSTERRA-INCONTENT: paste your Adsterra native/in-content ad code inside the div below -->
+  <div class="ad-slot" data-ad="incontent"></div>
+
+  <div class="info-grid">
+    <div class="info-card">
+      <h2>📖 How to use</h2>
+      <ol><li>Pick the start date of the series.</li><li>Choose the frequency: daily, weekly, biweekly, monthly, quarterly, yearly or every N days.</li><li>Set how many occurrences to list (1–60).</li><li>Copy the schedule from the dated table.</li></ol>
+    </div>
+    <div class="info-card">
+      <h2>❓ Frequently asked questions</h2>
+      <div class="faq"><details><summary>What happens with month-end dates?</summary><p>They are clamped to the last valid day of each target month: starting Jan 31, the monthly series gives Feb 28 (Feb 29 in leap years), Mar 31, Apr 30, …</p></details><details><summary>How many dates can it generate?</summary><p>Between 1 and 60 occurrences — enough for a 5-year monthly plan or two months of daily reminders.</p></details><details><summary>Does it handle leap years?</summary><p>Yes. A yearly series starting Feb 29, 2024 gives Feb 28 in non-leap years and Feb 29 again in 2028.</p></details></div>
+    </div>
+  </div>
+
+  <section class="section">
+    <h2>🔗 Related tools</h2>
+    <div class="tool-grid"><a class="tool-link" href="/tools/add-subtract-days-calculator/" data-search="add / subtract days calculator add or subtract days, weeks, months or years from any date. optional business-days-only mode skips weekends automatically. add days to date subtract days calculator date plus days business days calculator date arithmetic"><span class="t-ico">⏰</span><span class="t-body"><b>Add / Subtract Days Calculator</b><small>Add or subtract days, weeks, months or years from any date. Optional business-days-only mode…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/anniversary-calculator/" data-search="anniversary calculator track any anniversary: days until the next one, which number it is (10th, 25th…), total days together and the weekday it falls on. anniversary calculator wedding anniversary countdown how many days until anniversary anniversary date tracker years together calculator"><span class="t-ico">⏰</span><span class="t-body"><b>Anniversary Calculator</b><small>Track any anniversary: days until the next one, which number it is (10th, 25th…), total days…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/date-duration-calculator/" data-search="date duration calculator exact duration between two dates, plus business days. date duration calculator days between dates business days calculator"><span class="t-ico">⏰</span><span class="t-body"><b>Date Duration Calculator</b><small>Exact duration between two dates, plus business days.</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/event-countdown/" data-search="event countdown timer live ticking countdown to any future date and time. countdown timer event countdown countdown to date"><span class="t-ico">⏰</span><span class="t-body"><b>Event Countdown Timer</b><small>Live ticking countdown to any future date and time.</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/fiscal-quarter-finder/" data-search="fiscal quarter finder find the fiscal quarter for any date with any fiscal year start month. get the fy label, quarter start/end dates and days remaining. fiscal quarter finder what quarter are we in financial quarter calculator fy quarter dates fiscal year calculator"><span class="t-ico">⏰</span><span class="t-body"><b>Fiscal Quarter Finder</b><small>Find the fiscal quarter for any date with any fiscal year start month. Get the FY label, qua…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/meeting-cost-calculator/" data-search="meeting cost calculator calculate what meetings really cost: enter attendees, average hourly rate and duration to see the cost per meeting, per week, per month and per year. meeting cost calculator cost of meetings meeting time cost how much do meetings cost meeting roi calculator"><span class="t-ico">⏰</span><span class="t-body"><b>Meeting Cost Calculator</b><small>Calculate what meetings really cost: enter attendees, average hourly rate and duration to se…</small></span><span class="t-arrow">→</span></a></div>
+  </section>
+</main>
+
+<!-- ADSTERRA-FOOTER: paste your Adsterra footer/banner ad code inside the div below -->
+<div class="container"><div class="ad-slot" data-ad="footer"></div></div>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="f-grid">
+      <div>
+        <span class="brandline"><span class="logo-mark">T</span> ToolNest</span>
+        <p>Free online tools that actually work. No sign-up, no watermarks — and your files never leave your device for client-side tools.</p>
+      </div>
+      <div>
+        <h4>Popular</h4>
+        <a href="/tools/qr-code-generator/">QR Code Generator</a>
+        <a href="/tools/background-remover/">Background Remover</a>
+        <a href="/tools/pdf-merger/">PDF Merger</a>
+        <a href="/tools/word-counter/">Word Counter</a>
+      </div>
+      <div>
+        <h4>Categories</h4>
+        <a href="/#image">Image Tools</a>
+        <a href="/#pdf">PDF &amp; Documents</a>
+        <a href="/#calculators">Calculators</a>
+        <a href="/#developer">Developer Tools</a>
+      </div>
+      <div>
+        <h4>Site</h4>
+        <a href="/">Home</a>
+        <a href="/#all-tools">All Tools</a>
+        <a href="/sitemap.xml">Sitemap</a>
+      </div>
+    </div>
+    <div class="f-bottom">© 2026 ToolNest · Free tools for everyone · Made with care</div>
+  </div>
+</footer>
+
+<script src="/assets/site.js?v=5"></script>
+
+<script>
+(function () {
+  'use strict';
+  var P = 'recurring-date-calculator-';
+  var ERR = P + 'error';
+  function g(id) { return document.getElementById(P + id); }
+  function set(id, v) { var el = g(id); if (el) el.textContent = v; }
+  var DAYS = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+  var MONTHS = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+  function fmtD(d) { return DAYS[d.getDay()] + ' ' + MONTHS[d.getMonth()] + ' ' + d.getDate() + ', ' + d.getFullYear(); }
+  function addMonthsClamped(d, n) {
+    var day = d.getDate();
+    var r = new Date(d.getFullYear(), d.getMonth() + n, 1);
+    var last = new Date(r.getFullYear(), r.getMonth() + 1, 0).getDate();
+    r.setDate(Math.min(day, last));
+    return r;
+  }
+  function blank() {
+    set('first', '–'); set('last', '–'); set('span', '–');
+    g('body').innerHTML = '<tr><td colspan="3" class="muted">Pick a start date to generate the series.</td></tr>';
+  }
+  function calc() {
+    if (!g('start')) return;
+    TN.clearErr(ERR);
+    var freq = g('freq').value;
+    g('nwrap').style.display = freq === 'ndays' ? '' : 'none';
+    var v = g('start').value;
+    var m = /^(\d{4})-(\d{2})-(\d{2})$/.exec(v || '');
+    if (!m) { blank(); return; }
+    var start = new Date(parseInt(m[1], 10), parseInt(m[2], 10) - 1, parseInt(m[3], 10));
+    var count = parseInt(g('count').value, 10);
+    if (isNaN(count) || count < 1 || count > 60) { TN.setErr(ERR, 'Occurrences must be between 1 and 60.'); blank(); return; }
+    var stepDays = freq === 'daily' ? 1 : freq === 'weekly' ? 7 : freq === 'biweekly' ? 14 : 0;
+    var stepMonths = freq === 'monthly' ? 1 : freq === 'quarterly' ? 3 : freq === 'yearly' ? 12 : 0;
+    if (freq === 'ndays') {
+      var n = parseInt(g('n').value, 10);
+      if (isNaN(n) || n < 1 || n > 3650) { TN.setErr(ERR, 'N must be between 1 and 3650 days.'); blank(); return; }
+      stepDays = n;
+    }
+    var dates = [], d = new Date(start.getTime());
+    for (var i = 0; i < count; i++) {
+      dates.push(new Date(d.getTime()));
+      d = stepMonths ? addMonthsClamped(d, stepMonths) : new Date(d.getTime() + stepDays * 86400000);
+    }
+    set('first', MONTHS[dates[0].getMonth()] + ' ' + dates[0].getDate() + ', ' + dates[0].getFullYear());
+    var last = dates[dates.length - 1];
+    set('last', MONTHS[last.getMonth()] + ' ' + last.getDate() + ', ' + last.getFullYear());
+    set('span', String(Math.round((last - dates[0]) / 86400000)));
+    var html = '';
+    dates.forEach(function (dt, i) {
+      html += '<tr><td>' + (i + 1) + '</td><td>' + TN.esc(fmtD(dt)) + '</td><td>' +
+        TN.esc(['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'][dt.getDay()]) + '</td></tr>';
+    });
+    g('body').innerHTML = html;
+  }
+  try {
+    var t = new Date();
+    g('start').value = t.getFullYear() + '-' + String(t.getMonth() + 1).padStart(2, '0') + '-' + String(t.getDate()).padStart(2, '0');
+    TN.on(P + 'start', 'input', calc);
+    TN.on(P + 'start', 'change', calc);
+    TN.on(P + 'freq', 'change', calc);
+    TN.on(P + 'n', 'input', calc);
+    TN.on(P + 'count', 'input', calc);
+    calc();
+  } catch (e) { /* never throw on load */ }
+})();
+
+</script>
+</body>
+</html>

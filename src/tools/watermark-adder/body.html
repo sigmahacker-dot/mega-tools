@@ -1,0 +1,52 @@
+<div class="tool-card">
+  <div class="field">
+    <label for="watermark-adder-file">Upload image</label>
+    <input type="file" class="input" id="watermark-adder-file" accept="image/*">
+  </div>
+  <div class="grid2">
+    <div class="field">
+      <label for="watermark-adder-text">Watermark text</label>
+      <input type="text" class="input" id="watermark-adder-text" value="© Your Name" maxlength="80">
+    </div>
+    <div class="field">
+      <label for="watermark-adder-pos">Position</label>
+      <select class="input" id="watermark-adder-pos">
+        <option value="tl">Top-left</option>
+        <option value="tc">Top-center</option>
+        <option value="tr">Top-right</option>
+        <option value="ml">Middle-left</option>
+        <option value="mc">Center</option>
+        <option value="mr">Middle-right</option>
+        <option value="bl">Bottom-left</option>
+        <option value="bc" selected>Bottom-center</option>
+        <option value="br">Bottom-right</option>
+      </select>
+    </div>
+    <div class="field">
+      <label for="watermark-adder-size">Font size (<span id="watermark-adder-size-v">48</span> px)</label>
+      <input type="range" class="input" id="watermark-adder-size" min="12" max="200" step="1" value="48">
+    </div>
+    <div class="field">
+      <label for="watermark-adder-opacity">Opacity (<span id="watermark-adder-opacity-v">60</span>%)</label>
+      <input type="range" class="input" id="watermark-adder-opacity" min="5" max="100" step="1" value="60">
+    </div>
+    <div class="field">
+      <label for="watermark-adder-color">Color</label>
+      <input type="color" class="input" id="watermark-adder-color" value="#ffffff">
+    </div>
+    <div class="field">
+      <label for="watermark-adder-angle">Angle (<span id="watermark-adder-angle-v">0</span>°)</label>
+      <input type="range" class="input" id="watermark-adder-angle" min="-90" max="90" step="1" value="0">
+    </div>
+  </div>
+  <div class="field" style="margin-top:8px">
+    <label><input type="checkbox" id="watermark-adder-tile"> Tile watermark across the whole image</label>
+  </div>
+  <div class="btn-row" style="margin-top:12px">
+    <button class="btn btn-outline" id="watermark-adder-dl" disabled>Download watermarked PNG</button>
+  </div>
+  <div class="error" id="watermark-adder-error"></div>
+  <div class="result" id="watermark-adder-result" hidden>
+    <canvas id="watermark-adder-canvas" style="max-width:100%;height:auto;border-radius:8px;border:1px solid #ddd"></canvas>
+  </div>
+</div>

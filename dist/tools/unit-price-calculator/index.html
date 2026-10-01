@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Unit Price Calculator — Free Online | ToolNest</title>
+<meta name="description" content="Compare up to three products by price per unit to instantly see which pack or brand is the best deal.">
+<meta name="keywords" content="unit price calculator, price per unit calculator, best deal calculator, compare grocery prices, value for money calculator">
+<link rel="canonical" href="https://toolnest.vercel.app/tools/unit-price-calculator/">
+<meta name="theme-color" content="#07070b">
+<meta property="og:title" content="Unit Price Calculator — Free Online | ToolNest">
+<meta property="og:description" content="Compare up to three products by price per unit to instantly see which pack or brand is the best deal.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css?v=4">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%23e01111'/><text x='50' y='68' font-size='58' text-anchor='middle' fill='white' font-family='Arial' font-weight='bold'>T</text></svg>">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebApplication","name":"Unit Price Calculator","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0"},"url":"https://toolnest.vercel.app/tools/unit-price-calculator/","description":"Compare up to three products by price per unit to instantly see which pack or brand is the best deal."},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Do the quantities need to be in the same unit?","acceptedAnswer":{"@type":"Answer","text":"Yes. Compare grams with grams or pieces with pieces. Mixing units (e.g. 500g vs 1kg) still works only if you enter the raw numbers in the same base unit."}},{"@type":"Question","name":"Why does the cheapest pack not always win?","acceptedAnswer":{"@type":"Answer","text":"Because unit price ignores pack size. A bigger pack usually has a lower price per unit, so it wins even though you pay more upfront."}},{"@type":"Question","name":"How is the percentage difference calculated?","acceptedAnswer":{"@type":"Answer","text":"Each product's unit price is divided by the best unit price, minus one, expressed as a percent. A value of 25% means it costs 25% more per unit than the best deal."}}]}]}</script>
+</head>
+<body>
+<header class="site-header">
+  <div class="container">
+    <a class="logo" href="/"><span class="logo-mark">T</span> ToolNest</a>
+    <div class="header-right">
+      <form class="nav-search" action="/" method="get" role="search">
+        <span class="ns-icon">🔍</span>
+        <input type="search" name="q" placeholder="Search tools…" aria-label="Search tools" autocomplete="off">
+      </form>
+      <div class="menu-wrap">
+        <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="menuPanel" aria-label="Open menu"><span></span><span></span><span></span></button>
+        <nav class="menu-panel" id="menuPanel" aria-label="Site">
+          <a href="/">Home</a>
+          <a href="/#categories">Categories</a>
+          <a href="/#all-tools">All Tools</a>
+        </nav>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ADSTERRA-HEADER: paste your Adsterra banner ad code inside the div below -->
+<div class="container"><div class="ad-slot ad-leaderboard" data-ad="header"></div></div>
+
+<main class="container">
+  <nav class="crumbs"><a href="/">Home</a> &rsaquo; <a href="/#calculators">Calculators</a> &rsaquo; Unit Price Calculator</nav>
+  <div class="tool-hero">
+    <h1>Unit Price Calculator</h1>
+    <p>Compare up to three products by price per unit to instantly see which pack or brand is the best deal.</p>
+  </div>
+
+  <div class="tool-card">
+  <div class="grid2">
+    <div class="field"><label for="unitprice-name1">Product 1 name</label><input type="text" class="input" id="unitprice-name1" placeholder="e.g. Brand A"></div>
+    <div class="field"><label for="unitprice-price1">Product 1 price ($)</label><input type="number" class="input" id="unitprice-price1" min="0" step="any" placeholder="4.99"></div>
+    <div class="field"><label for="unitprice-qty1">Product 1 quantity</label><input type="number" class="input" id="unitprice-qty1" min="0" step="any" placeholder="500"></div>
+    <div class="field"><label for="unitprice-name2">Product 2 name</label><input type="text" class="input" id="unitprice-name2" placeholder="e.g. Brand B"></div>
+    <div class="field"><label for="unitprice-price2">Product 2 price ($)</label><input type="number" class="input" id="unitprice-price2" min="0" step="any" placeholder="7.49"></div>
+    <div class="field"><label for="unitprice-qty2">Product 2 quantity</label><input type="number" class="input" id="unitprice-qty2" min="0" step="any" placeholder="1000"></div>
+    <div class="field"><label for="unitprice-name3">Product 3 name (optional)</label><input type="text" class="input" id="unitprice-name3" placeholder="e.g. Brand C"></div>
+    <div class="field"><label for="unitprice-price3">Product 3 price ($)</label><input type="number" class="input" id="unitprice-price3" min="0" step="any" placeholder=""></div>
+    <div class="field"><label for="unitprice-qty3">Product 3 quantity (optional)</label><input type="number" class="input" id="unitprice-qty3" min="0" step="any" placeholder=""></div>
+  </div>
+  <div class="error" id="unit-price-calculator-error"></div>
+  <div class="result" id="unitprice-result">
+    <div class="stat-cards">
+      <div class="stat-card"><div class="v" id="unitprice-best">–</div><div class="l">Best deal</div></div>
+      <div class="stat-card"><div class="v" id="unitprice-bestunit">–</div><div class="l">Lowest unit price</div></div>
+      <div class="stat-card"><div class="v" id="unitprice-count">–</div><div class="l">Products compared</div></div>
+    </div>
+    <table class="data">
+      <thead><tr><th>Product</th><th>Price</th><th>Qty</th><th>Unit price</th><th>vs best</th></tr></thead>
+      <tbody id="unitprice-body"><tr><td colspan="5" class="muted">Enter at least two products to compare.</td></tr></tbody>
+    </table>
+    <p class="note">Unit price = price ÷ quantity. Use the same quantity unit (g, ml, pieces) for every product.</p>
+  </div>
+</div>
+
+  <!-- ADSTERRA-INCONTENT: paste your Adsterra native/in-content ad code inside the div below -->
+  <div class="ad-slot" data-ad="incontent"></div>
+
+  <div class="info-grid">
+    <div class="info-card">
+      <h2>📖 How to use</h2>
+      <ol><li>Enter the price and quantity for each product you want to compare.</li><li>Quantities can be any unit (pieces, grams, ml) as long as you use the same unit across products.</li><li>The tool divides price by quantity and flags the lowest unit price as the best deal.</li><li>It also shows how much more expensive each other option is, in percent.</li></ol>
+    </div>
+    <div class="info-card">
+      <h2>❓ Frequently asked questions</h2>
+      <div class="faq"><details><summary>Do the quantities need to be in the same unit?</summary><p>Yes. Compare grams with grams or pieces with pieces. Mixing units (e.g. 500g vs 1kg) still works only if you enter the raw numbers in the same base unit.</p></details><details><summary>Why does the cheapest pack not always win?</summary><p>Because unit price ignores pack size. A bigger pack usually has a lower price per unit, so it wins even though you pay more upfront.</p></details><details><summary>How is the percentage difference calculated?</summary><p>Each product&#39;s unit price is divided by the best unit price, minus one, expressed as a percent. A value of 25% means it costs 25% more per unit than the best deal.</p></details></div>
+    </div>
+  </div>
+
+  <section class="section">
+    <h2>🔗 Related tools</h2>
+    <div class="tool-grid"><a class="tool-link" href="/tools/age-calculator/" data-search="age calculator enter your date of birth to get your exact age in years, months and days, plus total weeks, days, hours, the weekday you were born, and days until your next birthday. age calculator calculate age date of birth age"><span class="t-ico">🧮</span><span class="t-body"><b>Age Calculator</b><small>Enter your date of birth to get your exact age in years, months and days, plus total weeks, …</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/aspect-ratio-calculator/" data-search="aspect ratio calculator reduce any width × height to its simplest aspect ratio, or find the missing side from a ratio. aspect ratio calculator reduce aspect ratio 16:9 calculator missing side calculator ratio simplifier"><span class="t-ico">🧮</span><span class="t-body"><b>Aspect Ratio Calculator</b><small>Reduce any width × height to its simplest aspect ratio, or find the missing side from a rati…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/bmi-calculator/" data-search="bmi calculator calculate your body mass index from height and weight in metric or imperial units. get your bmi value, weight category and the healthy weight range for your height. bmi calculator body mass index healthy weight calculator"><span class="t-ico">🧮</span><span class="t-body"><b>BMI Calculator</b><small>Calculate your Body Mass Index from height and weight in metric or imperial units. Get your …</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/concrete-calculator/" data-search="concrete calculator calculate cubic yards of concrete for any slab, plus how many 60 lb or 80 lb bags that equals. concrete calculator cubic yards concrete concrete bags calculator slab concrete estimator how much concrete"><span class="t-ico">🧮</span><span class="t-body"><b>Concrete Calculator</b><small>Calculate cubic yards of concrete for any slab, plus how many 60 lb or 80 lb bags that equal…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/cooking-measurement-scaler/" data-search="cooking measurement scaler scale any recipe up or down: enter servings and ingredients, get rescaled amounts with metric equivalents. recipe scaler scale recipe calculator cooking measurement converter adjust recipe servings ingredient scaler"><span class="t-ico">🧮</span><span class="t-body"><b>Cooking Measurement Scaler</b><small>Scale any recipe up or down: enter servings and ingredients, get rescaled amounts with metri…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/currency-converter/" data-search="currency converter convert any amount between 30+ world currencies with live exchange rates. pick source and target currencies, convert instantly, and see the rate and last update date. currency converter exchange rate converter usd to pkr converter"><span class="t-ico">🧮</span><span class="t-body"><b>Currency Converter</b><small>Convert any amount between 30+ world currencies with live exchange rates. Pick source and ta…</small></span><span class="t-arrow">→</span></a></div>
+  </section>
+</main>
+
+<!-- ADSTERRA-FOOTER: paste your Adsterra footer/banner ad code inside the div below -->
+<div class="container"><div class="ad-slot" data-ad="footer"></div></div>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="f-grid">
+      <div>
+        <span class="brandline"><span class="logo-mark">T</span> ToolNest</span>
+        <p>Free online tools that actually work. No sign-up, no watermarks — and your files never leave your device for client-side tools.</p>
+      </div>
+      <div>
+        <h4>Popular</h4>
+        <a href="/tools/qr-code-generator/">QR Code Generator</a>
+        <a href="/tools/background-remover/">Background Remover</a>
+        <a href="/tools/pdf-merger/">PDF Merger</a>
+        <a href="/tools/word-counter/">Word Counter</a>
+      </div>
+      <div>
+        <h4>Categories</h4>
+        <a href="/#image">Image Tools</a>
+        <a href="/#pdf">PDF &amp; Documents</a>
+        <a href="/#calculators">Calculators</a>
+        <a href="/#developer">Developer Tools</a>
+      </div>
+      <div>
+        <h4>Site</h4>
+        <a href="/">Home</a>
+        <a href="/#all-tools">All Tools</a>
+        <a href="/sitemap.xml">Sitemap</a>
+      </div>
+    </div>
+    <div class="f-bottom">© 2026 ToolNest · Free tools for everyone · Made with care</div>
+  </div>
+</footer>
+
+<script src="/assets/site.js?v=5"></script>
+
+<script>
+(function () {
+  'use strict';
+  var ERR = 'unit-price-calculator-error';
+  function esc(s) { return String(s).replace(/[&<>"']/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]; }); }
+  function money(n) { try { return '$' + n.toLocaleString('en-US', { minimumFractionDigits: 4, maximumFractionDigits: 4 }); } catch (e) { return '$' + (Math.round(n * 10000) / 10000); } }
+  function calc() {
+    if (!TN.el('unitprice-price1')) return;
+    TN.clearErr(ERR);
+    var items = [];
+    for (var i = 1; i <= 3; i++) {
+      var name = (TN.el('unitprice-name' + i).value || '').trim() || ('Product ' + i);
+      var p = parseFloat(TN.el('unitprice-price' + i).value);
+      var q = parseFloat(TN.el('unitprice-qty' + i).value);
+      if (isNaN(p) && isNaN(q)) continue;
+      if (!(p >= 0)) { TN.setErr(ERR, 'Enter a valid price (0 or more) for ' + name + '.'); return; }
+      if (!(q > 0)) { TN.setErr(ERR, 'Enter a quantity greater than 0 for ' + name + '.'); return; }
+      items.push({ name: name, p: p, q: q, u: p / q });
+    }
+    if (items.length < 2) { TN.setErr(ERR, 'Enter at least two products to compare.'); return; }
+    var best = items[0];
+    items.forEach(function (it) { if (it.u < best.u) best = it; });
+    var rows = items.map(function (it) {
+      var v = it === best ? '<strong>Best deal</strong>' : ('+' + Math.round((it.u / best.u - 1) * 100) + '%');
+      return '<tr><td>' + esc(it.name) + '</td><td>$' + it.p.toFixed(2) + '</td><td>' + it.q + '</td><td>' + money(it.u) + '</td><td>' + v + '</td></tr>';
+    });
+    TN.el('unitprice-body').innerHTML = rows.join('');
+    TN.el('unitprice-best').textContent = best.name;
+    TN.el('unitprice-bestunit').textContent = money(best.u);
+    TN.el('unitprice-count').textContent = items.length;
+  }
+  try {
+    for (var i = 1; i <= 3; i++) { TN.on('unitprice-name' + i, 'input', calc); TN.on('unitprice-price' + i, 'input', calc); TN.on('unitprice-qty' + i, 'input', calc); }
+    calc();
+  } catch (e) { /* never throw on load */ }
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gift List Tracker — Free Online | ToolNest</title>
+<meta name="description" content="Plan gifts for everyone: track recipients, gift ideas, budgets and purchased status — with totals and remaining budget.">
+<meta name="keywords" content="gift list tracker, christmas gift list, gift planner, gift budget tracker, holiday gift organizer">
+<link rel="canonical" href="https://toolnest.vercel.app/tools/gift-list-tracker/">
+<meta name="theme-color" content="#07070b">
+<meta property="og:title" content="Gift List Tracker — Free Online | ToolNest">
+<meta property="og:description" content="Plan gifts for everyone: track recipients, gift ideas, budgets and purchased status — with totals and remaining budget.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css?v=4">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%23e01111'/><text x='50' y='68' font-size='58' text-anchor='middle' fill='white' font-family='Arial' font-weight='bold'>T</text></svg>">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebApplication","name":"Gift List Tracker","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0"},"url":"https://toolnest.vercel.app/tools/gift-list-tracker/","description":"Plan gifts for everyone: track recipients, gift ideas, budgets and purchased status — with totals and remaining budget."},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How does it work?","acceptedAnswer":{"@type":"Answer","text":"Add a row per gift with recipient, idea, budget and cost. Tick purchased when bought; totals update live."}},{"@type":"Question","name":"Is my list saved?","acceptedAnswer":{"@type":"Answer","text":"Yes — your gift list is stored in the browser's localStorage on this device."}},{"@type":"Question","name":"What do the totals show?","acceptedAnswer":{"@type":"Answer","text":"The header shows total budget, total planned cost and how much budget remains."}},{"@type":"Question","name":"Can I remove a gift?","acceptedAnswer":{"@type":"Answer","text":"Use the ✕ button on any row to remove it."}},{"@type":"Question","name":"Is this private?","acceptedAnswer":{"@type":"Answer","text":"Yes — everything stays in your browser."}}]}]}</script>
+</head>
+<body>
+<header class="site-header">
+  <div class="container">
+    <a class="logo" href="/"><span class="logo-mark">T</span> ToolNest</a>
+    <div class="header-right">
+      <form class="nav-search" action="/" method="get" role="search">
+        <span class="ns-icon">🔍</span>
+        <input type="search" name="q" placeholder="Search tools…" aria-label="Search tools" autocomplete="off">
+      </form>
+      <div class="menu-wrap">
+        <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="menuPanel" aria-label="Open menu"><span></span><span></span><span></span></button>
+        <nav class="menu-panel" id="menuPanel" aria-label="Site">
+          <a href="/">Home</a>
+          <a href="/#categories">Categories</a>
+          <a href="/#all-tools">All Tools</a>
+        </nav>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ADSTERRA-HEADER: paste your Adsterra banner ad code inside the div below -->
+<div class="container"><div class="ad-slot ad-leaderboard" data-ad="header"></div></div>
+
+<main class="container">
+  <nav class="crumbs"><a href="/">Home</a> &rsaquo; <a href="/#fun">Fun &amp; Lifestyle</a> &rsaquo; Gift List Tracker</nav>
+  <div class="tool-hero">
+    <h1>Gift List Tracker</h1>
+    <p>Plan gifts for everyone: track recipients, gift ideas, budgets and purchased status — with totals and remaining budget.</p>
+  </div>
+
+  <div class="tool-card">
+  <div class="grid2">
+    <div class="field"><label for="gift-for">Recipient</label><input type="text" class="input" id="gift-for" placeholder="Mom"></div>
+    <div class="field"><label for="gift-idea">Gift idea</label><input type="text" class="input" id="gift-idea" placeholder="Silk scarf"></div>
+    <div class="field"><label for="gift-budget">Budget ($)</label><input type="number" class="input" id="gift-budget" min="0" step="any" placeholder="50"></div>
+    <div class="field"><label for="gift-cost">Actual cost ($) <span class="hint">(optional)</span></label><input type="number" class="input" id="gift-cost" min="0" step="any" placeholder=""></div>
+  </div>
+  <div class="btn-row"><button class="btn btn-primary btn-sm" id="gift-add" type="button">Add gift</button></div>
+  <div class="error" id="gift-list-tracker-error"></div>
+  <div class="result" id="gift-result">
+    <div class="stat-cards">
+      <div class="stat-card"><div class="v" id="gift-tbudget">$0</div><div class="l">Total budget</div></div>
+      <div class="stat-card"><div class="v" id="gift-tcost">$0</div><div class="l">Planned cost</div></div>
+      <div class="stat-card"><div class="v" id="gift-left">$0</div><div class="l">Remaining</div></div>
+      <div class="stat-card"><div class="v" id="gift-bought">0/0</div><div class="l">Purchased</div></div>
+    </div>
+    <table class="data"><thead><tr><th>Recipient</th><th>Gift</th><th>Budget</th><th>Cost</th><th>Bought</th><th></th></tr></thead><tbody id="gift-body"></tbody></table>
+  </div>
+</div>
+
+  <!-- ADSTERRA-INCONTENT: paste your Adsterra native/in-content ad code inside the div below -->
+  <div class="ad-slot" data-ad="incontent"></div>
+
+  <div class="info-grid">
+    <div class="info-card">
+      <h2>📖 How to use</h2>
+      <ol><li>Add gifts with recipient, idea, budget and cost.</li><li>Tick purchased as you buy them.</li><li>Watch totals and remaining budget update live.</li></ol>
+    </div>
+    <div class="info-card">
+      <h2>❓ Frequently asked questions</h2>
+      <div class="faq"><details><summary>How does it work?</summary><p>Add a row per gift with recipient, idea, budget and cost. Tick purchased when bought; totals update live.</p></details><details><summary>Is my list saved?</summary><p>Yes — your gift list is stored in the browser&#39;s localStorage on this device.</p></details><details><summary>What do the totals show?</summary><p>The header shows total budget, total planned cost and how much budget remains.</p></details><details><summary>Can I remove a gift?</summary><p>Use the ✕ button on any row to remove it.</p></details><details><summary>Is this private?</summary><p>Yes — everything stays in your browser.</p></details></div>
+    </div>
+  </div>
+
+  <section class="section">
+    <h2>🔗 Related tools</h2>
+    <div class="tool-grid"><a class="tool-link" href="/tools/aim-trainer-game/" data-search="aim trainer game test and train your aim — targets pop up at random spots for 30 seconds. hits, misses and accuracy are tracked live. aim trainer aim test reaction test click speed test fps aim trainer"><span class="t-ico">🎲</span><span class="t-body"><b>Aim Trainer Game</b><small>Test and train your aim — targets pop up at random spots for 30 seconds. Hits, misses and ac…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/baby-name-generator/" data-search="baby name generator discover baby names by gender and origin — pakistani, arabic, western, indian or turkish — with meanings, random picks and tap-to-copy. baby name generator baby names with meanings muslim baby names boy girl names"><span class="t-ico">🎲</span><span class="t-body"><b>Baby Name Generator</b><small>Discover baby names by gender and origin — Pakistani, Arabic, Western, Indian or Turkish — w…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/battery-status-checker/" data-search="battery status checker check your device&#39;s battery level, charging status and estimated time remaining, with live updates — where your browser supports the battery api. battery status battery level checker laptop battery charging status"><span class="t-ico">🎲</span><span class="t-body"><b>Battery Status Checker</b><small>Check your device&#39;s battery level, charging status and estimated time remaining, with live u…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/birthday-countdown/" data-search="birthday countdown enter your birthday for a live countdown to your next one — days, hours, minutes and seconds — plus the age you&#39;ll turn and a fun message. birthday countdown countdown to birthday how old am i birthday timer"><span class="t-ico">🎲</span><span class="t-body"><b>Birthday Countdown</b><small>Enter your birthday for a live countdown to your next one — days, hours, minutes and seconds…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/calendar-generator/" data-search="calendar generator generate a monthly calendar for any month and year, with correct weekdays, leap years, today&#39;s date highlighted, and previous/next month navigation. calendar generator monthly calendar printable calendar month planner"><span class="t-ico">🎲</span><span class="t-body"><b>Calendar Generator</b><small>Generate a monthly calendar for any month and year, with correct weekdays, leap years, today…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/coin-flip/" data-search="coin flip flip a virtual coin with a fun animated toss. get instant heads or tails results, keep a running tally of both sides, and reset the count whenever you like. coin flip heads or tails coin toss random coin"><span class="t-ico">🎲</span><span class="t-body"><b>Coin Flip</b><small>Flip a virtual coin with a fun animated toss. Get instant Heads or Tails results, keep a run…</small></span><span class="t-arrow">→</span></a></div>
+  </section>
+</main>
+
+<!-- ADSTERRA-FOOTER: paste your Adsterra footer/banner ad code inside the div below -->
+<div class="container"><div class="ad-slot" data-ad="footer"></div></div>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="f-grid">
+      <div>
+        <span class="brandline"><span class="logo-mark">T</span> ToolNest</span>
+        <p>Free online tools that actually work. No sign-up, no watermarks — and your files never leave your device for client-side tools.</p>
+      </div>
+      <div>
+        <h4>Popular</h4>
+        <a href="/tools/qr-code-generator/">QR Code Generator</a>
+        <a href="/tools/background-remover/">Background Remover</a>
+        <a href="/tools/pdf-merger/">PDF Merger</a>
+        <a href="/tools/word-counter/">Word Counter</a>
+      </div>
+      <div>
+        <h4>Categories</h4>
+        <a href="/#image">Image Tools</a>
+        <a href="/#pdf">PDF &amp; Documents</a>
+        <a href="/#calculators">Calculators</a>
+        <a href="/#developer">Developer Tools</a>
+      </div>
+      <div>
+        <h4>Site</h4>
+        <a href="/">Home</a>
+        <a href="/#all-tools">All Tools</a>
+        <a href="/sitemap.xml">Sitemap</a>
+      </div>
+    </div>
+    <div class="f-bottom">© 2026 ToolNest · Free tools for everyone · Made with care</div>
+  </div>
+</footer>
+
+<script src="/assets/site.js?v=5"></script>
+
+<script>
+(function () {
+  'use strict';
+  var ERR = 'gift-list-tracker-error';
+  var KEY = 'tn_gifts';
+  var gifts = [];
+  function esc(s) {
+    return String(s).replace(/[&<>"']/g, function (c) {
+      return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c];
+    });
+  }
+  function money(n) { return '$' + (Math.round(n * 100) / 100).toFixed(2); }
+  function save() { try { localStorage.setItem(KEY, JSON.stringify(gifts)); } catch (e) {} }
+  function load() {
+    try {
+      var raw = localStorage.getItem(KEY);
+      if (raw) gifts = JSON.parse(raw) || [];
+    } catch (e) { gifts = []; }
+  }
+  function render() {
+    var tb = 0, tc = 0, bought = 0;
+    gifts.forEach(function (g) {
+      tb += g.budget || 0; tc += g.cost || 0;
+      if (g.done) bought++;
+    });
+    TN.el('gift-tbudget').textContent = money(tb);
+    TN.el('gift-tcost').textContent = money(tc);
+    var left = tb - tc;
+    TN.el('gift-left').textContent = money(left);
+    TN.el('gift-left').style.color = left < 0 ? '#f87171' : '';
+    TN.el('gift-bought').textContent = bought + '/' + gifts.length;
+    TN.el('gift-body').innerHTML = gifts.map(function (g, i) {
+      return '<tr><td><strong>' + esc(g.for) + '</strong></td><td>' + esc(g.idea) + '</td>' +
+        '<td>' + money(g.budget || 0) + '</td><td>' + (g.cost ? money(g.cost) : '<span class="muted">—</span>') + '</td>' +
+        '<td><input type="checkbox" class="gift-done" data-i="' + i + '"' + (g.done ? ' checked' : '') + ' style="width:18px;height:18px"></td>' +
+        '<td style="text-align:right"><button type="button" class="btn btn-danger btn-sm gift-del" data-i="' + i + '">✕</button></td></tr>';
+    }).join('') || '<tr><td colspan="6" class="muted">No gifts yet — add your first one above.</td></tr>';
+    TN.qsa('#gift-body .gift-done').forEach(function (cb) {
+      cb.addEventListener('change', function () {
+        gifts[parseInt(cb.getAttribute('data-i'), 10)].done = cb.checked;
+        save(); render();
+      });
+    });
+    TN.qsa('#gift-body .gift-del').forEach(function (b) {
+      b.addEventListener('click', function () {
+        gifts.splice(parseInt(b.getAttribute('data-i'), 10), 1);
+        save(); render();
+      });
+    });
+  }
+  try {
+    load(); render();
+    TN.on('gift-add', 'click', function () {
+      TN.clearErr(ERR);
+      var f = TN.el('gift-for').value.trim(), idea = TN.el('gift-idea').value.trim();
+      if (!f || !idea) { TN.setErr(ERR, 'Enter a recipient and a gift idea.'); return; }
+      gifts.push({
+        for: f, idea: idea,
+        budget: parseFloat(TN.el('gift-budget').value) || 0,
+        cost: parseFloat(TN.el('gift-cost').value) || 0,
+        done: false
+      });
+      TN.el('gift-for').value = ''; TN.el('gift-idea').value = '';
+      TN.el('gift-budget').value = ''; TN.el('gift-cost').value = '';
+      save(); render();
+    });
+  } catch (e) { /* never throw on load */ }
+})();
+</script>
+</body>
+</html>

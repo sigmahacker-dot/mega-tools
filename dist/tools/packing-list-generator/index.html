@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Packing List Generator — Free Online | ToolNest</title>
+<meta name="description" content="Generate a smart travel packing checklist by trip type and length — quantities scale with your days and travelers, then check items off.">
+<meta name="keywords" content="packing list generator, travel packing checklist, trip packing list, vacation packing list, what to pack generator">
+<link rel="canonical" href="https://toolnest.vercel.app/tools/packing-list-generator/">
+<meta name="theme-color" content="#07070b">
+<meta property="og:title" content="Packing List Generator — Free Online | ToolNest">
+<meta property="og:description" content="Generate a smart travel packing checklist by trip type and length — quantities scale with your days and travelers, then check items off.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css?v=4">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%23e01111'/><text x='50' y='68' font-size='58' text-anchor='middle' fill='white' font-family='Arial' font-weight='bold'>T</text></svg>">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebApplication","name":"Packing List Generator","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0"},"url":"https://toolnest.vercel.app/tools/packing-list-generator/","description":"Generate a smart travel packing checklist by trip type and length — quantities scale with your days and travelers, then check items off."},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Does it adapt to the trip type?","acceptedAnswer":{"@type":"Answer","text":"Yes — pick Beach, Business, City break, Camping, Skiing, Backpacking, Cruise or Road trip and the base list adapts with trip-specific gear."}},{"@type":"Question","name":"How are quantities calculated?","acceptedAnswer":{"@type":"Answer","text":"Clothing quantities are computed from your trip length (e.g. one shirt per day plus a spare), and most shared items scale with the traveler count."}},{"@type":"Question","name":"Can I check items off?","acceptedAnswer":{"@type":"Answer","text":"Check items off as you pack; your checklist state stays on this page while it is open."}},{"@type":"Question","name":"Is my trip data private?","acceptedAnswer":{"@type":"Answer","text":"Fully private — everything is generated and stored only in your browser."}}]}]}</script>
+</head>
+<body>
+<header class="site-header">
+  <div class="container">
+    <a class="logo" href="/"><span class="logo-mark">T</span> ToolNest</a>
+    <div class="header-right">
+      <form class="nav-search" action="/" method="get" role="search">
+        <span class="ns-icon">🔍</span>
+        <input type="search" name="q" placeholder="Search tools…" aria-label="Search tools" autocomplete="off">
+      </form>
+      <div class="menu-wrap">
+        <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="menuPanel" aria-label="Open menu"><span></span><span></span><span></span></button>
+        <nav class="menu-panel" id="menuPanel" aria-label="Site">
+          <a href="/">Home</a>
+          <a href="/#categories">Categories</a>
+          <a href="/#all-tools">All Tools</a>
+        </nav>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ADSTERRA-HEADER: paste your Adsterra banner ad code inside the div below -->
+<div class="container"><div class="ad-slot ad-leaderboard" data-ad="header"></div></div>
+
+<main class="container">
+  <nav class="crumbs"><a href="/">Home</a> &rsaquo; <a href="/#generators">Generators</a> &rsaquo; Packing List Generator</nav>
+  <div class="tool-hero">
+    <h1>Packing List Generator</h1>
+    <p>Generate a smart travel packing checklist by trip type and length — quantities scale with your days and travelers, then check items off.</p>
+  </div>
+
+  <div class="tool-card">
+  <div class="grid2">
+    <div class="field"><label for="pack-type">Trip type</label>
+      <select class="select" id="pack-type">
+        <option value="beach">Beach holiday</option>
+        <option value="business">Business trip</option>
+        <option value="city">City break</option>
+        <option value="camping">Camping</option>
+        <option value="ski">Skiing / winter</option>
+        <option value="backpack">Backpacking</option>
+        <option value="cruise">Cruise</option>
+        <option value="road">Road trip</option>
+      </select>
+    </div>
+    <div class="field"><label for="pack-days">Trip length (days)</label><input type="number" class="input" id="pack-days" min="1" max="90" value="7"></div>
+    <div class="field"><label for="pack-travelers">Travelers</label><input type="number" class="input" id="pack-travelers" min="1" max="20" value="1"></div>
+  </div>
+  <div class="field"><label>Include categories</label>
+    <div class="grid2">
+      <div class="checkbox-row"><input type="checkbox" id="pack-c-docs" checked><label for="pack-c-docs">Travel documents</label></div>
+      <div class="checkbox-row"><input type="checkbox" id="pack-c-clothes" checked><label for="pack-c-clothes">Clothing</label></div>
+      <div class="checkbox-row"><input type="checkbox" id="pack-c-toilet" checked><label for="pack-c-toilet">Toiletries</label></div>
+      <div class="checkbox-row"><input type="checkbox" id="pack-c-elect" checked><label for="pack-c-elect">Electronics</label></div>
+      <div class="checkbox-row"><input type="checkbox" id="pack-c-health" checked><label for="pack-c-health">Health &amp; meds</label></div>
+      <div class="checkbox-row"><input type="checkbox" id="pack-c-misc" checked><label for="pack-c-misc">Miscellaneous</label></div>
+    </div>
+  </div>
+  <div class="error" id="packing-list-generator-error"></div>
+  <div class="result" id="pack-result">
+    <div class="stat-cards">
+      <div class="stat-card"><div class="v" id="pack-count">–</div><div class="l">Items</div></div>
+      <div class="stat-card"><div class="v" id="pack-packed">–</div><div class="l">Packed</div></div>
+    </div>
+    <div id="pack-list"></div>
+    <div class="btn-row">
+      <button class="btn btn-primary" id="pack-gen" type="button">Generate list</button>
+      <button class="btn btn-outline" id="pack-dl" type="button">Download .txt</button>
+    </div>
+  </div>
+</div>
+
+  <!-- ADSTERRA-INCONTENT: paste your Adsterra native/in-content ad code inside the div below -->
+  <div class="ad-slot" data-ad="incontent"></div>
+
+  <div class="info-grid">
+    <div class="info-card">
+      <h2>📖 How to use</h2>
+      <ol><li>Choose your trip type, length in days and number of travelers.</li><li>Tick the categories you want included.</li><li>Generate the list, check items off as you pack, and download it for offline use.</li></ol>
+    </div>
+    <div class="info-card">
+      <h2>❓ Frequently asked questions</h2>
+      <div class="faq"><details><summary>Does it adapt to the trip type?</summary><p>Yes — pick Beach, Business, City break, Camping, Skiing, Backpacking, Cruise or Road trip and the base list adapts with trip-specific gear.</p></details><details><summary>How are quantities calculated?</summary><p>Clothing quantities are computed from your trip length (e.g. one shirt per day plus a spare), and most shared items scale with the traveler count.</p></details><details><summary>Can I check items off?</summary><p>Check items off as you pack; your checklist state stays on this page while it is open.</p></details><details><summary>Is my trip data private?</summary><p>Fully private — everything is generated and stored only in your browser.</p></details></div>
+    </div>
+  </div>
+
+  <section class="section">
+    <h2>🔗 Related tools</h2>
+    <div class="tool-grid"><a class="tool-link" href="/tools/band-name-generator/" data-search="band name generator generate original band names by genre — rock, metal, pop, hip-hop, electronic, jazz, punk or indie — with one click and copy. band name generator rock band names metal band names cool band names music group name ideas"><span class="t-ico">⚙️</span><span class="t-body"><b>Band Name Generator</b><small>Generate original band names by genre — rock, metal, pop, hip-hop, electronic, jazz, punk or…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/barcode-generator/" data-search="barcode generator generate barcodes in common formats — code128, code39, ean-13, ean-8, upc and itf-14 — and download them as png or svg images. barcode generator barcode maker ean13 barcode upc barcode generator"><span class="t-ico">⚙️</span><span class="t-body"><b>Barcode Generator</b><small>Generate barcodes in common formats — CODE128, CODE39, EAN-13, EAN-8, UPC and ITF-14 — and d…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/bingo-card-generator/" data-search="bingo card generator create printable 5×5 bingo cards with classic b-i-n-g-o number ranges, an optional free space, or your own custom word list. bingo card generator printable bingo cards custom bingo cards bingo number generator free bingo cards"><span class="t-ico">⚙️</span><span class="t-body"><b>Bingo Card Generator</b><small>Create printable 5×5 bingo cards with classic B-I-N-G-O number ranges, an optional free spac…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/border-radius-generator/" data-search="border radius generator organic blob shapes with an 8-handle radius editor. border radius generator blob shape css border-radius css"><span class="t-ico">⚙️</span><span class="t-body"><b>Border Radius Generator</b><small>Organic blob shapes with an 8-handle radius editor.</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/box-shadow-generator/" data-search="box shadow generator visual css box-shadow builder with live preview. box shadow generator css shadow box-shadow css"><span class="t-ico">⚙️</span><span class="t-body"><b>Box Shadow Generator</b><small>Visual CSS box-shadow builder with live preview.</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/button-generator/" data-search="button generator design a custom button with your text, colors, border radius, padding and shadow — then copy the generated css and use it anywhere. button generator css button maker button css custom button design"><span class="t-ico">⚙️</span><span class="t-body"><b>Button Generator</b><small>Design a custom button with your text, colors, border radius, padding and shadow — then copy…</small></span><span class="t-arrow">→</span></a></div>
+  </section>
+</main>
+
+<!-- ADSTERRA-FOOTER: paste your Adsterra footer/banner ad code inside the div below -->
+<div class="container"><div class="ad-slot" data-ad="footer"></div></div>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="f-grid">
+      <div>
+        <span class="brandline"><span class="logo-mark">T</span> ToolNest</span>
+        <p>Free online tools that actually work. No sign-up, no watermarks — and your files never leave your device for client-side tools.</p>
+      </div>
+      <div>
+        <h4>Popular</h4>
+        <a href="/tools/qr-code-generator/">QR Code Generator</a>
+        <a href="/tools/background-remover/">Background Remover</a>
+        <a href="/tools/pdf-merger/">PDF Merger</a>
+        <a href="/tools/word-counter/">Word Counter</a>
+      </div>
+      <div>
+        <h4>Categories</h4>
+        <a href="/#image">Image Tools</a>
+        <a href="/#pdf">PDF &amp; Documents</a>
+        <a href="/#calculators">Calculators</a>
+        <a href="/#developer">Developer Tools</a>
+      </div>
+      <div>
+        <h4>Site</h4>
+        <a href="/">Home</a>
+        <a href="/#all-tools">All Tools</a>
+        <a href="/sitemap.xml">Sitemap</a>
+      </div>
+    </div>
+    <div class="f-bottom">© 2026 ToolNest · Free tools for everyone · Made with care</div>
+  </div>
+</footer>
+
+<script src="/assets/site.js?v=5"></script>
+
+<script>
+(function () {
+  'use strict';
+  var ERR = 'packing-list-generator-error';
+  var state = [];
+  function esc(s) {
+    return String(s).replace(/[&<>"']/g, function (c) {
+      return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c];
+    });
+  }
+  function num(id, dflt) { var e = TN.el(id); var v = e ? parseInt(e.value, 10) : NaN; return isNaN(v) ? dflt : v; }
+  var TYPE_ITEMS = {
+    beach: ['Swimsuit (2)', 'Beach towel', 'Sunscreen SPF 50', 'Sunglasses', 'Flip-flops', 'Beach bag', 'Snorkel set'],
+    business: ['Blazer', 'Dress shirts (' + 0 + ')', 'Dress shoes', 'Laptop + charger', 'Business cards', 'Tie / scarf'],
+    city: ['Comfortable walking shoes', 'Day backpack', 'City map / offline maps', 'Reusable water bottle'],
+    camping: ['Tent', 'Sleeping bag', 'Sleeping pad', 'Headlamp + batteries', 'Camping stove + fuel', 'Cooler', 'Insect repellent', 'Pocket knife'],
+    ski: ['Ski jacket', 'Thermal base layers (3)', 'Ski pants', 'Gloves + liners', 'Beanie', 'Ski socks (4)', 'Goggles', 'Lip balm'],
+    backpack: ['Backpack 50L+', 'Packing cubes', 'Travel lock', 'Quick-dry towel', 'Laundry soap strips', 'Dry bag'],
+    cruise: ['Formal outfit', 'Swimsuit (2)', 'Sunscreen', 'Motion-sickness tablets', 'Lanyard for key card'],
+    road: ['Cooler with snacks', 'Paper maps / offline GPS', 'Car charger', 'Blanket + pillow', 'Jumper cables', 'First-aid kit']
+  };
+  function generate() {
+    TN.clearErr(ERR);
+    var type = TN.el('pack-type').value;
+    var days = Math.min(90, Math.max(1, num('pack-days', 7)));
+    var travelers = Math.min(20, Math.max(1, num('pack-travelers', 1)));
+    var per = function (n) { return n * travelers; };
+    var cats = [];
+    if (TN.el('pack-c-docs').checked) cats.push(['Travel documents', ['Passport / ID', 'Visas', 'Flight / train tickets', 'Hotel confirmations', 'Travel insurance', 'Emergency contacts list']]);
+    if (TN.el('pack-c-clothes').checked) {
+      var shirts = Math.min(days + 1, 14), socks = Math.min(days + 1, 14), under = Math.min(days + 1, 14);
+      cats.push(['Clothing', ['T-shirts / tops x' + per(shirts), 'Underwear x' + per(under), 'Socks x' + per(socks),
+        'Trousers / jeans x' + per(Math.ceil(days / 3)), 'Sleepwear', 'Light jacket', 'Comfortable shoes', 'Laundry bag']]);
+    }
+    if (TN.el('pack-c-toilet').checked) cats.push(['Toiletries', ['Toothbrush + toothpaste', 'Deodorant', 'Shampoo / conditioner', 'Razor', 'Medications', 'Contact lenses / glasses']]);
+    if (TN.el('pack-c-elect').checked) cats.push(['Electronics', ['Phone + charger', 'Power bank', 'Universal travel adapter', 'Headphones', 'Camera (optional)']]);
+    if (TN.el('pack-c-health').checked) cats.push(['Health', ['Prescription meds', 'Pain relievers', 'Bandages', 'Hand sanitizer', 'Sunscreen']]);
+    if (TN.el('pack-c-misc').checked) cats.push(['Miscellaneous', ['Snacks', 'Reusable water bottle', 'Book / e-reader', 'Pen + small notebook', 'Umbrella']]);
+    var typeItems = (TYPE_ITEMS[type] || []).map(function (it) { return it.replace('(0)', 'x' + per(Math.min(days, 5))); });
+    if (typeItems.length) cats.push(['Trip specific', typeItems]);
+    if (!cats.length) { TN.setErr(ERR, 'Select at least one category.'); return; }
+    state = [];
+    cats.forEach(function (c) {
+      c[1].forEach(function (item) { state.push({ cat: c[0], item: item, done: false }); });
+    });
+    render();
+  }
+  function render() {
+    var box = TN.el('pack-list');
+    if (!state.length) { box.innerHTML = '<p class="muted">Press Generate list to build your checklist.</p>'; return; }
+    var html = '', lastCat = null, done = 0;
+    state.forEach(function (s, i) {
+      if (s.done) done++;
+      if (s.cat !== lastCat) { html += '<h4 style="margin:14px 0 4px">' + esc(s.cat) + '</h4>'; lastCat = s.cat; }
+      html += '<div class="checkbox-row"><input type="checkbox" data-i="' + i + '" id="pack-it-' + i + '"' +
+        (s.done ? ' checked' : '') + '><label for="pack-it-' + i + '"' +
+        (s.done ? ' style="text-decoration:line-through;opacity:.6"' : '') + '>' + esc(s.item) + '</label></div>';
+    });
+    box.innerHTML = html;
+    TN.el('pack-count').textContent = state.length;
+    TN.el('pack-packed').textContent = done + ' / ' + state.length;
+    TN.qsa('#pack-list input[type=checkbox]').forEach(function (cb) {
+      cb.addEventListener('change', function () {
+        state[parseInt(cb.getAttribute('data-i'), 10)].done = cb.checked;
+        render();
+      });
+    });
+  }
+  function download() {
+    if (!state.length) { TN.setErr(ERR, 'Generate a list first.'); return; }
+    TN.clearErr(ERR);
+    var lines = ['PACKING LIST', ''];
+    var lastCat = null;
+    state.forEach(function (s) {
+      if (s.cat !== lastCat) { lines.push('', s.cat.toUpperCase()); lastCat = s.cat; }
+      lines.push((s.done ? '[x] ' : '[ ] ') + s.item);
+    });
+    var b = new Blob([lines.join('\n')], { type: 'text/plain;charset=utf-8' });
+    var a = document.createElement('a');
+    a.href = URL.createObjectURL(b); a.download = 'packing-list.txt';
+    document.body.appendChild(a); a.click();
+    setTimeout(function () { URL.revokeObjectURL(a.href); a.remove(); }, 400);
+  }
+  try {
+    TN.on('pack-gen', 'click', generate);
+    TN.on('pack-dl', 'click', download);
+    render();
+  } catch (e) { /* never throw on load */ }
+})();
+</script>
+</body>
+</html>

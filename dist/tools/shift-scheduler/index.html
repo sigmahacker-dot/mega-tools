@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Shift Scheduler — Free Online | ToolNest</title>
+<meta name="description" content="Build a rotating shift schedule: set days-on / days-off, the start date and shift pattern to get a dated roster with on/off days.">
+<meta name="keywords" content="shift scheduler, rotating shift calendar, 4 on 4 off schedule, work roster generator, shift planner">
+<link rel="canonical" href="https://toolnest.vercel.app/tools/shift-scheduler/">
+<meta name="theme-color" content="#07070b">
+<meta property="og:title" content="Shift Scheduler — Free Online | ToolNest">
+<meta property="og:description" content="Build a rotating shift schedule: set days-on / days-off, the start date and shift pattern to get a dated roster with on/off days.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css?v=4">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%23e01111'/><text x='50' y='68' font-size='58' text-anchor='middle' fill='white' font-family='Arial' font-weight='bold'>T</text></svg>">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebApplication","name":"Shift Scheduler","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0"},"url":"https://toolnest.vercel.app/tools/shift-scheduler/","description":"Build a rotating shift schedule: set days-on / days-off, the start date and shift pattern to get a dated roster with on/off days."},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What patterns does it support?","acceptedAnswer":{"@type":"Answer","text":"Any N-days-on / M-days-off rotation — 4-on/4-off, 5-on/2-off, 2-on/2-off — over any date range up to 120 days."}},{"@type":"Question","name":"What are the shift types?","acceptedAnswer":{"@type":"Answer","text":"Day shifts, night shifts, or alternating day/night for each working day."}},{"@type":"Question","name":"Does the rotation continue across months?","acceptedAnswer":{"@type":"Answer","text":"Yes — the on/off cycle runs continuously from the start date regardless of month or year boundaries."}}]}]}</script>
+</head>
+<body>
+<header class="site-header">
+  <div class="container">
+    <a class="logo" href="/"><span class="logo-mark">T</span> ToolNest</a>
+    <div class="header-right">
+      <form class="nav-search" action="/" method="get" role="search">
+        <span class="ns-icon">🔍</span>
+        <input type="search" name="q" placeholder="Search tools…" aria-label="Search tools" autocomplete="off">
+      </form>
+      <div class="menu-wrap">
+        <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="menuPanel" aria-label="Open menu"><span></span><span></span><span></span></button>
+        <nav class="menu-panel" id="menuPanel" aria-label="Site">
+          <a href="/">Home</a>
+          <a href="/#categories">Categories</a>
+          <a href="/#all-tools">All Tools</a>
+        </nav>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ADSTERRA-HEADER: paste your Adsterra banner ad code inside the div below -->
+<div class="container"><div class="ad-slot ad-leaderboard" data-ad="header"></div></div>
+
+<main class="container">
+  <nav class="crumbs"><a href="/">Home</a> &rsaquo; <a href="/#time">Time &amp; Date</a> &rsaquo; Shift Scheduler</nav>
+  <div class="tool-hero">
+    <h1>Shift Scheduler</h1>
+    <p>Build a rotating shift schedule: set days-on / days-off, the start date and shift pattern to get a dated roster with on/off days.</p>
+  </div>
+
+  <div class="tool-card">
+  <div class="grid2">
+    <div class="field">
+      <label for="shift-scheduler-start">Rotation start date</label>
+      <input type="date" class="input" id="shift-scheduler-start">
+    </div>
+    <div class="field">
+      <label for="shift-scheduler-on">Days on</label>
+      <input type="number" class="input" id="shift-scheduler-on" min="1" max="30" step="1" value="4">
+    </div>
+    <div class="field">
+      <label for="shift-scheduler-off">Days off</label>
+      <input type="number" class="input" id="shift-scheduler-off" min="1" max="30" step="1" value="4">
+    </div>
+    <div class="field">
+      <label for="shift-scheduler-total">Days to show (1–120)</label>
+      <input type="number" class="input" id="shift-scheduler-total" min="1" max="120" step="1" value="28">
+    </div>
+    <div class="field">
+      <label for="shift-scheduler-pattern">Shift pattern</label>
+      <select class="select" id="shift-scheduler-pattern">
+        <option value="day">Day shifts</option>
+        <option value="night">Night shifts</option>
+        <option value="alt">Alternating day / night</option>
+      </select>
+    </div>
+  </div>
+  <div class="error" id="shift-scheduler-error"></div>
+  <div class="result" id="shift-scheduler-result">
+    <div class="stat-cards">
+      <div class="stat-card"><div class="v" id="shift-scheduler-ondays">–</div><div class="l">Working days</div></div>
+      <div class="stat-card"><div class="v" id="shift-scheduler-offdays">–</div><div class="l">Days off</div></div>
+      <div class="stat-card"><div class="v" id="shift-scheduler-cycles">–</div><div class="l">Full rotations</div></div>
+    </div>
+    <table class="data">
+      <thead><tr><th>Date</th><th>Day</th><th>Status</th><th>Shift</th></tr></thead>
+      <tbody id="shift-scheduler-body">
+        <tr><td colspan="4" class="muted">Set the rotation to generate the schedule.</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+
+  <!-- ADSTERRA-INCONTENT: paste your Adsterra native/in-content ad code inside the div below -->
+  <div class="ad-slot" data-ad="incontent"></div>
+
+  <div class="info-grid">
+    <div class="info-card">
+      <h2>📖 How to use</h2>
+      <ol><li>Pick the rotation start date.</li><li>Enter days on and days off (e.g. 4 on / 4 off).</li><li>Choose day, night or alternating shifts, and how many days to show.</li><li>Read the dated roster with every on/off day and shift labelled.</li></ol>
+    </div>
+    <div class="info-card">
+      <h2>❓ Frequently asked questions</h2>
+      <div class="faq"><details><summary>What patterns does it support?</summary><p>Any N-days-on / M-days-off rotation — 4-on/4-off, 5-on/2-off, 2-on/2-off — over any date range up to 120 days.</p></details><details><summary>What are the shift types?</summary><p>Day shifts, night shifts, or alternating day/night for each working day.</p></details><details><summary>Does the rotation continue across months?</summary><p>Yes — the on/off cycle runs continuously from the start date regardless of month or year boundaries.</p></details></div>
+    </div>
+  </div>
+
+  <section class="section">
+    <h2>🔗 Related tools</h2>
+    <div class="tool-grid"><a class="tool-link" href="/tools/add-subtract-days-calculator/" data-search="add / subtract days calculator add or subtract days, weeks, months or years from any date. optional business-days-only mode skips weekends automatically. add days to date subtract days calculator date plus days business days calculator date arithmetic"><span class="t-ico">⏰</span><span class="t-body"><b>Add / Subtract Days Calculator</b><small>Add or subtract days, weeks, months or years from any date. Optional business-days-only mode…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/anniversary-calculator/" data-search="anniversary calculator track any anniversary: days until the next one, which number it is (10th, 25th…), total days together and the weekday it falls on. anniversary calculator wedding anniversary countdown how many days until anniversary anniversary date tracker years together calculator"><span class="t-ico">⏰</span><span class="t-body"><b>Anniversary Calculator</b><small>Track any anniversary: days until the next one, which number it is (10th, 25th…), total days…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/date-duration-calculator/" data-search="date duration calculator exact duration between two dates, plus business days. date duration calculator days between dates business days calculator"><span class="t-ico">⏰</span><span class="t-body"><b>Date Duration Calculator</b><small>Exact duration between two dates, plus business days.</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/event-countdown/" data-search="event countdown timer live ticking countdown to any future date and time. countdown timer event countdown countdown to date"><span class="t-ico">⏰</span><span class="t-body"><b>Event Countdown Timer</b><small>Live ticking countdown to any future date and time.</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/fiscal-quarter-finder/" data-search="fiscal quarter finder find the fiscal quarter for any date with any fiscal year start month. get the fy label, quarter start/end dates and days remaining. fiscal quarter finder what quarter are we in financial quarter calculator fy quarter dates fiscal year calculator"><span class="t-ico">⏰</span><span class="t-body"><b>Fiscal Quarter Finder</b><small>Find the fiscal quarter for any date with any fiscal year start month. Get the FY label, qua…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/meeting-cost-calculator/" data-search="meeting cost calculator calculate what meetings really cost: enter attendees, average hourly rate and duration to see the cost per meeting, per week, per month and per year. meeting cost calculator cost of meetings meeting time cost how much do meetings cost meeting roi calculator"><span class="t-ico">⏰</span><span class="t-body"><b>Meeting Cost Calculator</b><small>Calculate what meetings really cost: enter attendees, average hourly rate and duration to se…</small></span><span class="t-arrow">→</span></a></div>
+  </section>
+</main>
+
+<!-- ADSTERRA-FOOTER: paste your Adsterra footer/banner ad code inside the div below -->
+<div class="container"><div class="ad-slot" data-ad="footer"></div></div>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="f-grid">
+      <div>
+        <span class="brandline"><span class="logo-mark">T</span> ToolNest</span>
+        <p>Free online tools that actually work. No sign-up, no watermarks — and your files never leave your device for client-side tools.</p>
+      </div>
+      <div>
+        <h4>Popular</h4>
+        <a href="/tools/qr-code-generator/">QR Code Generator</a>
+        <a href="/tools/background-remover/">Background Remover</a>
+        <a href="/tools/pdf-merger/">PDF Merger</a>
+        <a href="/tools/word-counter/">Word Counter</a>
+      </div>
+      <div>
+        <h4>Categories</h4>
+        <a href="/#image">Image Tools</a>
+        <a href="/#pdf">PDF &amp; Documents</a>
+        <a href="/#calculators">Calculators</a>
+        <a href="/#developer">Developer Tools</a>
+      </div>
+      <div>
+        <h4>Site</h4>
+        <a href="/">Home</a>
+        <a href="/#all-tools">All Tools</a>
+        <a href="/sitemap.xml">Sitemap</a>
+      </div>
+    </div>
+    <div class="f-bottom">© 2026 ToolNest · Free tools for everyone · Made with care</div>
+  </div>
+</footer>
+
+<script src="/assets/site.js?v=5"></script>
+
+<script>
+(function () {
+  'use strict';
+  var P = 'shift-scheduler-';
+  var ERR = P + 'error';
+  function g(id) { return document.getElementById(P + id); }
+  function set(id, v) { var el = g(id); if (el) el.textContent = v; }
+  var DAYS = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+  var MONTHS = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+  function fmtD(d) { return MONTHS[d.getMonth()] + ' ' + d.getDate() + ', ' + d.getFullYear(); }
+  function blank() {
+    set('ondays', '–'); set('offdays', '–'); set('cycles', '–');
+    g('body').innerHTML = '<tr><td colspan="4" class="muted">Set the rotation to generate the schedule.</td></tr>';
+  }
+  function calc() {
+    if (!g('start')) return;
+    TN.clearErr(ERR);
+    var v = g('start').value;
+    var m = /^(\d{4})-(\d{2})-(\d{2})$/.exec(v || '');
+    if (!m) { blank(); return; }
+    var start = new Date(parseInt(m[1], 10), parseInt(m[2], 10) - 1, parseInt(m[3], 10));
+    var on = parseInt(g('on').value, 10), off = parseInt(g('off').value, 10),
+        total = parseInt(g('total').value, 10);
+    if ([on, off, total].some(isNaN) || on < 1 || on > 30 || off < 1 || off > 30 || total < 1 || total > 120) {
+      TN.setErr(ERR, 'Check the ranges: days on/off 1–30, days to show 1–120.');
+      blank(); return;
+    }
+    var pattern = g('pattern').value;
+    var cycleLen = on + off;
+    var html = '', onCount = 0, offCount = 0, onIdx = 0;
+    for (var i = 0; i < total; i++) {
+      var d = new Date(start.getTime() + i * 86400000);
+      var pos = i % cycleLen;
+      var isOn = pos < on;
+      var shift;
+      if (!isOn) { shift = '—'; offCount++; }
+      else {
+        onCount++;
+        shift = pattern === 'day' ? '☀️ Day' : pattern === 'night' ? '🌙 Night' : (onIdx % 2 === 0 ? '☀️ Day' : '🌙 Night');
+        onIdx++;
+      }
+      html += '<tr' + (isOn ? ' style="background:rgba(255,90,90,.06);"' : '') + '><td>' + TN.esc(fmtD(d)) + '</td><td>' +
+        TN.esc(DAYS[d.getDay()]) + '</td><td>' + (isOn ? '<b>ON</b>' : '<span class="muted">OFF</span>') + '</td><td>' +
+        TN.esc(shift) + '</td></tr>';
+    }
+    g('body').innerHTML = html;
+    set('ondays', String(onCount));
+    set('offdays', String(offCount));
+    set('cycles', (total / cycleLen).toFixed(1));
+  }
+  try {
+    var t = new Date();
+    g('start').value = t.getFullYear() + '-' + String(t.getMonth() + 1).padStart(2, '0') + '-' + String(t.getDate()).padStart(2, '0');
+    TN.on(P + 'start', 'input', calc);
+    TN.on(P + 'start', 'change', calc);
+    ['on', 'off', 'total'].forEach(function (k) { TN.on(P + k, 'input', calc); });
+    TN.on(P + 'pattern', 'change', calc);
+    calc();
+  } catch (e) { /* never throw on load */ }
+})();
+
+</script>
+</body>
+</html>

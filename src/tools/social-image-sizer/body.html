@@ -1,0 +1,47 @@
+<div class="tool-card">
+  <div class="field">
+    <label for="social-image-sizer-file">Upload image</label>
+    <input type="file" class="input" id="social-image-sizer-file" accept="image/*">
+  </div>
+  <div class="grid2">
+    <div class="field">
+      <label for="social-image-sizer-preset">Preset</label>
+      <select class="input" id="social-image-sizer-preset">
+        <option value="1080x1080">Instagram Post — 1080×1080</option>
+        <option value="1080x1920">Instagram Story / Reel — 1080×1920</option>
+        <option value="1200x630">Facebook Post — 1200×630</option>
+        <option value="820x312">Facebook Cover — 820×312</option>
+        <option value="1200x675">X Post — 1200×675</option>
+        <option value="1500x500">X Header — 1500×500</option>
+        <option value="1280x720">YouTube Thumbnail — 1280×720</option>
+        <option value="1200x627">LinkedIn Post — 1200×627</option>
+        <option value="1000x1500">Pinterest Pin — 1000×1500</option>
+        <option value="custom">Custom size…</option>
+      </select>
+    </div>
+    <div class="field">
+      <label for="social-image-sizer-mode">Mode</label>
+      <select class="input" id="social-image-sizer-mode">
+        <option value="cover">Cover — crop to fill</option>
+        <option value="fit">Fit — whole image + blurred padding</option>
+      </select>
+    </div>
+    <div class="field" id="social-image-sizer-cw-wrap" hidden>
+      <label for="social-image-sizer-cw">Custom width (px)</label>
+      <input type="number" class="input" id="social-image-sizer-cw" min="1" max="8000" value="1080">
+    </div>
+    <div class="field" id="social-image-sizer-ch-wrap" hidden>
+      <label for="social-image-sizer-ch">Custom height (px)</label>
+      <input type="number" class="input" id="social-image-sizer-ch" min="1" max="8000" value="1080">
+    </div>
+  </div>
+  <div class="btn-row" style="margin-top:12px">
+    <button class="btn" id="social-image-sizer-go" disabled>Resize &amp; preview</button>
+    <button class="btn btn-outline" id="social-image-sizer-dl" disabled>Download PNG</button>
+  </div>
+  <div class="error" id="social-image-sizer-error"></div>
+  <div class="result" id="social-image-sizer-result" hidden>
+    <p class="muted" id="social-image-sizer-info"></p>
+    <img id="social-image-sizer-preview" alt="Resized preview" style="max-width:100%;height:auto;border-radius:8px;border:1px solid #ddd">
+  </div>
+</div>

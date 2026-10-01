@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>VO2 Max Estimator — Free Online | ToolNest</title>
+<meta name="description" content="Estimate your VO2 max cardio fitness score from a 12-minute Cooper run or from resting heart rate.">
+<meta name="keywords" content="vo2 max calculator, cooper test calculator, cardio fitness score, vo2max estimate, aerobic fitness test">
+<link rel="canonical" href="https://toolnest.vercel.app/tools/vo2max-estimator/">
+<meta name="theme-color" content="#07070b">
+<meta property="og:title" content="VO2 Max Estimator — Free Online | ToolNest">
+<meta property="og:description" content="Estimate your VO2 max cardio fitness score from a 12-minute Cooper run or from resting heart rate.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css?v=4">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%23e01111'/><text x='50' y='68' font-size='58' text-anchor='middle' fill='white' font-family='Arial' font-weight='bold'>T</text></svg>">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebApplication","name":"VO2 Max Estimator","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0"},"url":"https://toolnest.vercel.app/tools/vo2max-estimator/","description":"Estimate your VO2 max cardio fitness score from a 12-minute Cooper run or from resting heart rate."},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What is the Cooper test formula?","acceptedAnswer":{"@type":"Answer","text":"VO2 max = (distance in meters − 504.9) ÷ 44.73, from Kenneth Cooper's original 1968 research on the 12-minute run."}},{"@type":"Question","name":"How does the heart rate method work?","acceptedAnswer":{"@type":"Answer","text":"It uses the ratio of max heart rate (estimated as 208 − 0.7 × age) to resting heart rate: VO2 max ≈ 15 × (HRmax ÷ HRrest)."}},{"@type":"Question","name":"What is a good VO2 max?","acceptedAnswer":{"@type":"Answer","text":"For men 30-39, above ~45 is good and above ~52 excellent; for women 30-39, above ~38 is good and above ~45 excellent. Ratings shift with age."}}]}]}</script>
+</head>
+<body>
+<header class="site-header">
+  <div class="container">
+    <a class="logo" href="/"><span class="logo-mark">T</span> ToolNest</a>
+    <div class="header-right">
+      <form class="nav-search" action="/" method="get" role="search">
+        <span class="ns-icon">🔍</span>
+        <input type="search" name="q" placeholder="Search tools…" aria-label="Search tools" autocomplete="off">
+      </form>
+      <div class="menu-wrap">
+        <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="menuPanel" aria-label="Open menu"><span></span><span></span><span></span></button>
+        <nav class="menu-panel" id="menuPanel" aria-label="Site">
+          <a href="/">Home</a>
+          <a href="/#categories">Categories</a>
+          <a href="/#all-tools">All Tools</a>
+        </nav>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ADSTERRA-HEADER: paste your Adsterra banner ad code inside the div below -->
+<div class="container"><div class="ad-slot ad-leaderboard" data-ad="header"></div></div>
+
+<main class="container">
+  <nav class="crumbs"><a href="/">Home</a> &rsaquo; <a href="/#health">Health &amp; Fitness</a> &rsaquo; VO2 Max Estimator</nav>
+  <div class="tool-hero">
+    <h1>VO2 Max Estimator</h1>
+    <p>Estimate your VO2 max cardio fitness score from a 12-minute Cooper run or from resting heart rate.</p>
+  </div>
+
+  <div class="tool-card">
+  <div class="grid2">
+    <div class="field"><label for="vo2-method">Method</label>
+      <select class="input" id="vo2-method">
+        <option value="cooper">Cooper 12-min run (distance)</option>
+        <option value="hr">Resting heart rate</option>
+      </select>
+    </div>
+    <div class="field"><label for="vo2-dist">Distance in 12 min (meters)</label><input type="number" class="input" id="vo2-dist" min="0" step="any" placeholder="2400"></div>
+    <div class="field"><label for="vo2-age">Age (years)</label><input type="number" class="input" id="vo2-age" min="10" max="100" step="1" placeholder="35"></div>
+    <div class="field"><label for="vo2-rest">Resting heart rate (bpm)</label><input type="number" class="input" id="vo2-rest" min="30" max="120" step="1" placeholder="60"></div>
+  </div>
+  <div class="error" id="vo2max-estimator-error"></div>
+  <div class="result" id="vo2-result">
+    <div class="stat-cards">
+      <div class="stat-card"><div class="v" id="vo2-score">–</div><div class="l">VO2 max (ml/kg/min)</div></div>
+      <div class="stat-card"><div class="v" id="vo2-rating">–</div><div class="l">Fitness rating</div></div>
+    </div>
+    <p class="note">Estimates only, not a lab measurement. The Cooper test needs a true maximal 12-minute effort.</p>
+  </div>
+</div>
+
+  <!-- ADSTERRA-INCONTENT: paste your Adsterra native/in-content ad code inside the div below -->
+  <div class="ad-slot" data-ad="incontent"></div>
+
+  <div class="info-grid">
+    <div class="info-card">
+      <h2>📖 How to use</h2>
+      <ol><li>Pick the Cooper 12-minute run or the resting heart rate method.</li><li>Enter your distance covered or your age and resting heart rate.</li><li>Read your estimated VO2 max and fitness rating.</li></ol>
+    </div>
+    <div class="info-card">
+      <h2>❓ Frequently asked questions</h2>
+      <div class="faq"><details><summary>What is the Cooper test formula?</summary><p>VO2 max = (distance in meters − 504.9) ÷ 44.73, from Kenneth Cooper&#39;s original 1968 research on the 12-minute run.</p></details><details><summary>How does the heart rate method work?</summary><p>It uses the ratio of max heart rate (estimated as 208 − 0.7 × age) to resting heart rate: VO2 max ≈ 15 × (HRmax ÷ HRrest).</p></details><details><summary>What is a good VO2 max?</summary><p>For men 30-39, above ~45 is good and above ~52 excellent; for women 30-39, above ~38 is good and above ~45 excellent. Ratings shift with age.</p></details></div>
+    </div>
+  </div>
+
+  <section class="section">
+    <h2>🔗 Related tools</h2>
+    <div class="tool-grid"><a class="tool-link" href="/tools/blood-pressure-tracker/" data-search="blood pressure tracker log blood pressure readings with automatic aha category classification, averages and history saved in your browser. blood pressure tracker bp log blood pressure chart hypertension tracker bp monitor log"><span class="t-ico">❤️</span><span class="t-body"><b>Blood Pressure Tracker</b><small>Log blood pressure readings with automatic AHA category classification, averages and history…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/body-fat-calculator/" data-search="body fat calculator estimate body fat percentage with the us navy tape-measure method and see your fitness category. body fat calculator us navy body fat body fat percentage calculator"><span class="t-ico">❤️</span><span class="t-body"><b>Body Fat Calculator</b><small>Estimate body fat percentage with the US Navy tape-measure method and see your fitness categ…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/calorie-calculator/" data-search="tdee calorie calculator estimate your daily calorie needs with the mifflin-st jeor equation and get targets for losing, maintaining or gaining weight. tdee calculator calorie calculator mifflin st jeor daily calorie needs"><span class="t-ico">❤️</span><span class="t-body"><b>TDEE Calorie Calculator</b><small>Estimate your daily calorie needs with the Mifflin-St Jeor equation and get targets for losi…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/carb-cycling-calculator/" data-search="carb cycling calculator build high, medium and low carb day macros from your tdee using the mifflin-st jeor equation. carb cycling calculator macro cycling high low carb days tdee macro calculator carb cycle plan"><span class="t-ico">❤️</span><span class="t-body"><b>Carb Cycling Calculator</b><small>Build high, medium and low carb day macros from your TDEE using the Mifflin-St Jeor equation…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/eye-strain-timer/" data-search="eye strain timer (20-20-20) a 20-20-20 rule timer for screen workers: work 20 minutes, then rest your eyes 20 seconds looking 20 feet away. 20-20-20 timer eye strain timer eye break reminder screen break timer eye rest timer"><span class="t-ico">❤️</span><span class="t-body"><b>Eye Strain Timer (20-20-20)</b><small>A 20-20-20 rule timer for screen workers: work 20 minutes, then rest your eyes 20 seconds lo…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/five-k-pace-calculator/" data-search="5k pace calculator turn a 5k goal time into pace per km, per mile and a full kilometer-by-kilometer split plan. 5k pace calculator 5k goal time running splits calculator 5k training pace pace chart 5k"><span class="t-ico">❤️</span><span class="t-body"><b>5K Pace Calculator</b><small>Turn a 5K goal time into pace per km, per mile and a full kilometer-by-kilometer split plan.</small></span><span class="t-arrow">→</span></a></div>
+  </section>
+</main>
+
+<!-- ADSTERRA-FOOTER: paste your Adsterra footer/banner ad code inside the div below -->
+<div class="container"><div class="ad-slot" data-ad="footer"></div></div>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="f-grid">
+      <div>
+        <span class="brandline"><span class="logo-mark">T</span> ToolNest</span>
+        <p>Free online tools that actually work. No sign-up, no watermarks — and your files never leave your device for client-side tools.</p>
+      </div>
+      <div>
+        <h4>Popular</h4>
+        <a href="/tools/qr-code-generator/">QR Code Generator</a>
+        <a href="/tools/background-remover/">Background Remover</a>
+        <a href="/tools/pdf-merger/">PDF Merger</a>
+        <a href="/tools/word-counter/">Word Counter</a>
+      </div>
+      <div>
+        <h4>Categories</h4>
+        <a href="/#image">Image Tools</a>
+        <a href="/#pdf">PDF &amp; Documents</a>
+        <a href="/#calculators">Calculators</a>
+        <a href="/#developer">Developer Tools</a>
+      </div>
+      <div>
+        <h4>Site</h4>
+        <a href="/">Home</a>
+        <a href="/#all-tools">All Tools</a>
+        <a href="/sitemap.xml">Sitemap</a>
+      </div>
+    </div>
+    <div class="f-bottom">© 2026 ToolNest · Free tools for everyone · Made with care</div>
+  </div>
+</footer>
+
+<script src="/assets/site.js?v=5"></script>
+
+<script>
+(function () {
+  'use strict';
+  var ERR = 'vo2max-estimator-error';
+  function rating(v) {
+    if (v < 30) return 'Poor';
+    if (v < 38) return 'Below average';
+    if (v < 45) return 'Average';
+    if (v < 52) return 'Good';
+    return 'Excellent';
+  }
+  function calc() {
+    if (!TN.el('vo2-dist')) return;
+    TN.clearErr(ERR);
+    var method = TN.el('vo2-method').value;
+    var v = NaN;
+    if (method === 'cooper') {
+      var d = parseFloat(TN.el('vo2-dist').value);
+      if (!(d > 0)) { TN.setErr(ERR, 'Enter the distance you covered in 12 minutes (meters).'); return; }
+      if (d > 6000) { TN.setErr(ERR, 'That distance is beyond human limits — check your entry.'); return; }
+      v = (d - 504.9) / 44.73;
+    } else {
+      var age = parseInt(TN.el('vo2-age').value, 10);
+      var rest = parseInt(TN.el('vo2-rest').value, 10);
+      if (!(age >= 10 && age <= 100)) { TN.setErr(ERR, 'Enter an age between 10 and 100.'); return; }
+      if (!(rest >= 30 && rest <= 120)) { TN.setErr(ERR, 'Enter a resting heart rate between 30 and 120 bpm.'); return; }
+      var maxHR = 208 - 0.7 * age;
+      v = 15 * (maxHR / rest);
+    }
+    TN.el('vo2-score').textContent = v.toFixed(1);
+    TN.el('vo2-rating').textContent = rating(v);
+  }
+  try {
+    TN.on('vo2-method', 'change', calc);
+    TN.on('vo2-dist', 'input', calc);
+    TN.on('vo2-age', 'input', calc);
+    TN.on('vo2-rest', 'input', calc);
+    calc();
+  } catch (e) { /* never throw on load */ }
+})();
+</script>
+</body>
+</html>

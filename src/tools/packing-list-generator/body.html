@@ -1,0 +1,40 @@
+<div class="tool-card">
+  <div class="grid2">
+    <div class="field"><label for="pack-type">Trip type</label>
+      <select class="select" id="pack-type">
+        <option value="beach">Beach holiday</option>
+        <option value="business">Business trip</option>
+        <option value="city">City break</option>
+        <option value="camping">Camping</option>
+        <option value="ski">Skiing / winter</option>
+        <option value="backpack">Backpacking</option>
+        <option value="cruise">Cruise</option>
+        <option value="road">Road trip</option>
+      </select>
+    </div>
+    <div class="field"><label for="pack-days">Trip length (days)</label><input type="number" class="input" id="pack-days" min="1" max="90" value="7"></div>
+    <div class="field"><label for="pack-travelers">Travelers</label><input type="number" class="input" id="pack-travelers" min="1" max="20" value="1"></div>
+  </div>
+  <div class="field"><label>Include categories</label>
+    <div class="grid2">
+      <div class="checkbox-row"><input type="checkbox" id="pack-c-docs" checked><label for="pack-c-docs">Travel documents</label></div>
+      <div class="checkbox-row"><input type="checkbox" id="pack-c-clothes" checked><label for="pack-c-clothes">Clothing</label></div>
+      <div class="checkbox-row"><input type="checkbox" id="pack-c-toilet" checked><label for="pack-c-toilet">Toiletries</label></div>
+      <div class="checkbox-row"><input type="checkbox" id="pack-c-elect" checked><label for="pack-c-elect">Electronics</label></div>
+      <div class="checkbox-row"><input type="checkbox" id="pack-c-health" checked><label for="pack-c-health">Health &amp; meds</label></div>
+      <div class="checkbox-row"><input type="checkbox" id="pack-c-misc" checked><label for="pack-c-misc">Miscellaneous</label></div>
+    </div>
+  </div>
+  <div class="error" id="packing-list-generator-error"></div>
+  <div class="result" id="pack-result">
+    <div class="stat-cards">
+      <div class="stat-card"><div class="v" id="pack-count">–</div><div class="l">Items</div></div>
+      <div class="stat-card"><div class="v" id="pack-packed">–</div><div class="l">Packed</div></div>
+    </div>
+    <div id="pack-list"></div>
+    <div class="btn-row">
+      <button class="btn btn-primary" id="pack-gen" type="button">Generate list</button>
+      <button class="btn btn-outline" id="pack-dl" type="button">Download .txt</button>
+    </div>
+  </div>
+</div>

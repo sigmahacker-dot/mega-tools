@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Countdown Timer Widget — Free Online | ToolNest</title>
+<meta name="description" content="A simple countdown timer widget — set hours, minutes and seconds, start/pause/reset, with an audible alarm when time runs out.">
+<meta name="keywords" content="countdown timer, timer widget, online timer, kitchen timer, study timer">
+<link rel="canonical" href="https://toolnest.vercel.app/tools/countdown-timer-widget/">
+<meta name="theme-color" content="#07070b">
+<meta property="og:title" content="Countdown Timer Widget — Free Online | ToolNest">
+<meta property="og:description" content="A simple countdown timer widget — set hours, minutes and seconds, start/pause/reset, with an audible alarm when time runs out.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css?v=4">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%23e01111'/><text x='50' y='68' font-size='58' text-anchor='middle' fill='white' font-family='Arial' font-weight='bold'>T</text></svg>">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebApplication","name":"Countdown Timer Widget","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0"},"url":"https://toolnest.vercel.app/tools/countdown-timer-widget/","description":"A simple countdown timer widget — set hours, minutes and seconds, start/pause/reset, with an audible alarm when time runs out."},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Does it play a sound when finished?","acceptedAnswer":{"@type":"Answer","text":"Yes — a chime plays when the countdown reaches zero (keep the tab open and volume up)."}},{"@type":"Question","name":"What is the maximum duration?","acceptedAnswer":{"@type":"Answer","text":"Up to 99 hours, 59 minutes, 59 seconds."}},{"@type":"Question","name":"How precise is the display?","acceptedAnswer":{"@type":"Answer","text":"The display shows HH:MM:SS and updates every fraction of a second for smooth counting."}},{"@type":"Question","name":"Does it keep running if I switch tabs?","acceptedAnswer":{"@type":"Answer","text":"Yes — the timer runs in the page; switching tabs keeps it counting."}}]}]}</script>
+</head>
+<body>
+<header class="site-header">
+  <div class="container">
+    <a class="logo" href="/"><span class="logo-mark">T</span> ToolNest</a>
+    <div class="header-right">
+      <form class="nav-search" action="/" method="get" role="search">
+        <span class="ns-icon">🔍</span>
+        <input type="search" name="q" placeholder="Search tools…" aria-label="Search tools" autocomplete="off">
+      </form>
+      <div class="menu-wrap">
+        <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="menuPanel" aria-label="Open menu"><span></span><span></span><span></span></button>
+        <nav class="menu-panel" id="menuPanel" aria-label="Site">
+          <a href="/">Home</a>
+          <a href="/#categories">Categories</a>
+          <a href="/#all-tools">All Tools</a>
+        </nav>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ADSTERRA-HEADER: paste your Adsterra banner ad code inside the div below -->
+<div class="container"><div class="ad-slot ad-leaderboard" data-ad="header"></div></div>
+
+<main class="container">
+  <nav class="crumbs"><a href="/">Home</a> &rsaquo; <a href="/#generators">Generators</a> &rsaquo; Countdown Timer Widget</nav>
+  <div class="tool-hero">
+    <h1>Countdown Timer Widget</h1>
+    <p>A simple countdown timer widget — set hours, minutes and seconds, start/pause/reset, with an audible alarm when time runs out.</p>
+  </div>
+
+  <div class="tool-card" style="text-align:center">
+  <div style="font-size:72px;font-weight:800;font-variant-numeric:tabular-nums" id="countdown-timer-widget-display">00:00:00</div>
+  <div class="grid2" style="max-width:420px;margin:12px auto;text-align:left">
+    <div class="field">
+      <label for="countdown-timer-widget-h">Hours</label>
+      <input type="number" class="input" id="countdown-timer-widget-h" min="0" max="99" step="1" value="0">
+    </div>
+    <div class="field">
+      <label for="countdown-timer-widget-m">Minutes</label>
+      <input type="number" class="input" id="countdown-timer-widget-m" min="0" max="59" step="1" value="5">
+    </div>
+    <div class="field">
+      <label for="countdown-timer-widget-s">Seconds</label>
+      <input type="number" class="input" id="countdown-timer-widget-s" min="0" max="59" step="1" value="0">
+    </div>
+    <div class="field">
+      <label for="countdown-timer-widget-preset">Presets</label>
+      <select class="input" id="countdown-timer-widget-preset">
+        <option value="">Custom…</option>
+        <option value="60">1 minute</option>
+        <option value="300">5 minutes</option>
+        <option value="600">10 minutes</option>
+        <option value="900">15 minutes</option>
+        <option value="1500">25 min (Pomodoro)</option>
+        <option value="1800">30 minutes</option>
+        <option value="3600">1 hour</option>
+      </select>
+    </div>
+  </div>
+  <div class="btn-row" style="justify-content:center">
+    <button class="btn" id="countdown-timer-widget-toggle">▶ Start</button>
+    <button class="btn btn-outline" id="countdown-timer-widget-reset">Reset</button>
+  </div>
+  <p class="muted" id="countdown-timer-widget-msg" style="min-height:24px"></p>
+  <div class="error" id="countdown-timer-widget-error"></div>
+</div>
+
+
+  <!-- ADSTERRA-INCONTENT: paste your Adsterra native/in-content ad code inside the div below -->
+  <div class="ad-slot" data-ad="incontent"></div>
+
+  <div class="info-grid">
+    <div class="info-card">
+      <h2>📖 How to use</h2>
+      <ol><li>Set hours, minutes and seconds (or use a preset).</li><li>Press Start.</li><li>Pause or reset anytime.</li><li>Hear the alarm when it hits zero.</li></ol>
+    </div>
+    <div class="info-card">
+      <h2>❓ Frequently asked questions</h2>
+      <div class="faq"><details><summary>Does it play a sound when finished?</summary><p>Yes — a chime plays when the countdown reaches zero (keep the tab open and volume up).</p></details><details><summary>What is the maximum duration?</summary><p>Up to 99 hours, 59 minutes, 59 seconds.</p></details><details><summary>How precise is the display?</summary><p>The display shows HH:MM:SS and updates every fraction of a second for smooth counting.</p></details><details><summary>Does it keep running if I switch tabs?</summary><p>Yes — the timer runs in the page; switching tabs keeps it counting.</p></details></div>
+    </div>
+  </div>
+
+  <section class="section">
+    <h2>🔗 Related tools</h2>
+    <div class="tool-grid"><a class="tool-link" href="/tools/band-name-generator/" data-search="band name generator generate original band names by genre — rock, metal, pop, hip-hop, electronic, jazz, punk or indie — with one click and copy. band name generator rock band names metal band names cool band names music group name ideas"><span class="t-ico">⚙️</span><span class="t-body"><b>Band Name Generator</b><small>Generate original band names by genre — rock, metal, pop, hip-hop, electronic, jazz, punk or…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/barcode-generator/" data-search="barcode generator generate barcodes in common formats — code128, code39, ean-13, ean-8, upc and itf-14 — and download them as png or svg images. barcode generator barcode maker ean13 barcode upc barcode generator"><span class="t-ico">⚙️</span><span class="t-body"><b>Barcode Generator</b><small>Generate barcodes in common formats — CODE128, CODE39, EAN-13, EAN-8, UPC and ITF-14 — and d…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/bingo-card-generator/" data-search="bingo card generator create printable 5×5 bingo cards with classic b-i-n-g-o number ranges, an optional free space, or your own custom word list. bingo card generator printable bingo cards custom bingo cards bingo number generator free bingo cards"><span class="t-ico">⚙️</span><span class="t-body"><b>Bingo Card Generator</b><small>Create printable 5×5 bingo cards with classic B-I-N-G-O number ranges, an optional free spac…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/border-radius-generator/" data-search="border radius generator organic blob shapes with an 8-handle radius editor. border radius generator blob shape css border-radius css"><span class="t-ico">⚙️</span><span class="t-body"><b>Border Radius Generator</b><small>Organic blob shapes with an 8-handle radius editor.</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/box-shadow-generator/" data-search="box shadow generator visual css box-shadow builder with live preview. box shadow generator css shadow box-shadow css"><span class="t-ico">⚙️</span><span class="t-body"><b>Box Shadow Generator</b><small>Visual CSS box-shadow builder with live preview.</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/button-generator/" data-search="button generator design a custom button with your text, colors, border radius, padding and shadow — then copy the generated css and use it anywhere. button generator css button maker button css custom button design"><span class="t-ico">⚙️</span><span class="t-body"><b>Button Generator</b><small>Design a custom button with your text, colors, border radius, padding and shadow — then copy…</small></span><span class="t-arrow">→</span></a></div>
+  </section>
+</main>
+
+<!-- ADSTERRA-FOOTER: paste your Adsterra footer/banner ad code inside the div below -->
+<div class="container"><div class="ad-slot" data-ad="footer"></div></div>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="f-grid">
+      <div>
+        <span class="brandline"><span class="logo-mark">T</span> ToolNest</span>
+        <p>Free online tools that actually work. No sign-up, no watermarks — and your files never leave your device for client-side tools.</p>
+      </div>
+      <div>
+        <h4>Popular</h4>
+        <a href="/tools/qr-code-generator/">QR Code Generator</a>
+        <a href="/tools/background-remover/">Background Remover</a>
+        <a href="/tools/pdf-merger/">PDF Merger</a>
+        <a href="/tools/word-counter/">Word Counter</a>
+      </div>
+      <div>
+        <h4>Categories</h4>
+        <a href="/#image">Image Tools</a>
+        <a href="/#pdf">PDF &amp; Documents</a>
+        <a href="/#calculators">Calculators</a>
+        <a href="/#developer">Developer Tools</a>
+      </div>
+      <div>
+        <h4>Site</h4>
+        <a href="/">Home</a>
+        <a href="/#all-tools">All Tools</a>
+        <a href="/sitemap.xml">Sitemap</a>
+      </div>
+    </div>
+    <div class="f-bottom">© 2026 ToolNest · Free tools for everyone · Made with care</div>
+  </div>
+</footer>
+
+<script src="/assets/site.js?v=5"></script>
+
+<script>
+/* Countdown Timer Widget — set/start/pause/reset with alarm chime. */
+(function () {
+  'use strict';
+  var SLUG = 'countdown-timer-widget';
+  var ERR = SLUG + '-error';
+  var remaining = 0; // ms
+  var running = false;
+  var endAt = 0;
+  var rafId = null;
+  var actx = null;
+
+  function $(id) { return document.getElementById(id); }
+
+  function fmt(ms) {
+    ms = Math.max(0, Math.ceil(ms / 100) * 100);
+    var s = Math.floor(ms / 1000);
+    var h = Math.floor(s / 3600), m = Math.floor(s % 3600 / 60), ss = s % 60;
+    function p(n) { return (n < 10 ? '0' : '') + n; }
+    return p(h) + ':' + p(m) + ':' + p(ss);
+  }
+
+  function readInputs() {
+    var h = Math.max(0, Math.min(99, parseInt($('countdown-timer-widget-h').value, 10) || 0));
+    var m = Math.max(0, Math.min(59, parseInt($('countdown-timer-widget-m').value, 10) || 0));
+    var s = Math.max(0, Math.min(59, parseInt($('countdown-timer-widget-s').value, 10) || 0));
+    return (h * 3600 + m * 60 + s) * 1000;
+  }
+
+  function chime() {
+    try {
+      if (!actx) actx = new (window.AudioContext || window.webkitAudioContext)();
+      if (actx.state === 'suspended') actx.resume();
+      var notes = [880, 880, 880, 1046.5];
+      notes.forEach(function (f, i) {
+        var o = actx.createOscillator(), g = actx.createGain();
+        o.type = 'sine'; o.frequency.value = f;
+        var t = actx.currentTime + i * 0.22;
+        g.gain.setValueAtTime(0.0001, t);
+        g.gain.exponentialRampToValueAtTime(0.4, t + 0.02);
+        g.gain.exponentialRampToValueAtTime(0.0001, t + 0.2);
+        o.connect(g); g.connect(actx.destination);
+        o.start(t); o.stop(t + 0.25);
+      });
+    } catch (e) { /* audio optional */ }
+  }
+
+  function tick() {
+    if (!running) return;
+    remaining = endAt - Date.now();
+    if (remaining <= 0) {
+      remaining = 0;
+      $('countdown-timer-widget-display').textContent = fmt(0);
+      stop();
+      chime();
+      $('countdown-timer-widget-msg').textContent = '⏰ Time is up!';
+      // flash the display
+      var d = $('countdown-timer-widget-display');
+      var n = 0;
+      var fl = setInterval(function () {
+        d.style.color = n % 2 ? '#e53935' : '';
+        if (++n > 7) { clearInterval(fl); d.style.color = ''; }
+      }, 400);
+      return;
+    }
+    $('countdown-timer-widget-display').textContent = fmt(remaining);
+    rafId = requestAnimationFrame(tick);
+  }
+
+  function start() {
+    if (running) return;
+    if (remaining <= 0) {
+      remaining = readInputs();
+      if (remaining <= 0) { TN.setErr(ERR, 'Set a duration greater than zero first.'); return; }
+    }
+    TN.clearErr(ERR);
+    running = true;
+    endAt = Date.now() + remaining;
+    $('countdown-timer-widget-toggle').textContent = '⏸ Pause';
+    $('countdown-timer-widget-msg').textContent = '';
+    tick();
+  }
+
+  function stop() {
+    running = false;
+    if (rafId) { cancelAnimationFrame(rafId); rafId = null; }
+    $('countdown-timer-widget-toggle').textContent = '▶ Start';
+  }
+
+  function reset() {
+    stop();
+    remaining = 0;
+    $('countdown-timer-widget-display').textContent = fmt(readInputs());
+    $('countdown-timer-widget-msg').textContent = '';
+    TN.clearErr(ERR);
+  }
+
+  try {
+    TN.on('countdown-timer-widget-toggle', 'click', function () { running ? stop() : start(); });
+    TN.on('countdown-timer-widget-reset', 'click', reset);
+    ['countdown-timer-widget-h', 'countdown-timer-widget-m', 'countdown-timer-widget-s'].forEach(function (id) {
+      TN.on(id, 'input', function () {
+        if (!running) { remaining = 0; $('countdown-timer-widget-display').textContent = fmt(readInputs()); }
+      });
+    });
+    TN.on('countdown-timer-widget-preset', 'change', function () {
+      var v = parseInt($('countdown-timer-widget-preset').value, 10);
+      if (!v) return;
+      $('countdown-timer-widget-h').value = Math.floor(v / 3600);
+      $('countdown-timer-widget-m').value = Math.floor(v % 3600 / 60);
+      $('countdown-timer-widget-s').value = v % 60;
+      if (!running) { remaining = 0; $('countdown-timer-widget-display').textContent = fmt(readInputs()); }
+    });
+    $('countdown-timer-widget-display').textContent = fmt(readInputs());
+  } catch (e) { /* never throw on load */ }
+})();
+
+</script>
+</body>
+</html>

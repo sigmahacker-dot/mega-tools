@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Random Team Generator — Free Online | ToolNest</title>
+<meta name="description" content="Split names into random fair teams by team count or team size, using a Fisher-Yates shuffle with round-robin distribution.">
+<meta name="keywords" content="random team generator, team splitter, random team maker, split into teams, team randomizer">
+<link rel="canonical" href="https://toolnest.vercel.app/tools/random-team-generator/">
+<meta name="theme-color" content="#07070b">
+<meta property="og:title" content="Random Team Generator — Free Online | ToolNest">
+<meta property="og:description" content="Split names into random fair teams by team count or team size, using a Fisher-Yates shuffle with round-robin distribution.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css?v=4">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%23e01111'/><text x='50' y='68' font-size='58' text-anchor='middle' fill='white' font-family='Arial' font-weight='bold'>T</text></svg>">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebApplication","name":"Random Team Generator","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0"},"url":"https://toolnest.vercel.app/tools/random-team-generator/","description":"Split names into random fair teams by team count or team size, using a Fisher-Yates shuffle with round-robin distribution."},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Are the teams fair / balanced?","acceptedAnswer":{"@type":"Answer","text":"Yes. Every name is shuffled with the Fisher-Yates algorithm and dealt round-robin, so teams differ by at most one player."}},{"@type":"Question","name":"Can I choose team size instead of team count?","acceptedAnswer":{"@type":"Answer","text":"Pick the mode you want: a fixed number of teams, or a fixed team size (the tool computes how many teams that makes)."}},{"@type":"Question","name":"Can I re-shuffle?","acceptedAnswer":{"@type":"Answer","text":"Press Shuffle again — every press re-randomizes with a fresh shuffle."}},{"@type":"Question","name":"Is this private?","acceptedAnswer":{"@type":"Answer","text":"Yes, everything runs locally in your browser."}}]}]}</script>
+</head>
+<body>
+<header class="site-header">
+  <div class="container">
+    <a class="logo" href="/"><span class="logo-mark">T</span> ToolNest</a>
+    <div class="header-right">
+      <form class="nav-search" action="/" method="get" role="search">
+        <span class="ns-icon">🔍</span>
+        <input type="search" name="q" placeholder="Search tools…" aria-label="Search tools" autocomplete="off">
+      </form>
+      <div class="menu-wrap">
+        <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="menuPanel" aria-label="Open menu"><span></span><span></span><span></span></button>
+        <nav class="menu-panel" id="menuPanel" aria-label="Site">
+          <a href="/">Home</a>
+          <a href="/#categories">Categories</a>
+          <a href="/#all-tools">All Tools</a>
+        </nav>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ADSTERRA-HEADER: paste your Adsterra banner ad code inside the div below -->
+<div class="container"><div class="ad-slot ad-leaderboard" data-ad="header"></div></div>
+
+<main class="container">
+  <nav class="crumbs"><a href="/">Home</a> &rsaquo; <a href="/#generators">Generators</a> &rsaquo; Random Team Generator</nav>
+  <div class="tool-hero">
+    <h1>Random Team Generator</h1>
+    <p>Split names into random fair teams by team count or team size, using a Fisher-Yates shuffle with round-robin distribution.</p>
+  </div>
+
+  <div class="tool-card">
+  <div class="field"><label for="rteam-names">Names <span class="hint">(one per line)</span></label><textarea class="textarea" id="rteam-names" rows="6" placeholder="Ayesha&#10;Bilal&#10;Chen&#10;Diana&#10;..."></textarea></div>
+  <div class="grid2">
+    <div class="field"><label for="rteam-mode">Split by</label>
+      <select class="select" id="rteam-mode"><option value="count">Number of teams</option><option value="size">Team size</option></select>
+    </div>
+    <div class="field"><label for="rteam-n">Number</label><input type="number" class="input" id="rteam-n" min="2" max="50" value="2"></div>
+  </div>
+  <div class="error" id="random-team-generator-error"></div>
+  <div class="result" id="rteam-result">
+    <div class="stat-cards">
+      <div class="stat-card"><div class="v" id="rteam-players">–</div><div class="l">Players</div></div>
+      <div class="stat-card"><div class="v" id="rteam-teams">–</div><div class="l">Teams</div></div>
+    </div>
+    <div id="rteam-list"></div>
+    <div class="btn-row">
+      <button class="btn btn-primary" id="rteam-go" type="button">Shuffle teams</button>
+      <button class="btn btn-outline" id="rteam-copy" type="button">Copy result</button>
+    </div>
+  </div>
+</div>
+
+  <!-- ADSTERRA-INCONTENT: paste your Adsterra native/in-content ad code inside the div below -->
+  <div class="ad-slot" data-ad="incontent"></div>
+
+  <div class="info-grid">
+    <div class="info-card">
+      <h2>📖 How to use</h2>
+      <ol><li>Paste one name per line.</li><li>Choose team count or team size and set the number.</li><li>Press Shuffle teams — copy or download the result.</li></ol>
+    </div>
+    <div class="info-card">
+      <h2>❓ Frequently asked questions</h2>
+      <div class="faq"><details><summary>Are the teams fair / balanced?</summary><p>Yes. Every name is shuffled with the Fisher-Yates algorithm and dealt round-robin, so teams differ by at most one player.</p></details><details><summary>Can I choose team size instead of team count?</summary><p>Pick the mode you want: a fixed number of teams, or a fixed team size (the tool computes how many teams that makes).</p></details><details><summary>Can I re-shuffle?</summary><p>Press Shuffle again — every press re-randomizes with a fresh shuffle.</p></details><details><summary>Is this private?</summary><p>Yes, everything runs locally in your browser.</p></details></div>
+    </div>
+  </div>
+
+  <section class="section">
+    <h2>🔗 Related tools</h2>
+    <div class="tool-grid"><a class="tool-link" href="/tools/band-name-generator/" data-search="band name generator generate original band names by genre — rock, metal, pop, hip-hop, electronic, jazz, punk or indie — with one click and copy. band name generator rock band names metal band names cool band names music group name ideas"><span class="t-ico">⚙️</span><span class="t-body"><b>Band Name Generator</b><small>Generate original band names by genre — rock, metal, pop, hip-hop, electronic, jazz, punk or…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/barcode-generator/" data-search="barcode generator generate barcodes in common formats — code128, code39, ean-13, ean-8, upc and itf-14 — and download them as png or svg images. barcode generator barcode maker ean13 barcode upc barcode generator"><span class="t-ico">⚙️</span><span class="t-body"><b>Barcode Generator</b><small>Generate barcodes in common formats — CODE128, CODE39, EAN-13, EAN-8, UPC and ITF-14 — and d…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/bingo-card-generator/" data-search="bingo card generator create printable 5×5 bingo cards with classic b-i-n-g-o number ranges, an optional free space, or your own custom word list. bingo card generator printable bingo cards custom bingo cards bingo number generator free bingo cards"><span class="t-ico">⚙️</span><span class="t-body"><b>Bingo Card Generator</b><small>Create printable 5×5 bingo cards with classic B-I-N-G-O number ranges, an optional free spac…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/border-radius-generator/" data-search="border radius generator organic blob shapes with an 8-handle radius editor. border radius generator blob shape css border-radius css"><span class="t-ico">⚙️</span><span class="t-body"><b>Border Radius Generator</b><small>Organic blob shapes with an 8-handle radius editor.</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/box-shadow-generator/" data-search="box shadow generator visual css box-shadow builder with live preview. box shadow generator css shadow box-shadow css"><span class="t-ico">⚙️</span><span class="t-body"><b>Box Shadow Generator</b><small>Visual CSS box-shadow builder with live preview.</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/button-generator/" data-search="button generator design a custom button with your text, colors, border radius, padding and shadow — then copy the generated css and use it anywhere. button generator css button maker button css custom button design"><span class="t-ico">⚙️</span><span class="t-body"><b>Button Generator</b><small>Design a custom button with your text, colors, border radius, padding and shadow — then copy…</small></span><span class="t-arrow">→</span></a></div>
+  </section>
+</main>
+
+<!-- ADSTERRA-FOOTER: paste your Adsterra footer/banner ad code inside the div below -->
+<div class="container"><div class="ad-slot" data-ad="footer"></div></div>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="f-grid">
+      <div>
+        <span class="brandline"><span class="logo-mark">T</span> ToolNest</span>
+        <p>Free online tools that actually work. No sign-up, no watermarks — and your files never leave your device for client-side tools.</p>
+      </div>
+      <div>
+        <h4>Popular</h4>
+        <a href="/tools/qr-code-generator/">QR Code Generator</a>
+        <a href="/tools/background-remover/">Background Remover</a>
+        <a href="/tools/pdf-merger/">PDF Merger</a>
+        <a href="/tools/word-counter/">Word Counter</a>
+      </div>
+      <div>
+        <h4>Categories</h4>
+        <a href="/#image">Image Tools</a>
+        <a href="/#pdf">PDF &amp; Documents</a>
+        <a href="/#calculators">Calculators</a>
+        <a href="/#developer">Developer Tools</a>
+      </div>
+      <div>
+        <h4>Site</h4>
+        <a href="/">Home</a>
+        <a href="/#all-tools">All Tools</a>
+        <a href="/sitemap.xml">Sitemap</a>
+      </div>
+    </div>
+    <div class="f-bottom">© 2026 ToolNest · Free tools for everyone · Made with care</div>
+  </div>
+</footer>
+
+<script src="/assets/site.js?v=5"></script>
+
+<script>
+(function () {
+  'use strict';
+  var ERR = 'random-team-generator-error';
+  var lastTeams = [];
+  function esc(s) {
+    return String(s).replace(/[&<>"']/g, function (c) {
+      return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c];
+    });
+  }
+  function shuffle(arr) {
+    for (var i = arr.length - 1; i > 0; i--) {
+      var j = Math.floor(Math.random() * (i + 1));
+      var t = arr[i]; arr[i] = arr[j]; arr[j] = t;
+    }
+    return arr;
+  }
+  function names() {
+    return TN.el('rteam-names').value.split(/\r?\n/).map(function (x) { return x.trim(); }).filter(function (x) { return x.length; });
+  }
+  function generate() {
+    TN.clearErr(ERR);
+    var ns = names();
+    if (ns.length < 2) { TN.setErr(ERR, 'Enter at least 2 names.'); return; }
+    var n = parseInt(TN.el('rteam-n').value, 10);
+    if (!(n >= 2)) { TN.setErr(ERR, 'Enter a number of 2 or more.'); return; }
+    var mode = TN.el('rteam-mode').value;
+    var teamCount = mode === 'count' ? Math.min(n, ns.length) : Math.max(1, Math.ceil(ns.length / n));
+    if (teamCount < 2 && ns.length >= 2) teamCount = 2;
+    if (teamCount > ns.length) teamCount = ns.length;
+    var order = shuffle(ns.slice());
+    var teams = [];
+    for (var i = 0; i < teamCount; i++) teams.push([]);
+    order.forEach(function (name, idx) { teams[idx % teamCount].push(name); });
+    lastTeams = teams;
+    TN.el('rteam-players').textContent = ns.length;
+    TN.el('rteam-teams').textContent = teamCount;
+    var html = '<div class="grid2">';
+    teams.forEach(function (t, i) {
+      html += '<div><h4 style="margin:10px 0 6px">Team ' + (i + 1) + ' <span class="muted">(' + t.length + ')</span></h4><ul style="margin:0;padding-left:20px">';
+      t.forEach(function (p) { html += '<li>' + esc(p) + '</li>'; });
+      html += '</ul></div>';
+    });
+    TN.el('rteam-list').innerHTML = html + '</div>';
+  }
+  try {
+    TN.on('rteam-go', 'click', generate);
+    TN.on('rteam-mode', 'change', generate);
+    TN.on('rteam-n', 'input', generate);
+    TN.on('rteam-copy', 'click', function () {
+      if (!lastTeams.length) { TN.setErr(ERR, 'Shuffle the teams first.'); return; }
+      TN.clearErr(ERR);
+      var txt = lastTeams.map(function (t, i) { return 'Team ' + (i + 1) + ':\n' + t.join('\n'); }).join('\n\n');
+      if (TN.copy) TN.copy(txt);
+    });
+    TN.el('rteam-list').innerHTML = '<p class="muted">Enter names and press Shuffle teams.</p>';
+  } catch (e) { /* never throw on load */ }
+})();
+</script>
+</body>
+</html>

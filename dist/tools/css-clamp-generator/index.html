@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CSS Clamp Generator — Free Online | ToolNest</title>
+<meta name="description" content="Generate fluid clamp() typography and spacing — the exact math from your min/max sizes and viewport range, with a live demo.">
+<meta name="keywords" content="css clamp generator, fluid typography calculator, clamp css generator, responsive font size">
+<link rel="canonical" href="https://toolnest.vercel.app/tools/css-clamp-generator/">
+<meta name="theme-color" content="#07070b">
+<meta property="og:title" content="CSS Clamp Generator — Free Online | ToolNest">
+<meta property="og:description" content="Generate fluid clamp() typography and spacing — the exact math from your min/max sizes and viewport range, with a live demo.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css?v=4">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%23e01111'/><text x='50' y='68' font-size='58' text-anchor='middle' fill='white' font-family='Arial' font-weight='bold'>T</text></svg>">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebApplication","name":"CSS Clamp Generator","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0"},"url":"https://toolnest.vercel.app/tools/css-clamp-generator/","description":"Generate fluid clamp() typography and spacing — the exact math from your min/max sizes and viewport range, with a live demo."},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What does clamp() do?","acceptedAnswer":{"@type":"Answer","text":"clamp(min, preferred, max) picks a fluid middle value that scales with the viewport but never goes below min or above max — perfect for responsive type."}},{"@type":"Question","name":"How is the middle value computed?","acceptedAnswer":{"@type":"Answer","text":"Linear interpolation: slope = (maxSize − minSize) / (maxVw − minVw), then preferred = intercept + slope × 100vw. The math is exact, not an approximation."}},{"@type":"Question","name":"Should I use px or rem?","acceptedAnswer":{"@type":"Answer","text":"Use rem for accessibility (it respects user font-size settings). The toggle converts your px values using a 16px root."}}]}]}</script>
+</head>
+<body>
+<header class="site-header">
+  <div class="container">
+    <a class="logo" href="/"><span class="logo-mark">T</span> ToolNest</a>
+    <div class="header-right">
+      <form class="nav-search" action="/" method="get" role="search">
+        <span class="ns-icon">🔍</span>
+        <input type="search" name="q" placeholder="Search tools…" aria-label="Search tools" autocomplete="off">
+      </form>
+      <div class="menu-wrap">
+        <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="menuPanel" aria-label="Open menu"><span></span><span></span><span></span></button>
+        <nav class="menu-panel" id="menuPanel" aria-label="Site">
+          <a href="/">Home</a>
+          <a href="/#categories">Categories</a>
+          <a href="/#all-tools">All Tools</a>
+        </nav>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ADSTERRA-HEADER: paste your Adsterra banner ad code inside the div below -->
+<div class="container"><div class="ad-slot ad-leaderboard" data-ad="header"></div></div>
+
+<main class="container">
+  <nav class="crumbs"><a href="/">Home</a> &rsaquo; <a href="/#color">Color Tools</a> &rsaquo; CSS Clamp Generator</nav>
+  <div class="tool-hero">
+    <h1>CSS Clamp Generator</h1>
+    <p>Generate fluid clamp() typography and spacing — the exact math from your min/max sizes and viewport range, with a live demo.</p>
+  </div>
+
+  <div class="tool-card">
+  <div class="grid2">
+    <div class="field">
+      <label for="css-clamp-generator-min">Min size (px)</label>
+      <input type="number" class="input" id="css-clamp-generator-min" value="16" min="1" step="any">
+    </div>
+    <div class="field">
+      <label for="css-clamp-generator-max">Max size (px)</label>
+      <input type="number" class="input" id="css-clamp-generator-max" value="32" min="1" step="any">
+    </div>
+    <div class="field">
+      <label for="css-clamp-generator-minvw">Min viewport (px)</label>
+      <input type="number" class="input" id="css-clamp-generator-minvw" value="360" min="1" step="1">
+    </div>
+    <div class="field">
+      <label for="css-clamp-generator-maxvw">Max viewport (px)</label>
+      <input type="number" class="input" id="css-clamp-generator-maxvw" value="1280" min="1" step="1">
+    </div>
+  </div>
+  <div class="checkbox-row"><input type="checkbox" id="css-clamp-generator-rem" checked> <label for="css-clamp-generator-rem">Output in rem (16px root)</label></div>
+  <div class="error" id="css-clamp-generator-error"></div>
+  <div class="result mt">
+    <div class="field">
+      <label for="css-clamp-generator-css">Generated CSS</label>
+      <input type="text" class="input" id="css-clamp-generator-css" readonly style="font-family:ui-monospace,monospace;">
+    </div>
+    <div class="btn-row">
+      <button class="btn btn-outline btn-sm" id="css-clamp-generator-copy" type="button">Copy CSS</button>
+    </div>
+    <div class="field mt">
+      <label>Live demo <span class="muted">(resize your browser window)</span></label>
+      <div id="css-clamp-generator-demo" style="border:1px solid var(--line);border-radius:10px;padding:16px;">Fluid typography scales with the viewport</div>
+    </div>
+    <p class="note" id="css-clamp-generator-math"></p>
+  </div>
+</div>
+
+
+  <!-- ADSTERRA-INCONTENT: paste your Adsterra native/in-content ad code inside the div below -->
+  <div class="ad-slot" data-ad="incontent"></div>
+
+  <div class="info-grid">
+    <div class="info-card">
+      <h2>📖 How to use</h2>
+      <ol><li>Enter the minimum and maximum size (px) you want.</li><li>Enter the viewport range (e.g. 360px to 1280px) the fluid scaling should cover.</li><li>Copy the generated clamp() rule and watch it scale live in the demo box.</li></ol>
+    </div>
+    <div class="info-card">
+      <h2>❓ Frequently asked questions</h2>
+      <div class="faq"><details><summary>What does clamp() do?</summary><p>clamp(min, preferred, max) picks a fluid middle value that scales with the viewport but never goes below min or above max — perfect for responsive type.</p></details><details><summary>How is the middle value computed?</summary><p>Linear interpolation: slope = (maxSize − minSize) / (maxVw − minVw), then preferred = intercept + slope × 100vw. The math is exact, not an approximation.</p></details><details><summary>Should I use px or rem?</summary><p>Use rem for accessibility (it respects user font-size settings). The toggle converts your px values using a 16px root.</p></details></div>
+    </div>
+  </div>
+
+  <section class="section">
+    <h2>🔗 Related tools</h2>
+    <div class="tool-grid"><a class="tool-link" href="/tools/color-blindness-simulator/" data-search="color blindness simulator see colors and images as color-blind viewers do. color blindness simulator protanopia simulator deuteranopia test"><span class="t-ico">🎨</span><span class="t-body"><b>Color Blindness Simulator</b><small>See colors and images as color-blind viewers do.</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/color-harmony-generator/" data-search="color harmony generator build complementary, analogous, triadic, tetradic and split-complementary palettes from any base color using real hsl math. color harmony generator complementary color finder analogous colors triadic color scheme"><span class="t-ico">🎨</span><span class="t-body"><b>Color Harmony Generator</b><small>Build complementary, analogous, triadic, tetradic and split-complementary palettes from any …</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/color-mixer/" data-search="color mixer blend any two colors with a ratio slider — see the real mixed result as hex and rgb with a live preview. color mixer blend two colors mix colors online color blender tool"><span class="t-ico">🎨</span><span class="t-body"><b>Color Mixer</b><small>Blend any two colors with a ratio slider — see the real mixed result as HEX and RGB with a l…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/color-temperature-converter/" data-search="color temperature converter convert light color temperature (kelvin) to its approximate on-screen color — real blackbody math with warm/cool labels. kelvin to rgb color temperature converter kelvin to hex light temperature color"><span class="t-ico">🎨</span><span class="t-body"><b>Color Temperature Converter</b><small>Convert light color temperature (Kelvin) to its approximate on-screen color — real blackbody…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/contrast-checker/" data-search="color contrast checker wcag contrast ratio with aa/aaa verdicts. contrast checker wcag contrast color contrast ratio"><span class="t-ico">🎨</span><span class="t-body"><b>Color Contrast Checker</b><small>WCAG contrast ratio with AA/AAA verdicts.</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/cubic-bezier-generator/" data-search="cubic bezier generator design custom cubic-bezier() timing functions with sliders — live curve, handles and an animated preview ball. cubic bezier generator bezier curve css animation timing function cubic-bezier visualizer"><span class="t-ico">🎨</span><span class="t-body"><b>Cubic Bezier Generator</b><small>Design custom cubic-bezier() timing functions with sliders — live curve, handles and an anim…</small></span><span class="t-arrow">→</span></a></div>
+  </section>
+</main>
+
+<!-- ADSTERRA-FOOTER: paste your Adsterra footer/banner ad code inside the div below -->
+<div class="container"><div class="ad-slot" data-ad="footer"></div></div>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="f-grid">
+      <div>
+        <span class="brandline"><span class="logo-mark">T</span> ToolNest</span>
+        <p>Free online tools that actually work. No sign-up, no watermarks — and your files never leave your device for client-side tools.</p>
+      </div>
+      <div>
+        <h4>Popular</h4>
+        <a href="/tools/qr-code-generator/">QR Code Generator</a>
+        <a href="/tools/background-remover/">Background Remover</a>
+        <a href="/tools/pdf-merger/">PDF Merger</a>
+        <a href="/tools/word-counter/">Word Counter</a>
+      </div>
+      <div>
+        <h4>Categories</h4>
+        <a href="/#image">Image Tools</a>
+        <a href="/#pdf">PDF &amp; Documents</a>
+        <a href="/#calculators">Calculators</a>
+        <a href="/#developer">Developer Tools</a>
+      </div>
+      <div>
+        <h4>Site</h4>
+        <a href="/">Home</a>
+        <a href="/#all-tools">All Tools</a>
+        <a href="/sitemap.xml">Sitemap</a>
+      </div>
+    </div>
+    <div class="f-bottom">© 2026 ToolNest · Free tools for everyone · Made with care</div>
+  </div>
+</footer>
+
+<script src="/assets/site.js?v=5"></script>
+
+<script>
+(function () {
+  'use strict';
+  var P = 'css-clamp-generator-', ERR = P + 'error';
+  function num(id) { var v = parseFloat(TN.el(P + id).value); return isNaN(v) ? NaN : v; }
+  function fmt(n, unit) {
+    var s = (Math.round(n * 10000) / 10000).toString();
+    return s + unit;
+  }
+  function update() {
+    try {
+      TN.clearErr(ERR);
+      var minS = num('min'), maxS = num('max'), minV = num('minvw'), maxV = num('maxvw');
+      var useRem = TN.el(P + 'rem').checked;
+      if (!(minS > 0) || !(maxS > 0)) { TN.setErr(ERR, 'Min and max sizes must be greater than 0.'); return; }
+      if (minS >= maxS) { TN.setErr(ERR, 'Max size must be larger than min size.'); return; }
+      if (!(minV > 0) || !(maxV > 0) || minV >= maxV) { TN.setErr(ERR, 'Viewport range must be positive with min < max.'); return; }
+      var slope = (maxS - minS) / (maxV - minV);
+      var intercept = minS - slope * minV;
+      var unit = useRem ? 'rem' : 'px', div = useRem ? 16 : 1;
+      var css = 'font-size: clamp(' + fmt(minS / div, unit) + ', ' + fmt(intercept / div, unit) + ' + ' + fmt(slope * 100 / div, 'vw') + ', ' + fmt(maxS / div, unit) + ');';
+      TN.el(P + 'css').value = css;
+      TN.el(P + 'demo').style.fontSize = 'clamp(' + (minS / div) + unit + ', ' + (intercept / div) + unit + ' + ' + (slope * 100 / div) + 'vw, ' + (maxS / div) + unit + ')';
+      TN.el(P + 'math').textContent = 'Slope = (' + maxS + '−' + minS + ')/(' + maxV + '−' + minV + ') = ' + (slope * 100).toFixed(4) + 'vw per 100vw; intercept = ' + intercept.toFixed(2) + 'px.';
+    } catch (e) { TN.setErr(ERR, 'Could not generate the clamp() rule. Please try again.'); }
+  }
+  try {
+    ['min', 'max', 'minvw', 'maxvw'].forEach(function (k) { TN.on(P + k, 'input', update); });
+    TN.on(P + 'rem', 'change', update);
+    TN.on(P + 'copy', 'click', function () {
+      var v = TN.el(P + 'css').value;
+      if (!v) { TN.setErr(ERR, 'Nothing to copy yet.'); return; }
+      TN.clearErr(ERR);
+      TN.copy(v).then(function (ok) {
+        var b = TN.el(P + 'copy');
+        b.textContent = ok ? 'Copied!' : 'Copy failed';
+        setTimeout(function () { b.textContent = 'Copy CSS'; }, 1200);
+      });
+    });
+    update();
+  } catch (e) { /* never throw on load */ }
+})();
+
+</script>
+</body>
+</html>

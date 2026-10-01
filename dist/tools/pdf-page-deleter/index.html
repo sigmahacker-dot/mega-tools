@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PDF Page Deleter — Free Online | ToolNest</title>
+<meta name="description" content="Delete pages from a PDF by number or range — preview the page list, select what to remove, and download the cleaned document.">
+<meta name="keywords" content="delete pdf pages, remove pdf pages, pdf page remover, edit pdf pages, pdf deleter">
+<link rel="canonical" href="https://toolnest.vercel.app/tools/pdf-page-deleter/">
+<meta name="theme-color" content="#07070b">
+<meta property="og:title" content="PDF Page Deleter — Free Online | ToolNest">
+<meta property="og:description" content="Delete pages from a PDF by number or range — preview the page list, select what to remove, and download the cleaned document.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css?v=4">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%23e01111'/><text x='50' y='68' font-size='58' text-anchor='middle' fill='white' font-family='Arial' font-weight='bold'>T</text></svg>">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebApplication","name":"PDF Page Deleter","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0"},"url":"https://toolnest.vercel.app/tools/pdf-page-deleter/","description":"Delete pages from a PDF by number or range — preview the page list, select what to remove, and download the cleaned document."},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How do I specify which pages to delete?","acceptedAnswer":{"@type":"Answer","text":"Type individual pages (2, 5) and ranges (3-7) together, e.g. “2, 5-8, 12”. Pages are 1-based."}},{"@type":"Question","name":"Does it affect the remaining pages?","acceptedAnswer":{"@type":"Answer","text":"No — only the pages you select are removed; the rest keep their original content and order."}},{"@type":"Question","name":"Is my PDF uploaded?","acceptedAnswer":{"@type":"Answer","text":"The file stays on your device the whole time — pdf-lib runs locally in your browser."}},{"@type":"Question","name":"Are there size limits?","acceptedAnswer":{"@type":"Answer","text":"Browsers can struggle with extremely large PDFs (hundreds of MB). For typical documents it works fine."}}]}]}</script>
+</head>
+<body>
+<header class="site-header">
+  <div class="container">
+    <a class="logo" href="/"><span class="logo-mark">T</span> ToolNest</a>
+    <div class="header-right">
+      <form class="nav-search" action="/" method="get" role="search">
+        <span class="ns-icon">🔍</span>
+        <input type="search" name="q" placeholder="Search tools…" aria-label="Search tools" autocomplete="off">
+      </form>
+      <div class="menu-wrap">
+        <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="menuPanel" aria-label="Open menu"><span></span><span></span><span></span></button>
+        <nav class="menu-panel" id="menuPanel" aria-label="Site">
+          <a href="/">Home</a>
+          <a href="/#categories">Categories</a>
+          <a href="/#all-tools">All Tools</a>
+        </nav>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ADSTERRA-HEADER: paste your Adsterra banner ad code inside the div below -->
+<div class="container"><div class="ad-slot ad-leaderboard" data-ad="header"></div></div>
+
+<main class="container">
+  <nav class="crumbs"><a href="/">Home</a> &rsaquo; <a href="/#pdf">PDF &amp; Documents</a> &rsaquo; PDF Page Deleter</nav>
+  <div class="tool-hero">
+    <h1>PDF Page Deleter</h1>
+    <p>Delete pages from a PDF by number or range — preview the page list, select what to remove, and download the cleaned document.</p>
+  </div>
+
+  <div class="tool-card">
+  <div class="field">
+    <label for="pdf-page-deleter-file">Upload PDF</label>
+    <input type="file" class="input" id="pdf-page-deleter-file" accept="application/pdf,.pdf">
+  </div>
+  <div class="field" id="pdf-page-deleter-form" hidden>
+    <label for="pdf-page-deleter-pages">Pages to delete (e.g. 2, 5-8, 12)</label>
+    <input type="text" class="input" id="pdf-page-deleter-pages" placeholder="2, 5-8">
+  </div>
+  <div class="btn-row" style="margin-top:12px">
+    <button class="btn" id="pdf-page-deleter-go" disabled>Delete pages &amp; download</button>
+  </div>
+  <div class="error" id="pdf-page-deleter-error"></div>
+  <div class="result" id="pdf-page-deleter-result" hidden>
+    <div class="stat-cards">
+      <div class="stat-card"><div class="v" id="pdf-page-deleter-total">–</div><div class="l">Total pages</div></div>
+      <div class="stat-card"><div class="v" id="pdf-page-deleter-del">–</div><div class="l">Pages to delete</div></div>
+      <div class="stat-card"><div class="v" id="pdf-page-deleter-keep">–</div><div class="l">Pages kept</div></div>
+    </div>
+    <p class="muted" id="pdf-page-deleter-list"></p>
+  </div>
+</div>
+
+
+  <!-- ADSTERRA-INCONTENT: paste your Adsterra native/in-content ad code inside the div below -->
+  <div class="ad-slot" data-ad="incontent"></div>
+
+  <div class="info-grid">
+    <div class="info-card">
+      <h2>📖 How to use</h2>
+      <ol><li>Upload your PDF.</li><li>Enter the page numbers or ranges to delete.</li><li>Review which pages will be kept.</li><li>Click “Delete pages” and download the new PDF.</li></ol>
+    </div>
+    <div class="info-card">
+      <h2>❓ Frequently asked questions</h2>
+      <div class="faq"><details><summary>How do I specify which pages to delete?</summary><p>Type individual pages (2, 5) and ranges (3-7) together, e.g. “2, 5-8, 12”. Pages are 1-based.</p></details><details><summary>Does it affect the remaining pages?</summary><p>No — only the pages you select are removed; the rest keep their original content and order.</p></details><details><summary>Is my PDF uploaded?</summary><p>The file stays on your device the whole time — pdf-lib runs locally in your browser.</p></details><details><summary>Are there size limits?</summary><p>Browsers can struggle with extremely large PDFs (hundreds of MB). For typical documents it works fine.</p></details></div>
+    </div>
+  </div>
+
+  <section class="section">
+    <h2>🔗 Related tools</h2>
+    <div class="tool-grid"><a class="tool-link" href="/tools/esign-pdf/" data-search="esign pdf draw your signature and stamp it onto any page of a pdf. choose the page, position and size with sliders, then download the signed document. esign pdf sign pdf online electronic signature pdf"><span class="t-ico">📄</span><span class="t-body"><b>eSign PDF</b><small>Draw your signature and stamp it onto any page of a PDF. Choose the page, position and size …</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/pdf-blank-page-adder/" data-search="pdf blank page adder insert blank pages into a pdf — at the start, at the end, or after any page. choose page size and how many to add. add blank pages pdf insert blank page pdf pdf blank page add pages to pdf pdf insert pages"><span class="t-ico">📄</span><span class="t-body"><b>PDF Blank Page Adder</b><small>Insert blank pages into a PDF — at the start, at the end, or after any page. Choose page siz…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/pdf-compressor/" data-search="pdf compressor shrink a pdf&#39;s file size by re-rendering its pages as compressed images. choose low, medium or high quality and compare sizes before downloading. compress pdf reduce pdf size shrink pdf"><span class="t-ico">📄</span><span class="t-body"><b>PDF Compressor</b><small>Shrink a PDF&#39;s file size by re-rendering its pages as compressed images. Choose Low, Medium …</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/pdf-merger/" data-search="pdf merger combine multiple pdf files into one document. arrange the files in any order, preview each file&#39;s page count, then merge and download the result. merge pdf combine pdf join pdf files"><span class="t-ico">📄</span><span class="t-body"><b>PDF Merger</b><small>Combine multiple PDF files into one document. Arrange the files in any order, preview each f…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/pdf-metadata-editor/" data-search="pdf metadata editor read and edit a pdf&#39;s title, author, subject and keywords metadata. edit pdf metadata pdf title author pdf properties editor"><span class="t-ico">📄</span><span class="t-body"><b>PDF Metadata Editor</b><small>Read and edit a PDF&#39;s title, author, subject and keywords metadata.</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/pdf-page-counter/" data-search="pdf page counter count the pages in any pdf instantly — plus file size, page dimensions, version and encryption status, all read locally. pdf page counter count pdf pages how many pages in pdf pdf info pdf metadata"><span class="t-ico">📄</span><span class="t-body"><b>PDF Page Counter</b><small>Count the pages in any PDF instantly — plus file size, page dimensions, version and encrypti…</small></span><span class="t-arrow">→</span></a></div>
+  </section>
+</main>
+
+<!-- ADSTERRA-FOOTER: paste your Adsterra footer/banner ad code inside the div below -->
+<div class="container"><div class="ad-slot" data-ad="footer"></div></div>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="f-grid">
+      <div>
+        <span class="brandline"><span class="logo-mark">T</span> ToolNest</span>
+        <p>Free online tools that actually work. No sign-up, no watermarks — and your files never leave your device for client-side tools.</p>
+      </div>
+      <div>
+        <h4>Popular</h4>
+        <a href="/tools/qr-code-generator/">QR Code Generator</a>
+        <a href="/tools/background-remover/">Background Remover</a>
+        <a href="/tools/pdf-merger/">PDF Merger</a>
+        <a href="/tools/word-counter/">Word Counter</a>
+      </div>
+      <div>
+        <h4>Categories</h4>
+        <a href="/#image">Image Tools</a>
+        <a href="/#pdf">PDF &amp; Documents</a>
+        <a href="/#calculators">Calculators</a>
+        <a href="/#developer">Developer Tools</a>
+      </div>
+      <div>
+        <h4>Site</h4>
+        <a href="/">Home</a>
+        <a href="/#all-tools">All Tools</a>
+        <a href="/sitemap.xml">Sitemap</a>
+      </div>
+    </div>
+    <div class="f-bottom">© 2026 ToolNest · Free tools for everyone · Made with care</div>
+  </div>
+</footer>
+
+<script src="/assets/site.js?v=5"></script>
+<script src="https://cdn.jsdelivr.net/npm/pdf-lib@1.17.1/dist/pdf-lib.min.js" defer></script>
+<script>
+/* PDF Page Deleter — remove selected pages via pdf-lib. */
+(function () {
+  'use strict';
+  var SLUG = 'pdf-page-deleter';
+  var ERR = SLUG + '-error';
+  var buf = null;
+  var pageCount = 0;
+  var pdfName = 'document.pdf';
+
+  function $(id) { return document.getElementById(id); }
+
+  function parsePages(spec, max) {
+    var set = {};
+    var parts = (spec || '').split(',');
+    for (var i = 0; i < parts.length; i++) {
+      var p = parts[i].trim();
+      if (!p) continue;
+      var m = p.match(/^(\d+)\s*-\s*(\d+)$/);
+      if (m) {
+        var a = parseInt(m[1], 10), b = parseInt(m[2], 10);
+        if (a > b) { var t = a; a = b; b = t; }
+        for (var n = a; n <= b; n++) { if (n >= 1 && n <= max) set[n] = true; }
+      } else if (/^\d+$/.test(p)) {
+        var v = parseInt(p, 10);
+        if (v >= 1 && v <= max) set[v] = true;
+      } else {
+        return null; // invalid token
+      }
+    }
+    return Object.keys(set).map(Number).sort(function (x, y) { return x - y; });
+  }
+
+  function refreshStats() {
+    var pages = parsePages($('pdf-page-deleter-pages').value, pageCount);
+    if (pages === null) {
+      $('pdf-page-deleter-del').textContent = '–';
+      $('pdf-page-deleter-keep').textContent = '–';
+      $('pdf-page-deleter-list').textContent = '';
+      return;
+    }
+    $('pdf-page-deleter-del').textContent = pages.length;
+    $('pdf-page-deleter-keep').textContent = pageCount - pages.length;
+    $('pdf-page-deleter-list').textContent = pages.length
+      ? 'Deleting pages: ' + pages.join(', ')
+      : 'No valid pages selected yet.';
+  }
+
+  function go() {
+    if (typeof PDFLib === 'undefined') { TN.setErr(ERR, 'PDF engine failed to load. Check your connection and reload.'); return; }
+    if (!buf) { TN.setErr(ERR, 'Upload a PDF first.'); return; }
+    var pages = parsePages($('pdf-page-deleter-pages').value, pageCount);
+    if (pages === null) { TN.setErr(ERR, 'Invalid page specification. Use numbers and ranges like “2, 5-8”.'); return; }
+    if (!pages.length) { TN.setErr(ERR, 'No valid pages to delete.'); return; }
+    if (pages.length >= pageCount) { TN.setErr(ERR, 'You cannot delete all pages of the PDF.'); return; }
+    TN.clearErr(ERR);
+    PDFLib.PDFDocument.load(buf.slice(0)).then(function (src) {
+      return PDFLib.PDFDocument.create().then(function (doc) {
+        var delSet = {};
+        pages.forEach(function (p) { delSet[p - 1] = true; });
+        var keepIdx = [];
+        for (var i = 0; i < pageCount; i++) { if (!delSet[i]) keepIdx.push(i); }
+        return doc.copyPages(src, keepIdx).then(function (copied) {
+          copied.forEach(function (p) { doc.addPage(p); });
+          return doc.save();
+        });
+      });
+    }).then(function (bytes) {
+      var blob = new Blob([bytes], { type: 'application/pdf' });
+      var a = document.createElement('a');
+      a.href = URL.createObjectURL(blob);
+      a.download = pdfName.replace(/\.pdf$/i, '') + '-trimmed.pdf';
+      document.body.appendChild(a); a.click();
+      setTimeout(function () { document.body.removeChild(a); }, 100);
+    }).catch(function () {
+      TN.setErr(ERR, 'Could not process that PDF. It may be encrypted or corrupted.');
+    });
+  }
+
+  try {
+    TN.on('pdf-page-deleter-file', 'change', function (e) {
+      var f = e.target.files && e.target.files[0];
+      if (!f) return;
+      pdfName = f.name || pdfName;
+      var r = new FileReader();
+      r.onload = function () {
+        buf = r.result;
+        if (typeof PDFLib === 'undefined') { TN.setErr(ERR, 'PDF engine failed to load. Check your connection and reload.'); return; }
+        PDFLib.PDFDocument.load(buf.slice(0)).then(function (doc) {
+          pageCount = doc.getPageCount();
+          $('pdf-page-deleter-total').textContent = pageCount;
+          $('pdf-page-deleter-form').hidden = false;
+          $('pdf-page-deleter-result').hidden = false;
+          $('pdf-page-deleter-go').disabled = false;
+          TN.clearErr(ERR);
+          refreshStats();
+        }).catch(function () { TN.setErr(ERR, 'Could not read that PDF. It may be encrypted or corrupted.'); });
+      };
+      r.onerror = function () { TN.setErr(ERR, 'Could not read the file.'); };
+      r.readAsArrayBuffer(f);
+    });
+    TN.on('pdf-page-deleter-pages', 'input', refreshStats);
+    TN.on('pdf-page-deleter-go', 'click', go);
+  } catch (e) { /* never throw on load */ }
+})();
+
+</script>
+</body>
+</html>

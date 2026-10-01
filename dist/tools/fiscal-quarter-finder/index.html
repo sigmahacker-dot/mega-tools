@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fiscal Quarter Finder — Free Online | ToolNest</title>
+<meta name="description" content="Find the fiscal quarter for any date with any fiscal year start month. Get the FY label, quarter start/end dates and days remaining.">
+<meta name="keywords" content="fiscal quarter finder, what quarter are we in, financial quarter calculator, FY quarter dates, fiscal year calculator">
+<link rel="canonical" href="https://toolnest.vercel.app/tools/fiscal-quarter-finder/">
+<meta name="theme-color" content="#07070b">
+<meta property="og:title" content="Fiscal Quarter Finder — Free Online | ToolNest">
+<meta property="og:description" content="Find the fiscal quarter for any date with any fiscal year start month. Get the FY label, quarter start/end dates and days remaining.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css?v=4">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%23e01111'/><text x='50' y='68' font-size='58' text-anchor='middle' fill='white' font-family='Arial' font-weight='bold'>T</text></svg>">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebApplication","name":"Fiscal Quarter Finder","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0"},"url":"https://toolnest.vercel.app/tools/fiscal-quarter-finder/","description":"Find the fiscal quarter for any date with any fiscal year start month. Get the FY label, quarter start/end dates and days remaining."},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How is the fiscal year labelled?","acceptedAnswer":{"@type":"Answer","text":"By the calendar year in which it ends. With an April start, March 2026 falls in FY2026 (April 2025 – March 2026)."}},{"@type":"Question","name":"Which start months are common?","acceptedAnswer":{"@type":"Answer","text":"January (calendar year), April (UK, Japan, India), July (Australia) and October (US federal government)."}},{"@type":"Question","name":"How are quarter boundaries found?","acceptedAnswer":{"@type":"Answer","text":"Each quarter is exactly 3 calendar months from the fiscal year start: Q1 = months 1–3 of the fiscal year, and so on."}}]}]}</script>
+</head>
+<body>
+<header class="site-header">
+  <div class="container">
+    <a class="logo" href="/"><span class="logo-mark">T</span> ToolNest</a>
+    <div class="header-right">
+      <form class="nav-search" action="/" method="get" role="search">
+        <span class="ns-icon">🔍</span>
+        <input type="search" name="q" placeholder="Search tools…" aria-label="Search tools" autocomplete="off">
+      </form>
+      <div class="menu-wrap">
+        <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="menuPanel" aria-label="Open menu"><span></span><span></span><span></span></button>
+        <nav class="menu-panel" id="menuPanel" aria-label="Site">
+          <a href="/">Home</a>
+          <a href="/#categories">Categories</a>
+          <a href="/#all-tools">All Tools</a>
+        </nav>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ADSTERRA-HEADER: paste your Adsterra banner ad code inside the div below -->
+<div class="container"><div class="ad-slot ad-leaderboard" data-ad="header"></div></div>
+
+<main class="container">
+  <nav class="crumbs"><a href="/">Home</a> &rsaquo; <a href="/#time">Time &amp; Date</a> &rsaquo; Fiscal Quarter Finder</nav>
+  <div class="tool-hero">
+    <h1>Fiscal Quarter Finder</h1>
+    <p>Find the fiscal quarter for any date with any fiscal year start month. Get the FY label, quarter start/end dates and days remaining.</p>
+  </div>
+
+  <div class="tool-card">
+  <div class="grid2">
+    <div class="field">
+      <label for="fiscal-quarter-finder-date">Date</label>
+      <input type="date" class="input" id="fiscal-quarter-finder-date">
+    </div>
+    <div class="field">
+      <label for="fiscal-quarter-finder-start">Fiscal year starts in</label>
+      <select class="select" id="fiscal-quarter-finder-start"></select>
+    </div>
+  </div>
+  <div class="error" id="fiscal-quarter-finder-error"></div>
+  <div class="result" id="fiscal-quarter-finder-result">
+    <div class="stat-cards">
+      <div class="stat-card"><div class="v" id="fiscal-quarter-finder-fy">–</div><div class="l">Fiscal year</div></div>
+      <div class="stat-card"><div class="v" id="fiscal-quarter-finder-q">–</div><div class="l">Quarter</div></div>
+      <div class="stat-card"><div class="v" id="fiscal-quarter-finder-left">–</div><div class="l">Days left in quarter</div></div>
+    </div>
+    <table class="data">
+      <thead><tr><th>Detail</th><th>Value</th></tr></thead>
+      <tbody id="fiscal-quarter-finder-body"></tbody>
+    </table>
+    <p class="note">Fiscal year is labelled by the calendar year in which it ends.</p>
+  </div>
+</div>
+
+
+  <!-- ADSTERRA-INCONTENT: paste your Adsterra native/in-content ad code inside the div below -->
+  <div class="ad-slot" data-ad="incontent"></div>
+
+  <div class="info-grid">
+    <div class="info-card">
+      <h2>📖 How to use</h2>
+      <ol><li>Pick the date you want to classify (defaults to today).</li><li>Choose the month your fiscal year starts in.</li><li>Read the fiscal year, quarter and exact quarter start/end dates.</li><li>See how many days have passed and how many remain in the quarter.</li></ol>
+    </div>
+    <div class="info-card">
+      <h2>❓ Frequently asked questions</h2>
+      <div class="faq"><details><summary>How is the fiscal year labelled?</summary><p>By the calendar year in which it ends. With an April start, March 2026 falls in FY2026 (April 2025 – March 2026).</p></details><details><summary>Which start months are common?</summary><p>January (calendar year), April (UK, Japan, India), July (Australia) and October (US federal government).</p></details><details><summary>How are quarter boundaries found?</summary><p>Each quarter is exactly 3 calendar months from the fiscal year start: Q1 = months 1–3 of the fiscal year, and so on.</p></details></div>
+    </div>
+  </div>
+
+  <section class="section">
+    <h2>🔗 Related tools</h2>
+    <div class="tool-grid"><a class="tool-link" href="/tools/add-subtract-days-calculator/" data-search="add / subtract days calculator add or subtract days, weeks, months or years from any date. optional business-days-only mode skips weekends automatically. add days to date subtract days calculator date plus days business days calculator date arithmetic"><span class="t-ico">⏰</span><span class="t-body"><b>Add / Subtract Days Calculator</b><small>Add or subtract days, weeks, months or years from any date. Optional business-days-only mode…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/anniversary-calculator/" data-search="anniversary calculator track any anniversary: days until the next one, which number it is (10th, 25th…), total days together and the weekday it falls on. anniversary calculator wedding anniversary countdown how many days until anniversary anniversary date tracker years together calculator"><span class="t-ico">⏰</span><span class="t-body"><b>Anniversary Calculator</b><small>Track any anniversary: days until the next one, which number it is (10th, 25th…), total days…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/date-duration-calculator/" data-search="date duration calculator exact duration between two dates, plus business days. date duration calculator days between dates business days calculator"><span class="t-ico">⏰</span><span class="t-body"><b>Date Duration Calculator</b><small>Exact duration between two dates, plus business days.</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/event-countdown/" data-search="event countdown timer live ticking countdown to any future date and time. countdown timer event countdown countdown to date"><span class="t-ico">⏰</span><span class="t-body"><b>Event Countdown Timer</b><small>Live ticking countdown to any future date and time.</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/meeting-cost-calculator/" data-search="meeting cost calculator calculate what meetings really cost: enter attendees, average hourly rate and duration to see the cost per meeting, per week, per month and per year. meeting cost calculator cost of meetings meeting time cost how much do meetings cost meeting roi calculator"><span class="t-ico">⏰</span><span class="t-body"><b>Meeting Cost Calculator</b><small>Calculate what meetings really cost: enter attendees, average hourly rate and duration to se…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/meeting-planner/" data-search="meeting time planner find overlapping work hours across time zones. meeting planner time zone overlap world clock meeting"><span class="t-ico">⏰</span><span class="t-body"><b>Meeting Time Planner</b><small>Find overlapping work hours across time zones.</small></span><span class="t-arrow">→</span></a></div>
+  </section>
+</main>
+
+<!-- ADSTERRA-FOOTER: paste your Adsterra footer/banner ad code inside the div below -->
+<div class="container"><div class="ad-slot" data-ad="footer"></div></div>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="f-grid">
+      <div>
+        <span class="brandline"><span class="logo-mark">T</span> ToolNest</span>
+        <p>Free online tools that actually work. No sign-up, no watermarks — and your files never leave your device for client-side tools.</p>
+      </div>
+      <div>
+        <h4>Popular</h4>
+        <a href="/tools/qr-code-generator/">QR Code Generator</a>
+        <a href="/tools/background-remover/">Background Remover</a>
+        <a href="/tools/pdf-merger/">PDF Merger</a>
+        <a href="/tools/word-counter/">Word Counter</a>
+      </div>
+      <div>
+        <h4>Categories</h4>
+        <a href="/#image">Image Tools</a>
+        <a href="/#pdf">PDF &amp; Documents</a>
+        <a href="/#calculators">Calculators</a>
+        <a href="/#developer">Developer Tools</a>
+      </div>
+      <div>
+        <h4>Site</h4>
+        <a href="/">Home</a>
+        <a href="/#all-tools">All Tools</a>
+        <a href="/sitemap.xml">Sitemap</a>
+      </div>
+    </div>
+    <div class="f-bottom">© 2026 ToolNest · Free tools for everyone · Made with care</div>
+  </div>
+</footer>
+
+<script src="/assets/site.js?v=5"></script>
+
+<script>
+(function () {
+  'use strict';
+  var P = 'fiscal-quarter-finder-';
+  var ERR = P + 'error';
+  function g(id) { return document.getElementById(P + id); }
+  function set(id, v) { var el = g(id); if (el) el.textContent = v; }
+  var MONTHS = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+  function fmtD(d) { return MONTHS[d.getMonth()] + ' ' + d.getDate() + ', ' + d.getFullYear(); }
+  function calc() {
+    if (!g('date')) return;
+    TN.clearErr(ERR);
+    var v = g('date').value;
+    var m = /^(\d{4})-(\d{2})-(\d{2})$/.exec(v || '');
+    if (!m) {
+      set('fy', '–'); set('q', '–'); set('left', '–');
+      g('body').innerHTML = '<tr><td colspan="2" class="muted">Pick a date to find its fiscal quarter.</td></tr>';
+      return;
+    }
+    var d = new Date(parseInt(m[1], 10), parseInt(m[2], 10) - 1, parseInt(m[3], 10));
+    var sm = parseInt(g('start').value, 10); /* FY start month 0-11 */
+    var mo = d.getMonth(), yr = d.getFullYear();
+    var fyEnd = mo >= sm ? yr + 1 : yr;       /* FY labelled by ending year */
+    var fyStartYear = fyEnd - 1;
+    var q = Math.floor(((mo - sm + 12) % 12) / 3) + 1;
+    var qsMonth = (sm + (q - 1) * 3) % 12;
+    var qsYear = fyStartYear + (qsMonth < sm ? 1 : 0);
+    var qStart = new Date(qsYear, qsMonth, 1);
+    var qEnd = new Date(qsYear, qsMonth + 3, 0); /* last day of 3rd month */
+    var totalDays = Math.round((qEnd - qStart) / 86400000) + 1;
+    var elapsed = Math.round((d - qStart) / 86400000) + 1;
+    var left = totalDays - elapsed;
+    set('fy', 'FY' + fyEnd);
+    set('q', 'Q' + q);
+    set('left', String(left));
+    var rows = [
+      ['Date', fmtD(d)],
+      ['Fiscal year', 'FY' + fyEnd + ' (' + MONTHS[sm] + ' ' + fyStartYear + ' – ' + MONTHS[(sm + 11) % 12] + ' ' + fyEnd + ')'],
+      ['Quarter', 'Q' + q + ' of FY' + fyEnd],
+      ['Quarter starts', fmtD(qStart)],
+      ['Quarter ends', fmtD(qEnd)],
+      ['Day of quarter', elapsed + ' of ' + totalDays]
+    ];
+    var html = '';
+    rows.forEach(function (r) {
+      html += '<tr><td>' + TN.esc(r[0]) + '</td><td>' + TN.esc(r[1]) + '</td></tr>';
+    });
+    g('body').innerHTML = html;
+  }
+  try {
+    var sel = g('start');
+    MONTHS.forEach(function (name, i) {
+      var o = document.createElement('option');
+      o.value = String(i); o.textContent = name;
+      sel.appendChild(o);
+    });
+    sel.value = '0';
+    var t = new Date();
+    g('date').value = t.getFullYear() + '-' + String(t.getMonth() + 1).padStart(2, '0') + '-' + String(t.getDate()).padStart(2, '0');
+    TN.on(P + 'date', 'input', calc);
+    TN.on(P + 'date', 'change', calc);
+    TN.on(P + 'start', 'change', calc);
+    calc();
+  } catch (e) { /* never throw on load */ }
+})();
+
+</script>
+</body>
+</html>

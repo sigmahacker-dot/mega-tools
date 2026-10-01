@@ -1,0 +1,25 @@
+<div class="tool-card">
+  <div class="grid2">
+    <div class="field"><label for="rcpt-biz">Business name</label><input type="text" class="input" id="rcpt-biz" placeholder="Corner Store"></div>
+    <div class="field"><label for="rcpt-addr">Business address <span class="hint">(optional)</span></label><input type="text" class="input" id="rcpt-addr" placeholder="123 Main St"></div>
+    <div class="field"><label for="rcpt-tax">Tax rate (%)</label><input type="number" class="input" id="rcpt-tax" min="0" max="100" step="any" value="0"></div>
+    <div class="field"><label for="rcpt-disc">Discount (%)</label><input type="number" class="input" id="rcpt-disc" min="0" max="100" step="any" value="0"></div>
+    <div class="field"><label for="rcpt-pay">Payment method</label>
+      <select class="select" id="rcpt-pay">
+        <option>Cash</option><option>Card</option><option>Bank transfer</option><option>Mobile wallet</option><option>Other</option>
+      </select>
+    </div>
+    <div class="field"><label for="rcpt-num">Receipt no. <span class="hint">(optional)</span></label><input type="text" class="input" id="rcpt-num" placeholder="001"></div>
+  </div>
+  <div class="field"><label>Items</label><div id="rcpt-items"></div>
+    <div class="btn-row"><button class="btn btn-outline btn-sm" id="rcpt-add" type="button">+ Add item</button></div>
+  </div>
+  <div class="error" id="receipt-maker-error"></div>
+  <div class="result" id="rcpt-result">
+    <div class="field"><label for="rcpt-out">Receipt preview</label><textarea class="textarea" id="rcpt-out" rows="16" readonly style="font-family:ui-monospace,Menlo,Consolas,monospace"></textarea></div>
+    <div class="btn-row">
+      <button class="btn btn-primary" id="rcpt-dl" type="button">Download .txt</button>
+      <button class="btn btn-outline" id="rcpt-print" type="button">Print receipt</button>
+    </div>
+  </div>
+</div>

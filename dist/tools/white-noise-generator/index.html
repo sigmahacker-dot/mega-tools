@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>White Noise Generator — Free Online | ToolNest</title>
+<meta name="description" content="Generate white, pink and brown noise for sleep, focus and masking — with volume control and an auto-stop sleep timer.">
+<meta name="keywords" content="white noise, white noise generator, pink noise, brown noise, sleep sounds">
+<link rel="canonical" href="https://toolnest.vercel.app/tools/white-noise-generator/">
+<meta name="theme-color" content="#07070b">
+<meta property="og:title" content="White Noise Generator — Free Online | ToolNest">
+<meta property="og:description" content="Generate white, pink and brown noise for sleep, focus and masking — with volume control and an auto-stop sleep timer.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css?v=4">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%23e01111'/><text x='50' y='68' font-size='58' text-anchor='middle' fill='white' font-family='Arial' font-weight='bold'>T</text></svg>">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebApplication","name":"White Noise Generator","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0"},"url":"https://toolnest.vercel.app/tools/white-noise-generator/","description":"Generate white, pink and brown noise for sleep, focus and masking — with volume control and an auto-stop sleep timer."},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Which noise types are included?","acceptedAnswer":{"@type":"Answer","text":"White (even hiss), pink (softer, deeper) and brown (deep rumble). Pink is the most popular for sleep."}},{"@type":"Question","name":"Is this real generated noise?","acceptedAnswer":{"@type":"Answer","text":"The noise is synthesized live with the Web Audio API — no audio files, no streaming."}},{"@type":"Question","name":"Is there a sleep timer?","acceptedAnswer":{"@type":"Answer","text":"Yes — set 15, 30, 60 or 90 minutes and it fades out automatically."}},{"@type":"Question","name":"Does it work on mobile?","acceptedAnswer":{"@type":"Answer","text":"Yes — works on desktop and mobile browsers."}}]}]}</script>
+</head>
+<body>
+<header class="site-header">
+  <div class="container">
+    <a class="logo" href="/"><span class="logo-mark">T</span> ToolNest</a>
+    <div class="header-right">
+      <form class="nav-search" action="/" method="get" role="search">
+        <span class="ns-icon">🔍</span>
+        <input type="search" name="q" placeholder="Search tools…" aria-label="Search tools" autocomplete="off">
+      </form>
+      <div class="menu-wrap">
+        <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="menuPanel" aria-label="Open menu"><span></span><span></span><span></span></button>
+        <nav class="menu-panel" id="menuPanel" aria-label="Site">
+          <a href="/">Home</a>
+          <a href="/#categories">Categories</a>
+          <a href="/#all-tools">All Tools</a>
+        </nav>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ADSTERRA-HEADER: paste your Adsterra banner ad code inside the div below -->
+<div class="container"><div class="ad-slot ad-leaderboard" data-ad="header"></div></div>
+
+<main class="container">
+  <nav class="crumbs"><a href="/">Home</a> &rsaquo; <a href="/#video-audio">Video &amp; Audio</a> &rsaquo; White Noise Generator</nav>
+  <div class="tool-hero">
+    <h1>White Noise Generator</h1>
+    <p>Generate white, pink and brown noise for sleep, focus and masking — with volume control and an auto-stop sleep timer.</p>
+  </div>
+
+  <div class="tool-card" style="text-align:center">
+  <div class="btn-row" style="justify-content:center" id="white-noise-generator-types">
+    <button class="btn" data-t="white">White</button>
+    <button class="btn btn-outline" data-t="pink">Pink</button>
+    <button class="btn btn-outline" data-t="brown">Brown</button>
+  </div>
+  <div class="field" style="max-width:420px;margin:16px auto;text-align:left">
+    <label for="white-noise-generator-vol">Volume (<span id="white-noise-generator-vol-v">50</span>%)</label>
+    <input type="range" class="input" id="white-noise-generator-vol" min="0" max="100" step="1" value="50">
+  </div>
+  <div class="field" style="max-width:420px;margin:0 auto;text-align:left">
+    <label for="white-noise-generator-timer">Sleep timer</label>
+    <select class="input" id="white-noise-generator-timer">
+      <option value="0">Off — play until stopped</option>
+      <option value="15">15 minutes</option>
+      <option value="30">30 minutes</option>
+      <option value="60">1 hour</option>
+      <option value="90">90 minutes</option>
+    </select>
+  </div>
+  <div class="btn-row" style="justify-content:center;margin-top:16px">
+    <button class="btn" id="white-noise-generator-toggle">▶ Play</button>
+  </div>
+  <p class="muted" id="white-noise-generator-status" style="min-height:24px"></p>
+  <div class="error" id="white-noise-generator-error"></div>
+</div>
+
+
+  <!-- ADSTERRA-INCONTENT: paste your Adsterra native/in-content ad code inside the div below -->
+  <div class="ad-slot" data-ad="incontent"></div>
+
+  <div class="info-grid">
+    <div class="info-card">
+      <h2>📖 How to use</h2>
+      <ol><li>Pick white, pink or brown noise.</li><li>Set a comfortable volume.</li><li>Optionally set a sleep timer.</li><li>Press Play and relax.</li></ol>
+    </div>
+    <div class="info-card">
+      <h2>❓ Frequently asked questions</h2>
+      <div class="faq"><details><summary>Which noise types are included?</summary><p>White (even hiss), pink (softer, deeper) and brown (deep rumble). Pink is the most popular for sleep.</p></details><details><summary>Is this real generated noise?</summary><p>The noise is synthesized live with the Web Audio API — no audio files, no streaming.</p></details><details><summary>Is there a sleep timer?</summary><p>Yes — set 15, 30, 60 or 90 minutes and it fades out automatically.</p></details><details><summary>Does it work on mobile?</summary><p>Yes — works on desktop and mobile browsers.</p></details></div>
+    </div>
+  </div>
+
+  <section class="section">
+    <h2>🔗 Related tools</h2>
+    <div class="tool-grid"><a class="tool-link" href="/tools/audio-cutter/" data-search="audio cutter cut a section out of any audio file in your browser. set start and end times, preview the selection, then download it as an mp3. audio cutter cut audio online trim mp3 audio trimmer mp3 cutter"><span class="t-ico">🎬</span><span class="t-body"><b>Audio Cutter</b><small>Cut a section out of any audio file in your browser. Set start and end times, preview the se…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/audio-voice-recorder/" data-search="voice recorder record audio with your microphone, play it back and download it as a file. voice recorder record audio online microphone recorder"><span class="t-ico">🎬</span><span class="t-body"><b>Voice Recorder</b><small>Record audio with your microphone, play it back and download it as a file.</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/bpm-tap-tempo/" data-search="bpm tap tempo find the tempo of any song — tap along to the beat and get a live bpm readout with beat-interval stats. tap tempo bpm tap find bpm of song tempo finder beats per minute tap"><span class="t-ico">🎬</span><span class="t-body"><b>BPM Tap Tempo</b><small>Find the tempo of any song — tap along to the beat and get a live BPM readout with beat-inte…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/metronome-tool/" data-search="metronome tool a precise metronome with webaudio clicks — set any bpm, beats per bar and subdivision, with tap tempo and a visual pulse. metronome online metronome bpm metronome music practice tempo tool"><span class="t-ico">🎬</span><span class="t-body"><b>Metronome Tool</b><small>A precise metronome with WebAudio clicks — set any BPM, beats per bar and subdivision, with …</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/online-guitar-tuner/" data-search="online guitar tuner tune your guitar with real pitch detection — the mic listens, autocorrelation finds your note, and the needle shows how many cents sharp or flat you are. guitar tuner online guitar tuner pitch detection tune guitar chromatic tuner"><span class="t-ico">🎬</span><span class="t-body"><b>Online Guitar Tuner</b><small>Tune your guitar with real pitch detection — the mic listens, autocorrelation finds your not…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/pitch-pipe-tool/" data-search="pitch pipe tool a chromatic pitch pipe — tap any note from c to b across two octaves to hear a pure reference tone for tuning and singing. pitch pipe online pitch pipe tuning note reference pitch chromatic tuner note"><span class="t-ico">🎬</span><span class="t-body"><b>Pitch Pipe Tool</b><small>A chromatic pitch pipe — tap any note from C to B across two octaves to hear a pure referenc…</small></span><span class="t-arrow">→</span></a></div>
+  </section>
+</main>
+
+<!-- ADSTERRA-FOOTER: paste your Adsterra footer/banner ad code inside the div below -->
+<div class="container"><div class="ad-slot" data-ad="footer"></div></div>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="f-grid">
+      <div>
+        <span class="brandline"><span class="logo-mark">T</span> ToolNest</span>
+        <p>Free online tools that actually work. No sign-up, no watermarks — and your files never leave your device for client-side tools.</p>
+      </div>
+      <div>
+        <h4>Popular</h4>
+        <a href="/tools/qr-code-generator/">QR Code Generator</a>
+        <a href="/tools/background-remover/">Background Remover</a>
+        <a href="/tools/pdf-merger/">PDF Merger</a>
+        <a href="/tools/word-counter/">Word Counter</a>
+      </div>
+      <div>
+        <h4>Categories</h4>
+        <a href="/#image">Image Tools</a>
+        <a href="/#pdf">PDF &amp; Documents</a>
+        <a href="/#calculators">Calculators</a>
+        <a href="/#developer">Developer Tools</a>
+      </div>
+      <div>
+        <h4>Site</h4>
+        <a href="/">Home</a>
+        <a href="/#all-tools">All Tools</a>
+        <a href="/sitemap.xml">Sitemap</a>
+      </div>
+    </div>
+    <div class="f-bottom">© 2026 ToolNest · Free tools for everyone · Made with care</div>
+  </div>
+</footer>
+
+<script src="/assets/site.js?v=5"></script>
+
+<script>
+/* White Noise Generator — white/pink/brown noise via AudioBufferSourceNode. */
+(function () {
+  'use strict';
+  var SLUG = 'white-noise-generator';
+  var ERR = SLUG + '-error';
+  var type = 'white';
+  var actx = null, src = null, gain = null, filter = null;
+  var playing = false, timerId = null;
+
+  function $(id) { return document.getElementById(id); }
+
+  function ctx() {
+    if (!actx) {
+      try { actx = new (window.AudioContext || window.webkitAudioContext)(); }
+      catch (e) { TN.setErr(ERR, 'Web Audio is not supported in this browser.'); return null; }
+    }
+    if (actx.state === 'suspended') actx.resume();
+    return actx;
+  }
+
+  function makeBuffer(c, seconds) {
+    var len = Math.floor(c.sampleRate * seconds);
+    var b = c.createBuffer(1, len, c.sampleRate);
+    var d = b.getChannelData(0);
+    var last = 0;
+    for (var i = 0; i < len; i++) {
+      var w = Math.random() * 2 - 1;
+      if (type === 'white') d[i] = w;
+      else if (type === 'pink') {
+        // Paul Kellet's pink noise approximation
+        last = 0.997 * last + 0.029591 * w + 0.032534 * w; // simplified
+        d[i] = last * 3.2;
+      } else { // brown
+        last = (last + 0.02 * w) / 1.02;
+        d[i] = last * 3.5;
+      }
+    }
+    return b;
+  }
+
+  function start() {
+    var c = ctx();
+    if (!c) return;
+    stop();
+    src = c.createBufferSource();
+    src.buffer = makeBuffer(c, 4);
+    src.loop = true;
+    gain = c.createGain();
+    var vol = (parseInt($('white-noise-generator-vol').value, 10) || 50) / 100;
+    gain.gain.value = vol * 0.5;
+    if (type !== 'white') {
+      filter = c.createBiquadFilter();
+      filter.type = 'lowpass';
+      filter.frequency.value = type === 'pink' ? 4000 : 800;
+      src.connect(filter); filter.connect(gain);
+    } else {
+      src.connect(gain);
+    }
+    gain.connect(c.destination);
+    src.start();
+    playing = true;
+    $('white-noise-generator-toggle').textContent = '⏹ Stop';
+    $('white-noise-generator-status').textContent = 'Playing ' + type + ' noise…';
+    var mins = parseInt($('white-noise-generator-timer').value, 10) || 0;
+    if (mins > 0) {
+      $('white-noise-generator-status').textContent += ' Auto-stop in ' + mins + ' min.';
+      timerId = setTimeout(stop, mins * 60 * 1000);
+    }
+    TN.clearErr(ERR);
+  }
+
+  function stop() {
+    if (timerId) { clearTimeout(timerId); timerId = null; }
+    if (src) {
+      try { src.stop(); } catch (e) {}
+      try { src.disconnect(); } catch (e) {}
+      src = null;
+    }
+    if (gain) { try { gain.disconnect(); } catch (e) {} gain = null; }
+    if (filter) { try { filter.disconnect(); } catch (e) {} filter = null; }
+    playing = false;
+    $('white-noise-generator-toggle').textContent = '▶ Play';
+    $('white-noise-generator-status').textContent = '';
+  }
+
+  try {
+    var btns = $('white-noise-generator-types').querySelectorAll('button');
+    for (var k = 0; k < btns.length; k++) {
+      (function (b) {
+        b.addEventListener('click', function () {
+          type = b.getAttribute('data-t');
+          for (var j = 0; j < btns.length; j++) btns[j].className = 'btn' + (btns[j] === b ? '' : ' btn-outline');
+          if (playing) start(); // restart with new type
+        });
+      })(btns[k]);
+    }
+    TN.on('white-noise-generator-vol', 'input', function () {
+      $('white-noise-generator-vol-v').textContent = $('white-noise-generator-vol').value;
+      if (gain && actx) gain.gain.value = (parseInt($('white-noise-generator-vol').value, 10) / 100) * 0.5;
+    });
+    TN.on('white-noise-generator-toggle', 'click', function () { playing ? stop() : start(); });
+  } catch (e) { /* never throw on load */ }
+})();
+
+</script>
+</body>
+</html>

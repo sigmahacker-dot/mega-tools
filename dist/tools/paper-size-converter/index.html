@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Paper Size Converter — Free Online | ToolNest</title>
+<meta name="description" content="Look up any paper size — A0 to A6, Letter, Legal, Tabloid — in millimetres, centimetres and inches, plus area and pixel dimensions at your chosen DPI.">
+<meta name="keywords" content="paper size converter, A4 dimensions mm inches, paper size chart, A3 vs A4 size, pixels at 300 dpi A4">
+<link rel="canonical" href="https://toolnest.vercel.app/tools/paper-size-converter/">
+<meta name="theme-color" content="#07070b">
+<meta property="og:title" content="Paper Size Converter — Free Online | ToolNest">
+<meta property="og:description" content="Look up any paper size — A0 to A6, Letter, Legal, Tabloid — in millimetres, centimetres and inches, plus area and pixel dimensions at your chosen DPI.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css?v=4">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%23e01111'/><text x='50' y='68' font-size='58' text-anchor='middle' fill='white' font-family='Arial' font-weight='bold'>T</text></svg>">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebApplication","name":"Paper Size Converter","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0"},"url":"https://toolnest.vercel.app/tools/paper-size-converter/","description":"Look up any paper size — A0 to A6, Letter, Legal, Tabloid — in millimetres, centimetres and inches, plus area and pixel dimensions at your chosen DPI."},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Why does each A size halve the previous one?","acceptedAnswer":{"@type":"Answer","text":"The ISO 216 A series is built so that cutting a sheet in half across its long side gives the next size down with the same √2 aspect ratio. A0 is defined as exactly 1 m²."}},{"@type":"Question","name":"What are the exact dimensions of A4?","acceptedAnswer":{"@type":"Answer","text":"210 × 297 mm (8.27 × 11.69 in). It is the world's most common office paper size."}},{"@type":"Question","name":"How are pixel dimensions computed?","acceptedAnswer":{"@type":"Answer","text":"Pixels = inches × DPI. A4 at 300 DPI is (210/25.4)×300 ≈ 2480 × 3508 px — the standard print-ready size."}}]}]}</script>
+</head>
+<body>
+<header class="site-header">
+  <div class="container">
+    <a class="logo" href="/"><span class="logo-mark">T</span> ToolNest</a>
+    <div class="header-right">
+      <form class="nav-search" action="/" method="get" role="search">
+        <span class="ns-icon">🔍</span>
+        <input type="search" name="q" placeholder="Search tools…" aria-label="Search tools" autocomplete="off">
+      </form>
+      <div class="menu-wrap">
+        <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="menuPanel" aria-label="Open menu"><span></span><span></span><span></span></button>
+        <nav class="menu-panel" id="menuPanel" aria-label="Site">
+          <a href="/">Home</a>
+          <a href="/#categories">Categories</a>
+          <a href="/#all-tools">All Tools</a>
+        </nav>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ADSTERRA-HEADER: paste your Adsterra banner ad code inside the div below -->
+<div class="container"><div class="ad-slot ad-leaderboard" data-ad="header"></div></div>
+
+<main class="container">
+  <nav class="crumbs"><a href="/">Home</a> &rsaquo; <a href="/#converters">Converters</a> &rsaquo; Paper Size Converter</nav>
+  <div class="tool-hero">
+    <h1>Paper Size Converter</h1>
+    <p>Look up any paper size — A0 to A6, Letter, Legal, Tabloid — in millimetres, centimetres and inches, plus area and pixel dimensions at your chosen DPI.</p>
+  </div>
+
+  <div class="tool-card">
+  <div class="grid2">
+    <div class="field">
+      <label for="paper-size-converter-size">Paper size</label>
+      <select class="select" id="paper-size-converter-size"></select>
+    </div>
+    <div class="field">
+      <label for="paper-size-converter-dpi">DPI (for pixel size)</label>
+      <input type="number" class="input" id="paper-size-converter-dpi" min="1" max="2400" step="1" value="300">
+    </div>
+  </div>
+  <div class="error" id="paper-size-converter-error"></div>
+  <div class="result" id="paper-size-converter-result">
+    <div class="stat-cards">
+      <div class="stat-card"><div class="v" id="paper-size-converter-mm">–</div><div class="l">Millimetres (W × H)</div></div>
+      <div class="stat-card"><div class="v" id="paper-size-converter-in">–</div><div class="l">Inches (W × H)</div></div>
+      <div class="stat-card"><div class="v" id="paper-size-converter-px">–</div><div class="l">Pixels at DPI</div></div>
+    </div>
+    <table class="data">
+      <thead><tr><th>Property</th><th>Value</th></tr></thead>
+      <tbody id="paper-size-converter-body"></tbody>
+    </table>
+  </div>
+</div>
+
+
+  <!-- ADSTERRA-INCONTENT: paste your Adsterra native/in-content ad code inside the div below -->
+  <div class="ad-slot" data-ad="incontent"></div>
+
+  <div class="info-grid">
+    <div class="info-card">
+      <h2>📖 How to use</h2>
+      <ol><li>Choose a paper size (A0–A6, Letter, Legal or Tabloid).</li><li>Optionally set your print DPI (300 is standard for print).</li><li>Read the dimensions in mm, cm and inches instantly.</li><li>Use the pixel dimensions when exporting print-ready artwork.</li></ol>
+    </div>
+    <div class="info-card">
+      <h2>❓ Frequently asked questions</h2>
+      <div class="faq"><details><summary>Why does each A size halve the previous one?</summary><p>The ISO 216 A series is built so that cutting a sheet in half across its long side gives the next size down with the same √2 aspect ratio. A0 is defined as exactly 1 m².</p></details><details><summary>What are the exact dimensions of A4?</summary><p>210 × 297 mm (8.27 × 11.69 in). It is the world&#39;s most common office paper size.</p></details><details><summary>How are pixel dimensions computed?</summary><p>Pixels = inches × DPI. A4 at 300 DPI is (210/25.4)×300 ≈ 2480 × 3508 px — the standard print-ready size.</p></details></div>
+    </div>
+  </div>
+
+  <section class="section">
+    <h2>🔗 Related tools</h2>
+    <div class="tool-grid"><a class="tool-link" href="/tools/angle-converter/" data-search="angle converter convert angles between degrees, radians, gradians, turns, arcminutes, arcseconds and mils. enter a value once and see it in every unit instantly. angle converter degrees to radians radians to degrees gradians converter mils to degrees"><span class="t-ico">🔄</span><span class="t-body"><b>Angle Converter</b><small>Convert angles between degrees, radians, gradians, turns, arcminutes, arcseconds and mils. E…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/area-converter/" data-search="area converter square millimeters to square miles. area converter square feet to square meters acres to hectares"><span class="t-ico">🔄</span><span class="t-body"><b>Area Converter</b><small>Square millimeters to square miles.</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/clothing-size-converter/" data-search="clothing size converter convert clothing and shoe sizes between us, uk, eu and international systems for men&#39;s tops, pants, women&#39;s dresses and footwear. clothing size converter us to eu size uk to us shoe size dress size conversion pant size converter"><span class="t-ico">🔄</span><span class="t-body"><b>Clothing Size Converter</b><small>Convert clothing and shoe sizes between US, UK, EU and international systems for men&#39;s tops,…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/cooking-converter/" data-search="cooking converter cups, spoons and milliliters — plus grams via ingredient density. cooking converter cups to grams cups to ml"><span class="t-ico">🔄</span><span class="t-body"><b>Cooking Converter</b><small>Cups, spoons and milliliters — plus grams via ingredient density.</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/data-storage-converter/" data-search="data storage converter bits to petabytes, decimal and binary modes. data converter bytes to mb gb to mb"><span class="t-ico">🔄</span><span class="t-body"><b>Data Storage Converter</b><small>Bits to petabytes, decimal and binary modes.</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/data-transfer-time-calculator/" data-search="data transfer time calculator calculate how long a file takes to download or upload at a given connection speed. enter file size and transfer rate — get days, hours, minutes and seconds. download time calculator file transfer time how long to download upload time calculator bandwidth time calculator"><span class="t-ico">🔄</span><span class="t-body"><b>Data Transfer Time Calculator</b><small>Calculate how long a file takes to download or upload at a given connection speed. Enter fil…</small></span><span class="t-arrow">→</span></a></div>
+  </section>
+</main>
+
+<!-- ADSTERRA-FOOTER: paste your Adsterra footer/banner ad code inside the div below -->
+<div class="container"><div class="ad-slot" data-ad="footer"></div></div>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="f-grid">
+      <div>
+        <span class="brandline"><span class="logo-mark">T</span> ToolNest</span>
+        <p>Free online tools that actually work. No sign-up, no watermarks — and your files never leave your device for client-side tools.</p>
+      </div>
+      <div>
+        <h4>Popular</h4>
+        <a href="/tools/qr-code-generator/">QR Code Generator</a>
+        <a href="/tools/background-remover/">Background Remover</a>
+        <a href="/tools/pdf-merger/">PDF Merger</a>
+        <a href="/tools/word-counter/">Word Counter</a>
+      </div>
+      <div>
+        <h4>Categories</h4>
+        <a href="/#image">Image Tools</a>
+        <a href="/#pdf">PDF &amp; Documents</a>
+        <a href="/#calculators">Calculators</a>
+        <a href="/#developer">Developer Tools</a>
+      </div>
+      <div>
+        <h4>Site</h4>
+        <a href="/">Home</a>
+        <a href="/#all-tools">All Tools</a>
+        <a href="/sitemap.xml">Sitemap</a>
+      </div>
+    </div>
+    <div class="f-bottom">© 2026 ToolNest · Free tools for everyone · Made with care</div>
+  </div>
+</footer>
+
+<script src="/assets/site.js?v=5"></script>
+
+<script>
+(function () {
+  'use strict';
+  var P = 'paper-size-converter-';
+  var ERR = P + 'error';
+  function g(id) { return document.getElementById(P + id); }
+  function set(id, v) { var el = g(id); if (el) el.textContent = v; }
+  /* width × height in millimetres */
+  var SIZES = [
+    { id: 'a0', name: 'A0', w: 841, h: 1189 },
+    { id: 'a1', name: 'A1', w: 594, h: 841 },
+    { id: 'a2', name: 'A2', w: 420, h: 594 },
+    { id: 'a3', name: 'A3', w: 297, h: 420 },
+    { id: 'a4', name: 'A4', w: 210, h: 297 },
+    { id: 'a5', name: 'A5', w: 148, h: 210 },
+    { id: 'a6', name: 'A6', w: 105, h: 148 },
+    { id: 'letter', name: 'US Letter', w: 215.9, h: 279.4 },
+    { id: 'legal', name: 'US Legal', w: 215.9, h: 355.6 },
+    { id: 'tabloid', name: 'Tabloid / Ledger', w: 279.4, h: 431.8 }
+  ];
+  function find(id) { for (var i = 0; i < SIZES.length; i++) if (SIZES[i].id === id) return SIZES[i]; return SIZES[4]; }
+  function f2(n) { return String(Number(n.toFixed(2))); }
+  function calc() {
+    if (!g('size')) return;
+    TN.clearErr(ERR);
+    var s = find(g('size').value);
+    var dpi = parseFloat(g('dpi').value);
+    if (isNaN(dpi) || dpi < 1 || dpi > 2400) { TN.setErr(ERR, 'DPI must be between 1 and 2400.'); return; }
+    var wIn = s.w / 25.4, hIn = s.h / 25.4;
+    set('mm', s.w + ' × ' + s.h);
+    set('in', f2(wIn) + ' × ' + f2(hIn));
+    set('px', Math.round(wIn * dpi) + ' × ' + Math.round(hIn * dpi));
+    var rows = [
+      ['Size', s.name],
+      ['Millimetres', s.w + ' × ' + s.h + ' mm'],
+      ['Centimetres', f2(s.w / 10) + ' × ' + f2(s.h / 10) + ' cm'],
+      ['Inches', f2(wIn) + ' × ' + f2(hIn) + ' in'],
+      ['Area', f2(s.w * s.h / 100) + ' cm²'],
+      ['Aspect ratio', f2(Math.max(s.w, s.h) / Math.min(s.w, s.h)) + ' : 1'],
+      ['Pixels @ ' + dpi + ' DPI', Math.round(wIn * dpi) + ' × ' + Math.round(hIn * dpi) + ' px']
+    ];
+    var html = '';
+    rows.forEach(function (r) {
+      html += '<tr><td>' + TN.esc(r[0]) + '</td><td>' + TN.esc(r[1]) + '</td></tr>';
+    });
+    g('body').innerHTML = html;
+  }
+  try {
+    var sel = g('size');
+    SIZES.forEach(function (s) {
+      var o = document.createElement('option');
+      o.value = s.id; o.textContent = s.name + ' — ' + s.w + ' × ' + s.h + ' mm';
+      sel.appendChild(o);
+    });
+    sel.value = 'a4';
+    TN.on(P + 'size', 'change', calc);
+    TN.on(P + 'dpi', 'input', calc);
+    calc();
+  } catch (e) { /* never throw on load */ }
+})();
+
+</script>
+</body>
+</html>

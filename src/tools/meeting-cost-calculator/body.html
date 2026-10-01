@@ -1,0 +1,34 @@
+<div class="tool-card">
+  <div class="grid2">
+    <div class="field">
+      <label for="meeting-cost-calculator-people">Attendees</label>
+      <input type="number" class="input" id="meeting-cost-calculator-people" min="1" max="10000" step="1" placeholder="e.g. 8">
+    </div>
+    <div class="field">
+      <label for="meeting-cost-calculator-rate">Avg. hourly cost per person ($)</label>
+      <input type="number" class="input" id="meeting-cost-calculator-rate" min="0" step="any" placeholder="e.g. 50">
+    </div>
+    <div class="field">
+      <label for="meeting-cost-calculator-mins">Duration (minutes)</label>
+      <input type="number" class="input" id="meeting-cost-calculator-mins" min="1" max="1440" step="any" placeholder="e.g. 60">
+    </div>
+    <div class="field">
+      <label for="meeting-cost-calculator-perweek">Meetings per week</label>
+      <input type="number" class="input" id="meeting-cost-calculator-perweek" min="1" max="100" step="1" placeholder="e.g. 3">
+    </div>
+  </div>
+  <div class="error" id="meeting-cost-calculator-error"></div>
+  <div class="result" id="meeting-cost-calculator-result">
+    <div class="stat-cards">
+      <div class="stat-card"><div class="v" id="meeting-cost-calculator-once">–</div><div class="l">Cost per meeting</div></div>
+      <div class="stat-card"><div class="v" id="meeting-cost-calculator-week">–</div><div class="l">Cost per week</div></div>
+      <div class="stat-card"><div class="v" id="meeting-cost-calculator-year">–</div><div class="l">Cost per year</div></div>
+    </div>
+    <table class="data">
+      <thead><tr><th>Period</th><th>Cost</th><th>Person-hours</th></tr></thead>
+      <tbody id="meeting-cost-calculator-body">
+        <tr><td colspan="3" class="muted">Enter the meeting details to see its true cost.</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>

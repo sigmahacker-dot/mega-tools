@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fence Calculator — Free Online | ToolNest</title>
+<meta name="description" content="Estimate fence materials: posts, pickets and rails for any fence length and picket style.">
+<meta name="keywords" content="fence calculator, fence materials estimator, fence posts calculator, pickets needed calculator, how many fence pickets">
+<link rel="canonical" href="https://toolnest.vercel.app/tools/fence-calculator/">
+<meta name="theme-color" content="#07070b">
+<meta property="og:title" content="Fence Calculator — Free Online | ToolNest">
+<meta property="og:description" content="Estimate fence materials: posts, pickets and rails for any fence length and picket style.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css?v=4">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%23e01111'/><text x='50' y='68' font-size='58' text-anchor='middle' fill='white' font-family='Arial' font-weight='bold'>T</text></svg>">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebApplication","name":"Fence Calculator","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0"},"url":"https://toolnest.vercel.app/tools/fence-calculator/","description":"Estimate fence materials: posts, pickets and rails for any fence length and picket style."},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How many posts do I need?","acceptedAnswer":{"@type":"Answer","text":"One per section plus one for the end: fence length ÷ post spacing, rounded up, plus 1."}},{"@type":"Question","name":"What picket spacing does this assume?","acceptedAnswer":{"@type":"Answer","text":"Tight, side-by-side pickets with no gap (privacy style). For spaced picket fences, add your gap to the picket width mentally or buy fewer."}},{"@type":"Question","name":"How deep should posts be set?","acceptedAnswer":{"@type":"Answer","text":"About one-third of the post length underground — typically 2 ft deep for a 6 ft fence, set in concrete."}}]}]}</script>
+</head>
+<body>
+<header class="site-header">
+  <div class="container">
+    <a class="logo" href="/"><span class="logo-mark">T</span> ToolNest</a>
+    <div class="header-right">
+      <form class="nav-search" action="/" method="get" role="search">
+        <span class="ns-icon">🔍</span>
+        <input type="search" name="q" placeholder="Search tools…" aria-label="Search tools" autocomplete="off">
+      </form>
+      <div class="menu-wrap">
+        <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="menuPanel" aria-label="Open menu"><span></span><span></span><span></span></button>
+        <nav class="menu-panel" id="menuPanel" aria-label="Site">
+          <a href="/">Home</a>
+          <a href="/#categories">Categories</a>
+          <a href="/#all-tools">All Tools</a>
+        </nav>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ADSTERRA-HEADER: paste your Adsterra banner ad code inside the div below -->
+<div class="container"><div class="ad-slot ad-leaderboard" data-ad="header"></div></div>
+
+<main class="container">
+  <nav class="crumbs"><a href="/">Home</a> &rsaquo; <a href="/#calculators">Calculators</a> &rsaquo; Fence Calculator</nav>
+  <div class="tool-hero">
+    <h1>Fence Calculator</h1>
+    <p>Estimate fence materials: posts, pickets and rails for any fence length and picket style.</p>
+  </div>
+
+  <div class="tool-card">
+  <div class="grid2">
+    <div class="field"><label for="fence-length">Fence length (ft)</label><input type="number" class="input" id="fence-length" min="0" step="any" placeholder="100"></div>
+    <div class="field"><label for="fence-spacing">Post spacing (ft)</label><input type="number" class="input" id="fence-spacing" min="1" step="any" placeholder="8"></div>
+    <div class="field"><label for="fence-picket">Picket width (inches)</label><input type="number" class="input" id="fence-picket" min="0" step="any" placeholder="5.5"></div>
+    <div class="field"><label for="fence-rails">Rails per section</label>
+      <select class="input" id="fence-rails"><option value="2">2 rails</option><option value="3" selected>3 rails</option></select>
+    </div>
+  </div>
+  <div class="error" id="fence-calculator-error"></div>
+  <div class="result" id="fence-result">
+    <div class="stat-cards">
+      <div class="stat-card"><div class="v" id="fence-posts">–</div><div class="l">Posts</div></div>
+      <div class="stat-card"><div class="v" id="fence-pickets">–</div><div class="l">Pickets</div></div>
+      <div class="stat-card"><div class="v" id="fence-railsout">–</div><div class="l">Rails</div></div>
+    </div>
+    <p class="note">Pickets assume tight privacy-style spacing with no gaps. Add 5–10% extra for cuts and mistakes.</p>
+  </div>
+</div>
+
+  <!-- ADSTERRA-INCONTENT: paste your Adsterra native/in-content ad code inside the div below -->
+  <div class="ad-slot" data-ad="incontent"></div>
+
+  <div class="info-grid">
+    <div class="info-card">
+      <h2>📖 How to use</h2>
+      <ol><li>Enter the total fence length in feet.</li><li>Set post spacing (8 ft is standard) and picket width.</li><li>Read the posts, pickets and rails to buy.</li></ol>
+    </div>
+    <div class="info-card">
+      <h2>❓ Frequently asked questions</h2>
+      <div class="faq"><details><summary>How many posts do I need?</summary><p>One per section plus one for the end: fence length ÷ post spacing, rounded up, plus 1.</p></details><details><summary>What picket spacing does this assume?</summary><p>Tight, side-by-side pickets with no gap (privacy style). For spaced picket fences, add your gap to the picket width mentally or buy fewer.</p></details><details><summary>How deep should posts be set?</summary><p>About one-third of the post length underground — typically 2 ft deep for a 6 ft fence, set in concrete.</p></details></div>
+    </div>
+  </div>
+
+  <section class="section">
+    <h2>🔗 Related tools</h2>
+    <div class="tool-grid"><a class="tool-link" href="/tools/age-calculator/" data-search="age calculator enter your date of birth to get your exact age in years, months and days, plus total weeks, days, hours, the weekday you were born, and days until your next birthday. age calculator calculate age date of birth age"><span class="t-ico">🧮</span><span class="t-body"><b>Age Calculator</b><small>Enter your date of birth to get your exact age in years, months and days, plus total weeks, …</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/aspect-ratio-calculator/" data-search="aspect ratio calculator reduce any width × height to its simplest aspect ratio, or find the missing side from a ratio. aspect ratio calculator reduce aspect ratio 16:9 calculator missing side calculator ratio simplifier"><span class="t-ico">🧮</span><span class="t-body"><b>Aspect Ratio Calculator</b><small>Reduce any width × height to its simplest aspect ratio, or find the missing side from a rati…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/bmi-calculator/" data-search="bmi calculator calculate your body mass index from height and weight in metric or imperial units. get your bmi value, weight category and the healthy weight range for your height. bmi calculator body mass index healthy weight calculator"><span class="t-ico">🧮</span><span class="t-body"><b>BMI Calculator</b><small>Calculate your Body Mass Index from height and weight in metric or imperial units. Get your …</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/concrete-calculator/" data-search="concrete calculator calculate cubic yards of concrete for any slab, plus how many 60 lb or 80 lb bags that equals. concrete calculator cubic yards concrete concrete bags calculator slab concrete estimator how much concrete"><span class="t-ico">🧮</span><span class="t-body"><b>Concrete Calculator</b><small>Calculate cubic yards of concrete for any slab, plus how many 60 lb or 80 lb bags that equal…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/cooking-measurement-scaler/" data-search="cooking measurement scaler scale any recipe up or down: enter servings and ingredients, get rescaled amounts with metric equivalents. recipe scaler scale recipe calculator cooking measurement converter adjust recipe servings ingredient scaler"><span class="t-ico">🧮</span><span class="t-body"><b>Cooking Measurement Scaler</b><small>Scale any recipe up or down: enter servings and ingredients, get rescaled amounts with metri…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/currency-converter/" data-search="currency converter convert any amount between 30+ world currencies with live exchange rates. pick source and target currencies, convert instantly, and see the rate and last update date. currency converter exchange rate converter usd to pkr converter"><span class="t-ico">🧮</span><span class="t-body"><b>Currency Converter</b><small>Convert any amount between 30+ world currencies with live exchange rates. Pick source and ta…</small></span><span class="t-arrow">→</span></a></div>
+  </section>
+</main>
+
+<!-- ADSTERRA-FOOTER: paste your Adsterra footer/banner ad code inside the div below -->
+<div class="container"><div class="ad-slot" data-ad="footer"></div></div>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="f-grid">
+      <div>
+        <span class="brandline"><span class="logo-mark">T</span> ToolNest</span>
+        <p>Free online tools that actually work. No sign-up, no watermarks — and your files never leave your device for client-side tools.</p>
+      </div>
+      <div>
+        <h4>Popular</h4>
+        <a href="/tools/qr-code-generator/">QR Code Generator</a>
+        <a href="/tools/background-remover/">Background Remover</a>
+        <a href="/tools/pdf-merger/">PDF Merger</a>
+        <a href="/tools/word-counter/">Word Counter</a>
+      </div>
+      <div>
+        <h4>Categories</h4>
+        <a href="/#image">Image Tools</a>
+        <a href="/#pdf">PDF &amp; Documents</a>
+        <a href="/#calculators">Calculators</a>
+        <a href="/#developer">Developer Tools</a>
+      </div>
+      <div>
+        <h4>Site</h4>
+        <a href="/">Home</a>
+        <a href="/#all-tools">All Tools</a>
+        <a href="/sitemap.xml">Sitemap</a>
+      </div>
+    </div>
+    <div class="f-bottom">© 2026 ToolNest · Free tools for everyone · Made with care</div>
+  </div>
+</footer>
+
+<script src="/assets/site.js?v=5"></script>
+
+<script>
+(function () {
+  'use strict';
+  var ERR = 'fence-calculator-error';
+  function calc() {
+    if (!TN.el('fence-length')) return;
+    TN.clearErr(ERR);
+    var L = parseFloat(TN.el('fence-length').value);
+    var sp = parseFloat(TN.el('fence-spacing').value);
+    var pw = parseFloat(TN.el('fence-picket').value);
+    var rails = parseInt(TN.el('fence-rails').value, 10);
+    if (!(L > 0)) { TN.setErr(ERR, 'Enter a fence length greater than 0 ft.'); return; }
+    if (!(sp > 0)) { TN.setErr(ERR, 'Enter post spacing greater than 0 ft.'); return; }
+    if (!(pw > 0)) { TN.setErr(ERR, 'Enter a picket width greater than 0 inches.'); return; }
+    var sections = Math.ceil(L / sp - 1e-9);
+    var posts = sections + 1;
+    var pickets = Math.ceil(L * 12 / pw - 1e-9);
+    TN.el('fence-posts').textContent = posts;
+    TN.el('fence-pickets').textContent = pickets;
+    TN.el('fence-railsout').textContent = sections * rails;
+  }
+  try {
+    TN.on('fence-length', 'input', calc);
+    TN.on('fence-spacing', 'input', calc);
+    TN.on('fence-picket', 'input', calc);
+    TN.on('fence-rails', 'change', calc);
+    calc();
+  } catch (e) { /* never throw on load */ }
+})();
+</script>
+</body>
+</html>

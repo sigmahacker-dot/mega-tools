@@ -1,0 +1,29 @@
+<div class="tool-card">
+  <div class="field"><label>Test area <span class="hint">(click to focus, then press keys)</span></label>
+    <div id="kb-box" tabindex="0" style="border:2px dashed rgba(255,255,255,.25);border-radius:14px;padding:36px;text-align:center;cursor:text;outline:none">
+      <div style="font-size:2rem" id="kb-big">Press any key…</div>
+      <div class="muted" id="kb-sub">keydown / keyup are captured here</div>
+    </div>
+  </div>
+  <div class="grid2">
+    <div class="checkbox-row"><input type="checkbox" id="kb-prevent"><label for="kb-prevent">preventDefault() (block browser shortcuts)</label></div>
+    <div class="checkbox-row"><input type="checkbox" id="kb-global"><label for="kb-global">Listen on whole window (no focus needed)</label></div>
+  </div>
+  <div class="error" id="keyboard-event-tester-error"></div>
+  <div class="result" id="kb-result">
+    <div class="stat-cards">
+      <div class="stat-card"><div class="v" id="kb-key">–</div><div class="l">key</div></div>
+      <div class="stat-card"><div class="v" id="kb-code">–</div><div class="l">code</div></div>
+      <div class="stat-card"><div class="v" id="kb-keycode">–</div><div class="l">keyCode</div></div>
+      <div class="stat-card"><div class="v" id="kb-which">–</div><div class="l">which</div></div>
+    </div>
+    <table class="data">
+      <thead><tr><th>Time</th><th>Event</th><th>key</th><th>code</th><th>keyCode</th><th>Modifiers</th></tr></thead>
+      <tbody id="kb-history"><tr><td colspan="6" class="muted">No events yet.</td></tr></tbody>
+    </table>
+    <div class="btn-row">
+      <button class="btn btn-outline btn-sm" id="kb-clear" type="button">Clear history</button>
+    </div>
+    <p class="note">Location: 0 = standard, 1 = left, 2 = right, 3 = numpad. Modifiers show Ctrl / Shift / Alt / Meta held during the press.</p>
+  </div>
+</div>

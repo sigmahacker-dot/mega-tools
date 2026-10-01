@@ -1,0 +1,44 @@
+<div class="tool-card">
+  <div class="field">
+    <label for="pdf-blank-page-adder-file">Upload PDF</label>
+    <input type="file" class="input" id="pdf-blank-page-adder-file" accept="application/pdf,.pdf">
+  </div>
+  <div id="pdf-blank-page-adder-form" hidden>
+    <div class="grid2">
+      <div class="field">
+        <label for="pdf-blank-page-adder-where">Insert</label>
+        <select class="input" id="pdf-blank-page-adder-where">
+          <option value="end">At the end</option>
+          <option value="start">At the start</option>
+          <option value="after">After page…</option>
+        </select>
+      </div>
+      <div class="field" id="pdf-blank-page-adder-after-wrap" hidden>
+        <label for="pdf-blank-page-adder-after">After page number</label>
+        <input type="number" class="input" id="pdf-blank-page-adder-after" min="1" step="1" value="1">
+      </div>
+      <div class="field">
+        <label for="pdf-blank-page-adder-size">Blank page size</label>
+        <select class="input" id="pdf-blank-page-adder-size">
+          <option value="match">Match first page</option>
+          <option value="612,792">Letter (8.5×11 in)</option>
+          <option value="595.28,841.89">A4</option>
+          <option value="841.89,1190.55">A3</option>
+          <option value="612,1008">Legal</option>
+          <option value="792,1224">Tabloid</option>
+        </select>
+      </div>
+      <div class="field">
+        <label for="pdf-blank-page-adder-count">How many (1–100)</label>
+        <input type="number" class="input" id="pdf-blank-page-adder-count" min="1" max="100" step="1" value="1">
+      </div>
+    </div>
+  </div>
+  <div class="btn-row" style="margin-top:12px">
+    <button class="btn" id="pdf-blank-page-adder-go" disabled>Add pages &amp; download</button>
+  </div>
+  <div class="error" id="pdf-blank-page-adder-error"></div>
+  <div class="result" id="pdf-blank-page-adder-result" hidden>
+    <p class="muted" id="pdf-blank-page-adder-info"></p>
+  </div>
+</div>

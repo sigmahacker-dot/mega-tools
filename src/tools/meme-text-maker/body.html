@@ -1,0 +1,36 @@
+<div class="tool-card">
+  <div class="field">
+    <label for="meme-text-maker-file">Upload image</label>
+    <input type="file" class="input" id="meme-text-maker-file" accept="image/*">
+  </div>
+  <div class="grid2">
+    <div class="field">
+      <label for="meme-text-maker-top">Top text</label>
+      <input type="text" class="input" id="meme-text-maker-top" value="TOP TEXT" maxlength="120">
+    </div>
+    <div class="field">
+      <label for="meme-text-maker-bottom">Bottom text</label>
+      <input type="text" class="input" id="meme-text-maker-bottom" value="BOTTOM TEXT" maxlength="120">
+    </div>
+    <div class="field">
+      <label for="meme-text-maker-size">Text size (<span id="meme-text-maker-size-v">10</span>%)</label>
+      <input type="range" class="input" id="meme-text-maker-size" min="4" max="20" step="1" value="10">
+    </div>
+    <div class="field">
+      <label for="meme-text-maker-color">Text color</label>
+      <select class="input" id="meme-text-maker-color">
+        <option value="#ffffff">White (classic)</option>
+        <option value="#000000">Black</option>
+        <option value="#ffeb3b">Yellow</option>
+        <option value="#ff5252">Red</option>
+      </select>
+    </div>
+  </div>
+  <div class="btn-row" style="margin-top:12px">
+    <button class="btn btn-outline" id="meme-text-maker-dl" disabled>Download meme</button>
+  </div>
+  <div class="error" id="meme-text-maker-error"></div>
+  <div class="result" id="meme-text-maker-result" hidden>
+    <canvas id="meme-text-maker-canvas" style="max-width:100%;height:auto;border-radius:8px"></canvas>
+  </div>
+</div>

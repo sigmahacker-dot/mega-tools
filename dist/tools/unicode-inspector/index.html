@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Unicode Inspector — Free Online | ToolNest</title>
+<meta name="description" content="Inspect any text character by character: code point, UTF-16 units, UTF-8 bytes, Unicode block and category — handles emoji and surrogate pairs correctly.">
+<meta name="keywords" content="unicode inspector, utf-8 bytes, code point lookup, unicode character info, emoji code point">
+<link rel="canonical" href="https://toolnest.vercel.app/tools/unicode-inspector/">
+<meta name="theme-color" content="#07070b">
+<meta property="og:title" content="Unicode Inspector — Free Online | ToolNest">
+<meta property="og:description" content="Inspect any text character by character: code point, UTF-16 units, UTF-8 bytes, Unicode block and category — handles emoji and surrogate pairs correctly.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css?v=4">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%23e01111'/><text x='50' y='68' font-size='58' text-anchor='middle' fill='white' font-family='Arial' font-weight='bold'>T</text></svg>">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebApplication","name":"Unicode Inspector","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0"},"url":"https://toolnest.vercel.app/tools/unicode-inspector/","description":"Inspect any text character by character: code point, UTF-16 units, UTF-8 bytes, Unicode block and category — handles emoji and surrogate pairs correctly."},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How does it work?","acceptedAnswer":{"@type":"Answer","text":"Type or paste any text. Each Unicode code point gets a row: the character, U+XXXX, UTF-16 code units, UTF-8 bytes, block and category."}},{"@type":"Question","name":"Does it handle emoji correctly?","acceptedAnswer":{"@type":"Answer","text":"Yes — it iterates by code point (not UTF-16 unit), so emoji like 😀 show as a single U+1F600 with its 4 UTF-8 bytes."}},{"@type":"Question","name":"Are the UTF-8 bytes real?","acceptedAnswer":{"@type":"Answer","text":"UTF-8 bytes are computed with the real encoding algorithm from the code point, and blocks come from the official Unicode range table."}},{"@type":"Question","name":"Is this private?","acceptedAnswer":{"@type":"Answer","text":"Yes, everything runs locally in your browser."}}]}]}</script>
+</head>
+<body>
+<header class="site-header">
+  <div class="container">
+    <a class="logo" href="/"><span class="logo-mark">T</span> ToolNest</a>
+    <div class="header-right">
+      <form class="nav-search" action="/" method="get" role="search">
+        <span class="ns-icon">🔍</span>
+        <input type="search" name="q" placeholder="Search tools…" aria-label="Search tools" autocomplete="off">
+      </form>
+      <div class="menu-wrap">
+        <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="menuPanel" aria-label="Open menu"><span></span><span></span><span></span></button>
+        <nav class="menu-panel" id="menuPanel" aria-label="Site">
+          <a href="/">Home</a>
+          <a href="/#categories">Categories</a>
+          <a href="/#all-tools">All Tools</a>
+        </nav>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ADSTERRA-HEADER: paste your Adsterra banner ad code inside the div below -->
+<div class="container"><div class="ad-slot ad-leaderboard" data-ad="header"></div></div>
+
+<main class="container">
+  <nav class="crumbs"><a href="/">Home</a> &rsaquo; <a href="/#developer">Developer Tools</a> &rsaquo; Unicode Inspector</nav>
+  <div class="tool-hero">
+    <h1>Unicode Inspector</h1>
+    <p>Inspect any text character by character: code point, UTF-16 units, UTF-8 bytes, Unicode block and category — handles emoji and surrogate pairs correctly.</p>
+  </div>
+
+  <div class="tool-card">
+  <div class="field"><label for="uni-text">Text to inspect</label><textarea class="textarea" id="uni-text" rows="3" placeholder="Hello 😀 مرحبا"></textarea></div>
+  <div class="error" id="unicode-inspector-error"></div>
+  <div class="result" id="uni-result">
+    <div class="stat-cards">
+      <div class="stat-card"><div class="v" id="uni-cps">–</div><div class="l">Code points</div></div>
+      <div class="stat-card"><div class="v" id="uni-units">–</div><div class="l">UTF-16 units</div></div>
+      <div class="stat-card"><div class="v" id="uni-bytes">–</div><div class="l">UTF-8 bytes</div></div>
+    </div>
+    <div style="overflow-x:auto">
+      <table class="data"><thead><tr><th>Char</th><th>Code point</th><th>UTF-16</th><th>UTF-8 bytes</th><th>Block</th><th>Category</th></tr></thead><tbody id="uni-body"></tbody></table>
+    </div>
+  </div>
+</div>
+
+  <!-- ADSTERRA-INCONTENT: paste your Adsterra native/in-content ad code inside the div below -->
+  <div class="ad-slot" data-ad="incontent"></div>
+
+  <div class="info-grid">
+    <div class="info-card">
+      <h2>📖 How to use</h2>
+      <ol><li>Type or paste text into the input box.</li><li>Each character is broken down into code point, UTF-8 bytes and more.</li><li>Use it to debug invisible characters, emoji and encodings.</li></ol>
+    </div>
+    <div class="info-card">
+      <h2>❓ Frequently asked questions</h2>
+      <div class="faq"><details><summary>How does it work?</summary><p>Type or paste any text. Each Unicode code point gets a row: the character, U+XXXX, UTF-16 code units, UTF-8 bytes, block and category.</p></details><details><summary>Does it handle emoji correctly?</summary><p>Yes — it iterates by code point (not UTF-16 unit), so emoji like 😀 show as a single U+1F600 with its 4 UTF-8 bytes.</p></details><details><summary>Are the UTF-8 bytes real?</summary><p>UTF-8 bytes are computed with the real encoding algorithm from the code point, and blocks come from the official Unicode range table.</p></details><details><summary>Is this private?</summary><p>Yes, everything runs locally in your browser.</p></details></div>
+    </div>
+  </div>
+
+  <section class="section">
+    <h2>🔗 Related tools</h2>
+    <div class="tool-grid"><a class="tool-link" href="/tools/ascii-table-reference/" data-search="ascii table reference full ascii table 0–127: decimal, hex, octal, character, control-code names and html entities — searchable. ascii table ascii codes ascii chart control characters ascii reference"><span class="t-ico">💻</span><span class="t-body"><b>ASCII Table Reference</b><small>Full ASCII table 0–127: decimal, hex, octal, character, control-code names and HTML entities…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/base64-encoder-decoder/" data-search="base64 encoder / decoder encode text to base64 or decode base64 back to text, with full utf-8 support and a file-to-data-url converter. base64 encoder base64 decoder base64 encode base64 decode file to base64"><span class="t-ico">💻</span><span class="t-body"><b>Base64 Encoder / Decoder</b><small>Encode text to Base64 or decode Base64 back to text, with full UTF-8 support and a file-to-d…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/binary-text-converter/" data-search="binary and text converter convert text to binary or hex and back, with full utf-8 awareness and strict input validation. binary to text text to binary hex to text converter"><span class="t-ico">💻</span><span class="t-body"><b>Binary and Text Converter</b><small>Convert text to binary or hex and back, with full UTF-8 awareness and strict input validatio…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/color-code-converter/" data-search="color code converter type a color in hex, rgb or hsl format and instantly see it converted to all three formats with a preview swatch. color converter hex to rgb rgb to hex hsl converter color code"><span class="t-ico">💻</span><span class="t-body"><b>Color Code Converter</b><small>Type a color in HEX, RGB or HSL format and instantly see it converted to all three formats w…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/css-minifier/" data-search="css minifier compress css by stripping comments, collapsing whitespace and removing redundant semicolons, with before/after byte stats. css minifier minify css css compressor reduce css size"><span class="t-ico">💻</span><span class="t-body"><b>CSS Minifier</b><small>Compress CSS by stripping comments, collapsing whitespace and removing redundant semicolons,…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/css-specificity-calculator/" data-search="css specificity calculator calculate css selector specificity as (a,b,c) with a full breakdown — handles ids, classes, attributes, pseudo-classes, :not(), :is(), :where() and pseudo-elements. css specificity calculator specificity calculator css selector weight calculate specificity css cascade"><span class="t-ico">💻</span><span class="t-body"><b>CSS Specificity Calculator</b><small>Calculate CSS selector specificity as (a,b,c) with a full breakdown — handles IDs, classes, …</small></span><span class="t-arrow">→</span></a></div>
+  </section>
+</main>
+
+<!-- ADSTERRA-FOOTER: paste your Adsterra footer/banner ad code inside the div below -->
+<div class="container"><div class="ad-slot" data-ad="footer"></div></div>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="f-grid">
+      <div>
+        <span class="brandline"><span class="logo-mark">T</span> ToolNest</span>
+        <p>Free online tools that actually work. No sign-up, no watermarks — and your files never leave your device for client-side tools.</p>
+      </div>
+      <div>
+        <h4>Popular</h4>
+        <a href="/tools/qr-code-generator/">QR Code Generator</a>
+        <a href="/tools/background-remover/">Background Remover</a>
+        <a href="/tools/pdf-merger/">PDF Merger</a>
+        <a href="/tools/word-counter/">Word Counter</a>
+      </div>
+      <div>
+        <h4>Categories</h4>
+        <a href="/#image">Image Tools</a>
+        <a href="/#pdf">PDF &amp; Documents</a>
+        <a href="/#calculators">Calculators</a>
+        <a href="/#developer">Developer Tools</a>
+      </div>
+      <div>
+        <h4>Site</h4>
+        <a href="/">Home</a>
+        <a href="/#all-tools">All Tools</a>
+        <a href="/sitemap.xml">Sitemap</a>
+      </div>
+    </div>
+    <div class="f-bottom">© 2026 ToolNest · Free tools for everyone · Made with care</div>
+  </div>
+</footer>
+
+<script src="/assets/site.js?v=5"></script>
+
+<script>
+(function () {
+  'use strict';
+  var ERR = 'unicode-inspector-error';
+  var BLOCKS = [
+    [0x0000, 0x007F, 'Basic Latin'], [0x0080, 0x00FF, 'Latin-1 Supplement'],
+    [0x0100, 0x017F, 'Latin Extended-A'], [0x0180, 0x024F, 'Latin Extended-B'],
+    [0x0250, 0x02AF, 'IPA Extensions'], [0x02B0, 0x02FF, 'Spacing Modifier Letters'],
+    [0x0300, 0x036F, 'Combining Diacritical Marks'], [0x0370, 0x03FF, 'Greek and Coptic'],
+    [0x0400, 0x04FF, 'Cyrillic'], [0x0500, 0x052F, 'Cyrillic Supplement'],
+    [0x0530, 0x058F, 'Armenian'], [0x0590, 0x05FF, 'Hebrew'],
+    [0x0600, 0x06FF, 'Arabic'], [0x0700, 0x074F, 'Syriac'],
+    [0x0750, 0x077F, 'Arabic Supplement'], [0x0780, 0x07BF, 'Thaana'],
+    [0x0900, 0x097F, 'Devanagari'], [0x0980, 0x09FF, 'Bengali'],
+    [0x0A00, 0x0A7F, 'Gurmukhi'], [0x0A80, 0x0AFF, 'Gujarati'],
+    [0x0E00, 0x0E7F, 'Thai'], [0x0E80, 0x0EFF, 'Lao'],
+    [0x1E00, 0x1EFF, 'Latin Extended Additional'], [0x2000, 0x206F, 'General Punctuation'],
+    [0x2070, 0x209F, 'Superscripts and Subscripts'], [0x20A0, 0x20CF, 'Currency Symbols'],
+    [0x20D0, 0x20FF, 'Combining Diacritical Marks for Symbols'],
+    [0x2100, 0x214F, 'Letterlike Symbols'], [0x2150, 0x218F, 'Number Forms'],
+    [0x2190, 0x21FF, 'Arrows'], [0x2200, 0x22FF, 'Mathematical Operators'],
+    [0x2300, 0x23FF, 'Miscellaneous Technical'], [0x2400, 0x243F, 'Control Pictures'],
+    [0x2440, 0x245F, 'Optical Character Recognition'], [0x2460, 0x24FF, 'Enclosed Alphanumerics'],
+    [0x2500, 0x257F, 'Box Drawing'], [0x2580, 0x259F, 'Block Elements'],
+    [0x25A0, 0x25FF, 'Geometric Shapes'], [0x2600, 0x26FF, 'Miscellaneous Symbols'],
+    [0x2700, 0x27BF, 'Dingbats'], [0x27C0, 0x27EF, 'Miscellaneous Mathematical Symbols-A'],
+    [0x27F0, 0x27FF, 'Supplemental Arrows-A'], [0x2800, 0x28FF, 'Braille Patterns'],
+    [0x2C00, 0x2C5F, 'Glagolitic'], [0x2E80, 0x2EFF, 'CJK Radicals Supplement'],
+    [0x2F00, 0x2FDF, 'Kangxi Radicals'], [0x2FF0, 0x2FFF, 'Ideographic Description Characters'],
+    [0x3000, 0x303F, 'CJK Symbols and Punctuation'], [0x3040, 0x309F, 'Hiragana'],
+    [0x30A0, 0x30FF, 'Katakana'], [0x3100, 0x312F, 'Bopomofo'],
+    [0x3130, 0x318F, 'Hangul Compatibility Jamo'], [0x3190, 0x319F, 'Kanbun'],
+    [0x31A0, 0x31BF, 'Bopomofo Extended'], [0x31C0, 0x31EF, 'CJK Strokes'],
+    [0x31F0, 0x31FF, 'Katakana Phonetic Extensions'], [0x3200, 0x32FF, 'Enclosed CJK Letters and Months'],
+    [0x3300, 0x33FF, 'CJK Compatibility'], [0x3400, 0x4DBF, 'CJK Unified Ideographs Extension A'],
+    [0x4E00, 0x9FFF, 'CJK Unified Ideographs'], [0xA000, 0xA48F, 'Yi Syllables'],
+    [0xAC00, 0xD7AF, 'Hangul Syllables'], [0xD800, 0xDFFF, 'Surrogates (not characters)'],
+    [0xE000, 0xF8FF, 'Private Use Area'], [0xF900, 0xFAFF, 'CJK Compatibility Ideographs'],
+    [0xFB00, 0xFB4F, 'Alphabetic Presentation Forms'], [0xFB50, 0xFDFF, 'Arabic Presentation Forms-A'],
+    [0xFE00, 0xFE0F, 'Variation Selectors'], [0xFE20, 0xFE2F, 'Combining Half Marks'],
+    [0xFE30, 0xFE4F, 'CJK Compatibility Forms'], [0xFE50, 0xFE6F, 'Small Form Variants'],
+    [0xFE70, 0xFEFF, 'Arabic Presentation Forms-B'], [0xFF00, 0xFFEF, 'Halfwidth and Fullwidth Forms'],
+    [0xFFF0, 0xFFFF, 'Specials'], [0x10000, 0x1007F, 'Linear B Syllabary'],
+    [0x1D400, 0x1D7FF, 'Mathematical Alphanumeric Symbols'],
+    [0x1F000, 0x1F0FF, 'Mahjong Tiles'], [0x1F100, 0x1F1FF, 'Enclosed Alphanumeric Supplement'],
+    [0x1F200, 0x1F2FF, 'Enclosed Ideographic Supplement'],
+    [0x1F300, 0x1F5FF, 'Miscellaneous Symbols and Pictographs'],
+    [0x1F600, 0x1F64F, 'Emoticons'], [0x1F650, 0x1F67F, 'Ornamental Dingbats'],
+    [0x1F680, 0x1F6FF, 'Transport and Map Symbols'],
+    [0x1F700, 0x1F77F, 'Alchemical Symbols'], [0x1F900, 0x1F9FF, 'Supplemental Symbols and Pictographs'],
+    [0x20000, 0x2A6DF, 'CJK Unified Ideographs Extension B'],
+    [0xE0000, 0xE0FFF, 'Tags'], [0xE0100, 0xE01EF, 'Variation Selectors Supplement'],
+    [0xF0000, 0xFFFFF, 'Supplementary Private Use Area-A'],
+    [0x100000, 0x10FFFF, 'Supplementary Private Use Area-B']
+  ];
+  function esc(s) {
+    return String(s).replace(/[&<>"']/g, function (c) {
+      return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c];
+    });
+  }
+  function hex(n, w) { return n.toString(16).toUpperCase().padStart(w, '0'); }
+  function utf8bytes(cp) {
+    if (cp < 0x80) return [cp];
+    if (cp < 0x800) return [0xC0 | (cp >> 6), 0x80 | (cp & 0x3F)];
+    if (cp < 0x10000) return [0xE0 | (cp >> 12), 0x80 | ((cp >> 6) & 0x3F), 0x80 | (cp & 0x3F)];
+    return [0xF0 | (cp >> 18), 0x80 | ((cp >> 12) & 0x3F), 0x80 | ((cp >> 6) & 0x3F), 0x80 | (cp & 0x3F)];
+  }
+  function blockOf(cp) {
+    for (var i = 0; i < BLOCKS.length; i++) {
+      if (cp >= BLOCKS[i][0] && cp <= BLOCKS[i][1]) return BLOCKS[i][2];
+    }
+    return 'Unknown';
+  }
+  var propTests = null;
+  function categoryOf(ch) {
+    try {
+      if (!propTests) {
+        propTests = [
+          ['Letter', 'L'], ['Mark', 'M'], ['Number', 'N'], ['Punctuation', 'P'],
+          ['Symbol', 'S'], ['Separator', 'Z'], ['Control / Other', 'C']
+        ].map(function (p) { return [p[0], new RegExp('^\\p{' + p[1] + '}$', 'u')]; });
+      }
+      for (var i = 0; i < propTests.length; i++) {
+        if (propTests[i][1].test(ch)) return propTests[i][0];
+      }
+    } catch (e) { /* property escapes unsupported */ }
+    return '—';
+  }
+  function update() {
+    if (!TN.el('uni-body')) return;
+    TN.clearErr(ERR);
+    var text = TN.el('uni-text').value;
+    var cps = Array.from(text);
+    TN.el('uni-cps').textContent = cps.length;
+    TN.el('uni-units').textContent = text.length;
+    var totalBytes = 0, html = '';
+    cps.forEach(function (ch) {
+      var cp = ch.codePointAt(0);
+      var bytes = utf8bytes(cp);
+      totalBytes += bytes.length;
+      var units = [];
+      for (var i = 0; i < ch.length; i++) units.push('0x' + hex(ch.charCodeAt(i), 4));
+      html += '<tr><td style="font-size:1.4rem">' + esc(ch) + '</td>' +
+        '<td><strong>U+' + hex(cp, cp > 0xFFFF ? 5 : 4) + '</strong></td>' +
+        '<td style="font-family:ui-monospace,monospace">' + units.join(' ') + '</td>' +
+        '<td style="font-family:ui-monospace,monospace">' + bytes.map(function (b) { return hex(b, 2); }).join(' ') + '</td>' +
+        '<td>' + esc(blockOf(cp)) + '</td><td>' + esc(categoryOf(ch)) + '</td></tr>';
+    });
+    TN.el('uni-bytes').textContent = totalBytes;
+    TN.el('uni-body').innerHTML = html || '<tr><td colspan="6" class="muted">Type something to inspect it.</td></tr>';
+  }
+  try {
+    TN.on('uni-text', 'input', update);
+    update();
+  } catch (e) { /* never throw on load */ }
+})();
+</script>
+</body>
+</html>

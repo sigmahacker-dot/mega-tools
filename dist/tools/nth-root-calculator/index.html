@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nth Root Calculator — Free Online | ToolNest</title>
+<meta name="description" content="Compute the n-th root of any number — square root, cube root and beyond — with exact handling of negative inputs for odd roots.">
+<meta name="keywords" content="nth root calculator, cube root calculator, square root calculator, root of a number, radicand calculator">
+<link rel="canonical" href="https://toolnest.vercel.app/tools/nth-root-calculator/">
+<meta name="theme-color" content="#07070b">
+<meta property="og:title" content="Nth Root Calculator — Free Online | ToolNest">
+<meta property="og:description" content="Compute the n-th root of any number — square root, cube root and beyond — with exact handling of negative inputs for odd roots.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css?v=4">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%23e01111'/><text x='50' y='68' font-size='58' text-anchor='middle' fill='white' font-family='Arial' font-weight='bold'>T</text></svg>">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebApplication","name":"Nth Root Calculator","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0"},"url":"https://toolnest.vercel.app/tools/nth-root-calculator/","description":"Compute the n-th root of any number — square root, cube root and beyond — with exact handling of negative inputs for odd roots."},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What is an n-th root?","acceptedAnswer":{"@type":"Answer","text":"The n-th root of x is the number r with r^n = x. For example, the cube root of 27 is 3 because 3^3 = 27."}},{"@type":"Question","name":"Can I take an even root of a negative number?","acceptedAnswer":{"@type":"Answer","text":"Not in the real numbers — no real number squared gives a negative. The tool will tell you this and only offer complex results as a note. Odd roots of negatives are fine (e.g. ∛(−8) = −2)."}},{"@type":"Question","name":"How is the result verified?","acceptedAnswer":{"@type":"Answer","text":"The calculator raises the result back to the n-th power and shows it next to your original x, so you can confirm r^n ≈ x."}}]}]}</script>
+</head>
+<body>
+<header class="site-header">
+  <div class="container">
+    <a class="logo" href="/"><span class="logo-mark">T</span> ToolNest</a>
+    <div class="header-right">
+      <form class="nav-search" action="/" method="get" role="search">
+        <span class="ns-icon">🔍</span>
+        <input type="search" name="q" placeholder="Search tools…" aria-label="Search tools" autocomplete="off">
+      </form>
+      <div class="menu-wrap">
+        <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="menuPanel" aria-label="Open menu"><span></span><span></span><span></span></button>
+        <nav class="menu-panel" id="menuPanel" aria-label="Site">
+          <a href="/">Home</a>
+          <a href="/#categories">Categories</a>
+          <a href="/#all-tools">All Tools</a>
+        </nav>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ADSTERRA-HEADER: paste your Adsterra banner ad code inside the div below -->
+<div class="container"><div class="ad-slot ad-leaderboard" data-ad="header"></div></div>
+
+<main class="container">
+  <nav class="crumbs"><a href="/">Home</a> &rsaquo; <a href="/#math">Math &amp; Numbers</a> &rsaquo; Nth Root Calculator</nav>
+  <div class="tool-hero">
+    <h1>Nth Root Calculator</h1>
+    <p>Compute the n-th root of any number — square root, cube root and beyond — with exact handling of negative inputs for odd roots.</p>
+  </div>
+
+  <div class="tool-card">
+  <div class="grid2">
+    <div class="field">
+      <label for="nth-root-calculator-x">Number (x)</label>
+      <input type="number" class="input" id="nth-root-calculator-x" step="any" placeholder="e.g. 27">
+    </div>
+    <div class="field">
+      <label for="nth-root-calculator-n">Root degree (n)</label>
+      <input type="number" class="input" id="nth-root-calculator-n" min="1" max="1000" step="1" placeholder="e.g. 3">
+    </div>
+  </div>
+  <div class="error" id="nth-root-calculator-error"></div>
+  <div class="result" id="nth-root-calculator-result">
+    <div class="stat-cards">
+      <div class="stat-card"><div class="v" id="nth-root-calculator-res">–</div><div class="l" id="nth-root-calculator-lab">ⁿ√x</div></div>
+      <div class="stat-card"><div class="v" id="nth-root-calculator-check">–</div><div class="l">Verification (rⁿ)</div></div>
+      <div class="stat-card"><div class="v" id="nth-root-calculator-pow">–</div><div class="l">As x^(1/n)</div></div>
+    </div>
+    <p class="note" id="nth-root-calculator-steps">Enter x and the root degree n.</p>
+  </div>
+</div>
+
+
+  <!-- ADSTERRA-INCONTENT: paste your Adsterra native/in-content ad code inside the div below -->
+  <div class="ad-slot" data-ad="incontent"></div>
+
+  <div class="info-grid">
+    <div class="info-card">
+      <h2>📖 How to use</h2>
+      <ol><li>Enter the number x (the radicand).</li><li>Enter n, the root degree (2 for square root, 3 for cube root, …).</li><li>Read the n-th root instantly with a raise-back verification.</li><li>Note that even roots of negative numbers have no real result.</li></ol>
+    </div>
+    <div class="info-card">
+      <h2>❓ Frequently asked questions</h2>
+      <div class="faq"><details><summary>What is an n-th root?</summary><p>The n-th root of x is the number r with r^n = x. For example, the cube root of 27 is 3 because 3^3 = 27.</p></details><details><summary>Can I take an even root of a negative number?</summary><p>Not in the real numbers — no real number squared gives a negative. The tool will tell you this and only offer complex results as a note. Odd roots of negatives are fine (e.g. ∛(−8) = −2).</p></details><details><summary>How is the result verified?</summary><p>The calculator raises the result back to the n-th power and shows it next to your original x, so you can confirm r^n ≈ x.</p></details></div>
+    </div>
+  </div>
+
+  <section class="section">
+    <h2>🔗 Related tools</h2>
+    <div class="tool-grid"><a class="tool-link" href="/tools/complex-number-calculator/" data-search="complex number calculator add, subtract, multiply and divide complex numbers. see the result in a+bi form with modulus, argument and conjugates. complex number calculator imaginary number calculator complex division a+bi calculator complex arithmetic"><span class="t-ico">📐</span><span class="t-body"><b>Complex Number Calculator</b><small>Add, subtract, multiply and divide complex numbers. See the result in a+bi form with modulus…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/exponent-calculator/" data-search="exponent calculator raise any base to any exponent. get base^exponent instantly with the expanded multiplication shown step by step for integer powers. exponent calculator power calculator base to the power exponential calculation x to the power of n"><span class="t-ico">📐</span><span class="t-body"><b>Exponent Calculator</b><small>Raise any base to any exponent. Get base^exponent instantly with the expanded multiplication…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/factorial-calculator/" data-search="factorial calculator compute n! for any n from 0 to 170. see the exact value, scientific notation, the multiplication expanded step by step and the count of trailing zeros. factorial calculator n factorial compute n! trailing zeros factorial factorial value"><span class="t-ico">📐</span><span class="t-body"><b>Factorial Calculator</b><small>Compute n! for any n from 0 to 170. See the exact value, scientific notation, the multiplica…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/fraction-calculator/" data-search="fraction calculator add, subtract, multiply and divide fractions with simplification. fraction calculator add fractions simplify fraction"><span class="t-ico">📐</span><span class="t-body"><b>Fraction Calculator</b><small>Add, subtract, multiply and divide fractions with simplification.</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/gcf-lcm-calculator/" data-search="gcf &amp; lcm calculator greatest common factor and least common multiple of any list. gcf calculator lcm calculator greatest common factor"><span class="t-ico">📐</span><span class="t-body"><b>GCF &amp; LCM Calculator</b><small>Greatest common factor and least common multiple of any list.</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/logarithm-calculator/" data-search="logarithm calculator compute logarithms to any base using the change-of-base formula. get log, natural log (ln), log10 and log2 of any positive number. logarithm calculator log base calculator natural log calculator change of base formula log10 log2 calculator"><span class="t-ico">📐</span><span class="t-body"><b>Logarithm Calculator</b><small>Compute logarithms to any base using the change-of-base formula. Get log, natural log (ln), …</small></span><span class="t-arrow">→</span></a></div>
+  </section>
+</main>
+
+<!-- ADSTERRA-FOOTER: paste your Adsterra footer/banner ad code inside the div below -->
+<div class="container"><div class="ad-slot" data-ad="footer"></div></div>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="f-grid">
+      <div>
+        <span class="brandline"><span class="logo-mark">T</span> ToolNest</span>
+        <p>Free online tools that actually work. No sign-up, no watermarks — and your files never leave your device for client-side tools.</p>
+      </div>
+      <div>
+        <h4>Popular</h4>
+        <a href="/tools/qr-code-generator/">QR Code Generator</a>
+        <a href="/tools/background-remover/">Background Remover</a>
+        <a href="/tools/pdf-merger/">PDF Merger</a>
+        <a href="/tools/word-counter/">Word Counter</a>
+      </div>
+      <div>
+        <h4>Categories</h4>
+        <a href="/#image">Image Tools</a>
+        <a href="/#pdf">PDF &amp; Documents</a>
+        <a href="/#calculators">Calculators</a>
+        <a href="/#developer">Developer Tools</a>
+      </div>
+      <div>
+        <h4>Site</h4>
+        <a href="/">Home</a>
+        <a href="/#all-tools">All Tools</a>
+        <a href="/sitemap.xml">Sitemap</a>
+      </div>
+    </div>
+    <div class="f-bottom">© 2026 ToolNest · Free tools for everyone · Made with care</div>
+  </div>
+</footer>
+
+<script src="/assets/site.js?v=5"></script>
+
+<script>
+(function () {
+  'use strict';
+  var P = 'nth-root-calculator-';
+  var ERR = P + 'error';
+  function g(id) { return document.getElementById(P + id); }
+  function set(id, v) { var el = g(id); if (el) el.textContent = v; }
+  function fmt(n) {
+    if (!isFinite(n)) return '–';
+    if (n !== 0 && (Math.abs(n) >= 1e15 || Math.abs(n) < 1e-9)) return n.toExponential(6);
+    return String(Number(n.toFixed(10)));
+  }
+  function blank() {
+    set('res', '–'); set('lab', 'ⁿ√x'); set('check', '–'); set('pow', '–');
+    set('steps', 'Enter x and the root degree n.');
+  }
+  function calc() {
+    if (!g('x')) return;
+    TN.clearErr(ERR);
+    var xv = g('x').value, nv = g('n').value;
+    if (xv === '' || nv === '') { blank(); return; }
+    var x = parseFloat(xv), n = parseFloat(nv);
+    if (isNaN(x)) { TN.setErr(ERR, 'Enter a valid number for x.'); blank(); return; }
+    if (isNaN(n) || Math.floor(n) !== n || n < 1 || n > 1000) {
+      TN.setErr(ERR, 'n must be a whole number between 1 and 1000.'); blank(); return;
+    }
+    if (x < 0 && n % 2 === 0) {
+      TN.setErr(ERR, 'No real ' + n + '-th root of a negative number exists (even root of a negative).');
+      blank(); return;
+    }
+    var r = x < 0 ? -Math.pow(-x, 1 / n) : Math.pow(x, 1 / n);
+    set('res', fmt(r));
+    set('lab', n === 2 ? '√x' : (n === 3 ? '∛x' : n + '-th root'));
+    set('check', fmt(Math.pow(r, n)));
+    set('pow', fmt(x) + '^(1/' + n + ')');
+    set('steps', 'r = ' + fmt(x) + '^(1/' + n + ') = ' + fmt(r) + '. Verification: ' + fmt(r) + '^' + n + ' = ' + fmt(Math.pow(r, n)) + ' ≈ ' + fmt(x) + '.');
+  }
+  try {
+    TN.on(P + 'x', 'input', calc);
+    TN.on(P + 'n', 'input', calc);
+    calc();
+  } catch (e) { /* never throw on load */ }
+})();
+
+</script>
+</body>
+</html>

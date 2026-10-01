@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Factorial Calculator — Free Online | ToolNest</title>
+<meta name="description" content="Compute n! for any n from 0 to 170. See the exact value, scientific notation, the multiplication expanded step by step and the count of trailing zeros.">
+<meta name="keywords" content="factorial calculator, n factorial, compute n!, trailing zeros factorial, factorial value">
+<link rel="canonical" href="https://toolnest.vercel.app/tools/factorial-calculator/">
+<meta name="theme-color" content="#07070b">
+<meta property="og:title" content="Factorial Calculator — Free Online | ToolNest">
+<meta property="og:description" content="Compute n! for any n from 0 to 170. See the exact value, scientific notation, the multiplication expanded step by step and the count of trailing zeros.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css?v=4">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%23e01111'/><text x='50' y='68' font-size='58' text-anchor='middle' fill='white' font-family='Arial' font-weight='bold'>T</text></svg>">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebApplication","name":"Factorial Calculator","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0"},"url":"https://toolnest.vercel.app/tools/factorial-calculator/","description":"Compute n! for any n from 0 to 170. See the exact value, scientific notation, the multiplication expanded step by step and the count of trailing zeros."},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What is a factorial?","acceptedAnswer":{"@type":"Answer","text":"n! (n factorial) is the product of all positive integers from 1 to n. For example, 5! = 5 × 4 × 3 × 2 × 1 = 120. By definition, 0! = 1."}},{"@type":"Question","name":"Why is the maximum 170?","acceptedAnswer":{"@type":"Answer","text":"170! is the largest factorial that fits in a standard 64-bit floating-point number (about 7.26 × 10^306). 171! overflows to infinity."}},{"@type":"Question","name":"How are trailing zeros counted?","acceptedAnswer":{"@type":"Answer","text":"Each trailing zero comes from a factor of 10 = 2 × 5. Since factors of 2 are plentiful, the count equals the number of factors of 5 in 1…n: floor(n/5) + floor(n/25) + floor(n/125) + …"}}]}]}</script>
+</head>
+<body>
+<header class="site-header">
+  <div class="container">
+    <a class="logo" href="/"><span class="logo-mark">T</span> ToolNest</a>
+    <div class="header-right">
+      <form class="nav-search" action="/" method="get" role="search">
+        <span class="ns-icon">🔍</span>
+        <input type="search" name="q" placeholder="Search tools…" aria-label="Search tools" autocomplete="off">
+      </form>
+      <div class="menu-wrap">
+        <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="menuPanel" aria-label="Open menu"><span></span><span></span><span></span></button>
+        <nav class="menu-panel" id="menuPanel" aria-label="Site">
+          <a href="/">Home</a>
+          <a href="/#categories">Categories</a>
+          <a href="/#all-tools">All Tools</a>
+        </nav>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ADSTERRA-HEADER: paste your Adsterra banner ad code inside the div below -->
+<div class="container"><div class="ad-slot ad-leaderboard" data-ad="header"></div></div>
+
+<main class="container">
+  <nav class="crumbs"><a href="/">Home</a> &rsaquo; <a href="/#math">Math &amp; Numbers</a> &rsaquo; Factorial Calculator</nav>
+  <div class="tool-hero">
+    <h1>Factorial Calculator</h1>
+    <p>Compute n! for any n from 0 to 170. See the exact value, scientific notation, the multiplication expanded step by step and the count of trailing zeros.</p>
+  </div>
+
+  <div class="tool-card">
+  <div class="grid2">
+    <div class="field">
+      <label for="factorial-calculator-n">n (0 – 170)</label>
+      <input type="number" class="input" id="factorial-calculator-n" min="0" max="170" step="1" placeholder="e.g. 10">
+    </div>
+  </div>
+  <div class="error" id="factorial-calculator-error"></div>
+  <div class="result" id="factorial-calculator-result">
+    <div class="stat-cards">
+      <div class="stat-card"><div class="v" id="factorial-calculator-value">–</div><div class="l">n!</div></div>
+      <div class="stat-card"><div class="v" id="factorial-calculator-sci">–</div><div class="l">Scientific notation</div></div>
+      <div class="stat-card"><div class="v" id="factorial-calculator-zeros">–</div><div class="l">Trailing zeros</div></div>
+    </div>
+    <p class="note" id="factorial-calculator-steps">Enter n to compute its factorial.</p>
+  </div>
+</div>
+
+
+  <!-- ADSTERRA-INCONTENT: paste your Adsterra native/in-content ad code inside the div below -->
+  <div class="ad-slot" data-ad="incontent"></div>
+
+  <div class="info-grid">
+    <div class="info-card">
+      <h2>📖 How to use</h2>
+      <ol><li>Enter a whole number n between 0 and 170.</li><li>The factorial value appears instantly, exact for n ≤ 18.</li><li>Read the scientific-notation form for large values.</li><li>See the trailing-zero count and, for n ≤ 10, the full multiplication expanded.</li></ol>
+    </div>
+    <div class="info-card">
+      <h2>❓ Frequently asked questions</h2>
+      <div class="faq"><details><summary>What is a factorial?</summary><p>n! (n factorial) is the product of all positive integers from 1 to n. For example, 5! = 5 × 4 × 3 × 2 × 1 = 120. By definition, 0! = 1.</p></details><details><summary>Why is the maximum 170?</summary><p>170! is the largest factorial that fits in a standard 64-bit floating-point number (about 7.26 × 10^306). 171! overflows to infinity.</p></details><details><summary>How are trailing zeros counted?</summary><p>Each trailing zero comes from a factor of 10 = 2 × 5. Since factors of 2 are plentiful, the count equals the number of factors of 5 in 1…n: floor(n/5) + floor(n/25) + floor(n/125) + …</p></details></div>
+    </div>
+  </div>
+
+  <section class="section">
+    <h2>🔗 Related tools</h2>
+    <div class="tool-grid"><a class="tool-link" href="/tools/complex-number-calculator/" data-search="complex number calculator add, subtract, multiply and divide complex numbers. see the result in a+bi form with modulus, argument and conjugates. complex number calculator imaginary number calculator complex division a+bi calculator complex arithmetic"><span class="t-ico">📐</span><span class="t-body"><b>Complex Number Calculator</b><small>Add, subtract, multiply and divide complex numbers. See the result in a+bi form with modulus…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/exponent-calculator/" data-search="exponent calculator raise any base to any exponent. get base^exponent instantly with the expanded multiplication shown step by step for integer powers. exponent calculator power calculator base to the power exponential calculation x to the power of n"><span class="t-ico">📐</span><span class="t-body"><b>Exponent Calculator</b><small>Raise any base to any exponent. Get base^exponent instantly with the expanded multiplication…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/fraction-calculator/" data-search="fraction calculator add, subtract, multiply and divide fractions with simplification. fraction calculator add fractions simplify fraction"><span class="t-ico">📐</span><span class="t-body"><b>Fraction Calculator</b><small>Add, subtract, multiply and divide fractions with simplification.</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/gcf-lcm-calculator/" data-search="gcf &amp; lcm calculator greatest common factor and least common multiple of any list. gcf calculator lcm calculator greatest common factor"><span class="t-ico">📐</span><span class="t-body"><b>GCF &amp; LCM Calculator</b><small>Greatest common factor and least common multiple of any list.</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/logarithm-calculator/" data-search="logarithm calculator compute logarithms to any base using the change-of-base formula. get log, natural log (ln), log10 and log2 of any positive number. logarithm calculator log base calculator natural log calculator change of base formula log10 log2 calculator"><span class="t-ico">📐</span><span class="t-body"><b>Logarithm Calculator</b><small>Compute logarithms to any base using the change-of-base formula. Get log, natural log (ln), …</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/matrix-calculator/" data-search="matrix calculator add, multiply, invert and transpose 2x2 and 3x3 matrices. matrix calculator matrix inverse matrix multiplication"><span class="t-ico">📐</span><span class="t-body"><b>Matrix Calculator</b><small>Add, multiply, invert and transpose 2x2 and 3x3 matrices.</small></span><span class="t-arrow">→</span></a></div>
+  </section>
+</main>
+
+<!-- ADSTERRA-FOOTER: paste your Adsterra footer/banner ad code inside the div below -->
+<div class="container"><div class="ad-slot" data-ad="footer"></div></div>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="f-grid">
+      <div>
+        <span class="brandline"><span class="logo-mark">T</span> ToolNest</span>
+        <p>Free online tools that actually work. No sign-up, no watermarks — and your files never leave your device for client-side tools.</p>
+      </div>
+      <div>
+        <h4>Popular</h4>
+        <a href="/tools/qr-code-generator/">QR Code Generator</a>
+        <a href="/tools/background-remover/">Background Remover</a>
+        <a href="/tools/pdf-merger/">PDF Merger</a>
+        <a href="/tools/word-counter/">Word Counter</a>
+      </div>
+      <div>
+        <h4>Categories</h4>
+        <a href="/#image">Image Tools</a>
+        <a href="/#pdf">PDF &amp; Documents</a>
+        <a href="/#calculators">Calculators</a>
+        <a href="/#developer">Developer Tools</a>
+      </div>
+      <div>
+        <h4>Site</h4>
+        <a href="/">Home</a>
+        <a href="/#all-tools">All Tools</a>
+        <a href="/sitemap.xml">Sitemap</a>
+      </div>
+    </div>
+    <div class="f-bottom">© 2026 ToolNest · Free tools for everyone · Made with care</div>
+  </div>
+</footer>
+
+<script src="/assets/site.js?v=5"></script>
+
+<script>
+(function () {
+  'use strict';
+  var P = 'factorial-calculator-';
+  var ERR = P + 'error';
+  function g(id) { return document.getElementById(P + id); }
+  function set(id, v) { var el = g(id); if (el) el.textContent = v; }
+  function blank() {
+    set('value', '–'); set('sci', '–'); set('zeros', '–');
+    set('steps', 'Enter n to compute its factorial.');
+  }
+  function trailingZeros(n) {
+    var t = 0;
+    for (var p = 5; p <= n; p *= 5) t += Math.floor(n / p);
+    return t;
+  }
+  function calc() {
+    if (!g('n')) return;
+    TN.clearErr(ERR);
+    var raw = g('n').value;
+    if (raw === '') { blank(); return; }
+    var n = parseFloat(raw);
+    if (isNaN(n) || Math.floor(n) !== n || n < 0 || n > 170) {
+      TN.setErr(ERR, 'Enter a whole number between 0 and 170.');
+      blank(); return;
+    }
+    var f = 1;
+    for (var i = 2; i <= n; i++) f *= i;
+    set('value', n <= 18 ? f.toLocaleString('en-US') : f.toExponential(6));
+    set('sci', n === 0 ? '1' : f.toExponential(4));
+    set('zeros', String(trailingZeros(n)));
+    var steps;
+    if (n === 0 || n === 1) {
+      steps = n + '! = 1 by definition.';
+    } else if (n <= 10) {
+      var parts = [];
+      for (var j = n; j >= 1; j--) parts.push(String(j));
+      steps = n + '! = ' + parts.join(' × ') + ' = ' + f.toLocaleString('en-US');
+    } else {
+      steps = n + '! computed as the product of all integers from 1 to ' + n + '.';
+    }
+    set('steps', steps);
+  }
+  try {
+    TN.on(P + 'n', 'input', calc);
+    calc();
+  } catch (e) { /* never throw on load */ }
+})();
+
+</script>
+</body>
+</html>

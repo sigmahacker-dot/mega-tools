@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Exponent Calculator — Free Online | ToolNest</title>
+<meta name="description" content="Raise any base to any exponent. Get base^exponent instantly with the expanded multiplication shown step by step for integer powers.">
+<meta name="keywords" content="exponent calculator, power calculator, base to the power, exponential calculation, x to the power of n">
+<link rel="canonical" href="https://toolnest.vercel.app/tools/exponent-calculator/">
+<meta name="theme-color" content="#07070b">
+<meta property="og:title" content="Exponent Calculator — Free Online | ToolNest">
+<meta property="og:description" content="Raise any base to any exponent. Get base^exponent instantly with the expanded multiplication shown step by step for integer powers.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css?v=4">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%23e01111'/><text x='50' y='68' font-size='58' text-anchor='middle' fill='white' font-family='Arial' font-weight='bold'>T</text></svg>">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebApplication","name":"Exponent Calculator","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0"},"url":"https://toolnest.vercel.app/tools/exponent-calculator/","description":"Raise any base to any exponent. Get base^exponent instantly with the expanded multiplication shown step by step for integer powers."},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What is an exponent?","acceptedAnswer":{"@type":"Answer","text":"An exponent tells you how many times to multiply the base by itself. For example, 2^5 means 2 × 2 × 2 × 2 × 2 = 32."}},{"@type":"Question","name":"How are negative exponents handled?","acceptedAnswer":{"@type":"Answer","text":"A negative exponent means the reciprocal: base^(-n) = 1 / base^n. So 2^(-3) = 1/8 = 0.125."}},{"@type":"Question","name":"What about fractional exponents like 9^(1/2)?","acceptedAnswer":{"@type":"Answer","text":"Fractional exponents represent roots: x^(1/n) is the n-th root of x, so 9^0.5 = 3. The calculator evaluates these with full floating-point precision."}},{"@type":"Question","name":"What is 0^0?","acceptedAnswer":{"@type":"Answer","text":"0^0 is mathematically indeterminate. The calculator follows the common computing convention and returns 1, but notes it as undefined in strict mathematics."}}]}]}</script>
+</head>
+<body>
+<header class="site-header">
+  <div class="container">
+    <a class="logo" href="/"><span class="logo-mark">T</span> ToolNest</a>
+    <div class="header-right">
+      <form class="nav-search" action="/" method="get" role="search">
+        <span class="ns-icon">🔍</span>
+        <input type="search" name="q" placeholder="Search tools…" aria-label="Search tools" autocomplete="off">
+      </form>
+      <div class="menu-wrap">
+        <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="menuPanel" aria-label="Open menu"><span></span><span></span><span></span></button>
+        <nav class="menu-panel" id="menuPanel" aria-label="Site">
+          <a href="/">Home</a>
+          <a href="/#categories">Categories</a>
+          <a href="/#all-tools">All Tools</a>
+        </nav>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ADSTERRA-HEADER: paste your Adsterra banner ad code inside the div below -->
+<div class="container"><div class="ad-slot ad-leaderboard" data-ad="header"></div></div>
+
+<main class="container">
+  <nav class="crumbs"><a href="/">Home</a> &rsaquo; <a href="/#math">Math &amp; Numbers</a> &rsaquo; Exponent Calculator</nav>
+  <div class="tool-hero">
+    <h1>Exponent Calculator</h1>
+    <p>Raise any base to any exponent. Get base^exponent instantly with the expanded multiplication shown step by step for integer powers.</p>
+  </div>
+
+  <div class="tool-card">
+  <div class="grid2">
+    <div class="field">
+      <label for="exponent-calculator-base">Base</label>
+      <input type="number" class="input" id="exponent-calculator-base" step="any" placeholder="e.g. 2">
+    </div>
+    <div class="field">
+      <label for="exponent-calculator-exp">Exponent</label>
+      <input type="number" class="input" id="exponent-calculator-exp" step="any" placeholder="e.g. 10">
+    </div>
+  </div>
+  <div class="error" id="exponent-calculator-error"></div>
+  <div class="result" id="exponent-calculator-result">
+    <div class="stat-cards">
+      <div class="stat-card"><div class="v" id="exponent-calculator-value">–</div><div class="l">Result</div></div>
+      <div class="stat-card"><div class="v" id="exponent-calculator-sci">–</div><div class="l">Scientific notation</div></div>
+      <div class="stat-card"><div class="v" id="exponent-calculator-recip">–</div><div class="l">Reciprocal (1 ÷ result)</div></div>
+    </div>
+    <p class="note" id="exponent-calculator-steps">Enter a base and an exponent to see the calculation.</p>
+  </div>
+</div>
+
+
+  <!-- ADSTERRA-INCONTENT: paste your Adsterra native/in-content ad code inside the div below -->
+  <div class="ad-slot" data-ad="incontent"></div>
+
+  <div class="info-grid">
+    <div class="info-card">
+      <h2>📖 How to use</h2>
+      <ol><li>Enter the base number.</li><li>Enter the exponent (whole, negative or fractional).</li><li>Read the result instantly, including scientific notation for very large or small values.</li><li>For small integer exponents, see the multiplication expanded step by step.</li></ol>
+    </div>
+    <div class="info-card">
+      <h2>❓ Frequently asked questions</h2>
+      <div class="faq"><details><summary>What is an exponent?</summary><p>An exponent tells you how many times to multiply the base by itself. For example, 2^5 means 2 × 2 × 2 × 2 × 2 = 32.</p></details><details><summary>How are negative exponents handled?</summary><p>A negative exponent means the reciprocal: base^(-n) = 1 / base^n. So 2^(-3) = 1/8 = 0.125.</p></details><details><summary>What about fractional exponents like 9^(1/2)?</summary><p>Fractional exponents represent roots: x^(1/n) is the n-th root of x, so 9^0.5 = 3. The calculator evaluates these with full floating-point precision.</p></details><details><summary>What is 0^0?</summary><p>0^0 is mathematically indeterminate. The calculator follows the common computing convention and returns 1, but notes it as undefined in strict mathematics.</p></details></div>
+    </div>
+  </div>
+
+  <section class="section">
+    <h2>🔗 Related tools</h2>
+    <div class="tool-grid"><a class="tool-link" href="/tools/complex-number-calculator/" data-search="complex number calculator add, subtract, multiply and divide complex numbers. see the result in a+bi form with modulus, argument and conjugates. complex number calculator imaginary number calculator complex division a+bi calculator complex arithmetic"><span class="t-ico">📐</span><span class="t-body"><b>Complex Number Calculator</b><small>Add, subtract, multiply and divide complex numbers. See the result in a+bi form with modulus…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/factorial-calculator/" data-search="factorial calculator compute n! for any n from 0 to 170. see the exact value, scientific notation, the multiplication expanded step by step and the count of trailing zeros. factorial calculator n factorial compute n! trailing zeros factorial factorial value"><span class="t-ico">📐</span><span class="t-body"><b>Factorial Calculator</b><small>Compute n! for any n from 0 to 170. See the exact value, scientific notation, the multiplica…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/fraction-calculator/" data-search="fraction calculator add, subtract, multiply and divide fractions with simplification. fraction calculator add fractions simplify fraction"><span class="t-ico">📐</span><span class="t-body"><b>Fraction Calculator</b><small>Add, subtract, multiply and divide fractions with simplification.</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/gcf-lcm-calculator/" data-search="gcf &amp; lcm calculator greatest common factor and least common multiple of any list. gcf calculator lcm calculator greatest common factor"><span class="t-ico">📐</span><span class="t-body"><b>GCF &amp; LCM Calculator</b><small>Greatest common factor and least common multiple of any list.</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/logarithm-calculator/" data-search="logarithm calculator compute logarithms to any base using the change-of-base formula. get log, natural log (ln), log10 and log2 of any positive number. logarithm calculator log base calculator natural log calculator change of base formula log10 log2 calculator"><span class="t-ico">📐</span><span class="t-body"><b>Logarithm Calculator</b><small>Compute logarithms to any base using the change-of-base formula. Get log, natural log (ln), …</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/matrix-calculator/" data-search="matrix calculator add, multiply, invert and transpose 2x2 and 3x3 matrices. matrix calculator matrix inverse matrix multiplication"><span class="t-ico">📐</span><span class="t-body"><b>Matrix Calculator</b><small>Add, multiply, invert and transpose 2x2 and 3x3 matrices.</small></span><span class="t-arrow">→</span></a></div>
+  </section>
+</main>
+
+<!-- ADSTERRA-FOOTER: paste your Adsterra footer/banner ad code inside the div below -->
+<div class="container"><div class="ad-slot" data-ad="footer"></div></div>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="f-grid">
+      <div>
+        <span class="brandline"><span class="logo-mark">T</span> ToolNest</span>
+        <p>Free online tools that actually work. No sign-up, no watermarks — and your files never leave your device for client-side tools.</p>
+      </div>
+      <div>
+        <h4>Popular</h4>
+        <a href="/tools/qr-code-generator/">QR Code Generator</a>
+        <a href="/tools/background-remover/">Background Remover</a>
+        <a href="/tools/pdf-merger/">PDF Merger</a>
+        <a href="/tools/word-counter/">Word Counter</a>
+      </div>
+      <div>
+        <h4>Categories</h4>
+        <a href="/#image">Image Tools</a>
+        <a href="/#pdf">PDF &amp; Documents</a>
+        <a href="/#calculators">Calculators</a>
+        <a href="/#developer">Developer Tools</a>
+      </div>
+      <div>
+        <h4>Site</h4>
+        <a href="/">Home</a>
+        <a href="/#all-tools">All Tools</a>
+        <a href="/sitemap.xml">Sitemap</a>
+      </div>
+    </div>
+    <div class="f-bottom">© 2026 ToolNest · Free tools for everyone · Made with care</div>
+  </div>
+</footer>
+
+<script src="/assets/site.js?v=5"></script>
+
+<script>
+(function () {
+  'use strict';
+  var P = 'exponent-calculator-';
+  var ERR = P + 'error';
+  function g(id) { return document.getElementById(P + id); }
+  function set(id, v) { var el = g(id); if (el) el.textContent = v; }
+  function fmt(n) {
+    if (!isFinite(n)) return '–';
+    if (n !== 0 && (Math.abs(n) >= 1e15 || Math.abs(n) < 1e-6)) return n.toExponential(6);
+    return String(Number(n.toFixed(10)));
+  }
+  function sci(n) { if (!isFinite(n) || n === 0) return '–'; return n.toExponential(4); }
+  function blank(msg) {
+    set('value', '–'); set('sci', '–'); set('recip', '–');
+    set('steps', msg || 'Enter a base and an exponent to see the calculation.');
+  }
+  function calc() {
+    if (!g('base')) return;
+    TN.clearErr(ERR);
+    var bv = g('base').value, ev = g('exp').value;
+    if (bv === '' || ev === '') { blank(); return; }
+    var base = parseFloat(bv), exp = parseFloat(ev);
+    if (isNaN(base) || isNaN(exp)) { TN.setErr(ERR, 'Enter valid numbers for the base and exponent.'); blank(); return; }
+    if (base < 0 && Math.floor(exp) !== exp) { TN.setErr(ERR, 'A negative base with a fractional exponent has no real result.'); blank(); return; }
+    if (base === 0 && exp < 0) { TN.setErr(ERR, 'Zero raised to a negative exponent is undefined (division by zero).'); blank(); return; }
+    var r = Math.pow(base, exp);
+    if (!isFinite(r)) { TN.setErr(ERR, 'The result is too large to represent.'); blank(); return; }
+    set('value', fmt(r));
+    set('sci', sci(r));
+    set('recip', r === 0 ? '–' : fmt(1 / r));
+    var steps = '';
+    var isInt = Math.floor(exp) === exp && Math.abs(exp) <= 12;
+    if (isInt) {
+      if (exp === 0) {
+        steps = base === 0
+          ? '0^0 is indeterminate in strict mathematics; computing convention returns 1.'
+          : 'Any non-zero base raised to 0 equals 1.';
+      } else {
+        var n = Math.abs(exp), parts = [];
+        for (var i = 0; i < n; i++) parts.push(String(base));
+        var prod = parts.join(' × ');
+        steps = exp > 0
+          ? base + '^' + exp + ' = ' + prod + ' = ' + fmt(r)
+          : base + '^(' + exp + ') = 1 ÷ (' + prod + ') = 1 ÷ ' + fmt(Math.pow(base, n)) + ' = ' + fmt(r);
+      }
+    } else {
+      steps = base + '^' + exp + ' = e^(' + exp + ' × ln(' + base + ')) = ' + fmt(r);
+    }
+    set('steps', steps);
+  }
+  try {
+    TN.on(P + 'base', 'input', calc);
+    TN.on(P + 'exp', 'input', calc);
+    calc();
+  } catch (e) { /* never throw on load */ }
+})();
+
+</script>
+</body>
+</html>
