@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Trigonometry Calculator — Free Online | ToolNest</title>
+<meta name="description" content="Compute sin, cos, tan, csc, sec, cot for any angle in degrees or radians, plus inverse trig from a value.">
+<meta name="keywords" content="trig calculator, sin cos tan, trigonometry, arcsin calculator, cot sec csc">
+<link rel="canonical" href="https://toolnest.vercel.app/tools/trig-calculator/">
+<meta name="theme-color" content="#07070b">
+<meta property="og:title" content="Trigonometry Calculator — Free Online | ToolNest">
+<meta property="og:description" content="Compute sin, cos, tan, csc, sec, cot for any angle in degrees or radians, plus inverse trig from a value.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css?v=4">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%23e01111'/><text x='50' y='68' font-size='58' text-anchor='middle' fill='white' font-family='Arial' font-weight='bold'>T</text></svg>">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebApplication","name":"Trigonometry Calculator","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0"},"url":"https://toolnest.vercel.app/tools/trig-calculator/","description":"Compute sin, cos, tan, csc, sec, cot for any angle in degrees or radians, plus inverse trig from a value."},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"When are csc, sec or cot undefined?","acceptedAnswer":{"@type":"Answer","text":"When their reciprocal is zero: csc at 0°/180°, sec at 90°/270°, cot at 0°/180°."}},{"@type":"Question","name":"What range does arcsin accept?","acceptedAnswer":{"@type":"Answer","text":"Values from −1 to 1 only, since sine never leaves that range; arctan accepts any real number."}},{"@type":"Question","name":"What is the principal value?","acceptedAnswer":{"@type":"Answer","text":"Inverse trig returns one standard angle: arcsin in [−90°, 90°], arccos in [0°, 180°], arctan in (−90°, 90°)."}}]}]}</script>
+</head>
+<body>
+<header class="site-header">
+  <div class="container">
+    <a class="logo" href="/"><span class="logo-mark">T</span> ToolNest</a>
+    <div class="header-right">
+      <form class="nav-search" action="/" method="get" role="search">
+        <span class="ns-icon">🔍</span>
+        <input type="search" name="q" placeholder="Search tools…" aria-label="Search tools" autocomplete="off">
+      </form>
+      <div class="menu-wrap">
+        <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="menuPanel" aria-label="Open menu"><span></span><span></span><span></span></button>
+        <nav class="menu-panel" id="menuPanel" aria-label="Site">
+          <a href="/">Home</a>
+          <a href="/#categories">Categories</a>
+          <a href="/#all-tools">All Tools</a>
+        </nav>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ADSTERRA-HEADER: paste your Adsterra banner ad code inside the div below -->
+<div class="container"><div class="ad-slot ad-leaderboard" data-ad="header"></div></div>
+
+<main class="container">
+  <nav class="crumbs"><a href="/">Home</a> &rsaquo; <a href="/#math">Math &amp; Numbers</a> &rsaquo; Trigonometry Calculator</nav>
+  <div class="tool-hero">
+    <h1>Trigonometry Calculator</h1>
+    <p>Compute sin, cos, tan, csc, sec, cot for any angle in degrees or radians, plus inverse trig from a value.</p>
+  </div>
+
+  <div class="tool-card">
+  <div class="grid2">
+    <div class="field"><label for="trig-calculator-ang">Angle</label><input class="input" id="trig-calculator-ang" type="number" value="30"></div>
+    <div class="field"><label for="trig-calculator-unit">Unit</label><select class="input" id="trig-calculator-unit"><option value="deg">Degrees</option><option value="rad">Radians</option></select></div>
+  </div>
+  <div class="btn-row"><button class="btn btn-primary" id="trig-calculator-go">Calculate</button></div>
+  <div class="result"><div class="data" id="trig-calculator-table"></div></div>
+  <h3 style="margin-top:16px">Inverse trig (from a value)</h3>
+  <div class="grid2">
+    <div class="field"><label for="trig-calculator-val">Value (\u22121 to 1 for sin/cos)</label><input class="input" id="trig-calculator-val" type="number" value="0.5" step="any"></div>
+    <div class="field"><label for="trig-calculator-ifn">Function</label><select class="input" id="trig-calculator-ifn"><option value="asin">arcsin</option><option value="acos">arccos</option><option value="atan">arctan</option></select></div>
+  </div>
+  <div class="btn-row"><button class="btn btn-outline" id="trig-calculator-goinv">Compute inverse</button></div>
+  <div class="result"><pre class="code" id="trig-calculator-invout" style="text-align:left;white-space:pre-wrap"></pre></div>
+  <div class="error" id="trig-calculator-error"></div>
+</div>
+
+  <!-- ADSTERRA-INCONTENT: paste your Adsterra native/in-content ad code inside the div below -->
+  <div class="ad-slot" data-ad="incontent"></div>
+
+  <div class="info-grid">
+    <div class="info-card">
+      <h2>📖 How to use</h2>
+      <ol><li>Enter the angle and pick degrees or radians.</li><li>Press Calculate for all six trig functions.</li><li>Use the inverse section to get arcsin, arccos or arctan of a value.</li></ol>
+    </div>
+    <div class="info-card">
+      <h2>❓ Frequently asked questions</h2>
+      <div class="faq"><details><summary>When are csc, sec or cot undefined?</summary><p>When their reciprocal is zero: csc at 0°/180°, sec at 90°/270°, cot at 0°/180°.</p></details><details><summary>What range does arcsin accept?</summary><p>Values from −1 to 1 only, since sine never leaves that range; arctan accepts any real number.</p></details><details><summary>What is the principal value?</summary><p>Inverse trig returns one standard angle: arcsin in [−90°, 90°], arccos in [0°, 180°], arctan in (−90°, 90°).</p></details></div>
+    </div>
+  </div>
+
+  <section class="section">
+    <h2>🔗 Related tools</h2>
+    <div class="tool-grid"><a class="tool-link" href="/tools/arithmetic-sequence-calculator/" data-search="arithmetic sequence calculator from the first term and common difference get the nth term and the sum of the first n terms. arithmetic sequence arithmetic progression nth term sum of arithmetic series common difference"><span class="t-ico">📐</span><span class="t-body"><b>Arithmetic Sequence Calculator</b><small>From the first term and common difference get the nth term and the sum of the first n terms.</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/binary-adder-calculator/" data-search="binary adder calculator add two binary numbers with every column addition and carry shown, plus a decimal check. binary addition add binary numbers binary adder binary sum binary carry"><span class="t-ico">📐</span><span class="t-body"><b>Binary Adder Calculator</b><small>Add two binary numbers with every column addition and carry shown, plus a decimal check.</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/birthday-paradox-simulator/" data-search="birthday paradox simulator see how likely a shared birthday is: simulate random groups and compare with the exact theoretical probability. birthday paradox birthday problem shared birthday probability birthday collision probability simulation"><span class="t-ico">📐</span><span class="t-body"><b>Birthday Paradox Simulator</b><small>See how likely a shared birthday is: simulate random groups and compare with the exact theor…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/circle-calculator/" data-search="circle calculator enter radius, diameter, circumference or area — get all four circle properties with the formulas shown. circle calculator circumference calculator circle area radius from area diameter calculator"><span class="t-ico">📐</span><span class="t-body"><b>Circle Calculator</b><small>Enter radius, diameter, circumference or area — get all four circle properties with the form…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/clock-angle-calculator/" data-search="clock angle calculator enter a time to get the smaller angle between the hour and minute hands, with the formula and a dial drawing. clock angle angle between hands clock hands angle time angle watch angle calculator"><span class="t-ico">📐</span><span class="t-body"><b>Clock Angle Calculator</b><small>Enter a time to get the smaller angle between the hour and minute hands, with the formula an…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/collatz-sequence-explorer/" data-search="collatz sequence explorer run the 3n+1 collatz sequence from any start: full path, step count, max value and a bar chart. collatz 3n+1 collatz sequence collatz conjecture hailstone sequence"><span class="t-ico">📐</span><span class="t-body"><b>Collatz Sequence Explorer</b><small>Run the 3n+1 Collatz sequence from any start: full path, step count, max value and a bar cha…</small></span><span class="t-arrow">→</span></a></div>
+  </section>
+</main>
+
+<!-- ADSTERRA-FOOTER: paste your Adsterra footer/banner ad code inside the div below -->
+<div class="container"><div class="ad-slot" data-ad="footer"></div></div>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="f-grid">
+      <div>
+        <span class="brandline"><span class="logo-mark">T</span> ToolNest</span>
+        <p>Free online tools that actually work. No sign-up, no watermarks — and your files never leave your device for client-side tools.</p>
+      </div>
+      <div>
+        <h4>Popular</h4>
+        <a href="/tools/qr-code-generator/">QR Code Generator</a>
+        <a href="/tools/background-remover/">Background Remover</a>
+        <a href="/tools/pdf-merger/">PDF Merger</a>
+        <a href="/tools/word-counter/">Word Counter</a>
+      </div>
+      <div>
+        <h4>Categories</h4>
+        <a href="/#image">Image Tools</a>
+        <a href="/#pdf">PDF &amp; Documents</a>
+        <a href="/#calculators">Calculators</a>
+        <a href="/#developer">Developer Tools</a>
+      </div>
+      <div>
+        <h4>Site</h4>
+        <a href="/">Home</a>
+        <a href="/#all-tools">All Tools</a>
+        <a href="/sitemap.xml">Sitemap</a>
+      </div>
+    </div>
+    <div class="f-bottom">© 2026 ToolNest · Free tools for everyone · Made with care</div>
+  </div>
+</footer>
+
+<script src="/assets/site.js?v=5"></script>
+
+<script>
+/* Trig calculator: six functions + inverses. */
+(function () {
+  'use strict';
+  var SLUG = 'trig-calculator';
+  function $(id) { return document.getElementById(id); }
+  function err(m) { TN.setErr(SLUG + '-error', m); }
+  function fmt(v) {
+    if (!isFinite(v)) return 'undefined';
+    var r = Math.abs(v) < 1e-12 ? 0 : v;
+    return r.toFixed(6);
+  }
+  function calc() {
+    TN.clearErr(SLUG + '-error');
+    var a = parseFloat($(SLUG + '-ang').value);
+    if (isNaN(a)) { err('Enter an angle.'); return; }
+    var rad = $(SLUG + '-unit').value === 'deg' ? a * Math.PI / 180 : a;
+    var s = Math.sin(rad), c = Math.cos(rad), t = Math.tan(rad);
+    var rows = [
+      ['sin', s], ['cos', c], ['tan', t],
+      ['csc (1/sin)', Math.abs(s) < 1e-12 ? NaN : 1 / s],
+      ['sec (1/cos)', Math.abs(c) < 1e-12 ? NaN : 1 / c],
+      ['cot (1/tan)', Math.abs(t) < 1e-12 ? NaN : 1 / t]
+    ];
+    var html = '<table style="width:100%;border-collapse:collapse"><tbody>';
+    rows.forEach(function (r) {
+      html += '<tr><td style="padding:6px;border-bottom:1px solid #eee;font-weight:bold">' + TN.esc(r[0]) + '</td><td style="padding:6px;border-bottom:1px solid #eee;text-align:right;font-family:monospace">' + TN.esc(fmt(r[1])) + '</td></tr>';
+    });
+    html += '</tbody></table>';
+    var note = '<p class="hint">Angle used: ' + TN.esc(String(a)) + ($(SLUG + '-unit').value === 'deg' ? '\u00B0 = ' + rad.toFixed(6) + ' rad' : ' rad = ' + (a * 180 / Math.PI).toFixed(4) + '\u00B0') + '</p>';
+    $(SLUG + '-table').innerHTML = html + note;
+  }
+  function calcInv() {
+    TN.clearErr(SLUG + '-error');
+    var v = parseFloat($(SLUG + '-val').value);
+    var fn = $(SLUG + '-ifn').value;
+    if (isNaN(v)) { err('Enter a value for the inverse function.'); return; }
+    if ((fn === 'asin' || fn === 'acos') && (v < -1 || v > 1)) { err('arcsin/arccos need a value between \u22121 and 1.'); return; }
+    var r = fn === 'asin' ? Math.asin(v) : fn === 'acos' ? Math.acos(v) : Math.atan(v);
+    var deg = r * 180 / Math.PI;
+    $(SLUG + '-invout').textContent = fn + '(' + v + ') = ' + r.toFixed(6) + ' rad = ' + deg.toFixed(4) + '\u00B0\n(principal value)';
+  }
+  try {
+    TN.on(SLUG + '-go', 'click', calc);
+    TN.on(SLUG + '-goinv', 'click', calcInv);
+    TN.on(SLUG + '-ang', 'input', TN.debounce(calc, 400));
+    TN.on(SLUG + '-unit', 'change', calc);
+    calc();
+  } catch (e) {}
+})();
+</script>
+</body>
+</html>

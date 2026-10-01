@@ -1,0 +1,43 @@
+<div class="tool-card">
+  <div class="field">
+    <label for="hmac-generator-message">Message</label>
+    <textarea class="textarea" id="hmac-generator-message" rows="4" placeholder="Message to authenticate…"></textarea>
+  </div>
+  <div class="grid2">
+    <div class="field">
+      <label for="hmac-generator-key">Secret key</label>
+      <input type="password" class="input" id="hmac-generator-key" placeholder="secret key" autocomplete="off">
+    </div>
+    <div class="field">
+      <label for="hmac-generator-algo">Algorithm</label>
+      <select class="input" id="hmac-generator-algo">
+        <option value="SHA-256">HMAC-SHA-256</option>
+        <option value="SHA-512">HMAC-SHA-512</option>
+        <option value="SHA-384">HMAC-SHA-384</option>
+        <option value="SHA-1">HMAC-SHA-1</option>
+      </select>
+    </div>
+  </div>
+  <div class="grid2">
+    <div class="field">
+      <label for="hmac-generator-format">Output format</label>
+      <select class="input" id="hmac-generator-format">
+        <option value="hex">Hexadecimal</option>
+        <option value="base64">Base64</option>
+        <option value="base64url">Base64 URL-safe</option>
+      </select>
+    </div>
+    <div class="field">
+      <label>&nbsp;</label>
+      <div class="btn-row"><button class="btn btn-primary" id="hmac-generator-generate">Generate HMAC</button></div>
+    </div>
+  </div>
+  <div class="error" id="hmac-generator-error"></div>
+  <div class="field">
+    <label for="hmac-generator-output">HMAC</label>
+    <div class="copy-row">
+      <code class="code" id="hmac-generator-output" style="flex:1;word-break:break-all"></code>
+      <button class="btn btn-outline" id="hmac-generator-copy">Copy</button>
+    </div>
+  </div>
+</div>

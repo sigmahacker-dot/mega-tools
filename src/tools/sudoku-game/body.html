@@ -1,0 +1,31 @@
+<div class="tool-card" style="text-align:center">
+  <div class="grid2" style="max-width:420px;margin:0 auto 12px">
+    <div class="field" style="text-align:left">
+      <label for="sudoku-game-diff">Difficulty</label>
+      <select class="input" id="sudoku-game-diff">
+        <option value="45">Easy — 45 givens</option>
+        <option value="35" selected>Medium — 35 givens</option>
+        <option value="28">Hard — 28 givens</option>
+      </select>
+    </div>
+    <div class="field" style="text-align:left">
+      <label>&nbsp;</label>
+      <button class="btn btn-primary" id="sudoku-game-new" style="width:100%">New game</button>
+    </div>
+  </div>
+  <div class="stat-cards" style="max-width:420px;margin:0 auto 12px">
+    <div class="stat-card"><div class="v" id="sudoku-game-mistakes">0</div><div class="l">Mistakes</div></div>
+    <div class="stat-card"><div class="v" id="sudoku-game-hints">3</div><div class="l">Hints left</div></div>
+  </div>
+  <p class="muted" id="sudoku-game-msg" style="min-height:24px">Select a cell, then tap a number.</p>
+  <div style="overflow:auto;display:inline-block;max-width:100%">
+    <div id="sudoku-game-board" style="display:grid;grid-template-columns:repeat(9,38px);gap:0;border:2px solid #333;border-radius:4px;overflow:hidden;background:#fff"></div>
+  </div>
+  <div id="sudoku-game-pad" style="display:grid;grid-template-columns:repeat(9,38px);gap:4px;justify-content:center;margin-top:10px"></div>
+  <div class="btn-row" style="justify-content:center;margin-top:10px">
+    <button class="btn btn-outline" id="sudoku-game-erase">⌫ Erase</button>
+    <button class="btn btn-outline" id="sudoku-game-hint">💡 Hint</button>
+    <button class="btn btn-outline" id="sudoku-game-check">✓ Check</button>
+  </div>
+  <div class="error" id="sudoku-game-error"></div>
+</div>

@@ -1,0 +1,42 @@
+<div class="tool-card" style="text-align:center">
+  <p class="note" style="text-align:left">Client-side only: your secret never leaves this browser tab. For real accounts, prefer your phone's authenticator app.</p>
+  <div class="field" style="text-align:left">
+    <label for="totp-generator-secret">Base32 secret</label>
+    <input class="input" id="totp-generator-secret" placeholder="JBSWY3DPEHPK3PXP" autocomplete="off" spellcheck="false">
+  </div>
+  <div class="grid2" style="max-width:420px;margin:0 auto">
+    <div class="field" style="text-align:left">
+      <label for="totp-generator-digits">Digits</label>
+      <select class="input" id="totp-generator-digits">
+        <option value="6">6</option>
+        <option value="8">8</option>
+      </select>
+    </div>
+    <div class="field" style="text-align:left">
+      <label for="totp-generator-period">Period (seconds)</label>
+      <select class="input" id="totp-generator-period">
+        <option value="30">30</option>
+        <option value="60">60</option>
+      </select>
+    </div>
+  </div>
+  <div class="error" id="totp-generator-error"></div>
+  <div class="result hidden" id="totp-generator-result">
+    <div class="stat-cards" style="max-width:420px;margin:0 auto 8px">
+      <div class="stat-card"><div class="v" id="totp-generator-code" style="font-size:34px;letter-spacing:6px">······</div><div class="l">Current code</div></div>
+      <div class="stat-card"><div class="v" id="totp-generator-count">—</div><div class="l">Seconds left</div></div>
+    </div>
+    <div style="max-width:420px;margin:0 auto 12px;background:#e0e0e0;border-radius:4px;height:8px;overflow:hidden">
+      <div id="totp-generator-bar" style="height:100%;background:#2e7d32;width:100%"></div>
+    </div>
+  </div>
+  <hr>
+  <div class="field" style="text-align:left;max-width:420px;margin:0 auto">
+    <label for="totp-generator-verify">Verify a code (±1 time-step window)</label>
+    <div style="display:flex;gap:8px">
+      <input class="input" id="totp-generator-verify" placeholder="123456" maxlength="8" style="flex:1">
+      <button class="btn btn-primary" id="totp-generator-verify-btn">Verify</button>
+    </div>
+    <p class="hint" id="totp-generator-verdict" style="min-height:20px;margin-top:8px"></p>
+  </div>
+</div>

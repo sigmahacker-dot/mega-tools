@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SVG Blob Generator — Free Online | ToolNest</title>
+<meta name="description" content="Generate organic blob shapes: a randomness seed plus complexity and roundness controls, live SVG preview, and copyable path code.">
+<meta name="keywords" content="svg blob, blob generator, organic shape svg, blob svg code, blob shape maker">
+<link rel="canonical" href="https://toolnest.vercel.app/tools/svg-blob-generator/">
+<meta name="theme-color" content="#07070b">
+<meta property="og:title" content="SVG Blob Generator — Free Online | ToolNest">
+<meta property="og:description" content="Generate organic blob shapes: a randomness seed plus complexity and roundness controls, live SVG preview, and copyable path code.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css?v=4">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%23e01111'/><text x='50' y='68' font-size='58' text-anchor='middle' fill='white' font-family='Arial' font-weight='bold'>T</text></svg>">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebApplication","name":"SVG Blob Generator","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0"},"url":"https://toolnest.vercel.app/tools/svg-blob-generator/","description":"Generate organic blob shapes: a randomness seed plus complexity and roundness controls, live SVG preview, and copyable path code."},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Can I recreate the same blob later?","acceptedAnswer":{"@type":"Answer","text":"Every seed produces a different-but-deterministic blob, so re-entering the same seed and settings recreates the exact same shape."}},{"@type":"Question","name":"Are the blobs scalable?","acceptedAnswer":{"@type":"Answer","text":"Blobs are vector SVG paths — infinitely scalable and sharp at any size."}},{"@type":"Question","name":"What are blobs used for?","acceptedAnswer":{"@type":"Answer","text":"Blob backgrounds, avatars, hero section art, masks for images — anything that needs an organic decorative shape."}}]}]}</script>
+</head>
+<body>
+<header class="site-header">
+  <div class="container">
+    <a class="logo" href="/"><span class="logo-mark">T</span> ToolNest</a>
+    <div class="header-right">
+      <form class="nav-search" action="/" method="get" role="search">
+        <span class="ns-icon">🔍</span>
+        <input type="search" name="q" placeholder="Search tools…" aria-label="Search tools" autocomplete="off">
+      </form>
+      <div class="menu-wrap">
+        <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="menuPanel" aria-label="Open menu"><span></span><span></span><span></span></button>
+        <nav class="menu-panel" id="menuPanel" aria-label="Site">
+          <a href="/">Home</a>
+          <a href="/#categories">Categories</a>
+          <a href="/#all-tools">All Tools</a>
+        </nav>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ADSTERRA-HEADER: paste your Adsterra banner ad code inside the div below -->
+<div class="container"><div class="ad-slot ad-leaderboard" data-ad="header"></div></div>
+
+<main class="container">
+  <nav class="crumbs"><a href="/">Home</a> &rsaquo; <a href="/#developer">Developer Tools</a> &rsaquo; SVG Blob Generator</nav>
+  <div class="tool-hero">
+    <h1>SVG Blob Generator</h1>
+    <p>Generate organic blob shapes: a randomness seed plus complexity and roundness controls, live SVG preview, and copyable path code.</p>
+  </div>
+
+  <div class="tool-card">
+  <h2>SVG Blob Generator</h2>
+  <p class="muted">Smooth organic blob shapes — deterministic per seed, infinitely scalable.</p>
+  <div class="grid2">
+    <div class="field">
+      <label for="svg-blob-generator-seed">Seed: <span id="svg-blob-generator-seed-v">7</span></label>
+      <input type="range" class="input" id="svg-blob-generator-seed" min="1" max="999" step="1" value="7">
+    </div>
+    <div class="field">
+      <label for="svg-blob-generator-points">Complexity: <span id="svg-blob-generator-points-v">8</span></label>
+      <input type="range" class="input" id="svg-blob-generator-points" min="4" max="16" step="1" value="8">
+    </div>
+    <div class="field">
+      <label for="svg-blob-generator-round">Roundness: <span id="svg-blob-generator-round-v">0.65</span></label>
+      <input type="range" class="input" id="svg-blob-generator-round" min="0.1" max="1" step="0.01" value="0.65">
+    </div>
+    <div class="field">
+      <label for="svg-blob-generator-wobble">Wobble: <span id="svg-blob-generator-wobble-v">0.30</span></label>
+      <input type="range" class="input" id="svg-blob-generator-wobble" min="0" max="0.8" step="0.01" value="0.30">
+    </div>
+    <div class="field">
+      <label for="svg-blob-generator-fill">Fill style</label>
+      <select class="input" id="svg-blob-generator-fill">
+        <option value="grad">Gradient</option>
+        <option value="flat">Flat color</option>
+      </select>
+    </div>
+    <div class="field">
+      <label for="svg-blob-generator-color">Color</label>
+      <input type="color" class="input" id="svg-blob-generator-color" value="#7c3aed" style="height:44px;padding:4px">
+    </div>
+  </div>
+  <h3>Live preview</h3>
+  <div class="preview" id="svg-blob-generator-stage" style="display:flex;align-items:center;justify-content:center;min-height:260px"></div>
+  <div class="btn-row mt">
+    <button class="btn btn-outline" id="svg-blob-generator-random">🎲 Random seed</button>
+    <button class="btn btn-primary" id="svg-blob-generator-copy">Copy SVG</button>
+  </div>
+  <h3 class="mt">Generated SVG</h3>
+  <pre class="code" id="svg-blob-generator-code" style="max-height:300px;overflow:auto"></pre>
+  <div class="error" id="svg-blob-generator-error"></div>
+</div>
+
+
+  <!-- ADSTERRA-INCONTENT: paste your Adsterra native/in-content ad code inside the div below -->
+  <div class="ad-slot" data-ad="incontent"></div>
+
+  <div class="info-grid">
+    <div class="info-card">
+      <h2>📖 How to use</h2>
+      <ol><li>Drag the seed slider to shuffle through blob shapes.</li><li>Adjust complexity (points) and roundness.</li><li>Pick a fill color or keep the gradient.</li><li>Click &quot;Copy SVG&quot; to grab the ready-to-use code.</li></ol>
+    </div>
+    <div class="info-card">
+      <h2>❓ Frequently asked questions</h2>
+      <div class="faq"><details><summary>Can I recreate the same blob later?</summary><p>Every seed produces a different-but-deterministic blob, so re-entering the same seed and settings recreates the exact same shape.</p></details><details><summary>Are the blobs scalable?</summary><p>Blobs are vector SVG paths — infinitely scalable and sharp at any size.</p></details><details><summary>What are blobs used for?</summary><p>Blob backgrounds, avatars, hero section art, masks for images — anything that needs an organic decorative shape.</p></details></div>
+    </div>
+  </div>
+
+  <section class="section">
+    <h2>🔗 Related tools</h2>
+    <div class="tool-grid"><a class="tool-link" href="/tools/ascii-table-reference/" data-search="ascii table reference full ascii table 0–127: decimal, hex, octal, character, control-code names and html entities — searchable. ascii table ascii codes ascii chart control characters ascii reference"><span class="t-ico">💻</span><span class="t-body"><b>ASCII Table Reference</b><small>Full ASCII table 0–127: decimal, hex, octal, character, control-code names and HTML entities…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/base64-encoder-decoder/" data-search="base64 encoder / decoder encode text to base64 or decode base64 back to text, with full utf-8 support and a file-to-data-url converter. base64 encoder base64 decoder base64 encode base64 decode file to base64"><span class="t-ico">💻</span><span class="t-body"><b>Base64 Encoder / Decoder</b><small>Encode text to Base64 or decode Base64 back to text, with full UTF-8 support and a file-to-d…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/binary-text-converter/" data-search="binary and text converter convert text to binary or hex and back, with full utf-8 awareness and strict input validation. binary to text text to binary hex to text converter"><span class="t-ico">💻</span><span class="t-body"><b>Binary and Text Converter</b><small>Convert text to binary or hex and back, with full UTF-8 awareness and strict input validatio…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/changelog-generator/" data-search="changelog generator build a keep-a-changelog markdown file: version, date, and grouped added/fixed/changed entries. changelog generator keep a changelog changelog markdown release notes version changelog"><span class="t-ico">💻</span><span class="t-body"><b>Changelog Generator</b><small>Build a Keep-a-Changelog markdown file: version, date, and grouped Added/Fixed/Changed entri…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/character-escape-reference/" data-search="character escape reference searchable reference of characters with their html entities, url encodings, and js escapes — plus a live encoder. character escape reference html entities url encode unicode escape html entity table"><span class="t-ico">💻</span><span class="t-body"><b>Character Escape Reference</b><small>Searchable reference of characters with their HTML entities, URL encodings, and JS escapes —…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/chmod-calculator/" data-search="chmod calculator tick rwx boxes for user/group/other — or type 755 — and see octal, symbolic, and the chmod command live. chmod calculator chmod 755 linux permissions octal permissions rwx calculator"><span class="t-ico">💻</span><span class="t-body"><b>chmod Calculator</b><small>Tick rwx boxes for user/group/other — or type 755 — and see octal, symbolic, and the chmod c…</small></span><span class="t-arrow">→</span></a></div>
+  </section>
+</main>
+
+<!-- ADSTERRA-FOOTER: paste your Adsterra footer/banner ad code inside the div below -->
+<div class="container"><div class="ad-slot" data-ad="footer"></div></div>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="f-grid">
+      <div>
+        <span class="brandline"><span class="logo-mark">T</span> ToolNest</span>
+        <p>Free online tools that actually work. No sign-up, no watermarks — and your files never leave your device for client-side tools.</p>
+      </div>
+      <div>
+        <h4>Popular</h4>
+        <a href="/tools/qr-code-generator/">QR Code Generator</a>
+        <a href="/tools/background-remover/">Background Remover</a>
+        <a href="/tools/pdf-merger/">PDF Merger</a>
+        <a href="/tools/word-counter/">Word Counter</a>
+      </div>
+      <div>
+        <h4>Categories</h4>
+        <a href="/#image">Image Tools</a>
+        <a href="/#pdf">PDF &amp; Documents</a>
+        <a href="/#calculators">Calculators</a>
+        <a href="/#developer">Developer Tools</a>
+      </div>
+      <div>
+        <h4>Site</h4>
+        <a href="/">Home</a>
+        <a href="/#all-tools">All Tools</a>
+        <a href="/sitemap.xml">Sitemap</a>
+      </div>
+    </div>
+    <div class="f-bottom">© 2026 ToolNest · Free tools for everyone · Made with care</div>
+  </div>
+</footer>
+
+<script src="/assets/site.js?v=5"></script>
+
+<script>
+/* SVG Blob Generator — deterministic seeded blobs, smooth Catmull-Rom paths. */
+(function () {
+  'use strict';
+  var SLUG = 'svg-blob-generator';
+  var ERR = SLUG + '-error';
+  var SIZE = 300, R = 110;
+
+  function $(id) { return document.getElementById(SLUG + '-' + id); }
+
+  /* mulberry32 PRNG — deterministic per seed */
+  function prng(seed) {
+    var a = seed >>> 0;
+    return function () {
+      a |= 0; a = (a + 0x6D2B79F5) | 0;
+      var t = Math.imul(a ^ (a >>> 15), 1 | a);
+      t = (t + Math.imul(t ^ (t >>> 7), 61 | t)) ^ t;
+      return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
+    };
+  }
+
+  function blobPath(seed, points, round, wobble) {
+    var rnd = prng(seed);
+    var cx = SIZE / 2, cy = SIZE / 2;
+    var pts = [];
+    for (var i = 0; i < points; i++) {
+      var ang = (Math.PI * 2 * i) / points;
+      var r = R * (1 - wobble + rnd() * wobble * 2);
+      pts.push([cx + r * Math.cos(ang), cy + r * Math.sin(ang)]);
+    }
+    var d = 'M ' + pts[0][0].toFixed(1) + ' ' + pts[0][1].toFixed(1);
+    for (var j = 0; j < points; j++) {
+      var p0 = pts[(j - 1 + points) % points], p1 = pts[j], p2 = pts[(j + 1) % points], p3 = pts[(j + 2) % points];
+      var k = round / 6;
+      var c1x = p1[0] + (p2[0] - p0[0]) * k, c1y = p1[1] + (p2[1] - p0[1]) * k;
+      var c2x = p2[0] - (p3[0] - p1[0]) * k, c2y = p2[1] - (p3[1] - p1[1]) * k;
+      d += ' C ' + c1x.toFixed(1) + ' ' + c1y.toFixed(1) + ', ' + c2x.toFixed(1) + ' ' + c2y.toFixed(1) + ', ' + p2[0].toFixed(1) + ' ' + p2[1].toFixed(1);
+    }
+    return d + ' Z';
+  }
+
+  function shade(hex, amt) {
+    var m = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+    if (!m) return hex;
+    var c = [parseInt(m[1], 16), parseInt(m[2], 16), parseInt(m[3], 16)].map(function (v) {
+      return Math.max(0, Math.min(255, v + amt)).toString(16).padStart(2, '0');
+    });
+    return '#' + c.join('');
+  }
+
+  function buildSvg(color, fillStyle, path) {
+    var fill = color, defs = '';
+    if (fillStyle === 'grad') {
+      defs = '<defs><linearGradient id="blobg" x1="0" y1="0" x2="1" y2="1">'
+        + '<stop offset="0" stop-color="' + shade(color, 50) + '"/><stop offset="1" stop-color="' + shade(color, -60) + '"/></linearGradient></defs>';
+      fill = 'url(#blobg)';
+    }
+    return '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ' + SIZE + ' ' + SIZE + '" style="width:280px;height:280px">' + defs + '<path d="' + path + '" fill="' + fill + '"/></svg>';
+  }
+
+  function render() {
+    TN.clearErr(ERR);
+    try {
+      var seed = parseInt($('seed').value, 10);
+      var points = parseInt($('points').value, 10);
+      var round = parseFloat($('round').value);
+      var wobble = parseFloat($('wobble').value);
+      var color = $('color').value;
+      var fillStyle = $('fill').value;
+      $('seed-v').textContent = seed;
+      $('points-v').textContent = points;
+      $('round-v').textContent = round.toFixed(2);
+      $('wobble-v').textContent = wobble.toFixed(2);
+      var path = blobPath(seed, points, round, wobble);
+      var svg = buildSvg(color, fillStyle, path);
+      $('stage').innerHTML = svg;
+      $('code').textContent = svg;
+    } catch (e) {
+      TN.setErr(ERR, 'Could not render the blob.');
+    }
+  }
+
+  function init() {
+    try {
+      if (typeof TN === 'undefined') return;
+      ['seed', 'points', 'round', 'wobble', 'color', 'fill'].forEach(function (k) {
+        TN.on(SLUG + '-' + k, 'input', render);
+        TN.on(SLUG + '-' + k, 'change', render);
+      });
+      TN.on(SLUG + '-random', 'click', function () {
+        $('seed').value = 1 + Math.floor(Math.random() * 999);
+        render();
+      });
+      TN.on(SLUG + '-copy', 'click', function () {
+        var txt = $('code').textContent;
+        if (!txt) { TN.setErr(ERR, 'Nothing to copy yet.'); return; }
+        TN.copy(txt).then(function (ok) {
+          if (ok) TN.clearErr(ERR);
+          else TN.setErr(ERR, 'Copy failed — select the code and copy manually.');
+        });
+      });
+      render();
+    } catch (e) { /* never throw on load */ }
+  }
+
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init);
+  else init();
+})();
+
+</script>
+</body>
+</html>

@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Yoga Pose Timer — Free Online | ToolNest</title>
+<meta name="description" content="Guided yoga pose timer with sun salutation sequences, per-pose countdowns, and next-pose preview.">
+<meta name="keywords" content="yoga pose timer, sun salutation timer, yoga sequence timer, yoga flow timer, guided yoga">
+<link rel="canonical" href="https://toolnest.vercel.app/tools/yoga-pose-timer/">
+<meta name="theme-color" content="#07070b">
+<meta property="og:title" content="Yoga Pose Timer — Free Online | ToolNest">
+<meta property="og:description" content="Guided yoga pose timer with sun salutation sequences, per-pose countdowns, and next-pose preview.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css?v=4">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%23e01111'/><text x='50' y='68' font-size='58' text-anchor='middle' fill='white' font-family='Arial' font-weight='bold'>T</text></svg>">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebApplication","name":"Yoga Pose Timer","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0"},"url":"https://toolnest.vercel.app/tools/yoga-pose-timer/","description":"Guided yoga pose timer with sun salutation sequences, per-pose countdowns, and next-pose preview."},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What is a sun salutation?","acceptedAnswer":{"@type":"Answer","text":"Sun Salutation A links 12 poses in a flowing sequence, traditionally repeated for several rounds to warm up the body."}},{"@type":"Question","name":"How does the guided timer work?","acceptedAnswer":{"@type":"Answer","text":"The timer counts down each pose automatically, announces the next pose, and moves on — just follow along."}},{"@type":"Question","name":"What if a pose is too hard?","acceptedAnswer":{"@type":"Answer","text":"Move at your own pace, skip any pose that hurts, and use props or bent knees whenever you need them."}}]}]}</script>
+</head>
+<body>
+<header class="site-header">
+  <div class="container">
+    <a class="logo" href="/"><span class="logo-mark">T</span> ToolNest</a>
+    <div class="header-right">
+      <form class="nav-search" action="/" method="get" role="search">
+        <span class="ns-icon">🔍</span>
+        <input type="search" name="q" placeholder="Search tools…" aria-label="Search tools" autocomplete="off">
+      </form>
+      <div class="menu-wrap">
+        <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="menuPanel" aria-label="Open menu"><span></span><span></span><span></span></button>
+        <nav class="menu-panel" id="menuPanel" aria-label="Site">
+          <a href="/">Home</a>
+          <a href="/#categories">Categories</a>
+          <a href="/#all-tools">All Tools</a>
+        </nav>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ADSTERRA-HEADER: paste your Adsterra banner ad code inside the div below -->
+<div class="container"><div class="ad-slot ad-leaderboard" data-ad="header"></div></div>
+
+<main class="container">
+  <nav class="crumbs"><a href="/">Home</a> &rsaquo; <a href="/#health">Health &amp; Fitness</a> &rsaquo; Yoga Pose Timer</nav>
+  <div class="tool-hero">
+    <h1>Yoga Pose Timer</h1>
+    <p>Guided yoga pose timer with sun salutation sequences, per-pose countdowns, and next-pose preview.</p>
+  </div>
+
+  <div class="tool-card" style="text-align:center">
+  <div class="field" style="max-width:320px;margin:0 auto 12px;text-align:left">
+    <label for="yoga-pose-timer-seq">Sequence</label>
+    <select class="input" id="yoga-pose-timer-seq">
+      <option value="sun">Sun Salutation A</option>
+      <option value="moon">Moon Salutation</option>
+    </select>
+  </div>
+  <div class="stat-cards" style="max-width:520px;margin:0 auto 12px">
+    <div class="stat-card"><div class="v" id="yoga-pose-timer-count" style="font-size:2.2em">–</div><div class="l">Seconds left</div></div>
+    <div class="stat-card"><div class="v" id="yoga-pose-timer-pose" style="font-size:1.1em">Ready</div><div class="l">Current pose</div></div>
+  </div>
+  <p class="muted" id="yoga-pose-timer-next" style="min-height:24px">Next: –</p>
+  <p class="hint" id="yoga-pose-timer-tip"></p>
+  <div class="btn-row" style="justify-content:center">
+    <button class="btn btn-primary" id="yoga-pose-timer-start">Start</button>
+    <button class="btn btn-outline" id="yoga-pose-timer-stop">Stop</button>
+  </div>
+  <p class="note" style="text-align:left">General information only — not medical advice. Consult a professional for personal guidance. Skip any pose that causes pain.</p>
+  <div class="error" id="yoga-pose-timer-error"></div>
+</div>
+
+
+  <!-- ADSTERRA-INCONTENT: paste your Adsterra native/in-content ad code inside the div below -->
+  <div class="ad-slot" data-ad="incontent"></div>
+
+  <div class="info-grid">
+    <div class="info-card">
+      <h2>📖 How to use</h2>
+      <ol><li>Pick a sequence: Sun Salutation A or Moon Salutation.</li><li>Press Start sequence.</li><li>Hold each pose until the countdown ends.</li><li>Follow the next-pose preview to flow smoothly.</li></ol>
+    </div>
+    <div class="info-card">
+      <h2>❓ Frequently asked questions</h2>
+      <div class="faq"><details><summary>What is a sun salutation?</summary><p>Sun Salutation A links 12 poses in a flowing sequence, traditionally repeated for several rounds to warm up the body.</p></details><details><summary>How does the guided timer work?</summary><p>The timer counts down each pose automatically, announces the next pose, and moves on — just follow along.</p></details><details><summary>What if a pose is too hard?</summary><p>Move at your own pace, skip any pose that hurts, and use props or bent knees whenever you need them.</p></details></div>
+    </div>
+  </div>
+
+  <section class="section">
+    <h2>🔗 Related tools</h2>
+    <div class="tool-grid"><a class="tool-link" href="/tools/baby-growth-tracker/" data-search="baby growth tracker log your baby&#39;s weight and height over time and see a growth log with typical-range guidance. baby growth tracker baby weight tracker infant growth chart baby height log newborn growth"><span class="t-ico">❤️</span><span class="t-body"><b>Baby Growth Tracker</b><small>Log your baby&#39;s weight and height over time and see a growth log with typical-range guidance…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/blood-pressure-tracker/" data-search="blood pressure tracker log blood pressure readings with automatic aha category classification, averages and history saved in your browser. blood pressure tracker bp log blood pressure chart hypertension tracker bp monitor log"><span class="t-ico">❤️</span><span class="t-body"><b>Blood Pressure Tracker</b><small>Log blood pressure readings with automatic AHA category classification, averages and history…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/body-fat-calculator/" data-search="body fat calculator estimate body fat percentage with the us navy tape-measure method and see your fitness category. body fat calculator us navy body fat body fat percentage calculator"><span class="t-ico">❤️</span><span class="t-body"><b>Body Fat Calculator</b><small>Estimate body fat percentage with the US Navy tape-measure method and see your fitness categ…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/breathing-exercise-guide/" data-search="breathing exercise guide guided breathing exercises (4-7-8, box, energize) with an animated pacer circle, phase labels, and cycle counter. breathing exercise 4-7-8 breathing box breathing breathing pacer calm breathing"><span class="t-ico">❤️</span><span class="t-body"><b>Breathing Exercise Guide</b><small>Guided breathing exercises (4-7-8, box, energize) with an animated pacer circle, phase label…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/caffeine-half-life-calculator/" data-search="caffeine half-life calculator log caffeinated drinks and see how much caffeine is still in your system using 5.5-hour half-life decay. caffeine half life caffeine calculator caffeine in system coffee caffeine tracker caffeine sleep"><span class="t-ico">❤️</span><span class="t-body"><b>Caffeine Half-Life Calculator</b><small>Log caffeinated drinks and see how much caffeine is still in your system using 5.5-hour half…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/calorie-calculator/" data-search="tdee calorie calculator estimate your daily calorie needs with the mifflin-st jeor equation and get targets for losing, maintaining or gaining weight. tdee calculator calorie calculator mifflin st jeor daily calorie needs"><span class="t-ico">❤️</span><span class="t-body"><b>TDEE Calorie Calculator</b><small>Estimate your daily calorie needs with the Mifflin-St Jeor equation and get targets for losi…</small></span><span class="t-arrow">→</span></a></div>
+  </section>
+</main>
+
+<!-- ADSTERRA-FOOTER: paste your Adsterra footer/banner ad code inside the div below -->
+<div class="container"><div class="ad-slot" data-ad="footer"></div></div>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="f-grid">
+      <div>
+        <span class="brandline"><span class="logo-mark">T</span> ToolNest</span>
+        <p>Free online tools that actually work. No sign-up, no watermarks — and your files never leave your device for client-side tools.</p>
+      </div>
+      <div>
+        <h4>Popular</h4>
+        <a href="/tools/qr-code-generator/">QR Code Generator</a>
+        <a href="/tools/background-remover/">Background Remover</a>
+        <a href="/tools/pdf-merger/">PDF Merger</a>
+        <a href="/tools/word-counter/">Word Counter</a>
+      </div>
+      <div>
+        <h4>Categories</h4>
+        <a href="/#image">Image Tools</a>
+        <a href="/#pdf">PDF &amp; Documents</a>
+        <a href="/#calculators">Calculators</a>
+        <a href="/#developer">Developer Tools</a>
+      </div>
+      <div>
+        <h4>Site</h4>
+        <a href="/">Home</a>
+        <a href="/#all-tools">All Tools</a>
+        <a href="/sitemap.xml">Sitemap</a>
+      </div>
+    </div>
+    <div class="f-bottom">© 2026 ToolNest · Free tools for everyone · Made with care</div>
+  </div>
+</footer>
+
+<script src="/assets/site.js?v=5"></script>
+
+<script>
+/* Yoga pose timer: preset sequences with per-pose countdown + next-pose display. */
+(function () {
+  'use strict';
+  var SLUG = 'yoga-pose-timer';
+  function $(id) { return document.getElementById(id); }
+  var SEQS = {
+    sun: [
+      ['Tadasana (Mountain)', 20, 'Stand tall, feet together, arms relaxed. Breathe.'],
+      ['Urdhva Hastasana', 20, 'Inhale, sweep arms overhead, lengthen the spine.'],
+      ['Uttanasana (Forward fold)', 25, 'Exhale, fold forward, soft knees, head heavy.'],
+      ['Ardha Uttanasana', 15, 'Halfway lift, flat back, fingertips to shins.'],
+      ['Plank', 25, 'Step back, body in one straight line, core braced.'],
+      ['Chaturanga / Knees-down', 15, 'Lower halfway with control, elbows hugging ribs.'],
+      ['Cobra', 20, 'Press chest forward and up, shoulders away from ears.'],
+      ['Downward Dog', 40, 'Hips high, heels reaching down, breathe deeply.'],
+      ['Ardha Uttanasana', 15, 'Step forward, halfway lift, flat back.'],
+      ['Uttanasana (Forward fold)', 20, 'Fold, release the neck.'],
+      ['Urdhva Hastasana', 15, 'Rise with a flat back, arms sweep overhead.'],
+      ['Tadasana (Mountain)', 15, 'Hands to heart. One round complete.']
+    ],
+    moon: [
+      ['Tadasana (Mountain)', 20, 'Stand tall, ground through your feet.'],
+      ['Urdhva Hastasana side bend (R)', 25, 'Arms up, lean gently right.'],
+      ['Urdhva Hastasana side bend (L)', 25, 'Lean gently left.'],
+      ['Goddess pose', 30, 'Wide stance, knees bent, arms cactus.'],
+      ['Star pose', 15, 'Straighten legs, arms wide.'],
+      ['Triangle (R)', 30, 'Hinge right, right hand to shin, left arm up.'],
+      ['Pyramid (R)', 25, 'Fold over the straight right leg.'],
+      ['Low lunge (R)', 25, 'Right knee bent, back knee down, arms up.'],
+      ['Low lunge (L)', 25, 'Switch sides.'],
+      ['Pyramid (L)', 25, 'Fold over the straight left leg.'],
+      ['Triangle (L)', 30, 'Hinge left, left hand to shin.'],
+      ['Star pose', 15, 'Arms wide, breathe.'],
+      ['Goddess pose', 25, 'Sink low once more.'],
+      ['Tadasana (Mountain)', 20, 'Hands to heart. Sequence complete.']
+    ]
+  };
+  var timer = null, idx = 0, left = 0, running = false;
+  function show(i) {
+    var seq = SEQS[$(SLUG + '-seq').value];
+    var p = seq[i];
+    $(SLUG + '-pose').textContent = (i + 1) + '/' + seq.length + ' — ' + p[0];
+    $(SLUG + '-tip').textContent = p[2];
+    var nx = seq[i + 1];
+    $(SLUG + '-next').textContent = nx ? 'Next: ' + nx[0] + ' (' + nx[1] + 's)' : 'Next: finish 🎉';
+    $(SLUG + '-count').textContent = left;
+  }
+  function stopTimer() { if (timer) { clearInterval(timer); timer = null; } running = false; }
+  function step() {
+    var seq = SEQS[$(SLUG + '-seq').value];
+    left--;
+    if (left <= 0) {
+      idx++;
+      if (idx >= seq.length) {
+        stopTimer();
+        $(SLUG + '-count').textContent = '✓';
+        $(SLUG + '-next').textContent = 'Sequence complete — well done!';
+        return;
+      }
+      left = seq[idx][1];
+    }
+    show(idx);
+  }
+  function start() {
+    stopTimer();
+    var seq = SEQS[$(SLUG + '-seq').value];
+    idx = 0; left = seq[0][1]; running = true;
+    show(0);
+    timer = setInterval(step, 1000);
+  }
+  function stop() {
+    stopTimer();
+    $(SLUG + '-next').textContent = 'Stopped. Press Start to begin again.';
+  }
+  try {
+    $(SLUG + '-start').addEventListener('click', start);
+    $(SLUG + '-stop').addEventListener('click', stop);
+    $(SLUG + '-seq').addEventListener('change', function () {
+      stopTimer();
+      $(SLUG + '-count').textContent = '–';
+      $(SLUG + '-pose').textContent = 'Ready';
+      $(SLUG + '-next').textContent = 'Next: –';
+      $(SLUG + '-tip').textContent = '';
+    });
+  } catch (e) { /* never throw on load */ }
+})();
+
+</script>
+</body>
+</html>

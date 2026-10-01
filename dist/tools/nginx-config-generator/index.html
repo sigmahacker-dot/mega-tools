@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nginx Config Generator — Free Online | ToolNest</title>
+<meta name="description" content="Enter a domain and port to get a production-ready nginx server block, with optional SSL and gzip.">
+<meta name="keywords" content="nginx config generator, nginx server block, nginx ssl config, nginx reverse proxy, nginx config">
+<link rel="canonical" href="https://toolnest.vercel.app/tools/nginx-config-generator/">
+<meta name="theme-color" content="#07070b">
+<meta property="og:title" content="Nginx Config Generator — Free Online | ToolNest">
+<meta property="og:description" content="Enter a domain and port to get a production-ready nginx server block, with optional SSL and gzip.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css?v=4">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%23e01111'/><text x='50' y='68' font-size='58' text-anchor='middle' fill='white' font-family='Arial' font-weight='bold'>T</text></svg>">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebApplication","name":"Nginx Config Generator","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0"},"url":"https://toolnest.vercel.app/tools/nginx-config-generator/","description":"Enter a domain and port to get a production-ready nginx server block, with optional SSL and gzip."},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What does the config include?","acceptedAnswer":{"@type":"Answer","text":"A server block with listen, server_name, root or proxy_pass, SSL certificates, HTTP→HTTPS redirect, and gzip."}},{"@type":"Question","name":"How do I enable HTTPS?","acceptedAnswer":{"@type":"Answer","text":"Tick “Enable SSL” and add your certificate and key paths; port 443 and the redirect are added automatically."}},{"@type":"Question","name":"Can I serve multiple domains?","acceptedAnswer":{"@type":"Answer","text":"Yes — add extra domains separated by spaces and they all go into server_name."}},{"@type":"Question","name":"Can I download the config?","acceptedAnswer":{"@type":"Answer","text":"Yes — copy it or download it as a .conf file for sites-available."}}]}]}</script>
+</head>
+<body>
+<header class="site-header">
+  <div class="container">
+    <a class="logo" href="/"><span class="logo-mark">T</span> ToolNest</a>
+    <div class="header-right">
+      <form class="nav-search" action="/" method="get" role="search">
+        <span class="ns-icon">🔍</span>
+        <input type="search" name="q" placeholder="Search tools…" aria-label="Search tools" autocomplete="off">
+      </form>
+      <div class="menu-wrap">
+        <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="menuPanel" aria-label="Open menu"><span></span><span></span><span></span></button>
+        <nav class="menu-panel" id="menuPanel" aria-label="Site">
+          <a href="/">Home</a>
+          <a href="/#categories">Categories</a>
+          <a href="/#all-tools">All Tools</a>
+        </nav>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ADSTERRA-HEADER: paste your Adsterra banner ad code inside the div below -->
+<div class="container"><div class="ad-slot ad-leaderboard" data-ad="header"></div></div>
+
+<main class="container">
+  <nav class="crumbs"><a href="/">Home</a> &rsaquo; <a href="/#developer">Developer Tools</a> &rsaquo; Nginx Config Generator</nav>
+  <div class="tool-hero">
+    <h1>Nginx Config Generator</h1>
+    <p>Enter a domain and port to get a production-ready nginx server block, with optional SSL and gzip.</p>
+  </div>
+
+  <div class="tool-card">
+  <div class="grid2">
+    <div class="field">
+      <label for="nginx-config-generator-domain">Domain(s), space separated</label>
+      <input class="input" id="nginx-config-generator-domain" value="example.com www.example.com">
+    </div>
+    <div class="field">
+      <label for="nginx-config-generator-mode">Serve mode</label>
+      <select class="input" id="nginx-config-generator-mode">
+        <option value="static">Static files (root)</option>
+        <option value="proxy">Reverse proxy (proxy_pass)</option>
+      </select>
+    </div>
+  </div>
+  <div class="grid2">
+    <div class="field">
+      <label for="nginx-config-generator-target">Document root / upstream</label>
+      <input class="input" id="nginx-config-generator-target" value="/var/www/example.com/html">
+    </div>
+    <div class="field">
+      <label for="nginx-config-generator-port">Listen port</label>
+      <input class="input" id="nginx-config-generator-port" value="80">
+    </div>
+  </div>
+  <div class="grid2">
+    <div class="field">
+      <label>Options</label>
+      <div class="btn-row">
+        <label class="checkbox-row"><input type="checkbox" id="nginx-config-generator-ssl"> Enable SSL</label>
+        <label class="checkbox-row"><input type="checkbox" id="nginx-config-generator-redirect" checked> HTTP → HTTPS redirect</label>
+        <label class="checkbox-row"><input type="checkbox" id="nginx-config-generator-gzip" checked> gzip</label>
+      </div>
+    </div>
+    <div class="field">
+      <label for="nginx-config-generator-cert">SSL certificate / key paths</label>
+      <input class="input" id="nginx-config-generator-cert" value="/etc/ssl/certs/example.com.crt" style="margin-bottom:8px">
+      <input class="input" id="nginx-config-generator-key" value="/etc/ssl/private/example.com.key">
+    </div>
+  </div>
+  <div class="btn-row">
+    <button class="btn btn-primary" id="nginx-config-generator-generate">Generate config</button>
+  </div>
+  <div class="error" id="nginx-config-generator-error"></div>
+  <div class="field">
+    <label for="nginx-config-generator-output">nginx server block</label>
+    <textarea class="textarea" id="nginx-config-generator-output" rows="18" readonly placeholder="Your config will appear here…"></textarea>
+  </div>
+  <div class="btn-row">
+    <button class="btn btn-outline" id="nginx-config-generator-copy">Copy</button>
+    <button class="btn btn-outline" id="nginx-config-generator-download">Download .conf</button>
+  </div>
+</div>
+
+
+  <!-- ADSTERRA-INCONTENT: paste your Adsterra native/in-content ad code inside the div below -->
+  <div class="ad-slot" data-ad="incontent"></div>
+
+  <div class="info-grid">
+    <div class="info-card">
+      <h2>📖 How to use</h2>
+      <ol><li>Enter your domain, port, and document root or upstream.</li><li>Toggle SSL, redirect, and gzip as needed.</li><li>Click Generate — copy or download the server block.</li></ol>
+    </div>
+    <div class="info-card">
+      <h2>❓ Frequently asked questions</h2>
+      <div class="faq"><details><summary>What does the config include?</summary><p>A server block with listen, server_name, root or proxy_pass, SSL certificates, HTTP→HTTPS redirect, and gzip.</p></details><details><summary>How do I enable HTTPS?</summary><p>Tick “Enable SSL” and add your certificate and key paths; port 443 and the redirect are added automatically.</p></details><details><summary>Can I serve multiple domains?</summary><p>Yes — add extra domains separated by spaces and they all go into server_name.</p></details><details><summary>Can I download the config?</summary><p>Yes — copy it or download it as a .conf file for sites-available.</p></details></div>
+    </div>
+  </div>
+
+  <section class="section">
+    <h2>🔗 Related tools</h2>
+    <div class="tool-grid"><a class="tool-link" href="/tools/ascii-table-reference/" data-search="ascii table reference full ascii table 0–127: decimal, hex, octal, character, control-code names and html entities — searchable. ascii table ascii codes ascii chart control characters ascii reference"><span class="t-ico">💻</span><span class="t-body"><b>ASCII Table Reference</b><small>Full ASCII table 0–127: decimal, hex, octal, character, control-code names and HTML entities…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/base64-encoder-decoder/" data-search="base64 encoder / decoder encode text to base64 or decode base64 back to text, with full utf-8 support and a file-to-data-url converter. base64 encoder base64 decoder base64 encode base64 decode file to base64"><span class="t-ico">💻</span><span class="t-body"><b>Base64 Encoder / Decoder</b><small>Encode text to Base64 or decode Base64 back to text, with full UTF-8 support and a file-to-d…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/binary-text-converter/" data-search="binary and text converter convert text to binary or hex and back, with full utf-8 awareness and strict input validation. binary to text text to binary hex to text converter"><span class="t-ico">💻</span><span class="t-body"><b>Binary and Text Converter</b><small>Convert text to binary or hex and back, with full UTF-8 awareness and strict input validatio…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/changelog-generator/" data-search="changelog generator build a keep-a-changelog markdown file: version, date, and grouped added/fixed/changed entries. changelog generator keep a changelog changelog markdown release notes version changelog"><span class="t-ico">💻</span><span class="t-body"><b>Changelog Generator</b><small>Build a Keep-a-Changelog markdown file: version, date, and grouped Added/Fixed/Changed entri…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/character-escape-reference/" data-search="character escape reference searchable reference of characters with their html entities, url encodings, and js escapes — plus a live encoder. character escape reference html entities url encode unicode escape html entity table"><span class="t-ico">💻</span><span class="t-body"><b>Character Escape Reference</b><small>Searchable reference of characters with their HTML entities, URL encodings, and JS escapes —…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/chmod-calculator/" data-search="chmod calculator tick rwx boxes for user/group/other — or type 755 — and see octal, symbolic, and the chmod command live. chmod calculator chmod 755 linux permissions octal permissions rwx calculator"><span class="t-ico">💻</span><span class="t-body"><b>chmod Calculator</b><small>Tick rwx boxes for user/group/other — or type 755 — and see octal, symbolic, and the chmod c…</small></span><span class="t-arrow">→</span></a></div>
+  </section>
+</main>
+
+<!-- ADSTERRA-FOOTER: paste your Adsterra footer/banner ad code inside the div below -->
+<div class="container"><div class="ad-slot" data-ad="footer"></div></div>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="f-grid">
+      <div>
+        <span class="brandline"><span class="logo-mark">T</span> ToolNest</span>
+        <p>Free online tools that actually work. No sign-up, no watermarks — and your files never leave your device for client-side tools.</p>
+      </div>
+      <div>
+        <h4>Popular</h4>
+        <a href="/tools/qr-code-generator/">QR Code Generator</a>
+        <a href="/tools/background-remover/">Background Remover</a>
+        <a href="/tools/pdf-merger/">PDF Merger</a>
+        <a href="/tools/word-counter/">Word Counter</a>
+      </div>
+      <div>
+        <h4>Categories</h4>
+        <a href="/#image">Image Tools</a>
+        <a href="/#pdf">PDF &amp; Documents</a>
+        <a href="/#calculators">Calculators</a>
+        <a href="/#developer">Developer Tools</a>
+      </div>
+      <div>
+        <h4>Site</h4>
+        <a href="/">Home</a>
+        <a href="/#all-tools">All Tools</a>
+        <a href="/sitemap.xml">Sitemap</a>
+      </div>
+    </div>
+    <div class="f-bottom">© 2026 ToolNest · Free tools for everyone · Made with care</div>
+  </div>
+</footer>
+
+<script src="/assets/site.js?v=5"></script>
+
+<script>
+/* Nginx Config Generator — domain/port/mode/SSL options → server block. */
+(function () {
+  'use strict';
+  var SLUG = 'nginx-config-generator';
+
+  function el(id) { return document.getElementById(id); }
+  function fail(msg) { TN.setErr(SLUG + '-error', msg); }
+  function clear() { TN.clearErr(SLUG + '-error'); }
+
+  function generate() {
+    clear();
+    var domain = el(SLUG + '-domain').value.trim();
+    if (!domain) { fail('Enter at least one domain.'); return; }
+    var mode = el(SLUG + '-mode').value;
+    var target = el(SLUG + '-target').value.trim();
+    if (!target) { fail('Enter a document root or upstream.'); return; }
+    var port = el(SLUG + '-port').value.trim() || '80';
+    var ssl = el(SLUG + '-ssl').checked;
+    var redirect = el(SLUG + '-redirect').checked && ssl;
+    var gzip = el(SLUG + '-gzip').checked;
+    var cert = el(SLUG + '-cert').value.trim();
+    var key = el(SLUG + '-key').value.trim();
+
+    var out = '';
+    if (redirect) {
+      out += 'server {\n' +
+        '    listen ' + port + ';\n' +
+        '    server_name ' + domain + ';\n' +
+        '    return 301 https://$host$request_uri;\n' +
+        '}\n\n';
+    }
+    out += 'server {\n';
+    out += '    listen ' + (ssl ? '443 ssl' : port) + ';\n';
+    if (ssl && !redirect) out += '    listen ' + port + ';\n';
+    out += '    server_name ' + domain + ';\n\n';
+    if (ssl) {
+      out += '    ssl_certificate ' + cert + ';\n' +
+        '    ssl_certificate_key ' + key + ';\n' +
+        '    ssl_protocols TLSv1.2 TLSv1.3;\n' +
+        '    ssl_prefer_server_ciphers on;\n\n';
+    }
+    if (gzip) {
+      out += '    gzip on;\n' +
+        '    gzip_types text/plain text/css application/json application/javascript text/xml;\n' +
+        '    gzip_min_length 1024;\n\n';
+    }
+    if (mode === 'static') {
+      out += '    root ' + target + ';\n' +
+        '    index index.html index.htm;\n\n' +
+        '    location / {\n' +
+        '        try_files $uri $uri/ =404;\n' +
+        '    }\n';
+    } else {
+      out += '    location / {\n' +
+        '        proxy_pass ' + target + ';\n' +
+        '        proxy_set_header Host $host;\n' +
+        '        proxy_set_header X-Real-IP $remote_addr;\n' +
+        '        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;\n' +
+        '        proxy_set_header X-Forwarded-Proto $scheme;\n' +
+        '    }\n';
+    }
+    out += '}\n';
+    el(SLUG + '-output').value = out;
+  }
+
+  try {
+    TN.on(SLUG + '-generate', 'click', generate);
+    TN.on(SLUG + '-copy', 'click', function () {
+      var v = el(SLUG + '-output').value;
+      if (!v) { fail('Generate a config first.'); return; }
+      TN.copy(v).then(function (ok) { if (!ok) fail('Copy failed — select the text manually.'); });
+    });
+    TN.on(SLUG + '-download', 'click', function () {
+      var v = el(SLUG + '-output').value;
+      if (!v) { fail('Generate a config first.'); return; }
+      TN.downloadText(v, 'nginx-site.conf', 'text/plain');
+    });
+    generate();
+  } catch (e) { /* never throw on load */ }
+})();
+
+</script>
+</body>
+</html>

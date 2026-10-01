@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Car Lease vs Buy Calculator — Free Online | ToolNest</title>
+<meta name="description" content="Compare the total out-of-pocket cost of leasing a car versus buying it over the same term, with a clear verdict.">
+<meta name="keywords" content="lease vs buy calculator, car lease vs buy calculator, should i lease or buy a car, lease buy comparison, auto lease calculator">
+<link rel="canonical" href="https://toolnest.vercel.app/tools/car-lease-vs-buy-calculator/">
+<meta name="theme-color" content="#07070b">
+<meta property="og:title" content="Car Lease vs Buy Calculator — Free Online | ToolNest">
+<meta property="og:description" content="Compare the total out-of-pocket cost of leasing a car versus buying it over the same term, with a clear verdict.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css?v=4">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%23e01111'/><text x='50' y='68' font-size='58' text-anchor='middle' fill='white' font-family='Arial' font-weight='bold'>T</text></svg>">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebApplication","name":"Car Lease vs Buy Calculator","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0"},"url":"https://toolnest.vercel.app/tools/car-lease-vs-buy-calculator/","description":"Compare the total out-of-pocket cost of leasing a car versus buying it over the same term, with a clear verdict."},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How are the two totals calculated?","acceptedAnswer":{"@type":"Answer","text":"Leasing costs: down payment + (monthly payment × months) + disposition fee. Buying costs: down payment + (loan payment × months) − estimated resale value."}},{"@type":"Question","name":"Does this include mileage overage fees?","acceptedAnswer":{"@type":"Answer","text":"No — mileage overage penalties, wear-and-tear charges and lease taxes vary by contract and are not modeled here."}},{"@type":"Question","name":"When does leasing make more sense?","acceptedAnswer":{"@type":"Answer","text":"Buying usually wins if you keep cars long after the loan is paid; leasing wins if you always want a newer car with lower monthly payments and no resale hassle."}}]}]}</script>
+</head>
+<body>
+<header class="site-header">
+  <div class="container">
+    <a class="logo" href="/"><span class="logo-mark">T</span> ToolNest</a>
+    <div class="header-right">
+      <form class="nav-search" action="/" method="get" role="search">
+        <span class="ns-icon">🔍</span>
+        <input type="search" name="q" placeholder="Search tools…" aria-label="Search tools" autocomplete="off">
+      </form>
+      <div class="menu-wrap">
+        <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="menuPanel" aria-label="Open menu"><span></span><span></span><span></span></button>
+        <nav class="menu-panel" id="menuPanel" aria-label="Site">
+          <a href="/">Home</a>
+          <a href="/#categories">Categories</a>
+          <a href="/#all-tools">All Tools</a>
+        </nav>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ADSTERRA-HEADER: paste your Adsterra banner ad code inside the div below -->
+<div class="container"><div class="ad-slot ad-leaderboard" data-ad="header"></div></div>
+
+<main class="container">
+  <nav class="crumbs"><a href="/">Home</a> &rsaquo; <a href="/#finance">Finance &amp; Money</a> &rsaquo; Car Lease vs Buy Calculator</nav>
+  <div class="tool-hero">
+    <h1>Car Lease vs Buy Calculator</h1>
+    <p>Compare the total out-of-pocket cost of leasing a car versus buying it over the same term, with a clear verdict.</p>
+  </div>
+
+  <div class="tool-card">
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px;margin-bottom:12px">
+    <fieldset style="border:1px solid #ddd;border-radius:8px;padding:12px">
+      <legend><b>Lease</b></legend>
+      <div class="field"><label for="car-lease-vs-buy-calculator-ldown">Down payment ($)</label><input class="input" id="car-lease-vs-buy-calculator-ldown" type="number" min="0" step="any" value="2000"></div>
+      <div class="field"><label for="car-lease-vs-buy-calculator-lmonthly">Monthly payment ($)</label><input class="input" id="car-lease-vs-buy-calculator-lmonthly" type="number" min="0" step="any" value="350"></div>
+      <div class="field"><label for="car-lease-vs-buy-calculator-lmonths">Lease months</label><input class="input" id="car-lease-vs-buy-calculator-lmonths" type="number" min="1" step="1" value="36"></div>
+      <div class="field"><label for="car-lease-vs-buy-calculator-ldisp">Disposition fee ($)</label><input class="input" id="car-lease-vs-buy-calculator-ldisp" type="number" min="0" step="any" value="400"></div>
+    </fieldset>
+    <fieldset style="border:1px solid #ddd;border-radius:8px;padding:12px">
+      <legend><b>Buy</b></legend>
+      <div class="field"><label for="car-lease-vs-buy-calculator-bprice">Purchase price ($)</label><input class="input" id="car-lease-vs-buy-calculator-bprice" type="number" min="0" step="any" value="30000"></div>
+      <div class="field"><label for="car-lease-vs-buy-calculator-bdown">Down payment ($)</label><input class="input" id="car-lease-vs-buy-calculator-bdown" type="number" min="0" step="any" value="3000"></div>
+      <div class="field"><label for="car-lease-vs-buy-calculator-brate">Loan rate (% APR)</label><input class="input" id="car-lease-vs-buy-calculator-brate" type="number" min="0" step="any" value="7"></div>
+      <div class="field"><label for="car-lease-vs-buy-calculator-bterm">Loan term (months)</label><input class="input" id="car-lease-vs-buy-calculator-bterm" type="number" min="1" step="1" value="60"></div>
+      <div class="field"><label for="car-lease-vs-buy-calculator-bresale">Resale value after term ($)</label><input class="input" id="car-lease-vs-buy-calculator-bresale" type="number" min="0" step="any" value="18000"></div>
+    </fieldset>
+  </div>
+  <div class="btn-row"><button class="btn btn-primary" id="car-lease-vs-buy-calculator-calc">Compare</button></div>
+  <div class="error" id="car-lease-vs-buy-calculator-error"></div>
+  <div class="stat-cards">
+    <div class="stat-card"><div class="v" id="car-lease-vs-buy-calculator-lease">—</div><div class="l">Total lease cost</div></div>
+    <div class="stat-card"><div class="v" id="car-lease-vs-buy-calculator-buy">—</div><div class="l">Total buy cost</div></div>
+    <div class="stat-card"><div class="v" id="car-lease-vs-buy-calculator-diff">—</div><div class="l">Difference</div></div>
+  </div>
+  <p class="note" id="car-lease-vs-buy-calculator-verdict"></p>
+</div>
+
+  <!-- ADSTERRA-INCONTENT: paste your Adsterra native/in-content ad code inside the div below -->
+  <div class="ad-slot" data-ad="incontent"></div>
+
+  <div class="info-grid">
+    <div class="info-card">
+      <h2>📖 How to use</h2>
+      <ol><li>Enter the lease terms: down payment, monthly payment, months and disposition fee.</li><li>Enter the buy terms: price, down payment, rate, loan term and estimated resale value.</li><li>Read the total cost of each and the verdict.</li></ol>
+    </div>
+    <div class="info-card">
+      <h2>❓ Frequently asked questions</h2>
+      <div class="faq"><details><summary>How are the two totals calculated?</summary><p>Leasing costs: down payment + (monthly payment × months) + disposition fee. Buying costs: down payment + (loan payment × months) − estimated resale value.</p></details><details><summary>Does this include mileage overage fees?</summary><p>No — mileage overage penalties, wear-and-tear charges and lease taxes vary by contract and are not modeled here.</p></details><details><summary>When does leasing make more sense?</summary><p>Buying usually wins if you keep cars long after the loan is paid; leasing wins if you always want a newer car with lower monthly payments and no resale hassle.</p></details></div>
+    </div>
+  </div>
+
+  <section class="section">
+    <h2>🔗 Related tools</h2>
+    <div class="tool-grid"><a class="tool-link" href="/tools/apr-calculator/" data-search="apr calculator solve the true annual percentage rate of a loan by bisection — including upfront fees — and compare it with the nominal rate. apr calculator true apr calculator annual percentage rate calculator loan apr calculator nominal vs effective rate"><span class="t-ico">💰</span><span class="t-body"><b>APR Calculator</b><small>Solve the true Annual Percentage Rate of a loan by bisection — including upfront fees — and …</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/balloon-payment-calculator/" data-search="balloon payment calculator compute the monthly payment on a balloon loan and the lump-sum balloon balance still due at the end of the term. balloon payment calculator balloon loan calculator balloon mortgage calculator balloon balance calculator lump sum loan calculator"><span class="t-ico">💰</span><span class="t-body"><b>Balloon Payment Calculator</b><small>Compute the monthly payment on a balloon loan and the lump-sum balloon balance still due at …</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/break-even-calculator/" data-search="break-even calculator find your break-even point in units and revenue from fixed costs, price per unit and variable cost per unit. break even calculator breakeven point calculator break even analysis units to break even business break even calculator"><span class="t-ico">💰</span><span class="t-body"><b>Break-Even Calculator</b><small>Find your break-even point in units and revenue from fixed costs, price per unit and variabl…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/budget-50-30-20-calculator/" data-search="50/30/20 budget calculator split your take-home pay into needs (50%), wants (30%) and savings (20%), then compare with your actual spending. 50 30 20 budget budget calculator needs wants savings monthly budget planner budget rule calculator"><span class="t-ico">💰</span><span class="t-body"><b>50/30/20 Budget Calculator</b><small>Split your take-home pay into needs (50%), wants (30%) and savings (20%), then compare with …</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/business-profit-margin-calculator/" data-search="business profit margin calculator compute gross, operating and net profit margins from revenue, cost of goods sold and operating expenses. profit margin calculator business profit calculator gross margin calculator net margin calculator operating margin calculator"><span class="t-ico">💰</span><span class="t-body"><b>Business Profit Margin Calculator</b><small>Compute gross, operating and net profit margins from revenue, cost of goods sold and operati…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/cap-rate-calculator/" data-search="cap rate calculator convert between net operating income, property value and capitalization rate in both directions. cap rate calculator capitalization rate calculator noi calculator property valuation cap rate real estate cap rate"><span class="t-ico">💰</span><span class="t-body"><b>Cap Rate Calculator</b><small>Convert between net operating income, property value and capitalization rate in both directi…</small></span><span class="t-arrow">→</span></a></div>
+  </section>
+</main>
+
+<!-- ADSTERRA-FOOTER: paste your Adsterra footer/banner ad code inside the div below -->
+<div class="container"><div class="ad-slot" data-ad="footer"></div></div>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="f-grid">
+      <div>
+        <span class="brandline"><span class="logo-mark">T</span> ToolNest</span>
+        <p>Free online tools that actually work. No sign-up, no watermarks — and your files never leave your device for client-side tools.</p>
+      </div>
+      <div>
+        <h4>Popular</h4>
+        <a href="/tools/qr-code-generator/">QR Code Generator</a>
+        <a href="/tools/background-remover/">Background Remover</a>
+        <a href="/tools/pdf-merger/">PDF Merger</a>
+        <a href="/tools/word-counter/">Word Counter</a>
+      </div>
+      <div>
+        <h4>Categories</h4>
+        <a href="/#image">Image Tools</a>
+        <a href="/#pdf">PDF &amp; Documents</a>
+        <a href="/#calculators">Calculators</a>
+        <a href="/#developer">Developer Tools</a>
+      </div>
+      <div>
+        <h4>Site</h4>
+        <a href="/">Home</a>
+        <a href="/#all-tools">All Tools</a>
+        <a href="/sitemap.xml">Sitemap</a>
+      </div>
+    </div>
+    <div class="f-bottom">© 2026 ToolNest · Free tools for everyone · Made with care</div>
+  </div>
+</footer>
+
+<script src="/assets/site.js?v=5"></script>
+
+<script>
+/* Car lease vs buy calculator — total out-of-pocket over the same horizon. */
+(function () {
+  'use strict';
+  var SLUG = 'car-lease-vs-buy-calculator';
+  function $(id) { return document.getElementById(id); }
+  function num(id) { var v = parseFloat(String($(id).value).replace(/,/g, '').trim()); return isNaN(v) ? NaN : v; }
+  function money(n) { if (!isFinite(n)) return '—'; return '$' + n.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 }); }
+  function calc() {
+    TN.clearErr(SLUG + '-error');
+    var ldown = num(SLUG + '-ldown'), lmo = num(SLUG + '-lmonthly'), lmo_n = Math.round(num(SLUG + '-lmonths')), ldisp = num(SLUG + '-ldisp');
+    var bprice = num(SLUG + '-bprice'), bdown = num(SLUG + '-bdown'), brate = num(SLUG + '-brate');
+    var bterm = Math.round(num(SLUG + '-bterm')), bresale = num(SLUG + '-bresale');
+    var bad = [ldown, lmo, lmo_n, ldisp, bprice, bdown, brate, bterm, bresale].some(function (v) { return isNaN(v); }) ||
+      ldown < 0 || lmo < 0 || lmo_n <= 0 || ldisp < 0 || bprice <= 0 || bdown < 0 || brate < 0 || bterm <= 0 || bresale < 0;
+    if (bad || bdown >= bprice) {
+      TN.setErr(SLUG + '-error', 'Enter valid lease and buy figures (buy down payment must be below price).');
+      return;
+    }
+    var leaseTotal = ldown + lmo * lmo_n + ldisp;
+    var fin = bprice - bdown, r = brate / 1200;
+    var pmt = r > 0 ? fin * r / (1 - Math.pow(1 + r, -bterm)) : fin / bterm;
+    var buyTotal = bdown + pmt * bterm - bresale;
+    var diff = leaseTotal - buyTotal;
+    $(SLUG + '-lease').textContent = money(leaseTotal);
+    $(SLUG + '-buy').textContent = money(buyTotal);
+    $(SLUG + '-diff').textContent = money(Math.abs(diff));
+    var v = $(SLUG + '-verdict');
+    if (diff < 0) v.textContent = 'Verdict: Leasing costs ' + money(-diff) + ' LESS out of pocket than buying over this term.';
+    else if (diff > 0) v.textContent = 'Verdict: Buying costs ' + money(diff) + ' LESS out of pocket than leasing over this term.';
+    else v.textContent = 'Verdict: Dead even — both options cost the same out of pocket.';
+  }
+  try {
+    TN.on(SLUG + '-calc', 'click', calc);
+    var els = document.querySelectorAll('input[id^="' + SLUG + '-"]');
+    for (var i = 0; i < els.length; i++) { els[i].addEventListener('input', calc); }
+    calc();
+  } catch (e) { /* never throw on load */ }
+})();
+</script>
+</body>
+</html>

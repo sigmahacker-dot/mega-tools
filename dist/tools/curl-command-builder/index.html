@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>cURL Command Builder — Free Online | ToolNest</title>
+<meta name="description" content="Fill in method, URL, headers, and body to get a copy-paste curl command with safe shell quoting.">
+<meta name="keywords" content="curl command builder, curl generator, build curl request, curl post, curl example">
+<link rel="canonical" href="https://toolnest.vercel.app/tools/curl-command-builder/">
+<meta name="theme-color" content="#07070b">
+<meta property="og:title" content="cURL Command Builder — Free Online | ToolNest">
+<meta property="og:description" content="Fill in method, URL, headers, and body to get a copy-paste curl command with safe shell quoting.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css?v=4">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%23e01111'/><text x='50' y='68' font-size='58' text-anchor='middle' fill='white' font-family='Arial' font-weight='bold'>T</text></svg>">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebApplication","name":"cURL Command Builder","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0"},"url":"https://toolnest.vercel.app/tools/curl-command-builder/","description":"Fill in method, URL, headers, and body to get a copy-paste curl command with safe shell quoting."},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How are values quoted?","acceptedAnswer":{"@type":"Answer","text":"Single quotes are used; embedded single quotes are escaped the POSIX way ('\\'')."}},{"@type":"Question","name":"Can I add multiple headers?","acceptedAnswer":{"@type":"Answer","text":"Yes — rows with an empty name are skipped, and --data is only added when a body exists."}},{"@type":"Question","name":"Does it support following redirects?","acceptedAnswer":{"@type":"Answer","text":"Yes — tick the option and -L is added."}},{"@type":"Question","name":"What about special characters in values?","acceptedAnswer":{"@type":"Answer","text":"Paste the values as-is; the builder quotes everything safely."}}]}]}</script>
+</head>
+<body>
+<header class="site-header">
+  <div class="container">
+    <a class="logo" href="/"><span class="logo-mark">T</span> ToolNest</a>
+    <div class="header-right">
+      <form class="nav-search" action="/" method="get" role="search">
+        <span class="ns-icon">🔍</span>
+        <input type="search" name="q" placeholder="Search tools…" aria-label="Search tools" autocomplete="off">
+      </form>
+      <div class="menu-wrap">
+        <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="menuPanel" aria-label="Open menu"><span></span><span></span><span></span></button>
+        <nav class="menu-panel" id="menuPanel" aria-label="Site">
+          <a href="/">Home</a>
+          <a href="/#categories">Categories</a>
+          <a href="/#all-tools">All Tools</a>
+        </nav>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ADSTERRA-HEADER: paste your Adsterra banner ad code inside the div below -->
+<div class="container"><div class="ad-slot ad-leaderboard" data-ad="header"></div></div>
+
+<main class="container">
+  <nav class="crumbs"><a href="/">Home</a> &rsaquo; <a href="/#developer">Developer Tools</a> &rsaquo; cURL Command Builder</nav>
+  <div class="tool-hero">
+    <h1>cURL Command Builder</h1>
+    <p>Fill in method, URL, headers, and body to get a copy-paste curl command with safe shell quoting.</p>
+  </div>
+
+  <div class="tool-card">
+  <div class="grid2">
+    <div class="field">
+      <label for="curl-command-builder-method">Method</label>
+      <select class="input" id="curl-command-builder-method">
+        <option>GET</option><option>POST</option><option>PUT</option><option>PATCH</option><option>DELETE</option><option>HEAD</option><option>OPTIONS</option>
+      </select>
+    </div>
+    <div class="field">
+      <label for="curl-command-builder-url">URL</label>
+      <input class="input" id="curl-command-builder-url" placeholder="https://api.example.com/users">
+    </div>
+  </div>
+  <div class="field">
+    <label>Headers</label>
+    <div id="curl-command-builder-headers"></div>
+    <div class="btn-row" style="margin-top:8px"><button class="btn btn-outline" id="curl-command-builder-add">+ Add header</button></div>
+  </div>
+  <div class="field">
+    <label for="curl-command-builder-body">Request body</label>
+    <textarea class="textarea" id="curl-command-builder-body" rows="3" placeholder='{"name": "Ada"}'></textarea>
+  </div>
+  <div class="field">
+    <label>Options</label>
+    <div class="btn-row">
+      <label class="checkbox-row"><input type="checkbox" id="curl-command-builder-follow"> Follow redirects (-L)</label>
+      <label class="checkbox-row"><input type="checkbox" id="curl-command-builder-include"> Include response headers (-i)</label>
+      <label class="checkbox-row"><input type="checkbox" id="curl-command-builder-insecure"> Allow insecure SSL (-k)</label>
+    </div>
+  </div>
+  <div class="btn-row">
+    <button class="btn btn-primary" id="curl-command-builder-build">Build curl command</button>
+  </div>
+  <div class="error" id="curl-command-builder-error"></div>
+  <div class="field">
+    <label for="curl-command-builder-output">Command</label>
+    <div class="copy-row">
+      <code class="code" id="curl-command-builder-output" style="flex:1;word-break:break-all"></code>
+      <button class="btn btn-outline" id="curl-command-builder-copy">Copy</button>
+    </div>
+  </div>
+</div>
+
+
+  <!-- ADSTERRA-INCONTENT: paste your Adsterra native/in-content ad code inside the div below -->
+  <div class="ad-slot" data-ad="incontent"></div>
+
+  <div class="info-grid">
+    <div class="info-card">
+      <h2>📖 How to use</h2>
+      <ol><li>Choose the HTTP method and enter the URL.</li><li>Add headers and a request body as needed.</li><li>Click Build — copy the curl command.</li></ol>
+    </div>
+    <div class="info-card">
+      <h2>❓ Frequently asked questions</h2>
+      <div class="faq"><details><summary>How are values quoted?</summary><p>Single quotes are used; embedded single quotes are escaped the POSIX way (&#39;\&#39;&#39;).</p></details><details><summary>Can I add multiple headers?</summary><p>Yes — rows with an empty name are skipped, and --data is only added when a body exists.</p></details><details><summary>Does it support following redirects?</summary><p>Yes — tick the option and -L is added.</p></details><details><summary>What about special characters in values?</summary><p>Paste the values as-is; the builder quotes everything safely.</p></details></div>
+    </div>
+  </div>
+
+  <section class="section">
+    <h2>🔗 Related tools</h2>
+    <div class="tool-grid"><a class="tool-link" href="/tools/ascii-table-reference/" data-search="ascii table reference full ascii table 0–127: decimal, hex, octal, character, control-code names and html entities — searchable. ascii table ascii codes ascii chart control characters ascii reference"><span class="t-ico">💻</span><span class="t-body"><b>ASCII Table Reference</b><small>Full ASCII table 0–127: decimal, hex, octal, character, control-code names and HTML entities…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/base64-encoder-decoder/" data-search="base64 encoder / decoder encode text to base64 or decode base64 back to text, with full utf-8 support and a file-to-data-url converter. base64 encoder base64 decoder base64 encode base64 decode file to base64"><span class="t-ico">💻</span><span class="t-body"><b>Base64 Encoder / Decoder</b><small>Encode text to Base64 or decode Base64 back to text, with full UTF-8 support and a file-to-d…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/binary-text-converter/" data-search="binary and text converter convert text to binary or hex and back, with full utf-8 awareness and strict input validation. binary to text text to binary hex to text converter"><span class="t-ico">💻</span><span class="t-body"><b>Binary and Text Converter</b><small>Convert text to binary or hex and back, with full UTF-8 awareness and strict input validatio…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/changelog-generator/" data-search="changelog generator build a keep-a-changelog markdown file: version, date, and grouped added/fixed/changed entries. changelog generator keep a changelog changelog markdown release notes version changelog"><span class="t-ico">💻</span><span class="t-body"><b>Changelog Generator</b><small>Build a Keep-a-Changelog markdown file: version, date, and grouped Added/Fixed/Changed entri…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/character-escape-reference/" data-search="character escape reference searchable reference of characters with their html entities, url encodings, and js escapes — plus a live encoder. character escape reference html entities url encode unicode escape html entity table"><span class="t-ico">💻</span><span class="t-body"><b>Character Escape Reference</b><small>Searchable reference of characters with their HTML entities, URL encodings, and JS escapes —…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/chmod-calculator/" data-search="chmod calculator tick rwx boxes for user/group/other — or type 755 — and see octal, symbolic, and the chmod command live. chmod calculator chmod 755 linux permissions octal permissions rwx calculator"><span class="t-ico">💻</span><span class="t-body"><b>chmod Calculator</b><small>Tick rwx boxes for user/group/other — or type 755 — and see octal, symbolic, and the chmod c…</small></span><span class="t-arrow">→</span></a></div>
+  </section>
+</main>
+
+<!-- ADSTERRA-FOOTER: paste your Adsterra footer/banner ad code inside the div below -->
+<div class="container"><div class="ad-slot" data-ad="footer"></div></div>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="f-grid">
+      <div>
+        <span class="brandline"><span class="logo-mark">T</span> ToolNest</span>
+        <p>Free online tools that actually work. No sign-up, no watermarks — and your files never leave your device for client-side tools.</p>
+      </div>
+      <div>
+        <h4>Popular</h4>
+        <a href="/tools/qr-code-generator/">QR Code Generator</a>
+        <a href="/tools/background-remover/">Background Remover</a>
+        <a href="/tools/pdf-merger/">PDF Merger</a>
+        <a href="/tools/word-counter/">Word Counter</a>
+      </div>
+      <div>
+        <h4>Categories</h4>
+        <a href="/#image">Image Tools</a>
+        <a href="/#pdf">PDF &amp; Documents</a>
+        <a href="/#calculators">Calculators</a>
+        <a href="/#developer">Developer Tools</a>
+      </div>
+      <div>
+        <h4>Site</h4>
+        <a href="/">Home</a>
+        <a href="/#all-tools">All Tools</a>
+        <a href="/sitemap.xml">Sitemap</a>
+      </div>
+    </div>
+    <div class="f-bottom">© 2026 ToolNest · Free tools for everyone · Made with care</div>
+  </div>
+</footer>
+
+<script src="/assets/site.js?v=5"></script>
+
+<script>
+/* cURL Command Builder — method/URL/headers/body → safely quoted curl command. */
+(function () {
+  'use strict';
+  var SLUG = 'curl-command-builder';
+
+  function el(id) { return document.getElementById(id); }
+  function fail(msg) { TN.setErr(SLUG + '-error', msg); }
+  function clear() { TN.clearErr(SLUG + '-error'); }
+
+  function shQuote(s) {
+    if (/^[A-Za-z0-9_@%+=:,./-]+$/.test(s)) return s;
+    return "'" + s.replace(/'/g, "'\\''") + "'";
+  }
+
+  function addRow(n, v) {
+    var wrap = document.createElement('div');
+    wrap.style.cssText = 'display:flex;gap:8px;margin-bottom:8px';
+    var ni = document.createElement('input');
+    ni.className = 'input'; ni.placeholder = 'Header name'; ni.value = n || '';
+    ni.setAttribute('aria-label', 'Header name');
+    var vi = document.createElement('input');
+    vi.className = 'input'; vi.placeholder = 'Header value'; vi.value = v || '';
+    vi.style.flex = '2';
+    vi.setAttribute('aria-label', 'Header value');
+    var rm = document.createElement('button');
+    rm.className = 'btn btn-outline'; rm.textContent = '✕';
+    rm.setAttribute('aria-label', 'Remove header');
+    rm.addEventListener('click', function () { wrap.remove(); });
+    wrap.appendChild(ni); wrap.appendChild(vi); wrap.appendChild(rm);
+    el(SLUG + '-headers').appendChild(wrap);
+  }
+
+  function build() {
+    clear();
+    var url = el(SLUG + '-url').value.trim();
+    if (!url) { fail('Enter a URL.'); return; }
+    var method = el(SLUG + '-method').value;
+    var parts = ['curl'];
+    if (method !== 'GET') parts.push('-X', method);
+    if (el(SLUG + '-follow').checked) parts.push('-L');
+    if (el(SLUG + '-include').checked) parts.push('-i');
+    if (el(SLUG + '-insecure').checked) parts.push('-k');
+    var rows = el(SLUG + '-headers').children;
+    for (var i = 0; i < rows.length; i++) {
+      var ins = rows[i].querySelectorAll('input');
+      var n = ins[0].value.trim(), v = ins[1].value;
+      if (!n) continue;
+      parts.push('-H', shQuote(n + ': ' + v));
+    }
+    var body = el(SLUG + '-body').value;
+    if (body) parts.push('--data', shQuote(body));
+    parts.push(shQuote(url));
+    el(SLUG + '-output').textContent = parts.join(' ');
+  }
+
+  try {
+    TN.on(SLUG + '-add', 'click', function () { addRow('', ''); });
+    TN.on(SLUG + '-build', 'click', build);
+    TN.on(SLUG + '-copy', 'click', function () {
+      var v = el(SLUG + '-output').textContent;
+      if (!v) { fail('Build a command first.'); return; }
+      TN.copy(v).then(function (ok) { if (!ok) fail('Copy failed — select the text manually.'); });
+    });
+    addRow('Content-Type', 'application/json');
+    addRow('Authorization', 'Bearer TOKEN');
+  } catch (e) { /* never throw on load */ }
+})();
+
+</script>
+</body>
+</html>

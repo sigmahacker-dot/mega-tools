@@ -1,0 +1,39 @@
+<div class="tool-card">
+  <h2>PDF Text Compare</h2>
+  <p class="muted">Extract text from two PDFs and diff them line by line.</p>
+  <div class="grid2">
+    <div class="field">
+      <label for="pdf-text-compare-a">Document A</label>
+      <input type="file" class="input" id="pdf-text-compare-a" accept=".pdf,application/pdf">
+    </div>
+    <div class="field">
+      <label for="pdf-text-compare-b">Document B</label>
+      <input type="file" class="input" id="pdf-text-compare-b" accept=".pdf,application/pdf">
+    </div>
+  </div>
+  <div id="pdf-text-compare-info" class="muted" style="margin:8px 0"></div>
+  <div class="btn-row">
+    <button class="btn btn-primary" id="pdf-text-compare-go">Compare</button>
+    <button class="btn btn-outline" id="pdf-text-compare-clear">Clear</button>
+  </div>
+  <div class="stat-cards hidden" id="pdf-text-compare-stats" style="margin-top:12px">
+    <div class="stat-card"><div class="v" id="pdf-text-compare-added" style="color:#16a34a">0</div><div class="l">Lines added</div></div>
+    <div class="stat-card"><div class="v" id="pdf-text-compare-removed" style="color:#dc2626">0</div><div class="l">Lines removed</div></div>
+    <div class="stat-card"><div class="v" id="pdf-text-compare-same">0</div><div class="l">Lines unchanged</div></div>
+  </div>
+  <h3 class="mt">Side-by-side diff</h3>
+  <div class="preview" style="padding:0;overflow:hidden">
+    <div class="grid2" style="margin:0;gap:0">
+      <div style="border-right:1px solid #e5e7eb;max-height:420px;overflow:auto">
+        <div class="muted" style="padding:8px 12px;position:sticky;top:0;background:#f8fafc;border-bottom:1px solid #e5e7eb"><strong>Document A</strong></div>
+        <pre id="pdf-text-compare-left" style="padding:8px 12px;margin:0;white-space:pre-wrap;word-break:break-word;font-size:12.5px;line-height:1.6"></pre>
+      </div>
+      <div style="max-height:420px;overflow:auto">
+        <div class="muted" style="padding:8px 12px;position:sticky;top:0;background:#f8fafc;border-bottom:1px solid #e5e7eb"><strong>Document B</strong></div>
+        <pre id="pdf-text-compare-right" style="padding:8px 12px;margin:0;white-space:pre-wrap;word-break:break-word;font-size:12.5px;line-height:1.6"></pre>
+      </div>
+    </div>
+  </div>
+  <div class="error" id="pdf-text-compare-error"></div>
+  <p class="note">Compares extracted text (not scanned images). Files never leave your device.</p>
+</div>

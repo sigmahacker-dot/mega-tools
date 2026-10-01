@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ULID Generator — Free Online | ToolNest</title>
+<meta name="description" content="Generate real ULIDs: 48-bit millisecond timestamp plus 80-bit crypto randomness in Crockford base32.">
+<meta name="keywords" content="ulid generator, ulid, unique id, sortable id, uuid alternative">
+<link rel="canonical" href="https://toolnest.vercel.app/tools/ulid-generator/">
+<meta name="theme-color" content="#07070b">
+<meta property="og:title" content="ULID Generator — Free Online | ToolNest">
+<meta property="og:description" content="Generate real ULIDs: 48-bit millisecond timestamp plus 80-bit crypto randomness in Crockford base32.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css?v=4">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%23e01111'/><text x='50' y='68' font-size='58' text-anchor='middle' fill='white' font-family='Arial' font-weight='bold'>T</text></svg>">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebApplication","name":"ULID Generator","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0"},"url":"https://toolnest.vercel.app/tools/ulid-generator/","description":"Generate real ULIDs: 48-bit millisecond timestamp plus 80-bit crypto randomness in Crockford base32."},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How is a ULID built?","acceptedAnswer":{"@type":"Answer","text":"The first 10 chars encode the millisecond timestamp; the last 16 are 80 bits from crypto.getRandomValues."}},{"@type":"Question","name":"Which alphabet is used?","acceptedAnswer":{"@type":"Answer","text":"Crockford base32 (0-9, A-Z minus I, L, O, U) — 26 characters, URL-safe and case-insensitive."}},{"@type":"Question","name":"Can I generate many at once?","acceptedAnswer":{"@type":"Answer","text":"Yes — batch-generate up to 500 at once, then copy or download them."}},{"@type":"Question","name":"Is the randomness secure?","acceptedAnswer":{"@type":"Answer","text":"It uses the WebCrypto API, which is cryptographically secure."}}]}]}</script>
+</head>
+<body>
+<header class="site-header">
+  <div class="container">
+    <a class="logo" href="/"><span class="logo-mark">T</span> ToolNest</a>
+    <div class="header-right">
+      <form class="nav-search" action="/" method="get" role="search">
+        <span class="ns-icon">🔍</span>
+        <input type="search" name="q" placeholder="Search tools…" aria-label="Search tools" autocomplete="off">
+      </form>
+      <div class="menu-wrap">
+        <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="menuPanel" aria-label="Open menu"><span></span><span></span><span></span></button>
+        <nav class="menu-panel" id="menuPanel" aria-label="Site">
+          <a href="/">Home</a>
+          <a href="/#categories">Categories</a>
+          <a href="/#all-tools">All Tools</a>
+        </nav>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ADSTERRA-HEADER: paste your Adsterra banner ad code inside the div below -->
+<div class="container"><div class="ad-slot ad-leaderboard" data-ad="header"></div></div>
+
+<main class="container">
+  <nav class="crumbs"><a href="/">Home</a> &rsaquo; <a href="/#developer">Developer Tools</a> &rsaquo; ULID Generator</nav>
+  <div class="tool-hero">
+    <h1>ULID Generator</h1>
+    <p>Generate real ULIDs: 48-bit millisecond timestamp plus 80-bit crypto randomness in Crockford base32.</p>
+  </div>
+
+  <div class="tool-card">
+  <div class="grid2">
+    <div class="field">
+      <label for="ulid-generator-count">How many? (1–500)</label>
+      <input type="number" class="input" id="ulid-generator-count" min="1" max="500" value="10">
+    </div>
+    <div class="field">
+      <label>&nbsp;</label>
+      <div class="btn-row"><button class="btn btn-primary" id="ulid-generator-generate">Generate ULIDs</button></div>
+    </div>
+  </div>
+  <div class="error" id="ulid-generator-error"></div>
+  <div class="field">
+    <label for="ulid-generator-output">Generated ULIDs</label>
+    <textarea class="textarea" id="ulid-generator-output" rows="10" readonly placeholder="Your ULIDs will appear here…"></textarea>
+  </div>
+  <div class="btn-row">
+    <button class="btn btn-outline" id="ulid-generator-copy">Copy all</button>
+    <button class="btn btn-outline" id="ulid-generator-download">Download .txt</button>
+  </div>
+</div>
+
+
+  <!-- ADSTERRA-INCONTENT: paste your Adsterra native/in-content ad code inside the div below -->
+  <div class="ad-slot" data-ad="incontent"></div>
+
+  <div class="info-grid">
+    <div class="info-card">
+      <h2>📖 How to use</h2>
+      <ol><li>Choose how many ULIDs to generate (1–500).</li><li>Click Generate ULIDs.</li><li>Copy them or download as a text file.</li></ol>
+    </div>
+    <div class="info-card">
+      <h2>❓ Frequently asked questions</h2>
+      <div class="faq"><details><summary>How is a ULID built?</summary><p>The first 10 chars encode the millisecond timestamp; the last 16 are 80 bits from crypto.getRandomValues.</p></details><details><summary>Which alphabet is used?</summary><p>Crockford base32 (0-9, A-Z minus I, L, O, U) — 26 characters, URL-safe and case-insensitive.</p></details><details><summary>Can I generate many at once?</summary><p>Yes — batch-generate up to 500 at once, then copy or download them.</p></details><details><summary>Is the randomness secure?</summary><p>It uses the WebCrypto API, which is cryptographically secure.</p></details></div>
+    </div>
+  </div>
+
+  <section class="section">
+    <h2>🔗 Related tools</h2>
+    <div class="tool-grid"><a class="tool-link" href="/tools/ascii-table-reference/" data-search="ascii table reference full ascii table 0–127: decimal, hex, octal, character, control-code names and html entities — searchable. ascii table ascii codes ascii chart control characters ascii reference"><span class="t-ico">💻</span><span class="t-body"><b>ASCII Table Reference</b><small>Full ASCII table 0–127: decimal, hex, octal, character, control-code names and HTML entities…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/base64-encoder-decoder/" data-search="base64 encoder / decoder encode text to base64 or decode base64 back to text, with full utf-8 support and a file-to-data-url converter. base64 encoder base64 decoder base64 encode base64 decode file to base64"><span class="t-ico">💻</span><span class="t-body"><b>Base64 Encoder / Decoder</b><small>Encode text to Base64 or decode Base64 back to text, with full UTF-8 support and a file-to-d…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/binary-text-converter/" data-search="binary and text converter convert text to binary or hex and back, with full utf-8 awareness and strict input validation. binary to text text to binary hex to text converter"><span class="t-ico">💻</span><span class="t-body"><b>Binary and Text Converter</b><small>Convert text to binary or hex and back, with full UTF-8 awareness and strict input validatio…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/changelog-generator/" data-search="changelog generator build a keep-a-changelog markdown file: version, date, and grouped added/fixed/changed entries. changelog generator keep a changelog changelog markdown release notes version changelog"><span class="t-ico">💻</span><span class="t-body"><b>Changelog Generator</b><small>Build a Keep-a-Changelog markdown file: version, date, and grouped Added/Fixed/Changed entri…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/character-escape-reference/" data-search="character escape reference searchable reference of characters with their html entities, url encodings, and js escapes — plus a live encoder. character escape reference html entities url encode unicode escape html entity table"><span class="t-ico">💻</span><span class="t-body"><b>Character Escape Reference</b><small>Searchable reference of characters with their HTML entities, URL encodings, and JS escapes —…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/chmod-calculator/" data-search="chmod calculator tick rwx boxes for user/group/other — or type 755 — and see octal, symbolic, and the chmod command live. chmod calculator chmod 755 linux permissions octal permissions rwx calculator"><span class="t-ico">💻</span><span class="t-body"><b>chmod Calculator</b><small>Tick rwx boxes for user/group/other — or type 755 — and see octal, symbolic, and the chmod c…</small></span><span class="t-arrow">→</span></a></div>
+  </section>
+</main>
+
+<!-- ADSTERRA-FOOTER: paste your Adsterra footer/banner ad code inside the div below -->
+<div class="container"><div class="ad-slot" data-ad="footer"></div></div>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="f-grid">
+      <div>
+        <span class="brandline"><span class="logo-mark">T</span> ToolNest</span>
+        <p>Free online tools that actually work. No sign-up, no watermarks — and your files never leave your device for client-side tools.</p>
+      </div>
+      <div>
+        <h4>Popular</h4>
+        <a href="/tools/qr-code-generator/">QR Code Generator</a>
+        <a href="/tools/background-remover/">Background Remover</a>
+        <a href="/tools/pdf-merger/">PDF Merger</a>
+        <a href="/tools/word-counter/">Word Counter</a>
+      </div>
+      <div>
+        <h4>Categories</h4>
+        <a href="/#image">Image Tools</a>
+        <a href="/#pdf">PDF &amp; Documents</a>
+        <a href="/#calculators">Calculators</a>
+        <a href="/#developer">Developer Tools</a>
+      </div>
+      <div>
+        <h4>Site</h4>
+        <a href="/">Home</a>
+        <a href="/#all-tools">All Tools</a>
+        <a href="/sitemap.xml">Sitemap</a>
+      </div>
+    </div>
+    <div class="f-bottom">© 2026 ToolNest · Free tools for everyone · Made with care</div>
+  </div>
+</footer>
+
+<script src="/assets/site.js?v=5"></script>
+
+<script>
+/* ULID Generator — real ULIDs: 48-bit ms timestamp + 80-bit crypto randomness,
+   Crockford base32. Batch generation supported. */
+(function () {
+  'use strict';
+  var SLUG = 'ulid-generator';
+  var CROCKFORD = '0123456789ABCDEFGHJKMNPQRSTVWXYZ';
+
+  function el(id) { return document.getElementById(id); }
+  function fail(msg) { TN.setErr(SLUG + '-error', msg); }
+  function clear() { TN.clearErr(SLUG + '-error'); }
+
+  function encodeTime(now, len) {
+    var s = '';
+    for (var i = 0; i < len; i++) {
+      s = CROCKFORD[now % 32] + s;
+      now = Math.floor(now / 32);
+    }
+    return s;
+  }
+
+  function encodeRandom(len) {
+    var bytes = new Uint8Array(len);
+    crypto.getRandomValues(bytes);
+    // pack bytes into 5-bit groups
+    var s = '', bits = 0, acc = 0;
+    for (var i = 0; i < bytes.length; i++) {
+      acc = (acc << 8) | bytes[i];
+      bits += 8;
+      while (bits >= 5) {
+        bits -= 5;
+        s += CROCKFORD[(acc >>> bits) & 31];
+      }
+    }
+    if (bits > 0) s += CROCKFORD[(acc << (5 - bits)) & 31];
+    return s.slice(0, len);
+  }
+
+  function ulid() {
+    var now = Date.now();
+    if (now > 0xFFFFFFFFFFFF) throw new Error('Timestamp overflow');
+    return encodeTime(now, 10) + encodeRandom(16);
+  }
+
+  function generate() {
+    clear();
+    var count = parseInt(el(SLUG + '-count').value, 10);
+    if (!count || count < 1 || count > 500) { fail('Enter a count between 1 and 500.'); return; }
+    var out = [];
+    for (var i = 0; i < count; i++) out.push(ulid());
+    el(SLUG + '-output').value = out.join('\n');
+  }
+
+  try {
+    TN.on(SLUG + '-generate', 'click', generate);
+    TN.on(SLUG + '-copy', 'click', function () {
+      var v = el(SLUG + '-output').value;
+      if (!v) { fail('Generate ULIDs first.'); return; }
+      TN.copy(v).then(function (ok) { if (!ok) fail('Copy failed — select the text manually.'); });
+    });
+    TN.on(SLUG + '-download', 'click', function () {
+      var v = el(SLUG + '-output').value;
+      if (!v) { fail('Generate ULIDs first.'); return; }
+      TN.downloadText(v, 'ulids.txt', 'text/plain');
+    });
+    generate();
+  } catch (e) { /* never throw on load */ }
+})();
+
+</script>
+</body>
+</html>

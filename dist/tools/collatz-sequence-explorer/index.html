@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Collatz Sequence Explorer — Free Online | ToolNest</title>
+<meta name="description" content="Run the 3n+1 Collatz sequence from any start: full path, step count, max value and a bar chart.">
+<meta name="keywords" content="collatz, 3n+1, collatz sequence, collatz conjecture, hailstone sequence">
+<link rel="canonical" href="https://toolnest.vercel.app/tools/collatz-sequence-explorer/">
+<meta name="theme-color" content="#07070b">
+<meta property="og:title" content="Collatz Sequence Explorer — Free Online | ToolNest">
+<meta property="og:description" content="Run the 3n+1 Collatz sequence from any start: full path, step count, max value and a bar chart.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css?v=4">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%23e01111'/><text x='50' y='68' font-size='58' text-anchor='middle' fill='white' font-family='Arial' font-weight='bold'>T</text></svg>">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebApplication","name":"Collatz Sequence Explorer","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0"},"url":"https://toolnest.vercel.app/tools/collatz-sequence-explorer/","description":"Run the 3n+1 Collatz sequence from any start: full path, step count, max value and a bar chart."},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What is the Collatz conjecture?","acceptedAnswer":{"@type":"Answer","text":"That every positive integer reaches 1 by repeatedly halving evens and applying 3n+1 to odds — unproven but verified to huge bounds."}},{"@type":"Question","name":"Why is 27 famous?","acceptedAnswer":{"@type":"Answer","text":"It takes 111 steps and climbs to 9,232 before falling to 1 — surprisingly wild for such a small start."}},{"@type":"Question","name":"What does the chart show?","acceptedAnswer":{"@type":"Answer","text":"Each bar is a sequence value on a log scale, so both the huge spikes and the final descent stay visible."}}]}]}</script>
+</head>
+<body>
+<header class="site-header">
+  <div class="container">
+    <a class="logo" href="/"><span class="logo-mark">T</span> ToolNest</a>
+    <div class="header-right">
+      <form class="nav-search" action="/" method="get" role="search">
+        <span class="ns-icon">🔍</span>
+        <input type="search" name="q" placeholder="Search tools…" aria-label="Search tools" autocomplete="off">
+      </form>
+      <div class="menu-wrap">
+        <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="menuPanel" aria-label="Open menu"><span></span><span></span><span></span></button>
+        <nav class="menu-panel" id="menuPanel" aria-label="Site">
+          <a href="/">Home</a>
+          <a href="/#categories">Categories</a>
+          <a href="/#all-tools">All Tools</a>
+        </nav>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ADSTERRA-HEADER: paste your Adsterra banner ad code inside the div below -->
+<div class="container"><div class="ad-slot ad-leaderboard" data-ad="header"></div></div>
+
+<main class="container">
+  <nav class="crumbs"><a href="/">Home</a> &rsaquo; <a href="/#math">Math &amp; Numbers</a> &rsaquo; Collatz Sequence Explorer</nav>
+  <div class="tool-hero">
+    <h1>Collatz Sequence Explorer</h1>
+    <p>Run the 3n+1 Collatz sequence from any start: full path, step count, max value and a bar chart.</p>
+  </div>
+
+  <div class="tool-card">
+  <div class="field"><label for="collatz-sequence-explorer-n">Starting number (1 \u2013 10\u2077)</label><input class="input" id="collatz-sequence-explorer-n" type="number" value="27" min="1" max="10000000" step="1"></div>
+  <div class="btn-row"><button class="btn btn-primary" id="collatz-sequence-explorer-go">Explore</button></div>
+  <div class="stat-cards">
+    <div class="stat-card"><div class="v" id="collatz-sequence-explorer-steps">111</div><div class="l">Steps to 1</div></div>
+    <div class="stat-card"><div class="v" id="collatz-sequence-explorer-max">9232</div><div class="l">Max value</div></div>
+  </div>
+  <div id="collatz-sequence-explorer-chart" style="display:flex;align-items:flex-end;gap:1px;height:120px;margin:12px 0;overflow:hidden" aria-hidden="true"></div>
+  <div class="result"><pre class="code" id="collatz-sequence-explorer-seq" style="text-align:left;white-space:pre-wrap;max-height:200px;overflow:auto"></pre></div>
+  <div class="error" id="collatz-sequence-explorer-error"></div>
+</div>
+
+  <!-- ADSTERRA-INCONTENT: paste your Adsterra native/in-content ad code inside the div below -->
+  <div class="ad-slot" data-ad="incontent"></div>
+
+  <div class="info-grid">
+    <div class="info-card">
+      <h2>📖 How to use</h2>
+      <ol><li>Enter a starting number.</li><li>Press Explore.</li><li>Read the step count, peak value, chart and the full sequence.</li></ol>
+    </div>
+    <div class="info-card">
+      <h2>❓ Frequently asked questions</h2>
+      <div class="faq"><details><summary>What is the Collatz conjecture?</summary><p>That every positive integer reaches 1 by repeatedly halving evens and applying 3n+1 to odds — unproven but verified to huge bounds.</p></details><details><summary>Why is 27 famous?</summary><p>It takes 111 steps and climbs to 9,232 before falling to 1 — surprisingly wild for such a small start.</p></details><details><summary>What does the chart show?</summary><p>Each bar is a sequence value on a log scale, so both the huge spikes and the final descent stay visible.</p></details></div>
+    </div>
+  </div>
+
+  <section class="section">
+    <h2>🔗 Related tools</h2>
+    <div class="tool-grid"><a class="tool-link" href="/tools/arithmetic-sequence-calculator/" data-search="arithmetic sequence calculator from the first term and common difference get the nth term and the sum of the first n terms. arithmetic sequence arithmetic progression nth term sum of arithmetic series common difference"><span class="t-ico">📐</span><span class="t-body"><b>Arithmetic Sequence Calculator</b><small>From the first term and common difference get the nth term and the sum of the first n terms.</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/binary-adder-calculator/" data-search="binary adder calculator add two binary numbers with every column addition and carry shown, plus a decimal check. binary addition add binary numbers binary adder binary sum binary carry"><span class="t-ico">📐</span><span class="t-body"><b>Binary Adder Calculator</b><small>Add two binary numbers with every column addition and carry shown, plus a decimal check.</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/birthday-paradox-simulator/" data-search="birthday paradox simulator see how likely a shared birthday is: simulate random groups and compare with the exact theoretical probability. birthday paradox birthday problem shared birthday probability birthday collision probability simulation"><span class="t-ico">📐</span><span class="t-body"><b>Birthday Paradox Simulator</b><small>See how likely a shared birthday is: simulate random groups and compare with the exact theor…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/circle-calculator/" data-search="circle calculator enter radius, diameter, circumference or area — get all four circle properties with the formulas shown. circle calculator circumference calculator circle area radius from area diameter calculator"><span class="t-ico">📐</span><span class="t-body"><b>Circle Calculator</b><small>Enter radius, diameter, circumference or area — get all four circle properties with the form…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/clock-angle-calculator/" data-search="clock angle calculator enter a time to get the smaller angle between the hour and minute hands, with the formula and a dial drawing. clock angle angle between hands clock hands angle time angle watch angle calculator"><span class="t-ico">📐</span><span class="t-body"><b>Clock Angle Calculator</b><small>Enter a time to get the smaller angle between the hour and minute hands, with the formula an…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/complex-number-calculator/" data-search="complex number calculator add, subtract, multiply and divide complex numbers. see the result in a+bi form with modulus, argument and conjugates. complex number calculator imaginary number calculator complex division a+bi calculator complex arithmetic"><span class="t-ico">📐</span><span class="t-body"><b>Complex Number Calculator</b><small>Add, subtract, multiply and divide complex numbers. See the result in a+bi form with modulus…</small></span><span class="t-arrow">→</span></a></div>
+  </section>
+</main>
+
+<!-- ADSTERRA-FOOTER: paste your Adsterra footer/banner ad code inside the div below -->
+<div class="container"><div class="ad-slot" data-ad="footer"></div></div>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="f-grid">
+      <div>
+        <span class="brandline"><span class="logo-mark">T</span> ToolNest</span>
+        <p>Free online tools that actually work. No sign-up, no watermarks — and your files never leave your device for client-side tools.</p>
+      </div>
+      <div>
+        <h4>Popular</h4>
+        <a href="/tools/qr-code-generator/">QR Code Generator</a>
+        <a href="/tools/background-remover/">Background Remover</a>
+        <a href="/tools/pdf-merger/">PDF Merger</a>
+        <a href="/tools/word-counter/">Word Counter</a>
+      </div>
+      <div>
+        <h4>Categories</h4>
+        <a href="/#image">Image Tools</a>
+        <a href="/#pdf">PDF &amp; Documents</a>
+        <a href="/#calculators">Calculators</a>
+        <a href="/#developer">Developer Tools</a>
+      </div>
+      <div>
+        <h4>Site</h4>
+        <a href="/">Home</a>
+        <a href="/#all-tools">All Tools</a>
+        <a href="/sitemap.xml">Sitemap</a>
+      </div>
+    </div>
+    <div class="f-bottom">© 2026 ToolNest · Free tools for everyone · Made with care</div>
+  </div>
+</footer>
+
+<script src="/assets/site.js?v=5"></script>
+
+<script>
+/* Collatz sequence explorer with bar chart. */
+(function () {
+  'use strict';
+  var SLUG = 'collatz-sequence-explorer';
+  function $(id) { return document.getElementById(id); }
+  function err(m) { TN.setErr(SLUG + '-error', m); }
+  function calc() {
+    TN.clearErr(SLUG + '-error');
+    var n = parseInt($(SLUG + '-n').value, 10);
+    if (isNaN(n) || n < 1 || n > 10000000) { err('Enter a whole number from 1 to 10,000,000.'); return; }
+    var seq = [n], cur = n, max = n, guard = 0;
+    while (cur !== 1 && guard < 1000000) {
+      cur = cur % 2 === 0 ? cur / 2 : 3 * cur + 1;
+      seq.push(cur);
+      if (cur > max) max = cur;
+      guard++;
+    }
+    var steps = seq.length - 1;
+    $(SLUG + '-steps').textContent = steps;
+    $(SLUG + '-max').textContent = max.toLocaleString('en-US');
+    // bar chart (log scale)
+    var chart = $(SLUG + '-chart');
+    chart.innerHTML = '';
+    var lmax = Math.log10(max + 1);
+    var stride = Math.max(1, Math.floor(seq.length / 200));
+    for (var i = 0; i < seq.length; i += stride) {
+      var bar = document.createElement('div');
+      var h = Math.max(2, Math.log10(seq[i] + 1) / lmax * 100);
+      bar.style.cssText = 'flex:1;min-width:1px;background:#166534;height:' + h + '%';
+      bar.title = seq[i].toLocaleString('en-US');
+      chart.appendChild(bar);
+    }
+    $(SLUG + '-seq').textContent = 'Rule: even \u2192 n/2, odd \u2192 3n+1\n\n' + seq.map(function (x) { return x.toLocaleString('en-US'); }).join(' \u2192 ');
+  }
+  try {
+    TN.on(SLUG + '-go', 'click', calc);
+    TN.on(SLUG + '-n', 'input', TN.debounce(calc, 400));
+    calc();
+  } catch (e) {}
+})();
+</script>
+</body>
+</html>

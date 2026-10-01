@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>YouTube Thumbnail Maker — Free Online | ToolNest</title>
+<meta name="description" content="Design YouTube thumbnails at 1280×720: background style, bold headline text and accent colors, with a live preview and PNG download.">
+<meta name="keywords" content="youtube thumbnail maker, thumbnail maker, yt thumbnail png, thumbnail designer, video thumbnail maker">
+<link rel="canonical" href="https://toolnest.vercel.app/tools/youtube-thumbnail-maker/">
+<meta name="theme-color" content="#07070b">
+<meta property="og:title" content="YouTube Thumbnail Maker — Free Online | ToolNest">
+<meta property="og:description" content="Design YouTube thumbnails at 1280×720: background style, bold headline text and accent colors, with a live preview and PNG download.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css?v=4">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%23e01111'/><text x='50' y='68' font-size='58' text-anchor='middle' fill='white' font-family='Arial' font-weight='bold'>T</text></svg>">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebApplication","name":"YouTube Thumbnail Maker","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0"},"url":"https://toolnest.vercel.app/tools/youtube-thumbnail-maker/","description":"Design YouTube thumbnails at 1280×720: background style, bold headline text and accent colors, with a live preview and PNG download."},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What size is the thumbnail?","acceptedAnswer":{"@type":"Answer","text":"The thumbnail renders at 1280×720 pixels — YouTube's recommended thumbnail size."}},{"@type":"Question","name":"How do I make the text readable?","acceptedAnswer":{"@type":"Answer","text":"Keep the headline under ~6 words and large — the auto-fit keeps it readable even at small preview sizes."}},{"@type":"Question","name":"Is there a background for face-cam thumbnails?","acceptedAnswer":{"@type":"Answer","text":"Yes — the dark backdrop option is designed to sit behind profile photos or game screenshots."}}]}]}</script>
+</head>
+<body>
+<header class="site-header">
+  <div class="container">
+    <a class="logo" href="/"><span class="logo-mark">T</span> ToolNest</a>
+    <div class="header-right">
+      <form class="nav-search" action="/" method="get" role="search">
+        <span class="ns-icon">🔍</span>
+        <input type="search" name="q" placeholder="Search tools…" aria-label="Search tools" autocomplete="off">
+      </form>
+      <div class="menu-wrap">
+        <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="menuPanel" aria-label="Open menu"><span></span><span></span><span></span></button>
+        <nav class="menu-panel" id="menuPanel" aria-label="Site">
+          <a href="/">Home</a>
+          <a href="/#categories">Categories</a>
+          <a href="/#all-tools">All Tools</a>
+        </nav>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ADSTERRA-HEADER: paste your Adsterra banner ad code inside the div below -->
+<div class="container"><div class="ad-slot ad-leaderboard" data-ad="header"></div></div>
+
+<main class="container">
+  <nav class="crumbs"><a href="/">Home</a> &rsaquo; <a href="/#image">Image Tools</a> &rsaquo; YouTube Thumbnail Maker</nav>
+  <div class="tool-hero">
+    <h1>YouTube Thumbnail Maker</h1>
+    <p>Design YouTube thumbnails at 1280×720: background style, bold headline text and accent colors, with a live preview and PNG download.</p>
+  </div>
+
+  <div class="tool-card">
+  <h2>YouTube Thumbnail Maker</h2>
+  <p class="muted">1280×720 thumbnails — bold text, accent styles, PNG download.</p>
+  <div class="grid2">
+    <div class="field" style="grid-column:1/-1">
+      <label for="youtube-thumbnail-maker-headline">Headline</label>
+      <input type="text" class="input" id="youtube-thumbnail-maker-headline" value="I BUILT THIS IN ONE NIGHT">
+    </div>
+    <div class="field">
+      <label for="youtube-thumbnail-maker-sub">Subtext</label>
+      <input type="text" class="input" id="youtube-thumbnail-maker-sub" value="full process inside">
+    </div>
+    <div class="field">
+      <label for="youtube-thumbnail-maker-style">Background style</label>
+      <select class="input" id="youtube-thumbnail-maker-style">
+        <option value="burst">Radial burst</option>
+        <option value="diag">Diagonal split</option>
+        <option value="dark">Dark backdrop</option>
+        <option value="neon">Neon grid</option>
+      </select>
+    </div>
+    <div class="field">
+      <label for="youtube-thumbnail-maker-accent">Accent color</label>
+      <input type="color" class="input" id="youtube-thumbnail-maker-accent" value="#facc15" style="height:44px;padding:4px">
+    </div>
+    <div class="field">
+      <label for="youtube-thumbnail-maker-align">Text position</label>
+      <select class="input" id="youtube-thumbnail-maker-align">
+        <option value="left">Left</option>
+        <option value="center">Center</option>
+        <option value="right">Right</option>
+      </select>
+    </div>
+    <div class="field">
+      <label for="youtube-thumbnail-maker-size">Text size: <span id="youtube-thumbnail-maker-size-v">96</span></label>
+      <input type="range" class="input" id="youtube-thumbnail-maker-size" min="48" max="150" step="2" value="96">
+    </div>
+  </div>
+  <h3>Live preview</h3>
+  <div class="preview" style="display:flex;justify-content:center">
+    <canvas id="youtube-thumbnail-maker-canvas" width="1280" height="720" style="max-width:640px;width:100%;height:auto;border-radius:10px"></canvas>
+  </div>
+  <div class="btn-row mt">
+    <button class="btn btn-primary" id="youtube-thumbnail-maker-download">⬇ Download PNG</button>
+  </div>
+  <div class="error" id="youtube-thumbnail-maker-error"></div>
+</div>
+
+
+  <!-- ADSTERRA-INCONTENT: paste your Adsterra native/in-content ad code inside the div below -->
+  <div class="ad-slot" data-ad="incontent"></div>
+
+  <div class="info-grid">
+    <div class="info-card">
+      <h2>📖 How to use</h2>
+      <ol><li>Type your headline and optional subtext.</li><li>Pick a background style and accent color.</li><li>Adjust text size and position.</li><li>Preview live, then click &quot;Download PNG&quot;.</li></ol>
+    </div>
+    <div class="info-card">
+      <h2>❓ Frequently asked questions</h2>
+      <div class="faq"><details><summary>What size is the thumbnail?</summary><p>The thumbnail renders at 1280×720 pixels — YouTube&#39;s recommended thumbnail size.</p></details><details><summary>How do I make the text readable?</summary><p>Keep the headline under ~6 words and large — the auto-fit keeps it readable even at small preview sizes.</p></details><details><summary>Is there a background for face-cam thumbnails?</summary><p>Yes — the dark backdrop option is designed to sit behind profile photos or game screenshots.</p></details></div>
+    </div>
+  </div>
+
+  <section class="section">
+    <h2>🔗 Related tools</h2>
+    <div class="tool-grid"><a class="tool-link" href="/tools/app-icon-resizer/" data-search="app icon resizer generate every common app icon size from one image — 16, 32, 48, 180, 192 and 512 px — with instant preview and one-click png downloads. app icon resizer icon generator favicon sizes pwa icon apple touch icon generator"><span class="t-ico">🖼️</span><span class="t-body"><b>App Icon Resizer</b><small>Generate every common app icon size from one image — 16, 32, 48, 180, 192 and 512 px — with …</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/background-remover/" data-search="background remover remove the background from any photo with real on-device ai and download a transparent png. free, private and unlimited — no sign-up needed. background remover remove image background transparent png maker"><span class="t-ico">🖼️</span><span class="t-body"><b>Background Remover</b><small>Remove the background from any photo with real on-device AI and download a transparent PNG. …</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/before-after-slider-maker/" data-search="before/after slider maker upload two photos and get a standalone before/after comparison slider as an html file. before after slider image comparison slider photo compare html before after html"><span class="t-ico">🖼️</span><span class="t-body"><b>Before/After Slider Maker</b><small>Upload two photos and get a standalone before/after comparison slider as an HTML file.</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/business-card-maker/" data-search="business card maker design a business card front (1050×600): your name, role and contact details, color themes, live preview, and a png download. business card maker business card design business card png visiting card maker card designer"><span class="t-ico">🖼️</span><span class="t-body"><b>Business Card Maker</b><small>Design a business card front (1050×600): your name, role and contact details, color themes, …</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/certificate-maker/" data-search="certificate maker design printable certificates: recipient name, course title, date and signature line, live preview, and a high-res png download. certificate maker certificate generator certificate png award certificate maker printable certificate"><span class="t-ico">🖼️</span><span class="t-body"><b>Certificate Maker</b><small>Design printable certificates: recipient name, course title, date and signature line, live p…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/favicon-generator/" data-search="favicon generator generate a complete png favicon set (16–512 px) from your logo in one click, download it as a zip, and copy the ready-to-paste html link tags. favicon generator favicon maker png favicon"><span class="t-ico">🖼️</span><span class="t-body"><b>Favicon Generator</b><small>Generate a complete PNG favicon set (16–512 px) from your logo in one click, download it as …</small></span><span class="t-arrow">→</span></a></div>
+  </section>
+</main>
+
+<!-- ADSTERRA-FOOTER: paste your Adsterra footer/banner ad code inside the div below -->
+<div class="container"><div class="ad-slot" data-ad="footer"></div></div>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="f-grid">
+      <div>
+        <span class="brandline"><span class="logo-mark">T</span> ToolNest</span>
+        <p>Free online tools that actually work. No sign-up, no watermarks — and your files never leave your device for client-side tools.</p>
+      </div>
+      <div>
+        <h4>Popular</h4>
+        <a href="/tools/qr-code-generator/">QR Code Generator</a>
+        <a href="/tools/background-remover/">Background Remover</a>
+        <a href="/tools/pdf-merger/">PDF Merger</a>
+        <a href="/tools/word-counter/">Word Counter</a>
+      </div>
+      <div>
+        <h4>Categories</h4>
+        <a href="/#image">Image Tools</a>
+        <a href="/#pdf">PDF &amp; Documents</a>
+        <a href="/#calculators">Calculators</a>
+        <a href="/#developer">Developer Tools</a>
+      </div>
+      <div>
+        <h4>Site</h4>
+        <a href="/">Home</a>
+        <a href="/#all-tools">All Tools</a>
+        <a href="/sitemap.xml">Sitemap</a>
+      </div>
+    </div>
+    <div class="f-bottom">© 2026 ToolNest · Free tools for everyone · Made with care</div>
+  </div>
+</footer>
+
+<script src="/assets/site.js?v=5"></script>
+
+<script>
+/* YouTube Thumbnail Maker — 1280×720 canvas thumbnails, PNG download. */
+(function () {
+  'use strict';
+  var SLUG = 'youtube-thumbnail-maker';
+  var ERR = SLUG + '-error';
+  var W = 1280, H = 720;
+
+  function $(id) { return document.getElementById(SLUG + '-' + id); }
+
+  function shade(hex, amt) {
+    var m = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+    if (!m) return hex;
+    var c = [parseInt(m[1], 16), parseInt(m[2], 16), parseInt(m[3], 16)].map(function (v) {
+      return Math.max(0, Math.min(255, v + amt)).toString(16).padStart(2, '0');
+    });
+    return '#' + c.join('');
+  }
+
+  function drawBackground(ctx, style, accent) {
+    if (style === 'burst') {
+      var g = ctx.createRadialGradient(W / 2, H / 2, 60, W / 2, H / 2, 800);
+      g.addColorStop(0, shade(accent, -120)); g.addColorStop(1, '#0f172a');
+      ctx.fillStyle = g; ctx.fillRect(0, 0, W, H);
+      ctx.strokeStyle = accent; ctx.globalAlpha = 0.25; ctx.lineWidth = 3;
+      for (var i = 0; i < 24; i++) {
+        var a = (Math.PI * 2 * i) / 24;
+        ctx.beginPath();
+        ctx.moveTo(W / 2, H / 2);
+        ctx.lineTo(W / 2 + Math.cos(a) * 800, H / 2 + Math.sin(a) * 800);
+        ctx.stroke();
+      }
+      ctx.globalAlpha = 1;
+    } else if (style === 'diag') {
+      var g2 = ctx.createLinearGradient(0, 0, W, H);
+      g2.addColorStop(0, '#0f172a'); g2.addColorStop(1, shade(accent, -140));
+      ctx.fillStyle = g2; ctx.fillRect(0, 0, W, H);
+      ctx.fillStyle = accent; ctx.globalAlpha = 0.9;
+      ctx.beginPath();
+      ctx.moveTo(W * 0.58, 0); ctx.lineTo(W * 0.78, 0);
+      ctx.lineTo(W * 0.20, H); ctx.lineTo(0, H);
+      ctx.closePath(); ctx.fill(); ctx.globalAlpha = 1;
+      ctx.fillStyle = accent; ctx.fillRect(0, 0, 18, H);
+    } else if (style === 'dark') {
+      var g3 = ctx.createLinearGradient(0, 0, 0, H);
+      g3.addColorStop(0, '#111827'); g3.addColorStop(1, '#030712');
+      ctx.fillStyle = g3; ctx.fillRect(0, 0, W, H);
+      ctx.fillStyle = accent; ctx.globalAlpha = 0.14;
+      ctx.beginPath(); ctx.arc(W * 0.8, H * 0.2, 200, 0, Math.PI * 2); ctx.fill();
+      ctx.beginPath(); ctx.arc(W * 0.15, H * 0.85, 140, 0, Math.PI * 2); ctx.fill();
+      ctx.globalAlpha = 1;
+    } else { /* neon */
+      ctx.fillStyle = '#0b0620'; ctx.fillRect(0, 0, W, H);
+      ctx.strokeStyle = accent; ctx.globalAlpha = 0.35; ctx.lineWidth = 2;
+      var horizon = H * 0.55;
+      for (var y = horizon; y < H; y += 34) {
+        ctx.beginPath(); ctx.moveTo(0, y); ctx.lineTo(W, y); ctx.stroke();
+      }
+      for (var x = -W; x < W * 2; x += 80) {
+        ctx.beginPath(); ctx.moveTo(x, horizon); ctx.lineTo(x + (x - W / 2) * 0.9, H); ctx.stroke();
+      }
+      ctx.globalAlpha = 1;
+      ctx.fillStyle = accent;
+      ctx.beginPath(); ctx.arc(W / 2, horizon - 120, 90, 0, Math.PI * 2); ctx.fill();
+      ctx.fillStyle = '#0b0620';
+      ctx.beginPath(); ctx.arc(W / 2, horizon - 120, 70, 0, Math.PI * 2); ctx.fill();
+    }
+  }
+
+  function wrapText(ctx, text, maxW) {
+    var words = text.split(/\s+/).filter(Boolean);
+    var lines = [], line = '';
+    words.forEach(function (w) {
+      var test = line ? line + ' ' + w : w;
+      if (ctx.measureText(test).width > maxW && line) { lines.push(line); line = w; }
+      else line = test;
+    });
+    if (line) lines.push(line);
+    return lines;
+  }
+
+  function render() {
+    TN.clearErr(ERR);
+    try {
+      var headline = ($('headline').value.trim() || 'YOUR HEADLINE').toUpperCase();
+      var sub = $('sub').value.trim();
+      var style = $('style').value;
+      var accent = $('accent').value;
+      var align = $('align').value;
+      var baseSize = parseInt($('size').value, 10);
+      $('size-v').textContent = baseSize;
+      var cv = $('canvas'), ctx = cv.getContext('2d');
+      drawBackground(ctx, style, accent);
+      var tx = align === 'left' ? 90 : align === 'right' ? W - 90 : W / 2;
+      ctx.textAlign = align;
+      /* headline with stroke for pop */
+      var fs = baseSize, lines;
+      ctx.font = '900 ' + fs + 'px system-ui, sans-serif';
+      var maxW = W - 220;
+      do {
+        ctx.font = '900 ' + fs + 'px system-ui, sans-serif';
+        lines = wrapText(ctx, headline, maxW);
+        fs -= 6;
+      } while (lines.length > 3 && fs > 40);
+      fs += 6;
+      ctx.font = '900 ' + fs + 'px system-ui, sans-serif';
+      var lh = fs * 1.12;
+      var blockH = lines.length * lh + (sub ? 70 : 0);
+      var startY = (H - blockH) / 2 + fs * 0.8;
+      ctx.lineWidth = Math.max(6, fs / 10);
+      ctx.strokeStyle = 'rgba(0,0,0,0.85)';
+      ctx.fillStyle = '#ffffff';
+      lines.forEach(function (ln, i) {
+        var y = startY + i * lh;
+        ctx.strokeText(ln, tx, y);
+        ctx.fillText(ln, tx, y);
+      });
+      /* underline accent bar */
+      var barY = startY + lines.length * lh - fs * 0.25;
+      var barW = Math.min(maxW, ctx.measureText(lines[0]).width);
+      var barX = align === 'left' ? tx : align === 'right' ? tx - barW : tx - barW / 2;
+      ctx.fillStyle = accent;
+      ctx.fillRect(barX, barY, barW, 12);
+      /* subtext */
+      if (sub) {
+        ctx.font = '700 44px system-ui, sans-serif';
+        ctx.textAlign = align;
+        ctx.fillStyle = accent;
+        ctx.lineWidth = 4;
+        var sy = barY + 70;
+        ctx.strokeText(sub, tx, sy);
+        ctx.fillText(sub, tx, sy);
+      }
+    } catch (e) {
+      TN.setErr(ERR, 'Could not render the thumbnail.');
+    }
+  }
+
+  function init() {
+    try {
+      if (typeof TN === 'undefined') return;
+      ['headline', 'sub', 'style', 'accent', 'align', 'size'].forEach(function (k) {
+        TN.on(SLUG + '-' + k, 'input', render);
+        TN.on(SLUG + '-' + k, 'change', render);
+      });
+      TN.on(SLUG + '-download', 'click', function () {
+        try {
+          $('canvas').toBlob(function (blob) {
+            if (blob) TN.download(blob, 'youtube-thumbnail.png');
+            else TN.setErr(ERR, 'Could not create the PNG.');
+          }, 'image/png');
+        } catch (e) { TN.setErr(ERR, 'Could not create the PNG.'); }
+      });
+      render();
+    } catch (e) { /* never throw on load */ }
+  }
+
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init);
+  else init();
+})();
+
+</script>
+</body>
+</html>

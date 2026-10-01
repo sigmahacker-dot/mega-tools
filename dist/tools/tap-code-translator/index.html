@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tap Code Translator — Free Online | ToolNest</title>
+<meta name="description" content="Encode text into tap code (prison knock code) dots and decode tap sequences back to letters.">
+<meta name="keywords" content="tap code, tap code translator, knock code, prison tap code, tap cipher decoder">
+<link rel="canonical" href="https://toolnest.vercel.app/tools/tap-code-translator/">
+<meta name="theme-color" content="#07070b">
+<meta property="og:title" content="Tap Code Translator — Free Online | ToolNest">
+<meta property="og:description" content="Encode text into tap code (prison knock code) dots and decode tap sequences back to letters.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css?v=4">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%23e01111'/><text x='50' y='68' font-size='58' text-anchor='middle' fill='white' font-family='Arial' font-weight='bold'>T</text></svg>">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebApplication","name":"Tap Code Translator","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0"},"url":"https://toolnest.vercel.app/tools/tap-code-translator/","description":"Encode text into tap code (prison knock code) dots and decode tap sequences back to letters."},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How does tap code work?","acceptedAnswer":{"@type":"Answer","text":"Tap code uses a 5×5 grid like Polybius: each letter is row-taps then column-taps, e.g. A is • •, C is ••• •."}},{"@type":"Question","name":"What about the letter K?","acceptedAnswer":{"@type":"Answer","text":"The grid has no K — K is written as C, so decoding C shows C/K."}},{"@type":"Question","name":"How are letters separated?","acceptedAnswer":{"@type":"Answer","text":"Letters are separated by / and words by // in the encoded output."}}]}]}</script>
+</head>
+<body>
+<header class="site-header">
+  <div class="container">
+    <a class="logo" href="/"><span class="logo-mark">T</span> ToolNest</a>
+    <div class="header-right">
+      <form class="nav-search" action="/" method="get" role="search">
+        <span class="ns-icon">🔍</span>
+        <input type="search" name="q" placeholder="Search tools…" aria-label="Search tools" autocomplete="off">
+      </form>
+      <div class="menu-wrap">
+        <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="menuPanel" aria-label="Open menu"><span></span><span></span><span></span></button>
+        <nav class="menu-panel" id="menuPanel" aria-label="Site">
+          <a href="/">Home</a>
+          <a href="/#categories">Categories</a>
+          <a href="/#all-tools">All Tools</a>
+        </nav>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ADSTERRA-HEADER: paste your Adsterra banner ad code inside the div below -->
+<div class="container"><div class="ad-slot ad-leaderboard" data-ad="header"></div></div>
+
+<main class="container">
+  <nav class="crumbs"><a href="/">Home</a> &rsaquo; <a href="/#text">Text &amp; Writing</a> &rsaquo; Tap Code Translator</nav>
+  <div class="tool-hero">
+    <h1>Tap Code Translator</h1>
+    <p>Encode text into tap code (prison knock code) dots and decode tap sequences back to letters.</p>
+  </div>
+
+  <div class="tool-card">
+  <div class="field">
+    <label for="tap-code-translator-input">Input</label>
+    <textarea class="textarea" id="tap-code-translator-input" rows="5" placeholder="Type text to encode, or dots like . . / .. . to decode"></textarea>
+  </div>
+  <div class="grid2">
+    <div class="field">
+      <label for="tap-code-translator-mode">Mode</label>
+      <select class="input" id="tap-code-translator-mode">
+        <option value="encode">Encode (text → taps)</option>
+        <option value="decode">Decode (taps → text)</option>
+      </select>
+    </div>
+    <div class="field">
+      <label>&nbsp;</label>
+      <div class="btn-row"><button class="btn btn-primary" id="tap-code-translator-run">Run</button></div>
+    </div>
+  </div>
+  <div class="field">
+    <label>Output</label>
+    <div class="result"><div class="data" id="tap-code-translator-output" style="white-space:pre-wrap"></div></div>
+    <div class="copy-row"><button class="btn btn-outline" id="tap-code-translator-copy">Copy output</button></div>
+  </div>
+  <p class="hint">Row-taps then column-taps. Letters separated by <span class="code">/</span>, words by <span class="code">//</span>. K is tapped as C.</p>
+  <div class="error" id="tap-code-translator-error"></div>
+</div>
+
+
+  <!-- ADSTERRA-INCONTENT: paste your Adsterra native/in-content ad code inside the div below -->
+  <div class="ad-slot" data-ad="incontent"></div>
+
+  <div class="info-grid">
+    <div class="info-card">
+      <h2>📖 How to use</h2>
+      <ol><li>Enter text or a tap-code sequence.</li><li>Choose Encode or Decode.</li><li>Press Run.</li><li>Copy the result.</li></ol>
+    </div>
+    <div class="info-card">
+      <h2>❓ Frequently asked questions</h2>
+      <div class="faq"><details><summary>How does tap code work?</summary><p>Tap code uses a 5×5 grid like Polybius: each letter is row-taps then column-taps, e.g. A is • •, C is ••• •.</p></details><details><summary>What about the letter K?</summary><p>The grid has no K — K is written as C, so decoding C shows C/K.</p></details><details><summary>How are letters separated?</summary><p>Letters are separated by / and words by // in the encoded output.</p></details></div>
+    </div>
+  </div>
+
+  <section class="section">
+    <h2>🔗 Related tools</h2>
+    <div class="tool-grid"><a class="tool-link" href="/tools/acronym-generator/" data-search="acronym generator turn any phrase into an acronym instantly — first letters, with options to skip small words, add periods and force uppercase. acronym generator make acronym from words initialism generator phrase to acronym"><span class="t-ico">✍️</span><span class="t-body"><b>Acronym Generator</b><small>Turn any phrase into an acronym instantly — first letters, with options to skip small words,…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/acrostic-poem-generator/" data-search="acrostic poem generator turn any word into an acrostic poem — one poetic line per letter from built-in line banks. acrostic poem generator acrostic generator name poem acrostic maker poem from word"><span class="t-ico">✍️</span><span class="t-body"><b>Acrostic Poem Generator</b><small>Turn any word into an acrostic poem — one poetic line per letter from built-in line banks.</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/aes-text-encryptor/" data-search="aes text encryptor encrypt text with real aes-256-gcm using a password-derived key (pbkdf2), fully in your browser. aes encrypt text encrypt message password aes-gcm online"><span class="t-ico">✍️</span><span class="t-body"><b>AES Text Encryptor</b><small>Encrypt text with real AES-256-GCM using a password-derived key (PBKDF2), fully in your brow…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/alliteration-generator/" data-search="alliteration generator generate alliterative phrases — pick a letter and a theme, get tongue-twisting word combos. alliteration generator alliteration examples tongue twister generator alliterative phrases letter phrases"><span class="t-ico">✍️</span><span class="t-body"><b>Alliteration Generator</b><small>Generate alliterative phrases — pick a letter and a theme, get tongue-twisting word combos.</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/anagram-generator/" data-search="anagram generator find every real anagram of your word — all unique permutations checked against a built-in word list. anagram generator anagram solver find anagrams anagram finder word unscrambler"><span class="t-ico">✍️</span><span class="t-body"><b>Anagram Generator</b><small>Find every real anagram of your word — all unique permutations checked against a built-in wo…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/article-rewriter/" data-search="article rewriter rewrite articles with a built-in synonym engine covering 130+ common english words. whole-word replacement with capitalization preserved and a change report. article rewriter paraphrasing tool rewrite text online"><span class="t-ico">✍️</span><span class="t-body"><b>Article Rewriter</b><small>Rewrite articles with a built-in synonym engine covering 130+ common English words. Whole-wo…</small></span><span class="t-arrow">→</span></a></div>
+  </section>
+</main>
+
+<!-- ADSTERRA-FOOTER: paste your Adsterra footer/banner ad code inside the div below -->
+<div class="container"><div class="ad-slot" data-ad="footer"></div></div>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="f-grid">
+      <div>
+        <span class="brandline"><span class="logo-mark">T</span> ToolNest</span>
+        <p>Free online tools that actually work. No sign-up, no watermarks — and your files never leave your device for client-side tools.</p>
+      </div>
+      <div>
+        <h4>Popular</h4>
+        <a href="/tools/qr-code-generator/">QR Code Generator</a>
+        <a href="/tools/background-remover/">Background Remover</a>
+        <a href="/tools/pdf-merger/">PDF Merger</a>
+        <a href="/tools/word-counter/">Word Counter</a>
+      </div>
+      <div>
+        <h4>Categories</h4>
+        <a href="/#image">Image Tools</a>
+        <a href="/#pdf">PDF &amp; Documents</a>
+        <a href="/#calculators">Calculators</a>
+        <a href="/#developer">Developer Tools</a>
+      </div>
+      <div>
+        <h4>Site</h4>
+        <a href="/">Home</a>
+        <a href="/#all-tools">All Tools</a>
+        <a href="/sitemap.xml">Sitemap</a>
+      </div>
+    </div>
+    <div class="f-bottom">© 2026 ToolNest · Free tools for everyone · Made with care</div>
+  </div>
+</footer>
+
+<script src="/assets/site.js?v=5"></script>
+
+<script>
+/* Tap Code Translator — prison knock code; K taps as C. */
+(function () {
+  'use strict';
+  var SLUG = 'tap-code-translator';
+  var GRID = [
+    ['A', 'B', 'C', 'D', 'E'],
+    ['F', 'G', 'H', 'I', 'J'],
+    ['L', 'M', 'N', 'O', 'P'],
+    ['Q', 'R', 'S', 'T', 'U'],
+    ['V', 'W', 'X', 'Y', 'Z']
+  ];
+  var TOTAP = {};
+  function dots(n) { var s = ''; for (var i = 0; i < n; i++) s += '.'; return s; }
+  for (var r = 0; r < 5; r++) {
+    for (var c = 0; c < 5; c++) {
+      TOTAP[GRID[r][c]] = dots(r + 1) + ' ' + dots(c + 1);
+    }
+  }
+  TOTAP.K = TOTAP.C; // K is tapped as C
+
+  function encode(text) {
+    return text.toUpperCase().split(/\s+/).map(function (word) {
+      return word.split('').map(function (ch) { return TOTAP[ch] || '?'; }).join(' / ');
+    }).join(' // ');
+  }
+
+  function decode(code) {
+    return code.split(/\/\/+/).map(function (word) {
+      return word.split('/').map(function (letter) {
+        var parts = letter.trim().split(/\s+/);
+        if (parts.length !== 2) return '?';
+        var r = parts[0].length - 1, c = parts[1].length - 1;
+        if (r < 0 || r > 4 || c < 0 || c > 4) return '?';
+        var ch = GRID[r][c];
+        return ch === 'C' ? 'C/K' : ch;
+      }).join('');
+    }).join(' ');
+  }
+
+  function run() {
+    TN.clearErr(SLUG + '-error');
+    var input = TN.el(SLUG + '-input').value;
+    if (!input.trim()) { TN.setErr(SLUG + '-error', 'Please enter some input first.'); return; }
+    var mode = TN.el(SLUG + '-mode').value;
+    TN.el(SLUG + '-output').textContent = mode === 'encode' ? encode(input) : decode(input);
+  }
+
+  try {
+    TN.on(SLUG + '-run', 'click', run);
+    TN.on(SLUG + '-copy', 'click', function () {
+      TN.copy(TN.el(SLUG + '-output').textContent);
+    });
+  } catch (e) { /* never throw on load */ }
+})();
+
+</script>
+</body>
+</html>

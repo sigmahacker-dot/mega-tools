@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CSS Skeleton Loader Generator — Free Online | ToolNest</title>
+<meta name="description" content="Design skeleton loading screens: line count, widths, shimmer effect and colors, with a live preview and copyable CSS.">
+<meta name="keywords" content="skeleton css, skeleton loader css, shimmer css, content placeholder, skeleton loading generator">
+<link rel="canonical" href="https://toolnest.vercel.app/tools/css-skeleton-generator/">
+<meta name="theme-color" content="#07070b">
+<meta property="og:title" content="CSS Skeleton Loader Generator — Free Online | ToolNest">
+<meta property="og:description" content="Design skeleton loading screens: line count, widths, shimmer effect and colors, with a live preview and copyable CSS.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css?v=4">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%23e01111'/><text x='50' y='68' font-size='58' text-anchor='middle' fill='white' font-family='Arial' font-weight='bold'>T</text></svg>">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebApplication","name":"CSS Skeleton Loader Generator","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0"},"url":"https://toolnest.vercel.app/tools/css-skeleton-generator/","description":"Design skeleton loading screens: line count, widths, shimmer effect and colors, with a live preview and copyable CSS."},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Does the skeleton need JavaScript?","acceptedAnswer":{"@type":"Answer","text":"Yes — the snippet is plain CSS (plus a few empty divs). No JavaScript is needed."}},{"@type":"Question","name":"How do I make it look like text lines?","acceptedAnswer":{"@type":"Answer","text":"Change the line count and line height; the generator also randomizes line widths so the preview looks like real text."}},{"@type":"Question","name":"Can I make a static skeleton without shimmer?","acceptedAnswer":{"@type":"Answer","text":"Toggle shimmer off and both layers use the same base color for a calm static placeholder."}}]}]}</script>
+</head>
+<body>
+<header class="site-header">
+  <div class="container">
+    <a class="logo" href="/"><span class="logo-mark">T</span> ToolNest</a>
+    <div class="header-right">
+      <form class="nav-search" action="/" method="get" role="search">
+        <span class="ns-icon">🔍</span>
+        <input type="search" name="q" placeholder="Search tools…" aria-label="Search tools" autocomplete="off">
+      </form>
+      <div class="menu-wrap">
+        <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="menuPanel" aria-label="Open menu"><span></span><span></span><span></span></button>
+        <nav class="menu-panel" id="menuPanel" aria-label="Site">
+          <a href="/">Home</a>
+          <a href="/#categories">Categories</a>
+          <a href="/#all-tools">All Tools</a>
+        </nav>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ADSTERRA-HEADER: paste your Adsterra banner ad code inside the div below -->
+<div class="container"><div class="ad-slot ad-leaderboard" data-ad="header"></div></div>
+
+<main class="container">
+  <nav class="crumbs"><a href="/">Home</a> &rsaquo; <a href="/#developer">Developer Tools</a> &rsaquo; CSS Skeleton Loader Generator</nav>
+  <div class="tool-hero">
+    <h1>CSS Skeleton Loader Generator</h1>
+    <p>Design skeleton loading screens: line count, widths, shimmer effect and colors, with a live preview and copyable CSS.</p>
+  </div>
+
+  <div class="tool-card">
+  <h2>CSS Skeleton Loader Generator</h2>
+  <p class="muted">Generate a content-loading skeleton placeholder with an optional shimmer sweep.</p>
+  <div class="grid2">
+    <div class="field">
+      <label for="css-skeleton-generator-lines">Lines: <span id="css-skeleton-generator-lines-v">5</span></label>
+      <input type="range" class="input" id="css-skeleton-generator-lines" min="1" max="12" step="1" value="5">
+    </div>
+    <div class="field">
+      <label for="css-skeleton-generator-height">Line height: <span id="css-skeleton-generator-height-v">16px</span></label>
+      <input type="range" class="input" id="css-skeleton-generator-height" min="8" max="40" step="1" value="16">
+    </div>
+    <div class="field">
+      <label for="css-skeleton-generator-gap">Line gap: <span id="css-skeleton-generator-gap-v">12px</span></label>
+      <input type="range" class="input" id="css-skeleton-generator-gap" min="4" max="30" step="1" value="12">
+    </div>
+    <div class="field">
+      <label for="css-skeleton-generator-radius">Corner radius: <span id="css-skeleton-generator-radius-v">8px</span></label>
+      <input type="range" class="input" id="css-skeleton-generator-radius" min="0" max="30" step="1" value="8">
+    </div>
+    <div class="field">
+      <label for="css-skeleton-generator-base">Base color</label>
+      <input type="color" class="input" id="css-skeleton-generator-base" value="#e5e7eb" style="height:44px;padding:4px">
+    </div>
+    <div class="field">
+      <label for="css-skeleton-generator-shimmer">Shimmer color</label>
+      <input type="color" class="input" id="css-skeleton-generator-shimmer" value="#f9fafb" style="height:44px;padding:4px">
+    </div>
+    <div class="field">
+      <label for="css-skeleton-generator-anim">Shimmer effect</label>
+      <select class="input" id="css-skeleton-generator-anim">
+        <option value="on">On</option>
+        <option value="off">Off (static)</option>
+      </select>
+    </div>
+    <div class="field">
+      <label for="css-skeleton-generator-speed">Shimmer speed: <span id="css-skeleton-generator-speed-v">1.5s</span></label>
+      <input type="range" class="input" id="css-skeleton-generator-speed" min="0.5" max="4" step="0.1" value="1.5">
+    </div>
+  </div>
+  <h3>Live preview</h3>
+  <div class="preview" id="css-skeleton-generator-stage" style="min-height:200px"></div>
+  <div class="btn-row mt">
+    <button class="btn btn-outline" id="css-skeleton-generator-regen">⟳ Randomize widths</button>
+    <button class="btn btn-primary" id="css-skeleton-generator-copy">Copy HTML + CSS</button>
+  </div>
+  <h3 class="mt">Generated code</h3>
+  <pre class="code" id="css-skeleton-generator-code" style="max-height:340px;overflow:auto"></pre>
+  <div class="error" id="css-skeleton-generator-error"></div>
+</div>
+
+
+  <!-- ADSTERRA-INCONTENT: paste your Adsterra native/in-content ad code inside the div below -->
+  <div class="ad-slot" data-ad="incontent"></div>
+
+  <div class="info-grid">
+    <div class="info-card">
+      <h2>📖 How to use</h2>
+      <ol><li>Set the number of lines, line height and corner radius.</li><li>Toggle the shimmer sweep effect and pick base/shimmer colors.</li><li>Preview the skeleton block live.</li><li>Click &quot;Copy HTML + CSS&quot; to grab the snippet.</li></ol>
+    </div>
+    <div class="info-card">
+      <h2>❓ Frequently asked questions</h2>
+      <div class="faq"><details><summary>Does the skeleton need JavaScript?</summary><p>Yes — the snippet is plain CSS (plus a few empty divs). No JavaScript is needed.</p></details><details><summary>How do I make it look like text lines?</summary><p>Change the line count and line height; the generator also randomizes line widths so the preview looks like real text.</p></details><details><summary>Can I make a static skeleton without shimmer?</summary><p>Toggle shimmer off and both layers use the same base color for a calm static placeholder.</p></details></div>
+    </div>
+  </div>
+
+  <section class="section">
+    <h2>🔗 Related tools</h2>
+    <div class="tool-grid"><a class="tool-link" href="/tools/ascii-table-reference/" data-search="ascii table reference full ascii table 0–127: decimal, hex, octal, character, control-code names and html entities — searchable. ascii table ascii codes ascii chart control characters ascii reference"><span class="t-ico">💻</span><span class="t-body"><b>ASCII Table Reference</b><small>Full ASCII table 0–127: decimal, hex, octal, character, control-code names and HTML entities…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/base64-encoder-decoder/" data-search="base64 encoder / decoder encode text to base64 or decode base64 back to text, with full utf-8 support and a file-to-data-url converter. base64 encoder base64 decoder base64 encode base64 decode file to base64"><span class="t-ico">💻</span><span class="t-body"><b>Base64 Encoder / Decoder</b><small>Encode text to Base64 or decode Base64 back to text, with full UTF-8 support and a file-to-d…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/binary-text-converter/" data-search="binary and text converter convert text to binary or hex and back, with full utf-8 awareness and strict input validation. binary to text text to binary hex to text converter"><span class="t-ico">💻</span><span class="t-body"><b>Binary and Text Converter</b><small>Convert text to binary or hex and back, with full UTF-8 awareness and strict input validatio…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/changelog-generator/" data-search="changelog generator build a keep-a-changelog markdown file: version, date, and grouped added/fixed/changed entries. changelog generator keep a changelog changelog markdown release notes version changelog"><span class="t-ico">💻</span><span class="t-body"><b>Changelog Generator</b><small>Build a Keep-a-Changelog markdown file: version, date, and grouped Added/Fixed/Changed entri…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/character-escape-reference/" data-search="character escape reference searchable reference of characters with their html entities, url encodings, and js escapes — plus a live encoder. character escape reference html entities url encode unicode escape html entity table"><span class="t-ico">💻</span><span class="t-body"><b>Character Escape Reference</b><small>Searchable reference of characters with their HTML entities, URL encodings, and JS escapes —…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/chmod-calculator/" data-search="chmod calculator tick rwx boxes for user/group/other — or type 755 — and see octal, symbolic, and the chmod command live. chmod calculator chmod 755 linux permissions octal permissions rwx calculator"><span class="t-ico">💻</span><span class="t-body"><b>chmod Calculator</b><small>Tick rwx boxes for user/group/other — or type 755 — and see octal, symbolic, and the chmod c…</small></span><span class="t-arrow">→</span></a></div>
+  </section>
+</main>
+
+<!-- ADSTERRA-FOOTER: paste your Adsterra footer/banner ad code inside the div below -->
+<div class="container"><div class="ad-slot" data-ad="footer"></div></div>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="f-grid">
+      <div>
+        <span class="brandline"><span class="logo-mark">T</span> ToolNest</span>
+        <p>Free online tools that actually work. No sign-up, no watermarks — and your files never leave your device for client-side tools.</p>
+      </div>
+      <div>
+        <h4>Popular</h4>
+        <a href="/tools/qr-code-generator/">QR Code Generator</a>
+        <a href="/tools/background-remover/">Background Remover</a>
+        <a href="/tools/pdf-merger/">PDF Merger</a>
+        <a href="/tools/word-counter/">Word Counter</a>
+      </div>
+      <div>
+        <h4>Categories</h4>
+        <a href="/#image">Image Tools</a>
+        <a href="/#pdf">PDF &amp; Documents</a>
+        <a href="/#calculators">Calculators</a>
+        <a href="/#developer">Developer Tools</a>
+      </div>
+      <div>
+        <h4>Site</h4>
+        <a href="/">Home</a>
+        <a href="/#all-tools">All Tools</a>
+        <a href="/sitemap.xml">Sitemap</a>
+      </div>
+    </div>
+    <div class="f-bottom">© 2026 ToolNest · Free tools for everyone · Made with care</div>
+  </div>
+</footer>
+
+<script src="/assets/site.js?v=5"></script>
+
+<script>
+/* CSS Skeleton Loader Generator — skeleton blocks with optional shimmer sweep. */
+(function () {
+  'use strict';
+  var SLUG = 'css-skeleton-generator';
+  var ERR = SLUG + '-error';
+  var widths = [88, 100, 94, 100, 72];
+
+  function $(id) { return document.getElementById(SLUG + '-' + id); }
+
+  function randWidths(n) {
+    widths = [];
+    for (var i = 0; i < n; i++) {
+      widths.push(i === n - 1 ? 55 + Math.floor(Math.random() * 25) : 85 + Math.floor(Math.random() * 16));
+    }
+  }
+
+  function build(pfx, w) {
+    var lines = parseInt($('lines').value, 10);
+    var h = $('height').value, gap = $('gap').value, rad = $('radius').value;
+    var base = $('base').value, shim = $('shimmer').value;
+    var anim = $('anim').value === 'on';
+    var speed = parseFloat($('speed').value).toFixed(1);
+    var c = pfx;
+    var html = '<div class="' + c + '">\n';
+    for (var i = 0; i < lines; i++) {
+      html += '  <div class="' + c + '-line" style="width:' + w[i] + '%"></div>\n';
+    }
+    html += '</div>';
+    var css = '.' + c + ' {\n  display: flex;\n  flex-direction: column;\n  gap: ' + gap + 'px;\n}\n\n'
+      + '.' + c + '-line {\n  height: ' + h + 'px;\n  border-radius: ' + rad + 'px;\n  background: ' + base + ';\n';
+    if (anim) {
+      css += '  background-image: linear-gradient(90deg, ' + base + ' 25%, ' + shim + ' 50%, ' + base + ' 75%);\n'
+        + '  background-size: 200% 100%;\n  animation: ' + c + '-shimmer ' + speed + 's linear infinite;\n';
+    }
+    css += '}\n';
+    if (anim) {
+      css += '\n@keyframes ' + c + '-shimmer {\n  from { background-position: 200% 0; }\n  to { background-position: -200% 0; }\n}';
+    }
+    return { html: html, css: css };
+  }
+
+  function render() {
+    TN.clearErr(ERR);
+    try {
+      $('lines-v').textContent = $('lines').value;
+      $('height-v').textContent = $('height').value + 'px';
+      $('gap-v').textContent = $('gap').value + 'px';
+      $('radius-v').textContent = $('radius').value + 'px';
+      $('speed-v').textContent = parseFloat($('speed').value).toFixed(1) + 's';
+      var lines = parseInt($('lines').value, 10);
+      while (widths.length < lines) randWidths(lines);
+      widths = widths.slice(0, lines);
+      var demo = build('demo-skel', widths);
+      $('stage').innerHTML = demo.html;
+      var old = document.getElementById(SLUG + '-style');
+      if (old && old.parentNode) old.parentNode.removeChild(old);
+      var st = document.createElement('style');
+      st.id = SLUG + '-style';
+      st.textContent = demo.css;
+      document.head.appendChild(st);
+      var prod = build('skeleton', widths);
+      $('code').textContent = '<!-- HTML -->\n' + prod.html + '\n\n<!-- CSS -->\n<style>\n' + prod.css + '\n</style>';
+    } catch (e) {
+      TN.setErr(ERR, 'Could not render the skeleton.');
+    }
+  }
+
+  function init() {
+    try {
+      if (typeof TN === 'undefined') return;
+      ['lines', 'height', 'gap', 'radius', 'base', 'shimmer', 'anim', 'speed'].forEach(function (k) {
+        TN.on(SLUG + '-' + k, 'input', render);
+        TN.on(SLUG + '-' + k, 'change', render);
+      });
+      TN.on(SLUG + '-regen', 'click', function () {
+        randWidths(parseInt($('lines').value, 10));
+        render();
+      });
+      TN.on(SLUG + '-copy', 'click', function () {
+        var txt = $('code').textContent;
+        if (!txt) { TN.setErr(ERR, 'Nothing to copy yet.'); return; }
+        TN.copy(txt).then(function (ok) {
+          if (ok) TN.clearErr(ERR);
+          else TN.setErr(ERR, 'Copy failed — select the code and copy manually.');
+        });
+      });
+      randWidths(5);
+      render();
+    } catch (e) { /* never throw on load */ }
+  }
+
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init);
+  else init();
+})();
+
+</script>
+</body>
+</html>

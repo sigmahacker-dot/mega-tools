@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Neumorphism Generator — Free Online | ToolNest</title>
+<meta name="description" content="Build neumorphic (soft-UI) styles: light or dark mode, shadow distance and intensity, with a live preview and copyable box-shadow CSS.">
+<meta name="keywords" content="neumorphism, neumorphic css, soft ui css, box shadow generator, neumorphism generator">
+<link rel="canonical" href="https://toolnest.vercel.app/tools/neumorphism-generator/">
+<meta name="theme-color" content="#07070b">
+<meta property="og:title" content="Neumorphism Generator — Free Online | ToolNest">
+<meta property="og:description" content="Build neumorphic (soft-UI) styles: light or dark mode, shadow distance and intensity, with a live preview and copyable box-shadow CSS.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css?v=4">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%23e01111'/><text x='50' y='68' font-size='58' text-anchor='middle' fill='white' font-family='Arial' font-weight='bold'>T</text></svg>">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebApplication","name":"Neumorphism Generator","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0"},"url":"https://toolnest.vercel.app/tools/neumorphism-generator/","description":"Build neumorphic (soft-UI) styles: light or dark mode, shadow distance and intensity, with a live preview and copyable box-shadow CSS."},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Does it style my whole page?","acceptedAnswer":{"@type":"Answer","text":"It works on the element you apply it to; the generator previews it on both a raised card and a pressed-in button so you can see both states."}},{"@type":"Question","name":"How do I make an indented/pressed button?","acceptedAnswer":{"@type":"Answer","text":"Pick \"Pressed\" from the shadow mode to invert the shadows, which reads as an indented button."}},{"@type":"Question","name":"Which background colors work best?","acceptedAnswer":{"@type":"Answer","text":"Neumorphism relies on subtle light and dark shadows — pick a mid-tone background color for the effect to read clearly."}}]}]}</script>
+</head>
+<body>
+<header class="site-header">
+  <div class="container">
+    <a class="logo" href="/"><span class="logo-mark">T</span> ToolNest</a>
+    <div class="header-right">
+      <form class="nav-search" action="/" method="get" role="search">
+        <span class="ns-icon">🔍</span>
+        <input type="search" name="q" placeholder="Search tools…" aria-label="Search tools" autocomplete="off">
+      </form>
+      <div class="menu-wrap">
+        <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="menuPanel" aria-label="Open menu"><span></span><span></span><span></span></button>
+        <nav class="menu-panel" id="menuPanel" aria-label="Site">
+          <a href="/">Home</a>
+          <a href="/#categories">Categories</a>
+          <a href="/#all-tools">All Tools</a>
+        </nav>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ADSTERRA-HEADER: paste your Adsterra banner ad code inside the div below -->
+<div class="container"><div class="ad-slot ad-leaderboard" data-ad="header"></div></div>
+
+<main class="container">
+  <nav class="crumbs"><a href="/">Home</a> &rsaquo; <a href="/#developer">Developer Tools</a> &rsaquo; Neumorphism Generator</nav>
+  <div class="tool-hero">
+    <h1>Neumorphism Generator</h1>
+    <p>Build neumorphic (soft-UI) styles: light or dark mode, shadow distance and intensity, with a live preview and copyable box-shadow CSS.</p>
+  </div>
+
+  <div class="tool-card">
+  <h2>Neumorphism Generator</h2>
+  <p class="muted">Soft-UI box-shadow recipes with live raised/pressed previews.</p>
+  <div class="grid2">
+    <div class="field">
+      <label for="neumorphism-generator-mode">Mode</label>
+      <select class="input" id="neumorphism-generator-mode">
+        <option value="light">Light</option>
+        <option value="dark">Dark</option>
+      </select>
+    </div>
+    <div class="field">
+      <label for="neumorphism-generator-depth">Shadow mode</label>
+      <select class="input" id="neumorphism-generator-depth">
+        <option value="outset">Raised (outset)</option>
+        <option value="inset">Pressed (inset)</option>
+      </select>
+    </div>
+    <div class="field">
+      <label for="neumorphism-generator-bg">Background color</label>
+      <input type="color" class="input" id="neumorphism-generator-bg" value="#e0e5ec" style="height:44px;padding:4px">
+    </div>
+    <div class="field">
+      <label for="neumorphism-generator-distance">Distance: <span id="neumorphism-generator-distance-v">10px</span></label>
+      <input type="range" class="input" id="neumorphism-generator-distance" min="2" max="30" step="1" value="10">
+    </div>
+    <div class="field">
+      <label for="neumorphism-generator-blur">Blur: <span id="neumorphism-generator-blur-v">20px</span></label>
+      <input type="range" class="input" id="neumorphism-generator-blur" min="0" max="60" step="1" value="20">
+    </div>
+    <div class="field">
+      <label for="neumorphism-generator-intensity">Intensity: <span id="neumorphism-generator-intensity-v">0.30</span></label>
+      <input type="range" class="input" id="neumorphism-generator-intensity" min="0.05" max="0.9" step="0.01" value="0.30">
+    </div>
+    <div class="field">
+      <label for="neumorphism-generator-radius">Corner radius: <span id="neumorphism-generator-radius-v">20px</span></label>
+      <input type="range" class="input" id="neumorphism-generator-radius" min="0" max="60" step="1" value="20">
+    </div>
+    <div class="field">
+      <label for="neumorphism-generator-class">CSS class name</label>
+      <input type="text" class="input" id="neumorphism-generator-class" value="neu-card">
+    </div>
+  </div>
+  <h3>Live preview</h3>
+  <div class="preview" id="neumorphism-generator-stage" style="min-height:240px;display:flex;gap:28px;align-items:center;justify-content:center;transition:background .2s">
+    <div id="neumorphism-generator-card" style="width:150px;height:110px;display:flex;align-items:center;justify-content:center;font-weight:700">Card</div>
+    <button id="neumorphism-generator-btn" class="btn" style="border:none;padding:14px 26px;font-weight:700;cursor:pointer">Button</button>
+  </div>
+  <div class="btn-row mt">
+    <button class="btn btn-primary" id="neumorphism-generator-copy">Copy CSS</button>
+  </div>
+  <h3 class="mt">Generated CSS</h3>
+  <pre class="code" id="neumorphism-generator-code"></pre>
+  <div class="error" id="neumorphism-generator-error"></div>
+</div>
+
+
+  <!-- ADSTERRA-INCONTENT: paste your Adsterra native/in-content ad code inside the div below -->
+  <div class="ad-slot" data-ad="incontent"></div>
+
+  <div class="info-grid">
+    <div class="info-card">
+      <h2>📖 How to use</h2>
+      <ol><li>Pick light or dark mode and a background color.</li><li>Set the shadow distance, blur and intensity.</li><li>Choose raised (outset) or pressed (inset) shadows.</li><li>Preview both card and button live, then copy the CSS.</li></ol>
+    </div>
+    <div class="info-card">
+      <h2>❓ Frequently asked questions</h2>
+      <div class="faq"><details><summary>Does it style my whole page?</summary><p>It works on the element you apply it to; the generator previews it on both a raised card and a pressed-in button so you can see both states.</p></details><details><summary>How do I make an indented/pressed button?</summary><p>Pick &quot;Pressed&quot; from the shadow mode to invert the shadows, which reads as an indented button.</p></details><details><summary>Which background colors work best?</summary><p>Neumorphism relies on subtle light and dark shadows — pick a mid-tone background color for the effect to read clearly.</p></details></div>
+    </div>
+  </div>
+
+  <section class="section">
+    <h2>🔗 Related tools</h2>
+    <div class="tool-grid"><a class="tool-link" href="/tools/ascii-table-reference/" data-search="ascii table reference full ascii table 0–127: decimal, hex, octal, character, control-code names and html entities — searchable. ascii table ascii codes ascii chart control characters ascii reference"><span class="t-ico">💻</span><span class="t-body"><b>ASCII Table Reference</b><small>Full ASCII table 0–127: decimal, hex, octal, character, control-code names and HTML entities…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/base64-encoder-decoder/" data-search="base64 encoder / decoder encode text to base64 or decode base64 back to text, with full utf-8 support and a file-to-data-url converter. base64 encoder base64 decoder base64 encode base64 decode file to base64"><span class="t-ico">💻</span><span class="t-body"><b>Base64 Encoder / Decoder</b><small>Encode text to Base64 or decode Base64 back to text, with full UTF-8 support and a file-to-d…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/binary-text-converter/" data-search="binary and text converter convert text to binary or hex and back, with full utf-8 awareness and strict input validation. binary to text text to binary hex to text converter"><span class="t-ico">💻</span><span class="t-body"><b>Binary and Text Converter</b><small>Convert text to binary or hex and back, with full UTF-8 awareness and strict input validatio…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/changelog-generator/" data-search="changelog generator build a keep-a-changelog markdown file: version, date, and grouped added/fixed/changed entries. changelog generator keep a changelog changelog markdown release notes version changelog"><span class="t-ico">💻</span><span class="t-body"><b>Changelog Generator</b><small>Build a Keep-a-Changelog markdown file: version, date, and grouped Added/Fixed/Changed entri…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/character-escape-reference/" data-search="character escape reference searchable reference of characters with their html entities, url encodings, and js escapes — plus a live encoder. character escape reference html entities url encode unicode escape html entity table"><span class="t-ico">💻</span><span class="t-body"><b>Character Escape Reference</b><small>Searchable reference of characters with their HTML entities, URL encodings, and JS escapes —…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/chmod-calculator/" data-search="chmod calculator tick rwx boxes for user/group/other — or type 755 — and see octal, symbolic, and the chmod command live. chmod calculator chmod 755 linux permissions octal permissions rwx calculator"><span class="t-ico">💻</span><span class="t-body"><b>chmod Calculator</b><small>Tick rwx boxes for user/group/other — or type 755 — and see octal, symbolic, and the chmod c…</small></span><span class="t-arrow">→</span></a></div>
+  </section>
+</main>
+
+<!-- ADSTERRA-FOOTER: paste your Adsterra footer/banner ad code inside the div below -->
+<div class="container"><div class="ad-slot" data-ad="footer"></div></div>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="f-grid">
+      <div>
+        <span class="brandline"><span class="logo-mark">T</span> ToolNest</span>
+        <p>Free online tools that actually work. No sign-up, no watermarks — and your files never leave your device for client-side tools.</p>
+      </div>
+      <div>
+        <h4>Popular</h4>
+        <a href="/tools/qr-code-generator/">QR Code Generator</a>
+        <a href="/tools/background-remover/">Background Remover</a>
+        <a href="/tools/pdf-merger/">PDF Merger</a>
+        <a href="/tools/word-counter/">Word Counter</a>
+      </div>
+      <div>
+        <h4>Categories</h4>
+        <a href="/#image">Image Tools</a>
+        <a href="/#pdf">PDF &amp; Documents</a>
+        <a href="/#calculators">Calculators</a>
+        <a href="/#developer">Developer Tools</a>
+      </div>
+      <div>
+        <h4>Site</h4>
+        <a href="/">Home</a>
+        <a href="/#all-tools">All Tools</a>
+        <a href="/sitemap.xml">Sitemap</a>
+      </div>
+    </div>
+    <div class="f-bottom">© 2026 ToolNest · Free tools for everyone · Made with care</div>
+  </div>
+</footer>
+
+<script src="/assets/site.js?v=5"></script>
+
+<script>
+/* Neumorphism Generator — soft-UI box-shadow recipes with live preview. */
+(function () {
+  'use strict';
+  var SLUG = 'neumorphism-generator';
+  var ERR = SLUG + '-error';
+
+  function $(id) { return document.getElementById(SLUG + '-' + id); }
+
+  function hexToRgb(hex) {
+    var m = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+    if (!m) return [224, 229, 236];
+    return [parseInt(m[1], 16), parseInt(m[2], 16), parseInt(m[3], 16)];
+  }
+  function shift(rgb, amt) {
+    return 'rgb(' + Math.max(0, Math.min(255, rgb[0] + amt)) + ', '
+      + Math.max(0, Math.min(255, rgb[1] + amt)) + ', '
+      + Math.max(0, Math.min(255, rgb[2] + amt)) + ')';
+  }
+  function rgba(hex, amt, alpha) {
+    var rgb = hexToRgb(hex);
+    var c = shift(rgb, amt);
+    var inner = c.replace(/^rgb\(/, '').replace(/\)$/, '');
+    return 'rgba(' + inner + ', ' + alpha.toFixed(2) + ')';
+  }
+
+  function render() {
+    TN.clearErr(ERR);
+    try {
+      var mode = $('mode').value;
+      var inset = $('depth').value === 'inset';
+      var bg = $('bg').value;
+      var dist = parseInt($('distance').value, 10);
+      var blur = parseInt($('blur').value, 10);
+      var inten = parseFloat($('intensity').value);
+      var rad = parseInt($('radius').value, 10);
+      var cls = ($('class').value || 'neu-card').replace(/[^a-zA-Z0-9-_]/g, '-') || 'neu-card';
+      $('distance-v').textContent = dist + 'px';
+      $('blur-v').textContent = blur + 'px';
+      $('intensity-v').textContent = inten.toFixed(2);
+      $('radius-v').textContent = rad + 'px';
+      var dark = mode === 'dark';
+      var lightAmt = dark ? -40 : 60;
+      var darkAmt = dark ? 40 : -60;
+      var pre = inset ? 'inset ' : '';
+      var light = rgba(bg, lightAmt, inten);
+      var darkC = rgba(bg, darkAmt, inten);
+      var shadow = pre + dist + 'px ' + dist + 'px ' + blur + 'px ' + darkC + ', '
+        + pre + (-dist) + 'px ' + (-dist) + 'px ' + blur + 'px ' + light;
+      var stage = $('stage');
+      var card = $('card');
+      var btn = $('btn');
+      stage.style.background = bg;
+      stage.style.color = dark ? '#e5e7eb' : '#4b5563';
+      [card, btn].forEach(function (el) {
+        el.style.background = bg;
+        el.style.borderRadius = rad + 'px';
+        el.style.boxShadow = shadow;
+        el.style.color = stage.style.color;
+      });
+      var css = '.' + cls + ' {\n'
+        + '  background: ' + bg + ';\n'
+        + '  border-radius: ' + rad + 'px;\n'
+        + '  box-shadow: ' + shadow + ';\n'
+        + '}';
+      $('code').textContent = css;
+    } catch (e) {
+      TN.setErr(ERR, 'Could not render the preview.');
+    }
+  }
+
+  function init() {
+    try {
+      if (typeof TN === 'undefined') return;
+      ['mode', 'depth', 'bg', 'distance', 'blur', 'intensity', 'radius', 'class'].forEach(function (k) {
+        TN.on(SLUG + '-' + k, 'input', render);
+        TN.on(SLUG + '-' + k, 'change', render);
+      });
+      TN.on(SLUG + '-copy', 'click', function () {
+        var txt = $('code').textContent;
+        if (!txt) { TN.setErr(ERR, 'Nothing to copy yet.'); return; }
+        TN.copy(txt).then(function (ok) {
+          if (ok) TN.clearErr(ERR);
+          else TN.setErr(ERR, 'Copy failed — select the code and copy manually.');
+        });
+      });
+      render();
+    } catch (e) { /* never throw on load */ }
+  }
+
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init);
+  else init();
+})();
+
+</script>
+</body>
+</html>

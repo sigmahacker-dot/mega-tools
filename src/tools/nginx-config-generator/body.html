@@ -1,0 +1,52 @@
+<div class="tool-card">
+  <div class="grid2">
+    <div class="field">
+      <label for="nginx-config-generator-domain">Domain(s), space separated</label>
+      <input class="input" id="nginx-config-generator-domain" value="example.com www.example.com">
+    </div>
+    <div class="field">
+      <label for="nginx-config-generator-mode">Serve mode</label>
+      <select class="input" id="nginx-config-generator-mode">
+        <option value="static">Static files (root)</option>
+        <option value="proxy">Reverse proxy (proxy_pass)</option>
+      </select>
+    </div>
+  </div>
+  <div class="grid2">
+    <div class="field">
+      <label for="nginx-config-generator-target">Document root / upstream</label>
+      <input class="input" id="nginx-config-generator-target" value="/var/www/example.com/html">
+    </div>
+    <div class="field">
+      <label for="nginx-config-generator-port">Listen port</label>
+      <input class="input" id="nginx-config-generator-port" value="80">
+    </div>
+  </div>
+  <div class="grid2">
+    <div class="field">
+      <label>Options</label>
+      <div class="btn-row">
+        <label class="checkbox-row"><input type="checkbox" id="nginx-config-generator-ssl"> Enable SSL</label>
+        <label class="checkbox-row"><input type="checkbox" id="nginx-config-generator-redirect" checked> HTTP → HTTPS redirect</label>
+        <label class="checkbox-row"><input type="checkbox" id="nginx-config-generator-gzip" checked> gzip</label>
+      </div>
+    </div>
+    <div class="field">
+      <label for="nginx-config-generator-cert">SSL certificate / key paths</label>
+      <input class="input" id="nginx-config-generator-cert" value="/etc/ssl/certs/example.com.crt" style="margin-bottom:8px">
+      <input class="input" id="nginx-config-generator-key" value="/etc/ssl/private/example.com.key">
+    </div>
+  </div>
+  <div class="btn-row">
+    <button class="btn btn-primary" id="nginx-config-generator-generate">Generate config</button>
+  </div>
+  <div class="error" id="nginx-config-generator-error"></div>
+  <div class="field">
+    <label for="nginx-config-generator-output">nginx server block</label>
+    <textarea class="textarea" id="nginx-config-generator-output" rows="18" readonly placeholder="Your config will appear here…"></textarea>
+  </div>
+  <div class="btn-row">
+    <button class="btn btn-outline" id="nginx-config-generator-copy">Copy</button>
+    <button class="btn btn-outline" id="nginx-config-generator-download">Download .conf</button>
+  </div>
+</div>

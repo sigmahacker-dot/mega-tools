@@ -1,0 +1,49 @@
+<div class="tool-card">
+  <div class="grid2">
+    <div class="field">
+      <label for="jwt-encoder-header">Header (JSON)</label>
+      <textarea class="textarea" id="jwt-encoder-header" rows="4">{"alg":"HS256","typ":"JWT"}</textarea>
+    </div>
+    <div class="field">
+      <label for="jwt-encoder-payload">Payload (JSON)</label>
+      <textarea class="textarea" id="jwt-encoder-payload" rows="4">{"sub":"user-123","name":"Ada Lovelace","admin":true,"iat":1798761600}</textarea>
+    </div>
+  </div>
+  <div class="grid2">
+    <div class="field">
+      <label for="jwt-encoder-secret">Secret (HS256)</label>
+      <input type="password" class="input" id="jwt-encoder-secret" placeholder="your-256-bit-secret" autocomplete="off">
+    </div>
+    <div class="field">
+      <label>&nbsp;</label>
+      <div class="btn-row"><button class="btn btn-primary" id="jwt-encoder-sign">Sign JWT</button></div>
+    </div>
+  </div>
+  <div class="error" id="jwt-encoder-error"></div>
+  <div class="field">
+    <label for="jwt-encoder-output">Signed token</label>
+    <div class="copy-row">
+      <code class="code" id="jwt-encoder-output" style="flex:1;word-break:break-all"></code>
+      <button class="btn btn-outline" id="jwt-encoder-copy">Copy</button>
+    </div>
+  </div>
+  <hr>
+  <div class="field">
+    <label for="jwt-encoder-token">Decode / verify a token</label>
+    <textarea class="textarea" id="jwt-encoder-token" rows="3" placeholder="Paste a JWT here…"></textarea>
+  </div>
+  <div class="btn-row">
+    <button class="btn btn-primary" id="jwt-encoder-decode">Decode &amp; verify</button>
+  </div>
+  <p class="hint">Uses the secret above for verification. Leave the secret empty to decode only.</p>
+  <div class="result hidden" id="jwt-encoder-result">
+    <div class="stat-cards">
+      <div class="stat-card"><div class="v" id="jwt-encoder-valid">—</div><div class="l">Signature</div></div>
+      <div class="stat-card"><div class="v" id="jwt-encoder-exp">—</div><div class="l">Expiry</div></div>
+    </div>
+    <div class="grid2">
+      <div class="field"><label>Header</label><pre class="code" id="jwt-encoder-dheader"></pre></div>
+      <div class="field"><label>Payload</label><pre class="code" id="jwt-encoder-dpayload"></pre></div>
+    </div>
+  </div>
+</div>

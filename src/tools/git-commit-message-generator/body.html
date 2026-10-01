@@ -1,0 +1,49 @@
+<div class="tool-card">
+  <div class="grid2">
+    <div class="field">
+      <label for="git-commit-message-generator-type">Type</label>
+      <select class="input" id="git-commit-message-generator-type">
+        <option>feat</option><option>fix</option><option>docs</option><option>style</option>
+        <option>refactor</option><option>perf</option><option>test</option><option>build</option>
+        <option>ci</option><option>chore</option><option>revert</option>
+      </select>
+    </div>
+    <div class="field">
+      <label for="git-commit-message-generator-scope">Scope (optional)</label>
+      <input class="input" id="git-commit-message-generator-scope" placeholder="auth">
+    </div>
+  </div>
+  <div class="field">
+    <label for="git-commit-message-generator-subject">Subject</label>
+    <input class="input" id="git-commit-message-generator-subject" placeholder="add OAuth login flow">
+  </div>
+  <div class="field">
+    <label for="git-commit-message-generator-body">Body (optional)</label>
+    <textarea class="textarea" id="git-commit-message-generator-body" rows="2" placeholder="Why this change was needed…"></textarea>
+  </div>
+  <div class="field">
+    <label class="checkbox-row"><input type="checkbox" id="git-commit-message-generator-breaking"> Breaking change</label>
+  </div>
+  <div class="field hidden" id="git-commit-message-generator-breaking-wrap">
+    <label for="git-commit-message-generator-breaking-text">Breaking change description</label>
+    <input class="input" id="git-commit-message-generator-breaking-text" placeholder="API v1 endpoints removed">
+  </div>
+  <div class="btn-row">
+    <button class="btn btn-primary" id="git-commit-message-generator-generate">Generate</button>
+    <button class="btn btn-outline" id="git-commit-message-generator-copy">Copy</button>
+  </div>
+  <div class="error" id="git-commit-message-generator-error"></div>
+  <div class="field">
+    <label for="git-commit-message-generator-output">Commit message</label>
+    <textarea class="textarea" id="git-commit-message-generator-output" rows="4" readonly placeholder="Your commit message will appear here…"></textarea>
+  </div>
+  <hr>
+  <div class="field">
+    <label for="git-commit-message-generator-check">Validate an existing message</label>
+    <textarea class="textarea" id="git-commit-message-generator-check" rows="3" placeholder="feat(auth): add OAuth login flow"></textarea>
+  </div>
+  <div class="btn-row">
+    <button class="btn btn-primary" id="git-commit-message-generator-validate">Validate</button>
+  </div>
+  <div class="result hidden" id="git-commit-message-generator-verdict"></div>
+</div>

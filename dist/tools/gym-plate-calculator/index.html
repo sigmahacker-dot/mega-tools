@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gym Plate Calculator — Free Online | ToolNest</title>
+<meta name="description" content="Enter bar and target weight to get exact plates per side and the correct loading order.">
+<meta name="keywords" content="plate calculator, gym plate calculator, barbell plate calculator, weight plates, powerlifting plates">
+<link rel="canonical" href="https://toolnest.vercel.app/tools/gym-plate-calculator/">
+<meta name="theme-color" content="#07070b">
+<meta property="og:title" content="Gym Plate Calculator — Free Online | ToolNest">
+<meta property="og:description" content="Enter bar and target weight to get exact plates per side and the correct loading order.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css?v=4">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%23e01111'/><text x='50' y='68' font-size='58' text-anchor='middle' fill='white' font-family='Arial' font-weight='bold'>T</text></svg>">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebApplication","name":"Gym Plate Calculator","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0"},"url":"https://toolnest.vercel.app/tools/gym-plate-calculator/","description":"Enter bar and target weight to get exact plates per side and the correct loading order."},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How are plates chosen?","acceptedAnswer":{"@type":"Answer","text":"Greedy from the largest plate down: 25, 20, 15, 10, 5, 2.5, 1.25 kg per side."}},{"@type":"Question","name":"What is the loading order?","acceptedAnswer":{"@type":"Answer","text":"Load the heaviest plates first (closest to the bar sleeve), then lighter ones outside them."}},{"@type":"Question","name":"How much does the bar weigh?","acceptedAnswer":{"@type":"Answer","text":"Standard Olympic bars are 20 kg (men's) or 15 kg (women's) — pick yours before calculating."}},{"@type":"Question","name":"What if my target is not reachable?","acceptedAnswer":{"@type":"Answer","text":"If the remainder cannot be made with 1.25 kg plates, the tool tells you the closest achievable weight."}}]}]}</script>
+</head>
+<body>
+<header class="site-header">
+  <div class="container">
+    <a class="logo" href="/"><span class="logo-mark">T</span> ToolNest</a>
+    <div class="header-right">
+      <form class="nav-search" action="/" method="get" role="search">
+        <span class="ns-icon">🔍</span>
+        <input type="search" name="q" placeholder="Search tools…" aria-label="Search tools" autocomplete="off">
+      </form>
+      <div class="menu-wrap">
+        <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="menuPanel" aria-label="Open menu"><span></span><span></span><span></span></button>
+        <nav class="menu-panel" id="menuPanel" aria-label="Site">
+          <a href="/">Home</a>
+          <a href="/#categories">Categories</a>
+          <a href="/#all-tools">All Tools</a>
+        </nav>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ADSTERRA-HEADER: paste your Adsterra banner ad code inside the div below -->
+<div class="container"><div class="ad-slot ad-leaderboard" data-ad="header"></div></div>
+
+<main class="container">
+  <nav class="crumbs"><a href="/">Home</a> &rsaquo; <a href="/#health">Health &amp; Fitness</a> &rsaquo; Gym Plate Calculator</nav>
+  <div class="tool-hero">
+    <h1>Gym Plate Calculator</h1>
+    <p>Enter bar and target weight to get exact plates per side and the correct loading order.</p>
+  </div>
+
+  <div class="tool-card">
+  <div class="grid2">
+    <div class="field">
+      <label for="gym-plate-calculator-bar">Bar weight</label>
+      <select class="input" id="gym-plate-calculator-bar">
+        <option value="20">20 kg (Olympic men's)</option>
+        <option value="15">15 kg (Olympic women's)</option>
+      </select>
+    </div>
+    <div class="field">
+      <label for="gym-plate-calculator-target">Target total weight (kg)</label>
+      <input class="input" id="gym-plate-calculator-target" type="number" min="1" step="0.5" placeholder="e.g. 100">
+    </div>
+  </div>
+  <div class="btn-row"><button class="btn btn-primary" id="gym-plate-calculator-calc">Calculate plates</button></div>
+  <div class="stat-cards hidden" id="gym-plate-calculator-out">
+    <div class="stat-card"><div class="v" id="gym-plate-calculator-side">–</div><div class="l">Per side (kg)</div></div>
+    <div class="stat-card"><div class="v" id="gym-plate-calculator-total">–</div><div class="l">Loaded total (kg)</div></div>
+  </div>
+  <div class="result hidden" id="gym-plate-calculator-plates"></div>
+  <p class="note">General information only — not medical advice. Consult a professional for personal guidance. Always use collars and load both sides evenly.</p>
+  <div class="error" id="gym-plate-calculator-error"></div>
+</div>
+
+
+  <!-- ADSTERRA-INCONTENT: paste your Adsterra native/in-content ad code inside the div below -->
+  <div class="ad-slot" data-ad="incontent"></div>
+
+  <div class="info-grid">
+    <div class="info-card">
+      <h2>📖 How to use</h2>
+      <ol><li>Select your bar weight (20 kg or 15 kg).</li><li>Enter your target total weight.</li><li>Press Calculate plates.</li><li>Load plates per side in the shown order, heaviest first.</li></ol>
+    </div>
+    <div class="info-card">
+      <h2>❓ Frequently asked questions</h2>
+      <div class="faq"><details><summary>How are plates chosen?</summary><p>Greedy from the largest plate down: 25, 20, 15, 10, 5, 2.5, 1.25 kg per side.</p></details><details><summary>What is the loading order?</summary><p>Load the heaviest plates first (closest to the bar sleeve), then lighter ones outside them.</p></details><details><summary>How much does the bar weigh?</summary><p>Standard Olympic bars are 20 kg (men&#39;s) or 15 kg (women&#39;s) — pick yours before calculating.</p></details><details><summary>What if my target is not reachable?</summary><p>If the remainder cannot be made with 1.25 kg plates, the tool tells you the closest achievable weight.</p></details></div>
+    </div>
+  </div>
+
+  <section class="section">
+    <h2>🔗 Related tools</h2>
+    <div class="tool-grid"><a class="tool-link" href="/tools/baby-growth-tracker/" data-search="baby growth tracker log your baby&#39;s weight and height over time and see a growth log with typical-range guidance. baby growth tracker baby weight tracker infant growth chart baby height log newborn growth"><span class="t-ico">❤️</span><span class="t-body"><b>Baby Growth Tracker</b><small>Log your baby&#39;s weight and height over time and see a growth log with typical-range guidance…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/blood-pressure-tracker/" data-search="blood pressure tracker log blood pressure readings with automatic aha category classification, averages and history saved in your browser. blood pressure tracker bp log blood pressure chart hypertension tracker bp monitor log"><span class="t-ico">❤️</span><span class="t-body"><b>Blood Pressure Tracker</b><small>Log blood pressure readings with automatic AHA category classification, averages and history…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/body-fat-calculator/" data-search="body fat calculator estimate body fat percentage with the us navy tape-measure method and see your fitness category. body fat calculator us navy body fat body fat percentage calculator"><span class="t-ico">❤️</span><span class="t-body"><b>Body Fat Calculator</b><small>Estimate body fat percentage with the US Navy tape-measure method and see your fitness categ…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/breathing-exercise-guide/" data-search="breathing exercise guide guided breathing exercises (4-7-8, box, energize) with an animated pacer circle, phase labels, and cycle counter. breathing exercise 4-7-8 breathing box breathing breathing pacer calm breathing"><span class="t-ico">❤️</span><span class="t-body"><b>Breathing Exercise Guide</b><small>Guided breathing exercises (4-7-8, box, energize) with an animated pacer circle, phase label…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/caffeine-half-life-calculator/" data-search="caffeine half-life calculator log caffeinated drinks and see how much caffeine is still in your system using 5.5-hour half-life decay. caffeine half life caffeine calculator caffeine in system coffee caffeine tracker caffeine sleep"><span class="t-ico">❤️</span><span class="t-body"><b>Caffeine Half-Life Calculator</b><small>Log caffeinated drinks and see how much caffeine is still in your system using 5.5-hour half…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/calorie-calculator/" data-search="tdee calorie calculator estimate your daily calorie needs with the mifflin-st jeor equation and get targets for losing, maintaining or gaining weight. tdee calculator calorie calculator mifflin st jeor daily calorie needs"><span class="t-ico">❤️</span><span class="t-body"><b>TDEE Calorie Calculator</b><small>Estimate your daily calorie needs with the Mifflin-St Jeor equation and get targets for losi…</small></span><span class="t-arrow">→</span></a></div>
+  </section>
+</main>
+
+<!-- ADSTERRA-FOOTER: paste your Adsterra footer/banner ad code inside the div below -->
+<div class="container"><div class="ad-slot" data-ad="footer"></div></div>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="f-grid">
+      <div>
+        <span class="brandline"><span class="logo-mark">T</span> ToolNest</span>
+        <p>Free online tools that actually work. No sign-up, no watermarks — and your files never leave your device for client-side tools.</p>
+      </div>
+      <div>
+        <h4>Popular</h4>
+        <a href="/tools/qr-code-generator/">QR Code Generator</a>
+        <a href="/tools/background-remover/">Background Remover</a>
+        <a href="/tools/pdf-merger/">PDF Merger</a>
+        <a href="/tools/word-counter/">Word Counter</a>
+      </div>
+      <div>
+        <h4>Categories</h4>
+        <a href="/#image">Image Tools</a>
+        <a href="/#pdf">PDF &amp; Documents</a>
+        <a href="/#calculators">Calculators</a>
+        <a href="/#developer">Developer Tools</a>
+      </div>
+      <div>
+        <h4>Site</h4>
+        <a href="/">Home</a>
+        <a href="/#all-tools">All Tools</a>
+        <a href="/sitemap.xml">Sitemap</a>
+      </div>
+    </div>
+    <div class="f-bottom">© 2026 ToolNest · Free tools for everyone · Made with care</div>
+  </div>
+</footer>
+
+<script src="/assets/site.js?v=5"></script>
+
+<script>
+/* Gym plate calculator: bar + target -> plates per side (greedy), loading order. */
+(function () {
+  'use strict';
+  var SLUG = 'gym-plate-calculator';
+  var PLATES = [25, 20, 15, 10, 5, 2.5, 1.25];
+  function $(id) { return document.getElementById(id); }
+  function calc() {
+    $(SLUG + '-error').textContent = '';
+    var bar = parseFloat($(SLUG + '-bar').value);
+    var target = parseFloat($(SLUG + '-target').value);
+    if (isNaN(target) || target <= 0) { $(SLUG + '-error').textContent = 'Enter a valid target weight.'; return; }
+    if (target < bar) { $(SLUG + '-error').textContent = 'Target must be at least the bar weight (' + bar + ' kg).'; return; }
+    var perSide = (target - bar) / 2;
+    var rem = Math.round(perSide * 100) / 100;
+    var used = [];
+    PLATES.forEach(function (p) {
+      var c = 0;
+      while (rem >= p - 1e-9 && c < 12) { rem = Math.round((rem - p) * 100) / 100; used.push(p); c++; }
+    });
+    if (rem > 0.01) {
+      $(SLUG + '-error').textContent = '⚠️ ' + rem.toFixed(2) + ' kg per side cannot be made with standard plates. Closest loadable per side: ' +
+        (perSide - rem).toFixed(2) + ' kg.';
+      return;
+    }
+    var loaded = bar + 2 * used.reduce(function (a, b) { return a + b; }, 0);
+    $(SLUG + '-side').textContent = perSide.toFixed(2).replace(/\.?0+$/, '') + ' kg';
+    $(SLUG + '-total').textContent = loaded + ' kg';
+    $(SLUG + '-out').classList.remove('hidden');
+    var counts = {};
+    used.forEach(function (p) { counts[p] = (counts[p] || 0) + 1; });
+    var order = Object.keys(counts).map(Number).sort(function (a, b) { return b - a; });
+    var html = '<p><strong>Load per side, heaviest first</strong> (mirror on both sides):</p><ol>';
+    order.forEach(function (p) {
+      html += '<li>' + counts[p] + ' × ' + p + ' kg plate' + (counts[p] > 1 ? 's' : '') + '</li>';
+    });
+    html += '</ol><p class="hint">Then add collars. Double-check both sides match before lifting.</p>';
+    var box = $(SLUG + '-plates');
+    box.innerHTML = html;
+    box.classList.remove('hidden');
+  }
+  try { $(SLUG + '-calc').addEventListener('click', calc); } catch (e) { /* never throw on load */ }
+})();
+
+</script>
+</body>
+</html>

@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pong Game — Free Online | ToolNest</title>
+<meta name="description" content="Classic Pong on canvas — rally against the AI paddle, first to 7 wins, with pause and speed-up rallies.">
+<meta name="keywords" content="pong, pong game, table tennis game, arcade pong, paddle game">
+<link rel="canonical" href="https://toolnest.vercel.app/tools/pong-game/">
+<meta name="theme-color" content="#07070b">
+<meta property="og:title" content="Pong Game — Free Online | ToolNest">
+<meta property="og:description" content="Classic Pong on canvas — rally against the AI paddle, first to 7 wins, with pause and speed-up rallies.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css?v=4">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%23e01111'/><text x='50' y='68' font-size='58' text-anchor='middle' fill='white' font-family='Arial' font-weight='bold'>T</text></svg>">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebApplication","name":"Pong Game","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0"},"url":"https://toolnest.vercel.app/tools/pong-game/","description":"Classic Pong on canvas — rally against the AI paddle, first to 7 wins, with pause and speed-up rallies."},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How do I control my paddle?","acceptedAnswer":{"@type":"Answer","text":"Mouse, touch-drag, or ↑/↓ arrow keys move your paddle."}},{"@type":"Question","name":"How do I win?","acceptedAnswer":{"@type":"Answer","text":"First to 7 points wins the match."}},{"@type":"Question","name":"How hard is the AI?","acceptedAnswer":{"@type":"Answer","text":"The AI tracks the ball with a capped speed — rallies get faster the longer they last."}},{"@type":"Question","name":"Can I pause?","acceptedAnswer":{"@type":"Answer","text":"Yes — the Pause button freezes the game anytime."}}]}]}</script>
+</head>
+<body>
+<header class="site-header">
+  <div class="container">
+    <a class="logo" href="/"><span class="logo-mark">T</span> ToolNest</a>
+    <div class="header-right">
+      <form class="nav-search" action="/" method="get" role="search">
+        <span class="ns-icon">🔍</span>
+        <input type="search" name="q" placeholder="Search tools…" aria-label="Search tools" autocomplete="off">
+      </form>
+      <div class="menu-wrap">
+        <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="menuPanel" aria-label="Open menu"><span></span><span></span><span></span></button>
+        <nav class="menu-panel" id="menuPanel" aria-label="Site">
+          <a href="/">Home</a>
+          <a href="/#categories">Categories</a>
+          <a href="/#all-tools">All Tools</a>
+        </nav>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ADSTERRA-HEADER: paste your Adsterra banner ad code inside the div below -->
+<div class="container"><div class="ad-slot ad-leaderboard" data-ad="header"></div></div>
+
+<main class="container">
+  <nav class="crumbs"><a href="/">Home</a> &rsaquo; <a href="/#fun">Fun &amp; Lifestyle</a> &rsaquo; Pong Game</nav>
+  <div class="tool-hero">
+    <h1>Pong Game</h1>
+    <p>Classic Pong on canvas — rally against the AI paddle, first to 7 wins, with pause and speed-up rallies.</p>
+  </div>
+
+  <div class="tool-card" style="text-align:center">
+  <div class="stat-cards" style="max-width:480px;margin:0 auto 12px">
+    <div class="stat-card"><div class="v" id="pong-game-you">0</div><div class="l">You</div></div>
+    <div class="stat-card"><div class="v" id="pong-game-ai">0</div><div class="l">Computer</div></div>
+    <div class="stat-card"><div class="v">7</div><div class="l">To win</div></div>
+  </div>
+  <p class="muted" id="pong-game-msg" style="min-height:24px">Press Start — first to 7 wins!</p>
+  <canvas id="pong-game-canvas" width="480" height="320" style="max-width:100%;border-radius:8px;background:#101418;box-shadow:0 2px 8px rgba(0,0,0,.25);touch-action:none"></canvas>
+  <div class="btn-row" style="justify-content:center;margin-top:12px">
+    <button class="btn btn-primary" id="pong-game-start">▶ Start</button>
+    <button class="btn btn-outline" id="pong-game-pause" disabled>⏸ Pause</button>
+  </div>
+  <div class="error" id="pong-game-error"></div>
+</div>
+
+
+  <!-- ADSTERRA-INCONTENT: paste your Adsterra native/in-content ad code inside the div below -->
+  <div class="ad-slot" data-ad="incontent"></div>
+
+  <div class="info-grid">
+    <div class="info-card">
+      <h2>📖 How to use</h2>
+      <ol><li>Move your paddle with mouse, touch, or ↑/↓.</li><li>Return the ball past the AI paddle.</li><li>First to 7 points wins.</li><li>Rallies speed up — stay sharp!</li></ol>
+    </div>
+    <div class="info-card">
+      <h2>❓ Frequently asked questions</h2>
+      <div class="faq"><details><summary>How do I control my paddle?</summary><p>Mouse, touch-drag, or ↑/↓ arrow keys move your paddle.</p></details><details><summary>How do I win?</summary><p>First to 7 points wins the match.</p></details><details><summary>How hard is the AI?</summary><p>The AI tracks the ball with a capped speed — rallies get faster the longer they last.</p></details><details><summary>Can I pause?</summary><p>Yes — the Pause button freezes the game anytime.</p></details></div>
+    </div>
+  </div>
+
+  <section class="section">
+    <h2>🔗 Related tools</h2>
+    <div class="tool-grid"><a class="tool-link" href="/tools/aim-trainer-game/" data-search="aim trainer game test and train your aim — targets pop up at random spots for 30 seconds. hits, misses and accuracy are tracked live. aim trainer aim test reaction test click speed test fps aim trainer"><span class="t-ico">🎲</span><span class="t-body"><b>Aim Trainer Game</b><small>Test and train your aim — targets pop up at random spots for 30 seconds. Hits, misses and ac…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/baby-name-generator/" data-search="baby name generator discover baby names by gender and origin — pakistani, arabic, western, indian or turkish — with meanings, random picks and tap-to-copy. baby name generator baby names with meanings muslim baby names boy girl names"><span class="t-ico">🎲</span><span class="t-body"><b>Baby Name Generator</b><small>Discover baby names by gender and origin — Pakistani, Arabic, Western, Indian or Turkish — w…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/battery-status-checker/" data-search="battery status checker check your device&#39;s battery level, charging status and estimated time remaining, with live updates — where your browser supports the battery api. battery status battery level checker laptop battery charging status"><span class="t-ico">🎲</span><span class="t-body"><b>Battery Status Checker</b><small>Check your device&#39;s battery level, charging status and estimated time remaining, with live u…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/battleship-game/" data-search="battleship game the classic naval battle — place your 5 ships, then hunt the computer&#39;s fleet on a 10×10 grid with hit, miss, and sunk tracking. battleship game battleship naval battle game sea battle board game"><span class="t-ico">🎲</span><span class="t-body"><b>Battleship Game</b><small>The classic naval battle — place your 5 ships, then hunt the computer&#39;s fleet on a 10×10 gri…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/birthday-countdown/" data-search="birthday countdown enter your birthday for a live countdown to your next one — days, hours, minutes and seconds — plus the age you&#39;ll turn and a fun message. birthday countdown countdown to birthday how old am i birthday timer"><span class="t-ico">🎲</span><span class="t-body"><b>Birthday Countdown</b><small>Enter your birthday for a live countdown to your next one — days, hours, minutes and seconds…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/blackjack-game/" data-search="blackjack game real blackjack — hit, stand, double down, dealer hits to 17, blackjack pays 3:2, with a session bankroll. blackjack blackjack game 21 card game casino card game blackjack online"><span class="t-ico">🎲</span><span class="t-body"><b>Blackjack Game</b><small>Real Blackjack — hit, stand, double down, dealer hits to 17, blackjack pays 3:2, with a sess…</small></span><span class="t-arrow">→</span></a></div>
+  </section>
+</main>
+
+<!-- ADSTERRA-FOOTER: paste your Adsterra footer/banner ad code inside the div below -->
+<div class="container"><div class="ad-slot" data-ad="footer"></div></div>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="f-grid">
+      <div>
+        <span class="brandline"><span class="logo-mark">T</span> ToolNest</span>
+        <p>Free online tools that actually work. No sign-up, no watermarks — and your files never leave your device for client-side tools.</p>
+      </div>
+      <div>
+        <h4>Popular</h4>
+        <a href="/tools/qr-code-generator/">QR Code Generator</a>
+        <a href="/tools/background-remover/">Background Remover</a>
+        <a href="/tools/pdf-merger/">PDF Merger</a>
+        <a href="/tools/word-counter/">Word Counter</a>
+      </div>
+      <div>
+        <h4>Categories</h4>
+        <a href="/#image">Image Tools</a>
+        <a href="/#pdf">PDF &amp; Documents</a>
+        <a href="/#calculators">Calculators</a>
+        <a href="/#developer">Developer Tools</a>
+      </div>
+      <div>
+        <h4>Site</h4>
+        <a href="/">Home</a>
+        <a href="/#all-tools">All Tools</a>
+        <a href="/sitemap.xml">Sitemap</a>
+      </div>
+    </div>
+    <div class="f-bottom">© 2026 ToolNest · Free tools for everyone · Made with care</div>
+  </div>
+</footer>
+
+<script src="/assets/site.js?v=5"></script>
+
+<script>
+/* Pong — canvas, player vs AI paddle, first to 7, pause. */
+(function () {
+  'use strict';
+  var SLUG = 'pong-game';
+  var W = 480, H = 320, PH = 70, PW = 10;
+  var you = { y: H / 2 - PH / 2, s: 0 };
+  var ai = { y: H / 2 - PH / 2, s: 0 };
+  var ball = { x: W / 2, y: H / 2, dx: 0, dy: 0, r: 8, speed: 5 };
+  var running = false, paused = false, serveDir = 1, keys = {};
+
+  function $(id) { return document.getElementById(id); }
+  function canvas() { return $(SLUG + '-canvas'); }
+
+  function serve() {
+    ball.x = W / 2; ball.y = H / 2;
+    ball.speed = 5;
+    var ang = (Math.random() * 0.5 - 0.25) * Math.PI; // -45°..45°
+    ball.dx = serveDir * ball.speed * Math.cos(ang);
+    ball.dy = ball.speed * Math.sin(ang);
+    serveDir = -serveDir;
+  }
+
+  function start() {
+    you.s = 0; ai.s = 0;
+    $('pong-game-you').textContent = '0';
+    $('pong-game-ai').textContent = '0';
+    $('pong-game-start').textContent = '↻ Restart';
+    $('pong-game-pause').disabled = false;
+    $('pong-game-pause').textContent = '⏸ Pause';
+    paused = false;
+    running = true;
+    serveDir = Math.random() < 0.5 ? 1 : -1;
+    serve();
+    $('pong-game-msg').textContent = 'First to 7 wins — good luck!';
+  }
+
+  function point(winner) {
+    if (winner === 'you') {
+      you.s++;
+      $('pong-game-you').textContent = you.s;
+    } else {
+      ai.s++;
+      $('pong-game-ai').textContent = ai.s;
+    }
+    if (you.s >= 7 || ai.s >= 7) {
+      running = false;
+      $('pong-game-pause').disabled = true;
+      $('pong-game-msg').textContent = you.s >= 7 ? '🏆 You win ' + you.s + '–' + ai.s + '!' : '🤖 Computer wins ' + ai.s + '–' + you.s + '. Try again!';
+      return;
+    }
+    serve();
+  }
+
+  function bounce(paddleY, isLeft) {
+    var rel = (ball.y - (paddleY + PH / 2)) / (PH / 2); // -1..1
+    rel = Math.max(-1, Math.min(1, rel));
+    ball.speed = Math.min(11, ball.speed * 1.06);
+    var ang = rel * (Math.PI / 3.2);
+    ball.dx = (isLeft ? 1 : -1) * ball.speed * Math.cos(ang);
+    ball.dy = ball.speed * Math.sin(ang);
+    ball.x = isLeft ? PW + ball.r + 1 : W - PW - ball.r - 1;
+  }
+
+  function update() {
+    if (!running || paused) return;
+    // player keyboard
+    if (keys.up) you.y -= 6;
+    if (keys.down) you.y += 6;
+    you.y = Math.max(0, Math.min(H - PH, you.y));
+    // AI: track ball with capped speed, only when ball approaches
+    var aiSpeed = 4.6;
+    var target = ai.y + PH / 2;
+    if (ball.dx > 0) {
+      var want = ball.y;
+      if (Math.abs(want - target) > 8) ai.y += (want > target ? aiSpeed : -aiSpeed);
+    } else {
+      // drift to center when ball moves away
+      if (Math.abs(H / 2 - target) > 10) ai.y += (H / 2 > target ? aiSpeed * 0.6 : -aiSpeed * 0.6);
+    }
+    ai.y = Math.max(0, Math.min(H - PH, ai.y));
+    // ball
+    ball.x += ball.dx;
+    ball.y += ball.dy;
+    if (ball.y < ball.r) { ball.y = ball.r; ball.dy = Math.abs(ball.dy); }
+    if (ball.y > H - ball.r) { ball.y = H - ball.r; ball.dy = -Math.abs(ball.dy); }
+    // paddles
+    if (ball.dx < 0 && ball.x - ball.r <= PW && ball.x > 0 && ball.y >= you.y - ball.r && ball.y <= you.y + PH + ball.r) {
+      bounce(you.y, true);
+    }
+    if (ball.dx > 0 && ball.x + ball.r >= W - PW && ball.x < W && ball.y >= ai.y - ball.r && ball.y <= ai.y + PH + ball.r) {
+      bounce(ai.y, false);
+    }
+    if (ball.x < -20) point('ai');
+    if (ball.x > W + 20) point('you');
+  }
+
+  function draw() {
+    var ctx = canvas().getContext('2d');
+    ctx.fillStyle = '#101418';
+    ctx.fillRect(0, 0, W, H);
+    // center line
+    ctx.strokeStyle = '#37474f';
+    ctx.setLineDash([8, 8]);
+    ctx.beginPath();
+    ctx.moveTo(W / 2, 0); ctx.lineTo(W / 2, H);
+    ctx.stroke();
+    ctx.setLineDash([]);
+    // paddles
+    ctx.fillStyle = '#4caf50';
+    ctx.fillRect(0, you.y, PW, PH);
+    ctx.fillStyle = '#f44336';
+    ctx.fillRect(W - PW, ai.y, PW, PH);
+    // ball
+    ctx.fillStyle = '#fff';
+    ctx.beginPath();
+    ctx.arc(ball.x, ball.y, ball.r, 0, Math.PI * 2);
+    ctx.fill();
+    // score
+    ctx.fillStyle = '#78909c';
+    ctx.font = 'bold 44px sans-serif';
+    ctx.textAlign = 'center';
+    ctx.fillText(you.s, W / 2 - 50, 56);
+    ctx.fillText(ai.s, W / 2 + 50, 56);
+    if (!running) {
+      ctx.fillStyle = '#90a4ae';
+      ctx.font = '20px sans-serif';
+      ctx.fillText('Press Start to play', W / 2, H / 2 + 60);
+    }
+    if (paused && running) {
+      ctx.fillStyle = 'rgba(0,0,0,.55)';
+      ctx.fillRect(0, 0, W, H);
+      ctx.fillStyle = '#fff';
+      ctx.font = 'bold 30px sans-serif';
+      ctx.fillText('PAUSED', W / 2, H / 2);
+    }
+  }
+
+  function loop() {
+    update();
+    draw();
+    requestAnimationFrame(loop);
+  }
+
+  function moveTo(clientY) {
+    var r = canvas().getBoundingClientRect();
+    var y = (clientY - r.top) * (H / r.height);
+    you.y = Math.max(0, Math.min(H - PH, y - PH / 2));
+  }
+
+  try {
+    var cv = canvas();
+    cv.addEventListener('mousemove', function (e) { moveTo(e.clientY); });
+    cv.addEventListener('touchstart', function (e) { e.preventDefault(); moveTo(e.touches[0].clientY); }, { passive: false });
+    cv.addEventListener('touchmove', function (e) { e.preventDefault(); moveTo(e.touches[0].clientY); }, { passive: false });
+    document.addEventListener('keydown', function (e) {
+      var t = e.target;
+      if (t && (t.tagName === 'INPUT' || t.tagName === 'TEXTAREA' || t.tagName === 'SELECT')) return;
+      if (e.key === 'ArrowUp') { keys.up = true; e.preventDefault(); }
+      else if (e.key === 'ArrowDown') { keys.down = true; e.preventDefault(); }
+    });
+    document.addEventListener('keyup', function (e) {
+      if (e.key === 'ArrowUp') keys.up = false;
+      if (e.key === 'ArrowDown') keys.down = false;
+    });
+    TN.on('pong-game-start', 'click', start);
+    TN.on('pong-game-pause', 'click', function () {
+      if (!running) return;
+      paused = !paused;
+      $('pong-game-pause').textContent = paused ? '▶ Resume' : '⏸ Pause';
+    });
+    loop();
+  } catch (e) { /* never throw on load */ }
+})();
+
+</script>
+</body>
+</html>

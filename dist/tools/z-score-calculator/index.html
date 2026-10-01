@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Z-Score Calculator — Free Online | ToolNest</title>
+<meta name="description" content="Convert any value to a z-score from mean and standard deviation, with its percentile via the normal CDF.">
+<meta name="keywords" content="z-score, z score calculator, standard score, percentile calculator, normal distribution">
+<link rel="canonical" href="https://toolnest.vercel.app/tools/z-score-calculator/">
+<meta name="theme-color" content="#07070b">
+<meta property="og:title" content="Z-Score Calculator — Free Online | ToolNest">
+<meta property="og:description" content="Convert any value to a z-score from mean and standard deviation, with its percentile via the normal CDF.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css?v=4">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%23e01111'/><text x='50' y='68' font-size='58' text-anchor='middle' fill='white' font-family='Arial' font-weight='bold'>T</text></svg>">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebApplication","name":"Z-Score Calculator","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0"},"url":"https://toolnest.vercel.app/tools/z-score-calculator/","description":"Convert any value to a z-score from mean and standard deviation, with its percentile via the normal CDF."},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What does z = 2 mean?","acceptedAnswer":{"@type":"Answer","text":"The value sits 2 standard deviations above the mean — roughly the 97.7th percentile."}},{"@type":"Question","name":"How is the percentile computed?","acceptedAnswer":{"@type":"Answer","text":"With the standard normal CDF Φ(z) via the Abramowitz–Stegun approximation (accurate to ~1e-7)."}},{"@type":"Question","name":"Can z-scores be negative?","acceptedAnswer":{"@type":"Answer","text":"Yes — negative simply means below the mean, e.g. z = −1 is the 15.9th percentile."}}]}]}</script>
+</head>
+<body>
+<header class="site-header">
+  <div class="container">
+    <a class="logo" href="/"><span class="logo-mark">T</span> ToolNest</a>
+    <div class="header-right">
+      <form class="nav-search" action="/" method="get" role="search">
+        <span class="ns-icon">🔍</span>
+        <input type="search" name="q" placeholder="Search tools…" aria-label="Search tools" autocomplete="off">
+      </form>
+      <div class="menu-wrap">
+        <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="menuPanel" aria-label="Open menu"><span></span><span></span><span></span></button>
+        <nav class="menu-panel" id="menuPanel" aria-label="Site">
+          <a href="/">Home</a>
+          <a href="/#categories">Categories</a>
+          <a href="/#all-tools">All Tools</a>
+        </nav>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ADSTERRA-HEADER: paste your Adsterra banner ad code inside the div below -->
+<div class="container"><div class="ad-slot ad-leaderboard" data-ad="header"></div></div>
+
+<main class="container">
+  <nav class="crumbs"><a href="/">Home</a> &rsaquo; <a href="/#math">Math &amp; Numbers</a> &rsaquo; Z-Score Calculator</nav>
+  <div class="tool-hero">
+    <h1>Z-Score Calculator</h1>
+    <p>Convert any value to a z-score from mean and standard deviation, with its percentile via the normal CDF.</p>
+  </div>
+
+  <div class="tool-card">
+  <div class="grid2">
+    <div class="field"><label for="z-score-calculator-x">Value (x)</label><input class="input" id="z-score-calculator-x" type="number" value="130" step="any"></div>
+    <div class="field"><label for="z-score-calculator-mu">Mean (\u03BC)</label><input class="input" id="z-score-calculator-mu" type="number" value="100" step="any"></div>
+    <div class="field"><label for="z-score-calculator-sigma">Std dev (\u03C3)</label><input class="input" id="z-score-calculator-sigma" type="number" value="15" min="0" step="any"></div>
+  </div>
+  <div class="btn-row"><button class="btn btn-primary" id="z-score-calculator-go">Calculate</button></div>
+  <div class="stat-cards">
+    <div class="stat-card"><div class="v" id="z-score-calculator-z">2</div><div class="l">Z-score</div></div>
+    <div class="stat-card"><div class="v" id="z-score-calculator-pct">97.72%</div><div class="l">Percentile</div></div>
+  </div>
+  <div class="result"><pre class="code" id="z-score-calculator-steps" style="text-align:left;white-space:pre-wrap"></pre></div>
+  <div class="error" id="z-score-calculator-error"></div>
+</div>
+
+  <!-- ADSTERRA-INCONTENT: paste your Adsterra native/in-content ad code inside the div below -->
+  <div class="ad-slot" data-ad="incontent"></div>
+
+  <div class="info-grid">
+    <div class="info-card">
+      <h2>📖 How to use</h2>
+      <ol><li>Enter the value x, mean μ and standard deviation σ.</li><li>Press Calculate.</li><li>Read the z-score, percentile and plain-English interpretation.</li></ol>
+    </div>
+    <div class="info-card">
+      <h2>❓ Frequently asked questions</h2>
+      <div class="faq"><details><summary>What does z = 2 mean?</summary><p>The value sits 2 standard deviations above the mean — roughly the 97.7th percentile.</p></details><details><summary>How is the percentile computed?</summary><p>With the standard normal CDF Φ(z) via the Abramowitz–Stegun approximation (accurate to ~1e-7).</p></details><details><summary>Can z-scores be negative?</summary><p>Yes — negative simply means below the mean, e.g. z = −1 is the 15.9th percentile.</p></details></div>
+    </div>
+  </div>
+
+  <section class="section">
+    <h2>🔗 Related tools</h2>
+    <div class="tool-grid"><a class="tool-link" href="/tools/arithmetic-sequence-calculator/" data-search="arithmetic sequence calculator from the first term and common difference get the nth term and the sum of the first n terms. arithmetic sequence arithmetic progression nth term sum of arithmetic series common difference"><span class="t-ico">📐</span><span class="t-body"><b>Arithmetic Sequence Calculator</b><small>From the first term and common difference get the nth term and the sum of the first n terms.</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/binary-adder-calculator/" data-search="binary adder calculator add two binary numbers with every column addition and carry shown, plus a decimal check. binary addition add binary numbers binary adder binary sum binary carry"><span class="t-ico">📐</span><span class="t-body"><b>Binary Adder Calculator</b><small>Add two binary numbers with every column addition and carry shown, plus a decimal check.</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/birthday-paradox-simulator/" data-search="birthday paradox simulator see how likely a shared birthday is: simulate random groups and compare with the exact theoretical probability. birthday paradox birthday problem shared birthday probability birthday collision probability simulation"><span class="t-ico">📐</span><span class="t-body"><b>Birthday Paradox Simulator</b><small>See how likely a shared birthday is: simulate random groups and compare with the exact theor…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/circle-calculator/" data-search="circle calculator enter radius, diameter, circumference or area — get all four circle properties with the formulas shown. circle calculator circumference calculator circle area radius from area diameter calculator"><span class="t-ico">📐</span><span class="t-body"><b>Circle Calculator</b><small>Enter radius, diameter, circumference or area — get all four circle properties with the form…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/clock-angle-calculator/" data-search="clock angle calculator enter a time to get the smaller angle between the hour and minute hands, with the formula and a dial drawing. clock angle angle between hands clock hands angle time angle watch angle calculator"><span class="t-ico">📐</span><span class="t-body"><b>Clock Angle Calculator</b><small>Enter a time to get the smaller angle between the hour and minute hands, with the formula an…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/collatz-sequence-explorer/" data-search="collatz sequence explorer run the 3n+1 collatz sequence from any start: full path, step count, max value and a bar chart. collatz 3n+1 collatz sequence collatz conjecture hailstone sequence"><span class="t-ico">📐</span><span class="t-body"><b>Collatz Sequence Explorer</b><small>Run the 3n+1 Collatz sequence from any start: full path, step count, max value and a bar cha…</small></span><span class="t-arrow">→</span></a></div>
+  </section>
+</main>
+
+<!-- ADSTERRA-FOOTER: paste your Adsterra footer/banner ad code inside the div below -->
+<div class="container"><div class="ad-slot" data-ad="footer"></div></div>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="f-grid">
+      <div>
+        <span class="brandline"><span class="logo-mark">T</span> ToolNest</span>
+        <p>Free online tools that actually work. No sign-up, no watermarks — and your files never leave your device for client-side tools.</p>
+      </div>
+      <div>
+        <h4>Popular</h4>
+        <a href="/tools/qr-code-generator/">QR Code Generator</a>
+        <a href="/tools/background-remover/">Background Remover</a>
+        <a href="/tools/pdf-merger/">PDF Merger</a>
+        <a href="/tools/word-counter/">Word Counter</a>
+      </div>
+      <div>
+        <h4>Categories</h4>
+        <a href="/#image">Image Tools</a>
+        <a href="/#pdf">PDF &amp; Documents</a>
+        <a href="/#calculators">Calculators</a>
+        <a href="/#developer">Developer Tools</a>
+      </div>
+      <div>
+        <h4>Site</h4>
+        <a href="/">Home</a>
+        <a href="/#all-tools">All Tools</a>
+        <a href="/sitemap.xml">Sitemap</a>
+      </div>
+    </div>
+    <div class="f-bottom">© 2026 ToolNest · Free tools for everyone · Made with care</div>
+  </div>
+</footer>
+
+<script src="/assets/site.js?v=5"></script>
+
+<script>
+/* Z-score + percentile via normal CDF approximation. */
+(function () {
+  'use strict';
+  var SLUG = 'z-score-calculator';
+  function $(id) { return document.getElementById(id); }
+  function err(m) { TN.setErr(SLUG + '-error', m); }
+  function phi(z) { // standard normal CDF, Abramowitz & Stegun 7.1.26
+    var t = 1 / (1 + 0.2316419 * Math.abs(z));
+    var d = 0.3989423 * Math.exp(-z * z / 2);
+    var p = d * t * (0.3193815 + t * (-0.3565638 + t * (1.781478 + t * (-1.821256 + t * 1.330274))));
+    return z > 0 ? 1 - p : p;
+  }
+  function calc() {
+    TN.clearErr(SLUG + '-error');
+    var x = parseFloat($(SLUG + '-x').value), mu = parseFloat($(SLUG + '-mu').value), sd = parseFloat($(SLUG + '-sigma').value);
+    if ([x, mu, sd].some(isNaN)) { err('Enter numbers for x, \u03BC and \u03C3.'); return; }
+    if (sd <= 0) { err('\u03C3 must be positive.'); return; }
+    var z = (x - mu) / sd;
+    var pct = phi(z) * 100;
+    var lines = [
+      'z = (x \u2212 \u03BC) / \u03C3 = (' + x + ' \u2212 ' + mu + ') / ' + sd + ' = ' + (Math.round(z * 1e6) / 1e6),
+      'Interpretation: x is ' + Math.abs(Math.round(z * 100) / 100) + ' standard deviation' + (Math.abs(z) === 1 ? '' : 's') + ' ' + (z >= 0 ? 'above' : 'below') + ' the mean.',
+      'Percentile = \u03A6(z) \u00D7 100 \u2248 ' + pct.toFixed(2) + '%   (\u03A6 = standard normal CDF, Abramowitz\u2013Stegun approximation)',
+      'So about ' + pct.toFixed(2) + '% of values fall at or below x, and ' + (100 - pct).toFixed(2) + '% fall above.'
+    ];
+    $(SLUG + '-z').textContent = (Math.round(z * 1e6) / 1e6).toString();
+    $(SLUG + '-pct').textContent = pct.toFixed(2) + '%';
+    $(SLUG + '-steps').textContent = lines.join('\n');
+  }
+  try {
+    TN.on(SLUG + '-go', 'click', calc);
+    ['x', 'mu', 'sigma'].forEach(function (id) { TN.on(SLUG + '-' + id, 'input', TN.debounce(calc, 400)); });
+    calc();
+  } catch (e) {}
+})();
+</script>
+</body>
+</html>

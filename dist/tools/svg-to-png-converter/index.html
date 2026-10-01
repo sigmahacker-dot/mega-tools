@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SVG to PNG Converter — Free Online | ToolNest</title>
+<meta name="description" content="Paste SVG code or upload an .svg file and rasterize it to PNG at any size.">
+<meta name="keywords" content="svg to png, convert svg, rasterize svg, svg converter">
+<link rel="canonical" href="https://toolnest.vercel.app/tools/svg-to-png-converter/">
+<meta name="theme-color" content="#07070b">
+<meta property="og:title" content="SVG to PNG Converter — Free Online | ToolNest">
+<meta property="og:description" content="Paste SVG code or upload an .svg file and rasterize it to PNG at any size.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css?v=4">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%23e01111'/><text x='50' y='68' font-size='58' text-anchor='middle' fill='white' font-family='Arial' font-weight='bold'>T</text></svg>">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebApplication","name":"SVG to PNG Converter","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0"},"url":"https://toolnest.vercel.app/tools/svg-to-png-converter/","description":"Paste SVG code or upload an .svg file and rasterize it to PNG at any size."},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How does the conversion work?","acceptedAnswer":{"@type":"Answer","text":"Your SVG is drawn to a canvas at your chosen width and height, then exported as a PNG."}},{"@type":"Question","name":"Can I paste code or upload a file?","acceptedAnswer":{"@type":"Answer","text":"Type or paste code into the box, or upload an .svg file — both work."}},{"@type":"Question","name":"What output size can I get?","acceptedAnswer":{"@type":"Answer","text":"Set any width and height; the SVG scales crisply since it is vector."}}]}]}</script>
+</head>
+<body>
+<header class="site-header">
+  <div class="container">
+    <a class="logo" href="/"><span class="logo-mark">T</span> ToolNest</a>
+    <div class="header-right">
+      <form class="nav-search" action="/" method="get" role="search">
+        <span class="ns-icon">🔍</span>
+        <input type="search" name="q" placeholder="Search tools…" aria-label="Search tools" autocomplete="off">
+      </form>
+      <div class="menu-wrap">
+        <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="menuPanel" aria-label="Open menu"><span></span><span></span><span></span></button>
+        <nav class="menu-panel" id="menuPanel" aria-label="Site">
+          <a href="/">Home</a>
+          <a href="/#categories">Categories</a>
+          <a href="/#all-tools">All Tools</a>
+        </nav>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ADSTERRA-HEADER: paste your Adsterra banner ad code inside the div below -->
+<div class="container"><div class="ad-slot ad-leaderboard" data-ad="header"></div></div>
+
+<main class="container">
+  <nav class="crumbs"><a href="/">Home</a> &rsaquo; <a href="/#image">Image Tools</a> &rsaquo; SVG to PNG Converter</nav>
+  <div class="tool-hero">
+    <h1>SVG to PNG Converter</h1>
+    <p>Paste SVG code or upload an .svg file and rasterize it to PNG at any size.</p>
+  </div>
+
+  <div class="tool-card">
+  <div class="field">
+    <label for="svg-to-png-converter-code">SVG code</label>
+    <textarea id="svg-to-png-converter-code" class="textarea" rows="8" placeholder="&lt;svg xmlns=&quot;http://www.w3.org/2000/svg&quot; viewBox=&quot;0 0 100 100&quot;&gt;…&lt;/svg&gt;"></textarea>
+  </div>
+  <div class="dropzone" id="svg-to-png-converter-drop">
+    <span class="dz-icon">📄</span>
+    <strong>Or drop an .svg file here</strong> or click to browse
+    <input type="file" id="svg-to-png-converter-file" accept=".svg,image/svg+xml" class="hidden">
+  </div>
+  <div class="grid2">
+    <div class="field">
+      <label for="svg-to-png-converter-w">Output width (px)</label>
+      <input type="number" id="svg-to-png-converter-w" class="input" min="16" max="8192" value="1024">
+    </div>
+    <div class="field">
+      <label for="svg-to-png-converter-h">Output height (px)</label>
+      <input type="number" id="svg-to-png-converter-h" class="input" min="16" max="8192" value="1024">
+    </div>
+  </div>
+  <div class="preview hidden" id="svg-to-png-converter-wrap" style="text-align:center">
+    <canvas id="svg-to-png-converter-canvas" style="max-width:100%;height:auto;border-radius:8px"></canvas>
+  </div>
+  <div class="btn-row">
+    <button class="btn btn-primary" id="svg-to-png-converter-render">Render preview</button>
+    <button class="btn btn-outline hidden" id="svg-to-png-converter-download">Download PNG</button>
+  </div>
+  <div class="error" id="svg-to-png-converter-error"></div>
+  <p class="note">Files never leave your device — everything is processed in your browser.</p>
+</div>
+
+  <!-- ADSTERRA-INCONTENT: paste your Adsterra native/in-content ad code inside the div below -->
+  <div class="ad-slot" data-ad="incontent"></div>
+
+  <div class="info-grid">
+    <div class="info-card">
+      <h2>📖 How to use</h2>
+      <ol><li>Paste SVG code or upload an .svg file.</li><li>Set the output width and height.</li><li>Click Download PNG to save it.</li></ol>
+    </div>
+    <div class="info-card">
+      <h2>❓ Frequently asked questions</h2>
+      <div class="faq"><details><summary>How does the conversion work?</summary><p>Your SVG is drawn to a canvas at your chosen width and height, then exported as a PNG.</p></details><details><summary>Can I paste code or upload a file?</summary><p>Type or paste code into the box, or upload an .svg file — both work.</p></details><details><summary>What output size can I get?</summary><p>Set any width and height; the SVG scales crisply since it is vector.</p></details></div>
+    </div>
+  </div>
+
+  <section class="section">
+    <h2>🔗 Related tools</h2>
+    <div class="tool-grid"><a class="tool-link" href="/tools/app-icon-resizer/" data-search="app icon resizer generate every common app icon size from one image — 16, 32, 48, 180, 192 and 512 px — with instant preview and one-click png downloads. app icon resizer icon generator favicon sizes pwa icon apple touch icon generator"><span class="t-ico">🖼️</span><span class="t-body"><b>App Icon Resizer</b><small>Generate every common app icon size from one image — 16, 32, 48, 180, 192 and 512 px — with …</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/background-remover/" data-search="background remover remove the background from any photo with real on-device ai and download a transparent png. free, private and unlimited — no sign-up needed. background remover remove image background transparent png maker"><span class="t-ico">🖼️</span><span class="t-body"><b>Background Remover</b><small>Remove the background from any photo with real on-device AI and download a transparent PNG. …</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/before-after-slider-maker/" data-search="before/after slider maker upload two photos and get a standalone before/after comparison slider as an html file. before after slider image comparison slider photo compare html before after html"><span class="t-ico">🖼️</span><span class="t-body"><b>Before/After Slider Maker</b><small>Upload two photos and get a standalone before/after comparison slider as an HTML file.</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/business-card-maker/" data-search="business card maker design a business card front (1050×600): your name, role and contact details, color themes, live preview, and a png download. business card maker business card design business card png visiting card maker card designer"><span class="t-ico">🖼️</span><span class="t-body"><b>Business Card Maker</b><small>Design a business card front (1050×600): your name, role and contact details, color themes, …</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/certificate-maker/" data-search="certificate maker design printable certificates: recipient name, course title, date and signature line, live preview, and a high-res png download. certificate maker certificate generator certificate png award certificate maker printable certificate"><span class="t-ico">🖼️</span><span class="t-body"><b>Certificate Maker</b><small>Design printable certificates: recipient name, course title, date and signature line, live p…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/favicon-generator/" data-search="favicon generator generate a complete png favicon set (16–512 px) from your logo in one click, download it as a zip, and copy the ready-to-paste html link tags. favicon generator favicon maker png favicon"><span class="t-ico">🖼️</span><span class="t-body"><b>Favicon Generator</b><small>Generate a complete PNG favicon set (16–512 px) from your logo in one click, download it as …</small></span><span class="t-arrow">→</span></a></div>
+  </section>
+</main>
+
+<!-- ADSTERRA-FOOTER: paste your Adsterra footer/banner ad code inside the div below -->
+<div class="container"><div class="ad-slot" data-ad="footer"></div></div>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="f-grid">
+      <div>
+        <span class="brandline"><span class="logo-mark">T</span> ToolNest</span>
+        <p>Free online tools that actually work. No sign-up, no watermarks — and your files never leave your device for client-side tools.</p>
+      </div>
+      <div>
+        <h4>Popular</h4>
+        <a href="/tools/qr-code-generator/">QR Code Generator</a>
+        <a href="/tools/background-remover/">Background Remover</a>
+        <a href="/tools/pdf-merger/">PDF Merger</a>
+        <a href="/tools/word-counter/">Word Counter</a>
+      </div>
+      <div>
+        <h4>Categories</h4>
+        <a href="/#image">Image Tools</a>
+        <a href="/#pdf">PDF &amp; Documents</a>
+        <a href="/#calculators">Calculators</a>
+        <a href="/#developer">Developer Tools</a>
+      </div>
+      <div>
+        <h4>Site</h4>
+        <a href="/">Home</a>
+        <a href="/#all-tools">All Tools</a>
+        <a href="/sitemap.xml">Sitemap</a>
+      </div>
+    </div>
+    <div class="f-bottom">© 2026 ToolNest · Free tools for everyone · Made with care</div>
+  </div>
+</footer>
+
+<script src="/assets/site.js?v=5"></script>
+
+<script>
+/* SVG to PNG Converter — paste code or upload .svg, rasterize at chosen size, PNG download. */
+(function () {
+  'use strict';
+  var SLUG = 'svg-to-png-converter';
+  var rendered = false;
+
+  function canvas() { return TN.el(SLUG + '-canvas'); }
+  function svgText() {
+    var el = TN.el(SLUG + '-code');
+    return el ? el.value.trim() : '';
+  }
+
+  function loadFile(f) {
+    if (!f) return;
+    TN.clearErr(SLUG + '-error');
+    var r = new FileReader();
+    r.onload = function () {
+      var ta = TN.el(SLUG + '-code');
+      if (ta) ta.value = String(r.result || '');
+      render();
+    };
+    r.onerror = function () { TN.setErr(SLUG + '-error', 'Could not read that file.'); };
+    r.readAsText(f);
+  }
+
+  function render() {
+    var svg = svgText();
+    if (!svg) { TN.setErr(SLUG + '-error', 'Paste some SVG code or upload an .svg file first.'); return; }
+    var w = Math.max(16, Math.min(8192, parseInt((TN.el(SLUG + '-w') || {}).value, 10) || 1024));
+    var h = Math.max(16, Math.min(8192, parseInt((TN.el(SLUG + '-h') || {}).value, 10) || 1024));
+    TN.clearErr(SLUG + '-error');
+    var blob = new Blob([svg], { type: 'image/svg+xml;charset=utf-8' });
+    var url = URL.createObjectURL(blob);
+    var im = new Image();
+    im.onload = function () {
+      try {
+        var c = canvas();
+        c.width = w; c.height = h;
+        var x = c.getContext('2d');
+        x.clearRect(0, 0, w, h);
+        x.drawImage(im, 0, 0, w, h);
+        rendered = true;
+        TN.show(SLUG + '-wrap');
+        TN.show(SLUG + '-download');
+      } finally {
+        URL.revokeObjectURL(url);
+      }
+    };
+    im.onerror = function () {
+      URL.revokeObjectURL(url);
+      TN.setErr(SLUG + '-error', 'That SVG could not be rasterized. Check the code is valid.');
+    };
+    im.src = url;
+  }
+
+  function download() {
+    if (!rendered) { TN.setErr(SLUG + '-error', 'Render the preview first.'); return; }
+    canvas().toBlob(function (b) {
+      if (b) TN.download(b, 'svg-converted.png');
+      else TN.setErr(SLUG + '-error', 'Your browser could not encode the PNG.');
+    }, 'image/png');
+  }
+
+  var dz = TN.el(SLUG + '-drop'), input = TN.el(SLUG + '-file');
+  if (dz && input) {
+    dz.addEventListener('click', function () { input.click(); });
+    input.addEventListener('change', function () {
+      if (input.files && input.files[0]) loadFile(input.files[0]);
+      input.value = '';
+    });
+    ['dragover', 'dragenter'].forEach(function (ev) {
+      dz.addEventListener(ev, function (e) { e.preventDefault(); dz.classList.add('dragover'); });
+    });
+    ['dragleave', 'drop'].forEach(function (ev) {
+      dz.addEventListener(ev, function (e) { e.preventDefault(); dz.classList.remove('dragover'); });
+    });
+    dz.addEventListener('drop', function (e) {
+      if (e.dataTransfer && e.dataTransfer.files && e.dataTransfer.files[0]) loadFile(e.dataTransfer.files[0]);
+    });
+  }
+  TN.on(SLUG + '-render', 'click', render);
+  TN.on(SLUG + '-download', 'click', download);
+})();
+
+</script>
+</body>
+</html>

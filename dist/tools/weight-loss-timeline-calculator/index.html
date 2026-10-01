@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Weight Loss Timeline Calculator — Free Online | ToolNest</title>
+<meta name="description" content="Project your weight-loss journey from a daily calorie deficit: weekly rate, weeks to goal, and date.">
+<meta name="keywords" content="weight loss timeline, calorie deficit calculator, how long to lose weight, weight loss planner, diet timeline">
+<link rel="canonical" href="https://toolnest.vercel.app/tools/weight-loss-timeline-calculator/">
+<meta name="theme-color" content="#07070b">
+<meta property="og:title" content="Weight Loss Timeline Calculator — Free Online | ToolNest">
+<meta property="og:description" content="Project your weight-loss journey from a daily calorie deficit: weekly rate, weeks to goal, and date.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css?v=4">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%23e01111'/><text x='50' y='68' font-size='58' text-anchor='middle' fill='white' font-family='Arial' font-weight='bold'>T</text></svg>">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebApplication","name":"Weight Loss Timeline Calculator","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0"},"url":"https://toolnest.vercel.app/tools/weight-loss-timeline-calculator/","description":"Project your weight-loss journey from a daily calorie deficit: weekly rate, weeks to goal, and date."},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How is the weekly loss calculated?","acceptedAnswer":{"@type":"Answer","text":"About 7,700 kcal equals 1 kg of body fat, so a 500 kcal daily deficit yields roughly 0.5 kg per week."}},{"@type":"Question","name":"What is a safe rate of loss?","acceptedAnswer":{"@type":"Answer","text":"0.5–1 kg per week is generally considered sustainable. Faster loss should be supervised by a professional."}},{"@type":"Question","name":"Why do real results differ?","acceptedAnswer":{"@type":"Answer","text":"Metabolism adapts and water weight fluctuates — treat the timeline as a guide, not a promise."}}]}]}</script>
+</head>
+<body>
+<header class="site-header">
+  <div class="container">
+    <a class="logo" href="/"><span class="logo-mark">T</span> ToolNest</a>
+    <div class="header-right">
+      <form class="nav-search" action="/" method="get" role="search">
+        <span class="ns-icon">🔍</span>
+        <input type="search" name="q" placeholder="Search tools…" aria-label="Search tools" autocomplete="off">
+      </form>
+      <div class="menu-wrap">
+        <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="menuPanel" aria-label="Open menu"><span></span><span></span><span></span></button>
+        <nav class="menu-panel" id="menuPanel" aria-label="Site">
+          <a href="/">Home</a>
+          <a href="/#categories">Categories</a>
+          <a href="/#all-tools">All Tools</a>
+        </nav>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ADSTERRA-HEADER: paste your Adsterra banner ad code inside the div below -->
+<div class="container"><div class="ad-slot ad-leaderboard" data-ad="header"></div></div>
+
+<main class="container">
+  <nav class="crumbs"><a href="/">Home</a> &rsaquo; <a href="/#health">Health &amp; Fitness</a> &rsaquo; Weight Loss Timeline Calculator</nav>
+  <div class="tool-hero">
+    <h1>Weight Loss Timeline Calculator</h1>
+    <p>Project your weight-loss journey from a daily calorie deficit: weekly rate, weeks to goal, and date.</p>
+  </div>
+
+  <div class="tool-card">
+  <div class="grid2">
+    <div class="field">
+      <label for="weight-loss-timeline-calculator-now">Current weight (kg)</label>
+      <input class="input" id="weight-loss-timeline-calculator-now" type="number" min="20" max="400" step="0.1" placeholder="e.g. 90">
+    </div>
+    <div class="field">
+      <label for="weight-loss-timeline-calculator-goal">Goal weight (kg)</label>
+      <input class="input" id="weight-loss-timeline-calculator-goal" type="number" min="20" max="400" step="0.1" placeholder="e.g. 75">
+    </div>
+    <div class="field">
+      <label for="weight-loss-timeline-calculator-deficit">Daily calorie deficit (kcal)</label>
+      <input class="input" id="weight-loss-timeline-calculator-deficit" type="number" min="50" max="2000" step="10" placeholder="e.g. 500">
+    </div>
+    <div class="field" style="align-self:end">
+      <button class="btn btn-primary" id="weight-loss-timeline-calculator-calc">Calculate</button>
+    </div>
+  </div>
+  <div class="stat-cards hidden" id="weight-loss-timeline-calculator-out">
+    <div class="stat-card"><div class="v" id="weight-loss-timeline-calculator-rate">–</div><div class="l">kg per week</div></div>
+    <div class="stat-card"><div class="v" id="weight-loss-timeline-calculator-weeks">–</div><div class="l">Weeks to goal</div></div>
+    <div class="stat-card"><div class="v" id="weight-loss-timeline-calculator-date">–</div><div class="l">Projected goal date</div></div>
+  </div>
+  <div class="result hidden" id="weight-loss-timeline-calculator-table"></div>
+  <p class="note">General information only — not medical advice. Consult a professional for personal guidance. Aim for 0.5–1 kg/week; larger deficits need supervision.</p>
+  <div class="error" id="weight-loss-timeline-calculator-error"></div>
+</div>
+
+
+  <!-- ADSTERRA-INCONTENT: paste your Adsterra native/in-content ad code inside the div below -->
+  <div class="ad-slot" data-ad="incontent"></div>
+
+  <div class="info-grid">
+    <div class="info-card">
+      <h2>📖 How to use</h2>
+      <ol><li>Enter your current weight in kg.</li><li>Enter your goal weight in kg.</li><li>Enter your planned daily calorie deficit.</li><li>See kg/week, weeks to goal, projected date, and the weekly table.</li></ol>
+    </div>
+    <div class="info-card">
+      <h2>❓ Frequently asked questions</h2>
+      <div class="faq"><details><summary>How is the weekly loss calculated?</summary><p>About 7,700 kcal equals 1 kg of body fat, so a 500 kcal daily deficit yields roughly 0.5 kg per week.</p></details><details><summary>What is a safe rate of loss?</summary><p>0.5–1 kg per week is generally considered sustainable. Faster loss should be supervised by a professional.</p></details><details><summary>Why do real results differ?</summary><p>Metabolism adapts and water weight fluctuates — treat the timeline as a guide, not a promise.</p></details></div>
+    </div>
+  </div>
+
+  <section class="section">
+    <h2>🔗 Related tools</h2>
+    <div class="tool-grid"><a class="tool-link" href="/tools/baby-growth-tracker/" data-search="baby growth tracker log your baby&#39;s weight and height over time and see a growth log with typical-range guidance. baby growth tracker baby weight tracker infant growth chart baby height log newborn growth"><span class="t-ico">❤️</span><span class="t-body"><b>Baby Growth Tracker</b><small>Log your baby&#39;s weight and height over time and see a growth log with typical-range guidance…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/blood-pressure-tracker/" data-search="blood pressure tracker log blood pressure readings with automatic aha category classification, averages and history saved in your browser. blood pressure tracker bp log blood pressure chart hypertension tracker bp monitor log"><span class="t-ico">❤️</span><span class="t-body"><b>Blood Pressure Tracker</b><small>Log blood pressure readings with automatic AHA category classification, averages and history…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/body-fat-calculator/" data-search="body fat calculator estimate body fat percentage with the us navy tape-measure method and see your fitness category. body fat calculator us navy body fat body fat percentage calculator"><span class="t-ico">❤️</span><span class="t-body"><b>Body Fat Calculator</b><small>Estimate body fat percentage with the US Navy tape-measure method and see your fitness categ…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/breathing-exercise-guide/" data-search="breathing exercise guide guided breathing exercises (4-7-8, box, energize) with an animated pacer circle, phase labels, and cycle counter. breathing exercise 4-7-8 breathing box breathing breathing pacer calm breathing"><span class="t-ico">❤️</span><span class="t-body"><b>Breathing Exercise Guide</b><small>Guided breathing exercises (4-7-8, box, energize) with an animated pacer circle, phase label…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/caffeine-half-life-calculator/" data-search="caffeine half-life calculator log caffeinated drinks and see how much caffeine is still in your system using 5.5-hour half-life decay. caffeine half life caffeine calculator caffeine in system coffee caffeine tracker caffeine sleep"><span class="t-ico">❤️</span><span class="t-body"><b>Caffeine Half-Life Calculator</b><small>Log caffeinated drinks and see how much caffeine is still in your system using 5.5-hour half…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/calorie-calculator/" data-search="tdee calorie calculator estimate your daily calorie needs with the mifflin-st jeor equation and get targets for losing, maintaining or gaining weight. tdee calculator calorie calculator mifflin st jeor daily calorie needs"><span class="t-ico">❤️</span><span class="t-body"><b>TDEE Calorie Calculator</b><small>Estimate your daily calorie needs with the Mifflin-St Jeor equation and get targets for losi…</small></span><span class="t-arrow">→</span></a></div>
+  </section>
+</main>
+
+<!-- ADSTERRA-FOOTER: paste your Adsterra footer/banner ad code inside the div below -->
+<div class="container"><div class="ad-slot" data-ad="footer"></div></div>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="f-grid">
+      <div>
+        <span class="brandline"><span class="logo-mark">T</span> ToolNest</span>
+        <p>Free online tools that actually work. No sign-up, no watermarks — and your files never leave your device for client-side tools.</p>
+      </div>
+      <div>
+        <h4>Popular</h4>
+        <a href="/tools/qr-code-generator/">QR Code Generator</a>
+        <a href="/tools/background-remover/">Background Remover</a>
+        <a href="/tools/pdf-merger/">PDF Merger</a>
+        <a href="/tools/word-counter/">Word Counter</a>
+      </div>
+      <div>
+        <h4>Categories</h4>
+        <a href="/#image">Image Tools</a>
+        <a href="/#pdf">PDF &amp; Documents</a>
+        <a href="/#calculators">Calculators</a>
+        <a href="/#developer">Developer Tools</a>
+      </div>
+      <div>
+        <h4>Site</h4>
+        <a href="/">Home</a>
+        <a href="/#all-tools">All Tools</a>
+        <a href="/sitemap.xml">Sitemap</a>
+      </div>
+    </div>
+    <div class="f-bottom">© 2026 ToolNest · Free tools for everyone · Made with care</div>
+  </div>
+</footer>
+
+<script src="/assets/site.js?v=5"></script>
+
+<script>
+/* Weight loss timeline: deficit -> kg/week (7700 kcal/kg), weeks, date, weekly table. */
+(function () {
+  'use strict';
+  var SLUG = 'weight-loss-timeline-calculator';
+  function $(id) { return document.getElementById(id); }
+  function calc() {
+    $(SLUG + '-error').textContent = '';
+    var now = parseFloat($(SLUG + '-now').value);
+    var goal = parseFloat($(SLUG + '-goal').value);
+    var def = parseFloat($(SLUG + '-deficit').value);
+    if (isNaN(now) || now < 20 || now > 400) { $(SLUG + '-error').textContent = 'Enter a valid current weight (20–400 kg).'; return; }
+    if (isNaN(goal) || goal < 20 || goal > 400) { $(SLUG + '-error').textContent = 'Enter a valid goal weight (20–400 kg).'; return; }
+    if (goal >= now) { $(SLUG + '-error').textContent = 'Goal weight must be below your current weight.'; return; }
+    if (isNaN(def) || def < 50 || def > 2000) { $(SLUG + '-error').textContent = 'Enter a daily deficit between 50 and 2000 kcal.'; return; }
+    var perWeek = (def * 7) / 7700;
+    var toLose = now - goal;
+    var weeks = toLose / perWeek;
+    var date = new Date();
+    date.setDate(date.getDate() + Math.round(weeks * 7));
+    $(SLUG + '-rate').textContent = perWeek.toFixed(2);
+    $(SLUG + '-weeks').textContent = Math.ceil(weeks);
+    $(SLUG + '-date').textContent = date.toLocaleDateString(undefined, { year: 'numeric', month: 'short', day: 'numeric' });
+    $(SLUG + '-out').classList.remove('hidden');
+    var n = Math.ceil(weeks), w = now, html = '';
+    html += '<table class="data"><thead><tr><th>Week</th><th>Projected weight (kg)</th><th>Lost so far (kg)</th></tr></thead><tbody>';
+    var rows = Math.min(n, 104);
+    for (var i = 1; i <= rows; i++) {
+      w = Math.max(goal, w - perWeek);
+      html += '<tr><td>' + i + '</td><td>' + w.toFixed(1) + '</td><td>' + (now - w).toFixed(1) + '</td></tr>';
+    }
+    if (n > rows) html += '<tr><td colspan="3" class="muted">…table truncated at 104 weeks…</td></tr>';
+    html += '</tbody></table>';
+    if (perWeek > 1) html = '<p class="hint">⚠️ This rate exceeds 1 kg/week — consider a smaller deficit or professional guidance.</p>' + html;
+    var box = $(SLUG + '-table');
+    box.innerHTML = html;
+    box.classList.remove('hidden');
+  }
+  try { $(SLUG + '-calc').addEventListener('click', calc); } catch (e) { /* never throw on load */ }
+})();
+
+</script>
+</body>
+</html>

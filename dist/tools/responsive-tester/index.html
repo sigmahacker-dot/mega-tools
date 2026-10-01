@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Responsive Tester — Free Online | ToolNest</title>
+<meta name="description" content="Load any URL in a resizable frame with 360/768/1024/1440px presets to preview responsive layouts.">
+<meta name="keywords" content="responsive tester, responsive design test, mobile preview, viewport tester, website preview">
+<link rel="canonical" href="https://toolnest.vercel.app/tools/responsive-tester/">
+<meta name="theme-color" content="#07070b">
+<meta property="og:title" content="Responsive Tester — Free Online | ToolNest">
+<meta property="og:description" content="Load any URL in a resizable frame with 360/768/1024/1440px presets to preview responsive layouts.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css?v=4">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%23e01111'/><text x='50' y='68' font-size='58' text-anchor='middle' fill='white' font-family='Arial' font-weight='bold'>T</text></svg>">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebApplication","name":"Responsive Tester","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0"},"url":"https://toolnest.vercel.app/tools/responsive-tester/","description":"Load any URL in a resizable frame with 360/768/1024/1440px presets to preview responsive layouts."},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Why does some site show a blank frame?","acceptedAnswer":{"@type":"Answer","text":"Many sites send X-Frame-Options or CSP headers that block iframing — the page will show blank and that is the site's choice."}},{"@type":"Question","name":"Can I use custom dimensions?","acceptedAnswer":{"@type":"Answer","text":"Yes — presets set the width; enter any custom width and height."}},{"@type":"Question","name":"Is the URL scheme added automatically?","acceptedAnswer":{"@type":"Answer","text":"Yes — https:// is added automatically if you omit the scheme."}},{"@type":"Question","name":"Is this a real live preview?","acceptedAnswer":{"@type":"Answer","text":"Yes — the iframe is sandboxed and loads the live site; nothing is proxied or stored."}}]}]}</script>
+</head>
+<body>
+<header class="site-header">
+  <div class="container">
+    <a class="logo" href="/"><span class="logo-mark">T</span> ToolNest</a>
+    <div class="header-right">
+      <form class="nav-search" action="/" method="get" role="search">
+        <span class="ns-icon">🔍</span>
+        <input type="search" name="q" placeholder="Search tools…" aria-label="Search tools" autocomplete="off">
+      </form>
+      <div class="menu-wrap">
+        <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="menuPanel" aria-label="Open menu"><span></span><span></span><span></span></button>
+        <nav class="menu-panel" id="menuPanel" aria-label="Site">
+          <a href="/">Home</a>
+          <a href="/#categories">Categories</a>
+          <a href="/#all-tools">All Tools</a>
+        </nav>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ADSTERRA-HEADER: paste your Adsterra banner ad code inside the div below -->
+<div class="container"><div class="ad-slot ad-leaderboard" data-ad="header"></div></div>
+
+<main class="container">
+  <nav class="crumbs"><a href="/">Home</a> &rsaquo; <a href="/#developer">Developer Tools</a> &rsaquo; Responsive Tester</nav>
+  <div class="tool-hero">
+    <h1>Responsive Tester</h1>
+    <p>Load any URL in a resizable frame with 360/768/1024/1440px presets to preview responsive layouts.</p>
+  </div>
+
+  <div class="tool-card">
+  <div class="field">
+    <label for="responsive-tester-url">URL to preview</label>
+    <div style="display:flex;gap:8px">
+      <input class="input" id="responsive-tester-url" placeholder="example.com" style="flex:1">
+      <button class="btn btn-primary" id="responsive-tester-load">Load</button>
+    </div>
+  </div>
+  <div class="btn-row" style="align-items:flex-end">
+    <button class="btn btn-outline" data-w="360" data-h="740">360px</button>
+    <button class="btn btn-outline" data-w="768" data-h="1024">768px</button>
+    <button class="btn btn-outline" data-w="1024" data-h="768">1024px</button>
+    <button class="btn btn-outline" data-w="1440" data-h="900">1440px</button>
+    <div class="field" style="margin:0">
+      <label for="responsive-tester-w" style="font-size:12px">Custom W</label>
+      <input type="number" class="input" id="responsive-tester-w" value="390" min="200" max="3000" style="width:90px">
+    </div>
+    <div class="field" style="margin:0">
+      <label for="responsive-tester-h" style="font-size:12px">Custom H</label>
+      <input type="number" class="input" id="responsive-tester-h" value="844" min="200" max="3000" style="width:90px">
+    </div>
+    <button class="btn btn-outline" id="responsive-tester-apply">Apply</button>
+  </div>
+  <div class="error" id="responsive-tester-error"></div>
+  <p class="note">Sites that send <code>X-Frame-Options</code> or <code>frame-ancestors</code> headers refuse to load in any iframe — a blank frame means the site blocks embedding, not a bug in this tester.</p>
+  <div class="result hidden" id="responsive-tester-result">
+    <p><strong id="responsive-tester-dims">—</strong> <span class="muted" id="responsive-tester-site"></span></p>
+    <div style="overflow:auto;border:1px solid #ccc;border-radius:8px;background:#fff;max-height:70vh">
+      <iframe id="responsive-tester-frame" title="Responsive preview" sandbox="allow-scripts allow-same-origin allow-forms"
+        style="border:0;display:block;background:#fff"></iframe>
+    </div>
+  </div>
+</div>
+
+
+  <!-- ADSTERRA-INCONTENT: paste your Adsterra native/in-content ad code inside the div below -->
+  <div class="ad-slot" data-ad="incontent"></div>
+
+  <div class="info-grid">
+    <div class="info-card">
+      <h2>📖 How to use</h2>
+      <ol><li>Enter a URL (https:// is added if missing).</li><li>Click Load, then pick a preset or custom size.</li><li>Scroll and resize to check breakpoints.</li></ol>
+    </div>
+    <div class="info-card">
+      <h2>❓ Frequently asked questions</h2>
+      <div class="faq"><details><summary>Why does some site show a blank frame?</summary><p>Many sites send X-Frame-Options or CSP headers that block iframing — the page will show blank and that is the site&#39;s choice.</p></details><details><summary>Can I use custom dimensions?</summary><p>Yes — presets set the width; enter any custom width and height.</p></details><details><summary>Is the URL scheme added automatically?</summary><p>Yes — https:// is added automatically if you omit the scheme.</p></details><details><summary>Is this a real live preview?</summary><p>Yes — the iframe is sandboxed and loads the live site; nothing is proxied or stored.</p></details></div>
+    </div>
+  </div>
+
+  <section class="section">
+    <h2>🔗 Related tools</h2>
+    <div class="tool-grid"><a class="tool-link" href="/tools/ascii-table-reference/" data-search="ascii table reference full ascii table 0–127: decimal, hex, octal, character, control-code names and html entities — searchable. ascii table ascii codes ascii chart control characters ascii reference"><span class="t-ico">💻</span><span class="t-body"><b>ASCII Table Reference</b><small>Full ASCII table 0–127: decimal, hex, octal, character, control-code names and HTML entities…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/base64-encoder-decoder/" data-search="base64 encoder / decoder encode text to base64 or decode base64 back to text, with full utf-8 support and a file-to-data-url converter. base64 encoder base64 decoder base64 encode base64 decode file to base64"><span class="t-ico">💻</span><span class="t-body"><b>Base64 Encoder / Decoder</b><small>Encode text to Base64 or decode Base64 back to text, with full UTF-8 support and a file-to-d…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/binary-text-converter/" data-search="binary and text converter convert text to binary or hex and back, with full utf-8 awareness and strict input validation. binary to text text to binary hex to text converter"><span class="t-ico">💻</span><span class="t-body"><b>Binary and Text Converter</b><small>Convert text to binary or hex and back, with full UTF-8 awareness and strict input validatio…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/changelog-generator/" data-search="changelog generator build a keep-a-changelog markdown file: version, date, and grouped added/fixed/changed entries. changelog generator keep a changelog changelog markdown release notes version changelog"><span class="t-ico">💻</span><span class="t-body"><b>Changelog Generator</b><small>Build a Keep-a-Changelog markdown file: version, date, and grouped Added/Fixed/Changed entri…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/character-escape-reference/" data-search="character escape reference searchable reference of characters with their html entities, url encodings, and js escapes — plus a live encoder. character escape reference html entities url encode unicode escape html entity table"><span class="t-ico">💻</span><span class="t-body"><b>Character Escape Reference</b><small>Searchable reference of characters with their HTML entities, URL encodings, and JS escapes —…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/chmod-calculator/" data-search="chmod calculator tick rwx boxes for user/group/other — or type 755 — and see octal, symbolic, and the chmod command live. chmod calculator chmod 755 linux permissions octal permissions rwx calculator"><span class="t-ico">💻</span><span class="t-body"><b>chmod Calculator</b><small>Tick rwx boxes for user/group/other — or type 755 — and see octal, symbolic, and the chmod c…</small></span><span class="t-arrow">→</span></a></div>
+  </section>
+</main>
+
+<!-- ADSTERRA-FOOTER: paste your Adsterra footer/banner ad code inside the div below -->
+<div class="container"><div class="ad-slot" data-ad="footer"></div></div>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="f-grid">
+      <div>
+        <span class="brandline"><span class="logo-mark">T</span> ToolNest</span>
+        <p>Free online tools that actually work. No sign-up, no watermarks — and your files never leave your device for client-side tools.</p>
+      </div>
+      <div>
+        <h4>Popular</h4>
+        <a href="/tools/qr-code-generator/">QR Code Generator</a>
+        <a href="/tools/background-remover/">Background Remover</a>
+        <a href="/tools/pdf-merger/">PDF Merger</a>
+        <a href="/tools/word-counter/">Word Counter</a>
+      </div>
+      <div>
+        <h4>Categories</h4>
+        <a href="/#image">Image Tools</a>
+        <a href="/#pdf">PDF &amp; Documents</a>
+        <a href="/#calculators">Calculators</a>
+        <a href="/#developer">Developer Tools</a>
+      </div>
+      <div>
+        <h4>Site</h4>
+        <a href="/">Home</a>
+        <a href="/#all-tools">All Tools</a>
+        <a href="/sitemap.xml">Sitemap</a>
+      </div>
+    </div>
+    <div class="f-bottom">© 2026 ToolNest · Free tools for everyone · Made with care</div>
+  </div>
+</footer>
+
+<script src="/assets/site.js?v=5"></script>
+
+<script>
+/* Responsive Tester — URL (https:// normalized) → iframe with width presets + custom size. */
+(function () {
+  'use strict';
+  var SLUG = 'responsive-tester';
+
+  function el(id) { return document.getElementById(id); }
+  function fail(msg) { TN.setErr(SLUG + '-error', msg); }
+  function clear() { TN.clearErr(SLUG + '-error'); }
+
+  function normalize(url) {
+    url = url.trim();
+    if (!/^[a-zA-Z][a-zA-Z0-9+.-]*:\/\//.test(url)) url = 'https://' + url;
+    return url;
+  }
+
+  function setSize(w, h) {
+    var f = el(SLUG + '-frame');
+    f.style.width = w + 'px';
+    f.style.height = h + 'px';
+    el(SLUG + '-dims').textContent = w + ' × ' + h;
+  }
+
+  function load() {
+    clear();
+    var raw = el(SLUG + '-url').value;
+    if (!raw.trim()) { fail('Enter a URL to preview.'); return; }
+    var url = normalize(raw);
+    try { new URL(url); } catch (e) { fail('That URL does not look valid.'); return; }
+    el(SLUG + '-frame').src = url;
+    el(SLUG + '-site').textContent = url;
+    var w = parseInt(el(SLUG + '-w').value, 10) || 390;
+    var h = parseInt(el(SLUG + '-h').value, 10) || 844;
+    setSize(w, h);
+    TN.show(SLUG + '-result');
+  }
+
+  try {
+    TN.on(SLUG + '-load', 'click', load);
+    TN.on(SLUG + '-apply', 'click', function () {
+      var w = parseInt(el(SLUG + '-w').value, 10) || 390;
+      var h = parseInt(el(SLUG + '-h').value, 10) || 844;
+      setSize(w, h);
+    });
+    var presets = document.querySelectorAll('[data-w]');
+    for (var i = 0; i < presets.length; i++) {
+      (function (b) {
+        b.addEventListener('click', function () {
+          el(SLUG + '-w').value = b.getAttribute('data-w');
+          el(SLUG + '-h').value = b.getAttribute('data-h');
+          setSize(parseInt(b.getAttribute('data-w'), 10), parseInt(b.getAttribute('data-h'), 10));
+        });
+      })(presets[i]);
+    }
+  } catch (e) { /* never throw on load */ }
+})();
+
+</script>
+</body>
+</html>

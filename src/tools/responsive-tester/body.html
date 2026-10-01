@@ -1,0 +1,33 @@
+<div class="tool-card">
+  <div class="field">
+    <label for="responsive-tester-url">URL to preview</label>
+    <div style="display:flex;gap:8px">
+      <input class="input" id="responsive-tester-url" placeholder="example.com" style="flex:1">
+      <button class="btn btn-primary" id="responsive-tester-load">Load</button>
+    </div>
+  </div>
+  <div class="btn-row" style="align-items:flex-end">
+    <button class="btn btn-outline" data-w="360" data-h="740">360px</button>
+    <button class="btn btn-outline" data-w="768" data-h="1024">768px</button>
+    <button class="btn btn-outline" data-w="1024" data-h="768">1024px</button>
+    <button class="btn btn-outline" data-w="1440" data-h="900">1440px</button>
+    <div class="field" style="margin:0">
+      <label for="responsive-tester-w" style="font-size:12px">Custom W</label>
+      <input type="number" class="input" id="responsive-tester-w" value="390" min="200" max="3000" style="width:90px">
+    </div>
+    <div class="field" style="margin:0">
+      <label for="responsive-tester-h" style="font-size:12px">Custom H</label>
+      <input type="number" class="input" id="responsive-tester-h" value="844" min="200" max="3000" style="width:90px">
+    </div>
+    <button class="btn btn-outline" id="responsive-tester-apply">Apply</button>
+  </div>
+  <div class="error" id="responsive-tester-error"></div>
+  <p class="note">Sites that send <code>X-Frame-Options</code> or <code>frame-ancestors</code> headers refuse to load in any iframe — a blank frame means the site blocks embedding, not a bug in this tester.</p>
+  <div class="result hidden" id="responsive-tester-result">
+    <p><strong id="responsive-tester-dims">—</strong> <span class="muted" id="responsive-tester-site"></span></p>
+    <div style="overflow:auto;border:1px solid #ccc;border-radius:8px;background:#fff;max-height:70vh">
+      <iframe id="responsive-tester-frame" title="Responsive preview" sandbox="allow-scripts allow-same-origin allow-forms"
+        style="border:0;display:block;background:#fff"></iframe>
+    </div>
+  </div>
+</div>

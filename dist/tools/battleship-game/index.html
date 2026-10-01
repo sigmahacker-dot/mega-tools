@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Battleship Game — Free Online | ToolNest</title>
+<meta name="description" content="The classic naval battle — place your 5 ships, then hunt the computer&#39;s fleet on a 10×10 grid with hit, miss, and sunk tracking.">
+<meta name="keywords" content="battleship game, battleship, naval battle game, sea battle, board game">
+<link rel="canonical" href="https://toolnest.vercel.app/tools/battleship-game/">
+<meta name="theme-color" content="#07070b">
+<meta property="og:title" content="Battleship Game — Free Online | ToolNest">
+<meta property="og:description" content="The classic naval battle — place your 5 ships, then hunt the computer&#39;s fleet on a 10×10 grid with hit, miss, and sunk tracking.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css?v=4">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%23e01111'/><text x='50' y='68' font-size='58' text-anchor='middle' fill='white' font-family='Arial' font-weight='bold'>T</text></svg>">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebApplication","name":"Battleship Game","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0"},"url":"https://toolnest.vercel.app/tools/battleship-game/","description":"The classic naval battle — place your 5 ships, then hunt the computer's fleet on a 10×10 grid with hit, miss, and sunk tracking."},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Which ships are in the game?","acceptedAnswer":{"@type":"Answer","text":"Carrier (5), Battleship (4), Cruiser (3), Submarine (3), and Destroyer (2) — 17 ship cells each side."}},{"@type":"Question","name":"How do I place my ships?","acceptedAnswer":{"@type":"Answer","text":"Pick a ship, choose horizontal or vertical, and click your grid — or press Auto-place to deploy instantly."}},{"@type":"Question","name":"How smart is the computer opponent?","acceptedAnswer":{"@type":"Answer","text":"It uses hunt-and-target tactics: random probing, then zeroing in on neighbors once it scores a hit."}},{"@type":"Question","name":"How do I win?","acceptedAnswer":{"@type":"Answer","text":"Sink all 5 enemy ships before it sinks yours. Sunk ships are announced in the battle log."}}]}]}</script>
+</head>
+<body>
+<header class="site-header">
+  <div class="container">
+    <a class="logo" href="/"><span class="logo-mark">T</span> ToolNest</a>
+    <div class="header-right">
+      <form class="nav-search" action="/" method="get" role="search">
+        <span class="ns-icon">🔍</span>
+        <input type="search" name="q" placeholder="Search tools…" aria-label="Search tools" autocomplete="off">
+      </form>
+      <div class="menu-wrap">
+        <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="menuPanel" aria-label="Open menu"><span></span><span></span><span></span></button>
+        <nav class="menu-panel" id="menuPanel" aria-label="Site">
+          <a href="/">Home</a>
+          <a href="/#categories">Categories</a>
+          <a href="/#all-tools">All Tools</a>
+        </nav>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ADSTERRA-HEADER: paste your Adsterra banner ad code inside the div below -->
+<div class="container"><div class="ad-slot ad-leaderboard" data-ad="header"></div></div>
+
+<main class="container">
+  <nav class="crumbs"><a href="/">Home</a> &rsaquo; <a href="/#fun">Fun &amp; Lifestyle</a> &rsaquo; Battleship Game</nav>
+  <div class="tool-hero">
+    <h1>Battleship Game</h1>
+    <p>The classic naval battle — place your 5 ships, then hunt the computer&#39;s fleet on a 10×10 grid with hit, miss, and sunk tracking.</p>
+  </div>
+
+  <div class="tool-card" style="text-align:center">
+  <div class="stat-cards" style="max-width:520px;margin:0 auto 12px">
+    <div class="stat-card"><div class="v" id="battleship-game-youships">5</div><div class="l">Your ships</div></div>
+    <div class="stat-card"><div class="v" id="battleship-game-foeships">5</div><div class="l">Enemy ships</div></div>
+    <div class="stat-card"><div class="v" id="battleship-game-shots">0</div><div class="l">Your shots</div></div>
+    <div class="stat-card"><div class="v" id="battleship-game-hits">0</div><div class="l">Your hits</div></div>
+  </div>
+  <p class="muted" id="battleship-game-msg" style="min-height:24px">Place your ships, then start the battle!</p>
+  <div id="battleship-game-setup" style="margin-bottom:12px">
+    <div class="btn-row" style="justify-content:center;flex-wrap:wrap" id="battleship-game-shiplist"></div>
+    <div class="btn-row" style="justify-content:center;margin-top:8px">
+      <button class="btn btn-outline" id="battleship-game-orient">Orientation: Horizontal →</button>
+      <button class="btn btn-outline" id="battleship-game-auto">🎲 Auto-place</button>
+      <button class="btn btn-primary" id="battleship-game-start" disabled>⚔ Start Battle</button>
+    </div>
+  </div>
+  <div style="display:flex;flex-wrap:wrap;gap:16px;justify-content:center">
+    <div>
+      <p class="muted" style="margin:4px 0">Your waters</p>
+      <div id="battleship-game-own" style="display:inline-grid;grid-template-columns:repeat(10,26px);gap:2px;background:#90a4ae;padding:5px;border-radius:6px"></div>
+    </div>
+    <div>
+      <p class="muted" style="margin:4px 0">Enemy waters — tap to fire</p>
+      <div id="battleship-game-foe" style="display:inline-grid;grid-template-columns:repeat(10,26px);gap:2px;background:#90a4ae;padding:5px;border-radius:6px"></div>
+    </div>
+  </div>
+  <div id="battleship-game-log" class="note" style="max-width:560px;margin:12px auto 0;text-align:left;max-height:110px;overflow:auto"></div>
+  <div class="btn-row" style="justify-content:center;margin-top:12px">
+    <button class="btn" id="battleship-game-new">New game</button>
+  </div>
+  <div class="error" id="battleship-game-error"></div>
+</div>
+
+
+  <!-- ADSTERRA-INCONTENT: paste your Adsterra native/in-content ad code inside the div below -->
+  <div class="ad-slot" data-ad="incontent"></div>
+
+  <div class="info-grid">
+    <div class="info-card">
+      <h2>📖 How to use</h2>
+      <ol><li>Place your 5 ships manually or press Auto-place.</li><li>Press Start Battle when your fleet is deployed.</li><li>Tap enemy waters to fire — 🔥 hit, · miss.</li><li>Sink all 5 enemy ships before yours are sunk!</li></ol>
+    </div>
+    <div class="info-card">
+      <h2>❓ Frequently asked questions</h2>
+      <div class="faq"><details><summary>Which ships are in the game?</summary><p>Carrier (5), Battleship (4), Cruiser (3), Submarine (3), and Destroyer (2) — 17 ship cells each side.</p></details><details><summary>How do I place my ships?</summary><p>Pick a ship, choose horizontal or vertical, and click your grid — or press Auto-place to deploy instantly.</p></details><details><summary>How smart is the computer opponent?</summary><p>It uses hunt-and-target tactics: random probing, then zeroing in on neighbors once it scores a hit.</p></details><details><summary>How do I win?</summary><p>Sink all 5 enemy ships before it sinks yours. Sunk ships are announced in the battle log.</p></details></div>
+    </div>
+  </div>
+
+  <section class="section">
+    <h2>🔗 Related tools</h2>
+    <div class="tool-grid"><a class="tool-link" href="/tools/aim-trainer-game/" data-search="aim trainer game test and train your aim — targets pop up at random spots for 30 seconds. hits, misses and accuracy are tracked live. aim trainer aim test reaction test click speed test fps aim trainer"><span class="t-ico">🎲</span><span class="t-body"><b>Aim Trainer Game</b><small>Test and train your aim — targets pop up at random spots for 30 seconds. Hits, misses and ac…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/baby-name-generator/" data-search="baby name generator discover baby names by gender and origin — pakistani, arabic, western, indian or turkish — with meanings, random picks and tap-to-copy. baby name generator baby names with meanings muslim baby names boy girl names"><span class="t-ico">🎲</span><span class="t-body"><b>Baby Name Generator</b><small>Discover baby names by gender and origin — Pakistani, Arabic, Western, Indian or Turkish — w…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/battery-status-checker/" data-search="battery status checker check your device&#39;s battery level, charging status and estimated time remaining, with live updates — where your browser supports the battery api. battery status battery level checker laptop battery charging status"><span class="t-ico">🎲</span><span class="t-body"><b>Battery Status Checker</b><small>Check your device&#39;s battery level, charging status and estimated time remaining, with live u…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/birthday-countdown/" data-search="birthday countdown enter your birthday for a live countdown to your next one — days, hours, minutes and seconds — plus the age you&#39;ll turn and a fun message. birthday countdown countdown to birthday how old am i birthday timer"><span class="t-ico">🎲</span><span class="t-body"><b>Birthday Countdown</b><small>Enter your birthday for a live countdown to your next one — days, hours, minutes and seconds…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/blackjack-game/" data-search="blackjack game real blackjack — hit, stand, double down, dealer hits to 17, blackjack pays 3:2, with a session bankroll. blackjack blackjack game 21 card game casino card game blackjack online"><span class="t-ico">🎲</span><span class="t-body"><b>Blackjack Game</b><small>Real Blackjack — hit, stand, double down, dealer hits to 17, blackjack pays 3:2, with a sess…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/breakout-game/" data-search="breakout game classic breakout on canvas — real ball physics, 5 rows of bricks, 3 lives, score, and speed-up levels. breakout breakout game brick breaker arcade game paddle game"><span class="t-ico">🎲</span><span class="t-body"><b>Breakout Game</b><small>Classic Breakout on canvas — real ball physics, 5 rows of bricks, 3 lives, score, and speed-…</small></span><span class="t-arrow">→</span></a></div>
+  </section>
+</main>
+
+<!-- ADSTERRA-FOOTER: paste your Adsterra footer/banner ad code inside the div below -->
+<div class="container"><div class="ad-slot" data-ad="footer"></div></div>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="f-grid">
+      <div>
+        <span class="brandline"><span class="logo-mark">T</span> ToolNest</span>
+        <p>Free online tools that actually work. No sign-up, no watermarks — and your files never leave your device for client-side tools.</p>
+      </div>
+      <div>
+        <h4>Popular</h4>
+        <a href="/tools/qr-code-generator/">QR Code Generator</a>
+        <a href="/tools/background-remover/">Background Remover</a>
+        <a href="/tools/pdf-merger/">PDF Merger</a>
+        <a href="/tools/word-counter/">Word Counter</a>
+      </div>
+      <div>
+        <h4>Categories</h4>
+        <a href="/#image">Image Tools</a>
+        <a href="/#pdf">PDF &amp; Documents</a>
+        <a href="/#calculators">Calculators</a>
+        <a href="/#developer">Developer Tools</a>
+      </div>
+      <div>
+        <h4>Site</h4>
+        <a href="/">Home</a>
+        <a href="/#all-tools">All Tools</a>
+        <a href="/sitemap.xml">Sitemap</a>
+      </div>
+    </div>
+    <div class="f-bottom">© 2026 ToolNest · Free tools for everyone · Made with care</div>
+  </div>
+</footer>
+
+<script src="/assets/site.js?v=5"></script>
+
+<script>
+/* Battleship — 10x10, manual/auto placement, hunt-target AI, hit/miss/sunk. */
+(function () {
+  'use strict';
+  var SLUG = 'battleship-game';
+  var N = 10;
+  var SHIPS = [
+    { name: 'Carrier', size: 5 }, { name: 'Battleship', size: 4 }, { name: 'Cruiser', size: 3 },
+    { name: 'Submarine', size: 3 }, { name: 'Destroyer', size: 2 }
+  ];
+  var own = [], foe = [];           // arrays of {ship: shipIdx|null, hit: bool}
+  var ownShips = [], foeShips = []; // {name,size,cells:[],hits:0,sunk:false}
+  var selShip = 0, horiz = true, phase = 'place', over = false;
+  var shots = 0, hits = 0;
+  var aiTargets = [], aiShots = {}; // computer targeting
+
+  function $(id) { return document.getElementById(id); }
+  function rc(i) { return [Math.floor(i / N), i % N]; }
+
+  function emptySide() {
+    var cells = [];
+    for (var i = 0; i < N * N; i++) cells.push({ ship: null, hit: false });
+    return { cells: cells, ships: [] };
+  }
+
+  function canPlace(cells, r, c, size, h) {
+    if (h && c + size > N) return null;
+    if (!h && r + size > N) return null;
+    var list = [];
+    for (var k = 0; k < size; k++) {
+      var rr = h ? r : r + k, cc = h ? c + k : c;
+      var i = rr * N + cc;
+      if (cells[i].ship !== null) return null;
+      list.push(i);
+    }
+    return list;
+  }
+
+  function doPlace(side, shipIdx, list) {
+    var s = SHIPS[shipIdx];
+    for (var k = 0; k < list.length; k++) side.cells[list[k]].ship = shipIdx;
+    side.ships.push({ name: s.name, size: s.size, cells: list.slice(), hits: 0, sunk: false });
+  }
+
+  function autoPlace(side) {
+    for (var si = 0; si < SHIPS.length; si++) {
+      var guard = 0;
+      while (guard++ < 500) {
+        var h = Math.random() < 0.5;
+        var r = Math.floor(Math.random() * N), c = Math.floor(Math.random() * N);
+        var list = canPlace(side.cells, r, c, SHIPS[si].size, h);
+        if (list) { doPlace(side, si, list); break; }
+      }
+    }
+  }
+
+  function log(msg) {
+    var l = $('battleship-game-log');
+    var d = document.createElement('div');
+    d.textContent = msg;
+    l.insertBefore(d, l.firstChild);
+  }
+
+  function render() {
+    for (var i = 0; i < N * N; i++) {
+      var o = $('battleship-game-own-' + i), f = $('battleship-game-foe-' + i);
+      var oc = own.cells[i], fc = foe.cells[i];
+      if (o) {
+        if (oc.hit && oc.ship !== null) { o.textContent = '🔥'; o.style.background = '#ef9a9a'; }
+        else if (oc.hit) { o.textContent = '·'; o.style.background = '#b3e5fc'; }
+        else if (oc.ship !== null) { o.textContent = ''; o.style.background = '#78909c'; }
+        else { o.textContent = ''; o.style.background = '#eceff1'; }
+      }
+      if (f) {
+        if (fc.hit && fc.ship !== null) { f.textContent = '🔥'; f.style.background = '#ef9a9a'; }
+        else if (fc.hit) { f.textContent = '·'; f.style.background = '#b3e5fc'; }
+        else { f.textContent = ''; f.style.background = '#eceff1'; }
+      }
+    }
+    var ys = ownShips.filter(function (s) { return !s.sunk; }).length;
+    var fs = foeShips.filter(function (s) { return !s.sunk; }).length;
+    $('battleship-game-youships').textContent = ys;
+    $('battleship-game-foeships').textContent = fs;
+    $('battleship-game-shots').textContent = shots;
+    $('battleship-game-hits').textContent = hits;
+  }
+
+  function buildGrids() {
+    var ob = $('battleship-game-own'), fb = $('battleship-game-foe');
+    ob.innerHTML = ''; fb.innerHTML = '';
+    for (var i = 0; i < N * N; i++) {
+      (function (idx) {
+        var d = document.createElement('div');
+        d.id = 'battleship-game-own-' + idx;
+        d.style.cssText = 'width:26px;height:26px;border-radius:3px;background:#eceff1;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:13px;touch-action:manipulation';
+        d.addEventListener('click', function () { placeClick(idx); });
+        ob.appendChild(d);
+        var e = document.createElement('div');
+        e.id = 'battleship-game-foe-' + idx;
+        e.style.cssText = 'width:26px;height:26px;border-radius:3px;background:#eceff1;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:13px;touch-action:manipulation';
+        e.addEventListener('click', function () { fire(idx); });
+        fb.appendChild(e);
+      })(i);
+    }
+  }
+
+  function refreshShipList() {
+    var box = $('battleship-game-shiplist');
+    box.innerHTML = '';
+    var allPlaced = ownShips.length === SHIPS.length;
+    SHIPS.forEach(function (s, si) {
+      var placed = ownShips.some(function (x) { return x.name === s.name; });
+      var b = document.createElement('button');
+      b.className = 'btn ' + (placed ? 'btn-outline' : (si === selShip ? 'btn-primary' : 'btn-outline'));
+      b.style.cssText = 'font-size:13px;padding:6px 10px';
+      b.textContent = (placed ? '✓ ' : '') + s.name + ' (' + s.size + ')';
+      b.disabled = placed || allPlaced;
+      b.addEventListener('click', function () { selShip = si; refreshShipList(); });
+      box.appendChild(b);
+    });
+    $('battleship-game-start').disabled = !allPlaced;
+  }
+
+  function placeClick(idx) {
+    if (phase !== 'place' || over) return;
+    if (ownShips.some(function (x) { return x.name === SHIPS[selShip].name; })) return;
+    var r = Math.floor(idx / N), c = idx % N;
+    var list = canPlace(own.cells, r, c, SHIPS[selShip].size, horiz);
+    if (!list) {
+      $('battleship-game-msg').textContent = '⚠ Cannot place ' + SHIPS[selShip].name + ' there — try another spot or orientation.';
+      return;
+    }
+    doPlace(own, selShip, list);
+    log('Deployed your ' + SHIPS[selShip].name + '.');
+    // select next unplaced ship
+    for (var si = 0; si < SHIPS.length; si++) {
+      if (!ownShips.some(function (x) { return x.name === SHIPS[si].name; })) { selShip = si; break; }
+    }
+    refreshShipList();
+    render();
+    if (ownShips.length === SHIPS.length) $('battleship-game-msg').textContent = 'Fleet ready! Press ⚔ Start Battle.';
+  }
+
+  function startBattle() {
+    if (ownShips.length !== SHIPS.length) return;
+    phase = 'battle';
+    foeShips = foe.ships;
+    $('battleship-game-setup').style.display = 'none';
+    $('battleship-game-msg').textContent = '⚔ Battle! Tap enemy waters to fire.';
+    log('Battle started. Good hunting!');
+  }
+
+  function fire(idx) {
+    if (phase !== 'battle' || over) return;
+    var cell = foe.cells[idx];
+    if (cell.hit) return;
+    cell.hit = true;
+    shots++;
+    if (cell.ship !== null) {
+      hits++;
+      var s = foeShips[cell.ship];
+      s.hits++;
+      log('🔥 HIT on enemy waters!' + (s.hits === s.size ? ' You SUNK the enemy ' + s.name + '!' : ''));
+      if (s.hits === s.size) s.sunk = true;
+    } else {
+      log('· Miss.');
+    }
+    render();
+    if (foeShips.every(function (s) { return s.sunk; })) return endGame(true);
+    setTimeout(aiMove, 450);
+  }
+
+  function aiMove() {
+    if (over || phase !== 'battle') return;
+    var idx = -1;
+    // target mode: pop queued neighbors
+    while (aiTargets.length) {
+      var t = aiTargets.pop();
+      if (!own.cells[t].hit) { idx = t; break; }
+    }
+    // hunt mode: random unshot, checkerboard parity first
+    if (idx < 0) {
+      var cands = [], cands2 = [];
+      for (var i = 0; i < N * N; i++) {
+        if (own.cells[i].hit) continue;
+        var r = Math.floor(i / N), c = i % N;
+        if ((r + c) % 2 === 0) cands.push(i); else cands2.push(i);
+      }
+      var pool = cands.length ? cands : cands2;
+      idx = pool[Math.floor(Math.random() * pool.length)];
+    }
+    var cell = own.cells[idx];
+    cell.hit = true;
+    aiShots[idx] = 1;
+    if (cell.ship !== null) {
+      var s = ownShips[cell.ship];
+      s.hits++;
+      // queue orthogonal neighbors
+      var r2 = Math.floor(idx / N), c2 = idx % N;
+      [[1, 0], [-1, 0], [0, 1], [0, -1]].forEach(function (d) {
+        var nr = r2 + d[0], nc = c2 + d[1];
+        if (nr >= 0 && nr < N && nc >= 0 && nc < N) {
+          var ni = nr * N + nc;
+          if (!own.cells[ni].hit && aiTargets.indexOf(ni) === -1) aiTargets.push(ni);
+        }
+      });
+      if (s.hits === s.size) {
+        s.sunk = true;
+        // drop targets belonging to sunk ship area
+        aiTargets = aiTargets.filter(function (t) { return s.cells.indexOf(t) === -1; });
+        log('💥 Enemy SUNK your ' + s.name + '!');
+      } else {
+        log('🔥 Enemy hit your ship!');
+      }
+    } else {
+      log('· Enemy missed.');
+    }
+    render();
+    if (ownShips.every(function (s) { return s.sunk; })) return endGame(false);
+  }
+
+  function endGame(won) {
+    over = true;
+    // reveal enemy ships
+    foe.cells.forEach(function (cell, i) {
+      var el = $('battleship-game-foe-' + i);
+      if (cell.ship !== null && !cell.hit && el) { el.style.background = '#b0bec5'; el.textContent = '▦'; }
+    });
+    $('battleship-game-msg').textContent = won
+      ? '🏆 Victory! You sank the entire enemy fleet in ' + shots + ' shots.'
+      : '💀 Defeat — your fleet was sunk. Press New game to try again.';
+    log(won ? '🏆 Victory!' : '💀 Defeat.');
+  }
+
+  function newGame() {
+    own = emptySide(); foe = emptySide();
+    ownShips = own.ships;
+    autoPlace(foe);
+    foeShips = foe.ships;
+    selShip = 0; horiz = true; phase = 'place'; over = false;
+    shots = 0; hits = 0; aiTargets = []; aiShots = {};
+    $('battleship-game-setup').style.display = '';
+    $('battleship-game-log').innerHTML = '';
+    $('battleship-game-orient').textContent = 'Orientation: Horizontal →';
+    $('battleship-game-msg').textContent = 'Place your ships, then start the battle!';
+    buildGrids();
+    refreshShipList();
+    render();
+  }
+
+  try {
+    TN.on('battleship-game-new', 'click', newGame);
+    TN.on('battleship-game-start', 'click', startBattle);
+    TN.on('battleship-game-auto', 'click', function () {
+      if (phase !== 'place') return;
+      own = emptySide(); ownShips = own.ships;
+      autoPlace(own);
+      ownShips = own.ships;
+      refreshShipList();
+      render();
+      $('battleship-game-msg').textContent = 'Fleet auto-deployed! Press ⚔ Start Battle.';
+    });
+    TN.on('battleship-game-orient', 'click', function () {
+      horiz = !horiz;
+      $('battleship-game-orient').textContent = 'Orientation: ' + (horiz ? 'Horizontal →' : 'Vertical ↓');
+    });
+    newGame();
+  } catch (e) { /* never throw on load */ }
+})();
+
+</script>
+</body>
+</html>

@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rental Yield Calculator — Free Online | ToolNest</title>
+<meta name="description" content="Compute gross and net rental yield from purchase price, monthly rent and annual expenses.">
+<meta name="keywords" content="rental yield calculator, rental property yield calculator, gross rental yield, net rental yield, rental roi calculator">
+<link rel="canonical" href="https://toolnest.vercel.app/tools/rental-yield-calculator/">
+<meta name="theme-color" content="#07070b">
+<meta property="og:title" content="Rental Yield Calculator — Free Online | ToolNest">
+<meta property="og:description" content="Compute gross and net rental yield from purchase price, monthly rent and annual expenses.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css?v=4">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%23e01111'/><text x='50' y='68' font-size='58' text-anchor='middle' fill='white' font-family='Arial' font-weight='bold'>T</text></svg>">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebApplication","name":"Rental Yield Calculator","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0"},"url":"https://toolnest.vercel.app/tools/rental-yield-calculator/","description":"Compute gross and net rental yield from purchase price, monthly rent and annual expenses."},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Gross yield vs net yield?","acceptedAnswer":{"@type":"Answer","text":"Gross yield = annual rent ÷ purchase price. Net yield = (annual rent − annual expenses) ÷ purchase price. Net yield reflects real cash return before financing."}},{"@type":"Question","name":"Which expenses should I include?","acceptedAnswer":{"@type":"Answer","text":"Include taxes, insurance, maintenance, vacancy allowance, property management and HOA — everything except mortgage payments."}},{"@type":"Question","name":"What is a good rental yield?","acceptedAnswer":{"@type":"Answer","text":"A good yield depends on the market: 4–6% is typical in expensive cities, 8%+ in cheaper rental markets. Always compare net yields, not gross."}}]}]}</script>
+</head>
+<body>
+<header class="site-header">
+  <div class="container">
+    <a class="logo" href="/"><span class="logo-mark">T</span> ToolNest</a>
+    <div class="header-right">
+      <form class="nav-search" action="/" method="get" role="search">
+        <span class="ns-icon">🔍</span>
+        <input type="search" name="q" placeholder="Search tools…" aria-label="Search tools" autocomplete="off">
+      </form>
+      <div class="menu-wrap">
+        <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="menuPanel" aria-label="Open menu"><span></span><span></span><span></span></button>
+        <nav class="menu-panel" id="menuPanel" aria-label="Site">
+          <a href="/">Home</a>
+          <a href="/#categories">Categories</a>
+          <a href="/#all-tools">All Tools</a>
+        </nav>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ADSTERRA-HEADER: paste your Adsterra banner ad code inside the div below -->
+<div class="container"><div class="ad-slot ad-leaderboard" data-ad="header"></div></div>
+
+<main class="container">
+  <nav class="crumbs"><a href="/">Home</a> &rsaquo; <a href="/#finance">Finance &amp; Money</a> &rsaquo; Rental Yield Calculator</nav>
+  <div class="tool-hero">
+    <h1>Rental Yield Calculator</h1>
+    <p>Compute gross and net rental yield from purchase price, monthly rent and annual expenses.</p>
+  </div>
+
+  <div class="tool-card">
+  <div class="grid2">
+    <div class="field"><label for="rental-yield-calculator-price">Purchase price ($)</label><input class="input" id="rental-yield-calculator-price" type="number" min="0" step="any" value="250000"></div>
+    <div class="field"><label for="rental-yield-calculator-rent">Monthly rent ($)</label><input class="input" id="rental-yield-calculator-rent" type="number" min="0" step="any" value="1800"></div>
+    <div class="field"><label for="rental-yield-calculator-expenses">Annual expenses ($)</label><input class="input" id="rental-yield-calculator-expenses" type="number" min="0" step="any" value="6000"></div>
+  </div>
+  <div class="btn-row"><button class="btn btn-primary" id="rental-yield-calculator-calc">Calculate</button></div>
+  <div class="error" id="rental-yield-calculator-error"></div>
+  <div class="stat-cards">
+    <div class="stat-card"><div class="v" id="rental-yield-calculator-gross">—</div><div class="l">Gross yield</div></div>
+    <div class="stat-card"><div class="v" id="rental-yield-calculator-net">—</div><div class="l">Net yield</div></div>
+    <div class="stat-card"><div class="v" id="rental-yield-calculator-income">—</div><div class="l">Annual net income</div></div>
+    <div class="stat-card"><div class="v" id="rental-yield-calculator-monthly">—</div><div class="l">Monthly net income</div></div>
+  </div>
+  <p class="note">Educational estimates only — not financial advice.</p>
+</div>
+
+  <!-- ADSTERRA-INCONTENT: paste your Adsterra native/in-content ad code inside the div below -->
+  <div class="ad-slot" data-ad="incontent"></div>
+
+  <div class="info-grid">
+    <div class="info-card">
+      <h2>📖 How to use</h2>
+      <ol><li>Enter the purchase price and expected monthly rent.</li><li>Add your total annual expenses (taxes, insurance, maintenance…).</li><li>Compare gross vs net yield instantly.</li></ol>
+    </div>
+    <div class="info-card">
+      <h2>❓ Frequently asked questions</h2>
+      <div class="faq"><details><summary>Gross yield vs net yield?</summary><p>Gross yield = annual rent ÷ purchase price. Net yield = (annual rent − annual expenses) ÷ purchase price. Net yield reflects real cash return before financing.</p></details><details><summary>Which expenses should I include?</summary><p>Include taxes, insurance, maintenance, vacancy allowance, property management and HOA — everything except mortgage payments.</p></details><details><summary>What is a good rental yield?</summary><p>A good yield depends on the market: 4–6% is typical in expensive cities, 8%+ in cheaper rental markets. Always compare net yields, not gross.</p></details></div>
+    </div>
+  </div>
+
+  <section class="section">
+    <h2>🔗 Related tools</h2>
+    <div class="tool-grid"><a class="tool-link" href="/tools/apr-calculator/" data-search="apr calculator solve the true annual percentage rate of a loan by bisection — including upfront fees — and compare it with the nominal rate. apr calculator true apr calculator annual percentage rate calculator loan apr calculator nominal vs effective rate"><span class="t-ico">💰</span><span class="t-body"><b>APR Calculator</b><small>Solve the true Annual Percentage Rate of a loan by bisection — including upfront fees — and …</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/balloon-payment-calculator/" data-search="balloon payment calculator compute the monthly payment on a balloon loan and the lump-sum balloon balance still due at the end of the term. balloon payment calculator balloon loan calculator balloon mortgage calculator balloon balance calculator lump sum loan calculator"><span class="t-ico">💰</span><span class="t-body"><b>Balloon Payment Calculator</b><small>Compute the monthly payment on a balloon loan and the lump-sum balloon balance still due at …</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/break-even-calculator/" data-search="break-even calculator find your break-even point in units and revenue from fixed costs, price per unit and variable cost per unit. break even calculator breakeven point calculator break even analysis units to break even business break even calculator"><span class="t-ico">💰</span><span class="t-body"><b>Break-Even Calculator</b><small>Find your break-even point in units and revenue from fixed costs, price per unit and variabl…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/budget-50-30-20-calculator/" data-search="50/30/20 budget calculator split your take-home pay into needs (50%), wants (30%) and savings (20%), then compare with your actual spending. 50 30 20 budget budget calculator needs wants savings monthly budget planner budget rule calculator"><span class="t-ico">💰</span><span class="t-body"><b>50/30/20 Budget Calculator</b><small>Split your take-home pay into needs (50%), wants (30%) and savings (20%), then compare with …</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/business-profit-margin-calculator/" data-search="business profit margin calculator compute gross, operating and net profit margins from revenue, cost of goods sold and operating expenses. profit margin calculator business profit calculator gross margin calculator net margin calculator operating margin calculator"><span class="t-ico">💰</span><span class="t-body"><b>Business Profit Margin Calculator</b><small>Compute gross, operating and net profit margins from revenue, cost of goods sold and operati…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/cap-rate-calculator/" data-search="cap rate calculator convert between net operating income, property value and capitalization rate in both directions. cap rate calculator capitalization rate calculator noi calculator property valuation cap rate real estate cap rate"><span class="t-ico">💰</span><span class="t-body"><b>Cap Rate Calculator</b><small>Convert between net operating income, property value and capitalization rate in both directi…</small></span><span class="t-arrow">→</span></a></div>
+  </section>
+</main>
+
+<!-- ADSTERRA-FOOTER: paste your Adsterra footer/banner ad code inside the div below -->
+<div class="container"><div class="ad-slot" data-ad="footer"></div></div>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="f-grid">
+      <div>
+        <span class="brandline"><span class="logo-mark">T</span> ToolNest</span>
+        <p>Free online tools that actually work. No sign-up, no watermarks — and your files never leave your device for client-side tools.</p>
+      </div>
+      <div>
+        <h4>Popular</h4>
+        <a href="/tools/qr-code-generator/">QR Code Generator</a>
+        <a href="/tools/background-remover/">Background Remover</a>
+        <a href="/tools/pdf-merger/">PDF Merger</a>
+        <a href="/tools/word-counter/">Word Counter</a>
+      </div>
+      <div>
+        <h4>Categories</h4>
+        <a href="/#image">Image Tools</a>
+        <a href="/#pdf">PDF &amp; Documents</a>
+        <a href="/#calculators">Calculators</a>
+        <a href="/#developer">Developer Tools</a>
+      </div>
+      <div>
+        <h4>Site</h4>
+        <a href="/">Home</a>
+        <a href="/#all-tools">All Tools</a>
+        <a href="/sitemap.xml">Sitemap</a>
+      </div>
+    </div>
+    <div class="f-bottom">© 2026 ToolNest · Free tools for everyone · Made with care</div>
+  </div>
+</footer>
+
+<script src="/assets/site.js?v=5"></script>
+
+<script>
+/* Rental yield calculator — gross and net yield. */
+(function () {
+  'use strict';
+  var SLUG = 'rental-yield-calculator';
+  function $(id) { return document.getElementById(id); }
+  function num(id) { var v = parseFloat(String($(id).value).replace(/,/g, '').trim()); return isNaN(v) ? NaN : v; }
+  function money(n) { if (!isFinite(n)) return '—'; var neg = n < 0; n = Math.abs(n); return (neg ? '-' : '') + '$' + n.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 }); }
+  function calc() {
+    TN.clearErr(SLUG + '-error');
+    var price = num(SLUG + '-price'), rent = num(SLUG + '-rent'), exp = num(SLUG + '-expenses');
+    if (isNaN(price) || isNaN(rent) || isNaN(exp) || price <= 0 || rent < 0 || exp < 0) {
+      TN.setErr(SLUG + '-error', 'Enter a valid purchase price, monthly rent and annual expenses.');
+      return;
+    }
+    var annualRent = rent * 12, netIncome = annualRent - exp;
+    $(SLUG + '-gross').textContent = (annualRent / price * 100).toFixed(2) + '%';
+    $(SLUG + '-net').textContent = (netIncome / price * 100).toFixed(2) + '%';
+    $(SLUG + '-income').textContent = money(netIncome);
+    $(SLUG + '-monthly').textContent = money(netIncome / 12);
+  }
+  try {
+    TN.on(SLUG + '-calc', 'click', calc);
+    var els = document.querySelectorAll('input[id^="' + SLUG + '-"]');
+    for (var i = 0; i < els.length; i++) { els[i].addEventListener('input', calc); }
+    calc();
+  } catch (e) { /* never throw on load */ }
+})();
+</script>
+</body>
+</html>

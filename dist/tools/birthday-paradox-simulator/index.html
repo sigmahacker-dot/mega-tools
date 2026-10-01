@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Birthday Paradox Simulator — Free Online | ToolNest</title>
+<meta name="description" content="See how likely a shared birthday is: simulate random groups and compare with the exact theoretical probability.">
+<meta name="keywords" content="birthday paradox, birthday problem, shared birthday probability, birthday collision, probability simulation">
+<link rel="canonical" href="https://toolnest.vercel.app/tools/birthday-paradox-simulator/">
+<meta name="theme-color" content="#07070b">
+<meta property="og:title" content="Birthday Paradox Simulator — Free Online | ToolNest">
+<meta property="og:description" content="See how likely a shared birthday is: simulate random groups and compare with the exact theoretical probability.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css?v=4">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%23e01111'/><text x='50' y='68' font-size='58' text-anchor='middle' fill='white' font-family='Arial' font-weight='bold'>T</text></svg>">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebApplication","name":"Birthday Paradox Simulator","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0"},"url":"https://toolnest.vercel.app/tools/birthday-paradox-simulator/","description":"See how likely a shared birthday is: simulate random groups and compare with the exact theoretical probability."},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Why is 23 the magic number?","acceptedAnswer":{"@type":"Answer","text":"23 people form 253 pairs, and the no-match probability (364/365)×(363/365)×… drops just below 50% — so a match is likelier than not."}},{"@type":"Question","name":"Is this about matching MY birthday?","acceptedAnswer":{"@type":"Answer","text":"No — that needs ~253 people for 50%. The paradox is about ANY two people sharing a birthday."}},{"@type":"Question","name":"Does it assume 365 days?","acceptedAnswer":{"@type":"Answer","text":"Yes, leap days are ignored and birthdays are treated as uniform — the standard textbook model."}}]}]}</script>
+</head>
+<body>
+<header class="site-header">
+  <div class="container">
+    <a class="logo" href="/"><span class="logo-mark">T</span> ToolNest</a>
+    <div class="header-right">
+      <form class="nav-search" action="/" method="get" role="search">
+        <span class="ns-icon">🔍</span>
+        <input type="search" name="q" placeholder="Search tools…" aria-label="Search tools" autocomplete="off">
+      </form>
+      <div class="menu-wrap">
+        <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="menuPanel" aria-label="Open menu"><span></span><span></span><span></span></button>
+        <nav class="menu-panel" id="menuPanel" aria-label="Site">
+          <a href="/">Home</a>
+          <a href="/#categories">Categories</a>
+          <a href="/#all-tools">All Tools</a>
+        </nav>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ADSTERRA-HEADER: paste your Adsterra banner ad code inside the div below -->
+<div class="container"><div class="ad-slot ad-leaderboard" data-ad="header"></div></div>
+
+<main class="container">
+  <nav class="crumbs"><a href="/">Home</a> &rsaquo; <a href="/#math">Math &amp; Numbers</a> &rsaquo; Birthday Paradox Simulator</nav>
+  <div class="tool-hero">
+    <h1>Birthday Paradox Simulator</h1>
+    <p>See how likely a shared birthday is: simulate random groups and compare with the exact theoretical probability.</p>
+  </div>
+
+  <div class="tool-card">
+  <div class="grid2">
+    <div class="field"><label for="birthday-paradox-simulator-n">Group size (n)</label><input class="input" id="birthday-paradox-simulator-n" type="number" value="23" min="2" max="200" step="1"></div>
+    <div class="field"><label for="birthday-paradox-simulator-t">Trials</label><input class="input" id="birthday-paradox-simulator-t" type="number" value="20000" min="100" max="200000" step="1"></div>
+  </div>
+  <div class="btn-row"><button class="btn btn-primary" id="birthday-paradox-simulator-go">Run simulation</button></div>
+  <div class="stat-cards">
+    <div class="stat-card"><div class="v" id="birthday-paradox-simulator-sim">50.7%</div><div class="l">Simulated match %</div></div>
+    <div class="stat-card"><div class="v" id="birthday-paradox-simulator-th">50.7%</div><div class="l">Theoretical %</div></div>
+  </div>
+  <div id="birthday-paradox-simulator-bars" style="max-width:560px;margin:12px auto"></div>
+  <div class="result"><pre class="code" id="birthday-paradox-simulator-steps" style="text-align:left;white-space:pre-wrap"></pre></div>
+  <div class="error" id="birthday-paradox-simulator-error"></div>
+</div>
+
+  <!-- ADSTERRA-INCONTENT: paste your Adsterra native/in-content ad code inside the div below -->
+  <div class="ad-slot" data-ad="incontent"></div>
+
+  <div class="info-grid">
+    <div class="info-card">
+      <h2>📖 How to use</h2>
+      <ol><li>Enter the group size n.</li><li>Choose the number of trials.</li><li>Press Run simulation to compare simulated vs theoretical match rates.</li></ol>
+    </div>
+    <div class="info-card">
+      <h2>❓ Frequently asked questions</h2>
+      <div class="faq"><details><summary>Why is 23 the magic number?</summary><p>23 people form 253 pairs, and the no-match probability (364/365)×(363/365)×… drops just below 50% — so a match is likelier than not.</p></details><details><summary>Is this about matching MY birthday?</summary><p>No — that needs ~253 people for 50%. The paradox is about ANY two people sharing a birthday.</p></details><details><summary>Does it assume 365 days?</summary><p>Yes, leap days are ignored and birthdays are treated as uniform — the standard textbook model.</p></details></div>
+    </div>
+  </div>
+
+  <section class="section">
+    <h2>🔗 Related tools</h2>
+    <div class="tool-grid"><a class="tool-link" href="/tools/arithmetic-sequence-calculator/" data-search="arithmetic sequence calculator from the first term and common difference get the nth term and the sum of the first n terms. arithmetic sequence arithmetic progression nth term sum of arithmetic series common difference"><span class="t-ico">📐</span><span class="t-body"><b>Arithmetic Sequence Calculator</b><small>From the first term and common difference get the nth term and the sum of the first n terms.</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/binary-adder-calculator/" data-search="binary adder calculator add two binary numbers with every column addition and carry shown, plus a decimal check. binary addition add binary numbers binary adder binary sum binary carry"><span class="t-ico">📐</span><span class="t-body"><b>Binary Adder Calculator</b><small>Add two binary numbers with every column addition and carry shown, plus a decimal check.</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/circle-calculator/" data-search="circle calculator enter radius, diameter, circumference or area — get all four circle properties with the formulas shown. circle calculator circumference calculator circle area radius from area diameter calculator"><span class="t-ico">📐</span><span class="t-body"><b>Circle Calculator</b><small>Enter radius, diameter, circumference or area — get all four circle properties with the form…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/clock-angle-calculator/" data-search="clock angle calculator enter a time to get the smaller angle between the hour and minute hands, with the formula and a dial drawing. clock angle angle between hands clock hands angle time angle watch angle calculator"><span class="t-ico">📐</span><span class="t-body"><b>Clock Angle Calculator</b><small>Enter a time to get the smaller angle between the hour and minute hands, with the formula an…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/collatz-sequence-explorer/" data-search="collatz sequence explorer run the 3n+1 collatz sequence from any start: full path, step count, max value and a bar chart. collatz 3n+1 collatz sequence collatz conjecture hailstone sequence"><span class="t-ico">📐</span><span class="t-body"><b>Collatz Sequence Explorer</b><small>Run the 3n+1 Collatz sequence from any start: full path, step count, max value and a bar cha…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/complex-number-calculator/" data-search="complex number calculator add, subtract, multiply and divide complex numbers. see the result in a+bi form with modulus, argument and conjugates. complex number calculator imaginary number calculator complex division a+bi calculator complex arithmetic"><span class="t-ico">📐</span><span class="t-body"><b>Complex Number Calculator</b><small>Add, subtract, multiply and divide complex numbers. See the result in a+bi form with modulus…</small></span><span class="t-arrow">→</span></a></div>
+  </section>
+</main>
+
+<!-- ADSTERRA-FOOTER: paste your Adsterra footer/banner ad code inside the div below -->
+<div class="container"><div class="ad-slot" data-ad="footer"></div></div>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="f-grid">
+      <div>
+        <span class="brandline"><span class="logo-mark">T</span> ToolNest</span>
+        <p>Free online tools that actually work. No sign-up, no watermarks — and your files never leave your device for client-side tools.</p>
+      </div>
+      <div>
+        <h4>Popular</h4>
+        <a href="/tools/qr-code-generator/">QR Code Generator</a>
+        <a href="/tools/background-remover/">Background Remover</a>
+        <a href="/tools/pdf-merger/">PDF Merger</a>
+        <a href="/tools/word-counter/">Word Counter</a>
+      </div>
+      <div>
+        <h4>Categories</h4>
+        <a href="/#image">Image Tools</a>
+        <a href="/#pdf">PDF &amp; Documents</a>
+        <a href="/#calculators">Calculators</a>
+        <a href="/#developer">Developer Tools</a>
+      </div>
+      <div>
+        <h4>Site</h4>
+        <a href="/">Home</a>
+        <a href="/#all-tools">All Tools</a>
+        <a href="/sitemap.xml">Sitemap</a>
+      </div>
+    </div>
+    <div class="f-bottom">© 2026 ToolNest · Free tools for everyone · Made with care</div>
+  </div>
+</footer>
+
+<script src="/assets/site.js?v=5"></script>
+
+<script>
+/* Birthday paradox: simulated vs theoretical collision probability. */
+(function () {
+  'use strict';
+  var SLUG = 'birthday-paradox-simulator';
+  function $(id) { return document.getElementById(id); }
+  function err(m) { TN.setErr(SLUG + '-error', m); }
+  function bar(label, pct, color) {
+    var wrap = document.createElement('div');
+    wrap.style.margin = '8px 0';
+    var lab = document.createElement('div');
+    lab.style.cssText = 'font-size:13px;margin-bottom:4px';
+    lab.textContent = label + ' \u2014 ' + pct.toFixed(2) + '%';
+    var track = document.createElement('div');
+    track.style.cssText = 'background:#eee;border-radius:6px;height:22px;overflow:hidden';
+    var fill = document.createElement('div');
+    fill.style.cssText = 'height:100%;width:' + Math.min(100, pct) + '%;background:' + color + ';border-radius:6px';
+    track.appendChild(fill);
+    wrap.appendChild(lab); wrap.appendChild(track);
+    return wrap;
+  }
+  function theory(n) {
+    var pNo = 1;
+    for (var i = 0; i < n; i++) pNo *= (365 - i) / 365;
+    return (1 - pNo) * 100;
+  }
+  function calc() {
+    TN.clearErr(SLUG + '-error');
+    var n = parseInt($(SLUG + '-n').value, 10);
+    var T = parseInt($(SLUG + '-t').value, 10);
+    if (isNaN(n) || n < 2 || n > 200) { err('Group size must be 2\u2013200.'); return; }
+    if (isNaN(T) || T < 100 || T > 200000) { err('Trials must be 100\u2013200,000.'); return; }
+    var hits = 0;
+    for (var t = 0; t < T; t++) {
+      var seen = {};
+      var collided = false;
+      for (var i = 0; i < n; i++) {
+        var b = Math.floor(Math.random() * 365);
+        if (seen[b]) { collided = true; break; }
+        seen[b] = true;
+      }
+      if (collided) hits++;
+    }
+    var sim = hits / T * 100, th = theory(n);
+    $(SLUG + '-sim').textContent = sim.toFixed(2) + '%';
+    $(SLUG + '-th').textContent = th.toFixed(2) + '%';
+    var host = $(SLUG + '-bars');
+    host.innerHTML = '';
+    host.appendChild(bar('Simulated (' + hits.toLocaleString('en-US') + '/' + T.toLocaleString('en-US') + ' groups)', sim, '#1976d2'));
+    host.appendChild(bar('Theoretical 1 \u2212 \u220F', th, '#7b1fa2'));
+    var lines = [
+      'Theoretical: P(match) = 1 \u2212 (364/365) \u00D7 (363/365) \u00D7 \u2026 \u00D7 (' + (365 - n + 1) + '/365)',
+      '           = 1 \u2212 P(no shared birthday among ' + n + ' people) = ' + th.toFixed(4) + '%',
+      'Simulation: ' + T.toLocaleString('en-US') + ' random groups of ' + n + ' \u2192 ' + hits.toLocaleString('en-US') + ' had a shared birthday = ' + sim.toFixed(4) + '%',
+      'Why so high? ' + n + ' people make ' + (n * (n - 1) / 2) + ' pairs — each pair is a chance to match.'
+    ];
+    $(SLUG + '-steps').textContent = lines.join('\n');
+  }
+  try {
+    TN.on(SLUG + '-go', 'click', calc);
+    calc();
+  } catch (e) {}
+})();
+</script>
+</body>
+</html>

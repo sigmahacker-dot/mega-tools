@@ -1,0 +1,29 @@
+<div class="tool-card">
+  <div class="grid2">
+    <div class="field">
+      <label for="cycling-power-estimator-speed">Speed (km/h)</label>
+      <input class="input" id="cycling-power-estimator-speed" type="number" min="1" step="0.5" placeholder="e.g. 30">
+    </div>
+    <div class="field">
+      <label for="cycling-power-estimator-rider">Rider weight (kg)</label>
+      <input class="input" id="cycling-power-estimator-rider" type="number" min="20" max="250" step="0.5" placeholder="e.g. 75">
+    </div>
+    <div class="field">
+      <label for="cycling-power-estimator-bike">Bike weight (kg)</label>
+      <input class="input" id="cycling-power-estimator-bike" type="number" min="1" max="40" step="0.5" placeholder="e.g. 9">
+    </div>
+    <div class="field">
+      <label for="cycling-power-estimator-grade">Gradient (%)</label>
+      <input class="input" id="cycling-power-estimator-grade" type="number" min="-30" max="30" step="0.5" placeholder="e.g. 2 (negative = downhill)">
+    </div>
+  </div>
+  <div class="btn-row"><button class="btn btn-primary" id="cycling-power-estimator-calc">Calculate</button></div>
+  <div class="stat-cards hidden" id="cycling-power-estimator-out">
+    <div class="stat-card"><div class="v" id="cycling-power-estimator-watts">0</div><div class="l">Estimated power (W)</div></div>
+    <div class="stat-card"><div class="v" id="cycling-power-estimator-wkg">0</div><div class="l">Watts per kg</div></div>
+  </div>
+  <div class="result hidden" id="cycling-power-estimator-break"></div>
+  <p class="hint">Model: ½ρCdA·v³ (aero, CdA 0.32) + Crr·m·g·v (rolling, Crr 0.005) + m·g·grade·v (gravity).</p>
+  <p class="note">General information only — not medical advice. Consult a professional for personal guidance.</p>
+  <div class="error" id="cycling-power-estimator-error"></div>
+</div>

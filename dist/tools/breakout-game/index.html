@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Breakout Game — Free Online | ToolNest</title>
+<meta name="description" content="Classic Breakout on canvas — real ball physics, 5 rows of bricks, 3 lives, score, and speed-up levels.">
+<meta name="keywords" content="breakout, breakout game, brick breaker, arcade game, paddle game">
+<link rel="canonical" href="https://toolnest.vercel.app/tools/breakout-game/">
+<meta name="theme-color" content="#07070b">
+<meta property="og:title" content="Breakout Game — Free Online | ToolNest">
+<meta property="og:description" content="Classic Breakout on canvas — real ball physics, 5 rows of bricks, 3 lives, score, and speed-up levels.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css?v=4">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%23e01111'/><text x='50' y='68' font-size='58' text-anchor='middle' fill='white' font-family='Arial' font-weight='bold'>T</text></svg>">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebApplication","name":"Breakout Game","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0"},"url":"https://toolnest.vercel.app/tools/breakout-game/","description":"Classic Breakout on canvas — real ball physics, 5 rows of bricks, 3 lives, score, and speed-up levels."},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How do I control the paddle?","acceptedAnswer":{"@type":"Answer","text":"Mouse, touch-drag, or ←/→ arrow keys. Press Space or tap to launch the ball."}},{"@type":"Question","name":"How does scoring work?","acceptedAnswer":{"@type":"Answer","text":"Bricks are worth 10 points each; clearing the board advances a level and speeds up the ball."}},{"@type":"Question","name":"How many lives do I get?","acceptedAnswer":{"@type":"Answer","text":"You get 3 lives. Missing the ball costs one; losing all three ends the game."}},{"@type":"Question","name":"Does it get harder?","acceptedAnswer":{"@type":"Answer","text":"Yes — the ball speeds up and bricks reset each level."}}]}]}</script>
+</head>
+<body>
+<header class="site-header">
+  <div class="container">
+    <a class="logo" href="/"><span class="logo-mark">T</span> ToolNest</a>
+    <div class="header-right">
+      <form class="nav-search" action="/" method="get" role="search">
+        <span class="ns-icon">🔍</span>
+        <input type="search" name="q" placeholder="Search tools…" aria-label="Search tools" autocomplete="off">
+      </form>
+      <div class="menu-wrap">
+        <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="menuPanel" aria-label="Open menu"><span></span><span></span><span></span></button>
+        <nav class="menu-panel" id="menuPanel" aria-label="Site">
+          <a href="/">Home</a>
+          <a href="/#categories">Categories</a>
+          <a href="/#all-tools">All Tools</a>
+        </nav>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ADSTERRA-HEADER: paste your Adsterra banner ad code inside the div below -->
+<div class="container"><div class="ad-slot ad-leaderboard" data-ad="header"></div></div>
+
+<main class="container">
+  <nav class="crumbs"><a href="/">Home</a> &rsaquo; <a href="/#fun">Fun &amp; Lifestyle</a> &rsaquo; Breakout Game</nav>
+  <div class="tool-hero">
+    <h1>Breakout Game</h1>
+    <p>Classic Breakout on canvas — real ball physics, 5 rows of bricks, 3 lives, score, and speed-up levels.</p>
+  </div>
+
+  <div class="tool-card" style="text-align:center">
+  <div class="stat-cards" style="max-width:480px;margin:0 auto 12px">
+    <div class="stat-card"><div class="v" id="breakout-game-score">0</div><div class="l">Score</div></div>
+    <div class="stat-card"><div class="v" id="breakout-game-lives">3</div><div class="l">Lives</div></div>
+    <div class="stat-card"><div class="v" id="breakout-game-level">1</div><div class="l">Level</div></div>
+  </div>
+  <p class="muted" id="breakout-game-msg" style="min-height:24px">Press Start — move with mouse, touch, or ←/→.</p>
+  <canvas id="breakout-game-canvas" width="480" height="360" style="max-width:100%;border-radius:8px;background:#0d1b2a;box-shadow:0 2px 8px rgba(0,0,0,.25);touch-action:none"></canvas>
+  <div class="btn-row" style="justify-content:center;margin-top:12px">
+    <button class="btn btn-primary" id="breakout-game-start">▶ Start</button>
+  </div>
+  <div class="error" id="breakout-game-error"></div>
+</div>
+
+
+  <!-- ADSTERRA-INCONTENT: paste your Adsterra native/in-content ad code inside the div below -->
+  <div class="ad-slot" data-ad="incontent"></div>
+
+  <div class="info-grid">
+    <div class="info-card">
+      <h2>📖 How to use</h2>
+      <ol><li>Move the paddle with mouse, touch, or ←/→.</li><li>Launch the ball with Space or a tap.</li><li>Break every brick to advance levels.</li><li>Don&#39;t let the ball past your paddle — 3 lives!</li></ol>
+    </div>
+    <div class="info-card">
+      <h2>❓ Frequently asked questions</h2>
+      <div class="faq"><details><summary>How do I control the paddle?</summary><p>Mouse, touch-drag, or ←/→ arrow keys. Press Space or tap to launch the ball.</p></details><details><summary>How does scoring work?</summary><p>Bricks are worth 10 points each; clearing the board advances a level and speeds up the ball.</p></details><details><summary>How many lives do I get?</summary><p>You get 3 lives. Missing the ball costs one; losing all three ends the game.</p></details><details><summary>Does it get harder?</summary><p>Yes — the ball speeds up and bricks reset each level.</p></details></div>
+    </div>
+  </div>
+
+  <section class="section">
+    <h2>🔗 Related tools</h2>
+    <div class="tool-grid"><a class="tool-link" href="/tools/aim-trainer-game/" data-search="aim trainer game test and train your aim — targets pop up at random spots for 30 seconds. hits, misses and accuracy are tracked live. aim trainer aim test reaction test click speed test fps aim trainer"><span class="t-ico">🎲</span><span class="t-body"><b>Aim Trainer Game</b><small>Test and train your aim — targets pop up at random spots for 30 seconds. Hits, misses and ac…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/baby-name-generator/" data-search="baby name generator discover baby names by gender and origin — pakistani, arabic, western, indian or turkish — with meanings, random picks and tap-to-copy. baby name generator baby names with meanings muslim baby names boy girl names"><span class="t-ico">🎲</span><span class="t-body"><b>Baby Name Generator</b><small>Discover baby names by gender and origin — Pakistani, Arabic, Western, Indian or Turkish — w…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/battery-status-checker/" data-search="battery status checker check your device&#39;s battery level, charging status and estimated time remaining, with live updates — where your browser supports the battery api. battery status battery level checker laptop battery charging status"><span class="t-ico">🎲</span><span class="t-body"><b>Battery Status Checker</b><small>Check your device&#39;s battery level, charging status and estimated time remaining, with live u…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/battleship-game/" data-search="battleship game the classic naval battle — place your 5 ships, then hunt the computer&#39;s fleet on a 10×10 grid with hit, miss, and sunk tracking. battleship game battleship naval battle game sea battle board game"><span class="t-ico">🎲</span><span class="t-body"><b>Battleship Game</b><small>The classic naval battle — place your 5 ships, then hunt the computer&#39;s fleet on a 10×10 gri…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/birthday-countdown/" data-search="birthday countdown enter your birthday for a live countdown to your next one — days, hours, minutes and seconds — plus the age you&#39;ll turn and a fun message. birthday countdown countdown to birthday how old am i birthday timer"><span class="t-ico">🎲</span><span class="t-body"><b>Birthday Countdown</b><small>Enter your birthday for a live countdown to your next one — days, hours, minutes and seconds…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/blackjack-game/" data-search="blackjack game real blackjack — hit, stand, double down, dealer hits to 17, blackjack pays 3:2, with a session bankroll. blackjack blackjack game 21 card game casino card game blackjack online"><span class="t-ico">🎲</span><span class="t-body"><b>Blackjack Game</b><small>Real Blackjack — hit, stand, double down, dealer hits to 17, blackjack pays 3:2, with a sess…</small></span><span class="t-arrow">→</span></a></div>
+  </section>
+</main>
+
+<!-- ADSTERRA-FOOTER: paste your Adsterra footer/banner ad code inside the div below -->
+<div class="container"><div class="ad-slot" data-ad="footer"></div></div>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="f-grid">
+      <div>
+        <span class="brandline"><span class="logo-mark">T</span> ToolNest</span>
+        <p>Free online tools that actually work. No sign-up, no watermarks — and your files never leave your device for client-side tools.</p>
+      </div>
+      <div>
+        <h4>Popular</h4>
+        <a href="/tools/qr-code-generator/">QR Code Generator</a>
+        <a href="/tools/background-remover/">Background Remover</a>
+        <a href="/tools/pdf-merger/">PDF Merger</a>
+        <a href="/tools/word-counter/">Word Counter</a>
+      </div>
+      <div>
+        <h4>Categories</h4>
+        <a href="/#image">Image Tools</a>
+        <a href="/#pdf">PDF &amp; Documents</a>
+        <a href="/#calculators">Calculators</a>
+        <a href="/#developer">Developer Tools</a>
+      </div>
+      <div>
+        <h4>Site</h4>
+        <a href="/">Home</a>
+        <a href="/#all-tools">All Tools</a>
+        <a href="/sitemap.xml">Sitemap</a>
+      </div>
+    </div>
+    <div class="f-bottom">© 2026 ToolNest · Free tools for everyone · Made with care</div>
+  </div>
+</footer>
+
+<script src="/assets/site.js?v=5"></script>
+
+<script>
+/* Breakout — canvas, ball physics, brick rows, lives, score, levels. */
+(function () {
+  'use strict';
+  var SLUG = 'breakout-game';
+  var W = 480, H = 360;
+  var paddle = { w: 76, h: 12, x: (W - 76) / 2 };
+  var ball = { x: 0, y: 0, dx: 0, dy: 0, r: 8, speed: 5 };
+  var bricks = [], score = 0, lives = 3, level = 1;
+  var state = 'idle'; // idle | ready | play | over | win
+  var keys = {};
+  var BRICK_ROWS = 5, BRICK_COLS = 8;
+  var COLORS = ['#ef5350', '#ff9800', '#ffeb3b', '#66bb6a', '#42a5f5'];
+
+  function $(id) { return document.getElementById(id); }
+  function canvas() { return $(SLUG + '-canvas'); }
+
+  function buildBricks() {
+    bricks = [];
+    var bw = (W - 20) / BRICK_COLS, bh = 22;
+    for (var r = 0; r < BRICK_ROWS; r++) for (var c = 0; c < BRICK_COLS; c++) {
+      bricks.push({ x: 10 + c * bw, y: 44 + r * (bh + 6), w: bw - 6, h: bh, alive: true, color: COLORS[r % COLORS.length] });
+    }
+  }
+
+  function resetBall() {
+    ball.x = paddle.x + paddle.w / 2;
+    ball.y = H - 40;
+    ball.dx = 0; ball.dy = 0;
+    ball.speed = 4.5 + (level - 1) * 0.7;
+    state = 'ready';
+    $('breakout-game-msg').textContent = 'Tap / Space to launch the ball!';
+  }
+
+  function launch() {
+    if (state !== 'ready') return;
+    var ang = (Math.random() * 0.6 + 0.2) * Math.PI; // 36°..144° upward
+    ball.dx = ball.speed * Math.cos(ang) * (Math.random() < 0.5 ? 1 : -1);
+    ball.dy = -Math.abs(ball.speed * Math.sin(ang));
+    state = 'play';
+    $('breakout-game-msg').textContent = 'Go!';
+  }
+
+  function start() {
+    score = 0; lives = 3; level = 1;
+    $('breakout-game-score').textContent = '0';
+    $('breakout-game-lives').textContent = '3';
+    $('breakout-game-level').textContent = '1';
+    $('breakout-game-start').textContent = '↻ Restart';
+    buildBricks();
+    paddle.x = (W - paddle.w) / 2;
+    resetBall();
+  }
+
+  function loseLife() {
+    lives--;
+    $('breakout-game-lives').textContent = lives;
+    if (lives <= 0) {
+      state = 'over';
+      $('breakout-game-msg').textContent = '💀 Game over! Score: ' + score + '. Press Restart.';
+    } else {
+      $('breakout-game-msg').textContent = 'Lost a ball — ' + lives + ' ' + (lives === 1 ? 'life' : 'lives') + ' left.';
+      resetBall();
+    }
+  }
+
+  function update() {
+    if (state !== 'play') return;
+    // paddle keyboard
+    if (keys.left) paddle.x -= 7;
+    if (keys.right) paddle.x += 7;
+    paddle.x = Math.max(0, Math.min(W - paddle.w, paddle.x));
+    // ball
+    ball.x += ball.dx;
+    ball.y += ball.dy;
+    if (ball.x < ball.r) { ball.x = ball.r; ball.dx = Math.abs(ball.dx); }
+    if (ball.x > W - ball.r) { ball.x = W - ball.r; ball.dx = -Math.abs(ball.dx); }
+    if (ball.y < ball.r) { ball.y = ball.r; ball.dy = Math.abs(ball.dy); }
+    // paddle collision
+    var py = H - 28;
+    if (ball.dy > 0 && ball.y + ball.r >= py && ball.y + ball.r <= py + paddle.h + 8 &&
+        ball.x >= paddle.x - ball.r && ball.x <= paddle.x + paddle.w + ball.r) {
+      var rel = (ball.x - (paddle.x + paddle.w / 2)) / (paddle.w / 2); // -1..1
+      var ang = rel * (Math.PI / 3); // max 60°
+      var sp = Math.sqrt(ball.dx * ball.dx + ball.dy * ball.dy);
+      ball.dx = sp * Math.sin(ang);
+      ball.dy = -Math.abs(sp * Math.cos(ang));
+      ball.y = py - ball.r;
+    }
+    // brick collision
+    for (var i = 0; i < bricks.length; i++) {
+      var b = bricks[i];
+      if (!b.alive) continue;
+      if (ball.x + ball.r > b.x && ball.x - ball.r < b.x + b.w &&
+          ball.y + ball.r > b.y && ball.y - ball.r < b.y + b.h) {
+        b.alive = false;
+        score += 10;
+        $('breakout-game-score').textContent = score;
+        // bounce: determine side by overlap
+        var ox = Math.min(ball.x + ball.r - b.x, b.x + b.w - (ball.x - ball.r));
+        var oy = Math.min(ball.y + ball.r - b.y, b.y + b.h - (ball.y - ball.r));
+        if (ox < oy) ball.dx = -ball.dx; else ball.dy = -ball.dy;
+        break;
+      }
+    }
+    if (bricks.every(function (b) { return !b.alive; })) {
+      level++;
+      $('breakout-game-level').textContent = level;
+      $('breakout-game-msg').textContent = '🏆 Level ' + level + '! Faster ball — keep going!';
+      buildBricks();
+      paddle.x = (W - paddle.w) / 2;
+      resetBall();
+      return;
+    }
+    if (ball.y - ball.r > H) loseLife();
+  }
+
+  function draw() {
+    var ctx = canvas().getContext('2d');
+    ctx.fillStyle = '#0d1b2a';
+    ctx.fillRect(0, 0, W, H);
+    bricks.forEach(function (b) {
+      if (!b.alive) return;
+      ctx.fillStyle = b.color;
+      ctx.fillRect(b.x, b.y, b.w, b.h);
+      ctx.fillStyle = 'rgba(255,255,255,.25)';
+      ctx.fillRect(b.x, b.y, b.w, 4);
+    });
+    // paddle
+    ctx.fillStyle = '#eceff1';
+    var py = H - 28;
+    ctx.beginPath();
+    if (ctx.roundRect) ctx.roundRect(paddle.x, py, paddle.w, paddle.h, 6); else ctx.rect(paddle.x, py, paddle.w, paddle.h);
+    ctx.fill();
+    // ball
+    ctx.fillStyle = '#ffeb3b';
+    ctx.beginPath();
+    ctx.arc(ball.x, ball.y, ball.r, 0, Math.PI * 2);
+    ctx.fill();
+    if (state === 'idle') {
+      ctx.fillStyle = '#90a4ae';
+      ctx.font = '20px sans-serif';
+      ctx.textAlign = 'center';
+      ctx.fillText('Press Start to play', W / 2, H / 2);
+    }
+  }
+
+  function loop() {
+    update();
+    draw();
+    requestAnimationFrame(loop);
+  }
+
+  function paddleTo(clientX) {
+    var r = canvas().getBoundingClientRect();
+    var x = (clientX - r.left) * (W / r.width);
+    paddle.x = Math.max(0, Math.min(W - paddle.w, x - paddle.w / 2));
+  }
+
+  try {
+    var cv = canvas();
+    cv.addEventListener('mousemove', function (e) { paddleTo(e.clientX); });
+    cv.addEventListener('touchstart', function (e) {
+      e.preventDefault();
+      paddleTo(e.touches[0].clientX);
+      launch();
+    }, { passive: false });
+    cv.addEventListener('touchmove', function (e) {
+      e.preventDefault();
+      paddleTo(e.touches[0].clientX);
+    }, { passive: false });
+    document.addEventListener('keydown', function (e) {
+      var t = e.target;
+      if (t && (t.tagName === 'INPUT' || t.tagName === 'TEXTAREA' || t.tagName === 'SELECT')) return;
+      if (e.key === 'ArrowLeft') { keys.left = true; e.preventDefault(); }
+      else if (e.key === 'ArrowRight') { keys.right = true; e.preventDefault(); }
+      else if (e.key === ' ') { e.preventDefault(); launch(); }
+    });
+    document.addEventListener('keyup', function (e) {
+      if (e.key === 'ArrowLeft') keys.left = false;
+      if (e.key === 'ArrowRight') keys.right = false;
+    });
+    TN.on('breakout-game-start', 'click', start);
+    buildBricks();
+    paddle.x = (W - paddle.w) / 2;
+    ball.x = W / 2; ball.y = H / 2;
+    loop();
+  } catch (e) { /* never throw on load */ }
+})();
+
+</script>
+</body>
+</html>

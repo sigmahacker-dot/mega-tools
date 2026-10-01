@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dice Probability Calculator — Free Online | ToolNest</title>
+<meta name="description" content="For XdY plus a modifier get the full exact probability distribution, P(≥ target) and the mean.">
+<meta name="keywords" content="dice probability, XdY calculator, d20 probability, dice odds, roll probability">
+<link rel="canonical" href="https://toolnest.vercel.app/tools/dice-probability-calculator/">
+<meta name="theme-color" content="#07070b">
+<meta property="og:title" content="Dice Probability Calculator — Free Online | ToolNest">
+<meta property="og:description" content="For XdY plus a modifier get the full exact probability distribution, P(≥ target) and the mean.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css?v=4">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%23e01111'/><text x='50' y='68' font-size='58' text-anchor='middle' fill='white' font-family='Arial' font-weight='bold'>T</text></svg>">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebApplication","name":"Dice Probability Calculator","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0"},"url":"https://toolnest.vercel.app/tools/dice-probability-calculator/","description":"For XdY plus a modifier get the full exact probability distribution, P(≥ target) and the mean."},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How is the distribution computed?","acceptedAnswer":{"@type":"Answer","text":"Dynamic programming convolves one die at a time — exact counts for every total, no Monte Carlo sampling."}},{"@type":"Question","name":"What does P(≥) mean?","acceptedAnswer":{"@type":"Answer","text":"The cumulative chance of rolling at least that total — the number that matters for attack rolls and saving throws."}},{"@type":"Question","name":"Why is the mean X×(Y+1)/2?","acceptedAnswer":{"@type":"Answer","text":"One die averages (Y+1)/2; X independent dice add their means, then the modifier shifts everything."}}]}]}</script>
+</head>
+<body>
+<header class="site-header">
+  <div class="container">
+    <a class="logo" href="/"><span class="logo-mark">T</span> ToolNest</a>
+    <div class="header-right">
+      <form class="nav-search" action="/" method="get" role="search">
+        <span class="ns-icon">🔍</span>
+        <input type="search" name="q" placeholder="Search tools…" aria-label="Search tools" autocomplete="off">
+      </form>
+      <div class="menu-wrap">
+        <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="menuPanel" aria-label="Open menu"><span></span><span></span><span></span></button>
+        <nav class="menu-panel" id="menuPanel" aria-label="Site">
+          <a href="/">Home</a>
+          <a href="/#categories">Categories</a>
+          <a href="/#all-tools">All Tools</a>
+        </nav>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ADSTERRA-HEADER: paste your Adsterra banner ad code inside the div below -->
+<div class="container"><div class="ad-slot ad-leaderboard" data-ad="header"></div></div>
+
+<main class="container">
+  <nav class="crumbs"><a href="/">Home</a> &rsaquo; <a href="/#math">Math &amp; Numbers</a> &rsaquo; Dice Probability Calculator</nav>
+  <div class="tool-hero">
+    <h1>Dice Probability Calculator</h1>
+    <p>For XdY plus a modifier get the full exact probability distribution, P(≥ target) and the mean.</p>
+  </div>
+
+  <div class="tool-card">
+  <div class="grid2">
+    <div class="field"><label for="dice-probability-calculator-x">Dice (X)</label><input class="input" id="dice-probability-calculator-x" type="number" value="2" min="1" max="20" step="1"></div>
+    <div class="field"><label for="dice-probability-calculator-y">Sides (Y)</label><input class="input" id="dice-probability-calculator-y" type="number" value="6" min="2" max="100" step="1"></div>
+    <div class="field"><label for="dice-probability-calculator-mod">Modifier (+/-)</label><input class="input" id="dice-probability-calculator-mod" type="number" value="0" step="1"></div>
+    <div class="field"><label for="dice-probability-calculator-target">Target (\u2265)</label><input class="input" id="dice-probability-calculator-target" type="number" value="7" step="1"></div>
+  </div>
+  <div class="btn-row"><button class="btn btn-primary" id="dice-probability-calculator-go">Compute</button></div>
+  <div class="stat-cards">
+    <div class="stat-card"><div class="v" id="dice-probability-calculator-p">58.33%</div><div class="l">P(\u2265 target)</div></div>
+    <div class="stat-card"><div class="v" id="dice-probability-calculator-mean">7</div><div class="l">Mean</div></div>
+  </div>
+  <div class="result"><div class="data" id="dice-probability-calculator-table" style="max-height:300px;overflow:auto"></div></div>
+  <div class="error" id="dice-probability-calculator-error"></div>
+</div>
+
+  <!-- ADSTERRA-INCONTENT: paste your Adsterra native/in-content ad code inside the div below -->
+  <div class="ad-slot" data-ad="incontent"></div>
+
+  <div class="info-grid">
+    <div class="info-card">
+      <h2>📖 How to use</h2>
+      <ol><li>Enter dice X, sides Y, modifier and target.</li><li>Press Compute.</li><li>Read the success chance and the full distribution table.</li></ol>
+    </div>
+    <div class="info-card">
+      <h2>❓ Frequently asked questions</h2>
+      <div class="faq"><details><summary>How is the distribution computed?</summary><p>Dynamic programming convolves one die at a time — exact counts for every total, no Monte Carlo sampling.</p></details><details><summary>What does P(≥) mean?</summary><p>The cumulative chance of rolling at least that total — the number that matters for attack rolls and saving throws.</p></details><details><summary>Why is the mean X×(Y+1)/2?</summary><p>One die averages (Y+1)/2; X independent dice add their means, then the modifier shifts everything.</p></details></div>
+    </div>
+  </div>
+
+  <section class="section">
+    <h2>🔗 Related tools</h2>
+    <div class="tool-grid"><a class="tool-link" href="/tools/arithmetic-sequence-calculator/" data-search="arithmetic sequence calculator from the first term and common difference get the nth term and the sum of the first n terms. arithmetic sequence arithmetic progression nth term sum of arithmetic series common difference"><span class="t-ico">📐</span><span class="t-body"><b>Arithmetic Sequence Calculator</b><small>From the first term and common difference get the nth term and the sum of the first n terms.</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/binary-adder-calculator/" data-search="binary adder calculator add two binary numbers with every column addition and carry shown, plus a decimal check. binary addition add binary numbers binary adder binary sum binary carry"><span class="t-ico">📐</span><span class="t-body"><b>Binary Adder Calculator</b><small>Add two binary numbers with every column addition and carry shown, plus a decimal check.</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/birthday-paradox-simulator/" data-search="birthday paradox simulator see how likely a shared birthday is: simulate random groups and compare with the exact theoretical probability. birthday paradox birthday problem shared birthday probability birthday collision probability simulation"><span class="t-ico">📐</span><span class="t-body"><b>Birthday Paradox Simulator</b><small>See how likely a shared birthday is: simulate random groups and compare with the exact theor…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/circle-calculator/" data-search="circle calculator enter radius, diameter, circumference or area — get all four circle properties with the formulas shown. circle calculator circumference calculator circle area radius from area diameter calculator"><span class="t-ico">📐</span><span class="t-body"><b>Circle Calculator</b><small>Enter radius, diameter, circumference or area — get all four circle properties with the form…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/clock-angle-calculator/" data-search="clock angle calculator enter a time to get the smaller angle between the hour and minute hands, with the formula and a dial drawing. clock angle angle between hands clock hands angle time angle watch angle calculator"><span class="t-ico">📐</span><span class="t-body"><b>Clock Angle Calculator</b><small>Enter a time to get the smaller angle between the hour and minute hands, with the formula an…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/collatz-sequence-explorer/" data-search="collatz sequence explorer run the 3n+1 collatz sequence from any start: full path, step count, max value and a bar chart. collatz 3n+1 collatz sequence collatz conjecture hailstone sequence"><span class="t-ico">📐</span><span class="t-body"><b>Collatz Sequence Explorer</b><small>Run the 3n+1 Collatz sequence from any start: full path, step count, max value and a bar cha…</small></span><span class="t-arrow">→</span></a></div>
+  </section>
+</main>
+
+<!-- ADSTERRA-FOOTER: paste your Adsterra footer/banner ad code inside the div below -->
+<div class="container"><div class="ad-slot" data-ad="footer"></div></div>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="f-grid">
+      <div>
+        <span class="brandline"><span class="logo-mark">T</span> ToolNest</span>
+        <p>Free online tools that actually work. No sign-up, no watermarks — and your files never leave your device for client-side tools.</p>
+      </div>
+      <div>
+        <h4>Popular</h4>
+        <a href="/tools/qr-code-generator/">QR Code Generator</a>
+        <a href="/tools/background-remover/">Background Remover</a>
+        <a href="/tools/pdf-merger/">PDF Merger</a>
+        <a href="/tools/word-counter/">Word Counter</a>
+      </div>
+      <div>
+        <h4>Categories</h4>
+        <a href="/#image">Image Tools</a>
+        <a href="/#pdf">PDF &amp; Documents</a>
+        <a href="/#calculators">Calculators</a>
+        <a href="/#developer">Developer Tools</a>
+      </div>
+      <div>
+        <h4>Site</h4>
+        <a href="/">Home</a>
+        <a href="/#all-tools">All Tools</a>
+        <a href="/sitemap.xml">Sitemap</a>
+      </div>
+    </div>
+    <div class="f-bottom">© 2026 ToolNest · Free tools for everyone · Made with care</div>
+  </div>
+</footer>
+
+<script src="/assets/site.js?v=5"></script>
+
+<script>
+/* Dice probability distribution via dynamic programming. */
+(function () {
+  'use strict';
+  var SLUG = 'dice-probability-calculator';
+  function $(id) { return document.getElementById(id); }
+  function err(m) { TN.setErr(SLUG + '-error', m); }
+  function calc() {
+    TN.clearErr(SLUG + '-error');
+    var X = parseInt($(SLUG + '-x').value, 10), Y = parseInt($(SLUG + '-y').value, 10);
+    var mod = parseInt($(SLUG + '-mod').value, 10) || 0;
+    var target = parseInt($(SLUG + '-target').value, 10);
+    if (isNaN(X) || X < 1 || X > 20) { err('Dice X must be 1\u201320.'); return; }
+    if (isNaN(Y) || Y < 2 || Y > 100) { err('Sides Y must be 2\u2013100.'); return; }
+    if (isNaN(target)) { err('Enter a target number.'); return; }
+    // DP over sums
+    var dp = { 0: 1 };
+    for (var d = 0; d < X; d++) {
+      var ndp = {};
+      for (var s in dp) {
+        for (var face = 1; face <= Y; face++) {
+          var ns = parseInt(s, 10) + face;
+          ndp[ns] = (ndp[ns] || 0) + dp[s];
+        }
+      }
+      dp = ndp;
+    }
+    var total = Math.pow(Y, X);
+    var sums = Object.keys(dp).map(Number).sort(function (a, b) { return a - b; });
+    var mean = 0, pTarget = 0;
+    sums.forEach(function (s) {
+      var p = dp[s] / total;
+      mean += (s + mod) * p;
+      if (s + mod >= target) pTarget += p;
+    });
+    $(SLUG + '-p').textContent = (pTarget * 100).toFixed(2) + '%';
+    $(SLUG + '-mean').textContent = (Math.round(mean * 100) / 100).toString();
+    var html = '<table style="width:100%;border-collapse:collapse"><thead><tr><th style="text-align:left;padding:6px;border-bottom:2px solid #ddd">Total</th><th style="text-align:right;padding:6px;border-bottom:2px solid #ddd">Ways</th><th style="text-align:right;padding:6px;border-bottom:2px solid #ddd">P(exact)</th><th style="text-align:right;padding:6px;border-bottom:2px solid #ddd">P(\u2265)</th></tr></thead><tbody>';
+    var cum = 0;
+    sums.slice().reverse().forEach(function (s) {
+      var p = dp[s] / total;
+      cum += p;
+      var t = s + mod;
+      html += '<tr' + (t === target ? ' style="background:#e8f5e9"' : '') + '><td style="padding:5px;border-bottom:1px solid #eee;font-weight:bold">' + t + '</td><td style="padding:5px;border-bottom:1px solid #eee;text-align:right;font-family:monospace">' + dp[s].toLocaleString('en-US') + '</td><td style="padding:5px;border-bottom:1px solid #eee;text-align:right;font-family:monospace">' + (p * 100).toFixed(2) + '%</td><td style="padding:5px;border-bottom:1px solid #eee;text-align:right;font-family:monospace">' + (cum * 100).toFixed(2) + '%</td></tr>';
+    });
+    html += '</tbody></table>';
+    html += '<p class="hint">Exact distribution for ' + X + 'd' + Y + (mod ? (mod > 0 ? '+' + mod : mod) : '') + ' via dynamic programming over ' + total.toLocaleString('en-US') + ' outcomes. Mean = X\u00D7(Y+1)/2 + mod = ' + (Math.round(mean * 100) / 100) + '.</p>';
+    $(SLUG + '-table').innerHTML = html;
+  }
+  try {
+    TN.on(SLUG + '-go', 'click', calc);
+    ['x', 'y', 'mod', 'target'].forEach(function (id) { TN.on(SLUG + '-' + id, 'input', TN.debounce(calc, 400)); });
+    calc();
+  } catch (e) {}
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mortgage Points Calculator — Free Online | ToolNest</title>
+<meta name="description" content="Find out if paying mortgage discount points is worth it — break-even months and net savings over your planned stay.">
+<meta name="keywords" content="mortgage points calculator, discount points calculator, buy down mortgage rate calculator, mortgage points break even, points vs rate calculator">
+<link rel="canonical" href="https://toolnest.vercel.app/tools/mortgage-points-calculator/">
+<meta name="theme-color" content="#07070b">
+<meta property="og:title" content="Mortgage Points Calculator — Free Online | ToolNest">
+<meta property="og:description" content="Find out if paying mortgage discount points is worth it — break-even months and net savings over your planned stay.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css?v=4">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%23e01111'/><text x='50' y='68' font-size='58' text-anchor='middle' fill='white' font-family='Arial' font-weight='bold'>T</text></svg>">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebApplication","name":"Mortgage Points Calculator","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0"},"url":"https://toolnest.vercel.app/tools/mortgage-points-calculator/","description":"Find out if paying mortgage discount points is worth it — break-even months and net savings over your planned stay."},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What is a discount point?","acceptedAnswer":{"@type":"Answer","text":"One discount point costs 1% of the loan amount, paid up front at closing, in exchange for a lower interest rate."}},{"@type":"Question","name":"How is break-even calculated?","acceptedAnswer":{"@type":"Answer","text":"Break-even months = (points cost) ÷ (monthly payment savings). After that month, the lower payment puts you ahead."}},{"@type":"Question","name":"When are points NOT worth it?","acceptedAnswer":{"@type":"Answer","text":"If your break-even month comes after you plan to sell or refinance, points usually do not pay off. They work best for long stays."}}]}]}</script>
+</head>
+<body>
+<header class="site-header">
+  <div class="container">
+    <a class="logo" href="/"><span class="logo-mark">T</span> ToolNest</a>
+    <div class="header-right">
+      <form class="nav-search" action="/" method="get" role="search">
+        <span class="ns-icon">🔍</span>
+        <input type="search" name="q" placeholder="Search tools…" aria-label="Search tools" autocomplete="off">
+      </form>
+      <div class="menu-wrap">
+        <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="menuPanel" aria-label="Open menu"><span></span><span></span><span></span></button>
+        <nav class="menu-panel" id="menuPanel" aria-label="Site">
+          <a href="/">Home</a>
+          <a href="/#categories">Categories</a>
+          <a href="/#all-tools">All Tools</a>
+        </nav>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ADSTERRA-HEADER: paste your Adsterra banner ad code inside the div below -->
+<div class="container"><div class="ad-slot ad-leaderboard" data-ad="header"></div></div>
+
+<main class="container">
+  <nav class="crumbs"><a href="/">Home</a> &rsaquo; <a href="/#finance">Finance &amp; Money</a> &rsaquo; Mortgage Points Calculator</nav>
+  <div class="tool-hero">
+    <h1>Mortgage Points Calculator</h1>
+    <p>Find out if paying mortgage discount points is worth it — break-even months and net savings over your planned stay.</p>
+  </div>
+
+  <div class="tool-card">
+  <div class="grid2">
+    <div class="field"><label for="mortgage-points-calculator-amount">Loan amount ($)</label><input class="input" id="mortgage-points-calculator-amount" type="number" min="0" step="any" value="350000"></div>
+    <div class="field"><label for="mortgage-points-calculator-rate">Base rate (% APR)</label><input class="input" id="mortgage-points-calculator-rate" type="number" min="0" step="any" value="7"></div>
+    <div class="field"><label for="mortgage-points-calculator-points">Points (1 point = 1%)</label><input class="input" id="mortgage-points-calculator-points" type="number" min="0" step="any" value="2"></div>
+    <div class="field"><label for="mortgage-points-calculator-reduction">Rate reduction per point (%)</label><input class="input" id="mortgage-points-calculator-reduction" type="number" min="0" step="any" value="0.25"></div>
+    <div class="field"><label for="mortgage-points-calculator-stay">Years you will stay</label><input class="input" id="mortgage-points-calculator-stay" type="number" min="1" step="any" value="10"></div>
+  </div>
+  <div class="btn-row"><button class="btn btn-primary" id="mortgage-points-calculator-calc">Calculate</button></div>
+  <div class="error" id="mortgage-points-calculator-error"></div>
+  <div class="stat-cards">
+    <div class="stat-card"><div class="v" id="mortgage-points-calculator-cost">—</div><div class="l">Points cost</div></div>
+    <div class="stat-card"><div class="v" id="mortgage-points-calculator-newrate">—</div><div class="l">New rate</div></div>
+    <div class="stat-card"><div class="v" id="mortgage-points-calculator-breakeven">—</div><div class="l">Break-even (months)</div></div>
+    <div class="stat-card"><div class="v" id="mortgage-points-calculator-net">—</div><div class="l">Net savings</div></div>
+  </div>
+  <p class="hint">Assumes a 30-year fixed loan; comparisons are principal &amp; interest only.</p>
+  <p class="note">Educational estimates only — not financial advice.</p>
+</div>
+
+  <!-- ADSTERRA-INCONTENT: paste your Adsterra native/in-content ad code inside the div below -->
+  <div class="ad-slot" data-ad="incontent"></div>
+
+  <div class="info-grid">
+    <div class="info-card">
+      <h2>📖 How to use</h2>
+      <ol><li>Enter the loan amount, base rate and the points you are considering.</li><li>Enter the rate reduction each point buys and how many years you will stay.</li><li>Read the break-even month and your net savings.</li></ol>
+    </div>
+    <div class="info-card">
+      <h2>❓ Frequently asked questions</h2>
+      <div class="faq"><details><summary>What is a discount point?</summary><p>One discount point costs 1% of the loan amount, paid up front at closing, in exchange for a lower interest rate.</p></details><details><summary>How is break-even calculated?</summary><p>Break-even months = (points cost) ÷ (monthly payment savings). After that month, the lower payment puts you ahead.</p></details><details><summary>When are points NOT worth it?</summary><p>If your break-even month comes after you plan to sell or refinance, points usually do not pay off. They work best for long stays.</p></details></div>
+    </div>
+  </div>
+
+  <section class="section">
+    <h2>🔗 Related tools</h2>
+    <div class="tool-grid"><a class="tool-link" href="/tools/apr-calculator/" data-search="apr calculator solve the true annual percentage rate of a loan by bisection — including upfront fees — and compare it with the nominal rate. apr calculator true apr calculator annual percentage rate calculator loan apr calculator nominal vs effective rate"><span class="t-ico">💰</span><span class="t-body"><b>APR Calculator</b><small>Solve the true Annual Percentage Rate of a loan by bisection — including upfront fees — and …</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/balloon-payment-calculator/" data-search="balloon payment calculator compute the monthly payment on a balloon loan and the lump-sum balloon balance still due at the end of the term. balloon payment calculator balloon loan calculator balloon mortgage calculator balloon balance calculator lump sum loan calculator"><span class="t-ico">💰</span><span class="t-body"><b>Balloon Payment Calculator</b><small>Compute the monthly payment on a balloon loan and the lump-sum balloon balance still due at …</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/break-even-calculator/" data-search="break-even calculator find your break-even point in units and revenue from fixed costs, price per unit and variable cost per unit. break even calculator breakeven point calculator break even analysis units to break even business break even calculator"><span class="t-ico">💰</span><span class="t-body"><b>Break-Even Calculator</b><small>Find your break-even point in units and revenue from fixed costs, price per unit and variabl…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/budget-50-30-20-calculator/" data-search="50/30/20 budget calculator split your take-home pay into needs (50%), wants (30%) and savings (20%), then compare with your actual spending. 50 30 20 budget budget calculator needs wants savings monthly budget planner budget rule calculator"><span class="t-ico">💰</span><span class="t-body"><b>50/30/20 Budget Calculator</b><small>Split your take-home pay into needs (50%), wants (30%) and savings (20%), then compare with …</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/business-profit-margin-calculator/" data-search="business profit margin calculator compute gross, operating and net profit margins from revenue, cost of goods sold and operating expenses. profit margin calculator business profit calculator gross margin calculator net margin calculator operating margin calculator"><span class="t-ico">💰</span><span class="t-body"><b>Business Profit Margin Calculator</b><small>Compute gross, operating and net profit margins from revenue, cost of goods sold and operati…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/cap-rate-calculator/" data-search="cap rate calculator convert between net operating income, property value and capitalization rate in both directions. cap rate calculator capitalization rate calculator noi calculator property valuation cap rate real estate cap rate"><span class="t-ico">💰</span><span class="t-body"><b>Cap Rate Calculator</b><small>Convert between net operating income, property value and capitalization rate in both directi…</small></span><span class="t-arrow">→</span></a></div>
+  </section>
+</main>
+
+<!-- ADSTERRA-FOOTER: paste your Adsterra footer/banner ad code inside the div below -->
+<div class="container"><div class="ad-slot" data-ad="footer"></div></div>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="f-grid">
+      <div>
+        <span class="brandline"><span class="logo-mark">T</span> ToolNest</span>
+        <p>Free online tools that actually work. No sign-up, no watermarks — and your files never leave your device for client-side tools.</p>
+      </div>
+      <div>
+        <h4>Popular</h4>
+        <a href="/tools/qr-code-generator/">QR Code Generator</a>
+        <a href="/tools/background-remover/">Background Remover</a>
+        <a href="/tools/pdf-merger/">PDF Merger</a>
+        <a href="/tools/word-counter/">Word Counter</a>
+      </div>
+      <div>
+        <h4>Categories</h4>
+        <a href="/#image">Image Tools</a>
+        <a href="/#pdf">PDF &amp; Documents</a>
+        <a href="/#calculators">Calculators</a>
+        <a href="/#developer">Developer Tools</a>
+      </div>
+      <div>
+        <h4>Site</h4>
+        <a href="/">Home</a>
+        <a href="/#all-tools">All Tools</a>
+        <a href="/sitemap.xml">Sitemap</a>
+      </div>
+    </div>
+    <div class="f-bottom">© 2026 ToolNest · Free tools for everyone · Made with care</div>
+  </div>
+</footer>
+
+<script src="/assets/site.js?v=5"></script>
+
+<script>
+/* Mortgage points calculator — break-even and net savings from discount points. */
+(function () {
+  'use strict';
+  var SLUG = 'mortgage-points-calculator';
+  function $(id) { return document.getElementById(id); }
+  function num(id) { var v = parseFloat(String($(id).value).replace(/,/g, '').trim()); return isNaN(v) ? NaN : v; }
+  function money(n) { if (!isFinite(n)) return '—'; var neg = n < 0; n = Math.abs(n); return (neg ? '-' : '') + '$' + n.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 }); }
+  function pay(P, r, n) { if (r <= 0) return P / n; return P * r / (1 - Math.pow(1 + r, -n)); }
+  function calc() {
+    TN.clearErr(SLUG + '-error');
+    var P = num(SLUG + '-amount'), base = num(SLUG + '-rate'), pts = num(SLUG + '-points');
+    var red = num(SLUG + '-reduction'), stay = num(SLUG + '-stay');
+    if (isNaN(P) || isNaN(base) || isNaN(pts) || isNaN(red) || isNaN(stay) || P <= 0 || base < 0 || pts < 0 || red < 0 || stay <= 0) {
+      TN.setErr(SLUG + '-error', 'Enter a valid loan amount, rate, points, reduction and stay.');
+      return;
+    }
+    var newRate = base - pts * red;
+    if (newRate < 0) {
+      TN.setErr(SLUG + '-error', 'The rate reduction would push the new rate below 0%.');
+      return;
+    }
+    var n = 360;
+    var cost = P * pts / 100;
+    var mBase = pay(P, base / 1200, n), mNew = pay(P, newRate / 1200, n);
+    var save = mBase - mNew;
+    var be = save > 0 ? cost / save : Infinity;
+    var net = save * stay * 12 - cost;
+    $(SLUG + '-cost').textContent = money(cost);
+    $(SLUG + '-newrate').textContent = newRate.toFixed(3) + '%';
+    $(SLUG + '-breakeven').textContent = isFinite(be) ? Math.ceil(be).toString() : 'Never';
+    $(SLUG + '-net').textContent = money(net);
+  }
+  try {
+    TN.on(SLUG + '-calc', 'click', calc);
+    var els = document.querySelectorAll('input[id^="' + SLUG + '-"]');
+    for (var i = 0; i < els.length; i++) { els[i].addEventListener('input', calc); }
+    calc();
+  } catch (e) { /* never throw on load */ }
+})();
+</script>
+</body>
+</html>

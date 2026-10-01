@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>YAML to JSON Converter — Free Online | ToolNest</title>
+<meta name="description" content="Parse YAML (maps, lists, nested indentation, scalars, quoted strings) into JSON with clear error messages.">
+<meta name="keywords" content="yaml to json, yaml parser, convert yaml, yaml to json online, yaml validator">
+<link rel="canonical" href="https://toolnest.vercel.app/tools/yaml-to-json-converter/">
+<meta name="theme-color" content="#07070b">
+<meta property="og:title" content="YAML to JSON Converter — Free Online | ToolNest">
+<meta property="og:description" content="Parse YAML (maps, lists, nested indentation, scalars, quoted strings) into JSON with clear error messages.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css?v=4">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%23e01111'/><text x='50' y='68' font-size='58' text-anchor='middle' fill='white' font-family='Arial' font-weight='bold'>T</text></svg>">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebApplication","name":"YAML to JSON Converter","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0"},"url":"https://toolnest.vercel.app/tools/yaml-to-json-converter/","description":"Parse YAML (maps, lists, nested indentation, scalars, quoted strings) into JSON with clear error messages."},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Which YAML features are supported?","acceptedAnswer":{"@type":"Answer","text":"Indentation-based maps and lists, nesting, strings, numbers, booleans, null, quoted scalars, comments, and simple inline [arrays] and {maps}."}},{"@type":"Question","name":"Does it support the full YAML spec?","acceptedAnswer":{"@type":"Answer","text":"No: anchors/aliases, multi-line block scalars (| and >), tags, or complex keys. The FAQ below explains the limits."}},{"@type":"Question","name":"How are indentation errors reported?","acceptedAnswer":{"@type":"Answer","text":"Tabs are rejected (per the YAML spec) and every error names the offending line number."}}]}]}</script>
+</head>
+<body>
+<header class="site-header">
+  <div class="container">
+    <a class="logo" href="/"><span class="logo-mark">T</span> ToolNest</a>
+    <div class="header-right">
+      <form class="nav-search" action="/" method="get" role="search">
+        <span class="ns-icon">🔍</span>
+        <input type="search" name="q" placeholder="Search tools…" aria-label="Search tools" autocomplete="off">
+      </form>
+      <div class="menu-wrap">
+        <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="menuPanel" aria-label="Open menu"><span></span><span></span><span></span></button>
+        <nav class="menu-panel" id="menuPanel" aria-label="Site">
+          <a href="/">Home</a>
+          <a href="/#categories">Categories</a>
+          <a href="/#all-tools">All Tools</a>
+        </nav>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ADSTERRA-HEADER: paste your Adsterra banner ad code inside the div below -->
+<div class="container"><div class="ad-slot ad-leaderboard" data-ad="header"></div></div>
+
+<main class="container">
+  <nav class="crumbs"><a href="/">Home</a> &rsaquo; <a href="/#developer">Developer Tools</a> &rsaquo; YAML to JSON Converter</nav>
+  <div class="tool-hero">
+    <h1>YAML to JSON Converter</h1>
+    <p>Parse YAML (maps, lists, nested indentation, scalars, quoted strings) into JSON with clear error messages.</p>
+  </div>
+
+  <div class="tool-card">
+  <div class="field">
+    <label for="yaml-to-json-converter-input">YAML input</label>
+    <textarea class="textarea" id="yaml-to-json-converter-input" rows="10" placeholder="Paste YAML here…"></textarea>
+  </div>
+  <div class="btn-row">
+    <button class="btn btn-primary" id="yaml-to-json-converter-convert">Convert to JSON</button>
+    <button class="btn btn-outline" id="yaml-to-json-converter-sample">Load sample</button>
+  </div>
+  <div class="error" id="yaml-to-json-converter-error"></div>
+  <p class="note">Practical YAML subset: maps, lists, nesting by indentation, scalars, quoted strings, comments, and simple inline <span class="code">[arrays]</span> / <span class="code">{maps}</span>. Not supported: anchors &amp; aliases, multi-line <span class="code">|</span> / <span class="code">&gt;</span> blocks, custom tags.</p>
+  <div class="field">
+    <label for="yaml-to-json-converter-output">JSON output</label>
+    <textarea class="textarea" id="yaml-to-json-converter-output" rows="10" readonly placeholder="JSON will appear here…"></textarea>
+  </div>
+  <div class="btn-row">
+    <button class="btn btn-outline" id="yaml-to-json-converter-copy">Copy JSON</button>
+    <button class="btn btn-outline" id="yaml-to-json-converter-download">Download .json</button>
+  </div>
+</div>
+
+
+  <!-- ADSTERRA-INCONTENT: paste your Adsterra native/in-content ad code inside the div below -->
+  <div class="ad-slot" data-ad="incontent"></div>
+
+  <div class="info-grid">
+    <div class="info-card">
+      <h2>📖 How to use</h2>
+      <ol><li>Paste your YAML into the input box.</li><li>Click Convert to JSON — the parsed result appears formatted.</li><li>Copy the JSON or download it as a .json file.</li></ol>
+    </div>
+    <div class="info-card">
+      <h2>❓ Frequently asked questions</h2>
+      <div class="faq"><details><summary>Which YAML features are supported?</summary><p>Indentation-based maps and lists, nesting, strings, numbers, booleans, null, quoted scalars, comments, and simple inline [arrays] and {maps}.</p></details><details><summary>Does it support the full YAML spec?</summary><p>No: anchors/aliases, multi-line block scalars (| and &gt;), tags, or complex keys. The FAQ below explains the limits.</p></details><details><summary>How are indentation errors reported?</summary><p>Tabs are rejected (per the YAML spec) and every error names the offending line number.</p></details></div>
+    </div>
+  </div>
+
+  <section class="section">
+    <h2>🔗 Related tools</h2>
+    <div class="tool-grid"><a class="tool-link" href="/tools/ascii-table-reference/" data-search="ascii table reference full ascii table 0–127: decimal, hex, octal, character, control-code names and html entities — searchable. ascii table ascii codes ascii chart control characters ascii reference"><span class="t-ico">💻</span><span class="t-body"><b>ASCII Table Reference</b><small>Full ASCII table 0–127: decimal, hex, octal, character, control-code names and HTML entities…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/base64-encoder-decoder/" data-search="base64 encoder / decoder encode text to base64 or decode base64 back to text, with full utf-8 support and a file-to-data-url converter. base64 encoder base64 decoder base64 encode base64 decode file to base64"><span class="t-ico">💻</span><span class="t-body"><b>Base64 Encoder / Decoder</b><small>Encode text to Base64 or decode Base64 back to text, with full UTF-8 support and a file-to-d…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/binary-text-converter/" data-search="binary and text converter convert text to binary or hex and back, with full utf-8 awareness and strict input validation. binary to text text to binary hex to text converter"><span class="t-ico">💻</span><span class="t-body"><b>Binary and Text Converter</b><small>Convert text to binary or hex and back, with full UTF-8 awareness and strict input validatio…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/changelog-generator/" data-search="changelog generator build a keep-a-changelog markdown file: version, date, and grouped added/fixed/changed entries. changelog generator keep a changelog changelog markdown release notes version changelog"><span class="t-ico">💻</span><span class="t-body"><b>Changelog Generator</b><small>Build a Keep-a-Changelog markdown file: version, date, and grouped Added/Fixed/Changed entri…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/character-escape-reference/" data-search="character escape reference searchable reference of characters with their html entities, url encodings, and js escapes — plus a live encoder. character escape reference html entities url encode unicode escape html entity table"><span class="t-ico">💻</span><span class="t-body"><b>Character Escape Reference</b><small>Searchable reference of characters with their HTML entities, URL encodings, and JS escapes —…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/chmod-calculator/" data-search="chmod calculator tick rwx boxes for user/group/other — or type 755 — and see octal, symbolic, and the chmod command live. chmod calculator chmod 755 linux permissions octal permissions rwx calculator"><span class="t-ico">💻</span><span class="t-body"><b>chmod Calculator</b><small>Tick rwx boxes for user/group/other — or type 755 — and see octal, symbolic, and the chmod c…</small></span><span class="t-arrow">→</span></a></div>
+  </section>
+</main>
+
+<!-- ADSTERRA-FOOTER: paste your Adsterra footer/banner ad code inside the div below -->
+<div class="container"><div class="ad-slot" data-ad="footer"></div></div>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="f-grid">
+      <div>
+        <span class="brandline"><span class="logo-mark">T</span> ToolNest</span>
+        <p>Free online tools that actually work. No sign-up, no watermarks — and your files never leave your device for client-side tools.</p>
+      </div>
+      <div>
+        <h4>Popular</h4>
+        <a href="/tools/qr-code-generator/">QR Code Generator</a>
+        <a href="/tools/background-remover/">Background Remover</a>
+        <a href="/tools/pdf-merger/">PDF Merger</a>
+        <a href="/tools/word-counter/">Word Counter</a>
+      </div>
+      <div>
+        <h4>Categories</h4>
+        <a href="/#image">Image Tools</a>
+        <a href="/#pdf">PDF &amp; Documents</a>
+        <a href="/#calculators">Calculators</a>
+        <a href="/#developer">Developer Tools</a>
+      </div>
+      <div>
+        <h4>Site</h4>
+        <a href="/">Home</a>
+        <a href="/#all-tools">All Tools</a>
+        <a href="/sitemap.xml">Sitemap</a>
+      </div>
+    </div>
+    <div class="f-bottom">© 2026 ToolNest · Free tools for everyone · Made with care</div>
+  </div>
+</footer>
+
+<script src="/assets/site.js?v=5"></script>
+
+<script>
+/* YAML → JSON. Practical subset parser: indentation maps/lists, nested blocks,
+   scalars (string/number/bool/null), quoted strings, # comments, simple inline flows. */
+(function () {
+  'use strict';
+  var SLUG = 'yaml-to-json-converter';
+  var SAMPLE = '# sample config\nserver:\n  host: localhost\n  port: 8080\n  ssl: true\n  welcome: "Hello, YAML!"\ndatabase:\n  urls:\n    - postgres://db1:5432/app\n    - postgres://db2:5432/app\n  pool: 10\nfeatures: [auth, billing, "dark mode"]\nempty_value:\n';
+
+  function el(id) { return document.getElementById(id); }
+  function fail(msg) { TN.setErr(SLUG + '-error', msg); }
+  function clear() { TN.clearErr(SLUG + '-error'); }
+
+  function stripComment(line) {
+    var out = '', sq = false, dq = false;
+    for (var i = 0; i < line.length; i++) {
+      var c = line[i];
+      if (c === "'" && !dq) {
+        if (line[i + 1] === "'") { out += "''"; i++; continue; }
+        sq = !sq; out += c; continue;
+      }
+      if (c === '"' && !sq) { if (i === 0 || line[i - 1] !== '\\') dq = !dq; out += c; continue; }
+      if (c === '#' && !sq && !dq && (i === 0 || /\s/.test(line[i - 1]))) break;
+      out += c;
+    }
+    return out;
+  }
+
+  function splitFlow(s) { // split on commas outside quotes/brackets
+    var parts = [], cur = '', sq = false, dq = false, depth = 0;
+    for (var i = 0; i < s.length; i++) {
+      var c = s[i];
+      if (c === "'" && !dq) sq = !sq;
+      else if (c === '"' && !sq) dq = !dq;
+      else if (!sq && !dq) {
+        if (c === '[' || c === '{') depth++;
+        else if (c === ']' || c === '}') depth--;
+        else if (c === ',' && depth === 0) { parts.push(cur); cur = ''; continue; }
+      }
+      cur += c;
+    }
+    parts.push(cur);
+    return parts;
+  }
+
+  function splitKV(text) { // split on first ':' outside quotes/brackets, followed by space/EOL
+    var sq = false, dq = false, depth = 0;
+    for (var i = 0; i < text.length; i++) {
+      var c = text[i];
+      if (c === "'" && !dq) sq = !sq;
+      else if (c === '"' && !sq) dq = !dq;
+      else if (!sq && !dq) {
+        if (c === '[' || c === '{') depth++;
+        else if (c === ']' || c === '}') depth--;
+        else if (c === ':' && depth === 0 && (i + 1 >= text.length || /\s/.test(text[i + 1]))) {
+          return [text.slice(0, i).trim(), text.slice(i + 1).trim()];
+        }
+      }
+    }
+    return null;
+  }
+
+  function parseScalar(s) {
+    s = s.trim();
+    if (s === '') return '';
+    if (s.length >= 2 && ((s[0] === '"' && s[s.length - 1] === '"') || (s[0] === "'" && s[s.length - 1] === "'"))) {
+      var inner = s.slice(1, -1);
+      if (s[0] === '"') return inner.replace(/\\n/g, '\n').replace(/\\t/g, '\t').replace(/\\"/g, '"').replace(/\\\\/g, '\\');
+      return inner.replace(/''/g, "'");
+    }
+    var low = s.toLowerCase();
+    if (low === 'true' || low === 'yes') return true;
+    if (low === 'false' || low === 'no') return false;
+    if (low === 'null' || s === '~') return null;
+    if (/^[+-]?(\d+\.?\d*|\.\d+)([eE][+-]?\d+)?$/.test(s)) return parseFloat(s);
+    if (s[0] === '[' && s[s.length - 1] === ']') return splitFlow(s.slice(1, -1)).map(parseScalar);
+    if (s[0] === '{' && s[s.length - 1] === '}') {
+      var o = {};
+      splitFlow(s.slice(1, -1)).forEach(function (p) {
+        var kv = splitKV(p);
+        if (kv) o[parseScalar(kv[0])] = parseScalar(kv[1]);
+      });
+      return o;
+    }
+    return s;
+  }
+
+  function parseYAML(src) {
+    var raw = src.split(/\r?\n/), items = [], i, stripped, indent;
+    for (i = 0; i < raw.length; i++) {
+      stripped = stripComment(raw[i]);
+      if (!stripped.trim()) continue;
+      indent = stripped.match(/^ */)[0].length;
+      if (/^\t* /.test(stripped) || stripped.slice(0, indent).indexOf('\t') >= 0) {
+        throw new Error('Line ' + (i + 1) + ': tabs are not allowed for indentation');
+      }
+      items.push({ indent: indent, text: stripped.trim(), line: i + 1 });
+    }
+    if (!items.length) throw new Error('Empty input');
+    var pos = 0;
+    function peek() { return items[pos]; }
+    function isListItem(t) { return t === '-' || /^-(\s|$)/.test(t); }
+    function block(minIndent) {
+      var it = peek();
+      if (!it) return null;
+      return isListItem(it.text) ? parseList(minIndent) : parseMap(minIndent);
+    }
+    function valueFor(val, it) {
+      if (val !== '') return parseScalar(val);
+      var nxt = peek();
+      if (nxt && nxt.indent > it.indent) return block(nxt.indent);
+      return null;
+    }
+    function parseList(minIndent) {
+      var arr = [], it;
+      while ((it = peek()) && it.indent === minIndent && isListItem(it.text)) {
+        var rest = it.text === '-' ? '' : it.text.replace(/^-\s+/, '');
+        pos++;
+        if (rest === '') {
+          var nxt = peek();
+          arr.push(nxt && nxt.indent > minIndent ? block(nxt.indent) : null);
+        } else {
+          var kv = splitKV(rest);
+          if (kv) {
+            var obj = {};
+            obj[kv[0]] = valueFor(kv[1], it);
+            var more;
+            while ((more = peek()) && more.indent === minIndent && !isListItem(more.text)) {
+              var kv2 = splitKV(more.text);
+              if (!kv2) throw new Error('Line ' + more.line + ': expected "key: value"');
+              pos++;
+              obj[kv2[0]] = valueFor(kv2[1], more);
+            }
+            arr.push(obj);
+          } else {
+            arr.push(parseScalar(rest));
+          }
+        }
+      }
+      return arr;
+    }
+    function parseMap(minIndent) {
+      var obj = {}, it;
+      while ((it = peek()) && it.indent === minIndent && !isListItem(it.text)) {
+        var kv = splitKV(it.text);
+        if (!kv) throw new Error('Line ' + it.line + ': expected "key: value"');
+        pos++;
+        obj[kv[0]] = valueFor(kv[1], it);
+      }
+      return obj;
+    }
+    var result = block(items[0].indent);
+    if (pos < items.length) throw new Error('Line ' + items[pos].line + ': unexpected content (bad indentation?)');
+    return result;
+  }
+
+  function convert() {
+    clear();
+    var src = el(SLUG + '-input').value;
+    if (!src.trim()) { fail('Paste some YAML first.'); return; }
+    try {
+      var obj = parseYAML(src);
+      el(SLUG + '-output').value = JSON.stringify(obj, null, 2);
+    } catch (e) {
+      fail(e.message);
+    }
+  }
+
+  try {
+    TN.on(SLUG + '-convert', 'click', convert);
+    TN.on(SLUG + '-sample', 'click', function () { el(SLUG + '-input').value = SAMPLE; clear(); convert(); });
+    TN.on(SLUG + '-copy', 'click', function () {
+      var v = el(SLUG + '-output').value;
+      if (!v) { fail('Nothing to copy yet.'); return; }
+      TN.copy(v).then(function (ok) { if (!ok) fail('Copy failed — select the text manually.'); });
+    });
+    TN.on(SLUG + '-download', 'click', function () {
+      var v = el(SLUG + '-output').value;
+      if (!v) { fail('Nothing to download yet.'); return; }
+      TN.downloadText(v, 'data.json', 'application/json');
+    });
+  } catch (e) { /* never throw on load */ }
+})();
+
+</script>
+</body>
+</html>

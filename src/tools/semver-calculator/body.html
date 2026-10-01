@@ -1,0 +1,35 @@
+<div class="tool-card">
+  <div class="grid2">
+    <div class="field">
+      <label for="semver-calculator-current">Current version</label>
+      <input class="input" id="semver-calculator-current" value="1.4.2" placeholder="1.4.2">
+    </div>
+    <div class="field">
+      <label for="semver-calculator-bump">Bump type</label>
+      <select class="input" id="semver-calculator-bump">
+        <option value="major">major (1.4.2 → 2.0.0)</option>
+        <option value="minor">minor (1.4.2 → 1.5.0)</option>
+        <option value="patch" selected>patch (1.4.2 → 1.4.3)</option>
+        <option value="premajor">premajor (→ 2.0.0-beta.1)</option>
+        <option value="preminor">preminor (→ 1.5.0-beta.1)</option>
+        <option value="prepatch">prepatch (→ 1.4.3-beta.1)</option>
+        <option value="prerelease">prerelease (→ 1.4.3-beta.1)</option>
+      </select>
+    </div>
+  </div>
+  <div class="field">
+    <label for="semver-calculator-tag">Prerelease tag (for pre* and prerelease bumps)</label>
+    <input class="input" id="semver-calculator-tag" value="beta" placeholder="beta">
+  </div>
+  <div class="btn-row">
+    <button class="btn btn-primary" id="semver-calculator-calc">Calculate next version</button>
+  </div>
+  <div class="error" id="semver-calculator-error"></div>
+  <div class="result hidden" id="semver-calculator-result">
+    <div class="stat-cards">
+      <div class="stat-card"><div class="v" id="semver-calculator-next">—</div><div class="l">Next version</div></div>
+    </div>
+    <p class="muted" id="semver-calculator-explain"></p>
+    <div class="btn-row"><button class="btn btn-outline" id="semver-calculator-copy">Copy version</button></div>
+  </div>
+</div>

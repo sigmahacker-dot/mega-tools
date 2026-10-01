@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Math Quiz Game — Free Online | ToolNest</title>
+<meta name="description" content="A 60-second arithmetic sprint — adaptive difficulty that ramps up as your streak grows.">
+<meta name="keywords" content="math quiz, arithmetic game, math game, mental math, timed math quiz">
+<link rel="canonical" href="https://toolnest.vercel.app/tools/math-quiz-game/">
+<meta name="theme-color" content="#07070b">
+<meta property="og:title" content="Math Quiz Game — Free Online | ToolNest">
+<meta property="og:description" content="A 60-second arithmetic sprint — adaptive difficulty that ramps up as your streak grows.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css?v=4">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%23e01111'/><text x='50' y='68' font-size='58' text-anchor='middle' fill='white' font-family='Arial' font-weight='bold'>T</text></svg>">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebApplication","name":"Math Quiz Game","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0"},"url":"https://toolnest.vercel.app/tools/math-quiz-game/","description":"A 60-second arithmetic sprint — adaptive difficulty that ramps up as your streak grows."},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Which operations appear?","acceptedAnswer":{"@type":"Answer","text":"Addition, subtraction, multiplication, and division with whole-number answers."}},{"@type":"Question","name":"How does difficulty ramp up?","acceptedAnswer":{"@type":"Answer","text":"Every 5-in-a-row streak raises the level: bigger numbers, times tables, division, then negatives."}},{"@type":"Question","name":"How is scoring calculated?","acceptedAnswer":{"@type":"Answer","text":"Each correct answer scores 10 × your level; a wrong answer resets the streak."}},{"@type":"Question","name":"How long does a round last?","acceptedAnswer":{"@type":"Answer","text":"You get 60 seconds from pressing Start. Answer as many as you can!"}}]}]}</script>
+</head>
+<body>
+<header class="site-header">
+  <div class="container">
+    <a class="logo" href="/"><span class="logo-mark">T</span> ToolNest</a>
+    <div class="header-right">
+      <form class="nav-search" action="/" method="get" role="search">
+        <span class="ns-icon">🔍</span>
+        <input type="search" name="q" placeholder="Search tools…" aria-label="Search tools" autocomplete="off">
+      </form>
+      <div class="menu-wrap">
+        <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="menuPanel" aria-label="Open menu"><span></span><span></span><span></span></button>
+        <nav class="menu-panel" id="menuPanel" aria-label="Site">
+          <a href="/">Home</a>
+          <a href="/#categories">Categories</a>
+          <a href="/#all-tools">All Tools</a>
+        </nav>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ADSTERRA-HEADER: paste your Adsterra banner ad code inside the div below -->
+<div class="container"><div class="ad-slot ad-leaderboard" data-ad="header"></div></div>
+
+<main class="container">
+  <nav class="crumbs"><a href="/">Home</a> &rsaquo; <a href="/#fun">Fun &amp; Lifestyle</a> &rsaquo; Math Quiz Game</nav>
+  <div class="tool-hero">
+    <h1>Math Quiz Game</h1>
+    <p>A 60-second arithmetic sprint — adaptive difficulty that ramps up as your streak grows.</p>
+  </div>
+
+  <div class="tool-card" style="text-align:center">
+  <div class="stat-cards" style="max-width:480px;margin:0 auto 12px">
+    <div class="stat-card"><div class="v" id="math-quiz-game-score">0</div><div class="l">Score</div></div>
+    <div class="stat-card"><div class="v" id="math-quiz-game-streak">0</div><div class="l">Streak</div></div>
+    <div class="stat-card"><div class="v" id="math-quiz-game-level">1</div><div class="l">Level</div></div>
+    <div class="stat-card"><div class="v" id="math-quiz-game-time">60</div><div class="l">Seconds</div></div>
+  </div>
+  <div id="math-quiz-game-q" style="font-size:44px;font-weight:bold;margin:16px 0;min-height:64px">? + ? = ?</div>
+  <p class="muted" id="math-quiz-game-msg" style="min-height:24px">Press Start — solve as many as you can in 60 seconds!</p>
+  <div class="grid2" style="max-width:420px;margin:0 auto 12px">
+    <div class="field" style="text-align:left">
+      <label for="math-quiz-game-ans">Your answer</label>
+      <input class="input" id="math-quiz-game-ans" type="number" placeholder="Answer…" disabled autocomplete="off">
+    </div>
+    <div class="field" style="text-align:left">
+      <label>&nbsp;</label>
+      <button class="btn btn-primary" id="math-quiz-game-submit" style="width:100%" disabled>Answer</button>
+    </div>
+  </div>
+  <div class="btn-row" style="justify-content:center">
+    <button class="btn" id="math-quiz-game-start">▶ Start</button>
+  </div>
+  <div class="error" id="math-quiz-game-error"></div>
+</div>
+
+
+  <!-- ADSTERRA-INCONTENT: paste your Adsterra native/in-content ad code inside the div below -->
+  <div class="ad-slot" data-ad="incontent"></div>
+
+  <div class="info-grid">
+    <div class="info-card">
+      <h2>📖 How to use</h2>
+      <ol><li>Press Start — the 60-second timer begins.</li><li>Type the answer and press Enter.</li><li>Chain correct answers to raise the difficulty level.</li><li>Wrong answers reset your streak — keep it alive!</li></ol>
+    </div>
+    <div class="info-card">
+      <h2>❓ Frequently asked questions</h2>
+      <div class="faq"><details><summary>Which operations appear?</summary><p>Addition, subtraction, multiplication, and division with whole-number answers.</p></details><details><summary>How does difficulty ramp up?</summary><p>Every 5-in-a-row streak raises the level: bigger numbers, times tables, division, then negatives.</p></details><details><summary>How is scoring calculated?</summary><p>Each correct answer scores 10 × your level; a wrong answer resets the streak.</p></details><details><summary>How long does a round last?</summary><p>You get 60 seconds from pressing Start. Answer as many as you can!</p></details></div>
+    </div>
+  </div>
+
+  <section class="section">
+    <h2>🔗 Related tools</h2>
+    <div class="tool-grid"><a class="tool-link" href="/tools/aim-trainer-game/" data-search="aim trainer game test and train your aim — targets pop up at random spots for 30 seconds. hits, misses and accuracy are tracked live. aim trainer aim test reaction test click speed test fps aim trainer"><span class="t-ico">🎲</span><span class="t-body"><b>Aim Trainer Game</b><small>Test and train your aim — targets pop up at random spots for 30 seconds. Hits, misses and ac…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/baby-name-generator/" data-search="baby name generator discover baby names by gender and origin — pakistani, arabic, western, indian or turkish — with meanings, random picks and tap-to-copy. baby name generator baby names with meanings muslim baby names boy girl names"><span class="t-ico">🎲</span><span class="t-body"><b>Baby Name Generator</b><small>Discover baby names by gender and origin — Pakistani, Arabic, Western, Indian or Turkish — w…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/battery-status-checker/" data-search="battery status checker check your device&#39;s battery level, charging status and estimated time remaining, with live updates — where your browser supports the battery api. battery status battery level checker laptop battery charging status"><span class="t-ico">🎲</span><span class="t-body"><b>Battery Status Checker</b><small>Check your device&#39;s battery level, charging status and estimated time remaining, with live u…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/battleship-game/" data-search="battleship game the classic naval battle — place your 5 ships, then hunt the computer&#39;s fleet on a 10×10 grid with hit, miss, and sunk tracking. battleship game battleship naval battle game sea battle board game"><span class="t-ico">🎲</span><span class="t-body"><b>Battleship Game</b><small>The classic naval battle — place your 5 ships, then hunt the computer&#39;s fleet on a 10×10 gri…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/birthday-countdown/" data-search="birthday countdown enter your birthday for a live countdown to your next one — days, hours, minutes and seconds — plus the age you&#39;ll turn and a fun message. birthday countdown countdown to birthday how old am i birthday timer"><span class="t-ico">🎲</span><span class="t-body"><b>Birthday Countdown</b><small>Enter your birthday for a live countdown to your next one — days, hours, minutes and seconds…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/blackjack-game/" data-search="blackjack game real blackjack — hit, stand, double down, dealer hits to 17, blackjack pays 3:2, with a session bankroll. blackjack blackjack game 21 card game casino card game blackjack online"><span class="t-ico">🎲</span><span class="t-body"><b>Blackjack Game</b><small>Real Blackjack — hit, stand, double down, dealer hits to 17, blackjack pays 3:2, with a sess…</small></span><span class="t-arrow">→</span></a></div>
+  </section>
+</main>
+
+<!-- ADSTERRA-FOOTER: paste your Adsterra footer/banner ad code inside the div below -->
+<div class="container"><div class="ad-slot" data-ad="footer"></div></div>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="f-grid">
+      <div>
+        <span class="brandline"><span class="logo-mark">T</span> ToolNest</span>
+        <p>Free online tools that actually work. No sign-up, no watermarks — and your files never leave your device for client-side tools.</p>
+      </div>
+      <div>
+        <h4>Popular</h4>
+        <a href="/tools/qr-code-generator/">QR Code Generator</a>
+        <a href="/tools/background-remover/">Background Remover</a>
+        <a href="/tools/pdf-merger/">PDF Merger</a>
+        <a href="/tools/word-counter/">Word Counter</a>
+      </div>
+      <div>
+        <h4>Categories</h4>
+        <a href="/#image">Image Tools</a>
+        <a href="/#pdf">PDF &amp; Documents</a>
+        <a href="/#calculators">Calculators</a>
+        <a href="/#developer">Developer Tools</a>
+      </div>
+      <div>
+        <h4>Site</h4>
+        <a href="/">Home</a>
+        <a href="/#all-tools">All Tools</a>
+        <a href="/sitemap.xml">Sitemap</a>
+      </div>
+    </div>
+    <div class="f-bottom">© 2026 ToolNest · Free tools for everyone · Made with care</div>
+  </div>
+</footer>
+
+<script src="/assets/site.js?v=5"></script>
+
+<script>
+/* Math Quiz — 60s adaptive arithmetic sprint; level ramps with streaks. */
+(function () {
+  'use strict';
+  var SLUG = 'math-quiz-game';
+  var answer = 0, score = 0, streak = 0, level = 1, timeLeft = 60, timerId = null, playing = false;
+
+  function $(id) { return document.getElementById(id); }
+  function ri(a, b) { return a + Math.floor(Math.random() * (b - a + 1)); }
+
+  function newQuestion() {
+    var a, b, op, txt;
+    var roll = Math.random();
+    if (level === 1) {
+      if (roll < 0.6) { a = ri(2, 20); b = ri(2, 20); op = '+'; answer = a + b; }
+      else { a = ri(5, 25); b = ri(1, a); op = '−'; answer = a - b; }
+    } else if (level === 2) {
+      if (roll < 0.4) { a = ri(10, 99); b = ri(10, 99); op = '+'; answer = a + b; }
+      else if (roll < 0.7) { a = ri(20, 99); b = ri(10, a); op = '−'; answer = a - b; }
+      else if (roll < 0.9) { a = ri(2, 12); b = ri(2, 12); op = '×'; answer = a * b; }
+      else { b = ri(2, 12); answer = ri(2, 12); a = b * answer; op = '÷'; }
+    } else {
+      if (roll < 0.3) { a = ri(2, 20); b = ri(2, 20); op = '×'; answer = a * b; }
+      else if (roll < 0.55) { b = ri(3, 15); answer = ri(3, 15); a = b * answer; op = '÷'; }
+      else if (roll < 0.8) { a = ri(-50, 50); b = ri(-50, 50); op = '+'; answer = a + b; }
+      else { a = ri(-50, 50); b = ri(-50, 50); op = '−'; answer = a - b; }
+    }
+    txt = a + ' ' + op + ' ' + b + ' = ?';
+    $('math-quiz-game-q').textContent = txt;
+    var inp = $('math-quiz-game-ans');
+    inp.value = '';
+    inp.focus();
+  }
+
+  function start() {
+    if (timerId) clearInterval(timerId);
+    score = 0; streak = 0; level = 1; timeLeft = 60;
+    $('math-quiz-game-score').textContent = '0';
+    $('math-quiz-game-streak').textContent = '0';
+    $('math-quiz-game-level').textContent = '1';
+    $('math-quiz-game-time').textContent = '60';
+    $('math-quiz-game-msg').textContent = 'Go! Level 1 — warm up.';
+    $('math-quiz-game-ans').disabled = false;
+    $('math-quiz-game-submit').disabled = false;
+    $('math-quiz-game-start').textContent = '↻ Restart';
+    playing = true;
+    newQuestion();
+    timerId = setInterval(function () {
+      timeLeft--;
+      $('math-quiz-game-time').textContent = timeLeft;
+      if (timeLeft <= 0) endGame();
+    }, 1000);
+  }
+
+  function endGame() {
+    clearInterval(timerId); timerId = null;
+    playing = false;
+    $('math-quiz-game-ans').disabled = true;
+    $('math-quiz-game-submit').disabled = true;
+    $('math-quiz-game-q').textContent = '⏰';
+    $('math-quiz-game-msg').textContent = "Time's up! Final score: " + score + ' (best level ' + level + '). Play again?';
+  }
+
+  function submit() {
+    if (!playing) return;
+    var raw = $('math-quiz-game-ans').value.trim();
+    if (raw === '' || isNaN(Number(raw))) return;
+    if (Number(raw) === answer) {
+      streak++;
+      var newLevel = Math.min(3, 1 + Math.floor(streak / 5));
+      if (newLevel > level) {
+        level = newLevel;
+        $('math-quiz-game-level').textContent = level;
+        $('math-quiz-game-msg').textContent = '⬆ Level up! Now Level ' + level + ' — harder questions.';
+      } else {
+        $('math-quiz-game-msg').textContent = '✓ Correct! +' + (10 * level) + ' points.';
+      }
+      score += 10 * level;
+      $('math-quiz-game-score').textContent = score;
+      $('math-quiz-game-streak').textContent = streak;
+      newQuestion();
+    } else {
+      streak = 0; level = 1;
+      $('math-quiz-game-streak').textContent = '0';
+      $('math-quiz-game-level').textContent = '1';
+      $('math-quiz-game-msg').textContent = '✗ Wrong — the answer was ' + answer + '. Streak reset.';
+      newQuestion();
+    }
+  }
+
+  try {
+    TN.on('math-quiz-game-start', 'click', start);
+    TN.on('math-quiz-game-submit', 'click', submit);
+    TN.on('math-quiz-game-ans', 'keydown', function (e) { if (e.key === 'Enter') submit(); });
+  } catch (e) { /* never throw on load */ }
+})();
+
+</script>
+</body>
+</html>

@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nap Timer — Free Online | ToolNest</title>
+<meta name="description" content="A power-nap countdown with 10/20/26/90-minute presets, custom length and a gentle wake-up chime.">
+<meta name="keywords" content="nap timer, power nap timer, sleep timer, nap alarm, 20 minute nap timer">
+<link rel="canonical" href="https://toolnest.vercel.app/tools/nap-timer/">
+<meta name="theme-color" content="#07070b">
+<meta property="og:title" content="Nap Timer — Free Online | ToolNest">
+<meta property="og:description" content="A power-nap countdown with 10/20/26/90-minute presets, custom length and a gentle wake-up chime.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css?v=4">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%23e01111'/><text x='50' y='68' font-size='58' text-anchor='middle' fill='white' font-family='Arial' font-weight='bold'>T</text></svg>">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebApplication","name":"Nap Timer","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0"},"url":"https://toolnest.vercel.app/tools/nap-timer/","description":"A power-nap countdown with 10/20/26/90-minute presets, custom length and a gentle wake-up chime."},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Which nap length should I choose?","acceptedAnswer":{"@type":"Answer","text":"A 10–20 minute power nap boosts alertness without grogginess; 90 minutes completes a full sleep cycle. The 26-minute preset comes from NASA's famous cockpit-nap study."}},{"@type":"Question","name":"Can I set a custom nap length?","acceptedAnswer":{"@type":"Answer","text":"Yes — set any custom length from 1 to 480 minutes."}},{"@type":"Question","name":"How will I be woken up?","acceptedAnswer":{"@type":"Answer","text":"A soft three-note chime plays when time is up. Keep this tab open and your volume on so you hear it."}}]}]}</script>
+</head>
+<body>
+<header class="site-header">
+  <div class="container">
+    <a class="logo" href="/"><span class="logo-mark">T</span> ToolNest</a>
+    <div class="header-right">
+      <form class="nav-search" action="/" method="get" role="search">
+        <span class="ns-icon">🔍</span>
+        <input type="search" name="q" placeholder="Search tools…" aria-label="Search tools" autocomplete="off">
+      </form>
+      <div class="menu-wrap">
+        <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="menuPanel" aria-label="Open menu"><span></span><span></span><span></span></button>
+        <nav class="menu-panel" id="menuPanel" aria-label="Site">
+          <a href="/">Home</a>
+          <a href="/#categories">Categories</a>
+          <a href="/#all-tools">All Tools</a>
+        </nav>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ADSTERRA-HEADER: paste your Adsterra banner ad code inside the div below -->
+<div class="container"><div class="ad-slot ad-leaderboard" data-ad="header"></div></div>
+
+<main class="container">
+  <nav class="crumbs"><a href="/">Home</a> &rsaquo; <a href="/#time">Time &amp; Date</a> &rsaquo; Nap Timer</nav>
+  <div class="tool-hero">
+    <h1>Nap Timer</h1>
+    <p>A power-nap countdown with 10/20/26/90-minute presets, custom length and a gentle wake-up chime.</p>
+  </div>
+
+  <div class="tool-card" style="text-align:center">
+  <div class="btn-row" style="justify-content:center;margin-bottom:12px">
+    <button class="btn btn-outline" data-nap="10">10 min</button>
+    <button class="btn btn-outline" data-nap="20">20 min</button>
+    <button class="btn btn-outline" data-nap="26">26 min</button>
+    <button class="btn btn-outline" data-nap="90">90 min</button>
+  </div>
+  <div class="field" style="max-width:220px;margin:0 auto 12px;text-align:left">
+    <label for="nap-timer-custom">Custom (minutes)</label>
+    <input class="input" type="number" id="nap-timer-custom" min="1" max="480" placeholder="e.g. 45">
+  </div>
+  <div class="countdown-digits" style="margin-bottom:8px"><div class="cd-cell"><span id="nap-timer-clock">0:00:00</span></div></div>
+  <p class="muted" id="nap-timer-status" style="min-height:24px">Choose a length, then start your nap. 😴</p>
+  <div class="btn-row" style="justify-content:center">
+    <button class="btn btn-primary" id="nap-timer-start">Start nap</button>
+    <button class="btn btn-outline" id="nap-timer-stop">Stop</button>
+  </div>
+  <div class="error" id="nap-timer-error"></div>
+</div>
+
+
+  <!-- ADSTERRA-INCONTENT: paste your Adsterra native/in-content ad code inside the div below -->
+  <div class="ad-slot" data-ad="incontent"></div>
+
+  <div class="info-grid">
+    <div class="info-card">
+      <h2>📖 How to use</h2>
+      <ol><li>Pick a preset or enter a custom number of minutes.</li><li>Press Start nap and rest — the countdown runs live.</li><li>A gentle chime plays when your nap ends.</li><li>Press Stop to cancel early.</li></ol>
+    </div>
+    <div class="info-card">
+      <h2>❓ Frequently asked questions</h2>
+      <div class="faq"><details><summary>Which nap length should I choose?</summary><p>A 10–20 minute power nap boosts alertness without grogginess; 90 minutes completes a full sleep cycle. The 26-minute preset comes from NASA&#39;s famous cockpit-nap study.</p></details><details><summary>Can I set a custom nap length?</summary><p>Yes — set any custom length from 1 to 480 minutes.</p></details><details><summary>How will I be woken up?</summary><p>A soft three-note chime plays when time is up. Keep this tab open and your volume on so you hear it.</p></details></div>
+    </div>
+  </div>
+
+  <section class="section">
+    <h2>🔗 Related tools</h2>
+    <div class="tool-grid"><a class="tool-link" href="/tools/add-subtract-days-calculator/" data-search="add / subtract days calculator add or subtract days, weeks, months or years from any date. optional business-days-only mode skips weekends automatically. add days to date subtract days calculator date plus days business days calculator date arithmetic"><span class="t-ico">⏰</span><span class="t-body"><b>Add / Subtract Days Calculator</b><small>Add or subtract days, weeks, months or years from any date. Optional business-days-only mode…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/anniversary-calculator/" data-search="anniversary calculator track any anniversary: days until the next one, which number it is (10th, 25th…), total days together and the weekday it falls on. anniversary calculator wedding anniversary countdown how many days until anniversary anniversary date tracker years together calculator"><span class="t-ico">⏰</span><span class="t-body"><b>Anniversary Calculator</b><small>Track any anniversary: days until the next one, which number it is (10th, 25th…), total days…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/bill-due-tracker/" data-search="bill due tracker never miss a payment — track recurring monthly bills with automatic next-due dates, days remaining and urgency sorting. bill due tracker bill reminder recurring bills tracker monthly bills organizer due date tracker"><span class="t-ico">⏰</span><span class="t-body"><b>Bill Due Tracker</b><small>Never miss a payment — track recurring monthly bills with automatic next-due dates, days rem…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/business-days-calculator/" data-search="business days calculator count working days between two dates, excluding weekends and your own custom holidays, with a full breakdown. business days calculator working days calculator weekdays between dates net workdays business days excluding holidays"><span class="t-ico">⏰</span><span class="t-body"><b>Business Days Calculator</b><small>Count working days between two dates, excluding weekends and your own custom holidays, with …</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/chess-clock-timer/" data-search="chess clock timer a two-player chess clock with tap-to-switch, optional increment per move, flag detection, pause and reset. chess clock chess timer two player timer blitz clock increment chess clock"><span class="t-ico">⏰</span><span class="t-body"><b>Chess Clock Timer</b><small>A two-player chess clock with tap-to-switch, optional increment per move, flag detection, pa…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/daily-screen-time-log/" data-search="daily screen time log log daily screen time by app or category and see daily totals plus a 7-day bar summary — all saved in your browser. screen time tracker screen time log daily screen time phone usage tracker app usage log"><span class="t-ico">⏰</span><span class="t-body"><b>Daily Screen Time Log</b><small>Log daily screen time by app or category and see daily totals plus a 7-day bar summary — all…</small></span><span class="t-arrow">→</span></a></div>
+  </section>
+</main>
+
+<!-- ADSTERRA-FOOTER: paste your Adsterra footer/banner ad code inside the div below -->
+<div class="container"><div class="ad-slot" data-ad="footer"></div></div>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="f-grid">
+      <div>
+        <span class="brandline"><span class="logo-mark">T</span> ToolNest</span>
+        <p>Free online tools that actually work. No sign-up, no watermarks — and your files never leave your device for client-side tools.</p>
+      </div>
+      <div>
+        <h4>Popular</h4>
+        <a href="/tools/qr-code-generator/">QR Code Generator</a>
+        <a href="/tools/background-remover/">Background Remover</a>
+        <a href="/tools/pdf-merger/">PDF Merger</a>
+        <a href="/tools/word-counter/">Word Counter</a>
+      </div>
+      <div>
+        <h4>Categories</h4>
+        <a href="/#image">Image Tools</a>
+        <a href="/#pdf">PDF &amp; Documents</a>
+        <a href="/#calculators">Calculators</a>
+        <a href="/#developer">Developer Tools</a>
+      </div>
+      <div>
+        <h4>Site</h4>
+        <a href="/">Home</a>
+        <a href="/#all-tools">All Tools</a>
+        <a href="/sitemap.xml">Sitemap</a>
+      </div>
+    </div>
+    <div class="f-bottom">© 2026 ToolNest · Free tools for everyone · Made with care</div>
+  </div>
+</footer>
+
+<script src="/assets/site.js?v=5"></script>
+
+<script>
+/* Nap Timer — presets + custom countdown with a gentle wake-up chime. */
+(function () {
+  'use strict';
+  var SLUG = 'nap-timer';
+  var $ = function (id) { return TN.el(SLUG + '-' + id); };
+
+  var timerId = null, endAt = 0, totalMs = 0, lastWhole = -1;
+  var actx = null;
+
+  function tone(freq, dur, delay) {
+    try {
+      if (!actx) actx = new (window.AudioContext || window.webkitAudioContext)();
+      var at = actx.currentTime + (delay || 0);
+      var o = actx.createOscillator(), g = actx.createGain();
+      o.type = 'sine'; o.frequency.value = freq;
+      g.gain.setValueAtTime(0.0001, at);
+      g.gain.exponentialRampToValueAtTime(0.4, at + 0.05);
+      g.gain.exponentialRampToValueAtTime(0.0001, at + dur);
+      o.connect(g); g.connect(actx.destination);
+      o.start(at); o.stop(at + dur + 0.1);
+    } catch (e) {}
+  }
+
+  function chime() {
+    // gentle wake-up: soft ascending arpeggio, twice
+    var notes = [523.25, 659.25, 783.99];
+    notes.forEach(function (f, i) { tone(f, 1.4, i * 0.55); });
+    notes.forEach(function (f, i) { tone(f, 1.4, 2.2 + i * 0.55); });
+  }
+
+  function fmt(ms) {
+    var s = Math.max(0, Math.ceil(ms / 1000));
+    var h = Math.floor(s / 3600), m = Math.floor((s % 3600) / 60), sec = s % 60;
+    return h + ':' + ('0' + m).slice(-2) + ':' + ('0' + sec).slice(-2);
+  }
+
+  function tick() {
+    var remain = endAt - Date.now();
+    if (remain <= 0) {
+      stopTick();
+      $('clock').textContent = '0:00:00';
+      $('status').textContent = '⏰ Time to wake up — hope you feel refreshed!';
+      chime();
+      return;
+    }
+    $('clock').textContent = fmt(remain);
+    var whole = Math.ceil(remain / 1000);
+    if (whole !== lastWhole) {
+      lastWhole = whole;
+      $('status').textContent = 'Nap in progress… ' + fmt(remain) + ' remaining.';
+    }
+  }
+
+  function stopTick() { if (timerId) { clearInterval(timerId); timerId = null; } }
+
+  function start(mins) {
+    TN.clearErr(SLUG + '-error');
+    if (!mins || mins < 1 || mins > 480) { TN.setErr(SLUG + '-error', 'Please choose a length between 1 and 480 minutes.'); return; }
+    tone(660, 0.12); // unlock audio on gesture
+    stopTick();
+    totalMs = mins * 60000;
+    endAt = Date.now() + totalMs;
+    lastWhole = -1;
+    $('status').textContent = 'Nap in progress… sweet dreams. 😴';
+    timerId = setInterval(tick, 250);
+    tick();
+  }
+
+  function stop() {
+    stopTick();
+    $('clock').textContent = '0:00:00';
+    $('status').textContent = 'Nap cancelled.';
+  }
+
+  try {
+    TN.qsa('[data-nap]').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        $('custom').value = '';
+        start(parseInt(btn.getAttribute('data-nap'), 10));
+      });
+    });
+    TN.on(SLUG + '-start', 'click', function () {
+      start(parseInt($('custom').value, 10));
+    });
+    TN.on(SLUG + '-stop', 'click', stop);
+  } catch (e) { /* never throw on load */ }
+})();
+
+</script>
+</body>
+</html>

@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Midpoint Calculator — Free Online | ToolNest</title>
+<meta name="description" content="Find the midpoint of a line segment in 2D or 3D by averaging the coordinates.">
+<meta name="keywords" content="midpoint formula, midpoint calculator, segment midpoint, bisect segment, center of two points">
+<link rel="canonical" href="https://toolnest.vercel.app/tools/midpoint-calculator/">
+<meta name="theme-color" content="#07070b">
+<meta property="og:title" content="Midpoint Calculator — Free Online | ToolNest">
+<meta property="og:description" content="Find the midpoint of a line segment in 2D or 3D by averaging the coordinates.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css?v=4">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%23e01111'/><text x='50' y='68' font-size='58' text-anchor='middle' fill='white' font-family='Arial' font-weight='bold'>T</text></svg>">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebApplication","name":"Midpoint Calculator","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0"},"url":"https://toolnest.vercel.app/tools/midpoint-calculator/","description":"Find the midpoint of a line segment in 2D or 3D by averaging the coordinates."},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What is the midpoint formula?","acceptedAnswer":{"@type":"Answer","text":"Average each coordinate: M = ((x₁+x₂)/2, (y₁+y₂)/2), and likewise for z in 3D."}},{"@type":"Question","name":"Is the midpoint always between the points?","acceptedAnswer":{"@type":"Answer","text":"Yes — it is the exact center of the segment, equidistant from both endpoints."}},{"@type":"Question","name":"Can I use it to bisect repeatedly?","acceptedAnswer":{"@type":"Answer","text":"Yes, applying it again to each half quarters the segment — the basis of binary search on a line."}}]}]}</script>
+</head>
+<body>
+<header class="site-header">
+  <div class="container">
+    <a class="logo" href="/"><span class="logo-mark">T</span> ToolNest</a>
+    <div class="header-right">
+      <form class="nav-search" action="/" method="get" role="search">
+        <span class="ns-icon">🔍</span>
+        <input type="search" name="q" placeholder="Search tools…" aria-label="Search tools" autocomplete="off">
+      </form>
+      <div class="menu-wrap">
+        <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="menuPanel" aria-label="Open menu"><span></span><span></span><span></span></button>
+        <nav class="menu-panel" id="menuPanel" aria-label="Site">
+          <a href="/">Home</a>
+          <a href="/#categories">Categories</a>
+          <a href="/#all-tools">All Tools</a>
+        </nav>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ADSTERRA-HEADER: paste your Adsterra banner ad code inside the div below -->
+<div class="container"><div class="ad-slot ad-leaderboard" data-ad="header"></div></div>
+
+<main class="container">
+  <nav class="crumbs"><a href="/">Home</a> &rsaquo; <a href="/#math">Math &amp; Numbers</a> &rsaquo; Midpoint Calculator</nav>
+  <div class="tool-hero">
+    <h1>Midpoint Calculator</h1>
+    <p>Find the midpoint of a line segment in 2D or 3D by averaging the coordinates.</p>
+  </div>
+
+  <div class="tool-card">
+  <div class="field"><label for="midpoint-calculator-dim">Dimension</label>
+    <select class="input" id="midpoint-calculator-dim">
+      <option value="2">2D (x, y)</option><option value="3">3D (x, y, z)</option>
+    </select>
+  </div>
+  <div class="grid2">
+    <div class="field"><label for="midpoint-calculator-x1">x\u2081</label><input class="input" id="midpoint-calculator-x1" type="number" value="2" step="any"></div>
+    <div class="field"><label for="midpoint-calculator-y1">y\u2081</label><input class="input" id="midpoint-calculator-y1" type="number" value="4" step="any"></div>
+    <div class="field hidden" id="midpoint-calculator-z1w"><label for="midpoint-calculator-z1">z\u2081</label><input class="input" id="midpoint-calculator-z1" type="number" value="0" step="any"></div>
+    <div class="field"><label for="midpoint-calculator-x2">x\u2082</label><input class="input" id="midpoint-calculator-x2" type="number" value="8" step="any"></div>
+    <div class="field"><label for="midpoint-calculator-y2">y\u2082</label><input class="input" id="midpoint-calculator-y2" type="number" value="10" step="any"></div>
+    <div class="field hidden" id="midpoint-calculator-z2w"><label for="midpoint-calculator-z2">z\u2082</label><input class="input" id="midpoint-calculator-z2" type="number" value="0" step="any"></div>
+  </div>
+  <div class="btn-row"><button class="btn btn-primary" id="midpoint-calculator-go">Find midpoint</button></div>
+  <div class="stat-cards">
+    <div class="stat-card"><div class="v" id="midpoint-calculator-m" style="font-size:1.1rem">(5, 7)</div><div class="l">Midpoint</div></div>
+  </div>
+  <div class="result"><pre class="code" id="midpoint-calculator-steps" style="text-align:left;white-space:pre-wrap"></pre></div>
+  <div class="error" id="midpoint-calculator-error"></div>
+</div>
+
+  <!-- ADSTERRA-INCONTENT: paste your Adsterra native/in-content ad code inside the div below -->
+  <div class="ad-slot" data-ad="incontent"></div>
+
+  <div class="info-grid">
+    <div class="info-card">
+      <h2>📖 How to use</h2>
+      <ol><li>Choose 2D or 3D.</li><li>Enter the two endpoints.</li><li>Press Find midpoint to see the result and the averaging steps.</li></ol>
+    </div>
+    <div class="info-card">
+      <h2>❓ Frequently asked questions</h2>
+      <div class="faq"><details><summary>What is the midpoint formula?</summary><p>Average each coordinate: M = ((x₁+x₂)/2, (y₁+y₂)/2), and likewise for z in 3D.</p></details><details><summary>Is the midpoint always between the points?</summary><p>Yes — it is the exact center of the segment, equidistant from both endpoints.</p></details><details><summary>Can I use it to bisect repeatedly?</summary><p>Yes, applying it again to each half quarters the segment — the basis of binary search on a line.</p></details></div>
+    </div>
+  </div>
+
+  <section class="section">
+    <h2>🔗 Related tools</h2>
+    <div class="tool-grid"><a class="tool-link" href="/tools/arithmetic-sequence-calculator/" data-search="arithmetic sequence calculator from the first term and common difference get the nth term and the sum of the first n terms. arithmetic sequence arithmetic progression nth term sum of arithmetic series common difference"><span class="t-ico">📐</span><span class="t-body"><b>Arithmetic Sequence Calculator</b><small>From the first term and common difference get the nth term and the sum of the first n terms.</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/binary-adder-calculator/" data-search="binary adder calculator add two binary numbers with every column addition and carry shown, plus a decimal check. binary addition add binary numbers binary adder binary sum binary carry"><span class="t-ico">📐</span><span class="t-body"><b>Binary Adder Calculator</b><small>Add two binary numbers with every column addition and carry shown, plus a decimal check.</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/birthday-paradox-simulator/" data-search="birthday paradox simulator see how likely a shared birthday is: simulate random groups and compare with the exact theoretical probability. birthday paradox birthday problem shared birthday probability birthday collision probability simulation"><span class="t-ico">📐</span><span class="t-body"><b>Birthday Paradox Simulator</b><small>See how likely a shared birthday is: simulate random groups and compare with the exact theor…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/circle-calculator/" data-search="circle calculator enter radius, diameter, circumference or area — get all four circle properties with the formulas shown. circle calculator circumference calculator circle area radius from area diameter calculator"><span class="t-ico">📐</span><span class="t-body"><b>Circle Calculator</b><small>Enter radius, diameter, circumference or area — get all four circle properties with the form…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/clock-angle-calculator/" data-search="clock angle calculator enter a time to get the smaller angle between the hour and minute hands, with the formula and a dial drawing. clock angle angle between hands clock hands angle time angle watch angle calculator"><span class="t-ico">📐</span><span class="t-body"><b>Clock Angle Calculator</b><small>Enter a time to get the smaller angle between the hour and minute hands, with the formula an…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/collatz-sequence-explorer/" data-search="collatz sequence explorer run the 3n+1 collatz sequence from any start: full path, step count, max value and a bar chart. collatz 3n+1 collatz sequence collatz conjecture hailstone sequence"><span class="t-ico">📐</span><span class="t-body"><b>Collatz Sequence Explorer</b><small>Run the 3n+1 Collatz sequence from any start: full path, step count, max value and a bar cha…</small></span><span class="t-arrow">→</span></a></div>
+  </section>
+</main>
+
+<!-- ADSTERRA-FOOTER: paste your Adsterra footer/banner ad code inside the div below -->
+<div class="container"><div class="ad-slot" data-ad="footer"></div></div>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="f-grid">
+      <div>
+        <span class="brandline"><span class="logo-mark">T</span> ToolNest</span>
+        <p>Free online tools that actually work. No sign-up, no watermarks — and your files never leave your device for client-side tools.</p>
+      </div>
+      <div>
+        <h4>Popular</h4>
+        <a href="/tools/qr-code-generator/">QR Code Generator</a>
+        <a href="/tools/background-remover/">Background Remover</a>
+        <a href="/tools/pdf-merger/">PDF Merger</a>
+        <a href="/tools/word-counter/">Word Counter</a>
+      </div>
+      <div>
+        <h4>Categories</h4>
+        <a href="/#image">Image Tools</a>
+        <a href="/#pdf">PDF &amp; Documents</a>
+        <a href="/#calculators">Calculators</a>
+        <a href="/#developer">Developer Tools</a>
+      </div>
+      <div>
+        <h4>Site</h4>
+        <a href="/">Home</a>
+        <a href="/#all-tools">All Tools</a>
+        <a href="/sitemap.xml">Sitemap</a>
+      </div>
+    </div>
+    <div class="f-bottom">© 2026 ToolNest · Free tools for everyone · Made with care</div>
+  </div>
+</footer>
+
+<script src="/assets/site.js?v=5"></script>
+
+<script>
+/* Midpoint of a segment, 2D or 3D. */
+(function () {
+  'use strict';
+  var SLUG = 'midpoint-calculator';
+  function $(id) { return document.getElementById(id); }
+  function err(m) { TN.setErr(SLUG + '-error', m); }
+  function f(x) { return (Math.round(x * 1e6) / 1e6).toString(); }
+  function calc() {
+    TN.clearErr(SLUG + '-error');
+    var dim = $(SLUG + '-dim').value;
+    var x1 = parseFloat($(SLUG + '-x1').value), y1 = parseFloat($(SLUG + '-y1').value);
+    var x2 = parseFloat($(SLUG + '-x2').value), y2 = parseFloat($(SLUG + '-y2').value);
+    var z1 = parseFloat($(SLUG + '-z1').value) || 0, z2 = parseFloat($(SLUG + '-z2').value) || 0;
+    if ([x1, y1, x2, y2].some(isNaN)) { err('Enter numeric coordinates.'); return; }
+    var mx = (x1 + x2) / 2, my = (y1 + y2) / 2, mz = (z1 + z2) / 2;
+    var lines = [
+      'M = ((x\u2081 + x\u2082)/2, (y\u2081 + y\u2082)/2' + (dim === '3' ? ', (z\u2081 + z\u2082)/2' : '') + ')',
+      'x: (' + f(x1) + ' + ' + f(x2) + ') / 2 = ' + f(mx),
+      'y: (' + f(y1) + ' + ' + f(y2) + ') / 2 = ' + f(my)
+    ];
+    if (dim === '3') lines.push('z: (' + f(z1) + ' + ' + f(z2) + ') / 2 = ' + f(mz));
+    var mstr = '(' + f(mx) + ', ' + f(my) + (dim === '3' ? ', ' + f(mz) : '') + ')';
+    lines.push('\nMidpoint M = ' + mstr);
+    $(SLUG + '-m').textContent = mstr;
+    $(SLUG + '-steps').textContent = lines.join('\n');
+  }
+  try {
+    TN.on(SLUG + '-go', 'click', calc);
+    TN.on(SLUG + '-dim', 'change', function () {
+      var is3 = $(SLUG + '-dim').value === '3';
+      $(SLUG + '-z1w').classList.toggle('hidden', !is3);
+      $(SLUG + '-z2w').classList.toggle('hidden', !is3);
+      calc();
+    });
+    ['x1', 'y1', 'z1', 'x2', 'y2', 'z2'].forEach(function (id) { TN.on(SLUG + '-' + id, 'input', TN.debounce(calc, 400)); });
+    calc();
+  } catch (e) {}
+})();
+</script>
+</body>
+</html>

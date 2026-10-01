@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mesh Gradient Generator — Free Online | ToolNest</title>
+<meta name="description" content="Design mesh gradients: four color stops blended as layered radial gradients, with a live preview and copyable CSS.">
+<meta name="keywords" content="mesh gradient, mesh gradient css, gradient mesh generator, radial gradient blend, color mesh css">
+<link rel="canonical" href="https://toolnest.vercel.app/tools/mesh-gradient-generator/">
+<meta name="theme-color" content="#07070b">
+<meta property="og:title" content="Mesh Gradient Generator — Free Online | ToolNest">
+<meta property="og:description" content="Design mesh gradients: four color stops blended as layered radial gradients, with a live preview and copyable CSS.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css?v=4">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%23e01111'/><text x='50' y='68' font-size='58' text-anchor='middle' fill='white' font-family='Arial' font-weight='bold'>T</text></svg>">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebApplication","name":"Mesh Gradient Generator","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0"},"url":"https://toolnest.vercel.app/tools/mesh-gradient-generator/","description":"Design mesh gradients: four color stops blended as layered radial gradients, with a live preview and copyable CSS."},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How many colors can I blend?","acceptedAnswer":{"@type":"Answer","text":"Four — each stop is a radial gradient layer blended together for the mesh look."}},{"@type":"Question","name":"Is the output plain CSS?","acceptedAnswer":{"@type":"Answer","text":"Yes — the snippet is a single background declaration you can paste into any stylesheet."}},{"@type":"Question","name":"Is it sharp at any size?","acceptedAnswer":{"@type":"Answer","text":"The background is generated with real CSS gradients, so it scales infinitely and never pixelates."}}]}]}</script>
+</head>
+<body>
+<header class="site-header">
+  <div class="container">
+    <a class="logo" href="/"><span class="logo-mark">T</span> ToolNest</a>
+    <div class="header-right">
+      <form class="nav-search" action="/" method="get" role="search">
+        <span class="ns-icon">🔍</span>
+        <input type="search" name="q" placeholder="Search tools…" aria-label="Search tools" autocomplete="off">
+      </form>
+      <div class="menu-wrap">
+        <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="menuPanel" aria-label="Open menu"><span></span><span></span><span></span></button>
+        <nav class="menu-panel" id="menuPanel" aria-label="Site">
+          <a href="/">Home</a>
+          <a href="/#categories">Categories</a>
+          <a href="/#all-tools">All Tools</a>
+        </nav>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ADSTERRA-HEADER: paste your Adsterra banner ad code inside the div below -->
+<div class="container"><div class="ad-slot ad-leaderboard" data-ad="header"></div></div>
+
+<main class="container">
+  <nav class="crumbs"><a href="/">Home</a> &rsaquo; <a href="/#developer">Developer Tools</a> &rsaquo; Mesh Gradient Generator</nav>
+  <div class="tool-hero">
+    <h1>Mesh Gradient Generator</h1>
+    <p>Design mesh gradients: four color stops blended as layered radial gradients, with a live preview and copyable CSS.</p>
+  </div>
+
+  <div class="tool-card">
+  <h2>Mesh Gradient Generator</h2>
+  <p class="muted">Four radial-gradient blobs blended into a trendy mesh gradient.</p>
+  <div class="grid2">
+    <div class="field">
+      <label for="mesh-gradient-generator-c1">Color 1</label>
+      <input type="color" class="input" id="mesh-gradient-generator-c1" value="#7c3aed" style="height:44px;padding:4px">
+    </div>
+    <div class="field">
+      <label for="mesh-gradient-generator-c2">Color 2</label>
+      <input type="color" class="input" id="mesh-gradient-generator-c2" value="#e11d48" style="height:44px;padding:4px">
+    </div>
+    <div class="field">
+      <label for="mesh-gradient-generator-c3">Color 3</label>
+      <input type="color" class="input" id="mesh-gradient-generator-c3" value="#0ea5e9" style="height:44px;padding:4px">
+    </div>
+    <div class="field">
+      <label for="mesh-gradient-generator-c4">Color 4</label>
+      <input type="color" class="input" id="mesh-gradient-generator-c4" value="#f59e0b" style="height:44px;padding:4px">
+    </div>
+    <div class="field">
+      <label for="mesh-gradient-generator-spread">Blob spread: <span id="mesh-gradient-generator-spread-v">60%</span></label>
+      <input type="range" class="input" id="mesh-gradient-generator-spread" min="20" max="100" step="1" value="60">
+    </div>
+    <div class="field">
+      <label for="mesh-gradient-generator-bg">Base color</label>
+      <input type="color" class="input" id="mesh-gradient-generator-bg" value="#ffffff" style="height:44px;padding:4px">
+    </div>
+  </div>
+  <h3>Live preview</h3>
+  <div class="preview" id="mesh-gradient-generator-stage" style="min-height:240px"></div>
+  <div class="btn-row mt">
+    <button class="btn btn-outline" id="mesh-gradient-generator-shuffle">🎲 Shuffle colors</button>
+    <button class="btn btn-primary" id="mesh-gradient-generator-copy">Copy CSS</button>
+  </div>
+  <h3 class="mt">Generated CSS</h3>
+  <pre class="code" id="mesh-gradient-generator-code"></pre>
+  <div class="error" id="mesh-gradient-generator-error"></div>
+</div>
+
+
+  <!-- ADSTERRA-INCONTENT: paste your Adsterra native/in-content ad code inside the div below -->
+  <div class="ad-slot" data-ad="incontent"></div>
+
+  <div class="info-grid">
+    <div class="info-card">
+      <h2>📖 How to use</h2>
+      <ol><li>Pick four color stops.</li><li>Drag each stop&#39;s position sliders to spread the blobs.</li><li>Preview the mesh blend live.</li><li>Click &quot;Copy CSS&quot; and paste the layered gradient.</li></ol>
+    </div>
+    <div class="info-card">
+      <h2>❓ Frequently asked questions</h2>
+      <div class="faq"><details><summary>How many colors can I blend?</summary><p>Four — each stop is a radial gradient layer blended together for the mesh look.</p></details><details><summary>Is the output plain CSS?</summary><p>Yes — the snippet is a single background declaration you can paste into any stylesheet.</p></details><details><summary>Is it sharp at any size?</summary><p>The background is generated with real CSS gradients, so it scales infinitely and never pixelates.</p></details></div>
+    </div>
+  </div>
+
+  <section class="section">
+    <h2>🔗 Related tools</h2>
+    <div class="tool-grid"><a class="tool-link" href="/tools/ascii-table-reference/" data-search="ascii table reference full ascii table 0–127: decimal, hex, octal, character, control-code names and html entities — searchable. ascii table ascii codes ascii chart control characters ascii reference"><span class="t-ico">💻</span><span class="t-body"><b>ASCII Table Reference</b><small>Full ASCII table 0–127: decimal, hex, octal, character, control-code names and HTML entities…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/base64-encoder-decoder/" data-search="base64 encoder / decoder encode text to base64 or decode base64 back to text, with full utf-8 support and a file-to-data-url converter. base64 encoder base64 decoder base64 encode base64 decode file to base64"><span class="t-ico">💻</span><span class="t-body"><b>Base64 Encoder / Decoder</b><small>Encode text to Base64 or decode Base64 back to text, with full UTF-8 support and a file-to-d…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/binary-text-converter/" data-search="binary and text converter convert text to binary or hex and back, with full utf-8 awareness and strict input validation. binary to text text to binary hex to text converter"><span class="t-ico">💻</span><span class="t-body"><b>Binary and Text Converter</b><small>Convert text to binary or hex and back, with full UTF-8 awareness and strict input validatio…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/changelog-generator/" data-search="changelog generator build a keep-a-changelog markdown file: version, date, and grouped added/fixed/changed entries. changelog generator keep a changelog changelog markdown release notes version changelog"><span class="t-ico">💻</span><span class="t-body"><b>Changelog Generator</b><small>Build a Keep-a-Changelog markdown file: version, date, and grouped Added/Fixed/Changed entri…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/character-escape-reference/" data-search="character escape reference searchable reference of characters with their html entities, url encodings, and js escapes — plus a live encoder. character escape reference html entities url encode unicode escape html entity table"><span class="t-ico">💻</span><span class="t-body"><b>Character Escape Reference</b><small>Searchable reference of characters with their HTML entities, URL encodings, and JS escapes —…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/chmod-calculator/" data-search="chmod calculator tick rwx boxes for user/group/other — or type 755 — and see octal, symbolic, and the chmod command live. chmod calculator chmod 755 linux permissions octal permissions rwx calculator"><span class="t-ico">💻</span><span class="t-body"><b>chmod Calculator</b><small>Tick rwx boxes for user/group/other — or type 755 — and see octal, symbolic, and the chmod c…</small></span><span class="t-arrow">→</span></a></div>
+  </section>
+</main>
+
+<!-- ADSTERRA-FOOTER: paste your Adsterra footer/banner ad code inside the div below -->
+<div class="container"><div class="ad-slot" data-ad="footer"></div></div>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="f-grid">
+      <div>
+        <span class="brandline"><span class="logo-mark">T</span> ToolNest</span>
+        <p>Free online tools that actually work. No sign-up, no watermarks — and your files never leave your device for client-side tools.</p>
+      </div>
+      <div>
+        <h4>Popular</h4>
+        <a href="/tools/qr-code-generator/">QR Code Generator</a>
+        <a href="/tools/background-remover/">Background Remover</a>
+        <a href="/tools/pdf-merger/">PDF Merger</a>
+        <a href="/tools/word-counter/">Word Counter</a>
+      </div>
+      <div>
+        <h4>Categories</h4>
+        <a href="/#image">Image Tools</a>
+        <a href="/#pdf">PDF &amp; Documents</a>
+        <a href="/#calculators">Calculators</a>
+        <a href="/#developer">Developer Tools</a>
+      </div>
+      <div>
+        <h4>Site</h4>
+        <a href="/">Home</a>
+        <a href="/#all-tools">All Tools</a>
+        <a href="/sitemap.xml">Sitemap</a>
+      </div>
+    </div>
+    <div class="f-bottom">© 2026 ToolNest · Free tools for everyone · Made with care</div>
+  </div>
+</footer>
+
+<script src="/assets/site.js?v=5"></script>
+
+<script>
+/* Mesh Gradient Generator — 4 layered radial gradients, live preview. */
+(function () {
+  'use strict';
+  var SLUG = 'mesh-gradient-generator';
+  var ERR = SLUG + '-error';
+  var POS = ['0% 0%', '100% 0%', '100% 100%', '0% 100%'];
+
+  function $(id) { return document.getElementById(SLUG + '-' + id); }
+
+  function buildCss() {
+    var colors = [$('c1').value, $('c2').value, $('c3').value, $('c4').value];
+    var spread = parseInt($('spread').value, 10);
+    var bg = $('bg').value;
+    var layers = colors.map(function (c, i) {
+      return 'radial-gradient(at ' + POS[i] + ', ' + c + ' 0px, transparent ' + spread + '%)';
+    });
+    return { layers: layers, bg: bg };
+  }
+
+  function render() {
+    TN.clearErr(ERR);
+    try {
+      $('spread-v').textContent = $('spread').value + '%';
+      var g = buildCss();
+      var bg = g.layers.join(', ') + ',\n  ' + g.bg;
+      $('stage').style.background = bg;
+      $('code').textContent = '.mesh-gradient {\n  background:\n    ' + g.layers.join(',\n    ') + ',\n    ' + g.bg + ';\n}';
+    } catch (e) {
+      TN.setErr(ERR, 'Could not render the mesh gradient.');
+    }
+  }
+
+  function shuffle() {
+    ['c1', 'c2', 'c3', 'c4'].forEach(function (k) {
+      var v = Math.floor(Math.random() * 0xffffff).toString(16);
+      $(k).value = '#' + ('000000' + v).slice(-6);
+    });
+    render();
+  }
+
+  function init() {
+    try {
+      if (typeof TN === 'undefined') return;
+      ['c1', 'c2', 'c3', 'c4', 'spread', 'bg'].forEach(function (k) {
+        TN.on(SLUG + '-' + k, 'input', render);
+        TN.on(SLUG + '-' + k, 'change', render);
+      });
+      TN.on(SLUG + '-shuffle', 'click', shuffle);
+      TN.on(SLUG + '-copy', 'click', function () {
+        var txt = $('code').textContent;
+        if (!txt) { TN.setErr(ERR, 'Nothing to copy yet.'); return; }
+        TN.copy(txt).then(function (ok) {
+          if (ok) TN.clearErr(ERR);
+          else TN.setErr(ERR, 'Copy failed — select the code and copy manually.');
+        });
+      });
+      render();
+    } catch (e) { /* never throw on load */ }
+  }
+
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init);
+  else init();
+})();
+
+</script>
+</body>
+</html>

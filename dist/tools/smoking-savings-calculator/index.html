@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Smoking Savings Calculator — Free Online | ToolNest</title>
+<meta name="description" content="Enter cigarettes per day, pack price, and quit date to see money saved so far plus 1- and 5-year projections.">
+<meta name="keywords" content="smoking savings calculator, quit smoking savings, cigarette cost calculator, stop smoking money, smoking cost">
+<link rel="canonical" href="https://toolnest.vercel.app/tools/smoking-savings-calculator/">
+<meta name="theme-color" content="#07070b">
+<meta property="og:title" content="Smoking Savings Calculator — Free Online | ToolNest">
+<meta property="og:description" content="Enter cigarettes per day, pack price, and quit date to see money saved so far plus 1- and 5-year projections.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css?v=4">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%23e01111'/><text x='50' y='68' font-size='58' text-anchor='middle' fill='white' font-family='Arial' font-weight='bold'>T</text></svg>">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebApplication","name":"Smoking Savings Calculator","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0"},"url":"https://toolnest.vercel.app/tools/smoking-savings-calculator/","description":"Enter cigarettes per day, pack price, and quit date to see money saved so far plus 1- and 5-year projections."},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How are savings calculated?","acceptedAnswer":{"@type":"Answer","text":"Days since your quit date × (cigarettes per day ÷ 20) × pack price. Future projections use the same daily saving rate."}},{"@type":"Question","name":"How much can I really save?","acceptedAnswer":{"@type":"Answer","text":"A pack-a-day smoker at typical prices saves thousands per year — the 1-year and 5-year projections show the full picture."}},{"@type":"Question","name":"I slipped up — is this still useful?","acceptedAnswer":{"@type":"Answer","text":"Yes — the calculation is pure arithmetic on the numbers you enter; no judgment, just motivation."}}]}]}</script>
+</head>
+<body>
+<header class="site-header">
+  <div class="container">
+    <a class="logo" href="/"><span class="logo-mark">T</span> ToolNest</a>
+    <div class="header-right">
+      <form class="nav-search" action="/" method="get" role="search">
+        <span class="ns-icon">🔍</span>
+        <input type="search" name="q" placeholder="Search tools…" aria-label="Search tools" autocomplete="off">
+      </form>
+      <div class="menu-wrap">
+        <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="menuPanel" aria-label="Open menu"><span></span><span></span><span></span></button>
+        <nav class="menu-panel" id="menuPanel" aria-label="Site">
+          <a href="/">Home</a>
+          <a href="/#categories">Categories</a>
+          <a href="/#all-tools">All Tools</a>
+        </nav>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ADSTERRA-HEADER: paste your Adsterra banner ad code inside the div below -->
+<div class="container"><div class="ad-slot ad-leaderboard" data-ad="header"></div></div>
+
+<main class="container">
+  <nav class="crumbs"><a href="/">Home</a> &rsaquo; <a href="/#health">Health &amp; Fitness</a> &rsaquo; Smoking Savings Calculator</nav>
+  <div class="tool-hero">
+    <h1>Smoking Savings Calculator</h1>
+    <p>Enter cigarettes per day, pack price, and quit date to see money saved so far plus 1- and 5-year projections.</p>
+  </div>
+
+  <div class="tool-card">
+  <div class="grid2">
+    <div class="field">
+      <label for="smoking-savings-calculator-cigs">Cigarettes per day</label>
+      <input class="input" id="smoking-savings-calculator-cigs" type="number" min="1" max="200" step="1" placeholder="e.g. 20">
+    </div>
+    <div class="field">
+      <label for="smoking-savings-calculator-price">Price per pack of 20</label>
+      <input class="input" id="smoking-savings-calculator-price" type="number" min="0.1" step="0.01" placeholder="e.g. 8.50">
+    </div>
+    <div class="field">
+      <label for="smoking-savings-calculator-currency">Currency symbol</label>
+      <input class="input" id="smoking-savings-calculator-currency" type="text" value="$" maxlength="3">
+    </div>
+    <div class="field">
+      <label for="smoking-savings-calculator-quit">Quit date</label>
+      <input class="input" id="smoking-savings-calculator-quit" type="date">
+    </div>
+  </div>
+  <div class="btn-row"><button class="btn btn-primary" id="smoking-savings-calculator-calc">Calculate savings</button></div>
+  <div class="stat-cards hidden" id="smoking-savings-calculator-out">
+    <div class="stat-card"><div class="v" id="smoking-savings-calculator-saved">–</div><div class="l">Saved to date</div></div>
+    <div class="stat-card"><div class="v" id="smoking-savings-calculator-cigsaved">–</div><div class="l">Cigarettes not smoked</div></div>
+    <div class="stat-card"><div class="v" id="smoking-savings-calculator-yr1">–</div><div class="l">Projected 1 year</div></div>
+    <div class="stat-card"><div class="v" id="smoking-savings-calculator-yr5">–</div><div class="l">Projected 5 years</div></div>
+  </div>
+  <p class="hint" id="smoking-savings-calculator-note"></p>
+  <p class="note">General information only — not medical advice. Consult a professional for personal guidance.</p>
+  <div class="error" id="smoking-savings-calculator-error"></div>
+</div>
+
+
+  <!-- ADSTERRA-INCONTENT: paste your Adsterra native/in-content ad code inside the div below -->
+  <div class="ad-slot" data-ad="incontent"></div>
+
+  <div class="info-grid">
+    <div class="info-card">
+      <h2>📖 How to use</h2>
+      <ol><li>Enter how many cigarettes you smoked per day.</li><li>Enter the price of a 20-cigarette pack.</li><li>Enter your quit date.</li><li>See money saved to date plus 1-year and 5-year projections.</li></ol>
+    </div>
+    <div class="info-card">
+      <h2>❓ Frequently asked questions</h2>
+      <div class="faq"><details><summary>How are savings calculated?</summary><p>Days since your quit date × (cigarettes per day ÷ 20) × pack price. Future projections use the same daily saving rate.</p></details><details><summary>How much can I really save?</summary><p>A pack-a-day smoker at typical prices saves thousands per year — the 1-year and 5-year projections show the full picture.</p></details><details><summary>I slipped up — is this still useful?</summary><p>Yes — the calculation is pure arithmetic on the numbers you enter; no judgment, just motivation.</p></details></div>
+    </div>
+  </div>
+
+  <section class="section">
+    <h2>🔗 Related tools</h2>
+    <div class="tool-grid"><a class="tool-link" href="/tools/baby-growth-tracker/" data-search="baby growth tracker log your baby&#39;s weight and height over time and see a growth log with typical-range guidance. baby growth tracker baby weight tracker infant growth chart baby height log newborn growth"><span class="t-ico">❤️</span><span class="t-body"><b>Baby Growth Tracker</b><small>Log your baby&#39;s weight and height over time and see a growth log with typical-range guidance…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/blood-pressure-tracker/" data-search="blood pressure tracker log blood pressure readings with automatic aha category classification, averages and history saved in your browser. blood pressure tracker bp log blood pressure chart hypertension tracker bp monitor log"><span class="t-ico">❤️</span><span class="t-body"><b>Blood Pressure Tracker</b><small>Log blood pressure readings with automatic AHA category classification, averages and history…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/body-fat-calculator/" data-search="body fat calculator estimate body fat percentage with the us navy tape-measure method and see your fitness category. body fat calculator us navy body fat body fat percentage calculator"><span class="t-ico">❤️</span><span class="t-body"><b>Body Fat Calculator</b><small>Estimate body fat percentage with the US Navy tape-measure method and see your fitness categ…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/breathing-exercise-guide/" data-search="breathing exercise guide guided breathing exercises (4-7-8, box, energize) with an animated pacer circle, phase labels, and cycle counter. breathing exercise 4-7-8 breathing box breathing breathing pacer calm breathing"><span class="t-ico">❤️</span><span class="t-body"><b>Breathing Exercise Guide</b><small>Guided breathing exercises (4-7-8, box, energize) with an animated pacer circle, phase label…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/caffeine-half-life-calculator/" data-search="caffeine half-life calculator log caffeinated drinks and see how much caffeine is still in your system using 5.5-hour half-life decay. caffeine half life caffeine calculator caffeine in system coffee caffeine tracker caffeine sleep"><span class="t-ico">❤️</span><span class="t-body"><b>Caffeine Half-Life Calculator</b><small>Log caffeinated drinks and see how much caffeine is still in your system using 5.5-hour half…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/calorie-calculator/" data-search="tdee calorie calculator estimate your daily calorie needs with the mifflin-st jeor equation and get targets for losing, maintaining or gaining weight. tdee calculator calorie calculator mifflin st jeor daily calorie needs"><span class="t-ico">❤️</span><span class="t-body"><b>TDEE Calorie Calculator</b><small>Estimate your daily calorie needs with the Mifflin-St Jeor equation and get targets for losi…</small></span><span class="t-arrow">→</span></a></div>
+  </section>
+</main>
+
+<!-- ADSTERRA-FOOTER: paste your Adsterra footer/banner ad code inside the div below -->
+<div class="container"><div class="ad-slot" data-ad="footer"></div></div>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="f-grid">
+      <div>
+        <span class="brandline"><span class="logo-mark">T</span> ToolNest</span>
+        <p>Free online tools that actually work. No sign-up, no watermarks — and your files never leave your device for client-side tools.</p>
+      </div>
+      <div>
+        <h4>Popular</h4>
+        <a href="/tools/qr-code-generator/">QR Code Generator</a>
+        <a href="/tools/background-remover/">Background Remover</a>
+        <a href="/tools/pdf-merger/">PDF Merger</a>
+        <a href="/tools/word-counter/">Word Counter</a>
+      </div>
+      <div>
+        <h4>Categories</h4>
+        <a href="/#image">Image Tools</a>
+        <a href="/#pdf">PDF &amp; Documents</a>
+        <a href="/#calculators">Calculators</a>
+        <a href="/#developer">Developer Tools</a>
+      </div>
+      <div>
+        <h4>Site</h4>
+        <a href="/">Home</a>
+        <a href="/#all-tools">All Tools</a>
+        <a href="/sitemap.xml">Sitemap</a>
+      </div>
+    </div>
+    <div class="f-bottom">© 2026 ToolNest · Free tools for everyone · Made with care</div>
+  </div>
+</footer>
+
+<script src="/assets/site.js?v=5"></script>
+
+<script>
+/* Smoking savings calculator: cigs/day, pack price, quit date -> savings. */
+(function () {
+  'use strict';
+  var SLUG = 'smoking-savings-calculator';
+  function $(id) { return document.getElementById(id); }
+  function calc() {
+    $(SLUG + '-error').textContent = '';
+    var cigs = parseFloat($(SLUG + '-cigs').value);
+    var price = parseFloat($(SLUG + '-price').value);
+    var cur = $(SLUG + '-currency').value || '$';
+    var qv = $(SLUG + '-quit').value;
+    if (isNaN(cigs) || cigs < 1 || cigs > 200) { $(SLUG + '-error').textContent = 'Enter cigarettes per day (1–200).'; return; }
+    if (isNaN(price) || price <= 0) { $(SLUG + '-error').textContent = 'Enter a valid pack price.'; return; }
+    if (!qv) { $(SLUG + '-error').textContent = 'Enter your quit date.'; return; }
+    var quit = new Date(qv + 'T00:00:00');
+    var now = new Date();
+    var days = Math.floor((now - quit) / 86400000);
+    if (days < 0) { $(SLUG + '-error').textContent = 'Quit date is in the future — enter the day you actually quit.'; return; }
+    var dailyCost = (cigs / 20) * price;
+    var saved = dailyCost * days;
+    var cigsSaved = Math.round(cigs * days);
+    function money(x) {
+      return cur + x.toLocaleString(undefined, { maximumFractionDigits: 0 });
+    }
+    $(SLUG + '-saved').textContent = money(saved);
+    $(SLUG + '-cigsaved').textContent = cigsSaved.toLocaleString();
+    $(SLUG + '-yr1').textContent = money(dailyCost * 365);
+    $(SLUG + '-yr5').textContent = money(dailyCost * 365 * 5);
+    $(SLUG + '-out').classList.remove('hidden');
+    $(SLUG + '-note').textContent = 'Smoke-free for ' + days + ' day' + (days === 1 ? '' : 's') +
+      ' · saving about ' + cur + dailyCost.toFixed(2) + ' per day.';
+  }
+  try { $(SLUG + '-calc').addEventListener('click', calc); } catch (e) { /* never throw on load */ }
+})();
+
+</script>
+</body>
+</html>

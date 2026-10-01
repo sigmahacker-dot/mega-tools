@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Chess Clock Timer — Free Online | ToolNest</title>
+<meta name="description" content="A two-player chess clock with tap-to-switch, optional increment per move, flag detection, pause and reset.">
+<meta name="keywords" content="chess clock, chess timer, two player timer, blitz clock, increment chess clock">
+<link rel="canonical" href="https://toolnest.vercel.app/tools/chess-clock-timer/">
+<meta name="theme-color" content="#07070b">
+<meta property="og:title" content="Chess Clock Timer — Free Online | ToolNest">
+<meta property="og:description" content="A two-player chess clock with tap-to-switch, optional increment per move, flag detection, pause and reset.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css?v=4">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%23e01111'/><text x='50' y='68' font-size='58' text-anchor='middle' fill='white' font-family='Arial' font-weight='bold'>T</text></svg>">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebApplication","name":"Chess Clock Timer","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0"},"url":"https://toolnest.vercel.app/tools/chess-clock-timer/","description":"A two-player chess clock with tap-to-switch, optional increment per move, flag detection, pause and reset."},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How do I switch the clock?","acceptedAnswer":{"@type":"Answer","text":"Tap the clock of the player who just moved. Their clock stops, the increment is added, and the opponent's clock starts."}},{"@type":"Question","name":"How does the game start?","acceptedAnswer":{"@type":"Answer","text":"Set minutes and increment, then tap either side to start — the other player's clock begins running."}},{"@type":"Question","name":"What happens when time runs out?","acceptedAnswer":{"@type":"Answer","text":"Yes — when a clock reaches zero it flags: the timer stops, the side flashes red and a sound plays."}},{"@type":"Question","name":"How does the increment work?","acceptedAnswer":{"@type":"Answer","text":"Fischer increment: the seconds you set are added to a player's clock every time they tap their side."}}]}]}</script>
+</head>
+<body>
+<header class="site-header">
+  <div class="container">
+    <a class="logo" href="/"><span class="logo-mark">T</span> ToolNest</a>
+    <div class="header-right">
+      <form class="nav-search" action="/" method="get" role="search">
+        <span class="ns-icon">🔍</span>
+        <input type="search" name="q" placeholder="Search tools…" aria-label="Search tools" autocomplete="off">
+      </form>
+      <div class="menu-wrap">
+        <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="menuPanel" aria-label="Open menu"><span></span><span></span><span></span></button>
+        <nav class="menu-panel" id="menuPanel" aria-label="Site">
+          <a href="/">Home</a>
+          <a href="/#categories">Categories</a>
+          <a href="/#all-tools">All Tools</a>
+        </nav>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ADSTERRA-HEADER: paste your Adsterra banner ad code inside the div below -->
+<div class="container"><div class="ad-slot ad-leaderboard" data-ad="header"></div></div>
+
+<main class="container">
+  <nav class="crumbs"><a href="/">Home</a> &rsaquo; <a href="/#time">Time &amp; Date</a> &rsaquo; Chess Clock Timer</nav>
+  <div class="tool-hero">
+    <h1>Chess Clock Timer</h1>
+    <p>A two-player chess clock with tap-to-switch, optional increment per move, flag detection, pause and reset.</p>
+  </div>
+
+  <div class="tool-card" style="text-align:center">
+  <div class="grid2" style="max-width:440px;margin:0 auto 12px">
+    <div class="field" style="text-align:left">
+      <label for="chess-clock-timer-mins">Minutes per player</label>
+      <input class="input" type="number" id="chess-clock-timer-mins" value="10" min="1" max="180">
+    </div>
+    <div class="field" style="text-align:left">
+      <label for="chess-clock-timer-inc">Increment (sec / move)</label>
+      <input class="input" type="number" id="chess-clock-timer-inc" value="0" min="0" max="60">
+    </div>
+  </div>
+  <div id="chess-clock-timer-sides" style="max-width:440px;margin:0 auto">
+    <button id="chess-clock-timer-p1" style="display:block;width:100%;padding:26px 10px;margin-bottom:10px;font-size:44px;font-weight:700;border-radius:12px;border:2px solid #ccc;background:#f5f5f5;cursor:pointer;font-variant-numeric:tabular-nums" aria-label="Player 1 clock — tap to switch">10:00</button>
+    <button id="chess-clock-timer-p2" style="display:block;width:100%;padding:26px 10px;font-size:44px;font-weight:700;border-radius:12px;border:2px solid #ccc;background:#f5f5f5;cursor:pointer;font-variant-numeric:tabular-nums" aria-label="Player 2 clock — tap to switch">10:00</button>
+  </div>
+  <p class="muted" id="chess-clock-timer-msg" style="min-height:24px;margin-top:10px">Tap a side to start. Tap your own side after your move.</p>
+  <div class="btn-row" style="justify-content:center">
+    <button class="btn" id="chess-clock-timer-pause">Pause</button>
+    <button class="btn btn-outline" id="chess-clock-timer-reset">Reset</button>
+  </div>
+  <div class="error" id="chess-clock-timer-error"></div>
+</div>
+
+
+  <!-- ADSTERRA-INCONTENT: paste your Adsterra native/in-content ad code inside the div below -->
+  <div class="ad-slot" data-ad="incontent"></div>
+
+  <div class="info-grid">
+    <div class="info-card">
+      <h2>📖 How to use</h2>
+      <ol><li>Set the starting minutes and optional increment seconds.</li><li>Tap either side to start the other player&#39;s clock.</li><li>After each move, the player taps their own side to switch.</li><li>Pause or Reset anytime from the buttons below.</li></ol>
+    </div>
+    <div class="info-card">
+      <h2>❓ Frequently asked questions</h2>
+      <div class="faq"><details><summary>How do I switch the clock?</summary><p>Tap the clock of the player who just moved. Their clock stops, the increment is added, and the opponent&#39;s clock starts.</p></details><details><summary>How does the game start?</summary><p>Set minutes and increment, then tap either side to start — the other player&#39;s clock begins running.</p></details><details><summary>What happens when time runs out?</summary><p>Yes — when a clock reaches zero it flags: the timer stops, the side flashes red and a sound plays.</p></details><details><summary>How does the increment work?</summary><p>Fischer increment: the seconds you set are added to a player&#39;s clock every time they tap their side.</p></details></div>
+    </div>
+  </div>
+
+  <section class="section">
+    <h2>🔗 Related tools</h2>
+    <div class="tool-grid"><a class="tool-link" href="/tools/add-subtract-days-calculator/" data-search="add / subtract days calculator add or subtract days, weeks, months or years from any date. optional business-days-only mode skips weekends automatically. add days to date subtract days calculator date plus days business days calculator date arithmetic"><span class="t-ico">⏰</span><span class="t-body"><b>Add / Subtract Days Calculator</b><small>Add or subtract days, weeks, months or years from any date. Optional business-days-only mode…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/anniversary-calculator/" data-search="anniversary calculator track any anniversary: days until the next one, which number it is (10th, 25th…), total days together and the weekday it falls on. anniversary calculator wedding anniversary countdown how many days until anniversary anniversary date tracker years together calculator"><span class="t-ico">⏰</span><span class="t-body"><b>Anniversary Calculator</b><small>Track any anniversary: days until the next one, which number it is (10th, 25th…), total days…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/bill-due-tracker/" data-search="bill due tracker never miss a payment — track recurring monthly bills with automatic next-due dates, days remaining and urgency sorting. bill due tracker bill reminder recurring bills tracker monthly bills organizer due date tracker"><span class="t-ico">⏰</span><span class="t-body"><b>Bill Due Tracker</b><small>Never miss a payment — track recurring monthly bills with automatic next-due dates, days rem…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/business-days-calculator/" data-search="business days calculator count working days between two dates, excluding weekends and your own custom holidays, with a full breakdown. business days calculator working days calculator weekdays between dates net workdays business days excluding holidays"><span class="t-ico">⏰</span><span class="t-body"><b>Business Days Calculator</b><small>Count working days between two dates, excluding weekends and your own custom holidays, with …</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/daily-screen-time-log/" data-search="daily screen time log log daily screen time by app or category and see daily totals plus a 7-day bar summary — all saved in your browser. screen time tracker screen time log daily screen time phone usage tracker app usage log"><span class="t-ico">⏰</span><span class="t-body"><b>Daily Screen Time Log</b><small>Log daily screen time by app or category and see daily totals plus a 7-day bar summary — all…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/date-duration-calculator/" data-search="date duration calculator exact duration between two dates, plus business days. date duration calculator days between dates business days calculator"><span class="t-ico">⏰</span><span class="t-body"><b>Date Duration Calculator</b><small>Exact duration between two dates, plus business days.</small></span><span class="t-arrow">→</span></a></div>
+  </section>
+</main>
+
+<!-- ADSTERRA-FOOTER: paste your Adsterra footer/banner ad code inside the div below -->
+<div class="container"><div class="ad-slot" data-ad="footer"></div></div>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="f-grid">
+      <div>
+        <span class="brandline"><span class="logo-mark">T</span> ToolNest</span>
+        <p>Free online tools that actually work. No sign-up, no watermarks — and your files never leave your device for client-side tools.</p>
+      </div>
+      <div>
+        <h4>Popular</h4>
+        <a href="/tools/qr-code-generator/">QR Code Generator</a>
+        <a href="/tools/background-remover/">Background Remover</a>
+        <a href="/tools/pdf-merger/">PDF Merger</a>
+        <a href="/tools/word-counter/">Word Counter</a>
+      </div>
+      <div>
+        <h4>Categories</h4>
+        <a href="/#image">Image Tools</a>
+        <a href="/#pdf">PDF &amp; Documents</a>
+        <a href="/#calculators">Calculators</a>
+        <a href="/#developer">Developer Tools</a>
+      </div>
+      <div>
+        <h4>Site</h4>
+        <a href="/">Home</a>
+        <a href="/#all-tools">All Tools</a>
+        <a href="/sitemap.xml">Sitemap</a>
+      </div>
+    </div>
+    <div class="f-bottom">© 2026 ToolNest · Free tools for everyone · Made with care</div>
+  </div>
+</footer>
+
+<script src="/assets/site.js?v=5"></script>
+
+<script>
+/* Chess Clock Timer — two clocks, tap-to-switch, increment, flag detection. */
+(function () {
+  'use strict';
+  var SLUG = 'chess-clock-timer';
+  var $ = function (id) { return TN.el(SLUG + '-' + id); };
+
+  var t = [600000, 600000];   // ms remaining per player
+  var active = -1;            // index of running clock, -1 = none
+  var running = false;
+  var over = false;
+  var timerId = null, lastTick = 0;
+  var actx = null;
+
+  function beep(freq, dur, delay) {
+    try {
+      if (!actx) actx = new (window.AudioContext || window.webkitAudioContext)();
+      var at = actx.currentTime + (delay || 0);
+      var o = actx.createOscillator(), g = actx.createGain();
+      o.type = 'square'; o.frequency.value = freq || 660;
+      g.gain.setValueAtTime(0.0001, at);
+      g.gain.exponentialRampToValueAtTime(0.25, at + 0.02);
+      g.gain.exponentialRampToValueAtTime(0.0001, at + (dur || 0.3));
+      o.connect(g); g.connect(actx.destination);
+      o.start(at); o.stop(at + (dur || 0.3) + 0.05);
+    } catch (e) {}
+  }
+
+  function fmt(ms) {
+    var s = Math.max(0, ms) / 1000;
+    var m = Math.floor(s / 60), sec = Math.floor(s % 60);
+    var str = m + ':' + (sec < 10 ? '0' : '') + sec;
+    if (s < 20) str += '.' + Math.floor((s % 1) * 10);
+    return str;
+  }
+
+  function render() {
+    $('p1').textContent = fmt(t[0]);
+    $('p2').textContent = fmt(t[1]);
+    ['p1', 'p2'].forEach(function (pid, i) {
+      var el = $(pid);
+      if (over && t[i] <= 0) {
+        el.style.background = '#ef5350'; el.style.color = '#fff'; el.style.borderColor = '#c62828';
+      } else if (running && active === i) {
+        el.style.background = '#e8f5e9'; el.style.borderColor = '#2e7d32'; el.style.color = '#1b5e20';
+      } else {
+        el.style.background = '#f5f5f5'; el.style.color = '#222'; el.style.borderColor = '#ccc';
+      }
+    });
+  }
+
+  function stopTick() { if (timerId) { clearInterval(timerId); timerId = null; } }
+
+  function tick() {
+    var now = Date.now();
+    var dt = now - lastTick;
+    lastTick = now;
+    if (active < 0) return;
+    t[active] -= dt;
+    if (t[active] <= 0) {
+      t[active] = 0;
+      over = true; running = false;
+      stopTick();
+      $('msg').textContent = '🏁 Flag! Player ' + (active + 1) + ' ran out of time.';
+      beep(440, 0.5); beep(440, 0.5, 0.6); beep(330, 0.9, 1.2);
+    }
+    render();
+  }
+
+  function startTick() {
+    stopTick();
+    lastTick = Date.now();
+    timerId = setInterval(tick, 100);
+  }
+
+  function press(i) {
+    if (over) return;
+    beep(880, 0.06); // unlock audio on gesture
+    if (!running) {
+      // first press: start the OTHER clock
+      active = 1 - i;
+      running = true;
+      $('msg').textContent = "Player " + (active + 1) + "'s clock is running.";
+      startTick(); render();
+      return;
+    }
+    if (i === active) {
+      var inc = Math.max(0, parseInt($('inc').value, 10) || 0);
+      t[i] += inc * 1000;
+      active = 1 - i;
+      $('msg').textContent = "Player " + (active + 1) + "'s clock is running.";
+      render();
+    }
+    // pressing the non-running side while running: ignore
+  }
+
+  function pause() {
+    if (over || !running) return;
+    running = false;
+    stopTick();
+    $('msg').textContent = 'Paused.';
+    render();
+  }
+
+  function reset() {
+    stopTick();
+    var mins = Math.min(180, Math.max(1, parseInt($('mins').value, 10) || 10));
+    $('mins').value = mins;
+    t = [mins * 60000, mins * 60000];
+    active = -1; running = false; over = false;
+    $('msg').textContent = 'Tap a side to start. Tap your own side after your move.';
+    render();
+  }
+
+  try {
+    TN.on(SLUG + '-p1', 'click', function () { press(0); });
+    TN.on(SLUG + '-p2', 'click', function () { press(1); });
+    TN.on(SLUG + '-pause', 'click', pause);
+    TN.on(SLUG + '-reset', 'click', reset);
+    TN.on(SLUG + '-mins', 'change', reset);
+    reset();
+  } catch (e) { /* never throw on load */ }
+})();
+
+</script>
+</body>
+</html>

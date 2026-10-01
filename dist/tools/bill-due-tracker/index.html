@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bill Due Tracker — Free Online | ToolNest</title>
+<meta name="description" content="Never miss a payment — track recurring monthly bills with automatic next-due dates, days remaining and urgency sorting.">
+<meta name="keywords" content="bill due tracker, bill reminder, recurring bills tracker, monthly bills organizer, due date tracker">
+<link rel="canonical" href="https://toolnest.vercel.app/tools/bill-due-tracker/">
+<meta name="theme-color" content="#07070b">
+<meta property="og:title" content="Bill Due Tracker — Free Online | ToolNest">
+<meta property="og:description" content="Never miss a payment — track recurring monthly bills with automatic next-due dates, days remaining and urgency sorting.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css?v=4">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%23e01111'/><text x='50' y='68' font-size='58' text-anchor='middle' fill='white' font-family='Arial' font-weight='bold'>T</text></svg>">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebApplication","name":"Bill Due Tracker","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0"},"url":"https://toolnest.vercel.app/tools/bill-due-tracker/","description":"Never miss a payment — track recurring monthly bills with automatic next-due dates, days remaining and urgency sorting."},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How do recurring due dates work?","acceptedAnswer":{"@type":"Answer","text":"Each bill repeats monthly on the day you set. If a month is shorter (e.g. the 31st in February), the due date moves to that month's last day."}},{"@type":"Question","name":"Are my bills saved?","acceptedAnswer":{"@type":"Answer","text":"Yes — bills, amounts and due days are saved in this browser's localStorage."}},{"@type":"Question","name":"Can I track subscriptions too?","acceptedAnswer":{"@type":"Answer","text":"Yes — type any name, e.g. 'Netflix', 'Electricity' or 'Gym membership'."}}]}]}</script>
+</head>
+<body>
+<header class="site-header">
+  <div class="container">
+    <a class="logo" href="/"><span class="logo-mark">T</span> ToolNest</a>
+    <div class="header-right">
+      <form class="nav-search" action="/" method="get" role="search">
+        <span class="ns-icon">🔍</span>
+        <input type="search" name="q" placeholder="Search tools…" aria-label="Search tools" autocomplete="off">
+      </form>
+      <div class="menu-wrap">
+        <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="menuPanel" aria-label="Open menu"><span></span><span></span><span></span></button>
+        <nav class="menu-panel" id="menuPanel" aria-label="Site">
+          <a href="/">Home</a>
+          <a href="/#categories">Categories</a>
+          <a href="/#all-tools">All Tools</a>
+        </nav>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ADSTERRA-HEADER: paste your Adsterra banner ad code inside the div below -->
+<div class="container"><div class="ad-slot ad-leaderboard" data-ad="header"></div></div>
+
+<main class="container">
+  <nav class="crumbs"><a href="/">Home</a> &rsaquo; <a href="/#time">Time &amp; Date</a> &rsaquo; Bill Due Tracker</nav>
+  <div class="tool-hero">
+    <h1>Bill Due Tracker</h1>
+    <p>Never miss a payment — track recurring monthly bills with automatic next-due dates, days remaining and urgency sorting.</p>
+  </div>
+
+  <div class="tool-card">
+  <div class="grid2" style="margin-bottom:8px">
+    <div class="field">
+      <label for="bill-due-tracker-name">Bill name</label>
+      <input class="input" type="text" id="bill-due-tracker-name" placeholder="e.g. Electricity" maxlength="60">
+    </div>
+    <div class="field">
+      <label for="bill-due-tracker-amount">Amount</label>
+      <input class="input" type="number" id="bill-due-tracker-amount" min="0" step="0.01" placeholder="e.g. 2500">
+    </div>
+  </div>
+  <div class="grid2" style="margin-bottom:8px">
+    <div class="field">
+      <label for="bill-due-tracker-day">Due day of month (1–31)</label>
+      <input class="input" type="number" id="bill-due-tracker-day" min="1" max="31" placeholder="e.g. 15">
+    </div>
+    <div class="field" style="display:flex;align-items:flex-end">
+      <button class="btn btn-primary" id="bill-due-tracker-add" style="width:100%">Add bill</button>
+    </div>
+  </div>
+  <div class="stat-cards">
+    <div class="stat-card"><div class="v" id="bill-due-tracker-total">0</div><div class="l">Bills tracked</div></div>
+    <div class="stat-card"><div class="v" id="bill-due-tracker-duesoon">0</div><div class="l">Due within 7 days</div></div>
+    <div class="stat-card"><div class="v" id="bill-due-tracker-monthsum">—</div><div class="l">Monthly total</div></div>
+  </div>
+  <div id="bill-due-tracker-list"></div>
+  <div class="error" id="bill-due-tracker-error"></div>
+</div>
+
+
+  <!-- ADSTERRA-INCONTENT: paste your Adsterra native/in-content ad code inside the div below -->
+  <div class="ad-slot" data-ad="incontent"></div>
+
+  <div class="info-grid">
+    <div class="info-card">
+      <h2>📖 How to use</h2>
+      <ol><li>Enter the bill name, amount and the day of the month it&#39;s due.</li><li>Press Add bill — the next due date is computed automatically.</li><li>Bills sort by urgency: due soonest first.</li><li>Delete a bill with ✕ when it&#39;s cancelled.</li></ol>
+    </div>
+    <div class="info-card">
+      <h2>❓ Frequently asked questions</h2>
+      <div class="faq"><details><summary>How do recurring due dates work?</summary><p>Each bill repeats monthly on the day you set. If a month is shorter (e.g. the 31st in February), the due date moves to that month&#39;s last day.</p></details><details><summary>Are my bills saved?</summary><p>Yes — bills, amounts and due days are saved in this browser&#39;s localStorage.</p></details><details><summary>Can I track subscriptions too?</summary><p>Yes — type any name, e.g. &#39;Netflix&#39;, &#39;Electricity&#39; or &#39;Gym membership&#39;.</p></details></div>
+    </div>
+  </div>
+
+  <section class="section">
+    <h2>🔗 Related tools</h2>
+    <div class="tool-grid"><a class="tool-link" href="/tools/add-subtract-days-calculator/" data-search="add / subtract days calculator add or subtract days, weeks, months or years from any date. optional business-days-only mode skips weekends automatically. add days to date subtract days calculator date plus days business days calculator date arithmetic"><span class="t-ico">⏰</span><span class="t-body"><b>Add / Subtract Days Calculator</b><small>Add or subtract days, weeks, months or years from any date. Optional business-days-only mode…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/anniversary-calculator/" data-search="anniversary calculator track any anniversary: days until the next one, which number it is (10th, 25th…), total days together and the weekday it falls on. anniversary calculator wedding anniversary countdown how many days until anniversary anniversary date tracker years together calculator"><span class="t-ico">⏰</span><span class="t-body"><b>Anniversary Calculator</b><small>Track any anniversary: days until the next one, which number it is (10th, 25th…), total days…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/business-days-calculator/" data-search="business days calculator count working days between two dates, excluding weekends and your own custom holidays, with a full breakdown. business days calculator working days calculator weekdays between dates net workdays business days excluding holidays"><span class="t-ico">⏰</span><span class="t-body"><b>Business Days Calculator</b><small>Count working days between two dates, excluding weekends and your own custom holidays, with …</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/chess-clock-timer/" data-search="chess clock timer a two-player chess clock with tap-to-switch, optional increment per move, flag detection, pause and reset. chess clock chess timer two player timer blitz clock increment chess clock"><span class="t-ico">⏰</span><span class="t-body"><b>Chess Clock Timer</b><small>A two-player chess clock with tap-to-switch, optional increment per move, flag detection, pa…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/daily-screen-time-log/" data-search="daily screen time log log daily screen time by app or category and see daily totals plus a 7-day bar summary — all saved in your browser. screen time tracker screen time log daily screen time phone usage tracker app usage log"><span class="t-ico">⏰</span><span class="t-body"><b>Daily Screen Time Log</b><small>Log daily screen time by app or category and see daily totals plus a 7-day bar summary — all…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/date-duration-calculator/" data-search="date duration calculator exact duration between two dates, plus business days. date duration calculator days between dates business days calculator"><span class="t-ico">⏰</span><span class="t-body"><b>Date Duration Calculator</b><small>Exact duration between two dates, plus business days.</small></span><span class="t-arrow">→</span></a></div>
+  </section>
+</main>
+
+<!-- ADSTERRA-FOOTER: paste your Adsterra footer/banner ad code inside the div below -->
+<div class="container"><div class="ad-slot" data-ad="footer"></div></div>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="f-grid">
+      <div>
+        <span class="brandline"><span class="logo-mark">T</span> ToolNest</span>
+        <p>Free online tools that actually work. No sign-up, no watermarks — and your files never leave your device for client-side tools.</p>
+      </div>
+      <div>
+        <h4>Popular</h4>
+        <a href="/tools/qr-code-generator/">QR Code Generator</a>
+        <a href="/tools/background-remover/">Background Remover</a>
+        <a href="/tools/pdf-merger/">PDF Merger</a>
+        <a href="/tools/word-counter/">Word Counter</a>
+      </div>
+      <div>
+        <h4>Categories</h4>
+        <a href="/#image">Image Tools</a>
+        <a href="/#pdf">PDF &amp; Documents</a>
+        <a href="/#calculators">Calculators</a>
+        <a href="/#developer">Developer Tools</a>
+      </div>
+      <div>
+        <h4>Site</h4>
+        <a href="/">Home</a>
+        <a href="/#all-tools">All Tools</a>
+        <a href="/sitemap.xml">Sitemap</a>
+      </div>
+    </div>
+    <div class="f-bottom">© 2026 ToolNest · Free tools for everyone · Made with care</div>
+  </div>
+</footer>
+
+<script src="/assets/site.js?v=5"></script>
+
+<script>
+/* Bill Due Tracker — recurring monthly bills, next due date, days remaining, sorted. */
+(function () {
+  'use strict';
+  var SLUG = 'bill-due-tracker';
+  var KEY = 'tn_bills_v1';
+  var $ = function (id) { return TN.el(SLUG + '-' + id); };
+
+  var bills = [];
+
+  function esc(s) {
+    return String(s).replace(/[&<>"']/g, function (c) {
+      return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c];
+    });
+  }
+
+  function load() {
+    try {
+      var raw = localStorage.getItem(KEY);
+      bills = raw ? JSON.parse(raw) : [];
+      if (!Array.isArray(bills)) bills = [];
+    } catch (e) { bills = []; }
+  }
+
+  function save() { try { localStorage.setItem(KEY, JSON.stringify(bills)); } catch (e) {} }
+
+  function daysInMonth(y, m) { return new Date(y, m + 1, 0).getDate(); }
+
+  function nextDue(day) {
+    var now = new Date();
+    var today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+    var y = today.getFullYear(), m = today.getMonth();
+    var d = new Date(y, m, Math.min(day, daysInMonth(y, m)));
+    if (d <= today) {
+      m++;
+      if (m > 11) { m = 0; y++; }
+      d = new Date(y, m, Math.min(day, daysInMonth(y, m)));
+    }
+    return d;
+  }
+
+  function fmtDate(d) {
+    return d.toLocaleDateString(undefined, { weekday: 'short', year: 'numeric', month: 'short', day: 'numeric' });
+  }
+
+  function render() {
+    var today = new Date(); today.setHours(0, 0, 0, 0);
+    var rows = bills.map(function (b) {
+      var due = nextDue(b.day);
+      var days = Math.round((due.getTime() - today.getTime()) / 86400000);
+      return { b: b, due: due, days: days };
+    }).sort(function (a, b) { return a.days - b.days; });
+
+    $('total').textContent = bills.length;
+    $('duesoon').textContent = rows.filter(function (r) { return r.days <= 7; }).length;
+    var sum = bills.reduce(function (a, b) { return a + (parseFloat(b.amount) || 0); }, 0);
+    $('monthsum').textContent = bills.length ? sum.toLocaleString('en-US', { maximumFractionDigits: 2 }) : '—';
+
+    if (!rows.length) {
+      $('list').innerHTML = '<p class="muted" style="text-align:center">No bills yet — add your first one above.</p>';
+      return;
+    }
+    var html = '';
+    rows.forEach(function (r) {
+      var color = r.days <= 3 ? '#c62828' : (r.days <= 7 ? '#ef6c00' : '#2e7d32');
+      var urg = r.days === 0 ? 'due today' : r.days === 1 ? 'due tomorrow' : r.days + ' days left';
+      html += '<div style="display:flex;align-items:center;gap:10px;border:1px solid #e0e0e0;border-left:5px solid ' + color + ';border-radius:8px;padding:8px 12px;margin-bottom:8px">' +
+        '<div style="flex:1;min-width:0"><strong>' + esc(r.b.name) + '</strong>' +
+        (r.b.amount !== '' ? ' · <span class="code">' + esc(r.b.amount) + '</span>' : '') +
+        '<br><span class="muted">' + esc(fmtDate(r.due)) + '</span></div>' +
+        '<div style="font-weight:700;color:' + color + ';white-space:nowrap">' + urg + '</div>' +
+        '<button class="btn btn-outline bill-del" data-id="' + r.b.id + '" style="padding:4px 10px" aria-label="Delete bill">✕</button></div>';
+    });
+    $('list').innerHTML = html;
+    TN.qsa('.bill-del', $('list')).forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        bills = bills.filter(function (b) { return String(b.id) !== btn.getAttribute('data-id'); });
+        save(); render();
+      });
+    });
+  }
+
+  function add() {
+    TN.clearErr(SLUG + '-error');
+    var name = ($('name').value || '').trim();
+    var amount = ($('amount').value || '').trim();
+    var day = parseInt($('day').value, 10);
+    if (!name) { TN.setErr(SLUG + '-error', 'Please enter the bill name.'); return; }
+    if (!day || day < 1 || day > 31) { TN.setErr(SLUG + '-error', 'Due day must be between 1 and 31.'); return; }
+    if (amount !== '' && (isNaN(parseFloat(amount)) || parseFloat(amount) < 0)) { TN.setErr(SLUG + '-error', 'Please enter a valid amount (or leave it blank).'); return; }
+    bills.push({ id: Date.now() + '' + Math.floor(Math.random() * 1000), name: name, amount: amount, day: day });
+    $('name').value = ''; $('amount').value = ''; $('day').value = '';
+    save(); render();
+  }
+
+  try {
+    load(); render();
+    TN.on(SLUG + '-add', 'click', add);
+  } catch (e) { /* never throw on load */ }
+})();
+
+</script>
+</body>
+</html>

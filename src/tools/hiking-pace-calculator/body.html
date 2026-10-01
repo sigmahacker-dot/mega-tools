@@ -1,0 +1,30 @@
+<div class="tool-card">
+  <div class="grid2">
+    <div class="field">
+      <label for="hiking-pace-calculator-dist">Distance (km)</label>
+      <input class="input" id="hiking-pace-calculator-dist" type="number" min="0.1" step="0.1" placeholder="e.g. 12">
+    </div>
+    <div class="field">
+      <label for="hiking-pace-calculator-ascent">Total ascent (m)</label>
+      <input class="input" id="hiking-pace-calculator-ascent" type="number" min="0" step="10" placeholder="e.g. 800">
+    </div>
+    <div class="field">
+      <label for="hiking-pace-calculator-fit">Fitness level</label>
+      <select class="input" id="hiking-pace-calculator-fit">
+        <option value="1.2">Relaxed (+20% time)</option>
+        <option value="1" selected>Average (Naismith standard)</option>
+        <option value="0.8">Fit (−20% time)</option>
+      </select>
+    </div>
+    <div class="field" style="align-self:end">
+      <button class="btn btn-primary" id="hiking-pace-calculator-calc">Estimate time</button>
+    </div>
+  </div>
+  <div class="stat-cards hidden" id="hiking-pace-calculator-out">
+    <div class="stat-card"><div class="v" id="hiking-pace-calculator-time">–</div><div class="l">Estimated time</div></div>
+    <div class="stat-card"><div class="v" id="hiking-pace-calculator-pace">–</div><div class="l">Pace (min/km)</div></div>
+  </div>
+  <div class="result hidden" id="hiking-pace-calculator-break"></div>
+  <p class="note">General information only — not medical advice. Consult a professional for personal guidance. Add buffer for weather, terrain, and rest stops.</p>
+  <div class="error" id="hiking-pace-calculator-error"></div>
+</div>

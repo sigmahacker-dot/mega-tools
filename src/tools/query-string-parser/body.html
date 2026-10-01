@@ -1,0 +1,29 @@
+<div class="tool-card">
+  <div class="field">
+    <label for="query-string-parser-input">URL or query string</label>
+    <textarea class="textarea" id="query-string-parser-input" rows="3" placeholder="https://example.com/search?q=hello+world&amp;tag=a&amp;tag=b"></textarea>
+  </div>
+  <div class="btn-row">
+    <button class="btn btn-primary" id="query-string-parser-parse">Parse</button>
+    <button class="btn btn-outline" id="query-string-parser-sample">Load sample</button>
+  </div>
+  <div class="error" id="query-string-parser-error"></div>
+  <div class="result hidden" id="query-string-parser-result">
+    <div class="field">
+      <label>Decoded parameters</label>
+      <div style="overflow-x:auto">
+        <table class="data" id="query-string-parser-table" style="width:100%">
+          <thead><tr><th>#</th><th>Key</th><th>Value</th></tr></thead>
+          <tbody></tbody>
+        </table>
+      </div>
+    </div>
+    <div class="field">
+      <label for="query-string-parser-json">As JSON (repeats merged into arrays)</label>
+      <div class="copy-row">
+        <code class="code" id="query-string-parser-json" style="flex:1;word-break:break-all"></code>
+        <button class="btn btn-outline" id="query-string-parser-copy">Copy</button>
+      </div>
+    </div>
+  </div>
+</div>

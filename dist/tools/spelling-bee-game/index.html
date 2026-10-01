@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Spelling Bee Game — Free Online | ToolNest</title>
+<meta name="description" content="A spelling bee with spoken words — hear the word, read its definition, then spell it correctly.">
+<meta name="keywords" content="spelling bee, spelling game, spell words, vocabulary game, spelling quiz">
+<link rel="canonical" href="https://toolnest.vercel.app/tools/spelling-bee-game/">
+<meta name="theme-color" content="#07070b">
+<meta property="og:title" content="Spelling Bee Game — Free Online | ToolNest">
+<meta property="og:description" content="A spelling bee with spoken words — hear the word, read its definition, then spell it correctly.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css?v=4">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%23e01111'/><text x='50' y='68' font-size='58' text-anchor='middle' fill='white' font-family='Arial' font-weight='bold'>T</text></svg>">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebApplication","name":"Spelling Bee Game","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0"},"url":"https://toolnest.vercel.app/tools/spelling-bee-game/","description":"A spelling bee with spoken words — hear the word, read its definition, then spell it correctly."},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How do I hear the word?","acceptedAnswer":{"@type":"Answer","text":"Your browser reads the word aloud with speech synthesis — press the speaker button to hear it again."}},{"@type":"Question","name":"Is there a definition clue?","acceptedAnswer":{"@type":"Answer","text":"Every word shows its definition as a clue, just like a real spelling bee."}},{"@type":"Question","name":"How does scoring work?","acceptedAnswer":{"@type":"Answer","text":"Each correct spelling scores 10 points plus a streak bonus; wrong spellings reset the streak."}},{"@type":"Question","name":"How many words are there?","acceptedAnswer":{"@type":"Answer","text":"60 words from easy to tricky, asked in random order without repeats."}}]}]}</script>
+</head>
+<body>
+<header class="site-header">
+  <div class="container">
+    <a class="logo" href="/"><span class="logo-mark">T</span> ToolNest</a>
+    <div class="header-right">
+      <form class="nav-search" action="/" method="get" role="search">
+        <span class="ns-icon">🔍</span>
+        <input type="search" name="q" placeholder="Search tools…" aria-label="Search tools" autocomplete="off">
+      </form>
+      <div class="menu-wrap">
+        <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="menuPanel" aria-label="Open menu"><span></span><span></span><span></span></button>
+        <nav class="menu-panel" id="menuPanel" aria-label="Site">
+          <a href="/">Home</a>
+          <a href="/#categories">Categories</a>
+          <a href="/#all-tools">All Tools</a>
+        </nav>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ADSTERRA-HEADER: paste your Adsterra banner ad code inside the div below -->
+<div class="container"><div class="ad-slot ad-leaderboard" data-ad="header"></div></div>
+
+<main class="container">
+  <nav class="crumbs"><a href="/">Home</a> &rsaquo; <a href="/#fun">Fun &amp; Lifestyle</a> &rsaquo; Spelling Bee Game</nav>
+  <div class="tool-hero">
+    <h1>Spelling Bee Game</h1>
+    <p>A spelling bee with spoken words — hear the word, read its definition, then spell it correctly.</p>
+  </div>
+
+  <div class="tool-card" style="text-align:center">
+  <div class="stat-cards" style="max-width:480px;margin:0 auto 12px">
+    <div class="stat-card"><div class="v" id="spelling-bee-game-score">0</div><div class="l">Score</div></div>
+    <div class="stat-card"><div class="v" id="spelling-bee-game-streak">0</div><div class="l">Streak</div></div>
+    <div class="stat-card"><div class="v" id="spelling-bee-game-done">0/60</div><div class="l">Words</div></div>
+  </div>
+  <button class="btn btn-outline" id="spelling-bee-game-hear" disabled style="font-size:40px;padding:10px 26px;margin:8px 0">🔊</button>
+  <div id="spelling-bee-game-def" style="font-size:18px;max-width:520px;margin:8px auto;min-height:52px;line-height:1.5;font-style:italic">Press Start, then listen and spell the word!</div>
+  <p class="muted" id="spelling-bee-game-msg" style="min-height:24px"></p>
+  <div class="grid2" style="max-width:420px;margin:0 auto 12px">
+    <div class="field" style="text-align:left">
+      <label for="spelling-bee-game-guess">Spell the word</label>
+      <input class="input" id="spelling-bee-game-guess" placeholder="Type the spelling…" autocomplete="off" autocapitalize="off" disabled>
+    </div>
+    <div class="field" style="text-align:left">
+      <label>&nbsp;</label>
+      <button class="btn btn-primary" id="spelling-bee-game-submit" style="width:100%" disabled>Check</button>
+    </div>
+  </div>
+  <div class="btn-row" style="justify-content:center">
+    <button class="btn" id="spelling-bee-game-start">▶ Start</button>
+    <button class="btn btn-outline" id="spelling-bee-game-skip" disabled>Skip ↷</button>
+  </div>
+  <div class="error" id="spelling-bee-game-error"></div>
+</div>
+
+
+  <!-- ADSTERRA-INCONTENT: paste your Adsterra native/in-content ad code inside the div below -->
+  <div class="ad-slot" data-ad="incontent"></div>
+
+  <div class="info-grid">
+    <div class="info-card">
+      <h2>📖 How to use</h2>
+      <ol><li>Press Start, then 🔊 to hear the word.</li><li>Read the definition clue.</li><li>Type the spelling and press Enter.</li><li>Streaks earn bonus points — spell them all!</li></ol>
+    </div>
+    <div class="info-card">
+      <h2>❓ Frequently asked questions</h2>
+      <div class="faq"><details><summary>How do I hear the word?</summary><p>Your browser reads the word aloud with speech synthesis — press the speaker button to hear it again.</p></details><details><summary>Is there a definition clue?</summary><p>Every word shows its definition as a clue, just like a real spelling bee.</p></details><details><summary>How does scoring work?</summary><p>Each correct spelling scores 10 points plus a streak bonus; wrong spellings reset the streak.</p></details><details><summary>How many words are there?</summary><p>60 words from easy to tricky, asked in random order without repeats.</p></details></div>
+    </div>
+  </div>
+
+  <section class="section">
+    <h2>🔗 Related tools</h2>
+    <div class="tool-grid"><a class="tool-link" href="/tools/aim-trainer-game/" data-search="aim trainer game test and train your aim — targets pop up at random spots for 30 seconds. hits, misses and accuracy are tracked live. aim trainer aim test reaction test click speed test fps aim trainer"><span class="t-ico">🎲</span><span class="t-body"><b>Aim Trainer Game</b><small>Test and train your aim — targets pop up at random spots for 30 seconds. Hits, misses and ac…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/baby-name-generator/" data-search="baby name generator discover baby names by gender and origin — pakistani, arabic, western, indian or turkish — with meanings, random picks and tap-to-copy. baby name generator baby names with meanings muslim baby names boy girl names"><span class="t-ico">🎲</span><span class="t-body"><b>Baby Name Generator</b><small>Discover baby names by gender and origin — Pakistani, Arabic, Western, Indian or Turkish — w…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/battery-status-checker/" data-search="battery status checker check your device&#39;s battery level, charging status and estimated time remaining, with live updates — where your browser supports the battery api. battery status battery level checker laptop battery charging status"><span class="t-ico">🎲</span><span class="t-body"><b>Battery Status Checker</b><small>Check your device&#39;s battery level, charging status and estimated time remaining, with live u…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/battleship-game/" data-search="battleship game the classic naval battle — place your 5 ships, then hunt the computer&#39;s fleet on a 10×10 grid with hit, miss, and sunk tracking. battleship game battleship naval battle game sea battle board game"><span class="t-ico">🎲</span><span class="t-body"><b>Battleship Game</b><small>The classic naval battle — place your 5 ships, then hunt the computer&#39;s fleet on a 10×10 gri…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/birthday-countdown/" data-search="birthday countdown enter your birthday for a live countdown to your next one — days, hours, minutes and seconds — plus the age you&#39;ll turn and a fun message. birthday countdown countdown to birthday how old am i birthday timer"><span class="t-ico">🎲</span><span class="t-body"><b>Birthday Countdown</b><small>Enter your birthday for a live countdown to your next one — days, hours, minutes and seconds…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/blackjack-game/" data-search="blackjack game real blackjack — hit, stand, double down, dealer hits to 17, blackjack pays 3:2, with a session bankroll. blackjack blackjack game 21 card game casino card game blackjack online"><span class="t-ico">🎲</span><span class="t-body"><b>Blackjack Game</b><small>Real Blackjack — hit, stand, double down, dealer hits to 17, blackjack pays 3:2, with a sess…</small></span><span class="t-arrow">→</span></a></div>
+  </section>
+</main>
+
+<!-- ADSTERRA-FOOTER: paste your Adsterra footer/banner ad code inside the div below -->
+<div class="container"><div class="ad-slot" data-ad="footer"></div></div>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="f-grid">
+      <div>
+        <span class="brandline"><span class="logo-mark">T</span> ToolNest</span>
+        <p>Free online tools that actually work. No sign-up, no watermarks — and your files never leave your device for client-side tools.</p>
+      </div>
+      <div>
+        <h4>Popular</h4>
+        <a href="/tools/qr-code-generator/">QR Code Generator</a>
+        <a href="/tools/background-remover/">Background Remover</a>
+        <a href="/tools/pdf-merger/">PDF Merger</a>
+        <a href="/tools/word-counter/">Word Counter</a>
+      </div>
+      <div>
+        <h4>Categories</h4>
+        <a href="/#image">Image Tools</a>
+        <a href="/#pdf">PDF &amp; Documents</a>
+        <a href="/#calculators">Calculators</a>
+        <a href="/#developer">Developer Tools</a>
+      </div>
+      <div>
+        <h4>Site</h4>
+        <a href="/">Home</a>
+        <a href="/#all-tools">All Tools</a>
+        <a href="/sitemap.xml">Sitemap</a>
+      </div>
+    </div>
+    <div class="f-bottom">© 2026 ToolNest · Free tools for everyone · Made with care</div>
+  </div>
+</footer>
+
+<script src="/assets/site.js?v=5"></script>
+
+<script>
+/* Spelling Bee — spoken words via SpeechSynthesis, definitions, streak scoring. */
+(function () {
+  'use strict';
+  var SLUG = 'spelling-bee-game';
+  var BANK = [
+    ['beautiful','pleasing the senses or mind; lovely'],
+    ['necessary','required; needed'],
+    ['rhythm','a strong, regular repeated pattern of sound or movement'],
+    ['embarrass','to cause someone to feel awkward or ashamed'],
+    ['occurrence','an incident or event'],
+    ['separate','to divide into different parts'],
+    ['definitely','without doubt; certainly'],
+    ['accommodate','to provide space for someone or something'],
+    ['conscience','the part of you that tells you right from wrong'],
+    ['fluorescent','glowing brightly under ultraviolet light'],
+    ['hierarchy','a system ranking people or things one above another'],
+    ['liaison','a connection or cooperation between people'],
+    ['millennium','a period of one thousand years'],
+    ['noticeable','easy to see or notice'],
+    ['occasion','a particular time or special event'],
+    ['playwright','a person who writes plays'],
+    ['questionnaire','a set of written questions used to gather information'],
+    ['rhinoceros','a large mammal with one or two horns on its nose'],
+    ['souvenir','a keepsake reminding you of a place or event'],
+    ['threshold','the level at which something starts; a doorway sill'],
+    ['vacuum','a space entirely empty of matter'],
+    ['weather','the state of the atmosphere: rain, sun, wind, etc.'],
+    ['weird','strange or uncanny'],
+    ['yacht','a medium-sized sailing or powered boat'],
+    ['zealous','full of passionate energy for a cause'],
+    ['entrepreneur','a person who starts and runs a business'],
+    ['bureaucracy','administration through departments and officials'],
+    ['camouflage','disguise that blends with surroundings'],
+    ['dilemma','a difficult choice between two options'],
+    ['etiquette','the rules of polite behavior'],
+    ['fascinate','to strongly attract or interest'],
+    ['gauge','to measure or estimate'],
+    ['harass','to trouble or annoy persistently'],
+    ['ignorance','lack of knowledge or information'],
+    ['jealous','envious of someone else\u2019s advantages'],
+    ['knowledge','facts and skills acquired through experience'],
+    ['leisure','free time for enjoyment'],
+    ['maintenance','keeping something in good condition'],
+    ['neighbor','a person living near you'],
+    ['obstacle','something that blocks progress'],
+    ['parallel','side by side, never meeting'],
+    ['pneumonia','a serious illness of the lungs'],
+    ['privilege','a special right or advantage'],
+    ['receipt','written proof of payment'],
+    ['rhyme','words with matching ending sounds'],
+    ['schedule','a plan of times for events'],
+    ['siege','a military blockade of a place'],
+    ['tomorrow','the day after today'],
+    ['unnecessary','not needed'],
+    ['village','a small community in the countryside'],
+    ['warrant','an official authorization'],
+    ['xylophone','a musical instrument with wooden bars'],
+    ['yesterday','the day before today'],
+    ['zebra','an African animal with black-and-white stripes'],
+    ['abundance','a very large quantity of something'],
+    ['brilliant','exceptionally clever or bright'],
+    ['courage','bravery in facing danger'],
+    ['dazzling','extremely impressive; shining brightly'],
+    ['envelope','a paper cover for a letter'],
+    ['friendship','a close relationship between friends']
+  ];
+  var order = [], pos = 0, score = 0, streak = 0, solved = 0, playing = false;
+
+  function $(id) { return document.getElementById(id); }
+  function shuffle(a) {
+    for (var i = a.length - 1; i > 0; i--) {
+      var j = Math.floor(Math.random() * (i + 1));
+      var t = a[i]; a[i] = a[j]; a[j] = t;
+    }
+    return a;
+  }
+
+  function speak(word) {
+    try {
+      if (!('speechSynthesis' in window)) {
+        $('spelling-bee-game-msg').textContent = '⚠ Speech not supported in this browser — use the definition clue.';
+        return;
+      }
+      window.speechSynthesis.cancel();
+      var u = new SpeechSynthesisUtterance(word);
+      u.rate = 0.85;
+      u.lang = 'en-US';
+      window.speechSynthesis.speak(u);
+    } catch (e) {
+      $('spelling-bee-game-msg').textContent = '⚠ Could not play audio — use the definition clue.';
+    }
+  }
+
+  function setPlaying(on) {
+    playing = on;
+    $('spelling-bee-game-guess').disabled = !on;
+    $('spelling-bee-game-submit').disabled = !on;
+    $('spelling-bee-game-hear').disabled = !on;
+    $('spelling-bee-game-skip').disabled = !on;
+  }
+
+  function newWord(autoSpeak) {
+    if (pos >= order.length) {
+      $('spelling-bee-game-def').textContent = '🏁 All words done!';
+      $('spelling-bee-game-msg').textContent = 'You spelled ' + solved + ' of ' + BANK.length + ' correctly with ' + score + ' points. Restart to play again!';
+      setPlaying(false);
+      return;
+    }
+    $('spelling-bee-game-def').textContent = '“' + BANK[order[pos]][1] + '”';
+    $('spelling-bee-game-guess').value = '';
+    $('spelling-bee-game-guess').focus();
+    if (autoSpeak) setTimeout(function () { speak(BANK[order[pos]][0]); }, 300);
+  }
+
+  function start() {
+    order = shuffle(BANK.map(function (_, i) { return i; }));
+    pos = 0; score = 0; streak = 0; solved = 0;
+    $('spelling-bee-game-score').textContent = '0';
+    $('spelling-bee-game-streak').textContent = '0';
+    $('spelling-bee-game-done').textContent = '0/' + BANK.length;
+    $('spelling-bee-game-msg').textContent = 'Listen to the word, then spell it!';
+    $('spelling-bee-game-start').textContent = '↻ Restart';
+    setPlaying(true);
+    newWord(true);
+  }
+
+  function check() {
+    if (!playing || pos >= order.length) return;
+    var g = $('spelling-bee-game-guess').value.trim().toLowerCase();
+    if (!g) return;
+    var word = BANK[order[pos]][0];
+    if (g === word) {
+      streak++; solved++;
+      var pts = 10 + (streak - 1) * 2;
+      score += pts;
+      $('spelling-bee-game-score').textContent = score;
+      $('spelling-bee-game-streak').textContent = streak;
+      $('spelling-bee-game-done').textContent = (pos + 1) + '/' + BANK.length;
+      $('spelling-bee-game-msg').textContent = '✓ Correct! "' + word + '" +' + pts + ' points.';
+      pos++;
+      newWord(true);
+    } else {
+      streak = 0;
+      $('spelling-bee-game-streak').textContent = '0';
+      $('spelling-bee-game-msg').textContent = '✗ Not quite — listen again and try once more!';
+      speak(word);
+    }
+  }
+
+  function skip() {
+    if (!playing || pos >= order.length) return;
+    streak = 0;
+    $('spelling-bee-game-streak').textContent = '0';
+    $('spelling-bee-game-done').textContent = (pos + 1) + '/' + BANK.length;
+    $('spelling-bee-game-msg').textContent = 'Skipped — the word was "' + BANK[order[pos]][0] + '".';
+    pos++;
+    newWord(true);
+  }
+
+  try {
+    TN.on('spelling-bee-game-start', 'click', start);
+    TN.on('spelling-bee-game-submit', 'click', check);
+    TN.on('spelling-bee-game-skip', 'click', skip);
+    TN.on('spelling-bee-game-hear', 'click', function () {
+      if (playing && pos < order.length) speak(BANK[order[pos]][0]);
+    });
+    TN.on('spelling-bee-game-guess', 'keydown', function (e) { if (e.key === 'Enter') check(); });
+  } catch (e) { /* never throw on load */ }
+})();
+
+</script>
+</body>
+</html>

@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>System of Equations Solver — Free Online | ToolNest</title>
+<meta name="description" content="Solve 2×2 systems by elimination and 3×3 systems by Gaussian elimination, with every step shown.">
+<meta name="keywords" content="system of equations, solve simultaneous equations, elimination method, gaussian elimination, 3x3 solver">
+<link rel="canonical" href="https://toolnest.vercel.app/tools/system-of-equations-solver/">
+<meta name="theme-color" content="#07070b">
+<meta property="og:title" content="System of Equations Solver — Free Online | ToolNest">
+<meta property="og:description" content="Solve 2×2 systems by elimination and 3×3 systems by Gaussian elimination, with every step shown.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css?v=4">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%23e01111'/><text x='50' y='68' font-size='58' text-anchor='middle' fill='white' font-family='Arial' font-weight='bold'>T</text></svg>">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebApplication","name":"System of Equations Solver","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0"},"url":"https://toolnest.vercel.app/tools/system-of-equations-solver/","description":"Solve 2×2 systems by elimination and 3×3 systems by Gaussian elimination, with every step shown."},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What if there is no unique solution?","acceptedAnswer":{"@type":"Answer","text":"A zero determinant (2×2) or zero pivot (3×3) means the system is inconsistent (no solution) or dependent (infinitely many) — the tool says which."}},{"@type":"Question","name":"What is Gaussian elimination?","acceptedAnswer":{"@type":"Answer","text":"Rows are combined to zero out entries below the diagonal (forward elimination), then variables are solved bottom-up (back substitution)."}},{"@type":"Question","name":"Are the answers checked?","acceptedAnswer":{"@type":"Answer","text":"Yes — the 2×2 solution is plugged back into both equations so you can verify the residuals."}}]}]}</script>
+</head>
+<body>
+<header class="site-header">
+  <div class="container">
+    <a class="logo" href="/"><span class="logo-mark">T</span> ToolNest</a>
+    <div class="header-right">
+      <form class="nav-search" action="/" method="get" role="search">
+        <span class="ns-icon">🔍</span>
+        <input type="search" name="q" placeholder="Search tools…" aria-label="Search tools" autocomplete="off">
+      </form>
+      <div class="menu-wrap">
+        <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="menuPanel" aria-label="Open menu"><span></span><span></span><span></span></button>
+        <nav class="menu-panel" id="menuPanel" aria-label="Site">
+          <a href="/">Home</a>
+          <a href="/#categories">Categories</a>
+          <a href="/#all-tools">All Tools</a>
+        </nav>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ADSTERRA-HEADER: paste your Adsterra banner ad code inside the div below -->
+<div class="container"><div class="ad-slot ad-leaderboard" data-ad="header"></div></div>
+
+<main class="container">
+  <nav class="crumbs"><a href="/">Home</a> &rsaquo; <a href="/#math">Math &amp; Numbers</a> &rsaquo; System of Equations Solver</nav>
+  <div class="tool-hero">
+    <h1>System of Equations Solver</h1>
+    <p>Solve 2×2 systems by elimination and 3×3 systems by Gaussian elimination, with every step shown.</p>
+  </div>
+
+  <div class="tool-card">
+  <div class="field"><label for="system-of-equations-solver-mode">System size</label>
+    <select class="input" id="system-of-equations-solver-mode">
+      <option value="2">2\u00D72 (elimination with steps)</option>
+      <option value="3">3\u00D73 (Gaussian elimination with steps)</option>
+    </select>
+  </div>
+  <div id="system-of-equations-solver-sys2">
+    <div class="grid2">
+      <div class="field"><label>Eq 1: a\u2081x + b\u2081y = c\u2081</label>
+        <div style="display:flex;gap:6px">
+          <input class="input" id="system-of-equations-solver-a1" type="number" value="2" step="any" aria-label="a1">
+          <input class="input" id="system-of-equations-solver-b1" type="number" value="3" step="any" aria-label="b1">
+          <input class="input" id="system-of-equations-solver-c1" type="number" value="13" step="any" aria-label="c1">
+        </div>
+      </div>
+      <div class="field"><label>Eq 2: a\u2082x + b\u2082y = c\u2082</label>
+        <div style="display:flex;gap:6px">
+          <input class="input" id="system-of-equations-solver-a2" type="number" value="1" step="any" aria-label="a2">
+          <input class="input" id="system-of-equations-solver-b2" type="number" value="-1" step="any" aria-label="b2">
+          <input class="input" id="system-of-equations-solver-c2" type="number" value="2" step="any" aria-label="c2">
+        </div>
+      </div>
+    </div>
+  </div>
+  <div id="system-of-equations-solver-sys3" class="hidden">
+    <div class="grid2">
+      <div class="field"><label>Eq 1: a\u2081x + b\u2081y + c\u2081z = d\u2081</label>
+        <div style="display:flex;gap:6px">
+          <input class="input" id="system-of-equations-solver-m11" type="number" value="2" step="any" aria-label="m11">
+          <input class="input" id="system-of-equations-solver-m12" type="number" value="1" step="any" aria-label="m12">
+          <input class="input" id="system-of-equations-solver-m13" type="number" value="-1" step="any" aria-label="m13">
+          <input class="input" id="system-of-equations-solver-d1" type="number" value="8" step="any" aria-label="d1">
+        </div>
+      </div>
+      <div class="field"><label>Eq 2</label>
+        <div style="display:flex;gap:6px">
+          <input class="input" id="system-of-equations-solver-m21" type="number" value="-3" step="any" aria-label="m21">
+          <input class="input" id="system-of-equations-solver-m22" type="number" value="-1" step="any" aria-label="m22">
+          <input class="input" id="system-of-equations-solver-m23" type="number" value="2" step="any" aria-label="m23">
+          <input class="input" id="system-of-equations-solver-d2" type="number" value="-11" step="any" aria-label="d2">
+        </div>
+      </div>
+      <div class="field"><label>Eq 3</label>
+        <div style="display:flex;gap:6px">
+          <input class="input" id="system-of-equations-solver-m31" type="number" value="-2" step="any" aria-label="m31">
+          <input class="input" id="system-of-equations-solver-m32" type="number" value="1" step="any" aria-label="m32">
+          <input class="input" id="system-of-equations-solver-m33" type="number" value="2" step="any" aria-label="m33">
+          <input class="input" id="system-of-equations-solver-d3" type="number" value="-3" step="any" aria-label="d3">
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="btn-row"><button class="btn btn-primary" id="system-of-equations-solver-go">Solve system</button></div>
+  <div class="stat-cards">
+    <div class="stat-card"><div class="v" id="system-of-equations-solver-rx">3.4</div><div class="l">x</div></div>
+    <div class="stat-card"><div class="v" id="system-of-equations-solver-ry">2.07</div><div class="l">y</div></div>
+    <div class="stat-card hidden" id="system-of-equations-solver-rzw"><div class="v" id="system-of-equations-solver-rz">\u2014</div><div class="l">z</div></div>
+  </div>
+  <div class="result"><pre class="code" id="system-of-equations-solver-steps" style="text-align:left;white-space:pre-wrap"></pre></div>
+  <div class="error" id="system-of-equations-solver-error"></div>
+</div>
+
+  <!-- ADSTERRA-INCONTENT: paste your Adsterra native/in-content ad code inside the div below -->
+  <div class="ad-slot" data-ad="incontent"></div>
+
+  <div class="info-grid">
+    <div class="info-card">
+      <h2>📖 How to use</h2>
+      <ol><li>Pick 2×2 or 3×3.</li><li>Type the coefficients of each equation.</li><li>Press Solve system to see the elimination steps and the solution.</li></ol>
+    </div>
+    <div class="info-card">
+      <h2>❓ Frequently asked questions</h2>
+      <div class="faq"><details><summary>What if there is no unique solution?</summary><p>A zero determinant (2×2) or zero pivot (3×3) means the system is inconsistent (no solution) or dependent (infinitely many) — the tool says which.</p></details><details><summary>What is Gaussian elimination?</summary><p>Rows are combined to zero out entries below the diagonal (forward elimination), then variables are solved bottom-up (back substitution).</p></details><details><summary>Are the answers checked?</summary><p>Yes — the 2×2 solution is plugged back into both equations so you can verify the residuals.</p></details></div>
+    </div>
+  </div>
+
+  <section class="section">
+    <h2>🔗 Related tools</h2>
+    <div class="tool-grid"><a class="tool-link" href="/tools/arithmetic-sequence-calculator/" data-search="arithmetic sequence calculator from the first term and common difference get the nth term and the sum of the first n terms. arithmetic sequence arithmetic progression nth term sum of arithmetic series common difference"><span class="t-ico">📐</span><span class="t-body"><b>Arithmetic Sequence Calculator</b><small>From the first term and common difference get the nth term and the sum of the first n terms.</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/binary-adder-calculator/" data-search="binary adder calculator add two binary numbers with every column addition and carry shown, plus a decimal check. binary addition add binary numbers binary adder binary sum binary carry"><span class="t-ico">📐</span><span class="t-body"><b>Binary Adder Calculator</b><small>Add two binary numbers with every column addition and carry shown, plus a decimal check.</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/birthday-paradox-simulator/" data-search="birthday paradox simulator see how likely a shared birthday is: simulate random groups and compare with the exact theoretical probability. birthday paradox birthday problem shared birthday probability birthday collision probability simulation"><span class="t-ico">📐</span><span class="t-body"><b>Birthday Paradox Simulator</b><small>See how likely a shared birthday is: simulate random groups and compare with the exact theor…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/circle-calculator/" data-search="circle calculator enter radius, diameter, circumference or area — get all four circle properties with the formulas shown. circle calculator circumference calculator circle area radius from area diameter calculator"><span class="t-ico">📐</span><span class="t-body"><b>Circle Calculator</b><small>Enter radius, diameter, circumference or area — get all four circle properties with the form…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/clock-angle-calculator/" data-search="clock angle calculator enter a time to get the smaller angle between the hour and minute hands, with the formula and a dial drawing. clock angle angle between hands clock hands angle time angle watch angle calculator"><span class="t-ico">📐</span><span class="t-body"><b>Clock Angle Calculator</b><small>Enter a time to get the smaller angle between the hour and minute hands, with the formula an…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/collatz-sequence-explorer/" data-search="collatz sequence explorer run the 3n+1 collatz sequence from any start: full path, step count, max value and a bar chart. collatz 3n+1 collatz sequence collatz conjecture hailstone sequence"><span class="t-ico">📐</span><span class="t-body"><b>Collatz Sequence Explorer</b><small>Run the 3n+1 Collatz sequence from any start: full path, step count, max value and a bar cha…</small></span><span class="t-arrow">→</span></a></div>
+  </section>
+</main>
+
+<!-- ADSTERRA-FOOTER: paste your Adsterra footer/banner ad code inside the div below -->
+<div class="container"><div class="ad-slot" data-ad="footer"></div></div>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="f-grid">
+      <div>
+        <span class="brandline"><span class="logo-mark">T</span> ToolNest</span>
+        <p>Free online tools that actually work. No sign-up, no watermarks — and your files never leave your device for client-side tools.</p>
+      </div>
+      <div>
+        <h4>Popular</h4>
+        <a href="/tools/qr-code-generator/">QR Code Generator</a>
+        <a href="/tools/background-remover/">Background Remover</a>
+        <a href="/tools/pdf-merger/">PDF Merger</a>
+        <a href="/tools/word-counter/">Word Counter</a>
+      </div>
+      <div>
+        <h4>Categories</h4>
+        <a href="/#image">Image Tools</a>
+        <a href="/#pdf">PDF &amp; Documents</a>
+        <a href="/#calculators">Calculators</a>
+        <a href="/#developer">Developer Tools</a>
+      </div>
+      <div>
+        <h4>Site</h4>
+        <a href="/">Home</a>
+        <a href="/#all-tools">All Tools</a>
+        <a href="/sitemap.xml">Sitemap</a>
+      </div>
+    </div>
+    <div class="f-bottom">© 2026 ToolNest · Free tools for everyone · Made with care</div>
+  </div>
+</footer>
+
+<script src="/assets/site.js?v=5"></script>
+
+<script>
+/* 2x2 elimination + 3x3 Gaussian elimination with steps. */
+(function () {
+  'use strict';
+  var SLUG = 'system-of-equations-solver';
+  function $(id) { return document.getElementById(id); }
+  function err(m) { TN.setErr(SLUG + '-error', m); }
+  function f(x) { return (Math.round(x * 1e8) / 1e8).toString(); }
+  function v(id) { return parseFloat($(SLUG + '-' + id).value); }
+  function solve2() {
+    var a1 = v('a1'), b1 = v('b1'), c1 = v('c1'), a2 = v('a2'), b2 = v('b2'), c2 = v('c2');
+    if ([a1, b1, c1, a2, b2, c2].some(isNaN)) { err('Enter all six coefficients.'); return null; }
+    var lines = [];
+    lines.push('Eq1: ' + f(a1) + 'x + ' + f(b1) + 'y = ' + f(c1));
+    lines.push('Eq2: ' + f(a2) + 'x + ' + f(b2) + 'y = ' + f(c2));
+    var det = a1 * b2 - a2 * b1;
+    lines.push('\nElimination: multiply Eq1 by ' + f(a2) + ', Eq2 by ' + f(a1) + ' to align x, then subtract.');
+    if (Math.abs(det) < 1e-12) {
+      var prop = Math.abs(a1 * c2 - a2 * c1) < 1e-9 && Math.abs(b1 * c2 - b2 * c1) < 1e-9;
+      lines.push(prop ? '\nDependent system \u2192 infinitely many solutions (same line).' : '\nInconsistent system \u2192 no solution (parallel lines).');
+      return { lines: lines, rx: prop ? 'any' : 'none', ry: prop ? 'any' : 'none' };
+    }
+    var x = (c1 * b2 - c2 * b1) / det, y = (a1 * c2 - a2 * c1) / det;
+    lines.push('Determinant D = a\u2081b\u2082 \u2212 a\u2082b\u2081 = ' + f(det));
+    lines.push('x = (c\u2081b\u2082 \u2212 c\u2082b\u2081) / D = ' + f(x));
+    lines.push('y = (a\u2081c\u2082 \u2212 a\u2082c\u2081) / D = ' + f(y));
+    lines.push('Check Eq1: ' + f(a1 * x + b1 * y) + ' \u2248 ' + f(c1) + '   Check Eq2: ' + f(a2 * x + b2 * y) + ' \u2248 ' + f(c2));
+    return { lines: lines, rx: f(x), ry: f(y) };
+  }
+  function solve3() {
+    var ids = ['m11', 'm12', 'm13', 'd1', 'm21', 'm22', 'm23', 'd2', 'm31', 'm32', 'm33', 'd3'];
+    var vals = ids.map(v);
+    if (vals.some(isNaN)) { err('Enter all twelve coefficients.'); return null; }
+    var M = [[vals[0], vals[1], vals[2], vals[3]], [vals[4], vals[5], vals[6], vals[7]], [vals[8], vals[9], vals[10], vals[11]]];
+    var lines = ['Augmented matrix:'];
+    function row(r) { return '[ ' + M[r].slice(0, 3).map(f).join('  ') + ' | ' + f(M[r][3]) + ' ]'; }
+    for (var i = 0; i < 3; i++) lines.push('  ' + row(i));
+    lines.push('\nForward elimination:');
+    for (var col = 0; col < 3; col++) {
+      var piv = col;
+      for (var r2 = col + 1; r2 < 3; r2++) if (Math.abs(M[r2][col]) > Math.abs(M[piv][col])) piv = r2;
+      if (Math.abs(M[piv][col]) < 1e-12) { lines.push('\nZero pivot in column ' + (col + 1) + ' \u2192 no unique solution.'); return { lines: lines, rx: 'none', ry: 'none', rz: 'none' }; }
+      if (piv !== col) { var tmp = M[col]; M[col] = M[piv]; M[piv] = tmp; lines.push('Swap R' + (col + 1) + ' \u2194 R' + (piv + 1)); }
+      for (var r3 = col + 1; r3 < 3; r3++) {
+        var factor = M[r3][col] / M[col][col];
+        lines.push('R' + (r3 + 1) + ' \u2190 R' + (r3 + 1) + ' \u2212 (' + f(factor) + ')\u00D7R' + (col + 1));
+        for (var k = col; k < 4; k++) M[r3][k] -= factor * M[col][k];
+      }
+      for (var rr = 0; rr < 3; rr++) lines.push('  ' + row(rr));
+    }
+    lines.push('\nBack substitution:');
+    var sol = [0, 0, 0];
+    for (var i2 = 2; i2 >= 0; i2--) {
+      var s = M[i2][3];
+      for (var j = i2 + 1; j < 3; j++) s -= M[i2][j] * sol[j];
+      sol[i2] = s / M[i2][i2];
+      lines.push(['x', 'y', 'z'][i2] + ' = ' + f(sol[i2]));
+    }
+    return { lines: lines, rx: f(sol[0]), ry: f(sol[1]), rz: f(sol[2]) };
+  }
+  function calc() {
+    TN.clearErr(SLUG + '-error');
+    var mode = $(SLUG + '-mode').value;
+    $(SLUG + '-sys2').classList.toggle('hidden', mode !== '2');
+    $(SLUG + '-sys3').classList.toggle('hidden', mode !== '3');
+    $(SLUG + '-rzw').classList.toggle('hidden', mode !== '3');
+    var r = mode === '2' ? solve2() : solve3();
+    if (!r) return;
+    $(SLUG + '-rx').textContent = r.rx;
+    $(SLUG + '-ry').textContent = r.ry;
+    if (r.rz !== undefined) $(SLUG + '-rz').textContent = r.rz;
+    $(SLUG + '-steps').textContent = r.lines.join('\n');
+  }
+  try {
+    TN.on(SLUG + '-go', 'click', calc);
+    TN.on(SLUG + '-mode', 'change', calc);
+    var all = ['a1', 'b1', 'c1', 'a2', 'b2', 'c2', 'm11', 'm12', 'm13', 'd1', 'm21', 'm22', 'm23', 'd2', 'm31', 'm32', 'm33', 'd3'];
+    all.forEach(function (id) { TN.on(SLUG + '-' + id, 'input', TN.debounce(calc, 400)); });
+    calc();
+  } catch (e) {}
+})();
+</script>
+</body>
+</html>

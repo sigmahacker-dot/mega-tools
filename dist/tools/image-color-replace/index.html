@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Image Color Replace — Free Online | ToolNest</title>
+<meta name="description" content="Click a color in your photo and replace it with any target color using a tolerance slider.">
+<meta name="keywords" content="replace color image, change color photo, color swap, recolor image">
+<link rel="canonical" href="https://toolnest.vercel.app/tools/image-color-replace/">
+<meta name="theme-color" content="#07070b">
+<meta property="og:title" content="Image Color Replace — Free Online | ToolNest">
+<meta property="og:description" content="Click a color in your photo and replace it with any target color using a tolerance slider.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css?v=4">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%23e01111'/><text x='50' y='68' font-size='58' text-anchor='middle' fill='white' font-family='Arial' font-weight='bold'>T</text></svg>">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebApplication","name":"Image Color Replace","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0"},"url":"https://toolnest.vercel.app/tools/image-color-replace/","description":"Click a color in your photo and replace it with any target color using a tolerance slider."},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How does color replacement work?","acceptedAnswer":{"@type":"Answer","text":"Click the image to sample a source color, set how close other pixels must be (tolerance), then pick the replacement color."}},{"@type":"Question","name":"Is the preview live?","acceptedAnswer":{"@type":"Answer","text":"Yes — the preview updates live as you change the tolerance or target color."}},{"@type":"Question","name":"What is it good for?","acceptedAnswer":{"@type":"Answer","text":"Backgrounds, skies, clothing and solid product shots."}}]}]}</script>
+</head>
+<body>
+<header class="site-header">
+  <div class="container">
+    <a class="logo" href="/"><span class="logo-mark">T</span> ToolNest</a>
+    <div class="header-right">
+      <form class="nav-search" action="/" method="get" role="search">
+        <span class="ns-icon">🔍</span>
+        <input type="search" name="q" placeholder="Search tools…" aria-label="Search tools" autocomplete="off">
+      </form>
+      <div class="menu-wrap">
+        <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="menuPanel" aria-label="Open menu"><span></span><span></span><span></span></button>
+        <nav class="menu-panel" id="menuPanel" aria-label="Site">
+          <a href="/">Home</a>
+          <a href="/#categories">Categories</a>
+          <a href="/#all-tools">All Tools</a>
+        </nav>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ADSTERRA-HEADER: paste your Adsterra banner ad code inside the div below -->
+<div class="container"><div class="ad-slot ad-leaderboard" data-ad="header"></div></div>
+
+<main class="container">
+  <nav class="crumbs"><a href="/">Home</a> &rsaquo; <a href="/#image">Image Tools</a> &rsaquo; Image Color Replace</nav>
+  <div class="tool-hero">
+    <h1>Image Color Replace</h1>
+    <p>Click a color in your photo and replace it with any target color using a tolerance slider.</p>
+  </div>
+
+  <div class="tool-card">
+  <div class="dropzone" id="image-color-replace-drop">
+    <span class="dz-icon">🎯</span>
+    <strong>Drop an image here</strong> or click to browse — then click a color in the image
+    <input type="file" id="image-color-replace-file" accept="image/*" class="hidden">
+  </div>
+  <div class="preview hidden" id="image-color-replace-wrap" style="text-align:center">
+    <canvas id="image-color-replace-canvas" style="max-width:100%;height:auto;border-radius:8px;cursor:crosshair"></canvas>
+  </div>
+  <div class="grid2">
+    <div class="field">
+      <label for="image-color-replace-tol">Tolerance: <span id="image-color-replace-tol-val">40</span></label>
+      <input type="range" id="image-color-replace-tol" min="0" max="200" value="40">
+      <span class="hint">Click the image first to sample a source color.</span>
+    </div>
+    <div class="field">
+      <label for="image-color-replace-target">Target color</label>
+      <input type="color" id="image-color-replace-target" class="input" value="#ff0000">
+      <div class="stat-card" style="margin-top:8px"><div class="l">Sampled source color</div><div class="v" id="image-color-replace-src">none — click the image</div></div>
+    </div>
+  </div>
+  <div class="btn-row">
+    <button class="btn btn-primary" id="image-color-replace-download">Download PNG</button>
+  </div>
+  <div class="error" id="image-color-replace-error"></div>
+  <p class="note">Files never leave your device — everything is processed in your browser.</p>
+</div>
+
+  <!-- ADSTERRA-INCONTENT: paste your Adsterra native/in-content ad code inside the div below -->
+  <div class="ad-slot" data-ad="incontent"></div>
+
+  <div class="info-grid">
+    <div class="info-card">
+      <h2>📖 How to use</h2>
+      <ol><li>Drop an image into the tool and click a color in it to sample.</li><li>Adjust the tolerance slider.</li><li>Pick the target color, then click Download PNG.</li></ol>
+    </div>
+    <div class="info-card">
+      <h2>❓ Frequently asked questions</h2>
+      <div class="faq"><details><summary>How does color replacement work?</summary><p>Click the image to sample a source color, set how close other pixels must be (tolerance), then pick the replacement color.</p></details><details><summary>Is the preview live?</summary><p>Yes — the preview updates live as you change the tolerance or target color.</p></details><details><summary>What is it good for?</summary><p>Backgrounds, skies, clothing and solid product shots.</p></details></div>
+    </div>
+  </div>
+
+  <section class="section">
+    <h2>🔗 Related tools</h2>
+    <div class="tool-grid"><a class="tool-link" href="/tools/app-icon-resizer/" data-search="app icon resizer generate every common app icon size from one image — 16, 32, 48, 180, 192 and 512 px — with instant preview and one-click png downloads. app icon resizer icon generator favicon sizes pwa icon apple touch icon generator"><span class="t-ico">🖼️</span><span class="t-body"><b>App Icon Resizer</b><small>Generate every common app icon size from one image — 16, 32, 48, 180, 192 and 512 px — with …</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/background-remover/" data-search="background remover remove the background from any photo with real on-device ai and download a transparent png. free, private and unlimited — no sign-up needed. background remover remove image background transparent png maker"><span class="t-ico">🖼️</span><span class="t-body"><b>Background Remover</b><small>Remove the background from any photo with real on-device AI and download a transparent PNG. …</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/before-after-slider-maker/" data-search="before/after slider maker upload two photos and get a standalone before/after comparison slider as an html file. before after slider image comparison slider photo compare html before after html"><span class="t-ico">🖼️</span><span class="t-body"><b>Before/After Slider Maker</b><small>Upload two photos and get a standalone before/after comparison slider as an HTML file.</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/business-card-maker/" data-search="business card maker design a business card front (1050×600): your name, role and contact details, color themes, live preview, and a png download. business card maker business card design business card png visiting card maker card designer"><span class="t-ico">🖼️</span><span class="t-body"><b>Business Card Maker</b><small>Design a business card front (1050×600): your name, role and contact details, color themes, …</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/certificate-maker/" data-search="certificate maker design printable certificates: recipient name, course title, date and signature line, live preview, and a high-res png download. certificate maker certificate generator certificate png award certificate maker printable certificate"><span class="t-ico">🖼️</span><span class="t-body"><b>Certificate Maker</b><small>Design printable certificates: recipient name, course title, date and signature line, live p…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/favicon-generator/" data-search="favicon generator generate a complete png favicon set (16–512 px) from your logo in one click, download it as a zip, and copy the ready-to-paste html link tags. favicon generator favicon maker png favicon"><span class="t-ico">🖼️</span><span class="t-body"><b>Favicon Generator</b><small>Generate a complete PNG favicon set (16–512 px) from your logo in one click, download it as …</small></span><span class="t-arrow">→</span></a></div>
+  </section>
+</main>
+
+<!-- ADSTERRA-FOOTER: paste your Adsterra footer/banner ad code inside the div below -->
+<div class="container"><div class="ad-slot" data-ad="footer"></div></div>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="f-grid">
+      <div>
+        <span class="brandline"><span class="logo-mark">T</span> ToolNest</span>
+        <p>Free online tools that actually work. No sign-up, no watermarks — and your files never leave your device for client-side tools.</p>
+      </div>
+      <div>
+        <h4>Popular</h4>
+        <a href="/tools/qr-code-generator/">QR Code Generator</a>
+        <a href="/tools/background-remover/">Background Remover</a>
+        <a href="/tools/pdf-merger/">PDF Merger</a>
+        <a href="/tools/word-counter/">Word Counter</a>
+      </div>
+      <div>
+        <h4>Categories</h4>
+        <a href="/#image">Image Tools</a>
+        <a href="/#pdf">PDF &amp; Documents</a>
+        <a href="/#calculators">Calculators</a>
+        <a href="/#developer">Developer Tools</a>
+      </div>
+      <div>
+        <h4>Site</h4>
+        <a href="/">Home</a>
+        <a href="/#all-tools">All Tools</a>
+        <a href="/sitemap.xml">Sitemap</a>
+      </div>
+    </div>
+    <div class="f-bottom">© 2026 ToolNest · Free tools for everyone · Made with care</div>
+  </div>
+</footer>
+
+<script src="/assets/site.js?v=5"></script>
+
+<script>
+/* Image Color Replace — click to sample source color, tolerance + target color, PNG download. */
+(function () {
+  'use strict';
+  var SLUG = 'image-color-replace';
+  var img = null, base = 'image';
+  var srcColor = null;
+
+  function canvas() { return TN.el(SLUG + '-canvas'); }
+  function tolerance() {
+    var el = TN.el(SLUG + '-tol');
+    return el ? parseFloat(el.value) || 0 : 40;
+  }
+  function hexToRgb(hex) {
+    var h = (hex || '#ff0000').replace('#', '');
+    if (h.length === 3) h = h[0] + h[0] + h[1] + h[1] + h[2] + h[2];
+    var n = parseInt(h, 16);
+    return [n >> 16 & 255, n >> 8 & 255, n & 255];
+  }
+  function rgbStr(c) { return 'rgb(' + c[0] + ', ' + c[1] + ', ' + c[2] + ')'; }
+
+  function loadFile(f) {
+    if (!f) return;
+    TN.clearErr(SLUG + '-error');
+    srcColor = null;
+    var sv = TN.el(SLUG + '-src');
+    if (sv) sv.textContent = 'none — click the image';
+    base = (f.name || 'image').replace(/\.[^.]+$/, '') || 'image';
+    TN.readAsDataURL(f).then(TN.loadImage).then(function (im) {
+      img = im;
+      var c = canvas();
+      c.width = im.naturalWidth; c.height = im.naturalHeight;
+      TN.show(SLUG + '-wrap');
+      apply();
+    }).catch(function () {
+      TN.setErr(SLUG + '-error', 'Could not read that image file.');
+    });
+  }
+
+  function apply() {
+    if (!img) return;
+    var c = canvas(), x = c.getContext('2d');
+    x.drawImage(img, 0, 0);
+    if (!srcColor) return;
+    var id = x.getImageData(0, 0, c.width, c.height), d = id.data;
+    var tol = tolerance(), tol2 = tol * tol;
+    var tgt = hexToRgb(TN.el(SLUG + '-target') && TN.el(SLUG + '-target').value);
+    for (var i = 0; i < d.length; i += 4) {
+      var dr = d[i] - srcColor[0], dg = d[i + 1] - srcColor[1], db = d[i + 2] - srcColor[2];
+      if (dr * dr + dg * dg + db * db <= tol2) {
+        d[i] = tgt[0]; d[i + 1] = tgt[1]; d[i + 2] = tgt[2];
+      }
+    }
+    x.putImageData(id, 0, 0);
+  }
+
+  function pickColor(e) {
+    if (!img) return;
+    var c = canvas();
+    var rect = c.getBoundingClientRect();
+    var px = Math.floor((e.clientX - rect.left) * (c.width / rect.width));
+    var py = Math.floor((e.clientY - rect.top) * (c.height / rect.height));
+    var x = c.getContext('2d');
+    var id = x.getImageData(Math.max(0, Math.min(c.width - 1, px)), Math.max(0, Math.min(c.height - 1, py)), 1, 1);
+    srcColor = [id.data[0], id.data[1], id.data[2]];
+    var sv = TN.el(SLUG + '-src');
+    if (sv) sv.textContent = rgbStr(srcColor);
+    apply();
+  }
+
+  function download() {
+    if (!img) { TN.setErr(SLUG + '-error', 'Choose an image first.'); return; }
+    canvas().toBlob(function (b) {
+      if (b) TN.download(b, base + '-recolored.png');
+      else TN.setErr(SLUG + '-error', 'Your browser could not encode the PNG.');
+    }, 'image/png');
+  }
+
+  var dz = TN.el(SLUG + '-drop'), input = TN.el(SLUG + '-file');
+  if (dz && input) {
+    dz.addEventListener('click', function () { input.click(); });
+    input.addEventListener('change', function () {
+      if (input.files && input.files[0]) loadFile(input.files[0]);
+      input.value = '';
+    });
+    ['dragover', 'dragenter'].forEach(function (ev) {
+      dz.addEventListener(ev, function (e) { e.preventDefault(); dz.classList.add('dragover'); });
+    });
+    ['dragleave', 'drop'].forEach(function (ev) {
+      dz.addEventListener(ev, function (e) { e.preventDefault(); dz.classList.remove('dragover'); });
+    });
+    dz.addEventListener('drop', function (e) {
+      if (e.dataTransfer && e.dataTransfer.files && e.dataTransfer.files[0]) loadFile(e.dataTransfer.files[0]);
+    });
+  }
+  var cv = TN.el(SLUG + '-canvas');
+  if (cv) cv.addEventListener('click', pickColor);
+  TN.on(SLUG + '-tol', 'input', function () {
+    var el = TN.el(SLUG + '-tol'), v = TN.el(SLUG + '-tol-val');
+    if (el && v) v.textContent = el.value;
+    apply();
+  });
+  TN.on(SLUG + '-target', 'input', apply);
+  TN.on(SLUG + '-download', 'click', download);
+})();
+
+</script>
+</body>
+</html>

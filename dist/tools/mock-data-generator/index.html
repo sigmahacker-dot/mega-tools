@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mock Data Generator — Free Online | ToolNest</title>
+<meta name="description" content="Define fields (name, email, phone, uuid, lorem, number, date…) and generate realistic JSON or CSV rows.">
+<meta name="keywords" content="mock data generator, fake data generator, test data, json mock data, csv generator">
+<link rel="canonical" href="https://toolnest.vercel.app/tools/mock-data-generator/">
+<meta name="theme-color" content="#07070b">
+<meta property="og:title" content="Mock Data Generator — Free Online | ToolNest">
+<meta property="og:description" content="Define fields (name, email, phone, uuid, lorem, number, date…) and generate realistic JSON or CSV rows.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css?v=4">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%23e01111'/><text x='50' y='68' font-size='58' text-anchor='middle' fill='white' font-family='Arial' font-weight='bold'>T</text></svg>">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebApplication","name":"Mock Data Generator","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0"},"url":"https://toolnest.vercel.app/tools/mock-data-generator/","description":"Define fields (name, email, phone, uuid, lorem, number, date…) and generate realistic JSON or CSV rows."},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Which field types are available?","acceptedAnswer":{"@type":"Answer","text":"name, email, phone, company, city, lorem, number, date, boolean, and uuid."}},{"@type":"Question","name":"How many rows can I generate?","acceptedAnswer":{"@type":"Answer","text":"Yes — generate 1 to 1000 rows per click."}},{"@type":"Question","name":"Which output formats are supported?","acceptedAnswer":{"@type":"Answer","text":"JSON array or CSV with headers — download either as a file."}},{"@type":"Question","name":"Is the data real?","acceptedAnswer":{"@type":"Answer","text":"No — the data is randomly generated placeholder text, fine for dev and demos."}}]}]}</script>
+</head>
+<body>
+<header class="site-header">
+  <div class="container">
+    <a class="logo" href="/"><span class="logo-mark">T</span> ToolNest</a>
+    <div class="header-right">
+      <form class="nav-search" action="/" method="get" role="search">
+        <span class="ns-icon">🔍</span>
+        <input type="search" name="q" placeholder="Search tools…" aria-label="Search tools" autocomplete="off">
+      </form>
+      <div class="menu-wrap">
+        <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="menuPanel" aria-label="Open menu"><span></span><span></span><span></span></button>
+        <nav class="menu-panel" id="menuPanel" aria-label="Site">
+          <a href="/">Home</a>
+          <a href="/#categories">Categories</a>
+          <a href="/#all-tools">All Tools</a>
+        </nav>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ADSTERRA-HEADER: paste your Adsterra banner ad code inside the div below -->
+<div class="container"><div class="ad-slot ad-leaderboard" data-ad="header"></div></div>
+
+<main class="container">
+  <nav class="crumbs"><a href="/">Home</a> &rsaquo; <a href="/#developer">Developer Tools</a> &rsaquo; Mock Data Generator</nav>
+  <div class="tool-hero">
+    <h1>Mock Data Generator</h1>
+    <p>Define fields (name, email, phone, uuid, lorem, number, date…) and generate realistic JSON or CSV rows.</p>
+  </div>
+
+  <div class="tool-card">
+  <div class="field">
+    <label>Fields</label>
+    <div id="mock-data-generator-fields"></div>
+    <div class="btn-row" style="margin-top:8px"><button class="btn btn-outline" id="mock-data-generator-add">+ Add field</button></div>
+  </div>
+  <div class="grid2">
+    <div class="field">
+      <label for="mock-data-generator-rows">Rows (1–1000)</label>
+      <input type="number" class="input" id="mock-data-generator-rows" min="1" max="1000" value="10">
+    </div>
+    <div class="field">
+      <label for="mock-data-generator-format">Format</label>
+      <select class="input" id="mock-data-generator-format">
+        <option value="json">JSON</option>
+        <option value="csv">CSV</option>
+      </select>
+    </div>
+  </div>
+  <div class="btn-row">
+    <button class="btn btn-primary" id="mock-data-generator-generate">Generate</button>
+  </div>
+  <div class="error" id="mock-data-generator-error"></div>
+  <div class="field">
+    <label for="mock-data-generator-output">Output</label>
+    <textarea class="textarea" id="mock-data-generator-output" rows="12" readonly placeholder="Generated data will appear here…"></textarea>
+  </div>
+  <div class="btn-row">
+    <button class="btn btn-outline" id="mock-data-generator-copy">Copy</button>
+    <button class="btn btn-outline" id="mock-data-generator-download">Download</button>
+  </div>
+</div>
+
+
+  <!-- ADSTERRA-INCONTENT: paste your Adsterra native/in-content ad code inside the div below -->
+  <div class="ad-slot" data-ad="incontent"></div>
+
+  <div class="info-grid">
+    <div class="info-card">
+      <h2>📖 How to use</h2>
+      <ol><li>Add field rows and pick a type for each.</li><li>Set how many rows to generate.</li><li>Generate — view as JSON or CSV, copy or download.</li></ol>
+    </div>
+    <div class="info-card">
+      <h2>❓ Frequently asked questions</h2>
+      <div class="faq"><details><summary>Which field types are available?</summary><p>name, email, phone, company, city, lorem, number, date, boolean, and uuid.</p></details><details><summary>How many rows can I generate?</summary><p>Yes — generate 1 to 1000 rows per click.</p></details><details><summary>Which output formats are supported?</summary><p>JSON array or CSV with headers — download either as a file.</p></details><details><summary>Is the data real?</summary><p>No — the data is randomly generated placeholder text, fine for dev and demos.</p></details></div>
+    </div>
+  </div>
+
+  <section class="section">
+    <h2>🔗 Related tools</h2>
+    <div class="tool-grid"><a class="tool-link" href="/tools/ascii-table-reference/" data-search="ascii table reference full ascii table 0–127: decimal, hex, octal, character, control-code names and html entities — searchable. ascii table ascii codes ascii chart control characters ascii reference"><span class="t-ico">💻</span><span class="t-body"><b>ASCII Table Reference</b><small>Full ASCII table 0–127: decimal, hex, octal, character, control-code names and HTML entities…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/base64-encoder-decoder/" data-search="base64 encoder / decoder encode text to base64 or decode base64 back to text, with full utf-8 support and a file-to-data-url converter. base64 encoder base64 decoder base64 encode base64 decode file to base64"><span class="t-ico">💻</span><span class="t-body"><b>Base64 Encoder / Decoder</b><small>Encode text to Base64 or decode Base64 back to text, with full UTF-8 support and a file-to-d…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/binary-text-converter/" data-search="binary and text converter convert text to binary or hex and back, with full utf-8 awareness and strict input validation. binary to text text to binary hex to text converter"><span class="t-ico">💻</span><span class="t-body"><b>Binary and Text Converter</b><small>Convert text to binary or hex and back, with full UTF-8 awareness and strict input validatio…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/changelog-generator/" data-search="changelog generator build a keep-a-changelog markdown file: version, date, and grouped added/fixed/changed entries. changelog generator keep a changelog changelog markdown release notes version changelog"><span class="t-ico">💻</span><span class="t-body"><b>Changelog Generator</b><small>Build a Keep-a-Changelog markdown file: version, date, and grouped Added/Fixed/Changed entri…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/character-escape-reference/" data-search="character escape reference searchable reference of characters with their html entities, url encodings, and js escapes — plus a live encoder. character escape reference html entities url encode unicode escape html entity table"><span class="t-ico">💻</span><span class="t-body"><b>Character Escape Reference</b><small>Searchable reference of characters with their HTML entities, URL encodings, and JS escapes —…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/chmod-calculator/" data-search="chmod calculator tick rwx boxes for user/group/other — or type 755 — and see octal, symbolic, and the chmod command live. chmod calculator chmod 755 linux permissions octal permissions rwx calculator"><span class="t-ico">💻</span><span class="t-body"><b>chmod Calculator</b><small>Tick rwx boxes for user/group/other — or type 755 — and see octal, symbolic, and the chmod c…</small></span><span class="t-arrow">→</span></a></div>
+  </section>
+</main>
+
+<!-- ADSTERRA-FOOTER: paste your Adsterra footer/banner ad code inside the div below -->
+<div class="container"><div class="ad-slot" data-ad="footer"></div></div>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="f-grid">
+      <div>
+        <span class="brandline"><span class="logo-mark">T</span> ToolNest</span>
+        <p>Free online tools that actually work. No sign-up, no watermarks — and your files never leave your device for client-side tools.</p>
+      </div>
+      <div>
+        <h4>Popular</h4>
+        <a href="/tools/qr-code-generator/">QR Code Generator</a>
+        <a href="/tools/background-remover/">Background Remover</a>
+        <a href="/tools/pdf-merger/">PDF Merger</a>
+        <a href="/tools/word-counter/">Word Counter</a>
+      </div>
+      <div>
+        <h4>Categories</h4>
+        <a href="/#image">Image Tools</a>
+        <a href="/#pdf">PDF &amp; Documents</a>
+        <a href="/#calculators">Calculators</a>
+        <a href="/#developer">Developer Tools</a>
+      </div>
+      <div>
+        <h4>Site</h4>
+        <a href="/">Home</a>
+        <a href="/#all-tools">All Tools</a>
+        <a href="/sitemap.xml">Sitemap</a>
+      </div>
+    </div>
+    <div class="f-bottom">© 2026 ToolNest · Free tools for everyone · Made with care</div>
+  </div>
+</footer>
+
+<script src="/assets/site.js?v=5"></script>
+
+<script>
+/* Mock Data Generator — typed field rows → realistic JSON/CSV rows. */
+(function () {
+  'use strict';
+  var SLUG = 'mock-data-generator';
+  var TYPES = ['name', 'email', 'phone', 'company', 'city', 'lorem', 'number', 'date', 'boolean', 'uuid'];
+
+  var FIRST = ['Ava', 'Liam', 'Mia', 'Noah', 'Zoe', 'Ethan', 'Ruby', 'Leo', 'Ivy', 'Owen',
+    'Aria', 'Kai', 'Nora', 'Felix', 'Lena', 'Omar', 'Priya', 'Sara', 'Tom', 'Uma'];
+  var LAST = ['Smith', 'Khan', 'Garcia', 'Kim', 'Novak', 'Ali', 'Brown', 'Silva', 'Rossi', 'Haddad',
+    'Meyer', 'Dubois', 'Tanaka', 'Ivanov', 'Okafor', 'Larsen', 'Costa', 'Weber', 'Fischer', 'Aziz'];
+  var COMPANIES = ['Acme', 'Globex', 'Initech', 'Umbrella', 'Hooli', 'Stark', 'Wayne', 'Massive Dynamic',
+    'Cyberdyne', 'Soylent', 'Tyrell', 'Aperture', 'Wonka', 'Gekko', 'Nakatomi'];
+  var SUFFIX = ['Inc', 'LLC', 'Ltd', 'GmbH', 'Co', 'Labs', 'Systems', 'Group'];
+  var CITIES = ['Karachi', 'Lahore', 'Islamabad', 'London', 'New York', 'Tokyo', 'Berlin', 'Paris',
+    'Dubai', 'Toronto', 'Sydney', 'Mumbai', 'Cairo', 'Istanbul', 'Nairobi'];
+  var WORDS = ('lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod tempor ' +
+    'incididunt ut labore et dolore magna aliqua enim quis nostrud exercitation ullamco laboris ' +
+    'nisi aliquip ex ea commodo consequat duis aute irure in reprehenderit voluptate velit esse ' +
+    'cillum fugiat nulla pariatur excepteur sint occaecat cupidatat non proident sunt culpa qui ' +
+    'officia deserunt mollit anim id est laborum').split(' ');
+
+  function el(id) { return document.getElementById(id); }
+  function fail(msg) { TN.setErr(SLUG + '-error', msg); }
+  function clear() { TN.clearErr(SLUG + '-error'); }
+  function pick(a) { return a[Math.floor(Math.random() * a.length)]; }
+  function ri(min, max) { return min + Math.floor(Math.random() * (max - min + 1)); }
+
+  function uuid() {
+    var b = new Uint8Array(16);
+    crypto.getRandomValues(b);
+    b[6] = (b[6] & 0x0f) | 0x40;
+    b[8] = (b[8] & 0x3f) | 0x80;
+    var h = Array.prototype.map.call(b, function (x) {
+      return ('0' + x.toString(16)).slice(-2);
+    }).join('');
+    return h.slice(0, 8) + '-' + h.slice(8, 12) + '-' + h.slice(12, 16) + '-' +
+           h.slice(16, 20) + '-' + h.slice(20);
+  }
+
+  function genValue(type) {
+    switch (type) {
+      case 'name': return pick(FIRST) + ' ' + pick(LAST);
+      case 'email': {
+        var n = pick(FIRST).toLowerCase() + '.' + pick(LAST).toLowerCase();
+        return n + ri(1, 999) + '@example.com';
+      }
+      case 'phone': return '+' + ri(1, 99) + ' ' + ri(100, 999) + ' ' + ri(100, 999) + ' ' + ri(1000, 9999);
+      case 'company': return pick(COMPANIES) + ' ' + pick(SUFFIX);
+      case 'city': return pick(CITIES);
+      case 'lorem': {
+        var n = ri(6, 14), s = [];
+        for (var i = 0; i < n; i++) s.push(pick(WORDS));
+        return s.join(' ');
+      }
+      case 'number': return ri(1, 10000);
+      case 'date': {
+        var d = new Date(ri(2020, 2026), ri(0, 11), ri(1, 28));
+        return d.toISOString().slice(0, 10);
+      }
+      case 'boolean': return Math.random() < 0.5;
+      case 'uuid': return uuid();
+      default: return '';
+    }
+  }
+
+  function addRow(name, type) {
+    var wrap = document.createElement('div');
+    wrap.style.cssText = 'display:flex;gap:8px;margin-bottom:8px';
+    var ni = document.createElement('input');
+    ni.className = 'input'; ni.placeholder = 'field name'; ni.value = name || '';
+    ni.setAttribute('aria-label', 'Field name');
+    var sel = document.createElement('select');
+    sel.className = 'input';
+    sel.style.flex = '1.4';
+    sel.setAttribute('aria-label', 'Field type');
+    TYPES.forEach(function (t) {
+      var o = document.createElement('option');
+      o.value = t; o.textContent = t;
+      if (t === type) o.selected = true;
+      sel.appendChild(o);
+    });
+    var rm = document.createElement('button');
+    rm.className = 'btn btn-outline'; rm.textContent = '✕';
+    rm.setAttribute('aria-label', 'Remove field');
+    rm.addEventListener('click', function () { wrap.remove(); });
+    wrap.appendChild(ni); wrap.appendChild(sel); wrap.appendChild(rm);
+    el(SLUG + '-fields').appendChild(wrap);
+  }
+
+  function csvCell(v) {
+    var s = String(v);
+    return /[",\n]/.test(s) ? '"' + s.replace(/"/g, '""') + '"' : s;
+  }
+
+  function generate() {
+    clear();
+    var rows = el(SLUG + '-fields').children;
+    var fields = [];
+    for (var i = 0; i < rows.length; i++) {
+      var ins = rows[i].querySelectorAll('input,select');
+      var name = ins[0].value.trim().replace(/\s+/g, '_').toLowerCase() || ('field' + (i + 1));
+      fields.push({ name: name, type: ins[1].value });
+    }
+    if (!fields.length) { fail('Add at least one field.'); return; }
+    var count = parseInt(el(SLUG + '-rows').value, 10);
+    if (!count || count < 1 || count > 1000) { fail('Rows must be between 1 and 1000.'); return; }
+    var data = [];
+    for (var r = 0; r < count; r++) {
+      var obj = {};
+      fields.forEach(function (f) { obj[f.name] = genValue(f.type); });
+      data.push(obj);
+    }
+    var out, ext, mime;
+    if (el(SLUG + '-format').value === 'csv') {
+      var head = fields.map(function (f) { return csvCell(f.name); }).join(',');
+      var lines = data.map(function (o) {
+        return fields.map(function (f) { return csvCell(o[f.name]); }).join(',');
+      });
+      out = head + '\n' + lines.join('\n');
+      ext = 'mock-data.csv'; mime = 'text/csv';
+    } else {
+      out = JSON.stringify(data, null, 2);
+      ext = 'mock-data.json'; mime = 'application/json';
+    }
+    el(SLUG + '-output').value = out;
+    el(SLUG + '-download').setAttribute('data-ext', ext);
+    el(SLUG + '-download').setAttribute('data-mime', mime);
+  }
+
+  try {
+    TN.on(SLUG + '-add', 'click', function () { addRow('', 'name'); });
+    TN.on(SLUG + '-generate', 'click', generate);
+    TN.on(SLUG + '-copy', 'click', function () {
+      var v = el(SLUG + '-output').value;
+      if (!v) { fail('Generate data first.'); return; }
+      TN.copy(v).then(function (ok) { if (!ok) fail('Copy failed — select the text manually.'); });
+    });
+    TN.on(SLUG + '-download', 'click', function () {
+      var v = el(SLUG + '-output').value;
+      if (!v) { fail('Generate data first.'); return; }
+      var btn = el(SLUG + '-download');
+      TN.downloadText(v, btn.getAttribute('data-ext') || 'mock-data.txt',
+        btn.getAttribute('data-mime') || 'text/plain');
+    });
+    addRow('id', 'uuid');
+    addRow('name', 'name');
+    addRow('email', 'email');
+    addRow('city', 'city');
+  } catch (e) { /* never throw on load */ }
+})();
+
+</script>
+</body>
+</html>

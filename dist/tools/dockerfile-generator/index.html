@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dockerfile Generator — Free Online | ToolNest</title>
+<meta name="description" content="Pick a base image, workdir, RUN steps, ports, and CMD to get a clean, working Dockerfile.">
+<meta name="keywords" content="dockerfile generator, create dockerfile, docker template, dockerfile template, docker build">
+<link rel="canonical" href="https://toolnest.vercel.app/tools/dockerfile-generator/">
+<meta name="theme-color" content="#07070b">
+<meta property="og:title" content="Dockerfile Generator — Free Online | ToolNest">
+<meta property="og:description" content="Pick a base image, workdir, RUN steps, ports, and CMD to get a clean, working Dockerfile.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css?v=4">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%23e01111'/><text x='50' y='68' font-size='58' text-anchor='middle' fill='white' font-family='Arial' font-weight='bold'>T</text></svg>">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebApplication","name":"Dockerfile Generator","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0"},"url":"https://toolnest.vercel.app/tools/dockerfile-generator/","description":"Pick a base image, workdir, RUN steps, ports, and CMD to get a clean, working Dockerfile."},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Which Dockerfile instructions are generated?","acceptedAnswer":{"@type":"Answer","text":"Base image, WORKDIR, COPY, ENV, RUN steps, EXPOSE ports, and CMD in exec form."}},{"@type":"Question","name":"How do multiple RUN commands work?","acceptedAnswer":{"@type":"Answer","text":"Each line of the RUN box becomes its own RUN instruction, in order."}},{"@type":"Question","name":"What form is CMD in?","acceptedAnswer":{"@type":"Answer","text":"CMD is emitted in exec (JSON array) form; separate arguments with spaces or commas."}},{"@type":"Question","name":"Can I download the file?","acceptedAnswer":{"@type":"Answer","text":"Yes — copy it or download it as Dockerfile."}}]}]}</script>
+</head>
+<body>
+<header class="site-header">
+  <div class="container">
+    <a class="logo" href="/"><span class="logo-mark">T</span> ToolNest</a>
+    <div class="header-right">
+      <form class="nav-search" action="/" method="get" role="search">
+        <span class="ns-icon">🔍</span>
+        <input type="search" name="q" placeholder="Search tools…" aria-label="Search tools" autocomplete="off">
+      </form>
+      <div class="menu-wrap">
+        <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="menuPanel" aria-label="Open menu"><span></span><span></span><span></span></button>
+        <nav class="menu-panel" id="menuPanel" aria-label="Site">
+          <a href="/">Home</a>
+          <a href="/#categories">Categories</a>
+          <a href="/#all-tools">All Tools</a>
+        </nav>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ADSTERRA-HEADER: paste your Adsterra banner ad code inside the div below -->
+<div class="container"><div class="ad-slot ad-leaderboard" data-ad="header"></div></div>
+
+<main class="container">
+  <nav class="crumbs"><a href="/">Home</a> &rsaquo; <a href="/#developer">Developer Tools</a> &rsaquo; Dockerfile Generator</nav>
+  <div class="tool-hero">
+    <h1>Dockerfile Generator</h1>
+    <p>Pick a base image, workdir, RUN steps, ports, and CMD to get a clean, working Dockerfile.</p>
+  </div>
+
+  <div class="tool-card">
+  <div class="grid2">
+    <div class="field">
+      <label for="dockerfile-generator-base">Base image</label>
+      <input class="input" id="dockerfile-generator-base" value="node:20-alpine" list="dockerfile-generator-bases">
+      <datalist id="dockerfile-generator-bases">
+        <option value="node:20-alpine"></option><option value="node:20-slim"></option>
+        <option value="python:3.12-slim"></option><option value="openjdk:17-slim"></option>
+        <option value="golang:1.22-alpine"></option><option value="nginx:alpine"></option>
+        <option value="php:8.3-apache"></option><option value="ubuntu:24.04"></option>
+        <option value="alpine:3.20"></option>
+      </datalist>
+    </div>
+    <div class="field">
+      <label for="dockerfile-generator-workdir">WORKDIR</label>
+      <input class="input" id="dockerfile-generator-workdir" value="/app">
+    </div>
+  </div>
+  <div class="grid2">
+    <div class="field">
+      <label for="dockerfile-generator-copy">COPY (src → dest)</label>
+      <input class="input" id="dockerfile-generator-copy" value=". .">
+    </div>
+    <div class="field">
+      <label for="dockerfile-generator-expose">EXPOSE ports (comma separated)</label>
+      <input class="input" id="dockerfile-generator-expose" value="3000">
+    </div>
+  </div>
+  <div class="field">
+    <label for="dockerfile-generator-env">ENV variables (one KEY=value per line)</label>
+    <textarea class="textarea" id="dockerfile-generator-env" rows="2" placeholder="NODE_ENV=production"></textarea>
+  </div>
+  <div class="field">
+    <label for="dockerfile-generator-run">RUN commands (one per line)</label>
+    <textarea class="textarea" id="dockerfile-generator-run" rows="3">npm ci --only=production
+npm run build</textarea>
+  </div>
+  <div class="field">
+    <label for="dockerfile-generator-cmd">CMD (exec form, e.g. node server.js)</label>
+    <input class="input" id="dockerfile-generator-cmd" value="node server.js">
+  </div>
+  <div class="btn-row">
+    <button class="btn btn-primary" id="dockerfile-generator-generate">Generate Dockerfile</button>
+  </div>
+  <div class="error" id="dockerfile-generator-error"></div>
+  <div class="field">
+    <label for="dockerfile-generator-output">Dockerfile</label>
+    <textarea class="textarea" id="dockerfile-generator-output" rows="12" readonly placeholder="Your Dockerfile will appear here…"></textarea>
+  </div>
+  <div class="btn-row">
+    <button class="btn btn-outline" id="dockerfile-generator-copy">Copy</button>
+    <button class="btn btn-outline" id="dockerfile-generator-download">Download Dockerfile</button>
+  </div>
+</div>
+
+
+  <!-- ADSTERRA-INCONTENT: paste your Adsterra native/in-content ad code inside the div below -->
+  <div class="ad-slot" data-ad="incontent"></div>
+
+  <div class="info-grid">
+    <div class="info-card">
+      <h2>📖 How to use</h2>
+      <ol><li>Choose a base image and working directory.</li><li>Add COPY, RUN, ENV, and EXPOSE entries.</li><li>Click Generate — copy or download the Dockerfile.</li></ol>
+    </div>
+    <div class="info-card">
+      <h2>❓ Frequently asked questions</h2>
+      <div class="faq"><details><summary>Which Dockerfile instructions are generated?</summary><p>Base image, WORKDIR, COPY, ENV, RUN steps, EXPOSE ports, and CMD in exec form.</p></details><details><summary>How do multiple RUN commands work?</summary><p>Each line of the RUN box becomes its own RUN instruction, in order.</p></details><details><summary>What form is CMD in?</summary><p>CMD is emitted in exec (JSON array) form; separate arguments with spaces or commas.</p></details><details><summary>Can I download the file?</summary><p>Yes — copy it or download it as Dockerfile.</p></details></div>
+    </div>
+  </div>
+
+  <section class="section">
+    <h2>🔗 Related tools</h2>
+    <div class="tool-grid"><a class="tool-link" href="/tools/ascii-table-reference/" data-search="ascii table reference full ascii table 0–127: decimal, hex, octal, character, control-code names and html entities — searchable. ascii table ascii codes ascii chart control characters ascii reference"><span class="t-ico">💻</span><span class="t-body"><b>ASCII Table Reference</b><small>Full ASCII table 0–127: decimal, hex, octal, character, control-code names and HTML entities…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/base64-encoder-decoder/" data-search="base64 encoder / decoder encode text to base64 or decode base64 back to text, with full utf-8 support and a file-to-data-url converter. base64 encoder base64 decoder base64 encode base64 decode file to base64"><span class="t-ico">💻</span><span class="t-body"><b>Base64 Encoder / Decoder</b><small>Encode text to Base64 or decode Base64 back to text, with full UTF-8 support and a file-to-d…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/binary-text-converter/" data-search="binary and text converter convert text to binary or hex and back, with full utf-8 awareness and strict input validation. binary to text text to binary hex to text converter"><span class="t-ico">💻</span><span class="t-body"><b>Binary and Text Converter</b><small>Convert text to binary or hex and back, with full UTF-8 awareness and strict input validatio…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/changelog-generator/" data-search="changelog generator build a keep-a-changelog markdown file: version, date, and grouped added/fixed/changed entries. changelog generator keep a changelog changelog markdown release notes version changelog"><span class="t-ico">💻</span><span class="t-body"><b>Changelog Generator</b><small>Build a Keep-a-Changelog markdown file: version, date, and grouped Added/Fixed/Changed entri…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/character-escape-reference/" data-search="character escape reference searchable reference of characters with their html entities, url encodings, and js escapes — plus a live encoder. character escape reference html entities url encode unicode escape html entity table"><span class="t-ico">💻</span><span class="t-body"><b>Character Escape Reference</b><small>Searchable reference of characters with their HTML entities, URL encodings, and JS escapes —…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/chmod-calculator/" data-search="chmod calculator tick rwx boxes for user/group/other — or type 755 — and see octal, symbolic, and the chmod command live. chmod calculator chmod 755 linux permissions octal permissions rwx calculator"><span class="t-ico">💻</span><span class="t-body"><b>chmod Calculator</b><small>Tick rwx boxes for user/group/other — or type 755 — and see octal, symbolic, and the chmod c…</small></span><span class="t-arrow">→</span></a></div>
+  </section>
+</main>
+
+<!-- ADSTERRA-FOOTER: paste your Adsterra footer/banner ad code inside the div below -->
+<div class="container"><div class="ad-slot" data-ad="footer"></div></div>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="f-grid">
+      <div>
+        <span class="brandline"><span class="logo-mark">T</span> ToolNest</span>
+        <p>Free online tools that actually work. No sign-up, no watermarks — and your files never leave your device for client-side tools.</p>
+      </div>
+      <div>
+        <h4>Popular</h4>
+        <a href="/tools/qr-code-generator/">QR Code Generator</a>
+        <a href="/tools/background-remover/">Background Remover</a>
+        <a href="/tools/pdf-merger/">PDF Merger</a>
+        <a href="/tools/word-counter/">Word Counter</a>
+      </div>
+      <div>
+        <h4>Categories</h4>
+        <a href="/#image">Image Tools</a>
+        <a href="/#pdf">PDF &amp; Documents</a>
+        <a href="/#calculators">Calculators</a>
+        <a href="/#developer">Developer Tools</a>
+      </div>
+      <div>
+        <h4>Site</h4>
+        <a href="/">Home</a>
+        <a href="/#all-tools">All Tools</a>
+        <a href="/sitemap.xml">Sitemap</a>
+      </div>
+    </div>
+    <div class="f-bottom">© 2026 ToolNest · Free tools for everyone · Made with care</div>
+  </div>
+</footer>
+
+<script src="/assets/site.js?v=5"></script>
+
+<script>
+/* Dockerfile Generator — base image, workdir, copy, env, run, expose, cmd → Dockerfile. */
+(function () {
+  'use strict';
+  var SLUG = 'dockerfile-generator';
+
+  function el(id) { return document.getElementById(id); }
+  function fail(msg) { TN.setErr(SLUG + '-error', msg); }
+  function clear() { TN.clearErr(SLUG + '-error'); }
+
+  function toCmdArray(cmd) {
+    // split on whitespace/commas, respecting single/double quotes
+    var parts = [], cur = '', q = null;
+    for (var i = 0; i < cmd.length; i++) {
+      var c = cmd[i];
+      if (q) {
+        if (c === q) q = null;
+        else cur += c;
+      } else if (c === '"' || c === "'") {
+        q = c;
+      } else if (/\s/.test(c) || c === ',') {
+        if (cur) { parts.push(cur); cur = ''; }
+      } else {
+        cur += c;
+      }
+    }
+    if (cur) parts.push(cur);
+    return parts;
+  }
+
+  function generate() {
+    clear();
+    var base = el(SLUG + '-base').value.trim();
+    if (!base) { fail('Enter a base image.'); return; }
+    var lines = ['FROM ' + base];
+    var workdir = el(SLUG + '-workdir').value.trim();
+    if (workdir) lines.push('WORKDIR ' + workdir);
+    el(SLUG + '-env').value.split('\n').forEach(function (l) {
+      l = l.trim();
+      if (!l) return;
+      var eq = l.indexOf('=');
+      if (eq < 0) { lines.push('ENV ' + l); }
+      else lines.push('ENV ' + l.slice(0, eq).trim() + '=' + l.slice(eq + 1).trim());
+    });
+    var copy = el(SLUG + '-copy').value.trim();
+    if (copy) lines.push('COPY ' + copy);
+    el(SLUG + '-run').value.split('\n').forEach(function (l) {
+      l = l.trim();
+      if (l) lines.push('RUN ' + l);
+    });
+    var expose = el(SLUG + '-expose').value.split(',').map(function (p) { return p.trim(); }).filter(Boolean);
+    if (expose.length) lines.push('EXPOSE ' + expose.join(' '));
+    var cmd = el(SLUG + '-cmd').value.trim();
+    if (cmd) lines.push('CMD ' + JSON.stringify(toCmdArray(cmd)));
+    el(SLUG + '-output').value = lines.join('\n') + '\n';
+  }
+
+  try {
+    TN.on(SLUG + '-generate', 'click', generate);
+    TN.on(SLUG + '-copy', 'click', function () {
+      var v = el(SLUG + '-output').value;
+      if (!v) { fail('Generate a Dockerfile first.'); return; }
+      TN.copy(v).then(function (ok) { if (!ok) fail('Copy failed — select the text manually.'); });
+    });
+    TN.on(SLUG + '-download', 'click', function () {
+      var v = el(SLUG + '-output').value;
+      if (!v) { fail('Generate a Dockerfile first.'); return; }
+      TN.downloadText(v, 'Dockerfile', 'text/plain');
+    });
+    generate();
+  } catch (e) { /* never throw on load */ }
+})();
+
+</script>
+</body>
+</html>

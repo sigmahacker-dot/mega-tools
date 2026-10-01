@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sliding Puzzle (15 Puzzle) — Free Online | ToolNest</title>
+<meta name="description" content="The classic 15-puzzle — a guaranteed-solvable shuffle, move counter, and win detection on a 4×4 grid.">
+<meta name="keywords" content="15 puzzle, sliding puzzle, slide puzzle, 15 tile game, classic puzzle">
+<link rel="canonical" href="https://toolnest.vercel.app/tools/sliding-puzzle-15/">
+<meta name="theme-color" content="#07070b">
+<meta property="og:title" content="Sliding Puzzle (15 Puzzle) — Free Online | ToolNest">
+<meta property="og:description" content="The classic 15-puzzle — a guaranteed-solvable shuffle, move counter, and win detection on a 4×4 grid.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css?v=4">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%23e01111'/><text x='50' y='68' font-size='58' text-anchor='middle' fill='white' font-family='Arial' font-weight='bold'>T</text></svg>">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebApplication","name":"Sliding Puzzle (15 Puzzle)","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0"},"url":"https://toolnest.vercel.app/tools/sliding-puzzle-15/","description":"The classic 15-puzzle — a guaranteed-solvable shuffle, move counter, and win detection on a 4×4 grid."},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Is every shuffle solvable?","acceptedAnswer":{"@type":"Answer","text":"The board is shuffled by making hundreds of random legal moves from the solved state, so every puzzle is solvable."}},{"@type":"Question","name":"How do I play?","acceptedAnswer":{"@type":"Answer","text":"Tap a tile next to the empty space to slide it in. Arrange 1–15 in order with the gap bottom-right."}},{"@type":"Question","name":"Is there a move limit?","acceptedAnswer":{"@type":"Answer","text":"No — the move counter tracks your efficiency. Try to beat your best!"}},{"@type":"Question","name":"Can I reshuffle?","acceptedAnswer":{"@type":"Answer","text":"Yes — press New Game for a fresh guaranteed-solvable shuffle."}}]}]}</script>
+</head>
+<body>
+<header class="site-header">
+  <div class="container">
+    <a class="logo" href="/"><span class="logo-mark">T</span> ToolNest</a>
+    <div class="header-right">
+      <form class="nav-search" action="/" method="get" role="search">
+        <span class="ns-icon">🔍</span>
+        <input type="search" name="q" placeholder="Search tools…" aria-label="Search tools" autocomplete="off">
+      </form>
+      <div class="menu-wrap">
+        <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="menuPanel" aria-label="Open menu"><span></span><span></span><span></span></button>
+        <nav class="menu-panel" id="menuPanel" aria-label="Site">
+          <a href="/">Home</a>
+          <a href="/#categories">Categories</a>
+          <a href="/#all-tools">All Tools</a>
+        </nav>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ADSTERRA-HEADER: paste your Adsterra banner ad code inside the div below -->
+<div class="container"><div class="ad-slot ad-leaderboard" data-ad="header"></div></div>
+
+<main class="container">
+  <nav class="crumbs"><a href="/">Home</a> &rsaquo; <a href="/#fun">Fun &amp; Lifestyle</a> &rsaquo; Sliding Puzzle (15 Puzzle)</nav>
+  <div class="tool-hero">
+    <h1>Sliding Puzzle (15 Puzzle)</h1>
+    <p>The classic 15-puzzle — a guaranteed-solvable shuffle, move counter, and win detection on a 4×4 grid.</p>
+  </div>
+
+  <div class="tool-card" style="text-align:center">
+  <div class="stat-cards" style="max-width:420px;margin:0 auto 12px">
+    <div class="stat-card"><div class="v" id="sliding-puzzle-15-moves">0</div><div class="l">Moves</div></div>
+    <div class="stat-card"><div class="v" id="sliding-puzzle-15-best">—</div><div class="l">Best</div></div>
+  </div>
+  <p class="muted" id="sliding-puzzle-15-msg" style="min-height:24px">Tap a tile next to the gap to slide it.</p>
+  <div style="overflow:auto;display:inline-block;max-width:100%">
+    <div id="sliding-puzzle-15-board" style="display:inline-grid;grid-template-columns:repeat(4,72px);gap:6px;background:#8d6e63;padding:8px;border-radius:10px"></div>
+  </div>
+  <div class="btn-row" style="justify-content:center;margin-top:12px">
+    <button class="btn btn-primary" id="sliding-puzzle-15-new">New game</button>
+  </div>
+  <div class="error" id="sliding-puzzle-15-error"></div>
+</div>
+
+
+  <!-- ADSTERRA-INCONTENT: paste your Adsterra native/in-content ad code inside the div below -->
+  <div class="ad-slot" data-ad="incontent"></div>
+
+  <div class="info-grid">
+    <div class="info-card">
+      <h2>📖 How to use</h2>
+      <ol><li>Press New Game for a fresh shuffle.</li><li>Tap tiles next to the empty space to slide them.</li><li>Arrange tiles 1–15 in order.</li><li>Get the gap to the bottom-right to win!</li></ol>
+    </div>
+    <div class="info-card">
+      <h2>❓ Frequently asked questions</h2>
+      <div class="faq"><details><summary>Is every shuffle solvable?</summary><p>The board is shuffled by making hundreds of random legal moves from the solved state, so every puzzle is solvable.</p></details><details><summary>How do I play?</summary><p>Tap a tile next to the empty space to slide it in. Arrange 1–15 in order with the gap bottom-right.</p></details><details><summary>Is there a move limit?</summary><p>No — the move counter tracks your efficiency. Try to beat your best!</p></details><details><summary>Can I reshuffle?</summary><p>Yes — press New Game for a fresh guaranteed-solvable shuffle.</p></details></div>
+    </div>
+  </div>
+
+  <section class="section">
+    <h2>🔗 Related tools</h2>
+    <div class="tool-grid"><a class="tool-link" href="/tools/aim-trainer-game/" data-search="aim trainer game test and train your aim — targets pop up at random spots for 30 seconds. hits, misses and accuracy are tracked live. aim trainer aim test reaction test click speed test fps aim trainer"><span class="t-ico">🎲</span><span class="t-body"><b>Aim Trainer Game</b><small>Test and train your aim — targets pop up at random spots for 30 seconds. Hits, misses and ac…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/baby-name-generator/" data-search="baby name generator discover baby names by gender and origin — pakistani, arabic, western, indian or turkish — with meanings, random picks and tap-to-copy. baby name generator baby names with meanings muslim baby names boy girl names"><span class="t-ico">🎲</span><span class="t-body"><b>Baby Name Generator</b><small>Discover baby names by gender and origin — Pakistani, Arabic, Western, Indian or Turkish — w…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/battery-status-checker/" data-search="battery status checker check your device&#39;s battery level, charging status and estimated time remaining, with live updates — where your browser supports the battery api. battery status battery level checker laptop battery charging status"><span class="t-ico">🎲</span><span class="t-body"><b>Battery Status Checker</b><small>Check your device&#39;s battery level, charging status and estimated time remaining, with live u…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/battleship-game/" data-search="battleship game the classic naval battle — place your 5 ships, then hunt the computer&#39;s fleet on a 10×10 grid with hit, miss, and sunk tracking. battleship game battleship naval battle game sea battle board game"><span class="t-ico">🎲</span><span class="t-body"><b>Battleship Game</b><small>The classic naval battle — place your 5 ships, then hunt the computer&#39;s fleet on a 10×10 gri…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/birthday-countdown/" data-search="birthday countdown enter your birthday for a live countdown to your next one — days, hours, minutes and seconds — plus the age you&#39;ll turn and a fun message. birthday countdown countdown to birthday how old am i birthday timer"><span class="t-ico">🎲</span><span class="t-body"><b>Birthday Countdown</b><small>Enter your birthday for a live countdown to your next one — days, hours, minutes and seconds…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/blackjack-game/" data-search="blackjack game real blackjack — hit, stand, double down, dealer hits to 17, blackjack pays 3:2, with a session bankroll. blackjack blackjack game 21 card game casino card game blackjack online"><span class="t-ico">🎲</span><span class="t-body"><b>Blackjack Game</b><small>Real Blackjack — hit, stand, double down, dealer hits to 17, blackjack pays 3:2, with a sess…</small></span><span class="t-arrow">→</span></a></div>
+  </section>
+</main>
+
+<!-- ADSTERRA-FOOTER: paste your Adsterra footer/banner ad code inside the div below -->
+<div class="container"><div class="ad-slot" data-ad="footer"></div></div>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="f-grid">
+      <div>
+        <span class="brandline"><span class="logo-mark">T</span> ToolNest</span>
+        <p>Free online tools that actually work. No sign-up, no watermarks — and your files never leave your device for client-side tools.</p>
+      </div>
+      <div>
+        <h4>Popular</h4>
+        <a href="/tools/qr-code-generator/">QR Code Generator</a>
+        <a href="/tools/background-remover/">Background Remover</a>
+        <a href="/tools/pdf-merger/">PDF Merger</a>
+        <a href="/tools/word-counter/">Word Counter</a>
+      </div>
+      <div>
+        <h4>Categories</h4>
+        <a href="/#image">Image Tools</a>
+        <a href="/#pdf">PDF &amp; Documents</a>
+        <a href="/#calculators">Calculators</a>
+        <a href="/#developer">Developer Tools</a>
+      </div>
+      <div>
+        <h4>Site</h4>
+        <a href="/">Home</a>
+        <a href="/#all-tools">All Tools</a>
+        <a href="/sitemap.xml">Sitemap</a>
+      </div>
+    </div>
+    <div class="f-bottom">© 2026 ToolNest · Free tools for everyone · Made with care</div>
+  </div>
+</footer>
+
+<script src="/assets/site.js?v=5"></script>
+
+<script>
+/* Sliding 15-Puzzle — guaranteed-solvable shuffle via random valid moves, win detection. */
+(function () {
+  'use strict';
+  var SLUG = 'sliding-puzzle-15';
+  var tiles = [], blank = 15, moves = 0, won = false, best = null;
+
+  function $(id) { return document.getElementById(id); }
+
+  function solvedState() {
+    var t = [];
+    for (var i = 1; i <= 15; i++) t.push(i);
+    t.push(0);
+    return t;
+  }
+
+  function shuffle() {
+    tiles = solvedState();
+    blank = 15;
+    var last = -1;
+    for (var k = 0; k < 400; k++) {
+      var r = Math.floor(blank / 4), c = blank % 4;
+      var opts = [];
+      if (r > 0 && blank - 4 !== last) opts.push(blank - 4);
+      if (r < 3 && blank + 4 !== last) opts.push(blank + 4);
+      if (c > 0 && blank - 1 !== last) opts.push(blank - 1);
+      if (c < 3 && blank + 1 !== last) opts.push(blank + 1);
+      var pick = opts[Math.floor(Math.random() * opts.length)];
+      tiles[blank] = tiles[pick];
+      tiles[pick] = 0;
+      last = blank;
+      blank = pick;
+    }
+    // ensure not accidentally solved
+    var ok = true;
+    for (var i = 0; i < 16; i++) if (tiles[i] !== (i === 15 ? 0 : i + 1)) { ok = false; break; }
+    if (ok) shuffle();
+  }
+
+  function render() {
+    var b = $('sliding-puzzle-15-board');
+    b.innerHTML = '';
+    tiles.forEach(function (v, i) {
+      var d = document.createElement('button');
+      d.style.cssText = 'width:72px;height:72px;font-size:26px;font-weight:bold;border:none;border-radius:8px;' +
+        (v === 0 ? 'background:transparent;cursor:default' : 'background:#ffcc80;color:#4e342e;cursor:pointer;box-shadow:0 2px 4px rgba(0,0,0,.25)') +
+        ';touch-action:manipulation;padding:0';
+      d.textContent = v === 0 ? '' : v;
+      d.setAttribute('aria-label', v === 0 ? 'Empty space' : 'Tile ' + v);
+      if (v !== 0) {
+        (function (idx) {
+          d.addEventListener('click', function () { tap(idx); });
+        })(i);
+      }
+      b.appendChild(d);
+    });
+    $('sliding-puzzle-15-moves').textContent = moves;
+  }
+
+  function tap(i) {
+    if (won) return;
+    var r = Math.floor(i / 4), c = i % 4;
+    var br = Math.floor(blank / 4), bc = blank % 4;
+    if (Math.abs(r - br) + Math.abs(c - bc) !== 1) return;
+    tiles[blank] = tiles[i];
+    tiles[i] = 0;
+    blank = i;
+    moves++;
+    render();
+    checkWin();
+  }
+
+  function checkWin() {
+    for (var i = 0; i < 15; i++) if (tiles[i] !== i + 1) return;
+    won = true;
+    if (best === null || moves < best) {
+      best = moves;
+      $('sliding-puzzle-15-best').textContent = best;
+    }
+    $('sliding-puzzle-15-msg').textContent = '🏆 Solved in ' + moves + ' moves! Press New game for another.';
+  }
+
+  function newGame() {
+    shuffle();
+    moves = 0;
+    won = false;
+    $('sliding-puzzle-15-msg').textContent = 'Tap a tile next to the gap to slide it.';
+    render();
+  }
+
+  try {
+    TN.on('sliding-puzzle-15-new', 'click', newGame);
+    newGame();
+  } catch (e) { /* never throw on load */ }
+})();
+
+</script>
+</body>
+</html>

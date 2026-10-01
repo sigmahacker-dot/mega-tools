@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Period Tracker Lite — Free Online | ToolNest</title>
+<meta name="description" content="Log period start dates to estimate average cycle length, next period, and fertile window.">
+<meta name="keywords" content="period tracker, cycle length calculator, ovulation calculator, fertile window, menstrual cycle tracker">
+<link rel="canonical" href="https://toolnest.vercel.app/tools/period-tracker-lite/">
+<meta name="theme-color" content="#07070b">
+<meta property="og:title" content="Period Tracker Lite — Free Online | ToolNest">
+<meta property="og:description" content="Log period start dates to estimate average cycle length, next period, and fertile window.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css?v=4">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%23e01111'/><text x='50' y='68' font-size='58' text-anchor='middle' fill='white' font-family='Arial' font-weight='bold'>T</text></svg>">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebApplication","name":"Period Tracker Lite","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0"},"url":"https://toolnest.vercel.app/tools/period-tracker-lite/","description":"Log period start dates to estimate average cycle length, next period, and fertile window."},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How is cycle length calculated?","acceptedAnswer":{"@type":"Answer","text":"The average of the gaps between logged start dates. Log at least 3 periods for a steadier average."}},{"@type":"Question","name":"How is the fertile window estimated?","acceptedAnswer":{"@type":"Answer","text":"Ovulation is estimated ~14 days before the next period; the fertile window covers 5 days before to 1 day after ovulation."}},{"@type":"Question","name":"Can I rely on these predictions?","acceptedAnswer":{"@type":"Answer","text":"It is a rough estimate for awareness only — not reliable for contraception or conception planning. Talk to a clinician."}}]}]}</script>
+</head>
+<body>
+<header class="site-header">
+  <div class="container">
+    <a class="logo" href="/"><span class="logo-mark">T</span> ToolNest</a>
+    <div class="header-right">
+      <form class="nav-search" action="/" method="get" role="search">
+        <span class="ns-icon">🔍</span>
+        <input type="search" name="q" placeholder="Search tools…" aria-label="Search tools" autocomplete="off">
+      </form>
+      <div class="menu-wrap">
+        <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="menuPanel" aria-label="Open menu"><span></span><span></span><span></span></button>
+        <nav class="menu-panel" id="menuPanel" aria-label="Site">
+          <a href="/">Home</a>
+          <a href="/#categories">Categories</a>
+          <a href="/#all-tools">All Tools</a>
+        </nav>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ADSTERRA-HEADER: paste your Adsterra banner ad code inside the div below -->
+<div class="container"><div class="ad-slot ad-leaderboard" data-ad="header"></div></div>
+
+<main class="container">
+  <nav class="crumbs"><a href="/">Home</a> &rsaquo; <a href="/#health">Health &amp; Fitness</a> &rsaquo; Period Tracker Lite</nav>
+  <div class="tool-hero">
+    <h1>Period Tracker Lite</h1>
+    <p>Log period start dates to estimate average cycle length, next period, and fertile window.</p>
+  </div>
+
+  <div class="tool-card">
+  <div class="field" style="max-width:320px">
+    <label for="period-tracker-lite-date">Period start date</label>
+    <div class="btn-row" style="justify-content:flex-start">
+      <input class="input" id="period-tracker-lite-date" type="date" style="flex:1">
+      <button class="btn btn-primary" id="period-tracker-lite-add">Log</button>
+    </div>
+  </div>
+  <div class="stat-cards hidden" id="period-tracker-lite-out">
+    <div class="stat-card"><div class="v" id="period-tracker-lite-avg">–</div><div class="l">Avg cycle (days)</div></div>
+    <div class="stat-card"><div class="v" id="period-tracker-lite-next" style="font-size:1em">–</div><div class="l">Predicted next period</div></div>
+    <div class="stat-card"><div class="v" id="period-tracker-lite-fertile" style="font-size:1em">–</div><div class="l">Est. fertile window</div></div>
+  </div>
+  <div class="result" id="period-tracker-lite-list"></div>
+  <p class="note">General information only — not medical advice. Consult a professional for personal guidance. Predictions are rough estimates, not reliable for contraception or conception planning.</p>
+  <div class="error" id="period-tracker-lite-error"></div>
+</div>
+
+
+  <!-- ADSTERRA-INCONTENT: paste your Adsterra native/in-content ad code inside the div below -->
+  <div class="ad-slot" data-ad="incontent"></div>
+
+  <div class="info-grid">
+    <div class="info-card">
+      <h2>📖 How to use</h2>
+      <ol><li>Log the start date of each period.</li><li>After 2+ entries, see your average cycle length.</li><li>Check the predicted next period date.</li><li>View the estimated fertile window.</li></ol>
+    </div>
+    <div class="info-card">
+      <h2>❓ Frequently asked questions</h2>
+      <div class="faq"><details><summary>How is cycle length calculated?</summary><p>The average of the gaps between logged start dates. Log at least 3 periods for a steadier average.</p></details><details><summary>How is the fertile window estimated?</summary><p>Ovulation is estimated ~14 days before the next period; the fertile window covers 5 days before to 1 day after ovulation.</p></details><details><summary>Can I rely on these predictions?</summary><p>It is a rough estimate for awareness only — not reliable for contraception or conception planning. Talk to a clinician.</p></details></div>
+    </div>
+  </div>
+
+  <section class="section">
+    <h2>🔗 Related tools</h2>
+    <div class="tool-grid"><a class="tool-link" href="/tools/baby-growth-tracker/" data-search="baby growth tracker log your baby&#39;s weight and height over time and see a growth log with typical-range guidance. baby growth tracker baby weight tracker infant growth chart baby height log newborn growth"><span class="t-ico">❤️</span><span class="t-body"><b>Baby Growth Tracker</b><small>Log your baby&#39;s weight and height over time and see a growth log with typical-range guidance…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/blood-pressure-tracker/" data-search="blood pressure tracker log blood pressure readings with automatic aha category classification, averages and history saved in your browser. blood pressure tracker bp log blood pressure chart hypertension tracker bp monitor log"><span class="t-ico">❤️</span><span class="t-body"><b>Blood Pressure Tracker</b><small>Log blood pressure readings with automatic AHA category classification, averages and history…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/body-fat-calculator/" data-search="body fat calculator estimate body fat percentage with the us navy tape-measure method and see your fitness category. body fat calculator us navy body fat body fat percentage calculator"><span class="t-ico">❤️</span><span class="t-body"><b>Body Fat Calculator</b><small>Estimate body fat percentage with the US Navy tape-measure method and see your fitness categ…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/breathing-exercise-guide/" data-search="breathing exercise guide guided breathing exercises (4-7-8, box, energize) with an animated pacer circle, phase labels, and cycle counter. breathing exercise 4-7-8 breathing box breathing breathing pacer calm breathing"><span class="t-ico">❤️</span><span class="t-body"><b>Breathing Exercise Guide</b><small>Guided breathing exercises (4-7-8, box, energize) with an animated pacer circle, phase label…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/caffeine-half-life-calculator/" data-search="caffeine half-life calculator log caffeinated drinks and see how much caffeine is still in your system using 5.5-hour half-life decay. caffeine half life caffeine calculator caffeine in system coffee caffeine tracker caffeine sleep"><span class="t-ico">❤️</span><span class="t-body"><b>Caffeine Half-Life Calculator</b><small>Log caffeinated drinks and see how much caffeine is still in your system using 5.5-hour half…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/calorie-calculator/" data-search="tdee calorie calculator estimate your daily calorie needs with the mifflin-st jeor equation and get targets for losing, maintaining or gaining weight. tdee calculator calorie calculator mifflin st jeor daily calorie needs"><span class="t-ico">❤️</span><span class="t-body"><b>TDEE Calorie Calculator</b><small>Estimate your daily calorie needs with the Mifflin-St Jeor equation and get targets for losi…</small></span><span class="t-arrow">→</span></a></div>
+  </section>
+</main>
+
+<!-- ADSTERRA-FOOTER: paste your Adsterra footer/banner ad code inside the div below -->
+<div class="container"><div class="ad-slot" data-ad="footer"></div></div>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="f-grid">
+      <div>
+        <span class="brandline"><span class="logo-mark">T</span> ToolNest</span>
+        <p>Free online tools that actually work. No sign-up, no watermarks — and your files never leave your device for client-side tools.</p>
+      </div>
+      <div>
+        <h4>Popular</h4>
+        <a href="/tools/qr-code-generator/">QR Code Generator</a>
+        <a href="/tools/background-remover/">Background Remover</a>
+        <a href="/tools/pdf-merger/">PDF Merger</a>
+        <a href="/tools/word-counter/">Word Counter</a>
+      </div>
+      <div>
+        <h4>Categories</h4>
+        <a href="/#image">Image Tools</a>
+        <a href="/#pdf">PDF &amp; Documents</a>
+        <a href="/#calculators">Calculators</a>
+        <a href="/#developer">Developer Tools</a>
+      </div>
+      <div>
+        <h4>Site</h4>
+        <a href="/">Home</a>
+        <a href="/#all-tools">All Tools</a>
+        <a href="/sitemap.xml">Sitemap</a>
+      </div>
+    </div>
+    <div class="f-bottom">© 2026 ToolNest · Free tools for everyone · Made with care</div>
+  </div>
+</footer>
+
+<script src="/assets/site.js?v=5"></script>
+
+<script>
+/* Period tracker lite: log starts -> avg cycle, next period, fertile window. */
+(function () {
+  'use strict';
+  var SLUG = 'period-tracker-lite';
+  var KEY = SLUG + '-data';
+  function $(id) { return document.getElementById(id); }
+  function load() {
+    try { var d = JSON.parse(localStorage.getItem(KEY)); return Array.isArray(d) ? d : []; }
+    catch (e) { return []; }
+  }
+  function save(d) { try { localStorage.setItem(KEY, JSON.stringify(d)); } catch (e) {} }
+  function err(m) { $(SLUG + '-error').textContent = m; }
+  function fdate(ms) {
+    return new Date(ms).toLocaleDateString(undefined, { month: 'short', day: 'numeric', year: 'numeric' });
+  }
+  function render() {
+    var dates = load().slice().sort(function (a, b) { return a - b; });
+    var box = $(SLUG + '-list');
+    if (!dates.length) {
+      box.innerHTML = '<p class="muted">No periods logged yet.</p>';
+      $(SLUG + '-out').classList.add('hidden');
+      return;
+    }
+    var html = '<table class="data"><thead><tr><th>#</th><th>Start date</th><th>Cycle length</th><th></th></tr></thead><tbody>';
+    dates.forEach(function (ms, i) {
+      var gap = i === 0 ? '–' : Math.round((ms - dates[i - 1]) / 86400000) + ' days';
+      html += '<tr><td>' + (i + 1) + '</td><td>' + fdate(ms) + '</td><td>' + gap +
+        '</td><td><button class="btn btn-outline" data-del="' + ms + '" style="padding:4px 10px">Delete</button></td></tr>';
+    });
+    html += '</tbody></table>';
+    box.innerHTML = html;
+    box.querySelectorAll('[data-del]').forEach(function (b) {
+      b.addEventListener('click', function () {
+        var ms = parseFloat(b.getAttribute('data-del'));
+        save(load().filter(function (d) { return d !== ms; }));
+        render();
+      });
+    });
+    if (dates.length >= 2) {
+      var gaps = [];
+      for (var i = 1; i < dates.length; i++) gaps.push((dates[i] - dates[i - 1]) / 86400000);
+      var avg = gaps.reduce(function (a, b) { return a + b; }, 0) / gaps.length;
+      var last = dates[dates.length - 1];
+      var next = last + avg * 86400000;
+      var ovu = next - 14 * 86400000;
+      $(SLUG + '-avg').textContent = avg.toFixed(1) + ' days';
+      $(SLUG + '-next').textContent = fdate(next);
+      $(SLUG + '-fertile').textContent = fdate(ovu - 5 * 86400000) + ' – ' + fdate(ovu + 86400000);
+      $(SLUG + '-out').classList.remove('hidden');
+    } else {
+      $(SLUG + '-out').classList.add('hidden');
+    }
+  }
+  function add() {
+    err('');
+    var v = $(SLUG + '-date').value;
+    if (!v) { err('Pick the period start date.'); return; }
+    var ms = new Date(v + 'T00:00:00').getTime();
+    var dates = load();
+    if (dates.indexOf(ms) !== -1) { err('That date is already logged.'); return; }
+    dates.push(ms);
+    save(dates);
+    $(SLUG + '-date').value = '';
+    render();
+  }
+  try {
+    $(SLUG + '-add').addEventListener('click', add);
+    render();
+  } catch (e) { /* never throw on load */ }
+})();
+
+</script>
+</body>
+</html>

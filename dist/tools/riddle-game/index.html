@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Riddle Game — Free Online | ToolNest</title>
+<meta name="description" content="Solve 50+ classic riddles — type your answer, reveal it if you&#39;re stuck, and track your score.">
+<meta name="keywords" content="riddle game, riddles with answers, brain teasers, puzzle riddles, riddle quiz">
+<link rel="canonical" href="https://toolnest.vercel.app/tools/riddle-game/">
+<meta name="theme-color" content="#07070b">
+<meta property="og:title" content="Riddle Game — Free Online | ToolNest">
+<meta property="og:description" content="Solve 50+ classic riddles — type your answer, reveal it if you&#39;re stuck, and track your score.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css?v=4">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%23e01111'/><text x='50' y='68' font-size='58' text-anchor='middle' fill='white' font-family='Arial' font-weight='bold'>T</text></svg>">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebApplication","name":"Riddle Game","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0"},"url":"https://toolnest.vercel.app/tools/riddle-game/","description":"Solve 50+ classic riddles — type your answer, reveal it if you're stuck, and track your score."},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How many riddles are there?","acceptedAnswer":{"@type":"Answer","text":"Over 50 classic riddles, asked in random order with no repeats until the bank runs out."}},{"@type":"Question","name":"How are answers checked?","acceptedAnswer":{"@type":"Answer","text":"Type your guess and press Enter. Matching is lenient — key words count, not exact phrasing."}},{"@type":"Question","name":"How does scoring work?","acceptedAnswer":{"@type":"Answer","text":"A correct answer scores 10 points; revealing the answer scores nothing for that riddle."}},{"@type":"Question","name":"Can I see the answer if I'm stuck?","acceptedAnswer":{"@type":"Answer","text":"Yes — the Show Answer button reveals it, then moves on. No penalty, but no points either."}}]}]}</script>
+</head>
+<body>
+<header class="site-header">
+  <div class="container">
+    <a class="logo" href="/"><span class="logo-mark">T</span> ToolNest</a>
+    <div class="header-right">
+      <form class="nav-search" action="/" method="get" role="search">
+        <span class="ns-icon">🔍</span>
+        <input type="search" name="q" placeholder="Search tools…" aria-label="Search tools" autocomplete="off">
+      </form>
+      <div class="menu-wrap">
+        <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="menuPanel" aria-label="Open menu"><span></span><span></span><span></span></button>
+        <nav class="menu-panel" id="menuPanel" aria-label="Site">
+          <a href="/">Home</a>
+          <a href="/#categories">Categories</a>
+          <a href="/#all-tools">All Tools</a>
+        </nav>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ADSTERRA-HEADER: paste your Adsterra banner ad code inside the div below -->
+<div class="container"><div class="ad-slot ad-leaderboard" data-ad="header"></div></div>
+
+<main class="container">
+  <nav class="crumbs"><a href="/">Home</a> &rsaquo; <a href="/#fun">Fun &amp; Lifestyle</a> &rsaquo; Riddle Game</nav>
+  <div class="tool-hero">
+    <h1>Riddle Game</h1>
+    <p>Solve 50+ classic riddles — type your answer, reveal it if you&#39;re stuck, and track your score.</p>
+  </div>
+
+  <div class="tool-card" style="text-align:center">
+  <div class="stat-cards" style="max-width:480px;margin:0 auto 12px">
+    <div class="stat-card"><div class="v" id="riddle-game-score">0</div><div class="l">Score</div></div>
+    <div class="stat-card"><div class="v" id="riddle-game-streak">0</div><div class="l">Streak</div></div>
+    <div class="stat-card"><div class="v" id="riddle-game-done">0</div><div class="l">Solved</div></div>
+  </div>
+  <div id="riddle-game-q" style="font-size:21px;font-weight:bold;margin:16px auto;max-width:560px;min-height:60px;line-height:1.5">Press Start for your first riddle!</div>
+  <p class="muted" id="riddle-game-msg" style="min-height:24px">Type your answer below.</p>
+  <div class="grid2" style="max-width:420px;margin:0 auto 12px">
+    <div class="field" style="text-align:left">
+      <label for="riddle-game-guess">Your answer</label>
+      <input class="input" id="riddle-game-guess" placeholder="What is it?…" autocomplete="off" disabled>
+    </div>
+    <div class="field" style="text-align:left">
+      <label>&nbsp;</label>
+      <button class="btn btn-primary" id="riddle-game-submit" style="width:100%" disabled>Answer</button>
+    </div>
+  </div>
+  <div class="btn-row" style="justify-content:center">
+    <button class="btn" id="riddle-game-start">▶ Start</button>
+    <button class="btn btn-outline" id="riddle-game-reveal" disabled>👁 Show Answer</button>
+    <button class="btn btn-outline" id="riddle-game-skip" disabled>Skip ↷</button>
+  </div>
+  <div class="error" id="riddle-game-error"></div>
+</div>
+
+
+  <!-- ADSTERRA-INCONTENT: paste your Adsterra native/in-content ad code inside the div below -->
+  <div class="ad-slot" data-ad="incontent"></div>
+
+  <div class="info-grid">
+    <div class="info-card">
+      <h2>📖 How to use</h2>
+      <ol><li>Press Start to get your first riddle.</li><li>Think, then type your answer and press Enter.</li><li>Stuck? Press Show Answer to reveal it.</li><li>Solve all 50+ riddles and beat your score!</li></ol>
+    </div>
+    <div class="info-card">
+      <h2>❓ Frequently asked questions</h2>
+      <div class="faq"><details><summary>How many riddles are there?</summary><p>Over 50 classic riddles, asked in random order with no repeats until the bank runs out.</p></details><details><summary>How are answers checked?</summary><p>Type your guess and press Enter. Matching is lenient — key words count, not exact phrasing.</p></details><details><summary>How does scoring work?</summary><p>A correct answer scores 10 points; revealing the answer scores nothing for that riddle.</p></details><details><summary>Can I see the answer if I&#39;m stuck?</summary><p>Yes — the Show Answer button reveals it, then moves on. No penalty, but no points either.</p></details></div>
+    </div>
+  </div>
+
+  <section class="section">
+    <h2>🔗 Related tools</h2>
+    <div class="tool-grid"><a class="tool-link" href="/tools/aim-trainer-game/" data-search="aim trainer game test and train your aim — targets pop up at random spots for 30 seconds. hits, misses and accuracy are tracked live. aim trainer aim test reaction test click speed test fps aim trainer"><span class="t-ico">🎲</span><span class="t-body"><b>Aim Trainer Game</b><small>Test and train your aim — targets pop up at random spots for 30 seconds. Hits, misses and ac…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/baby-name-generator/" data-search="baby name generator discover baby names by gender and origin — pakistani, arabic, western, indian or turkish — with meanings, random picks and tap-to-copy. baby name generator baby names with meanings muslim baby names boy girl names"><span class="t-ico">🎲</span><span class="t-body"><b>Baby Name Generator</b><small>Discover baby names by gender and origin — Pakistani, Arabic, Western, Indian or Turkish — w…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/battery-status-checker/" data-search="battery status checker check your device&#39;s battery level, charging status and estimated time remaining, with live updates — where your browser supports the battery api. battery status battery level checker laptop battery charging status"><span class="t-ico">🎲</span><span class="t-body"><b>Battery Status Checker</b><small>Check your device&#39;s battery level, charging status and estimated time remaining, with live u…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/battleship-game/" data-search="battleship game the classic naval battle — place your 5 ships, then hunt the computer&#39;s fleet on a 10×10 grid with hit, miss, and sunk tracking. battleship game battleship naval battle game sea battle board game"><span class="t-ico">🎲</span><span class="t-body"><b>Battleship Game</b><small>The classic naval battle — place your 5 ships, then hunt the computer&#39;s fleet on a 10×10 gri…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/birthday-countdown/" data-search="birthday countdown enter your birthday for a live countdown to your next one — days, hours, minutes and seconds — plus the age you&#39;ll turn and a fun message. birthday countdown countdown to birthday how old am i birthday timer"><span class="t-ico">🎲</span><span class="t-body"><b>Birthday Countdown</b><small>Enter your birthday for a live countdown to your next one — days, hours, minutes and seconds…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/blackjack-game/" data-search="blackjack game real blackjack — hit, stand, double down, dealer hits to 17, blackjack pays 3:2, with a session bankroll. blackjack blackjack game 21 card game casino card game blackjack online"><span class="t-ico">🎲</span><span class="t-body"><b>Blackjack Game</b><small>Real Blackjack — hit, stand, double down, dealer hits to 17, blackjack pays 3:2, with a sess…</small></span><span class="t-arrow">→</span></a></div>
+  </section>
+</main>
+
+<!-- ADSTERRA-FOOTER: paste your Adsterra footer/banner ad code inside the div below -->
+<div class="container"><div class="ad-slot" data-ad="footer"></div></div>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="f-grid">
+      <div>
+        <span class="brandline"><span class="logo-mark">T</span> ToolNest</span>
+        <p>Free online tools that actually work. No sign-up, no watermarks — and your files never leave your device for client-side tools.</p>
+      </div>
+      <div>
+        <h4>Popular</h4>
+        <a href="/tools/qr-code-generator/">QR Code Generator</a>
+        <a href="/tools/background-remover/">Background Remover</a>
+        <a href="/tools/pdf-merger/">PDF Merger</a>
+        <a href="/tools/word-counter/">Word Counter</a>
+      </div>
+      <div>
+        <h4>Categories</h4>
+        <a href="/#image">Image Tools</a>
+        <a href="/#pdf">PDF &amp; Documents</a>
+        <a href="/#calculators">Calculators</a>
+        <a href="/#developer">Developer Tools</a>
+      </div>
+      <div>
+        <h4>Site</h4>
+        <a href="/">Home</a>
+        <a href="/#all-tools">All Tools</a>
+        <a href="/sitemap.xml">Sitemap</a>
+      </div>
+    </div>
+    <div class="f-bottom">© 2026 ToolNest · Free tools for everyone · Made with care</div>
+  </div>
+</footer>
+
+<script src="/assets/site.js?v=5"></script>
+
+<script>
+/* Riddle Game — 50+ riddles, lenient answer checking, show-answer, scoring. */
+(function () {
+  'use strict';
+  var SLUG = 'riddle-game';
+  var BANK = [
+    ['I speak without a mouth and hear without ears. I have no body, but I come alive with wind. What am I?','echo'],
+    ['You measure my life in hours and I serve you by expiring. I am quick when I am thin and slow when I am fat. What am I?','candle'],
+    ['I have cities, but no houses. I have mountains, but no trees. I have water, but no fish. What am I?','map'],
+    ['What is seen in the middle of March and April that can never be seen at the beginning or end of either month?','the letter R'],
+    ['The more of this there is, the less you see. What is it?','darkness'],
+    ['What runs but never walks, has a mouth but never talks, has a bed but never sleeps?','river'],
+    ['I am always hungry and must always be fed. The finger I touch soon turns red. What am I?','fire'],
+    ['What has keys but cannot open a single lock?','piano'],
+    ['What has a head and a tail but no body?','coin'],
+    ['What gets wetter the more it dries?','towel'],
+    ['What has many needles but never sews?','pine tree'],
+    ['What has one eye but cannot see?','needle'],
+    ['What belongs to you but others use it more than you do?','your name'],
+    ['What goes up but never comes down?','your age'],
+    ['What can you catch but never throw?','a cold'],
+    ['What has hands but cannot clap?','clock'],
+    ['What has a neck but no head?','bottle'],
+    ['What is full of holes but still holds water?','sponge'],
+    ['What question can you never answer yes to?','are you asleep'],
+    ['What is always in front of you but cannot be seen?','the future'],
+    ['The person who makes it sells it. The person who buys it never uses it. What is it?','coffin'],
+    ['What has 13 hearts but no other organs?','a deck of cards'],
+    ['What can fill a room but takes up no space?','light'],
+    ['If you drop me I am sure to crack, but give me a smile and I will always smile back. What am I?','mirror'],
+    ['What has words but never speaks?','book'],
+    ['What runs around the whole yard without moving?','fence'],
+    ['What can you hold in your right hand but never in your left hand?','your left hand'],
+    ['What tastes better than it smells?','your tongue'],
+    ['What has a thumb and four fingers but is not alive?','glove'],
+    ['What comes once in a minute, twice in a moment, but never in a thousand years?','the letter M'],
+    ['What is so fragile that saying its name breaks it?','silence'],
+    ['What goes through cities and fields but never moves?','road'],
+    ['What has many teeth but cannot bite?','comb'],
+    ['What is black when clean and white when dirty?','chalkboard'],
+    ['What has an endless supply of letters but starts empty?','mailbox'],
+    ['What is easy to get into but hard to get out of?','trouble'],
+    ['What kind of band never plays music?','rubber band'],
+    ['What has a bottom at the top?','your legs'],
+    ['What is at the end of a rainbow?','the letter W'],
+    ['What has four wheels and flies?','garbage truck'],
+    ['What room has no doors?','mushroom'],
+    ['What starts with T, ends with T, and has T in it?','teapot'],
+    ['What has legs but does not walk?','table'],
+    ['What can run but never walks, has a mouth but never talks, has a head but never weeps, has a bed but never sleeps?','river'],
+    ['The more you take, the more you leave behind. What am I?','footsteps'],
+    ['I turn once, what is out will not get in. I turn again, what is in will not get out. What am I?','key'],
+    ['What invention lets you look right through a wall?','window'],
+    ['What is red and smells like blue paint?','red paint'],
+    ['What did the zero say to the eight?','nice belt'],
+    ['What has a face and two hands but no arms or legs?','clock'],
+    ['What building has the most stories?','library'],
+    ['What gets bigger the more you take away from it?','a hole'],
+    ['What is always coming but never arrives?','tomorrow']
+  ];
+  var order = [], pos = 0, score = 0, streak = 0, solved = 0, playing = false;
+
+  function $(id) { return document.getElementById(id); }
+  function shuffle(a) {
+    for (var i = a.length - 1; i > 0; i--) {
+      var j = Math.floor(Math.random() * (i + 1));
+      var t = a[i]; a[i] = a[j]; a[j] = t;
+    }
+    return a;
+  }
+  function norm(s) { return ' ' + s.toLowerCase().replace(/[^a-z0-9 ]/g, ' ').replace(/\s+/g, ' ').trim() + ' '; }
+  function matches(guess, ans) {
+    var g = norm(guess), a = norm(ans);
+    if (!g.trim()) return false;
+    if (g === a) return true;
+    // every significant word of the answer appears in the guess, or vice versa
+    var aw = a.trim().split(' ').filter(function (w) { return w.length > 2; });
+    var gw = g.trim().split(' ').filter(function (w) { return w.length > 2; });
+    if (aw.length && aw.every(function (w) { return g.indexOf(' ' + w + ' ') !== -1 || g.indexOf(w) !== -1; })) return true;
+    if (gw.length && gw.every(function (w) { return a.indexOf(w) !== -1; })) return true;
+    return false;
+  }
+
+  function setPlaying(on) {
+    playing = on;
+    $('riddle-game-guess').disabled = !on;
+    $('riddle-game-submit').disabled = !on;
+    $('riddle-game-reveal').disabled = !on;
+    $('riddle-game-skip').disabled = !on;
+  }
+
+  function newRiddle() {
+    if (pos >= order.length) {
+      $('riddle-game-q').textContent = '🏁 All riddles done!';
+      $('riddle-game-msg').textContent = 'You solved ' + solved + ' of ' + BANK.length + ' riddles with ' + score + ' points. Restart to play again!';
+      setPlaying(false);
+      return;
+    }
+    $('riddle-game-q').textContent = BANK[order[pos]][0];
+    $('riddle-game-guess').value = '';
+    $('riddle-game-guess').focus();
+  }
+
+  function start() {
+    order = shuffle(BANK.map(function (_, i) { return i; }));
+    pos = 0; score = 0; streak = 0; solved = 0;
+    $('riddle-game-score').textContent = '0';
+    $('riddle-game-streak').textContent = '0';
+    $('riddle-game-done').textContent = '0';
+    $('riddle-game-msg').textContent = 'Type your answer below.';
+    $('riddle-game-start').textContent = '↻ Restart';
+    setPlaying(true);
+    newRiddle();
+  }
+
+  function submit() {
+    if (!playing || pos >= order.length) return;
+    var g = $('riddle-game-guess').value;
+    if (!g.trim()) return;
+    var ans = BANK[order[pos]][1];
+    if (matches(g, ans)) {
+      streak++; solved++; score += 10;
+      $('riddle-game-score').textContent = score;
+      $('riddle-game-streak').textContent = streak;
+      $('riddle-game-done').textContent = solved;
+      $('riddle-game-msg').textContent = '✓ Correct! The answer was "' + ans + '". +10 points.';
+      pos++;
+      newRiddle();
+    } else {
+      streak = 0;
+      $('riddle-game-streak').textContent = '0';
+      $('riddle-game-msg').textContent = '✗ Not quite — think again or reveal the answer!';
+    }
+  }
+
+  function reveal() {
+    if (!playing || pos >= order.length) return;
+    var ans = BANK[order[pos]][1];
+    streak = 0;
+    $('riddle-game-streak').textContent = '0';
+    $('riddle-game-msg').textContent = '👁 The answer was: "' + ans + '". No points this time.';
+    pos++;
+    newRiddle();
+  }
+
+  function skip() {
+    if (!playing || pos >= order.length) return;
+    streak = 0;
+    $('riddle-game-streak').textContent = '0';
+    $('riddle-game-msg').textContent = 'Skipped — the answer was "' + BANK[order[pos]][1] + '".';
+    pos++;
+    newRiddle();
+  }
+
+  try {
+    TN.on('riddle-game-start', 'click', start);
+    TN.on('riddle-game-submit', 'click', submit);
+    TN.on('riddle-game-reveal', 'click', reveal);
+    TN.on('riddle-game-skip', 'click', skip);
+    TN.on('riddle-game-guess', 'keydown', function (e) { if (e.key === 'Enter') submit(); });
+  } catch (e) { /* never throw on load */ }
+})();
+
+</script>
+</body>
+</html>

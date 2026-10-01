@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Character Escape Reference — Free Online | ToolNest</title>
+<meta name="description" content="Searchable reference of characters with their HTML entities, URL encodings, and JS escapes — plus a live encoder.">
+<meta name="keywords" content="character escape reference, html entities, url encode, unicode escape, html entity table">
+<link rel="canonical" href="https://toolnest.vercel.app/tools/character-escape-reference/">
+<meta name="theme-color" content="#07070b">
+<meta property="og:title" content="Character Escape Reference — Free Online | ToolNest">
+<meta property="og:description" content="Searchable reference of characters with their HTML entities, URL encodings, and JS escapes — plus a live encoder.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css?v=4">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%23e01111'/><text x='50' y='68' font-size='58' text-anchor='middle' fill='white' font-family='Arial' font-weight='bold'>T</text></svg>">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebApplication","name":"Character Escape Reference","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0"},"url":"https://toolnest.vercel.app/tools/character-escape-reference/","description":"Searchable reference of characters with their HTML entities, URL encodings, and JS escapes — plus a live encoder."},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Can I search the table?","acceptedAnswer":{"@type":"Answer","text":"Yes — the table filters by character, entity name, or code instantly."}},{"@type":"Question","name":"How do I copy a character?","acceptedAnswer":{"@type":"Answer","text":"Click any row to copy the character itself."}},{"@type":"Question","name":"What does the live encoder do?","acceptedAnswer":{"@type":"Answer","text":"Paste text and choose HTML, URL, or JS-unicode mode to escape every character."}},{"@type":"Question","name":"Which characters are listed?","acceptedAnswer":{"@type":"Answer","text":"The table covers common ASCII punctuation plus named entities like é, ©, and €."}}]}]}</script>
+</head>
+<body>
+<header class="site-header">
+  <div class="container">
+    <a class="logo" href="/"><span class="logo-mark">T</span> ToolNest</a>
+    <div class="header-right">
+      <form class="nav-search" action="/" method="get" role="search">
+        <span class="ns-icon">🔍</span>
+        <input type="search" name="q" placeholder="Search tools…" aria-label="Search tools" autocomplete="off">
+      </form>
+      <div class="menu-wrap">
+        <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="menuPanel" aria-label="Open menu"><span></span><span></span><span></span></button>
+        <nav class="menu-panel" id="menuPanel" aria-label="Site">
+          <a href="/">Home</a>
+          <a href="/#categories">Categories</a>
+          <a href="/#all-tools">All Tools</a>
+        </nav>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ADSTERRA-HEADER: paste your Adsterra banner ad code inside the div below -->
+<div class="container"><div class="ad-slot ad-leaderboard" data-ad="header"></div></div>
+
+<main class="container">
+  <nav class="crumbs"><a href="/">Home</a> &rsaquo; <a href="/#developer">Developer Tools</a> &rsaquo; Character Escape Reference</nav>
+  <div class="tool-hero">
+    <h1>Character Escape Reference</h1>
+    <p>Searchable reference of characters with their HTML entities, URL encodings, and JS escapes — plus a live encoder.</p>
+  </div>
+
+  <div class="tool-card">
+  <div class="field">
+    <label for="character-escape-reference-search">Search characters</label>
+    <input class="input" id="character-escape-reference-search" placeholder="e.g. ampersand, é, 0026…">
+    <p class="hint">Click any row to copy the character.</p>
+  </div>
+  <div class="error" id="character-escape-reference-error"></div>
+  <div style="overflow-x:auto">
+    <table class="data" id="character-escape-reference-table">
+      <thead><tr><th>Char</th><th>HTML entity</th><th>Numeric</th><th>URL-encode</th><th>JS escape</th><th>Description</th></tr></thead>
+      <tbody id="character-escape-reference-rows"></tbody>
+    </table>
+  </div>
+  <p class="muted hidden" id="character-escape-reference-none">No characters match your search.</p>
+  <hr>
+  <div class="field">
+    <label for="character-escape-reference-input">Live encoder</label>
+    <textarea class="textarea" id="character-escape-reference-input" rows="3" placeholder="Paste text to escape…"></textarea>
+  </div>
+  <div class="field">
+    <label for="character-escape-reference-mode">Escape mode</label>
+    <select class="input" id="character-escape-reference-mode">
+      <option value="html">HTML entities</option>
+      <option value="url">URL-encoding</option>
+      <option value="js">JS \uXXXX escapes</option>
+    </select>
+  </div>
+  <div class="field">
+    <label for="character-escape-reference-output">Escaped output</label>
+    <textarea class="textarea" id="character-escape-reference-output" rows="3" readonly></textarea>
+  </div>
+  <div class="btn-row">
+    <button class="btn btn-outline" id="character-escape-reference-copy">Copy output</button>
+  </div>
+</div>
+
+
+  <!-- ADSTERRA-INCONTENT: paste your Adsterra native/in-content ad code inside the div below -->
+  <div class="ad-slot" data-ad="incontent"></div>
+
+  <div class="info-grid">
+    <div class="info-card">
+      <h2>📖 How to use</h2>
+      <ol><li>Search the table for a character.</li><li>Click a row to copy the character.</li><li>Or paste text below and encode it live.</li></ol>
+    </div>
+    <div class="info-card">
+      <h2>❓ Frequently asked questions</h2>
+      <div class="faq"><details><summary>Can I search the table?</summary><p>Yes — the table filters by character, entity name, or code instantly.</p></details><details><summary>How do I copy a character?</summary><p>Click any row to copy the character itself.</p></details><details><summary>What does the live encoder do?</summary><p>Paste text and choose HTML, URL, or JS-unicode mode to escape every character.</p></details><details><summary>Which characters are listed?</summary><p>The table covers common ASCII punctuation plus named entities like é, ©, and €.</p></details></div>
+    </div>
+  </div>
+
+  <section class="section">
+    <h2>🔗 Related tools</h2>
+    <div class="tool-grid"><a class="tool-link" href="/tools/ascii-table-reference/" data-search="ascii table reference full ascii table 0–127: decimal, hex, octal, character, control-code names and html entities — searchable. ascii table ascii codes ascii chart control characters ascii reference"><span class="t-ico">💻</span><span class="t-body"><b>ASCII Table Reference</b><small>Full ASCII table 0–127: decimal, hex, octal, character, control-code names and HTML entities…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/base64-encoder-decoder/" data-search="base64 encoder / decoder encode text to base64 or decode base64 back to text, with full utf-8 support and a file-to-data-url converter. base64 encoder base64 decoder base64 encode base64 decode file to base64"><span class="t-ico">💻</span><span class="t-body"><b>Base64 Encoder / Decoder</b><small>Encode text to Base64 or decode Base64 back to text, with full UTF-8 support and a file-to-d…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/binary-text-converter/" data-search="binary and text converter convert text to binary or hex and back, with full utf-8 awareness and strict input validation. binary to text text to binary hex to text converter"><span class="t-ico">💻</span><span class="t-body"><b>Binary and Text Converter</b><small>Convert text to binary or hex and back, with full UTF-8 awareness and strict input validatio…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/changelog-generator/" data-search="changelog generator build a keep-a-changelog markdown file: version, date, and grouped added/fixed/changed entries. changelog generator keep a changelog changelog markdown release notes version changelog"><span class="t-ico">💻</span><span class="t-body"><b>Changelog Generator</b><small>Build a Keep-a-Changelog markdown file: version, date, and grouped Added/Fixed/Changed entri…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/chmod-calculator/" data-search="chmod calculator tick rwx boxes for user/group/other — or type 755 — and see octal, symbolic, and the chmod command live. chmod calculator chmod 755 linux permissions octal permissions rwx calculator"><span class="t-ico">💻</span><span class="t-body"><b>chmod Calculator</b><small>Tick rwx boxes for user/group/other — or type 755 — and see octal, symbolic, and the chmod c…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/color-code-converter/" data-search="color code converter type a color in hex, rgb or hsl format and instantly see it converted to all three formats with a preview swatch. color converter hex to rgb rgb to hex hsl converter color code"><span class="t-ico">💻</span><span class="t-body"><b>Color Code Converter</b><small>Type a color in HEX, RGB or HSL format and instantly see it converted to all three formats w…</small></span><span class="t-arrow">→</span></a></div>
+  </section>
+</main>
+
+<!-- ADSTERRA-FOOTER: paste your Adsterra footer/banner ad code inside the div below -->
+<div class="container"><div class="ad-slot" data-ad="footer"></div></div>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="f-grid">
+      <div>
+        <span class="brandline"><span class="logo-mark">T</span> ToolNest</span>
+        <p>Free online tools that actually work. No sign-up, no watermarks — and your files never leave your device for client-side tools.</p>
+      </div>
+      <div>
+        <h4>Popular</h4>
+        <a href="/tools/qr-code-generator/">QR Code Generator</a>
+        <a href="/tools/background-remover/">Background Remover</a>
+        <a href="/tools/pdf-merger/">PDF Merger</a>
+        <a href="/tools/word-counter/">Word Counter</a>
+      </div>
+      <div>
+        <h4>Categories</h4>
+        <a href="/#image">Image Tools</a>
+        <a href="/#pdf">PDF &amp; Documents</a>
+        <a href="/#calculators">Calculators</a>
+        <a href="/#developer">Developer Tools</a>
+      </div>
+      <div>
+        <h4>Site</h4>
+        <a href="/">Home</a>
+        <a href="/#all-tools">All Tools</a>
+        <a href="/sitemap.xml">Sitemap</a>
+      </div>
+    </div>
+    <div class="f-bottom">© 2026 ToolNest · Free tools for everyone · Made with care</div>
+  </div>
+</footer>
+
+<script src="/assets/site.js?v=5"></script>
+
+<script>
+/* Character Escape Reference — searchable char table + live HTML/URL/JS encoder. */
+(function () {
+  'use strict';
+  var SLUG = 'character-escape-reference';
+  // [char, html entity, description]
+  var CHARS = [
+    ['<', '&lt;', 'Less-than'], ['>', '&gt;', 'Greater-than'],
+    ['&', '&amp;', 'Ampersand'], ['"', '&quot;', 'Double quote'],
+    ["'", '&apos;', 'Apostrophe'], [' ', '&nbsp;', 'Non-breaking space'],
+    ['©', '&copy;', 'Copyright'], ['®', '&reg;', 'Registered'],
+    ['™', '&trade;', 'Trademark'], ['€', '&euro;', 'Euro'],
+    ['£', '&pound;', 'Pound'], ['¥', '&yen;', 'Yen'],
+    ['¢', '&cent;', 'Cent'], ['§', '&sect;', 'Section'],
+    ['¶', '&para;', 'Pilcrow'], ['°', '&deg;', 'Degree'],
+    ['±', '&plusmn;', 'Plus-minus'], ['×', '&times;', 'Multiplication'],
+    ['÷', '&divide;', 'Division'], ['µ', '&micro;', 'Micro'],
+    ['·', '&middot;', 'Middle dot'], ['…', '&hellip;', 'Ellipsis'],
+    ['–', '&ndash;', 'En dash'], ['—', '&mdash;', 'Em dash'],
+    ['‘', '&lsquo;', 'Left single quote'], ['’', '&rsquo;', 'Right single quote'],
+    ['“', '&ldquo;', 'Left double quote'], ['”', '&rdquo;', 'Right double quote'],
+    ['‹', '&lsaquo;', 'Single left angle quote'], ['›', '&rsaquo;', 'Single right angle quote'],
+    ['«', '&laquo;', 'Left guillemet'], ['»', '&raquo;', 'Right guillemet'],
+    ['¡', '&iexcl;', 'Inverted exclamation'], ['¿', '&iquest;', 'Inverted question'],
+    ['À', '&Agrave;', 'A grave'], ['Á', '&Aacute;', 'A acute'],
+    ['Â', '&Acirc;', 'A circumflex'], ['Ã', '&Atilde;', 'A tilde'],
+    ['Ä', '&Auml;', 'A umlaut'], ['Å', '&Aring;', 'A ring'],
+    ['Æ', '&AElig;', 'AE ligature'], ['Ç', '&Ccedil;', 'C cedilla'],
+    ['È', '&Egrave;', 'E grave'], ['É', '&Eacute;', 'E acute'],
+    ['Ê', '&Ecirc;', 'E circumflex'], ['Ë', '&Euml;', 'E umlaut'],
+    ['Ì', '&Igrave;', 'I grave'], ['Í', '&Iacute;', 'I acute'],
+    ['Î', '&Icirc;', 'I circumflex'], ['Ï', '&Iuml;', 'I umlaut'],
+    ['Ñ', '&Ntilde;', 'N tilde'], ['Ò', '&Ograve;', 'O grave'],
+    ['Ó', '&Oacute;', 'O acute'], ['Ô', '&Ocirc;', 'O circumflex'],
+    ['Õ', '&Otilde;', 'O tilde'], ['Ö', '&Ouml;', 'O umlaut'],
+    ['Ø', '&Oslash;', 'O slash'], ['Ù', '&Ugrave;', 'U grave'],
+    ['Ú', '&Uacute;', 'U acute'], ['Û', '&Ucirc;', 'U circumflex'],
+    ['Ü', '&Uuml;', 'U umlaut'], ['Ý', '&Yacute;', 'Y acute'],
+    ['à', '&agrave;', 'a grave'], ['á', '&aacute;', 'a acute'],
+    ['â', '&acirc;', 'a circumflex'], ['ã', '&atilde;', 'a tilde'],
+    ['ä', '&auml;', 'a umlaut'], ['å', '&aring;', 'a ring'],
+    ['æ', '&aelig;', 'ae ligature'], ['ç', '&ccedil;', 'c cedilla'],
+    ['è', '&egrave;', 'e grave'], ['é', '&eacute;', 'e acute'],
+    ['ê', '&ecirc;', 'e circumflex'], ['ë', '&euml;', 'e umlaut'],
+    ['ì', '&igrave;', 'i grave'], ['í', '&iacute;', 'i acute'],
+    ['î', '&icirc;', 'i circumflex'], ['ï', '&iuml;', 'i umlaut'],
+    ['ñ', '&ntilde;', 'n tilde'], ['ò', '&ograve;', 'o grave'],
+    ['ó', '&oacute;', 'o acute'], ['ô', '&ocirc;', 'o circumflex'],
+    ['õ', '&otilde;', 'o tilde'], ['ö', '&ouml;', 'o umlaut'],
+    ['ø', '&oslash;', 'o slash'], ['ù', '&ugrave;', 'u grave'],
+    ['ú', '&uacute;', 'u acute'], ['û', '&ucirc;', 'u circumflex'],
+    ['ü', '&uuml;', 'u umlaut'], ['ý', '&yacute;', 'y acute'],
+    ['ÿ', '&yuml;', 'y umlaut'], ['ß', '&szlig;', 'Sharp s'],
+    ['ƒ', '&fnof;', 'Function sign'], ['α', '&alpha;', 'Alpha'],
+    ['β', '&beta;', 'Beta'], ['γ', '&gamma;', 'Gamma'],
+    ['δ', '&delta;', 'Delta'], ['π', '&pi;', 'Pi'],
+    ['σ', '&sigma;', 'Sigma'], ['ω', '&omega;', 'Omega'],
+    ['←', '&larr;', 'Left arrow'], ['→', '&rarr;', 'Right arrow'],
+    ['↑', '&uarr;', 'Up arrow'], ['↓', '&darr;', 'Down arrow'],
+    ['♥', '&hearts;', 'Heart'], ['♦', '&diams;', 'Diamond'],
+    ['♣', '&clubs;', 'Club'], ['♠', '&spades;', 'Spade'],
+    ['✓', '&#10003;', 'Check mark'], ['✗', '&#10007;', 'Ballot X']
+  ];
+
+  function el(id) { return document.getElementById(id); }
+  function fail(msg) { TN.setErr(SLUG + '-error', msg); }
+
+  function pad4(n) {
+    var s = n.toString(16).toUpperCase();
+    while (s.length < 4) s = '0' + s;
+    return s;
+  }
+
+  function rowData(ch, entity, desc) {
+    var cp = ch.codePointAt(0);
+    var numeric = '&#' + cp + ';';
+    var url = encodeURIComponent(ch);
+    var js = cp > 0xFFFF
+      ? '\\u' + pad4(Math.floor((cp - 0x10000) / 0x400) + 0xD800) + '\\u' + pad4((cp - 0x10000) % 0x400 + 0xDC00)
+      : '\\u' + pad4(cp);
+    return { ch: ch, entity: entity, numeric: numeric, url: url, js: js, desc: desc, cp: cp };
+  }
+
+  function render(filter) {
+    var tb = el(SLUG + '-rows');
+    tb.innerHTML = '';
+    var q = (filter || '').toLowerCase().trim();
+    var shown = 0;
+    CHARS.forEach(function (c) {
+      var d = rowData(c[0], c[1], c[2]);
+      var hay = (d.ch + ' ' + d.entity + ' ' + d.numeric + ' ' + d.desc + ' ' +
+                 d.cp + ' ' + pad4(d.cp)).toLowerCase();
+      if (q && hay.indexOf(q) < 0) return;
+      shown++;
+      var tr = document.createElement('tr');
+      tr.style.cursor = 'pointer';
+      tr.title = 'Click to copy the character';
+      [d.ch, d.entity, d.numeric, d.url, d.js, d.desc].forEach(function (v, i) {
+        var td = document.createElement('td');
+        if (i === 0) td.style.fontSize = '18px';
+        else td.innerHTML = '<code class="code">' + v.replace(/&/g, '&amp;').replace(/</g, '&lt;') + '</code>';
+        if (i === 0) td.textContent = v;
+        tr.appendChild(td);
+      });
+      tr.addEventListener('click', function () {
+        TN.copy(d.ch).then(function (ok) {
+          if (!ok) fail('Copy failed — select the text manually.');
+        });
+      });
+      tb.appendChild(tr);
+    });
+    el(SLUG + '-none').classList.toggle('hidden', shown > 0);
+  }
+
+  function encodeLive() {
+    var text = el(SLUG + '-input').value;
+    var mode = el(SLUG + '-mode').value;
+    var out;
+    if (mode === 'url') {
+      out = encodeURIComponent(text);
+    } else if (mode === 'js') {
+      out = '';
+      for (var i = 0; i < text.length; i++) {
+        var cp = text.codePointAt(i);
+        if (cp > 0xFFFF) {
+          out += '\\u' + pad4(Math.floor((cp - 0x10000) / 0x400) + 0xD800) +
+                 '\\u' + pad4((cp - 0x10000) % 0x400 + 0xDC00);
+          i++;
+        } else if (cp < 128 && /[A-Za-z0-9]/.test(text[i])) {
+          out += text[i];
+        } else {
+          out += '\\u' + pad4(cp);
+        }
+      }
+    } else {
+      out = text.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;').replace(/'/g, '&#39;');
+    }
+    el(SLUG + '-output').value = out;
+  }
+
+  try {
+    TN.on(SLUG + '-search', 'input', TN.debounce(function () {
+      render(el(SLUG + '-search').value);
+    }, 150));
+    TN.on(SLUG + '-input', 'input', TN.debounce(encodeLive, 200));
+    TN.on(SLUG + '-mode', 'change', encodeLive);
+    TN.on(SLUG + '-copy', 'click', function () {
+      var v = el(SLUG + '-output').value;
+      if (!v) { fail('Encode some text first.'); return; }
+      TN.copy(v).then(function (ok) { if (!ok) fail('Copy failed — select the text manually.'); });
+    });
+    render('');
+  } catch (e) { /* never throw on load */ }
+})();
+
+</script>
+</body>
+</html>

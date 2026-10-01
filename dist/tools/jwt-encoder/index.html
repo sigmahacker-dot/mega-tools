@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>JWT Encoder / Decoder — Free Online | ToolNest</title>
+<meta name="description" content="Create real HS256-signed JWTs in your browser and decode/verify existing tokens, all client-side.">
+<meta name="keywords" content="jwt encoder, jwt generator, jwt decoder, jwt verify, create jwt token">
+<link rel="canonical" href="https://toolnest.vercel.app/tools/jwt-encoder/">
+<meta name="theme-color" content="#07070b">
+<meta property="og:title" content="JWT Encoder / Decoder — Free Online | ToolNest">
+<meta property="og:description" content="Create real HS256-signed JWTs in your browser and decode/verify existing tokens, all client-side.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css?v=4">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%23e01111'/><text x='50' y='68' font-size='58' text-anchor='middle' fill='white' font-family='Arial' font-weight='bold'>T</text></svg>">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebApplication","name":"JWT Encoder / Decoder","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0"},"url":"https://toolnest.vercel.app/tools/jwt-encoder/","description":"Create real HS256-signed JWTs in your browser and decode/verify existing tokens, all client-side."},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How is the token signed?","acceptedAnswer":{"@type":"Answer","text":"Header and payload JSON are base64url-encoded and signed with HMAC-SHA256 using your secret via WebCrypto."}},{"@type":"Question","name":"Can I decode a token without the secret?","acceptedAnswer":{"@type":"Answer","text":"Yes — paste any token and it decodes the header/payload; with the secret it also checks the signature."}},{"@type":"Question","name":"Is my secret sent anywhere?","acceptedAnswer":{"@type":"Answer","text":"No. Signing and verification happen locally with the WebCrypto API; tokens never leave your device."}}]}]}</script>
+</head>
+<body>
+<header class="site-header">
+  <div class="container">
+    <a class="logo" href="/"><span class="logo-mark">T</span> ToolNest</a>
+    <div class="header-right">
+      <form class="nav-search" action="/" method="get" role="search">
+        <span class="ns-icon">🔍</span>
+        <input type="search" name="q" placeholder="Search tools…" aria-label="Search tools" autocomplete="off">
+      </form>
+      <div class="menu-wrap">
+        <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="menuPanel" aria-label="Open menu"><span></span><span></span><span></span></button>
+        <nav class="menu-panel" id="menuPanel" aria-label="Site">
+          <a href="/">Home</a>
+          <a href="/#categories">Categories</a>
+          <a href="/#all-tools">All Tools</a>
+        </nav>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ADSTERRA-HEADER: paste your Adsterra banner ad code inside the div below -->
+<div class="container"><div class="ad-slot ad-leaderboard" data-ad="header"></div></div>
+
+<main class="container">
+  <nav class="crumbs"><a href="/">Home</a> &rsaquo; <a href="/#developer">Developer Tools</a> &rsaquo; JWT Encoder / Decoder</nav>
+  <div class="tool-hero">
+    <h1>JWT Encoder / Decoder</h1>
+    <p>Create real HS256-signed JWTs in your browser and decode/verify existing tokens, all client-side.</p>
+  </div>
+
+  <div class="tool-card">
+  <div class="grid2">
+    <div class="field">
+      <label for="jwt-encoder-header">Header (JSON)</label>
+      <textarea class="textarea" id="jwt-encoder-header" rows="4">{"alg":"HS256","typ":"JWT"}</textarea>
+    </div>
+    <div class="field">
+      <label for="jwt-encoder-payload">Payload (JSON)</label>
+      <textarea class="textarea" id="jwt-encoder-payload" rows="4">{"sub":"user-123","name":"Ada Lovelace","admin":true,"iat":1798761600}</textarea>
+    </div>
+  </div>
+  <div class="grid2">
+    <div class="field">
+      <label for="jwt-encoder-secret">Secret (HS256)</label>
+      <input type="password" class="input" id="jwt-encoder-secret" placeholder="your-256-bit-secret" autocomplete="off">
+    </div>
+    <div class="field">
+      <label>&nbsp;</label>
+      <div class="btn-row"><button class="btn btn-primary" id="jwt-encoder-sign">Sign JWT</button></div>
+    </div>
+  </div>
+  <div class="error" id="jwt-encoder-error"></div>
+  <div class="field">
+    <label for="jwt-encoder-output">Signed token</label>
+    <div class="copy-row">
+      <code class="code" id="jwt-encoder-output" style="flex:1;word-break:break-all"></code>
+      <button class="btn btn-outline" id="jwt-encoder-copy">Copy</button>
+    </div>
+  </div>
+  <hr>
+  <div class="field">
+    <label for="jwt-encoder-token">Decode / verify a token</label>
+    <textarea class="textarea" id="jwt-encoder-token" rows="3" placeholder="Paste a JWT here…"></textarea>
+  </div>
+  <div class="btn-row">
+    <button class="btn btn-primary" id="jwt-encoder-decode">Decode &amp; verify</button>
+  </div>
+  <p class="hint">Uses the secret above for verification. Leave the secret empty to decode only.</p>
+  <div class="result hidden" id="jwt-encoder-result">
+    <div class="stat-cards">
+      <div class="stat-card"><div class="v" id="jwt-encoder-valid">—</div><div class="l">Signature</div></div>
+      <div class="stat-card"><div class="v" id="jwt-encoder-exp">—</div><div class="l">Expiry</div></div>
+    </div>
+    <div class="grid2">
+      <div class="field"><label>Header</label><pre class="code" id="jwt-encoder-dheader"></pre></div>
+      <div class="field"><label>Payload</label><pre class="code" id="jwt-encoder-dpayload"></pre></div>
+    </div>
+  </div>
+</div>
+
+
+  <!-- ADSTERRA-INCONTENT: paste your Adsterra native/in-content ad code inside the div below -->
+  <div class="ad-slot" data-ad="incontent"></div>
+
+  <div class="info-grid">
+    <div class="info-card">
+      <h2>📖 How to use</h2>
+      <ol><li>Edit the header and payload JSON.</li><li>Type your HS256 secret and click Sign JWT.</li><li>Or paste a token below to decode and verify it.</li></ol>
+    </div>
+    <div class="info-card">
+      <h2>❓ Frequently asked questions</h2>
+      <div class="faq"><details><summary>How is the token signed?</summary><p>Header and payload JSON are base64url-encoded and signed with HMAC-SHA256 using your secret via WebCrypto.</p></details><details><summary>Can I decode a token without the secret?</summary><p>Yes — paste any token and it decodes the header/payload; with the secret it also checks the signature.</p></details><details><summary>Is my secret sent anywhere?</summary><p>No. Signing and verification happen locally with the WebCrypto API; tokens never leave your device.</p></details></div>
+    </div>
+  </div>
+
+  <section class="section">
+    <h2>🔗 Related tools</h2>
+    <div class="tool-grid"><a class="tool-link" href="/tools/ascii-table-reference/" data-search="ascii table reference full ascii table 0–127: decimal, hex, octal, character, control-code names and html entities — searchable. ascii table ascii codes ascii chart control characters ascii reference"><span class="t-ico">💻</span><span class="t-body"><b>ASCII Table Reference</b><small>Full ASCII table 0–127: decimal, hex, octal, character, control-code names and HTML entities…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/base64-encoder-decoder/" data-search="base64 encoder / decoder encode text to base64 or decode base64 back to text, with full utf-8 support and a file-to-data-url converter. base64 encoder base64 decoder base64 encode base64 decode file to base64"><span class="t-ico">💻</span><span class="t-body"><b>Base64 Encoder / Decoder</b><small>Encode text to Base64 or decode Base64 back to text, with full UTF-8 support and a file-to-d…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/binary-text-converter/" data-search="binary and text converter convert text to binary or hex and back, with full utf-8 awareness and strict input validation. binary to text text to binary hex to text converter"><span class="t-ico">💻</span><span class="t-body"><b>Binary and Text Converter</b><small>Convert text to binary or hex and back, with full UTF-8 awareness and strict input validatio…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/changelog-generator/" data-search="changelog generator build a keep-a-changelog markdown file: version, date, and grouped added/fixed/changed entries. changelog generator keep a changelog changelog markdown release notes version changelog"><span class="t-ico">💻</span><span class="t-body"><b>Changelog Generator</b><small>Build a Keep-a-Changelog markdown file: version, date, and grouped Added/Fixed/Changed entri…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/character-escape-reference/" data-search="character escape reference searchable reference of characters with their html entities, url encodings, and js escapes — plus a live encoder. character escape reference html entities url encode unicode escape html entity table"><span class="t-ico">💻</span><span class="t-body"><b>Character Escape Reference</b><small>Searchable reference of characters with their HTML entities, URL encodings, and JS escapes —…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/chmod-calculator/" data-search="chmod calculator tick rwx boxes for user/group/other — or type 755 — and see octal, symbolic, and the chmod command live. chmod calculator chmod 755 linux permissions octal permissions rwx calculator"><span class="t-ico">💻</span><span class="t-body"><b>chmod Calculator</b><small>Tick rwx boxes for user/group/other — or type 755 — and see octal, symbolic, and the chmod c…</small></span><span class="t-arrow">→</span></a></div>
+  </section>
+</main>
+
+<!-- ADSTERRA-FOOTER: paste your Adsterra footer/banner ad code inside the div below -->
+<div class="container"><div class="ad-slot" data-ad="footer"></div></div>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="f-grid">
+      <div>
+        <span class="brandline"><span class="logo-mark">T</span> ToolNest</span>
+        <p>Free online tools that actually work. No sign-up, no watermarks — and your files never leave your device for client-side tools.</p>
+      </div>
+      <div>
+        <h4>Popular</h4>
+        <a href="/tools/qr-code-generator/">QR Code Generator</a>
+        <a href="/tools/background-remover/">Background Remover</a>
+        <a href="/tools/pdf-merger/">PDF Merger</a>
+        <a href="/tools/word-counter/">Word Counter</a>
+      </div>
+      <div>
+        <h4>Categories</h4>
+        <a href="/#image">Image Tools</a>
+        <a href="/#pdf">PDF &amp; Documents</a>
+        <a href="/#calculators">Calculators</a>
+        <a href="/#developer">Developer Tools</a>
+      </div>
+      <div>
+        <h4>Site</h4>
+        <a href="/">Home</a>
+        <a href="/#all-tools">All Tools</a>
+        <a href="/sitemap.xml">Sitemap</a>
+      </div>
+    </div>
+    <div class="f-bottom">© 2026 ToolNest · Free tools for everyone · Made with care</div>
+  </div>
+</footer>
+
+<script src="/assets/site.js?v=5"></script>
+
+<script>
+/* JWT Encoder/Decoder — real HS256 signing via WebCrypto SubtleCrypto. All client-side. */
+(function () {
+  'use strict';
+  var SLUG = 'jwt-encoder';
+
+  function el(id) { return document.getElementById(id); }
+  function fail(msg) { TN.setErr(SLUG + '-error', msg); }
+  function clear() { TN.clearErr(SLUG + '-error'); }
+
+  function b64urlEncode(bytes) {
+    var bin = '';
+    var arr = new Uint8Array(bytes);
+    for (var i = 0; i < arr.length; i++) bin += String.fromCharCode(arr[i]);
+    return btoa(bin).replace(/\+/g, '-').replace(/\//g, '_').replace(/=+$/, '');
+  }
+  function b64urlDecode(str) {
+    var s = str.replace(/-/g, '+').replace(/_/g, '/');
+    while (s.length % 4) s += '=';
+    var bin = atob(s);
+    var arr = new Uint8Array(bin.length);
+    for (var i = 0; i < bin.length; i++) arr[i] = bin.charCodeAt(i);
+    return new TextDecoder().decode(arr);
+  }
+  function utf8(str) { return new TextEncoder().encode(str); }
+
+  function hmacKey(secret) {
+    return crypto.subtle.importKey('raw', utf8(secret), { name: 'HMAC', hash: 'SHA-256' }, false, ['sign', 'verify']);
+  }
+
+  function parseJSONField(id, label) {
+    try { return JSON.parse(el(id).value); }
+    catch (e) { throw new Error('Invalid ' + label + ' JSON: ' + e.message); }
+  }
+
+  function sign() {
+    clear();
+    var header, payload;
+    try {
+      header = parseJSONField(SLUG + '-header', 'header');
+      payload = parseJSONField(SLUG + '-payload', 'payload');
+    } catch (e) { fail(e.message); return; }
+    var secret = el(SLUG + '-secret').value;
+    if (!secret) { fail('Enter a secret to sign with.'); return; }
+    var data = b64urlEncode(utf8(JSON.stringify(header))) + '.' + b64urlEncode(utf8(JSON.stringify(payload)));
+    hmacKey(secret).then(function (key) {
+      return crypto.subtle.sign('HMAC', key, utf8(data));
+    }).then(function (sig) {
+      el(SLUG + '-output').textContent = data + '.' + b64urlEncode(sig);
+    }).catch(function (e) { fail('Signing failed: ' + e.message); });
+  }
+
+  function expiryNote(payload) {
+    if (!payload || typeof payload.exp !== 'number') return 'no exp claim';
+    var now = Math.floor(Date.now() / 1000);
+    if (payload.exp < now) return 'EXPIRED';
+    var s = payload.exp - now;
+    if (s < 3600) return Math.floor(s / 60) + 'm left';
+    if (s < 86400) return Math.floor(s / 3600) + 'h left';
+    return Math.floor(s / 86400) + 'd left';
+  }
+
+  function decode() {
+    clear();
+    TN.hide(SLUG + '-result');
+    var token = el(SLUG + '-token').value.trim();
+    var parts = token.split('.');
+    if (parts.length !== 3) { fail('Not a JWT — expected three base64url segments.'); return; }
+    var header, payload;
+    try {
+      header = JSON.parse(b64urlDecode(parts[0]));
+      payload = JSON.parse(b64urlDecode(parts[1]));
+    } catch (e) { fail('Could not decode token: ' + e.message); return; }
+    el(SLUG + '-dheader').textContent = JSON.stringify(header, null, 2);
+    el(SLUG + '-dpayload').textContent = JSON.stringify(payload, null, 2);
+    el(SLUG + '-exp').textContent = expiryNote(payload);
+    var secret = el(SLUG + '-secret').value;
+    if (!secret) {
+      el(SLUG + '-valid').textContent = 'not checked';
+      TN.show(SLUG + '-result');
+      return;
+    }
+    var data = parts[0] + '.' + parts[1];
+    var sigBytes;
+    try { sigBytes = (function () {
+      var s = parts[2].replace(/-/g, '+').replace(/_/g, '/');
+      while (s.length % 4) s += '=';
+      var bin = atob(s), arr = new Uint8Array(bin.length);
+      for (var i = 0; i < bin.length; i++) arr[i] = bin.charCodeAt(i);
+      return arr;
+    })(); } catch (e) { fail('Bad signature encoding: ' + e.message); return; }
+    hmacKey(secret).then(function (key) {
+      return crypto.subtle.verify('HMAC', key, sigBytes, utf8(data));
+    }).then(function (ok) {
+      el(SLUG + '-valid').textContent = ok ? 'VALID ✓' : 'INVALID ✗';
+      TN.show(SLUG + '-result');
+    }).catch(function (e) { fail('Verification failed: ' + e.message); });
+  }
+
+  try {
+    TN.on(SLUG + '-sign', 'click', sign);
+    TN.on(SLUG + '-decode', 'click', decode);
+    TN.on(SLUG + '-copy', 'click', function () {
+      var v = el(SLUG + '-output').textContent;
+      if (!v) { fail('Sign a token first.'); return; }
+      TN.copy(v).then(function (ok) { if (!ok) fail('Copy failed — select the text manually.'); });
+    });
+  } catch (e) { /* never throw on load */ }
+})();
+
+</script>
+</body>
+</html>

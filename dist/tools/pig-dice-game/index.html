@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pig Dice Game — Free Online | ToolNest</title>
+<meta name="description" content="Pig dice — roll or hold, bust on 1, first to 100 wins. Play against a smart computer opponent.">
+<meta name="keywords" content="pig dice game, pig dice, dice game, roll hold game, pig game">
+<link rel="canonical" href="https://toolnest.vercel.app/tools/pig-dice-game/">
+<meta name="theme-color" content="#07070b">
+<meta property="og:title" content="Pig Dice Game — Free Online | ToolNest">
+<meta property="og:description" content="Pig dice — roll or hold, bust on 1, first to 100 wins. Play against a smart computer opponent.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css?v=4">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%23e01111'/><text x='50' y='68' font-size='58' text-anchor='middle' fill='white' font-family='Arial' font-weight='bold'>T</text></svg>">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebApplication","name":"Pig Dice Game","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0"},"url":"https://toolnest.vercel.app/tools/pig-dice-game/","description":"Pig dice — roll or hold, bust on 1, first to 100 wins. Play against a smart computer opponent."},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What are the rules?","acceptedAnswer":{"@type":"Answer","text":"Roll to add to your turn total, or Hold to bank it. Rolling a 1 busts — you lose the turn total."}},{"@type":"Question","name":"How does the computer play?","acceptedAnswer":{"@type":"Answer","text":"The computer rolls until its turn total reaches 20, then holds — a classic Pig strategy."}},{"@type":"Question","name":"How do I win?","acceptedAnswer":{"@type":"Answer","text":"First to 100 total points wins the game."}},{"@type":"Question","name":"Can I lose banked points?","acceptedAnswer":{"@type":"Answer","text":"Your banked total is always safe — only the current turn total is at risk on each roll."}}]}]}</script>
+</head>
+<body>
+<header class="site-header">
+  <div class="container">
+    <a class="logo" href="/"><span class="logo-mark">T</span> ToolNest</a>
+    <div class="header-right">
+      <form class="nav-search" action="/" method="get" role="search">
+        <span class="ns-icon">🔍</span>
+        <input type="search" name="q" placeholder="Search tools…" aria-label="Search tools" autocomplete="off">
+      </form>
+      <div class="menu-wrap">
+        <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="menuPanel" aria-label="Open menu"><span></span><span></span><span></span></button>
+        <nav class="menu-panel" id="menuPanel" aria-label="Site">
+          <a href="/">Home</a>
+          <a href="/#categories">Categories</a>
+          <a href="/#all-tools">All Tools</a>
+        </nav>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ADSTERRA-HEADER: paste your Adsterra banner ad code inside the div below -->
+<div class="container"><div class="ad-slot ad-leaderboard" data-ad="header"></div></div>
+
+<main class="container">
+  <nav class="crumbs"><a href="/">Home</a> &rsaquo; <a href="/#fun">Fun &amp; Lifestyle</a> &rsaquo; Pig Dice Game</nav>
+  <div class="tool-hero">
+    <h1>Pig Dice Game</h1>
+    <p>Pig dice — roll or hold, bust on 1, first to 100 wins. Play against a smart computer opponent.</p>
+  </div>
+
+  <div class="tool-card" style="text-align:center">
+  <div class="stat-cards" style="max-width:560px;margin:0 auto 12px">
+    <div class="stat-card"><div class="v" id="pig-dice-game-youtotal">0</div><div class="l">Your total</div></div>
+    <div class="stat-card"><div class="v" id="pig-dice-game-cputotal">0</div><div class="l">CPU total</div></div>
+    <div class="stat-card"><div class="v" id="pig-dice-game-turntotal">0</div><div class="l">Turn total</div></div>
+  </div>
+  <div id="pig-dice-game-die" style="font-size:84px;margin:8px 0;min-height:100px">🎲</div>
+  <p class="muted" id="pig-dice-game-msg" style="min-height:24px">Your turn — Roll or Hold! First to 100 wins.</p>
+  <div class="btn-row" style="justify-content:center">
+    <button class="btn btn-primary" id="pig-dice-game-roll" style="font-size:17px">🎲 Roll</button>
+    <button class="btn" id="pig-dice-game-hold" style="font-size:17px">✋ Hold</button>
+    <button class="btn btn-outline" id="pig-dice-game-new">↻ New game</button>
+  </div>
+  <div id="pig-dice-game-log" class="note" style="max-width:480px;margin:12px auto 0;text-align:left;max-height:110px;overflow:auto"></div>
+  <div class="error" id="pig-dice-game-error"></div>
+</div>
+
+
+  <!-- ADSTERRA-INCONTENT: paste your Adsterra native/in-content ad code inside the div below -->
+  <div class="ad-slot" data-ad="incontent"></div>
+
+  <div class="info-grid">
+    <div class="info-card">
+      <h2>📖 How to use</h2>
+      <ol><li>Press Roll to build your turn total.</li><li>Hold to bank the points — or risk rolling on.</li><li>Rolling a 1 busts: turn total lost!</li><li>First to 100 wins. Beat the computer!</li></ol>
+    </div>
+    <div class="info-card">
+      <h2>❓ Frequently asked questions</h2>
+      <div class="faq"><details><summary>What are the rules?</summary><p>Roll to add to your turn total, or Hold to bank it. Rolling a 1 busts — you lose the turn total.</p></details><details><summary>How does the computer play?</summary><p>The computer rolls until its turn total reaches 20, then holds — a classic Pig strategy.</p></details><details><summary>How do I win?</summary><p>First to 100 total points wins the game.</p></details><details><summary>Can I lose banked points?</summary><p>Your banked total is always safe — only the current turn total is at risk on each roll.</p></details></div>
+    </div>
+  </div>
+
+  <section class="section">
+    <h2>🔗 Related tools</h2>
+    <div class="tool-grid"><a class="tool-link" href="/tools/aim-trainer-game/" data-search="aim trainer game test and train your aim — targets pop up at random spots for 30 seconds. hits, misses and accuracy are tracked live. aim trainer aim test reaction test click speed test fps aim trainer"><span class="t-ico">🎲</span><span class="t-body"><b>Aim Trainer Game</b><small>Test and train your aim — targets pop up at random spots for 30 seconds. Hits, misses and ac…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/baby-name-generator/" data-search="baby name generator discover baby names by gender and origin — pakistani, arabic, western, indian or turkish — with meanings, random picks and tap-to-copy. baby name generator baby names with meanings muslim baby names boy girl names"><span class="t-ico">🎲</span><span class="t-body"><b>Baby Name Generator</b><small>Discover baby names by gender and origin — Pakistani, Arabic, Western, Indian or Turkish — w…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/battery-status-checker/" data-search="battery status checker check your device&#39;s battery level, charging status and estimated time remaining, with live updates — where your browser supports the battery api. battery status battery level checker laptop battery charging status"><span class="t-ico">🎲</span><span class="t-body"><b>Battery Status Checker</b><small>Check your device&#39;s battery level, charging status and estimated time remaining, with live u…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/battleship-game/" data-search="battleship game the classic naval battle — place your 5 ships, then hunt the computer&#39;s fleet on a 10×10 grid with hit, miss, and sunk tracking. battleship game battleship naval battle game sea battle board game"><span class="t-ico">🎲</span><span class="t-body"><b>Battleship Game</b><small>The classic naval battle — place your 5 ships, then hunt the computer&#39;s fleet on a 10×10 gri…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/birthday-countdown/" data-search="birthday countdown enter your birthday for a live countdown to your next one — days, hours, minutes and seconds — plus the age you&#39;ll turn and a fun message. birthday countdown countdown to birthday how old am i birthday timer"><span class="t-ico">🎲</span><span class="t-body"><b>Birthday Countdown</b><small>Enter your birthday for a live countdown to your next one — days, hours, minutes and seconds…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/blackjack-game/" data-search="blackjack game real blackjack — hit, stand, double down, dealer hits to 17, blackjack pays 3:2, with a session bankroll. blackjack blackjack game 21 card game casino card game blackjack online"><span class="t-ico">🎲</span><span class="t-body"><b>Blackjack Game</b><small>Real Blackjack — hit, stand, double down, dealer hits to 17, blackjack pays 3:2, with a sess…</small></span><span class="t-arrow">→</span></a></div>
+  </section>
+</main>
+
+<!-- ADSTERRA-FOOTER: paste your Adsterra footer/banner ad code inside the div below -->
+<div class="container"><div class="ad-slot" data-ad="footer"></div></div>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="f-grid">
+      <div>
+        <span class="brandline"><span class="logo-mark">T</span> ToolNest</span>
+        <p>Free online tools that actually work. No sign-up, no watermarks — and your files never leave your device for client-side tools.</p>
+      </div>
+      <div>
+        <h4>Popular</h4>
+        <a href="/tools/qr-code-generator/">QR Code Generator</a>
+        <a href="/tools/background-remover/">Background Remover</a>
+        <a href="/tools/pdf-merger/">PDF Merger</a>
+        <a href="/tools/word-counter/">Word Counter</a>
+      </div>
+      <div>
+        <h4>Categories</h4>
+        <a href="/#image">Image Tools</a>
+        <a href="/#pdf">PDF &amp; Documents</a>
+        <a href="/#calculators">Calculators</a>
+        <a href="/#developer">Developer Tools</a>
+      </div>
+      <div>
+        <h4>Site</h4>
+        <a href="/">Home</a>
+        <a href="/#all-tools">All Tools</a>
+        <a href="/sitemap.xml">Sitemap</a>
+      </div>
+    </div>
+    <div class="f-bottom">© 2026 ToolNest · Free tools for everyone · Made with care</div>
+  </div>
+</footer>
+
+<script src="/assets/site.js?v=5"></script>
+
+<script>
+/* Pig Dice — roll/hold, bust on 1, first to 100, vs computer (holds at 20). */
+(function () {
+  'use strict';
+  var SLUG = 'pig-dice-game';
+  var FACES = ['', '⚀', '⚁', '⚂', '⚃', '⚄', '⚅'];
+  var WIN = 100, CPU_HOLD = 20;
+  var youTotal = 0, cpuTotal = 0, turnTotal = 0, yourTurn = true, over = false;
+
+  function $(id) { return document.getElementById(id); }
+
+  function log(msg) {
+    var l = $('pig-dice-game-log');
+    var d = document.createElement('div');
+    d.textContent = msg;
+    l.insertBefore(d, l.firstChild);
+    while (l.children.length > 8) l.removeChild(l.lastChild);
+  }
+
+  function stats() {
+    $('pig-dice-game-youtotal').textContent = youTotal;
+    $('pig-dice-game-cputotal').textContent = cpuTotal;
+    $('pig-dice-game-turntotal').textContent = turnTotal;
+  }
+
+  function setButtons(on) {
+    $('pig-dice-game-roll').disabled = !on;
+    $('pig-dice-game-hold').disabled = !on;
+  }
+
+  function endGame(youWin) {
+    over = true;
+    setButtons(false);
+    stats();
+    $('pig-dice-game-msg').textContent = youWin
+      ? '🏆 YOU WIN ' + youTotal + '–' + cpuTotal + '! Press ↻ for a new game.'
+      : '🤖 CPU WINS ' + cpuTotal + '–' + youTotal + '. Press ↻ to try again.';
+    log(youWin ? '🏆 You reached 100 first!' : '🤖 CPU reached 100 first.');
+  }
+
+  function roll() {
+    if (over || !yourTurn) return;
+    var d = 1 + Math.floor(Math.random() * 6);
+    $('pig-dice-game-die').textContent = FACES[d];
+    if (d === 1) {
+      turnTotal = 0;
+      $('pig-dice-game-msg').textContent = '💥 Bust! Rolled a 1 — turn total lost. CPU\'s turn.';
+      log('You rolled a 1 — busted!');
+      endTurn();
+    } else {
+      turnTotal += d;
+      $('pig-dice-game-msg').textContent = 'Rolled ' + d + ' — turn total ' + turnTotal + '. Roll again or Hold?';
+      stats();
+    }
+  }
+
+  function hold() {
+    if (over || !yourTurn || turnTotal === 0) return;
+    youTotal += turnTotal;
+    log('You held — banked ' + turnTotal + ' (total ' + youTotal + ').');
+    turnTotal = 0;
+    stats();
+    if (youTotal >= WIN) { endGame(true); return; }
+    endTurn();
+  }
+
+  function endTurn() {
+    yourTurn = false;
+    setButtons(false);
+    stats();
+    setTimeout(cpuPlay, 800);
+  }
+
+  function cpuPlay() {
+    if (over) return;
+    turnTotal = 0;
+    $('pig-dice-game-msg').textContent = '🤖 CPU is rolling…';
+    var step = function () {
+      if (over) return;
+      var d = 1 + Math.floor(Math.random() * 6);
+      $('pig-dice-game-die').textContent = FACES[d];
+      if (d === 1) {
+        turnTotal = 0;
+        log('CPU rolled a 1 — busted!');
+        $('pig-dice-game-msg').textContent = '💥 CPU busted on a 1! Your turn.';
+        stats();
+        yourTurn = true;
+        setButtons(true);
+        return;
+      }
+      turnTotal += d;
+      stats();
+      var projected = cpuTotal + turnTotal;
+      if (projected >= WIN || turnTotal >= CPU_HOLD) {
+        cpuTotal = projected;
+        log('CPU held — banked ' + turnTotal + ' (total ' + cpuTotal + ').');
+        turnTotal = 0;
+        stats();
+        if (cpuTotal >= WIN) { endGame(false); return; }
+        $('pig-dice-game-msg').textContent = 'CPU held at ' + cpuTotal + '. Your turn — Roll or Hold!';
+        yourTurn = true;
+        setButtons(true);
+        return;
+      }
+      $('pig-dice-game-msg').textContent = '🤖 CPU rolled ' + d + ' (turn total ' + turnTotal + ')…';
+      setTimeout(step, 800);
+    };
+    setTimeout(step, 600);
+  }
+
+  function newGame() {
+    youTotal = 0; cpuTotal = 0; turnTotal = 0;
+    yourTurn = true; over = false;
+    $('pig-dice-game-die').textContent = '🎲';
+    $('pig-dice-game-log').innerHTML = '';
+    $('pig-dice-game-msg').textContent = 'Your turn — Roll or Hold! First to 100 wins.';
+    setButtons(true);
+    stats();
+  }
+
+  try {
+    TN.on('pig-dice-game-roll', 'click', roll);
+    TN.on('pig-dice-game-hold', 'click', hold);
+    TN.on('pig-dice-game-new', 'click', newGame);
+    newGame();
+  } catch (e) { /* never throw on load */ }
+})();
+
+</script>
+</body>
+</html>

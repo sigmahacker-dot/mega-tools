@@ -1,0 +1,26 @@
+<div class="tool-card">
+  <h2>CSS Filter Playground</h2>
+  <p class="muted">Drag sliders to combine real CSS filter functions on a sample image, then copy the one-liner.</p>
+  <div class="grid2">
+    <div class="field"><label for="css-filter-playground-grayscale">Grayscale: <span id="css-filter-playground-grayscale-v">0%</span></label><input type="range" class="input" id="css-filter-playground-grayscale" min="0" max="100" value="0"></div>
+    <div class="field"><label for="css-filter-playground-sepia">Sepia: <span id="css-filter-playground-sepia-v">0%</span></label><input type="range" class="input" id="css-filter-playground-sepia" min="0" max="100" value="0"></div>
+    <div class="field"><label for="css-filter-playground-blur">Blur: <span id="css-filter-playground-blur-v">0px</span></label><input type="range" class="input" id="css-filter-playground-blur" min="0" max="10" step="0.5" value="0"></div>
+    <div class="field"><label for="css-filter-playground-brightness">Brightness: <span id="css-filter-playground-brightness-v">100%</span></label><input type="range" class="input" id="css-filter-playground-brightness" min="0" max="200" value="100"></div>
+    <div class="field"><label for="css-filter-playground-contrast">Contrast: <span id="css-filter-playground-contrast-v">100%</span></label><input type="range" class="input" id="css-filter-playground-contrast" min="0" max="200" value="100"></div>
+    <div class="field"><label for="css-filter-playground-hue">Hue-rotate: <span id="css-filter-playground-hue-v">0°</span></label><input type="range" class="input" id="css-filter-playground-hue" min="0" max="360" value="0"></div>
+    <div class="field"><label for="css-filter-playground-saturate">Saturate: <span id="css-filter-playground-saturate-v">100%</span></label><input type="range" class="input" id="css-filter-playground-saturate" min="0" max="300" value="100"></div>
+    <div class="field"><label for="css-filter-playground-invert">Invert: <span id="css-filter-playground-invert-v">0%</span></label><input type="range" class="input" id="css-filter-playground-invert" min="0" max="100" value="0"></div>
+  </div>
+  <h3>Live preview</h3>
+  <div class="preview" style="display:flex;justify-content:center;gap:24px;flex-wrap:wrap">
+    <div style="text-align:center"><div class="muted" style="margin-bottom:6px">Original</div><canvas id="css-filter-playground-orig" width="280" height="180" style="border-radius:10px;max-width:100%"></canvas></div>
+    <div style="text-align:center"><div class="muted" style="margin-bottom:6px">Filtered</div><canvas id="css-filter-playground-demo" width="280" height="180" style="border-radius:10px;max-width:100%"></canvas></div>
+  </div>
+  <div class="btn-row mt">
+    <button class="btn btn-outline" id="css-filter-playground-reset">Reset</button>
+    <button class="btn btn-primary" id="css-filter-playground-copy">Copy filter CSS</button>
+  </div>
+  <h3 class="mt">Generated CSS</h3>
+  <pre class="code" id="css-filter-playground-code"></pre>
+  <div class="error" id="css-filter-playground-error"></div>
+</div>

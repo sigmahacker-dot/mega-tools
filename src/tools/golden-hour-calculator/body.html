@@ -1,0 +1,42 @@
+<div class="tool-card">
+  <div class="grid2">
+    <div class="field">
+      <label for="golden-hour-calculator-date">Date</label>
+      <input class="input" type="date" id="golden-hour-calculator-date">
+    </div>
+    <div class="field">
+      <label for="golden-hour-calculator-lat">Latitude (−90 to 90)</label>
+      <input class="input" type="number" id="golden-hour-calculator-lat" step="0.0001" min="-90" max="90" placeholder="e.g. 33.6844">
+    </div>
+  </div>
+  <div class="grid2">
+    <div class="field">
+      <label for="golden-hour-calculator-rise">Sunrise <span class="muted">(optional manual)</span></label>
+      <input class="input" type="time" id="golden-hour-calculator-rise">
+    </div>
+    <div class="field">
+      <label for="golden-hour-calculator-set">Sunset <span class="muted">(optional manual)</span></label>
+      <input class="input" type="time" id="golden-hour-calculator-set">
+    </div>
+  </div>
+  <div class="grid2">
+    <div class="field">
+      <label for="golden-hour-calculator-lon">Longitude <span class="muted">(for auto times)</span></label>
+      <input class="input" type="number" id="golden-hour-calculator-lon" step="0.0001" min="-180" max="180" placeholder="e.g. 73.0479">
+    </div>
+    <div class="field">
+      <label for="golden-hour-calculator-tz">UTC offset <span class="muted">(for auto times)</span></label>
+      <input class="input" type="number" id="golden-hour-calculator-tz" step="0.25" min="-12" max="14" placeholder="e.g. 5">
+    </div>
+  </div>
+  <p class="hint">Leave sunrise/sunset blank to compute them from the date + latitude.</p>
+  <div class="btn-row">
+    <button class="btn btn-primary" id="golden-hour-calculator-calc">Calculate</button>
+  </div>
+  <div class="stat-cards">
+    <div class="stat-card"><div class="v" id="golden-hour-calculator-morn" style="font-size:18px">—</div><div class="l">🌅 Morning golden hour</div></div>
+    <div class="stat-card"><div class="v" id="golden-hour-calculator-eve" style="font-size:18px">—</div><div class="l">🌇 Evening golden hour</div></div>
+  </div>
+  <div class="result" id="golden-hour-calculator-out"></div>
+  <div class="error" id="golden-hour-calculator-error"></div>
+</div>

@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CSS Animation Generator — Free Online | ToolNest</title>
+<meta name="description" content="Build ready-to-paste CSS animations: pick an effect, duration, easing and loop count, preview it live, then copy the @keyframes and class code.">
+<meta name="keywords" content="css animation, css animation generator, keyframes generator, css effects, animation maker">
+<link rel="canonical" href="https://toolnest.vercel.app/tools/css-animation-generator/">
+<meta name="theme-color" content="#07070b">
+<meta property="og:title" content="CSS Animation Generator — Free Online | ToolNest">
+<meta property="og:description" content="Build ready-to-paste CSS animations: pick an effect, duration, easing and loop count, preview it live, then copy the @keyframes and class code.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css?v=4">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%23e01111'/><text x='50' y='68' font-size='58' text-anchor='middle' fill='white' font-family='Arial' font-weight='bold'>T</text></svg>">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebApplication","name":"CSS Animation Generator","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0"},"url":"https://toolnest.vercel.app/tools/css-animation-generator/","description":"Build ready-to-paste CSS animations: pick an effect, duration, easing and loop count, preview it live, then copy the @keyframes and class code."},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Does the generated code need any library?","acceptedAnswer":{"@type":"Answer","text":"The code is plain CSS3 with no dependencies. It works in all modern browsers; older browsers may need vendor prefixes, which the generator omits by default."}},{"@type":"Question","name":"Can I rename the animation class?","acceptedAnswer":{"@type":"Answer","text":"Yes — the class name uses a generic name like .animate-fade-in and the keyframes have matching names. You can rename them freely in the copied code."}},{"@type":"Question","name":"What range do duration and iterations cover?","acceptedAnswer":{"@type":"Answer","text":"The duration slider covers 0.2s to 5s and iteration can be a fixed count or infinite. For longer loops, edit the duration value in the copied CSS."}}]}]}</script>
+</head>
+<body>
+<header class="site-header">
+  <div class="container">
+    <a class="logo" href="/"><span class="logo-mark">T</span> ToolNest</a>
+    <div class="header-right">
+      <form class="nav-search" action="/" method="get" role="search">
+        <span class="ns-icon">🔍</span>
+        <input type="search" name="q" placeholder="Search tools…" aria-label="Search tools" autocomplete="off">
+      </form>
+      <div class="menu-wrap">
+        <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="menuPanel" aria-label="Open menu"><span></span><span></span><span></span></button>
+        <nav class="menu-panel" id="menuPanel" aria-label="Site">
+          <a href="/">Home</a>
+          <a href="/#categories">Categories</a>
+          <a href="/#all-tools">All Tools</a>
+        </nav>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ADSTERRA-HEADER: paste your Adsterra banner ad code inside the div below -->
+<div class="container"><div class="ad-slot ad-leaderboard" data-ad="header"></div></div>
+
+<main class="container">
+  <nav class="crumbs"><a href="/">Home</a> &rsaquo; <a href="/#developer">Developer Tools</a> &rsaquo; CSS Animation Generator</nav>
+  <div class="tool-hero">
+    <h1>CSS Animation Generator</h1>
+    <p>Build ready-to-paste CSS animations: pick an effect, duration, easing and loop count, preview it live, then copy the @keyframes and class code.</p>
+  </div>
+
+  <div class="tool-card">
+  <h2>CSS Animation Generator</h2>
+  <p class="muted">Design a CSS keyframe animation, preview it live, and copy production-ready code.</p>
+  <div class="grid2">
+    <div class="field">
+      <label for="css-animation-generator-type">Animation type</label>
+      <select class="input" id="css-animation-generator-type">
+        <option value="fade-in">Fade in</option>
+        <option value="slide-in">Slide in (from bottom)</option>
+        <option value="slide-left">Slide in (from right)</option>
+        <option value="bounce">Bounce in</option>
+        <option value="spin">Spin</option>
+        <option value="pulse">Pulse</option>
+        <option value="shake">Shake</option>
+        <option value="flip">Flip in</option>
+      </select>
+    </div>
+    <div class="field">
+      <label for="css-animation-generator-timing">Timing function</label>
+      <select class="input" id="css-animation-generator-timing">
+        <option value="ease">ease</option>
+        <option value="ease-in">ease-in</option>
+        <option value="ease-out">ease-out</option>
+        <option value="ease-in-out">ease-in-out</option>
+        <option value="linear">linear</option>
+        <option value="cubic-bezier(0.34,1.56,0.64,1)">springy (cubic-bezier)</option>
+      </select>
+    </div>
+    <div class="field">
+      <label for="css-animation-generator-duration">Duration: <span id="css-animation-generator-duration-v">1s</span></label>
+      <input type="range" class="input" id="css-animation-generator-duration" min="0.2" max="5" step="0.1" value="1">
+    </div>
+    <div class="field">
+      <label for="css-animation-generator-delay">Delay: <span id="css-animation-generator-delay-v">0s</span></label>
+      <input type="range" class="input" id="css-animation-generator-delay" min="0" max="3" step="0.1" value="0">
+    </div>
+    <div class="field">
+      <label for="css-animation-generator-iter">Iterations</label>
+      <select class="input" id="css-animation-generator-iter">
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="infinite">infinite</option>
+      </select>
+    </div>
+    <div class="field">
+      <label for="css-animation-generator-class">CSS class name</label>
+      <input type="text" class="input" id="css-animation-generator-class" value="my-animation">
+    </div>
+  </div>
+  <h3>Live preview</h3>
+  <div class="preview" id="css-animation-generator-stage" style="min-height:180px;display:flex;align-items:center;justify-content:center">
+    <div id="css-animation-generator-box" style="width:120px;height:120px;border-radius:16px;background:linear-gradient(135deg,#e11d48,#7c3aed);display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700">✨</div>
+  </div>
+  <div class="btn-row mt">
+    <button class="btn btn-outline" id="css-animation-generator-replay">↻ Replay</button>
+    <button class="btn btn-primary" id="css-animation-generator-copy">Copy CSS</button>
+  </div>
+  <h3 class="mt">Generated CSS</h3>
+  <pre class="code" id="css-animation-generator-code" style="max-height:320px;overflow:auto"></pre>
+  <div class="error" id="css-animation-generator-error"></div>
+</div>
+
+
+  <!-- ADSTERRA-INCONTENT: paste your Adsterra native/in-content ad code inside the div below -->
+  <div class="ad-slot" data-ad="incontent"></div>
+
+  <div class="info-grid">
+    <div class="info-card">
+      <h2>📖 How to use</h2>
+      <ol><li>Choose an animation type (fade, slide, bounce, spin, pulse, shake).</li><li>Set the duration, timing function, iteration count and delay.</li><li>Watch the live preview update instantly.</li><li>Click &quot;Copy CSS&quot; and paste the @keyframes + class into your stylesheet.</li></ol>
+    </div>
+    <div class="info-card">
+      <h2>❓ Frequently asked questions</h2>
+      <div class="faq"><details><summary>Does the generated code need any library?</summary><p>The code is plain CSS3 with no dependencies. It works in all modern browsers; older browsers may need vendor prefixes, which the generator omits by default.</p></details><details><summary>Can I rename the animation class?</summary><p>Yes — the class name uses a generic name like .animate-fade-in and the keyframes have matching names. You can rename them freely in the copied code.</p></details><details><summary>What range do duration and iterations cover?</summary><p>The duration slider covers 0.2s to 5s and iteration can be a fixed count or infinite. For longer loops, edit the duration value in the copied CSS.</p></details></div>
+    </div>
+  </div>
+
+  <section class="section">
+    <h2>🔗 Related tools</h2>
+    <div class="tool-grid"><a class="tool-link" href="/tools/ascii-table-reference/" data-search="ascii table reference full ascii table 0–127: decimal, hex, octal, character, control-code names and html entities — searchable. ascii table ascii codes ascii chart control characters ascii reference"><span class="t-ico">💻</span><span class="t-body"><b>ASCII Table Reference</b><small>Full ASCII table 0–127: decimal, hex, octal, character, control-code names and HTML entities…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/base64-encoder-decoder/" data-search="base64 encoder / decoder encode text to base64 or decode base64 back to text, with full utf-8 support and a file-to-data-url converter. base64 encoder base64 decoder base64 encode base64 decode file to base64"><span class="t-ico">💻</span><span class="t-body"><b>Base64 Encoder / Decoder</b><small>Encode text to Base64 or decode Base64 back to text, with full UTF-8 support and a file-to-d…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/binary-text-converter/" data-search="binary and text converter convert text to binary or hex and back, with full utf-8 awareness and strict input validation. binary to text text to binary hex to text converter"><span class="t-ico">💻</span><span class="t-body"><b>Binary and Text Converter</b><small>Convert text to binary or hex and back, with full UTF-8 awareness and strict input validatio…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/changelog-generator/" data-search="changelog generator build a keep-a-changelog markdown file: version, date, and grouped added/fixed/changed entries. changelog generator keep a changelog changelog markdown release notes version changelog"><span class="t-ico">💻</span><span class="t-body"><b>Changelog Generator</b><small>Build a Keep-a-Changelog markdown file: version, date, and grouped Added/Fixed/Changed entri…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/character-escape-reference/" data-search="character escape reference searchable reference of characters with their html entities, url encodings, and js escapes — plus a live encoder. character escape reference html entities url encode unicode escape html entity table"><span class="t-ico">💻</span><span class="t-body"><b>Character Escape Reference</b><small>Searchable reference of characters with their HTML entities, URL encodings, and JS escapes —…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/chmod-calculator/" data-search="chmod calculator tick rwx boxes for user/group/other — or type 755 — and see octal, symbolic, and the chmod command live. chmod calculator chmod 755 linux permissions octal permissions rwx calculator"><span class="t-ico">💻</span><span class="t-body"><b>chmod Calculator</b><small>Tick rwx boxes for user/group/other — or type 755 — and see octal, symbolic, and the chmod c…</small></span><span class="t-arrow">→</span></a></div>
+  </section>
+</main>
+
+<!-- ADSTERRA-FOOTER: paste your Adsterra footer/banner ad code inside the div below -->
+<div class="container"><div class="ad-slot" data-ad="footer"></div></div>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="f-grid">
+      <div>
+        <span class="brandline"><span class="logo-mark">T</span> ToolNest</span>
+        <p>Free online tools that actually work. No sign-up, no watermarks — and your files never leave your device for client-side tools.</p>
+      </div>
+      <div>
+        <h4>Popular</h4>
+        <a href="/tools/qr-code-generator/">QR Code Generator</a>
+        <a href="/tools/background-remover/">Background Remover</a>
+        <a href="/tools/pdf-merger/">PDF Merger</a>
+        <a href="/tools/word-counter/">Word Counter</a>
+      </div>
+      <div>
+        <h4>Categories</h4>
+        <a href="/#image">Image Tools</a>
+        <a href="/#pdf">PDF &amp; Documents</a>
+        <a href="/#calculators">Calculators</a>
+        <a href="/#developer">Developer Tools</a>
+      </div>
+      <div>
+        <h4>Site</h4>
+        <a href="/">Home</a>
+        <a href="/#all-tools">All Tools</a>
+        <a href="/sitemap.xml">Sitemap</a>
+      </div>
+    </div>
+    <div class="f-bottom">© 2026 ToolNest · Free tools for everyone · Made with care</div>
+  </div>
+</footer>
+
+<script src="/assets/site.js?v=5"></script>
+
+<script>
+/* CSS Animation Generator — pick an effect, preview live, copy @keyframes + class CSS. */
+(function () {
+  'use strict';
+  var SLUG = 'css-animation-generator';
+  var ERR = SLUG + '-error';
+
+  var KF = {
+    'fade-in': 'from { opacity: 0; }\n  to { opacity: 1; }',
+    'slide-in': 'from { opacity: 0; transform: translateY(40px); }\n  to { opacity: 1; transform: translateY(0); }',
+    'slide-left': 'from { opacity: 0; transform: translateX(60px); }\n  to { opacity: 1; transform: translateX(0); }',
+    'bounce': '0% { opacity: 0; transform: translateY(-60px); }\n  60% { opacity: 1; transform: translateY(12px); }\n  80% { transform: translateY(-6px); }\n  100% { opacity: 1; transform: translateY(0); }',
+    'spin': 'from { transform: rotate(0deg); }\n  to { transform: rotate(360deg); }',
+    'pulse': '0%, 100% { transform: scale(1); }\n  50% { transform: scale(1.15); }',
+    'shake': '0%, 100% { transform: translateX(0); }\n  20%, 60% { transform: translateX(-10px); }\n  40%, 80% { transform: translateX(10px); }',
+    'flip': 'from { opacity: 0; transform: perspective(600px) rotateY(-90deg); }\n  to { opacity: 1; transform: perspective(600px) rotateY(0); }'
+  };
+
+  function $(id) { return document.getElementById(SLUG + '-' + id); }
+
+  function opt(key) { return $(key).value; }
+  function num(key) { return parseFloat($(key).value); }
+
+  function kfName() { return 'anim-' + opt('type'); }
+
+  function play() {
+    TN.clearErr(ERR);
+    var box = $('box');
+    var dur = num('duration').toFixed(1);
+    var delay = num('delay').toFixed(1);
+    var anim = kfName() + ' ' + dur + 's ' + opt('timing') + ' ' + delay + 's ' + opt('iter') + ' both';
+    try {
+      var css = buildCss();
+      var old = document.getElementById(SLUG + '-kv');
+      if (old && old.parentNode) old.parentNode.removeChild(old);
+      var st = document.createElement('style');
+      st.id = SLUG + '-kv';
+      st.textContent = '@keyframes ' + kfName() + ' {\n  ' + KF[opt('type')] + '\n}';
+      document.head.appendChild(st);
+      box.style.animation = 'none';
+      void box.offsetWidth; /* reflow to restart animation */
+      box.style.animation = anim;
+      $('code').textContent = css;
+    } catch (e) {
+      TN.setErr(ERR, 'Could not render the preview.');
+    }
+  }
+
+  function buildCss() {
+    var dur = num('duration').toFixed(1);
+    var delay = num('delay').toFixed(1);
+    var cls = (opt('class') || 'my-animation').replace(/[^a-zA-Z0-9-_]/g, '-') || 'my-animation';
+    return '@keyframes ' + kfName() + ' {\n  ' + KF[opt('type')] + '\n}\n\n.' + cls + ' {\n'
+      + '  animation: ' + kfName() + ' ' + dur + 's ' + opt('timing') + ' ' + delay + 's ' + opt('iter') + ' both;\n}';
+  }
+
+  function init() {
+    try {
+      if (typeof TN === 'undefined') return;
+      ['type', 'timing', 'duration', 'delay', 'iter', 'class'].forEach(function (k) {
+        TN.on(SLUG + '-' + k, k === 'type' || k === 'timing' || k === 'iter' ? 'change' : 'input', function () {
+          if (k === 'duration') $('duration-v').textContent = num('duration').toFixed(1) + 's';
+          if (k === 'delay') $('delay-v').textContent = num('delay').toFixed(1) + 's';
+          play();
+        });
+      });
+      TN.on(SLUG + '-replay', 'click', play);
+      TN.on(SLUG + '-copy', 'click', function () {
+        var txt = $('code').textContent;
+        if (!txt) { TN.setErr(ERR, 'Nothing to copy yet.'); return; }
+        TN.copy(txt).then(function (ok) {
+          if (ok) { TN.clearErr(ERR); }
+          else TN.setErr(ERR, 'Copy failed — select the code and copy manually.');
+        });
+      });
+      play();
+    } catch (e) { /* never throw on load */ }
+  }
+
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init);
+  else init();
+})();
+
+</script>
+</body>
+</html>

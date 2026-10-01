@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Resting Heart Rate Tracker — Free Online | ToolNest</title>
+<meta name="description" content="Log morning resting heart rate to track your 7-day average, trend, and fitness interpretation.">
+<meta name="keywords" content="resting heart rate tracker, rhr tracker, heart rate log, morning heart rate, hrv heart rate">
+<link rel="canonical" href="https://toolnest.vercel.app/tools/resting-heart-rate-tracker/">
+<meta name="theme-color" content="#07070b">
+<meta property="og:title" content="Resting Heart Rate Tracker — Free Online | ToolNest">
+<meta property="og:description" content="Log morning resting heart rate to track your 7-day average, trend, and fitness interpretation.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css?v=4">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%23e01111'/><text x='50' y='68' font-size='58' text-anchor='middle' fill='white' font-family='Arial' font-weight='bold'>T</text></svg>">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebApplication","name":"Resting Heart Rate Tracker","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0"},"url":"https://toolnest.vercel.app/tools/resting-heart-rate-tracker/","description":"Log morning resting heart rate to track your 7-day average, trend, and fitness interpretation."},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How do I measure resting heart rate?","acceptedAnswer":{"@type":"Answer","text":"Measure right after waking, before getting up: count beats for 60 seconds or use a wearable's morning reading."}},{"@type":"Question","name":"How is the trend calculated?","acceptedAnswer":{"@type":"Answer","text":"The tool compares your last 3 readings against the previous ones to show rising, falling, or stable trends."}},{"@type":"Question","name":"What is a good resting heart rate?","acceptedAnswer":{"@type":"Answer","text":"Roughly: under 60 athletic, 60–70 good, 70–80 average, 80–100 below average, over 100 high. Individual variation is normal."}},{"@type":"Question","name":"Why does it drop with fitness?","acceptedAnswer":{"@type":"Answer","text":"A lower resting heart rate generally reflects better cardiovascular fitness — but see a doctor about sudden changes."}}]}]}</script>
+</head>
+<body>
+<header class="site-header">
+  <div class="container">
+    <a class="logo" href="/"><span class="logo-mark">T</span> ToolNest</a>
+    <div class="header-right">
+      <form class="nav-search" action="/" method="get" role="search">
+        <span class="ns-icon">🔍</span>
+        <input type="search" name="q" placeholder="Search tools…" aria-label="Search tools" autocomplete="off">
+      </form>
+      <div class="menu-wrap">
+        <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="menuPanel" aria-label="Open menu"><span></span><span></span><span></span></button>
+        <nav class="menu-panel" id="menuPanel" aria-label="Site">
+          <a href="/">Home</a>
+          <a href="/#categories">Categories</a>
+          <a href="/#all-tools">All Tools</a>
+        </nav>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ADSTERRA-HEADER: paste your Adsterra banner ad code inside the div below -->
+<div class="container"><div class="ad-slot ad-leaderboard" data-ad="header"></div></div>
+
+<main class="container">
+  <nav class="crumbs"><a href="/">Home</a> &rsaquo; <a href="/#health">Health &amp; Fitness</a> &rsaquo; Resting Heart Rate Tracker</nav>
+  <div class="tool-hero">
+    <h1>Resting Heart Rate Tracker</h1>
+    <p>Log morning resting heart rate to track your 7-day average, trend, and fitness interpretation.</p>
+  </div>
+
+  <div class="tool-card">
+  <div class="grid2">
+    <div class="field">
+      <label for="resting-heart-rate-tracker-date">Date</label>
+      <input class="input" id="resting-heart-rate-tracker-date" type="date">
+    </div>
+    <div class="field">
+      <label for="resting-heart-rate-tracker-bpm">Resting HR (bpm)</label>
+      <div class="btn-row" style="justify-content:flex-start">
+        <input class="input" id="resting-heart-rate-tracker-bpm" type="number" min="25" max="220" step="1" placeholder="e.g. 62" style="flex:1">
+        <button class="btn btn-primary" id="resting-heart-rate-tracker-add">Log</button>
+      </div>
+    </div>
+  </div>
+  <div class="stat-cards" id="resting-heart-rate-tracker-out">
+    <div class="stat-card"><div class="v" id="resting-heart-rate-tracker-avg">–</div><div class="l">7-day average (bpm)</div></div>
+    <div class="stat-card"><div class="v" id="resting-heart-rate-tracker-trend">–</div><div class="l">Trend</div></div>
+    <div class="stat-card"><div class="v" id="resting-heart-rate-tracker-level" style="font-size:1em">–</div><div class="l">Interpretation</div></div>
+  </div>
+  <div class="result" id="resting-heart-rate-tracker-list"></div>
+  <p class="note">General information only — not medical advice. Consult a professional for personal guidance. See a doctor about a persistently high or suddenly changed resting heart rate.</p>
+  <div class="error" id="resting-heart-rate-tracker-error"></div>
+</div>
+
+
+  <!-- ADSTERRA-INCONTENT: paste your Adsterra native/in-content ad code inside the div below -->
+  <div class="ad-slot" data-ad="incontent"></div>
+
+  <div class="info-grid">
+    <div class="info-card">
+      <h2>📖 How to use</h2>
+      <ol><li>Each morning, measure your resting heart rate before getting up.</li><li>Log the date and BPM.</li><li>Watch your 7-day average and trend arrow.</li><li>Read the fitness interpretation for your range.</li></ol>
+    </div>
+    <div class="info-card">
+      <h2>❓ Frequently asked questions</h2>
+      <div class="faq"><details><summary>How do I measure resting heart rate?</summary><p>Measure right after waking, before getting up: count beats for 60 seconds or use a wearable&#39;s morning reading.</p></details><details><summary>How is the trend calculated?</summary><p>The tool compares your last 3 readings against the previous ones to show rising, falling, or stable trends.</p></details><details><summary>What is a good resting heart rate?</summary><p>Roughly: under 60 athletic, 60–70 good, 70–80 average, 80–100 below average, over 100 high. Individual variation is normal.</p></details><details><summary>Why does it drop with fitness?</summary><p>A lower resting heart rate generally reflects better cardiovascular fitness — but see a doctor about sudden changes.</p></details></div>
+    </div>
+  </div>
+
+  <section class="section">
+    <h2>🔗 Related tools</h2>
+    <div class="tool-grid"><a class="tool-link" href="/tools/baby-growth-tracker/" data-search="baby growth tracker log your baby&#39;s weight and height over time and see a growth log with typical-range guidance. baby growth tracker baby weight tracker infant growth chart baby height log newborn growth"><span class="t-ico">❤️</span><span class="t-body"><b>Baby Growth Tracker</b><small>Log your baby&#39;s weight and height over time and see a growth log with typical-range guidance…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/blood-pressure-tracker/" data-search="blood pressure tracker log blood pressure readings with automatic aha category classification, averages and history saved in your browser. blood pressure tracker bp log blood pressure chart hypertension tracker bp monitor log"><span class="t-ico">❤️</span><span class="t-body"><b>Blood Pressure Tracker</b><small>Log blood pressure readings with automatic AHA category classification, averages and history…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/body-fat-calculator/" data-search="body fat calculator estimate body fat percentage with the us navy tape-measure method and see your fitness category. body fat calculator us navy body fat body fat percentage calculator"><span class="t-ico">❤️</span><span class="t-body"><b>Body Fat Calculator</b><small>Estimate body fat percentage with the US Navy tape-measure method and see your fitness categ…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/breathing-exercise-guide/" data-search="breathing exercise guide guided breathing exercises (4-7-8, box, energize) with an animated pacer circle, phase labels, and cycle counter. breathing exercise 4-7-8 breathing box breathing breathing pacer calm breathing"><span class="t-ico">❤️</span><span class="t-body"><b>Breathing Exercise Guide</b><small>Guided breathing exercises (4-7-8, box, energize) with an animated pacer circle, phase label…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/caffeine-half-life-calculator/" data-search="caffeine half-life calculator log caffeinated drinks and see how much caffeine is still in your system using 5.5-hour half-life decay. caffeine half life caffeine calculator caffeine in system coffee caffeine tracker caffeine sleep"><span class="t-ico">❤️</span><span class="t-body"><b>Caffeine Half-Life Calculator</b><small>Log caffeinated drinks and see how much caffeine is still in your system using 5.5-hour half…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/calorie-calculator/" data-search="tdee calorie calculator estimate your daily calorie needs with the mifflin-st jeor equation and get targets for losing, maintaining or gaining weight. tdee calculator calorie calculator mifflin st jeor daily calorie needs"><span class="t-ico">❤️</span><span class="t-body"><b>TDEE Calorie Calculator</b><small>Estimate your daily calorie needs with the Mifflin-St Jeor equation and get targets for losi…</small></span><span class="t-arrow">→</span></a></div>
+  </section>
+</main>
+
+<!-- ADSTERRA-FOOTER: paste your Adsterra footer/banner ad code inside the div below -->
+<div class="container"><div class="ad-slot" data-ad="footer"></div></div>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="f-grid">
+      <div>
+        <span class="brandline"><span class="logo-mark">T</span> ToolNest</span>
+        <p>Free online tools that actually work. No sign-up, no watermarks — and your files never leave your device for client-side tools.</p>
+      </div>
+      <div>
+        <h4>Popular</h4>
+        <a href="/tools/qr-code-generator/">QR Code Generator</a>
+        <a href="/tools/background-remover/">Background Remover</a>
+        <a href="/tools/pdf-merger/">PDF Merger</a>
+        <a href="/tools/word-counter/">Word Counter</a>
+      </div>
+      <div>
+        <h4>Categories</h4>
+        <a href="/#image">Image Tools</a>
+        <a href="/#pdf">PDF &amp; Documents</a>
+        <a href="/#calculators">Calculators</a>
+        <a href="/#developer">Developer Tools</a>
+      </div>
+      <div>
+        <h4>Site</h4>
+        <a href="/">Home</a>
+        <a href="/#all-tools">All Tools</a>
+        <a href="/sitemap.xml">Sitemap</a>
+      </div>
+    </div>
+    <div class="f-bottom">© 2026 ToolNest · Free tools for everyone · Made with care</div>
+  </div>
+</footer>
+
+<script src="/assets/site.js?v=5"></script>
+
+<script>
+/* Resting heart rate tracker: log morning RHR -> 7-day avg, trend, interpretation. */
+(function () {
+  'use strict';
+  var SLUG = 'resting-heart-rate-tracker';
+  var KEY = SLUG + '-data';
+  function $(id) { return document.getElementById(id); }
+  function load() {
+    try { var d = JSON.parse(localStorage.getItem(KEY)); return Array.isArray(d) ? d : []; }
+    catch (e) { return []; }
+  }
+  function save(d) { try { localStorage.setItem(KEY, JSON.stringify(d)); } catch (e) {} }
+  function err(m) { $(SLUG + '-error').textContent = m; }
+  function avg(a) { return a.reduce(function (x, y) { return x + y; }, 0) / a.length; }
+  function level(bpm) {
+    if (bpm < 60) return 'Athletic';
+    if (bpm < 70) return 'Good';
+    if (bpm < 80) return 'Average';
+    if (bpm <= 100) return 'Below average';
+    return 'High — consider a check-up';
+  }
+  function render() {
+    var rows = load().slice().sort(function (a, b) { return a.at - b.at; });
+    var box = $(SLUG + '-list');
+    if (!rows.length) {
+      box.innerHTML = '<p class="muted">No readings yet — log your first morning measurement.</p>';
+      $(SLUG + '-avg').textContent = '–';
+      $(SLUG + '-trend').textContent = '–';
+      $(SLUG + '-level').textContent = '–';
+      return;
+    }
+    var cutoff = Date.now() - 7 * 86400000;
+    var recent = rows.filter(function (r) { return r.at >= cutoff; }).map(function (r) { return r.bpm; });
+    var a7 = recent.length ? avg(recent) : avg(rows.slice(-7).map(function (r) { return r.bpm; }));
+    $(SLUG + '-avg').textContent = Math.round(a7) + ' bpm';
+    var trend = '–';
+    if (rows.length >= 4) {
+      var last3 = avg(rows.slice(-3).map(function (r) { return r.bpm; }));
+      var prev = avg(rows.slice(-6, -3).map(function (r) { return r.bpm; }));
+      var d = last3 - prev;
+      trend = d <= -2 ? '↘ Improving' : d >= 2 ? '↗ Rising' : '→ Stable';
+    }
+    $(SLUG + '-trend').textContent = trend;
+    $(SLUG + '-level').textContent = level(a7);
+    var html = '<table class="data"><thead><tr><th>Date</th><th>BPM</th><th></th></tr></thead><tbody>';
+    rows.slice().reverse().forEach(function (r) {
+      html += '<tr><td>' + new Date(r.at).toLocaleDateString() + '</td><td>' + r.bpm +
+        '</td><td><button class="btn btn-outline" data-del="' + r.at + '" style="padding:4px 10px">Delete</button></td></tr>';
+    });
+    html += '</tbody></table>';
+    box.innerHTML = html;
+    box.querySelectorAll('[data-del]').forEach(function (b) {
+      b.addEventListener('click', function () {
+        var at = parseFloat(b.getAttribute('data-del'));
+        save(load().filter(function (r) { return r.at !== at; }));
+        render();
+      });
+    });
+  }
+  function add() {
+    err('');
+    var v = $(SLUG + '-date').value;
+    var bpm = parseInt($(SLUG + '-bpm').value, 10);
+    if (!v) { err('Pick the measurement date.'); return; }
+    if (isNaN(bpm) || bpm < 25 || bpm > 220) { err('Enter a BPM between 25 and 220.'); return; }
+    var at = new Date(v + 'T00:00:00').getTime();
+    var rows = load().filter(function (r) { return r.at !== at; });
+    rows.push({ at: at, bpm: bpm });
+    save(rows);
+    $(SLUG + '-bpm').value = '';
+    render();
+  }
+  try {
+    $(SLUG + '-add').addEventListener('click', add);
+    render();
+  } catch (e) { /* never throw on load */ }
+})();
+
+</script>
+</body>
+</html>

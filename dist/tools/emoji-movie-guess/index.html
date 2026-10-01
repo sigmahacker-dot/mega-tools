@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Emoji Movie Guessing Game — Free Online | ToolNest</title>
+<meta name="description" content="Guess 60+ movies from emoji clues — with letter-reveal hints and streak scoring.">
+<meta name="keywords" content="emoji movie quiz, guess the movie, emoji quiz, movie emoji game, film trivia">
+<link rel="canonical" href="https://toolnest.vercel.app/tools/emoji-movie-guess/">
+<meta name="theme-color" content="#07070b">
+<meta property="og:title" content="Emoji Movie Guessing Game — Free Online | ToolNest">
+<meta property="og:description" content="Guess 60+ movies from emoji clues — with letter-reveal hints and streak scoring.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css?v=4">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%23e01111'/><text x='50' y='68' font-size='58' text-anchor='middle' fill='white' font-family='Arial' font-weight='bold'>T</text></svg>">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebApplication","name":"Emoji Movie Guessing Game","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0"},"url":"https://toolnest.vercel.app/tools/emoji-movie-guess/","description":"Guess 60+ movies from emoji clues — with letter-reveal hints and streak scoring."},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How many movies are included?","acceptedAnswer":{"@type":"Answer","text":"Over 60 emoji puzzles covering classics, animation, action, and horror films."}},{"@type":"Question","name":"How do hints work?","acceptedAnswer":{"@type":"Answer","text":"Each Hint reveals one hidden letter. More hints mean fewer points for that movie."}},{"@type":"Question","name":"How exact must my guess be?","acceptedAnswer":{"@type":"Answer","text":"Type the movie title — matching ignores case and punctuation, so close spellings count."}},{"@type":"Question","name":"How is scoring calculated?","acceptedAnswer":{"@type":"Answer","text":"10 points minus 2 per hint used, with a 2-point minimum. Streaks add excitement — keep guessing!"}}]}]}</script>
+</head>
+<body>
+<header class="site-header">
+  <div class="container">
+    <a class="logo" href="/"><span class="logo-mark">T</span> ToolNest</a>
+    <div class="header-right">
+      <form class="nav-search" action="/" method="get" role="search">
+        <span class="ns-icon">🔍</span>
+        <input type="search" name="q" placeholder="Search tools…" aria-label="Search tools" autocomplete="off">
+      </form>
+      <div class="menu-wrap">
+        <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="menuPanel" aria-label="Open menu"><span></span><span></span><span></span></button>
+        <nav class="menu-panel" id="menuPanel" aria-label="Site">
+          <a href="/">Home</a>
+          <a href="/#categories">Categories</a>
+          <a href="/#all-tools">All Tools</a>
+        </nav>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ADSTERRA-HEADER: paste your Adsterra banner ad code inside the div below -->
+<div class="container"><div class="ad-slot ad-leaderboard" data-ad="header"></div></div>
+
+<main class="container">
+  <nav class="crumbs"><a href="/">Home</a> &rsaquo; <a href="/#fun">Fun &amp; Lifestyle</a> &rsaquo; Emoji Movie Guessing Game</nav>
+  <div class="tool-hero">
+    <h1>Emoji Movie Guessing Game</h1>
+    <p>Guess 60+ movies from emoji clues — with letter-reveal hints and streak scoring.</p>
+  </div>
+
+  <div class="tool-card" style="text-align:center">
+  <div class="stat-cards" style="max-width:480px;margin:0 auto 12px">
+    <div class="stat-card"><div class="v" id="emoji-movie-guess-score">0</div><div class="l">Score</div></div>
+    <div class="stat-card"><div class="v" id="emoji-movie-guess-streak">0</div><div class="l">Streak</div></div>
+    <div class="stat-card"><div class="v" id="emoji-movie-guess-done">0</div><div class="l">Solved</div></div>
+  </div>
+  <div id="emoji-movie-guess-emoji" style="font-size:56px;margin:12px 0;min-height:76px">🎬🍿</div>
+  <div id="emoji-movie-guess-letters" style="font-size:26px;letter-spacing:6px;font-weight:bold;margin-bottom:8px;min-height:36px"></div>
+  <p class="muted" id="emoji-movie-guess-msg" style="min-height:24px">Press Start — guess the movie from the emojis!</p>
+  <div class="grid2" style="max-width:420px;margin:0 auto 12px">
+    <div class="field" style="text-align:left">
+      <label for="emoji-movie-guess-guess">Your guess</label>
+      <input class="input" id="emoji-movie-guess-guess" placeholder="Movie title…" autocomplete="off" disabled>
+    </div>
+    <div class="field" style="text-align:left">
+      <label>&nbsp;</label>
+      <button class="btn btn-primary" id="emoji-movie-guess-submit" style="width:100%" disabled>Guess</button>
+    </div>
+  </div>
+  <div class="btn-row" style="justify-content:center">
+    <button class="btn" id="emoji-movie-guess-start">▶ Start</button>
+    <button class="btn btn-outline" id="emoji-movie-guess-hint" disabled>💡 Hint</button>
+    <button class="btn btn-outline" id="emoji-movie-guess-skip" disabled>Skip ↷</button>
+  </div>
+  <div class="error" id="emoji-movie-guess-error"></div>
+</div>
+
+
+  <!-- ADSTERRA-INCONTENT: paste your Adsterra native/in-content ad code inside the div below -->
+  <div class="ad-slot" data-ad="incontent"></div>
+
+  <div class="info-grid">
+    <div class="info-card">
+      <h2>📖 How to use</h2>
+      <ol><li>Look at the emoji clue and guess the movie.</li><li>Type your guess and press Enter.</li><li>Stuck? Press Hint to reveal letters (fewer points).</li><li>Skip anytime — guess all 60+ movies!</li></ol>
+    </div>
+    <div class="info-card">
+      <h2>❓ Frequently asked questions</h2>
+      <div class="faq"><details><summary>How many movies are included?</summary><p>Over 60 emoji puzzles covering classics, animation, action, and horror films.</p></details><details><summary>How do hints work?</summary><p>Each Hint reveals one hidden letter. More hints mean fewer points for that movie.</p></details><details><summary>How exact must my guess be?</summary><p>Type the movie title — matching ignores case and punctuation, so close spellings count.</p></details><details><summary>How is scoring calculated?</summary><p>10 points minus 2 per hint used, with a 2-point minimum. Streaks add excitement — keep guessing!</p></details></div>
+    </div>
+  </div>
+
+  <section class="section">
+    <h2>🔗 Related tools</h2>
+    <div class="tool-grid"><a class="tool-link" href="/tools/aim-trainer-game/" data-search="aim trainer game test and train your aim — targets pop up at random spots for 30 seconds. hits, misses and accuracy are tracked live. aim trainer aim test reaction test click speed test fps aim trainer"><span class="t-ico">🎲</span><span class="t-body"><b>Aim Trainer Game</b><small>Test and train your aim — targets pop up at random spots for 30 seconds. Hits, misses and ac…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/baby-name-generator/" data-search="baby name generator discover baby names by gender and origin — pakistani, arabic, western, indian or turkish — with meanings, random picks and tap-to-copy. baby name generator baby names with meanings muslim baby names boy girl names"><span class="t-ico">🎲</span><span class="t-body"><b>Baby Name Generator</b><small>Discover baby names by gender and origin — Pakistani, Arabic, Western, Indian or Turkish — w…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/battery-status-checker/" data-search="battery status checker check your device&#39;s battery level, charging status and estimated time remaining, with live updates — where your browser supports the battery api. battery status battery level checker laptop battery charging status"><span class="t-ico">🎲</span><span class="t-body"><b>Battery Status Checker</b><small>Check your device&#39;s battery level, charging status and estimated time remaining, with live u…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/battleship-game/" data-search="battleship game the classic naval battle — place your 5 ships, then hunt the computer&#39;s fleet on a 10×10 grid with hit, miss, and sunk tracking. battleship game battleship naval battle game sea battle board game"><span class="t-ico">🎲</span><span class="t-body"><b>Battleship Game</b><small>The classic naval battle — place your 5 ships, then hunt the computer&#39;s fleet on a 10×10 gri…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/birthday-countdown/" data-search="birthday countdown enter your birthday for a live countdown to your next one — days, hours, minutes and seconds — plus the age you&#39;ll turn and a fun message. birthday countdown countdown to birthday how old am i birthday timer"><span class="t-ico">🎲</span><span class="t-body"><b>Birthday Countdown</b><small>Enter your birthday for a live countdown to your next one — days, hours, minutes and seconds…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/blackjack-game/" data-search="blackjack game real blackjack — hit, stand, double down, dealer hits to 17, blackjack pays 3:2, with a session bankroll. blackjack blackjack game 21 card game casino card game blackjack online"><span class="t-ico">🎲</span><span class="t-body"><b>Blackjack Game</b><small>Real Blackjack — hit, stand, double down, dealer hits to 17, blackjack pays 3:2, with a sess…</small></span><span class="t-arrow">→</span></a></div>
+  </section>
+</main>
+
+<!-- ADSTERRA-FOOTER: paste your Adsterra footer/banner ad code inside the div below -->
+<div class="container"><div class="ad-slot" data-ad="footer"></div></div>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="f-grid">
+      <div>
+        <span class="brandline"><span class="logo-mark">T</span> ToolNest</span>
+        <p>Free online tools that actually work. No sign-up, no watermarks — and your files never leave your device for client-side tools.</p>
+      </div>
+      <div>
+        <h4>Popular</h4>
+        <a href="/tools/qr-code-generator/">QR Code Generator</a>
+        <a href="/tools/background-remover/">Background Remover</a>
+        <a href="/tools/pdf-merger/">PDF Merger</a>
+        <a href="/tools/word-counter/">Word Counter</a>
+      </div>
+      <div>
+        <h4>Categories</h4>
+        <a href="/#image">Image Tools</a>
+        <a href="/#pdf">PDF &amp; Documents</a>
+        <a href="/#calculators">Calculators</a>
+        <a href="/#developer">Developer Tools</a>
+      </div>
+      <div>
+        <h4>Site</h4>
+        <a href="/">Home</a>
+        <a href="/#all-tools">All Tools</a>
+        <a href="/sitemap.xml">Sitemap</a>
+      </div>
+    </div>
+    <div class="f-bottom">© 2026 ToolNest · Free tools for everyone · Made with care</div>
+  </div>
+</footer>
+
+<script src="/assets/site.js?v=5"></script>
+
+<script>
+/* Emoji Movie Guessing — 60+ emoji puzzles, letter hints, scoring. */
+(function () {
+  'use strict';
+  var SLUG = 'emoji-movie-guess';
+  var BANK = [
+    ['🦁👑','The Lion King'],['🧊❄️👸','Frozen'],['🕷️🕸️🏙️','Spider-Man'],['🦇🌃','Batman'],
+    ['⚡🧙‍♂️🦉','Harry Potter'],['🚢🧊💔','Titanic'],['🦖🏝️','Jurassic Park'],['👻🏠','Ghostbusters'],
+    ['🧜‍♀️🌊','The Little Mermaid'],['🤖💚🌱','Wall-E'],['🐭👨‍🍳','Ratatouille'],['🐟🔍','Finding Nemo'],
+    ['🚀🌌⏳','Interstellar'],['🌊🌀⛵','Moana'],['🐉🔥','How to Train Your Dragon'],['🎈🏠👴','Up'],
+    ['🐼🥋','Kung Fu Panda'],['👽📞🚲','E.T.'],['🦈🏖️','Jaws'],['🧛🩸','Dracula'],
+    ['🧟‍♂️🧠','Zombieland'],['🤡🎈😱','It'],['🔪🚿🏨','Psycho'],['👹📼','The Ring'],
+    ['🧙‍♂️💍🌋','The Lord of the Rings'],['⚔️🌟🚀','Star Wars'],['🖖👽🚀','Star Trek'],
+    ['🤖🚗💥','Transformers'],['🦍🏙️','King Kong'],['🐋⚓','Moby Dick'],['🏴‍☠️💰','Pirates of the Caribbean'],
+    ['🧞‍♂️🪔','Aladdin'],['💤👸🏰','Sleeping Beauty'],['🍎👸⛏️','Snow White'],['👠🎃🕛','Cinderella'],
+    ['🌹👹🏰','Beauty and the Beast'],['🧜‍♂️🔱','Aquaman'],['⚡🔨','Thor'],['🛡️🇺🇸','Captain America'],
+    ['💚👊','The Hulk'],['🕷️🐜','Ant-Man'],['🧙‍♂️👁️','Doctor Strange'],['🐈‍⬛🎩','Puss in Boots'],
+    ['🐷🕷️🕸️',"Charlotte's Web"],['🐰🥕🏙️','Zootopia'],['🦊🐶','The Fox and the Hound'],
+    ['🐘🎪','Dumbo'],['🦌🌲','Bambi'],['🐻🍯🌲','Winnie the Pooh'],['🚂💨','The Polar Express'],
+    ['🎅🎄','Home Alone'],['👦🏠😈','Home Alone'],['🔫🕶️👽','Men in Black'],['🦖🌋','Jurassic World'],
+    ['🐒🗽','Planet of the Apes'],['🧊🚢','The Ice Age'],['🐿️🌰','Ice Age'],['🐧🐾','Happy Feet'],
+    ['🐝🌼','Bee Movie'],['🦗🎸','A Bug\'s Life'],['🐜🏋️','Antz'],['🦎🏜️','Rango'],
+    ['🐢🥷🍕','Teenage Mutant Ninja Turtles'],['🧽🍍','SpongeBob SquarePants'],['👾🕹️','Wreck-It Ralph'],
+    ['🎮👾','Pixels'],['🧸🔫','Ted'],['🤖👦❤️','Big Hero 6'],['🚗🏁','Cars'],
+    ['✈️🌍','Around the World in 80 Days'],['🗼💘','Midnight in Paris']
+  ];
+  var order = [], pos = 0, score = 0, streak = 0, solved = 0;
+  var revealed = [], hintsUsed = 0, playing = false;
+
+  function $(id) { return document.getElementById(id); }
+  function shuffle(a) {
+    for (var i = a.length - 1; i > 0; i--) {
+      var j = Math.floor(Math.random() * (i + 1));
+      var t = a[i]; a[i] = a[j]; a[j] = t;
+    }
+    return a;
+  }
+  function norm(s) { return s.toLowerCase().replace(/[^a-z0-9]/g, ''); }
+
+  function paintLetters() {
+    var title = BANK[order[pos]][1];
+    var out = '';
+    for (var i = 0; i < title.length; i++) {
+      var ch = title[i];
+      if (/[a-zA-Z0-9]/.test(ch)) out += (revealed[i] ? ch : '_') + ' ';
+      else out += ch + ' ';
+    }
+    $('emoji-movie-guess-letters').textContent = out.trim();
+  }
+
+  function newPuzzle() {
+    if (pos >= order.length) {
+      $('emoji-movie-guess-emoji').textContent = '🏁';
+      $('emoji-movie-guess-letters').textContent = '';
+      $('emoji-movie-guess-msg').textContent = 'You finished all ' + BANK.length + ' movies with ' + score + ' points! Restart to play again.';
+      setPlaying(false);
+      return;
+    }
+    var p = BANK[order[pos]];
+    hintsUsed = 0;
+    revealed = p[1].split('').map(function () { return false; });
+    $('emoji-movie-guess-emoji').textContent = p[0];
+    paintLetters();
+    $('emoji-movie-guess-guess').value = '';
+    $('emoji-movie-guess-guess').focus();
+  }
+
+  function setPlaying(on) {
+    playing = on;
+    $('emoji-movie-guess-guess').disabled = !on;
+    $('emoji-movie-guess-submit').disabled = !on;
+    $('emoji-movie-guess-hint').disabled = !on;
+    $('emoji-movie-guess-skip').disabled = !on;
+  }
+
+  function start() {
+    order = shuffle(BANK.map(function (_, i) { return i; }));
+    pos = 0; score = 0; streak = 0; solved = 0;
+    $('emoji-movie-guess-score').textContent = '0';
+    $('emoji-movie-guess-streak').textContent = '0';
+    $('emoji-movie-guess-done').textContent = '0';
+    $('emoji-movie-guess-msg').textContent = 'Guess the movie!';
+    $('emoji-movie-guess-start').textContent = '↻ Restart';
+    setPlaying(true);
+    newPuzzle();
+  }
+
+  function guess() {
+    if (!playing || pos >= order.length) return;
+    var g = $('emoji-movie-guess-guess').value.trim();
+    if (!g) return;
+    var title = BANK[order[pos]][1];
+    if (norm(g) === norm(title)) {
+      streak++; solved++;
+      var pts = Math.max(2, 10 - hintsUsed * 2);
+      score += pts;
+      $('emoji-movie-guess-score').textContent = score;
+      $('emoji-movie-guess-streak').textContent = streak;
+      $('emoji-movie-guess-done').textContent = solved;
+      $('emoji-movie-guess-msg').textContent = '✓ Correct! It was "' + title + '". +' + pts + ' points.';
+      pos++;
+      newPuzzle();
+    } else {
+      streak = 0;
+      $('emoji-movie-guess-streak').textContent = '0';
+      $('emoji-movie-guess-msg').textContent = '✗ Not quite — try again or take a hint!';
+    }
+  }
+
+  function hint() {
+    if (!playing || pos >= order.length) return;
+    var title = BANK[order[pos]];
+    var hidden = [];
+    for (var i = 0; i < title[1].length; i++) {
+      if (/[a-zA-Z0-9]/.test(title[1][i]) && !revealed[i]) hidden.push(i);
+    }
+    if (!hidden.length) return;
+    revealed[hidden[Math.floor(Math.random() * hidden.length)]] = true;
+    hintsUsed++;
+    paintLetters();
+    $('emoji-movie-guess-msg').textContent = '💡 Letter revealed (' + hintsUsed + ' hint' + (hintsUsed > 1 ? 's' : '') + ' used).';
+  }
+
+  function skip() {
+    if (!playing || pos >= order.length) return;
+    var title = BANK[order[pos]][1];
+    streak = 0;
+    $('emoji-movie-guess-streak').textContent = '0';
+    $('emoji-movie-guess-msg').textContent = 'Skipped — it was "' + title + '".';
+    pos++;
+    newPuzzle();
+  }
+
+  try {
+    TN.on('emoji-movie-guess-start', 'click', start);
+    TN.on('emoji-movie-guess-submit', 'click', guess);
+    TN.on('emoji-movie-guess-hint', 'click', hint);
+    TN.on('emoji-movie-guess-skip', 'click', skip);
+    TN.on('emoji-movie-guess-guess', 'keydown', function (e) { if (e.key === 'Enter') guess(); });
+  } catch (e) { /* never throw on load */ }
+})();
+
+</script>
+</body>
+</html>

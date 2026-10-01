@@ -1,0 +1,45 @@
+<div class="tool-card">
+  <h2>Noise Texture Generator</h2>
+  <p class="muted">Canvas-generated film-grain noise — download as PNG or copy the data-URL.</p>
+  <div class="grid2">
+    <div class="field">
+      <label for="noise-texture-generator-size">Texture size</label>
+      <select class="input" id="noise-texture-generator-size">
+        <option value="256">256 × 256</option>
+        <option value="512" selected>512 × 512</option>
+        <option value="1024">1024 × 1024</option>
+      </select>
+    </div>
+    <div class="field">
+      <label for="noise-texture-generator-kind">Noise type</label>
+      <select class="input" id="noise-texture-generator-kind">
+        <option value="mono">Monochrome</option>
+        <option value="color">Colored</option>
+      </select>
+    </div>
+    <div class="field">
+      <label for="noise-texture-generator-grain">Grain: <span id="noise-texture-generator-grain-v">40</span></label>
+      <input type="range" class="input" id="noise-texture-generator-grain" min="5" max="100" step="1" value="40">
+    </div>
+    <div class="field">
+      <label for="noise-texture-generator-opacity">Opacity: <span id="noise-texture-generator-opacity-v">100%</span></label>
+      <input type="range" class="input" id="noise-texture-generator-opacity" min="10" max="100" step="1" value="100">
+    </div>
+  </div>
+  <h3>Live preview</h3>
+  <div class="preview" style="display:flex;justify-content:center">
+    <canvas id="noise-texture-generator-canvas" style="border-radius:10px;max-width:100%;image-rendering:pixelated"></canvas>
+  </div>
+  <div class="btn-row mt">
+    <button class="btn btn-outline" id="noise-texture-generator-regen">⟳ Regenerate</button>
+    <button class="btn btn-primary" id="noise-texture-generator-download">⬇ Download PNG</button>
+  </div>
+  <h3 class="mt">Data-URL (for CSS backgrounds)</h3>
+  <div class="copy-row">
+    <textarea class="textarea" id="noise-texture-generator-dataurl" rows="3" readonly style="font-size:11px"></textarea>
+  </div>
+  <div class="btn-row mt">
+    <button class="btn btn-outline" id="noise-texture-generator-copyurl">Copy data-URL</button>
+  </div>
+  <div class="error" id="noise-texture-generator-error"></div>
+</div>

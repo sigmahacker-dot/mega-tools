@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fiber Intake Calculator — Free Online | ToolNest</title>
+<meta name="description" content="Tick off fiber-rich foods or add your own to total daily fiber against 25g/30g targets.">
+<meta name="keywords" content="fiber intake calculator, daily fiber tracker, fiber foods list, how much fiber, fiber counter">
+<link rel="canonical" href="https://toolnest.vercel.app/tools/fiber-intake-calculator/">
+<meta name="theme-color" content="#07070b">
+<meta property="og:title" content="Fiber Intake Calculator — Free Online | ToolNest">
+<meta property="og:description" content="Tick off fiber-rich foods or add your own to total daily fiber against 25g/30g targets.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css?v=4">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%23e01111'/><text x='50' y='68' font-size='58' text-anchor='middle' fill='white' font-family='Arial' font-weight='bold'>T</text></svg>">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebApplication","name":"Fiber Intake Calculator","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0"},"url":"https://toolnest.vercel.app/tools/fiber-intake-calculator/","description":"Tick off fiber-rich foods or add your own to total daily fiber against 25g/30g targets."},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How much fiber do I need?","acceptedAnswer":{"@type":"Answer","text":"About 25g per day for women and 30g for men are common reference targets; this tool lets you track against both."}},{"@type":"Question","name":"How do I log my foods?","acceptedAnswer":{"@type":"Answer","text":"Tick each food you ate today, or add a custom entry with its fiber grams from the nutrition label."}},{"@type":"Question","name":"Are the built-in values exact?","acceptedAnswer":{"@type":"Answer","text":"Yes — fiber grams vary by brand and portion; treat the built-in values as typical averages."}}]}]}</script>
+</head>
+<body>
+<header class="site-header">
+  <div class="container">
+    <a class="logo" href="/"><span class="logo-mark">T</span> ToolNest</a>
+    <div class="header-right">
+      <form class="nav-search" action="/" method="get" role="search">
+        <span class="ns-icon">🔍</span>
+        <input type="search" name="q" placeholder="Search tools…" aria-label="Search tools" autocomplete="off">
+      </form>
+      <div class="menu-wrap">
+        <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="menuPanel" aria-label="Open menu"><span></span><span></span><span></span></button>
+        <nav class="menu-panel" id="menuPanel" aria-label="Site">
+          <a href="/">Home</a>
+          <a href="/#categories">Categories</a>
+          <a href="/#all-tools">All Tools</a>
+        </nav>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ADSTERRA-HEADER: paste your Adsterra banner ad code inside the div below -->
+<div class="container"><div class="ad-slot ad-leaderboard" data-ad="header"></div></div>
+
+<main class="container">
+  <nav class="crumbs"><a href="/">Home</a> &rsaquo; <a href="/#health">Health &amp; Fitness</a> &rsaquo; Fiber Intake Calculator</nav>
+  <div class="tool-hero">
+    <h1>Fiber Intake Calculator</h1>
+    <p>Tick off fiber-rich foods or add your own to total daily fiber against 25g/30g targets.</p>
+  </div>
+
+  <div class="tool-card">
+  <div class="field">
+    <label for="fiber-intake-calculator-target">Daily target</label>
+    <select class="input" id="fiber-intake-calculator-target" style="max-width:320px">
+      <option value="25">25 g (women)</option>
+      <option value="30" selected>30 g (men)</option>
+    </select>
+  </div>
+  <div id="fiber-intake-calculator-foods"></div>
+  <div class="grid2" style="margin-top:8px">
+    <div class="field">
+      <label for="fiber-intake-calculator-cname">Custom food</label>
+      <input class="input" id="fiber-intake-calculator-cname" type="text" placeholder="e.g. Protein bar">
+    </div>
+    <div class="field">
+      <label for="fiber-intake-calculator-cg">Fiber (g)</label>
+      <div class="btn-row" style="justify-content:flex-start">
+        <input class="input" id="fiber-intake-calculator-cg" type="number" min="0" step="0.5" placeholder="e.g. 6" style="flex:1">
+        <button class="btn" id="fiber-intake-calculator-add">Add</button>
+      </div>
+    </div>
+  </div>
+  <div class="stat-cards" style="margin-top:12px">
+    <div class="stat-card"><div class="v" id="fiber-intake-calculator-total">0 g</div><div class="l">Total fiber today</div></div>
+    <div class="stat-card"><div class="v" id="fiber-intake-calculator-pct">0%</div><div class="l">Of target</div></div>
+  </div>
+  <div style="background:#eee;border-radius:6px;height:14px;margin-top:8px;overflow:hidden">
+    <div id="fiber-intake-calculator-bar" style="height:100%;width:0%;background:#2e7d32;transition:width .3s"></div>
+  </div>
+  <p class="hint" id="fiber-intake-calculator-msg"></p>
+  <p class="note">General information only — not medical advice. Consult a professional for personal guidance. Increase fiber gradually and drink enough water.</p>
+  <div class="error" id="fiber-intake-calculator-error"></div>
+</div>
+
+
+  <!-- ADSTERRA-INCONTENT: paste your Adsterra native/in-content ad code inside the div below -->
+  <div class="ad-slot" data-ad="incontent"></div>
+
+  <div class="info-grid">
+    <div class="info-card">
+      <h2>📖 How to use</h2>
+      <ol><li>Tick every high-fiber food you ate today.</li><li>Add custom entries with fiber grams from labels.</li><li>Watch your total climb toward the target bar.</li><li>Aim to hit 25g (women) or 30g (men) daily.</li></ol>
+    </div>
+    <div class="info-card">
+      <h2>❓ Frequently asked questions</h2>
+      <div class="faq"><details><summary>How much fiber do I need?</summary><p>About 25g per day for women and 30g for men are common reference targets; this tool lets you track against both.</p></details><details><summary>How do I log my foods?</summary><p>Tick each food you ate today, or add a custom entry with its fiber grams from the nutrition label.</p></details><details><summary>Are the built-in values exact?</summary><p>Yes — fiber grams vary by brand and portion; treat the built-in values as typical averages.</p></details></div>
+    </div>
+  </div>
+
+  <section class="section">
+    <h2>🔗 Related tools</h2>
+    <div class="tool-grid"><a class="tool-link" href="/tools/baby-growth-tracker/" data-search="baby growth tracker log your baby&#39;s weight and height over time and see a growth log with typical-range guidance. baby growth tracker baby weight tracker infant growth chart baby height log newborn growth"><span class="t-ico">❤️</span><span class="t-body"><b>Baby Growth Tracker</b><small>Log your baby&#39;s weight and height over time and see a growth log with typical-range guidance…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/blood-pressure-tracker/" data-search="blood pressure tracker log blood pressure readings with automatic aha category classification, averages and history saved in your browser. blood pressure tracker bp log blood pressure chart hypertension tracker bp monitor log"><span class="t-ico">❤️</span><span class="t-body"><b>Blood Pressure Tracker</b><small>Log blood pressure readings with automatic AHA category classification, averages and history…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/body-fat-calculator/" data-search="body fat calculator estimate body fat percentage with the us navy tape-measure method and see your fitness category. body fat calculator us navy body fat body fat percentage calculator"><span class="t-ico">❤️</span><span class="t-body"><b>Body Fat Calculator</b><small>Estimate body fat percentage with the US Navy tape-measure method and see your fitness categ…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/breathing-exercise-guide/" data-search="breathing exercise guide guided breathing exercises (4-7-8, box, energize) with an animated pacer circle, phase labels, and cycle counter. breathing exercise 4-7-8 breathing box breathing breathing pacer calm breathing"><span class="t-ico">❤️</span><span class="t-body"><b>Breathing Exercise Guide</b><small>Guided breathing exercises (4-7-8, box, energize) with an animated pacer circle, phase label…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/caffeine-half-life-calculator/" data-search="caffeine half-life calculator log caffeinated drinks and see how much caffeine is still in your system using 5.5-hour half-life decay. caffeine half life caffeine calculator caffeine in system coffee caffeine tracker caffeine sleep"><span class="t-ico">❤️</span><span class="t-body"><b>Caffeine Half-Life Calculator</b><small>Log caffeinated drinks and see how much caffeine is still in your system using 5.5-hour half…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/calorie-calculator/" data-search="tdee calorie calculator estimate your daily calorie needs with the mifflin-st jeor equation and get targets for losing, maintaining or gaining weight. tdee calculator calorie calculator mifflin st jeor daily calorie needs"><span class="t-ico">❤️</span><span class="t-body"><b>TDEE Calorie Calculator</b><small>Estimate your daily calorie needs with the Mifflin-St Jeor equation and get targets for losi…</small></span><span class="t-arrow">→</span></a></div>
+  </section>
+</main>
+
+<!-- ADSTERRA-FOOTER: paste your Adsterra footer/banner ad code inside the div below -->
+<div class="container"><div class="ad-slot" data-ad="footer"></div></div>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="f-grid">
+      <div>
+        <span class="brandline"><span class="logo-mark">T</span> ToolNest</span>
+        <p>Free online tools that actually work. No sign-up, no watermarks — and your files never leave your device for client-side tools.</p>
+      </div>
+      <div>
+        <h4>Popular</h4>
+        <a href="/tools/qr-code-generator/">QR Code Generator</a>
+        <a href="/tools/background-remover/">Background Remover</a>
+        <a href="/tools/pdf-merger/">PDF Merger</a>
+        <a href="/tools/word-counter/">Word Counter</a>
+      </div>
+      <div>
+        <h4>Categories</h4>
+        <a href="/#image">Image Tools</a>
+        <a href="/#pdf">PDF &amp; Documents</a>
+        <a href="/#calculators">Calculators</a>
+        <a href="/#developer">Developer Tools</a>
+      </div>
+      <div>
+        <h4>Site</h4>
+        <a href="/">Home</a>
+        <a href="/#all-tools">All Tools</a>
+        <a href="/sitemap.xml">Sitemap</a>
+      </div>
+    </div>
+    <div class="f-bottom">© 2026 ToolNest · Free tools for everyone · Made with care</div>
+  </div>
+</footer>
+
+<script src="/assets/site.js?v=5"></script>
+
+<script>
+/* Fiber intake calculator: checkbox foods + custom entries -> total vs target. */
+(function () {
+  'use strict';
+  var SLUG = 'fiber-intake-calculator';
+  function $(id) { return document.getElementById(id); }
+  var FOODS = [
+    ['Oatmeal (1 bowl)', 4],
+    ['Whole wheat bread (2 slices)', 3.8],
+    ['Brown rice (1 cup cooked)', 3.5],
+    ['Lentils (1 cup cooked)', 15.6],
+    ['Black beans (1 cup cooked)', 15],
+    ['Chickpeas (1 cup)', 12.5],
+    ['Apple (1 medium)', 4.4],
+    ['Banana (1 medium)', 3.1],
+    ['Broccoli (1 cup)', 5.1],
+    ['Chia seeds (1 tbsp)', 5.5],
+    ['Almonds (28 g handful)', 3.5],
+    ['Pear (1 medium)', 5.5]
+  ];
+  var customs = [];
+  function esc(s) {
+    return String(s).replace(/[&<>"']/g, function (c) {
+      return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c];
+    });
+  }
+  function build() {
+    var box = $(SLUG + '-foods');
+    var html = '';
+    FOODS.forEach(function (f, i) {
+      html += '<label class="checkbox-row"><input type="checkbox" data-fiber="' + f[1] + '" data-idx="' + i + '"> ' +
+        esc(f[0]) + ' <span class="muted">(' + f[1] + ' g)</span></label>';
+    });
+    box.innerHTML = html;
+    box.querySelectorAll('input[type=checkbox]').forEach(function (cb) {
+      cb.addEventListener('change', update);
+    });
+  }
+  function update() {
+    var total = 0;
+    document.querySelectorAll('#' + SLUG + '-foods input[type=checkbox]:checked').forEach(function (cb) {
+      total += parseFloat(cb.getAttribute('data-fiber'));
+    });
+    document.querySelectorAll('#' + SLUG + '-foods input[data-custom]:checked').forEach(function (cb) {
+      total += parseFloat(cb.getAttribute('data-fiber'));
+    });
+    var target = parseFloat($(SLUG + '-target').value);
+    total = Math.round(total * 10) / 10;
+    $(SLUG + '-total').textContent = total + ' g';
+    var pct = Math.round((total / target) * 100);
+    $(SLUG + '-pct').textContent = pct + '%';
+    $(SLUG + '-bar').style.width = Math.min(100, pct) + '%';
+    $(SLUG + '-bar').style.background = pct >= 100 ? '#2e7d32' : pct >= 50 ? '#f9a825' : '#c62828';
+    $(SLUG + '-msg').textContent = pct >= 100
+      ? '🎉 Target reached — great fiber day!'
+      : 'You need about ' + Math.max(0, Math.round((target - total) * 10) / 10) + ' g more to hit your target.';
+  }
+  function addCustom() {
+    $(SLUG + '-error').textContent = '';
+    var name = $(SLUG + '-cname').value.trim();
+    var g = parseFloat($(SLUG + '-cg').value);
+    if (!name) { $(SLUG + '-error').textContent = 'Enter a food name.'; return; }
+    if (isNaN(g) || g < 0 || g > 100) { $(SLUG + '-error').textContent = 'Enter fiber grams (0–100).'; return; }
+    var box = $(SLUG + '-foods');
+    var lbl = document.createElement('label');
+    lbl.className = 'checkbox-row';
+    var cb = document.createElement('input');
+    cb.type = 'checkbox'; cb.checked = true;
+    cb.setAttribute('data-fiber', g);
+    cb.setAttribute('data-custom', '1');
+    cb.addEventListener('change', update);
+    lbl.appendChild(cb);
+    lbl.appendChild(document.createTextNode(' ' + name + ' '));
+    var sp = document.createElement('span');
+    sp.className = 'muted'; sp.textContent = '(' + g + ' g)';
+    lbl.appendChild(sp);
+    box.appendChild(lbl);
+    $(SLUG + '-cname').value = '';
+    $(SLUG + '-cg').value = '';
+    update();
+  }
+  try {
+    build();
+    $(SLUG + '-target').addEventListener('change', update);
+    $(SLUG + '-add').addEventListener('click', addCustom);
+    update();
+  } catch (e) { /* never throw on load */ }
+})();
+
+</script>
+</body>
+</html>

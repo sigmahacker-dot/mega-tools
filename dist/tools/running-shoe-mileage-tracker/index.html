@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Running Shoe Mileage Tracker — Free Online | ToolNest</title>
+<meta name="description" content="Track mileage across your running shoes and get a replacement alert when a pair passes 500 km.">
+<meta name="keywords" content="running shoe mileage, shoe mileage tracker, running shoe replacement, track running shoes, shoe km log">
+<link rel="canonical" href="https://toolnest.vercel.app/tools/running-shoe-mileage-tracker/">
+<meta name="theme-color" content="#07070b">
+<meta property="og:title" content="Running Shoe Mileage Tracker — Free Online | ToolNest">
+<meta property="og:description" content="Track mileage across your running shoes and get a replacement alert when a pair passes 500 km.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css?v=4">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%23e01111'/><text x='50' y='68' font-size='58' text-anchor='middle' fill='white' font-family='Arial' font-weight='bold'>T</text></svg>">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebApplication","name":"Running Shoe Mileage Tracker","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0"},"url":"https://toolnest.vercel.app/tools/running-shoe-mileage-tracker/","description":"Track mileage across your running shoes and get a replacement alert when a pair passes 500 km."},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How do I track a shoe?","acceptedAnswer":{"@type":"Answer","text":"Add a shoe, then log each run with its date and distance. Totals build up automatically and are saved in your browser."}},{"@type":"Question","name":"When should running shoes be replaced?","acceptedAnswer":{"@type":"Answer","text":"Around 500–800 km for most trainers. This tool warns you at 500 km so you can start planning a replacement."}},{"@type":"Question","name":"Is my data saved?","acceptedAnswer":{"@type":"Answer","text":"Yes — all data is stored in your browser's localStorage and never leaves your device."}}]}]}</script>
+</head>
+<body>
+<header class="site-header">
+  <div class="container">
+    <a class="logo" href="/"><span class="logo-mark">T</span> ToolNest</a>
+    <div class="header-right">
+      <form class="nav-search" action="/" method="get" role="search">
+        <span class="ns-icon">🔍</span>
+        <input type="search" name="q" placeholder="Search tools…" aria-label="Search tools" autocomplete="off">
+      </form>
+      <div class="menu-wrap">
+        <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="menuPanel" aria-label="Open menu"><span></span><span></span><span></span></button>
+        <nav class="menu-panel" id="menuPanel" aria-label="Site">
+          <a href="/">Home</a>
+          <a href="/#categories">Categories</a>
+          <a href="/#all-tools">All Tools</a>
+        </nav>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ADSTERRA-HEADER: paste your Adsterra banner ad code inside the div below -->
+<div class="container"><div class="ad-slot ad-leaderboard" data-ad="header"></div></div>
+
+<main class="container">
+  <nav class="crumbs"><a href="/">Home</a> &rsaquo; <a href="/#health">Health &amp; Fitness</a> &rsaquo; Running Shoe Mileage Tracker</nav>
+  <div class="tool-hero">
+    <h1>Running Shoe Mileage Tracker</h1>
+    <p>Track mileage across your running shoes and get a replacement alert when a pair passes 500 km.</p>
+  </div>
+
+  <div class="tool-card">
+  <div class="field">
+    <label for="running-shoe-mileage-tracker-name">Shoe name</label>
+    <div class="btn-row" style="justify-content:flex-start">
+      <input class="input" id="running-shoe-mileage-tracker-name" type="text" placeholder="e.g. Nike Pegasus 41" style="flex:1">
+      <button class="btn btn-primary" id="running-shoe-mileage-tracker-add">Add shoe</button>
+    </div>
+  </div>
+  <div class="grid2">
+    <div class="field">
+      <label for="running-shoe-mileage-tracker-shoe">Shoe</label>
+      <select class="input" id="running-shoe-mileage-tracker-shoe"></select>
+    </div>
+    <div class="field">
+      <label for="running-shoe-mileage-tracker-date">Run date</label>
+      <input class="input" id="running-shoe-mileage-tracker-date" type="date">
+    </div>
+    <div class="field">
+      <label for="running-shoe-mileage-tracker-km">Distance (km)</label>
+      <input class="input" id="running-shoe-mileage-tracker-km" type="number" min="0.1" step="0.1" placeholder="e.g. 8.5">
+    </div>
+    <div class="field" style="align-self:end">
+      <button class="btn" id="running-shoe-mileage-tracker-log">Log run</button>
+    </div>
+  </div>
+  <div class="result" id="running-shoe-mileage-tracker-list"></div>
+  <p class="note">General information only — not medical advice. Consult a professional for personal guidance. Replace shoes flagged past 500 km — worn cushioning raises injury risk.</p>
+  <div class="error" id="running-shoe-mileage-tracker-error"></div>
+</div>
+
+
+  <!-- ADSTERRA-INCONTENT: paste your Adsterra native/in-content ad code inside the div below -->
+  <div class="ad-slot" data-ad="incontent"></div>
+
+  <div class="info-grid">
+    <div class="info-card">
+      <h2>📖 How to use</h2>
+      <ol><li>Add each pair of running shoes by name.</li><li>Log every run: pick the shoe, date, and distance in km.</li><li>Watch per-shoe totals grow in the mileage table.</li><li>Replace any shoe flagged past the 500 km warning.</li></ol>
+    </div>
+    <div class="info-card">
+      <h2>❓ Frequently asked questions</h2>
+      <div class="faq"><details><summary>How do I track a shoe?</summary><p>Add a shoe, then log each run with its date and distance. Totals build up automatically and are saved in your browser.</p></details><details><summary>When should running shoes be replaced?</summary><p>Around 500–800 km for most trainers. This tool warns you at 500 km so you can start planning a replacement.</p></details><details><summary>Is my data saved?</summary><p>Yes — all data is stored in your browser&#39;s localStorage and never leaves your device.</p></details></div>
+    </div>
+  </div>
+
+  <section class="section">
+    <h2>🔗 Related tools</h2>
+    <div class="tool-grid"><a class="tool-link" href="/tools/baby-growth-tracker/" data-search="baby growth tracker log your baby&#39;s weight and height over time and see a growth log with typical-range guidance. baby growth tracker baby weight tracker infant growth chart baby height log newborn growth"><span class="t-ico">❤️</span><span class="t-body"><b>Baby Growth Tracker</b><small>Log your baby&#39;s weight and height over time and see a growth log with typical-range guidance…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/blood-pressure-tracker/" data-search="blood pressure tracker log blood pressure readings with automatic aha category classification, averages and history saved in your browser. blood pressure tracker bp log blood pressure chart hypertension tracker bp monitor log"><span class="t-ico">❤️</span><span class="t-body"><b>Blood Pressure Tracker</b><small>Log blood pressure readings with automatic AHA category classification, averages and history…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/body-fat-calculator/" data-search="body fat calculator estimate body fat percentage with the us navy tape-measure method and see your fitness category. body fat calculator us navy body fat body fat percentage calculator"><span class="t-ico">❤️</span><span class="t-body"><b>Body Fat Calculator</b><small>Estimate body fat percentage with the US Navy tape-measure method and see your fitness categ…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/breathing-exercise-guide/" data-search="breathing exercise guide guided breathing exercises (4-7-8, box, energize) with an animated pacer circle, phase labels, and cycle counter. breathing exercise 4-7-8 breathing box breathing breathing pacer calm breathing"><span class="t-ico">❤️</span><span class="t-body"><b>Breathing Exercise Guide</b><small>Guided breathing exercises (4-7-8, box, energize) with an animated pacer circle, phase label…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/caffeine-half-life-calculator/" data-search="caffeine half-life calculator log caffeinated drinks and see how much caffeine is still in your system using 5.5-hour half-life decay. caffeine half life caffeine calculator caffeine in system coffee caffeine tracker caffeine sleep"><span class="t-ico">❤️</span><span class="t-body"><b>Caffeine Half-Life Calculator</b><small>Log caffeinated drinks and see how much caffeine is still in your system using 5.5-hour half…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/calorie-calculator/" data-search="tdee calorie calculator estimate your daily calorie needs with the mifflin-st jeor equation and get targets for losing, maintaining or gaining weight. tdee calculator calorie calculator mifflin st jeor daily calorie needs"><span class="t-ico">❤️</span><span class="t-body"><b>TDEE Calorie Calculator</b><small>Estimate your daily calorie needs with the Mifflin-St Jeor equation and get targets for losi…</small></span><span class="t-arrow">→</span></a></div>
+  </section>
+</main>
+
+<!-- ADSTERRA-FOOTER: paste your Adsterra footer/banner ad code inside the div below -->
+<div class="container"><div class="ad-slot" data-ad="footer"></div></div>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="f-grid">
+      <div>
+        <span class="brandline"><span class="logo-mark">T</span> ToolNest</span>
+        <p>Free online tools that actually work. No sign-up, no watermarks — and your files never leave your device for client-side tools.</p>
+      </div>
+      <div>
+        <h4>Popular</h4>
+        <a href="/tools/qr-code-generator/">QR Code Generator</a>
+        <a href="/tools/background-remover/">Background Remover</a>
+        <a href="/tools/pdf-merger/">PDF Merger</a>
+        <a href="/tools/word-counter/">Word Counter</a>
+      </div>
+      <div>
+        <h4>Categories</h4>
+        <a href="/#image">Image Tools</a>
+        <a href="/#pdf">PDF &amp; Documents</a>
+        <a href="/#calculators">Calculators</a>
+        <a href="/#developer">Developer Tools</a>
+      </div>
+      <div>
+        <h4>Site</h4>
+        <a href="/">Home</a>
+        <a href="/#all-tools">All Tools</a>
+        <a href="/sitemap.xml">Sitemap</a>
+      </div>
+    </div>
+    <div class="f-bottom">© 2026 ToolNest · Free tools for everyone · Made with care</div>
+  </div>
+</footer>
+
+<script src="/assets/site.js?v=5"></script>
+
+<script>
+/* Running shoe mileage tracker: localStorage shoes + runs, 500 km warning. */
+(function () {
+  'use strict';
+  var SLUG = 'running-shoe-mileage-tracker';
+  var KEY = SLUG + '-data';
+  function $(id) { return document.getElementById(id); }
+  function load() {
+    try { var d = JSON.parse(localStorage.getItem(KEY)); return Array.isArray(d) ? d : []; }
+    catch (e) { return []; }
+  }
+  function save(d) { try { localStorage.setItem(KEY, JSON.stringify(d)); } catch (e) {} }
+  function err(m) { $(SLUG + '-error').textContent = m; }
+  function total(shoe) {
+    var t = 0;
+    shoe.runs.forEach(function (r) { t += r.km; });
+    return t;
+  }
+  function esc(s) {
+    return String(s).replace(/[&<>"']/g, function (c) {
+      return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c];
+    });
+  }
+  function render() {
+    var shoes = load();
+    var sel = $(SLUG + '-shoe');
+    sel.innerHTML = '';
+    shoes.forEach(function (s, i) {
+      var o = document.createElement('option');
+      o.value = i; o.textContent = s.name;
+      sel.appendChild(o);
+    });
+    var box = $(SLUG + '-list');
+    if (!shoes.length) { box.innerHTML = '<p class="muted">No shoes yet — add your first pair above.</p>'; return; }
+    var html = '<table class="data"><thead><tr><th>Shoe</th><th>Runs</th><th>Total km</th><th>Status</th><th></th></tr></thead><tbody>';
+    shoes.forEach(function (s, i) {
+      var t = total(s);
+      var status = t > 500
+        ? '<strong style="color:#b71c1c">⚠️ ' + t.toFixed(1) + ' km — consider replacing</strong>'
+        : t.toFixed(1) + ' km — OK';
+      html += '<tr><td>' + esc(s.name) + '</td><td>' + s.runs.length + '</td><td>' + t.toFixed(1) + '</td><td>' + status + '</td>' +
+        '<td><button class="btn btn-outline" data-del="' + i + '" style="padding:4px 10px">Delete</button></td></tr>';
+    });
+    html += '</tbody></table>';
+    box.innerHTML = html;
+    box.querySelectorAll('[data-del]').forEach(function (b) {
+      b.addEventListener('click', function () {
+        var shoes = load();
+        shoes.splice(parseInt(b.getAttribute('data-del'), 10), 1);
+        save(shoes); render();
+      });
+    });
+  }
+  function addShoe() {
+    err('');
+    var name = $(SLUG + '-name').value.trim();
+    if (!name) { err('Please enter a shoe name.'); return; }
+    var shoes = load();
+    shoes.push({ name: name, runs: [] });
+    save(shoes);
+    $(SLUG + '-name').value = '';
+    render();
+  }
+  function logRun() {
+    err('');
+    var shoes = load();
+    var i = parseInt($(SLUG + '-shoe').value, 10);
+    if (isNaN(i) || !shoes[i]) { err('Add a shoe first.'); return; }
+    var date = $(SLUG + '-date').value;
+    var km = parseFloat($(SLUG + '-km').value);
+    if (!date) { err('Please pick the run date.'); return; }
+    if (isNaN(km) || km <= 0) { err('Please enter a valid distance in km.'); return; }
+    shoes[i].runs.push({ d: date, km: km });
+    save(shoes);
+    $(SLUG + '-km').value = '';
+    render();
+    if (total(shoes[i]) > 500) err('Note: "' + shoes[i].name + '" is past 500 km — consider replacing it.');
+  }
+  try {
+    $(SLUG + '-add').addEventListener('click', addShoe);
+    $(SLUG + '-log').addEventListener('click', logRun);
+    render();
+  } catch (e) { /* never throw on load */ }
+})();
+
+</script>
+</body>
+</html>

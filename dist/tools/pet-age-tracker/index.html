@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pet Age Tracker — Free Online | ToolNest</title>
+<meta name="description" content="How old is your pet in human years? Enter birthdate and species for exact age plus human-equivalent years.">
+<meta name="keywords" content="pet age calculator, dog age calculator, cat age calculator, dog years to human years, pet age in human years">
+<link rel="canonical" href="https://toolnest.vercel.app/tools/pet-age-tracker/">
+<meta name="theme-color" content="#07070b">
+<meta property="og:title" content="Pet Age Tracker — Free Online | ToolNest">
+<meta property="og:description" content="How old is your pet in human years? Enter birthdate and species for exact age plus human-equivalent years.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css?v=4">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%23e01111'/><text x='50' y='68' font-size='58' text-anchor='middle' fill='white' font-family='Arial' font-weight='bold'>T</text></svg>">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebApplication","name":"Pet Age Tracker","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0"},"url":"https://toolnest.vercel.app/tools/pet-age-tracker/","description":"How old is your pet in human years? Enter birthdate and species for exact age plus human-equivalent years."},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How are human-equivalent years calculated?","acceptedAnswer":{"@type":"Answer","text":"Dogs: 15 years for year one, 9 for year two, 5 per year after. Cats: 15 / 9, then 4 per year after. Partial years are prorated monthly."}},{"@type":"Question","name":"Does it work for all cat breeds?","acceptedAnswer":{"@type":"Answer","text":"Yes — the same 15/9/4 rule used by vets works for all cat breeds."}},{"@type":"Question","name":"What exactly does it show?","acceptedAnswer":{"@type":"Answer","text":"It shows exact years, months and days of actual age, plus the human-equivalent age."}}]}]}</script>
+</head>
+<body>
+<header class="site-header">
+  <div class="container">
+    <a class="logo" href="/"><span class="logo-mark">T</span> ToolNest</a>
+    <div class="header-right">
+      <form class="nav-search" action="/" method="get" role="search">
+        <span class="ns-icon">🔍</span>
+        <input type="search" name="q" placeholder="Search tools…" aria-label="Search tools" autocomplete="off">
+      </form>
+      <div class="menu-wrap">
+        <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="menuPanel" aria-label="Open menu"><span></span><span></span><span></span></button>
+        <nav class="menu-panel" id="menuPanel" aria-label="Site">
+          <a href="/">Home</a>
+          <a href="/#categories">Categories</a>
+          <a href="/#all-tools">All Tools</a>
+        </nav>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ADSTERRA-HEADER: paste your Adsterra banner ad code inside the div below -->
+<div class="container"><div class="ad-slot ad-leaderboard" data-ad="header"></div></div>
+
+<main class="container">
+  <nav class="crumbs"><a href="/">Home</a> &rsaquo; <a href="/#time">Time &amp; Date</a> &rsaquo; Pet Age Tracker</nav>
+  <div class="tool-hero">
+    <h1>Pet Age Tracker</h1>
+    <p>How old is your pet in human years? Enter birthdate and species for exact age plus human-equivalent years.</p>
+  </div>
+
+  <div class="tool-card">
+  <div class="grid2">
+    <div class="field">
+      <label for="pet-age-tracker-name">Pet's name</label>
+      <input class="input" type="text" id="pet-age-tracker-name" placeholder="e.g. Bruno" maxlength="40">
+    </div>
+    <div class="field">
+      <label for="pet-age-tracker-birth">Birthdate</label>
+      <input class="input" type="date" id="pet-age-tracker-birth">
+    </div>
+  </div>
+  <div class="field" style="max-width:260px">
+    <label for="pet-age-tracker-species">Species</label>
+    <select class="input" id="pet-age-tracker-species">
+      <option value="dog">🐶 Dog</option>
+      <option value="cat">🐱 Cat</option>
+    </select>
+  </div>
+  <div class="btn-row">
+    <button class="btn btn-primary" id="pet-age-tracker-calc">Calculate</button>
+  </div>
+  <div class="stat-cards">
+    <div class="stat-card"><div class="v" id="pet-age-tracker-years" style="font-size:22px">—</div><div class="l">Years old</div></div>
+    <div class="stat-card"><div class="v" id="pet-age-tracker-exact" style="font-size:22px">—</div><div class="l">Exact age</div></div>
+    <div class="stat-card"><div class="v" id="pet-age-tracker-human" style="font-size:22px">—</div><div class="l">Human-equivalent</div></div>
+  </div>
+  <div class="result" id="pet-age-tracker-out"></div>
+  <div class="error" id="pet-age-tracker-error"></div>
+</div>
+
+
+  <!-- ADSTERRA-INCONTENT: paste your Adsterra native/in-content ad code inside the div below -->
+  <div class="ad-slot" data-ad="incontent"></div>
+
+  <div class="info-grid">
+    <div class="info-card">
+      <h2>📖 How to use</h2>
+      <ol><li>Enter your pet&#39;s name and birthdate.</li><li>Choose dog or cat.</li><li>Press Calculate.</li><li>See exact age and human-equivalent years.</li></ol>
+    </div>
+    <div class="info-card">
+      <h2>❓ Frequently asked questions</h2>
+      <div class="faq"><details><summary>How are human-equivalent years calculated?</summary><p>Dogs: 15 years for year one, 9 for year two, 5 per year after. Cats: 15 / 9, then 4 per year after. Partial years are prorated monthly.</p></details><details><summary>Does it work for all cat breeds?</summary><p>Yes — the same 15/9/4 rule used by vets works for all cat breeds.</p></details><details><summary>What exactly does it show?</summary><p>It shows exact years, months and days of actual age, plus the human-equivalent age.</p></details></div>
+    </div>
+  </div>
+
+  <section class="section">
+    <h2>🔗 Related tools</h2>
+    <div class="tool-grid"><a class="tool-link" href="/tools/add-subtract-days-calculator/" data-search="add / subtract days calculator add or subtract days, weeks, months or years from any date. optional business-days-only mode skips weekends automatically. add days to date subtract days calculator date plus days business days calculator date arithmetic"><span class="t-ico">⏰</span><span class="t-body"><b>Add / Subtract Days Calculator</b><small>Add or subtract days, weeks, months or years from any date. Optional business-days-only mode…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/anniversary-calculator/" data-search="anniversary calculator track any anniversary: days until the next one, which number it is (10th, 25th…), total days together and the weekday it falls on. anniversary calculator wedding anniversary countdown how many days until anniversary anniversary date tracker years together calculator"><span class="t-ico">⏰</span><span class="t-body"><b>Anniversary Calculator</b><small>Track any anniversary: days until the next one, which number it is (10th, 25th…), total days…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/bill-due-tracker/" data-search="bill due tracker never miss a payment — track recurring monthly bills with automatic next-due dates, days remaining and urgency sorting. bill due tracker bill reminder recurring bills tracker monthly bills organizer due date tracker"><span class="t-ico">⏰</span><span class="t-body"><b>Bill Due Tracker</b><small>Never miss a payment — track recurring monthly bills with automatic next-due dates, days rem…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/business-days-calculator/" data-search="business days calculator count working days between two dates, excluding weekends and your own custom holidays, with a full breakdown. business days calculator working days calculator weekdays between dates net workdays business days excluding holidays"><span class="t-ico">⏰</span><span class="t-body"><b>Business Days Calculator</b><small>Count working days between two dates, excluding weekends and your own custom holidays, with …</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/chess-clock-timer/" data-search="chess clock timer a two-player chess clock with tap-to-switch, optional increment per move, flag detection, pause and reset. chess clock chess timer two player timer blitz clock increment chess clock"><span class="t-ico">⏰</span><span class="t-body"><b>Chess Clock Timer</b><small>A two-player chess clock with tap-to-switch, optional increment per move, flag detection, pa…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/daily-screen-time-log/" data-search="daily screen time log log daily screen time by app or category and see daily totals plus a 7-day bar summary — all saved in your browser. screen time tracker screen time log daily screen time phone usage tracker app usage log"><span class="t-ico">⏰</span><span class="t-body"><b>Daily Screen Time Log</b><small>Log daily screen time by app or category and see daily totals plus a 7-day bar summary — all…</small></span><span class="t-arrow">→</span></a></div>
+  </section>
+</main>
+
+<!-- ADSTERRA-FOOTER: paste your Adsterra footer/banner ad code inside the div below -->
+<div class="container"><div class="ad-slot" data-ad="footer"></div></div>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="f-grid">
+      <div>
+        <span class="brandline"><span class="logo-mark">T</span> ToolNest</span>
+        <p>Free online tools that actually work. No sign-up, no watermarks — and your files never leave your device for client-side tools.</p>
+      </div>
+      <div>
+        <h4>Popular</h4>
+        <a href="/tools/qr-code-generator/">QR Code Generator</a>
+        <a href="/tools/background-remover/">Background Remover</a>
+        <a href="/tools/pdf-merger/">PDF Merger</a>
+        <a href="/tools/word-counter/">Word Counter</a>
+      </div>
+      <div>
+        <h4>Categories</h4>
+        <a href="/#image">Image Tools</a>
+        <a href="/#pdf">PDF &amp; Documents</a>
+        <a href="/#calculators">Calculators</a>
+        <a href="/#developer">Developer Tools</a>
+      </div>
+      <div>
+        <h4>Site</h4>
+        <a href="/">Home</a>
+        <a href="/#all-tools">All Tools</a>
+        <a href="/sitemap.xml">Sitemap</a>
+      </div>
+    </div>
+    <div class="f-bottom">© 2026 ToolNest · Free tools for everyone · Made with care</div>
+  </div>
+</footer>
+
+<script src="/assets/site.js?v=5"></script>
+
+<script>
+/* Pet Age Tracker — exact pet age + human-equivalent years (dog 15/9/5, cat 15/9/4). */
+(function () {
+  'use strict';
+  var SLUG = 'pet-age-tracker';
+  var $ = function (id) { return TN.el(SLUG + '-' + id); };
+
+  function esc(s) {
+    return String(s).replace(/[&<>"']/g, function (c) {
+      return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c];
+    });
+  }
+
+  function parseDate(v) {
+    var m = /^(\d{4})-(\d{2})-(\d{2})$/.exec(v || '');
+    if (!m) return null;
+    var d = new Date(+m[1], +m[2] - 1, +m[3]);
+    if (d.getFullYear() !== +m[1] || d.getMonth() !== +m[2] - 1 || d.getDate() !== +m[3]) return null;
+    return d;
+  }
+
+  function humanYears(ageY, species) {
+    var y1 = 15, y2 = 9, rest = species === 'cat' ? 4 : 5;
+    var h = Math.min(ageY, 1) * y1 +
+      Math.min(Math.max(ageY - 1, 0), 1) * y2 +
+      Math.max(ageY - 2, 0) * rest;
+    return h;
+  }
+
+  function calc() {
+    TN.clearErr(SLUG + '-error');
+    var birth = parseDate($('birth').value);
+    var name = ($('name').value || '').trim() || 'Your pet';
+    if (!birth) { TN.setErr(SLUG + '-error', 'Please enter a valid birthdate.'); return; }
+    var today = new Date(); today.setHours(0, 0, 0, 0);
+    if (birth > today) { TN.setErr(SLUG + '-error', 'Birthdate cannot be in the future.'); return; }
+
+    var y = today.getFullYear() - birth.getFullYear();
+    var m = today.getMonth() - birth.getMonth();
+    var d = today.getDate() - birth.getDate();
+    if (d < 0) { m--; d += new Date(today.getFullYear(), today.getMonth(), 0).getDate(); }
+    if (m < 0) { y--; m += 12; }
+
+    var ageY = (today.getTime() - birth.getTime()) / 86400000 / 365.25;
+    var species = $('species').value;
+    var hy = humanYears(ageY, species);
+
+    $('years').textContent = y;
+    var parts = [];
+    if (y) parts.push(y + 'y');
+    if (m) parts.push(m + 'm');
+    if (d || !parts.length) parts.push(d + 'd');
+    $('exact').textContent = parts.join(' ');
+    $('human').textContent = hy.toFixed(1) + ' yrs';
+
+    var emoji = species === 'cat' ? '🐱' : '🐶';
+    var rule = species === 'cat'
+      ? 'Cat rule: 15 human years for year 1, 9 for year 2, 4 per year after.'
+      : 'Dog rule: 15 human years for year 1, 9 for year 2, 5 per year after.';
+    $('out').innerHTML = '<p>' + emoji + ' <strong>' + esc(name) + '</strong> is <strong>' + parts.join(', ') +
+      '</strong> old — about <strong>' + hy.toFixed(1) + ' human years</strong>.</p>' +
+      '<p class="muted">' + rule + ' (partial years prorated). A rough guide — size and breed shift real aging.</p>';
+  }
+
+  try {
+    TN.on(SLUG + '-calc', 'click', calc);
+    TN.on(SLUG + '-birth', 'change', calc);
+    TN.on(SLUG + '-species', 'change', calc);
+  } catch (e) { /* never throw on load */ }
+})();
+
+</script>
+</body>
+</html>

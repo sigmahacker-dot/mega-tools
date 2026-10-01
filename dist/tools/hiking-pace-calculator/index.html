@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hiking Pace Calculator — Free Online | ToolNest</title>
+<meta name="description" content="Estimate hiking time with Naismith&#39;s rule: 12 min per km plus 10 min per 100 m of ascent, with fitness adjustments.">
+<meta name="keywords" content="hiking pace calculator, naismiths rule, hiking time estimate, trek time calculator, hill walking time">
+<link rel="canonical" href="https://toolnest.vercel.app/tools/hiking-pace-calculator/">
+<meta name="theme-color" content="#07070b">
+<meta property="og:title" content="Hiking Pace Calculator — Free Online | ToolNest">
+<meta property="og:description" content="Estimate hiking time with Naismith&#39;s rule: 12 min per km plus 10 min per 100 m of ascent, with fitness adjustments.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css?v=4">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%23e01111'/><text x='50' y='68' font-size='58' text-anchor='middle' fill='white' font-family='Arial' font-weight='bold'>T</text></svg>">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebApplication","name":"Hiking Pace Calculator","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0"},"url":"https://toolnest.vercel.app/tools/hiking-pace-calculator/","description":"Estimate hiking time with Naismith's rule: 12 min per km plus 10 min per 100 m of ascent, with fitness adjustments."},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What is Naismith's rule?","acceptedAnswer":{"@type":"Answer","text":"Allow 12 minutes per kilometer plus 10 minutes for every 100 meters of ascent — the classic hillwalker's rule of thumb."}},{"@type":"Question","name":"How accurate is the estimate?","acceptedAnswer":{"@type":"Answer","text":"It assumes reasonable fitness on decent paths. Bad weather, rough terrain, or heavy packs all add time."}},{"@type":"Question","name":"What do the fitness options do?","acceptedAnswer":{"@type":"Answer","text":"Choose your fitness level to adjust the estimate by ±20%, and see both moving time and pace."}}]}]}</script>
+</head>
+<body>
+<header class="site-header">
+  <div class="container">
+    <a class="logo" href="/"><span class="logo-mark">T</span> ToolNest</a>
+    <div class="header-right">
+      <form class="nav-search" action="/" method="get" role="search">
+        <span class="ns-icon">🔍</span>
+        <input type="search" name="q" placeholder="Search tools…" aria-label="Search tools" autocomplete="off">
+      </form>
+      <div class="menu-wrap">
+        <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="menuPanel" aria-label="Open menu"><span></span><span></span><span></span></button>
+        <nav class="menu-panel" id="menuPanel" aria-label="Site">
+          <a href="/">Home</a>
+          <a href="/#categories">Categories</a>
+          <a href="/#all-tools">All Tools</a>
+        </nav>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ADSTERRA-HEADER: paste your Adsterra banner ad code inside the div below -->
+<div class="container"><div class="ad-slot ad-leaderboard" data-ad="header"></div></div>
+
+<main class="container">
+  <nav class="crumbs"><a href="/">Home</a> &rsaquo; <a href="/#health">Health &amp; Fitness</a> &rsaquo; Hiking Pace Calculator</nav>
+  <div class="tool-hero">
+    <h1>Hiking Pace Calculator</h1>
+    <p>Estimate hiking time with Naismith&#39;s rule: 12 min per km plus 10 min per 100 m of ascent, with fitness adjustments.</p>
+  </div>
+
+  <div class="tool-card">
+  <div class="grid2">
+    <div class="field">
+      <label for="hiking-pace-calculator-dist">Distance (km)</label>
+      <input class="input" id="hiking-pace-calculator-dist" type="number" min="0.1" step="0.1" placeholder="e.g. 12">
+    </div>
+    <div class="field">
+      <label for="hiking-pace-calculator-ascent">Total ascent (m)</label>
+      <input class="input" id="hiking-pace-calculator-ascent" type="number" min="0" step="10" placeholder="e.g. 800">
+    </div>
+    <div class="field">
+      <label for="hiking-pace-calculator-fit">Fitness level</label>
+      <select class="input" id="hiking-pace-calculator-fit">
+        <option value="1.2">Relaxed (+20% time)</option>
+        <option value="1" selected>Average (Naismith standard)</option>
+        <option value="0.8">Fit (−20% time)</option>
+      </select>
+    </div>
+    <div class="field" style="align-self:end">
+      <button class="btn btn-primary" id="hiking-pace-calculator-calc">Estimate time</button>
+    </div>
+  </div>
+  <div class="stat-cards hidden" id="hiking-pace-calculator-out">
+    <div class="stat-card"><div class="v" id="hiking-pace-calculator-time">–</div><div class="l">Estimated time</div></div>
+    <div class="stat-card"><div class="v" id="hiking-pace-calculator-pace">–</div><div class="l">Pace (min/km)</div></div>
+  </div>
+  <div class="result hidden" id="hiking-pace-calculator-break"></div>
+  <p class="note">General information only — not medical advice. Consult a professional for personal guidance. Add buffer for weather, terrain, and rest stops.</p>
+  <div class="error" id="hiking-pace-calculator-error"></div>
+</div>
+
+
+  <!-- ADSTERRA-INCONTENT: paste your Adsterra native/in-content ad code inside the div below -->
+  <div class="ad-slot" data-ad="incontent"></div>
+
+  <div class="info-grid">
+    <div class="info-card">
+      <h2>📖 How to use</h2>
+      <ol><li>Enter the route distance in km.</li><li>Enter total ascent in meters.</li><li>Pick your fitness level.</li><li>See estimated time, pace, and adjusted options.</li></ol>
+    </div>
+    <div class="info-card">
+      <h2>❓ Frequently asked questions</h2>
+      <div class="faq"><details><summary>What is Naismith&#39;s rule?</summary><p>Allow 12 minutes per kilometer plus 10 minutes for every 100 meters of ascent — the classic hillwalker&#39;s rule of thumb.</p></details><details><summary>How accurate is the estimate?</summary><p>It assumes reasonable fitness on decent paths. Bad weather, rough terrain, or heavy packs all add time.</p></details><details><summary>What do the fitness options do?</summary><p>Choose your fitness level to adjust the estimate by ±20%, and see both moving time and pace.</p></details></div>
+    </div>
+  </div>
+
+  <section class="section">
+    <h2>🔗 Related tools</h2>
+    <div class="tool-grid"><a class="tool-link" href="/tools/baby-growth-tracker/" data-search="baby growth tracker log your baby&#39;s weight and height over time and see a growth log with typical-range guidance. baby growth tracker baby weight tracker infant growth chart baby height log newborn growth"><span class="t-ico">❤️</span><span class="t-body"><b>Baby Growth Tracker</b><small>Log your baby&#39;s weight and height over time and see a growth log with typical-range guidance…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/blood-pressure-tracker/" data-search="blood pressure tracker log blood pressure readings with automatic aha category classification, averages and history saved in your browser. blood pressure tracker bp log blood pressure chart hypertension tracker bp monitor log"><span class="t-ico">❤️</span><span class="t-body"><b>Blood Pressure Tracker</b><small>Log blood pressure readings with automatic AHA category classification, averages and history…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/body-fat-calculator/" data-search="body fat calculator estimate body fat percentage with the us navy tape-measure method and see your fitness category. body fat calculator us navy body fat body fat percentage calculator"><span class="t-ico">❤️</span><span class="t-body"><b>Body Fat Calculator</b><small>Estimate body fat percentage with the US Navy tape-measure method and see your fitness categ…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/breathing-exercise-guide/" data-search="breathing exercise guide guided breathing exercises (4-7-8, box, energize) with an animated pacer circle, phase labels, and cycle counter. breathing exercise 4-7-8 breathing box breathing breathing pacer calm breathing"><span class="t-ico">❤️</span><span class="t-body"><b>Breathing Exercise Guide</b><small>Guided breathing exercises (4-7-8, box, energize) with an animated pacer circle, phase label…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/caffeine-half-life-calculator/" data-search="caffeine half-life calculator log caffeinated drinks and see how much caffeine is still in your system using 5.5-hour half-life decay. caffeine half life caffeine calculator caffeine in system coffee caffeine tracker caffeine sleep"><span class="t-ico">❤️</span><span class="t-body"><b>Caffeine Half-Life Calculator</b><small>Log caffeinated drinks and see how much caffeine is still in your system using 5.5-hour half…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/calorie-calculator/" data-search="tdee calorie calculator estimate your daily calorie needs with the mifflin-st jeor equation and get targets for losing, maintaining or gaining weight. tdee calculator calorie calculator mifflin st jeor daily calorie needs"><span class="t-ico">❤️</span><span class="t-body"><b>TDEE Calorie Calculator</b><small>Estimate your daily calorie needs with the Mifflin-St Jeor equation and get targets for losi…</small></span><span class="t-arrow">→</span></a></div>
+  </section>
+</main>
+
+<!-- ADSTERRA-FOOTER: paste your Adsterra footer/banner ad code inside the div below -->
+<div class="container"><div class="ad-slot" data-ad="footer"></div></div>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="f-grid">
+      <div>
+        <span class="brandline"><span class="logo-mark">T</span> ToolNest</span>
+        <p>Free online tools that actually work. No sign-up, no watermarks — and your files never leave your device for client-side tools.</p>
+      </div>
+      <div>
+        <h4>Popular</h4>
+        <a href="/tools/qr-code-generator/">QR Code Generator</a>
+        <a href="/tools/background-remover/">Background Remover</a>
+        <a href="/tools/pdf-merger/">PDF Merger</a>
+        <a href="/tools/word-counter/">Word Counter</a>
+      </div>
+      <div>
+        <h4>Categories</h4>
+        <a href="/#image">Image Tools</a>
+        <a href="/#pdf">PDF &amp; Documents</a>
+        <a href="/#calculators">Calculators</a>
+        <a href="/#developer">Developer Tools</a>
+      </div>
+      <div>
+        <h4>Site</h4>
+        <a href="/">Home</a>
+        <a href="/#all-tools">All Tools</a>
+        <a href="/sitemap.xml">Sitemap</a>
+      </div>
+    </div>
+    <div class="f-bottom">© 2026 ToolNest · Free tools for everyone · Made with care</div>
+  </div>
+</footer>
+
+<script src="/assets/site.js?v=5"></script>
+
+<script>
+/* Hiking pace calculator: Naismith's rule (12 min/km + 10 min/100m ascent). */
+(function () {
+  'use strict';
+  var SLUG = 'hiking-pace-calculator';
+  function $(id) { return document.getElementById(id); }
+  function fmt(mins) {
+    var h = Math.floor(mins / 60), m = Math.round(mins % 60);
+    if (m === 60) { h++; m = 0; }
+    return h + 'h ' + (m < 10 ? '0' : '') + m + 'm';
+  }
+  function calc() {
+    $(SLUG + '-error').textContent = '';
+    var d = parseFloat($(SLUG + '-dist').value);
+    var a = parseFloat($(SLUG + '-ascent').value);
+    var fit = parseFloat($(SLUG + '-fit').value);
+    if (isNaN(d) || d <= 0) { $(SLUG + '-error').textContent = 'Enter a valid distance in km.'; return; }
+    if (isNaN(a) || a < 0) { $(SLUG + '-error').textContent = 'Enter total ascent in meters (0 if flat).'; return; }
+    var flatMin = d * 12;
+    var climbMin = (a / 100) * 10;
+    var base = flatMin + climbMin;
+    var adj = base * fit;
+    $(SLUG + '-time').textContent = fmt(adj);
+    $(SLUG + '-pace').textContent = (adj / d).toFixed(1);
+    $(SLUG + '-out').classList.remove('hidden');
+    var box = $(SLUG + '-break');
+    box.innerHTML = '<p><strong>Naismith breakdown:</strong> ' + fmt(flatMin) + ' for distance + ' + fmt(climbMin) +
+      ' for ascent = ' + fmt(base) + ' base. Fitness adjustment ×' + fit + ' → <strong>' + fmt(adj) +
+      '</strong>. Add 10–15% buffer for breaks and rough terrain.</p>';
+    box.classList.remove('hidden');
+  }
+  try { $(SLUG + '-calc').addEventListener('click', calc); } catch (e) { /* never throw on load */ }
+})();
+
+</script>
+</body>
+</html>

@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PDF Redactor — Free Online | ToolNest</title>
+<meta name="description" content="Burn black redaction boxes into a PDF: pick a page, enter a rectangle in points (page-size helper included), and download the redacted file.">
+<meta name="keywords" content="pdf redactor, redact pdf, black out pdf text, pdf redaction tool, redact pdf online">
+<link rel="canonical" href="https://toolnest.vercel.app/tools/pdf-redactor/">
+<meta name="theme-color" content="#07070b">
+<meta property="og:title" content="PDF Redactor — Free Online | ToolNest">
+<meta property="og:description" content="Burn black redaction boxes into a PDF: pick a page, enter a rectangle in points (page-size helper included), and download the redacted file.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css?v=4">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%23e01111'/><text x='50' y='68' font-size='58' text-anchor='middle' fill='white' font-family='Arial' font-weight='bold'>T</text></svg>">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebApplication","name":"PDF Redactor","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0"},"url":"https://toolnest.vercel.app/tools/pdf-redactor/","description":"Burn black redaction boxes into a PDF: pick a page, enter a rectangle in points (page-size helper included), and download the redacted file."},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Are the redactions permanent?","acceptedAnswer":{"@type":"Answer","text":"Yes — the boxes are drawn into the page content itself, so they cannot be removed by selecting text or editing layers."}},{"@type":"Question","name":"How do PDF coordinates work?","acceptedAnswer":{"@type":"Answer","text":"PDF coordinates start at the bottom-left corner of the page, measured in points (1/72 inch). The tool shows the current page's exact size."}},{"@type":"Question","name":"Are my files uploaded anywhere?","acceptedAnswer":{"@type":"Answer","text":"Everything is processed locally in your browser with PDF-Lib. Your files are never uploaded to any server."}}]}]}</script>
+</head>
+<body>
+<header class="site-header">
+  <div class="container">
+    <a class="logo" href="/"><span class="logo-mark">T</span> ToolNest</a>
+    <div class="header-right">
+      <form class="nav-search" action="/" method="get" role="search">
+        <span class="ns-icon">🔍</span>
+        <input type="search" name="q" placeholder="Search tools…" aria-label="Search tools" autocomplete="off">
+      </form>
+      <div class="menu-wrap">
+        <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="menuPanel" aria-label="Open menu"><span></span><span></span><span></span></button>
+        <nav class="menu-panel" id="menuPanel" aria-label="Site">
+          <a href="/">Home</a>
+          <a href="/#categories">Categories</a>
+          <a href="/#all-tools">All Tools</a>
+        </nav>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ADSTERRA-HEADER: paste your Adsterra banner ad code inside the div below -->
+<div class="container"><div class="ad-slot ad-leaderboard" data-ad="header"></div></div>
+
+<main class="container">
+  <nav class="crumbs"><a href="/">Home</a> &rsaquo; <a href="/#pdf">PDF &amp; Documents</a> &rsaquo; PDF Redactor</nav>
+  <div class="tool-hero">
+    <h1>PDF Redactor</h1>
+    <p>Burn black redaction boxes into a PDF: pick a page, enter a rectangle in points (page-size helper included), and download the redacted file.</p>
+  </div>
+
+  <div class="tool-card">
+  <h2>PDF Redactor</h2>
+  <p class="muted">Burn permanent black redaction boxes into a PDF page.</p>
+  <div class="field">
+    <label for="pdf-redactor-file">PDF file</label>
+    <input type="file" class="input" id="pdf-redactor-file" accept=".pdf,application/pdf">
+  </div>
+  <div class="grid2">
+    <div class="field">
+      <label for="pdf-redactor-page">Page number</label>
+      <input type="number" class="input" id="pdf-redactor-page" min="1" value="1">
+    </div>
+    <div class="field">
+      <label>&nbsp;</label>
+      <div class="hint" id="pdf-redactor-sizeinfo">Load a PDF to see page size.</div>
+    </div>
+    <div class="field">
+      <label for="pdf-redactor-x">X (from left, pt)</label>
+      <input type="number" class="input" id="pdf-redactor-x" min="0" value="100">
+    </div>
+    <div class="field">
+      <label for="pdf-redactor-y">Y (from bottom, pt)</label>
+      <input type="number" class="input" id="pdf-redactor-y" min="0" value="100">
+    </div>
+    <div class="field">
+      <label for="pdf-redactor-w">Width (pt)</label>
+      <input type="number" class="input" id="pdf-redactor-w" min="1" value="200">
+    </div>
+    <div class="field">
+      <label for="pdf-redactor-h">Height (pt)</label>
+      <input type="number" class="input" id="pdf-redactor-h" min="1" value="30">
+    </div>
+  </div>
+  <p class="hint">PDF coordinates start at the bottom-left corner, in points (72 pt = 1 inch).</p>
+  <div class="btn-row">
+    <button class="btn btn-outline" id="pdf-redactor-add">＋ Add box</button>
+    <button class="btn btn-primary" id="pdf-redactor-go" disabled>Apply &amp; Download</button>
+  </div>
+  <h3 class="mt">Redaction boxes</h3>
+  <div id="pdf-redactor-list" class="file-list"><p class="muted">No boxes added yet.</p></div>
+  <div class="error" id="pdf-redactor-error"></div>
+  <div class="result hidden" id="pdf-redactor-result"></div>
+  <p class="note">Files never leave your device — everything is processed in your browser.</p>
+</div>
+
+
+  <!-- ADSTERRA-INCONTENT: paste your Adsterra native/in-content ad code inside the div below -->
+  <div class="ad-slot" data-ad="incontent"></div>
+
+  <div class="info-grid">
+    <div class="info-card">
+      <h2>📖 How to use</h2>
+      <ol><li>Upload a PDF and pick a page number.</li><li>Check the page-size helper (width × height in points).</li><li>Enter the rectangle&#39;s x, y, width and height in points.</li><li>Add as many boxes as needed, then &quot;Apply &amp; Download&quot;.</li></ol>
+    </div>
+    <div class="info-card">
+      <h2>❓ Frequently asked questions</h2>
+      <div class="faq"><details><summary>Are the redactions permanent?</summary><p>Yes — the boxes are drawn into the page content itself, so they cannot be removed by selecting text or editing layers.</p></details><details><summary>How do PDF coordinates work?</summary><p>PDF coordinates start at the bottom-left corner of the page, measured in points (1/72 inch). The tool shows the current page&#39;s exact size.</p></details><details><summary>Are my files uploaded anywhere?</summary><p>Everything is processed locally in your browser with PDF-Lib. Your files are never uploaded to any server.</p></details></div>
+    </div>
+  </div>
+
+  <section class="section">
+    <h2>🔗 Related tools</h2>
+    <div class="tool-grid"><a class="tool-link" href="/tools/esign-pdf/" data-search="esign pdf draw your signature and stamp it onto any page of a pdf. choose the page, position and size with sliders, then download the signed document. esign pdf sign pdf online electronic signature pdf"><span class="t-ico">📄</span><span class="t-body"><b>eSign PDF</b><small>Draw your signature and stamp it onto any page of a PDF. Choose the page, position and size …</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/pdf-blank-page-adder/" data-search="pdf blank page adder insert blank pages into a pdf — at the start, at the end, or after any page. choose page size and how many to add. add blank pages pdf insert blank page pdf pdf blank page add pages to pdf pdf insert pages"><span class="t-ico">📄</span><span class="t-body"><b>PDF Blank Page Adder</b><small>Insert blank pages into a PDF — at the start, at the end, or after any page. Choose page siz…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/pdf-compressor/" data-search="pdf compressor shrink a pdf&#39;s file size by re-rendering its pages as compressed images. choose low, medium or high quality and compare sizes before downloading. compress pdf reduce pdf size shrink pdf"><span class="t-ico">📄</span><span class="t-body"><b>PDF Compressor</b><small>Shrink a PDF&#39;s file size by re-rendering its pages as compressed images. Choose Low, Medium …</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/pdf-form-filler/" data-search="pdf form filler fill pdf forms in your browser: upload a pdf, see its detected text fields, type your answers, and download the filled document. fill pdf form pdf form filler fill pdf online fillable pdf pdf acroform"><span class="t-ico">📄</span><span class="t-body"><b>PDF Form Filler</b><small>Fill PDF forms in your browser: upload a PDF, see its detected text fields, type your answer…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/pdf-merger/" data-search="pdf merger combine multiple pdf files into one document. arrange the files in any order, preview each file&#39;s page count, then merge and download the result. merge pdf combine pdf join pdf files"><span class="t-ico">📄</span><span class="t-body"><b>PDF Merger</b><small>Combine multiple PDF files into one document. Arrange the files in any order, preview each f…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/pdf-metadata-editor/" data-search="pdf metadata editor read and edit a pdf&#39;s title, author, subject and keywords metadata. edit pdf metadata pdf title author pdf properties editor"><span class="t-ico">📄</span><span class="t-body"><b>PDF Metadata Editor</b><small>Read and edit a PDF&#39;s title, author, subject and keywords metadata.</small></span><span class="t-arrow">→</span></a></div>
+  </section>
+</main>
+
+<!-- ADSTERRA-FOOTER: paste your Adsterra footer/banner ad code inside the div below -->
+<div class="container"><div class="ad-slot" data-ad="footer"></div></div>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="f-grid">
+      <div>
+        <span class="brandline"><span class="logo-mark">T</span> ToolNest</span>
+        <p>Free online tools that actually work. No sign-up, no watermarks — and your files never leave your device for client-side tools.</p>
+      </div>
+      <div>
+        <h4>Popular</h4>
+        <a href="/tools/qr-code-generator/">QR Code Generator</a>
+        <a href="/tools/background-remover/">Background Remover</a>
+        <a href="/tools/pdf-merger/">PDF Merger</a>
+        <a href="/tools/word-counter/">Word Counter</a>
+      </div>
+      <div>
+        <h4>Categories</h4>
+        <a href="/#image">Image Tools</a>
+        <a href="/#pdf">PDF &amp; Documents</a>
+        <a href="/#calculators">Calculators</a>
+        <a href="/#developer">Developer Tools</a>
+      </div>
+      <div>
+        <h4>Site</h4>
+        <a href="/">Home</a>
+        <a href="/#all-tools">All Tools</a>
+        <a href="/sitemap.xml">Sitemap</a>
+      </div>
+    </div>
+    <div class="f-bottom">© 2026 ToolNest · Free tools for everyone · Made with care</div>
+  </div>
+</footer>
+
+<script src="/assets/site.js?v=5"></script>
+<script src="https://cdn.jsdelivr.net/npm/pdf-lib@1.17.1/dist/pdf-lib.min.js" defer></script>
+<script>
+/* PDF Redactor — burn black redaction rectangles into pages via pdf-lib. */
+(function () {
+  'use strict';
+  var SLUG = 'pdf-redactor';
+  var ERR = SLUG + '-error';
+  var buffer = null;
+  var pdfName = 'document.pdf';
+  var pageCount = 0;
+  var pageSizes = []; /* {w,h} per page */
+  var boxes = [];     /* {page (1-based), x,y,w,h} */
+
+  function $(id) { return document.getElementById(SLUG + '-' + id); }
+
+  function renderList() {
+    var list = $('list');
+    if (!boxes.length) {
+      list.innerHTML = '<p class="muted">No boxes added yet.</p>';
+    } else {
+      var html = '';
+      boxes.forEach(function (b, i) {
+        html += '<div class="row" style="justify-content:space-between;gap:8px;margin-bottom:8px;">'
+          + '<div><span class="tag">p' + b.page + '</span> '
+          + '<strong>box ' + (i + 1) + '</strong><br>'
+          + '<span class="muted">x=' + b.x + ' y=' + b.y + ' w=' + b.w + ' h=' + b.h + ' pt</span></div>'
+          + '<button type="button" class="btn btn-sm btn-danger" data-i="' + i + '" aria-label="Remove box">&times;</button></div>';
+      });
+      list.innerHTML = html;
+      Array.prototype.forEach.call(list.querySelectorAll('button[data-i]'), function (btn) {
+        btn.addEventListener('click', function () {
+          boxes.splice(parseInt(btn.getAttribute('data-i'), 10), 1);
+          renderList();
+        });
+      });
+    }
+    $('go').disabled = !(buffer && boxes.length);
+  }
+
+  function onFile(ev) {
+    TN.clearErr(ERR);
+    TN.hide(SLUG + '-result');
+    var f = ev.target.files && ev.target.files[0];
+    if (!f) return;
+    if (typeof PDFLib === 'undefined') {
+      TN.setErr(ERR, 'PDF engine failed to load. Check your connection and reload the page.');
+      return;
+    }
+    pdfName = f.name || pdfName;
+    (async function () {
+      try {
+        buffer = await TN.readAsArrayBuffer(f);
+        var doc = await PDFLib.PDFDocument.load(buffer);
+        pageCount = doc.getPageCount();
+        pageSizes = doc.getPages().map(function (p) { return { w: p.getWidth(), h: p.getHeight() }; });
+        $('page').max = pageCount;
+        updateSizeInfo();
+        boxes = [];
+        renderList();
+        TN.clearErr(ERR);
+      } catch (e) {
+        buffer = null; pageCount = 0; pageSizes = [];
+        $('sizeinfo').textContent = 'Load a PDF to see page size.';
+        renderList();
+        TN.setErr(ERR, 'Could not read "' + pdfName + '" — is it a valid PDF?');
+      }
+    })();
+  }
+
+  function updateSizeInfo() {
+    var p = parseInt($('page').value, 10) || 1;
+    if (p >= 1 && p <= pageSizes.length) {
+      var s = pageSizes[p - 1];
+      $('sizeinfo').textContent = 'Page ' + p + ': ' + Math.round(s.w) + ' × ' + Math.round(s.h) + ' pt (' + (s.w / 72).toFixed(2) + ' × ' + (s.h / 72).toFixed(2) + ' in). Origin: bottom-left.';
+    } else {
+      $('sizeinfo').textContent = 'Page number out of range (1–' + pageCount + ').';
+    }
+  }
+
+  function onAdd() {
+    TN.clearErr(ERR);
+    if (!buffer) { TN.setErr(ERR, 'Choose a PDF file first.'); return; }
+    var p = parseInt($('page').value, 10);
+    var x = parseFloat($('x').value), y = parseFloat($('y').value);
+    var w = parseFloat($('w').value), h = parseFloat($('h').value);
+    if (!p || p < 1 || p > pageCount) { TN.setErr(ERR, 'Page must be between 1 and ' + pageCount + '.'); return; }
+    if ([x, y, w, h].some(function (v) { return isNaN(v); }) || w <= 0 || h <= 0 || x < 0 || y < 0) {
+      TN.setErr(ERR, 'Enter valid non-negative numbers with positive width and height.');
+      return;
+    }
+    boxes.push({ page: p, x: x, y: y, w: w, h: h });
+    renderList();
+  }
+
+  function onGo() {
+    TN.clearErr(ERR);
+    TN.hide(SLUG + '-result');
+    if (!buffer || !boxes.length) { TN.setErr(ERR, 'Load a PDF and add at least one box.'); return; }
+    var btn = $('go');
+    btn.disabled = true;
+    (async function () {
+      try {
+        var doc = await PDFLib.PDFDocument.load(buffer);
+        boxes.forEach(function (b) {
+          var page = doc.getPage(b.page - 1);
+          page.drawRectangle({
+            x: b.x, y: b.y, width: b.w, height: b.h,
+            color: PDFLib.rgb(0, 0, 0),
+            opacity: 1
+          });
+        });
+        var bytes = await doc.save();
+        TN.download(new Blob([bytes], { type: 'application/pdf' }), pdfName.replace(/\.pdf$/i, '') + '-redacted.pdf');
+        var res = $('result');
+        res.innerHTML = '<p class="success">Applied ' + boxes.length + ' redaction box' + (boxes.length === 1 ? '' : 'es') + '. Download started.</p>';
+        TN.show(SLUG + '-result');
+      } catch (e) {
+        TN.setErr(ERR, 'Redaction failed: ' + (e && e.message ? e.message : 'unknown error.'));
+      } finally {
+        btn.disabled = false;
+      }
+    })();
+  }
+
+  function init() {
+    try {
+      if (typeof TN === 'undefined') return;
+      TN.on(SLUG + '-file', 'change', onFile);
+      TN.on(SLUG + '-page', 'input', updateSizeInfo);
+      TN.on(SLUG + '-page', 'change', updateSizeInfo);
+      TN.on(SLUG + '-add', 'click', onAdd);
+      TN.on(SLUG + '-go', 'click', onGo);
+      renderList();
+    } catch (e) { /* never throw on load */ }
+  }
+
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init);
+  else init();
+})();
+
+</script>
+</body>
+</html>

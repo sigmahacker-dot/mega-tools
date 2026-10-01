@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Daily Screen Time Log — Free Online | ToolNest</title>
+<meta name="description" content="Log daily screen time by app or category and see daily totals plus a 7-day bar summary — all saved in your browser.">
+<meta name="keywords" content="screen time tracker, screen time log, daily screen time, phone usage tracker, app usage log">
+<link rel="canonical" href="https://toolnest.vercel.app/tools/daily-screen-time-log/">
+<meta name="theme-color" content="#07070b">
+<meta property="og:title" content="Daily Screen Time Log — Free Online | ToolNest">
+<meta property="og:description" content="Log daily screen time by app or category and see daily totals plus a 7-day bar summary — all saved in your browser.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css?v=4">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%23e01111'/><text x='50' y='68' font-size='58' text-anchor='middle' fill='white' font-family='Arial' font-weight='bold'>T</text></svg>">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebApplication","name":"Daily Screen Time Log","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0"},"url":"https://toolnest.vercel.app/tools/daily-screen-time-log/","description":"Log daily screen time by app or category and see daily totals plus a 7-day bar summary — all saved in your browser."},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Where is my data stored?","acceptedAnswer":{"@type":"Answer","text":"In this browser's localStorage. Your entries stay on your device and are restored when you return."}},{"@type":"Question","name":"Can I log by app category?","acceptedAnswer":{"@type":"Answer","text":"Yes — pick a category like Social, Work, Entertainment, Games, News or Other for each entry."}},{"@type":"Question","name":"What does the 7-day chart show?","acceptedAnswer":{"@type":"Answer","text":"The chart always covers the last 7 days ending today, with total minutes per day."}}]}]}</script>
+</head>
+<body>
+<header class="site-header">
+  <div class="container">
+    <a class="logo" href="/"><span class="logo-mark">T</span> ToolNest</a>
+    <div class="header-right">
+      <form class="nav-search" action="/" method="get" role="search">
+        <span class="ns-icon">🔍</span>
+        <input type="search" name="q" placeholder="Search tools…" aria-label="Search tools" autocomplete="off">
+      </form>
+      <div class="menu-wrap">
+        <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="menuPanel" aria-label="Open menu"><span></span><span></span><span></span></button>
+        <nav class="menu-panel" id="menuPanel" aria-label="Site">
+          <a href="/">Home</a>
+          <a href="/#categories">Categories</a>
+          <a href="/#all-tools">All Tools</a>
+        </nav>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ADSTERRA-HEADER: paste your Adsterra banner ad code inside the div below -->
+<div class="container"><div class="ad-slot ad-leaderboard" data-ad="header"></div></div>
+
+<main class="container">
+  <nav class="crumbs"><a href="/">Home</a> &rsaquo; <a href="/#time">Time &amp; Date</a> &rsaquo; Daily Screen Time Log</nav>
+  <div class="tool-hero">
+    <h1>Daily Screen Time Log</h1>
+    <p>Log daily screen time by app or category and see daily totals plus a 7-day bar summary — all saved in your browser.</p>
+  </div>
+
+  <div class="tool-card">
+  <div class="grid2">
+    <div class="field">
+      <label for="daily-screen-time-log-date">Date</label>
+      <input class="input" type="date" id="daily-screen-time-log-date">
+    </div>
+    <div class="field">
+      <label for="daily-screen-time-log-cat">App / category</label>
+      <select class="input" id="daily-screen-time-log-cat">
+        <option>Social</option>
+        <option>Work</option>
+        <option>Entertainment</option>
+        <option>Games</option>
+        <option>News</option>
+        <option>Other</option>
+      </select>
+    </div>
+  </div>
+  <div class="grid2">
+    <div class="field">
+      <label for="daily-screen-time-log-mins">Minutes</label>
+      <input class="input" type="number" id="daily-screen-time-log-mins" min="1" max="1440" placeholder="e.g. 45">
+    </div>
+    <div class="field" style="display:flex;align-items:flex-end">
+      <button class="btn btn-primary" id="daily-screen-time-log-add" style="width:100%">Log time</button>
+    </div>
+  </div>
+  <div class="stat-cards">
+    <div class="stat-card"><div class="v" id="daily-screen-time-log-total">0</div><div class="l">Minutes today</div></div>
+    <div class="stat-card"><div class="v" id="daily-screen-time-log-avg">0</div><div class="l">7-day avg / day</div></div>
+  </div>
+  <h3 style="margin:8px 0">Last 7 days</h3>
+  <div id="daily-screen-time-log-chart" style="display:flex;align-items:flex-end;gap:6px;height:150px;padding:8px;border:1px solid #e0e0e0;border-radius:8px"></div>
+  <h3 style="margin:12px 0 8px">Entries</h3>
+  <div id="daily-screen-time-log-list"></div>
+  <div class="error" id="daily-screen-time-log-error"></div>
+</div>
+
+
+  <!-- ADSTERRA-INCONTENT: paste your Adsterra native/in-content ad code inside the div below -->
+  <div class="ad-slot" data-ad="incontent"></div>
+
+  <div class="info-grid">
+    <div class="info-card">
+      <h2>📖 How to use</h2>
+      <ol><li>Pick the date (defaults to today) and a category.</li><li>Enter minutes and press Log time.</li><li>See the day&#39;s total and per-category breakdown.</li><li>Check the 7-day bar chart for trends.</li></ol>
+    </div>
+    <div class="info-card">
+      <h2>❓ Frequently asked questions</h2>
+      <div class="faq"><details><summary>Where is my data stored?</summary><p>In this browser&#39;s localStorage. Your entries stay on your device and are restored when you return.</p></details><details><summary>Can I log by app category?</summary><p>Yes — pick a category like Social, Work, Entertainment, Games, News or Other for each entry.</p></details><details><summary>What does the 7-day chart show?</summary><p>The chart always covers the last 7 days ending today, with total minutes per day.</p></details></div>
+    </div>
+  </div>
+
+  <section class="section">
+    <h2>🔗 Related tools</h2>
+    <div class="tool-grid"><a class="tool-link" href="/tools/add-subtract-days-calculator/" data-search="add / subtract days calculator add or subtract days, weeks, months or years from any date. optional business-days-only mode skips weekends automatically. add days to date subtract days calculator date plus days business days calculator date arithmetic"><span class="t-ico">⏰</span><span class="t-body"><b>Add / Subtract Days Calculator</b><small>Add or subtract days, weeks, months or years from any date. Optional business-days-only mode…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/anniversary-calculator/" data-search="anniversary calculator track any anniversary: days until the next one, which number it is (10th, 25th…), total days together and the weekday it falls on. anniversary calculator wedding anniversary countdown how many days until anniversary anniversary date tracker years together calculator"><span class="t-ico">⏰</span><span class="t-body"><b>Anniversary Calculator</b><small>Track any anniversary: days until the next one, which number it is (10th, 25th…), total days…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/bill-due-tracker/" data-search="bill due tracker never miss a payment — track recurring monthly bills with automatic next-due dates, days remaining and urgency sorting. bill due tracker bill reminder recurring bills tracker monthly bills organizer due date tracker"><span class="t-ico">⏰</span><span class="t-body"><b>Bill Due Tracker</b><small>Never miss a payment — track recurring monthly bills with automatic next-due dates, days rem…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/business-days-calculator/" data-search="business days calculator count working days between two dates, excluding weekends and your own custom holidays, with a full breakdown. business days calculator working days calculator weekdays between dates net workdays business days excluding holidays"><span class="t-ico">⏰</span><span class="t-body"><b>Business Days Calculator</b><small>Count working days between two dates, excluding weekends and your own custom holidays, with …</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/chess-clock-timer/" data-search="chess clock timer a two-player chess clock with tap-to-switch, optional increment per move, flag detection, pause and reset. chess clock chess timer two player timer blitz clock increment chess clock"><span class="t-ico">⏰</span><span class="t-body"><b>Chess Clock Timer</b><small>A two-player chess clock with tap-to-switch, optional increment per move, flag detection, pa…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/date-duration-calculator/" data-search="date duration calculator exact duration between two dates, plus business days. date duration calculator days between dates business days calculator"><span class="t-ico">⏰</span><span class="t-body"><b>Date Duration Calculator</b><small>Exact duration between two dates, plus business days.</small></span><span class="t-arrow">→</span></a></div>
+  </section>
+</main>
+
+<!-- ADSTERRA-FOOTER: paste your Adsterra footer/banner ad code inside the div below -->
+<div class="container"><div class="ad-slot" data-ad="footer"></div></div>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="f-grid">
+      <div>
+        <span class="brandline"><span class="logo-mark">T</span> ToolNest</span>
+        <p>Free online tools that actually work. No sign-up, no watermarks — and your files never leave your device for client-side tools.</p>
+      </div>
+      <div>
+        <h4>Popular</h4>
+        <a href="/tools/qr-code-generator/">QR Code Generator</a>
+        <a href="/tools/background-remover/">Background Remover</a>
+        <a href="/tools/pdf-merger/">PDF Merger</a>
+        <a href="/tools/word-counter/">Word Counter</a>
+      </div>
+      <div>
+        <h4>Categories</h4>
+        <a href="/#image">Image Tools</a>
+        <a href="/#pdf">PDF &amp; Documents</a>
+        <a href="/#calculators">Calculators</a>
+        <a href="/#developer">Developer Tools</a>
+      </div>
+      <div>
+        <h4>Site</h4>
+        <a href="/">Home</a>
+        <a href="/#all-tools">All Tools</a>
+        <a href="/sitemap.xml">Sitemap</a>
+      </div>
+    </div>
+    <div class="f-bottom">© 2026 ToolNest · Free tools for everyone · Made with care</div>
+  </div>
+</footer>
+
+<script src="/assets/site.js?v=5"></script>
+
+<script>
+/* Daily Screen Time Log — log entries, daily totals, 7-day bar chart, localStorage. */
+(function () {
+  'use strict';
+  var SLUG = 'daily-screen-time-log';
+  var KEY = 'tn_screentime_v1';
+  var $ = function (id) { return TN.el(SLUG + '-' + id); };
+
+  var entries = [];
+
+  var COLORS = { Social: '#e53935', Work: '#1e88e5', Entertainment: '#8e24aa', Games: '#43a047', News: '#fb8c00', Other: '#757575' };
+
+  function esc(s) {
+    return String(s).replace(/[&<>"']/g, function (c) {
+      return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c];
+    });
+  }
+
+  function todayKey() {
+    var d = new Date();
+    return d.getFullYear() + '-' + ('0' + (d.getMonth() + 1)).slice(-2) + '-' + ('0' + d.getDate()).slice(-2);
+  }
+
+  function load() {
+    try {
+      var raw = localStorage.getItem(KEY);
+      entries = raw ? JSON.parse(raw) : [];
+      if (!Array.isArray(entries)) entries = [];
+    } catch (e) { entries = []; }
+  }
+
+  function save() { try { localStorage.setItem(KEY, JSON.stringify(entries)); } catch (e) {} }
+
+  function fmtH(mins) {
+    var h = Math.floor(mins / 60), m = mins % 60;
+    return h ? h + 'h ' + m + 'm' : m + 'm';
+  }
+
+  function render() {
+    var tk = todayKey();
+    var todayTotal = 0;
+    var byCat = {};
+    entries.forEach(function (e) {
+      if (e.date === tk) {
+        todayTotal += e.mins;
+        byCat[e.cat] = (byCat[e.cat] || 0) + e.mins;
+      }
+    });
+    $('total').textContent = fmtH(todayTotal);
+
+    // 7-day chart ending today
+    var days = [];
+    for (var i = 6; i >= 0; i--) {
+      var d = new Date(); d.setDate(d.getDate() - i);
+      var k = d.getFullYear() + '-' + ('0' + (d.getMonth() + 1)).slice(-2) + '-' + ('0' + d.getDate()).slice(-2);
+      var tot = 0;
+      entries.forEach(function (e) { if (e.date === k) tot += e.mins; });
+      days.push({ key: k, label: d.toLocaleDateString(undefined, { weekday: 'narrow' }), total: tot });
+    }
+    var max = Math.max.apply(null, days.map(function (x) { return x.total; }).concat([1]));
+    var avg = Math.round(days.reduce(function (a, x) { return a + x.total; }, 0) / 7);
+    $('avg').textContent = fmtH(avg);
+    var ch = $('chart');
+    ch.innerHTML = '';
+    days.forEach(function (x) {
+      var h = Math.max(3, Math.round(x.total / max * 110));
+      var bar = document.createElement('div');
+      bar.style.cssText = 'flex:1;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;height:100%;min-width:0';
+      bar.innerHTML = '<div title="' + x.total + ' min" style="width:70%;max-width:34px;height:' + h + 'px;background:' +
+        (x.key === tk ? '#1e88e5' : '#90caf9') + ';border-radius:4px 4px 0 0"></div>' +
+        '<div class="muted" style="font-size:11px;margin-top:4px">' + esc(x.label) + '</div>' +
+        '<div class="muted" style="font-size:10px">' + (x.total ? x.total + 'm' : '') + '</div>';
+      ch.appendChild(bar);
+    });
+
+    // entries list (today, newest first)
+    var list = $('list');
+    var todays = entries.filter(function (e) { return e.date === tk; }).reverse();
+    if (!todays.length) {
+      list.innerHTML = '<p class="muted">Nothing logged today yet.</p>';
+    } else {
+      var html = '';
+      todays.forEach(function (e) {
+        html += '<div style="display:flex;align-items:center;gap:10px;border:1px solid #e0e0e0;border-radius:8px;padding:6px 12px;margin-bottom:6px">' +
+          '<span style="display:inline-block;width:12px;height:12px;border-radius:50%;background:' + (COLORS[e.cat] || '#757575') + '"></span>' +
+          '<span style="flex:1"><strong>' + esc(e.cat) + '</strong></span>' +
+          '<span class="code">' + e.mins + ' min</span>' +
+          '<button class="btn btn-outline st-del" data-id="' + e.id + '" style="padding:4px 10px" aria-label="Delete entry">✕</button></div>';
+      });
+      list.innerHTML = html;
+      TN.qsa('.st-del', list).forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          entries = entries.filter(function (e) { return String(e.id) !== btn.getAttribute('data-id'); });
+          save(); render();
+        });
+      });
+    }
+  }
+
+  function add() {
+    TN.clearErr(SLUG + '-error');
+    var date = $('date').value || todayKey();
+    var cat = $('cat').value;
+    var mins = parseInt($('mins').value, 10);
+    if (!/^\d{4}-\d{2}-\d{2}$/.test(date)) { TN.setErr(SLUG + '-error', 'Please pick a valid date.'); return; }
+    if (!(mins >= 1 && mins <= 1440)) { TN.setErr(SLUG + '-error', 'Minutes must be between 1 and 1440.'); return; }
+    entries.push({ id: Date.now() + '' + Math.floor(Math.random() * 1000), date: date, cat: cat, mins: mins });
+    $('mins').value = '';
+    save(); render();
+  }
+
+  try {
+    load();
+    $('date').value = todayKey();
+    render();
+    TN.on(SLUG + '-add', 'click', add);
+  } catch (e) { /* never throw on load */ }
+})();
+
+</script>
+</body>
+</html>

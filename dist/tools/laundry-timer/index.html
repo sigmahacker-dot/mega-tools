@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Laundry Timer — Free Online | ToolNest</title>
+<meta name="description" content="Two independent side-by-side timers for washer (35 min) and dryer (45 min) cycles, each with custom lengths and alarms.">
+<meta name="keywords" content="laundry timer, washer timer, dryer timer, washing machine timer, laundry cycle timer">
+<link rel="canonical" href="https://toolnest.vercel.app/tools/laundry-timer/">
+<meta name="theme-color" content="#07070b">
+<meta property="og:title" content="Laundry Timer — Free Online | ToolNest">
+<meta property="og:description" content="Two independent side-by-side timers for washer (35 min) and dryer (45 min) cycles, each with custom lengths and alarms.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css?v=4">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%23e01111'/><text x='50' y='68' font-size='58' text-anchor='middle' fill='white' font-family='Arial' font-weight='bold'>T</text></svg>">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebApplication","name":"Laundry Timer","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0"},"url":"https://toolnest.vercel.app/tools/laundry-timer/","description":"Two independent side-by-side timers for washer (35 min) and dryer (45 min) cycles, each with custom lengths and alarms."},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Can both timers run at the same time?","acceptedAnswer":{"@type":"Answer","text":"Yes — the washer and dryer timers run completely independently, each with its own start, pause and reset."}},{"@type":"Question","name":"What presets are available?","acceptedAnswer":{"@type":"Answer","text":"Washer 35 / 45 / 60 minutes and dryer 45 / 60 / 90 minutes, plus any custom length from 1 to 300 minutes."}},{"@type":"Question","name":"Will I hear the alarm?","acceptedAnswer":{"@type":"Answer","text":"Keep this tab open with your volume on — each timer plays its own alarm when its cycle ends."}}]}]}</script>
+</head>
+<body>
+<header class="site-header">
+  <div class="container">
+    <a class="logo" href="/"><span class="logo-mark">T</span> ToolNest</a>
+    <div class="header-right">
+      <form class="nav-search" action="/" method="get" role="search">
+        <span class="ns-icon">🔍</span>
+        <input type="search" name="q" placeholder="Search tools…" aria-label="Search tools" autocomplete="off">
+      </form>
+      <div class="menu-wrap">
+        <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="menuPanel" aria-label="Open menu"><span></span><span></span><span></span></button>
+        <nav class="menu-panel" id="menuPanel" aria-label="Site">
+          <a href="/">Home</a>
+          <a href="/#categories">Categories</a>
+          <a href="/#all-tools">All Tools</a>
+        </nav>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ADSTERRA-HEADER: paste your Adsterra banner ad code inside the div below -->
+<div class="container"><div class="ad-slot ad-leaderboard" data-ad="header"></div></div>
+
+<main class="container">
+  <nav class="crumbs"><a href="/">Home</a> &rsaquo; <a href="/#time">Time &amp; Date</a> &rsaquo; Laundry Timer</nav>
+  <div class="tool-hero">
+    <h1>Laundry Timer</h1>
+    <p>Two independent side-by-side timers for washer (35 min) and dryer (45 min) cycles, each with custom lengths and alarms.</p>
+  </div>
+
+  <div class="tool-card">
+  <div class="grid2">
+    <div style="border:1px solid #e0e0e0;border-radius:10px;padding:12px;text-align:center">
+      <h3 style="margin:0 0 8px">🧺 Washer</h3>
+      <div class="field" style="text-align:left">
+        <label for="laundry-timer-w-preset">Preset</label>
+        <select class="input" id="laundry-timer-w-preset">
+          <option value="35">Normal — 35 min</option>
+          <option value="45">Heavy — 45 min</option>
+          <option value="60">Deep clean — 60 min</option>
+        </select>
+      </div>
+      <div class="field" style="text-align:left">
+        <label for="laundry-timer-w-custom">Custom (min)</label>
+        <input class="input" type="number" id="laundry-timer-w-custom" min="1" max="300" placeholder="optional">
+      </div>
+      <div class="countdown-digits"><div class="cd-cell"><span id="laundry-timer-w-clock">0:00</span></div></div>
+      <div class="btn-row" style="justify-content:center;margin-top:8px">
+        <button class="btn btn-primary" id="laundry-timer-w-start">Start</button>
+        <button class="btn btn-outline" id="laundry-timer-w-reset">Reset</button>
+      </div>
+    </div>
+    <div style="border:1px solid #e0e0e0;border-radius:10px;padding:12px;text-align:center">
+      <h3 style="margin:0 0 8px">🌀 Dryer</h3>
+      <div class="field" style="text-align:left">
+        <label for="laundry-timer-d-preset">Preset</label>
+        <select class="input" id="laundry-timer-d-preset">
+          <option value="45">Normal — 45 min</option>
+          <option value="60">Heavy — 60 min</option>
+          <option value="90">Bulky — 90 min</option>
+        </select>
+      </div>
+      <div class="field" style="text-align:left">
+        <label for="laundry-timer-d-custom">Custom (min)</label>
+        <input class="input" type="number" id="laundry-timer-d-custom" min="1" max="300" placeholder="optional">
+      </div>
+      <div class="countdown-digits"><div class="cd-cell"><span id="laundry-timer-d-clock">0:00</span></div></div>
+      <div class="btn-row" style="justify-content:center;margin-top:8px">
+        <button class="btn btn-primary" id="laundry-timer-d-start">Start</button>
+        <button class="btn btn-outline" id="laundry-timer-d-reset">Reset</button>
+      </div>
+    </div>
+  </div>
+  <div class="error" id="laundry-timer-error"></div>
+</div>
+
+
+  <!-- ADSTERRA-INCONTENT: paste your Adsterra native/in-content ad code inside the div below -->
+  <div class="ad-slot" data-ad="incontent"></div>
+
+  <div class="info-grid">
+    <div class="info-card">
+      <h2>📖 How to use</h2>
+      <ol><li>Pick a preset or custom length for the washer.</li><li>Do the same for the dryer.</li><li>Start each timer as you load the machine.</li><li>Each timer alarms independently when done.</li></ol>
+    </div>
+    <div class="info-card">
+      <h2>❓ Frequently asked questions</h2>
+      <div class="faq"><details><summary>Can both timers run at the same time?</summary><p>Yes — the washer and dryer timers run completely independently, each with its own start, pause and reset.</p></details><details><summary>What presets are available?</summary><p>Washer 35 / 45 / 60 minutes and dryer 45 / 60 / 90 minutes, plus any custom length from 1 to 300 minutes.</p></details><details><summary>Will I hear the alarm?</summary><p>Keep this tab open with your volume on — each timer plays its own alarm when its cycle ends.</p></details></div>
+    </div>
+  </div>
+
+  <section class="section">
+    <h2>🔗 Related tools</h2>
+    <div class="tool-grid"><a class="tool-link" href="/tools/add-subtract-days-calculator/" data-search="add / subtract days calculator add or subtract days, weeks, months or years from any date. optional business-days-only mode skips weekends automatically. add days to date subtract days calculator date plus days business days calculator date arithmetic"><span class="t-ico">⏰</span><span class="t-body"><b>Add / Subtract Days Calculator</b><small>Add or subtract days, weeks, months or years from any date. Optional business-days-only mode…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/anniversary-calculator/" data-search="anniversary calculator track any anniversary: days until the next one, which number it is (10th, 25th…), total days together and the weekday it falls on. anniversary calculator wedding anniversary countdown how many days until anniversary anniversary date tracker years together calculator"><span class="t-ico">⏰</span><span class="t-body"><b>Anniversary Calculator</b><small>Track any anniversary: days until the next one, which number it is (10th, 25th…), total days…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/bill-due-tracker/" data-search="bill due tracker never miss a payment — track recurring monthly bills with automatic next-due dates, days remaining and urgency sorting. bill due tracker bill reminder recurring bills tracker monthly bills organizer due date tracker"><span class="t-ico">⏰</span><span class="t-body"><b>Bill Due Tracker</b><small>Never miss a payment — track recurring monthly bills with automatic next-due dates, days rem…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/business-days-calculator/" data-search="business days calculator count working days between two dates, excluding weekends and your own custom holidays, with a full breakdown. business days calculator working days calculator weekdays between dates net workdays business days excluding holidays"><span class="t-ico">⏰</span><span class="t-body"><b>Business Days Calculator</b><small>Count working days between two dates, excluding weekends and your own custom holidays, with …</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/chess-clock-timer/" data-search="chess clock timer a two-player chess clock with tap-to-switch, optional increment per move, flag detection, pause and reset. chess clock chess timer two player timer blitz clock increment chess clock"><span class="t-ico">⏰</span><span class="t-body"><b>Chess Clock Timer</b><small>A two-player chess clock with tap-to-switch, optional increment per move, flag detection, pa…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/daily-screen-time-log/" data-search="daily screen time log log daily screen time by app or category and see daily totals plus a 7-day bar summary — all saved in your browser. screen time tracker screen time log daily screen time phone usage tracker app usage log"><span class="t-ico">⏰</span><span class="t-body"><b>Daily Screen Time Log</b><small>Log daily screen time by app or category and see daily totals plus a 7-day bar summary — all…</small></span><span class="t-arrow">→</span></a></div>
+  </section>
+</main>
+
+<!-- ADSTERRA-FOOTER: paste your Adsterra footer/banner ad code inside the div below -->
+<div class="container"><div class="ad-slot" data-ad="footer"></div></div>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="f-grid">
+      <div>
+        <span class="brandline"><span class="logo-mark">T</span> ToolNest</span>
+        <p>Free online tools that actually work. No sign-up, no watermarks — and your files never leave your device for client-side tools.</p>
+      </div>
+      <div>
+        <h4>Popular</h4>
+        <a href="/tools/qr-code-generator/">QR Code Generator</a>
+        <a href="/tools/background-remover/">Background Remover</a>
+        <a href="/tools/pdf-merger/">PDF Merger</a>
+        <a href="/tools/word-counter/">Word Counter</a>
+      </div>
+      <div>
+        <h4>Categories</h4>
+        <a href="/#image">Image Tools</a>
+        <a href="/#pdf">PDF &amp; Documents</a>
+        <a href="/#calculators">Calculators</a>
+        <a href="/#developer">Developer Tools</a>
+      </div>
+      <div>
+        <h4>Site</h4>
+        <a href="/">Home</a>
+        <a href="/#all-tools">All Tools</a>
+        <a href="/sitemap.xml">Sitemap</a>
+      </div>
+    </div>
+    <div class="f-bottom">© 2026 ToolNest · Free tools for everyone · Made with care</div>
+  </div>
+</footer>
+
+<script src="/assets/site.js?v=5"></script>
+
+<script>
+/* Laundry Timer — two independent washer/dryer countdowns with alarms. */
+(function () {
+  'use strict';
+  var SLUG = 'laundry-timer';
+  var $ = function (id) { return TN.el(SLUG + '-' + id); };
+  var actx = null;
+
+  function beep(freq, dur, delay) {
+    try {
+      if (!actx) actx = new (window.AudioContext || window.webkitAudioContext)();
+      var at = actx.currentTime + (delay || 0);
+      var o = actx.createOscillator(), g = actx.createGain();
+      o.type = 'sine'; o.frequency.value = freq;
+      g.gain.setValueAtTime(0.0001, at);
+      g.gain.exponentialRampToValueAtTime(0.5, at + 0.03);
+      g.gain.exponentialRampToValueAtTime(0.0001, at + dur);
+      o.connect(g); g.connect(actx.destination);
+      o.start(at); o.stop(at + dur + 0.05);
+    } catch (e) {}
+  }
+
+  function alarm() {
+    for (var i = 0; i < 4; i++) { beep(784, 0.3, i * 0.45); }
+  }
+
+  function fmt(ms) {
+    var s = Math.max(0, Math.ceil(ms / 1000));
+    var h = Math.floor(s / 3600), m = Math.floor((s % 3600) / 60), sec = s % 60;
+    return (h ? h + ':' + ('0' + m).slice(-2) : m) + ':' + ('0' + sec).slice(-2);
+  }
+
+  function makeMachine(prefix, label) {
+    var st = { timerId: null, endAt: 0, pausedMs: 0 };
+    function clockEl() { return $(prefix + '-clock'); }
+    function stopTick() { if (st.timerId) { clearInterval(st.timerId); st.timerId = null; } }
+
+    function tick() {
+      var remain = st.endAt - Date.now();
+      if (remain <= 0) {
+        stopTick();
+        clockEl().textContent = '0:00';
+        alarm();
+        $(prefix + '-start').textContent = 'Start';
+        return;
+      }
+      clockEl().textContent = fmt(remain);
+    }
+
+    function startPause() {
+      TN.clearErr(SLUG + '-error');
+      if (st.timerId) {
+        // pause
+        st.pausedMs = st.endAt - Date.now();
+        stopTick();
+        $(prefix + '-start').textContent = 'Resume';
+        return;
+      }
+      beep(660, 0.08); // unlock audio
+      var remain;
+      if (st.pausedMs > 0) {
+        remain = st.pausedMs;
+        st.pausedMs = 0;
+      } else {
+        var custom = parseInt($(prefix + '-custom').value, 10);
+        var mins = custom > 0 ? custom : parseInt($(prefix + '-preset').value, 10);
+        if (!mins || mins < 1 || mins > 300) { TN.setErr(SLUG + '-error', label + ': enter 1–300 minutes.'); return; }
+        remain = mins * 60000;
+      }
+      st.endAt = Date.now() + remain;
+      $(prefix + '-start').textContent = 'Pause';
+      st.timerId = setInterval(tick, 250);
+      tick();
+    }
+
+    function reset() {
+      stopTick();
+      st.pausedMs = 0;
+      clockEl().textContent = '0:00';
+      $(prefix + '-start').textContent = 'Start';
+    }
+
+    TN.on(SLUG + '-' + prefix + '-start', 'click', startPause);
+    TN.on(SLUG + '-' + prefix + '-reset', 'click', reset);
+  }
+
+  try {
+    makeMachine('w', 'Washer');
+    makeMachine('d', 'Dryer');
+  } catch (e) { /* never throw on load */ }
+})();
+
+</script>
+</body>
+</html>

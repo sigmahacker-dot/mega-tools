@@ -1,0 +1,52 @@
+<div class="tool-card">
+  <h2>Print Stylesheet Generator</h2>
+  <p class="muted">A sensible <code>@media print</code> block for cleaner printed pages.</p>
+  <div class="grid2">
+    <div class="field">
+      <label for="print-stylesheet-generator-size">Page size</label>
+      <select class="input" id="print-stylesheet-generator-size">
+        <option value="A4">A4</option>
+        <option value="Letter">Letter</option>
+        <option value="Legal">Legal</option>
+      </select>
+    </div>
+    <div class="field">
+      <label for="print-stylesheet-generator-orient">Orientation</label>
+      <select class="input" id="print-stylesheet-generator-orient">
+        <option value="portrait">Portrait</option>
+        <option value="landscape">Landscape</option>
+      </select>
+    </div>
+    <div class="field">
+      <label for="print-stylesheet-generator-margin">Margin</label>
+      <select class="input" id="print-stylesheet-generator-margin">
+        <option value="1cm">1 cm</option>
+        <option value="2cm" selected>2 cm</option>
+        <option value="0.5in">0.5 in</option>
+        <option value="0">None</option>
+      </select>
+    </div>
+    <div class="field">
+      <label for="print-stylesheet-generator-ink">Ink-saver mode</label>
+      <select class="input" id="print-stylesheet-generator-ink">
+        <option value="no">Off</option>
+        <option value="yes">On — strip backgrounds & dark colors</option>
+      </select>
+    </div>
+  </div>
+  <h3>Hide when printing</h3>
+  <div class="grid2">
+    <label style="display:flex;gap:8px;align-items:center"><input type="checkbox" id="print-stylesheet-generator-hide-nav" checked> Navigation</label>
+    <label style="display:flex;gap:8px;align-items:center"><input type="checkbox" id="print-stylesheet-generator-hide-ads" checked> Ads / banners</label>
+    <label style="display:flex;gap:8px;align-items:center"><input type="checkbox" id="print-stylesheet-generator-hide-sidebar" checked> Sidebar</label>
+    <label style="display:flex;gap:8px;align-items:center"><input type="checkbox" id="print-stylesheet-generator-hide-footer" checked> Footer</label>
+    <label style="display:flex;gap:8px;align-items:center"><input type="checkbox" id="print-stylesheet-generator-hide-forms" checked> Forms & buttons</label>
+    <label style="display:flex;gap:8px;align-items:center"><input type="checkbox" id="print-stylesheet-generator-hide-video" checked> Videos / iframes</label>
+  </div>
+  <div class="btn-row mt">
+    <button class="btn btn-primary" id="print-stylesheet-generator-copy">Copy CSS</button>
+  </div>
+  <h3 class="mt">Generated CSS</h3>
+  <pre class="code" id="print-stylesheet-generator-code" style="max-height:380px;overflow:auto"></pre>
+  <div class="error" id="print-stylesheet-generator-error"></div>
+</div>

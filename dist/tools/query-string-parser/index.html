@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Query String Parser — Free Online | ToolNest</title>
+<meta name="description" content="Paste a URL or query string and see every parameter decoded in a table, including repeats and bracket keys.">
+<meta name="keywords" content="query string parser, parse url params, url decoder, query params table, decode query string">
+<link rel="canonical" href="https://toolnest.vercel.app/tools/query-string-parser/">
+<meta name="theme-color" content="#07070b">
+<meta property="og:title" content="Query String Parser — Free Online | ToolNest">
+<meta property="og:description" content="Paste a URL or query string and see every parameter decoded in a table, including repeats and bracket keys.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css?v=4">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%23e01111'/><text x='50' y='68' font-size='58' text-anchor='middle' fill='white' font-family='Arial' font-weight='bold'>T</text></svg>">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebApplication","name":"Query String Parser","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0"},"url":"https://toolnest.vercel.app/tools/query-string-parser/","description":"Paste a URL or query string and see every parameter decoded in a table, including repeats and bracket keys."},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How are repeated keys handled?","acceptedAnswer":{"@type":"Answer","text":"Yes — repeated keys are listed as separate rows and also merged into an array in the JSON view."}},{"@type":"Question","name":"Can I paste a full URL?","acceptedAnswer":{"@type":"Answer","text":"Both. A full URL works, or just the part after the ?. The # fragment is ignored."}},{"@type":"Question","name":"What about malformed percent-encoding?","acceptedAnswer":{"@type":"Answer","text":"A warning is shown and the raw value is kept, so no data is silently dropped."}},{"@type":"Question","name":"Is + decoded as a space?","acceptedAnswer":{"@type":"Answer","text":"Both are decoded: %XX sequences and + as a space."}}]}]}</script>
+</head>
+<body>
+<header class="site-header">
+  <div class="container">
+    <a class="logo" href="/"><span class="logo-mark">T</span> ToolNest</a>
+    <div class="header-right">
+      <form class="nav-search" action="/" method="get" role="search">
+        <span class="ns-icon">🔍</span>
+        <input type="search" name="q" placeholder="Search tools…" aria-label="Search tools" autocomplete="off">
+      </form>
+      <div class="menu-wrap">
+        <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="menuPanel" aria-label="Open menu"><span></span><span></span><span></span></button>
+        <nav class="menu-panel" id="menuPanel" aria-label="Site">
+          <a href="/">Home</a>
+          <a href="/#categories">Categories</a>
+          <a href="/#all-tools">All Tools</a>
+        </nav>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ADSTERRA-HEADER: paste your Adsterra banner ad code inside the div below -->
+<div class="container"><div class="ad-slot ad-leaderboard" data-ad="header"></div></div>
+
+<main class="container">
+  <nav class="crumbs"><a href="/">Home</a> &rsaquo; <a href="/#developer">Developer Tools</a> &rsaquo; Query String Parser</nav>
+  <div class="tool-hero">
+    <h1>Query String Parser</h1>
+    <p>Paste a URL or query string and see every parameter decoded in a table, including repeats and bracket keys.</p>
+  </div>
+
+  <div class="tool-card">
+  <div class="field">
+    <label for="query-string-parser-input">URL or query string</label>
+    <textarea class="textarea" id="query-string-parser-input" rows="3" placeholder="https://example.com/search?q=hello+world&amp;tag=a&amp;tag=b"></textarea>
+  </div>
+  <div class="btn-row">
+    <button class="btn btn-primary" id="query-string-parser-parse">Parse</button>
+    <button class="btn btn-outline" id="query-string-parser-sample">Load sample</button>
+  </div>
+  <div class="error" id="query-string-parser-error"></div>
+  <div class="result hidden" id="query-string-parser-result">
+    <div class="field">
+      <label>Decoded parameters</label>
+      <div style="overflow-x:auto">
+        <table class="data" id="query-string-parser-table" style="width:100%">
+          <thead><tr><th>#</th><th>Key</th><th>Value</th></tr></thead>
+          <tbody></tbody>
+        </table>
+      </div>
+    </div>
+    <div class="field">
+      <label for="query-string-parser-json">As JSON (repeats merged into arrays)</label>
+      <div class="copy-row">
+        <code class="code" id="query-string-parser-json" style="flex:1;word-break:break-all"></code>
+        <button class="btn btn-outline" id="query-string-parser-copy">Copy</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+  <!-- ADSTERRA-INCONTENT: paste your Adsterra native/in-content ad code inside the div below -->
+  <div class="ad-slot" data-ad="incontent"></div>
+
+  <div class="info-grid">
+    <div class="info-card">
+      <h2>📖 How to use</h2>
+      <ol><li>Paste a full URL or just a query string.</li><li>Click Parse — each parameter appears decoded in the table.</li><li>Use the JSON view for copy-paste into code.</li></ol>
+    </div>
+    <div class="info-card">
+      <h2>❓ Frequently asked questions</h2>
+      <div class="faq"><details><summary>How are repeated keys handled?</summary><p>Yes — repeated keys are listed as separate rows and also merged into an array in the JSON view.</p></details><details><summary>Can I paste a full URL?</summary><p>Both. A full URL works, or just the part after the ?. The # fragment is ignored.</p></details><details><summary>What about malformed percent-encoding?</summary><p>A warning is shown and the raw value is kept, so no data is silently dropped.</p></details><details><summary>Is + decoded as a space?</summary><p>Both are decoded: %XX sequences and + as a space.</p></details></div>
+    </div>
+  </div>
+
+  <section class="section">
+    <h2>🔗 Related tools</h2>
+    <div class="tool-grid"><a class="tool-link" href="/tools/ascii-table-reference/" data-search="ascii table reference full ascii table 0–127: decimal, hex, octal, character, control-code names and html entities — searchable. ascii table ascii codes ascii chart control characters ascii reference"><span class="t-ico">💻</span><span class="t-body"><b>ASCII Table Reference</b><small>Full ASCII table 0–127: decimal, hex, octal, character, control-code names and HTML entities…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/base64-encoder-decoder/" data-search="base64 encoder / decoder encode text to base64 or decode base64 back to text, with full utf-8 support and a file-to-data-url converter. base64 encoder base64 decoder base64 encode base64 decode file to base64"><span class="t-ico">💻</span><span class="t-body"><b>Base64 Encoder / Decoder</b><small>Encode text to Base64 or decode Base64 back to text, with full UTF-8 support and a file-to-d…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/binary-text-converter/" data-search="binary and text converter convert text to binary or hex and back, with full utf-8 awareness and strict input validation. binary to text text to binary hex to text converter"><span class="t-ico">💻</span><span class="t-body"><b>Binary and Text Converter</b><small>Convert text to binary or hex and back, with full UTF-8 awareness and strict input validatio…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/changelog-generator/" data-search="changelog generator build a keep-a-changelog markdown file: version, date, and grouped added/fixed/changed entries. changelog generator keep a changelog changelog markdown release notes version changelog"><span class="t-ico">💻</span><span class="t-body"><b>Changelog Generator</b><small>Build a Keep-a-Changelog markdown file: version, date, and grouped Added/Fixed/Changed entri…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/character-escape-reference/" data-search="character escape reference searchable reference of characters with their html entities, url encodings, and js escapes — plus a live encoder. character escape reference html entities url encode unicode escape html entity table"><span class="t-ico">💻</span><span class="t-body"><b>Character Escape Reference</b><small>Searchable reference of characters with their HTML entities, URL encodings, and JS escapes —…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/chmod-calculator/" data-search="chmod calculator tick rwx boxes for user/group/other — or type 755 — and see octal, symbolic, and the chmod command live. chmod calculator chmod 755 linux permissions octal permissions rwx calculator"><span class="t-ico">💻</span><span class="t-body"><b>chmod Calculator</b><small>Tick rwx boxes for user/group/other — or type 755 — and see octal, symbolic, and the chmod c…</small></span><span class="t-arrow">→</span></a></div>
+  </section>
+</main>
+
+<!-- ADSTERRA-FOOTER: paste your Adsterra footer/banner ad code inside the div below -->
+<div class="container"><div class="ad-slot" data-ad="footer"></div></div>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="f-grid">
+      <div>
+        <span class="brandline"><span class="logo-mark">T</span> ToolNest</span>
+        <p>Free online tools that actually work. No sign-up, no watermarks — and your files never leave your device for client-side tools.</p>
+      </div>
+      <div>
+        <h4>Popular</h4>
+        <a href="/tools/qr-code-generator/">QR Code Generator</a>
+        <a href="/tools/background-remover/">Background Remover</a>
+        <a href="/tools/pdf-merger/">PDF Merger</a>
+        <a href="/tools/word-counter/">Word Counter</a>
+      </div>
+      <div>
+        <h4>Categories</h4>
+        <a href="/#image">Image Tools</a>
+        <a href="/#pdf">PDF &amp; Documents</a>
+        <a href="/#calculators">Calculators</a>
+        <a href="/#developer">Developer Tools</a>
+      </div>
+      <div>
+        <h4>Site</h4>
+        <a href="/">Home</a>
+        <a href="/#all-tools">All Tools</a>
+        <a href="/sitemap.xml">Sitemap</a>
+      </div>
+    </div>
+    <div class="f-bottom">© 2026 ToolNest · Free tools for everyone · Made with care</div>
+  </div>
+</footer>
+
+<script src="/assets/site.js?v=5"></script>
+
+<script>
+/* Query String Parser — query string → decoded key/value table + JSON. */
+(function () {
+  'use strict';
+  var SLUG = 'query-string-parser';
+  var SAMPLE = 'https://shop.example.com/search?q=wireless%20headphones&tag=audio&tag=bluetooth&price_min=50&in_stock=true&note=free+shipping';
+
+  function el(id) { return document.getElementById(id); }
+  function fail(msg) { TN.setErr(SLUG + '-error', msg); }
+  function clear() { TN.clearErr(SLUG + '-error'); }
+
+  function safeDecode(s) {
+    try { return { value: decodeURIComponent(s.replace(/\+/g, ' ')), bad: false }; }
+    catch (e) { return { value: s, bad: true }; }
+  }
+
+  function parse() {
+    clear();
+    TN.hide(SLUG + '-result');
+    var src = el(SLUG + '-input').value.trim();
+    if (!src) { fail('Paste a URL or query string first.'); return; }
+    var q = src;
+    var hash = q.indexOf('#');
+    if (hash >= 0) q = q.slice(0, hash);
+    var qi = q.indexOf('?');
+    if (qi >= 0) q = q.slice(qi + 1);
+    if (!q) { fail('No query string found.'); return; }
+
+    var pairs = q.split('&'), rows = [], merged = {}, bad = 0;
+    pairs.forEach(function (p, i) {
+      if (p === '') return;
+      var eq = p.indexOf('=');
+      var rk = eq < 0 ? p : p.slice(0, eq);
+      var rv = eq < 0 ? '' : p.slice(eq + 1);
+      var k = safeDecode(rk), v = safeDecode(rv);
+      if (k.bad || v.bad) bad++;
+      rows.push({ n: i + 1, key: k.value, value: v.value, bad: k.bad || v.bad });
+      if (merged.hasOwnProperty(k.value)) {
+        if (!Array.isArray(merged[k.value])) merged[k.value] = [merged[k.value]];
+        merged[k.value].push(v.value);
+      } else {
+        merged[k.value] = v.value;
+      }
+    });
+    if (!rows.length) { fail('No parameters found.'); return; }
+
+    var tb = el(SLUG + '-table').querySelector('tbody');
+    tb.innerHTML = '';
+    rows.forEach(function (r) {
+      var tr = document.createElement('tr');
+      var tdN = document.createElement('td'); tdN.textContent = r.n;
+      var tdK = document.createElement('td'); tdK.textContent = r.key;
+      var tdV = document.createElement('td'); tdV.textContent = r.value;
+      if (r.bad) { tr.title = 'Malformed percent-encoding — raw value kept'; tr.style.background = 'rgba(255,0,0,0.06)'; }
+      tr.appendChild(tdN); tr.appendChild(tdK); tr.appendChild(tdV);
+      tb.appendChild(tr);
+    });
+    el(SLUG + '-json').textContent = JSON.stringify(merged, null, 2);
+    if (bad) fail('Warning: ' + bad + ' parameter(s) had malformed percent-encoding; raw values were kept.');
+    TN.show(SLUG + '-result');
+  }
+
+  try {
+    TN.on(SLUG + '-parse', 'click', parse);
+    TN.on(SLUG + '-sample', 'click', function () { el(SLUG + '-input').value = SAMPLE; clear(); parse(); });
+    TN.on(SLUG + '-copy', 'click', function () {
+      var v = el(SLUG + '-json').textContent;
+      if (!v) { fail('Nothing to copy yet.'); return; }
+      TN.copy(v).then(function (ok) { if (!ok) fail('Copy failed — select the text manually.'); });
+    });
+  } catch (e) { /* never throw on load */ }
+})();
+
+</script>
+</body>
+</html>

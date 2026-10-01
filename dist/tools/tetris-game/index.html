@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tetris Game — Free Online | ToolNest</title>
+<meta name="description" content="Full Tetris — all 7 tetrominoes, rotation, line clears, levels, next-piece preview, keyboard and touch controls.">
+<meta name="keywords" content="tetris, tetris game, block puzzle, tetromino game, classic arcade">
+<link rel="canonical" href="https://toolnest.vercel.app/tools/tetris-game/">
+<meta name="theme-color" content="#07070b">
+<meta property="og:title" content="Tetris Game — Free Online | ToolNest">
+<meta property="og:description" content="Full Tetris — all 7 tetrominoes, rotation, line clears, levels, next-piece preview, keyboard and touch controls.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css?v=4">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%23e01111'/><text x='50' y='68' font-size='58' text-anchor='middle' fill='white' font-family='Arial' font-weight='bold'>T</text></svg>">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebApplication","name":"Tetris Game","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0"},"url":"https://toolnest.vercel.app/tools/tetris-game/","description":"Full Tetris — all 7 tetrominoes, rotation, line clears, levels, next-piece preview, keyboard and touch controls."},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What are the controls?","acceptedAnswer":{"@type":"Answer","text":"Arrow keys: ←/→ move, ↓ soft drop, ↑ rotate, Space hard drop, P pause. Touch buttons are on screen too."}},{"@type":"Question","name":"How do levels work?","acceptedAnswer":{"@type":"Answer","text":"Every 10 lines raises the level, speeding up the fall and multiplying line-clear points."}},{"@type":"Question","name":"How is scoring calculated?","acceptedAnswer":{"@type":"Answer","text":"Single 40, Double 100, Triple 300, Tetris 1200 — each multiplied by the current level."}},{"@type":"Question","name":"How does the game end?","acceptedAnswer":{"@type":"Answer","text":"When a new piece has no room to spawn, the game ends and shows your final score."}}]}]}</script>
+</head>
+<body>
+<header class="site-header">
+  <div class="container">
+    <a class="logo" href="/"><span class="logo-mark">T</span> ToolNest</a>
+    <div class="header-right">
+      <form class="nav-search" action="/" method="get" role="search">
+        <span class="ns-icon">🔍</span>
+        <input type="search" name="q" placeholder="Search tools…" aria-label="Search tools" autocomplete="off">
+      </form>
+      <div class="menu-wrap">
+        <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="menuPanel" aria-label="Open menu"><span></span><span></span><span></span></button>
+        <nav class="menu-panel" id="menuPanel" aria-label="Site">
+          <a href="/">Home</a>
+          <a href="/#categories">Categories</a>
+          <a href="/#all-tools">All Tools</a>
+        </nav>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ADSTERRA-HEADER: paste your Adsterra banner ad code inside the div below -->
+<div class="container"><div class="ad-slot ad-leaderboard" data-ad="header"></div></div>
+
+<main class="container">
+  <nav class="crumbs"><a href="/">Home</a> &rsaquo; <a href="/#fun">Fun &amp; Lifestyle</a> &rsaquo; Tetris Game</nav>
+  <div class="tool-hero">
+    <h1>Tetris Game</h1>
+    <p>Full Tetris — all 7 tetrominoes, rotation, line clears, levels, next-piece preview, keyboard and touch controls.</p>
+  </div>
+
+  <div class="tool-card" style="text-align:center">
+  <div class="stat-cards" style="max-width:480px;margin:0 auto 12px">
+    <div class="stat-card"><div class="v" id="tetris-game-score">0</div><div class="l">Score</div></div>
+    <div class="stat-card"><div class="v" id="tetris-game-lines">0</div><div class="l">Lines</div></div>
+    <div class="stat-card"><div class="v" id="tetris-game-level">1</div><div class="l">Level</div></div>
+  </div>
+  <p class="muted" id="tetris-game-msg" style="min-height:24px">Press Start — arrows/WASD or the buttons below.</p>
+  <div style="display:flex;gap:12px;justify-content:center;align-items:flex-start;flex-wrap:wrap">
+    <canvas id="tetris-game-canvas" width="240" height="480" style="border-radius:8px;box-shadow:0 2px 8px rgba(0,0,0,.25);background:#111;touch-action:none"></canvas>
+    <div>
+      <p class="muted" style="margin:0 0 4px">Next</p>
+      <canvas id="tetris-game-next" width="96" height="96" style="border-radius:8px;background:#111"></canvas>
+      <div class="btn-row" style="justify-content:center;margin-top:8px;flex-direction:column;gap:8px">
+        <button class="btn btn-primary" id="tetris-game-start">▶ Start</button>
+        <button class="btn btn-outline" id="tetris-game-pause" disabled>⏸ Pause</button>
+      </div>
+    </div>
+  </div>
+  <div style="display:grid;grid-template-columns:repeat(5,58px);gap:6px;justify-content:center;margin-top:12px">
+    <button class="btn btn-outline" id="tetris-game-left" style="height:52px;font-size:20px">◀</button>
+    <button class="btn btn-outline" id="tetris-game-down" style="height:52px;font-size:20px">▼</button>
+    <button class="btn btn-outline" id="tetris-game-rotate" style="height:52px;font-size:20px">⟳</button>
+    <button class="btn btn-outline" id="tetris-game-right" style="height:52px;font-size:20px">▶</button>
+    <button class="btn btn-outline" id="tetris-game-drop" style="height:52px;font-size:20px">⤓</button>
+  </div>
+  <div class="error" id="tetris-game-error"></div>
+</div>
+
+
+  <!-- ADSTERRA-INCONTENT: paste your Adsterra native/in-content ad code inside the div below -->
+  <div class="ad-slot" data-ad="incontent"></div>
+
+  <div class="info-grid">
+    <div class="info-card">
+      <h2>📖 How to use</h2>
+      <ol><li>Use ← → to move, ↑ to rotate, ↓ to drop faster.</li><li>Clear lines — 4 at once (Tetris) scores big.</li><li>Every 10 lines the level (and speed) rises.</li><li>Don&#39;t let the stack reach the top!</li></ol>
+    </div>
+    <div class="info-card">
+      <h2>❓ Frequently asked questions</h2>
+      <div class="faq"><details><summary>What are the controls?</summary><p>Arrow keys: ←/→ move, ↓ soft drop, ↑ rotate, Space hard drop, P pause. Touch buttons are on screen too.</p></details><details><summary>How do levels work?</summary><p>Every 10 lines raises the level, speeding up the fall and multiplying line-clear points.</p></details><details><summary>How is scoring calculated?</summary><p>Single 40, Double 100, Triple 300, Tetris 1200 — each multiplied by the current level.</p></details><details><summary>How does the game end?</summary><p>When a new piece has no room to spawn, the game ends and shows your final score.</p></details></div>
+    </div>
+  </div>
+
+  <section class="section">
+    <h2>🔗 Related tools</h2>
+    <div class="tool-grid"><a class="tool-link" href="/tools/aim-trainer-game/" data-search="aim trainer game test and train your aim — targets pop up at random spots for 30 seconds. hits, misses and accuracy are tracked live. aim trainer aim test reaction test click speed test fps aim trainer"><span class="t-ico">🎲</span><span class="t-body"><b>Aim Trainer Game</b><small>Test and train your aim — targets pop up at random spots for 30 seconds. Hits, misses and ac…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/baby-name-generator/" data-search="baby name generator discover baby names by gender and origin — pakistani, arabic, western, indian or turkish — with meanings, random picks and tap-to-copy. baby name generator baby names with meanings muslim baby names boy girl names"><span class="t-ico">🎲</span><span class="t-body"><b>Baby Name Generator</b><small>Discover baby names by gender and origin — Pakistani, Arabic, Western, Indian or Turkish — w…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/battery-status-checker/" data-search="battery status checker check your device&#39;s battery level, charging status and estimated time remaining, with live updates — where your browser supports the battery api. battery status battery level checker laptop battery charging status"><span class="t-ico">🎲</span><span class="t-body"><b>Battery Status Checker</b><small>Check your device&#39;s battery level, charging status and estimated time remaining, with live u…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/battleship-game/" data-search="battleship game the classic naval battle — place your 5 ships, then hunt the computer&#39;s fleet on a 10×10 grid with hit, miss, and sunk tracking. battleship game battleship naval battle game sea battle board game"><span class="t-ico">🎲</span><span class="t-body"><b>Battleship Game</b><small>The classic naval battle — place your 5 ships, then hunt the computer&#39;s fleet on a 10×10 gri…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/birthday-countdown/" data-search="birthday countdown enter your birthday for a live countdown to your next one — days, hours, minutes and seconds — plus the age you&#39;ll turn and a fun message. birthday countdown countdown to birthday how old am i birthday timer"><span class="t-ico">🎲</span><span class="t-body"><b>Birthday Countdown</b><small>Enter your birthday for a live countdown to your next one — days, hours, minutes and seconds…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/blackjack-game/" data-search="blackjack game real blackjack — hit, stand, double down, dealer hits to 17, blackjack pays 3:2, with a session bankroll. blackjack blackjack game 21 card game casino card game blackjack online"><span class="t-ico">🎲</span><span class="t-body"><b>Blackjack Game</b><small>Real Blackjack — hit, stand, double down, dealer hits to 17, blackjack pays 3:2, with a sess…</small></span><span class="t-arrow">→</span></a></div>
+  </section>
+</main>
+
+<!-- ADSTERRA-FOOTER: paste your Adsterra footer/banner ad code inside the div below -->
+<div class="container"><div class="ad-slot" data-ad="footer"></div></div>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="f-grid">
+      <div>
+        <span class="brandline"><span class="logo-mark">T</span> ToolNest</span>
+        <p>Free online tools that actually work. No sign-up, no watermarks — and your files never leave your device for client-side tools.</p>
+      </div>
+      <div>
+        <h4>Popular</h4>
+        <a href="/tools/qr-code-generator/">QR Code Generator</a>
+        <a href="/tools/background-remover/">Background Remover</a>
+        <a href="/tools/pdf-merger/">PDF Merger</a>
+        <a href="/tools/word-counter/">Word Counter</a>
+      </div>
+      <div>
+        <h4>Categories</h4>
+        <a href="/#image">Image Tools</a>
+        <a href="/#pdf">PDF &amp; Documents</a>
+        <a href="/#calculators">Calculators</a>
+        <a href="/#developer">Developer Tools</a>
+      </div>
+      <div>
+        <h4>Site</h4>
+        <a href="/">Home</a>
+        <a href="/#all-tools">All Tools</a>
+        <a href="/sitemap.xml">Sitemap</a>
+      </div>
+    </div>
+    <div class="f-bottom">© 2026 ToolNest · Free tools for everyone · Made with care</div>
+  </div>
+</footer>
+
+<script src="/assets/site.js?v=5"></script>
+
+<script>
+/* Tetris — 7 tetrominoes, rotation, line clears, levels, next piece, game over. */
+(function () {
+  'use strict';
+  var SLUG = 'tetris-game';
+  var COLS = 10, ROWS = 20, CELL = 24;
+  var SHAPES = {
+    I: { m: [[0,0,0,0],[1,1,1,1],[0,0,0,0],[0,0,0,0]], c: '#00bcd4' },
+    J: { m: [[1,0,0],[1,1,1],[0,0,0]], c: '#3f51b5' },
+    L: { m: [[0,0,1],[1,1,1],[0,0,0]], c: '#ff9800' },
+    O: { m: [[1,1],[1,1]], c: '#ffeb3b' },
+    S: { m: [[0,1,1],[1,1,0],[0,0,0]], c: '#4caf50' },
+    T: { m: [[0,1,0],[1,1,1],[0,0,0]], c: '#9c27b0' },
+    Z: { m: [[1,1,0],[0,1,1],[0,0,0]], c: '#f44336' }
+  };
+  var KEYS = Object.keys(SHAPES);
+  var grid = [], cur = null, next = null;
+  var score = 0, lines = 0, level = 1, timerId = null, running = false, paused = false;
+
+  function $(id) { return document.getElementById(id); }
+  function canvas() { return $(SLUG + '-canvas'); }
+
+  function emptyGrid() {
+    var g = [];
+    for (var r = 0; r < ROWS; r++) { g.push([]); for (var c = 0; c < COLS; c++) g[r].push(null); }
+    return g;
+  }
+
+  function randPiece() {
+    var k = KEYS[Math.floor(Math.random() * KEYS.length)];
+    var s = SHAPES[k];
+    return { m: s.m.map(function (row) { return row.slice(); }), c: s.c, x: 3, y: 0 };
+  }
+
+  function rotate(m) {
+    var n = m.length, out = [];
+    for (var r = 0; r < n; r++) { out.push([]); for (var c = 0; c < n; c++) out[r].push(m[n - 1 - c][r]); }
+    return out;
+  }
+
+  function collides(m, px, py) {
+    for (var r = 0; r < m.length; r++) for (var c = 0; c < m[r].length; c++) {
+      if (!m[r][c]) continue;
+      var x = px + c, y = py + r;
+      if (x < 0 || x >= COLS || y >= ROWS) return true;
+      if (y >= 0 && grid[y][x]) return true;
+    }
+    return false;
+  }
+
+  function merge() {
+    var m = cur.m;
+    for (var r = 0; r < m.length; r++) for (var c = 0; c < m[r].length; c++) {
+      if (m[r][c]) {
+        var y = cur.y + r;
+        if (y >= 0) grid[y][cur.x + c] = cur.c;
+      }
+    }
+  }
+
+  function clearLines() {
+    var cleared = 0;
+    for (var r = ROWS - 1; r >= 0; r--) {
+      var full = true;
+      for (var c = 0; c < COLS; c++) if (!grid[r][c]) { full = false; break; }
+      if (full) {
+        grid.splice(r, 1);
+        var row = [];
+        for (var k = 0; k < COLS; k++) row.push(null);
+        grid.unshift(row);
+        cleared++;
+        r++;
+      }
+    }
+    if (cleared) {
+      var pts = [0, 40, 100, 300, 1200][cleared] * level;
+      score += pts;
+      lines += cleared;
+      var nl = 1 + Math.floor(lines / 10);
+      if (nl !== level) {
+        level = nl;
+        restartTimer();
+        $('tetris-game-msg').textContent = '⬆ Level ' + level + ' — faster!';
+      }
+      $('tetris-game-score').textContent = score;
+      $('tetris-game-lines').textContent = lines;
+      $('tetris-game-level').textContent = level;
+    }
+  }
+
+  function spawn() {
+    cur = next || randPiece();
+    next = randPiece();
+    cur.x = 3; cur.y = 0;
+    if (collides(cur.m, cur.x, cur.y)) {
+      gameOver();
+      return false;
+    }
+    drawNext();
+    return true;
+  }
+
+  function step() {
+    if (!running || paused || !cur) return;
+    if (!collides(cur.m, cur.x, cur.y + 1)) {
+      cur.y++;
+    } else {
+      merge();
+      clearLines();
+      if (!spawn()) return;
+    }
+    draw();
+  }
+
+  function dropInterval() { return Math.max(60, 800 - (level - 1) * 70); }
+
+  function restartTimer() {
+    if (timerId) clearInterval(timerId);
+    timerId = setInterval(step, dropInterval());
+  }
+
+  function drawBlock(ctx, x, y, color, size) {
+    ctx.fillStyle = color;
+    ctx.fillRect(x * size, y * size, size, size);
+    ctx.strokeStyle = 'rgba(0,0,0,.35)';
+    ctx.lineWidth = 1;
+    ctx.strokeRect(x * size + 0.5, y * size + 0.5, size - 1, size - 1);
+    ctx.fillStyle = 'rgba(255,255,255,.25)';
+    ctx.fillRect(x * size + 2, y * size + 2, size - 5, 5);
+  }
+
+  function draw() {
+    var ctx = canvas().getContext('2d');
+    ctx.fillStyle = '#111';
+    ctx.fillRect(0, 0, COLS * CELL, ROWS * CELL);
+    for (var r = 0; r < ROWS; r++) for (var c = 0; c < COLS; c++) {
+      if (grid[r][c]) drawBlock(ctx, c, r, grid[r][c], CELL);
+    }
+    if (cur) {
+      var m = cur.m;
+      for (var rr = 0; rr < m.length; rr++) for (var cc = 0; cc < m[rr].length; cc++) {
+        if (m[rr][cc] && cur.y + rr >= 0) drawBlock(ctx, cur.x + cc, cur.y + rr, cur.c, CELL);
+      }
+    }
+    if (paused) {
+      ctx.fillStyle = 'rgba(0,0,0,.6)';
+      ctx.fillRect(0, 0, COLS * CELL, ROWS * CELL);
+      ctx.fillStyle = '#fff';
+      ctx.font = 'bold 28px sans-serif';
+      ctx.textAlign = 'center';
+      ctx.fillText('PAUSED', COLS * CELL / 2, ROWS * CELL / 2);
+    }
+  }
+
+  function drawNext() {
+    var cv = $(SLUG + '-next'), ctx = cv.getContext('2d');
+    ctx.fillStyle = '#111';
+    ctx.fillRect(0, 0, cv.width, cv.height);
+    if (!next) return;
+    var m = next.m, size = 20;
+    var ox = (cv.width - m[0].length * size) / 2, oy = (cv.height - m.length * size) / 2;
+    for (var r = 0; r < m.length; r++) for (var c = 0; c < m[r].length; c++) {
+      if (m[r][c]) {
+        ctx.fillStyle = next.c;
+        ctx.fillRect(ox + c * size, oy + r * size, size, size);
+        ctx.strokeStyle = 'rgba(0,0,0,.35)';
+        ctx.strokeRect(ox + c * size + 0.5, oy + r * size + 0.5, size - 1, size - 1);
+      }
+    }
+  }
+
+  function gameOver() {
+    running = false;
+    if (timerId) { clearInterval(timerId); timerId = null; }
+    $('tetris-game-msg').textContent = '💀 Game over! Score: ' + score + ' — press Start for a new game.';
+    $('tetris-game-start').textContent = '▶ Start';
+    $('tetris-game-pause').disabled = true;
+    draw();
+  }
+
+  function start() {
+    grid = emptyGrid();
+    score = 0; lines = 0; level = 1;
+    next = null; cur = null;
+    paused = false; running = true;
+    $('tetris-game-score').textContent = '0';
+    $('tetris-game-lines').textContent = '0';
+    $('tetris-game-level').textContent = '1';
+    $('tetris-game-msg').textContent = 'Good luck!';
+    $('tetris-game-start').textContent = '↻ Restart';
+    $('tetris-game-pause').disabled = false;
+    $('tetris-game-pause').textContent = '⏸ Pause';
+    spawn();
+    draw();
+    restartTimer();
+  }
+
+  function togglePause() {
+    if (!running) return;
+    paused = !paused;
+    $('tetris-game-pause').textContent = paused ? '▶ Resume' : '⏸ Pause';
+    draw();
+  }
+
+  function movePiece(dx) {
+    if (!running || paused || !cur) return;
+    if (!collides(cur.m, cur.x + dx, cur.y)) { cur.x += dx; draw(); }
+  }
+  function softDrop() {
+    if (!running || paused || !cur) return;
+    if (!collides(cur.m, cur.x, cur.y + 1)) { cur.y++; score += 1; $('tetris-game-score').textContent = score; draw(); }
+    else step();
+  }
+  function rotatePiece() {
+    if (!running || paused || !cur) return;
+    var rm = rotate(cur.m);
+    if (!collides(rm, cur.x, cur.y)) { cur.m = rm; draw(); return; }
+    // simple wall kicks
+    if (!collides(rm, cur.x - 1, cur.y)) { cur.m = rm; cur.x -= 1; draw(); }
+    else if (!collides(rm, cur.x + 1, cur.y)) { cur.m = rm; cur.x += 1; draw(); }
+  }
+  function hardDrop() {
+    if (!running || paused || !cur) return;
+    while (!collides(cur.m, cur.x, cur.y + 1)) { cur.y++; score += 2; }
+    $('tetris-game-score').textContent = score;
+    merge();
+    clearLines();
+    spawn();
+    draw();
+  }
+
+  try {
+    TN.on('tetris-game-start', 'click', start);
+    TN.on('tetris-game-pause', 'click', togglePause);
+    TN.on('tetris-game-left', 'click', function () { movePiece(-1); });
+    TN.on('tetris-game-right', 'click', function () { movePiece(1); });
+    TN.on('tetris-game-down', 'click', softDrop);
+    TN.on('tetris-game-rotate', 'click', rotatePiece);
+    TN.on('tetris-game-drop', 'click', hardDrop);
+    document.addEventListener('keydown', function (e) {
+      var t = e.target;
+      if (t && (t.tagName === 'INPUT' || t.tagName === 'TEXTAREA' || t.tagName === 'SELECT')) return;
+      var k = e.key;
+      if (k === 'ArrowLeft' || k === 'a' || k === 'A') { e.preventDefault(); movePiece(-1); }
+      else if (k === 'ArrowRight' || k === 'd' || k === 'D') { e.preventDefault(); movePiece(1); }
+      else if (k === 'ArrowDown' || k === 's' || k === 'S') { e.preventDefault(); softDrop(); }
+      else if (k === 'ArrowUp' || k === 'w' || k === 'W') { e.preventDefault(); rotatePiece(); }
+      else if (k === ' ') { e.preventDefault(); hardDrop(); }
+      else if (k === 'p' || k === 'P') togglePause();
+    });
+    draw();
+  } catch (e) { /* never throw on load */ }
+})();
+
+</script>
+</body>
+</html>

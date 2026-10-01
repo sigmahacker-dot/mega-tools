@@ -1,0 +1,32 @@
+<div class="tool-card">
+  <div class="dropzone" id="image-contact-sheet-drop">
+    <span class="dz-icon">🖼️</span>
+    <strong>Drop images here</strong> or click to browse (multiple)
+    <input type="file" id="image-contact-sheet-file" accept="image/*" multiple class="hidden">
+  </div>
+  <ul class="file-list" id="image-contact-sheet-list"></ul>
+  <div class="grid2">
+    <div class="field">
+      <label for="image-contact-sheet-cols">Columns</label>
+      <select class="select" id="image-contact-sheet-cols">
+        <option value="2">2 columns</option>
+        <option value="3" selected>3 columns</option>
+        <option value="4">4 columns</option>
+        <option value="5">5 columns</option>
+      </select>
+    </div>
+    <div class="field">
+      <label for="image-contact-sheet-size">Cell size: <span id="image-contact-sheet-size-val">400</span>px</label>
+      <input type="range" id="image-contact-sheet-size" min="200" max="800" step="50" value="400">
+    </div>
+  </div>
+  <div class="btn-row">
+    <button class="btn btn-primary" id="image-contact-sheet-build">Build contact sheet</button>
+    <button class="btn btn-outline hidden" id="image-contact-sheet-download">Download PNG</button>
+  </div>
+  <div class="preview hidden" id="image-contact-sheet-wrap" style="text-align:center">
+    <canvas id="image-contact-sheet-canvas" style="max-width:100%;height:auto;border-radius:8px"></canvas>
+  </div>
+  <div class="error" id="image-contact-sheet-error"></div>
+  <p class="note">Files never leave your device — everything is processed in your browser.</p>
+</div>

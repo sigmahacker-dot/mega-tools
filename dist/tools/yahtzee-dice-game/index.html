@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Yahtzee Dice Game — Free Online | ToolNest</title>
+<meta name="description" content="Full Yahtzee rules — 5 dice, 3 rolls, all 13 scoring categories, upper-section bonus, and total score.">
+<meta name="keywords" content="yahtzee, yahtzee game, dice game, yahtzee dice, 5 dice game">
+<link rel="canonical" href="https://toolnest.vercel.app/tools/yahtzee-dice-game/">
+<meta name="theme-color" content="#07070b">
+<meta property="og:title" content="Yahtzee Dice Game — Free Online | ToolNest">
+<meta property="og:description" content="Full Yahtzee rules — 5 dice, 3 rolls, all 13 scoring categories, upper-section bonus, and total score.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css?v=4">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%23e01111'/><text x='50' y='68' font-size='58' text-anchor='middle' fill='white' font-family='Arial' font-weight='bold'>T</text></svg>">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebApplication","name":"Yahtzee Dice Game","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0"},"url":"https://toolnest.vercel.app/tools/yahtzee-dice-game/","description":"Full Yahtzee rules — 5 dice, 3 rolls, all 13 scoring categories, upper-section bonus, and total score."},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Which scoring categories are included?","acceptedAnswer":{"@type":"Answer","text":"Ones through Sixes, Three of a Kind, Four of a Kind, Full House, Small/Large Straight, Yahtzee, and Chance."}},{"@type":"Question","name":"How do I hold dice?","acceptedAnswer":{"@type":"Answer","text":"Tap dice to hold them between rolls — held dice keep their value when you roll again."}},{"@type":"Question","name":"How many rolls per turn?","acceptedAnswer":{"@type":"Answer","text":"You get 3 rolls per turn. After rolling, pick an empty category to score your dice into."}},{"@type":"Question","name":"What is the upper section bonus?","acceptedAnswer":{"@type":"Answer","text":"Score 63+ in the upper section (Ones–Sixes) to earn a 35-point bonus."}}]}]}</script>
+</head>
+<body>
+<header class="site-header">
+  <div class="container">
+    <a class="logo" href="/"><span class="logo-mark">T</span> ToolNest</a>
+    <div class="header-right">
+      <form class="nav-search" action="/" method="get" role="search">
+        <span class="ns-icon">🔍</span>
+        <input type="search" name="q" placeholder="Search tools…" aria-label="Search tools" autocomplete="off">
+      </form>
+      <div class="menu-wrap">
+        <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="menuPanel" aria-label="Open menu"><span></span><span></span><span></span></button>
+        <nav class="menu-panel" id="menuPanel" aria-label="Site">
+          <a href="/">Home</a>
+          <a href="/#categories">Categories</a>
+          <a href="/#all-tools">All Tools</a>
+        </nav>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ADSTERRA-HEADER: paste your Adsterra banner ad code inside the div below -->
+<div class="container"><div class="ad-slot ad-leaderboard" data-ad="header"></div></div>
+
+<main class="container">
+  <nav class="crumbs"><a href="/">Home</a> &rsaquo; <a href="/#fun">Fun &amp; Lifestyle</a> &rsaquo; Yahtzee Dice Game</nav>
+  <div class="tool-hero">
+    <h1>Yahtzee Dice Game</h1>
+    <p>Full Yahtzee rules — 5 dice, 3 rolls, all 13 scoring categories, upper-section bonus, and total score.</p>
+  </div>
+
+  <div class="tool-card" style="text-align:center">
+  <div class="stat-cards" style="max-width:480px;margin:0 auto 12px">
+    <div class="stat-card"><div class="v" id="yahtzee-dice-game-rolls">3</div><div class="l">Rolls left</div></div>
+    <div class="stat-card"><div class="v" id="yahtzee-dice-game-upper">0</div><div class="l">Upper subtotal</div></div>
+    <div class="stat-card"><div class="v" id="yahtzee-dice-game-total">0</div><div class="l">Total</div></div>
+  </div>
+  <p class="muted" id="yahtzee-dice-game-msg" style="min-height:24px">Press Roll Dice, tap dice to hold, then pick a category.</p>
+  <div id="yahtzee-dice-game-dice" style="display:flex;gap:10px;justify-content:center;margin:12px 0;flex-wrap:wrap"></div>
+  <div class="btn-row" style="justify-content:center;margin-bottom:12px">
+    <button class="btn btn-primary" id="yahtzee-dice-game-roll">🎲 Roll Dice</button>
+    <button class="btn" id="yahtzee-dice-game-new">New game</button>
+  </div>
+  <div id="yahtzee-dice-game-card" style="max-width:440px;margin:0 auto;text-align:left"></div>
+  <div class="error" id="yahtzee-dice-game-error"></div>
+</div>
+
+
+  <!-- ADSTERRA-INCONTENT: paste your Adsterra native/in-content ad code inside the div below -->
+  <div class="ad-slot" data-ad="incontent"></div>
+
+  <div class="info-grid">
+    <div class="info-card">
+      <h2>📖 How to use</h2>
+      <ol><li>Press Roll Dice (3 rolls per turn).</li><li>Tap dice to hold the ones you like.</li><li>Pick an empty category to score the dice.</li><li>Fill all 13 categories — highest total wins!</li></ol>
+    </div>
+    <div class="info-card">
+      <h2>❓ Frequently asked questions</h2>
+      <div class="faq"><details><summary>Which scoring categories are included?</summary><p>Ones through Sixes, Three of a Kind, Four of a Kind, Full House, Small/Large Straight, Yahtzee, and Chance.</p></details><details><summary>How do I hold dice?</summary><p>Tap dice to hold them between rolls — held dice keep their value when you roll again.</p></details><details><summary>How many rolls per turn?</summary><p>You get 3 rolls per turn. After rolling, pick an empty category to score your dice into.</p></details><details><summary>What is the upper section bonus?</summary><p>Score 63+ in the upper section (Ones–Sixes) to earn a 35-point bonus.</p></details></div>
+    </div>
+  </div>
+
+  <section class="section">
+    <h2>🔗 Related tools</h2>
+    <div class="tool-grid"><a class="tool-link" href="/tools/aim-trainer-game/" data-search="aim trainer game test and train your aim — targets pop up at random spots for 30 seconds. hits, misses and accuracy are tracked live. aim trainer aim test reaction test click speed test fps aim trainer"><span class="t-ico">🎲</span><span class="t-body"><b>Aim Trainer Game</b><small>Test and train your aim — targets pop up at random spots for 30 seconds. Hits, misses and ac…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/baby-name-generator/" data-search="baby name generator discover baby names by gender and origin — pakistani, arabic, western, indian or turkish — with meanings, random picks and tap-to-copy. baby name generator baby names with meanings muslim baby names boy girl names"><span class="t-ico">🎲</span><span class="t-body"><b>Baby Name Generator</b><small>Discover baby names by gender and origin — Pakistani, Arabic, Western, Indian or Turkish — w…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/battery-status-checker/" data-search="battery status checker check your device&#39;s battery level, charging status and estimated time remaining, with live updates — where your browser supports the battery api. battery status battery level checker laptop battery charging status"><span class="t-ico">🎲</span><span class="t-body"><b>Battery Status Checker</b><small>Check your device&#39;s battery level, charging status and estimated time remaining, with live u…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/battleship-game/" data-search="battleship game the classic naval battle — place your 5 ships, then hunt the computer&#39;s fleet on a 10×10 grid with hit, miss, and sunk tracking. battleship game battleship naval battle game sea battle board game"><span class="t-ico">🎲</span><span class="t-body"><b>Battleship Game</b><small>The classic naval battle — place your 5 ships, then hunt the computer&#39;s fleet on a 10×10 gri…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/birthday-countdown/" data-search="birthday countdown enter your birthday for a live countdown to your next one — days, hours, minutes and seconds — plus the age you&#39;ll turn and a fun message. birthday countdown countdown to birthday how old am i birthday timer"><span class="t-ico">🎲</span><span class="t-body"><b>Birthday Countdown</b><small>Enter your birthday for a live countdown to your next one — days, hours, minutes and seconds…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/blackjack-game/" data-search="blackjack game real blackjack — hit, stand, double down, dealer hits to 17, blackjack pays 3:2, with a session bankroll. blackjack blackjack game 21 card game casino card game blackjack online"><span class="t-ico">🎲</span><span class="t-body"><b>Blackjack Game</b><small>Real Blackjack — hit, stand, double down, dealer hits to 17, blackjack pays 3:2, with a sess…</small></span><span class="t-arrow">→</span></a></div>
+  </section>
+</main>
+
+<!-- ADSTERRA-FOOTER: paste your Adsterra footer/banner ad code inside the div below -->
+<div class="container"><div class="ad-slot" data-ad="footer"></div></div>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="f-grid">
+      <div>
+        <span class="brandline"><span class="logo-mark">T</span> ToolNest</span>
+        <p>Free online tools that actually work. No sign-up, no watermarks — and your files never leave your device for client-side tools.</p>
+      </div>
+      <div>
+        <h4>Popular</h4>
+        <a href="/tools/qr-code-generator/">QR Code Generator</a>
+        <a href="/tools/background-remover/">Background Remover</a>
+        <a href="/tools/pdf-merger/">PDF Merger</a>
+        <a href="/tools/word-counter/">Word Counter</a>
+      </div>
+      <div>
+        <h4>Categories</h4>
+        <a href="/#image">Image Tools</a>
+        <a href="/#pdf">PDF &amp; Documents</a>
+        <a href="/#calculators">Calculators</a>
+        <a href="/#developer">Developer Tools</a>
+      </div>
+      <div>
+        <h4>Site</h4>
+        <a href="/">Home</a>
+        <a href="/#all-tools">All Tools</a>
+        <a href="/sitemap.xml">Sitemap</a>
+      </div>
+    </div>
+    <div class="f-bottom">© 2026 ToolNest · Free tools for everyone · Made with care</div>
+  </div>
+</footer>
+
+<script src="/assets/site.js?v=5"></script>
+
+<script>
+/* Yahtzee — full rules: 5 dice, 3 rolls, 13 categories, upper bonus. */
+(function () {
+  'use strict';
+  var SLUG = 'yahtzee-dice-game';
+  var FACES = ['⚀', '⚁', '⚂', '⚃', '⚄', '⚅'];
+  var CATS = [
+    { id: 'ones', name: 'Ones', upper: true },
+    { id: 'twos', name: 'Twos', upper: true },
+    { id: 'threes', name: 'Threes', upper: true },
+    { id: 'fours', name: 'Fours', upper: true },
+    { id: 'fives', name: 'Fives', upper: true },
+    { id: 'sixes', name: 'Sixes', upper: true },
+    { id: 'kind3', name: 'Three of a Kind' },
+    { id: 'kind4', name: 'Four of a Kind' },
+    { id: 'fh', name: 'Full House' },
+    { id: 'ss', name: 'Small Straight' },
+    { id: 'ls', name: 'Large Straight' },
+    { id: 'yahtzee', name: 'Yahtzee' },
+    { id: 'chance', name: 'Chance' }
+  ];
+  var dice = [1, 1, 1, 1, 1], held = [false, false, false, false, false];
+  var rollsLeft = 3, scores = {}, over = false;
+
+  function $(id) { return document.getElementById(id); }
+  function counts() {
+    var c = [0, 0, 0, 0, 0, 0, 0];
+    dice.forEach(function (d) { c[d]++; });
+    return c;
+  }
+  function sum() { return dice.reduce(function (a, b) { return a + b; }, 0); }
+
+  function scoreFor(id) {
+    var c = counts(), s = sum(), i;
+    switch (id) {
+      case 'ones': return c[1] * 1;
+      case 'twos': return c[2] * 2;
+      case 'threes': return c[3] * 3;
+      case 'fours': return c[4] * 4;
+      case 'fives': return c[5] * 5;
+      case 'sixes': return c[6] * 6;
+      case 'kind3':
+        for (i = 1; i <= 6; i++) if (c[i] >= 3) return s;
+        return 0;
+      case 'kind4':
+        for (i = 1; i <= 6; i++) if (c[i] >= 4) return s;
+        return 0;
+      case 'fh': {
+        var has3 = false, has2 = false;
+        for (i = 1; i <= 6; i++) { if (c[i] === 3) has3 = true; if (c[i] === 2) has2 = true; }
+        return (has3 && has2) ? 25 : 0;
+      }
+      case 'ss': {
+        var u = {};
+        dice.forEach(function (d) { u[d] = 1; });
+        var k = Object.keys(u).map(Number).sort();
+        var run = 1;
+        for (i = 1; i < k.length; i++) {
+          if (k[i] === k[i - 1] + 1) { run++; if (run >= 4) return 30; }
+          else run = 1;
+        }
+        return 0;
+      }
+      case 'ls': {
+        var sorted = dice.slice().sort();
+        var ok = true;
+        for (i = 1; i < 5; i++) if (sorted[i] !== sorted[i - 1] + 1) ok = false;
+        return ok ? 40 : 0;
+      }
+      case 'yahtzee':
+        for (i = 1; i <= 6; i++) if (c[i] === 5) return 50;
+        return 0;
+      case 'chance': return s;
+    }
+    return 0;
+  }
+
+  function upperSubtotal() {
+    var t = 0;
+    CATS.forEach(function (ct) {
+      if (ct.upper && scores[ct.id] !== undefined) t += scores[ct.id];
+    });
+    return t;
+  }
+  function grandTotal() {
+    var t = 0, filled = 0;
+    CATS.forEach(function (ct) {
+      if (scores[ct.id] !== undefined) { t += scores[ct.id]; filled++; }
+    });
+    if (upperSubtotal() >= 63) t += 35;
+    return { total: t, filled: filled };
+  }
+
+  function renderDice() {
+    var box = $('yahtzee-dice-game-dice');
+    box.innerHTML = '';
+    dice.forEach(function (d, i) {
+      var b = document.createElement('button');
+      b.style.cssText = 'width:58px;height:58px;font-size:36px;border-radius:10px;border:3px solid ' +
+        (held[i] ? '#2e7d32' : '#bdbdbd') + ';background:' + (held[i] ? '#e8f5e9' : '#fff') +
+        ';cursor:pointer;line-height:1;padding:0;touch-action:manipulation';
+      b.textContent = FACES[d - 1];
+      b.setAttribute('aria-label', 'Die ' + (i + 1) + ': ' + d + (held[i] ? ' (held)' : ''));
+      b.addEventListener('click', function () {
+        if (over || rollsLeft === 3) return;
+        held[i] = !held[i];
+        renderDice();
+      });
+      box.appendChild(b);
+    });
+  }
+
+  function renderCard() {
+    var box = $('yahtzee-dice-game-card');
+    box.innerHTML = '';
+    var canScore = !over && rollsLeft < 3;
+    CATS.forEach(function (ct) {
+      var row = document.createElement('button');
+      var filled = scores[ct.id] !== undefined;
+      var preview = (!filled && canScore) ? ' <span style="color:#2e7d32">(' + scoreFor(ct.id) + ')</span>' : '';
+      row.style.cssText = 'display:flex;justify-content:space-between;width:100%;padding:8px 12px;margin-bottom:4px;' +
+        'border:1px solid #cfd8dc;border-radius:8px;background:' + (filled ? '#eceff1' : (canScore ? '#fff' : '#fafafa')) +
+        ';cursor:' + (filled || !canScore ? 'default' : 'pointer') + ';font-size:15px';
+      row.innerHTML = '<span>' + ct.name + '</span><strong>' + (filled ? scores[ct.id] : preview || '—') + '</strong>';
+      if (!filled && canScore) {
+        row.addEventListener('click', function () { choose(ct.id); });
+      }
+      box.appendChild(row);
+    });
+    var up = upperSubtotal(), gt = grandTotal();
+    $('yahtzee-dice-game-upper').textContent = up + (up >= 63 ? ' (+35!)' : '');
+    $('yahtzee-dice-game-total').textContent = gt.total;
+    $('yahtzee-dice-game-rolls').textContent = rollsLeft;
+    if (gt.filled === CATS.length && !over) {
+      over = true;
+      $('yahtzee-dice-game-msg').textContent = '🏁 Game over! Final score: ' + gt.total + '. Press New game to play again.';
+    }
+  }
+
+  function roll() {
+    if (over || rollsLeft <= 0) return;
+    for (var i = 0; i < 5; i++) {
+      if (!held[i]) dice[i] = 1 + Math.floor(Math.random() * 6);
+    }
+    rollsLeft--;
+    $('yahtzee-dice-game-msg').textContent = rollsLeft > 0
+      ? 'Tap dice to hold, roll again or pick a category.'
+      : 'No rolls left — pick a category to score!';
+    renderDice();
+    renderCard();
+  }
+
+  function choose(id) {
+    if (over || rollsLeft === 3 || scores[id] !== undefined) return;
+    scores[id] = scoreFor(id);
+    dice = [1, 1, 1, 1, 1];
+    held = [false, false, false, false, false];
+    rollsLeft = 3;
+    $('yahtzee-dice-game-msg').textContent = 'Scored ' + scores[id] + ' in ' +
+      CATS.filter(function (c) { return c.id === id; })[0].name + '. Roll for the next turn!';
+    renderDice();
+    renderCard();
+  }
+
+  function newGame() {
+    dice = [1, 1, 1, 1, 1];
+    held = [false, false, false, false, false];
+    rollsLeft = 3; scores = {}; over = false;
+    $('yahtzee-dice-game-msg').textContent = 'Press Roll Dice, tap dice to hold, then pick a category.';
+    renderDice();
+    renderCard();
+  }
+
+  try {
+    TN.on('yahtzee-dice-game-roll', 'click', roll);
+    TN.on('yahtzee-dice-game-new', 'click', newGame);
+    newGame();
+  } catch (e) { /* never throw on load */ }
+})();
+
+</script>
+</body>
+</html>

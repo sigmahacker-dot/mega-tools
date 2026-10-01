@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Regex Cheat Sheet — Free Online | ToolNest</title>
+<meta name="description" content="Searchable regex token reference plus a live tester with highlighted matches and capture groups.">
+<meta name="keywords" content="regex cheat sheet, regular expression reference, regex tester, regex tokens, regex online">
+<link rel="canonical" href="https://toolnest.vercel.app/tools/regex-cheat-sheet/">
+<meta name="theme-color" content="#07070b">
+<meta property="og:title" content="Regex Cheat Sheet — Free Online | ToolNest">
+<meta property="og:description" content="Searchable regex token reference plus a live tester with highlighted matches and capture groups.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css?v=4">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%23e01111'/><text x='50' y='68' font-size='58' text-anchor='middle' fill='white' font-family='Arial' font-weight='bold'>T</text></svg>">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebApplication","name":"Regex Cheat Sheet","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0"},"url":"https://toolnest.vercel.app/tools/regex-cheat-sheet/","description":"Searchable regex token reference plus a live tester with highlighted matches and capture groups."},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Can I search the token table?","acceptedAnswer":{"@type":"Answer","text":"Yes — the token table filters as you type, by token or description."}},{"@type":"Question","name":"How are matches shown?","acceptedAnswer":{"@type":"Answer","text":"Matches are highlighted in the sample text and numbered capture groups are listed below."}},{"@type":"Question","name":"Can I set regex flags?","acceptedAnswer":{"@type":"Answer","text":"Yes — toggle global, case-insensitive, and multiline flags."}},{"@type":"Question","name":"Which regex flavor is used?","acceptedAnswer":{"@type":"Answer","text":"The tester uses JavaScript's RegExp engine; syntax follows JS rules."}}]}]}</script>
+</head>
+<body>
+<header class="site-header">
+  <div class="container">
+    <a class="logo" href="/"><span class="logo-mark">T</span> ToolNest</a>
+    <div class="header-right">
+      <form class="nav-search" action="/" method="get" role="search">
+        <span class="ns-icon">🔍</span>
+        <input type="search" name="q" placeholder="Search tools…" aria-label="Search tools" autocomplete="off">
+      </form>
+      <div class="menu-wrap">
+        <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="menuPanel" aria-label="Open menu"><span></span><span></span><span></span></button>
+        <nav class="menu-panel" id="menuPanel" aria-label="Site">
+          <a href="/">Home</a>
+          <a href="/#categories">Categories</a>
+          <a href="/#all-tools">All Tools</a>
+        </nav>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ADSTERRA-HEADER: paste your Adsterra banner ad code inside the div below -->
+<div class="container"><div class="ad-slot ad-leaderboard" data-ad="header"></div></div>
+
+<main class="container">
+  <nav class="crumbs"><a href="/">Home</a> &rsaquo; <a href="/#developer">Developer Tools</a> &rsaquo; Regex Cheat Sheet</nav>
+  <div class="tool-hero">
+    <h1>Regex Cheat Sheet</h1>
+    <p>Searchable regex token reference plus a live tester with highlighted matches and capture groups.</p>
+  </div>
+
+  <div class="tool-card">
+  <div class="grid2">
+    <div class="field">
+      <label for="regex-cheat-sheet-pattern">Pattern</label>
+      <input class="input" id="regex-cheat-sheet-pattern" placeholder="(\w+)@(\w+\.\w+)" spellcheck="false">
+    </div>
+    <div class="field">
+      <label>Flags</label>
+      <div class="btn-row">
+        <label class="checkbox-row"><input type="checkbox" id="regex-cheat-sheet-g" checked> g global</label>
+        <label class="checkbox-row"><input type="checkbox" id="regex-cheat-sheet-i"> i ignore case</label>
+        <label class="checkbox-row"><input type="checkbox" id="regex-cheat-sheet-m"> m multiline</label>
+      </div>
+    </div>
+  </div>
+  <div class="field">
+    <label for="regex-cheat-sheet-text">Test text</label>
+    <textarea class="textarea" id="regex-cheat-sheet-text" rows="4" placeholder="Type text to test against…"></textarea>
+  </div>
+  <div class="error" id="regex-cheat-sheet-error"></div>
+  <div class="result hidden" id="regex-cheat-sheet-result">
+    <div class="field">
+      <label>Matches</label>
+      <div class="code" id="regex-cheat-sheet-matches" style="white-space:pre-wrap;word-break:break-word"></div>
+    </div>
+    <div class="field">
+      <label>Capture groups</label>
+      <div id="regex-cheat-sheet-groups"></div>
+    </div>
+  </div>
+  <hr>
+  <div class="field">
+    <label for="regex-cheat-sheet-search">Search tokens</label>
+    <input class="input" id="regex-cheat-sheet-search" placeholder="e.g. digit, lookahead…">
+  </div>
+  <div id="regex-cheat-sheet-table"></div>
+  <p class="muted hidden" id="regex-cheat-sheet-none">No tokens match your search.</p>
+</div>
+
+
+  <!-- ADSTERRA-INCONTENT: paste your Adsterra native/in-content ad code inside the div below -->
+  <div class="ad-slot" data-ad="incontent"></div>
+
+  <div class="info-grid">
+    <div class="info-card">
+      <h2>📖 How to use</h2>
+      <ol><li>Type a pattern and optional flags.</li><li>Paste or type sample text.</li><li>Matches highlight live with groups listed.</li></ol>
+    </div>
+    <div class="info-card">
+      <h2>❓ Frequently asked questions</h2>
+      <div class="faq"><details><summary>Can I search the token table?</summary><p>Yes — the token table filters as you type, by token or description.</p></details><details><summary>How are matches shown?</summary><p>Matches are highlighted in the sample text and numbered capture groups are listed below.</p></details><details><summary>Can I set regex flags?</summary><p>Yes — toggle global, case-insensitive, and multiline flags.</p></details><details><summary>Which regex flavor is used?</summary><p>The tester uses JavaScript&#39;s RegExp engine; syntax follows JS rules.</p></details></div>
+    </div>
+  </div>
+
+  <section class="section">
+    <h2>🔗 Related tools</h2>
+    <div class="tool-grid"><a class="tool-link" href="/tools/ascii-table-reference/" data-search="ascii table reference full ascii table 0–127: decimal, hex, octal, character, control-code names and html entities — searchable. ascii table ascii codes ascii chart control characters ascii reference"><span class="t-ico">💻</span><span class="t-body"><b>ASCII Table Reference</b><small>Full ASCII table 0–127: decimal, hex, octal, character, control-code names and HTML entities…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/base64-encoder-decoder/" data-search="base64 encoder / decoder encode text to base64 or decode base64 back to text, with full utf-8 support and a file-to-data-url converter. base64 encoder base64 decoder base64 encode base64 decode file to base64"><span class="t-ico">💻</span><span class="t-body"><b>Base64 Encoder / Decoder</b><small>Encode text to Base64 or decode Base64 back to text, with full UTF-8 support and a file-to-d…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/binary-text-converter/" data-search="binary and text converter convert text to binary or hex and back, with full utf-8 awareness and strict input validation. binary to text text to binary hex to text converter"><span class="t-ico">💻</span><span class="t-body"><b>Binary and Text Converter</b><small>Convert text to binary or hex and back, with full UTF-8 awareness and strict input validatio…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/changelog-generator/" data-search="changelog generator build a keep-a-changelog markdown file: version, date, and grouped added/fixed/changed entries. changelog generator keep a changelog changelog markdown release notes version changelog"><span class="t-ico">💻</span><span class="t-body"><b>Changelog Generator</b><small>Build a Keep-a-Changelog markdown file: version, date, and grouped Added/Fixed/Changed entri…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/character-escape-reference/" data-search="character escape reference searchable reference of characters with their html entities, url encodings, and js escapes — plus a live encoder. character escape reference html entities url encode unicode escape html entity table"><span class="t-ico">💻</span><span class="t-body"><b>Character Escape Reference</b><small>Searchable reference of characters with their HTML entities, URL encodings, and JS escapes —…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/chmod-calculator/" data-search="chmod calculator tick rwx boxes for user/group/other — or type 755 — and see octal, symbolic, and the chmod command live. chmod calculator chmod 755 linux permissions octal permissions rwx calculator"><span class="t-ico">💻</span><span class="t-body"><b>chmod Calculator</b><small>Tick rwx boxes for user/group/other — or type 755 — and see octal, symbolic, and the chmod c…</small></span><span class="t-arrow">→</span></a></div>
+  </section>
+</main>
+
+<!-- ADSTERRA-FOOTER: paste your Adsterra footer/banner ad code inside the div below -->
+<div class="container"><div class="ad-slot" data-ad="footer"></div></div>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="f-grid">
+      <div>
+        <span class="brandline"><span class="logo-mark">T</span> ToolNest</span>
+        <p>Free online tools that actually work. No sign-up, no watermarks — and your files never leave your device for client-side tools.</p>
+      </div>
+      <div>
+        <h4>Popular</h4>
+        <a href="/tools/qr-code-generator/">QR Code Generator</a>
+        <a href="/tools/background-remover/">Background Remover</a>
+        <a href="/tools/pdf-merger/">PDF Merger</a>
+        <a href="/tools/word-counter/">Word Counter</a>
+      </div>
+      <div>
+        <h4>Categories</h4>
+        <a href="/#image">Image Tools</a>
+        <a href="/#pdf">PDF &amp; Documents</a>
+        <a href="/#calculators">Calculators</a>
+        <a href="/#developer">Developer Tools</a>
+      </div>
+      <div>
+        <h4>Site</h4>
+        <a href="/">Home</a>
+        <a href="/#all-tools">All Tools</a>
+        <a href="/sitemap.xml">Sitemap</a>
+      </div>
+    </div>
+    <div class="f-bottom">© 2026 ToolNest · Free tools for everyone · Made with care</div>
+  </div>
+</footer>
+
+<script src="/assets/site.js?v=5"></script>
+
+<script>
+/* Regex Cheat Sheet — searchable token table + live tester with <mark> highlights. */
+(function () {
+  'use strict';
+  var SLUG = 'regex-cheat-sheet';
+  var GROUPS = [
+    ['Anchors', [
+      ['^', 'Start of string (or line with m)'],
+      ['$', 'End of string (or line with m)'],
+      ['\\b', 'Word boundary'],
+      ['\\B', 'Not a word boundary']
+    ]],
+    ['Character classes', [
+      ['.', 'Any character except newline'],
+      ['\\d', 'Digit [0-9]'],
+      ['\\D', 'Non-digit'],
+      ['\\w', 'Word char [A-Za-z0-9_]'],
+      ['\\W', 'Non-word char'],
+      ['\\s', 'Whitespace'],
+      ['\\S', 'Non-whitespace'],
+      ['[abc]', 'One of a, b, c'],
+      ['[^abc]', 'Anything but a, b, c'],
+      ['[a-z]', 'Range a to z']
+    ]],
+    ['Quantifiers', [
+      ['*', '0 or more (greedy)'],
+      ['+', '1 or more (greedy)'],
+      ['?', '0 or 1'],
+      ['{n}', 'Exactly n'],
+      ['{n,}', 'n or more'],
+      ['{n,m}', 'Between n and m'],
+      ['*?', '+?', 'Lazy versions of * and +']
+    ]],
+    ['Groups & alternation', [
+      ['(abc)', 'Capture group'],
+      ['(?:abc)', 'Non-capturing group'],
+      ['(?<name>abc)', 'Named capture group'],
+      ['a|b', 'a or b'],
+      ['\\1', 'Backreference to group 1']
+    ]],
+    ['Lookaround', [
+      ['(?=abc)', 'Positive lookahead'],
+      ['(?!abc)', 'Negative lookahead'],
+      ['(?<=abc)', 'Positive lookbehind'],
+      ['(?<!abc)', 'Negative lookbehind']
+    ]],
+    ['Escapes', [
+      ['\\', 'Escape a special char'],
+      ['\\n \\t \\r', 'Newline, tab, carriage return'],
+      ['\\u00A9', 'Unicode escape (©)'],
+      ['\\p{L}', 'Unicode property (letter), needs u flag']
+    ]]
+  ];
+
+  function el(id) { return document.getElementById(id); }
+  function fail(msg) { TN.setErr(SLUG + '-error', msg); }
+  function clear() { TN.clearErr(SLUG + '-error'); }
+  function esc(s) {
+    return s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+  }
+
+  function test() {
+    clear();
+    TN.hide(SLUG + '-result');
+    var pattern = el(SLUG + '-pattern').value;
+    var text = el(SLUG + '-text').value;
+    if (!pattern) return;
+    var flags = (el(SLUG + '-g').checked ? 'g' : '') +
+                (el(SLUG + '-i').checked ? 'i' : '') +
+                (el(SLUG + '-m').checked ? 'm' : '');
+    var re;
+    try { re = new RegExp(pattern, flags); }
+    catch (e) { fail('Invalid pattern: ' + e.message); return; }
+    // collect matches with indices
+    var matches = [];
+    if (flags.indexOf('g') >= 0) {
+      var m;
+      re.lastIndex = 0;
+      while ((m = re.exec(text)) !== null) {
+        matches.push(m);
+        if (m[0] === '') re.lastIndex++; // avoid infinite loop on empty match
+      }
+    } else {
+      var s = re.exec(text);
+      if (s) matches.push(s);
+    }
+    // highlight via <mark>
+    var html = '', last = 0;
+    matches.forEach(function (m, i) {
+      html += esc(text.slice(last, m.index));
+      html += '<mark data-i="' + i + '">' + esc(m[0] || '∅') + '</mark>';
+      last = m.index + m[0].length;
+    });
+    html += esc(text.slice(last));
+    el(SLUG + '-matches').innerHTML = html || '<span class="muted">No matches.</span>';
+    // groups
+    var gh = el(SLUG + '-groups');
+    gh.innerHTML = '';
+    if (!matches.length) {
+      gh.innerHTML = '<span class="muted">No matches.</span>';
+    } else {
+      matches.forEach(function (m, mi) {
+        if (m.length <= 1) return;
+        var p = document.createElement('p');
+        p.innerHTML = '<strong>Match ' + (mi + 1) + '</strong> <code class="code">' + esc(m[0]) + '</code>';
+        gh.appendChild(p);
+        var ul = document.createElement('ul');
+        for (var g = 1; g < m.length; g++) {
+          var li = document.createElement('li');
+          li.innerHTML = 'Group ' + g + ': <code class="code">' + esc(String(m[g])) + '</code>';
+          ul.appendChild(li);
+        }
+        gh.appendChild(ul);
+      });
+      if (!gh.children.length) gh.innerHTML = '<span class="muted">No capture groups in this pattern.</span>';
+    }
+    TN.show(SLUG + '-result');
+  }
+
+  function renderTable(filter) {
+    var host = el(SLUG + '-table');
+    host.innerHTML = '';
+    var q = (filter || '').toLowerCase().trim();
+    var shown = 0;
+    GROUPS.forEach(function (g) {
+      var items = g[1].filter(function (it) {
+        return !q || it[0].toLowerCase().indexOf(q) >= 0 || it[1].toLowerCase().indexOf(q) >= 0;
+      });
+      if (!items.length) return;
+      shown += items.length;
+      var h = document.createElement('h3');
+      h.textContent = g[0];
+      h.style.margin = '18px 0 8px';
+      host.appendChild(h);
+      var table = document.createElement('table');
+      table.className = 'data';
+      var tb = document.createElement('tbody');
+      items.forEach(function (it) {
+        var tr = document.createElement('tr');
+        var td1 = document.createElement('td');
+        td1.innerHTML = '<code class="code">' + esc(it[0]) + '</code>';
+        var td2 = document.createElement('td');
+        td2.textContent = it[1];
+        tr.appendChild(td1);
+        tr.appendChild(td2);
+        tb.appendChild(tr);
+      });
+      table.appendChild(tb);
+      host.appendChild(table);
+    });
+    el(SLUG + '-none').classList.toggle('hidden', shown > 0);
+  }
+
+  try {
+    var deb = TN.debounce(test, 250);
+    TN.on(SLUG + '-pattern', 'input', deb);
+    TN.on(SLUG + '-text', 'input', deb);
+    TN.on(SLUG + '-g', 'change', test);
+    TN.on(SLUG + '-i', 'change', test);
+    TN.on(SLUG + '-m', 'change', test);
+    TN.on(SLUG + '-search', 'input', TN.debounce(function () {
+      renderTable(el(SLUG + '-search').value);
+    }, 150));
+    renderTable('');
+  } catch (e) { /* never throw on load */ }
+})();
+
+</script>
+</body>
+</html>

@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>JSON to YAML Converter — Free Online | ToolNest</title>
+<meta name="description" content="Turn JSON into clean, readable YAML with proper nesting, list syntax, and quoting only where needed.">
+<meta name="keywords" content="json to yaml, convert json yaml, json yaml converter, yaml emitter, json to yml">
+<link rel="canonical" href="https://toolnest.vercel.app/tools/json-to-yaml-converter/">
+<meta name="theme-color" content="#07070b">
+<meta property="og:title" content="JSON to YAML Converter — Free Online | ToolNest">
+<meta property="og:description" content="Turn JSON into clean, readable YAML with proper nesting, list syntax, and quoting only where needed.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css?v=4">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%23e01111'/><text x='50' y='68' font-size='58' text-anchor='middle' fill='white' font-family='Arial' font-weight='bold'>T</text></svg>">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebApplication","name":"JSON to YAML Converter","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0"},"url":"https://toolnest.vercel.app/tools/json-to-yaml-converter/","description":"Turn JSON into clean, readable YAML with proper nesting, list syntax, and quoting only where needed."},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What JSON structures are supported?","acceptedAnswer":{"@type":"Answer","text":"Objects, nested objects, arrays, arrays of objects, strings, numbers, booleans, and null — with 2 or 4 space indentation."}},{"@type":"Question","name":"When are strings quoted?","acceptedAnswer":{"@type":"Answer","text":"Strings that look like numbers/booleans, contain special characters, or have leading/trailing spaces are double-quoted automatically."}},{"@type":"Question","name":"Does it validate the JSON?","acceptedAnswer":{"@type":"Answer","text":"Yes — it validates the JSON first and shows the exact parse error with its position."}},{"@type":"Question","name":"Is my data sent anywhere?","acceptedAnswer":{"@type":"Answer","text":"No. Conversion runs entirely in your browser."}}]}]}</script>
+</head>
+<body>
+<header class="site-header">
+  <div class="container">
+    <a class="logo" href="/"><span class="logo-mark">T</span> ToolNest</a>
+    <div class="header-right">
+      <form class="nav-search" action="/" method="get" role="search">
+        <span class="ns-icon">🔍</span>
+        <input type="search" name="q" placeholder="Search tools…" aria-label="Search tools" autocomplete="off">
+      </form>
+      <div class="menu-wrap">
+        <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="menuPanel" aria-label="Open menu"><span></span><span></span><span></span></button>
+        <nav class="menu-panel" id="menuPanel" aria-label="Site">
+          <a href="/">Home</a>
+          <a href="/#categories">Categories</a>
+          <a href="/#all-tools">All Tools</a>
+        </nav>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ADSTERRA-HEADER: paste your Adsterra banner ad code inside the div below -->
+<div class="container"><div class="ad-slot ad-leaderboard" data-ad="header"></div></div>
+
+<main class="container">
+  <nav class="crumbs"><a href="/">Home</a> &rsaquo; <a href="/#developer">Developer Tools</a> &rsaquo; JSON to YAML Converter</nav>
+  <div class="tool-hero">
+    <h1>JSON to YAML Converter</h1>
+    <p>Turn JSON into clean, readable YAML with proper nesting, list syntax, and quoting only where needed.</p>
+  </div>
+
+  <div class="tool-card">
+  <div class="field">
+    <label for="json-to-yaml-converter-input">JSON input</label>
+    <textarea class="textarea" id="json-to-yaml-converter-input" rows="10" placeholder='Paste JSON here, e.g. {"server": {"port": 8080}}'></textarea>
+  </div>
+  <div class="grid2">
+    <div class="field">
+      <label for="json-to-yaml-converter-indent">Indent</label>
+      <select class="input" id="json-to-yaml-converter-indent">
+        <option value="2">2 spaces</option>
+        <option value="4">4 spaces</option>
+      </select>
+    </div>
+    <div class="field">
+      <label>&nbsp;</label>
+      <div class="btn-row">
+        <button class="btn btn-primary" id="json-to-yaml-converter-convert">Convert to YAML</button>
+        <button class="btn btn-outline" id="json-to-yaml-converter-sample">Load sample</button>
+      </div>
+    </div>
+  </div>
+  <div class="error" id="json-to-yaml-converter-error"></div>
+  <div class="field">
+    <label for="json-to-yaml-converter-output">YAML output</label>
+    <textarea class="textarea" id="json-to-yaml-converter-output" rows="10" readonly placeholder="YAML will appear here…"></textarea>
+  </div>
+  <div class="btn-row">
+    <button class="btn btn-outline" id="json-to-yaml-converter-copy">Copy YAML</button>
+    <button class="btn btn-outline" id="json-to-yaml-converter-download">Download .yaml</button>
+  </div>
+</div>
+
+
+  <!-- ADSTERRA-INCONTENT: paste your Adsterra native/in-content ad code inside the div below -->
+  <div class="ad-slot" data-ad="incontent"></div>
+
+  <div class="info-grid">
+    <div class="info-card">
+      <h2>📖 How to use</h2>
+      <ol><li>Paste valid JSON into the input box.</li><li>Pick 2 or 4 space indentation.</li><li>Click Convert to YAML, then copy or download the result.</li></ol>
+    </div>
+    <div class="info-card">
+      <h2>❓ Frequently asked questions</h2>
+      <div class="faq"><details><summary>What JSON structures are supported?</summary><p>Objects, nested objects, arrays, arrays of objects, strings, numbers, booleans, and null — with 2 or 4 space indentation.</p></details><details><summary>When are strings quoted?</summary><p>Strings that look like numbers/booleans, contain special characters, or have leading/trailing spaces are double-quoted automatically.</p></details><details><summary>Does it validate the JSON?</summary><p>Yes — it validates the JSON first and shows the exact parse error with its position.</p></details><details><summary>Is my data sent anywhere?</summary><p>No. Conversion runs entirely in your browser.</p></details></div>
+    </div>
+  </div>
+
+  <section class="section">
+    <h2>🔗 Related tools</h2>
+    <div class="tool-grid"><a class="tool-link" href="/tools/ascii-table-reference/" data-search="ascii table reference full ascii table 0–127: decimal, hex, octal, character, control-code names and html entities — searchable. ascii table ascii codes ascii chart control characters ascii reference"><span class="t-ico">💻</span><span class="t-body"><b>ASCII Table Reference</b><small>Full ASCII table 0–127: decimal, hex, octal, character, control-code names and HTML entities…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/base64-encoder-decoder/" data-search="base64 encoder / decoder encode text to base64 or decode base64 back to text, with full utf-8 support and a file-to-data-url converter. base64 encoder base64 decoder base64 encode base64 decode file to base64"><span class="t-ico">💻</span><span class="t-body"><b>Base64 Encoder / Decoder</b><small>Encode text to Base64 or decode Base64 back to text, with full UTF-8 support and a file-to-d…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/binary-text-converter/" data-search="binary and text converter convert text to binary or hex and back, with full utf-8 awareness and strict input validation. binary to text text to binary hex to text converter"><span class="t-ico">💻</span><span class="t-body"><b>Binary and Text Converter</b><small>Convert text to binary or hex and back, with full UTF-8 awareness and strict input validatio…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/changelog-generator/" data-search="changelog generator build a keep-a-changelog markdown file: version, date, and grouped added/fixed/changed entries. changelog generator keep a changelog changelog markdown release notes version changelog"><span class="t-ico">💻</span><span class="t-body"><b>Changelog Generator</b><small>Build a Keep-a-Changelog markdown file: version, date, and grouped Added/Fixed/Changed entri…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/character-escape-reference/" data-search="character escape reference searchable reference of characters with their html entities, url encodings, and js escapes — plus a live encoder. character escape reference html entities url encode unicode escape html entity table"><span class="t-ico">💻</span><span class="t-body"><b>Character Escape Reference</b><small>Searchable reference of characters with their HTML entities, URL encodings, and JS escapes —…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/chmod-calculator/" data-search="chmod calculator tick rwx boxes for user/group/other — or type 755 — and see octal, symbolic, and the chmod command live. chmod calculator chmod 755 linux permissions octal permissions rwx calculator"><span class="t-ico">💻</span><span class="t-body"><b>chmod Calculator</b><small>Tick rwx boxes for user/group/other — or type 755 — and see octal, symbolic, and the chmod c…</small></span><span class="t-arrow">→</span></a></div>
+  </section>
+</main>
+
+<!-- ADSTERRA-FOOTER: paste your Adsterra footer/banner ad code inside the div below -->
+<div class="container"><div class="ad-slot" data-ad="footer"></div></div>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="f-grid">
+      <div>
+        <span class="brandline"><span class="logo-mark">T</span> ToolNest</span>
+        <p>Free online tools that actually work. No sign-up, no watermarks — and your files never leave your device for client-side tools.</p>
+      </div>
+      <div>
+        <h4>Popular</h4>
+        <a href="/tools/qr-code-generator/">QR Code Generator</a>
+        <a href="/tools/background-remover/">Background Remover</a>
+        <a href="/tools/pdf-merger/">PDF Merger</a>
+        <a href="/tools/word-counter/">Word Counter</a>
+      </div>
+      <div>
+        <h4>Categories</h4>
+        <a href="/#image">Image Tools</a>
+        <a href="/#pdf">PDF &amp; Documents</a>
+        <a href="/#calculators">Calculators</a>
+        <a href="/#developer">Developer Tools</a>
+      </div>
+      <div>
+        <h4>Site</h4>
+        <a href="/">Home</a>
+        <a href="/#all-tools">All Tools</a>
+        <a href="/sitemap.xml">Sitemap</a>
+      </div>
+    </div>
+    <div class="f-bottom">© 2026 ToolNest · Free tools for everyone · Made with care</div>
+  </div>
+</footer>
+
+<script src="/assets/site.js?v=5"></script>
+
+<script>
+/* JSON → YAML emitter. Nested objects/arrays, "- " list items, quoting only when needed. */
+(function () {
+  'use strict';
+  var SLUG = 'json-to-yaml-converter';
+  var SAMPLE = '{"server":{"host":"localhost","port":8080,"ssl":true},"database":{"urls":["postgres://db1:5432/app","postgres://db2:5432/app"],"pool":10},"features":["auth","billing","dark mode"],"empty_value":null}';
+
+  function el(id) { return document.getElementById(id); }
+  function fail(msg) { TN.setErr(SLUG + '-error', msg); }
+  function clear() { TN.clearErr(SLUG + '-error'); }
+  function sp(n) { var o = ''; for (var i = 0; i < n; i++) o += ' '; return o; }
+
+  function yamlStr(s) {
+    if (s === '' || /^\s|\s$/.test(s) || s.indexOf('\n') >= 0 ||
+        /[:#\[\]{}&,*!|>'"%@`?]/.test(s) || /^-/.test(s) || /: /.test(s) || / #/.test(s) ||
+        /^(true|false|null|~|yes|no|on|off)$/i.test(s) ||
+        /^[+-]?(\d+\.?\d*|\.\d+)([eE][+-]?\d+)?$/.test(s)) {
+      return JSON.stringify(s); // valid double-quoted YAML scalar
+    }
+    return s;
+  }
+
+  function scalar(v) {
+    if (v === null) return 'null';
+    if (typeof v === 'string') return yamlStr(v);
+    return String(v);
+  }
+
+  function emit(v, depth, step) {
+    var pad = sp(depth * step);
+    if (v === null || typeof v !== 'object') return scalar(v);
+    if (Array.isArray(v)) {
+      if (!v.length) return '[]';
+      return v.map(function (item) {
+        if (item !== null && typeof item === 'object') {
+          var lines = emit(item, depth + 1, step).split('\n');
+          var first = lines[0].slice(step); // align after "- "
+          var rest = lines.slice(1).join('\n');
+          return pad + '- ' + first + (rest ? '\n' + rest : '');
+        }
+        return pad + '- ' + scalar(item);
+      }).join('\n');
+    }
+    var keys = Object.keys(v);
+    if (!keys.length) return '{}';
+    return keys.map(function (k) {
+      var val = v[k], key = yamlStr(k);
+      if (val !== null && typeof val === 'object') return pad + key + ':\n' + emit(val, depth + 1, step);
+      return pad + key + ': ' + scalar(val);
+    }).join('\n');
+  }
+
+  function convert() {
+    clear();
+    var src = el(SLUG + '-input').value;
+    if (!src.trim()) { fail('Paste some JSON first.'); return; }
+    var obj;
+    try { obj = JSON.parse(src); }
+    catch (e) { fail('Invalid JSON: ' + e.message); return; }
+    var step = parseInt(el(SLUG + '-indent').value, 10);
+    el(SLUG + '-output').value = emit(obj, 0, step) + '\n';
+  }
+
+  try {
+    TN.on(SLUG + '-convert', 'click', convert);
+    TN.on(SLUG + '-sample', 'click', function () { el(SLUG + '-input').value = SAMPLE; clear(); convert(); });
+    TN.on(SLUG + '-copy', 'click', function () {
+      var v = el(SLUG + '-output').value;
+      if (!v) { fail('Nothing to copy yet.'); return; }
+      TN.copy(v).then(function (ok) { if (!ok) fail('Copy failed — select the text manually.'); });
+    });
+    TN.on(SLUG + '-download', 'click', function () {
+      var v = el(SLUG + '-output').value;
+      if (!v) { fail('Nothing to download yet.'); return; }
+      TN.downloadText(v, 'data.yaml', 'text/yaml');
+    });
+  } catch (e) { /* never throw on load */ }
+})();
+
+</script>
+</body>
+</html>

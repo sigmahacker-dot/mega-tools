@@ -1,0 +1,27 @@
+<div class="tool-card">
+  <div class="grid2">
+    <div class="field">
+      <label for="json-path-tester-json">JSON document</label>
+      <textarea class="textarea" id="json-path-tester-json" rows="12" placeholder='{"store": {"book": [{"title": "A"}]}}'></textarea>
+    </div>
+    <div>
+      <div class="field">
+        <label for="json-path-tester-path">JSONPath expression</label>
+        <input class="input" id="json-path-tester-path" value="$.store.book[*].title" spellcheck="false">
+        <p class="hint">Supported: $.dot, [0], ['key'], [*], .*</p>
+      </div>
+      <div class="btn-row">
+        <button class="btn btn-primary" id="json-path-tester-eval">Evaluate</button>
+        <button class="btn btn-outline" id="json-path-tester-sample">Load sample</button>
+      </div>
+      <div class="error" id="json-path-tester-error"></div>
+    </div>
+  </div>
+  <div class="result hidden" id="json-path-tester-result">
+    <p><strong id="json-path-tester-count">0</strong> match(es)</p>
+    <div class="field">
+      <label for="json-path-tester-output">Matches (value — path)</label>
+      <textarea class="textarea" id="json-path-tester-output" rows="10" readonly></textarea>
+    </div>
+  </div>
+</div>

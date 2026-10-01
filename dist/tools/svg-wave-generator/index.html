@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SVG Wave Generator — Free Online | ToolNest</title>
+<meta name="description" content="Create decorative SVG wave dividers: amplitude, wave count, height and color, with a live preview and copyable SVG code.">
+<meta name="keywords" content="svg wave, wave divider svg, svg wave generator, curved divider, wave svg code">
+<link rel="canonical" href="https://toolnest.vercel.app/tools/svg-wave-generator/">
+<meta name="theme-color" content="#07070b">
+<meta property="og:title" content="SVG Wave Generator — Free Online | ToolNest">
+<meta property="og:description" content="Create decorative SVG wave dividers: amplitude, wave count, height and color, with a live preview and copyable SVG code.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css?v=4">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%23e01111'/><text x='50' y='68' font-size='58' text-anchor='middle' fill='white' font-family='Arial' font-weight='bold'>T</text></svg>">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebApplication","name":"SVG Wave Generator","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0"},"url":"https://toolnest.vercel.app/tools/svg-wave-generator/","description":"Create decorative SVG wave dividers: amplitude, wave count, height and color, with a live preview and copyable SVG code."},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Are the waves sharp on all screens?","acceptedAnswer":{"@type":"Answer","text":"The SVG is generated from a smooth sine path, so it stays crisp at any screen size or resolution."}},{"@type":"Question","name":"Is the wave responsive?","acceptedAnswer":{"@type":"Answer","text":"The SVG uses width:100% and preserveAspectRatio=\"none\", so it stretches to fit any container width."}},{"@type":"Question","name":"Can I layer two waves?","acceptedAnswer":{"@type":"Answer","text":"Yes — copy the flipped SVG again with a different color, or stack two with negative margin, for layered wave sections."}}]}]}</script>
+</head>
+<body>
+<header class="site-header">
+  <div class="container">
+    <a class="logo" href="/"><span class="logo-mark">T</span> ToolNest</a>
+    <div class="header-right">
+      <form class="nav-search" action="/" method="get" role="search">
+        <span class="ns-icon">🔍</span>
+        <input type="search" name="q" placeholder="Search tools…" aria-label="Search tools" autocomplete="off">
+      </form>
+      <div class="menu-wrap">
+        <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="menuPanel" aria-label="Open menu"><span></span><span></span><span></span></button>
+        <nav class="menu-panel" id="menuPanel" aria-label="Site">
+          <a href="/">Home</a>
+          <a href="/#categories">Categories</a>
+          <a href="/#all-tools">All Tools</a>
+        </nav>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ADSTERRA-HEADER: paste your Adsterra banner ad code inside the div below -->
+<div class="container"><div class="ad-slot ad-leaderboard" data-ad="header"></div></div>
+
+<main class="container">
+  <nav class="crumbs"><a href="/">Home</a> &rsaquo; <a href="/#developer">Developer Tools</a> &rsaquo; SVG Wave Generator</nav>
+  <div class="tool-hero">
+    <h1>SVG Wave Generator</h1>
+    <p>Create decorative SVG wave dividers: amplitude, wave count, height and color, with a live preview and copyable SVG code.</p>
+  </div>
+
+  <div class="tool-card">
+  <h2>SVG Wave Generator</h2>
+  <p class="muted">Decorative wave divider SVGs — crisp, responsive, copy-paste ready.</p>
+  <div class="grid2">
+    <div class="field">
+      <label for="svg-wave-generator-amp">Amplitude: <span id="svg-wave-generator-amp-v">40</span></label>
+      <input type="range" class="input" id="svg-wave-generator-amp" min="5" max="120" step="1" value="40">
+    </div>
+    <div class="field">
+      <label for="svg-wave-generator-waves">Waves: <span id="svg-wave-generator-waves-v">2</span></label>
+      <input type="range" class="input" id="svg-wave-generator-waves" min="1" max="6" step="1" value="2">
+    </div>
+    <div class="field">
+      <label for="svg-wave-generator-height">Height: <span id="svg-wave-generator-height-v">120px</span></label>
+      <input type="range" class="input" id="svg-wave-generator-height" min="40" max="300" step="2" value="120">
+    </div>
+    <div class="field">
+      <label for="svg-wave-generator-color">Wave color</label>
+      <input type="color" class="input" id="svg-wave-generator-color" value="#7c3aed" style="height:44px;padding:4px">
+    </div>
+    <div class="field">
+      <label for="svg-wave-generator-flip">Flip vertically</label>
+      <select class="input" id="svg-wave-generator-flip">
+        <option value="no">No (bottom edge)</option>
+        <option value="yes">Yes (top edge)</option>
+      </select>
+    </div>
+    <div class="field">
+      <label for="svg-wave-generator-smooth">Smoothness: <span id="svg-wave-generator-smooth-v">64</span></label>
+      <input type="range" class="input" id="svg-wave-generator-smooth" min="16" max="128" step="4" value="64">
+    </div>
+  </div>
+  <h3>Live preview</h3>
+  <div class="preview" id="svg-wave-generator-stage" style="padding:0;overflow:hidden;line-height:0"></div>
+  <div class="btn-row mt">
+    <button class="btn btn-primary" id="svg-wave-generator-copy">Copy SVG</button>
+  </div>
+  <h3 class="mt">Generated SVG</h3>
+  <pre class="code" id="svg-wave-generator-code" style="max-height:300px;overflow:auto"></pre>
+  <div class="error" id="svg-wave-generator-error"></div>
+</div>
+
+
+  <!-- ADSTERRA-INCONTENT: paste your Adsterra native/in-content ad code inside the div below -->
+  <div class="ad-slot" data-ad="incontent"></div>
+
+  <div class="info-grid">
+    <div class="info-card">
+      <h2>📖 How to use</h2>
+      <ol><li>Set the amplitude, number of waves, height and color.</li><li>Preview the wave divider live.</li><li>Flip it vertically if you need a top-edge wave.</li><li>Click &quot;Copy SVG&quot; and paste it into your HTML.</li></ol>
+    </div>
+    <div class="info-card">
+      <h2>❓ Frequently asked questions</h2>
+      <div class="faq"><details><summary>Are the waves sharp on all screens?</summary><p>The SVG is generated from a smooth sine path, so it stays crisp at any screen size or resolution.</p></details><details><summary>Is the wave responsive?</summary><p>The SVG uses width:100% and preserveAspectRatio=&quot;none&quot;, so it stretches to fit any container width.</p></details><details><summary>Can I layer two waves?</summary><p>Yes — copy the flipped SVG again with a different color, or stack two with negative margin, for layered wave sections.</p></details></div>
+    </div>
+  </div>
+
+  <section class="section">
+    <h2>🔗 Related tools</h2>
+    <div class="tool-grid"><a class="tool-link" href="/tools/ascii-table-reference/" data-search="ascii table reference full ascii table 0–127: decimal, hex, octal, character, control-code names and html entities — searchable. ascii table ascii codes ascii chart control characters ascii reference"><span class="t-ico">💻</span><span class="t-body"><b>ASCII Table Reference</b><small>Full ASCII table 0–127: decimal, hex, octal, character, control-code names and HTML entities…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/base64-encoder-decoder/" data-search="base64 encoder / decoder encode text to base64 or decode base64 back to text, with full utf-8 support and a file-to-data-url converter. base64 encoder base64 decoder base64 encode base64 decode file to base64"><span class="t-ico">💻</span><span class="t-body"><b>Base64 Encoder / Decoder</b><small>Encode text to Base64 or decode Base64 back to text, with full UTF-8 support and a file-to-d…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/binary-text-converter/" data-search="binary and text converter convert text to binary or hex and back, with full utf-8 awareness and strict input validation. binary to text text to binary hex to text converter"><span class="t-ico">💻</span><span class="t-body"><b>Binary and Text Converter</b><small>Convert text to binary or hex and back, with full UTF-8 awareness and strict input validatio…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/changelog-generator/" data-search="changelog generator build a keep-a-changelog markdown file: version, date, and grouped added/fixed/changed entries. changelog generator keep a changelog changelog markdown release notes version changelog"><span class="t-ico">💻</span><span class="t-body"><b>Changelog Generator</b><small>Build a Keep-a-Changelog markdown file: version, date, and grouped Added/Fixed/Changed entri…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/character-escape-reference/" data-search="character escape reference searchable reference of characters with their html entities, url encodings, and js escapes — plus a live encoder. character escape reference html entities url encode unicode escape html entity table"><span class="t-ico">💻</span><span class="t-body"><b>Character Escape Reference</b><small>Searchable reference of characters with their HTML entities, URL encodings, and JS escapes —…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/chmod-calculator/" data-search="chmod calculator tick rwx boxes for user/group/other — or type 755 — and see octal, symbolic, and the chmod command live. chmod calculator chmod 755 linux permissions octal permissions rwx calculator"><span class="t-ico">💻</span><span class="t-body"><b>chmod Calculator</b><small>Tick rwx boxes for user/group/other — or type 755 — and see octal, symbolic, and the chmod c…</small></span><span class="t-arrow">→</span></a></div>
+  </section>
+</main>
+
+<!-- ADSTERRA-FOOTER: paste your Adsterra footer/banner ad code inside the div below -->
+<div class="container"><div class="ad-slot" data-ad="footer"></div></div>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="f-grid">
+      <div>
+        <span class="brandline"><span class="logo-mark">T</span> ToolNest</span>
+        <p>Free online tools that actually work. No sign-up, no watermarks — and your files never leave your device for client-side tools.</p>
+      </div>
+      <div>
+        <h4>Popular</h4>
+        <a href="/tools/qr-code-generator/">QR Code Generator</a>
+        <a href="/tools/background-remover/">Background Remover</a>
+        <a href="/tools/pdf-merger/">PDF Merger</a>
+        <a href="/tools/word-counter/">Word Counter</a>
+      </div>
+      <div>
+        <h4>Categories</h4>
+        <a href="/#image">Image Tools</a>
+        <a href="/#pdf">PDF &amp; Documents</a>
+        <a href="/#calculators">Calculators</a>
+        <a href="/#developer">Developer Tools</a>
+      </div>
+      <div>
+        <h4>Site</h4>
+        <a href="/">Home</a>
+        <a href="/#all-tools">All Tools</a>
+        <a href="/sitemap.xml">Sitemap</a>
+      </div>
+    </div>
+    <div class="f-bottom">© 2026 ToolNest · Free tools for everyone · Made with care</div>
+  </div>
+</footer>
+
+<script src="/assets/site.js?v=5"></script>
+
+<script>
+/* SVG Wave Generator — smooth sine wave dividers with copyable SVG. */
+(function () {
+  'use strict';
+  var SLUG = 'svg-wave-generator';
+  var ERR = SLUG + '-error';
+  var W = 1440;
+
+  function $(id) { return document.getElementById(SLUG + '-' + id); }
+
+  function wavePath(amp, waves, h, steps) {
+    var mid = h / 2;
+    var pts = [];
+    for (var i = 0; i <= steps; i++) {
+      var x = (W * i) / steps;
+      var y = mid + amp * Math.sin((Math.PI * 2 * waves * i) / steps);
+      pts.push([x, y]);
+    }
+    /* Catmull-Rom to bezier for a smooth curve */
+    var d = 'M ' + pts[0][0].toFixed(1) + ' ' + pts[0][1].toFixed(1);
+    for (var j = 0; j < pts.length - 1; j++) {
+      var p0 = pts[Math.max(0, j - 1)], p1 = pts[j], p2 = pts[j + 1], p3 = pts[Math.min(pts.length - 1, j + 2)];
+      var c1x = p1[0] + (p2[0] - p0[0]) / 6, c1y = p1[1] + (p2[1] - p0[1]) / 6;
+      var c2x = p2[0] - (p3[0] - p1[0]) / 6, c2y = p2[1] - (p3[1] - p1[1]) / 6;
+      d += ' C ' + c1x.toFixed(1) + ' ' + c1y.toFixed(1) + ', ' + c2x.toFixed(1) + ' ' + c2y.toFixed(1) + ', ' + p2[0].toFixed(1) + ' ' + p2[1].toFixed(1);
+    }
+    return d;
+  }
+
+  function buildSvg(flip, color, h, path) {
+    var inner = flip
+      ? '<path d="' + path + ' L ' + W + ' 0 L 0 0 Z" fill="' + color + '"/>'
+      : '<path d="' + path + ' L ' + W + ' ' + h + ' L 0 ' + h + ' Z" fill="' + color + '"/>';
+    return '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ' + W + ' ' + h + '" preserveAspectRatio="none" style="width:100%;height:' + h + 'px;display:block">' + inner + '</svg>';
+  }
+
+  function render() {
+    TN.clearErr(ERR);
+    try {
+      var amp = parseInt($('amp').value, 10);
+      var waves = parseInt($('waves').value, 10);
+      var h = parseInt($('height').value, 10);
+      var color = $('color').value;
+      var flip = $('flip').value === 'yes';
+      var smooth = parseInt($('smooth').value, 10);
+      $('amp-v').textContent = amp;
+      $('waves-v').textContent = waves;
+      $('height-v').textContent = h + 'px';
+      $('smooth-v').textContent = smooth;
+      var path = wavePath(amp, waves, h, smooth);
+      var svg = buildSvg(flip, color, h, path);
+      $('stage').innerHTML = svg;
+      $('code').textContent = svg;
+    } catch (e) {
+      TN.setErr(ERR, 'Could not render the wave.');
+    }
+  }
+
+  function init() {
+    try {
+      if (typeof TN === 'undefined') return;
+      ['amp', 'waves', 'height', 'color', 'flip', 'smooth'].forEach(function (k) {
+        TN.on(SLUG + '-' + k, 'input', render);
+        TN.on(SLUG + '-' + k, 'change', render);
+      });
+      TN.on(SLUG + '-copy', 'click', function () {
+        var txt = $('code').textContent;
+        if (!txt) { TN.setErr(ERR, 'Nothing to copy yet.'); return; }
+        TN.copy(txt).then(function (ok) {
+          if (ok) TN.clearErr(ERR);
+          else TN.setErr(ERR, 'Copy failed — select the code and copy manually.');
+        });
+      });
+      render();
+    } catch (e) { /* never throw on load */ }
+  }
+
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init);
+  else init();
+})();
+
+</script>
+</body>
+</html>

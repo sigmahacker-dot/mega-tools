@@ -1,0 +1,39 @@
+<div class="tool-card">
+  <div class="grid2">
+    <div class="field">
+      <label for="caffeine-half-life-calculator-drink">Drink</label>
+      <select class="input" id="caffeine-half-life-calculator-drink">
+        <option value="95">Brewed coffee (~95 mg)</option>
+        <option value="63">Espresso shot (~63 mg)</option>
+        <option value="47">Black tea (~47 mg)</option>
+        <option value="28">Green tea (~28 mg)</option>
+        <option value="34">Cola (~34 mg)</option>
+        <option value="120">Energy drink (~120 mg)</option>
+        <option value="custom">Custom amount…</option>
+      </select>
+    </div>
+    <div class="field">
+      <label for="caffeine-half-life-calculator-mg">Caffeine (mg)</label>
+      <input class="input" id="caffeine-half-life-calculator-mg" type="number" min="1" max="1000" step="1" value="95">
+    </div>
+    <div class="field">
+      <label for="caffeine-half-life-calculator-time">Time consumed</label>
+      <input class="input" id="caffeine-half-life-calculator-time" type="datetime-local">
+    </div>
+    <div class="field" style="align-self:end">
+      <button class="btn btn-primary" id="caffeine-half-life-calculator-add">Log drink</button>
+    </div>
+  </div>
+  <div class="field" style="max-width:320px">
+    <label for="caffeine-half-life-calculator-bed">Your bedtime (for estimate)</label>
+    <input class="input" id="caffeine-half-life-calculator-bed" type="time" value="23:00">
+  </div>
+  <div class="stat-cards" id="caffeine-half-life-calculator-out">
+    <div class="stat-card"><div class="v" id="caffeine-half-life-calculator-now">0</div><div class="l">mg in system now</div></div>
+    <div class="stat-card"><div class="v" id="caffeine-half-life-calculator-bedmg">–</div><div class="l">mg at bedtime</div></div>
+  </div>
+  <div class="result" id="caffeine-half-life-calculator-list"></div>
+  <p class="hint" id="caffeine-half-life-calculator-tip"></p>
+  <p class="note">General information only — not medical advice. Consult a professional for personal guidance. Half-life varies by person (3–7 hours).</p>
+  <div class="error" id="caffeine-half-life-calculator-error"></div>
+</div>

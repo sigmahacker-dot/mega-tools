@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Caesar Cipher Tool — Free Online | ToolNest</title>
+<meta name="description" content="Caesar cipher with any shift 1–25, plus a brute-force cracker that shows all 25 possible shifts.">
+<meta name="keywords" content="caesar cipher, caesar cipher decoder, shift cipher, caesar cracker, brute force cipher">
+<link rel="canonical" href="https://toolnest.vercel.app/tools/caesar-cipher-tool/">
+<meta name="theme-color" content="#07070b">
+<meta property="og:title" content="Caesar Cipher Tool — Free Online | ToolNest">
+<meta property="og:description" content="Caesar cipher with any shift 1–25, plus a brute-force cracker that shows all 25 possible shifts.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css?v=4">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%23e01111'/><text x='50' y='68' font-size='58' text-anchor='middle' fill='white' font-family='Arial' font-weight='bold'>T</text></svg>">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebApplication","name":"Caesar Cipher Tool","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0"},"url":"https://toolnest.vercel.app/tools/caesar-cipher-tool/","description":"Caesar cipher with any shift 1–25, plus a brute-force cracker that shows all 25 possible shifts."},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How does the Caesar cipher work?","acceptedAnswer":{"@type":"Answer","text":"Each letter shifts a fixed number of places (A→D with shift 3). Decoding shifts back by the same amount."}},{"@type":"Question","name":"How does the crack mode work?","acceptedAnswer":{"@type":"Answer","text":"It tries all 25 shifts and lists every result, so you can spot the readable one."}},{"@type":"Question","name":"Is it secure?","acceptedAnswer":{"@type":"Answer","text":"No — it is a classical teaching cipher and is trivially broken by brute force."}}]}]}</script>
+</head>
+<body>
+<header class="site-header">
+  <div class="container">
+    <a class="logo" href="/"><span class="logo-mark">T</span> ToolNest</a>
+    <div class="header-right">
+      <form class="nav-search" action="/" method="get" role="search">
+        <span class="ns-icon">🔍</span>
+        <input type="search" name="q" placeholder="Search tools…" aria-label="Search tools" autocomplete="off">
+      </form>
+      <div class="menu-wrap">
+        <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="menuPanel" aria-label="Open menu"><span></span><span></span><span></span></button>
+        <nav class="menu-panel" id="menuPanel" aria-label="Site">
+          <a href="/">Home</a>
+          <a href="/#categories">Categories</a>
+          <a href="/#all-tools">All Tools</a>
+        </nav>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ADSTERRA-HEADER: paste your Adsterra banner ad code inside the div below -->
+<div class="container"><div class="ad-slot ad-leaderboard" data-ad="header"></div></div>
+
+<main class="container">
+  <nav class="crumbs"><a href="/">Home</a> &rsaquo; <a href="/#text">Text &amp; Writing</a> &rsaquo; Caesar Cipher Tool</nav>
+  <div class="tool-hero">
+    <h1>Caesar Cipher Tool</h1>
+    <p>Caesar cipher with any shift 1–25, plus a brute-force cracker that shows all 25 possible shifts.</p>
+  </div>
+
+  <div class="tool-card">
+  <div class="field">
+    <label for="caesar-cipher-tool-input">Input text</label>
+    <textarea class="textarea" id="caesar-cipher-tool-input" rows="5" placeholder="Type text to encode, decode or crack"></textarea>
+  </div>
+  <div class="grid2">
+    <div class="field">
+      <label for="caesar-cipher-tool-shift">Shift (1–25)</label>
+      <input class="input" type="number" id="caesar-cipher-tool-shift" min="1" max="25" value="3">
+    </div>
+    <div class="field">
+      <label for="caesar-cipher-tool-mode">Mode</label>
+      <select class="input" id="caesar-cipher-tool-mode">
+        <option value="encode">Encode</option>
+        <option value="decode">Decode</option>
+        <option value="crack">Crack (show all 25 shifts)</option>
+      </select>
+    </div>
+  </div>
+  <div class="btn-row">
+    <button class="btn btn-primary" id="caesar-cipher-tool-run">Run</button>
+  </div>
+  <div class="field">
+    <label>Output</label>
+    <div class="result"><div class="data" id="caesar-cipher-tool-output" style="white-space:pre-wrap"></div></div>
+    <div class="copy-row"><button class="btn btn-outline" id="caesar-cipher-tool-copy">Copy output</button></div>
+  </div>
+  <div class="error" id="caesar-cipher-tool-error"></div>
+</div>
+
+
+  <!-- ADSTERRA-INCONTENT: paste your Adsterra native/in-content ad code inside the div below -->
+  <div class="ad-slot" data-ad="incontent"></div>
+
+  <div class="info-grid">
+    <div class="info-card">
+      <h2>📖 How to use</h2>
+      <ol><li>Enter text and pick a shift from 1 to 25.</li><li>Choose Encode, Decode, or Crack (shows all 25 shifts).</li><li>Press Run.</li><li>Copy the result.</li></ol>
+    </div>
+    <div class="info-card">
+      <h2>❓ Frequently asked questions</h2>
+      <div class="faq"><details><summary>How does the Caesar cipher work?</summary><p>Each letter shifts a fixed number of places (A→D with shift 3). Decoding shifts back by the same amount.</p></details><details><summary>How does the crack mode work?</summary><p>It tries all 25 shifts and lists every result, so you can spot the readable one.</p></details><details><summary>Is it secure?</summary><p>No — it is a classical teaching cipher and is trivially broken by brute force.</p></details></div>
+    </div>
+  </div>
+
+  <section class="section">
+    <h2>🔗 Related tools</h2>
+    <div class="tool-grid"><a class="tool-link" href="/tools/acronym-generator/" data-search="acronym generator turn any phrase into an acronym instantly — first letters, with options to skip small words, add periods and force uppercase. acronym generator make acronym from words initialism generator phrase to acronym"><span class="t-ico">✍️</span><span class="t-body"><b>Acronym Generator</b><small>Turn any phrase into an acronym instantly — first letters, with options to skip small words,…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/acrostic-poem-generator/" data-search="acrostic poem generator turn any word into an acrostic poem — one poetic line per letter from built-in line banks. acrostic poem generator acrostic generator name poem acrostic maker poem from word"><span class="t-ico">✍️</span><span class="t-body"><b>Acrostic Poem Generator</b><small>Turn any word into an acrostic poem — one poetic line per letter from built-in line banks.</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/aes-text-encryptor/" data-search="aes text encryptor encrypt text with real aes-256-gcm using a password-derived key (pbkdf2), fully in your browser. aes encrypt text encrypt message password aes-gcm online"><span class="t-ico">✍️</span><span class="t-body"><b>AES Text Encryptor</b><small>Encrypt text with real AES-256-GCM using a password-derived key (PBKDF2), fully in your brow…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/alliteration-generator/" data-search="alliteration generator generate alliterative phrases — pick a letter and a theme, get tongue-twisting word combos. alliteration generator alliteration examples tongue twister generator alliterative phrases letter phrases"><span class="t-ico">✍️</span><span class="t-body"><b>Alliteration Generator</b><small>Generate alliterative phrases — pick a letter and a theme, get tongue-twisting word combos.</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/anagram-generator/" data-search="anagram generator find every real anagram of your word — all unique permutations checked against a built-in word list. anagram generator anagram solver find anagrams anagram finder word unscrambler"><span class="t-ico">✍️</span><span class="t-body"><b>Anagram Generator</b><small>Find every real anagram of your word — all unique permutations checked against a built-in wo…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/article-rewriter/" data-search="article rewriter rewrite articles with a built-in synonym engine covering 130+ common english words. whole-word replacement with capitalization preserved and a change report. article rewriter paraphrasing tool rewrite text online"><span class="t-ico">✍️</span><span class="t-body"><b>Article Rewriter</b><small>Rewrite articles with a built-in synonym engine covering 130+ common English words. Whole-wo…</small></span><span class="t-arrow">→</span></a></div>
+  </section>
+</main>
+
+<!-- ADSTERRA-FOOTER: paste your Adsterra footer/banner ad code inside the div below -->
+<div class="container"><div class="ad-slot" data-ad="footer"></div></div>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="f-grid">
+      <div>
+        <span class="brandline"><span class="logo-mark">T</span> ToolNest</span>
+        <p>Free online tools that actually work. No sign-up, no watermarks — and your files never leave your device for client-side tools.</p>
+      </div>
+      <div>
+        <h4>Popular</h4>
+        <a href="/tools/qr-code-generator/">QR Code Generator</a>
+        <a href="/tools/background-remover/">Background Remover</a>
+        <a href="/tools/pdf-merger/">PDF Merger</a>
+        <a href="/tools/word-counter/">Word Counter</a>
+      </div>
+      <div>
+        <h4>Categories</h4>
+        <a href="/#image">Image Tools</a>
+        <a href="/#pdf">PDF &amp; Documents</a>
+        <a href="/#calculators">Calculators</a>
+        <a href="/#developer">Developer Tools</a>
+      </div>
+      <div>
+        <h4>Site</h4>
+        <a href="/">Home</a>
+        <a href="/#all-tools">All Tools</a>
+        <a href="/sitemap.xml">Sitemap</a>
+      </div>
+    </div>
+    <div class="f-bottom">© 2026 ToolNest · Free tools for everyone · Made with care</div>
+  </div>
+</footer>
+
+<script src="/assets/site.js?v=5"></script>
+
+<script>
+/* Caesar Cipher Tool — shift encode/decode plus a brute-force cracker. */
+(function () {
+  'use strict';
+  var SLUG = 'caesar-cipher-tool';
+
+  function shift(text, n) {
+    n = ((n % 26) + 26) % 26;
+    return text.replace(/[A-Za-z]/g, function (ch) {
+      var base = ch <= 'Z' ? 65 : 97;
+      return String.fromCharCode(((ch.charCodeAt(0) - base + n) % 26) + base);
+    });
+  }
+
+  function run() {
+    TN.clearErr(SLUG + '-error');
+    var input = TN.el(SLUG + '-input').value;
+    if (!input.trim()) { TN.setErr(SLUG + '-error', 'Please enter some text first.'); return; }
+    var mode = TN.el(SLUG + '-mode').value;
+    var out;
+    if (mode === 'crack') {
+      var lines = [];
+      for (var s = 1; s <= 25; s++) {
+        lines.push('Shift ' + (s < 10 ? ' ' + s : s) + ':  ' + shift(input, 26 - s));
+      }
+      out = lines.join('\n');
+    } else {
+      var n = parseInt(TN.el(SLUG + '-shift').value, 10);
+      if (isNaN(n) || n < 1 || n > 25) { TN.setErr(SLUG + '-error', 'Shift must be between 1 and 25.'); return; }
+      out = mode === 'encode' ? shift(input, n) : shift(input, -n);
+    }
+    TN.el(SLUG + '-output').textContent = out;
+  }
+
+  try {
+    TN.on(SLUG + '-run', 'click', run);
+    TN.on(SLUG + '-copy', 'click', function () {
+      TN.copy(TN.el(SLUG + '-output').textContent);
+    });
+  } catch (e) { /* never throw on load */ }
+})();
+
+</script>
+</body>
+</html>

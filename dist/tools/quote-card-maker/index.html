@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Quote Card Maker — Free Online | ToolNest</title>
+<meta name="description" content="Design shareable 1080×1080 quote cards: your quote and author, six styled themes, live preview, and a real PNG download.">
+<meta name="keywords" content="quote card maker, quote image maker, instagram quote card, motivational quote png, quote graphic maker">
+<link rel="canonical" href="https://toolnest.vercel.app/tools/quote-card-maker/">
+<meta name="theme-color" content="#07070b">
+<meta property="og:title" content="Quote Card Maker — Free Online | ToolNest">
+<meta property="og:description" content="Design shareable 1080×1080 quote cards: your quote and author, six styled themes, live preview, and a real PNG download.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css?v=4">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%23e01111'/><text x='50' y='68' font-size='58' text-anchor='middle' fill='white' font-family='Arial' font-weight='bold'>T</text></svg>">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebApplication","name":"Quote Card Maker","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0"},"url":"https://toolnest.vercel.app/tools/quote-card-maker/","description":"Design shareable 1080×1080 quote cards: your quote and author, six styled themes, live preview, and a real PNG download."},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What size is the exported card?","acceptedAnswer":{"@type":"Answer","text":"The card renders at 1080×1080 pixels — the standard square size for Instagram and Facebook posts."}},{"@type":"Question","name":"How do I make a card?","acceptedAnswer":{"@type":"Answer","text":"Type the quote and author, pick a theme, and the preview updates instantly. Download when it looks right."}},{"@type":"Question","name":"What if my quote is long?","acceptedAnswer":{"@type":"Answer","text":"Long quotes wrap automatically across multiple lines; keep it under ~200 characters for the best typography."}}]}]}</script>
+</head>
+<body>
+<header class="site-header">
+  <div class="container">
+    <a class="logo" href="/"><span class="logo-mark">T</span> ToolNest</a>
+    <div class="header-right">
+      <form class="nav-search" action="/" method="get" role="search">
+        <span class="ns-icon">🔍</span>
+        <input type="search" name="q" placeholder="Search tools…" aria-label="Search tools" autocomplete="off">
+      </form>
+      <div class="menu-wrap">
+        <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="menuPanel" aria-label="Open menu"><span></span><span></span><span></span></button>
+        <nav class="menu-panel" id="menuPanel" aria-label="Site">
+          <a href="/">Home</a>
+          <a href="/#categories">Categories</a>
+          <a href="/#all-tools">All Tools</a>
+        </nav>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ADSTERRA-HEADER: paste your Adsterra banner ad code inside the div below -->
+<div class="container"><div class="ad-slot ad-leaderboard" data-ad="header"></div></div>
+
+<main class="container">
+  <nav class="crumbs"><a href="/">Home</a> &rsaquo; <a href="/#image">Image Tools</a> &rsaquo; Quote Card Maker</nav>
+  <div class="tool-hero">
+    <h1>Quote Card Maker</h1>
+    <p>Design shareable 1080×1080 quote cards: your quote and author, six styled themes, live preview, and a real PNG download.</p>
+  </div>
+
+  <div class="tool-card">
+  <h2>Quote Card Maker</h2>
+  <p class="muted">1080×1080 quote cards for social media — live preview, one-click PNG download.</p>
+  <div class="grid2">
+    <div class="field" style="grid-column:1/-1">
+      <label for="quote-card-maker-quote">Quote</label>
+      <textarea class="textarea" id="quote-card-maker-quote" rows="3">The best way to predict the future is to create it.</textarea>
+    </div>
+    <div class="field">
+      <label for="quote-card-maker-author">Author</label>
+      <input type="text" class="input" id="quote-card-maker-author" value="Peter Drucker">
+    </div>
+    <div class="field">
+      <label for="quote-card-maker-theme">Theme</label>
+      <select class="input" id="quote-card-maker-theme">
+        <option value="midnight">Midnight</option>
+        <option value="sunset">Sunset</option>
+        <option value="ocean">Ocean</option>
+        <option value="forest">Forest</option>
+        <option value="paper">Paper (light)</option>
+        <option value="royal">Royal</option>
+      </select>
+    </div>
+  </div>
+  <h3>Live preview</h3>
+  <div class="preview" style="display:flex;justify-content:center">
+    <canvas id="quote-card-maker-canvas" width="1080" height="1080" style="max-width:420px;width:100%;height:auto;border-radius:12px"></canvas>
+  </div>
+  <div class="btn-row mt">
+    <button class="btn btn-primary" id="quote-card-maker-download">⬇ Download PNG</button>
+  </div>
+  <div class="error" id="quote-card-maker-error"></div>
+</div>
+
+
+  <!-- ADSTERRA-INCONTENT: paste your Adsterra native/in-content ad code inside the div below -->
+  <div class="ad-slot" data-ad="incontent"></div>
+
+  <div class="info-grid">
+    <div class="info-card">
+      <h2>📖 How to use</h2>
+      <ol><li>Type your quote and the author&#39;s name.</li><li>Pick one of the six themes.</li><li>Preview the 1080×1080 card live.</li><li>Click &quot;Download PNG&quot; to save the card.</li></ol>
+    </div>
+    <div class="info-card">
+      <h2>❓ Frequently asked questions</h2>
+      <div class="faq"><details><summary>What size is the exported card?</summary><p>The card renders at 1080×1080 pixels — the standard square size for Instagram and Facebook posts.</p></details><details><summary>How do I make a card?</summary><p>Type the quote and author, pick a theme, and the preview updates instantly. Download when it looks right.</p></details><details><summary>What if my quote is long?</summary><p>Long quotes wrap automatically across multiple lines; keep it under ~200 characters for the best typography.</p></details></div>
+    </div>
+  </div>
+
+  <section class="section">
+    <h2>🔗 Related tools</h2>
+    <div class="tool-grid"><a class="tool-link" href="/tools/app-icon-resizer/" data-search="app icon resizer generate every common app icon size from one image — 16, 32, 48, 180, 192 and 512 px — with instant preview and one-click png downloads. app icon resizer icon generator favicon sizes pwa icon apple touch icon generator"><span class="t-ico">🖼️</span><span class="t-body"><b>App Icon Resizer</b><small>Generate every common app icon size from one image — 16, 32, 48, 180, 192 and 512 px — with …</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/background-remover/" data-search="background remover remove the background from any photo with real on-device ai and download a transparent png. free, private and unlimited — no sign-up needed. background remover remove image background transparent png maker"><span class="t-ico">🖼️</span><span class="t-body"><b>Background Remover</b><small>Remove the background from any photo with real on-device AI and download a transparent PNG. …</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/before-after-slider-maker/" data-search="before/after slider maker upload two photos and get a standalone before/after comparison slider as an html file. before after slider image comparison slider photo compare html before after html"><span class="t-ico">🖼️</span><span class="t-body"><b>Before/After Slider Maker</b><small>Upload two photos and get a standalone before/after comparison slider as an HTML file.</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/business-card-maker/" data-search="business card maker design a business card front (1050×600): your name, role and contact details, color themes, live preview, and a png download. business card maker business card design business card png visiting card maker card designer"><span class="t-ico">🖼️</span><span class="t-body"><b>Business Card Maker</b><small>Design a business card front (1050×600): your name, role and contact details, color themes, …</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/certificate-maker/" data-search="certificate maker design printable certificates: recipient name, course title, date and signature line, live preview, and a high-res png download. certificate maker certificate generator certificate png award certificate maker printable certificate"><span class="t-ico">🖼️</span><span class="t-body"><b>Certificate Maker</b><small>Design printable certificates: recipient name, course title, date and signature line, live p…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/favicon-generator/" data-search="favicon generator generate a complete png favicon set (16–512 px) from your logo in one click, download it as a zip, and copy the ready-to-paste html link tags. favicon generator favicon maker png favicon"><span class="t-ico">🖼️</span><span class="t-body"><b>Favicon Generator</b><small>Generate a complete PNG favicon set (16–512 px) from your logo in one click, download it as …</small></span><span class="t-arrow">→</span></a></div>
+  </section>
+</main>
+
+<!-- ADSTERRA-FOOTER: paste your Adsterra footer/banner ad code inside the div below -->
+<div class="container"><div class="ad-slot" data-ad="footer"></div></div>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="f-grid">
+      <div>
+        <span class="brandline"><span class="logo-mark">T</span> ToolNest</span>
+        <p>Free online tools that actually work. No sign-up, no watermarks — and your files never leave your device for client-side tools.</p>
+      </div>
+      <div>
+        <h4>Popular</h4>
+        <a href="/tools/qr-code-generator/">QR Code Generator</a>
+        <a href="/tools/background-remover/">Background Remover</a>
+        <a href="/tools/pdf-merger/">PDF Merger</a>
+        <a href="/tools/word-counter/">Word Counter</a>
+      </div>
+      <div>
+        <h4>Categories</h4>
+        <a href="/#image">Image Tools</a>
+        <a href="/#pdf">PDF &amp; Documents</a>
+        <a href="/#calculators">Calculators</a>
+        <a href="/#developer">Developer Tools</a>
+      </div>
+      <div>
+        <h4>Site</h4>
+        <a href="/">Home</a>
+        <a href="/#all-tools">All Tools</a>
+        <a href="/sitemap.xml">Sitemap</a>
+      </div>
+    </div>
+    <div class="f-bottom">© 2026 ToolNest · Free tools for everyone · Made with care</div>
+  </div>
+</footer>
+
+<script src="/assets/site.js?v=5"></script>
+
+<script>
+/* Quote Card Maker — 1080×1080 canvas cards, real PNG download. */
+(function () {
+  'use strict';
+  var SLUG = 'quote-card-maker';
+  var ERR = SLUG + '-error';
+  var W = 1080, H = 1080;
+
+  var THEMES = {
+    midnight: { bg: ['#0f172a', '#1e1b4b'], fg: '#f8fafc', accent: '#a78bfa', mark: '“' },
+    sunset: { bg: ['#7c2d12', '#b45309'], fg: '#fff7ed', accent: '#fde68a', mark: '“' },
+    ocean: { bg: ['#0c4a6e', '#164e63'], fg: '#ecfeff', accent: '#67e8f9', mark: '“' },
+    forest: { bg: ['#14532d', '#1a2e05'], fg: '#f7fee7', accent: '#bef264', mark: '“' },
+    paper: { bg: ['#faf7f2', '#e7e0d3'], fg: '#292524', accent: '#b45309', mark: '“' },
+    royal: { bg: ['#4c1d95', '#831843'], fg: '#fdf4ff', accent: '#f0abfc', mark: '“' }
+  };
+
+  function $(id) { return document.getElementById(SLUG + '-' + id); }
+
+  function wrapText(ctx, text, maxW) {
+    var words = text.split(/\s+/).filter(Boolean);
+    var lines = [], line = '';
+    words.forEach(function (w) {
+      var test = line ? line + ' ' + w : w;
+      if (ctx.measureText(test).width > maxW && line) { lines.push(line); line = w; }
+      else line = test;
+    });
+    if (line) lines.push(line);
+    return lines;
+  }
+
+  function render() {
+    TN.clearErr(ERR);
+    try {
+      var quote = $('quote').value.trim() || 'Your quote here.';
+      var author = $('author').value.trim();
+      var th = THEMES[$('theme').value] || THEMES.midnight;
+      var cv = $('canvas'), ctx = cv.getContext('2d');
+      var g = ctx.createLinearGradient(0, 0, W, H);
+      g.addColorStop(0, th.bg[0]); g.addColorStop(1, th.bg[1]);
+      ctx.fillStyle = g; ctx.fillRect(0, 0, W, H);
+      /* decorative circles */
+      ctx.fillStyle = th.accent; ctx.globalAlpha = 0.12;
+      ctx.beginPath(); ctx.arc(W * 0.85, H * 0.15, 220, 0, Math.PI * 2); ctx.fill();
+      ctx.beginPath(); ctx.arc(W * 0.12, H * 0.88, 160, 0, Math.PI * 2); ctx.fill();
+      ctx.globalAlpha = 1;
+      /* quote mark */
+      ctx.fillStyle = th.accent;
+      ctx.font = '700 200px Georgia, serif';
+      ctx.textAlign = 'center';
+      ctx.fillText(th.mark, W / 2, 330);
+      /* quote text, auto-fit */
+      var fs = 64, lines;
+      ctx.fillStyle = th.fg;
+      do {
+        ctx.font = '600 ' + fs + 'px Georgia, serif';
+        lines = wrapText(ctx, quote, W - 220);
+        fs -= 4;
+      } while (lines.length > 6 && fs > 30);
+      var lh = fs * 1.45;
+      var startY = (H / 2) - ((lines.length - 1) * lh) / 2 + 40;
+      lines.forEach(function (ln, i) {
+        ctx.fillText(ln, W / 2, startY + i * lh);
+      });
+      /* divider */
+      var dy = startY + lines.length * lh + 10;
+      ctx.strokeStyle = th.accent; ctx.lineWidth = 4;
+      ctx.beginPath(); ctx.moveTo(W / 2 - 60, dy); ctx.lineTo(W / 2 + 60, dy); ctx.stroke();
+      /* author */
+      if (author) {
+        ctx.fillStyle = th.accent;
+        ctx.font = '600 44px system-ui, sans-serif';
+        ctx.fillText('— ' + author.toUpperCase(), W / 2, dy + 90);
+      }
+    } catch (e) {
+      TN.setErr(ERR, 'Could not render the card.');
+    }
+  }
+
+  function init() {
+    try {
+      if (typeof TN === 'undefined') return;
+      ['quote', 'author', 'theme'].forEach(function (k) {
+        TN.on(SLUG + '-' + k, 'input', render);
+        TN.on(SLUG + '-' + k, 'change', render);
+      });
+      TN.on(SLUG + '-download', 'click', function () {
+        try {
+          $('canvas').toBlob(function (blob) {
+            if (blob) TN.download(blob, 'quote-card.png');
+            else TN.setErr(ERR, 'Could not create the PNG.');
+          }, 'image/png');
+        } catch (e) { TN.setErr(ERR, 'Could not create the PNG.'); }
+      });
+      render();
+    } catch (e) { /* never throw on load */ }
+  }
+
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init);
+  else init();
+})();
+
+</script>
+</body>
+</html>

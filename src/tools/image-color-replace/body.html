@@ -1,0 +1,27 @@
+<div class="tool-card">
+  <div class="dropzone" id="image-color-replace-drop">
+    <span class="dz-icon">🎯</span>
+    <strong>Drop an image here</strong> or click to browse — then click a color in the image
+    <input type="file" id="image-color-replace-file" accept="image/*" class="hidden">
+  </div>
+  <div class="preview hidden" id="image-color-replace-wrap" style="text-align:center">
+    <canvas id="image-color-replace-canvas" style="max-width:100%;height:auto;border-radius:8px;cursor:crosshair"></canvas>
+  </div>
+  <div class="grid2">
+    <div class="field">
+      <label for="image-color-replace-tol">Tolerance: <span id="image-color-replace-tol-val">40</span></label>
+      <input type="range" id="image-color-replace-tol" min="0" max="200" value="40">
+      <span class="hint">Click the image first to sample a source color.</span>
+    </div>
+    <div class="field">
+      <label for="image-color-replace-target">Target color</label>
+      <input type="color" id="image-color-replace-target" class="input" value="#ff0000">
+      <div class="stat-card" style="margin-top:8px"><div class="l">Sampled source color</div><div class="v" id="image-color-replace-src">none — click the image</div></div>
+    </div>
+  </div>
+  <div class="btn-row">
+    <button class="btn btn-primary" id="image-color-replace-download">Download PNG</button>
+  </div>
+  <div class="error" id="image-color-replace-error"></div>
+  <p class="note">Files never leave your device — everything is processed in your browser.</p>
+</div>

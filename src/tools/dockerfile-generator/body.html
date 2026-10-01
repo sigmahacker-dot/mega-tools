@@ -1,0 +1,54 @@
+<div class="tool-card">
+  <div class="grid2">
+    <div class="field">
+      <label for="dockerfile-generator-base">Base image</label>
+      <input class="input" id="dockerfile-generator-base" value="node:20-alpine" list="dockerfile-generator-bases">
+      <datalist id="dockerfile-generator-bases">
+        <option value="node:20-alpine"></option><option value="node:20-slim"></option>
+        <option value="python:3.12-slim"></option><option value="openjdk:17-slim"></option>
+        <option value="golang:1.22-alpine"></option><option value="nginx:alpine"></option>
+        <option value="php:8.3-apache"></option><option value="ubuntu:24.04"></option>
+        <option value="alpine:3.20"></option>
+      </datalist>
+    </div>
+    <div class="field">
+      <label for="dockerfile-generator-workdir">WORKDIR</label>
+      <input class="input" id="dockerfile-generator-workdir" value="/app">
+    </div>
+  </div>
+  <div class="grid2">
+    <div class="field">
+      <label for="dockerfile-generator-copy">COPY (src → dest)</label>
+      <input class="input" id="dockerfile-generator-copy" value=". .">
+    </div>
+    <div class="field">
+      <label for="dockerfile-generator-expose">EXPOSE ports (comma separated)</label>
+      <input class="input" id="dockerfile-generator-expose" value="3000">
+    </div>
+  </div>
+  <div class="field">
+    <label for="dockerfile-generator-env">ENV variables (one KEY=value per line)</label>
+    <textarea class="textarea" id="dockerfile-generator-env" rows="2" placeholder="NODE_ENV=production"></textarea>
+  </div>
+  <div class="field">
+    <label for="dockerfile-generator-run">RUN commands (one per line)</label>
+    <textarea class="textarea" id="dockerfile-generator-run" rows="3">npm ci --only=production
+npm run build</textarea>
+  </div>
+  <div class="field">
+    <label for="dockerfile-generator-cmd">CMD (exec form, e.g. node server.js)</label>
+    <input class="input" id="dockerfile-generator-cmd" value="node server.js">
+  </div>
+  <div class="btn-row">
+    <button class="btn btn-primary" id="dockerfile-generator-generate">Generate Dockerfile</button>
+  </div>
+  <div class="error" id="dockerfile-generator-error"></div>
+  <div class="field">
+    <label for="dockerfile-generator-output">Dockerfile</label>
+    <textarea class="textarea" id="dockerfile-generator-output" rows="12" readonly placeholder="Your Dockerfile will appear here…"></textarea>
+  </div>
+  <div class="btn-row">
+    <button class="btn btn-outline" id="dockerfile-generator-copy">Copy</button>
+    <button class="btn btn-outline" id="dockerfile-generator-download">Download Dockerfile</button>
+  </div>
+</div>

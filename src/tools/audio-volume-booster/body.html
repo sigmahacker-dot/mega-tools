@@ -1,0 +1,20 @@
+<div class="tool-card">
+  <div class="dropzone" id="audio-volume-booster-drop">
+    <span class="dz-icon">🔊</span>
+    <strong>Drop an audio file here</strong> or click to browse
+    <input type="file" id="audio-volume-booster-file" accept="audio/*" class="hidden">
+  </div>
+  <div class="field">
+    <label for="audio-volume-booster-gain">Gain: <span id="audio-volume-booster-gain-val">150</span>%</label>
+    <input type="range" id="audio-volume-booster-gain" min="100" max="300" value="150">
+    <span class="hint">Above ~100% loud parts may clip — the tool counts clipped samples after boosting.</span>
+  </div>
+  <div class="result hidden" id="audio-volume-booster-result">
+    <table class="data"><tbody id="audio-volume-booster-rows"></tbody></table>
+  </div>
+  <div class="btn-row">
+    <button class="btn btn-primary" id="audio-volume-booster-go">Boost &amp; download WAV</button>
+  </div>
+  <div class="error" id="audio-volume-booster-error"></div>
+  <p class="note">Clipping happens when boosting pushes samples past the maximum level — distortion. Lower the gain if the clip count is high. Files never leave your device — everything is processed in your browser.</p>
+</div>

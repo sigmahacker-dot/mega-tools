@@ -1,0 +1,42 @@
+<div class="tool-card">
+  <div class="grid2">
+    <div class="field">
+      <label for="curl-command-builder-method">Method</label>
+      <select class="input" id="curl-command-builder-method">
+        <option>GET</option><option>POST</option><option>PUT</option><option>PATCH</option><option>DELETE</option><option>HEAD</option><option>OPTIONS</option>
+      </select>
+    </div>
+    <div class="field">
+      <label for="curl-command-builder-url">URL</label>
+      <input class="input" id="curl-command-builder-url" placeholder="https://api.example.com/users">
+    </div>
+  </div>
+  <div class="field">
+    <label>Headers</label>
+    <div id="curl-command-builder-headers"></div>
+    <div class="btn-row" style="margin-top:8px"><button class="btn btn-outline" id="curl-command-builder-add">+ Add header</button></div>
+  </div>
+  <div class="field">
+    <label for="curl-command-builder-body">Request body</label>
+    <textarea class="textarea" id="curl-command-builder-body" rows="3" placeholder='{"name": "Ada"}'></textarea>
+  </div>
+  <div class="field">
+    <label>Options</label>
+    <div class="btn-row">
+      <label class="checkbox-row"><input type="checkbox" id="curl-command-builder-follow"> Follow redirects (-L)</label>
+      <label class="checkbox-row"><input type="checkbox" id="curl-command-builder-include"> Include response headers (-i)</label>
+      <label class="checkbox-row"><input type="checkbox" id="curl-command-builder-insecure"> Allow insecure SSL (-k)</label>
+    </div>
+  </div>
+  <div class="btn-row">
+    <button class="btn btn-primary" id="curl-command-builder-build">Build curl command</button>
+  </div>
+  <div class="error" id="curl-command-builder-error"></div>
+  <div class="field">
+    <label for="curl-command-builder-output">Command</label>
+    <div class="copy-row">
+      <code class="code" id="curl-command-builder-output" style="flex:1;word-break:break-all"></code>
+      <button class="btn btn-outline" id="curl-command-builder-copy">Copy</button>
+    </div>
+  </div>
+</div>

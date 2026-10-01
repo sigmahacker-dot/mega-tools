@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Business Days Calculator — Free Online | ToolNest</title>
+<meta name="description" content="Count working days between two dates, excluding weekends and your own custom holidays, with a full breakdown.">
+<meta name="keywords" content="business days calculator, working days calculator, weekdays between dates, net workdays, business days excluding holidays">
+<link rel="canonical" href="https://toolnest.vercel.app/tools/business-days-calculator/">
+<meta name="theme-color" content="#07070b">
+<meta property="og:title" content="Business Days Calculator — Free Online | ToolNest">
+<meta property="og:description" content="Count working days between two dates, excluding weekends and your own custom holidays, with a full breakdown.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css?v=4">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%23e01111'/><text x='50' y='68' font-size='58' text-anchor='middle' fill='white' font-family='Arial' font-weight='bold'>T</text></svg>">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebApplication","name":"Business Days Calculator","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0"},"url":"https://toolnest.vercel.app/tools/business-days-calculator/","description":"Count working days between two dates, excluding weekends and your own custom holidays, with a full breakdown."},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Can I add my own public holidays?","acceptedAnswer":{"@type":"Answer","text":"Yes. Type each holiday as YYYY-MM-DD, one per line. Only holidays that fall on a weekday inside your date range are subtracted."}},{"@type":"Question","name":"Are the start and end dates inclusive?","acceptedAnswer":{"@type":"Answer","text":"Both dates are included in the count."}},{"@type":"Question","name":"Does it work for past dates too?","acceptedAnswer":{"@type":"Answer","text":"Yes — the count updates for any dates, past or future, so it works for payroll, contracts and project planning."}},{"@type":"Question","name":"My weekend isn't Saturday–Sunday. What can I do?","acceptedAnswer":{"@type":"Answer","text":"Use the optional weekend selector — choose Friday–Saturday or Thursday–Friday if that matches your country."}}]}]}</script>
+</head>
+<body>
+<header class="site-header">
+  <div class="container">
+    <a class="logo" href="/"><span class="logo-mark">T</span> ToolNest</a>
+    <div class="header-right">
+      <form class="nav-search" action="/" method="get" role="search">
+        <span class="ns-icon">🔍</span>
+        <input type="search" name="q" placeholder="Search tools…" aria-label="Search tools" autocomplete="off">
+      </form>
+      <div class="menu-wrap">
+        <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="menuPanel" aria-label="Open menu"><span></span><span></span><span></span></button>
+        <nav class="menu-panel" id="menuPanel" aria-label="Site">
+          <a href="/">Home</a>
+          <a href="/#categories">Categories</a>
+          <a href="/#all-tools">All Tools</a>
+        </nav>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ADSTERRA-HEADER: paste your Adsterra banner ad code inside the div below -->
+<div class="container"><div class="ad-slot ad-leaderboard" data-ad="header"></div></div>
+
+<main class="container">
+  <nav class="crumbs"><a href="/">Home</a> &rsaquo; <a href="/#time">Time &amp; Date</a> &rsaquo; Business Days Calculator</nav>
+  <div class="tool-hero">
+    <h1>Business Days Calculator</h1>
+    <p>Count working days between two dates, excluding weekends and your own custom holidays, with a full breakdown.</p>
+  </div>
+
+  <div class="tool-card">
+  <div class="grid2">
+    <div class="field">
+      <label for="business-days-calculator-start">Start date</label>
+      <input class="input" type="date" id="business-days-calculator-start">
+    </div>
+    <div class="field">
+      <label for="business-days-calculator-end">End date</label>
+      <input class="input" type="date" id="business-days-calculator-end">
+    </div>
+  </div>
+  <div class="grid2">
+    <div class="field">
+      <label for="business-days-calculator-weekend">Weekend days</label>
+      <select class="input" id="business-days-calculator-weekend">
+        <option value="0,6">Saturday – Sunday</option>
+        <option value="5,6">Friday – Saturday</option>
+        <option value="4,5">Thursday – Friday</option>
+        <option value="6,0">Sunday only</option>
+      </select>
+    </div>
+    <div class="field">
+      <label for="business-days-calculator-holidays">Holidays (one per line, YYYY-MM-DD)</label>
+      <textarea class="textarea" id="business-days-calculator-holidays" rows="2" placeholder="2026-12-25&#10;2027-01-01"></textarea>
+    </div>
+  </div>
+  <p class="hint">Only holidays that fall on a working day inside the range are subtracted.</p>
+  <div class="btn-row">
+    <button class="btn btn-primary" id="business-days-calculator-calc">Calculate</button>
+  </div>
+  <div class="stat-cards">
+    <div class="stat-card"><div class="v" id="business-days-calculator-business">—</div><div class="l">Business days</div></div>
+    <div class="stat-card"><div class="v" id="business-days-calculator-total">—</div><div class="l">Total days</div></div>
+    <div class="stat-card"><div class="v" id="business-days-calculator-weekend">—</div><div class="l">Weekend days</div></div>
+    <div class="stat-card"><div class="v" id="business-days-calculator-hol">—</div><div class="l">Holidays</div></div>
+  </div>
+  <div class="result" id="business-days-calculator-breakdown"></div>
+  <div class="error" id="business-days-calculator-error"></div>
+</div>
+
+
+  <!-- ADSTERRA-INCONTENT: paste your Adsterra native/in-content ad code inside the div below -->
+  <div class="ad-slot" data-ad="incontent"></div>
+
+  <div class="info-grid">
+    <div class="info-card">
+      <h2>📖 How to use</h2>
+      <ol><li>Pick a start date and an end date.</li><li>Optionally choose your weekend days.</li><li>List any holidays, one YYYY-MM-DD per line.</li><li>Press Calculate to see business days plus the full breakdown.</li></ol>
+    </div>
+    <div class="info-card">
+      <h2>❓ Frequently asked questions</h2>
+      <div class="faq"><details><summary>Can I add my own public holidays?</summary><p>Yes. Type each holiday as YYYY-MM-DD, one per line. Only holidays that fall on a weekday inside your date range are subtracted.</p></details><details><summary>Are the start and end dates inclusive?</summary><p>Both dates are included in the count.</p></details><details><summary>Does it work for past dates too?</summary><p>Yes — the count updates for any dates, past or future, so it works for payroll, contracts and project planning.</p></details><details><summary>My weekend isn&#39;t Saturday–Sunday. What can I do?</summary><p>Use the optional weekend selector — choose Friday–Saturday or Thursday–Friday if that matches your country.</p></details></div>
+    </div>
+  </div>
+
+  <section class="section">
+    <h2>🔗 Related tools</h2>
+    <div class="tool-grid"><a class="tool-link" href="/tools/add-subtract-days-calculator/" data-search="add / subtract days calculator add or subtract days, weeks, months or years from any date. optional business-days-only mode skips weekends automatically. add days to date subtract days calculator date plus days business days calculator date arithmetic"><span class="t-ico">⏰</span><span class="t-body"><b>Add / Subtract Days Calculator</b><small>Add or subtract days, weeks, months or years from any date. Optional business-days-only mode…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/anniversary-calculator/" data-search="anniversary calculator track any anniversary: days until the next one, which number it is (10th, 25th…), total days together and the weekday it falls on. anniversary calculator wedding anniversary countdown how many days until anniversary anniversary date tracker years together calculator"><span class="t-ico">⏰</span><span class="t-body"><b>Anniversary Calculator</b><small>Track any anniversary: days until the next one, which number it is (10th, 25th…), total days…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/bill-due-tracker/" data-search="bill due tracker never miss a payment — track recurring monthly bills with automatic next-due dates, days remaining and urgency sorting. bill due tracker bill reminder recurring bills tracker monthly bills organizer due date tracker"><span class="t-ico">⏰</span><span class="t-body"><b>Bill Due Tracker</b><small>Never miss a payment — track recurring monthly bills with automatic next-due dates, days rem…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/chess-clock-timer/" data-search="chess clock timer a two-player chess clock with tap-to-switch, optional increment per move, flag detection, pause and reset. chess clock chess timer two player timer blitz clock increment chess clock"><span class="t-ico">⏰</span><span class="t-body"><b>Chess Clock Timer</b><small>A two-player chess clock with tap-to-switch, optional increment per move, flag detection, pa…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/daily-screen-time-log/" data-search="daily screen time log log daily screen time by app or category and see daily totals plus a 7-day bar summary — all saved in your browser. screen time tracker screen time log daily screen time phone usage tracker app usage log"><span class="t-ico">⏰</span><span class="t-body"><b>Daily Screen Time Log</b><small>Log daily screen time by app or category and see daily totals plus a 7-day bar summary — all…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/date-duration-calculator/" data-search="date duration calculator exact duration between two dates, plus business days. date duration calculator days between dates business days calculator"><span class="t-ico">⏰</span><span class="t-body"><b>Date Duration Calculator</b><small>Exact duration between two dates, plus business days.</small></span><span class="t-arrow">→</span></a></div>
+  </section>
+</main>
+
+<!-- ADSTERRA-FOOTER: paste your Adsterra footer/banner ad code inside the div below -->
+<div class="container"><div class="ad-slot" data-ad="footer"></div></div>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="f-grid">
+      <div>
+        <span class="brandline"><span class="logo-mark">T</span> ToolNest</span>
+        <p>Free online tools that actually work. No sign-up, no watermarks — and your files never leave your device for client-side tools.</p>
+      </div>
+      <div>
+        <h4>Popular</h4>
+        <a href="/tools/qr-code-generator/">QR Code Generator</a>
+        <a href="/tools/background-remover/">Background Remover</a>
+        <a href="/tools/pdf-merger/">PDF Merger</a>
+        <a href="/tools/word-counter/">Word Counter</a>
+      </div>
+      <div>
+        <h4>Categories</h4>
+        <a href="/#image">Image Tools</a>
+        <a href="/#pdf">PDF &amp; Documents</a>
+        <a href="/#calculators">Calculators</a>
+        <a href="/#developer">Developer Tools</a>
+      </div>
+      <div>
+        <h4>Site</h4>
+        <a href="/">Home</a>
+        <a href="/#all-tools">All Tools</a>
+        <a href="/sitemap.xml">Sitemap</a>
+      </div>
+    </div>
+    <div class="f-bottom">© 2026 ToolNest · Free tools for everyone · Made with care</div>
+  </div>
+</footer>
+
+<script src="/assets/site.js?v=5"></script>
+
+<script>
+/* Business Days Calculator — working days between two dates, custom weekend + holidays. */
+(function () {
+  'use strict';
+  var SLUG = 'business-days-calculator';
+  var $ = function (id) { return TN.el(SLUG + '-' + id); };
+
+  function parseDate(v) {
+    var m = /^(\d{4})-(\d{2})-(\d{2})$/.exec(v || '');
+    if (!m) return null;
+    var d = new Date(+m[1], +m[2] - 1, +m[3]);
+    if (d.getFullYear() !== +m[1] || d.getMonth() !== +m[2] - 1 || d.getDate() !== +m[3]) return null;
+    return d;
+  }
+
+  function keyOf(d) {
+    return d.getFullYear() + '-' + ('0' + (d.getMonth() + 1)).slice(-2) + '-' + ('0' + d.getDate()).slice(-2);
+  }
+
+  function calc() {
+    TN.clearErr(SLUG + '-error');
+    var s = parseDate($('start').value), e = parseDate($('end').value);
+    if (!s || !e) {
+      if ($('start').value || $('end').value) TN.setErr(SLUG + '-error', 'Please enter both a start and an end date.');
+      return;
+    }
+    if (s > e) { TN.setErr(SLUG + '-error', 'Start date must be on or before the end date.'); return; }
+    var weekend = $('weekend').value.split(',').map(Number);
+    var holSet = {};
+    ($('holidays').value || '').split(/\r?\n/).forEach(function (line) {
+      var d = parseDate(line.trim());
+      if (d) holSet[keyOf(d)] = true;
+    });
+
+    var total = 0, weekendDays = 0, holDays = 0, business = 0;
+    var holList = [];
+    var cur = new Date(s.getTime());
+    while (cur <= e) {
+      total++;
+      var dow = cur.getDay();
+      var isWk = weekend.indexOf(dow) !== -1;
+      var isHol = !!holSet[keyOf(cur)];
+      if (isWk) { weekendDays++; }
+      else if (isHol) { holDays++; holList.push(keyOf(cur)); }
+      else { business++; }
+      cur.setDate(cur.getDate() + 1);
+    }
+
+    $('business').textContent = business;
+    $('total').textContent = total;
+    $('weekend').textContent = weekendDays;
+    $('hol').textContent = holDays;
+    var pct = total ? Math.round(business / total * 100) : 0;
+    var html = '<p><strong>' + business + '</strong> working days out of ' + total +
+      ' total days (' + pct + '%).</p>';
+    if (holList.length) {
+      html += '<p class="muted">Holidays subtracted: ' + holList.join(', ') + '</p>';
+    } else if (($('holidays').value || '').trim()) {
+      html += '<p class="muted">None of the listed holidays fell on a working day in this range.</p>';
+    }
+    $('breakdown').innerHTML = html;
+  }
+
+  try {
+    TN.on(SLUG + '-calc', 'click', calc);
+    TN.on(SLUG + '-start', 'change', calc);
+    TN.on(SLUG + '-end', 'change', calc);
+    TN.on(SLUG + '-weekend', 'change', calc);
+  } catch (e) { /* never throw on load */ }
+})();
+
+</script>
+</body>
+</html>

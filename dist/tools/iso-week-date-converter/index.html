@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ISO Week Date Converter — Free Online | ToolNest</title>
+<meta name="description" content="Convert any date to its ISO week date (YYYY-Www-D) and back — find the Monday of any ISO week.">
+<meta name="keywords" content="ISO week calculator, week number calculator, ISO 8601 week date, date to week number, week number to date">
+<link rel="canonical" href="https://toolnest.vercel.app/tools/iso-week-date-converter/">
+<meta name="theme-color" content="#07070b">
+<meta property="og:title" content="ISO Week Date Converter — Free Online | ToolNest">
+<meta property="og:description" content="Convert any date to its ISO week date (YYYY-Www-D) and back — find the Monday of any ISO week.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css?v=4">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%23e01111'/><text x='50' y='68' font-size='58' text-anchor='middle' fill='white' font-family='Arial' font-weight='bold'>T</text></svg>">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebApplication","name":"ISO Week Date Converter","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0"},"url":"https://toolnest.vercel.app/tools/iso-week-date-converter/","description":"Convert any date to its ISO week date (YYYY-Www-D) and back — find the Monday of any ISO week."},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How is ISO week 1 defined?","acceptedAnswer":{"@type":"Answer","text":"ISO 8601 defines week 1 as the week containing the first Thursday of the year (equivalently, the week with January 4th). Weeks start on Monday."}},{"@type":"Question","name":"Do all years have 52 weeks?","acceptedAnswer":{"@type":"Answer","text":"Yes — most years have 52 ISO weeks, but years starting on Thursday (or leap years starting on Wednesday) have 53."}},{"@type":"Question","name":"How does the reverse conversion work?","acceptedAnswer":{"@type":"Answer","text":"Enter the ISO year, week number and day (1=Monday … 7=Sunday) and the exact calendar date is computed."}}]}]}</script>
+</head>
+<body>
+<header class="site-header">
+  <div class="container">
+    <a class="logo" href="/"><span class="logo-mark">T</span> ToolNest</a>
+    <div class="header-right">
+      <form class="nav-search" action="/" method="get" role="search">
+        <span class="ns-icon">🔍</span>
+        <input type="search" name="q" placeholder="Search tools…" aria-label="Search tools" autocomplete="off">
+      </form>
+      <div class="menu-wrap">
+        <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="menuPanel" aria-label="Open menu"><span></span><span></span><span></span></button>
+        <nav class="menu-panel" id="menuPanel" aria-label="Site">
+          <a href="/">Home</a>
+          <a href="/#categories">Categories</a>
+          <a href="/#all-tools">All Tools</a>
+        </nav>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ADSTERRA-HEADER: paste your Adsterra banner ad code inside the div below -->
+<div class="container"><div class="ad-slot ad-leaderboard" data-ad="header"></div></div>
+
+<main class="container">
+  <nav class="crumbs"><a href="/">Home</a> &rsaquo; <a href="/#time">Time &amp; Date</a> &rsaquo; ISO Week Date Converter</nav>
+  <div class="tool-hero">
+    <h1>ISO Week Date Converter</h1>
+    <p>Convert any date to its ISO week date (YYYY-Www-D) and back — find the Monday of any ISO week.</p>
+  </div>
+
+  <div class="tool-card">
+  <h3 style="margin:0 0 8px">Date → ISO week</h3>
+  <div class="field" style="max-width:260px">
+    <label for="iso-week-date-converter-date">Calendar date</label>
+    <input class="input" type="date" id="iso-week-date-converter-date">
+  </div>
+  <div class="btn-row">
+    <button class="btn btn-primary" id="iso-week-date-converter-fwd">Convert to ISO week</button>
+  </div>
+  <div class="result" id="iso-week-date-converter-fwdout"></div>
+  <hr style="border:none;border-top:1px solid #eee;margin:16px 0">
+  <h3 style="margin:0 0 8px">ISO week → date</h3>
+  <div class="grid2" style="max-width:520px">
+    <div class="field">
+      <label for="iso-week-date-converter-year">ISO year</label>
+      <input class="input" type="number" id="iso-week-date-converter-year" min="1" max="9999" value="2026">
+    </div>
+    <div class="field">
+      <label for="iso-week-date-converter-week">Week (1–53)</label>
+      <input class="input" type="number" id="iso-week-date-converter-week" min="1" max="53" value="40">
+    </div>
+  </div>
+  <div class="field" style="max-width:260px">
+    <label for="iso-week-date-converter-day">Day of week</label>
+    <select class="input" id="iso-week-date-converter-day">
+      <option value="1">1 — Monday</option>
+      <option value="2">2 — Tuesday</option>
+      <option value="3">3 — Wednesday</option>
+      <option value="4">4 — Thursday</option>
+      <option value="5">5 — Friday</option>
+      <option value="6">6 — Saturday</option>
+      <option value="7">7 — Sunday</option>
+    </select>
+  </div>
+  <div class="btn-row">
+    <button class="btn btn-primary" id="iso-week-date-converter-rev">Convert to date</button>
+  </div>
+  <div class="result" id="iso-week-date-converter-revout"></div>
+  <div class="error" id="iso-week-date-converter-error"></div>
+</div>
+
+
+  <!-- ADSTERRA-INCONTENT: paste your Adsterra native/in-content ad code inside the div below -->
+  <div class="ad-slot" data-ad="incontent"></div>
+
+  <div class="info-grid">
+    <div class="info-card">
+      <h2>📖 How to use</h2>
+      <ol><li>To convert forward: pick any calendar date.</li><li>To convert back: enter ISO year, week and day.</li><li>Press the matching Convert button.</li><li>The result appears instantly.</li></ol>
+    </div>
+    <div class="info-card">
+      <h2>❓ Frequently asked questions</h2>
+      <div class="faq"><details><summary>How is ISO week 1 defined?</summary><p>ISO 8601 defines week 1 as the week containing the first Thursday of the year (equivalently, the week with January 4th). Weeks start on Monday.</p></details><details><summary>Do all years have 52 weeks?</summary><p>Yes — most years have 52 ISO weeks, but years starting on Thursday (or leap years starting on Wednesday) have 53.</p></details><details><summary>How does the reverse conversion work?</summary><p>Enter the ISO year, week number and day (1=Monday … 7=Sunday) and the exact calendar date is computed.</p></details></div>
+    </div>
+  </div>
+
+  <section class="section">
+    <h2>🔗 Related tools</h2>
+    <div class="tool-grid"><a class="tool-link" href="/tools/add-subtract-days-calculator/" data-search="add / subtract days calculator add or subtract days, weeks, months or years from any date. optional business-days-only mode skips weekends automatically. add days to date subtract days calculator date plus days business days calculator date arithmetic"><span class="t-ico">⏰</span><span class="t-body"><b>Add / Subtract Days Calculator</b><small>Add or subtract days, weeks, months or years from any date. Optional business-days-only mode…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/anniversary-calculator/" data-search="anniversary calculator track any anniversary: days until the next one, which number it is (10th, 25th…), total days together and the weekday it falls on. anniversary calculator wedding anniversary countdown how many days until anniversary anniversary date tracker years together calculator"><span class="t-ico">⏰</span><span class="t-body"><b>Anniversary Calculator</b><small>Track any anniversary: days until the next one, which number it is (10th, 25th…), total days…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/bill-due-tracker/" data-search="bill due tracker never miss a payment — track recurring monthly bills with automatic next-due dates, days remaining and urgency sorting. bill due tracker bill reminder recurring bills tracker monthly bills organizer due date tracker"><span class="t-ico">⏰</span><span class="t-body"><b>Bill Due Tracker</b><small>Never miss a payment — track recurring monthly bills with automatic next-due dates, days rem…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/business-days-calculator/" data-search="business days calculator count working days between two dates, excluding weekends and your own custom holidays, with a full breakdown. business days calculator working days calculator weekdays between dates net workdays business days excluding holidays"><span class="t-ico">⏰</span><span class="t-body"><b>Business Days Calculator</b><small>Count working days between two dates, excluding weekends and your own custom holidays, with …</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/chess-clock-timer/" data-search="chess clock timer a two-player chess clock with tap-to-switch, optional increment per move, flag detection, pause and reset. chess clock chess timer two player timer blitz clock increment chess clock"><span class="t-ico">⏰</span><span class="t-body"><b>Chess Clock Timer</b><small>A two-player chess clock with tap-to-switch, optional increment per move, flag detection, pa…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/daily-screen-time-log/" data-search="daily screen time log log daily screen time by app or category and see daily totals plus a 7-day bar summary — all saved in your browser. screen time tracker screen time log daily screen time phone usage tracker app usage log"><span class="t-ico">⏰</span><span class="t-body"><b>Daily Screen Time Log</b><small>Log daily screen time by app or category and see daily totals plus a 7-day bar summary — all…</small></span><span class="t-arrow">→</span></a></div>
+  </section>
+</main>
+
+<!-- ADSTERRA-FOOTER: paste your Adsterra footer/banner ad code inside the div below -->
+<div class="container"><div class="ad-slot" data-ad="footer"></div></div>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="f-grid">
+      <div>
+        <span class="brandline"><span class="logo-mark">T</span> ToolNest</span>
+        <p>Free online tools that actually work. No sign-up, no watermarks — and your files never leave your device for client-side tools.</p>
+      </div>
+      <div>
+        <h4>Popular</h4>
+        <a href="/tools/qr-code-generator/">QR Code Generator</a>
+        <a href="/tools/background-remover/">Background Remover</a>
+        <a href="/tools/pdf-merger/">PDF Merger</a>
+        <a href="/tools/word-counter/">Word Counter</a>
+      </div>
+      <div>
+        <h4>Categories</h4>
+        <a href="/#image">Image Tools</a>
+        <a href="/#pdf">PDF &amp; Documents</a>
+        <a href="/#calculators">Calculators</a>
+        <a href="/#developer">Developer Tools</a>
+      </div>
+      <div>
+        <h4>Site</h4>
+        <a href="/">Home</a>
+        <a href="/#all-tools">All Tools</a>
+        <a href="/sitemap.xml">Sitemap</a>
+      </div>
+    </div>
+    <div class="f-bottom">© 2026 ToolNest · Free tools for everyone · Made with care</div>
+  </div>
+</footer>
+
+<script src="/assets/site.js?v=5"></script>
+
+<script>
+/* ISO Week Date Converter — date ↔ ISO 8601 week date (YYYY-Www-D), both directions. */
+(function () {
+  'use strict';
+  var SLUG = 'iso-week-date-converter';
+  var $ = function (id) { return TN.el(SLUG + '-' + id); };
+
+  function parseDate(v) {
+    var m = /^(\d{4})-(\d{2})-(\d{2})$/.exec(v || '');
+    if (!m) return null;
+    var d = new Date(+m[1], +m[2] - 1, +m[3]);
+    if (d.getFullYear() !== +m[1] || d.getMonth() !== +m[2] - 1 || d.getDate() !== +m[3]) return null;
+    return d;
+  }
+
+  /* ISO week of a local date. Returns {year, week, day} (day 1=Mon..7=Sun). */
+  function isoWeek(d) {
+    var t = new Date(Date.UTC(d.getFullYear(), d.getMonth(), d.getDate()));
+    var day = (t.getUTCDay() + 6) % 7; // Mon=0
+    t.setUTCDate(t.getUTCDate() - day + 3); // shift to Thursday of this week
+    var isoYear = t.getUTCFullYear();
+    var firstThu = new Date(Date.UTC(isoYear, 0, 4));
+    var fday = (firstThu.getUTCDay() + 6) % 7;
+    firstThu.setUTCDate(firstThu.getUTCDate() - fday + 3);
+    var week = 1 + Math.round((t.getTime() - firstThu.getTime()) / (7 * 86400000));
+    return { year: isoYear, week: week, day: day + 1 };
+  }
+
+  /* Number of ISO weeks in a year: 53 if Jan 1 is Thursday, or leap year starting Wednesday. */
+  function weeksInYear(y) {
+    var jan1 = (new Date(y, 0, 1).getDay() + 6) % 7; // Mon=0
+    var leap = (y % 4 === 0 && y % 100 !== 0) || y % 400 === 0;
+    return (jan1 === 3 || (leap && jan1 === 2)) ? 53 : 52;
+  }
+
+  var DAYS = ['', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
+
+  function fwd() {
+    TN.clearErr(SLUG + '-error');
+    var d = parseDate($('date').value);
+    if (!d) { TN.setErr(SLUG + '-error', 'Please pick a valid calendar date.'); return; }
+    var w = isoWeek(d);
+    var ww = ('0' + w.week).slice(-2);
+    $('fwdout').innerHTML = '<p>ISO week date: <strong class="code">' + w.year + '-W' + ww + '-' + w.day +
+      '</strong></p><p class="muted">' + DAYS[w.day] + ', week ' + w.week + ' of ISO year ' + w.year + '.</p>';
+  }
+
+  function rev() {
+    TN.clearErr(SLUG + '-error');
+    var y = parseInt($('year').value, 10);
+    var w = parseInt($('week').value, 10);
+    var day = parseInt($('day').value, 10);
+    if (!(y >= 1 && y <= 9999)) { TN.setErr(SLUG + '-error', 'ISO year must be 1–9999.'); return; }
+    var maxW = weeksInYear(y);
+    if (!(w >= 1 && w <= maxW)) { TN.setErr(SLUG + '-error', 'ISO year ' + y + ' has ' + maxW + ' weeks — week must be 1–' + maxW + '.'); return; }
+    // Jan 4 is always in week 1; Monday of week 1:
+    var jan4 = new Date(y, 0, 4);
+    var jan4dow = (jan4.getDay() + 6) % 7; // Mon=0
+    var mon1 = new Date(y, 0, 4 - jan4dow);
+    var target = new Date(mon1.getFullYear(), mon1.getMonth(), mon1.getDate() + (w - 1) * 7 + (day - 1));
+    var ds = target.toLocaleDateString(undefined, { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
+    var iso = target.getFullYear() + '-' + ('0' + (target.getMonth() + 1)).slice(-2) + '-' + ('0' + target.getDate()).slice(-2);
+    $('revout').innerHTML = '<p><strong>' + ds + '</strong> <span class="code">' + iso + '</span></p>' +
+      '<p class="muted">That is ' + DAYS[day] + ' of week ' + w + ', ISO year ' + y +
+      (day === 1 ? ' — the Monday of that week.' : '.') + '</p>';
+  }
+
+  try {
+    TN.on(SLUG + '-fwd', 'click', fwd);
+    TN.on(SLUG + '-rev', 'click', rev);
+  } catch (e) { /* never throw on load */ }
+})();
+
+</script>
+</body>
+</html>

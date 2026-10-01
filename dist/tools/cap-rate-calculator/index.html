@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cap Rate Calculator — Free Online | ToolNest</title>
+<meta name="description" content="Convert between net operating income, property value and capitalization rate in both directions.">
+<meta name="keywords" content="cap rate calculator, capitalization rate calculator, noi calculator, property valuation cap rate, real estate cap rate">
+<link rel="canonical" href="https://toolnest.vercel.app/tools/cap-rate-calculator/">
+<meta name="theme-color" content="#07070b">
+<meta property="og:title" content="Cap Rate Calculator — Free Online | ToolNest">
+<meta property="og:description" content="Convert between net operating income, property value and capitalization rate in both directions.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css?v=4">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%23e01111'/><text x='50' y='68' font-size='58' text-anchor='middle' fill='white' font-family='Arial' font-weight='bold'>T</text></svg>">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebApplication","name":"Cap Rate Calculator","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0"},"url":"https://toolnest.vercel.app/tools/cap-rate-calculator/","description":"Convert between net operating income, property value and capitalization rate in both directions."},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What is the cap rate formula?","acceptedAnswer":{"@type":"Answer","text":"Cap rate = annual net operating income ÷ property value. It measures a property's unleveraged annual return."}},{"@type":"Question","name":"How do you find value from cap rate?","acceptedAnswer":{"@type":"Answer","text":"Rearranged: value = NOI ÷ cap rate. A property earning $20,000 NOI at a 5% cap rate is worth $400,000."}},{"@type":"Question","name":"What counts in NOI?","acceptedAnswer":{"@type":"Answer","text":"NOI is rental income minus operating expenses (taxes, insurance, maintenance). Mortgage payments are not subtracted — cap rate ignores financing."}}]}]}</script>
+</head>
+<body>
+<header class="site-header">
+  <div class="container">
+    <a class="logo" href="/"><span class="logo-mark">T</span> ToolNest</a>
+    <div class="header-right">
+      <form class="nav-search" action="/" method="get" role="search">
+        <span class="ns-icon">🔍</span>
+        <input type="search" name="q" placeholder="Search tools…" aria-label="Search tools" autocomplete="off">
+      </form>
+      <div class="menu-wrap">
+        <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="menuPanel" aria-label="Open menu"><span></span><span></span><span></span></button>
+        <nav class="menu-panel" id="menuPanel" aria-label="Site">
+          <a href="/">Home</a>
+          <a href="/#categories">Categories</a>
+          <a href="/#all-tools">All Tools</a>
+        </nav>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ADSTERRA-HEADER: paste your Adsterra banner ad code inside the div below -->
+<div class="container"><div class="ad-slot ad-leaderboard" data-ad="header"></div></div>
+
+<main class="container">
+  <nav class="crumbs"><a href="/">Home</a> &rsaquo; <a href="/#finance">Finance &amp; Money</a> &rsaquo; Cap Rate Calculator</nav>
+  <div class="tool-hero">
+    <h1>Cap Rate Calculator</h1>
+    <p>Convert between net operating income, property value and capitalization rate in both directions.</p>
+  </div>
+
+  <div class="tool-card">
+  <div class="tabs" style="margin-bottom:12px">
+    <button class="tab-btn" id="cap-rate-calculator-tab1" type="button">NOI + Value → Cap rate</button>
+    <button class="tab-btn" id="cap-rate-calculator-tab2" type="button">NOI + Cap rate → Value</button>
+  </div>
+  <div id="cap-rate-calculator-mode1">
+    <div class="grid2">
+      <div class="field"><label for="cap-rate-calculator-noi1">Annual NOI ($)</label><input class="input" id="cap-rate-calculator-noi1" type="number" min="0" step="any" value="24000"></div>
+      <div class="field"><label for="cap-rate-calculator-value1">Property value ($)</label><input class="input" id="cap-rate-calculator-value1" type="number" min="0" step="any" value="400000"></div>
+    </div>
+  </div>
+  <div id="cap-rate-calculator-mode2" class="hidden">
+    <div class="grid2">
+      <div class="field"><label for="cap-rate-calculator-noi2">Annual NOI ($)</label><input class="input" id="cap-rate-calculator-noi2" type="number" min="0" step="any" value="24000"></div>
+      <div class="field"><label for="cap-rate-calculator-cap2">Cap rate (%)</label><input class="input" id="cap-rate-calculator-cap2" type="number" min="0" step="any" value="6"></div>
+    </div>
+  </div>
+  <div class="btn-row"><button class="btn btn-primary" id="cap-rate-calculator-calc">Calculate</button></div>
+  <div class="error" id="cap-rate-calculator-error"></div>
+  <div class="result" id="cap-rate-calculator-result">—</div>
+  <p class="note">Educational estimates only — not financial advice.</p>
+</div>
+
+  <!-- ADSTERRA-INCONTENT: paste your Adsterra native/in-content ad code inside the div below -->
+  <div class="ad-slot" data-ad="incontent"></div>
+
+  <div class="info-grid">
+    <div class="info-card">
+      <h2>📖 How to use</h2>
+      <ol><li>Pick a direction: value → cap rate, or cap rate → value.</li><li>Enter the net operating income plus the other figure.</li><li>Read the result instantly.</li></ol>
+    </div>
+    <div class="info-card">
+      <h2>❓ Frequently asked questions</h2>
+      <div class="faq"><details><summary>What is the cap rate formula?</summary><p>Cap rate = annual net operating income ÷ property value. It measures a property&#39;s unleveraged annual return.</p></details><details><summary>How do you find value from cap rate?</summary><p>Rearranged: value = NOI ÷ cap rate. A property earning $20,000 NOI at a 5% cap rate is worth $400,000.</p></details><details><summary>What counts in NOI?</summary><p>NOI is rental income minus operating expenses (taxes, insurance, maintenance). Mortgage payments are not subtracted — cap rate ignores financing.</p></details></div>
+    </div>
+  </div>
+
+  <section class="section">
+    <h2>🔗 Related tools</h2>
+    <div class="tool-grid"><a class="tool-link" href="/tools/apr-calculator/" data-search="apr calculator solve the true annual percentage rate of a loan by bisection — including upfront fees — and compare it with the nominal rate. apr calculator true apr calculator annual percentage rate calculator loan apr calculator nominal vs effective rate"><span class="t-ico">💰</span><span class="t-body"><b>APR Calculator</b><small>Solve the true Annual Percentage Rate of a loan by bisection — including upfront fees — and …</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/balloon-payment-calculator/" data-search="balloon payment calculator compute the monthly payment on a balloon loan and the lump-sum balloon balance still due at the end of the term. balloon payment calculator balloon loan calculator balloon mortgage calculator balloon balance calculator lump sum loan calculator"><span class="t-ico">💰</span><span class="t-body"><b>Balloon Payment Calculator</b><small>Compute the monthly payment on a balloon loan and the lump-sum balloon balance still due at …</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/break-even-calculator/" data-search="break-even calculator find your break-even point in units and revenue from fixed costs, price per unit and variable cost per unit. break even calculator breakeven point calculator break even analysis units to break even business break even calculator"><span class="t-ico">💰</span><span class="t-body"><b>Break-Even Calculator</b><small>Find your break-even point in units and revenue from fixed costs, price per unit and variabl…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/budget-50-30-20-calculator/" data-search="50/30/20 budget calculator split your take-home pay into needs (50%), wants (30%) and savings (20%), then compare with your actual spending. 50 30 20 budget budget calculator needs wants savings monthly budget planner budget rule calculator"><span class="t-ico">💰</span><span class="t-body"><b>50/30/20 Budget Calculator</b><small>Split your take-home pay into needs (50%), wants (30%) and savings (20%), then compare with …</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/business-profit-margin-calculator/" data-search="business profit margin calculator compute gross, operating and net profit margins from revenue, cost of goods sold and operating expenses. profit margin calculator business profit calculator gross margin calculator net margin calculator operating margin calculator"><span class="t-ico">💰</span><span class="t-body"><b>Business Profit Margin Calculator</b><small>Compute gross, operating and net profit margins from revenue, cost of goods sold and operati…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/capital-gains-calculator/" data-search="capital gains calculator estimate capital gains tax on an investment sale — total gain, tax owed and net proceeds. educational only, not tax advice. capital gains calculator capital gains tax calculator stock gains tax calculator investment tax calculator crypto gains calculator"><span class="t-ico">💰</span><span class="t-body"><b>Capital Gains Calculator</b><small>Estimate capital gains tax on an investment sale — total gain, tax owed and net proceeds. Ed…</small></span><span class="t-arrow">→</span></a></div>
+  </section>
+</main>
+
+<!-- ADSTERRA-FOOTER: paste your Adsterra footer/banner ad code inside the div below -->
+<div class="container"><div class="ad-slot" data-ad="footer"></div></div>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="f-grid">
+      <div>
+        <span class="brandline"><span class="logo-mark">T</span> ToolNest</span>
+        <p>Free online tools that actually work. No sign-up, no watermarks — and your files never leave your device for client-side tools.</p>
+      </div>
+      <div>
+        <h4>Popular</h4>
+        <a href="/tools/qr-code-generator/">QR Code Generator</a>
+        <a href="/tools/background-remover/">Background Remover</a>
+        <a href="/tools/pdf-merger/">PDF Merger</a>
+        <a href="/tools/word-counter/">Word Counter</a>
+      </div>
+      <div>
+        <h4>Categories</h4>
+        <a href="/#image">Image Tools</a>
+        <a href="/#pdf">PDF &amp; Documents</a>
+        <a href="/#calculators">Calculators</a>
+        <a href="/#developer">Developer Tools</a>
+      </div>
+      <div>
+        <h4>Site</h4>
+        <a href="/">Home</a>
+        <a href="/#all-tools">All Tools</a>
+        <a href="/sitemap.xml">Sitemap</a>
+      </div>
+    </div>
+    <div class="f-bottom">© 2026 ToolNest · Free tools for everyone · Made with care</div>
+  </div>
+</footer>
+
+<script src="/assets/site.js?v=5"></script>
+
+<script>
+/* Cap rate calculator — two directions: rate from value, value from rate. */
+(function () {
+  'use strict';
+  var SLUG = 'cap-rate-calculator';
+  var mode = 1;
+  function $(id) { return document.getElementById(id); }
+  function num(id) { var v = parseFloat(String($(id).value).replace(/,/g, '').trim()); return isNaN(v) ? NaN : v; }
+  function money(n) { if (!isFinite(n)) return '—'; return '$' + n.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 }); }
+  function setMode(m) {
+    mode = m;
+    TN.hide(SLUG + '-mode1'); TN.hide(SLUG + '-mode2');
+    TN.show(SLUG + '-mode' + m);
+    $(SLUG + '-tab1').classList.toggle('active', m === 1);
+    $(SLUG + '-tab2').classList.toggle('active', m === 2);
+    calc();
+  }
+  function calc() {
+    TN.clearErr(SLUG + '-error');
+    if (mode === 1) {
+      var noi = num(SLUG + '-noi1'), val = num(SLUG + '-value1');
+      if (isNaN(noi) || isNaN(val) || noi < 0 || val <= 0) {
+        TN.setErr(SLUG + '-error', 'Enter a valid NOI and property value.');
+        $(SLUG + '-result').textContent = '—';
+        return;
+      }
+      $(SLUG + '-result').innerHTML = 'Cap rate = <b>' + (noi / val * 100).toFixed(2) + '%</b>';
+    } else {
+      var noi2 = num(SLUG + '-noi2'), cap = num(SLUG + '-cap2');
+      if (isNaN(noi2) || isNaN(cap) || noi2 < 0 || cap <= 0) {
+        TN.setErr(SLUG + '-error', 'Enter a valid NOI and cap rate.');
+        $(SLUG + '-result').textContent = '—';
+        return;
+      }
+      $(SLUG + '-result').innerHTML = 'Estimated value = <b>' + money(noi2 / (cap / 100)) + '</b>';
+    }
+  }
+  try {
+    TN.on(SLUG + '-calc', 'click', calc);
+    TN.on(SLUG + '-tab1', 'click', function () { setMode(1); });
+    TN.on(SLUG + '-tab2', 'click', function () { setMode(2); });
+    var els = document.querySelectorAll('input[id^="' + SLUG + '-"]');
+    for (var i = 0; i < els.length; i++) { els[i].addEventListener('input', calc); }
+    setMode(1);
+  } catch (e) { /* never throw on load */ }
+})();
+</script>
+</body>
+</html>

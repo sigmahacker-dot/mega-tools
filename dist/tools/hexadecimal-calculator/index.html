@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hexadecimal Calculator — Free Online | ToolNest</title>
+<meta name="description" content="Add or subtract two hex numbers and see the result in hex, decimal and binary.">
+<meta name="keywords" content="hex calculator, hexadecimal addition, hex adder, hex subtract, hex math">
+<link rel="canonical" href="https://toolnest.vercel.app/tools/hexadecimal-calculator/">
+<meta name="theme-color" content="#07070b">
+<meta property="og:title" content="Hexadecimal Calculator — Free Online | ToolNest">
+<meta property="og:description" content="Add or subtract two hex numbers and see the result in hex, decimal and binary.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css?v=4">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%23e01111'/><text x='50' y='68' font-size='58' text-anchor='middle' fill='white' font-family='Arial' font-weight='bold'>T</text></svg>">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebApplication","name":"Hexadecimal Calculator","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0"},"url":"https://toolnest.vercel.app/tools/hexadecimal-calculator/","description":"Add or subtract two hex numbers and see the result in hex, decimal and binary."},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How does hex addition work?","acceptedAnswer":{"@type":"Answer","text":"Same as decimal column addition, but each digit carries at 16 instead of 10: F + 1 = 10₁₆."}},{"@type":"Question","name":"Can the result be negative?","acceptedAnswer":{"@type":"Answer","text":"Yes — subtraction can go below zero, shown with a minus sign in every base."}},{"@type":"Question","name":"Is the 0x prefix allowed?","acceptedAnswer":{"@type":"Answer","text":"Yes, a leading 0x is stripped automatically; digits may be upper or lower case."}}]}]}</script>
+</head>
+<body>
+<header class="site-header">
+  <div class="container">
+    <a class="logo" href="/"><span class="logo-mark">T</span> ToolNest</a>
+    <div class="header-right">
+      <form class="nav-search" action="/" method="get" role="search">
+        <span class="ns-icon">🔍</span>
+        <input type="search" name="q" placeholder="Search tools…" aria-label="Search tools" autocomplete="off">
+      </form>
+      <div class="menu-wrap">
+        <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="menuPanel" aria-label="Open menu"><span></span><span></span><span></span></button>
+        <nav class="menu-panel" id="menuPanel" aria-label="Site">
+          <a href="/">Home</a>
+          <a href="/#categories">Categories</a>
+          <a href="/#all-tools">All Tools</a>
+        </nav>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ADSTERRA-HEADER: paste your Adsterra banner ad code inside the div below -->
+<div class="container"><div class="ad-slot ad-leaderboard" data-ad="header"></div></div>
+
+<main class="container">
+  <nav class="crumbs"><a href="/">Home</a> &rsaquo; <a href="/#math">Math &amp; Numbers</a> &rsaquo; Hexadecimal Calculator</nav>
+  <div class="tool-hero">
+    <h1>Hexadecimal Calculator</h1>
+    <p>Add or subtract two hex numbers and see the result in hex, decimal and binary.</p>
+  </div>
+
+  <div class="tool-card">
+  <div class="grid2">
+    <div class="field"><label for="hexadecimal-calculator-a">Hex A</label><input class="input" id="hexadecimal-calculator-a" type="text" value="1F4"></div>
+    <div class="field"><label for="hexadecimal-calculator-b">Hex B</label><input class="input" id="hexadecimal-calculator-b" type="text" value="2A"></div>
+    <div class="field"><label for="hexadecimal-calculator-op">Operation</label>
+      <select class="input" id="hexadecimal-calculator-op"><option value="+">Add (+)</option><option value="-">Subtract (\u2212)</option></select>
+    </div>
+  </div>
+  <div class="btn-row"><button class="btn btn-primary" id="hexadecimal-calculator-go">Calculate</button></div>
+  <div class="stat-cards">
+    <div class="stat-card"><div class="v" id="hexadecimal-calculator-hex" style="font-size:1.1rem">21E</div><div class="l">Hex result</div></div>
+    <div class="stat-card"><div class="v" id="hexadecimal-calculator-dec">542</div><div class="l">Decimal result</div></div>
+  </div>
+  <div class="result"><pre class="code" id="hexadecimal-calculator-steps" style="text-align:left;white-space:pre-wrap"></pre></div>
+  <div class="error" id="hexadecimal-calculator-error"></div>
+</div>
+
+  <!-- ADSTERRA-INCONTENT: paste your Adsterra native/in-content ad code inside the div below -->
+  <div class="ad-slot" data-ad="incontent"></div>
+
+  <div class="info-grid">
+    <div class="info-card">
+      <h2>📖 How to use</h2>
+      <ol><li>Type two hexadecimal numbers.</li><li>Choose add or subtract.</li><li>Press Calculate to see the hex result with decimal and binary checks.</li></ol>
+    </div>
+    <div class="info-card">
+      <h2>❓ Frequently asked questions</h2>
+      <div class="faq"><details><summary>How does hex addition work?</summary><p>Same as decimal column addition, but each digit carries at 16 instead of 10: F + 1 = 10₁₆.</p></details><details><summary>Can the result be negative?</summary><p>Yes — subtraction can go below zero, shown with a minus sign in every base.</p></details><details><summary>Is the 0x prefix allowed?</summary><p>Yes, a leading 0x is stripped automatically; digits may be upper or lower case.</p></details></div>
+    </div>
+  </div>
+
+  <section class="section">
+    <h2>🔗 Related tools</h2>
+    <div class="tool-grid"><a class="tool-link" href="/tools/arithmetic-sequence-calculator/" data-search="arithmetic sequence calculator from the first term and common difference get the nth term and the sum of the first n terms. arithmetic sequence arithmetic progression nth term sum of arithmetic series common difference"><span class="t-ico">📐</span><span class="t-body"><b>Arithmetic Sequence Calculator</b><small>From the first term and common difference get the nth term and the sum of the first n terms.</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/binary-adder-calculator/" data-search="binary adder calculator add two binary numbers with every column addition and carry shown, plus a decimal check. binary addition add binary numbers binary adder binary sum binary carry"><span class="t-ico">📐</span><span class="t-body"><b>Binary Adder Calculator</b><small>Add two binary numbers with every column addition and carry shown, plus a decimal check.</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/birthday-paradox-simulator/" data-search="birthday paradox simulator see how likely a shared birthday is: simulate random groups and compare with the exact theoretical probability. birthday paradox birthday problem shared birthday probability birthday collision probability simulation"><span class="t-ico">📐</span><span class="t-body"><b>Birthday Paradox Simulator</b><small>See how likely a shared birthday is: simulate random groups and compare with the exact theor…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/circle-calculator/" data-search="circle calculator enter radius, diameter, circumference or area — get all four circle properties with the formulas shown. circle calculator circumference calculator circle area radius from area diameter calculator"><span class="t-ico">📐</span><span class="t-body"><b>Circle Calculator</b><small>Enter radius, diameter, circumference or area — get all four circle properties with the form…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/clock-angle-calculator/" data-search="clock angle calculator enter a time to get the smaller angle between the hour and minute hands, with the formula and a dial drawing. clock angle angle between hands clock hands angle time angle watch angle calculator"><span class="t-ico">📐</span><span class="t-body"><b>Clock Angle Calculator</b><small>Enter a time to get the smaller angle between the hour and minute hands, with the formula an…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/collatz-sequence-explorer/" data-search="collatz sequence explorer run the 3n+1 collatz sequence from any start: full path, step count, max value and a bar chart. collatz 3n+1 collatz sequence collatz conjecture hailstone sequence"><span class="t-ico">📐</span><span class="t-body"><b>Collatz Sequence Explorer</b><small>Run the 3n+1 Collatz sequence from any start: full path, step count, max value and a bar cha…</small></span><span class="t-arrow">→</span></a></div>
+  </section>
+</main>
+
+<!-- ADSTERRA-FOOTER: paste your Adsterra footer/banner ad code inside the div below -->
+<div class="container"><div class="ad-slot" data-ad="footer"></div></div>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="f-grid">
+      <div>
+        <span class="brandline"><span class="logo-mark">T</span> ToolNest</span>
+        <p>Free online tools that actually work. No sign-up, no watermarks — and your files never leave your device for client-side tools.</p>
+      </div>
+      <div>
+        <h4>Popular</h4>
+        <a href="/tools/qr-code-generator/">QR Code Generator</a>
+        <a href="/tools/background-remover/">Background Remover</a>
+        <a href="/tools/pdf-merger/">PDF Merger</a>
+        <a href="/tools/word-counter/">Word Counter</a>
+      </div>
+      <div>
+        <h4>Categories</h4>
+        <a href="/#image">Image Tools</a>
+        <a href="/#pdf">PDF &amp; Documents</a>
+        <a href="/#calculators">Calculators</a>
+        <a href="/#developer">Developer Tools</a>
+      </div>
+      <div>
+        <h4>Site</h4>
+        <a href="/">Home</a>
+        <a href="/#all-tools">All Tools</a>
+        <a href="/sitemap.xml">Sitemap</a>
+      </div>
+    </div>
+    <div class="f-bottom">© 2026 ToolNest · Free tools for everyone · Made with care</div>
+  </div>
+</footer>
+
+<script src="/assets/site.js?v=5"></script>
+
+<script>
+/* Hex add/subtract with decimal verification. */
+(function () {
+  'use strict';
+  var SLUG = 'hexadecimal-calculator';
+  function $(id) { return document.getElementById(id); }
+  function err(m) { TN.setErr(SLUG + '-error', m); }
+  function calc() {
+    TN.clearErr(SLUG + '-error');
+    var A = $(SLUG + '-a').value.trim().toUpperCase().replace(/^0X/, '');
+    var B = $(SLUG + '-b').value.trim().toUpperCase().replace(/^0X/, '');
+    var op = $(SLUG + '-op').value;
+    if (!/^[0-9A-F]+$/.test(A) || !/^[0-9A-F]+$/.test(B)) { err('Enter valid hex digits (0-9, A-F).'); return; }
+    var da = parseInt(A, 16), db = parseInt(B, 16);
+    var res = op === '+' ? da + db : da - db;
+    var lines = [
+      'A = ' + A + '\u2081\u2086 = ' + da + '\u2081\u2080',
+      'B = ' + B + '\u2081\u2086 = ' + db + '\u2081\u2080',
+      'Decimal: ' + da + ' ' + op + ' ' + db + ' = ' + res,
+      'Back to hex: ' + res + '\u2081\u2080 = ' + (res < 0 ? '-' : '') + Math.abs(res).toString(16).toUpperCase() + '\u2081\u2086',
+      'Binary check: ' + da.toString(2) + '\u2082 ' + op + ' ' + db.toString(2) + '\u2082 = ' + (res < 0 ? '-' : '') + Math.abs(res).toString(2) + '\u2082'
+    ];
+    $(SLUG + '-hex').textContent = (res < 0 ? '-' : '') + Math.abs(res).toString(16).toUpperCase();
+    $(SLUG + '-dec').textContent = res;
+    $(SLUG + '-steps').textContent = lines.join('\n');
+  }
+  try {
+    TN.on(SLUG + '-go', 'click', calc);
+    TN.on(SLUG + '-a', 'input', TN.debounce(calc, 400));
+    TN.on(SLUG + '-b', 'input', TN.debounce(calc, 400));
+    TN.on(SLUG + '-op', 'change', calc);
+    calc();
+  } catch (e) {}
+})();
+</script>
+</body>
+</html>

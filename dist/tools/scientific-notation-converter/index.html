@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Scientific Notation Converter — Free Online | ToolNest</title>
+<meta name="description" content="Convert between standard form, scientific notation and engineering notation in both directions.">
+<meta name="keywords" content="scientific notation, engineering notation, standard form converter, e notation, power of ten converter">
+<link rel="canonical" href="https://toolnest.vercel.app/tools/scientific-notation-converter/">
+<meta name="theme-color" content="#07070b">
+<meta property="og:title" content="Scientific Notation Converter — Free Online | ToolNest">
+<meta property="og:description" content="Convert between standard form, scientific notation and engineering notation in both directions.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css?v=4">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%23e01111'/><text x='50' y='68' font-size='58' text-anchor='middle' fill='white' font-family='Arial' font-weight='bold'>T</text></svg>">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebApplication","name":"Scientific Notation Converter","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0"},"url":"https://toolnest.vercel.app/tools/scientific-notation-converter/","description":"Convert between standard form, scientific notation and engineering notation in both directions."},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Scientific vs engineering notation?","acceptedAnswer":{"@type":"Answer","text":"Scientific keeps 1 ≤ a \u003c 10; engineering forces the exponent to a multiple of 3, matching SI prefixes like kilo and mega."}},{"@type":"Question","name":"How do I read 2.5 × 10^-4?","acceptedAnswer":{"@type":"Answer","text":"Move the decimal point 4 places left: 0.00025."}},{"@type":"Question","name":"Why is the exponent negative for small numbers?","acceptedAnswer":{"@type":"Answer","text":"Each leftward decimal shift divides by 10, so a number like 0.003 needs 10^-3 to scale back up."}}]}]}</script>
+</head>
+<body>
+<header class="site-header">
+  <div class="container">
+    <a class="logo" href="/"><span class="logo-mark">T</span> ToolNest</a>
+    <div class="header-right">
+      <form class="nav-search" action="/" method="get" role="search">
+        <span class="ns-icon">🔍</span>
+        <input type="search" name="q" placeholder="Search tools…" aria-label="Search tools" autocomplete="off">
+      </form>
+      <div class="menu-wrap">
+        <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="menuPanel" aria-label="Open menu"><span></span><span></span><span></span></button>
+        <nav class="menu-panel" id="menuPanel" aria-label="Site">
+          <a href="/">Home</a>
+          <a href="/#categories">Categories</a>
+          <a href="/#all-tools">All Tools</a>
+        </nav>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ADSTERRA-HEADER: paste your Adsterra banner ad code inside the div below -->
+<div class="container"><div class="ad-slot ad-leaderboard" data-ad="header"></div></div>
+
+<main class="container">
+  <nav class="crumbs"><a href="/">Home</a> &rsaquo; <a href="/#math">Math &amp; Numbers</a> &rsaquo; Scientific Notation Converter</nav>
+  <div class="tool-hero">
+    <h1>Scientific Notation Converter</h1>
+    <p>Convert between standard form, scientific notation and engineering notation in both directions.</p>
+  </div>
+
+  <div class="tool-card">
+  <div class="field"><label for="scientific-notation-converter-mode">Conversion</label>
+    <select class="input" id="scientific-notation-converter-mode">
+      <option value="std-sci">Standard → Scientific (a × 10^b)</option>
+      <option value="std-eng">Standard → Engineering (exponent multiple of 3)</option>
+      <option value="sci-std">Scientific (a, b) → Standard</option>
+      <option value="eng-std">Engineering (a, b) → Standard</option>
+    </select>
+  </div>
+  <div class="grid2" id="scientific-notation-converter-in1row">
+    <div class="field"><label for="scientific-notation-converter-x">Number</label><input class="input" id="scientific-notation-converter-x" type="text" value="299792458"></div>
+    <div class="field hidden" id="scientific-notation-converter-bwrap"><label for="scientific-notation-converter-b">Exponent b</label><input class="input" id="scientific-notation-converter-b" type="number" value="8"></div>
+  </div>
+  <div class="btn-row"><button class="btn btn-primary" id="scientific-notation-converter-go">Convert</button></div>
+  <div class="stat-cards">
+    <div class="stat-card"><div class="v" id="scientific-notation-converter-out">2.99792458 × 10^8</div><div class="l">Result</div></div>
+  </div>
+  <div class="result"><pre class="code" id="scientific-notation-converter-steps" style="text-align:left;white-space:pre-wrap"></pre></div>
+  <div class="error" id="scientific-notation-converter-error"></div>
+</div>
+
+  <!-- ADSTERRA-INCONTENT: paste your Adsterra native/in-content ad code inside the div below -->
+  <div class="ad-slot" data-ad="incontent"></div>
+
+  <div class="info-grid">
+    <div class="info-card">
+      <h2>📖 How to use</h2>
+      <ol><li>Pick the conversion direction.</li><li>Enter the number (and exponent for reverse conversions).</li><li>Press Convert to see the result and the decimal-point shift.</li></ol>
+    </div>
+    <div class="info-card">
+      <h2>❓ Frequently asked questions</h2>
+      <div class="faq"><details><summary>Scientific vs engineering notation?</summary><p>Scientific keeps 1 ≤ a &lt; 10; engineering forces the exponent to a multiple of 3, matching SI prefixes like kilo and mega.</p></details><details><summary>How do I read 2.5 × 10^-4?</summary><p>Move the decimal point 4 places left: 0.00025.</p></details><details><summary>Why is the exponent negative for small numbers?</summary><p>Each leftward decimal shift divides by 10, so a number like 0.003 needs 10^-3 to scale back up.</p></details></div>
+    </div>
+  </div>
+
+  <section class="section">
+    <h2>🔗 Related tools</h2>
+    <div class="tool-grid"><a class="tool-link" href="/tools/arithmetic-sequence-calculator/" data-search="arithmetic sequence calculator from the first term and common difference get the nth term and the sum of the first n terms. arithmetic sequence arithmetic progression nth term sum of arithmetic series common difference"><span class="t-ico">📐</span><span class="t-body"><b>Arithmetic Sequence Calculator</b><small>From the first term and common difference get the nth term and the sum of the first n terms.</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/binary-adder-calculator/" data-search="binary adder calculator add two binary numbers with every column addition and carry shown, plus a decimal check. binary addition add binary numbers binary adder binary sum binary carry"><span class="t-ico">📐</span><span class="t-body"><b>Binary Adder Calculator</b><small>Add two binary numbers with every column addition and carry shown, plus a decimal check.</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/birthday-paradox-simulator/" data-search="birthday paradox simulator see how likely a shared birthday is: simulate random groups and compare with the exact theoretical probability. birthday paradox birthday problem shared birthday probability birthday collision probability simulation"><span class="t-ico">📐</span><span class="t-body"><b>Birthday Paradox Simulator</b><small>See how likely a shared birthday is: simulate random groups and compare with the exact theor…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/circle-calculator/" data-search="circle calculator enter radius, diameter, circumference or area — get all four circle properties with the formulas shown. circle calculator circumference calculator circle area radius from area diameter calculator"><span class="t-ico">📐</span><span class="t-body"><b>Circle Calculator</b><small>Enter radius, diameter, circumference or area — get all four circle properties with the form…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/clock-angle-calculator/" data-search="clock angle calculator enter a time to get the smaller angle between the hour and minute hands, with the formula and a dial drawing. clock angle angle between hands clock hands angle time angle watch angle calculator"><span class="t-ico">📐</span><span class="t-body"><b>Clock Angle Calculator</b><small>Enter a time to get the smaller angle between the hour and minute hands, with the formula an…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/collatz-sequence-explorer/" data-search="collatz sequence explorer run the 3n+1 collatz sequence from any start: full path, step count, max value and a bar chart. collatz 3n+1 collatz sequence collatz conjecture hailstone sequence"><span class="t-ico">📐</span><span class="t-body"><b>Collatz Sequence Explorer</b><small>Run the 3n+1 Collatz sequence from any start: full path, step count, max value and a bar cha…</small></span><span class="t-arrow">→</span></a></div>
+  </section>
+</main>
+
+<!-- ADSTERRA-FOOTER: paste your Adsterra footer/banner ad code inside the div below -->
+<div class="container"><div class="ad-slot" data-ad="footer"></div></div>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="f-grid">
+      <div>
+        <span class="brandline"><span class="logo-mark">T</span> ToolNest</span>
+        <p>Free online tools that actually work. No sign-up, no watermarks — and your files never leave your device for client-side tools.</p>
+      </div>
+      <div>
+        <h4>Popular</h4>
+        <a href="/tools/qr-code-generator/">QR Code Generator</a>
+        <a href="/tools/background-remover/">Background Remover</a>
+        <a href="/tools/pdf-merger/">PDF Merger</a>
+        <a href="/tools/word-counter/">Word Counter</a>
+      </div>
+      <div>
+        <h4>Categories</h4>
+        <a href="/#image">Image Tools</a>
+        <a href="/#pdf">PDF &amp; Documents</a>
+        <a href="/#calculators">Calculators</a>
+        <a href="/#developer">Developer Tools</a>
+      </div>
+      <div>
+        <h4>Site</h4>
+        <a href="/">Home</a>
+        <a href="/#all-tools">All Tools</a>
+        <a href="/sitemap.xml">Sitemap</a>
+      </div>
+    </div>
+    <div class="f-bottom">© 2026 ToolNest · Free tools for everyone · Made with care</div>
+  </div>
+</footer>
+
+<script src="/assets/site.js?v=5"></script>
+
+<script>
+/* Scientific / engineering notation converter. */
+(function () {
+  'use strict';
+  var SLUG = 'scientific-notation-converter';
+  function $(id) { return document.getElementById(id); }
+  function err(m) { TN.setErr(SLUG + '-error', m); }
+  function sup(n) {
+    var map = { '-': '\u207B', '0': '\u2070', '1': '\u00B9', '2': '\u00B2', '3': '\u00B3', '4': '\u2074', '5': '\u2075', '6': '\u2076', '7': '\u2077', '8': '\u2078', '9': '\u2079' };
+    return String(n).split('').map(function (c) { return map[c] || c; }).join('');
+  }
+  function pretty(a, b) { return a + ' \u00D7 10' + sup(b); }
+  function calc() {
+    TN.clearErr(SLUG + '-error');
+    var mode = $(SLUG + '-mode').value;
+    var raw = $(SLUG + '-x').value.trim();
+    var lines = [];
+    if (mode === 'std-sci' || mode === 'std-eng') {
+      if (!/^-?\d*(\.\d+)?$/.test(raw) || raw === '' || raw === '-') { err('Enter a standard number.'); return; }
+      var v = parseFloat(raw);
+      if (v === 0) {
+        $(SLUG + '-out').textContent = '0';
+        $(SLUG + '-steps').textContent = 'Zero is 0 in every notation.';
+        return;
+      }
+      var e = Math.floor(Math.log10(Math.abs(v)));
+      var a, be;
+      if (mode === 'std-sci') {
+        be = e; a = v / Math.pow(10, e);
+        lines.push('Move the decimal point ' + Math.abs(e) + ' place' + (Math.abs(e) === 1 ? '' : 's') + ' ' + (e >= 0 ? 'left' : 'right') + ' so 1 \u2264 |a| < 10.');
+      } else {
+        be = Math.floor(e / 3) * 3; a = v / Math.pow(10, be);
+        lines.push('Engineering notation forces the exponent to a multiple of 3 (matching SI prefixes).');
+        lines.push('Nearest multiple of 3 \u2264 ' + e + ' is ' + be + '; move the decimal ' + Math.abs(be) + ' places ' + (be >= 0 ? 'left' : 'right') + '.');
+      }
+      var astr = parseFloat(a.toPrecision(10)).toString();
+      $(SLUG + '-out').textContent = pretty(astr, be);
+      lines.push('Result: ' + pretty(astr, be));
+      lines.push('Check: ' + astr + ' \u00D7 10^' + be + ' = ' + (a * Math.pow(10, be)));
+    } else {
+      var aa = parseFloat(raw);
+      var bb = parseInt($(SLUG + '-b').value, 10);
+      if (isNaN(aa)) { err('Enter the coefficient a.'); return; }
+      if (isNaN(bb)) { err('Enter the exponent b.'); return; }
+      var val = aa * Math.pow(10, bb);
+      var label = mode === 'sci-std' ? 'scientific' : 'engineering';
+      lines.push('Standard form = a \u00D7 10^b = ' + aa + ' \u00D7 10^' + bb);
+      lines.push('Move the decimal point ' + Math.abs(bb) + ' place' + (Math.abs(bb) === 1 ? '' : 's') + ' ' + (bb >= 0 ? 'right' : 'left') + '.');
+      $(SLUG + '-out').textContent = String(val);
+      lines.push('Result: ' + val);
+    }
+    $(SLUG + '-steps').textContent = lines.join('\n');
+  }
+  function syncMode() {
+    var rev = $(SLUG + '-mode').value === 'sci-std' || $(SLUG + '-mode').value === 'eng-std';
+    $(SLUG + '-bwrap').classList.toggle('hidden', !rev);
+    $(SLUG + '-x').previousElementSibling.textContent = rev ? 'Coefficient a' : 'Number';
+  }
+  try {
+    TN.on(SLUG + '-go', 'click', calc);
+    TN.on(SLUG + '-mode', 'change', function () { syncMode(); calc(); });
+    TN.on(SLUG + '-x', 'input', TN.debounce(calc, 400));
+    TN.on(SLUG + '-b', 'input', TN.debounce(calc, 400));
+    syncMode(); calc();
+  } catch (e) {}
+})();
+</script>
+</body>
+</html>

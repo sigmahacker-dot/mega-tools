@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pig Latin Translator — Free Online | ToolNest</title>
+<meta name="description" content="Translate English to Pig Latin and back, with proper vowel, consonant-cluster and &#39;qu&#39; rules plus case handling.">
+<meta name="keywords" content="pig latin translator, pig latin converter, pig latin decoder, fun text translator, igpay atinlay">
+<link rel="canonical" href="https://toolnest.vercel.app/tools/pig-latin-translator/">
+<meta name="theme-color" content="#07070b">
+<meta property="og:title" content="Pig Latin Translator — Free Online | ToolNest">
+<meta property="og:description" content="Translate English to Pig Latin and back, with proper vowel, consonant-cluster and &#39;qu&#39; rules plus case handling.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css?v=4">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%23e01111'/><text x='50' y='68' font-size='58' text-anchor='middle' fill='white' font-family='Arial' font-weight='bold'>T</text></svg>">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebApplication","name":"Pig Latin Translator","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0"},"url":"https://toolnest.vercel.app/tools/pig-latin-translator/","description":"Translate English to Pig Latin and back, with proper vowel, consonant-cluster and 'qu' rules plus case handling."},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What rules are used?","acceptedAnswer":{"@type":"Answer","text":"Words starting with a vowel get 'way' added (apple → appleway). Consonant clusters move to the end with 'ay' (string → ingstray). 'qu' moves together (queen → eenquay)."}},{"@type":"Question","name":"Does it keep capitalization and punctuation?","acceptedAnswer":{"@type":"Answer","text":"Yes — capitalization and punctuation are preserved, so 'Hello, world!' becomes 'Ellohay, orldway!'."}},{"@type":"Question","name":"Is decoding perfect?","acceptedAnswer":{"@type":"Answer","text":"Decoding reverses the process but cannot always recover the original word, since multiple English words can map to the same Pig Latin form."}}]}]}</script>
+</head>
+<body>
+<header class="site-header">
+  <div class="container">
+    <a class="logo" href="/"><span class="logo-mark">T</span> ToolNest</a>
+    <div class="header-right">
+      <form class="nav-search" action="/" method="get" role="search">
+        <span class="ns-icon">🔍</span>
+        <input type="search" name="q" placeholder="Search tools…" aria-label="Search tools" autocomplete="off">
+      </form>
+      <div class="menu-wrap">
+        <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="menuPanel" aria-label="Open menu"><span></span><span></span><span></span></button>
+        <nav class="menu-panel" id="menuPanel" aria-label="Site">
+          <a href="/">Home</a>
+          <a href="/#categories">Categories</a>
+          <a href="/#all-tools">All Tools</a>
+        </nav>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ADSTERRA-HEADER: paste your Adsterra banner ad code inside the div below -->
+<div class="container"><div class="ad-slot ad-leaderboard" data-ad="header"></div></div>
+
+<main class="container">
+  <nav class="crumbs"><a href="/">Home</a> &rsaquo; <a href="/#text">Text &amp; Writing</a> &rsaquo; Pig Latin Translator</nav>
+  <div class="tool-hero">
+    <h1>Pig Latin Translator</h1>
+    <p>Translate English to Pig Latin and back, with proper vowel, consonant-cluster and &#39;qu&#39; rules plus case handling.</p>
+  </div>
+
+  <div class="tool-card">
+  <div class="field">
+    <label for="pig-latin-translator-input">Input text</label>
+    <textarea class="textarea" id="pig-latin-translator-input" rows="5" placeholder="Type English to encode, or Pig Latin to decode"></textarea>
+  </div>
+  <div class="grid2">
+    <div class="field">
+      <label for="pig-latin-translator-mode">Mode</label>
+      <select class="input" id="pig-latin-translator-mode">
+        <option value="encode">English → Pig Latin</option>
+        <option value="decode">Pig Latin → English</option>
+      </select>
+    </div>
+    <div class="field">
+      <label>&nbsp;</label>
+      <div class="btn-row"><button class="btn btn-primary" id="pig-latin-translator-run">Convert</button></div>
+    </div>
+  </div>
+  <div class="field">
+    <label>Output</label>
+    <div class="result"><div class="data" id="pig-latin-translator-output" style="white-space:pre-wrap"></div></div>
+    <div class="copy-row"><button class="btn btn-outline" id="pig-latin-translator-copy">Copy output</button></div>
+  </div>
+  <p class="hint">Vowel start → +way · consonant cluster → move +ay · qu moves together · case & punctuation kept.</p>
+  <div class="error" id="pig-latin-translator-error"></div>
+</div>
+
+
+  <!-- ADSTERRA-INCONTENT: paste your Adsterra native/in-content ad code inside the div below -->
+  <div class="ad-slot" data-ad="incontent"></div>
+
+  <div class="info-grid">
+    <div class="info-card">
+      <h2>📖 How to use</h2>
+      <ol><li>Type or paste English text.</li><li>Choose English → Pig Latin or Pig Latin → English.</li><li>Press Convert.</li><li>Copy the result.</li></ol>
+    </div>
+    <div class="info-card">
+      <h2>❓ Frequently asked questions</h2>
+      <div class="faq"><details><summary>What rules are used?</summary><p>Words starting with a vowel get &#39;way&#39; added (apple → appleway). Consonant clusters move to the end with &#39;ay&#39; (string → ingstray). &#39;qu&#39; moves together (queen → eenquay).</p></details><details><summary>Does it keep capitalization and punctuation?</summary><p>Yes — capitalization and punctuation are preserved, so &#39;Hello, world!&#39; becomes &#39;Ellohay, orldway!&#39;.</p></details><details><summary>Is decoding perfect?</summary><p>Decoding reverses the process but cannot always recover the original word, since multiple English words can map to the same Pig Latin form.</p></details></div>
+    </div>
+  </div>
+
+  <section class="section">
+    <h2>🔗 Related tools</h2>
+    <div class="tool-grid"><a class="tool-link" href="/tools/acronym-generator/" data-search="acronym generator turn any phrase into an acronym instantly — first letters, with options to skip small words, add periods and force uppercase. acronym generator make acronym from words initialism generator phrase to acronym"><span class="t-ico">✍️</span><span class="t-body"><b>Acronym Generator</b><small>Turn any phrase into an acronym instantly — first letters, with options to skip small words,…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/acrostic-poem-generator/" data-search="acrostic poem generator turn any word into an acrostic poem — one poetic line per letter from built-in line banks. acrostic poem generator acrostic generator name poem acrostic maker poem from word"><span class="t-ico">✍️</span><span class="t-body"><b>Acrostic Poem Generator</b><small>Turn any word into an acrostic poem — one poetic line per letter from built-in line banks.</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/aes-text-encryptor/" data-search="aes text encryptor encrypt text with real aes-256-gcm using a password-derived key (pbkdf2), fully in your browser. aes encrypt text encrypt message password aes-gcm online"><span class="t-ico">✍️</span><span class="t-body"><b>AES Text Encryptor</b><small>Encrypt text with real AES-256-GCM using a password-derived key (PBKDF2), fully in your brow…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/alliteration-generator/" data-search="alliteration generator generate alliterative phrases — pick a letter and a theme, get tongue-twisting word combos. alliteration generator alliteration examples tongue twister generator alliterative phrases letter phrases"><span class="t-ico">✍️</span><span class="t-body"><b>Alliteration Generator</b><small>Generate alliterative phrases — pick a letter and a theme, get tongue-twisting word combos.</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/anagram-generator/" data-search="anagram generator find every real anagram of your word — all unique permutations checked against a built-in word list. anagram generator anagram solver find anagrams anagram finder word unscrambler"><span class="t-ico">✍️</span><span class="t-body"><b>Anagram Generator</b><small>Find every real anagram of your word — all unique permutations checked against a built-in wo…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/article-rewriter/" data-search="article rewriter rewrite articles with a built-in synonym engine covering 130+ common english words. whole-word replacement with capitalization preserved and a change report. article rewriter paraphrasing tool rewrite text online"><span class="t-ico">✍️</span><span class="t-body"><b>Article Rewriter</b><small>Rewrite articles with a built-in synonym engine covering 130+ common English words. Whole-wo…</small></span><span class="t-arrow">→</span></a></div>
+  </section>
+</main>
+
+<!-- ADSTERRA-FOOTER: paste your Adsterra footer/banner ad code inside the div below -->
+<div class="container"><div class="ad-slot" data-ad="footer"></div></div>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="f-grid">
+      <div>
+        <span class="brandline"><span class="logo-mark">T</span> ToolNest</span>
+        <p>Free online tools that actually work. No sign-up, no watermarks — and your files never leave your device for client-side tools.</p>
+      </div>
+      <div>
+        <h4>Popular</h4>
+        <a href="/tools/qr-code-generator/">QR Code Generator</a>
+        <a href="/tools/background-remover/">Background Remover</a>
+        <a href="/tools/pdf-merger/">PDF Merger</a>
+        <a href="/tools/word-counter/">Word Counter</a>
+      </div>
+      <div>
+        <h4>Categories</h4>
+        <a href="/#image">Image Tools</a>
+        <a href="/#pdf">PDF &amp; Documents</a>
+        <a href="/#calculators">Calculators</a>
+        <a href="/#developer">Developer Tools</a>
+      </div>
+      <div>
+        <h4>Site</h4>
+        <a href="/">Home</a>
+        <a href="/#all-tools">All Tools</a>
+        <a href="/sitemap.xml">Sitemap</a>
+      </div>
+    </div>
+    <div class="f-bottom">© 2026 ToolNest · Free tools for everyone · Made with care</div>
+  </div>
+</footer>
+
+<script src="/assets/site.js?v=5"></script>
+
+<script>
+/* Pig Latin Translator — proper vowel/cluster/qu rules, case + punctuation preserved. */
+(function () {
+  'use strict';
+  var SLUG = 'pig-latin-translator';
+  var VOWELS = 'aeiouAEIOU';
+
+  function isVowel(ch) { return VOWELS.indexOf(ch) !== -1; }
+
+  function applyCase(original, pig) {
+    if (original === original.toUpperCase() && /[A-Z]/.test(original)) return pig.toUpperCase();
+    if (original[0] === original[0].toUpperCase()) return pig[0].toUpperCase() + pig.slice(1).toLowerCase();
+    return pig.toLowerCase();
+  }
+
+  function encodeWord(word) {
+    var m = word.match(/^([^A-Za-z]*)([A-Za-z]+)([^A-Za-z]*)$/);
+    if (!m) return word;
+    var core = m[2], low = core.toLowerCase(), pig;
+    if (isVowel(low[0])) {
+      pig = low + 'way';
+    } else {
+      var i = 0;
+      while (i < low.length && !isVowel(low[i])) {
+        if (low[i] === 'q' && low[i + 1] === 'u') { i += 2; break; }
+        i++;
+      }
+      pig = low.slice(i) + low.slice(0, i) + 'ay';
+    }
+    return m[1] + applyCase(core, pig) + m[3];
+  }
+
+  // Small common-word dictionary so decode can pick the right pre-image when
+  // Pig Latin is ambiguous (e.g. "ingstray" could be "string" or "ngstri").
+  var DICT = {};
+  ('the be to of and a in that have i it for not on with he as you do at this but his by from they we say her she ' +
+   'or an will my one all would there their what so up out if about who get which go me when make can like time no ' +
+   'just him know take people into year your good some could them see other than then now look only come its over ' +
+   'think also back after use two how our work first well way even new want because any these give day most us ' +
+   'hello world string queen apple pig latin cat sat mat dog fox brown quick lazy jumps over under apple orange ' +
+   'happy day play night light love house mouse green great small large big red blue black white man woman child ' +
+   'water fire earth wind sun moon star fish bird tree flower grass road town city country music song dance smile ' +
+   'laugh cry run walk talk speak hear see look feel think dream sleep wake eat drink sweet fresh bright dark cold ' +
+   'warm hot cool soft hard long short high low fast slow early late young old new').split(' ')
+    .forEach(function (w) { DICT[w] = true; });
+
+  function encodeLower(word) {
+    var low = word.toLowerCase(), pig;
+    if (isVowel(low[0])) {
+      pig = low + 'way';
+    } else {
+      var i = 0;
+      while (i < low.length && !isVowel(low[i])) {
+        if (low[i] === 'q' && low[i + 1] === 'u') { i += 2; break; }
+        i++;
+      }
+      pig = low.slice(i) + low.slice(0, i) + 'ay';
+    }
+    return pig;
+  }
+
+  // All plausible English pre-images of a Pig Latin word.
+  function candidates(low) {
+    var cands = [];
+    function add(c) { if (c && cands.indexOf(c) === -1) cands.push(c); }
+    if (/way$/.test(low) && low.length > 3) {
+      var stem = low.slice(0, -3);
+      if (isVowel(stem[0])) add(stem); // vowel-start hypothesis
+    }
+    if (/ay$/.test(low) && low.length > 2) {
+      var s = low.replace(/ay$/, '');
+      if (/qu$/.test(s)) {
+        add('qu' + s.slice(0, -2));
+      } else {
+        for (var k = 1; k < s.length; k++) {
+          var rest = s.slice(0, k), cluster = s.slice(k);
+          if (isVowel(rest[0]) && /^[bcdfghjklmnpqrstvwxz]+$/.test(cluster)) add(cluster + rest);
+        }
+      }
+    }
+    return cands;
+  }
+
+  function decodeWord(word) {
+    var m = word.match(/^([^A-Za-z]*)([A-Za-z]+)([^A-Za-z]*)$/);
+    if (!m) return word;
+    var core = m[2], low = core.toLowerCase(), eng = low;
+    var cands = candidates(low), best = null, fallback = null;
+    for (var i = 0; i < cands.length; i++) {
+      if (encodeLower(cands[i]) === low) { // must re-encode to the input
+        if (DICT[cands[i]]) { best = cands[i]; break; }
+        if (!fallback) fallback = cands[i];
+      }
+    }
+    if (best) eng = best;
+    else if (fallback) eng = fallback;
+    return m[1] + applyCase(core, eng) + m[3];
+  }
+
+  function convert(text, fn) {
+    return text.split(/(\s+)/).map(function (tok) {
+      return /^\s+$/.test(tok) ? tok : fn(tok);
+    }).join('');
+  }
+
+  function run() {
+    TN.clearErr(SLUG + '-error');
+    var mode = TN.el(SLUG + '-mode').value;
+    var input = TN.el(SLUG + '-input').value;
+    if (!input.trim()) { TN.setErr(SLUG + '-error', 'Please enter some text first.'); return; }
+    TN.el(SLUG + '-output').textContent = convert(input, mode === 'encode' ? encodeWord : decodeWord);
+  }
+
+  try {
+    TN.on(SLUG + '-run', 'click', run);
+    TN.on(SLUG + '-copy', 'click', function () {
+      TN.copy(TN.el(SLUG + '-output').textContent);
+    });
+  } catch (e) { /* never throw on load */ }
+})();
+
+</script>
+</body>
+</html>

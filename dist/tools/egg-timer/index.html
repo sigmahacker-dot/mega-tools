@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Egg Timer — Free Online | ToolNest</title>
+<meta name="description" content="Boil the perfect egg — soft (6 min), medium (8 min) and hard (10 min) presets plus a custom timer with alarm.">
+<meta name="keywords" content="egg timer, boiled egg timer, soft boiled egg timer, egg boil timer, perfect egg timer">
+<link rel="canonical" href="https://toolnest.vercel.app/tools/egg-timer/">
+<meta name="theme-color" content="#07070b">
+<meta property="og:title" content="Egg Timer — Free Online | ToolNest">
+<meta property="og:description" content="Boil the perfect egg — soft (6 min), medium (8 min) and hard (10 min) presets plus a custom timer with alarm.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css?v=4">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%23e01111'/><text x='50' y='68' font-size='58' text-anchor='middle' fill='white' font-family='Arial' font-weight='bold'>T</text></svg>">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebApplication","name":"Egg Timer","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0"},"url":"https://toolnest.vercel.app/tools/egg-timer/","description":"Boil the perfect egg — soft (6 min), medium (8 min) and hard (10 min) presets plus a custom timer with alarm."},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What times does it use?","acceptedAnswer":{"@type":"Answer","text":"Soft 6 minutes (runny yolk), medium 8 minutes (jammy yolk), hard 10 minutes (fully set). Times assume large eggs lowered into already-boiling water."}},{"@type":"Question","name":"Can I set a custom time?","acceptedAnswer":{"@type":"Answer","text":"Yes — enter any custom time from 1 to 60 minutes."}},{"@type":"Question","name":"How do I stop the eggs overcooking?","acceptedAnswer":{"@type":"Answer","text":"Move the eggs to ice water immediately for 5 minutes — this stops the cooking and makes peeling easier."}}]}]}</script>
+</head>
+<body>
+<header class="site-header">
+  <div class="container">
+    <a class="logo" href="/"><span class="logo-mark">T</span> ToolNest</a>
+    <div class="header-right">
+      <form class="nav-search" action="/" method="get" role="search">
+        <span class="ns-icon">🔍</span>
+        <input type="search" name="q" placeholder="Search tools…" aria-label="Search tools" autocomplete="off">
+      </form>
+      <div class="menu-wrap">
+        <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="menuPanel" aria-label="Open menu"><span></span><span></span><span></span></button>
+        <nav class="menu-panel" id="menuPanel" aria-label="Site">
+          <a href="/">Home</a>
+          <a href="/#categories">Categories</a>
+          <a href="/#all-tools">All Tools</a>
+        </nav>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ADSTERRA-HEADER: paste your Adsterra banner ad code inside the div below -->
+<div class="container"><div class="ad-slot ad-leaderboard" data-ad="header"></div></div>
+
+<main class="container">
+  <nav class="crumbs"><a href="/">Home</a> &rsaquo; <a href="/#time">Time &amp; Date</a> &rsaquo; Egg Timer</nav>
+  <div class="tool-hero">
+    <h1>Egg Timer</h1>
+    <p>Boil the perfect egg — soft (6 min), medium (8 min) and hard (10 min) presets plus a custom timer with alarm.</p>
+  </div>
+
+  <div class="tool-card" style="text-align:center">
+  <div class="btn-row" style="justify-content:center;margin-bottom:12px">
+    <button class="btn btn-outline" data-egg="6">🥚 Soft · 6 min</button>
+    <button class="btn btn-outline" data-egg="8">🍳 Medium · 8 min</button>
+    <button class="btn btn-outline" data-egg="10">🥚 Hard · 10 min</button>
+  </div>
+  <div class="field" style="max-width:220px;margin:0 auto 12px;text-align:left">
+    <label for="egg-timer-custom">Custom (minutes)</label>
+    <input class="input" type="number" id="egg-timer-custom" min="1" max="60" placeholder="e.g. 7">
+  </div>
+  <div class="countdown-digits" style="margin-bottom:8px"><div class="cd-cell"><span id="egg-timer-clock">0:00</span></div></div>
+  <p class="muted" id="egg-timer-status" style="min-height:24px">Times assume eggs go into already-boiling water.</p>
+  <div class="btn-row" style="justify-content:center">
+    <button class="btn btn-primary" id="egg-timer-start">Start</button>
+    <button class="btn btn-outline" id="egg-timer-stop">Stop</button>
+  </div>
+  <div class="error" id="egg-timer-error"></div>
+</div>
+
+
+  <!-- ADSTERRA-INCONTENT: paste your Adsterra native/in-content ad code inside the div below -->
+  <div class="ad-slot" data-ad="incontent"></div>
+
+  <div class="info-grid">
+    <div class="info-card">
+      <h2>📖 How to use</h2>
+      <ol><li>Pick soft, medium or hard — or set a custom time.</li><li>Lower your eggs into boiling water and press Start.</li><li>Wait for the alarm when the countdown ends.</li><li>Cool the eggs in ice water and peel.</li></ol>
+    </div>
+    <div class="info-card">
+      <h2>❓ Frequently asked questions</h2>
+      <div class="faq"><details><summary>What times does it use?</summary><p>Soft 6 minutes (runny yolk), medium 8 minutes (jammy yolk), hard 10 minutes (fully set). Times assume large eggs lowered into already-boiling water.</p></details><details><summary>Can I set a custom time?</summary><p>Yes — enter any custom time from 1 to 60 minutes.</p></details><details><summary>How do I stop the eggs overcooking?</summary><p>Move the eggs to ice water immediately for 5 minutes — this stops the cooking and makes peeling easier.</p></details></div>
+    </div>
+  </div>
+
+  <section class="section">
+    <h2>🔗 Related tools</h2>
+    <div class="tool-grid"><a class="tool-link" href="/tools/add-subtract-days-calculator/" data-search="add / subtract days calculator add or subtract days, weeks, months or years from any date. optional business-days-only mode skips weekends automatically. add days to date subtract days calculator date plus days business days calculator date arithmetic"><span class="t-ico">⏰</span><span class="t-body"><b>Add / Subtract Days Calculator</b><small>Add or subtract days, weeks, months or years from any date. Optional business-days-only mode…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/anniversary-calculator/" data-search="anniversary calculator track any anniversary: days until the next one, which number it is (10th, 25th…), total days together and the weekday it falls on. anniversary calculator wedding anniversary countdown how many days until anniversary anniversary date tracker years together calculator"><span class="t-ico">⏰</span><span class="t-body"><b>Anniversary Calculator</b><small>Track any anniversary: days until the next one, which number it is (10th, 25th…), total days…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/bill-due-tracker/" data-search="bill due tracker never miss a payment — track recurring monthly bills with automatic next-due dates, days remaining and urgency sorting. bill due tracker bill reminder recurring bills tracker monthly bills organizer due date tracker"><span class="t-ico">⏰</span><span class="t-body"><b>Bill Due Tracker</b><small>Never miss a payment — track recurring monthly bills with automatic next-due dates, days rem…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/business-days-calculator/" data-search="business days calculator count working days between two dates, excluding weekends and your own custom holidays, with a full breakdown. business days calculator working days calculator weekdays between dates net workdays business days excluding holidays"><span class="t-ico">⏰</span><span class="t-body"><b>Business Days Calculator</b><small>Count working days between two dates, excluding weekends and your own custom holidays, with …</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/chess-clock-timer/" data-search="chess clock timer a two-player chess clock with tap-to-switch, optional increment per move, flag detection, pause and reset. chess clock chess timer two player timer blitz clock increment chess clock"><span class="t-ico">⏰</span><span class="t-body"><b>Chess Clock Timer</b><small>A two-player chess clock with tap-to-switch, optional increment per move, flag detection, pa…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/daily-screen-time-log/" data-search="daily screen time log log daily screen time by app or category and see daily totals plus a 7-day bar summary — all saved in your browser. screen time tracker screen time log daily screen time phone usage tracker app usage log"><span class="t-ico">⏰</span><span class="t-body"><b>Daily Screen Time Log</b><small>Log daily screen time by app or category and see daily totals plus a 7-day bar summary — all…</small></span><span class="t-arrow">→</span></a></div>
+  </section>
+</main>
+
+<!-- ADSTERRA-FOOTER: paste your Adsterra footer/banner ad code inside the div below -->
+<div class="container"><div class="ad-slot" data-ad="footer"></div></div>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="f-grid">
+      <div>
+        <span class="brandline"><span class="logo-mark">T</span> ToolNest</span>
+        <p>Free online tools that actually work. No sign-up, no watermarks — and your files never leave your device for client-side tools.</p>
+      </div>
+      <div>
+        <h4>Popular</h4>
+        <a href="/tools/qr-code-generator/">QR Code Generator</a>
+        <a href="/tools/background-remover/">Background Remover</a>
+        <a href="/tools/pdf-merger/">PDF Merger</a>
+        <a href="/tools/word-counter/">Word Counter</a>
+      </div>
+      <div>
+        <h4>Categories</h4>
+        <a href="/#image">Image Tools</a>
+        <a href="/#pdf">PDF &amp; Documents</a>
+        <a href="/#calculators">Calculators</a>
+        <a href="/#developer">Developer Tools</a>
+      </div>
+      <div>
+        <h4>Site</h4>
+        <a href="/">Home</a>
+        <a href="/#all-tools">All Tools</a>
+        <a href="/sitemap.xml">Sitemap</a>
+      </div>
+    </div>
+    <div class="f-bottom">© 2026 ToolNest · Free tools for everyone · Made with care</div>
+  </div>
+</footer>
+
+<script src="/assets/site.js?v=5"></script>
+
+<script>
+/* Egg Timer — soft/medium/hard presets + custom, with alarm. */
+(function () {
+  'use strict';
+  var SLUG = 'egg-timer';
+  var $ = function (id) { return TN.el(SLUG + '-' + id); };
+
+  var timerId = null, endAt = 0;
+  var actx = null;
+
+  function beep(freq, dur, delay) {
+    try {
+      if (!actx) actx = new (window.AudioContext || window.webkitAudioContext)();
+      var at = actx.currentTime + (delay || 0);
+      var o = actx.createOscillator(), g = actx.createGain();
+      o.type = 'triangle'; o.frequency.value = freq;
+      g.gain.setValueAtTime(0.0001, at);
+      g.gain.exponentialRampToValueAtTime(0.5, at + 0.03);
+      g.gain.exponentialRampToValueAtTime(0.0001, at + dur);
+      o.connect(g); g.connect(actx.destination);
+      o.start(at); o.stop(at + dur + 0.05);
+    } catch (e) {}
+  }
+
+  function alarm() {
+    for (var i = 0; i < 3; i++) { beep(1046, 0.35, i * 0.5); }
+  }
+
+  function fmt(ms) {
+    var s = Math.max(0, Math.ceil(ms / 1000));
+    return Math.floor(s / 60) + ':' + ('0' + (s % 60)).slice(-2);
+  }
+
+  function stopTick() { if (timerId) { clearInterval(timerId); timerId = null; } }
+
+  function tick() {
+    var remain = endAt - Date.now();
+    if (remain <= 0) {
+      stopTick();
+      $('clock').textContent = '0:00';
+      $('status').textContent = '⏰ Done! Move the eggs to ice water now.';
+      alarm();
+      return;
+    }
+    $('clock').textContent = fmt(remain);
+    $('status').textContent = 'Cooking… ' + fmt(remain) + ' left.';
+  }
+
+  function start(mins) {
+    TN.clearErr(SLUG + '-error');
+    if (!mins || mins < 1 || mins > 60) { TN.setErr(SLUG + '-error', 'Please pick a preset or enter 1–60 minutes.'); return; }
+    beep(660, 0.1);
+    stopTick();
+    endAt = Date.now() + mins * 60000;
+    $('status').textContent = 'Cooking…';
+    timerId = setInterval(tick, 250);
+    tick();
+  }
+
+  function stop() {
+    stopTick();
+    $('clock').textContent = '0:00';
+    $('status').textContent = 'Timer stopped.';
+  }
+
+  try {
+    TN.qsa('[data-egg]').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        $('custom').value = '';
+        start(parseInt(btn.getAttribute('data-egg'), 10));
+      });
+    });
+    TN.on(SLUG + '-start', 'click', function () { start(parseInt($('custom').value, 10)); });
+    TN.on(SLUG + '-stop', 'click', stop);
+  } catch (e) { /* never throw on load */ }
+})();
+
+</script>
+</body>
+</html>

@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cycling Power Estimator — Free Online | ToolNest</title>
+<meta name="description" content="Estimate cycling power in watts from speed, rider weight, and gradient using the standard physics model.">
+<meta name="keywords" content="cycling power estimator, bike watts calculator, cycling power calculator, watts cycling speed, ftp estimate">
+<link rel="canonical" href="https://toolnest.vercel.app/tools/cycling-power-estimator/">
+<meta name="theme-color" content="#07070b">
+<meta property="og:title" content="Cycling Power Estimator — Free Online | ToolNest">
+<meta property="og:description" content="Estimate cycling power in watts from speed, rider weight, and gradient using the standard physics model.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css?v=4">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%23e01111'/><text x='50' y='68' font-size='58' text-anchor='middle' fill='white' font-family='Arial' font-weight='bold'>T</text></svg>">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebApplication","name":"Cycling Power Estimator","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0"},"url":"https://toolnest.vercel.app/tools/cycling-power-estimator/","description":"Estimate cycling power in watts from speed, rider weight, and gradient using the standard physics model."},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How is power estimated?","acceptedAnswer":{"@type":"Answer","text":"Power overcomes three resistances: aerodynamic drag, rolling resistance, and gravity on hills. The model sums all three."}},{"@type":"Question","name":"What is a good wattage?","acceptedAnswer":{"@type":"Answer","text":"Flat-road cruising is usually 100–200 W, a strong club rider holds 250–300 W, and pros exceed 400 W on climbs."}},{"@type":"Question","name":"Is this as accurate as a power meter?","acceptedAnswer":{"@type":"Answer","text":"An estimate only — it cannot replace a power meter. Wind, position, and tires change real values by 10–20%."}}]}]}</script>
+</head>
+<body>
+<header class="site-header">
+  <div class="container">
+    <a class="logo" href="/"><span class="logo-mark">T</span> ToolNest</a>
+    <div class="header-right">
+      <form class="nav-search" action="/" method="get" role="search">
+        <span class="ns-icon">🔍</span>
+        <input type="search" name="q" placeholder="Search tools…" aria-label="Search tools" autocomplete="off">
+      </form>
+      <div class="menu-wrap">
+        <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="menuPanel" aria-label="Open menu"><span></span><span></span><span></span></button>
+        <nav class="menu-panel" id="menuPanel" aria-label="Site">
+          <a href="/">Home</a>
+          <a href="/#categories">Categories</a>
+          <a href="/#all-tools">All Tools</a>
+        </nav>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ADSTERRA-HEADER: paste your Adsterra banner ad code inside the div below -->
+<div class="container"><div class="ad-slot ad-leaderboard" data-ad="header"></div></div>
+
+<main class="container">
+  <nav class="crumbs"><a href="/">Home</a> &rsaquo; <a href="/#health">Health &amp; Fitness</a> &rsaquo; Cycling Power Estimator</nav>
+  <div class="tool-hero">
+    <h1>Cycling Power Estimator</h1>
+    <p>Estimate cycling power in watts from speed, rider weight, and gradient using the standard physics model.</p>
+  </div>
+
+  <div class="tool-card">
+  <div class="grid2">
+    <div class="field">
+      <label for="cycling-power-estimator-speed">Speed (km/h)</label>
+      <input class="input" id="cycling-power-estimator-speed" type="number" min="1" step="0.5" placeholder="e.g. 30">
+    </div>
+    <div class="field">
+      <label for="cycling-power-estimator-rider">Rider weight (kg)</label>
+      <input class="input" id="cycling-power-estimator-rider" type="number" min="20" max="250" step="0.5" placeholder="e.g. 75">
+    </div>
+    <div class="field">
+      <label for="cycling-power-estimator-bike">Bike weight (kg)</label>
+      <input class="input" id="cycling-power-estimator-bike" type="number" min="1" max="40" step="0.5" placeholder="e.g. 9">
+    </div>
+    <div class="field">
+      <label for="cycling-power-estimator-grade">Gradient (%)</label>
+      <input class="input" id="cycling-power-estimator-grade" type="number" min="-30" max="30" step="0.5" placeholder="e.g. 2 (negative = downhill)">
+    </div>
+  </div>
+  <div class="btn-row"><button class="btn btn-primary" id="cycling-power-estimator-calc">Calculate</button></div>
+  <div class="stat-cards hidden" id="cycling-power-estimator-out">
+    <div class="stat-card"><div class="v" id="cycling-power-estimator-watts">0</div><div class="l">Estimated power (W)</div></div>
+    <div class="stat-card"><div class="v" id="cycling-power-estimator-wkg">0</div><div class="l">Watts per kg</div></div>
+  </div>
+  <div class="result hidden" id="cycling-power-estimator-break"></div>
+  <p class="hint">Model: ½ρCdA·v³ (aero, CdA 0.32) + Crr·m·g·v (rolling, Crr 0.005) + m·g·grade·v (gravity).</p>
+  <p class="note">General information only — not medical advice. Consult a professional for personal guidance.</p>
+  <div class="error" id="cycling-power-estimator-error"></div>
+</div>
+
+
+  <!-- ADSTERRA-INCONTENT: paste your Adsterra native/in-content ad code inside the div below -->
+  <div class="ad-slot" data-ad="incontent"></div>
+
+  <div class="info-grid">
+    <div class="info-card">
+      <h2>📖 How to use</h2>
+      <ol><li>Enter your average speed in km/h.</li><li>Enter rider weight and bike weight in kg.</li><li>Enter the average gradient in percent (negative for descents).</li><li>Press Calculate to see estimated watts and the breakdown.</li></ol>
+    </div>
+    <div class="info-card">
+      <h2>❓ Frequently asked questions</h2>
+      <div class="faq"><details><summary>How is power estimated?</summary><p>Power overcomes three resistances: aerodynamic drag, rolling resistance, and gravity on hills. The model sums all three.</p></details><details><summary>What is a good wattage?</summary><p>Flat-road cruising is usually 100–200 W, a strong club rider holds 250–300 W, and pros exceed 400 W on climbs.</p></details><details><summary>Is this as accurate as a power meter?</summary><p>An estimate only — it cannot replace a power meter. Wind, position, and tires change real values by 10–20%.</p></details></div>
+    </div>
+  </div>
+
+  <section class="section">
+    <h2>🔗 Related tools</h2>
+    <div class="tool-grid"><a class="tool-link" href="/tools/baby-growth-tracker/" data-search="baby growth tracker log your baby&#39;s weight and height over time and see a growth log with typical-range guidance. baby growth tracker baby weight tracker infant growth chart baby height log newborn growth"><span class="t-ico">❤️</span><span class="t-body"><b>Baby Growth Tracker</b><small>Log your baby&#39;s weight and height over time and see a growth log with typical-range guidance…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/blood-pressure-tracker/" data-search="blood pressure tracker log blood pressure readings with automatic aha category classification, averages and history saved in your browser. blood pressure tracker bp log blood pressure chart hypertension tracker bp monitor log"><span class="t-ico">❤️</span><span class="t-body"><b>Blood Pressure Tracker</b><small>Log blood pressure readings with automatic AHA category classification, averages and history…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/body-fat-calculator/" data-search="body fat calculator estimate body fat percentage with the us navy tape-measure method and see your fitness category. body fat calculator us navy body fat body fat percentage calculator"><span class="t-ico">❤️</span><span class="t-body"><b>Body Fat Calculator</b><small>Estimate body fat percentage with the US Navy tape-measure method and see your fitness categ…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/breathing-exercise-guide/" data-search="breathing exercise guide guided breathing exercises (4-7-8, box, energize) with an animated pacer circle, phase labels, and cycle counter. breathing exercise 4-7-8 breathing box breathing breathing pacer calm breathing"><span class="t-ico">❤️</span><span class="t-body"><b>Breathing Exercise Guide</b><small>Guided breathing exercises (4-7-8, box, energize) with an animated pacer circle, phase label…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/caffeine-half-life-calculator/" data-search="caffeine half-life calculator log caffeinated drinks and see how much caffeine is still in your system using 5.5-hour half-life decay. caffeine half life caffeine calculator caffeine in system coffee caffeine tracker caffeine sleep"><span class="t-ico">❤️</span><span class="t-body"><b>Caffeine Half-Life Calculator</b><small>Log caffeinated drinks and see how much caffeine is still in your system using 5.5-hour half…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/calorie-calculator/" data-search="tdee calorie calculator estimate your daily calorie needs with the mifflin-st jeor equation and get targets for losing, maintaining or gaining weight. tdee calculator calorie calculator mifflin st jeor daily calorie needs"><span class="t-ico">❤️</span><span class="t-body"><b>TDEE Calorie Calculator</b><small>Estimate your daily calorie needs with the Mifflin-St Jeor equation and get targets for losi…</small></span><span class="t-arrow">→</span></a></div>
+  </section>
+</main>
+
+<!-- ADSTERRA-FOOTER: paste your Adsterra footer/banner ad code inside the div below -->
+<div class="container"><div class="ad-slot" data-ad="footer"></div></div>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="f-grid">
+      <div>
+        <span class="brandline"><span class="logo-mark">T</span> ToolNest</span>
+        <p>Free online tools that actually work. No sign-up, no watermarks — and your files never leave your device for client-side tools.</p>
+      </div>
+      <div>
+        <h4>Popular</h4>
+        <a href="/tools/qr-code-generator/">QR Code Generator</a>
+        <a href="/tools/background-remover/">Background Remover</a>
+        <a href="/tools/pdf-merger/">PDF Merger</a>
+        <a href="/tools/word-counter/">Word Counter</a>
+      </div>
+      <div>
+        <h4>Categories</h4>
+        <a href="/#image">Image Tools</a>
+        <a href="/#pdf">PDF &amp; Documents</a>
+        <a href="/#calculators">Calculators</a>
+        <a href="/#developer">Developer Tools</a>
+      </div>
+      <div>
+        <h4>Site</h4>
+        <a href="/">Home</a>
+        <a href="/#all-tools">All Tools</a>
+        <a href="/sitemap.xml">Sitemap</a>
+      </div>
+    </div>
+    <div class="f-bottom">© 2026 ToolNest · Free tools for everyone · Made with care</div>
+  </div>
+</footer>
+
+<script src="/assets/site.js?v=5"></script>
+
+<script>
+/* Cycling power estimator: P = aero + rolling + gravity (standard model). */
+(function () {
+  'use strict';
+  var SLUG = 'cycling-power-estimator';
+  function $(id) { return document.getElementById(id); }
+  function calc() {
+    $(SLUG + '-error').textContent = '';
+    var speed = parseFloat($(SLUG + '-speed').value);
+    var rider = parseFloat($(SLUG + '-rider').value);
+    var bike = parseFloat($(SLUG + '-bike').value);
+    var grade = parseFloat($(SLUG + '-grade').value);
+    if (isNaN(speed) || speed <= 0) { $(SLUG + '-error').textContent = 'Enter a valid speed in km/h.'; return; }
+    if (isNaN(rider) || rider < 20 || rider > 250) { $(SLUG + '-error').textContent = 'Enter a valid rider weight (20–250 kg).'; return; }
+    if (isNaN(bike) || bike < 1 || bike > 40) { $(SLUG + '-error').textContent = 'Enter a valid bike weight (1–40 kg).'; return; }
+    if (isNaN(grade)) { $(SLUG + '-error').textContent = 'Enter a gradient in percent (0 for flat).'; return; }
+    var v = speed / 3.6;             // m/s
+    var m = rider + bike;            // total mass kg
+    var g = 9.81;
+    var pAero = 0.5 * 1.225 * 0.32 * Math.pow(v, 3);
+    var pRoll = 0.005 * m * g * v;
+    var pGrav = m * g * (grade / 100) * v;
+    var total = Math.max(0, pAero + pRoll + pGrav);
+    $(SLUG + '-watts').textContent = Math.round(total) + ' W';
+    $(SLUG + '-wkg').textContent = (total / rider).toFixed(2) + ' W/kg';
+    var box = $(SLUG + '-break');
+    box.innerHTML = '<p><strong>Breakdown:</strong> aero drag ' + Math.round(pAero) + ' W · rolling ' +
+      Math.round(pRoll) + ' W · gravity ' + Math.round(pGrav) + ' W</p>';
+    box.classList.remove('hidden');
+    $(SLUG + '-out').classList.remove('hidden');
+  }
+  try { $(SLUG + '-calc').addEventListener('click', calc); } catch (e) { /* never throw on load */ }
+})();
+
+</script>
+</body>
+</html>

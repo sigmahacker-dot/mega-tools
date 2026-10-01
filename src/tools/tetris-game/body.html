@@ -1,0 +1,27 @@
+<div class="tool-card" style="text-align:center">
+  <div class="stat-cards" style="max-width:480px;margin:0 auto 12px">
+    <div class="stat-card"><div class="v" id="tetris-game-score">0</div><div class="l">Score</div></div>
+    <div class="stat-card"><div class="v" id="tetris-game-lines">0</div><div class="l">Lines</div></div>
+    <div class="stat-card"><div class="v" id="tetris-game-level">1</div><div class="l">Level</div></div>
+  </div>
+  <p class="muted" id="tetris-game-msg" style="min-height:24px">Press Start — arrows/WASD or the buttons below.</p>
+  <div style="display:flex;gap:12px;justify-content:center;align-items:flex-start;flex-wrap:wrap">
+    <canvas id="tetris-game-canvas" width="240" height="480" style="border-radius:8px;box-shadow:0 2px 8px rgba(0,0,0,.25);background:#111;touch-action:none"></canvas>
+    <div>
+      <p class="muted" style="margin:0 0 4px">Next</p>
+      <canvas id="tetris-game-next" width="96" height="96" style="border-radius:8px;background:#111"></canvas>
+      <div class="btn-row" style="justify-content:center;margin-top:8px;flex-direction:column;gap:8px">
+        <button class="btn btn-primary" id="tetris-game-start">▶ Start</button>
+        <button class="btn btn-outline" id="tetris-game-pause" disabled>⏸ Pause</button>
+      </div>
+    </div>
+  </div>
+  <div style="display:grid;grid-template-columns:repeat(5,58px);gap:6px;justify-content:center;margin-top:12px">
+    <button class="btn btn-outline" id="tetris-game-left" style="height:52px;font-size:20px">◀</button>
+    <button class="btn btn-outline" id="tetris-game-down" style="height:52px;font-size:20px">▼</button>
+    <button class="btn btn-outline" id="tetris-game-rotate" style="height:52px;font-size:20px">⟳</button>
+    <button class="btn btn-outline" id="tetris-game-right" style="height:52px;font-size:20px">▶</button>
+    <button class="btn btn-outline" id="tetris-game-drop" style="height:52px;font-size:20px">⤓</button>
+  </div>
+  <div class="error" id="tetris-game-error"></div>
+</div>

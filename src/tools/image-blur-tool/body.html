@@ -1,0 +1,19 @@
+<div class="tool-card">
+  <div class="dropzone" id="image-blur-tool-drop">
+    <span class="dz-icon">🖼️</span>
+    <strong>Drop an image here</strong> or click to browse
+    <input type="file" id="image-blur-tool-file" accept="image/*" class="hidden">
+  </div>
+  <div class="preview hidden" id="image-blur-tool-wrap" style="text-align:center">
+    <canvas id="image-blur-tool-canvas" style="max-width:100%;height:auto;border-radius:8px"></canvas>
+  </div>
+  <div class="field">
+    <label for="image-blur-tool-radius">Blur radius: <span id="image-blur-tool-radius-val">5</span>px</label>
+    <input type="range" id="image-blur-tool-radius" min="0" max="20" value="5">
+  </div>
+  <div class="btn-row">
+    <button class="btn btn-primary" id="image-blur-tool-download">Download PNG</button>
+  </div>
+  <div class="error" id="image-blur-tool-error"></div>
+  <p class="note">Blur uses your browser's built-in canvas blur filter — fast, but an approximation at large radii, not an exact Gaussian. Files never leave your device — everything is processed in your browser.</p>
+</div>

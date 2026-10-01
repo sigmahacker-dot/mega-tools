@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ISO 8601 Converter — Free Online | ToolNest</title>
+<meta name="description" content="Convert between local datetimes, ISO 8601 variants (UTC, offset, date-only) and Unix timestamps.">
+<meta name="keywords" content="iso8601 converter, unix timestamp converter, datetime to iso, iso to timestamp, rfc3339">
+<link rel="canonical" href="https://toolnest.vercel.app/tools/iso8601-converter/">
+<meta name="theme-color" content="#07070b">
+<meta property="og:title" content="ISO 8601 Converter — Free Online | ToolNest">
+<meta property="og:description" content="Convert between local datetimes, ISO 8601 variants (UTC, offset, date-only) and Unix timestamps.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css?v=4">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%23e01111'/><text x='50' y='68' font-size='58' text-anchor='middle' fill='white' font-family='Arial' font-weight='bold'>T</text></svg>">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebApplication","name":"ISO 8601 Converter","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0"},"url":"https://toolnest.vercel.app/tools/iso8601-converter/","description":"Convert between local datetimes, ISO 8601 variants (UTC, offset, date-only) and Unix timestamps."},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Which timezone is used for local input?","acceptedAnswer":{"@type":"Answer","text":"The picker's timezone is your browser's local zone; UTC variants are converted explicitly."}},{"@type":"Question","name":"Can I convert a Unix timestamp back?","acceptedAnswer":{"@type":"Answer","text":"Yes — timestamps in seconds and milliseconds are converted to full ISO dates."}},{"@type":"Question","name":"Seconds or milliseconds input?","acceptedAnswer":{"@type":"Answer","text":"Both — the parser detects second vs millisecond magnitude automatically."}},{"@type":"Question","name":"Does it handle ISO week dates?","acceptedAnswer":{"@type":"Answer","text":"No — week dates (2026-W40) and ordinal dates are not handled; use standard RFC 3339-style input."}}]}]}</script>
+</head>
+<body>
+<header class="site-header">
+  <div class="container">
+    <a class="logo" href="/"><span class="logo-mark">T</span> ToolNest</a>
+    <div class="header-right">
+      <form class="nav-search" action="/" method="get" role="search">
+        <span class="ns-icon">🔍</span>
+        <input type="search" name="q" placeholder="Search tools…" aria-label="Search tools" autocomplete="off">
+      </form>
+      <div class="menu-wrap">
+        <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="menuPanel" aria-label="Open menu"><span></span><span></span><span></span></button>
+        <nav class="menu-panel" id="menuPanel" aria-label="Site">
+          <a href="/">Home</a>
+          <a href="/#categories">Categories</a>
+          <a href="/#all-tools">All Tools</a>
+        </nav>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ADSTERRA-HEADER: paste your Adsterra banner ad code inside the div below -->
+<div class="container"><div class="ad-slot ad-leaderboard" data-ad="header"></div></div>
+
+<main class="container">
+  <nav class="crumbs"><a href="/">Home</a> &rsaquo; <a href="/#developer">Developer Tools</a> &rsaquo; ISO 8601 Converter</nav>
+  <div class="tool-hero">
+    <h1>ISO 8601 Converter</h1>
+    <p>Convert between local datetimes, ISO 8601 variants (UTC, offset, date-only) and Unix timestamps.</p>
+  </div>
+
+  <div class="tool-card">
+  <div class="field">
+    <label for="iso8601-converter-local">Local datetime</label>
+    <input type="datetime-local" class="input" id="iso8601-converter-local">
+  </div>
+  <div class="field">
+    <label for="iso8601-converter-iso">ISO 8601 string</label>
+    <input class="input" id="iso8601-converter-iso" placeholder="2026-10-01T09:30:00Z">
+  </div>
+  <div class="field">
+    <label for="iso8601-converter-ts">Unix timestamp</label>
+    <input class="input" id="iso8601-converter-ts" placeholder="1759295400 (seconds) or 1759295400000 (ms)">
+  </div>
+  <div class="btn-row">
+    <button class="btn btn-primary" id="iso8601-converter-convert">Convert</button>
+    <button class="btn btn-outline" id="iso8601-converter-now">Use now</button>
+  </div>
+  <div class="error" id="iso8601-converter-error"></div>
+  <div class="result hidden" id="iso8601-converter-result">
+    <table class="data" id="iso8601-converter-table"></table>
+  </div>
+</div>
+
+
+  <!-- ADSTERRA-INCONTENT: paste your Adsterra native/in-content ad code inside the div below -->
+  <div class="ad-slot" data-ad="incontent"></div>
+
+  <div class="info-grid">
+    <div class="info-card">
+      <h2>📖 How to use</h2>
+      <ol><li>Enter a datetime, ISO string, or Unix timestamp.</li><li>Click Convert.</li><li>Copy whichever output format you need.</li></ol>
+    </div>
+    <div class="info-card">
+      <h2>❓ Frequently asked questions</h2>
+      <div class="faq"><details><summary>Which timezone is used for local input?</summary><p>The picker&#39;s timezone is your browser&#39;s local zone; UTC variants are converted explicitly.</p></details><details><summary>Can I convert a Unix timestamp back?</summary><p>Yes — timestamps in seconds and milliseconds are converted to full ISO dates.</p></details><details><summary>Seconds or milliseconds input?</summary><p>Both — the parser detects second vs millisecond magnitude automatically.</p></details><details><summary>Does it handle ISO week dates?</summary><p>No — week dates (2026-W40) and ordinal dates are not handled; use standard RFC 3339-style input.</p></details></div>
+    </div>
+  </div>
+
+  <section class="section">
+    <h2>🔗 Related tools</h2>
+    <div class="tool-grid"><a class="tool-link" href="/tools/ascii-table-reference/" data-search="ascii table reference full ascii table 0–127: decimal, hex, octal, character, control-code names and html entities — searchable. ascii table ascii codes ascii chart control characters ascii reference"><span class="t-ico">💻</span><span class="t-body"><b>ASCII Table Reference</b><small>Full ASCII table 0–127: decimal, hex, octal, character, control-code names and HTML entities…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/base64-encoder-decoder/" data-search="base64 encoder / decoder encode text to base64 or decode base64 back to text, with full utf-8 support and a file-to-data-url converter. base64 encoder base64 decoder base64 encode base64 decode file to base64"><span class="t-ico">💻</span><span class="t-body"><b>Base64 Encoder / Decoder</b><small>Encode text to Base64 or decode Base64 back to text, with full UTF-8 support and a file-to-d…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/binary-text-converter/" data-search="binary and text converter convert text to binary or hex and back, with full utf-8 awareness and strict input validation. binary to text text to binary hex to text converter"><span class="t-ico">💻</span><span class="t-body"><b>Binary and Text Converter</b><small>Convert text to binary or hex and back, with full UTF-8 awareness and strict input validatio…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/changelog-generator/" data-search="changelog generator build a keep-a-changelog markdown file: version, date, and grouped added/fixed/changed entries. changelog generator keep a changelog changelog markdown release notes version changelog"><span class="t-ico">💻</span><span class="t-body"><b>Changelog Generator</b><small>Build a Keep-a-Changelog markdown file: version, date, and grouped Added/Fixed/Changed entri…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/character-escape-reference/" data-search="character escape reference searchable reference of characters with their html entities, url encodings, and js escapes — plus a live encoder. character escape reference html entities url encode unicode escape html entity table"><span class="t-ico">💻</span><span class="t-body"><b>Character Escape Reference</b><small>Searchable reference of characters with their HTML entities, URL encodings, and JS escapes —…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/chmod-calculator/" data-search="chmod calculator tick rwx boxes for user/group/other — or type 755 — and see octal, symbolic, and the chmod command live. chmod calculator chmod 755 linux permissions octal permissions rwx calculator"><span class="t-ico">💻</span><span class="t-body"><b>chmod Calculator</b><small>Tick rwx boxes for user/group/other — or type 755 — and see octal, symbolic, and the chmod c…</small></span><span class="t-arrow">→</span></a></div>
+  </section>
+</main>
+
+<!-- ADSTERRA-FOOTER: paste your Adsterra footer/banner ad code inside the div below -->
+<div class="container"><div class="ad-slot" data-ad="footer"></div></div>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="f-grid">
+      <div>
+        <span class="brandline"><span class="logo-mark">T</span> ToolNest</span>
+        <p>Free online tools that actually work. No sign-up, no watermarks — and your files never leave your device for client-side tools.</p>
+      </div>
+      <div>
+        <h4>Popular</h4>
+        <a href="/tools/qr-code-generator/">QR Code Generator</a>
+        <a href="/tools/background-remover/">Background Remover</a>
+        <a href="/tools/pdf-merger/">PDF Merger</a>
+        <a href="/tools/word-counter/">Word Counter</a>
+      </div>
+      <div>
+        <h4>Categories</h4>
+        <a href="/#image">Image Tools</a>
+        <a href="/#pdf">PDF &amp; Documents</a>
+        <a href="/#calculators">Calculators</a>
+        <a href="/#developer">Developer Tools</a>
+      </div>
+      <div>
+        <h4>Site</h4>
+        <a href="/">Home</a>
+        <a href="/#all-tools">All Tools</a>
+        <a href="/sitemap.xml">Sitemap</a>
+      </div>
+    </div>
+    <div class="f-bottom">© 2026 ToolNest · Free tools for everyone · Made with care</div>
+  </div>
+</footer>
+
+<script src="/assets/site.js?v=5"></script>
+
+<script>
+/* ISO 8601 Converter — datetime-local ↔ ISO variants ↔ unix s/ms, both directions. */
+(function () {
+  'use strict';
+  var SLUG = 'iso8601-converter';
+
+  function el(id) { return document.getElementById(id); }
+  function fail(msg) { TN.setErr(SLUG + '-error', msg); }
+  function clear() { TN.clearErr(SLUG + '-error'); }
+
+  function pad(n, l) { n = String(n); while (n.length < (l || 2)) n = '0' + n; return n; }
+
+  function offsetString(d) {
+    var off = -d.getTimezoneOffset();
+    var sign = off >= 0 ? '+' : '-';
+    off = Math.abs(off);
+    return sign + pad(Math.floor(off / 60)) + ':' + pad(off % 60);
+  }
+
+  function withOffset(d) {
+    return d.getFullYear() + '-' + pad(d.getMonth() + 1) + '-' + pad(d.getDate()) + 'T' +
+      pad(d.getHours()) + ':' + pad(d.getMinutes()) + ':' + pad(d.getSeconds()) + offsetString(d);
+  }
+
+  function toLocalInput(d) {
+    return d.getFullYear() + '-' + pad(d.getMonth() + 1) + '-' + pad(d.getDate()) + 'T' +
+      pad(d.getHours()) + ':' + pad(d.getMinutes());
+  }
+
+  function row(label, value) {
+    return '<tr><td><strong>' + label + '</strong></td><td><code class="code">' + value + '</code></td></tr>';
+  }
+
+  function show(d) {
+    var ms = d.getTime();
+    var t = el(SLUG + '-table');
+    t.innerHTML =
+      row('ISO 8601 (UTC)', d.toISOString()) +
+      row('ISO 8601 (local offset)', withOffset(d)) +
+      row('Date only', d.getFullYear() + '-' + pad(d.getMonth() + 1) + '-' + pad(d.getDate())) +
+      row('Unix seconds', Math.floor(ms / 1000)) +
+      row('Unix milliseconds', ms) +
+      row('Local datetime input', toLocalInput(d));
+    TN.show(SLUG + '-result');
+  }
+
+  function convert() {
+    clear();
+    TN.hide(SLUG + '-result');
+    var d = null;
+    var localV = el(SLUG + '-local').value;
+    var isoV = el(SLUG + '-iso').value.trim();
+    var tsV = el(SLUG + '-ts').value.trim();
+    if (tsV) {
+      if (!/^\d+$/.test(tsV)) { fail('Timestamp must be digits only.'); return; }
+      var n = parseInt(tsV, 10);
+      d = new Date(tsV.length > 10 ? n : n * 1000); // ms vs seconds
+    } else if (localV) {
+      d = new Date(localV);
+    } else if (isoV) {
+      d = new Date(isoV);
+    } else {
+      fail('Enter a datetime, ISO string, or timestamp.');
+      return;
+    }
+    if (isNaN(d.getTime())) { fail('Could not parse that date.'); return; }
+    show(d);
+  }
+
+  try {
+    TN.on(SLUG + '-convert', 'click', convert);
+    TN.on(SLUG + '-now', 'click', function () {
+      clear();
+      show(new Date());
+      el(SLUG + '-local').value = '';
+      el(SLUG + '-iso').value = '';
+      el(SLUG + '-ts').value = '';
+    });
+  } catch (e) { /* never throw on load */ }
+})();
+
+</script>
+</body>
+</html>

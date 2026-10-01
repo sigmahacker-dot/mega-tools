@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Before/After Image Comparison Slider Snippet — Free Online | ToolNest</title>
+<meta name="description" content="Build a before/after image comparison slider: upload two images (or use canvas placeholders), try the live demo, and copy the HTML + CSS + JS snippet.">
+<meta name="keywords" content="image comparison slider, before after slider, image compare html css js, comparison slider snippet, before after widget">
+<link rel="canonical" href="https://toolnest.vercel.app/tools/image-comparison-slider-snippet/">
+<meta name="theme-color" content="#07070b">
+<meta property="og:title" content="Before/After Image Comparison Slider Snippet — Free Online | ToolNest">
+<meta property="og:description" content="Build a before/after image comparison slider: upload two images (or use canvas placeholders), try the live demo, and copy the HTML + CSS + JS snippet.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css?v=4">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%23e01111'/><text x='50' y='68' font-size='58' text-anchor='middle' fill='white' font-family='Arial' font-weight='bold'>T</text></svg>">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebApplication","name":"Before/After Image Comparison Slider Snippet","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0"},"url":"https://toolnest.vercel.app/tools/image-comparison-slider-snippet/","description":"Build a before/after image comparison slider: upload two images (or use canvas placeholders), try the live demo, and copy the HTML + CSS + JS snippet."},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Are my images uploaded anywhere?","acceptedAnswer":{"@type":"Answer","text":"Both images are read locally in your browser — nothing is uploaded to any server."}},{"@type":"Question","name":"Is the slider responsive?","acceptedAnswer":{"@type":"Answer","text":"Yes — the generated snippet is self-contained with no dependencies and resizes with its container."}},{"@type":"Question","name":"Is it accessible?","acceptedAnswer":{"@type":"Answer","text":"The slider uses a range input with keyboard support, so it is usable via keyboard and screen readers."}}]}]}</script>
+</head>
+<body>
+<header class="site-header">
+  <div class="container">
+    <a class="logo" href="/"><span class="logo-mark">T</span> ToolNest</a>
+    <div class="header-right">
+      <form class="nav-search" action="/" method="get" role="search">
+        <span class="ns-icon">🔍</span>
+        <input type="search" name="q" placeholder="Search tools…" aria-label="Search tools" autocomplete="off">
+      </form>
+      <div class="menu-wrap">
+        <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="menuPanel" aria-label="Open menu"><span></span><span></span><span></span></button>
+        <nav class="menu-panel" id="menuPanel" aria-label="Site">
+          <a href="/">Home</a>
+          <a href="/#categories">Categories</a>
+          <a href="/#all-tools">All Tools</a>
+        </nav>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ADSTERRA-HEADER: paste your Adsterra banner ad code inside the div below -->
+<div class="container"><div class="ad-slot ad-leaderboard" data-ad="header"></div></div>
+
+<main class="container">
+  <nav class="crumbs"><a href="/">Home</a> &rsaquo; <a href="/#developer">Developer Tools</a> &rsaquo; Before/After Image Comparison Slider Snippet</nav>
+  <div class="tool-hero">
+    <h1>Before/After Image Comparison Slider Snippet</h1>
+    <p>Build a before/after image comparison slider: upload two images (or use canvas placeholders), try the live demo, and copy the HTML + CSS + JS snippet.</p>
+  </div>
+
+  <div class="tool-card">
+  <h2>Before/After Comparison Slider</h2>
+  <p class="muted">A draggable before/after slider — try the live demo, then copy the dependency-free snippet.</p>
+  <div class="grid2">
+    <div class="field">
+      <label for="image-comparison-slider-snippet-before">Before image</label>
+      <input type="file" class="input" id="image-comparison-slider-snippet-before" accept="image/*">
+    </div>
+    <div class="field">
+      <label for="image-comparison-slider-snippet-after">After image</label>
+      <input type="file" class="input" id="image-comparison-slider-snippet-after" accept="image/*">
+    </div>
+    <div class="field">
+      <label for="image-comparison-slider-snippet-handle">Handle color</label>
+      <input type="color" class="input" id="image-comparison-slider-snippet-handle" value="#e11d48" style="height:44px;padding:4px">
+    </div>
+    <div class="field">
+      <label for="image-comparison-slider-snippet-start">Start position: <span id="image-comparison-slider-snippet-start-v">50%</span></label>
+      <input type="range" class="input" id="image-comparison-slider-snippet-start" min="5" max="95" value="50">
+    </div>
+  </div>
+  <div class="btn-row">
+    <button class="btn btn-outline" id="image-comparison-slider-snippet-placeholder">Use canvas placeholders</button>
+    <button class="btn btn-primary" id="image-comparison-slider-snippet-copy">Copy HTML + CSS + JS</button>
+  </div>
+  <h3 class="mt">Live demo <span class="muted" style="font-weight:normal;font-size:13px">(drag the handle)</span></h3>
+  <div class="preview" style="display:flex;justify-content:center">
+    <div id="image-comparison-slider-snippet-wrap" style="position:relative;width:100%;max-width:560px;aspect-ratio:16/9;overflow:hidden;border-radius:10px;user-select:none;touch-action:pan-y;cursor:ew-resize">
+      <img id="image-comparison-slider-snippet-img-a" alt="After" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;pointer-events:none">
+      <img id="image-comparison-slider-snippet-img-b" alt="Before" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;pointer-events:none">
+      <div id="image-comparison-slider-snippet-line" style="position:absolute;top:0;bottom:0;width:3px;transform:translateX(-50%);pointer-events:none"></div>
+      <div id="image-comparison-slider-snippet-knob" style="position:absolute;top:50%;transform:translate(-50%,-50%);width:44px;height:44px;border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;cursor:ew-resize;box-shadow:0 2px 10px rgba(0,0,0,.35);pointer-events:none">⇔</div>
+      <span class="tag" id="image-comparison-slider-snippet-lab-a" style="position:absolute;top:10px;left:10px">Before</span>
+      <span class="tag" id="image-comparison-slider-snippet-lab-b" style="position:absolute;top:10px;right:10px">After</span>
+    </div>
+  </div>
+  <h3 class="mt">Generated code</h3>
+  <pre class="code" id="image-comparison-slider-snippet-code" style="max-height:420px;overflow:auto"></pre>
+  <div class="error" id="image-comparison-slider-snippet-error"></div>
+</div>
+
+
+  <!-- ADSTERRA-INCONTENT: paste your Adsterra native/in-content ad code inside the div below -->
+  <div class="ad-slot" data-ad="incontent"></div>
+
+  <div class="info-grid">
+    <div class="info-card">
+      <h2>📖 How to use</h2>
+      <ol><li>Upload a &quot;before&quot; image and an &quot;after&quot; image.</li><li>Or press &quot;Use canvas placeholders&quot; to demo without uploads.</li><li>Drag the slider handle on the live demo.</li><li>Click &quot;Copy snippet&quot; and paste the HTML, CSS and JS into your page.</li></ol>
+    </div>
+    <div class="info-card">
+      <h2>❓ Frequently asked questions</h2>
+      <div class="faq"><details><summary>Are my images uploaded anywhere?</summary><p>Both images are read locally in your browser — nothing is uploaded to any server.</p></details><details><summary>Is the slider responsive?</summary><p>Yes — the generated snippet is self-contained with no dependencies and resizes with its container.</p></details><details><summary>Is it accessible?</summary><p>The slider uses a range input with keyboard support, so it is usable via keyboard and screen readers.</p></details></div>
+    </div>
+  </div>
+
+  <section class="section">
+    <h2>🔗 Related tools</h2>
+    <div class="tool-grid"><a class="tool-link" href="/tools/ascii-table-reference/" data-search="ascii table reference full ascii table 0–127: decimal, hex, octal, character, control-code names and html entities — searchable. ascii table ascii codes ascii chart control characters ascii reference"><span class="t-ico">💻</span><span class="t-body"><b>ASCII Table Reference</b><small>Full ASCII table 0–127: decimal, hex, octal, character, control-code names and HTML entities…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/base64-encoder-decoder/" data-search="base64 encoder / decoder encode text to base64 or decode base64 back to text, with full utf-8 support and a file-to-data-url converter. base64 encoder base64 decoder base64 encode base64 decode file to base64"><span class="t-ico">💻</span><span class="t-body"><b>Base64 Encoder / Decoder</b><small>Encode text to Base64 or decode Base64 back to text, with full UTF-8 support and a file-to-d…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/binary-text-converter/" data-search="binary and text converter convert text to binary or hex and back, with full utf-8 awareness and strict input validation. binary to text text to binary hex to text converter"><span class="t-ico">💻</span><span class="t-body"><b>Binary and Text Converter</b><small>Convert text to binary or hex and back, with full UTF-8 awareness and strict input validatio…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/changelog-generator/" data-search="changelog generator build a keep-a-changelog markdown file: version, date, and grouped added/fixed/changed entries. changelog generator keep a changelog changelog markdown release notes version changelog"><span class="t-ico">💻</span><span class="t-body"><b>Changelog Generator</b><small>Build a Keep-a-Changelog markdown file: version, date, and grouped Added/Fixed/Changed entri…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/character-escape-reference/" data-search="character escape reference searchable reference of characters with their html entities, url encodings, and js escapes — plus a live encoder. character escape reference html entities url encode unicode escape html entity table"><span class="t-ico">💻</span><span class="t-body"><b>Character Escape Reference</b><small>Searchable reference of characters with their HTML entities, URL encodings, and JS escapes —…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/chmod-calculator/" data-search="chmod calculator tick rwx boxes for user/group/other — or type 755 — and see octal, symbolic, and the chmod command live. chmod calculator chmod 755 linux permissions octal permissions rwx calculator"><span class="t-ico">💻</span><span class="t-body"><b>chmod Calculator</b><small>Tick rwx boxes for user/group/other — or type 755 — and see octal, symbolic, and the chmod c…</small></span><span class="t-arrow">→</span></a></div>
+  </section>
+</main>
+
+<!-- ADSTERRA-FOOTER: paste your Adsterra footer/banner ad code inside the div below -->
+<div class="container"><div class="ad-slot" data-ad="footer"></div></div>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="f-grid">
+      <div>
+        <span class="brandline"><span class="logo-mark">T</span> ToolNest</span>
+        <p>Free online tools that actually work. No sign-up, no watermarks — and your files never leave your device for client-side tools.</p>
+      </div>
+      <div>
+        <h4>Popular</h4>
+        <a href="/tools/qr-code-generator/">QR Code Generator</a>
+        <a href="/tools/background-remover/">Background Remover</a>
+        <a href="/tools/pdf-merger/">PDF Merger</a>
+        <a href="/tools/word-counter/">Word Counter</a>
+      </div>
+      <div>
+        <h4>Categories</h4>
+        <a href="/#image">Image Tools</a>
+        <a href="/#pdf">PDF &amp; Documents</a>
+        <a href="/#calculators">Calculators</a>
+        <a href="/#developer">Developer Tools</a>
+      </div>
+      <div>
+        <h4>Site</h4>
+        <a href="/">Home</a>
+        <a href="/#all-tools">All Tools</a>
+        <a href="/sitemap.xml">Sitemap</a>
+      </div>
+    </div>
+    <div class="f-bottom">© 2026 ToolNest · Free tools for everyone · Made with care</div>
+  </div>
+</footer>
+
+<script src="/assets/site.js?v=5"></script>
+
+<script>
+/* Before/After Comparison Slider Snippet — live demo + copyable HTML/CSS/JS. */
+(function () {
+  'use strict';
+  var SLUG = 'image-comparison-slider-snippet';
+  var ERR = SLUG + '-error';
+  var pos = 50;
+
+  function $(id) { return document.getElementById(SLUG + '-' + id); }
+
+  function placeholder(label, c1, c2) {
+    var cv = document.createElement('canvas');
+    cv.width = 640; cv.height = 360;
+    var ctx = cv.getContext('2d');
+    var g = ctx.createLinearGradient(0, 0, 640, 360);
+    g.addColorStop(0, c1); g.addColorStop(1, c2);
+    ctx.fillStyle = g; ctx.fillRect(0, 0, 640, 360);
+    ctx.fillStyle = 'rgba(255,255,255,0.95)';
+    ctx.font = 'bold 44px system-ui, sans-serif';
+    ctx.textAlign = 'center';
+    ctx.fillText(label, 320, 195);
+    return cv.toDataURL('image/png');
+  }
+
+  function paint() {
+    TN.clearErr(ERR);
+    try {
+      var color = $('handle').value;
+      pos = parseInt($('start').value, 10);
+      $('start-v').textContent = pos + '%';
+      $('img-b').style.clipPath = 'inset(0 ' + (100 - pos) + '% 0 0)';
+      $('line').style.left = pos + '%';
+      $('line').style.background = color;
+      $('knob').style.left = pos + '%';
+      $('knob').style.background = color;
+
+      var css = '.ba-wrap { position: relative; width: 100%; max-width: 900px; aspect-ratio: 16/9; overflow: hidden; border-radius: 10px; user-select: none; cursor: ew-resize; }\n'
+        + '.ba-wrap img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; pointer-events: none; }\n'
+        + '.ba-before { clip-path: inset(0 ' + (100 - pos) + '% 0 0); }\n'
+        + '.ba-line { position: absolute; top: 0; bottom: 0; left: ' + pos + '%; width: 3px; background: ' + color + '; transform: translateX(-50%); pointer-events: none; }\n'
+        + '.ba-knob { position: absolute; top: 50%; left: ' + pos + '%; transform: translate(-50%, -50%); width: 44px; height: 44px; border-radius: 50%;\n'
+        + '  background: ' + color + '; color: #fff; display: flex; align-items: center; justify-content: center; font-weight: 700; box-shadow: 0 2px 10px rgba(0,0,0,.35); pointer-events: none; }\n'
+        + '.ba-tag { position: absolute; top: 10px; padding: 4px 10px; border-radius: 999px; background: rgba(0,0,0,.55); color: #fff; font-size: 12px; pointer-events: none; }\n'
+        + '.ba-tag.left { left: 10px; } .ba-tag.right { right: 10px; }';
+      var js = '(function () {\n'
+        + '  var wrap = document.querySelector(\'.ba-wrap\');\n'
+        + '  if (!wrap) return;\n'
+        + '  var before = wrap.querySelector(\'.ba-before\');\n'
+        + '  var line = wrap.querySelector(\'.ba-line\');\n'
+        + '  var knob = wrap.querySelector(\'.ba-knob\');\n'
+        + '  function setPos(pct) {\n'
+        + '    pct = Math.max(2, Math.min(98, pct));\n'
+        + '    before.style.clipPath = \'inset(0 \' + (100 - pct) + \'% 0 0)\';\n'
+        + '    line.style.left = pct + \'%\';\n'
+        + '    knob.style.left = pct + \'%\';\n'
+        + '  }\n'
+        + '  function fromEvent(e) {\n'
+        + '    var r = wrap.getBoundingClientRect();\n'
+        + '    setPos(((e.clientX - r.left) / r.width) * 100);\n'
+        + '  }\n'
+        + '  var dragging = false;\n'
+        + '  wrap.addEventListener(\'pointerdown\', function (e) { dragging = true; fromEvent(e); try { wrap.setPointerCapture(e.pointerId); } catch (x) {} });\n'
+        + '  wrap.addEventListener(\'pointermove\', function (e) { if (dragging) fromEvent(e); });\n'
+        + '  wrap.addEventListener(\'pointerup\', function () { dragging = false; });\n'
+        + '  wrap.addEventListener(\'pointercancel\', function () { dragging = false; });\n'
+        + '})();';
+      var html = '<div class="ba-wrap">\n'
+        + '  <img src="after.jpg" alt="After">\n'
+        + '  <img src="before.jpg" alt="Before" class="ba-before">\n'
+        + '  <div class="ba-line"></div>\n'
+        + '  <div class="ba-knob">&harr;</div>\n'
+        + '  <span class="ba-tag left">Before</span>\n'
+        + '  <span class="ba-tag right">After</span>\n'
+        + '</div>';
+      $('code').textContent = '<!-- 1) HTML — replace before.jpg / after.jpg with your images -->\n' + html
+        + '\n\n<!-- 2) CSS -->\n<style>\n' + css + '\n</style>'
+        + '\n\n<!-- 3) JS (drag support) -->\n<script>\n' + js + '\n<\/script>';
+    } catch (e) {
+      TN.setErr(ERR, 'Could not render the demo.');
+    }
+  }
+
+  function bindDrag() {
+    var wrap = $('wrap');
+    var dragging = false;
+    function fromEvent(e) {
+      var r = wrap.getBoundingClientRect();
+      var pct = ((e.clientX - r.left) / r.width) * 100;
+      $('start').value = Math.round(Math.max(2, Math.min(98, pct)));
+      paint();
+    }
+    wrap.addEventListener('pointerdown', function (e) { dragging = true; try { wrap.setPointerCapture(e.pointerId); } catch (x) {} fromEvent(e); });
+    wrap.addEventListener('pointermove', function (e) { if (dragging) fromEvent(e); });
+    wrap.addEventListener('pointerup', function () { dragging = false; });
+    wrap.addEventListener('pointercancel', function () { dragging = false; });
+  }
+
+  function onFile(inputId) {
+    return function (e) {
+      var f = e.target.files && e.target.files[0];
+      if (!f) return;
+      var r = new FileReader();
+      r.onload = function () {
+        if (inputId === 'before') $('img-b').src = r.result;   /* before = top layer */
+        else $('img-a').src = r.result;                        /* after = bottom layer */
+      };
+      r.onerror = function () { TN.setErr(ERR, 'Could not read that image.'); };
+      r.readAsDataURL(f);
+    };
+  }
+
+  function init() {
+    try {
+      if (typeof TN === 'undefined') return;
+      $('img-a').src = placeholder('AFTER', '#e11d48', '#f59e0b');
+      $('img-b').src = placeholder('BEFORE', '#0ea5e9', '#7c3aed');
+      bindDrag();
+      TN.on(SLUG + '-before', 'change', onFile('before'));
+      TN.on(SLUG + '-after', 'change', onFile('after'));
+      TN.on(SLUG + '-handle', 'input', paint);
+      TN.on(SLUG + '-start', 'input', paint);
+      TN.on(SLUG + '-placeholder', 'click', function () {
+        $('img-a').src = placeholder('AFTER', '#e11d48', '#f59e0b');
+        $('img-b').src = placeholder('BEFORE', '#0ea5e9', '#7c3aed');
+        TN.clearErr(ERR);
+      });
+      TN.on(SLUG + '-copy', 'click', function () {
+        var txt = $('code').textContent;
+        if (!txt) { TN.setErr(ERR, 'Nothing to copy yet.'); return; }
+        TN.copy(txt).then(function (ok) {
+          if (ok) TN.clearErr(ERR);
+          else TN.setErr(ERR, 'Copy failed — select the code and copy manually.');
+        });
+      });
+      paint();
+    } catch (e) { /* never throw on load */ }
+  }
+
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init);
+  else init();
+})();
+
+</script>
+</body>
+</html>

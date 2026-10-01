@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CSS Triangle Generator — Free Online | ToolNest</title>
+<meta name="description" content="Make CSS-only triangles from borders: pick a direction, size and color, preview it live, and copy the snippet.">
+<meta name="keywords" content="css triangle, css triangle generator, border triangle css, css arrow, triangle css code">
+<link rel="canonical" href="https://toolnest.vercel.app/tools/css-triangle-generator/">
+<meta name="theme-color" content="#07070b">
+<meta property="og:title" content="CSS Triangle Generator — Free Online | ToolNest">
+<meta property="og:description" content="Make CSS-only triangles from borders: pick a direction, size and color, preview it live, and copy the snippet.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css?v=4">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%23e01111'/><text x='50' y='68' font-size='58' text-anchor='middle' fill='white' font-family='Arial' font-weight='bold'>T</text></svg>">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebApplication","name":"CSS Triangle Generator","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0"},"url":"https://toolnest.vercel.app/tools/css-triangle-generator/","description":"Make CSS-only triangles from borders: pick a direction, size and color, preview it live, and copy the snippet."},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Are the triangles sharp on retina screens?","acceptedAnswer":{"@type":"Answer","text":"The triangle is made from a zero-size element with thick borders — it is resolution-independent and stays crisp at any zoom."}},{"@type":"Question","name":"Do I need any fallback for old browsers?","acceptedAnswer":{"@type":"Answer","text":"For IE11 support, the code works as-is since it uses only classic border properties."}},{"@type":"Question","name":"How do I position the triangle in my layout?","acceptedAnswer":{"@type":"Answer","text":"The generator emits only the triangle; add margin, float or a wrapper class in your own CSS to position it."}}]}]}</script>
+</head>
+<body>
+<header class="site-header">
+  <div class="container">
+    <a class="logo" href="/"><span class="logo-mark">T</span> ToolNest</a>
+    <div class="header-right">
+      <form class="nav-search" action="/" method="get" role="search">
+        <span class="ns-icon">🔍</span>
+        <input type="search" name="q" placeholder="Search tools…" aria-label="Search tools" autocomplete="off">
+      </form>
+      <div class="menu-wrap">
+        <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="menuPanel" aria-label="Open menu"><span></span><span></span><span></span></button>
+        <nav class="menu-panel" id="menuPanel" aria-label="Site">
+          <a href="/">Home</a>
+          <a href="/#categories">Categories</a>
+          <a href="/#all-tools">All Tools</a>
+        </nav>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ADSTERRA-HEADER: paste your Adsterra banner ad code inside the div below -->
+<div class="container"><div class="ad-slot ad-leaderboard" data-ad="header"></div></div>
+
+<main class="container">
+  <nav class="crumbs"><a href="/">Home</a> &rsaquo; <a href="/#developer">Developer Tools</a> &rsaquo; CSS Triangle Generator</nav>
+  <div class="tool-hero">
+    <h1>CSS Triangle Generator</h1>
+    <p>Make CSS-only triangles from borders: pick a direction, size and color, preview it live, and copy the snippet.</p>
+  </div>
+
+  <div class="tool-card">
+  <h2>CSS Triangle Generator</h2>
+  <p class="muted">CSS-only triangles built from borders — crisp at any size, zero images.</p>
+  <div class="grid2">
+    <div class="field">
+      <label for="css-triangle-generator-direction">Direction</label>
+      <select class="input" id="css-triangle-generator-direction">
+        <option value="up">▲ Up</option>
+        <option value="down">▼ Down</option>
+        <option value="left">◀ Left</option>
+        <option value="right">▶ Right</option>
+      </select>
+    </div>
+    <div class="field">
+      <label for="css-triangle-generator-color">Color</label>
+      <input type="color" class="input" id="css-triangle-generator-color" value="#e11d48" style="height:44px;padding:4px">
+    </div>
+    <div class="field">
+      <label for="css-triangle-generator-size">Size: <span id="css-triangle-generator-size-v">60px</span></label>
+      <input type="range" class="input" id="css-triangle-generator-size" min="10" max="200" step="2" value="60">
+    </div>
+    <div class="field">
+      <label for="css-triangle-generator-class">CSS class name</label>
+      <input type="text" class="input" id="css-triangle-generator-class" value="my-triangle">
+    </div>
+  </div>
+  <h3>Live preview</h3>
+  <div class="preview" style="min-height:200px;display:flex;align-items:center;justify-content:center">
+    <div id="css-triangle-generator-stage"></div>
+  </div>
+  <div class="btn-row mt">
+    <button class="btn btn-primary" id="css-triangle-generator-copy">Copy CSS</button>
+  </div>
+  <h3 class="mt">Generated CSS</h3>
+  <pre class="code" id="css-triangle-generator-code"></pre>
+  <div class="error" id="css-triangle-generator-error"></div>
+</div>
+
+
+  <!-- ADSTERRA-INCONTENT: paste your Adsterra native/in-content ad code inside the div below -->
+  <div class="ad-slot" data-ad="incontent"></div>
+
+  <div class="info-grid">
+    <div class="info-card">
+      <h2>📖 How to use</h2>
+      <ol><li>Choose a direction (up, down, left, right).</li><li>Set the triangle size and pick a color.</li><li>Preview the triangle live.</li><li>Click &quot;Copy CSS&quot; and paste the snippet into your stylesheet.</li></ol>
+    </div>
+    <div class="info-card">
+      <h2>❓ Frequently asked questions</h2>
+      <div class="faq"><details><summary>Are the triangles sharp on retina screens?</summary><p>The triangle is made from a zero-size element with thick borders — it is resolution-independent and stays crisp at any zoom.</p></details><details><summary>Do I need any fallback for old browsers?</summary><p>For IE11 support, the code works as-is since it uses only classic border properties.</p></details><details><summary>How do I position the triangle in my layout?</summary><p>The generator emits only the triangle; add margin, float or a wrapper class in your own CSS to position it.</p></details></div>
+    </div>
+  </div>
+
+  <section class="section">
+    <h2>🔗 Related tools</h2>
+    <div class="tool-grid"><a class="tool-link" href="/tools/ascii-table-reference/" data-search="ascii table reference full ascii table 0–127: decimal, hex, octal, character, control-code names and html entities — searchable. ascii table ascii codes ascii chart control characters ascii reference"><span class="t-ico">💻</span><span class="t-body"><b>ASCII Table Reference</b><small>Full ASCII table 0–127: decimal, hex, octal, character, control-code names and HTML entities…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/base64-encoder-decoder/" data-search="base64 encoder / decoder encode text to base64 or decode base64 back to text, with full utf-8 support and a file-to-data-url converter. base64 encoder base64 decoder base64 encode base64 decode file to base64"><span class="t-ico">💻</span><span class="t-body"><b>Base64 Encoder / Decoder</b><small>Encode text to Base64 or decode Base64 back to text, with full UTF-8 support and a file-to-d…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/binary-text-converter/" data-search="binary and text converter convert text to binary or hex and back, with full utf-8 awareness and strict input validation. binary to text text to binary hex to text converter"><span class="t-ico">💻</span><span class="t-body"><b>Binary and Text Converter</b><small>Convert text to binary or hex and back, with full UTF-8 awareness and strict input validatio…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/changelog-generator/" data-search="changelog generator build a keep-a-changelog markdown file: version, date, and grouped added/fixed/changed entries. changelog generator keep a changelog changelog markdown release notes version changelog"><span class="t-ico">💻</span><span class="t-body"><b>Changelog Generator</b><small>Build a Keep-a-Changelog markdown file: version, date, and grouped Added/Fixed/Changed entri…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/character-escape-reference/" data-search="character escape reference searchable reference of characters with their html entities, url encodings, and js escapes — plus a live encoder. character escape reference html entities url encode unicode escape html entity table"><span class="t-ico">💻</span><span class="t-body"><b>Character Escape Reference</b><small>Searchable reference of characters with their HTML entities, URL encodings, and JS escapes —…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/chmod-calculator/" data-search="chmod calculator tick rwx boxes for user/group/other — or type 755 — and see octal, symbolic, and the chmod command live. chmod calculator chmod 755 linux permissions octal permissions rwx calculator"><span class="t-ico">💻</span><span class="t-body"><b>chmod Calculator</b><small>Tick rwx boxes for user/group/other — or type 755 — and see octal, symbolic, and the chmod c…</small></span><span class="t-arrow">→</span></a></div>
+  </section>
+</main>
+
+<!-- ADSTERRA-FOOTER: paste your Adsterra footer/banner ad code inside the div below -->
+<div class="container"><div class="ad-slot" data-ad="footer"></div></div>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="f-grid">
+      <div>
+        <span class="brandline"><span class="logo-mark">T</span> ToolNest</span>
+        <p>Free online tools that actually work. No sign-up, no watermarks — and your files never leave your device for client-side tools.</p>
+      </div>
+      <div>
+        <h4>Popular</h4>
+        <a href="/tools/qr-code-generator/">QR Code Generator</a>
+        <a href="/tools/background-remover/">Background Remover</a>
+        <a href="/tools/pdf-merger/">PDF Merger</a>
+        <a href="/tools/word-counter/">Word Counter</a>
+      </div>
+      <div>
+        <h4>Categories</h4>
+        <a href="/#image">Image Tools</a>
+        <a href="/#pdf">PDF &amp; Documents</a>
+        <a href="/#calculators">Calculators</a>
+        <a href="/#developer">Developer Tools</a>
+      </div>
+      <div>
+        <h4>Site</h4>
+        <a href="/">Home</a>
+        <a href="/#all-tools">All Tools</a>
+        <a href="/sitemap.xml">Sitemap</a>
+      </div>
+    </div>
+    <div class="f-bottom">© 2026 ToolNest · Free tools for everyone · Made with care</div>
+  </div>
+</footer>
+
+<script src="/assets/site.js?v=5"></script>
+
+<script>
+/* CSS Triangle Generator — border-based CSS triangles with live preview. */
+(function () {
+  'use strict';
+  var SLUG = 'css-triangle-generator';
+  var ERR = SLUG + '-error';
+
+  function $(id) { return document.getElementById(SLUG + '-' + id); }
+
+  function buildCss(dir, size, color, cls) {
+    var h = Math.round(size / 2);
+    var lines = [
+      '.' + cls + ' {',
+      '  width: 0;',
+      '  height: 0;',
+      '  border-style: solid;'
+    ];
+    if (dir === 'up') {
+      lines.push('  border-width: 0 ' + h + 'px ' + size + 'px ' + h + 'px;');
+      lines.push('  border-color: transparent transparent ' + color + ' transparent;');
+    } else if (dir === 'down') {
+      lines.push('  border-width: ' + size + 'px ' + h + 'px 0 ' + h + 'px;');
+      lines.push('  border-color: ' + color + ' transparent transparent transparent;');
+    } else if (dir === 'left') {
+      lines.push('  border-width: ' + h + 'px ' + size + 'px ' + h + 'px 0;');
+      lines.push('  border-color: transparent ' + color + ' transparent transparent;');
+    } else {
+      lines.push('  border-width: ' + h + 'px 0 ' + h + 'px ' + size + 'px;');
+      lines.push('  border-color: transparent transparent transparent ' + color + ';');
+    }
+    lines.push('}');
+    return lines.join('\n');
+  }
+
+  function render() {
+    TN.clearErr(ERR);
+    try {
+      var dir = $('direction').value;
+      var size = parseInt($('size').value, 10);
+      var color = $('color').value;
+      var cls = ($('class').value || 'my-triangle').replace(/[^a-zA-Z0-9-_]/g, '-') || 'my-triangle';
+      $('size-v').textContent = size + 'px';
+      var css = buildCss(dir, size, color, cls);
+      $('code').textContent = css;
+      var stage = $('stage');
+      stage.style.width = '0';
+      stage.style.height = '0';
+      stage.style.borderStyle = 'solid';
+      stage.style.borderWidth = '';
+      var h = Math.round(size / 2);
+      var transparent = 'transparent';
+      if (dir === 'up') {
+        stage.style.borderWidth = '0 ' + h + 'px ' + size + 'px ' + h + 'px';
+        stage.style.borderColor = transparent + ' ' + transparent + ' ' + color + ' ' + transparent;
+      } else if (dir === 'down') {
+        stage.style.borderWidth = size + 'px ' + h + 'px 0 ' + h + 'px';
+        stage.style.borderColor = color + ' ' + transparent + ' ' + transparent + ' ' + transparent;
+      } else if (dir === 'left') {
+        stage.style.borderWidth = h + 'px ' + size + 'px ' + h + 'px 0';
+        stage.style.borderColor = transparent + ' ' + color + ' ' + transparent + ' ' + transparent;
+      } else {
+        stage.style.borderWidth = h + 'px 0 ' + h + 'px ' + size + 'px';
+        stage.style.borderColor = transparent + ' ' + transparent + ' ' + transparent + ' ' + color;
+      }
+    } catch (e) {
+      TN.setErr(ERR, 'Could not render the triangle.');
+    }
+  }
+
+  function init() {
+    try {
+      if (typeof TN === 'undefined') return;
+      ['direction', 'color', 'size', 'class'].forEach(function (k) {
+        TN.on(SLUG + '-' + k, 'input', render);
+        TN.on(SLUG + '-' + k, 'change', render);
+      });
+      TN.on(SLUG + '-copy', 'click', function () {
+        var txt = $('code').textContent;
+        if (!txt) { TN.setErr(ERR, 'Nothing to copy yet.'); return; }
+        TN.copy(txt).then(function (ok) {
+          if (ok) TN.clearErr(ERR);
+          else TN.setErr(ERR, 'Copy failed — select the code and copy manually.');
+        });
+      });
+      render();
+    } catch (e) { /* never throw on load */ }
+  }
+
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init);
+  else init();
+})();
+
+</script>
+</body>
+</html>

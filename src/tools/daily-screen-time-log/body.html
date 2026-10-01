@@ -1,0 +1,37 @@
+<div class="tool-card">
+  <div class="grid2">
+    <div class="field">
+      <label for="daily-screen-time-log-date">Date</label>
+      <input class="input" type="date" id="daily-screen-time-log-date">
+    </div>
+    <div class="field">
+      <label for="daily-screen-time-log-cat">App / category</label>
+      <select class="input" id="daily-screen-time-log-cat">
+        <option>Social</option>
+        <option>Work</option>
+        <option>Entertainment</option>
+        <option>Games</option>
+        <option>News</option>
+        <option>Other</option>
+      </select>
+    </div>
+  </div>
+  <div class="grid2">
+    <div class="field">
+      <label for="daily-screen-time-log-mins">Minutes</label>
+      <input class="input" type="number" id="daily-screen-time-log-mins" min="1" max="1440" placeholder="e.g. 45">
+    </div>
+    <div class="field" style="display:flex;align-items:flex-end">
+      <button class="btn btn-primary" id="daily-screen-time-log-add" style="width:100%">Log time</button>
+    </div>
+  </div>
+  <div class="stat-cards">
+    <div class="stat-card"><div class="v" id="daily-screen-time-log-total">0</div><div class="l">Minutes today</div></div>
+    <div class="stat-card"><div class="v" id="daily-screen-time-log-avg">0</div><div class="l">7-day avg / day</div></div>
+  </div>
+  <h3 style="margin:8px 0">Last 7 days</h3>
+  <div id="daily-screen-time-log-chart" style="display:flex;align-items:flex-end;gap:6px;height:150px;padding:8px;border:1px solid #e0e0e0;border-radius:8px"></div>
+  <h3 style="margin:12px 0 8px">Entries</h3>
+  <div id="daily-screen-time-log-list"></div>
+  <div class="error" id="daily-screen-time-log-error"></div>
+</div>

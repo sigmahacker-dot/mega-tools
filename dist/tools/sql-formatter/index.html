@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SQL Formatter — Free Online | ToolNest</title>
+<meta name="description" content="Format messy SQL: keywords uppercased, clauses on new lines, and subqueries indented properly.">
+<meta name="keywords" content="sql formatter, format sql, sql beautifier, pretty print sql, sql indent">
+<link rel="canonical" href="https://toolnest.vercel.app/tools/sql-formatter/">
+<meta name="theme-color" content="#07070b">
+<meta property="og:title" content="SQL Formatter — Free Online | ToolNest">
+<meta property="og:description" content="Format messy SQL: keywords uppercased, clauses on new lines, and subqueries indented properly.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css?v=4">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%23e01111'/><text x='50' y='68' font-size='58' text-anchor='middle' fill='white' font-family='Arial' font-weight='bold'>T</text></svg>">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebApplication","name":"SQL Formatter","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0"},"url":"https://toolnest.vercel.app/tools/sql-formatter/","description":"Format messy SQL: keywords uppercased, clauses on new lines, and subqueries indented properly."},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Are strings and comments preserved?","acceptedAnswer":{"@type":"Answer","text":"Yes — single-quoted, double-quoted, and backtick strings plus -- and /* */ comments are preserved untouched."}},{"@type":"Question","name":"Which clauses get their own line?","acceptedAnswer":{"@type":"Answer","text":"SELECT, FROM, WHERE, JOINs, ON, GROUP BY, ORDER BY, HAVING, LIMIT, UNION, INSERT, UPDATE, DELETE and more."}},{"@type":"Question","name":"How are subqueries handled?","acceptedAnswer":{"@type":"Answer","text":"Subqueries in parentheses are indented one extra level automatically."}},{"@type":"Question","name":"Does it validate SQL?","acceptedAnswer":{"@type":"Answer","text":"It is a formatter, not a validator — it will not catch SQL syntax errors."}}]}]}</script>
+</head>
+<body>
+<header class="site-header">
+  <div class="container">
+    <a class="logo" href="/"><span class="logo-mark">T</span> ToolNest</a>
+    <div class="header-right">
+      <form class="nav-search" action="/" method="get" role="search">
+        <span class="ns-icon">🔍</span>
+        <input type="search" name="q" placeholder="Search tools…" aria-label="Search tools" autocomplete="off">
+      </form>
+      <div class="menu-wrap">
+        <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="menuPanel" aria-label="Open menu"><span></span><span></span><span></span></button>
+        <nav class="menu-panel" id="menuPanel" aria-label="Site">
+          <a href="/">Home</a>
+          <a href="/#categories">Categories</a>
+          <a href="/#all-tools">All Tools</a>
+        </nav>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ADSTERRA-HEADER: paste your Adsterra banner ad code inside the div below -->
+<div class="container"><div class="ad-slot ad-leaderboard" data-ad="header"></div></div>
+
+<main class="container">
+  <nav class="crumbs"><a href="/">Home</a> &rsaquo; <a href="/#developer">Developer Tools</a> &rsaquo; SQL Formatter</nav>
+  <div class="tool-hero">
+    <h1>SQL Formatter</h1>
+    <p>Format messy SQL: keywords uppercased, clauses on new lines, and subqueries indented properly.</p>
+  </div>
+
+  <div class="tool-card">
+  <div class="field">
+    <label for="sql-formatter-input">SQL input</label>
+    <textarea class="textarea" id="sql-formatter-input" rows="8" placeholder="Paste SQL here…"></textarea>
+  </div>
+  <div class="btn-row">
+    <button class="btn btn-primary" id="sql-formatter-format">Format SQL</button>
+    <button class="btn btn-outline" id="sql-formatter-sample">Load sample</button>
+    <label style="display:inline-flex;align-items:center;gap:6px;">
+      <input type="checkbox" id="sql-formatter-upper" checked> Uppercase keywords
+    </label>
+  </div>
+  <div class="error" id="sql-formatter-error"></div>
+  <div class="field">
+    <label for="sql-formatter-output">Formatted SQL</label>
+    <textarea class="textarea" id="sql-formatter-output" rows="12" readonly placeholder="Formatted SQL will appear here…"></textarea>
+  </div>
+  <div class="btn-row">
+    <button class="btn btn-outline" id="sql-formatter-copy">Copy SQL</button>
+  </div>
+</div>
+
+
+  <!-- ADSTERRA-INCONTENT: paste your Adsterra native/in-content ad code inside the div below -->
+  <div class="ad-slot" data-ad="incontent"></div>
+
+  <div class="info-grid">
+    <div class="info-card">
+      <h2>📖 How to use</h2>
+      <ol><li>Paste your SQL query.</li><li>Click Format SQL.</li><li>Copy the formatted query.</li></ol>
+    </div>
+    <div class="info-card">
+      <h2>❓ Frequently asked questions</h2>
+      <div class="faq"><details><summary>Are strings and comments preserved?</summary><p>Yes — single-quoted, double-quoted, and backtick strings plus -- and /* */ comments are preserved untouched.</p></details><details><summary>Which clauses get their own line?</summary><p>SELECT, FROM, WHERE, JOINs, ON, GROUP BY, ORDER BY, HAVING, LIMIT, UNION, INSERT, UPDATE, DELETE and more.</p></details><details><summary>How are subqueries handled?</summary><p>Subqueries in parentheses are indented one extra level automatically.</p></details><details><summary>Does it validate SQL?</summary><p>It is a formatter, not a validator — it will not catch SQL syntax errors.</p></details></div>
+    </div>
+  </div>
+
+  <section class="section">
+    <h2>🔗 Related tools</h2>
+    <div class="tool-grid"><a class="tool-link" href="/tools/ascii-table-reference/" data-search="ascii table reference full ascii table 0–127: decimal, hex, octal, character, control-code names and html entities — searchable. ascii table ascii codes ascii chart control characters ascii reference"><span class="t-ico">💻</span><span class="t-body"><b>ASCII Table Reference</b><small>Full ASCII table 0–127: decimal, hex, octal, character, control-code names and HTML entities…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/base64-encoder-decoder/" data-search="base64 encoder / decoder encode text to base64 or decode base64 back to text, with full utf-8 support and a file-to-data-url converter. base64 encoder base64 decoder base64 encode base64 decode file to base64"><span class="t-ico">💻</span><span class="t-body"><b>Base64 Encoder / Decoder</b><small>Encode text to Base64 or decode Base64 back to text, with full UTF-8 support and a file-to-d…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/binary-text-converter/" data-search="binary and text converter convert text to binary or hex and back, with full utf-8 awareness and strict input validation. binary to text text to binary hex to text converter"><span class="t-ico">💻</span><span class="t-body"><b>Binary and Text Converter</b><small>Convert text to binary or hex and back, with full UTF-8 awareness and strict input validatio…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/changelog-generator/" data-search="changelog generator build a keep-a-changelog markdown file: version, date, and grouped added/fixed/changed entries. changelog generator keep a changelog changelog markdown release notes version changelog"><span class="t-ico">💻</span><span class="t-body"><b>Changelog Generator</b><small>Build a Keep-a-Changelog markdown file: version, date, and grouped Added/Fixed/Changed entri…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/character-escape-reference/" data-search="character escape reference searchable reference of characters with their html entities, url encodings, and js escapes — plus a live encoder. character escape reference html entities url encode unicode escape html entity table"><span class="t-ico">💻</span><span class="t-body"><b>Character Escape Reference</b><small>Searchable reference of characters with their HTML entities, URL encodings, and JS escapes —…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/chmod-calculator/" data-search="chmod calculator tick rwx boxes for user/group/other — or type 755 — and see octal, symbolic, and the chmod command live. chmod calculator chmod 755 linux permissions octal permissions rwx calculator"><span class="t-ico">💻</span><span class="t-body"><b>chmod Calculator</b><small>Tick rwx boxes for user/group/other — or type 755 — and see octal, symbolic, and the chmod c…</small></span><span class="t-arrow">→</span></a></div>
+  </section>
+</main>
+
+<!-- ADSTERRA-FOOTER: paste your Adsterra footer/banner ad code inside the div below -->
+<div class="container"><div class="ad-slot" data-ad="footer"></div></div>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="f-grid">
+      <div>
+        <span class="brandline"><span class="logo-mark">T</span> ToolNest</span>
+        <p>Free online tools that actually work. No sign-up, no watermarks — and your files never leave your device for client-side tools.</p>
+      </div>
+      <div>
+        <h4>Popular</h4>
+        <a href="/tools/qr-code-generator/">QR Code Generator</a>
+        <a href="/tools/background-remover/">Background Remover</a>
+        <a href="/tools/pdf-merger/">PDF Merger</a>
+        <a href="/tools/word-counter/">Word Counter</a>
+      </div>
+      <div>
+        <h4>Categories</h4>
+        <a href="/#image">Image Tools</a>
+        <a href="/#pdf">PDF &amp; Documents</a>
+        <a href="/#calculators">Calculators</a>
+        <a href="/#developer">Developer Tools</a>
+      </div>
+      <div>
+        <h4>Site</h4>
+        <a href="/">Home</a>
+        <a href="/#all-tools">All Tools</a>
+        <a href="/sitemap.xml">Sitemap</a>
+      </div>
+    </div>
+    <div class="f-bottom">© 2026 ToolNest · Free tools for everyone · Made with care</div>
+  </div>
+</footer>
+
+<script src="/assets/site.js?v=5"></script>
+
+<script>
+/* SQL Formatter — tokenizer preserves strings/comments; keywords uppercased,
+   major clauses on new lines, parens indented. */
+(function () {
+  'use strict';
+  var SLUG = 'sql-formatter';
+  var SAMPLE = "select u.id, u.name, count(o.id) as orders from users u left join orders o on o.user_id = u.id where u.active = 1 and u.created_at > '2024-01-01' group by u.id, u.name having count(o.id) > 5 order by orders desc limit 20;";
+
+  var CLAUSE = { // keyword -> newline before, extra indent after
+    'SELECT': 0, 'FROM': 0, 'WHERE': 0, 'GROUP BY': 0, 'ORDER BY': 0, 'HAVING': 0,
+    'LIMIT': 0, 'OFFSET': 0, 'UNION': 0, 'UNION ALL': 0, 'EXCEPT': 0, 'INTERSECT': 0,
+    'INSERT INTO': 0, 'VALUES': 0, 'UPDATE': 0, 'SET': 0, 'DELETE FROM': 0,
+    'LEFT JOIN': 1, 'RIGHT JOIN': 1, 'INNER JOIN': 1, 'OUTER JOIN': 1, 'FULL JOIN': 1,
+    'CROSS JOIN': 1, 'JOIN': 1, 'ON': 2
+  };
+  var JOINER = { 'AND': 0, 'OR': 0 };
+  var KEYWORDS = ('SELECT FROM WHERE GROUP BY ORDER BY HAVING LIMIT OFFSET UNION EXCEPT INTERSECT ' +
+    'INSERT INTO VALUES UPDATE SET DELETE LEFT RIGHT INNER OUTER FULL CROSS JOIN ON AND OR AS ' +
+    'DISTINCT ALL BY ASC DESC NOT NULL IS IN LIKE BETWEEN EXISTS CASE WHEN THEN ELSE END ' +
+    'CREATE TABLE ALTER DROP PRIMARY KEY FOREIGN REFERENCES INDEX VIEW').split(' ');
+
+  function el(id) { return document.getElementById(id); }
+  function fail(msg) { TN.setErr(SLUG + '-error', msg); }
+  function clear() { TN.clearErr(SLUG + '-error'); }
+
+  function tokenize(src) {
+    var tokens = [], i = 0, n = src.length;
+    while (i < n) {
+      var c = src[i];
+      if (c === '-' && src[i + 1] === '-') {
+        var j = src.indexOf('\n', i);
+        tokens.push({ t: 'comment', v: src.slice(i, j < 0 ? n : j) });
+        i = j < 0 ? n : j;
+      } else if (c === '/' && src[i + 1] === '*') {
+        var k = src.indexOf('*/', i + 2);
+        k = k < 0 ? n : k + 2;
+        tokens.push({ t: 'comment', v: src.slice(i, k) });
+        i = k;
+      } else if (c === "'" || c === '"' || c === '`') {
+        var q = c, s = c, p = i + 1;
+        while (p < n) {
+          s += src[p];
+          if (src[p] === q) { if (src[p + 1] === q) { s += q; p += 2; continue; } p++; break; }
+          p++;
+        }
+        tokens.push({ t: 'string', v: s });
+        i = p;
+      } else if (/[\s]/.test(c)) {
+        i++;
+      } else if (/[(),;.=<>!+\-*/|]/.test(c)) {
+        var two = src.substr(i, 2);
+        if (['<=', '>=', '<>', '!=', '||'].indexOf(two) >= 0) { tokens.push({ t: 'sym', v: two }); i += 2; }
+        else { tokens.push({ t: 'sym', v: c }); i++; }
+      } else {
+        var w = '', q2 = i;
+        while (q2 < n && /[\w$]/.test(src[q2])) { w += src[q2]; q2++; }
+        if (w) { tokens.push({ t: 'word', v: w }); i = q2; }
+        else { tokens.push({ t: 'sym', v: c }); i++; }
+      }
+    }
+    return tokens;
+  }
+
+  function peekWord(tokens, i) {
+    var words = [];
+    for (var j = i; j < tokens.length && words.length < 2; j++) {
+      if (tokens[j].t === 'word') words.push(tokens[j].v.toUpperCase());
+      else if (tokens[j].t !== 'comment') break;
+    }
+    return words;
+  }
+
+  function format(src, upper) {
+    var tokens = tokenize(src), out = '', indent = 0, i = 0;
+    function pad(extra) {
+      var s = '\n';
+      for (var k = 0; k < indent + (extra || 0); k++) s += '  ';
+      return s;
+    }
+    function needSpace() { return out && !/[\s(]$/.test(out); }
+    while (i < tokens.length) {
+      var tk = tokens[i];
+      if (tk.t === 'comment') { out += pad(0) + tk.v; i++; continue; }
+      if (tk.t === 'string') { out += (needSpace() ? ' ' : '') + tk.v; i++; continue; }
+      if (tk.t === 'sym') {
+        if (tk.v === '(') { out += (needSpace() ? ' ' : '') + '('; indent++; i++; continue; }
+        if (tk.v === ')') { indent = Math.max(0, indent - 1); out += pad(0) + ')'; i++; continue; }
+        if (tk.v === ',') { out += ',' + pad(0); i++; continue; }
+        if (tk.v === ';') { out += ';'; i++; continue; }
+        out += (needSpace() ? ' ' : '') + tk.v;
+        i++;
+        continue;
+      }
+      // word: check two-word keywords first
+      var words = peekWord(tokens, i);
+      var two = words.length === 2 ? words[0] + ' ' + words[1] : null;
+      var kw = null, consumed = 1;
+      if (two && (CLAUSE.hasOwnProperty(two) || KEYWORDS.indexOf(two) >= 0)) { kw = two; consumed = 2; }
+      else if (KEYWORDS.indexOf(words[0]) >= 0) { kw = words[0]; }
+      if (kw && CLAUSE.hasOwnProperty(kw)) {
+        out += pad(CLAUSE[kw] === 2 ? 1 : 0) + (upper ? kw : kw.toLowerCase());
+        i += consumed;
+        continue;
+      }
+      if (kw && JOINER.hasOwnProperty(kw)) {
+        out += pad(1) + (upper ? kw : kw.toLowerCase());
+        i += consumed;
+        continue;
+      }
+      var wv = upper && KEYWORDS.indexOf(words[0]) >= 0 ? words[0] : tk.v;
+      out += (needSpace() ? ' ' : '') + wv;
+      i++;
+    }
+    return out.replace(/^\n/, '').replace(/[ \t]+\n/g, '\n').trim();
+  }
+
+  function run() {
+    clear();
+    var src = el(SLUG + '-input').value;
+    if (!src.trim()) { fail('Paste some SQL first.'); return; }
+    el(SLUG + '-output').value = format(src, el(SLUG + '-upper').checked);
+  }
+
+  try {
+    TN.on(SLUG + '-format', 'click', run);
+    TN.on(SLUG + '-sample', 'click', function () { el(SLUG + '-input').value = SAMPLE; clear(); run(); });
+    TN.on(SLUG + '-copy', 'click', function () {
+      var v = el(SLUG + '-output').value;
+      if (!v) { fail('Nothing to copy yet.'); return; }
+      TN.copy(v).then(function (ok) { if (!ok) fail('Copy failed — select the text manually.'); });
+    });
+  } catch (e) { /* never throw on load */ }
+})();
+
+</script>
+</body>
+</html>

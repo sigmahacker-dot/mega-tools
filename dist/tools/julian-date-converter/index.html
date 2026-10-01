@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Julian Date Converter — Free Online | ToolNest</title>
+<meta name="description" content="Convert any Gregorian calendar date to its Julian Day Number and back, using the standard astronomical algorithm.">
+<meta name="keywords" content="julian date converter, julian day number, julian date calculator, JDN converter, astronomical julian date">
+<link rel="canonical" href="https://toolnest.vercel.app/tools/julian-date-converter/">
+<meta name="theme-color" content="#07070b">
+<meta property="og:title" content="Julian Date Converter — Free Online | ToolNest">
+<meta property="og:description" content="Convert any Gregorian calendar date to its Julian Day Number and back, using the standard astronomical algorithm.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css?v=4">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%23e01111'/><text x='50' y='68' font-size='58' text-anchor='middle' fill='white' font-family='Arial' font-weight='bold'>T</text></svg>">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebApplication","name":"Julian Date Converter","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0"},"url":"https://toolnest.vercel.app/tools/julian-date-converter/","description":"Convert any Gregorian calendar date to its Julian Day Number and back, using the standard astronomical algorithm."},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What is a Julian Day Number?","acceptedAnswer":{"@type":"Answer","text":"The Julian Day Number counts days since noon on January 1, 4713 BC (Julian proleptic calendar). Astronomers use it to compute intervals between dates simply."}},{"@type":"Question","name":"Which algorithm is used?","acceptedAnswer":{"@type":"Answer","text":"Use the standard algorithm: JDN = (1461×(y+4800+(m−14)/12))/4 + … (integer division). The tool computes it exactly."}},{"@type":"Question","name":"Can I convert a JDN back to a date?","acceptedAnswer":{"@type":"Answer","text":"Yes — both directions are supported: date → JDN and JDN → date."}}]}]}</script>
+</head>
+<body>
+<header class="site-header">
+  <div class="container">
+    <a class="logo" href="/"><span class="logo-mark">T</span> ToolNest</a>
+    <div class="header-right">
+      <form class="nav-search" action="/" method="get" role="search">
+        <span class="ns-icon">🔍</span>
+        <input type="search" name="q" placeholder="Search tools…" aria-label="Search tools" autocomplete="off">
+      </form>
+      <div class="menu-wrap">
+        <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="menuPanel" aria-label="Open menu"><span></span><span></span><span></span></button>
+        <nav class="menu-panel" id="menuPanel" aria-label="Site">
+          <a href="/">Home</a>
+          <a href="/#categories">Categories</a>
+          <a href="/#all-tools">All Tools</a>
+        </nav>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ADSTERRA-HEADER: paste your Adsterra banner ad code inside the div below -->
+<div class="container"><div class="ad-slot ad-leaderboard" data-ad="header"></div></div>
+
+<main class="container">
+  <nav class="crumbs"><a href="/">Home</a> &rsaquo; <a href="/#time">Time &amp; Date</a> &rsaquo; Julian Date Converter</nav>
+  <div class="tool-hero">
+    <h1>Julian Date Converter</h1>
+    <p>Convert any Gregorian calendar date to its Julian Day Number and back, using the standard astronomical algorithm.</p>
+  </div>
+
+  <div class="tool-card">
+  <h3 style="margin:0 0 8px">Gregorian date → Julian Day Number</h3>
+  <div class="field" style="max-width:260px">
+    <label for="julian-date-converter-date">Calendar date</label>
+    <input class="input" type="date" id="julian-date-converter-date">
+  </div>
+  <div class="btn-row">
+    <button class="btn btn-primary" id="julian-date-converter-tojdn">Convert to JDN</button>
+  </div>
+  <div class="result" id="julian-date-converter-tojdnout"></div>
+  <hr style="border:none;border-top:1px solid #eee;margin:16px 0">
+  <h3 style="margin:0 0 8px">Julian Day Number → date</h3>
+  <div class="field" style="max-width:260px">
+    <label for="julian-date-converter-jdn">Julian Day Number</label>
+    <input class="input" type="number" id="julian-date-converter-jdn" min="0" max="9999999" step="1" placeholder="e.g. 2460948">
+  </div>
+  <div class="btn-row">
+    <button class="btn btn-primary" id="julian-date-converter-todate">Convert to date</button>
+  </div>
+  <div class="result" id="julian-date-converter-todateout"></div>
+  <div class="error" id="julian-date-converter-error"></div>
+</div>
+
+
+  <!-- ADSTERRA-INCONTENT: paste your Adsterra native/in-content ad code inside the div below -->
+  <div class="ad-slot" data-ad="incontent"></div>
+
+  <div class="info-grid">
+    <div class="info-card">
+      <h2>📖 How to use</h2>
+      <ol><li>Enter a calendar date to get its Julian Day Number.</li><li>Or enter a Julian Day Number to get the calendar date.</li><li>Press the matching Convert button.</li><li>Use the JDN to compute exact day differences.</li></ol>
+    </div>
+    <div class="info-card">
+      <h2>❓ Frequently asked questions</h2>
+      <div class="faq"><details><summary>What is a Julian Day Number?</summary><p>The Julian Day Number counts days since noon on January 1, 4713 BC (Julian proleptic calendar). Astronomers use it to compute intervals between dates simply.</p></details><details><summary>Which algorithm is used?</summary><p>Use the standard algorithm: JDN = (1461×(y+4800+(m−14)/12))/4 + … (integer division). The tool computes it exactly.</p></details><details><summary>Can I convert a JDN back to a date?</summary><p>Yes — both directions are supported: date → JDN and JDN → date.</p></details></div>
+    </div>
+  </div>
+
+  <section class="section">
+    <h2>🔗 Related tools</h2>
+    <div class="tool-grid"><a class="tool-link" href="/tools/add-subtract-days-calculator/" data-search="add / subtract days calculator add or subtract days, weeks, months or years from any date. optional business-days-only mode skips weekends automatically. add days to date subtract days calculator date plus days business days calculator date arithmetic"><span class="t-ico">⏰</span><span class="t-body"><b>Add / Subtract Days Calculator</b><small>Add or subtract days, weeks, months or years from any date. Optional business-days-only mode…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/anniversary-calculator/" data-search="anniversary calculator track any anniversary: days until the next one, which number it is (10th, 25th…), total days together and the weekday it falls on. anniversary calculator wedding anniversary countdown how many days until anniversary anniversary date tracker years together calculator"><span class="t-ico">⏰</span><span class="t-body"><b>Anniversary Calculator</b><small>Track any anniversary: days until the next one, which number it is (10th, 25th…), total days…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/bill-due-tracker/" data-search="bill due tracker never miss a payment — track recurring monthly bills with automatic next-due dates, days remaining and urgency sorting. bill due tracker bill reminder recurring bills tracker monthly bills organizer due date tracker"><span class="t-ico">⏰</span><span class="t-body"><b>Bill Due Tracker</b><small>Never miss a payment — track recurring monthly bills with automatic next-due dates, days rem…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/business-days-calculator/" data-search="business days calculator count working days between two dates, excluding weekends and your own custom holidays, with a full breakdown. business days calculator working days calculator weekdays between dates net workdays business days excluding holidays"><span class="t-ico">⏰</span><span class="t-body"><b>Business Days Calculator</b><small>Count working days between two dates, excluding weekends and your own custom holidays, with …</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/chess-clock-timer/" data-search="chess clock timer a two-player chess clock with tap-to-switch, optional increment per move, flag detection, pause and reset. chess clock chess timer two player timer blitz clock increment chess clock"><span class="t-ico">⏰</span><span class="t-body"><b>Chess Clock Timer</b><small>A two-player chess clock with tap-to-switch, optional increment per move, flag detection, pa…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/daily-screen-time-log/" data-search="daily screen time log log daily screen time by app or category and see daily totals plus a 7-day bar summary — all saved in your browser. screen time tracker screen time log daily screen time phone usage tracker app usage log"><span class="t-ico">⏰</span><span class="t-body"><b>Daily Screen Time Log</b><small>Log daily screen time by app or category and see daily totals plus a 7-day bar summary — all…</small></span><span class="t-arrow">→</span></a></div>
+  </section>
+</main>
+
+<!-- ADSTERRA-FOOTER: paste your Adsterra footer/banner ad code inside the div below -->
+<div class="container"><div class="ad-slot" data-ad="footer"></div></div>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="f-grid">
+      <div>
+        <span class="brandline"><span class="logo-mark">T</span> ToolNest</span>
+        <p>Free online tools that actually work. No sign-up, no watermarks — and your files never leave your device for client-side tools.</p>
+      </div>
+      <div>
+        <h4>Popular</h4>
+        <a href="/tools/qr-code-generator/">QR Code Generator</a>
+        <a href="/tools/background-remover/">Background Remover</a>
+        <a href="/tools/pdf-merger/">PDF Merger</a>
+        <a href="/tools/word-counter/">Word Counter</a>
+      </div>
+      <div>
+        <h4>Categories</h4>
+        <a href="/#image">Image Tools</a>
+        <a href="/#pdf">PDF &amp; Documents</a>
+        <a href="/#calculators">Calculators</a>
+        <a href="/#developer">Developer Tools</a>
+      </div>
+      <div>
+        <h4>Site</h4>
+        <a href="/">Home</a>
+        <a href="/#all-tools">All Tools</a>
+        <a href="/sitemap.xml">Sitemap</a>
+      </div>
+    </div>
+    <div class="f-bottom">© 2026 ToolNest · Free tools for everyone · Made with care</div>
+  </div>
+</footer>
+
+<script src="/assets/site.js?v=5"></script>
+
+<script>
+/* Julian Date Converter — Gregorian date ↔ Julian Day Number (standard algorithms). */
+(function () {
+  'use strict';
+  var SLUG = 'julian-date-converter';
+  var $ = function (id) { return TN.el(SLUG + '-' + id); };
+
+  function parseDate(v) {
+    var m = /^(\d{4})-(\d{2})-(\d{2})$/.exec(v || '');
+    if (!m) return null;
+    var d = new Date(+m[1], +m[2] - 1, +m[3]);
+    if (d.getFullYear() !== +m[1] || d.getMonth() !== +m[2] - 1 || d.getDate() !== +m[3]) return null;
+    return { y: +m[1], m: +m[2], d: +m[3] };
+  }
+
+  /* Gregorian → JDN (integer math, Fliegel–Van Flandern). */
+  function toJDN(y, m, d) {
+    var a = Math.floor((14 - m) / 12);
+    var yy = y + 4800 - a;
+    var mm = m + 12 * a - 3;
+    return d + Math.floor((153 * mm + 2) / 5) + 365 * yy +
+      Math.floor(yy / 4) - Math.floor(yy / 100) + Math.floor(yy / 400) - 32045;
+  }
+
+  /* JDN → Gregorian (integer math, Fliegel–Van Flandern). */
+  function fromJDN(j) {
+    var a = j + 32044;
+    var b = Math.floor((4 * a + 3) / 146097);
+    var c = a - Math.floor(146097 * b / 4);
+    var d = Math.floor((4 * c + 3) / 1461);
+    var e = c - Math.floor(1461 * d / 4);
+    var m = Math.floor((5 * e + 2) / 153);
+    var day = e - Math.floor((153 * m + 2) / 5) + 1;
+    var month = m + 3 - 12 * Math.floor(m / 10);
+    var year = 100 * b + d - 4800 + Math.floor(m / 10);
+    return { y: year, m: month, d: day };
+  }
+
+  function toJdnGo() {
+    TN.clearErr(SLUG + '-error');
+    var p = parseDate($('date').value);
+    if (!p) { TN.setErr(SLUG + '-error', 'Please pick a valid calendar date.'); return; }
+    var jdn = toJDN(p.y, p.m, p.d);
+    var weekday = new Date(p.y, p.m - 1, p.d).toLocaleDateString(undefined, { weekday: 'long' });
+    $('tojdnout').innerHTML = '<p>Julian Day Number: <strong class="code">' + jdn.toLocaleString('en-US') + '</strong></p>' +
+      '<p class="muted">' + weekday + ' — day ' + jdn.toLocaleString('en-US') + ' of the continuous count starting Jan 1, 4713 BC.</p>';
+  }
+
+  function toDateGo() {
+    TN.clearErr(SLUG + '-error');
+    var raw = ($('jdn').value || '').trim();
+    if (!/^\d+$/.test(raw)) { TN.setErr(SLUG + '-error', 'Please enter a whole Julian Day Number (digits only).'); return; }
+    var j = parseInt(raw, 10);
+    var g = fromJDN(j);
+    if (g.y < 1 || g.y > 9999) { TN.setErr(SLUG + '-error', 'That JDN maps outside the supported year range (1–9999).'); return; }
+    var d = new Date(g.y, g.m - 1, g.d);
+    var ds = d.toLocaleDateString(undefined, { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
+    var iso = g.y + '-' + ('0' + g.m).slice(-2) + '-' + ('0' + g.d).slice(-2);
+    $('todateout').innerHTML = '<p><strong>' + ds + '</strong> <span class="code">' + iso + '</span></p>' +
+      '<p class="muted">Gregorian (proleptic) calendar date for JDN ' + j.toLocaleString('en-US') + '.</p>';
+  }
+
+  try {
+    TN.on(SLUG + '-tojdn', 'click', toJdnGo);
+    TN.on(SLUG + '-todate', 'click', toDateGo);
+  } catch (e) { /* never throw on load */ }
+})();
+
+</script>
+</body>
+</html>

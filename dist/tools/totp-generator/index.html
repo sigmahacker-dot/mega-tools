@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TOTP Generator — Free Online | ToolNest</title>
+<meta name="description" content="Paste a base32 secret to get real RFC 6238 TOTP codes with a live countdown, plus a verify mode.">
+<meta name="keywords" content="totp generator, 2fa code, authenticator, rfc 6238, otp generator">
+<link rel="canonical" href="https://toolnest.vercel.app/tools/totp-generator/">
+<meta name="theme-color" content="#07070b">
+<meta property="og:title" content="TOTP Generator — Free Online | ToolNest">
+<meta property="og:description" content="Paste a base32 secret to get real RFC 6238 TOTP codes with a live countdown, plus a verify mode.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css?v=4">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%23e01111'/><text x='50' y='68' font-size='58' text-anchor='middle' fill='white' font-family='Arial' font-weight='bold'>T</text></svg>">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebApplication","name":"TOTP Generator","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0"},"url":"https://toolnest.vercel.app/tools/totp-generator/","description":"Paste a base32 secret to get real RFC 6238 TOTP codes with a live countdown, plus a verify mode."},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Which algorithm is used?","acceptedAnswer":{"@type":"Answer","text":"HMAC-SHA1 with a 30-second time step and dynamic truncation — exactly per RFC 6238/4226."}},{"@type":"Question","name":"Can I verify a code?","acceptedAnswer":{"@type":"Answer","text":"Yes — enter a code to check it against the current, previous, and next 30-second window."}},{"@type":"Question","name":"Does it accept spaced secrets?","acceptedAnswer":{"@type":"Answer","text":"Secrets often include spaces or lowercase letters; both are accepted and ignored/normalized."}},{"@type":"Question","name":"Is it safe to paste my real secret?","acceptedAnswer":{"@type":"Answer","text":"The secret never leaves your browser — but for real accounts, prefer your phone's authenticator app."}}]}]}</script>
+</head>
+<body>
+<header class="site-header">
+  <div class="container">
+    <a class="logo" href="/"><span class="logo-mark">T</span> ToolNest</a>
+    <div class="header-right">
+      <form class="nav-search" action="/" method="get" role="search">
+        <span class="ns-icon">🔍</span>
+        <input type="search" name="q" placeholder="Search tools…" aria-label="Search tools" autocomplete="off">
+      </form>
+      <div class="menu-wrap">
+        <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="menuPanel" aria-label="Open menu"><span></span><span></span><span></span></button>
+        <nav class="menu-panel" id="menuPanel" aria-label="Site">
+          <a href="/">Home</a>
+          <a href="/#categories">Categories</a>
+          <a href="/#all-tools">All Tools</a>
+        </nav>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ADSTERRA-HEADER: paste your Adsterra banner ad code inside the div below -->
+<div class="container"><div class="ad-slot ad-leaderboard" data-ad="header"></div></div>
+
+<main class="container">
+  <nav class="crumbs"><a href="/">Home</a> &rsaquo; <a href="/#developer">Developer Tools</a> &rsaquo; TOTP Generator</nav>
+  <div class="tool-hero">
+    <h1>TOTP Generator</h1>
+    <p>Paste a base32 secret to get real RFC 6238 TOTP codes with a live countdown, plus a verify mode.</p>
+  </div>
+
+  <div class="tool-card" style="text-align:center">
+  <p class="note" style="text-align:left">Client-side only: your secret never leaves this browser tab. For real accounts, prefer your phone's authenticator app.</p>
+  <div class="field" style="text-align:left">
+    <label for="totp-generator-secret">Base32 secret</label>
+    <input class="input" id="totp-generator-secret" placeholder="JBSWY3DPEHPK3PXP" autocomplete="off" spellcheck="false">
+  </div>
+  <div class="grid2" style="max-width:420px;margin:0 auto">
+    <div class="field" style="text-align:left">
+      <label for="totp-generator-digits">Digits</label>
+      <select class="input" id="totp-generator-digits">
+        <option value="6">6</option>
+        <option value="8">8</option>
+      </select>
+    </div>
+    <div class="field" style="text-align:left">
+      <label for="totp-generator-period">Period (seconds)</label>
+      <select class="input" id="totp-generator-period">
+        <option value="30">30</option>
+        <option value="60">60</option>
+      </select>
+    </div>
+  </div>
+  <div class="error" id="totp-generator-error"></div>
+  <div class="result hidden" id="totp-generator-result">
+    <div class="stat-cards" style="max-width:420px;margin:0 auto 8px">
+      <div class="stat-card"><div class="v" id="totp-generator-code" style="font-size:34px;letter-spacing:6px">······</div><div class="l">Current code</div></div>
+      <div class="stat-card"><div class="v" id="totp-generator-count">—</div><div class="l">Seconds left</div></div>
+    </div>
+    <div style="max-width:420px;margin:0 auto 12px;background:#e0e0e0;border-radius:4px;height:8px;overflow:hidden">
+      <div id="totp-generator-bar" style="height:100%;background:#2e7d32;width:100%"></div>
+    </div>
+  </div>
+  <hr>
+  <div class="field" style="text-align:left;max-width:420px;margin:0 auto">
+    <label for="totp-generator-verify">Verify a code (±1 time-step window)</label>
+    <div style="display:flex;gap:8px">
+      <input class="input" id="totp-generator-verify" placeholder="123456" maxlength="8" style="flex:1">
+      <button class="btn btn-primary" id="totp-generator-verify-btn">Verify</button>
+    </div>
+    <p class="hint" id="totp-generator-verdict" style="min-height:20px;margin-top:8px"></p>
+  </div>
+</div>
+
+
+  <!-- ADSTERRA-INCONTENT: paste your Adsterra native/in-content ad code inside the div below -->
+  <div class="ad-slot" data-ad="incontent"></div>
+
+  <div class="info-grid">
+    <div class="info-card">
+      <h2>📖 How to use</h2>
+      <ol><li>Paste your base32 TOTP secret.</li><li>The current 6-digit code appears with a countdown ring.</li><li>Use verify mode to check a code someone gives you.</li></ol>
+    </div>
+    <div class="info-card">
+      <h2>❓ Frequently asked questions</h2>
+      <div class="faq"><details><summary>Which algorithm is used?</summary><p>HMAC-SHA1 with a 30-second time step and dynamic truncation — exactly per RFC 6238/4226.</p></details><details><summary>Can I verify a code?</summary><p>Yes — enter a code to check it against the current, previous, and next 30-second window.</p></details><details><summary>Does it accept spaced secrets?</summary><p>Secrets often include spaces or lowercase letters; both are accepted and ignored/normalized.</p></details><details><summary>Is it safe to paste my real secret?</summary><p>The secret never leaves your browser — but for real accounts, prefer your phone&#39;s authenticator app.</p></details></div>
+    </div>
+  </div>
+
+  <section class="section">
+    <h2>🔗 Related tools</h2>
+    <div class="tool-grid"><a class="tool-link" href="/tools/ascii-table-reference/" data-search="ascii table reference full ascii table 0–127: decimal, hex, octal, character, control-code names and html entities — searchable. ascii table ascii codes ascii chart control characters ascii reference"><span class="t-ico">💻</span><span class="t-body"><b>ASCII Table Reference</b><small>Full ASCII table 0–127: decimal, hex, octal, character, control-code names and HTML entities…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/base64-encoder-decoder/" data-search="base64 encoder / decoder encode text to base64 or decode base64 back to text, with full utf-8 support and a file-to-data-url converter. base64 encoder base64 decoder base64 encode base64 decode file to base64"><span class="t-ico">💻</span><span class="t-body"><b>Base64 Encoder / Decoder</b><small>Encode text to Base64 or decode Base64 back to text, with full UTF-8 support and a file-to-d…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/binary-text-converter/" data-search="binary and text converter convert text to binary or hex and back, with full utf-8 awareness and strict input validation. binary to text text to binary hex to text converter"><span class="t-ico">💻</span><span class="t-body"><b>Binary and Text Converter</b><small>Convert text to binary or hex and back, with full UTF-8 awareness and strict input validatio…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/changelog-generator/" data-search="changelog generator build a keep-a-changelog markdown file: version, date, and grouped added/fixed/changed entries. changelog generator keep a changelog changelog markdown release notes version changelog"><span class="t-ico">💻</span><span class="t-body"><b>Changelog Generator</b><small>Build a Keep-a-Changelog markdown file: version, date, and grouped Added/Fixed/Changed entri…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/character-escape-reference/" data-search="character escape reference searchable reference of characters with their html entities, url encodings, and js escapes — plus a live encoder. character escape reference html entities url encode unicode escape html entity table"><span class="t-ico">💻</span><span class="t-body"><b>Character Escape Reference</b><small>Searchable reference of characters with their HTML entities, URL encodings, and JS escapes —…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/chmod-calculator/" data-search="chmod calculator tick rwx boxes for user/group/other — or type 755 — and see octal, symbolic, and the chmod command live. chmod calculator chmod 755 linux permissions octal permissions rwx calculator"><span class="t-ico">💻</span><span class="t-body"><b>chmod Calculator</b><small>Tick rwx boxes for user/group/other — or type 755 — and see octal, symbolic, and the chmod c…</small></span><span class="t-arrow">→</span></a></div>
+  </section>
+</main>
+
+<!-- ADSTERRA-FOOTER: paste your Adsterra footer/banner ad code inside the div below -->
+<div class="container"><div class="ad-slot" data-ad="footer"></div></div>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="f-grid">
+      <div>
+        <span class="brandline"><span class="logo-mark">T</span> ToolNest</span>
+        <p>Free online tools that actually work. No sign-up, no watermarks — and your files never leave your device for client-side tools.</p>
+      </div>
+      <div>
+        <h4>Popular</h4>
+        <a href="/tools/qr-code-generator/">QR Code Generator</a>
+        <a href="/tools/background-remover/">Background Remover</a>
+        <a href="/tools/pdf-merger/">PDF Merger</a>
+        <a href="/tools/word-counter/">Word Counter</a>
+      </div>
+      <div>
+        <h4>Categories</h4>
+        <a href="/#image">Image Tools</a>
+        <a href="/#pdf">PDF &amp; Documents</a>
+        <a href="/#calculators">Calculators</a>
+        <a href="/#developer">Developer Tools</a>
+      </div>
+      <div>
+        <h4>Site</h4>
+        <a href="/">Home</a>
+        <a href="/#all-tools">All Tools</a>
+        <a href="/sitemap.xml">Sitemap</a>
+      </div>
+    </div>
+    <div class="f-bottom">© 2026 ToolNest · Free tools for everyone · Made with care</div>
+  </div>
+</footer>
+
+<script src="/assets/site.js?v=5"></script>
+
+<script>
+/* TOTP Generator — RFC 6238: base32 secret, HMAC-SHA1, 30s step, dynamic truncation.
+   Client-side only. Includes verify mode (±1 window). */
+(function () {
+  'use strict';
+  var SLUG = 'totp-generator';
+  var B32 = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ234567';
+  var timerId = null;
+
+  function el(id) { return document.getElementById(id); }
+  function fail(msg) { TN.setErr(SLUG + '-error', msg); }
+  function clear() { TN.clearErr(SLUG + '-error'); }
+
+  function base32Decode(s) {
+    s = s.replace(/[\s-]/g, '').toUpperCase().replace(/=+$/, '');
+    if (!/^[A-Z2-7]*$/.test(s) || !s.length) throw new Error('Not valid base32.');
+    var bits = '', bytes = [];
+    for (var i = 0; i < s.length; i++) {
+      var v = B32.indexOf(s[i]);
+      var b = v.toString(2);
+      while (b.length < 5) b = '0' + b;
+      bits += b;
+    }
+    for (var j = 0; j + 8 <= bits.length; j += 8) {
+      bytes.push(parseInt(bits.substr(j, 8), 2));
+    }
+    if (!bytes.length) throw new Error('Secret decodes to nothing.');
+    return new Uint8Array(bytes);
+  }
+
+  function counterBytes(counter) {
+    var b = new Uint8Array(8);
+    for (var i = 7; i >= 0; i--) {
+      b[i] = counter & 0xff;
+      counter = Math.floor(counter / 256);
+    }
+    return b;
+  }
+
+  function hotp(keyBytes, counter, digits) {
+    return crypto.subtle.importKey('raw', keyBytes, { name: 'HMAC', hash: 'SHA-1' }, false, ['sign'])
+      .then(function (key) { return crypto.subtle.sign('HMAC', key, counterBytes(counter)); })
+      .then(function (sig) {
+        var h = new Uint8Array(sig);
+        var offset = h[h.length - 1] & 0x0f;
+        var code = ((h[offset] & 0x7f) << 24) | (h[offset + 1] << 16) | (h[offset + 2] << 8) | h[offset + 3];
+        var s = String(code % Math.pow(10, digits));
+        while (s.length < digits) s = '0' + s;
+        return s;
+      });
+  }
+
+  function getKey() {
+    var raw = el(SLUG + '-secret').value;
+    if (!raw.trim()) throw new Error('Paste a base32 secret first.');
+    return base32Decode(raw);
+  }
+
+  function tick() {
+    var keyBytes;
+    try { keyBytes = getKey(); }
+    catch (e) { stop(); fail(e.message); return; }
+    clear();
+    var period = parseInt(el(SLUG + '-period').value, 10);
+    var digits = parseInt(el(SLUG + '-digits').value, 10);
+    var now = Math.floor(Date.now() / 1000);
+    var counter = Math.floor(now / period);
+    var left = period - (now % period);
+    hotp(keyBytes, counter, digits).then(function (code) {
+      el(SLUG + '-code').textContent = code;
+      el(SLUG + '-count').textContent = left + 's';
+      el(SLUG + '-bar').style.width = (left / period * 100) + '%';
+      el(SLUG + '-bar').style.background = left <= 5 ? '#c62828' : '#2e7d32';
+      TN.show(SLUG + '-result');
+    }).catch(function (e) { fail('TOTP failed: ' + e.message); });
+  }
+
+  function stop() {
+    if (timerId) { clearInterval(timerId); timerId = null; }
+  }
+
+  function verify() {
+    clear();
+    var verdict = el(SLUG + '-verdict');
+    verdict.textContent = '';
+    var code = el(SLUG + '-verify').value.trim();
+    if (!/^\d+$/.test(code)) { fail('Enter the numeric code to verify.'); return; }
+    var keyBytes;
+    try { keyBytes = getKey(); } catch (e) { fail(e.message); return; }
+    var period = parseInt(el(SLUG + '-period').value, 10);
+    var counter = Math.floor(Date.now() / 1000 / period);
+    var jobs = [-1, 0, 1].map(function (d) { return hotp(keyBytes, counter + d, code.length); });
+    Promise.all(jobs).then(function (codes) {
+      var ok = codes.indexOf(code) >= 0;
+      verdict.textContent = ok ? '✓ Valid code (within ±1 time step).' : '✗ Code does not match.';
+      verdict.style.color = ok ? '#2e7d32' : '#c62828';
+    }).catch(function (e) { fail('Verify failed: ' + e.message); });
+  }
+
+  try {
+    var start = function () {
+      stop();
+      tick();
+      timerId = setInterval(tick, 1000);
+    };
+    TN.on(SLUG + '-secret', 'input', TN.debounce(start, 400));
+    TN.on(SLUG + '-digits', 'change', start);
+    TN.on(SLUG + '-period', 'change', start);
+    TN.on(SLUG + '-verify-btn', 'click', verify);
+  } catch (e) { /* never throw on load */ }
+})();
+
+</script>
+</body>
+</html>

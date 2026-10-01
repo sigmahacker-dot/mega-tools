@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Standing Desk Ratio Calculator — Free Online | ToolNest</title>
+<meta name="description" content="Turn your work hours and sit:stand ratio into an alternating sit-stand schedule table.">
+<meta name="keywords" content="standing desk ratio, sit stand schedule, standing desk timer, sit stand desk plan, ergonomic work schedule">
+<link rel="canonical" href="https://toolnest.vercel.app/tools/standing-desk-ratio-calculator/">
+<meta name="theme-color" content="#07070b">
+<meta property="og:title" content="Standing Desk Ratio Calculator — Free Online | ToolNest">
+<meta property="og:description" content="Turn your work hours and sit:stand ratio into an alternating sit-stand schedule table.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css?v=4">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%23e01111'/><text x='50' y='68' font-size='58' text-anchor='middle' fill='white' font-family='Arial' font-weight='bold'>T</text></svg>">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebApplication","name":"Standing Desk Ratio Calculator","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0"},"url":"https://toolnest.vercel.app/tools/standing-desk-ratio-calculator/","description":"Turn your work hours and sit:stand ratio into an alternating sit-stand schedule table."},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How much standing is healthy?","acceptedAnswer":{"@type":"Answer","text":"Common guidance suggests standing or moving for 2–4 hours of an 8-hour day, changing posture every 30–60 minutes."}},{"@type":"Question","name":"Should I stand all at once?","acceptedAnswer":{"@type":"Answer","text":"Alternate blocks (e.g. 40 min sitting, 20 min standing) rather than one long stand — variety matters more than totals."}},{"@type":"Question","name":"Can I set my own start time?","acceptedAnswer":{"@type":"Answer","text":"Yes — the table uses 24-hour clock times starting from whatever start time you enter."}}]}]}</script>
+</head>
+<body>
+<header class="site-header">
+  <div class="container">
+    <a class="logo" href="/"><span class="logo-mark">T</span> ToolNest</a>
+    <div class="header-right">
+      <form class="nav-search" action="/" method="get" role="search">
+        <span class="ns-icon">🔍</span>
+        <input type="search" name="q" placeholder="Search tools…" aria-label="Search tools" autocomplete="off">
+      </form>
+      <div class="menu-wrap">
+        <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="menuPanel" aria-label="Open menu"><span></span><span></span><span></span></button>
+        <nav class="menu-panel" id="menuPanel" aria-label="Site">
+          <a href="/">Home</a>
+          <a href="/#categories">Categories</a>
+          <a href="/#all-tools">All Tools</a>
+        </nav>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ADSTERRA-HEADER: paste your Adsterra banner ad code inside the div below -->
+<div class="container"><div class="ad-slot ad-leaderboard" data-ad="header"></div></div>
+
+<main class="container">
+  <nav class="crumbs"><a href="/">Home</a> &rsaquo; <a href="/#health">Health &amp; Fitness</a> &rsaquo; Standing Desk Ratio Calculator</nav>
+  <div class="tool-hero">
+    <h1>Standing Desk Ratio Calculator</h1>
+    <p>Turn your work hours and sit:stand ratio into an alternating sit-stand schedule table.</p>
+  </div>
+
+  <div class="tool-card">
+  <div class="grid2">
+    <div class="field">
+      <label for="standing-desk-ratio-calculator-hours">Work hours per day</label>
+      <input class="input" id="standing-desk-ratio-calculator-hours" type="number" min="1" max="16" step="0.5" value="8">
+    </div>
+    <div class="field">
+      <label for="standing-desk-ratio-calculator-ratio">Sit : stand ratio</label>
+      <select class="input" id="standing-desk-ratio-calculator-ratio">
+        <option value="3:1">3:1 — gentle start (45 sit / 15 stand)</option>
+        <option value="2:1" selected>2:1 — balanced (40 sit / 20 stand)</option>
+        <option value="1:1">1:1 — active (30 sit / 30 stand)</option>
+        <option value="1:2">1:2 — mostly standing (20 sit / 40 stand)</option>
+      </select>
+    </div>
+    <div class="field">
+      <label for="standing-desk-ratio-calculator-start">Day starts at</label>
+      <input class="input" id="standing-desk-ratio-calculator-start" type="time" value="09:00">
+    </div>
+    <div class="field" style="align-self:end">
+      <button class="btn btn-primary" id="standing-desk-ratio-calculator-build">Build schedule</button>
+    </div>
+  </div>
+  <div class="stat-cards hidden" id="standing-desk-ratio-calculator-out">
+    <div class="stat-card"><div class="v" id="standing-desk-ratio-calculator-sit">–</div><div class="l">Sitting time</div></div>
+    <div class="stat-card"><div class="v" id="standing-desk-ratio-calculator-stand">–</div><div class="l">Standing time</div></div>
+  </div>
+  <div class="result hidden" id="standing-desk-ratio-calculator-table"></div>
+  <p class="note">General information only — not medical advice. Consult a professional for personal guidance. Ease into standing gradually if you are new to it.</p>
+  <div class="error" id="standing-desk-ratio-calculator-error"></div>
+</div>
+
+
+  <!-- ADSTERRA-INCONTENT: paste your Adsterra native/in-content ad code inside the div below -->
+  <div class="ad-slot" data-ad="incontent"></div>
+
+  <div class="info-grid">
+    <div class="info-card">
+      <h2>📖 How to use</h2>
+      <ol><li>Enter your total work hours for the day.</li><li>Pick a sit:stand ratio.</li><li>Set your day&#39;s start time.</li><li>Press Build schedule and follow the alternating blocks.</li></ol>
+    </div>
+    <div class="info-card">
+      <h2>❓ Frequently asked questions</h2>
+      <div class="faq"><details><summary>How much standing is healthy?</summary><p>Common guidance suggests standing or moving for 2–4 hours of an 8-hour day, changing posture every 30–60 minutes.</p></details><details><summary>Should I stand all at once?</summary><p>Alternate blocks (e.g. 40 min sitting, 20 min standing) rather than one long stand — variety matters more than totals.</p></details><details><summary>Can I set my own start time?</summary><p>Yes — the table uses 24-hour clock times starting from whatever start time you enter.</p></details></div>
+    </div>
+  </div>
+
+  <section class="section">
+    <h2>🔗 Related tools</h2>
+    <div class="tool-grid"><a class="tool-link" href="/tools/baby-growth-tracker/" data-search="baby growth tracker log your baby&#39;s weight and height over time and see a growth log with typical-range guidance. baby growth tracker baby weight tracker infant growth chart baby height log newborn growth"><span class="t-ico">❤️</span><span class="t-body"><b>Baby Growth Tracker</b><small>Log your baby&#39;s weight and height over time and see a growth log with typical-range guidance…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/blood-pressure-tracker/" data-search="blood pressure tracker log blood pressure readings with automatic aha category classification, averages and history saved in your browser. blood pressure tracker bp log blood pressure chart hypertension tracker bp monitor log"><span class="t-ico">❤️</span><span class="t-body"><b>Blood Pressure Tracker</b><small>Log blood pressure readings with automatic AHA category classification, averages and history…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/body-fat-calculator/" data-search="body fat calculator estimate body fat percentage with the us navy tape-measure method and see your fitness category. body fat calculator us navy body fat body fat percentage calculator"><span class="t-ico">❤️</span><span class="t-body"><b>Body Fat Calculator</b><small>Estimate body fat percentage with the US Navy tape-measure method and see your fitness categ…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/breathing-exercise-guide/" data-search="breathing exercise guide guided breathing exercises (4-7-8, box, energize) with an animated pacer circle, phase labels, and cycle counter. breathing exercise 4-7-8 breathing box breathing breathing pacer calm breathing"><span class="t-ico">❤️</span><span class="t-body"><b>Breathing Exercise Guide</b><small>Guided breathing exercises (4-7-8, box, energize) with an animated pacer circle, phase label…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/caffeine-half-life-calculator/" data-search="caffeine half-life calculator log caffeinated drinks and see how much caffeine is still in your system using 5.5-hour half-life decay. caffeine half life caffeine calculator caffeine in system coffee caffeine tracker caffeine sleep"><span class="t-ico">❤️</span><span class="t-body"><b>Caffeine Half-Life Calculator</b><small>Log caffeinated drinks and see how much caffeine is still in your system using 5.5-hour half…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/calorie-calculator/" data-search="tdee calorie calculator estimate your daily calorie needs with the mifflin-st jeor equation and get targets for losing, maintaining or gaining weight. tdee calculator calorie calculator mifflin st jeor daily calorie needs"><span class="t-ico">❤️</span><span class="t-body"><b>TDEE Calorie Calculator</b><small>Estimate your daily calorie needs with the Mifflin-St Jeor equation and get targets for losi…</small></span><span class="t-arrow">→</span></a></div>
+  </section>
+</main>
+
+<!-- ADSTERRA-FOOTER: paste your Adsterra footer/banner ad code inside the div below -->
+<div class="container"><div class="ad-slot" data-ad="footer"></div></div>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="f-grid">
+      <div>
+        <span class="brandline"><span class="logo-mark">T</span> ToolNest</span>
+        <p>Free online tools that actually work. No sign-up, no watermarks — and your files never leave your device for client-side tools.</p>
+      </div>
+      <div>
+        <h4>Popular</h4>
+        <a href="/tools/qr-code-generator/">QR Code Generator</a>
+        <a href="/tools/background-remover/">Background Remover</a>
+        <a href="/tools/pdf-merger/">PDF Merger</a>
+        <a href="/tools/word-counter/">Word Counter</a>
+      </div>
+      <div>
+        <h4>Categories</h4>
+        <a href="/#image">Image Tools</a>
+        <a href="/#pdf">PDF &amp; Documents</a>
+        <a href="/#calculators">Calculators</a>
+        <a href="/#developer">Developer Tools</a>
+      </div>
+      <div>
+        <h4>Site</h4>
+        <a href="/">Home</a>
+        <a href="/#all-tools">All Tools</a>
+        <a href="/sitemap.xml">Sitemap</a>
+      </div>
+    </div>
+    <div class="f-bottom">© 2026 ToolNest · Free tools for everyone · Made with care</div>
+  </div>
+</footer>
+
+<script src="/assets/site.js?v=5"></script>
+
+<script>
+/* Standing desk ratio calculator: work hours + ratio -> alternating schedule table. */
+(function () {
+  'use strict';
+  var SLUG = 'standing-desk-ratio-calculator';
+  function $(id) { return document.getElementById(id); }
+  var BLOCKS = { '3:1': [45, 15], '2:1': [40, 20], '1:1': [30, 30], '1:2': [20, 40] };
+  function fmtTime(mins) {
+    var h = Math.floor(mins / 60) % 24, m = mins % 60;
+    return (h < 10 ? '0' : '') + h + ':' + (m < 10 ? '0' : '') + m;
+  }
+  function fmtDur(mins) {
+    var h = Math.floor(mins / 60), m = Math.round(mins % 60);
+    return (h ? h + 'h ' : '') + m + 'm';
+  }
+  function build() {
+    $(SLUG + '-error').textContent = '';
+    var hours = parseFloat($(SLUG + '-hours').value);
+    var ratio = $(SLUG + '-ratio').value;
+    var startV = $(SLUG + '-start').value;
+    if (isNaN(hours) || hours < 1 || hours > 16) { $(SLUG + '-error').textContent = 'Enter work hours between 1 and 16.'; return; }
+    if (!startV) { $(SLUG + '-error').textContent = 'Pick a start time.'; return; }
+    var blk = BLOCKS[ratio];
+    var sitB = blk[0], standB = blk[1];
+    var totalMin = Math.round(hours * 60);
+    var sp = startV.split(':');
+    var t = parseInt(sp[0], 10) * 60 + parseInt(sp[1], 10);
+    var html = '<table class="data"><thead><tr><th>#</th><th>Time</th><th>Posture</th></tr></thead><tbody>';
+    var n = 0, sitT = 0, standT = 0;
+    while (totalMin > 0) {
+      n++;
+      var isSit = (n % 2 === 1);
+      var want = isSit ? sitB : standB;
+      var use = Math.min(want, totalMin);
+      html += '<tr><td>' + n + '</td><td>' + fmtTime(t) + ' – ' + fmtTime(t + use) + '</td><td>' +
+        (isSit ? '🪑 Sit' : '🧍 Stand') + ' (' + use + ' min)</td></tr>';
+      if (isSit) sitT += use; else standT += use;
+      t += use; totalMin -= use;
+    }
+    html += '</tbody></table>';
+    $(SLUG + '-sit').textContent = fmtDur(sitT);
+    $(SLUG + '-stand').textContent = fmtDur(standT);
+    $(SLUG + '-out').classList.remove('hidden');
+    var box = $(SLUG + '-table');
+    box.innerHTML = html;
+    box.classList.remove('hidden');
+  }
+  try {
+    $(SLUG + '-build').addEventListener('click', build);
+    build();
+  } catch (e) { /* never throw on load */ }
+})();
+
+</script>
+</body>
+</html>

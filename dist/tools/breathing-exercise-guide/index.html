@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Breathing Exercise Guide — Free Online | ToolNest</title>
+<meta name="description" content="Guided breathing exercises (4-7-8, box, energize) with an animated pacer circle, phase labels, and cycle counter.">
+<meta name="keywords" content="breathing exercise, 4-7-8 breathing, box breathing, breathing pacer, calm breathing">
+<link rel="canonical" href="https://toolnest.vercel.app/tools/breathing-exercise-guide/">
+<meta name="theme-color" content="#07070b">
+<meta property="og:title" content="Breathing Exercise Guide — Free Online | ToolNest">
+<meta property="og:description" content="Guided breathing exercises (4-7-8, box, energize) with an animated pacer circle, phase labels, and cycle counter.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css?v=4">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%23e01111'/><text x='50' y='68' font-size='58' text-anchor='middle' fill='white' font-family='Arial' font-weight='bold'>T</text></svg>">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebApplication","name":"Breathing Exercise Guide","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0"},"url":"https://toolnest.vercel.app/tools/breathing-exercise-guide/","description":"Guided breathing exercises (4-7-8, box, energize) with an animated pacer circle, phase labels, and cycle counter."},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What is 4-7-8 breathing?","acceptedAnswer":{"@type":"Answer","text":"Inhale 4s, hold 7s, exhale 8s. It is a popular calming pattern said to slow the heart rate and ease stress."}},{"@type":"Question","name":"What is box breathing?","acceptedAnswer":{"@type":"Answer","text":"Equal 4-second phases: inhale, hold, exhale, hold. Used by athletes and first responders to steady focus."}},{"@type":"Question","name":"Is this safe for everyone?","acceptedAnswer":{"@type":"Answer","text":"Sit comfortably, breathe through your nose, and stop if you feel dizzy. These are relaxation aids, not medical treatment."}},{"@type":"Question","name":"How do I use the pacer?","acceptedAnswer":{"@type":"Answer","text":"Choose a pattern, set your cycles, press Start, and follow the expanding/contracting circle and phase labels."}}]}]}</script>
+</head>
+<body>
+<header class="site-header">
+  <div class="container">
+    <a class="logo" href="/"><span class="logo-mark">T</span> ToolNest</a>
+    <div class="header-right">
+      <form class="nav-search" action="/" method="get" role="search">
+        <span class="ns-icon">🔍</span>
+        <input type="search" name="q" placeholder="Search tools…" aria-label="Search tools" autocomplete="off">
+      </form>
+      <div class="menu-wrap">
+        <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="menuPanel" aria-label="Open menu"><span></span><span></span><span></span></button>
+        <nav class="menu-panel" id="menuPanel" aria-label="Site">
+          <a href="/">Home</a>
+          <a href="/#categories">Categories</a>
+          <a href="/#all-tools">All Tools</a>
+        </nav>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ADSTERRA-HEADER: paste your Adsterra banner ad code inside the div below -->
+<div class="container"><div class="ad-slot ad-leaderboard" data-ad="header"></div></div>
+
+<main class="container">
+  <nav class="crumbs"><a href="/">Home</a> &rsaquo; <a href="/#health">Health &amp; Fitness</a> &rsaquo; Breathing Exercise Guide</nav>
+  <div class="tool-hero">
+    <h1>Breathing Exercise Guide</h1>
+    <p>Guided breathing exercises (4-7-8, box, energize) with an animated pacer circle, phase labels, and cycle counter.</p>
+  </div>
+
+  <div class="tool-card" style="text-align:center">
+  <div class="grid2" style="max-width:440px;margin:0 auto 12px;text-align:left">
+    <div class="field">
+      <label for="breathing-exercise-guide-pattern">Pattern</label>
+      <select class="input" id="breathing-exercise-guide-pattern">
+        <option value="478">4-7-8 Calming (in 4 · hold 7 · out 8)</option>
+        <option value="box">Box breathing (4 · 4 · 4 · 4)</option>
+        <option value="energize">Energize (in 4 · hold 2 · out 6)</option>
+      </select>
+    </div>
+    <div class="field">
+      <label for="breathing-exercise-guide-cycles">Cycles</label>
+      <input class="input" id="breathing-exercise-guide-cycles" type="number" min="1" max="30" step="1" value="4">
+    </div>
+  </div>
+  <div style="height:220px;display:flex;align-items:center;justify-content:center">
+    <div id="breathing-exercise-guide-circle" style="width:120px;height:120px;border-radius:50%;background:radial-gradient(circle at 35% 35%, #81c784, #2e7d32);transition:width 1s linear,height 1s linear,opacity 1s linear;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:bold"></div>
+  </div>
+  <p style="font-size:1.4em;font-weight:bold;min-height:32px" id="breathing-exercise-guide-phase">Ready</p>
+  <p class="muted" id="breathing-exercise-guide-count">Cycle 0 / 4</p>
+  <div class="btn-row" style="justify-content:center">
+    <button class="btn btn-primary" id="breathing-exercise-guide-start">Start</button>
+    <button class="btn btn-outline" id="breathing-exercise-guide-stop">Stop</button>
+  </div>
+  <p class="note" style="text-align:left">General information only — not medical advice. Consult a professional for personal guidance. Breathe through your nose and stop if you feel dizzy.</p>
+  <div class="error" id="breathing-exercise-guide-error"></div>
+</div>
+
+
+  <!-- ADSTERRA-INCONTENT: paste your Adsterra native/in-content ad code inside the div below -->
+  <div class="ad-slot" data-ad="incontent"></div>
+
+  <div class="info-grid">
+    <div class="info-card">
+      <h2>📖 How to use</h2>
+      <ol><li>Choose a breathing pattern.</li><li>Set how many cycles you want.</li><li>Press Start and follow the animated circle.</li><li>Match each phase: inhale, hold, exhale.</li></ol>
+    </div>
+    <div class="info-card">
+      <h2>❓ Frequently asked questions</h2>
+      <div class="faq"><details><summary>What is 4-7-8 breathing?</summary><p>Inhale 4s, hold 7s, exhale 8s. It is a popular calming pattern said to slow the heart rate and ease stress.</p></details><details><summary>What is box breathing?</summary><p>Equal 4-second phases: inhale, hold, exhale, hold. Used by athletes and first responders to steady focus.</p></details><details><summary>Is this safe for everyone?</summary><p>Sit comfortably, breathe through your nose, and stop if you feel dizzy. These are relaxation aids, not medical treatment.</p></details><details><summary>How do I use the pacer?</summary><p>Choose a pattern, set your cycles, press Start, and follow the expanding/contracting circle and phase labels.</p></details></div>
+    </div>
+  </div>
+
+  <section class="section">
+    <h2>🔗 Related tools</h2>
+    <div class="tool-grid"><a class="tool-link" href="/tools/baby-growth-tracker/" data-search="baby growth tracker log your baby&#39;s weight and height over time and see a growth log with typical-range guidance. baby growth tracker baby weight tracker infant growth chart baby height log newborn growth"><span class="t-ico">❤️</span><span class="t-body"><b>Baby Growth Tracker</b><small>Log your baby&#39;s weight and height over time and see a growth log with typical-range guidance…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/blood-pressure-tracker/" data-search="blood pressure tracker log blood pressure readings with automatic aha category classification, averages and history saved in your browser. blood pressure tracker bp log blood pressure chart hypertension tracker bp monitor log"><span class="t-ico">❤️</span><span class="t-body"><b>Blood Pressure Tracker</b><small>Log blood pressure readings with automatic AHA category classification, averages and history…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/body-fat-calculator/" data-search="body fat calculator estimate body fat percentage with the us navy tape-measure method and see your fitness category. body fat calculator us navy body fat body fat percentage calculator"><span class="t-ico">❤️</span><span class="t-body"><b>Body Fat Calculator</b><small>Estimate body fat percentage with the US Navy tape-measure method and see your fitness categ…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/caffeine-half-life-calculator/" data-search="caffeine half-life calculator log caffeinated drinks and see how much caffeine is still in your system using 5.5-hour half-life decay. caffeine half life caffeine calculator caffeine in system coffee caffeine tracker caffeine sleep"><span class="t-ico">❤️</span><span class="t-body"><b>Caffeine Half-Life Calculator</b><small>Log caffeinated drinks and see how much caffeine is still in your system using 5.5-hour half…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/calorie-calculator/" data-search="tdee calorie calculator estimate your daily calorie needs with the mifflin-st jeor equation and get targets for losing, maintaining or gaining weight. tdee calculator calorie calculator mifflin st jeor daily calorie needs"><span class="t-ico">❤️</span><span class="t-body"><b>TDEE Calorie Calculator</b><small>Estimate your daily calorie needs with the Mifflin-St Jeor equation and get targets for losi…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/carb-cycling-calculator/" data-search="carb cycling calculator build high, medium and low carb day macros from your tdee using the mifflin-st jeor equation. carb cycling calculator macro cycling high low carb days tdee macro calculator carb cycle plan"><span class="t-ico">❤️</span><span class="t-body"><b>Carb Cycling Calculator</b><small>Build high, medium and low carb day macros from your TDEE using the Mifflin-St Jeor equation…</small></span><span class="t-arrow">→</span></a></div>
+  </section>
+</main>
+
+<!-- ADSTERRA-FOOTER: paste your Adsterra footer/banner ad code inside the div below -->
+<div class="container"><div class="ad-slot" data-ad="footer"></div></div>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="f-grid">
+      <div>
+        <span class="brandline"><span class="logo-mark">T</span> ToolNest</span>
+        <p>Free online tools that actually work. No sign-up, no watermarks — and your files never leave your device for client-side tools.</p>
+      </div>
+      <div>
+        <h4>Popular</h4>
+        <a href="/tools/qr-code-generator/">QR Code Generator</a>
+        <a href="/tools/background-remover/">Background Remover</a>
+        <a href="/tools/pdf-merger/">PDF Merger</a>
+        <a href="/tools/word-counter/">Word Counter</a>
+      </div>
+      <div>
+        <h4>Categories</h4>
+        <a href="/#image">Image Tools</a>
+        <a href="/#pdf">PDF &amp; Documents</a>
+        <a href="/#calculators">Calculators</a>
+        <a href="/#developer">Developer Tools</a>
+      </div>
+      <div>
+        <h4>Site</h4>
+        <a href="/">Home</a>
+        <a href="/#all-tools">All Tools</a>
+        <a href="/sitemap.xml">Sitemap</a>
+      </div>
+    </div>
+    <div class="f-bottom">© 2026 ToolNest · Free tools for everyone · Made with care</div>
+  </div>
+</footer>
+
+<script src="/assets/site.js?v=5"></script>
+
+<script>
+/* Breathing exercise guide: animated pacer circle, phase labels, cycle counter. */
+(function () {
+  'use strict';
+  var SLUG = 'breathing-exercise-guide';
+  function $(id) { return document.getElementById(id); }
+  var PATTERNS = {
+    '478': [['Inhale', 4, 1], ['Hold', 7, 1], ['Exhale', 8, 0]],
+    'box': [['Inhale', 4, 1], ['Hold', 4, 1], ['Exhale', 4, 0], ['Hold', 4, 0]],
+    'energize': [['Inhale', 4, 1], ['Hold', 2, 1], ['Exhale', 6, 0]]
+  };
+  var timer = null, queue = [], qi = 0, left = 0, cycle = 0, totalCycles = 4, done = false;
+  function circleSize(big) {
+    var c = $(SLUG + '-circle');
+    c.style.width = big ? '200px' : '110px';
+    c.style.height = big ? '200px' : '110px';
+  }
+  function render() {
+    var ph = queue[qi];
+    $(SLUG + '-phase').textContent = ph[0] + '… ' + left + 's';
+    $(SLUG + '-count').textContent = 'Cycle ' + Math.min(cycle + 1, totalCycles) + ' / ' + totalCycles;
+    circleSize(ph[2] === 1);
+  }
+  function stopAll(msg) {
+    if (timer) { clearInterval(timer); timer = null; }
+    done = true;
+    if (msg) {
+      $(SLUG + '-phase').textContent = msg;
+      $(SLUG + '-count').textContent = '';
+    }
+  }
+  function tick() {
+    if (done) return;
+    left--;
+    if (left <= 0) {
+      qi++;
+      if (qi >= queue.length) {
+        cycle++;
+        if (cycle >= totalCycles) { stopAll('🎉 Complete — notice how you feel.'); circleSize(false); return; }
+        qi = 0;
+      }
+      left = queue[qi][1];
+    }
+    render();
+  }
+  function start() {
+    stopAll();
+    done = false;
+    totalCycles = parseInt($(SLUG + '-cycles').value, 10);
+    if (isNaN(totalCycles) || totalCycles < 1 || totalCycles > 30) {
+      $(SLUG + '-error').textContent = 'Enter 1–30 cycles.';
+      return;
+    }
+    $(SLUG + '-error').textContent = '';
+    queue = PATTERNS[$(SLUG + '-pattern').value] || PATTERNS['478'];
+    qi = 0; cycle = 0; left = queue[0][1];
+    render();
+    timer = setInterval(tick, 1000);
+  }
+  try {
+    $(SLUG + '-start').addEventListener('click', start);
+    $(SLUG + '-stop').addEventListener('click', function () { stopAll('Stopped. Press Start to begin again.'); circleSize(false); });
+    $(SLUG + '-pattern').addEventListener('change', function () { stopAll('Ready'); circleSize(false); });
+  } catch (e) { /* never throw on load */ }
+})();
+
+</script>
+</body>
+</html>

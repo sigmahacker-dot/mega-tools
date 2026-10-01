@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>chmod Calculator — Free Online | ToolNest</title>
+<meta name="description" content="Tick rwx boxes for user/group/other — or type 755 — and see octal, symbolic, and the chmod command live.">
+<meta name="keywords" content="chmod calculator, chmod 755, linux permissions, octal permissions, rwx calculator">
+<link rel="canonical" href="https://toolnest.vercel.app/tools/chmod-calculator/">
+<meta name="theme-color" content="#07070b">
+<meta property="og:title" content="chmod Calculator — Free Online | ToolNest">
+<meta property="og:description" content="Tick rwx boxes for user/group/other — or type 755 — and see octal, symbolic, and the chmod command live.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css?v=4">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%23e01111'/><text x='50' y='68' font-size='58' text-anchor='middle' fill='white' font-family='Arial' font-weight='bold'>T</text></svg>">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebApplication","name":"chmod Calculator","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0"},"url":"https://toolnest.vercel.app/tools/chmod-calculator/","description":"Tick rwx boxes for user/group/other — or type 755 — and see octal, symbolic, and the chmod command live."},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Does it handle setuid/setgid/sticky?","acceptedAnswer":{"@type":"Answer","text":"Yes — setuid, setgid, and the sticky bit are included and shown as the 4th octal digit."}},{"@type":"Question","name":"Can I type an octal number?","acceptedAnswer":{"@type":"Answer","text":"Type any 3- or 4-digit octal (e.g. 644) and the checkboxes update instantly."}},{"@type":"Question","name":"Can I paste symbolic notation?","acceptedAnswer":{"@type":"Answer","text":"Yes — paste something like rwxr-xr-x and the octal value appears."}},{"@type":"Question","name":"Does it show the chmod command?","acceptedAnswer":{"@type":"Answer","text":"The exact shell command (e.g. chmod 755 file) is shown for copy-paste."}}]}]}</script>
+</head>
+<body>
+<header class="site-header">
+  <div class="container">
+    <a class="logo" href="/"><span class="logo-mark">T</span> ToolNest</a>
+    <div class="header-right">
+      <form class="nav-search" action="/" method="get" role="search">
+        <span class="ns-icon">🔍</span>
+        <input type="search" name="q" placeholder="Search tools…" aria-label="Search tools" autocomplete="off">
+      </form>
+      <div class="menu-wrap">
+        <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="menuPanel" aria-label="Open menu"><span></span><span></span><span></span></button>
+        <nav class="menu-panel" id="menuPanel" aria-label="Site">
+          <a href="/">Home</a>
+          <a href="/#categories">Categories</a>
+          <a href="/#all-tools">All Tools</a>
+        </nav>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ADSTERRA-HEADER: paste your Adsterra banner ad code inside the div below -->
+<div class="container"><div class="ad-slot ad-leaderboard" data-ad="header"></div></div>
+
+<main class="container">
+  <nav class="crumbs"><a href="/">Home</a> &rsaquo; <a href="/#developer">Developer Tools</a> &rsaquo; chmod Calculator</nav>
+  <div class="tool-hero">
+    <h1>chmod Calculator</h1>
+    <p>Tick rwx boxes for user/group/other — or type 755 — and see octal, symbolic, and the chmod command live.</p>
+  </div>
+
+  <div class="tool-card">
+  <div class="field">
+    <label>Permission bits</label>
+    <div style="overflow-x:auto">
+      <table class="data" id="chmod-calculator-grid" style="margin:0 auto">
+        <thead><tr><th></th><th>Read</th><th>Write</th><th>Execute</th></tr></thead>
+        <tbody>
+          <tr><td><strong>User</strong></td>
+            <td><input type="checkbox" id="chmod-calculator-u-r" aria-label="User read"></td>
+            <td><input type="checkbox" id="chmod-calculator-u-w" aria-label="User write"></td>
+            <td><input type="checkbox" id="chmod-calculator-u-x" aria-label="User execute"></td></tr>
+          <tr><td><strong>Group</strong></td>
+            <td><input type="checkbox" id="chmod-calculator-g-r" aria-label="Group read"></td>
+            <td><input type="checkbox" id="chmod-calculator-g-w" aria-label="Group write"></td>
+            <td><input type="checkbox" id="chmod-calculator-g-x" aria-label="Group execute"></td></tr>
+          <tr><td><strong>Other</strong></td>
+            <td><input type="checkbox" id="chmod-calculator-o-r" aria-label="Other read"></td>
+            <td><input type="checkbox" id="chmod-calculator-o-w" aria-label="Other write"></td>
+            <td><input type="checkbox" id="chmod-calculator-o-x" aria-label="Other execute"></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div class="field">
+    <label>Special bits</label>
+    <div class="btn-row">
+      <label class="checkbox-row"><input type="checkbox" id="chmod-calculator-setuid"> setuid (4)</label>
+      <label class="checkbox-row"><input type="checkbox" id="chmod-calculator-setgid"> setgid (2)</label>
+      <label class="checkbox-row"><input type="checkbox" id="chmod-calculator-sticky"> sticky (1)</label>
+    </div>
+  </div>
+  <div class="grid2">
+    <div class="field">
+      <label for="chmod-calculator-octal">Octal</label>
+      <input class="input" id="chmod-calculator-octal" value="755" maxlength="4">
+    </div>
+    <div class="field">
+      <label for="chmod-calculator-symbolic">Symbolic</label>
+      <input class="input" id="chmod-calculator-symbolic" value="rwxr-xr-x" maxlength="9">
+    </div>
+  </div>
+  <div class="error" id="chmod-calculator-error"></div>
+  <div class="result">
+    <div class="field">
+      <label for="chmod-calculator-cmd">chmod command</label>
+      <div class="copy-row">
+        <code class="code" id="chmod-calculator-cmd" style="flex:1"></code>
+        <button class="btn btn-outline" id="chmod-calculator-copy">Copy</button>
+      </div>
+    </div>
+  </div>
+  <div class="btn-row">
+    <button class="btn btn-outline" id="chmod-calculator-preset-755">755</button>
+    <button class="btn btn-outline" id="chmod-calculator-preset-644">644</button>
+    <button class="btn btn-outline" id="chmod-calculator-preset-600">600</button>
+    <button class="btn btn-outline" id="chmod-calculator-preset-777">777</button>
+  </div>
+</div>
+
+
+  <!-- ADSTERRA-INCONTENT: paste your Adsterra native/in-content ad code inside the div below -->
+  <div class="ad-slot" data-ad="incontent"></div>
+
+  <div class="info-grid">
+    <div class="info-card">
+      <h2>📖 How to use</h2>
+      <ol><li>Tick the rwx boxes, or type an octal/symbolic value.</li><li>All three representations update live.</li><li>Copy the generated chmod command.</li></ol>
+    </div>
+    <div class="info-card">
+      <h2>❓ Frequently asked questions</h2>
+      <div class="faq"><details><summary>Does it handle setuid/setgid/sticky?</summary><p>Yes — setuid, setgid, and the sticky bit are included and shown as the 4th octal digit.</p></details><details><summary>Can I type an octal number?</summary><p>Type any 3- or 4-digit octal (e.g. 644) and the checkboxes update instantly.</p></details><details><summary>Can I paste symbolic notation?</summary><p>Yes — paste something like rwxr-xr-x and the octal value appears.</p></details><details><summary>Does it show the chmod command?</summary><p>The exact shell command (e.g. chmod 755 file) is shown for copy-paste.</p></details></div>
+    </div>
+  </div>
+
+  <section class="section">
+    <h2>🔗 Related tools</h2>
+    <div class="tool-grid"><a class="tool-link" href="/tools/ascii-table-reference/" data-search="ascii table reference full ascii table 0–127: decimal, hex, octal, character, control-code names and html entities — searchable. ascii table ascii codes ascii chart control characters ascii reference"><span class="t-ico">💻</span><span class="t-body"><b>ASCII Table Reference</b><small>Full ASCII table 0–127: decimal, hex, octal, character, control-code names and HTML entities…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/base64-encoder-decoder/" data-search="base64 encoder / decoder encode text to base64 or decode base64 back to text, with full utf-8 support and a file-to-data-url converter. base64 encoder base64 decoder base64 encode base64 decode file to base64"><span class="t-ico">💻</span><span class="t-body"><b>Base64 Encoder / Decoder</b><small>Encode text to Base64 or decode Base64 back to text, with full UTF-8 support and a file-to-d…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/binary-text-converter/" data-search="binary and text converter convert text to binary or hex and back, with full utf-8 awareness and strict input validation. binary to text text to binary hex to text converter"><span class="t-ico">💻</span><span class="t-body"><b>Binary and Text Converter</b><small>Convert text to binary or hex and back, with full UTF-8 awareness and strict input validatio…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/changelog-generator/" data-search="changelog generator build a keep-a-changelog markdown file: version, date, and grouped added/fixed/changed entries. changelog generator keep a changelog changelog markdown release notes version changelog"><span class="t-ico">💻</span><span class="t-body"><b>Changelog Generator</b><small>Build a Keep-a-Changelog markdown file: version, date, and grouped Added/Fixed/Changed entri…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/character-escape-reference/" data-search="character escape reference searchable reference of characters with their html entities, url encodings, and js escapes — plus a live encoder. character escape reference html entities url encode unicode escape html entity table"><span class="t-ico">💻</span><span class="t-body"><b>Character Escape Reference</b><small>Searchable reference of characters with their HTML entities, URL encodings, and JS escapes —…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/color-code-converter/" data-search="color code converter type a color in hex, rgb or hsl format and instantly see it converted to all three formats with a preview swatch. color converter hex to rgb rgb to hex hsl converter color code"><span class="t-ico">💻</span><span class="t-body"><b>Color Code Converter</b><small>Type a color in HEX, RGB or HSL format and instantly see it converted to all three formats w…</small></span><span class="t-arrow">→</span></a></div>
+  </section>
+</main>
+
+<!-- ADSTERRA-FOOTER: paste your Adsterra footer/banner ad code inside the div below -->
+<div class="container"><div class="ad-slot" data-ad="footer"></div></div>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="f-grid">
+      <div>
+        <span class="brandline"><span class="logo-mark">T</span> ToolNest</span>
+        <p>Free online tools that actually work. No sign-up, no watermarks — and your files never leave your device for client-side tools.</p>
+      </div>
+      <div>
+        <h4>Popular</h4>
+        <a href="/tools/qr-code-generator/">QR Code Generator</a>
+        <a href="/tools/background-remover/">Background Remover</a>
+        <a href="/tools/pdf-merger/">PDF Merger</a>
+        <a href="/tools/word-counter/">Word Counter</a>
+      </div>
+      <div>
+        <h4>Categories</h4>
+        <a href="/#image">Image Tools</a>
+        <a href="/#pdf">PDF &amp; Documents</a>
+        <a href="/#calculators">Calculators</a>
+        <a href="/#developer">Developer Tools</a>
+      </div>
+      <div>
+        <h4>Site</h4>
+        <a href="/">Home</a>
+        <a href="/#all-tools">All Tools</a>
+        <a href="/sitemap.xml">Sitemap</a>
+      </div>
+    </div>
+    <div class="f-bottom">© 2026 ToolNest · Free tools for everyone · Made with care</div>
+  </div>
+</footer>
+
+<script src="/assets/site.js?v=5"></script>
+
+<script>
+/* chmod Calculator — rwx checkboxes ↔ octal ↔ symbolic, live both ways, with special bits. */
+(function () {
+  'use strict';
+  var SLUG = 'chmod-calculator';
+  var WHO = ['u', 'g', 'o'], PERM = ['r', 'w', 'x'];
+
+  function el(id) { return document.getElementById(id); }
+  function fail(msg) { TN.setErr(SLUG + '-error', msg); }
+  function clear() { TN.clearErr(SLUG + '-error'); }
+
+  function readBits() {
+    var bits = { u: 0, g: 0, o: 0 };
+    WHO.forEach(function (w) {
+      var v = 0;
+      if (el(SLUG + '-' + w + '-r').checked) v += 4;
+      if (el(SLUG + '-' + w + '-w').checked) v += 2;
+      if (el(SLUG + '-' + w + '-x').checked) v += 1;
+      bits[w] = v;
+    });
+    var special = 0;
+    if (el(SLUG + '-setuid').checked) special += 4;
+    if (el(SLUG + '-setgid').checked) special += 2;
+    if (el(SLUG + '-sticky').checked) special += 1;
+    return { bits: bits, special: special };
+  }
+
+  function symbolic(bits, special) {
+    var s = '';
+    WHO.forEach(function (w, wi) {
+      var v = bits[w];
+      s += (v & 4) ? 'r' : '-';
+      s += (v & 2) ? 'w' : '-';
+      var x = (v & 1) ? true : false;
+      var sp = wi === 0 ? (special & 4) : wi === 1 ? (special & 2) : (special & 1);
+      if (wi === 2 && (special & 1)) s += x ? 't' : 'T';
+      else if (sp) s += x ? 's' : 'S';
+      else s += x ? 'x' : '-';
+    });
+    return s;
+  }
+
+  function render() {
+    clear();
+    var r = readBits();
+    var oct = '' + r.bits.u + r.bits.g + r.bits.o;
+    var full = (r.special ? String(r.special) : '') + oct;
+    el(SLUG + '-octal').value = full;
+    el(SLUG + '-symbolic').value = symbolic(r.bits, r.special);
+    el(SLUG + '-cmd').textContent = 'chmod ' + full + ' filename';
+  }
+
+  function fromOctal(str) {
+    clear();
+    if (!/^[0-7]{3,4}$/.test(str.trim())) { fail('Octal must be 3–4 digits, each 0–7 (e.g. 755).'); return; }
+    var d = str.trim().split('').map(Number);
+    var special = d.length === 4 ? d.shift() : 0;
+    var vals = d;
+    WHO.forEach(function (w, i) {
+      el(SLUG + '-' + w + '-r').checked = !!(vals[i] & 4);
+      el(SLUG + '-' + w + '-w').checked = !!(vals[i] & 2);
+      el(SLUG + '-' + w + '-x').checked = !!(vals[i] & 1);
+    });
+    el(SLUG + '-setuid').checked = !!(special & 4);
+    el(SLUG + '-setgid').checked = !!(special & 2);
+    el(SLUG + '-sticky').checked = !!(special & 1);
+    render();
+  }
+
+  function fromSymbolic(str) {
+    clear();
+    var m = /^(-|r)(-|w)(-|x|s|S)(-|r)(-|w)(-|x|s|S)(-|r)(-|w)(-|x|t|T)$/.exec(str.trim());
+    if (!m) { fail('Symbolic must look like rwxr-xr-x (9 chars).'); return; }
+    var vals = [0, 0, 0], special = 0;
+    for (var w = 0; w < 3; w++) {
+      var r = m[1 + w * 3] === 'r', ww = m[2 + w * 3] === 'w', x = m[3 + w * 3];
+      vals[w] = (r ? 4 : 0) + (ww ? 2 : 0) + ((x === 'x' || x === 's' || x === 't') ? 1 : 0);
+      if (x === 's' || x === 'S') special |= (w === 0 ? 4 : 2);
+      if (x === 't' || x === 'T') special |= 1;
+    }
+    WHO.forEach(function (who, i) {
+      el(SLUG + '-' + who + '-r').checked = !!(vals[i] & 4);
+      el(SLUG + '-' + who + '-w').checked = !!(vals[i] & 2);
+      el(SLUG + '-' + who + '-x').checked = !!(vals[i] & 1);
+    });
+    el(SLUG + '-setuid').checked = !!(special & 4);
+    el(SLUG + '-setgid').checked = !!(special & 2);
+    el(SLUG + '-sticky').checked = !!(special & 1);
+    render();
+  }
+
+  try {
+    var boxes = document.querySelectorAll('#' + SLUG + '-grid input, #' + SLUG + '-setuid, #' + SLUG + '-setgid, #' + SLUG + '-sticky');
+    for (var i = 0; i < boxes.length; i++) boxes[i].addEventListener('change', render);
+    TN.on(SLUG + '-octal', 'input', function () { fromOctal(el(SLUG + '-octal').value); });
+    TN.on(SLUG + '-symbolic', 'input', function () { fromSymbolic(el(SLUG + '-symbolic').value); });
+    TN.on(SLUG + '-preset-755', 'click', function () { fromOctal('755'); });
+    TN.on(SLUG + '-preset-644', 'click', function () { fromOctal('644'); });
+    TN.on(SLUG + '-preset-600', 'click', function () { fromOctal('600'); });
+    TN.on(SLUG + '-preset-777', 'click', function () { fromOctal('777'); });
+    TN.on(SLUG + '-copy', 'click', function () {
+      TN.copy(el(SLUG + '-cmd').textContent).then(function (ok) {
+        if (!ok) fail('Copy failed — select the text manually.');
+      });
+    });
+    render();
+  } catch (e) { /* never throw on load */ }
+})();
+
+</script>
+</body>
+</html>

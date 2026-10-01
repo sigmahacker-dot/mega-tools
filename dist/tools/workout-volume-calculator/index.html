@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Workout Volume Calculator — Free Online | ToolNest</title>
+<meta name="description" content="Add exercises with sets, reps, and weight to compute training volume per exercise and session total.">
+<meta name="keywords" content="workout volume calculator, training volume, sets reps weight calculator, tonnage calculator, gym volume tracker">
+<link rel="canonical" href="https://toolnest.vercel.app/tools/workout-volume-calculator/">
+<meta name="theme-color" content="#07070b">
+<meta property="og:title" content="Workout Volume Calculator — Free Online | ToolNest">
+<meta property="og:description" content="Add exercises with sets, reps, and weight to compute training volume per exercise and session total.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css?v=4">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%23e01111'/><text x='50' y='68' font-size='58' text-anchor='middle' fill='white' font-family='Arial' font-weight='bold'>T</text></svg>">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebApplication","name":"Workout Volume Calculator","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0"},"url":"https://toolnest.vercel.app/tools/workout-volume-calculator/","description":"Add exercises with sets, reps, and weight to compute training volume per exercise and session total."},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What is training volume?","acceptedAnswer":{"@type":"Answer","text":"Sets × reps × weight (kg). It measures total work done, a key driver of muscle and strength progress."}},{"@type":"Question","name":"What is per-exercise share?","acceptedAnswer":{"@type":"Answer","text":"Volume per exercise ÷ total session volume, shown as a percentage so you can see where your work went."}},{"@type":"Question","name":"Is more volume always better?","acceptedAnswer":{"@type":"Answer","text":"Higher is not always better — volume should rise gradually; jumps over ~10% per week raise injury risk."}}]}]}</script>
+</head>
+<body>
+<header class="site-header">
+  <div class="container">
+    <a class="logo" href="/"><span class="logo-mark">T</span> ToolNest</a>
+    <div class="header-right">
+      <form class="nav-search" action="/" method="get" role="search">
+        <span class="ns-icon">🔍</span>
+        <input type="search" name="q" placeholder="Search tools…" aria-label="Search tools" autocomplete="off">
+      </form>
+      <div class="menu-wrap">
+        <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="menuPanel" aria-label="Open menu"><span></span><span></span><span></span></button>
+        <nav class="menu-panel" id="menuPanel" aria-label="Site">
+          <a href="/">Home</a>
+          <a href="/#categories">Categories</a>
+          <a href="/#all-tools">All Tools</a>
+        </nav>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ADSTERRA-HEADER: paste your Adsterra banner ad code inside the div below -->
+<div class="container"><div class="ad-slot ad-leaderboard" data-ad="header"></div></div>
+
+<main class="container">
+  <nav class="crumbs"><a href="/">Home</a> &rsaquo; <a href="/#health">Health &amp; Fitness</a> &rsaquo; Workout Volume Calculator</nav>
+  <div class="tool-hero">
+    <h1>Workout Volume Calculator</h1>
+    <p>Add exercises with sets, reps, and weight to compute training volume per exercise and session total.</p>
+  </div>
+
+  <div class="tool-card">
+  <div id="workout-volume-calculator-rows"></div>
+  <div class="btn-row">
+    <button class="btn" id="workout-volume-calculator-add">+ Add exercise</button>
+    <button class="btn btn-primary" id="workout-volume-calculator-calc">Calculate volume</button>
+  </div>
+  <div class="stat-cards hidden" id="workout-volume-calculator-out">
+    <div class="stat-card"><div class="v" id="workout-volume-calculator-total">0</div><div class="l">Total volume (kg)</div></div>
+    <div class="stat-card"><div class="v" id="workout-volume-calculator-ex">0</div><div class="l">Exercises</div></div>
+  </div>
+  <div class="result hidden" id="workout-volume-calculator-table"></div>
+  <p class="note">General information only — not medical advice. Consult a professional for personal guidance. Increase volume gradually (≤10%/week).</p>
+  <div class="error" id="workout-volume-calculator-error"></div>
+</div>
+
+
+  <!-- ADSTERRA-INCONTENT: paste your Adsterra native/in-content ad code inside the div below -->
+  <div class="ad-slot" data-ad="incontent"></div>
+
+  <div class="info-grid">
+    <div class="info-card">
+      <h2>📖 How to use</h2>
+      <ol><li>Press Add exercise for each lift in your session.</li><li>Enter name, sets, reps, and weight in kg.</li><li>Watch per-exercise volume and each share of the total.</li><li>Use the session total to track progressive overload.</li></ol>
+    </div>
+    <div class="info-card">
+      <h2>❓ Frequently asked questions</h2>
+      <div class="faq"><details><summary>What is training volume?</summary><p>Sets × reps × weight (kg). It measures total work done, a key driver of muscle and strength progress.</p></details><details><summary>What is per-exercise share?</summary><p>Volume per exercise ÷ total session volume, shown as a percentage so you can see where your work went.</p></details><details><summary>Is more volume always better?</summary><p>Higher is not always better — volume should rise gradually; jumps over ~10% per week raise injury risk.</p></details></div>
+    </div>
+  </div>
+
+  <section class="section">
+    <h2>🔗 Related tools</h2>
+    <div class="tool-grid"><a class="tool-link" href="/tools/baby-growth-tracker/" data-search="baby growth tracker log your baby&#39;s weight and height over time and see a growth log with typical-range guidance. baby growth tracker baby weight tracker infant growth chart baby height log newborn growth"><span class="t-ico">❤️</span><span class="t-body"><b>Baby Growth Tracker</b><small>Log your baby&#39;s weight and height over time and see a growth log with typical-range guidance…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/blood-pressure-tracker/" data-search="blood pressure tracker log blood pressure readings with automatic aha category classification, averages and history saved in your browser. blood pressure tracker bp log blood pressure chart hypertension tracker bp monitor log"><span class="t-ico">❤️</span><span class="t-body"><b>Blood Pressure Tracker</b><small>Log blood pressure readings with automatic AHA category classification, averages and history…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/body-fat-calculator/" data-search="body fat calculator estimate body fat percentage with the us navy tape-measure method and see your fitness category. body fat calculator us navy body fat body fat percentage calculator"><span class="t-ico">❤️</span><span class="t-body"><b>Body Fat Calculator</b><small>Estimate body fat percentage with the US Navy tape-measure method and see your fitness categ…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/breathing-exercise-guide/" data-search="breathing exercise guide guided breathing exercises (4-7-8, box, energize) with an animated pacer circle, phase labels, and cycle counter. breathing exercise 4-7-8 breathing box breathing breathing pacer calm breathing"><span class="t-ico">❤️</span><span class="t-body"><b>Breathing Exercise Guide</b><small>Guided breathing exercises (4-7-8, box, energize) with an animated pacer circle, phase label…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/caffeine-half-life-calculator/" data-search="caffeine half-life calculator log caffeinated drinks and see how much caffeine is still in your system using 5.5-hour half-life decay. caffeine half life caffeine calculator caffeine in system coffee caffeine tracker caffeine sleep"><span class="t-ico">❤️</span><span class="t-body"><b>Caffeine Half-Life Calculator</b><small>Log caffeinated drinks and see how much caffeine is still in your system using 5.5-hour half…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/calorie-calculator/" data-search="tdee calorie calculator estimate your daily calorie needs with the mifflin-st jeor equation and get targets for losing, maintaining or gaining weight. tdee calculator calorie calculator mifflin st jeor daily calorie needs"><span class="t-ico">❤️</span><span class="t-body"><b>TDEE Calorie Calculator</b><small>Estimate your daily calorie needs with the Mifflin-St Jeor equation and get targets for losi…</small></span><span class="t-arrow">→</span></a></div>
+  </section>
+</main>
+
+<!-- ADSTERRA-FOOTER: paste your Adsterra footer/banner ad code inside the div below -->
+<div class="container"><div class="ad-slot" data-ad="footer"></div></div>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="f-grid">
+      <div>
+        <span class="brandline"><span class="logo-mark">T</span> ToolNest</span>
+        <p>Free online tools that actually work. No sign-up, no watermarks — and your files never leave your device for client-side tools.</p>
+      </div>
+      <div>
+        <h4>Popular</h4>
+        <a href="/tools/qr-code-generator/">QR Code Generator</a>
+        <a href="/tools/background-remover/">Background Remover</a>
+        <a href="/tools/pdf-merger/">PDF Merger</a>
+        <a href="/tools/word-counter/">Word Counter</a>
+      </div>
+      <div>
+        <h4>Categories</h4>
+        <a href="/#image">Image Tools</a>
+        <a href="/#pdf">PDF &amp; Documents</a>
+        <a href="/#calculators">Calculators</a>
+        <a href="/#developer">Developer Tools</a>
+      </div>
+      <div>
+        <h4>Site</h4>
+        <a href="/">Home</a>
+        <a href="/#all-tools">All Tools</a>
+        <a href="/sitemap.xml">Sitemap</a>
+      </div>
+    </div>
+    <div class="f-bottom">© 2026 ToolNest · Free tools for everyone · Made with care</div>
+  </div>
+</footer>
+
+<script src="/assets/site.js?v=5"></script>
+
+<script>
+/* Workout volume calculator: dynamic rows -> volume per exercise + total + share. */
+(function () {
+  'use strict';
+  var SLUG = 'workout-volume-calculator';
+  function $(id) { return document.getElementById(id); }
+  var n = 0;
+  function esc(s) {
+    return String(s).replace(/[&<>"']/g, function (c) {
+      return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c];
+    });
+  }
+  function addRow() {
+    n++;
+    var box = $(SLUG + '-rows');
+    var div = document.createElement('div');
+    div.className = 'grid2';
+    div.id = SLUG + '-row' + n;
+    div.style.cssText = 'border:1px solid #ddd;border-radius:8px;padding:10px;margin-bottom:8px;grid-template-columns:2fr 1fr 1fr 1fr auto';
+    div.innerHTML =
+      '<div class="field"><label>Exercise</label><input class="input" data-f="name" type="text" placeholder="e.g. Bench press"></div>' +
+      '<div class="field"><label>Sets</label><input class="input" data-f="sets" type="number" min="1" value="3"></div>' +
+      '<div class="field"><label>Reps</label><input class="input" data-f="reps" type="number" min="1" value="8"></div>' +
+      '<div class="field"><label>Weight (kg)</label><input class="input" data-f="wt" type="number" min="0" step="0.5" value="60"></div>' +
+      '<div class="field" style="align-self:end"><button class="btn btn-outline" data-rm>✕</button></div>';
+    box.appendChild(div);
+    div.querySelector('[data-rm]').addEventListener('click', function () {
+      box.removeChild(div);
+    });
+  }
+  function calc() {
+    $(SLUG + '-error').textContent = '';
+    var rows = $(SLUG + '-rows').children;
+    if (!rows.length) { $(SLUG + '-error').textContent = 'Add at least one exercise.'; return; }
+    var items = [], total = 0, bad = 0;
+    for (var i = 0; i < rows.length; i++) {
+      var q = function (f) { return rows[i].querySelector('[data-f="' + f + '"]').value; };
+      var name = q('name').trim() || ('Exercise ' + (i + 1));
+      var sets = parseFloat(q('sets')), reps = parseFloat(q('reps')), wt = parseFloat(q('wt'));
+      if (isNaN(sets) || sets < 1 || isNaN(reps) || reps < 1 || isNaN(wt) || wt < 0) { bad++; continue; }
+      var vol = sets * reps * wt;
+      items.push({ name: name, vol: vol, sets: sets, reps: reps, wt: wt });
+      total += vol;
+    }
+    if (bad) { $(SLUG + '-error').textContent = bad + ' row(s) had invalid numbers and were skipped.'; }
+    if (!items.length) { $(SLUG + '-error').textContent = 'No valid rows to calculate.'; return; }
+    $(SLUG + '-total').textContent = Math.round(total).toLocaleString() + ' kg';
+    $(SLUG + '-ex').textContent = items.length;
+    $(SLUG + '-out').classList.remove('hidden');
+    var html = '<table class="data"><thead><tr><th>Exercise</th><th>Sets×Reps×kg</th><th>Volume</th><th>Share</th></tr></thead><tbody>';
+    items.forEach(function (it) {
+      html += '<tr><td>' + esc(it.name) + '</td><td>' + it.sets + '×' + it.reps + '×' + it.wt +
+        '</td><td>' + Math.round(it.vol).toLocaleString() + ' kg</td><td>' + Math.round(it.vol / total * 100) + '%</td></tr>';
+    });
+    html += '</tbody></table>';
+    var box = $(SLUG + '-table');
+    box.innerHTML = html;
+    box.classList.remove('hidden');
+  }
+  try {
+    $(SLUG + '-add').addEventListener('click', addRow);
+    $(SLUG + '-calc').addEventListener('click', calc);
+    addRow(); addRow();
+  } catch (e) { /* never throw on load */ }
+})();
+
+</script>
+</body>
+</html>

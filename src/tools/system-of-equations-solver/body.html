@@ -1,0 +1,62 @@
+<div class="tool-card">
+  <div class="field"><label for="system-of-equations-solver-mode">System size</label>
+    <select class="input" id="system-of-equations-solver-mode">
+      <option value="2">2\u00D72 (elimination with steps)</option>
+      <option value="3">3\u00D73 (Gaussian elimination with steps)</option>
+    </select>
+  </div>
+  <div id="system-of-equations-solver-sys2">
+    <div class="grid2">
+      <div class="field"><label>Eq 1: a\u2081x + b\u2081y = c\u2081</label>
+        <div style="display:flex;gap:6px">
+          <input class="input" id="system-of-equations-solver-a1" type="number" value="2" step="any" aria-label="a1">
+          <input class="input" id="system-of-equations-solver-b1" type="number" value="3" step="any" aria-label="b1">
+          <input class="input" id="system-of-equations-solver-c1" type="number" value="13" step="any" aria-label="c1">
+        </div>
+      </div>
+      <div class="field"><label>Eq 2: a\u2082x + b\u2082y = c\u2082</label>
+        <div style="display:flex;gap:6px">
+          <input class="input" id="system-of-equations-solver-a2" type="number" value="1" step="any" aria-label="a2">
+          <input class="input" id="system-of-equations-solver-b2" type="number" value="-1" step="any" aria-label="b2">
+          <input class="input" id="system-of-equations-solver-c2" type="number" value="2" step="any" aria-label="c2">
+        </div>
+      </div>
+    </div>
+  </div>
+  <div id="system-of-equations-solver-sys3" class="hidden">
+    <div class="grid2">
+      <div class="field"><label>Eq 1: a\u2081x + b\u2081y + c\u2081z = d\u2081</label>
+        <div style="display:flex;gap:6px">
+          <input class="input" id="system-of-equations-solver-m11" type="number" value="2" step="any" aria-label="m11">
+          <input class="input" id="system-of-equations-solver-m12" type="number" value="1" step="any" aria-label="m12">
+          <input class="input" id="system-of-equations-solver-m13" type="number" value="-1" step="any" aria-label="m13">
+          <input class="input" id="system-of-equations-solver-d1" type="number" value="8" step="any" aria-label="d1">
+        </div>
+      </div>
+      <div class="field"><label>Eq 2</label>
+        <div style="display:flex;gap:6px">
+          <input class="input" id="system-of-equations-solver-m21" type="number" value="-3" step="any" aria-label="m21">
+          <input class="input" id="system-of-equations-solver-m22" type="number" value="-1" step="any" aria-label="m22">
+          <input class="input" id="system-of-equations-solver-m23" type="number" value="2" step="any" aria-label="m23">
+          <input class="input" id="system-of-equations-solver-d2" type="number" value="-11" step="any" aria-label="d2">
+        </div>
+      </div>
+      <div class="field"><label>Eq 3</label>
+        <div style="display:flex;gap:6px">
+          <input class="input" id="system-of-equations-solver-m31" type="number" value="-2" step="any" aria-label="m31">
+          <input class="input" id="system-of-equations-solver-m32" type="number" value="1" step="any" aria-label="m32">
+          <input class="input" id="system-of-equations-solver-m33" type="number" value="2" step="any" aria-label="m33">
+          <input class="input" id="system-of-equations-solver-d3" type="number" value="-3" step="any" aria-label="d3">
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="btn-row"><button class="btn btn-primary" id="system-of-equations-solver-go">Solve system</button></div>
+  <div class="stat-cards">
+    <div class="stat-card"><div class="v" id="system-of-equations-solver-rx">3.4</div><div class="l">x</div></div>
+    <div class="stat-card"><div class="v" id="system-of-equations-solver-ry">2.07</div><div class="l">y</div></div>
+    <div class="stat-card hidden" id="system-of-equations-solver-rzw"><div class="v" id="system-of-equations-solver-rz">\u2014</div><div class="l">z</div></div>
+  </div>
+  <div class="result"><pre class="code" id="system-of-equations-solver-steps" style="text-align:left;white-space:pre-wrap"></pre></div>
+  <div class="error" id="system-of-equations-solver-error"></div>
+</div>

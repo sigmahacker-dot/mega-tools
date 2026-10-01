@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Study Session Planner — Free Online | ToolNest</title>
+<meta name="description" content="Turn total study hours and days left into a realistic day-by-day study plan that respects your daily limit.">
+<meta name="keywords" content="study planner, study schedule maker, exam study plan, study hours planner, revision timetable">
+<link rel="canonical" href="https://toolnest.vercel.app/tools/study-session-planner/">
+<meta name="theme-color" content="#07070b">
+<meta property="og:title" content="Study Session Planner — Free Online | ToolNest">
+<meta property="og:description" content="Turn total study hours and days left into a realistic day-by-day study plan that respects your daily limit.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css?v=4">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%23e01111'/><text x='50' y='68' font-size='58' text-anchor='middle' fill='white' font-family='Arial' font-weight='bold'>T</text></svg>">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebApplication","name":"Study Session Planner","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0"},"url":"https://toolnest.vercel.app/tools/study-session-planner/","description":"Turn total study hours and days left into a realistic day-by-day study plan that respects your daily limit."},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How are hours distributed?","acceptedAnswer":{"@type":"Answer","text":"It spreads hours evenly across the days. If the even split exceeds your daily limit, it fills each day to the limit and tells you exactly how many hours won't fit."}},{"@type":"Question","name":"Does the plan include the exam day itself?","acceptedAnswer":{"@type":"Answer","text":"The plan covers the days before the exam — day 1 is today and the last day is the day before the exam."}},{"@type":"Question","name":"What if I change my daily availability?","acceptedAnswer":{"@type":"Answer","text":"Yes — the table adjusts automatically; if the load no longer fits your daily limit you'll see a warning."}}]}]}</script>
+</head>
+<body>
+<header class="site-header">
+  <div class="container">
+    <a class="logo" href="/"><span class="logo-mark">T</span> ToolNest</a>
+    <div class="header-right">
+      <form class="nav-search" action="/" method="get" role="search">
+        <span class="ns-icon">🔍</span>
+        <input type="search" name="q" placeholder="Search tools…" aria-label="Search tools" autocomplete="off">
+      </form>
+      <div class="menu-wrap">
+        <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="menuPanel" aria-label="Open menu"><span></span><span></span><span></span></button>
+        <nav class="menu-panel" id="menuPanel" aria-label="Site">
+          <a href="/">Home</a>
+          <a href="/#categories">Categories</a>
+          <a href="/#all-tools">All Tools</a>
+        </nav>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ADSTERRA-HEADER: paste your Adsterra banner ad code inside the div below -->
+<div class="container"><div class="ad-slot ad-leaderboard" data-ad="header"></div></div>
+
+<main class="container">
+  <nav class="crumbs"><a href="/">Home</a> &rsaquo; <a href="/#time">Time &amp; Date</a> &rsaquo; Study Session Planner</nav>
+  <div class="tool-hero">
+    <h1>Study Session Planner</h1>
+    <p>Turn total study hours and days left into a realistic day-by-day study plan that respects your daily limit.</p>
+  </div>
+
+  <div class="tool-card">
+  <div class="grid2">
+    <div class="field">
+      <label for="study-session-planner-total">Total study hours needed</label>
+      <input class="input" type="number" id="study-session-planner-total" value="20" min="0.5" max="1000" step="0.5">
+    </div>
+    <div class="field">
+      <label for="study-session-planner-days">Days until exam</label>
+      <input class="input" type="number" id="study-session-planner-days" value="7" min="1" max="365">
+    </div>
+  </div>
+  <div class="field" style="max-width:260px">
+    <label for="study-session-planner-maxday">Max hours per day</label>
+    <input class="input" type="number" id="study-session-planner-maxday" value="4" min="0.5" max="24" step="0.5">
+  </div>
+  <div class="btn-row">
+    <button class="btn btn-primary" id="study-session-planner-build">Build plan</button>
+  </div>
+  <div class="stat-cards">
+    <div class="stat-card"><div class="v" id="study-session-planner-perday">—</div><div class="l">Hours / day</div></div>
+    <div class="stat-card"><div class="v" id="study-session-planner-cap">—</div><div class="l">Max possible</div></div>
+    <div class="stat-card"><div class="v" id="study-session-planner-status">—</div><div class="l">Plan status</div></div>
+  </div>
+  <div class="result" id="study-session-planner-table"></div>
+  <div class="error" id="study-session-planner-error"></div>
+</div>
+
+
+  <!-- ADSTERRA-INCONTENT: paste your Adsterra native/in-content ad code inside the div below -->
+  <div class="ad-slot" data-ad="incontent"></div>
+
+  <div class="info-grid">
+    <div class="info-card">
+      <h2>📖 How to use</h2>
+      <ol><li>Enter total study hours needed and days until the exam.</li><li>Set the maximum hours you can study per day.</li><li>Press Build plan for a day-by-day table.</li><li>Follow the plan — adjust inputs anytime to rebuild.</li></ol>
+    </div>
+    <div class="info-card">
+      <h2>❓ Frequently asked questions</h2>
+      <div class="faq"><details><summary>How are hours distributed?</summary><p>It spreads hours evenly across the days. If the even split exceeds your daily limit, it fills each day to the limit and tells you exactly how many hours won&#39;t fit.</p></details><details><summary>Does the plan include the exam day itself?</summary><p>The plan covers the days before the exam — day 1 is today and the last day is the day before the exam.</p></details><details><summary>What if I change my daily availability?</summary><p>Yes — the table adjusts automatically; if the load no longer fits your daily limit you&#39;ll see a warning.</p></details></div>
+    </div>
+  </div>
+
+  <section class="section">
+    <h2>🔗 Related tools</h2>
+    <div class="tool-grid"><a class="tool-link" href="/tools/add-subtract-days-calculator/" data-search="add / subtract days calculator add or subtract days, weeks, months or years from any date. optional business-days-only mode skips weekends automatically. add days to date subtract days calculator date plus days business days calculator date arithmetic"><span class="t-ico">⏰</span><span class="t-body"><b>Add / Subtract Days Calculator</b><small>Add or subtract days, weeks, months or years from any date. Optional business-days-only mode…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/anniversary-calculator/" data-search="anniversary calculator track any anniversary: days until the next one, which number it is (10th, 25th…), total days together and the weekday it falls on. anniversary calculator wedding anniversary countdown how many days until anniversary anniversary date tracker years together calculator"><span class="t-ico">⏰</span><span class="t-body"><b>Anniversary Calculator</b><small>Track any anniversary: days until the next one, which number it is (10th, 25th…), total days…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/bill-due-tracker/" data-search="bill due tracker never miss a payment — track recurring monthly bills with automatic next-due dates, days remaining and urgency sorting. bill due tracker bill reminder recurring bills tracker monthly bills organizer due date tracker"><span class="t-ico">⏰</span><span class="t-body"><b>Bill Due Tracker</b><small>Never miss a payment — track recurring monthly bills with automatic next-due dates, days rem…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/business-days-calculator/" data-search="business days calculator count working days between two dates, excluding weekends and your own custom holidays, with a full breakdown. business days calculator working days calculator weekdays between dates net workdays business days excluding holidays"><span class="t-ico">⏰</span><span class="t-body"><b>Business Days Calculator</b><small>Count working days between two dates, excluding weekends and your own custom holidays, with …</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/chess-clock-timer/" data-search="chess clock timer a two-player chess clock with tap-to-switch, optional increment per move, flag detection, pause and reset. chess clock chess timer two player timer blitz clock increment chess clock"><span class="t-ico">⏰</span><span class="t-body"><b>Chess Clock Timer</b><small>A two-player chess clock with tap-to-switch, optional increment per move, flag detection, pa…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/daily-screen-time-log/" data-search="daily screen time log log daily screen time by app or category and see daily totals plus a 7-day bar summary — all saved in your browser. screen time tracker screen time log daily screen time phone usage tracker app usage log"><span class="t-ico">⏰</span><span class="t-body"><b>Daily Screen Time Log</b><small>Log daily screen time by app or category and see daily totals plus a 7-day bar summary — all…</small></span><span class="t-arrow">→</span></a></div>
+  </section>
+</main>
+
+<!-- ADSTERRA-FOOTER: paste your Adsterra footer/banner ad code inside the div below -->
+<div class="container"><div class="ad-slot" data-ad="footer"></div></div>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="f-grid">
+      <div>
+        <span class="brandline"><span class="logo-mark">T</span> ToolNest</span>
+        <p>Free online tools that actually work. No sign-up, no watermarks — and your files never leave your device for client-side tools.</p>
+      </div>
+      <div>
+        <h4>Popular</h4>
+        <a href="/tools/qr-code-generator/">QR Code Generator</a>
+        <a href="/tools/background-remover/">Background Remover</a>
+        <a href="/tools/pdf-merger/">PDF Merger</a>
+        <a href="/tools/word-counter/">Word Counter</a>
+      </div>
+      <div>
+        <h4>Categories</h4>
+        <a href="/#image">Image Tools</a>
+        <a href="/#pdf">PDF &amp; Documents</a>
+        <a href="/#calculators">Calculators</a>
+        <a href="/#developer">Developer Tools</a>
+      </div>
+      <div>
+        <h4>Site</h4>
+        <a href="/">Home</a>
+        <a href="/#all-tools">All Tools</a>
+        <a href="/sitemap.xml">Sitemap</a>
+      </div>
+    </div>
+    <div class="f-bottom">© 2026 ToolNest · Free tools for everyone · Made with care</div>
+  </div>
+</footer>
+
+<script src="/assets/site.js?v=5"></script>
+
+<script>
+/* Study Session Planner — distribute total hours across days within a daily limit. */
+(function () {
+  'use strict';
+  var SLUG = 'study-session-planner';
+  var $ = function (id) { return TN.el(SLUG + '-' + id); };
+
+  function esc(s) {
+    return String(s).replace(/[&<>"']/g, function (c) {
+      return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c];
+    });
+  }
+
+  function build() {
+    TN.clearErr(SLUG + '-error');
+    var total = parseFloat($('total').value);
+    var days = parseInt($('days').value, 10);
+    var maxDay = parseFloat($('maxday').value);
+    if (!(total > 0) || !(days >= 1) || !(maxDay > 0)) {
+      TN.setErr(SLUG + '-error', 'Please enter positive numbers: total hours, days (1+), and max hours/day.');
+      return;
+    }
+    days = Math.min(365, Math.floor(days));
+
+    var capacity = days * maxDay;
+    var plan = [];
+    var remaining = total;
+    var shortfall = 0;
+    if (capacity >= total) {
+      // even split, rounded to 0.5h, last day absorbs rounding
+      var even = total / days;
+      for (var i = 0; i < days; i++) {
+        var h = (i === days - 1) ? remaining : Math.round(even * 2) / 2;
+        if (h > remaining) h = remaining;
+        plan.push(h);
+        remaining = Math.round((remaining - h) * 10) / 10;
+      }
+    } else {
+      for (var j = 0; j < days; j++) plan.push(maxDay);
+      shortfall = Math.round((total - capacity) * 10) / 10;
+      remaining = 0;
+    }
+
+    var evenH = total / days;
+    $('perday').textContent = (capacity >= total ? evenH.toFixed(1) : maxDay.toFixed(1)) + 'h';
+    $('cap').textContent = capacity.toFixed(1) + 'h';
+    var ok = shortfall <= 0;
+    $('status').textContent = ok ? '✅ Fits' : '⚠️ Short';
+    $('status').style.color = ok ? '#2e7d32' : '#c62828';
+
+    var html = '';
+    if (!ok) {
+      html += '<p class="note" style="border-left:4px solid #c62828">⚠️ Even at your daily limit you can only fit <strong>' +
+        capacity.toFixed(1) + 'h</strong> — <strong>' + shortfall.toFixed(1) +
+        'h</strong> short. Raise your daily limit, start earlier, or trim the syllabus.</p>';
+    }
+    html += '<table class="data" style="width:100%;border-collapse:collapse"><thead><tr>' +
+      '<th style="text-align:left;padding:6px;border-bottom:2px solid #ccc">Day</th>' +
+      '<th style="text-align:left;padding:6px;border-bottom:2px solid #ccc">Date</th>' +
+      '<th style="text-align:right;padding:6px;border-bottom:2px solid #ccc">Study time</th></tr></thead><tbody>';
+    var today = new Date();
+    var shown = 0;
+    for (var k = 0; k < days; k++) {
+      var d = new Date(today.getFullYear(), today.getMonth(), today.getDate() + k);
+      var ds = d.toLocaleDateString(undefined, { weekday: 'short', month: 'short', day: 'numeric' });
+      html += '<tr><td style="padding:6px;border-bottom:1px solid #eee">Day ' + (k + 1) + '</td>' +
+        '<td style="padding:6px;border-bottom:1px solid #eee">' + esc(ds) + '</td>' +
+        '<td style="padding:6px;border-bottom:1px solid #eee;text-align:right"><strong>' + plan[k].toFixed(1) + 'h</strong></td></tr>';
+      shown++;
+      if (shown >= 60 && days > 60) { // keep very long plans readable
+        html += '<tr><td colspan="3" style="padding:6px" class="muted">… and ' + (days - shown) + ' more days at ' + plan[k].toFixed(1) + 'h/day</td></tr>';
+        break;
+      }
+    }
+    html += '</tbody></table>';
+    var planned = plan.reduce(function (a, b) { return a + b; }, 0);
+    html += '<p class="muted">Total planned: ' + planned.toFixed(1) + 'h across ' + days + ' days (exam day excluded).</p>';
+    $('table').innerHTML = html;
+  }
+
+  try {
+    TN.on(SLUG + '-build', 'click', build);
+  } catch (e) { /* never throw on load */ }
+})();
+
+</script>
+</body>
+</html>

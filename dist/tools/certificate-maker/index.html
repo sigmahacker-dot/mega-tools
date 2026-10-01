@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Certificate Maker — Free Online | ToolNest</title>
+<meta name="description" content="Design printable certificates: recipient name, course title, date and signature line, live preview, and a high-res PNG download.">
+<meta name="keywords" content="certificate maker, certificate generator, certificate png, award certificate maker, printable certificate">
+<link rel="canonical" href="https://toolnest.vercel.app/tools/certificate-maker/">
+<meta name="theme-color" content="#07070b">
+<meta property="og:title" content="Certificate Maker — Free Online | ToolNest">
+<meta property="og:description" content="Design printable certificates: recipient name, course title, date and signature line, live preview, and a high-res PNG download.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css?v=4">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%23e01111'/><text x='50' y='68' font-size='58' text-anchor='middle' fill='white' font-family='Arial' font-weight='bold'>T</text></svg>">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebApplication","name":"Certificate Maker","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0"},"url":"https://toolnest.vercel.app/tools/certificate-maker/","description":"Design printable certificates: recipient name, course title, date and signature line, live preview, and a high-res PNG download."},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What resolution is the certificate?","acceptedAnswer":{"@type":"Answer","text":"The certificate renders at 1600×1200 pixels — sharp enough for screen use and small prints."}},{"@type":"Question","name":"How do I make a certificate?","acceptedAnswer":{"@type":"Answer","text":"Fill in the recipient, title, issuer and date fields and the preview updates live. Nothing is uploaded anywhere."}},{"@type":"Question","name":"Can I change the border style?","acceptedAnswer":{"@type":"Answer","text":"Yes — pick from the six border themes for different ceremony styles."}}]}]}</script>
+</head>
+<body>
+<header class="site-header">
+  <div class="container">
+    <a class="logo" href="/"><span class="logo-mark">T</span> ToolNest</a>
+    <div class="header-right">
+      <form class="nav-search" action="/" method="get" role="search">
+        <span class="ns-icon">🔍</span>
+        <input type="search" name="q" placeholder="Search tools…" aria-label="Search tools" autocomplete="off">
+      </form>
+      <div class="menu-wrap">
+        <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="menuPanel" aria-label="Open menu"><span></span><span></span><span></span></button>
+        <nav class="menu-panel" id="menuPanel" aria-label="Site">
+          <a href="/">Home</a>
+          <a href="/#categories">Categories</a>
+          <a href="/#all-tools">All Tools</a>
+        </nav>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ADSTERRA-HEADER: paste your Adsterra banner ad code inside the div below -->
+<div class="container"><div class="ad-slot ad-leaderboard" data-ad="header"></div></div>
+
+<main class="container">
+  <nav class="crumbs"><a href="/">Home</a> &rsaquo; <a href="/#image">Image Tools</a> &rsaquo; Certificate Maker</nav>
+  <div class="tool-hero">
+    <h1>Certificate Maker</h1>
+    <p>Design printable certificates: recipient name, course title, date and signature line, live preview, and a high-res PNG download.</p>
+  </div>
+
+  <div class="tool-card">
+  <h2>Certificate Maker</h2>
+  <p class="muted">Elegant 1600×1200 certificates — live preview, PNG download.</p>
+  <div class="grid2">
+    <div class="field">
+      <label for="certificate-maker-recipient">Recipient name</label>
+      <input type="text" class="input" id="certificate-maker-recipient" value="Alex Morgan">
+    </div>
+    <div class="field">
+      <label for="certificate-maker-title">Certificate title</label>
+      <input type="text" class="input" id="certificate-maker-title" value="Outstanding Achievement">
+    </div>
+    <div class="field">
+      <label for="certificate-maker-subtitle">Awarded for</label>
+      <input type="text" class="input" id="certificate-maker-subtitle" value="Completing the Advanced Design Course with distinction">
+    </div>
+    <div class="field">
+      <label for="certificate-maker-issuer">Issued by</label>
+      <input type="text" class="input" id="certificate-maker-issuer" value="ToolNest Academy">
+    </div>
+    <div class="field">
+      <label for="certificate-maker-date">Date</label>
+      <input type="text" class="input" id="certificate-maker-date" value="October 1, 2026">
+    </div>
+    <div class="field">
+      <label for="certificate-maker-signature">Signature name</label>
+      <input type="text" class="input" id="certificate-maker-signature" value="Director">
+    </div>
+    <div class="field" style="grid-column:1/-1">
+      <label for="certificate-maker-theme">Border theme</label>
+      <select class="input" id="certificate-maker-theme">
+        <option value="gold">Gold classic</option>
+        <option value="navy">Navy & silver</option>
+        <option value="emerald">Emerald</option>
+        <option value="crimson">Crimson</option>
+      </select>
+    </div>
+  </div>
+  <h3>Live preview</h3>
+  <div class="preview" style="display:flex;justify-content:center">
+    <canvas id="certificate-maker-canvas" width="1600" height="1200" style="max-width:640px;width:100%;height:auto;border-radius:8px"></canvas>
+  </div>
+  <div class="btn-row mt">
+    <button class="btn btn-primary" id="certificate-maker-download">⬇ Download PNG</button>
+  </div>
+  <div class="error" id="certificate-maker-error"></div>
+</div>
+
+
+  <!-- ADSTERRA-INCONTENT: paste your Adsterra native/in-content ad code inside the div below -->
+  <div class="ad-slot" data-ad="incontent"></div>
+
+  <div class="info-grid">
+    <div class="info-card">
+      <h2>📖 How to use</h2>
+      <ol><li>Enter the recipient&#39;s name and certificate title.</li><li>Add the issuer, date and an optional signature name.</li><li>Pick a border theme.</li><li>Preview live, then click &quot;Download PNG&quot;.</li></ol>
+    </div>
+    <div class="info-card">
+      <h2>❓ Frequently asked questions</h2>
+      <div class="faq"><details><summary>What resolution is the certificate?</summary><p>The certificate renders at 1600×1200 pixels — sharp enough for screen use and small prints.</p></details><details><summary>How do I make a certificate?</summary><p>Fill in the recipient, title, issuer and date fields and the preview updates live. Nothing is uploaded anywhere.</p></details><details><summary>Can I change the border style?</summary><p>Yes — pick from the six border themes for different ceremony styles.</p></details></div>
+    </div>
+  </div>
+
+  <section class="section">
+    <h2>🔗 Related tools</h2>
+    <div class="tool-grid"><a class="tool-link" href="/tools/app-icon-resizer/" data-search="app icon resizer generate every common app icon size from one image — 16, 32, 48, 180, 192 and 512 px — with instant preview and one-click png downloads. app icon resizer icon generator favicon sizes pwa icon apple touch icon generator"><span class="t-ico">🖼️</span><span class="t-body"><b>App Icon Resizer</b><small>Generate every common app icon size from one image — 16, 32, 48, 180, 192 and 512 px — with …</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/background-remover/" data-search="background remover remove the background from any photo with real on-device ai and download a transparent png. free, private and unlimited — no sign-up needed. background remover remove image background transparent png maker"><span class="t-ico">🖼️</span><span class="t-body"><b>Background Remover</b><small>Remove the background from any photo with real on-device AI and download a transparent PNG. …</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/before-after-slider-maker/" data-search="before/after slider maker upload two photos and get a standalone before/after comparison slider as an html file. before after slider image comparison slider photo compare html before after html"><span class="t-ico">🖼️</span><span class="t-body"><b>Before/After Slider Maker</b><small>Upload two photos and get a standalone before/after comparison slider as an HTML file.</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/business-card-maker/" data-search="business card maker design a business card front (1050×600): your name, role and contact details, color themes, live preview, and a png download. business card maker business card design business card png visiting card maker card designer"><span class="t-ico">🖼️</span><span class="t-body"><b>Business Card Maker</b><small>Design a business card front (1050×600): your name, role and contact details, color themes, …</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/favicon-generator/" data-search="favicon generator generate a complete png favicon set (16–512 px) from your logo in one click, download it as a zip, and copy the ready-to-paste html link tags. favicon generator favicon maker png favicon"><span class="t-ico">🖼️</span><span class="t-body"><b>Favicon Generator</b><small>Generate a complete PNG favicon set (16–512 px) from your logo in one click, download it as …</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/halftone-effect/" data-search="halftone effect convert any photo into a vintage newspaper-style halftone dot print. halftone effect dot print photo newspaper photo effect halftone maker"><span class="t-ico">🖼️</span><span class="t-body"><b>Halftone Effect</b><small>Convert any photo into a vintage newspaper-style halftone dot print.</small></span><span class="t-arrow">→</span></a></div>
+  </section>
+</main>
+
+<!-- ADSTERRA-FOOTER: paste your Adsterra footer/banner ad code inside the div below -->
+<div class="container"><div class="ad-slot" data-ad="footer"></div></div>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="f-grid">
+      <div>
+        <span class="brandline"><span class="logo-mark">T</span> ToolNest</span>
+        <p>Free online tools that actually work. No sign-up, no watermarks — and your files never leave your device for client-side tools.</p>
+      </div>
+      <div>
+        <h4>Popular</h4>
+        <a href="/tools/qr-code-generator/">QR Code Generator</a>
+        <a href="/tools/background-remover/">Background Remover</a>
+        <a href="/tools/pdf-merger/">PDF Merger</a>
+        <a href="/tools/word-counter/">Word Counter</a>
+      </div>
+      <div>
+        <h4>Categories</h4>
+        <a href="/#image">Image Tools</a>
+        <a href="/#pdf">PDF &amp; Documents</a>
+        <a href="/#calculators">Calculators</a>
+        <a href="/#developer">Developer Tools</a>
+      </div>
+      <div>
+        <h4>Site</h4>
+        <a href="/">Home</a>
+        <a href="/#all-tools">All Tools</a>
+        <a href="/sitemap.xml">Sitemap</a>
+      </div>
+    </div>
+    <div class="f-bottom">© 2026 ToolNest · Free tools for everyone · Made with care</div>
+  </div>
+</footer>
+
+<script src="/assets/site.js?v=5"></script>
+
+<script>
+/* Certificate Maker — 1600×1200 canvas certificates, PNG download. */
+(function () {
+  'use strict';
+  var SLUG = 'certificate-maker';
+  var ERR = SLUG + '-error';
+  var W = 1600, H = 1200;
+
+  var THEMES = {
+    gold: { primary: '#b45309', dark: '#78350f', bg: '#fffbeb', seal: '#d97706' },
+    navy: { primary: '#1e40af', dark: '#1e3a8a', bg: '#eff6ff', seal: '#64748b' },
+    emerald: { primary: '#047857', dark: '#065f46', bg: '#ecfdf5', seal: '#10b981' },
+    crimson: { primary: '#b91c1c', dark: '#7f1d1d', bg: '#fef2f2', seal: '#ef4444' }
+  };
+
+  function $(id) { return document.getElementById(SLUG + '-' + id); }
+
+  function fitFont(ctx, text, maxW, base, family, weight) {
+    var fs = base;
+    ctx.font = weight + ' ' + fs + 'px ' + family;
+    while (ctx.measureText(text).width > maxW && fs > 20) {
+      fs -= 4;
+      ctx.font = weight + ' ' + fs + 'px ' + family;
+    }
+    return fs;
+  }
+
+  function render() {
+    TN.clearErr(ERR);
+    try {
+      var recipient = $('recipient').value.trim() || 'Recipient Name';
+      var title = $('title').value.trim() || 'Certificate';
+      var subtitle = $('subtitle').value.trim();
+      var issuer = $('issuer').value.trim();
+      var date = $('date').value.trim();
+      var sig = $('signature').value.trim();
+      var th = THEMES[$('theme').value] || THEMES.gold;
+      var cv = $('canvas'), ctx = cv.getContext('2d');
+      /* paper */
+      ctx.fillStyle = th.bg; ctx.fillRect(0, 0, W, H);
+      /* borders */
+      ctx.strokeStyle = th.primary; ctx.lineWidth = 14;
+      ctx.strokeRect(48, 48, W - 96, H - 96);
+      ctx.strokeStyle = th.dark; ctx.lineWidth = 3;
+      ctx.strokeRect(80, 80, W - 160, H - 160);
+      /* corner ornaments */
+      ctx.fillStyle = th.primary;
+      [[80, 80], [W - 80, 80], [80, H - 80], [W - 80, H - 80]].forEach(function (p) {
+        ctx.beginPath(); ctx.arc(p[0], p[1], 16, 0, Math.PI * 2); ctx.fill();
+      });
+      ctx.textAlign = 'center';
+      /* header */
+      ctx.fillStyle = th.dark;
+      fitFont(ctx, title.toUpperCase(), W - 400, 84, 'Georgia, serif', '700');
+      ctx.fillText(title.toUpperCase(), W / 2, 300);
+      ctx.strokeStyle = th.primary; ctx.lineWidth = 2;
+      ctx.beginPath(); ctx.moveTo(W / 2 - 200, 340); ctx.lineTo(W / 2 + 200, 340); ctx.stroke();
+      /* presented to */
+      ctx.fillStyle = '#57534e';
+      ctx.font = '400 40px Georgia, serif';
+      ctx.fillText('This certificate is proudly presented to', W / 2, 430);
+      /* recipient */
+      ctx.fillStyle = th.dark;
+      var rfs = fitFont(ctx, recipient, W - 500, 110, '"Brush Script MT", "Segoe Script", cursive', '400');
+      ctx.font = 'italic ' + rfs + 'px Georgia, serif';
+      ctx.fillText(recipient, W / 2, 560);
+      /* subtitle */
+      if (subtitle) {
+        ctx.fillStyle = '#57534e';
+        ctx.font = 'italic 38px Georgia, serif';
+        ctx.fillText(subtitle, W / 2, 650);
+      }
+      /* seal */
+      ctx.save();
+      ctx.translate(W / 2, 800);
+      ctx.fillStyle = th.seal;
+      ctx.beginPath(); ctx.arc(0, 0, 64, 0, Math.PI * 2); ctx.fill();
+      ctx.fillStyle = '#ffffff';
+      ctx.font = '700 44px system-ui, sans-serif';
+      ctx.fillText('★', 0, 16);
+      ctx.restore();
+      /* footer: date + issuer + signature */
+      ctx.fillStyle = '#57534e';
+      ctx.font = '400 34px Georgia, serif';
+      ctx.textAlign = 'left';
+      if (date) ctx.fillText(date, 200, H - 200);
+      if (issuer) {
+        ctx.textAlign = 'center';
+        ctx.fillText(issuer, W / 2, H - 200);
+      }
+      ctx.textAlign = 'right';
+      if (sig) {
+        ctx.strokeStyle = '#44403c'; ctx.lineWidth = 2;
+        ctx.beginPath(); ctx.moveTo(W - 480, H - 240); ctx.lineTo(W - 200, H - 240); ctx.stroke();
+        ctx.font = 'italic 36px Georgia, serif';
+        ctx.fillStyle = '#44403c';
+        ctx.fillText(sig, W - 340, H - 195);
+        ctx.font = '400 26px system-ui, sans-serif';
+        ctx.fillStyle = '#78716c';
+        ctx.fillText('Signature', W - 340, H - 160);
+      }
+    } catch (e) {
+      TN.setErr(ERR, 'Could not render the certificate.');
+    }
+  }
+
+  function init() {
+    try {
+      if (typeof TN === 'undefined') return;
+      ['recipient', 'title', 'subtitle', 'issuer', 'date', 'signature', 'theme'].forEach(function (k) {
+        TN.on(SLUG + '-' + k, 'input', render);
+        TN.on(SLUG + '-' + k, 'change', render);
+      });
+      TN.on(SLUG + '-download', 'click', function () {
+        try {
+          $('canvas').toBlob(function (blob) {
+            if (blob) TN.download(blob, 'certificate.png');
+            else TN.setErr(ERR, 'Could not create the PNG.');
+          }, 'image/png');
+        } catch (e) { TN.setErr(ERR, 'Could not create the PNG.'); }
+      });
+      render();
+    } catch (e) { /* never throw on load */ }
+  }
+
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init);
+  else init();
+})();
+
+</script>
+</body>
+</html>

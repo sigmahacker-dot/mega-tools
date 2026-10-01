@@ -1,0 +1,44 @@
+<div class="tool-card">
+  <h2>PDF Redactor</h2>
+  <p class="muted">Burn permanent black redaction boxes into a PDF page.</p>
+  <div class="field">
+    <label for="pdf-redactor-file">PDF file</label>
+    <input type="file" class="input" id="pdf-redactor-file" accept=".pdf,application/pdf">
+  </div>
+  <div class="grid2">
+    <div class="field">
+      <label for="pdf-redactor-page">Page number</label>
+      <input type="number" class="input" id="pdf-redactor-page" min="1" value="1">
+    </div>
+    <div class="field">
+      <label>&nbsp;</label>
+      <div class="hint" id="pdf-redactor-sizeinfo">Load a PDF to see page size.</div>
+    </div>
+    <div class="field">
+      <label for="pdf-redactor-x">X (from left, pt)</label>
+      <input type="number" class="input" id="pdf-redactor-x" min="0" value="100">
+    </div>
+    <div class="field">
+      <label for="pdf-redactor-y">Y (from bottom, pt)</label>
+      <input type="number" class="input" id="pdf-redactor-y" min="0" value="100">
+    </div>
+    <div class="field">
+      <label for="pdf-redactor-w">Width (pt)</label>
+      <input type="number" class="input" id="pdf-redactor-w" min="1" value="200">
+    </div>
+    <div class="field">
+      <label for="pdf-redactor-h">Height (pt)</label>
+      <input type="number" class="input" id="pdf-redactor-h" min="1" value="30">
+    </div>
+  </div>
+  <p class="hint">PDF coordinates start at the bottom-left corner, in points (72 pt = 1 inch).</p>
+  <div class="btn-row">
+    <button class="btn btn-outline" id="pdf-redactor-add">＋ Add box</button>
+    <button class="btn btn-primary" id="pdf-redactor-go" disabled>Apply &amp; Download</button>
+  </div>
+  <h3 class="mt">Redaction boxes</h3>
+  <div id="pdf-redactor-list" class="file-list"><p class="muted">No boxes added yet.</p></div>
+  <div class="error" id="pdf-redactor-error"></div>
+  <div class="result hidden" id="pdf-redactor-result"></div>
+  <p class="note">Files never leave your device — everything is processed in your browser.</p>
+</div>

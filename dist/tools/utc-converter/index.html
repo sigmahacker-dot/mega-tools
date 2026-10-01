@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>UTC Converter — Free Online | ToolNest</title>
+<meta name="description" content="Convert between UTC, your local time and any fixed UTC offset — with an honest note about daylight saving.">
+<meta name="keywords" content="UTC converter, UTC to local time, timezone converter, UTC offset converter, convert UTC to EST">
+<link rel="canonical" href="https://toolnest.vercel.app/tools/utc-converter/">
+<meta name="theme-color" content="#07070b">
+<meta property="og:title" content="UTC Converter — Free Online | ToolNest">
+<meta property="og:description" content="Convert between UTC, your local time and any fixed UTC offset — with an honest note about daylight saving.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css?v=4">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%23e01111'/><text x='50' y='68' font-size='58' text-anchor='middle' fill='white' font-family='Arial' font-weight='bold'>T</text></svg>">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebApplication","name":"UTC Converter","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0"},"url":"https://toolnest.vercel.app/tools/utc-converter/","description":"Convert between UTC, your local time and any fixed UTC offset — with an honest note about daylight saving."},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Which conversions are supported?","acceptedAnswer":{"@type":"Answer","text":"UTC → your local time, UTC → any chosen UTC offset, and your local time → UTC."}},{"@type":"Question","name":"Does it handle daylight saving time?","acceptedAnswer":{"@type":"Answer","text":"No — it uses fixed offsets. Some regions shift by an hour for daylight saving, so always double-check meeting times for DST regions."}},{"@type":"Question","name":"Which offsets can I pick?","acceptedAnswer":{"@type":"Answer","text":"All standard zones from UTC−12:00 to UTC+14:00, including half- and quarter-hour offsets like +5:30 and +5:45."}}]}]}</script>
+</head>
+<body>
+<header class="site-header">
+  <div class="container">
+    <a class="logo" href="/"><span class="logo-mark">T</span> ToolNest</a>
+    <div class="header-right">
+      <form class="nav-search" action="/" method="get" role="search">
+        <span class="ns-icon">🔍</span>
+        <input type="search" name="q" placeholder="Search tools…" aria-label="Search tools" autocomplete="off">
+      </form>
+      <div class="menu-wrap">
+        <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="menuPanel" aria-label="Open menu"><span></span><span></span><span></span></button>
+        <nav class="menu-panel" id="menuPanel" aria-label="Site">
+          <a href="/">Home</a>
+          <a href="/#categories">Categories</a>
+          <a href="/#all-tools">All Tools</a>
+        </nav>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ADSTERRA-HEADER: paste your Adsterra banner ad code inside the div below -->
+<div class="container"><div class="ad-slot ad-leaderboard" data-ad="header"></div></div>
+
+<main class="container">
+  <nav class="crumbs"><a href="/">Home</a> &rsaquo; <a href="/#time">Time &amp; Date</a> &rsaquo; UTC Converter</nav>
+  <div class="tool-hero">
+    <h1>UTC Converter</h1>
+    <p>Convert between UTC, your local time and any fixed UTC offset — with an honest note about daylight saving.</p>
+  </div>
+
+  <div class="tool-card">
+  <h3 style="margin:0 0 8px">UTC → other zone</h3>
+  <div class="grid2">
+    <div class="field">
+      <label for="utc-converter-utc">UTC date &amp; time</label>
+      <input class="input" type="datetime-local" id="utc-converter-utc">
+    </div>
+    <div class="field">
+      <label for="utc-converter-target">Target UTC offset</label>
+      <select class="input" id="utc-converter-target"></select>
+    </div>
+  </div>
+  <div class="btn-row">
+    <button class="btn btn-primary" id="utc-converter-go1">Convert from UTC</button>
+  </div>
+  <div class="result" id="utc-converter-out1"></div>
+  <hr style="border:none;border-top:1px solid #eee;margin:16px 0">
+  <h3 style="margin:0 0 8px">Your local time → UTC</h3>
+  <div class="field" style="max-width:260px">
+    <label for="utc-converter-local">Local date &amp; time</label>
+    <input class="input" type="datetime-local" id="utc-converter-local">
+  </div>
+  <div class="btn-row">
+    <button class="btn btn-primary" id="utc-converter-go2">Convert to UTC</button>
+  </div>
+  <div class="result" id="utc-converter-out2"></div>
+  <p class="note" style="margin-top:12px">⏰ Honest note: this tool uses <strong>fixed</strong> UTC offsets. It does not apply daylight saving time automatically — regions observing DST shift by an hour for part of the year, so pick the offset that's actually in effect on your date.</p>
+  <div class="error" id="utc-converter-error"></div>
+</div>
+
+
+  <!-- ADSTERRA-INCONTENT: paste your Adsterra native/in-content ad code inside the div below -->
+  <div class="ad-slot" data-ad="incontent"></div>
+
+  <div class="info-grid">
+    <div class="info-card">
+      <h2>📖 How to use</h2>
+      <ol><li>Enter a UTC date/time and pick a target offset — or enter your local time.</li><li>Press Convert.</li><li>Read the converted time with its offset label.</li><li>Remember DST is not applied automatically.</li></ol>
+    </div>
+    <div class="info-card">
+      <h2>❓ Frequently asked questions</h2>
+      <div class="faq"><details><summary>Which conversions are supported?</summary><p>UTC → your local time, UTC → any chosen UTC offset, and your local time → UTC.</p></details><details><summary>Does it handle daylight saving time?</summary><p>No — it uses fixed offsets. Some regions shift by an hour for daylight saving, so always double-check meeting times for DST regions.</p></details><details><summary>Which offsets can I pick?</summary><p>All standard zones from UTC−12:00 to UTC+14:00, including half- and quarter-hour offsets like +5:30 and +5:45.</p></details></div>
+    </div>
+  </div>
+
+  <section class="section">
+    <h2>🔗 Related tools</h2>
+    <div class="tool-grid"><a class="tool-link" href="/tools/add-subtract-days-calculator/" data-search="add / subtract days calculator add or subtract days, weeks, months or years from any date. optional business-days-only mode skips weekends automatically. add days to date subtract days calculator date plus days business days calculator date arithmetic"><span class="t-ico">⏰</span><span class="t-body"><b>Add / Subtract Days Calculator</b><small>Add or subtract days, weeks, months or years from any date. Optional business-days-only mode…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/anniversary-calculator/" data-search="anniversary calculator track any anniversary: days until the next one, which number it is (10th, 25th…), total days together and the weekday it falls on. anniversary calculator wedding anniversary countdown how many days until anniversary anniversary date tracker years together calculator"><span class="t-ico">⏰</span><span class="t-body"><b>Anniversary Calculator</b><small>Track any anniversary: days until the next one, which number it is (10th, 25th…), total days…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/bill-due-tracker/" data-search="bill due tracker never miss a payment — track recurring monthly bills with automatic next-due dates, days remaining and urgency sorting. bill due tracker bill reminder recurring bills tracker monthly bills organizer due date tracker"><span class="t-ico">⏰</span><span class="t-body"><b>Bill Due Tracker</b><small>Never miss a payment — track recurring monthly bills with automatic next-due dates, days rem…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/business-days-calculator/" data-search="business days calculator count working days between two dates, excluding weekends and your own custom holidays, with a full breakdown. business days calculator working days calculator weekdays between dates net workdays business days excluding holidays"><span class="t-ico">⏰</span><span class="t-body"><b>Business Days Calculator</b><small>Count working days between two dates, excluding weekends and your own custom holidays, with …</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/chess-clock-timer/" data-search="chess clock timer a two-player chess clock with tap-to-switch, optional increment per move, flag detection, pause and reset. chess clock chess timer two player timer blitz clock increment chess clock"><span class="t-ico">⏰</span><span class="t-body"><b>Chess Clock Timer</b><small>A two-player chess clock with tap-to-switch, optional increment per move, flag detection, pa…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/daily-screen-time-log/" data-search="daily screen time log log daily screen time by app or category and see daily totals plus a 7-day bar summary — all saved in your browser. screen time tracker screen time log daily screen time phone usage tracker app usage log"><span class="t-ico">⏰</span><span class="t-body"><b>Daily Screen Time Log</b><small>Log daily screen time by app or category and see daily totals plus a 7-day bar summary — all…</small></span><span class="t-arrow">→</span></a></div>
+  </section>
+</main>
+
+<!-- ADSTERRA-FOOTER: paste your Adsterra footer/banner ad code inside the div below -->
+<div class="container"><div class="ad-slot" data-ad="footer"></div></div>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="f-grid">
+      <div>
+        <span class="brandline"><span class="logo-mark">T</span> ToolNest</span>
+        <p>Free online tools that actually work. No sign-up, no watermarks — and your files never leave your device for client-side tools.</p>
+      </div>
+      <div>
+        <h4>Popular</h4>
+        <a href="/tools/qr-code-generator/">QR Code Generator</a>
+        <a href="/tools/background-remover/">Background Remover</a>
+        <a href="/tools/pdf-merger/">PDF Merger</a>
+        <a href="/tools/word-counter/">Word Counter</a>
+      </div>
+      <div>
+        <h4>Categories</h4>
+        <a href="/#image">Image Tools</a>
+        <a href="/#pdf">PDF &amp; Documents</a>
+        <a href="/#calculators">Calculators</a>
+        <a href="/#developer">Developer Tools</a>
+      </div>
+      <div>
+        <h4>Site</h4>
+        <a href="/">Home</a>
+        <a href="/#all-tools">All Tools</a>
+        <a href="/sitemap.xml">Sitemap</a>
+      </div>
+    </div>
+    <div class="f-bottom">© 2026 ToolNest · Free tools for everyone · Made with care</div>
+  </div>
+</footer>
+
+<script src="/assets/site.js?v=5"></script>
+
+<script>
+/* UTC Converter — UTC ↔ local, UTC → any fixed UTC offset (honest no-DST note). */
+(function () {
+  'use strict';
+  var SLUG = 'utc-converter';
+  var $ = function (id) { return TN.el(SLUG + '-' + id); };
+
+  // All real-world standard UTC offsets in minutes.
+  var OFFSETS = [-720, -660, -600, -570, -540, -480, -420, -360, -300, -240, -210, -180,
+    -120, -60, 0, 60, 120, 180, 210, 240, 270, 300, 330, 345, 360, 390, 420, 480,
+    525, 540, 570, 600, 630, 660, 720, 765, 780, 840];
+
+  function offLabel(mins) {
+    var sign = mins < 0 ? '−' : '+';
+    var a = Math.abs(mins);
+    return 'UTC' + sign + ('0' + Math.floor(a / 60)).slice(-2) + ':' + ('0' + (a % 60)).slice(-2);
+  }
+
+  function buildOffsets() {
+    var sel = $('target');
+    OFFSETS.forEach(function (m) {
+      var o = document.createElement('option');
+      o.value = m;
+      o.textContent = offLabel(m);
+      if (m === 300) o.selected = true; // UTC+5 default
+      sel.appendChild(o);
+    });
+  }
+
+  function parseLocal(v) {
+    var m = /^(\d{4})-(\d{2})-(\d{2})T(\d{2}):(\d{2})$/.exec(v || '');
+    if (!m) return null;
+    var d = new Date(+m[1], +m[2] - 1, +m[3], +m[4], +m[5]);
+    return isNaN(d.getTime()) ? null : d;
+  }
+
+  function parseAsUTC(v) {
+    var m = /^(\d{4})-(\d{2})-(\d{2})T(\d{2}):(\d{2})$/.exec(v || '');
+    if (!m) return null;
+    var d = new Date(Date.UTC(+m[1], +m[2] - 1, +m[3], +m[4], +m[5]));
+    return isNaN(d.getTime()) ? null : d;
+  }
+
+  function fmtYMDHM(d) {
+    return d.getFullYear() + '-' + ('0' + (d.getMonth() + 1)).slice(-2) + '-' +
+      ('0' + d.getDate()).slice(-2) + ' ' + ('0' + d.getHours()).slice(-2) + ':' +
+      ('0' + d.getMinutes()).slice(-2);
+  }
+
+  function fmtUTC(d) {
+    return d.getUTCFullYear() + '-' + ('0' + (d.getUTCMonth() + 1)).slice(-2) + '-' +
+      ('0' + d.getUTCDate()).slice(-2) + ' ' + ('0' + d.getUTCHours()).slice(-2) + ':' +
+      ('0' + d.getUTCMinutes()).slice(-2) + ' UTC';
+  }
+
+  function go1() {
+    TN.clearErr(SLUG + '-error');
+    var utc = parseAsUTC($('utc').value);
+    if (!utc) { TN.setErr(SLUG + '-error', 'Please enter a valid UTC date and time.'); return; }
+    var off = parseInt($('target').value, 10);
+    // Represent the target wall-clock time by shifting a Date's UTC fields.
+    var shifted = new Date(utc.getTime() + off * 60000);
+    var lbl = offLabel(off);
+    var localOff = -utc.getTimezoneOffset();
+    var localLbl = offLabel(localOff);
+    $('out1').innerHTML = '<p><strong class="code">' + fmtUTC(utc) + '</strong> =</p>' +
+      '<p style="font-size:20px"><strong>' + fmtUTC(shifted).replace(' UTC', '') + '</strong> <span class="code">' + lbl + '</span></p>' +
+      '<p class="muted">Your local time: <strong>' + fmtYMDHM(utc) +
+      '</strong> <span class="code">' + localLbl + '</span></p>';
+  }
+
+  function go2() {
+    TN.clearErr(SLUG + '-error');
+    var local = parseLocal($('local').value);
+    if (!local) { TN.setErr(SLUG + '-error', 'Please enter a valid local date and time.'); return; }
+    $('out2').innerHTML = '<p>Your local <strong class="code">' + fmtYMDHM(local) + '</strong> =</p>' +
+      '<p style="font-size:20px"><strong>' + fmtUTC(local) + '</strong></p>' +
+      '<p class="muted">Unix timestamp: <span class="code">' + Math.floor(local.getTime() / 1000) + '</span></p>';
+  }
+
+  try {
+    buildOffsets();
+    TN.on(SLUG + '-go1', 'click', go1);
+    TN.on(SLUG + '-go2', 'click', go2);
+  } catch (e) { /* never throw on load */ }
+})();
+
+</script>
+</body>
+</html>

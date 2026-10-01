@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Baby Growth Tracker — Free Online | ToolNest</title>
+<meta name="description" content="Log your baby&#39;s weight and height over time and see a growth log with typical-range guidance.">
+<meta name="keywords" content="baby growth tracker, baby weight tracker, infant growth chart, baby height log, newborn growth">
+<link rel="canonical" href="https://toolnest.vercel.app/tools/baby-growth-tracker/">
+<meta name="theme-color" content="#07070b">
+<meta property="og:title" content="Baby Growth Tracker — Free Online | ToolNest">
+<meta property="og:description" content="Log your baby&#39;s weight and height over time and see a growth log with typical-range guidance.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css?v=4">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%23e01111'/><text x='50' y='68' font-size='58' text-anchor='middle' fill='white' font-family='Arial' font-weight='bold'>T</text></svg>">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebApplication","name":"Baby Growth Tracker","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0"},"url":"https://toolnest.vercel.app/tools/baby-growth-tracker/","description":"Log your baby's weight and height over time and see a growth log with typical-range guidance."},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What is typical baby growth?","acceptedAnswer":{"@type":"Answer","text":"Rough medians: birth ~3.3 kg/50 cm, 6 months ~7.9 kg/67 cm, 12 months ~9.6 kg/75 cm. Every baby grows at its own pace."}},{"@type":"Question","name":"Is this a percentile chart?","acceptedAnswer":{"@type":"Answer","text":"No — this is a simple log with rough reference bands, not a WHO percentile chart. Your pediatrician's chart is the authority."}},{"@type":"Question","name":"How often should I log?","acceptedAnswer":{"@type":"Answer","text":"Log a measurement every few weeks; more often is unnecessary and can cause needless worry."}},{"@type":"Question","name":"When should I worry?","acceptedAnswer":{"@type":"Answer","text":"Growth concerns are best judged by your pediatrician across proper percentile charts — ask at the next visit."}}]}]}</script>
+</head>
+<body>
+<header class="site-header">
+  <div class="container">
+    <a class="logo" href="/"><span class="logo-mark">T</span> ToolNest</a>
+    <div class="header-right">
+      <form class="nav-search" action="/" method="get" role="search">
+        <span class="ns-icon">🔍</span>
+        <input type="search" name="q" placeholder="Search tools…" aria-label="Search tools" autocomplete="off">
+      </form>
+      <div class="menu-wrap">
+        <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="menuPanel" aria-label="Open menu"><span></span><span></span><span></span></button>
+        <nav class="menu-panel" id="menuPanel" aria-label="Site">
+          <a href="/">Home</a>
+          <a href="/#categories">Categories</a>
+          <a href="/#all-tools">All Tools</a>
+        </nav>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ADSTERRA-HEADER: paste your Adsterra banner ad code inside the div below -->
+<div class="container"><div class="ad-slot ad-leaderboard" data-ad="header"></div></div>
+
+<main class="container">
+  <nav class="crumbs"><a href="/">Home</a> &rsaquo; <a href="/#health">Health &amp; Fitness</a> &rsaquo; Baby Growth Tracker</nav>
+  <div class="tool-hero">
+    <h1>Baby Growth Tracker</h1>
+    <p>Log your baby&#39;s weight and height over time and see a growth log with typical-range guidance.</p>
+  </div>
+
+  <div class="tool-card">
+  <div class="grid2">
+    <div class="field">
+      <label for="baby-growth-tracker-dob">Baby's date of birth</label>
+      <input class="input" id="baby-growth-tracker-dob" type="date">
+    </div>
+    <div class="field">
+      <label for="baby-growth-tracker-date">Measurement date</label>
+      <input class="input" id="baby-growth-tracker-date" type="date">
+    </div>
+    <div class="field">
+      <label for="baby-growth-tracker-weight">Weight (kg)</label>
+      <input class="input" id="baby-growth-tracker-weight" type="number" min="0.5" max="40" step="0.01" placeholder="e.g. 6.40">
+    </div>
+    <div class="field">
+      <label for="baby-growth-tracker-height">Height (cm)</label>
+      <input class="input" id="baby-growth-tracker-height" type="number" min="20" max="150" step="0.1" placeholder="e.g. 65">
+    </div>
+  </div>
+  <div class="btn-row"><button class="btn btn-primary" id="baby-growth-tracker-add">Log measurement</button></div>
+  <div class="result" id="baby-growth-tracker-list"></div>
+  <p class="hint" id="baby-growth-tracker-note"></p>
+  <p class="note">General information only — not medical advice. Consult a professional for personal guidance. This is NOT a percentile chart; your pediatrician's growth chart is the authority.</p>
+  <div class="error" id="baby-growth-tracker-error"></div>
+</div>
+
+
+  <!-- ADSTERRA-INCONTENT: paste your Adsterra native/in-content ad code inside the div below -->
+  <div class="ad-slot" data-ad="incontent"></div>
+
+  <div class="info-grid">
+    <div class="info-card">
+      <h2>📖 How to use</h2>
+      <ol><li>Enter your baby&#39;s date of birth once.</li><li>Log each measurement: date, weight, height.</li><li>Watch the growth table fill in over time.</li><li>Read the typical-range note — then confirm with your pediatrician.</li></ol>
+    </div>
+    <div class="info-card">
+      <h2>❓ Frequently asked questions</h2>
+      <div class="faq"><details><summary>What is typical baby growth?</summary><p>Rough medians: birth ~3.3 kg/50 cm, 6 months ~7.9 kg/67 cm, 12 months ~9.6 kg/75 cm. Every baby grows at its own pace.</p></details><details><summary>Is this a percentile chart?</summary><p>No — this is a simple log with rough reference bands, not a WHO percentile chart. Your pediatrician&#39;s chart is the authority.</p></details><details><summary>How often should I log?</summary><p>Log a measurement every few weeks; more often is unnecessary and can cause needless worry.</p></details><details><summary>When should I worry?</summary><p>Growth concerns are best judged by your pediatrician across proper percentile charts — ask at the next visit.</p></details></div>
+    </div>
+  </div>
+
+  <section class="section">
+    <h2>🔗 Related tools</h2>
+    <div class="tool-grid"><a class="tool-link" href="/tools/blood-pressure-tracker/" data-search="blood pressure tracker log blood pressure readings with automatic aha category classification, averages and history saved in your browser. blood pressure tracker bp log blood pressure chart hypertension tracker bp monitor log"><span class="t-ico">❤️</span><span class="t-body"><b>Blood Pressure Tracker</b><small>Log blood pressure readings with automatic AHA category classification, averages and history…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/body-fat-calculator/" data-search="body fat calculator estimate body fat percentage with the us navy tape-measure method and see your fitness category. body fat calculator us navy body fat body fat percentage calculator"><span class="t-ico">❤️</span><span class="t-body"><b>Body Fat Calculator</b><small>Estimate body fat percentage with the US Navy tape-measure method and see your fitness categ…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/breathing-exercise-guide/" data-search="breathing exercise guide guided breathing exercises (4-7-8, box, energize) with an animated pacer circle, phase labels, and cycle counter. breathing exercise 4-7-8 breathing box breathing breathing pacer calm breathing"><span class="t-ico">❤️</span><span class="t-body"><b>Breathing Exercise Guide</b><small>Guided breathing exercises (4-7-8, box, energize) with an animated pacer circle, phase label…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/caffeine-half-life-calculator/" data-search="caffeine half-life calculator log caffeinated drinks and see how much caffeine is still in your system using 5.5-hour half-life decay. caffeine half life caffeine calculator caffeine in system coffee caffeine tracker caffeine sleep"><span class="t-ico">❤️</span><span class="t-body"><b>Caffeine Half-Life Calculator</b><small>Log caffeinated drinks and see how much caffeine is still in your system using 5.5-hour half…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/calorie-calculator/" data-search="tdee calorie calculator estimate your daily calorie needs with the mifflin-st jeor equation and get targets for losing, maintaining or gaining weight. tdee calculator calorie calculator mifflin st jeor daily calorie needs"><span class="t-ico">❤️</span><span class="t-body"><b>TDEE Calorie Calculator</b><small>Estimate your daily calorie needs with the Mifflin-St Jeor equation and get targets for losi…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/carb-cycling-calculator/" data-search="carb cycling calculator build high, medium and low carb day macros from your tdee using the mifflin-st jeor equation. carb cycling calculator macro cycling high low carb days tdee macro calculator carb cycle plan"><span class="t-ico">❤️</span><span class="t-body"><b>Carb Cycling Calculator</b><small>Build high, medium and low carb day macros from your TDEE using the Mifflin-St Jeor equation…</small></span><span class="t-arrow">→</span></a></div>
+  </section>
+</main>
+
+<!-- ADSTERRA-FOOTER: paste your Adsterra footer/banner ad code inside the div below -->
+<div class="container"><div class="ad-slot" data-ad="footer"></div></div>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="f-grid">
+      <div>
+        <span class="brandline"><span class="logo-mark">T</span> ToolNest</span>
+        <p>Free online tools that actually work. No sign-up, no watermarks — and your files never leave your device for client-side tools.</p>
+      </div>
+      <div>
+        <h4>Popular</h4>
+        <a href="/tools/qr-code-generator/">QR Code Generator</a>
+        <a href="/tools/background-remover/">Background Remover</a>
+        <a href="/tools/pdf-merger/">PDF Merger</a>
+        <a href="/tools/word-counter/">Word Counter</a>
+      </div>
+      <div>
+        <h4>Categories</h4>
+        <a href="/#image">Image Tools</a>
+        <a href="/#pdf">PDF &amp; Documents</a>
+        <a href="/#calculators">Calculators</a>
+        <a href="/#developer">Developer Tools</a>
+      </div>
+      <div>
+        <h4>Site</h4>
+        <a href="/">Home</a>
+        <a href="/#all-tools">All Tools</a>
+        <a href="/sitemap.xml">Sitemap</a>
+      </div>
+    </div>
+    <div class="f-bottom">© 2026 ToolNest · Free tools for everyone · Made with care</div>
+  </div>
+</footer>
+
+<script src="/assets/site.js?v=5"></script>
+
+<script>
+/* Baby growth tracker: log date/weight/height; table + rough typical-range note. */
+(function () {
+  'use strict';
+  var SLUG = 'baby-growth-tracker';
+  var KEY = SLUG + '-data';
+  var DOBK = SLUG + '-dob';
+  // rough median weight (kg) by age in months (approx WHO medians)
+  var MED = [[0, 3.3], [1, 4.5], [2, 5.6], [3, 6.4], [4, 7.0], [6, 7.9], [9, 8.9], [12, 9.6], [18, 10.9], [24, 12.2]];
+  function $(id) { return document.getElementById(id); }
+  function load() {
+    try { var d = JSON.parse(localStorage.getItem(KEY)); return Array.isArray(d) ? d : []; }
+    catch (e) { return []; }
+  }
+  function save(d) { try { localStorage.setItem(KEY, JSON.stringify(d)); } catch (e) {} }
+  function err(m) { $(SLUG + '-error').textContent = m; }
+  function esc(s) {
+    return String(s).replace(/[&<>"']/g, function (c) {
+      return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c];
+    });
+  }
+  function medianAt(months) {
+    if (months <= 0) return MED[0][1];
+    for (var i = 1; i < MED.length; i++) {
+      if (months <= MED[i][0]) {
+        var a = MED[i - 1], b = MED[i];
+        return a[1] + (b[1] - a[1]) * ((months - a[0]) / (b[0] - a[0]));
+      }
+    }
+    return MED[MED.length - 1][1];
+  }
+  function ageMonths(dob, at) {
+    return (at - dob) / 86400000 / 30.4375;
+  }
+  function render() {
+    var dob = $(SLUG + '-dob').value;
+    var rows = load().slice().sort(function (a, b) { return a.at - b.at; });
+    var box = $(SLUG + '-list');
+    if (!rows.length) { box.innerHTML = '<p class="muted">No measurements yet.</p>'; $(SLUG + '-note').textContent = ''; return; }
+    var html = '<table class="data"><thead><tr><th>Date</th><th>Age</th><th>Weight</th><th>Height</th><th></th></tr></thead><tbody>';
+    rows.forEach(function (r) {
+      var age = dob ? ageMonths(new Date(dob + 'T00:00:00'), new Date(r.at)).toFixed(1) + ' mo' : '–';
+      html += '<tr><td>' + new Date(r.at).toLocaleDateString() + '</td><td>' + age + '</td><td>' + r.w +
+        ' kg</td><td>' + r.h + ' cm</td><td><button class="btn btn-outline" data-del="' + r.at + '" style="padding:4px 10px">Delete</button></td></tr>';
+    });
+    html += '</tbody></table>';
+    box.innerHTML = html;
+    box.querySelectorAll('[data-del]').forEach(function (b) {
+      b.addEventListener('click', function () {
+        var at = parseFloat(b.getAttribute('data-del'));
+        save(load().filter(function (r) { return r.at !== at; }));
+        render();
+      });
+    });
+    // growth note vs rough medians
+    var note = $(SLUG + '-note');
+    if (dob && rows.length) {
+      var last = rows[rows.length - 1];
+      var m = ageMonths(new Date(dob + 'T00:00:00'), new Date(last.at));
+      if (m >= 0 && m <= 24) {
+        var med = medianAt(m);
+        var ratio = last.w / med;
+        note.textContent = 'Rough guide: at ~' + m.toFixed(1) + ' months a typical median weight is ~' + med.toFixed(1) +
+          ' kg; your entry is ' + Math.round(ratio * 100) + '% of that. ' +
+          (ratio >= 0.8 && ratio <= 1.25
+            ? 'Within a broadly typical band — but only proper percentile charts (your pediatrician) can judge growth.'
+            : 'Outside the broad typical band — worth mentioning to your pediatrician at the next visit.');
+      } else note.textContent = '';
+    } else note.textContent = '';
+  }
+  function add() {
+    err('');
+    var dob = $(SLUG + '-dob').value;
+    var dv = $(SLUG + '-date').value;
+    var w = parseFloat($(SLUG + '-weight').value);
+    var h = parseFloat($(SLUG + '-height').value);
+    if (dob) { try { localStorage.setItem(DOBK, dob); } catch (e) {} }
+    if (!dv) { err('Enter the measurement date.'); return; }
+    var at = new Date(dv + 'T00:00:00').getTime();
+    if (dob && at < new Date(dob + 'T00:00:00').getTime()) { err('Measurement date cannot be before birth.'); return; }
+    if (isNaN(w) || w < 0.5 || w > 40) { err('Enter a valid weight (0.5–40 kg).'); return; }
+    if (isNaN(h) || h < 20 || h > 150) { err('Enter a valid height (20–150 cm).'); return; }
+    var rows = load();
+    rows.push({ at: at, w: Math.round(w * 100) / 100, h: Math.round(h * 10) / 10 });
+    save(rows);
+    $(SLUG + '-weight').value = '';
+    $(SLUG + '-height').value = '';
+    render();
+  }
+  try {
+    var savedDob = null;
+    try { savedDob = localStorage.getItem(DOBK); } catch (e) {}
+    if (savedDob) $(SLUG + '-dob').value = savedDob;
+    $(SLUG + '-add').addEventListener('click', add);
+    $(SLUG + '-dob').addEventListener('change', render);
+    render();
+  } catch (e) { /* never throw on load */ }
+})();
+
+</script>
+</body>
+</html>

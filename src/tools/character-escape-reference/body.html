@@ -1,0 +1,35 @@
+<div class="tool-card">
+  <div class="field">
+    <label for="character-escape-reference-search">Search characters</label>
+    <input class="input" id="character-escape-reference-search" placeholder="e.g. ampersand, é, 0026…">
+    <p class="hint">Click any row to copy the character.</p>
+  </div>
+  <div class="error" id="character-escape-reference-error"></div>
+  <div style="overflow-x:auto">
+    <table class="data" id="character-escape-reference-table">
+      <thead><tr><th>Char</th><th>HTML entity</th><th>Numeric</th><th>URL-encode</th><th>JS escape</th><th>Description</th></tr></thead>
+      <tbody id="character-escape-reference-rows"></tbody>
+    </table>
+  </div>
+  <p class="muted hidden" id="character-escape-reference-none">No characters match your search.</p>
+  <hr>
+  <div class="field">
+    <label for="character-escape-reference-input">Live encoder</label>
+    <textarea class="textarea" id="character-escape-reference-input" rows="3" placeholder="Paste text to escape…"></textarea>
+  </div>
+  <div class="field">
+    <label for="character-escape-reference-mode">Escape mode</label>
+    <select class="input" id="character-escape-reference-mode">
+      <option value="html">HTML entities</option>
+      <option value="url">URL-encoding</option>
+      <option value="js">JS \uXXXX escapes</option>
+    </select>
+  </div>
+  <div class="field">
+    <label for="character-escape-reference-output">Escaped output</label>
+    <textarea class="textarea" id="character-escape-reference-output" rows="3" readonly></textarea>
+  </div>
+  <div class="btn-row">
+    <button class="btn btn-outline" id="character-escape-reference-copy">Copy output</button>
+  </div>
+</div>

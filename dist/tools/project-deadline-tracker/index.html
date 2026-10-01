@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Project Deadline Tracker — Free Online | ToolNest</title>
+<meta name="description" content="Track a project deadline with milestones — progress percentage, days left and a checkable milestone list saved in your browser.">
+<meta name="keywords" content="project deadline tracker, milestone tracker, project progress tracker, deadline countdown project, project planner">
+<link rel="canonical" href="https://toolnest.vercel.app/tools/project-deadline-tracker/">
+<meta name="theme-color" content="#07070b">
+<meta property="og:title" content="Project Deadline Tracker — Free Online | ToolNest">
+<meta property="og:description" content="Track a project deadline with milestones — progress percentage, days left and a checkable milestone list saved in your browser.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css?v=4">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%23e01111'/><text x='50' y='68' font-size='58' text-anchor='middle' fill='white' font-family='Arial' font-weight='bold'>T</text></svg>">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebApplication","name":"Project Deadline Tracker","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0"},"url":"https://toolnest.vercel.app/tools/project-deadline-tracker/","description":"Track a project deadline with milestones — progress percentage, days left and a checkable milestone list saved in your browser."},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Is my project saved?","acceptedAnswer":{"@type":"Answer","text":"Yes — your project, deadline and milestone checkmarks are saved in this browser's localStorage and restored on your next visit."}},{"@type":"Question","name":"How are progress and days-left calculated?","acceptedAnswer":{"@type":"Answer","text":"Progress is the share of milestones marked done. Days left counts down to the deadline from today."}},{"@type":"Question","name":"How do I delete a milestone?","acceptedAnswer":{"@type":"Answer","text":"Use the ✕ button on a milestone row. To start over, clear the project name and deadline and re-save."}}]}]}</script>
+</head>
+<body>
+<header class="site-header">
+  <div class="container">
+    <a class="logo" href="/"><span class="logo-mark">T</span> ToolNest</a>
+    <div class="header-right">
+      <form class="nav-search" action="/" method="get" role="search">
+        <span class="ns-icon">🔍</span>
+        <input type="search" name="q" placeholder="Search tools…" aria-label="Search tools" autocomplete="off">
+      </form>
+      <div class="menu-wrap">
+        <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="menuPanel" aria-label="Open menu"><span></span><span></span><span></span></button>
+        <nav class="menu-panel" id="menuPanel" aria-label="Site">
+          <a href="/">Home</a>
+          <a href="/#categories">Categories</a>
+          <a href="/#all-tools">All Tools</a>
+        </nav>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ADSTERRA-HEADER: paste your Adsterra banner ad code inside the div below -->
+<div class="container"><div class="ad-slot ad-leaderboard" data-ad="header"></div></div>
+
+<main class="container">
+  <nav class="crumbs"><a href="/">Home</a> &rsaquo; <a href="/#time">Time &amp; Date</a> &rsaquo; Project Deadline Tracker</nav>
+  <div class="tool-hero">
+    <h1>Project Deadline Tracker</h1>
+    <p>Track a project deadline with milestones — progress percentage, days left and a checkable milestone list saved in your browser.</p>
+  </div>
+
+  <div class="tool-card">
+  <div class="grid2">
+    <div class="field">
+      <label for="project-deadline-tracker-name">Project name</label>
+      <input class="input" type="text" id="project-deadline-tracker-name" placeholder="e.g. Website relaunch" maxlength="80">
+    </div>
+    <div class="field">
+      <label for="project-deadline-tracker-deadline">Deadline</label>
+      <input class="input" type="date" id="project-deadline-tracker-deadline">
+    </div>
+  </div>
+  <div class="stat-cards">
+    <div class="stat-card"><div class="v" id="project-deadline-tracker-daysleft">—</div><div class="l">Days left</div></div>
+    <div class="stat-card"><div class="v" id="project-deadline-tracker-progress">—</div><div class="l">Progress</div></div>
+    <div class="stat-card"><div class="v" id="project-deadline-tracker-done">—</div><div class="l">Milestones done</div></div>
+  </div>
+  <div style="background:#e0e0e0;border-radius:6px;height:12px;overflow:hidden;margin-bottom:12px">
+    <div id="project-deadline-tracker-bar" style="height:100%;width:0%;background:#2e7d32;border-radius:6px;transition:width .3s"></div>
+  </div>
+  <h3 style="margin:8px 0">Milestones</h3>
+  <div class="grid2" style="margin-bottom:8px">
+    <div class="field">
+      <label for="project-deadline-tracker-mname">Milestone name</label>
+      <input class="input" type="text" id="project-deadline-tracker-mname" placeholder="e.g. Design approved" maxlength="80">
+    </div>
+    <div class="field">
+      <label for="project-deadline-tracker-mdate">Target date</label>
+      <input class="input" type="date" id="project-deadline-tracker-mdate">
+    </div>
+  </div>
+  <div class="btn-row" style="margin-bottom:12px">
+    <button class="btn" id="project-deadline-tracker-addm">Add milestone</button>
+  </div>
+  <div id="project-deadline-tracker-list"></div>
+  <div class="error" id="project-deadline-tracker-error"></div>
+  <p class="hint">Everything saves automatically in this browser.</p>
+</div>
+
+
+  <!-- ADSTERRA-INCONTENT: paste your Adsterra native/in-content ad code inside the div below -->
+  <div class="ad-slot" data-ad="incontent"></div>
+
+  <div class="info-grid">
+    <div class="info-card">
+      <h2>📖 How to use</h2>
+      <ol><li>Enter the project name and its deadline.</li><li>Add milestones with a name and target date each.</li><li>Tick milestones off as you complete them.</li><li>Progress, days left and the checklist update and save automatically.</li></ol>
+    </div>
+    <div class="info-card">
+      <h2>❓ Frequently asked questions</h2>
+      <div class="faq"><details><summary>Is my project saved?</summary><p>Yes — your project, deadline and milestone checkmarks are saved in this browser&#39;s localStorage and restored on your next visit.</p></details><details><summary>How are progress and days-left calculated?</summary><p>Progress is the share of milestones marked done. Days left counts down to the deadline from today.</p></details><details><summary>How do I delete a milestone?</summary><p>Use the ✕ button on a milestone row. To start over, clear the project name and deadline and re-save.</p></details></div>
+    </div>
+  </div>
+
+  <section class="section">
+    <h2>🔗 Related tools</h2>
+    <div class="tool-grid"><a class="tool-link" href="/tools/add-subtract-days-calculator/" data-search="add / subtract days calculator add or subtract days, weeks, months or years from any date. optional business-days-only mode skips weekends automatically. add days to date subtract days calculator date plus days business days calculator date arithmetic"><span class="t-ico">⏰</span><span class="t-body"><b>Add / Subtract Days Calculator</b><small>Add or subtract days, weeks, months or years from any date. Optional business-days-only mode…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/anniversary-calculator/" data-search="anniversary calculator track any anniversary: days until the next one, which number it is (10th, 25th…), total days together and the weekday it falls on. anniversary calculator wedding anniversary countdown how many days until anniversary anniversary date tracker years together calculator"><span class="t-ico">⏰</span><span class="t-body"><b>Anniversary Calculator</b><small>Track any anniversary: days until the next one, which number it is (10th, 25th…), total days…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/bill-due-tracker/" data-search="bill due tracker never miss a payment — track recurring monthly bills with automatic next-due dates, days remaining and urgency sorting. bill due tracker bill reminder recurring bills tracker monthly bills organizer due date tracker"><span class="t-ico">⏰</span><span class="t-body"><b>Bill Due Tracker</b><small>Never miss a payment — track recurring monthly bills with automatic next-due dates, days rem…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/business-days-calculator/" data-search="business days calculator count working days between two dates, excluding weekends and your own custom holidays, with a full breakdown. business days calculator working days calculator weekdays between dates net workdays business days excluding holidays"><span class="t-ico">⏰</span><span class="t-body"><b>Business Days Calculator</b><small>Count working days between two dates, excluding weekends and your own custom holidays, with …</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/chess-clock-timer/" data-search="chess clock timer a two-player chess clock with tap-to-switch, optional increment per move, flag detection, pause and reset. chess clock chess timer two player timer blitz clock increment chess clock"><span class="t-ico">⏰</span><span class="t-body"><b>Chess Clock Timer</b><small>A two-player chess clock with tap-to-switch, optional increment per move, flag detection, pa…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/daily-screen-time-log/" data-search="daily screen time log log daily screen time by app or category and see daily totals plus a 7-day bar summary — all saved in your browser. screen time tracker screen time log daily screen time phone usage tracker app usage log"><span class="t-ico">⏰</span><span class="t-body"><b>Daily Screen Time Log</b><small>Log daily screen time by app or category and see daily totals plus a 7-day bar summary — all…</small></span><span class="t-arrow">→</span></a></div>
+  </section>
+</main>
+
+<!-- ADSTERRA-FOOTER: paste your Adsterra footer/banner ad code inside the div below -->
+<div class="container"><div class="ad-slot" data-ad="footer"></div></div>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="f-grid">
+      <div>
+        <span class="brandline"><span class="logo-mark">T</span> ToolNest</span>
+        <p>Free online tools that actually work. No sign-up, no watermarks — and your files never leave your device for client-side tools.</p>
+      </div>
+      <div>
+        <h4>Popular</h4>
+        <a href="/tools/qr-code-generator/">QR Code Generator</a>
+        <a href="/tools/background-remover/">Background Remover</a>
+        <a href="/tools/pdf-merger/">PDF Merger</a>
+        <a href="/tools/word-counter/">Word Counter</a>
+      </div>
+      <div>
+        <h4>Categories</h4>
+        <a href="/#image">Image Tools</a>
+        <a href="/#pdf">PDF &amp; Documents</a>
+        <a href="/#calculators">Calculators</a>
+        <a href="/#developer">Developer Tools</a>
+      </div>
+      <div>
+        <h4>Site</h4>
+        <a href="/">Home</a>
+        <a href="/#all-tools">All Tools</a>
+        <a href="/sitemap.xml">Sitemap</a>
+      </div>
+    </div>
+    <div class="f-bottom">© 2026 ToolNest · Free tools for everyone · Made with care</div>
+  </div>
+</footer>
+
+<script src="/assets/site.js?v=5"></script>
+
+<script>
+/* Project Deadline Tracker — milestones with done toggles, progress %, days left, localStorage. */
+(function () {
+  'use strict';
+  var SLUG = 'project-deadline-tracker';
+  var KEY = 'tn_project_deadline_v1';
+  var $ = function (id) { return TN.el(SLUG + '-' + id); };
+
+  var state = { name: '', deadline: '', milestones: [] };
+
+  function esc(s) {
+    return String(s).replace(/[&<>"']/g, function (c) {
+      return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c];
+    });
+  }
+
+  function load() {
+    try {
+      var raw = localStorage.getItem(KEY);
+      if (raw) { var p = JSON.parse(raw); if (p && typeof p === 'object') state = p; }
+      if (!Array.isArray(state.milestones)) state.milestones = [];
+    } catch (e) {}
+  }
+
+  function save() {
+    state.name = $('name').value;
+    state.deadline = $('deadline').value;
+    try { localStorage.setItem(KEY, JSON.stringify(state)); } catch (e) {}
+  }
+
+  function parseDate(v) {
+    var m = /^(\d{4})-(\d{2})-(\d{2})$/.exec(v || '');
+    if (!m) return null;
+    var d = new Date(+m[1], +m[2] - 1, +m[3]);
+    if (d.getFullYear() !== +m[1] || d.getMonth() !== +m[2] - 1 || d.getDate() !== +m[3]) return null;
+    return d;
+  }
+
+  function fmtDate(v) {
+    var d = parseDate(v);
+    if (!d) return '—';
+    return d.toLocaleDateString(undefined, { year: 'numeric', month: 'short', day: 'numeric' });
+  }
+
+  function render() {
+    var today = new Date(); today.setHours(0, 0, 0, 0);
+    // days left
+    var dl = parseDate($('deadline').value || state.deadline);
+    if (dl) {
+      var days = Math.round((dl.getTime() - today.getTime()) / 86400000);
+      $('daysleft').textContent = days;
+      $('daysleft').style.color = days < 0 ? '#c62828' : (days <= 7 ? '#ef6c00' : '');
+    } else {
+      $('daysleft').textContent = '—';
+    }
+    // progress
+    var total = state.milestones.length;
+    var done = state.milestones.filter(function (m) { return m.done; }).length;
+    var pct = total ? Math.round(done / total * 100) : 0;
+    $('progress').textContent = pct + '%';
+    $('done').textContent = done + ' / ' + total;
+    $('bar').style.width = pct + '%';
+    // list sorted by date
+    var sorted = state.milestones.slice().sort(function (a, b) {
+      return (a.date || '9999') < (b.date || '9999') ? -1 : 1;
+    });
+    var html = '';
+    if (!sorted.length) html = '<p class="muted">No milestones yet — add the first one above.</p>';
+    sorted.forEach(function (m) {
+      var dd = parseDate(m.date);
+      var daysTxt = '';
+      if (dd) {
+        var d = Math.round((dd.getTime() - today.getTime()) / 86400000);
+        daysTxt = d < 0 ? '<span style="color:#c62828">overdue</span>' :
+          d === 0 ? '<span style="color:#ef6c00">today</span>' : d + 'd left';
+      }
+      html += '<div style="display:flex;align-items:center;gap:10px;border:1px solid #e0e0e0;border-radius:8px;padding:8px 12px;margin-bottom:8px;' +
+        (m.done ? 'background:#f1f8e9' : '') + '">' +
+        '<input type="checkbox" class="ms-done" data-id="' + m.id + '"' + (m.done ? ' checked' : '') + ' aria-label="Mark done">' +
+        '<div style="flex:1;min-width:0' + (m.done ? ';text-decoration:line-through;color:#777' : '') + '"><strong>' + esc(m.name) + '</strong><br><span class="muted">' + esc(fmtDate(m.date)) + ' · ' + daysTxt + '</span></div>' +
+        '<button class="btn btn-outline ms-del" data-id="' + m.id + '" style="padding:4px 10px" aria-label="Delete milestone">✕</button></div>';
+    });
+    $('list').innerHTML = html;
+    TN.qsa('.ms-done', $('list')).forEach(function (cb) {
+      cb.addEventListener('change', function () {
+        var id = cb.getAttribute('data-id');
+        state.milestones.forEach(function (m) { if (String(m.id) === id) m.done = cb.checked; });
+        save(); render();
+      });
+    });
+    TN.qsa('.ms-del', $('list')).forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        var id = btn.getAttribute('data-id');
+        state.milestones = state.milestones.filter(function (m) { return String(m.id) !== id; });
+        save(); render();
+      });
+    });
+  }
+
+  function addMilestone() {
+    TN.clearErr(SLUG + '-error');
+    var name = ($('mname').value || '').trim();
+    var date = $('mdate').value;
+    if (!name) { TN.setErr(SLUG + '-error', 'Please enter a milestone name.'); return; }
+    if (!parseDate(date)) { TN.setErr(SLUG + '-error', 'Please pick a valid target date.'); return; }
+    state.milestones.push({ id: Date.now() + '' + Math.floor(Math.random() * 1000), name: name, date: date, done: false });
+    $('mname').value = ''; $('mdate').value = '';
+    save(); render();
+  }
+
+  try {
+    load();
+    $('name').value = state.name || '';
+    $('deadline').value = state.deadline || '';
+    render();
+    TN.on(SLUG + '-addm', 'click', addMilestone);
+    TN.on(SLUG + '-name', 'input', function () { save(); render(); });
+    TN.on(SLUG + '-deadline', 'change', function () { save(); render(); });
+  } catch (e) { /* never throw on load */ }
+})();
+
+</script>
+</body>
+</html>

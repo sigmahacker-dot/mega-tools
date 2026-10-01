@@ -1,0 +1,22 @@
+<div class="tool-card" style="text-align:center">
+  <div class="grid2" style="max-width:520px;margin:0 auto 12px;text-align:left">
+    <div class="field">
+      <label for="audio-visualizer-source">Sound source</label>
+      <select class="select" id="audio-visualizer-source">
+        <option value="mic">🎤 Microphone</option>
+        <option value="file">📁 Upload audio file</option>
+      </select>
+    </div>
+    <div class="field hidden" id="audio-visualizer-filefield">
+      <label for="audio-visualizer-file">Audio file</label>
+      <input type="file" id="audio-visualizer-file" accept="audio/*" class="input">
+    </div>
+  </div>
+  <canvas id="audio-visualizer-canvas" style="width:100%;max-width:720px;height:220px;border-radius:8px;background:#000"></canvas>
+  <div class="btn-row" style="justify-content:center;margin-top:12px">
+    <button class="btn btn-primary" id="audio-visualizer-start">Start</button>
+    <button class="btn btn-outline" id="audio-visualizer-stop">Stop</button>
+  </div>
+  <div class="error" id="audio-visualizer-error"></div>
+  <p class="note">Microphone audio is processed locally and never recorded or sent anywhere. Files never leave your device — everything is processed in your browser.</p>
+</div>

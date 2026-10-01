@@ -1,0 +1,44 @@
+<div class="tool-card">
+  <h2>CSS Pattern Generator</h2>
+  <p class="muted">Seamless CSS background patterns from pure gradients — no images.</p>
+  <div class="grid2">
+    <div class="field">
+      <label for="pattern-generator-pattern">Pattern</label>
+      <select class="input" id="pattern-generator-pattern">
+        <option value="dots">Dots</option>
+        <option value="stripes">Stripes</option>
+        <option value="checker">Checkerboard</option>
+        <option value="zigzag">Zigzag</option>
+        <option value="grid">Grid</option>
+      </select>
+    </div>
+    <div class="field">
+      <label for="pattern-generator-size">Tile size: <span id="pattern-generator-size-v">24px</span></label>
+      <input type="range" class="input" id="pattern-generator-size" min="8" max="80" step="2" value="24">
+    </div>
+    <div class="field">
+      <label for="pattern-generator-fg">Pattern color</label>
+      <input type="color" class="input" id="pattern-generator-fg" value="#7c3aed" style="height:44px;padding:4px">
+    </div>
+    <div class="field">
+      <label for="pattern-generator-bg">Background color</label>
+      <input type="color" class="input" id="pattern-generator-bg" value="#f3f4f6" style="height:44px;padding:4px">
+    </div>
+    <div class="field">
+      <label for="pattern-generator-density">Density: <span id="pattern-generator-density-v">50%</span></label>
+      <input type="range" class="input" id="pattern-generator-density" min="10" max="90" step="5" value="50">
+    </div>
+    <div class="field">
+      <label for="pattern-generator-angle">Stripe angle: <span id="pattern-generator-angle-v">45°</span></label>
+      <input type="range" class="input" id="pattern-generator-angle" min="0" max="90" step="1" value="45">
+    </div>
+  </div>
+  <h3>Live preview</h3>
+  <div class="preview" id="pattern-generator-stage" style="min-height:220px"></div>
+  <div class="btn-row mt">
+    <button class="btn btn-primary" id="pattern-generator-copy">Copy CSS</button>
+  </div>
+  <h3 class="mt">Generated CSS</h3>
+  <pre class="code" id="pattern-generator-code"></pre>
+  <div class="error" id="pattern-generator-error"></div>
+</div>

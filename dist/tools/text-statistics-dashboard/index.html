@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Text Statistics Dashboard — Free Online | ToolNest</title>
+<meta name="description" content="A full text dashboard: word/char counts, reading &amp; speaking time, avg word length and a top-10 word frequency table.">
+<meta name="keywords" content="text statistics, word frequency counter, reading time calculator, text analyzer, word count tool">
+<link rel="canonical" href="https://toolnest.vercel.app/tools/text-statistics-dashboard/">
+<meta name="theme-color" content="#07070b">
+<meta property="og:title" content="Text Statistics Dashboard — Free Online | ToolNest">
+<meta property="og:description" content="A full text dashboard: word/char counts, reading &amp; speaking time, avg word length and a top-10 word frequency table.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css?v=4">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%23e01111'/><text x='50' y='68' font-size='58' text-anchor='middle' fill='white' font-family='Arial' font-weight='bold'>T</text></svg>">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebApplication","name":"Text Statistics Dashboard","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0"},"url":"https://toolnest.vercel.app/tools/text-statistics-dashboard/","description":"A full text dashboard: word/char counts, reading & speaking time, avg word length and a top-10 word frequency table."},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How are reading and speaking times calculated?","acceptedAnswer":{"@type":"Answer","text":"Reading time assumes 200 words per minute; speaking time assumes 130 words per minute."}},{"@type":"Question","name":"What is in the frequency table?","acceptedAnswer":{"@type":"Answer","text":"The table lists the 10 most common words with counts and percentages, ignoring case."}},{"@type":"Question","name":"Is my text uploaded anywhere?","acceptedAnswer":{"@type":"Answer","text":"No — every stat is computed locally in your browser; nothing leaves your device."}}]}]}</script>
+</head>
+<body>
+<header class="site-header">
+  <div class="container">
+    <a class="logo" href="/"><span class="logo-mark">T</span> ToolNest</a>
+    <div class="header-right">
+      <form class="nav-search" action="/" method="get" role="search">
+        <span class="ns-icon">🔍</span>
+        <input type="search" name="q" placeholder="Search tools…" aria-label="Search tools" autocomplete="off">
+      </form>
+      <div class="menu-wrap">
+        <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="menuPanel" aria-label="Open menu"><span></span><span></span><span></span></button>
+        <nav class="menu-panel" id="menuPanel" aria-label="Site">
+          <a href="/">Home</a>
+          <a href="/#categories">Categories</a>
+          <a href="/#all-tools">All Tools</a>
+        </nav>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ADSTERRA-HEADER: paste your Adsterra banner ad code inside the div below -->
+<div class="container"><div class="ad-slot ad-leaderboard" data-ad="header"></div></div>
+
+<main class="container">
+  <nav class="crumbs"><a href="/">Home</a> &rsaquo; <a href="/#text">Text &amp; Writing</a> &rsaquo; Text Statistics Dashboard</nav>
+  <div class="tool-hero">
+    <h1>Text Statistics Dashboard</h1>
+    <p>A full text dashboard: word/char counts, reading &amp; speaking time, avg word length and a top-10 word frequency table.</p>
+  </div>
+
+  <div class="tool-card">
+  <div class="field">
+    <label for="text-statistics-dashboard-input">Your text</label>
+    <textarea class="textarea" id="text-statistics-dashboard-input" rows="8" placeholder="Paste your text here"></textarea>
+  </div>
+  <div class="stat-cards">
+    <div class="stat-card"><div class="v" id="text-statistics-dashboard-words">0</div><div class="l">Words</div></div>
+    <div class="stat-card"><div class="v" id="text-statistics-dashboard-chars">0</div><div class="l">Characters</div></div>
+    <div class="stat-card"><div class="v" id="text-statistics-dashboard-charsnospace">0</div><div class="l">Chars (no spaces)</div></div>
+    <div class="stat-card"><div class="v" id="text-statistics-dashboard-sents">0</div><div class="l">Sentences</div></div>
+    <div class="stat-card"><div class="v" id="text-statistics-dashboard-paras">0</div><div class="l">Paragraphs</div></div>
+    <div class="stat-card"><div class="v" id="text-statistics-dashboard-read">0s</div><div class="l">Reading time</div></div>
+    <div class="stat-card"><div class="v" id="text-statistics-dashboard-speak">0s</div><div class="l">Speaking time</div></div>
+    <div class="stat-card"><div class="v" id="text-statistics-dashboard-avglen">0</div><div class="l">Avg word length</div></div>
+  </div>
+  <div class="field">
+    <label>Top 10 words</label>
+    <div class="result"><div class="data" id="text-statistics-dashboard-top10"></div></div>
+  </div>
+  <div class="error" id="text-statistics-dashboard-error"></div>
+</div>
+
+
+  <!-- ADSTERRA-INCONTENT: paste your Adsterra native/in-content ad code inside the div below -->
+  <div class="ad-slot" data-ad="incontent"></div>
+
+  <div class="info-grid">
+    <div class="info-card">
+      <h2>📖 How to use</h2>
+      <ol><li>Paste your text.</li><li>Stats update automatically.</li><li>Review counts, times and the top-10 words.</li></ol>
+    </div>
+    <div class="info-card">
+      <h2>❓ Frequently asked questions</h2>
+      <div class="faq"><details><summary>How are reading and speaking times calculated?</summary><p>Reading time assumes 200 words per minute; speaking time assumes 130 words per minute.</p></details><details><summary>What is in the frequency table?</summary><p>The table lists the 10 most common words with counts and percentages, ignoring case.</p></details><details><summary>Is my text uploaded anywhere?</summary><p>No — every stat is computed locally in your browser; nothing leaves your device.</p></details></div>
+    </div>
+  </div>
+
+  <section class="section">
+    <h2>🔗 Related tools</h2>
+    <div class="tool-grid"><a class="tool-link" href="/tools/acronym-generator/" data-search="acronym generator turn any phrase into an acronym instantly — first letters, with options to skip small words, add periods and force uppercase. acronym generator make acronym from words initialism generator phrase to acronym"><span class="t-ico">✍️</span><span class="t-body"><b>Acronym Generator</b><small>Turn any phrase into an acronym instantly — first letters, with options to skip small words,…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/acrostic-poem-generator/" data-search="acrostic poem generator turn any word into an acrostic poem — one poetic line per letter from built-in line banks. acrostic poem generator acrostic generator name poem acrostic maker poem from word"><span class="t-ico">✍️</span><span class="t-body"><b>Acrostic Poem Generator</b><small>Turn any word into an acrostic poem — one poetic line per letter from built-in line banks.</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/aes-text-encryptor/" data-search="aes text encryptor encrypt text with real aes-256-gcm using a password-derived key (pbkdf2), fully in your browser. aes encrypt text encrypt message password aes-gcm online"><span class="t-ico">✍️</span><span class="t-body"><b>AES Text Encryptor</b><small>Encrypt text with real AES-256-GCM using a password-derived key (PBKDF2), fully in your brow…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/alliteration-generator/" data-search="alliteration generator generate alliterative phrases — pick a letter and a theme, get tongue-twisting word combos. alliteration generator alliteration examples tongue twister generator alliterative phrases letter phrases"><span class="t-ico">✍️</span><span class="t-body"><b>Alliteration Generator</b><small>Generate alliterative phrases — pick a letter and a theme, get tongue-twisting word combos.</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/anagram-generator/" data-search="anagram generator find every real anagram of your word — all unique permutations checked against a built-in word list. anagram generator anagram solver find anagrams anagram finder word unscrambler"><span class="t-ico">✍️</span><span class="t-body"><b>Anagram Generator</b><small>Find every real anagram of your word — all unique permutations checked against a built-in wo…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/article-rewriter/" data-search="article rewriter rewrite articles with a built-in synonym engine covering 130+ common english words. whole-word replacement with capitalization preserved and a change report. article rewriter paraphrasing tool rewrite text online"><span class="t-ico">✍️</span><span class="t-body"><b>Article Rewriter</b><small>Rewrite articles with a built-in synonym engine covering 130+ common English words. Whole-wo…</small></span><span class="t-arrow">→</span></a></div>
+  </section>
+</main>
+
+<!-- ADSTERRA-FOOTER: paste your Adsterra footer/banner ad code inside the div below -->
+<div class="container"><div class="ad-slot" data-ad="footer"></div></div>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="f-grid">
+      <div>
+        <span class="brandline"><span class="logo-mark">T</span> ToolNest</span>
+        <p>Free online tools that actually work. No sign-up, no watermarks — and your files never leave your device for client-side tools.</p>
+      </div>
+      <div>
+        <h4>Popular</h4>
+        <a href="/tools/qr-code-generator/">QR Code Generator</a>
+        <a href="/tools/background-remover/">Background Remover</a>
+        <a href="/tools/pdf-merger/">PDF Merger</a>
+        <a href="/tools/word-counter/">Word Counter</a>
+      </div>
+      <div>
+        <h4>Categories</h4>
+        <a href="/#image">Image Tools</a>
+        <a href="/#pdf">PDF &amp; Documents</a>
+        <a href="/#calculators">Calculators</a>
+        <a href="/#developer">Developer Tools</a>
+      </div>
+      <div>
+        <h4>Site</h4>
+        <a href="/">Home</a>
+        <a href="/#all-tools">All Tools</a>
+        <a href="/sitemap.xml">Sitemap</a>
+      </div>
+    </div>
+    <div class="f-bottom">© 2026 ToolNest · Free tools for everyone · Made with care</div>
+  </div>
+</footer>
+
+<script src="/assets/site.js?v=5"></script>
+
+<script>
+/* Text Statistics Dashboard — full counts, reading/speaking time, top-10 words. */
+(function () {
+  'use strict';
+  var SLUG = 'text-statistics-dashboard';
+
+  function wordsOf(text) {
+    var m = text.toLowerCase().match(/[a-z0-9\u00C0-\u024F']+/g);
+    return m ? m : [];
+  }
+  function sentencesOf(text) {
+    var m = text.replace(/\b(Mr|Mrs|Ms|Dr|St|Jr|Sr|vs|etc|i\.e|e\.g)\./gi, '$1@DOT@')
+      .match(/[^.!?]+[.!?]+["'”’)]?\s*|[^.!?]+$/g);
+    if (!m) return [];
+    return m.filter(function (s) { return s.replace(/@DOT@/g, '.').trim().length > 0; });
+  }
+  function fmtTime(minutes) {
+    var total = Math.round(minutes * 60);
+    if (total < 60) return total + 's';
+    var m = Math.floor(total / 60), s = total % 60;
+    return m + 'm ' + s + 's';
+  }
+
+  function update() {
+    TN.clearErr(SLUG + '-error');
+    var text = TN.el(SLUG + '-input').value;
+    var words = wordsOf(text);
+    var chars = text.length;
+    var charsNoSpace = text.replace(/\s/g, '').length;
+    var sents = sentencesOf(text).length;
+    var paras = text.trim() ? text.trim().split(/\n\s*\n/).filter(function (p) { return p.trim(); }).length : 0;
+    var letterSum = 0;
+    words.forEach(function (w) { letterSum += w.replace(/[^a-z0-9\u00C0-\u024F]/g, '').length; });
+
+    TN.el(SLUG + '-words').textContent = words.length;
+    TN.el(SLUG + '-chars').textContent = chars;
+    TN.el(SLUG + '-charsnospace').textContent = charsNoSpace;
+    TN.el(SLUG + '-sents').textContent = sents;
+    TN.el(SLUG + '-paras').textContent = paras;
+    TN.el(SLUG + '-read').textContent = fmtTime(words.length / 200);
+    TN.el(SLUG + '-speak').textContent = fmtTime(words.length / 130);
+    TN.el(SLUG + '-avglen').textContent = words.length ? (letterSum / words.length).toFixed(1) : '0';
+
+    var freq = {};
+    words.forEach(function (w) {
+      var clean = w.replace(/^'+|'+$/g, '');
+      if (clean) freq[clean] = (freq[clean] || 0) + 1;
+    });
+    var sorted = Object.keys(freq).sort(function (a, b) { return freq[b] - freq[a]; }).slice(0, 10);
+    var box = TN.el(SLUG + '-top10');
+    if (!sorted.length) { box.textContent = '—'; return; }
+    var html = '<table style="width:100%;border-collapse:collapse;font-size:0.9em"><tr><th style="text-align:left;padding:4px">#</th><th style="text-align:left;padding:4px">Word</th><th style="text-align:right;padding:4px">Count</th><th style="text-align:right;padding:4px">%</th></tr>';
+    sorted.forEach(function (w, i) {
+      var pct = (freq[w] / words.length * 100).toFixed(1);
+      html += '<tr><td style="padding:4px">' + (i + 1) + '</td><td style="padding:4px">' +
+        TN.esc(w) + '</td><td style="padding:4px;text-align:right">' + freq[w] +
+        '</td><td style="padding:4px;text-align:right">' + pct + '%</td></tr>';
+    });
+    box.innerHTML = html + '</table>';
+  }
+
+  try {
+    TN.on(SLUG + '-input', 'input', update);
+    update();
+  } catch (e) { /* never throw on load */ }
+})();
+
+</script>
+</body>
+</html>

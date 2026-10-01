@@ -1,0 +1,39 @@
+<div class="tool-card">
+  <div class="grid2">
+    <div class="field">
+      <label for="business-days-calculator-start">Start date</label>
+      <input class="input" type="date" id="business-days-calculator-start">
+    </div>
+    <div class="field">
+      <label for="business-days-calculator-end">End date</label>
+      <input class="input" type="date" id="business-days-calculator-end">
+    </div>
+  </div>
+  <div class="grid2">
+    <div class="field">
+      <label for="business-days-calculator-weekend">Weekend days</label>
+      <select class="input" id="business-days-calculator-weekend">
+        <option value="0,6">Saturday – Sunday</option>
+        <option value="5,6">Friday – Saturday</option>
+        <option value="4,5">Thursday – Friday</option>
+        <option value="6,0">Sunday only</option>
+      </select>
+    </div>
+    <div class="field">
+      <label for="business-days-calculator-holidays">Holidays (one per line, YYYY-MM-DD)</label>
+      <textarea class="textarea" id="business-days-calculator-holidays" rows="2" placeholder="2026-12-25&#10;2027-01-01"></textarea>
+    </div>
+  </div>
+  <p class="hint">Only holidays that fall on a working day inside the range are subtracted.</p>
+  <div class="btn-row">
+    <button class="btn btn-primary" id="business-days-calculator-calc">Calculate</button>
+  </div>
+  <div class="stat-cards">
+    <div class="stat-card"><div class="v" id="business-days-calculator-business">—</div><div class="l">Business days</div></div>
+    <div class="stat-card"><div class="v" id="business-days-calculator-total">—</div><div class="l">Total days</div></div>
+    <div class="stat-card"><div class="v" id="business-days-calculator-weekend">—</div><div class="l">Weekend days</div></div>
+    <div class="stat-card"><div class="v" id="business-days-calculator-hol">—</div><div class="l">Holidays</div></div>
+  </div>
+  <div class="result" id="business-days-calculator-breakdown"></div>
+  <div class="error" id="business-days-calculator-error"></div>
+</div>

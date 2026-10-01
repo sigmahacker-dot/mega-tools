@@ -1,0 +1,58 @@
+<div class="tool-card">
+  <div class="field">
+    <label>Permission bits</label>
+    <div style="overflow-x:auto">
+      <table class="data" id="chmod-calculator-grid" style="margin:0 auto">
+        <thead><tr><th></th><th>Read</th><th>Write</th><th>Execute</th></tr></thead>
+        <tbody>
+          <tr><td><strong>User</strong></td>
+            <td><input type="checkbox" id="chmod-calculator-u-r" aria-label="User read"></td>
+            <td><input type="checkbox" id="chmod-calculator-u-w" aria-label="User write"></td>
+            <td><input type="checkbox" id="chmod-calculator-u-x" aria-label="User execute"></td></tr>
+          <tr><td><strong>Group</strong></td>
+            <td><input type="checkbox" id="chmod-calculator-g-r" aria-label="Group read"></td>
+            <td><input type="checkbox" id="chmod-calculator-g-w" aria-label="Group write"></td>
+            <td><input type="checkbox" id="chmod-calculator-g-x" aria-label="Group execute"></td></tr>
+          <tr><td><strong>Other</strong></td>
+            <td><input type="checkbox" id="chmod-calculator-o-r" aria-label="Other read"></td>
+            <td><input type="checkbox" id="chmod-calculator-o-w" aria-label="Other write"></td>
+            <td><input type="checkbox" id="chmod-calculator-o-x" aria-label="Other execute"></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div class="field">
+    <label>Special bits</label>
+    <div class="btn-row">
+      <label class="checkbox-row"><input type="checkbox" id="chmod-calculator-setuid"> setuid (4)</label>
+      <label class="checkbox-row"><input type="checkbox" id="chmod-calculator-setgid"> setgid (2)</label>
+      <label class="checkbox-row"><input type="checkbox" id="chmod-calculator-sticky"> sticky (1)</label>
+    </div>
+  </div>
+  <div class="grid2">
+    <div class="field">
+      <label for="chmod-calculator-octal">Octal</label>
+      <input class="input" id="chmod-calculator-octal" value="755" maxlength="4">
+    </div>
+    <div class="field">
+      <label for="chmod-calculator-symbolic">Symbolic</label>
+      <input class="input" id="chmod-calculator-symbolic" value="rwxr-xr-x" maxlength="9">
+    </div>
+  </div>
+  <div class="error" id="chmod-calculator-error"></div>
+  <div class="result">
+    <div class="field">
+      <label for="chmod-calculator-cmd">chmod command</label>
+      <div class="copy-row">
+        <code class="code" id="chmod-calculator-cmd" style="flex:1"></code>
+        <button class="btn btn-outline" id="chmod-calculator-copy">Copy</button>
+      </div>
+    </div>
+  </div>
+  <div class="btn-row">
+    <button class="btn btn-outline" id="chmod-calculator-preset-755">755</button>
+    <button class="btn btn-outline" id="chmod-calculator-preset-644">644</button>
+    <button class="btn btn-outline" id="chmod-calculator-preset-600">600</button>
+    <button class="btn btn-outline" id="chmod-calculator-preset-777">777</button>
+  </div>
+</div>

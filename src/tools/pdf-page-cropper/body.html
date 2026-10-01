@@ -1,0 +1,42 @@
+<div class="tool-card">
+  <h2>PDF Page Cropper</h2>
+  <p class="muted">Trim margins by setting the PDF crop box — content is hidden, not deleted.</p>
+  <div class="field">
+    <label for="pdf-page-cropper-file">PDF file</label>
+    <input type="file" class="input" id="pdf-page-cropper-file" accept=".pdf,application/pdf">
+  </div>
+  <div class="grid2">
+    <div class="field">
+      <label for="pdf-page-cropper-top">Top margin (in)</label>
+      <input type="number" class="input" id="pdf-page-cropper-top" min="0" max="5" step="0.05" value="0.5">
+    </div>
+    <div class="field">
+      <label for="pdf-page-cropper-right">Right margin (in)</label>
+      <input type="number" class="input" id="pdf-page-cropper-right" min="0" max="5" step="0.05" value="0.5">
+    </div>
+    <div class="field">
+      <label for="pdf-page-cropper-bottom">Bottom margin (in)</label>
+      <input type="number" class="input" id="pdf-page-cropper-bottom" min="0" max="5" step="0.05" value="0.5">
+    </div>
+    <div class="field">
+      <label for="pdf-page-cropper-left">Left margin (in)</label>
+      <input type="number" class="input" id="pdf-page-cropper-left" min="0" max="5" step="0.05" value="0.5">
+    </div>
+    <div class="field" style="grid-column:1/-1">
+      <label for="pdf-page-cropper-pages">Pages <span class="muted">(e.g. 1-3,5 — empty = all pages)</span></label>
+      <input type="text" class="input" id="pdf-page-cropper-pages" placeholder="1-3,5">
+    </div>
+  </div>
+  <h3>Margin preview</h3>
+  <div class="preview" style="display:flex;justify-content:center">
+    <div style="position:relative;width:200px;height:280px;border:2px solid #94a3b8;border-radius:4px;background:#f8fafc" id="pdf-page-cropper-prev">
+      <div id="pdf-page-cropper-crop" style="position:absolute;border:3px dashed #e11d48;background:rgba(225,29,72,.08)"></div>
+    </div>
+  </div>
+  <div class="btn-row mt">
+    <button class="btn btn-primary" id="pdf-page-cropper-go" disabled>Crop &amp; Download</button>
+  </div>
+  <div class="error" id="pdf-page-cropper-error"></div>
+  <div class="result hidden" id="pdf-page-cropper-result"></div>
+  <p class="note">Files never leave your device — everything is processed in your browser.</p>
+</div>

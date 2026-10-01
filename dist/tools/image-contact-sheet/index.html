@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Image Contact Sheet — Free Online | ToolNest</title>
+<meta name="description" content="Combine many photos into a single contact-sheet grid with adjustable columns.">
+<meta name="keywords" content="contact sheet maker, photo grid, image collage grid, combine photos">
+<link rel="canonical" href="https://toolnest.vercel.app/tools/image-contact-sheet/">
+<meta name="theme-color" content="#07070b">
+<meta property="og:title" content="Image Contact Sheet — Free Online | ToolNest">
+<meta property="og:description" content="Combine many photos into a single contact-sheet grid with adjustable columns.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css?v=4">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%23e01111'/><text x='50' y='68' font-size='58' text-anchor='middle' fill='white' font-family='Arial' font-weight='bold'>T</text></svg>">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebApplication","name":"Image Contact Sheet","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0"},"url":"https://toolnest.vercel.app/tools/image-contact-sheet/","description":"Combine many photos into a single contact-sheet grid with adjustable columns."},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How does the contact sheet work?","acceptedAnswer":{"@type":"Answer","text":"Upload any number of images; they are arranged into a neat grid with labels."}},{"@type":"Question","name":"How many columns can I choose?","acceptedAnswer":{"@type":"Answer","text":"2 to 5 columns — the tool picks a layout that fits all your images."}},{"@type":"Question","name":"What format is the download?","acceptedAnswer":{"@type":"Answer","text":"A lossless PNG."}}]}]}</script>
+</head>
+<body>
+<header class="site-header">
+  <div class="container">
+    <a class="logo" href="/"><span class="logo-mark">T</span> ToolNest</a>
+    <div class="header-right">
+      <form class="nav-search" action="/" method="get" role="search">
+        <span class="ns-icon">🔍</span>
+        <input type="search" name="q" placeholder="Search tools…" aria-label="Search tools" autocomplete="off">
+      </form>
+      <div class="menu-wrap">
+        <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="menuPanel" aria-label="Open menu"><span></span><span></span><span></span></button>
+        <nav class="menu-panel" id="menuPanel" aria-label="Site">
+          <a href="/">Home</a>
+          <a href="/#categories">Categories</a>
+          <a href="/#all-tools">All Tools</a>
+        </nav>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ADSTERRA-HEADER: paste your Adsterra banner ad code inside the div below -->
+<div class="container"><div class="ad-slot ad-leaderboard" data-ad="header"></div></div>
+
+<main class="container">
+  <nav class="crumbs"><a href="/">Home</a> &rsaquo; <a href="/#image">Image Tools</a> &rsaquo; Image Contact Sheet</nav>
+  <div class="tool-hero">
+    <h1>Image Contact Sheet</h1>
+    <p>Combine many photos into a single contact-sheet grid with adjustable columns.</p>
+  </div>
+
+  <div class="tool-card">
+  <div class="dropzone" id="image-contact-sheet-drop">
+    <span class="dz-icon">🖼️</span>
+    <strong>Drop images here</strong> or click to browse (multiple)
+    <input type="file" id="image-contact-sheet-file" accept="image/*" multiple class="hidden">
+  </div>
+  <ul class="file-list" id="image-contact-sheet-list"></ul>
+  <div class="grid2">
+    <div class="field">
+      <label for="image-contact-sheet-cols">Columns</label>
+      <select class="select" id="image-contact-sheet-cols">
+        <option value="2">2 columns</option>
+        <option value="3" selected>3 columns</option>
+        <option value="4">4 columns</option>
+        <option value="5">5 columns</option>
+      </select>
+    </div>
+    <div class="field">
+      <label for="image-contact-sheet-size">Cell size: <span id="image-contact-sheet-size-val">400</span>px</label>
+      <input type="range" id="image-contact-sheet-size" min="200" max="800" step="50" value="400">
+    </div>
+  </div>
+  <div class="btn-row">
+    <button class="btn btn-primary" id="image-contact-sheet-build">Build contact sheet</button>
+    <button class="btn btn-outline hidden" id="image-contact-sheet-download">Download PNG</button>
+  </div>
+  <div class="preview hidden" id="image-contact-sheet-wrap" style="text-align:center">
+    <canvas id="image-contact-sheet-canvas" style="max-width:100%;height:auto;border-radius:8px"></canvas>
+  </div>
+  <div class="error" id="image-contact-sheet-error"></div>
+  <p class="note">Files never leave your device — everything is processed in your browser.</p>
+</div>
+
+  <!-- ADSTERRA-INCONTENT: paste your Adsterra native/in-content ad code inside the div below -->
+  <div class="ad-slot" data-ad="incontent"></div>
+
+  <div class="info-grid">
+    <div class="info-card">
+      <h2>📖 How to use</h2>
+      <ol><li>Drop multiple images into the tool.</li><li>Choose the number of columns.</li><li>Click Download PNG to save the contact sheet.</li></ol>
+    </div>
+    <div class="info-card">
+      <h2>❓ Frequently asked questions</h2>
+      <div class="faq"><details><summary>How does the contact sheet work?</summary><p>Upload any number of images; they are arranged into a neat grid with labels.</p></details><details><summary>How many columns can I choose?</summary><p>2 to 5 columns — the tool picks a layout that fits all your images.</p></details><details><summary>What format is the download?</summary><p>A lossless PNG.</p></details></div>
+    </div>
+  </div>
+
+  <section class="section">
+    <h2>🔗 Related tools</h2>
+    <div class="tool-grid"><a class="tool-link" href="/tools/app-icon-resizer/" data-search="app icon resizer generate every common app icon size from one image — 16, 32, 48, 180, 192 and 512 px — with instant preview and one-click png downloads. app icon resizer icon generator favicon sizes pwa icon apple touch icon generator"><span class="t-ico">🖼️</span><span class="t-body"><b>App Icon Resizer</b><small>Generate every common app icon size from one image — 16, 32, 48, 180, 192 and 512 px — with …</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/background-remover/" data-search="background remover remove the background from any photo with real on-device ai and download a transparent png. free, private and unlimited — no sign-up needed. background remover remove image background transparent png maker"><span class="t-ico">🖼️</span><span class="t-body"><b>Background Remover</b><small>Remove the background from any photo with real on-device AI and download a transparent PNG. …</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/before-after-slider-maker/" data-search="before/after slider maker upload two photos and get a standalone before/after comparison slider as an html file. before after slider image comparison slider photo compare html before after html"><span class="t-ico">🖼️</span><span class="t-body"><b>Before/After Slider Maker</b><small>Upload two photos and get a standalone before/after comparison slider as an HTML file.</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/business-card-maker/" data-search="business card maker design a business card front (1050×600): your name, role and contact details, color themes, live preview, and a png download. business card maker business card design business card png visiting card maker card designer"><span class="t-ico">🖼️</span><span class="t-body"><b>Business Card Maker</b><small>Design a business card front (1050×600): your name, role and contact details, color themes, …</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/certificate-maker/" data-search="certificate maker design printable certificates: recipient name, course title, date and signature line, live preview, and a high-res png download. certificate maker certificate generator certificate png award certificate maker printable certificate"><span class="t-ico">🖼️</span><span class="t-body"><b>Certificate Maker</b><small>Design printable certificates: recipient name, course title, date and signature line, live p…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/favicon-generator/" data-search="favicon generator generate a complete png favicon set (16–512 px) from your logo in one click, download it as a zip, and copy the ready-to-paste html link tags. favicon generator favicon maker png favicon"><span class="t-ico">🖼️</span><span class="t-body"><b>Favicon Generator</b><small>Generate a complete PNG favicon set (16–512 px) from your logo in one click, download it as …</small></span><span class="t-arrow">→</span></a></div>
+  </section>
+</main>
+
+<!-- ADSTERRA-FOOTER: paste your Adsterra footer/banner ad code inside the div below -->
+<div class="container"><div class="ad-slot" data-ad="footer"></div></div>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="f-grid">
+      <div>
+        <span class="brandline"><span class="logo-mark">T</span> ToolNest</span>
+        <p>Free online tools that actually work. No sign-up, no watermarks — and your files never leave your device for client-side tools.</p>
+      </div>
+      <div>
+        <h4>Popular</h4>
+        <a href="/tools/qr-code-generator/">QR Code Generator</a>
+        <a href="/tools/background-remover/">Background Remover</a>
+        <a href="/tools/pdf-merger/">PDF Merger</a>
+        <a href="/tools/word-counter/">Word Counter</a>
+      </div>
+      <div>
+        <h4>Categories</h4>
+        <a href="/#image">Image Tools</a>
+        <a href="/#pdf">PDF &amp; Documents</a>
+        <a href="/#calculators">Calculators</a>
+        <a href="/#developer">Developer Tools</a>
+      </div>
+      <div>
+        <h4>Site</h4>
+        <a href="/">Home</a>
+        <a href="/#all-tools">All Tools</a>
+        <a href="/sitemap.xml">Sitemap</a>
+      </div>
+    </div>
+    <div class="f-bottom">© 2026 ToolNest · Free tools for everyone · Made with care</div>
+  </div>
+</footer>
+
+<script src="/assets/site.js?v=5"></script>
+
+<script>
+/* Image Contact Sheet — grid of multiple images, PNG download. */
+(function () {
+  'use strict';
+  var SLUG = 'image-contact-sheet';
+  var files = [];
+  var imgs = [];
+
+  function canvas() { return TN.el(SLUG + '-canvas'); }
+  function cols() {
+    var el = TN.el(SLUG + '-cols');
+    return el ? Math.max(2, parseInt(el.value, 10) || 3) : 3;
+  }
+  function cellSize() {
+    var el = TN.el(SLUG + '-size');
+    return el ? Math.max(200, parseInt(el.value, 10) || 400) : 400;
+  }
+
+  function renderList() {
+    var ul = TN.el(SLUG + '-list');
+    if (!ul) return;
+    var html = '';
+    for (var i = 0; i < files.length; i++) {
+      html += '<li><span>' + TN.esc(files[i].name || 'image') +
+        ' <span class="muted">(' + TN.fmtBytes(files[i].size) + ')</span></span>' +
+        '<button class="btn btn-outline" data-rm="' + i + '">Remove</button></li>';
+    }
+    ul.innerHTML = html;
+  }
+
+  function addFiles(list) {
+    var added = 0;
+    for (var i = 0; i < list.length; i++) {
+      if ((list[i].type || '').indexOf('image/') === 0) { files.push(list[i]); added++; }
+    }
+    if (!added) TN.setErr(SLUG + '-error', 'No image files found in that selection.');
+    else TN.clearErr(SLUG + '-error');
+    renderList();
+  }
+
+  function build() {
+    TN.clearErr(SLUG + '-error');
+    if (!files.length) { TN.setErr(SLUG + '-error', 'Add some images first.'); return; }
+    var btn = TN.el(SLUG + '-build');
+    if (btn) btn.textContent = 'Building…';
+    var chain = Promise.resolve();
+    imgs = [];
+    files.forEach(function (f) {
+      chain = chain.then(function () {
+        return TN.readAsDataURL(f).then(TN.loadImage).then(function (im) {
+          imgs.push({ img: im, name: f.name || 'image' });
+        });
+      });
+    });
+    chain.then(function () {
+      drawSheet();
+      TN.show(SLUG + '-wrap');
+      TN.show(SLUG + '-download');
+      if (btn) btn.textContent = 'Build contact sheet';
+    }).catch(function () {
+      TN.setErr(SLUG + '-error', 'Could not read one of the images.');
+      if (btn) btn.textContent = 'Build contact sheet';
+    });
+  }
+
+  function drawSheet() {
+    var c = canvas(), x = c.getContext('2d');
+    var n = imgs.length, nc = cols(), nr = Math.ceil(n / nc);
+    var cell = cellSize(), pad = 16, labelH = 26, bg = '#18181b';
+    var labelH2 = labelH;
+    c.width = pad * 2 + nc * cell + (nc - 1) * pad;
+    c.height = pad * 2 + nr * (cell + labelH2) - labelH2 + pad;
+    x.fillStyle = bg;
+    x.fillRect(0, 0, c.width, c.height);
+    for (var i = 0; i < n; i++) {
+      var r = Math.floor(i / nc), col = i % nc;
+      var cx = pad + col * (cell + pad), cy = pad + r * (cell + labelH2 + pad);
+      var im = imgs[i].img;
+      var s = Math.min(cell / im.naturalWidth, cell / im.naturalHeight);
+      var dw = Math.round(im.naturalWidth * s), dh = Math.round(im.naturalHeight * s);
+      x.fillStyle = '#000';
+      x.fillRect(cx, cy, cell, cell);
+      x.drawImage(im, cx + (cell - dw) / 2, cy + (cell - dh) / 2, dw, dh);
+      x.fillStyle = '#e4e4e7';
+      x.font = '13px Arial, sans-serif';
+      x.textAlign = 'left';
+      x.textBaseline = 'middle';
+      var name = imgs[i].name;
+      if (name.length > 32) name = name.slice(0, 29) + '…';
+      x.fillText(name, cx, cy + cell + labelH2 / 2);
+    }
+  }
+
+  function download() {
+    canvas().toBlob(function (b) {
+      if (b) TN.download(b, 'contact-sheet.png');
+      else TN.setErr(SLUG + '-error', 'Your browser could not encode the PNG.');
+    }, 'image/png');
+  }
+
+  var dz = TN.el(SLUG + '-drop'), input = TN.el(SLUG + '-file');
+  if (dz && input) {
+    dz.addEventListener('click', function () { input.click(); });
+    input.addEventListener('change', function () {
+      addFiles(input.files || []);
+      input.value = '';
+    });
+    ['dragover', 'dragenter'].forEach(function (ev) {
+      dz.addEventListener(ev, function (e) { e.preventDefault(); dz.classList.add('dragover'); });
+    });
+    ['dragleave', 'drop'].forEach(function (ev) {
+      dz.addEventListener(ev, function (e) { e.preventDefault(); dz.classList.remove('dragover'); });
+    });
+    dz.addEventListener('drop', function (e) {
+      if (e.dataTransfer && e.dataTransfer.files) addFiles(e.dataTransfer.files);
+    });
+  }
+  var list = TN.el(SLUG + '-list');
+  if (list) list.addEventListener('click', function (e) {
+    var b = e.target && e.target.closest ? e.target.closest('[data-rm]') : null;
+    if (b) { files.splice(parseInt(b.getAttribute('data-rm'), 10), 1); renderList(); }
+  });
+  TN.on(SLUG + '-cols', 'change', function () { if (imgs.length) drawSheet(); });
+  TN.on(SLUG + '-size', 'input', function () {
+    var el = TN.el(SLUG + '-size'), v = TN.el(SLUG + '-size-val');
+    if (el && v) v.textContent = el.value;
+    if (imgs.length) drawSheet();
+  });
+  TN.on(SLUG + '-build', 'click', build);
+  TN.on(SLUG + '-download', 'click', download);
+})();
+
+</script>
+</body>
+</html>

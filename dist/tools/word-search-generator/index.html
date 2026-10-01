@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Word Search Generator — Free Online | ToolNest</title>
+<meta name="description" content="Build your own word search puzzle — enter custom words and hunt them in a real 8-direction letter grid.">
+<meta name="keywords" content="word search, word search generator, word find puzzle, word puzzle maker, word hunt game">
+<link rel="canonical" href="https://toolnest.vercel.app/tools/word-search-generator/">
+<meta name="theme-color" content="#07070b">
+<meta property="og:title" content="Word Search Generator — Free Online | ToolNest">
+<meta property="og:description" content="Build your own word search puzzle — enter custom words and hunt them in a real 8-direction letter grid.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css?v=4">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%23e01111'/><text x='50' y='68' font-size='58' text-anchor='middle' fill='white' font-family='Arial' font-weight='bold'>T</text></svg>">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebApplication","name":"Word Search Generator","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0"},"url":"https://toolnest.vercel.app/tools/word-search-generator/","description":"Build your own word search puzzle — enter custom words and hunt them in a real 8-direction letter grid."},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How many words can I add?","acceptedAnswer":{"@type":"Answer","text":"Up to 20 words, each 3–15 letters long. Words that don't fit are listed so you can shorten them."}},{"@type":"Question","name":"Which directions are words hidden in?","acceptedAnswer":{"@type":"Answer","text":"All 8 directions: horizontal, vertical, and diagonal — forwards and backwards."}},{"@type":"Question","name":"How do I select a word on mobile?","acceptedAnswer":{"@type":"Answer","text":"Tap the first letter, then tap the last letter. On desktop you can also click and drag."}},{"@type":"Question","name":"How do I win?","acceptedAnswer":{"@type":"Answer","text":"Find every word in the word list — found words get crossed off automatically."}}]}]}</script>
+</head>
+<body>
+<header class="site-header">
+  <div class="container">
+    <a class="logo" href="/"><span class="logo-mark">T</span> ToolNest</a>
+    <div class="header-right">
+      <form class="nav-search" action="/" method="get" role="search">
+        <span class="ns-icon">🔍</span>
+        <input type="search" name="q" placeholder="Search tools…" aria-label="Search tools" autocomplete="off">
+      </form>
+      <div class="menu-wrap">
+        <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="menuPanel" aria-label="Open menu"><span></span><span></span><span></span></button>
+        <nav class="menu-panel" id="menuPanel" aria-label="Site">
+          <a href="/">Home</a>
+          <a href="/#categories">Categories</a>
+          <a href="/#all-tools">All Tools</a>
+        </nav>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ADSTERRA-HEADER: paste your Adsterra banner ad code inside the div below -->
+<div class="container"><div class="ad-slot ad-leaderboard" data-ad="header"></div></div>
+
+<main class="container">
+  <nav class="crumbs"><a href="/">Home</a> &rsaquo; <a href="/#fun">Fun &amp; Lifestyle</a> &rsaquo; Word Search Generator</nav>
+  <div class="tool-hero">
+    <h1>Word Search Generator</h1>
+    <p>Build your own word search puzzle — enter custom words and hunt them in a real 8-direction letter grid.</p>
+  </div>
+
+  <div class="tool-card" style="text-align:center">
+  <div class="grid2" style="max-width:560px;margin:0 auto 12px">
+    <div class="field" style="text-align:left">
+      <label for="word-search-generator-words">Your words (one per line or comma-separated)</label>
+      <textarea class="input" id="word-search-generator-words" rows="4" style="resize:vertical">PUZZLE, RAINBOW, CASTLE, DRAGON, FOREST, GUITAR, OCEAN, ROCKET, TIGER, VOLCANO</textarea>
+    </div>
+    <div class="field" style="text-align:left">
+      <label for="word-search-generator-size">Grid size</label>
+      <select class="input" id="word-search-generator-size">
+        <option value="10">10 × 10</option>
+        <option value="12" selected>12 × 12</option>
+        <option value="15">15 × 15</option>
+      </select>
+      <div style="margin-top:12px">
+        <button class="btn btn-primary" id="word-search-generator-gen" style="width:100%">Generate puzzle</button>
+      </div>
+    </div>
+  </div>
+  <div class="stat-cards" style="max-width:420px;margin:0 auto 12px">
+    <div class="stat-card"><div class="v" id="word-search-generator-found">0</div><div class="l">Found</div></div>
+    <div class="stat-card"><div class="v" id="word-search-generator-total">0</div><div class="l">Words</div></div>
+  </div>
+  <p class="muted" id="word-search-generator-msg" style="min-height:24px">Drag across letters (or tap start, then tap end) to select a word.</p>
+  <div style="overflow:auto;display:inline-block;max-width:100%">
+    <div id="word-search-generator-board" style="display:inline-grid;gap:2px;background:#cfd8dc;padding:6px;border-radius:8px;user-select:none;-webkit-user-select:none;touch-action:none"></div>
+  </div>
+  <div id="word-search-generator-list" style="display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-top:12px;max-width:560px;margin-left:auto;margin-right:auto"></div>
+  <div class="btn-row" style="justify-content:center;margin-top:12px">
+    <button class="btn" id="word-search-generator-new">New puzzle</button>
+  </div>
+  <div class="error" id="word-search-generator-error"></div>
+</div>
+
+
+  <!-- ADSTERRA-INCONTENT: paste your Adsterra native/in-content ad code inside the div below -->
+  <div class="ad-slot" data-ad="incontent"></div>
+
+  <div class="info-grid">
+    <div class="info-card">
+      <h2>📖 How to use</h2>
+      <ol><li>Type your words, one per line or comma-separated.</li><li>Pick a grid size and press Generate puzzle.</li><li>Click-drag (or tap start, then tap end) to select a word.</li><li>Find every word in the list to win.</li></ol>
+    </div>
+    <div class="info-card">
+      <h2>❓ Frequently asked questions</h2>
+      <div class="faq"><details><summary>How many words can I add?</summary><p>Up to 20 words, each 3–15 letters long. Words that don&#39;t fit are listed so you can shorten them.</p></details><details><summary>Which directions are words hidden in?</summary><p>All 8 directions: horizontal, vertical, and diagonal — forwards and backwards.</p></details><details><summary>How do I select a word on mobile?</summary><p>Tap the first letter, then tap the last letter. On desktop you can also click and drag.</p></details><details><summary>How do I win?</summary><p>Find every word in the word list — found words get crossed off automatically.</p></details></div>
+    </div>
+  </div>
+
+  <section class="section">
+    <h2>🔗 Related tools</h2>
+    <div class="tool-grid"><a class="tool-link" href="/tools/aim-trainer-game/" data-search="aim trainer game test and train your aim — targets pop up at random spots for 30 seconds. hits, misses and accuracy are tracked live. aim trainer aim test reaction test click speed test fps aim trainer"><span class="t-ico">🎲</span><span class="t-body"><b>Aim Trainer Game</b><small>Test and train your aim — targets pop up at random spots for 30 seconds. Hits, misses and ac…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/baby-name-generator/" data-search="baby name generator discover baby names by gender and origin — pakistani, arabic, western, indian or turkish — with meanings, random picks and tap-to-copy. baby name generator baby names with meanings muslim baby names boy girl names"><span class="t-ico">🎲</span><span class="t-body"><b>Baby Name Generator</b><small>Discover baby names by gender and origin — Pakistani, Arabic, Western, Indian or Turkish — w…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/battery-status-checker/" data-search="battery status checker check your device&#39;s battery level, charging status and estimated time remaining, with live updates — where your browser supports the battery api. battery status battery level checker laptop battery charging status"><span class="t-ico">🎲</span><span class="t-body"><b>Battery Status Checker</b><small>Check your device&#39;s battery level, charging status and estimated time remaining, with live u…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/battleship-game/" data-search="battleship game the classic naval battle — place your 5 ships, then hunt the computer&#39;s fleet on a 10×10 grid with hit, miss, and sunk tracking. battleship game battleship naval battle game sea battle board game"><span class="t-ico">🎲</span><span class="t-body"><b>Battleship Game</b><small>The classic naval battle — place your 5 ships, then hunt the computer&#39;s fleet on a 10×10 gri…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/birthday-countdown/" data-search="birthday countdown enter your birthday for a live countdown to your next one — days, hours, minutes and seconds — plus the age you&#39;ll turn and a fun message. birthday countdown countdown to birthday how old am i birthday timer"><span class="t-ico">🎲</span><span class="t-body"><b>Birthday Countdown</b><small>Enter your birthday for a live countdown to your next one — days, hours, minutes and seconds…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/blackjack-game/" data-search="blackjack game real blackjack — hit, stand, double down, dealer hits to 17, blackjack pays 3:2, with a session bankroll. blackjack blackjack game 21 card game casino card game blackjack online"><span class="t-ico">🎲</span><span class="t-body"><b>Blackjack Game</b><small>Real Blackjack — hit, stand, double down, dealer hits to 17, blackjack pays 3:2, with a sess…</small></span><span class="t-arrow">→</span></a></div>
+  </section>
+</main>
+
+<!-- ADSTERRA-FOOTER: paste your Adsterra footer/banner ad code inside the div below -->
+<div class="container"><div class="ad-slot" data-ad="footer"></div></div>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="f-grid">
+      <div>
+        <span class="brandline"><span class="logo-mark">T</span> ToolNest</span>
+        <p>Free online tools that actually work. No sign-up, no watermarks — and your files never leave your device for client-side tools.</p>
+      </div>
+      <div>
+        <h4>Popular</h4>
+        <a href="/tools/qr-code-generator/">QR Code Generator</a>
+        <a href="/tools/background-remover/">Background Remover</a>
+        <a href="/tools/pdf-merger/">PDF Merger</a>
+        <a href="/tools/word-counter/">Word Counter</a>
+      </div>
+      <div>
+        <h4>Categories</h4>
+        <a href="/#image">Image Tools</a>
+        <a href="/#pdf">PDF &amp; Documents</a>
+        <a href="/#calculators">Calculators</a>
+        <a href="/#developer">Developer Tools</a>
+      </div>
+      <div>
+        <h4>Site</h4>
+        <a href="/">Home</a>
+        <a href="/#all-tools">All Tools</a>
+        <a href="/sitemap.xml">Sitemap</a>
+      </div>
+    </div>
+    <div class="f-bottom">© 2026 ToolNest · Free tools for everyone · Made with care</div>
+  </div>
+</footer>
+
+<script src="/assets/site.js?v=5"></script>
+
+<script>
+/* Word Search Generator — custom words, 8-direction placement, drag/tap selection, win detection. */
+(function () {
+  'use strict';
+  var SLUG = 'word-search-generator';
+  var size = 12, grid = [], placed = [], foundCount = 0;
+  var anchor = null, selecting = false, pendingAnchor = null;
+  var DIRS = [[0,1],[1,0],[0,-1],[-1,0],[1,1],[1,-1],[-1,1],[-1,-1]];
+
+  function $(id) { return document.getElementById(id); }
+  function cellId(r, c) { return SLUG + '-cell-' + r + '-' + c; }
+  function cellEl(r, c) { return $(cellId(r, c)); }
+  function shuffle(a) {
+    for (var i = a.length - 1; i > 0; i--) {
+      var j = Math.floor(Math.random() * (i + 1));
+      var t = a[i]; a[i] = a[j]; a[j] = t;
+    }
+    return a;
+  }
+
+  function parseWords() {
+    var raw = $('word-search-generator-words').value.split(/[\n,;]+/);
+    var out = [];
+    for (var i = 0; i < raw.length; i++) {
+      var w = raw[i].trim().toUpperCase().replace(/[^A-Z]/g, '');
+      if (w.length >= 3 && w.length <= size && out.indexOf(w) === -1) out.push(w);
+      if (out.length >= 20) break;
+    }
+    return shuffle(out);
+  }
+
+  function tryPlace(word) {
+    for (var a = 0; a < 200; a++) {
+      var d = DIRS[Math.floor(Math.random() * DIRS.length)];
+      var r = Math.floor(Math.random() * size), c = Math.floor(Math.random() * size);
+      var er = r + d[0] * (word.length - 1), ec = c + d[1] * (word.length - 1);
+      if (er < 0 || er >= size || ec < 0 || ec >= size) continue;
+      var ok = true, cells = [];
+      for (var k = 0; k < word.length; k++) {
+        var rr = r + d[0] * k, cc = c + d[1] * k;
+        if (grid[rr][cc] !== '' && grid[rr][cc] !== word[k]) { ok = false; break; }
+        cells.push([rr, cc]);
+      }
+      if (!ok) continue;
+      for (var m = 0; m < cells.length; m++) grid[cells[m][0]][cells[m][1]] = word[m];
+      placed.push({ word: word, cells: cells, found: false });
+      return true;
+    }
+    return false;
+  }
+
+  function generate() {
+    size = parseInt($('word-search-generator-size').value, 10) || 12;
+    var words = parseWords();
+    grid = [];
+    for (var r = 0; r < size; r++) { grid.push([]); for (var c = 0; c < size; c++) grid[r].push(''); }
+    placed = []; foundCount = 0;
+    anchor = null; selecting = false; pendingAnchor = null;
+    var skipped = [];
+    words.forEach(function (w) { if (!tryPlace(w)) skipped.push(w); });
+    var alpha = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+    for (var i = 0; i < size; i++) for (var j = 0; j < size; j++) {
+      if (grid[i][j] === '') grid[i][j] = alpha[Math.floor(Math.random() * 26)];
+    }
+    render();
+    $('word-search-generator-found').textContent = '0';
+    $('word-search-generator-total').textContent = placed.length;
+    var msg = 'Find all ' + placed.length + ' words!';
+    if (skipped.length) msg += ' Could not fit: ' + skipped.join(', ');
+    $('word-search-generator-msg').textContent = msg;
+    if (!placed.length) $('word-search-generator-msg').textContent = 'No valid words — enter words of 3+ letters (A–Z).';
+  }
+
+  function render() {
+    var b = $('word-search-generator-board');
+    b.innerHTML = '';
+    b.style.gridTemplateColumns = 'repeat(' + size + ', 30px)';
+    for (var r = 0; r < size; r++) for (var c = 0; c < size; c++) {
+      (function (rr, cc) {
+        var d = document.createElement('div');
+        d.id = cellId(rr, cc);
+        d.textContent = grid[rr][cc];
+        d.style.cssText = 'width:30px;height:30px;display:flex;align-items:center;justify-content:center;font-weight:bold;font-size:15px;background:#fff;border-radius:4px;cursor:pointer;touch-action:none';
+        d.addEventListener('pointerdown', function (e) { e.preventDefault(); onDown(rr, cc); });
+        d.addEventListener('pointerenter', function () { onEnter(rr, cc); });
+        d.addEventListener('pointerup', function (e) { onUp(rr, cc, e); });
+        b.appendChild(d);
+      })(r, c);
+    }
+    var list = $('word-search-generator-list');
+    list.innerHTML = '';
+    placed.forEach(function (p, i) {
+      var s = document.createElement('span');
+      s.id = SLUG + '-word-' + i;
+      s.textContent = p.word;
+      s.style.cssText = 'padding:4px 10px;background:#e8f5e9;border:1px solid #a5d6a7;border-radius:20px;font-size:13px;font-weight:bold';
+      list.appendChild(s);
+    });
+  }
+
+  function lineCells(a, f) {
+    var dr = f[0] - a[0], dc = f[1] - a[1];
+    if (dr === 0 && dc === 0) return [[a[0], a[1]]];
+    if (dr !== 0 && dc !== 0 && Math.abs(dr) !== Math.abs(dc)) return null;
+    var steps = Math.max(Math.abs(dr), Math.abs(dc));
+    var sr = dr === 0 ? 0 : dr / Math.abs(dr);
+    var sc = dc === 0 ? 0 : dc / Math.abs(dc);
+    var out = [];
+    for (var k = 0; k <= steps; k++) out.push([a[0] + sr * k, a[1] + sc * k]);
+    return out;
+  }
+
+  function clearSel() {
+    for (var r = 0; r < size; r++) for (var c = 0; c < size; c++) {
+      var el = cellEl(r, c);
+      if (el && !el.dataset.found) el.style.background = '#fff';
+    }
+  }
+
+  function paintLine(a, f) {
+    clearSel();
+    var cells = lineCells(a, f);
+    if (!cells) return;
+    cells.forEach(function (p) {
+      var el = cellEl(p[0], p[1]);
+      if (el && !el.dataset.found) el.style.background = '#fff59d';
+    });
+  }
+
+  function onDown(r, c) {
+    if (pendingAnchor && (pendingAnchor[0] !== r || pendingAnchor[1] !== c)) {
+      evaluate(pendingAnchor, [r, c]);
+      pendingAnchor = null;
+      anchor = null; selecting = false;
+      return;
+    }
+    if (pendingAnchor && pendingAnchor[0] === r && pendingAnchor[1] === c) {
+      pendingAnchor = null; clearSel(); anchor = null; selecting = false;
+      return;
+    }
+    anchor = [r, c]; selecting = true; pendingAnchor = null;
+    paintLine(anchor, anchor);
+  }
+
+  function onEnter(r, c) {
+    if (selecting && anchor) paintLine(anchor, [r, c]);
+  }
+
+  function onUp(r, c) {
+    if (!selecting || !anchor) return;
+    selecting = false;
+    if (anchor[0] === r && anchor[1] === c) {
+      // tap — keep as pending anchor for tap-tap selection on touch
+      pendingAnchor = anchor;
+      anchor = null;
+      return;
+    }
+    var a = anchor;
+    anchor = null;
+    evaluate(a, [r, c]);
+  }
+
+  function evaluate(a, f) {
+    var cells = lineCells(a, f);
+    clearSel();
+    if (!cells || cells.length < 3) return;
+    var word = cells.map(function (p) { return grid[p[0]][p[1]]; }).join('');
+    var rev = word.split('').reverse().join('');
+    for (var i = 0; i < placed.length; i++) {
+      var p = placed[i];
+      if (!p.found && (p.word === word || p.word === rev)) {
+        p.found = true;
+        foundCount++;
+        p.cells.forEach(function (cp) {
+          var el = cellEl(cp[0], cp[1]);
+          if (el) { el.style.background = '#a5d6a7'; el.dataset.found = '1'; }
+        });
+        var chip = $(SLUG + '-word-' + i);
+        if (chip) { chip.style.textDecoration = 'line-through'; chip.style.opacity = '0.5'; }
+        $('word-search-generator-found').textContent = foundCount;
+        if (foundCount === placed.length) {
+          $('word-search-generator-msg').textContent = '🏆 You found every word! Amazing!';
+        } else {
+          $('word-search-generator-msg').textContent = 'Nice! Found "' + p.word + '" — ' + (placed.length - foundCount) + ' to go.';
+        }
+        return;
+      }
+    }
+  }
+
+  try {
+    TN.on('word-search-generator-gen', 'click', generate);
+    TN.on('word-search-generator-new', 'click', generate);
+    TN.on('word-search-generator-size', 'change', generate);
+    generate();
+  } catch (e) { /* never throw on load */ }
+})();
+
+</script>
+</body>
+</html>
