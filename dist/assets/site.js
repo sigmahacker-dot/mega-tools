@@ -4,6 +4,16 @@
   function resolveEl(elOrId){
     return typeof elOrId === 'string' ? document.getElementById(elOrId) : elOrId;
   }
+  /* Don't show validation errors until the user has interacted with the page —
+     tool pages run their calc() on load, and we don't want a red error banner
+     greeting the user before they've typed anything. */
+  var _touched = false;
+  function _markTouched(){ _touched = true; }
+  if (typeof document !== 'undefined' && document.addEventListener) {
+    document.addEventListener('input', _markTouched, { capture: true, passive: true });
+    document.addEventListener('change', _markTouched, { capture: true, passive: true });
+    document.addEventListener('click', _markTouched, { capture: true, passive: true });
+  }
   const TN = {
     el: function(id){ return document.getElementById(id); },
     qs: function(sel, root){ return (root||document).querySelector(sel); },
@@ -16,6 +26,7 @@
     show: function(elOrId){ const el = resolveEl(elOrId); if(el) el.classList.remove('hidden'); },
     hide: function(elOrId){ const el = resolveEl(elOrId); if(el) el.classList.add('hidden'); },
     setErr: function(elOrId, msg){
+      if(!_touched) return; /* suppress pre-interaction errors on initial load */
       const el = resolveEl(elOrId);
       if(!el) return;
       el.textContent = msg;
