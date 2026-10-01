@@ -106,4 +106,36 @@
     }
   };
   window.TN = TN;
+
+  /* ---------- hamburger menu ---------- */
+  (function(){
+    var btn = document.getElementById('menuBtn');
+    var panel = document.getElementById('menuPanel');
+    if(!btn || !panel) return;
+    function close(){
+      panel.classList.remove('open');
+      btn.setAttribute('aria-expanded', 'false');
+      btn.setAttribute('aria-label', 'Open menu');
+    }
+    btn.addEventListener('click', function(e){
+      e.stopPropagation();
+      var willOpen = !panel.classList.contains('open');
+      if(willOpen){
+        panel.classList.add('open');
+        btn.setAttribute('aria-expanded', 'true');
+        btn.setAttribute('aria-label', 'Close menu');
+      }else{
+        close();
+      }
+    });
+    document.addEventListener('click', function(e){
+      if(panel.classList.contains('open') && !panel.contains(e.target)) close();
+    });
+    document.addEventListener('keydown', function(e){
+      if(e.key === 'Escape') close();
+    });
+    panel.addEventListener('click', function(e){
+      if(e.target.closest('a')) close();
+    });
+  })();
 })();

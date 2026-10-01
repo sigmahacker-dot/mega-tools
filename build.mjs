@@ -193,10 +193,15 @@ const homeHtml = `<!DOCTYPE html>
 <header class="site-header">
   <div class="container">
     <a class="logo" href="/"><span class="logo-mark">T</span> ${SITE_NAME}</a>
-    <nav class="site-nav">
-      <a href="#categories">Categories</a>
-      <a href="#all-tools">All Tools</a>
-    </nav>
+    <div class="header-right">
+      <div class="menu-wrap">
+        <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="menuPanel" aria-label="Open menu"><span></span><span></span><span></span></button>
+        <nav class="menu-panel" id="menuPanel" aria-label="Site">
+          <a href="#categories">Categories</a>
+          <a href="#all-tools">All Tools</a>
+        </nav>
+      </div>
+    </div>
   </div>
 </header>
 
@@ -297,6 +302,7 @@ const homeHtml = `<!DOCTYPE html>
   </div>
 </footer>
 
+<script src="/assets/site.js?v=5"></script>
 <script>
 const TOOLS = ${JSON.stringify(toolsIndex).replace(/</g, '\\u003c')};
 const ICONS = ${JSON.stringify(Object.fromEntries(CATEGORIES.map(c => [c.id, c.icon])))};
