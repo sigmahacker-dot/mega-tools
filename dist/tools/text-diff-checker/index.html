@@ -14,7 +14,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/assets/site.css?v=2">
+<link rel="stylesheet" href="/assets/site.css?v=4">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%23e01111'/><text x='50' y='68' font-size='58' text-anchor='middle' fill='white' font-family='Arial' font-weight='bold'>T</text></svg>">
 <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebApplication","name":"Text Diff Checker","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0"},"url":"https://toolnest.vercel.app/tools/text-diff-checker/","description":"Compare two texts side by side and see every word added, removed or unchanged."},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How is the diff computed?","acceptedAnswer":{"@type":"Answer","text":"Words are compared with the longest-common-subsequence algorithm, so matching words are aligned even when large blocks move around."}},{"@type":"Question","name":"Why is there a 5,000-word limit per text?","acceptedAnswer":{"@type":"Answer","text":"The cap keeps the diff fast — a 5,000-word-per-side comparison already fills 25 million table cells in memory. Compare larger texts in smaller chunks."}},{"@type":"Question","name":"Are my texts sent anywhere?","acceptedAnswer":{"@type":"Answer","text":"No. The diff runs entirely in your browser; your texts never leave your device."}}]}]}</script>
 </head>
@@ -27,6 +27,10 @@
       <a href="/#categories">Categories</a>
       <a href="/#all-tools">All Tools</a>
     </nav>
+    <form class="nav-search" action="/" method="get" role="search">
+      <span class="ns-icon">🔍</span>
+      <input type="search" name="q" placeholder="Search tools…" aria-label="Search tools" autocomplete="off">
+    </form>
   </div>
 </header>
 
@@ -127,7 +131,7 @@
   </div>
 </footer>
 
-<script src="/assets/site.js?v=3"></script>
+<script src="/assets/site.js?v=4"></script>
 
 <script>
 /* Text Diff Checker — LCS-based word-level diff rendered with ins/del styling. */

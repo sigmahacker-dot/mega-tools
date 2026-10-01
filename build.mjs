@@ -85,6 +85,10 @@ mkdirSync(join(DIST, 'assets'), { recursive: true });
 mkdirSync(join(DIST, 'tools'), { recursive: true });
 copyFileSync(join(SRC, 'shared', 'site.css'), join(DIST, 'assets', 'site.css'));
 copyFileSync(join(SRC, 'shared', 'site.js'), join(DIST, 'assets', 'site.js'));
+mkdirSync(join(DIST, 'assets', 'img'), { recursive: true });
+for (const f of readdirSync(join(SRC, 'shared', 'img'))) {
+  copyFileSync(join(SRC, 'shared', 'img', f), join(DIST, 'assets', 'img', f));
+}
 
 const pageTpl = readFileSync(join(SRC, 'templates', 'page.html'), 'utf8');
 function fill(tpl, vars) {
@@ -139,6 +143,18 @@ for (const t of tools) {
   writeFileSync(join(outDir, 'index.html'), html);
 }
 
+/* ---------- shared Urdu font files (used by urdu-fonts + urdu-text-to-png) ---------- */
+const urduFontsSrc = join(SRC, 'tools', 'urdu-fonts', 'fonts');
+if (existsSync(urduFontsSrc)) {
+  for (const slug of ['urdu-fonts', 'urdu-text-to-png']) {
+    const fd = join(DIST, 'tools', slug, 'fonts');
+    mkdirSync(fd, { recursive: true });
+    for (const f of readdirSync(urduFontsSrc)) {
+      copyFileSync(join(urduFontsSrc, f), join(fd, f));
+    }
+  }
+}
+
 /* ---------- homepage ---------- */
 const toolsIndex = tools.map(t => ({ slug: t.slug, title: t.title, desc: t.description, cat: t.category, kw: t.keywords || [] }));
 const catSections = CATEGORIES.map(c => {
@@ -170,7 +186,7 @@ const homeHtml = `<!DOCTYPE html>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/assets/site.css?v=2">
+<link rel="stylesheet" href="/assets/site.css?v=4">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%23e01111'/><text x='50' y='68' font-size='58' text-anchor='middle' fill='white' font-family='Arial' font-weight='bold'>T</text></svg>">
 </head>
 <body>
@@ -186,15 +202,21 @@ const homeHtml = `<!DOCTYPE html>
 
 <section class="hero">
   <span class="hero-orb o1"></span><span class="hero-orb o2"></span>
-  <div class="container">
-    <span class="hero-badge"><span class="pulse"></span> ${tools.length}+ tools · 100% free · no sign-up</span>
-    <h1>Every tool you need, <span class="grad">free</span> — and they actually work</h1>
-    <p>${tools.length}+ fast online tools: images, PDFs, video, finance, health, math, converters &amp; more. No sign-up, no watermarks.</p>
-    <div class="search-wrap">
-      <span class="sicon">🔍</span>
-      <input id="toolSearch" type="search" placeholder="Search tools… e.g. &quot;mortgage&quot;, &quot;qr code&quot;, &quot;color picker&quot;" autocomplete="off">
+  <div class="container hero-split">
+    <div class="hero-copy">
+      <span class="hero-badge"><span class="pulse"></span> ${tools.length}+ tools · 100% free · no sign-up</span>
+      <h1>Every tool you need, <span class="grad">free</span> — and they actually work</h1>
+      <p class="hero-lead">${tools.length}+ fast online tools: images, PDFs, video, finance, health, math, converters &amp; more. No sign-up, no watermarks.</p>
+      <div class="search-wrap">
+        <span class="sicon">🔍</span>
+        <input id="toolSearch" type="search" placeholder="Search tools… e.g. &quot;mortgage&quot;, &quot;qr code&quot;, &quot;color picker&quot;" autocomplete="off">
+      </div>
+      <p class="search-hint">Press <kbd>/</kbd> to search</p>
+      <div class="hero-stats"><span><b>${tools.length}</b> tools</span><span><b>${CATEGORIES.length}</b> categories</span><span><b>100%</b> free</span></div>
     </div>
-    <div class="hero-stats"><span><b>${tools.length}</b> tools</span><span><b>${CATEGORIES.length}</b> categories</span><span><b>100%</b> free</span></div>
+    <div class="hero-img">
+      <img src="/assets/img/ai-hero-robot.webp" alt="AI robot with red glow — illustration for ToolNest's smart free online tools" width="1280" height="1920" fetchpriority="high">
+    </div>
   </div>
 </section>
 
@@ -206,6 +228,18 @@ const homeHtml = `<!DOCTYPE html>
     <h2>🗂️ Browse by category</h2>
     <p class="sec-sub">Pick a category to explore its tools.</p>
     <div class="cat-grid">${catCards}</div>
+  </section>
+
+  <section class="section smart-banner">
+    <img src="/assets/img/ai-tools-orb.webp" alt="Glowing red circuit orb — illustration for ToolNest's smart tool collection" loading="lazy" width="2352" height="1008">
+    <div class="sb-body">
+      <h2>Built smart, stays simple</h2>
+      <ul>
+        <li>Free forever — no trials, no paywalls, no watermarks</li>
+        <li>No sign-up — open any tool and start using it</li>
+        <li>Mobile-friendly — every tool works on your phone</li>
+      </ul>
+    </div>
   </section>
 
   <div id="searchResults" class="section hidden">
@@ -275,13 +309,27 @@ const ICONS = ${JSON.stringify(Object.fromEntries(CATEGORIES.map(c => [c.id, c.i
   function card(t){
     return '<a class="tool-link" href="/tools/'+t.slug+'/"><span class="t-ico">'+(ICONS[t.cat]||'🔧')+'</span><span class="t-body"><b>'+escH(t.title)+'</b><small>'+escH(String(t.desc).slice(0,92))+(String(t.desc).length>92?'…':'')+'</small></span><span class="t-arrow">→</span></a>';
   }
-  input.addEventListener('input', function(){
+  function doSearch(){
     const q = input.value.trim().toLowerCase();
     if(q.length < 2){ box.classList.add('hidden'); all.classList.remove('hidden'); return; }
     const hits = TOOLS.filter(t => (t.title+' '+t.desc+' '+(t.kw||[]).join(' ')).toLowerCase().includes(q)).slice(0, 60);
     grid.innerHTML = hits.length ? hits.map(card).join('') : '<p class="muted">No tools found for "'+q.replace(/</g,'&lt;')+'". Try another keyword.</p>';
     box.classList.remove('hidden'); all.classList.add('hidden');
+  }
+  input.addEventListener('input', doSearch);
+  /* "/" focuses search from anywhere on the page */
+  document.addEventListener('keydown', function(e){
+    if(e.key !== '/' || e.ctrlKey || e.metaKey || e.altKey) return;
+    const tag = (document.activeElement && document.activeElement.tagName) || '';
+    if(/^(INPUT|TEXTAREA|SELECT)$/.test(tag)) return;
+    e.preventDefault();
+    input.focus();
   });
+  /* ?q= pre-fill (used by the navbar search on tool pages) */
+  try{
+    const q0 = new URLSearchParams(location.search).get('q');
+    if(q0){ input.value = q0; doSearch(); input.focus(); }
+  }catch(e){}
 })();
 </script>
 </body>

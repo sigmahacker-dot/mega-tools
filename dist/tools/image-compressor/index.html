@@ -14,7 +14,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/assets/site.css?v=2">
+<link rel="stylesheet" href="/assets/site.css?v=4">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%23e01111'/><text x='50' y='68' font-size='58' text-anchor='middle' fill='white' font-family='Arial' font-weight='bold'>T</text></svg>">
 <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebApplication","name":"Image Compressor","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0"},"url":"https://toolnest.vercel.app/tools/image-compressor/","description":"Shrink JPG, PNG and WebP images right in your browser with an adjustable quality slider. Compare before/after sizes, download each file or grab everything as a ZIP."},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Does the quality slider affect PNG files?","acceptedAnswer":{"@type":"Answer","text":"Yes — the quality slider only affects JPEG and WebP output. PNG is lossless, so re-encoding a PNG keeps every pixel (the file may still shrink slightly)."}},{"@type":"Question","name":"Why did my transparent PNG turn white?","acceptedAnswer":{"@type":"Answer","text":"Converting to JPEG gives the smallest files but removes transparency — transparent areas are filled white. Choose WebP or PNG if you need to keep transparency."}},{"@type":"Question","name":"Is there a file size or count limit?","acceptedAnswer":{"@type":"Answer","text":"Your files are processed locally with the canvas API. Nothing is uploaded, and there are no watermarks or limits."}}]}]}</script>
 </head>
@@ -27,6 +27,10 @@
       <a href="/#categories">Categories</a>
       <a href="/#all-tools">All Tools</a>
     </nav>
+    <form class="nav-search" action="/" method="get" role="search">
+      <span class="ns-icon">🔍</span>
+      <input type="search" name="q" placeholder="Search tools…" aria-label="Search tools" autocomplete="off">
+    </form>
   </div>
 </header>
 
@@ -133,7 +137,7 @@
   </div>
 </footer>
 
-<script src="/assets/site.js?v=3"></script>
+<script src="/assets/site.js?v=4"></script>
 <script src="https://cdn.jsdelivr.net/npm/jszip@3.10.1/dist/jszip.min.js" defer></script>
 <script>
 /* Image Compressor — batch compress via canvas, optional ZIP via JSZip. */

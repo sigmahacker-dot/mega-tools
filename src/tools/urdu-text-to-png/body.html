@@ -1,0 +1,63 @@
+<style>
+@font-face{font-family:'TN Noto Nastaliq Urdu';src:url('fonts/NotoNastaliqUrdu.ttf') format('truetype');font-display:swap}
+.up-urdu-text{font-family:'TN Noto Nastaliq Urdu',serif !important;font-size:1.35rem !important;line-height:2.5 !important}
+.up-range{display:flex;align-items:center;gap:12px}
+.up-range input[type=range]{flex:1}
+.up-range .up-val{min-width:64px;text-align:right;color:#fff;font-weight:600}
+.up-color-row{display:flex;align-items:center;gap:12px}
+.up-color-row input[type=color]{width:56px;height:40px;padding:2px;border:1px solid rgba(255,255,255,.2);border-radius:10px;background:#0c0c11;cursor:pointer}
+#urdu-text-to-png-canvas{max-width:100%;height:auto;border:1px solid rgba(255,255,255,.12);border-radius:12px;background-color:#121217;background-image:linear-gradient(45deg,#1c1c22 25%,transparent 25%,transparent 75%,#1c1c22 75%),linear-gradient(45deg,#1c1c22 25%,transparent 25%,transparent 75%,#1c1c22 75%);background-size:22px 22px;background-position:0 0,11px 11px}
+</style>
+<div class="tool-card">
+  <div class="field">
+    <label for="urdu-text-to-png-text">Your Urdu text</label>
+    <textarea class="textarea up-urdu-text" id="urdu-text-to-png-text" dir="rtl" placeholder="یہاں اپنا اردو متن لکھیں…"></textarea>
+  </div>
+  <div class="grid2">
+    <div class="field">
+      <label for="urdu-text-to-png-size">Font size</label>
+      <div class="up-range">
+        <input type="range" id="urdu-text-to-png-size" min="24" max="160" value="64">
+        <span class="up-val" id="urdu-text-to-png-size-val">64px</span>
+      </div>
+    </div>
+    <div class="field">
+      <label for="urdu-text-to-png-padding">Padding</label>
+      <div class="up-range">
+        <input type="range" id="urdu-text-to-png-padding" min="20" max="120" value="48">
+        <span class="up-val" id="urdu-text-to-png-padding-val">48px</span>
+      </div>
+    </div>
+  </div>
+  <div class="grid2">
+    <div class="field">
+      <label for="urdu-text-to-png-color">Text color</label>
+      <div class="up-color-row">
+        <input type="color" id="urdu-text-to-png-color" value="#ffffff">
+      </div>
+    </div>
+    <div class="field">
+      <label for="urdu-text-to-png-bg">Background</label>
+      <select class="select" id="urdu-text-to-png-bg">
+        <option value="transparent" selected>Transparent</option>
+        <option value="dark">Dark (#07070b)</option>
+        <option value="white">White</option>
+        <option value="custom">Custom color…</option>
+      </select>
+    </div>
+  </div>
+  <div class="field hidden" id="urdu-text-to-png-bgcolor-wrap">
+    <label for="urdu-text-to-png-bgcolor">Custom background color</label>
+    <div class="up-color-row">
+      <input type="color" id="urdu-text-to-png-bgcolor" value="#07070b">
+    </div>
+  </div>
+  <div class="btn-row">
+    <button class="btn btn-primary" id="urdu-text-to-png-download">Download PNG</button>
+  </div>
+  <div class="error" id="urdu-text-to-png-error"></div>
+  <div class="center mt hidden" id="urdu-text-to-png-preview-row">
+    <canvas id="urdu-text-to-png-canvas"></canvas>
+  </div>
+  <p class="note">Type Urdu text above and watch the preview render in Noto Nastaliq Urdu. The checkerboard behind the preview means transparency — choose a solid background if you want one. Download gives you a crisp 2× PNG.</p>
+</div>

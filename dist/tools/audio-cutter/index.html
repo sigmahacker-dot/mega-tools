@@ -14,7 +14,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/assets/site.css?v=2">
+<link rel="stylesheet" href="/assets/site.css?v=4">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%23e01111'/><text x='50' y='68' font-size='58' text-anchor='middle' fill='white' font-family='Arial' font-weight='bold'>T</text></svg>">
 <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebApplication","name":"Audio Cutter","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0"},"url":"https://toolnest.vercel.app/tools/audio-cutter/","description":"Cut a section out of any audio file in your browser. Set start and end times, preview the selection, then download it as an MP3."},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What format is the cut audio saved in?","acceptedAnswer":{"@type":"Answer","text":"The selected section is encoded to a real MP3 at 128 kbps using the lamejs encoder, entirely on your device."}},{"@type":"Question","name":"Which audio formats can I cut?","acceptedAnswer":{"@type":"Answer","text":"Most common formats (MP3, WAV, OGG, M4A/AAC) decode in modern browsers. If decoding fails, your browser cannot read that file's audio."}},{"@type":"Question","name":"Is my audio uploaded anywhere?","acceptedAnswer":{"@type":"Answer","text":"Yes — the cut MP3 is generated locally in your browser. Your file is never uploaded anywhere."}}]}]}</script>
 </head>
@@ -27,6 +27,10 @@
       <a href="/#categories">Categories</a>
       <a href="/#all-tools">All Tools</a>
     </nav>
+    <form class="nav-search" action="/" method="get" role="search">
+      <span class="ns-icon">🔍</span>
+      <input type="search" name="q" placeholder="Search tools…" aria-label="Search tools" autocomplete="off">
+    </form>
   </div>
 </header>
 
@@ -124,7 +128,7 @@
   </div>
 </footer>
 
-<script src="/assets/site.js?v=3"></script>
+<script src="/assets/site.js?v=4"></script>
 <script src="https://cdn.jsdelivr.net/npm/lamejs@1.2.1/lame.min.js" defer></script>
 <script>
 /* Audio Cutter — decode, slice an AudioBuffer, preview, encode selection to MP3 with lamejs */

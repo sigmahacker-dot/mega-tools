@@ -14,7 +14,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/assets/site.css?v=2">
+<link rel="stylesheet" href="/assets/site.css?v=4">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%23e01111'/><text x='50' y='68' font-size='58' text-anchor='middle' fill='white' font-family='Arial' font-weight='bold'>T</text></svg>">
 <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebApplication","name":"Bio Generator","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0"},"url":"https://toolnest.vercel.app/tools/bio-generator/","description":"Create 4 polished social-media bios from your name, profession and interests in Professional, Funny, Minimalist or Inspirational tones. Click to copy."},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How does the bio generator work?","acceptedAnswer":{"@type":"Answer","text":"Enter your name, profession and interests, pick a tone and click Generate. You get four different bios to choose from."}},{"@type":"Question","name":"Are the 4 bios different from each other?","acceptedAnswer":{"@type":"Answer","text":"The four variants use different templates and reorder your interests, so you get genuinely different options each time."}},{"@type":"Question","name":"Is my information private?","acceptedAnswer":{"@type":"Answer","text":"Yes — all bios are generated from templates in your browser, so your details never leave your device."}}]}]}</script>
 </head>
@@ -27,6 +27,10 @@
       <a href="/#categories">Categories</a>
       <a href="/#all-tools">All Tools</a>
     </nav>
+    <form class="nav-search" action="/" method="get" role="search">
+      <span class="ns-icon">🔍</span>
+      <input type="search" name="q" placeholder="Search tools…" aria-label="Search tools" autocomplete="off">
+    </form>
   </div>
 </header>
 
@@ -62,6 +66,7 @@
       <option value="funny">Funny</option>
       <option value="minimalist">Minimalist</option>
       <option value="inspirational">Inspirational</option>
+      <option value="emoji">✨ Emoji Style</option>
     </select>
   </div>
   <div class="btn-row">
@@ -69,6 +74,15 @@
   </div>
   <div class="error" id="bio-generator-error"></div>
   <div class="mt" id="bio-generator-list"></div>
+  <hr class="mt">
+  <div class="field">
+    <label for="bio-generator-custom">Your own bio</label>
+    <textarea class="input" id="bio-generator-custom" rows="3" placeholder="e.g. Food lover, weekend traveller, chai enthusiast..." maxlength="300"></textarea>
+  </div>
+  <div class="btn-row">
+    <button class="btn btn-primary" id="bio-generator-sprinkle" type="button">✨ Sprinkle random emojis</button>
+  </div>
+  <div class="mt" id="bio-generator-sprinkled"></div>
 </div>
 
 
@@ -88,7 +102,7 @@
 
   <section class="section">
     <h2>🔗 Related tools</h2>
-    <div class="tool-grid"><a class="tool-link" href="/tools/caption-generator/" data-search="caption generator get 6 engaging captions for any topic in funny, aesthetic, motivational, savage or cute moods, plus a matching hashtag line. one-tap copy included. caption generator instagram captions social media captions"><span class="t-ico">📣</span><span class="t-body"><b>Caption Generator</b><small>Get 6 engaging captions for any topic in Funny, Aesthetic, Motivational, Savage or Cute mood…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/fancy-text-generator/" data-search="fancy text generator turn plain text into 16 stylish unicode fonts — bold, italic, script, fraktur, monospace, circled, upside-down and more — with one-tap copy on each style. fancy text generator stylish text unicode text styles"><span class="t-ico">📣</span><span class="t-body"><b>Fancy Text Generator</b><small>Turn plain text into 16 stylish Unicode fonts — bold, italic, script, fraktur, monospace, ci…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/linkedin-text-formatter/" data-search="linkedin text formatter style linkedin posts with unicode bold and italic text variants. linkedin text formatter bold text linkedin unicode bold italic"><span class="t-ico">📣</span><span class="t-body"><b>LinkedIn Text Formatter</b><small>Style LinkedIn posts with Unicode bold and italic text variants.</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/twitter-thread-splitter/" data-search="twitter thread splitter split long text into numbered 280-character tweets with per-tweet copy. twitter thread splitter split tweets tweet thread maker"><span class="t-ico">📣</span><span class="t-body"><b>Twitter Thread Splitter</b><small>Split long text into numbered 280-character tweets with per-tweet copy.</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/youtube-title-generator/" data-search="youtube title generator type a keyword and get 10 click-worthy youtube title ideas built from proven templates — challenges, comparisons, numbers, questions and curiosity gaps. youtube title generator video title ideas clickable titles"><span class="t-ico">📣</span><span class="t-body"><b>YouTube Title Generator</b><small>Type a keyword and get 10 click-worthy YouTube title ideas built from proven templates — cha…</small></span><span class="t-arrow">→</span></a></div>
+    <div class="tool-grid"><a class="tool-link" href="/tools/caption-generator/" data-search="caption generator get 6 engaging captions for any topic in funny, aesthetic, motivational, savage or cute moods, plus a matching hashtag line. one-tap copy included. caption generator instagram captions social media captions"><span class="t-ico">📣</span><span class="t-body"><b>Caption Generator</b><small>Get 6 engaging captions for any topic in Funny, Aesthetic, Motivational, Savage or Cute mood…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/fancy-text-generator/" data-search="fancy text generator turn plain text into 24 stylish unicode fonts and emoji styles — bold, italic, script, fraktur, monospace, circled, upside-down, sparkle-wrapped, emoji-framed and more — with one-tap copy on each style. fancy text generator stylish text unicode text styles"><span class="t-ico">📣</span><span class="t-body"><b>Fancy Text Generator</b><small>Turn plain text into 24 stylish Unicode fonts and emoji styles — bold, italic, script, frakt…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/linkedin-text-formatter/" data-search="linkedin text formatter style linkedin posts with unicode bold and italic text variants. linkedin text formatter bold text linkedin unicode bold italic"><span class="t-ico">📣</span><span class="t-body"><b>LinkedIn Text Formatter</b><small>Style LinkedIn posts with Unicode bold and italic text variants.</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/twitter-thread-splitter/" data-search="twitter thread splitter split long text into numbered 280-character tweets with per-tweet copy. twitter thread splitter split tweets tweet thread maker"><span class="t-ico">📣</span><span class="t-body"><b>Twitter Thread Splitter</b><small>Split long text into numbered 280-character tweets with per-tweet copy.</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/youtube-title-generator/" data-search="youtube title generator type a keyword and get 10 click-worthy youtube title ideas built from proven templates — challenges, comparisons, numbers, questions and curiosity gaps. youtube title generator video title ideas clickable titles"><span class="t-ico">📣</span><span class="t-body"><b>YouTube Title Generator</b><small>Type a keyword and get 10 click-worthy YouTube title ideas built from proven templates — cha…</small></span><span class="t-arrow">→</span></a></div>
   </section>
 </main>
 
@@ -127,7 +141,7 @@
   </div>
 </footer>
 
-<script src="/assets/site.js?v=3"></script>
+<script src="/assets/site.js?v=4"></script>
 
 <script>
 /* Bio Generator — template-based bio variants */
@@ -178,6 +192,18 @@
       function (n, p, ins) { return 'Dream big, start small. I\u2019m ' + n + ', ' + article(p) + ' ' + p + ' on a journey through ' + ins.slice(0, 2).join(' and ') + '.'; },
       function (n, p, ins) { return n + ' \u2014 turning ' + ins[0] + ' into purpose. ' + cap(p) + ' by craft, dreamer by heart.'; },
       function (n, p, ins) { return 'Your story matters. I\u2019m ' + n + ', ' + article(p) + ' ' + p + ' sharing ' + ins.slice(0, 2).join(', ') + ' and lessons along the way.'; }
+    ],
+    emoji: [
+      function (n, p, ins) { return '✨ ' + n + ' ✨\n📍 Pakistan | 💼 ' + cap(p || 'creator') + '\n❤️ ' + (ins[0] || 'good vibes') + ' | 🌟 ' + (ins[1] || 'new adventures'); },
+      function (n, p, ins) { return '👑 ' + n + '\n💼 ' + cap(p || 'creator') + ' by day, ' + (ins[0] || 'dreamer') + ' by night 🌙\n☕ Fueled by chai & ' + (ins[1] || 'good vibes'); },
+      function (n, p, ins) { return '🌸 Hi, I\u2019m ' + n + '!\n🎨 ' + cap(p || 'creative soul') + '\n💭 Into ' + (ins[0] || 'creativity') + ', ' + (ins[1] || 'music') + ' & ' + (ins[2] || 'sunsets 🌅') + '\n💌 DM open!'; },
+      function (n, p, ins) { return '🚀 ' + n + ' | ' + cap(p || 'dreamer') + '\n🎯 Mission: ' + (ins[0] || 'chasing dreams') + '\n💪 ' + (ins[1] || 'positive vibes') + ' only\n📩 Collabs? Let\u2019s talk!'; },
+      function (n, p, ins) { return '💫 ' + n + ' 💫\n📸 ' + cap(p || 'storyteller') + '\n🌈 ' + (ins[0] || 'adventures') + ' · ' + (ins[1] || 'photography') + '\n🦋 Living my best life'; },
+      function (n, p, ins) { return '🎭 ' + n + ' \u2014 ' + article(p || 'creative') + ' ' + (p || 'creative') + '\n🍕 Loves ' + (ins[0] || 'good food') + ' & ' + (ins[1] || 'great company') + '\n⚡ Part-time legend, full-time ' + (ins[2] || 'vibes'); },
+      function (n, p, ins) { return '🌙 Night owl | ☀️ Day dreamer\n👋 ' + n + ' · 💼 ' + cap(p || 'creator') + '\n🎵 ' + (ins[0] || 'music') + ' enthusiast\n💌 Say hi, don\u2019t be shy!'; },
+      function (n, p, ins) { return '💎 ' + n + '\n🔥 ' + cap(p || 'hustler') + ' making moves\n🏆 Into ' + (ins[0] || 'big goals') + ' & ' + (ins[1] || 'bigger dreams') + '\n📲 Follow the journey 👇'; },
+      function (n, p, ins) { return '🦋 ' + n + ' 🦋\n🌺 ' + cap(p || 'free spirit') + ' from Pakistan 🇵🇰\n✈️ ' + (ins[0] || 'travelling') + ' · 📖 ' + (ins[1] || 'reading') + ' · 🎨 ' + (ins[2] || 'creating') + '\n💖 Spread love, not hate'; },
+      function (n, p, ins) { return '⭐ ' + n.toUpperCase() + ' ⭐\n💼 ' + cap(p || 'creator') + ' | 🎯 ' + (ins[0] || 'dream chaser') + '\n💬 ' + (ins[1] || 'Storytime') + ' every week\n🔔 Turn on notifications!'; }
     ]
   };
 
@@ -231,7 +257,62 @@
     }
   }
 
+  var customEl = TN.el('bio-generator-custom');
+  var sprinkled = TN.el('bio-generator-sprinkled');
+
+  var EMOJI_POOL = ['✨', '🌟', '💖', '🔥', '⭐', '🌊', '💫', '🎉', '💯', '🚀', '🌈', '💪', '😍', '🤩', '💎', '🌸', '🍀', '🎨', '📸', '🎵', '💡', '🌙', '☀️', '🦋', '🌺', '🍕', '☕', '🎮', '🏔️', '✈️'];
+
+  function sprinkle() {
+    try {
+      TN.clearErr('bio-generator-error');
+      var t = customEl ? customEl.value.trim() : '';
+      if (!t) { TN.setErr('bio-generator-error', 'Please write your own bio first.'); return; }
+      var words = t.split(/\s+/);
+      var out = words.map(function (w, i) {
+        // Tasteful: ~1 emoji per 1–2 words; never break the words themselves
+        if (i > 0 && Math.random() < 0.6) {
+          return w + ' ' + EMOJI_POOL[Math.floor(Math.random() * EMOJI_POOL.length)];
+        }
+        return w;
+      }).join(' ');
+      if (!sprinkled) return;
+      sprinkled.innerHTML = '';
+      var row = document.createElement('div');
+      row.className = 'copy-row mt';
+      var res = document.createElement('div');
+      res.className = 'result';
+      res.style.whiteSpace = 'pre-line';
+      var label = document.createElement('div');
+      label.className = 'muted';
+      label.style.fontSize = '.78rem';
+      label.textContent = 'Sprinkled bio';
+      var val = document.createElement('div');
+      val.textContent = out;
+      res.appendChild(label);
+      res.appendChild(val);
+      var btn = document.createElement('button');
+      btn.className = 'btn btn-outline btn-sm';
+      btn.type = 'button';
+      btn.textContent = 'Copy';
+      btn.addEventListener('click', function () {
+        TN.copy(out).then(function (ok) {
+          btn.textContent = ok ? 'Copied ✓' : 'Copy';
+          if (!ok) TN.setErr('bio-generator-error', 'Copy failed — select the text and press Ctrl/Cmd+C.');
+          setTimeout(function () { btn.textContent = 'Copy'; }, 1000);
+        });
+      });
+      res.style.cursor = 'pointer';
+      res.addEventListener('click', function () { btn.click(); });
+      row.appendChild(res);
+      row.appendChild(btn);
+      sprinkled.appendChild(row);
+    } catch (e) {
+      TN.setErr('bio-generator-error', 'Could not sprinkle emojis. Please try again.');
+    }
+  }
+
   TN.on('bio-generator-generate', 'click', generate);
+  TN.on('bio-generator-sprinkle', 'click', sprinkle);
 })();
 
 </script>

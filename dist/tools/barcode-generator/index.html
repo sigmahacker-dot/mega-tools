@@ -14,7 +14,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/assets/site.css?v=2">
+<link rel="stylesheet" href="/assets/site.css?v=4">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%23e01111'/><text x='50' y='68' font-size='58' text-anchor='middle' fill='white' font-family='Arial' font-weight='bold'>T</text></svg>">
 <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebApplication","name":"Barcode Generator","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0"},"url":"https://toolnest.vercel.app/tools/barcode-generator/","description":"Generate barcodes in common formats — CODE128, CODE39, EAN-13, EAN-8, UPC and ITF-14 — and download them as PNG or SVG images."},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Which barcode format should I choose?","acceptedAnswer":{"@type":"Answer","text":"CODE128 is the most flexible: it encodes letters, numbers and symbols of any length. Use it unless a retailer specifically requires an EAN or UPC code."}},{"@type":"Question","name":"Why does the generator reject my number?","acceptedAnswer":{"@type":"Answer","text":"EAN-13 and UPC codes are strict retail formats. EAN-13 needs exactly 12 or 13 digits, EAN-8 needs 7 or 8, UPC needs 11 or 12. CODE128 has no such restriction."}},{"@type":"Question","name":"Are the generated barcodes free to use commercially?","acceptedAnswer":{"@type":"Answer","text":"Yes — the codes are generated in your browser and are free to use. Real retail product codes must be registered with GS1 to be scannable in stores."}}]}]}</script>
 </head>
@@ -27,6 +27,10 @@
       <a href="/#categories">Categories</a>
       <a href="/#all-tools">All Tools</a>
     </nav>
+    <form class="nav-search" action="/" method="get" role="search">
+      <span class="ns-icon">🔍</span>
+      <input type="search" name="q" placeholder="Search tools…" aria-label="Search tools" autocomplete="off">
+    </form>
   </div>
 </header>
 
@@ -127,7 +131,7 @@
   </div>
 </footer>
 
-<script src="/assets/site.js?v=3"></script>
+<script src="/assets/site.js?v=4"></script>
 <script src="https://cdn.jsdelivr.net/npm/jsbarcode@3.8.0/dist/JsBarcode.all.min.js" defer></script>
 <script>
 (function () {

@@ -1,4 +1,4 @@
-/* Fancy Text Generator — 16 Unicode text styles */
+/* Fancy Text Generator — 24 Unicode & emoji text styles */
 (function () {
   'use strict';
   var input = TN.el('fancy-text-generator-input');
@@ -33,6 +33,25 @@
   var UPSIDE = { a: 'ɐ', b: 'q', c: 'ɔ', d: 'p', e: 'ǝ', f: 'ɟ', g: 'ƃ', h: 'ɥ', i: 'ᴉ', j: 'ɾ', k: 'ʞ', l: 'l', m: 'ɯ', n: 'u', o: 'o', p: 'd', q: 'b', r: 'ɹ', s: 's', t: 'ʇ', u: 'n', v: 'ʌ', w: 'ʍ', x: 'x', y: 'ʎ', z: 'z', A: 'Ɐ', B: 'ᗺ', C: 'Ↄ', D: 'ᗡ', E: 'Ǝ', F: 'Ⅎ', G: '⅁', H: 'H', I: 'I', J: 'ſ', K: 'ʞ', L: '˥', M: 'W', N: 'И', O: 'O', P: 'Ԁ', Q: 'Q', R: 'ᴚ', S: 'S', T: '⊥', U: '∩', V: 'Λ', W: 'M', X: 'X', Y: '⅄', Z: 'Z', '0': '0', '1': 'Ɩ', '2': 'ᘔ', '3': 'Ɛ', '6': '9', '8': '8', '9': '6' };
   var SUPER = { a: 'ᵃ', b: 'ᵇ', c: 'ᶜ', d: 'ᵈ', e: 'ᵉ', f: 'ᶠ', g: 'ᵍ', h: 'ʰ', i: 'ⁱ', j: 'ʲ', k: 'ᵏ', l: 'ˡ', m: 'ᵐ', n: 'ⁿ', o: 'ᵒ', p: 'ᵖ', q: '𐞥', r: 'ʳ', s: 'ˢ', t: 'ᵗ', u: 'ᵘ', v: 'ᵛ', w: 'ʷ', x: 'ˣ', y: 'ʸ', z: 'ᶻ', '0': '⁰', '1': '¹', '2': '²', '3': '³', '4': '⁴', '5': '⁵', '6': '⁶', '7': '⁷', '8': '⁸', '9': '⁹' };
 
+  function circledMap() {
+    var m = offsetMap(0x24B6, 0x24D0, 0);
+    var d = '123456789';
+    for (var i = 0; i < 9; i++) m[d[i]] = cp(0x2460 + i);
+    m['0'] = cp(0x24EA);
+    return m;
+  }
+  var CIRCLED = circledMap();
+
+  function wrapEach(text, emoji) {
+    return Array.from(text).map(function (ch) {
+      return ch === ' ' ? ch : emoji + ch + emoji;
+    }).join('');
+  }
+
+  function joinEach(text, emoji) {
+    return Array.from(text).join(emoji);
+  }
+
   var STYLES = [
     { name: 'Bold', map: offsetMap(0x1D400, 0x1D41A, 0x1D7CE) },
     { name: 'Italic', map: offsetMap(0x1D434, 0x1D44E, 0) },
@@ -42,17 +61,37 @@
     { name: 'Double-struck', map: (function () { var m = offsetMap(0, 0x1D552, 0x1D7D8); for (var k in DSTR_UP) m[k] = cp(DSTR_UP[k]); return m; })() },
     { name: 'Monospace', map: offsetMap(0x1D670, 0x1D68A, 0x1D7F6) },
     { name: 'Sans Bold', map: offsetMap(0x1D5A0, 0x1D5BA, 0x1D7E2) },
-    { name: 'Circled', map: (function () { var m = offsetMap(0x24B6, 0x24D0, 0); var d = '123456789'; for (var i = 0; i < 9; i++) m[d[i]] = cp(0x2460 + i); m['0'] = cp(0x24EA); return m; })() },
+    { name: 'Circled', map: CIRCLED },
     { name: 'Squared', map: offsetMap(0x1F170, 0, 0) },
     { name: 'Small Caps', map: (function () { var m = customMap(SMALLCAPS); var A = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'; for (var i = 0; i < 26; i++) m[A[i]] = m[A[i].toLowerCase()]; return m; })() },
     { name: 'Upside Down', map: UPSIDE, flip: true },
     { name: 'Fullwidth', map: offsetMap(0xFF21, 0xFF41, 0xFF10) },
     { name: 'Strikethrough', map: null, combine: '̶' },
     { name: 'Underline', map: null, combine: '̲' },
-    { name: 'Superscript', map: (function () { var m = {}; var k; for (k in SUPER) m[k] = SUPER[k]; var A = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'; for (var i = 0; i < 26; i++) { var lo = A[i].toLowerCase(); if (m[lo]) m[A[i]] = m[lo]; } return m; })() }
+    { name: 'Superscript', map: (function () { var m = {}; var k; for (k in SUPER) m[k] = SUPER[k]; var A = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'; for (var i = 0; i < 26; i++) { var lo = A[i].toLowerCase(); if (m[lo]) m[A[i]] = m[lo]; } return m; })() },
+    { name: '✨ Sparkle Wrap', fn: function (text) { return wrapEach(text, '✨'); } },
+    { name: '🌟 Emoji Separator', fn: function (text) { return joinEach(text, '🌟'); } },
+    { name: '🍔 Sandwich', fn: function (text) { return '🍔 ' + text + ' 🍔'; } },
+    {
+      name: '💫 Bubble + Emoji', fn: function (text) {
+        return Array.from(text).map(function (ch) { return CIRCLED[ch] || ch; }).join('💫');
+      }
+    },
+    { name: '🔥 Fire Letters', fn: function (text) { return joinEach(text, '🔥'); } },
+    { name: '💖 Hearts', fn: function (text) { return wrapEach(text, '💖'); } },
+    {
+      name: '⭐ Star Frame', fn: function (text) {
+        var n = Math.max(Array.from(text).length + 6, 8);
+        var line = '';
+        for (var i = 0; i < n; i++) line += '⭐';
+        return line + '\n⭐ ' + text + ' ⭐\n' + line;
+      }
+    },
+    { name: '🌊 Wave', fn: function (text) { return '🌊' + joinEach(text, '🌊') + '🌊'; } }
   ];
 
   function stylize(text, style) {
+    if (style.fn) return style.fn(text);
     var chars = Array.from(text);
     var out = chars.map(function (ch) {
       if (style.combine) return ch + style.combine;
@@ -70,7 +109,7 @@
       if (!text) {
         var p = document.createElement('p');
         p.className = 'muted';
-        p.textContent = 'Type something above to see 16 stylish versions.';
+        p.textContent = 'Type something above to see 24 stylish versions.';
         list.appendChild(p);
         return;
       }
