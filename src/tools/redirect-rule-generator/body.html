@@ -1,0 +1,29 @@
+<div class="tool-card">
+  <div class="field">
+    <label for="redirect-rule-generator-input">Redirects — one per line: <span class="muted">old-path -&gt; new-url</span></label>
+    <textarea class="textarea" id="redirect-rule-generator-input" rows="6" placeholder="/old-page -> https://example.com/new-page&#10;/blog/2020/post -> https://example.com/blog/post" spellcheck="false"></textarea>
+  </div>
+  <div class="btn-row">
+    <button class="btn btn-primary" id="redirect-rule-generator-generate">Generate redirects</button>
+  </div>
+  <div class="error" id="redirect-rule-generator-error"></div>
+  <div class="result" id="redirect-rule-generator-result">
+    <div class="btn-row" role="tablist" aria-label="Output format">
+      <button class="btn btn-sm btn-primary" data-tab="apache" type="button">Apache .htaccess</button>
+      <button class="btn btn-sm btn-outline" data-tab="nginx" type="button">Nginx</button>
+      <button class="btn btn-sm btn-outline" data-tab="html" type="button">HTML</button>
+      <button class="btn btn-sm btn-outline" data-tab="js" type="button">JavaScript</button>
+    </div>
+    <div class="field">
+      <label id="redirect-rule-generator-out-label">Apache .htaccess</label>
+      <pre id="redirect-rule-generator-out-apache" style="background:#111827;color:#e5e7eb;padding:12px;border-radius:8px;overflow-x:auto;font-size:13px;"></pre>
+      <pre id="redirect-rule-generator-out-nginx" class="hidden" style="background:#111827;color:#e5e7eb;padding:12px;border-radius:8px;overflow-x:auto;font-size:13px;"></pre>
+      <pre id="redirect-rule-generator-out-html" class="hidden" style="background:#111827;color:#e5e7eb;padding:12px;border-radius:8px;overflow-x:auto;font-size:13px;"></pre>
+      <pre id="redirect-rule-generator-out-js" class="hidden" style="background:#111827;color:#e5e7eb;padding:12px;border-radius:8px;overflow-x:auto;font-size:13px;"></pre>
+    </div>
+    <div class="btn-row">
+      <button class="btn btn-outline" id="redirect-rule-generator-copy">Copy current tab</button>
+    </div>
+    <p class="note">HTML and JavaScript redirects are client-side fallbacks — prefer a real server 301 whenever you can.</p>
+  </div>
+</div>

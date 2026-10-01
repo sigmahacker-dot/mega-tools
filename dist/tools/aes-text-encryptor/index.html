@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AES Text Encryptor — Free Online | ToolNest</title>
+<meta name="description" content="Encrypt text with real AES-256-GCM using a password-derived key (PBKDF2), fully in your browser.">
+<meta name="keywords" content="aes encrypt text, encrypt message password, aes-gcm online">
+<link rel="canonical" href="https://toolnest.vercel.app/tools/aes-text-encryptor/">
+<meta name="theme-color" content="#07070b">
+<meta property="og:title" content="AES Text Encryptor — Free Online | ToolNest">
+<meta property="og:description" content="Encrypt text with real AES-256-GCM using a password-derived key (PBKDF2), fully in your browser.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css?v=2">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%23e01111'/><text x='50' y='68' font-size='58' text-anchor='middle' fill='white' font-family='Arial' font-weight='bold'>T</text></svg>">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebApplication","name":"AES Text Encryptor","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0"},"url":"https://toolnest.vercel.app/tools/aes-text-encryptor/","description":"Encrypt text with real AES-256-GCM using a password-derived key (PBKDF2), fully in your browser."},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Is this real encryption?","acceptedAnswer":{"@type":"Answer","text":"Yes. It uses WebCrypto PBKDF2 with 100,000 SHA-256 iterations and a random salt to derive an AES-256-GCM key — the same building blocks used by professional tools. The main weakness is a short, guessable password."}},{"@type":"Question","name":"Why does encrypting the same text give different output?","acceptedAnswer":{"@type":"Answer","text":"Each encryption uses a fresh random salt and IV, so encrypting the same text twice produces different output. Both are needed to decrypt."}},{"@type":"Question","name":"What if I forget the password?","acceptedAnswer":{"@type":"Answer","text":"No. Decryption fails and you get a clear error. There is no password recovery — keep your password safe."}},{"@type":"Question","name":"Can I decrypt on another device?","acceptedAnswer":{"@type":"Answer","text":"The encrypted output is self-contained: salt, IV and ciphertext packed into one Base64 string, so it decrypts on any device with the password."}}]}]}</script>
+</head>
+<body>
+<header class="site-header">
+  <div class="container">
+    <a class="logo" href="/"><span class="logo-mark">T</span> ToolNest</a>
+    <nav class="site-nav">
+      <a href="/">Home</a>
+      <a href="/#categories">Categories</a>
+      <a href="/#all-tools">All Tools</a>
+    </nav>
+  </div>
+</header>
+
+<!-- ADSTERRA-HEADER: paste your Adsterra banner ad code inside the div below -->
+<div class="container"><div class="ad-slot ad-leaderboard" data-ad="header"></div></div>
+
+<main class="container">
+  <nav class="crumbs"><a href="/">Home</a> &rsaquo; <a href="/#text">Text &amp; Writing</a> &rsaquo; AES Text Encryptor</nav>
+  <div class="tool-hero">
+    <h1>AES Text Encryptor</h1>
+    <p>Encrypt text with real AES-256-GCM using a password-derived key (PBKDF2), fully in your browser.</p>
+  </div>
+
+  <div class="tool-card">
+  <h2>AES Text Encryptor</h2>
+  <p class="muted">Real AES-256-GCM encryption with a PBKDF2 password key. Nothing leaves your browser.</p>
+  <div class="field">
+    <label for="aes-text-encryptor-mode">Mode</label>
+    <select class="select" id="aes-text-encryptor-mode">
+      <option value="encrypt">Encrypt</option>
+      <option value="decrypt">Decrypt</option>
+    </select>
+  </div>
+  <div class="field">
+    <label for="aes-text-encryptor-password">Password</label>
+    <input type="password" class="input" id="aes-text-encryptor-password" placeholder="Enter a strong password" autocomplete="off">
+  </div>
+  <div class="field">
+    <label for="aes-text-encryptor-input" id="aes-text-encryptor-input-label">Plain text</label>
+    <textarea class="textarea" id="aes-text-encryptor-input" rows="6" placeholder="Text to encrypt..."></textarea>
+  </div>
+  <div class="btn-row mt">
+    <button class="btn btn-primary" id="aes-text-encryptor-run">Encrypt</button>
+    <button class="btn btn-outline" id="aes-text-encryptor-clear">Clear</button>
+  </div>
+  <div class="error" id="aes-text-encryptor-error"></div>
+  <div class="result" id="aes-text-encryptor-result">
+    <div class="field">
+      <label for="aes-text-encryptor-output">Result</label>
+      <textarea class="textarea" id="aes-text-encryptor-output" rows="6" readonly placeholder="Result will appear here..."></textarea>
+    </div>
+    <div class="btn-row">
+      <button class="btn btn-outline" id="aes-text-encryptor-copy">Copy result</button>
+    </div>
+    <p class="note">Output is Base64(salt 16B | IV 12B | ciphertext). PBKDF2: 100,000 iterations, SHA-256, AES-256-GCM.</p>
+  </div>
+</div>
+
+  <!-- ADSTERRA-INCONTENT: paste your Adsterra native/in-content ad code inside the div below -->
+  <div class="ad-slot" data-ad="incontent"></div>
+
+  <div class="info-grid">
+    <div class="info-card">
+      <h2>📖 How to use</h2>
+      <ol><li>Choose Encrypt or Decrypt mode.</li><li>Enter a strong password (you will need it to decrypt).</li><li>Paste your text (or the encrypted Base64 string) and click the button.</li><li>Copy the result — the output packs salt, IV and ciphertext into one string.</li></ol>
+    </div>
+    <div class="info-card">
+      <h2>❓ Frequently asked questions</h2>
+      <div class="faq"><details><summary>Is this real encryption?</summary><p>Yes. It uses WebCrypto PBKDF2 with 100,000 SHA-256 iterations and a random salt to derive an AES-256-GCM key — the same building blocks used by professional tools. The main weakness is a short, guessable password.</p></details><details><summary>Why does encrypting the same text give different output?</summary><p>Each encryption uses a fresh random salt and IV, so encrypting the same text twice produces different output. Both are needed to decrypt.</p></details><details><summary>What if I forget the password?</summary><p>No. Decryption fails and you get a clear error. There is no password recovery — keep your password safe.</p></details><details><summary>Can I decrypt on another device?</summary><p>The encrypted output is self-contained: salt, IV and ciphertext packed into one Base64 string, so it decrypts on any device with the password.</p></details></div>
+    </div>
+  </div>
+
+  <section class="section">
+    <h2>🔗 Related tools</h2>
+    <div class="tool-grid"><a class="tool-link" href="/tools/article-rewriter/" data-search="article rewriter rewrite articles with a built-in synonym engine covering 130+ common english words. whole-word replacement with capitalization preserved and a change report. article rewriter paraphrasing tool rewrite text online"><span class="t-ico">✍️</span><span class="t-body"><b>Article Rewriter</b><small>Rewrite articles with a built-in synonym engine covering 130+ common English words. Whole-wo…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/case-converter/" data-search="case converter convert text to uppercase, lowercase, title case, sentence case, alternating case and inverse case instantly, then copy or download the result. case converter uppercase lowercase converter title case converter"><span class="t-ico">✍️</span><span class="t-body"><b>Case Converter</b><small>Convert text to UPPERCASE, lowercase, Title Case, Sentence case, aLtErNaTiNg cAsE and iNVERS…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/case-style-converter/" data-search="case style converter convert text between camelcase, pascalcase, snake_case, kebab-case and more. case converter camelcase to snakecase kebab case converter"><span class="t-ico">✍️</span><span class="t-body"><b>Case Style Converter</b><small>Convert text between camelCase, PascalCase, snake_case, kebab-case and more.</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/character-counter/" data-search="character counter count characters with and without spaces, words and lines in real time, with a live x/twitter 280-character limit gauge and sms segment indicator. character counter twitter character count count characters online"><span class="t-ico">✍️</span><span class="t-body"><b>Character Counter</b><small>Count characters with and without spaces, words and lines in real time, with a live X/Twitte…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/duplicate-line-remover/" data-search="duplicate line remover remove duplicate lines from any list, with options to ignore case, trim spaces and sort. remove duplicate lines dedupe lines unique lines"><span class="t-ico">✍️</span><span class="t-body"><b>Duplicate Line Remover</b><small>Remove duplicate lines from any list, with options to ignore case, trim spaces and sort.</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/hash-generator/" data-search="hash generator generate sha-256, sha-384, sha-512, sha-1 and md5 digests for text or any file. hash generator sha256 online md5 generator"><span class="t-ico">✍️</span><span class="t-body"><b>Hash Generator</b><small>Generate SHA-256, SHA-384, SHA-512, SHA-1 and MD5 digests for text or any file.</small></span><span class="t-arrow">→</span></a></div>
+  </section>
+</main>
+
+<!-- ADSTERRA-FOOTER: paste your Adsterra footer/banner ad code inside the div below -->
+<div class="container"><div class="ad-slot" data-ad="footer"></div></div>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="f-grid">
+      <div>
+        <span class="brandline"><span class="logo-mark">T</span> ToolNest</span>
+        <p>Free online tools that actually work. No sign-up, no watermarks — and your files never leave your device for client-side tools.</p>
+      </div>
+      <div>
+        <h4>Popular</h4>
+        <a href="/tools/qr-code-generator/">QR Code Generator</a>
+        <a href="/tools/background-remover/">Background Remover</a>
+        <a href="/tools/pdf-merger/">PDF Merger</a>
+        <a href="/tools/word-counter/">Word Counter</a>
+      </div>
+      <div>
+        <h4>Categories</h4>
+        <a href="/#image">Image Tools</a>
+        <a href="/#pdf">PDF &amp; Documents</a>
+        <a href="/#calculators">Calculators</a>
+        <a href="/#developer">Developer Tools</a>
+      </div>
+      <div>
+        <h4>Site</h4>
+        <a href="/">Home</a>
+        <a href="/#all-tools">All Tools</a>
+        <a href="/sitemap.xml">Sitemap</a>
+      </div>
+    </div>
+    <div class="f-bottom">© 2026 ToolNest · Free tools for everyone · Made with care</div>
+  </div>
+</footer>
+
+<script src="/assets/site.js?v=2"></script>
+
+<script>
+/* AES Text Encryptor — WebCrypto PBKDF2(100k, SHA-256) -> AES-256-GCM. */
+(function () {
+  'use strict';
+
+  var SLUG = 'aes-text-encryptor';
+  var ITERS = 100000;
+  var SALT_LEN = 16;
+  var IV_LEN = 12;
+
+  function errId() { return SLUG + '-error'; }
+
+  function b64encode(bytes) {
+    var bin = '';
+    var u8 = new Uint8Array(bytes);
+    for (var i = 0; i < u8.length; i++) bin += String.fromCharCode(u8[i]);
+    return btoa(bin);
+  }
+
+  function b64decode(s) {
+    var bin = atob(s);
+    var u8 = new Uint8Array(bin.length);
+    for (var i = 0; i < bin.length; i++) u8[i] = bin.charCodeAt(i);
+    return u8;
+  }
+
+  function cryptoOk() {
+    return typeof window !== 'undefined' && window.crypto && window.crypto.subtle
+      && typeof TextEncoder !== 'undefined';
+  }
+
+  function deriveKey(password, salt) {
+    var enc = new TextEncoder();
+    return window.crypto.subtle.importKey('raw', enc.encode(password), 'PBKDF2', false, ['deriveKey'])
+      .then(function (base) {
+        return window.crypto.subtle.deriveKey(
+          { name: 'PBKDF2', salt: salt, iterations: ITERS, hash: 'SHA-256' },
+          base,
+          { name: 'AES-GCM', length: 256 },
+          false,
+          ['encrypt', 'decrypt']
+        );
+      });
+  }
+
+  function setBusy(busy) {
+    var btn = TN.el(SLUG + '-run');
+    if (btn) btn.disabled = busy;
+  }
+
+  function run() {
+    TN.clearErr(errId());
+    if (!cryptoOk()) {
+      TN.setErr(errId(), 'WebCrypto is not available in this browser. Use a modern browser over HTTPS or localhost.');
+      return;
+    }
+    var modeEl = TN.el(SLUG + '-mode');
+    var mode = modeEl ? modeEl.value : 'encrypt';
+    var pwEl = TN.el(SLUG + '-password');
+    var inEl = TN.el(SLUG + '-input');
+    var outEl = TN.el(SLUG + '-output');
+    var password = pwEl ? pwEl.value : '';
+    var input = inEl ? inEl.value : '';
+    if (!password) { TN.setErr(errId(), 'Please enter a password.'); return; }
+    if (!input) { TN.setErr(errId(), mode === 'encrypt' ? 'Please enter text to encrypt.' : 'Please paste the encrypted Base64 string.'); return; }
+
+    setBusy(true);
+    (async function () {
+      try {
+        if (mode === 'encrypt') {
+          var salt = window.crypto.getRandomValues(new Uint8Array(SALT_LEN));
+          var iv = window.crypto.getRandomValues(new Uint8Array(IV_LEN));
+          var key = await deriveKey(password, salt);
+          var ct = await window.crypto.subtle.encrypt(
+            { name: 'AES-GCM', iv: iv },
+            key,
+            new TextEncoder().encode(input)
+          );
+          var packed = new Uint8Array(SALT_LEN + IV_LEN + ct.byteLength);
+          packed.set(salt, 0);
+          packed.set(iv, SALT_LEN);
+          packed.set(new Uint8Array(ct), SALT_LEN + IV_LEN);
+          if (outEl) outEl.value = b64encode(packed);
+        } else {
+          var raw;
+          try {
+            raw = b64decode(input.trim());
+          } catch (e) {
+            throw new Error('bad-base64');
+          }
+          if (raw.length < SALT_LEN + IV_LEN + 1) throw new Error('bad-format');
+          var salt2 = raw.slice(0, SALT_LEN);
+          var iv2 = raw.slice(SALT_LEN, SALT_LEN + IV_LEN);
+          var ct2 = raw.slice(SALT_LEN + IV_LEN);
+          var key2 = await deriveKey(password, salt2);
+          var pt;
+          try {
+            pt = await window.crypto.subtle.decrypt({ name: 'AES-GCM', iv: iv2 }, key2, ct2);
+          } catch (e) {
+            throw new Error('wrong-password');
+          }
+          if (outEl) outEl.value = new TextDecoder().decode(pt);
+        }
+      } catch (e) {
+        var msg = e && e.message;
+        if (msg === 'wrong-password') TN.setErr(errId(), 'Decryption failed — wrong password or corrupted data.');
+        else if (msg === 'bad-base64') TN.setErr(errId(), 'Invalid Base64 input. Paste the exact encrypted string.');
+        else if (msg === 'bad-format') TN.setErr(errId(), 'This does not look like output from this tool (too short).');
+        else TN.setErr(errId(), 'Operation failed: ' + (msg || 'unknown error.'));
+      } finally {
+        setBusy(false);
+      }
+    })();
+  }
+
+  function copy() {
+    var out = TN.el(SLUG + '-output');
+    if (!out || !out.value) { TN.setErr(errId(), 'Nothing to copy yet.'); return; }
+    TN.clearErr(errId());
+    TN.copy(out.value).then(function (ok) {
+      if (!ok) TN.setErr(errId(), 'Copy failed — select the text manually and press Ctrl+C.');
+    });
+  }
+
+  function clear() {
+    TN.clearErr(errId());
+    ['password', 'input', 'output'].forEach(function (k) {
+      var e = TN.el(SLUG + '-' + k);
+      if (e) e.value = '';
+    });
+  }
+
+  function syncMode() {
+    var modeEl = TN.el(SLUG + '-mode');
+    var mode = modeEl ? modeEl.value : 'encrypt';
+    var runBtn = TN.el(SLUG + '-run');
+    var inLabel = TN.el(SLUG + '-input-label');
+    var inEl = TN.el(SLUG + '-input');
+    if (runBtn) runBtn.textContent = mode === 'encrypt' ? 'Encrypt' : 'Decrypt';
+    if (inLabel) inLabel.textContent = mode === 'encrypt' ? 'Plain text' : 'Encrypted Base64';
+    if (inEl) inEl.placeholder = mode === 'encrypt' ? 'Text to encrypt...' : 'Paste the encrypted Base64 string...';
+    var outEl = TN.el(SLUG + '-output');
+    if (outEl) outEl.value = '';
+    TN.clearErr(errId());
+  }
+
+  function init() {
+    try {
+      if (typeof TN === 'undefined') return;
+      var r = TN.el(SLUG + '-run');
+      if (r) TN.on(r, 'click', run);
+      var c = TN.el(SLUG + '-clear');
+      if (c) TN.on(c, 'click', clear);
+      var cp = TN.el(SLUG + '-copy');
+      if (cp) TN.on(cp, 'click', copy);
+      var m = TN.el(SLUG + '-mode');
+      if (m) TN.on(m, 'change', syncMode);
+      syncMode();
+    } catch (e) { /* never throw on load */ }
+  }
+
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init);
+  else init();
+})();
+</script>
+</body>
+</html>

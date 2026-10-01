@@ -1,0 +1,58 @@
+<div class="tool-card">
+  <div class="field">
+    <label for="invest-mode">Mode</label>
+    <select class="select" id="invest-mode">
+      <option value="cagr">Compute CAGR from values</option>
+      <option value="project">Project future value from CAGR</option>
+    </select>
+  </div>
+  <div id="invest-mode-a">
+    <div class="grid2">
+      <div class="field">
+        <label for="invest-start">Start value ($)</label>
+        <input type="number" class="input" id="invest-start" min="0.01" step="any" placeholder="10000">
+      </div>
+      <div class="field">
+        <label for="invest-end">End value ($)</label>
+        <input type="number" class="input" id="invest-end" min="0" step="any" placeholder="19671">
+      </div>
+      <div class="field">
+        <label for="invest-years">Years</label>
+        <input type="number" class="input" id="invest-years" min="0.1" step="any" placeholder="10">
+      </div>
+    </div>
+  </div>
+  <div id="invest-mode-b" class="hidden">
+    <div class="grid2">
+      <div class="field">
+        <label for="invest2-start">Start value ($)</label>
+        <input type="number" class="input" id="invest2-start" min="0.01" step="any" placeholder="10000">
+      </div>
+      <div class="field">
+        <label for="invest2-cagr">CAGR (%)</label>
+        <input type="number" class="input" id="invest2-cagr" step="any" placeholder="7">
+      </div>
+      <div class="field">
+        <label for="invest2-years">Years</label>
+        <input type="number" class="input" id="invest2-years" min="0.1" step="any" placeholder="10">
+      </div>
+    </div>
+  </div>
+  <div class="error" id="investment-return-calculator-error"></div>
+  <div class="result" id="invest-result">
+    <div id="invest-result-a">
+      <div class="stat-cards">
+        <div class="stat-card"><div class="v" id="invest-cagr">–</div><div class="l">CAGR</div></div>
+        <div class="stat-card"><div class="v" id="invest-total-return">–</div><div class="l">Total return</div></div>
+        <div class="stat-card"><div class="v" id="invest-double">–</div><div class="l">Doubling time</div></div>
+      </div>
+    </div>
+    <div id="invest-result-b" class="hidden">
+      <div class="stat-cards">
+        <div class="stat-card"><div class="v" id="invest2-fv">–</div><div class="l">Future value</div></div>
+        <div class="stat-card"><div class="v" id="invest2-gain">–</div><div class="l">Total gain</div></div>
+      </div>
+    </div>
+    <p class="note">CAGR is a smoothed average — it does not show year-to-year volatility.</p>
+  </div>
+</div>

@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>JWT Decoder — Free Online | ToolNest</title>
+<meta name="description" content="Decode any JWT to inspect its header and payload claims — with an honest note that signatures are not verified.">
+<meta name="keywords" content="jwt decoder, decode jwt, jwt token decoder">
+<link rel="canonical" href="https://toolnest.vercel.app/tools/jwt-decoder/">
+<meta name="theme-color" content="#07070b">
+<meta property="og:title" content="JWT Decoder — Free Online | ToolNest">
+<meta property="og:description" content="Decode any JWT to inspect its header and payload claims — with an honest note that signatures are not verified.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css?v=2">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%23e01111'/><text x='50' y='68' font-size='58' text-anchor='middle' fill='white' font-family='Arial' font-weight='bold'>T</text></svg>">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebApplication","name":"JWT Decoder","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0"},"url":"https://toolnest.vercel.app/tools/jwt-decoder/","description":"Decode any JWT to inspect its header and payload claims — with an honest note that signatures are not verified."},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Does this verify the JWT signature?","acceptedAnswer":{"@type":"Answer","text":"No. This tool only decodes the base64url payload so you can read it. Verification needs the signing key, which this tool never sees."}},{"@type":"Question","name":"Is the data inside a JWT encrypted?","acceptedAnswer":{"@type":"Answer","text":"Anyone holding the token can read its payload, so never put passwords, API keys or other secrets inside a JWT."}},{"@type":"Question","name":"How do I try it without a real token?","acceptedAnswer":{"@type":"Answer","text":"Paste the token into the box or press “Load sample” to try the decoder on an example token."}}]}]}</script>
+</head>
+<body>
+<header class="site-header">
+  <div class="container">
+    <a class="logo" href="/"><span class="logo-mark">T</span> ToolNest</a>
+    <nav class="site-nav">
+      <a href="/">Home</a>
+      <a href="/#categories">Categories</a>
+      <a href="/#all-tools">All Tools</a>
+    </nav>
+  </div>
+</header>
+
+<!-- ADSTERRA-HEADER: paste your Adsterra banner ad code inside the div below -->
+<div class="container"><div class="ad-slot ad-leaderboard" data-ad="header"></div></div>
+
+<main class="container">
+  <nav class="crumbs"><a href="/">Home</a> &rsaquo; <a href="/#developer">Developer Tools</a> &rsaquo; JWT Decoder</nav>
+  <div class="tool-hero">
+    <h1>JWT Decoder</h1>
+    <p>Decode any JWT to inspect its header and payload claims — with an honest note that signatures are not verified.</p>
+  </div>
+
+  <div class="tool-card">
+  <div class="field">
+    <label for="jwt-decoder-token">JWT</label>
+    <textarea class="textarea" id="jwt-decoder-token" rows="4" placeholder="Paste a JSON Web Token (header.payload.signature)…" spellcheck="false" autocomplete="off" autocapitalize="off"></textarea>
+  </div>
+  <div class="btn-row">
+    <button type="button" class="btn btn-outline btn-sm" id="jwt-decoder-sample">Load sample</button>
+    <button type="button" class="btn btn-outline btn-sm" id="jwt-decoder-clear">Clear</button>
+  </div>
+  <div class="error" id="jwt-decoder-error"></div>
+  <div class="result hidden" id="jwt-decoder-result">
+    <div class="stat-cards">
+      <div class="stat-card"><div class="v" id="jwt-decoder-alg">–</div><div class="l">Algorithm</div></div>
+      <div class="stat-card"><div class="v" id="jwt-decoder-verdict">–</div><div class="l">Expiry verdict</div></div>
+    </div>
+    <div class="grid2">
+      <div class="field">
+        <label>Header</label>
+        <pre class="jwt-pre" id="jwt-decoder-header"></pre>
+      </div>
+      <div class="field">
+        <label>Payload</label>
+        <pre class="jwt-pre" id="jwt-decoder-payload"></pre>
+      </div>
+    </div>
+    <table class="data">
+      <tbody id="jwt-decoder-claims"></tbody>
+    </table>
+    <p class="note" id="jwt-decoder-signote"></p>
+    <p class="note"><strong>Signature is NOT verified.</strong> This tool only decodes — it cannot tell you whether the token is authentic. Never trust a token just because it decodes.</p>
+  </div>
+  <style>
+    .jwt-pre{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:.85rem;line-height:1.6;background:#f8fafc;border:1.5px solid #e2e8f0;border-radius:10px;padding:12px 14px;white-space:pre-wrap;word-break:break-word;max-height:300px;overflow:auto;margin:0}
+  </style>
+</div>
+
+
+  <!-- ADSTERRA-INCONTENT: paste your Adsterra native/in-content ad code inside the div below -->
+  <div class="ad-slot" data-ad="incontent"></div>
+
+  <div class="info-grid">
+    <div class="info-card">
+      <h2>📖 How to use</h2>
+      <ol><li>Paste a JWT (header.payload.signature) into the box.</li><li>The header and payload decode instantly into readable JSON.</li><li>Standard claims like exp, iat and iss are translated into plain dates.</li><li>Remember: decoding is not verification — the signature is never checked.</li></ol>
+    </div>
+    <div class="info-card">
+      <h2>❓ Frequently asked questions</h2>
+      <div class="faq"><details><summary>Does this verify the JWT signature?</summary><p>No. This tool only decodes the base64url payload so you can read it. Verification needs the signing key, which this tool never sees.</p></details><details><summary>Is the data inside a JWT encrypted?</summary><p>Anyone holding the token can read its payload, so never put passwords, API keys or other secrets inside a JWT.</p></details><details><summary>How do I try it without a real token?</summary><p>Paste the token into the box or press “Load sample” to try the decoder on an example token.</p></details></div>
+    </div>
+  </div>
+
+  <section class="section">
+    <h2>🔗 Related tools</h2>
+    <div class="tool-grid"><a class="tool-link" href="/tools/base64-encoder-decoder/" data-search="base64 encoder / decoder encode text to base64 or decode base64 back to text, with full utf-8 support and a file-to-data-url converter. base64 encoder base64 decoder base64 encode base64 decode file to base64"><span class="t-ico">💻</span><span class="t-body"><b>Base64 Encoder / Decoder</b><small>Encode text to Base64 or decode Base64 back to text, with full UTF-8 support and a file-to-d…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/binary-text-converter/" data-search="binary and text converter convert text to binary or hex and back, with full utf-8 awareness and strict input validation. binary to text text to binary hex to text converter"><span class="t-ico">💻</span><span class="t-body"><b>Binary and Text Converter</b><small>Convert text to binary or hex and back, with full UTF-8 awareness and strict input validatio…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/color-code-converter/" data-search="color code converter type a color in hex, rgb or hsl format and instantly see it converted to all three formats with a preview swatch. color converter hex to rgb rgb to hex hsl converter color code"><span class="t-ico">💻</span><span class="t-body"><b>Color Code Converter</b><small>Type a color in HEX, RGB or HSL format and instantly see it converted to all three formats w…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/css-minifier/" data-search="css minifier compress css by stripping comments, collapsing whitespace and removing redundant semicolons, with before/after byte stats. css minifier minify css css compressor reduce css size"><span class="t-ico">💻</span><span class="t-body"><b>CSS Minifier</b><small>Compress CSS by stripping comments, collapsing whitespace and removing redundant semicolons,…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/csv-to-json-converter/" data-search="csv to json converter convert csv to json with a real parser that handles quoted commas, escaped quotes and multi-line fields. csv to json csv to json converter convert csv to json"><span class="t-ico">💻</span><span class="t-body"><b>CSV to JSON Converter</b><small>Convert CSV to JSON with a real parser that handles quoted commas, escaped quotes and multi-…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/dns-lookup/" data-search="dns lookup look up dns records (a, aaaa, cname, mx, txt, ns) for any hostname, resolved live from our server. dns lookup dns checker mx record lookup txt record lookup ns lookup online"><span class="t-ico">💻</span><span class="t-body"><b>DNS Lookup</b><small>Look up DNS records (A, AAAA, CNAME, MX, TXT, NS) for any hostname, resolved live from our s…</small></span><span class="t-arrow">→</span></a></div>
+  </section>
+</main>
+
+<!-- ADSTERRA-FOOTER: paste your Adsterra footer/banner ad code inside the div below -->
+<div class="container"><div class="ad-slot" data-ad="footer"></div></div>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="f-grid">
+      <div>
+        <span class="brandline"><span class="logo-mark">T</span> ToolNest</span>
+        <p>Free online tools that actually work. No sign-up, no watermarks — and your files never leave your device for client-side tools.</p>
+      </div>
+      <div>
+        <h4>Popular</h4>
+        <a href="/tools/qr-code-generator/">QR Code Generator</a>
+        <a href="/tools/background-remover/">Background Remover</a>
+        <a href="/tools/pdf-merger/">PDF Merger</a>
+        <a href="/tools/word-counter/">Word Counter</a>
+      </div>
+      <div>
+        <h4>Categories</h4>
+        <a href="/#image">Image Tools</a>
+        <a href="/#pdf">PDF &amp; Documents</a>
+        <a href="/#calculators">Calculators</a>
+        <a href="/#developer">Developer Tools</a>
+      </div>
+      <div>
+        <h4>Site</h4>
+        <a href="/">Home</a>
+        <a href="/#all-tools">All Tools</a>
+        <a href="/sitemap.xml">Sitemap</a>
+      </div>
+    </div>
+    <div class="f-bottom">© 2026 ToolNest · Free tools for everyone · Made with care</div>
+  </div>
+</footer>
+
+<script src="/assets/site.js?v=2"></script>
+
+<script>
+(function () {
+  'use strict';
+  var P = 'jwt-decoder-';
+  var ERR = P + 'error';
+  var SAMPLE = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6ImRlbW8ta2V5LTEifQ.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyLCJleHAiOjk5OTk5OTk5OTl9.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c';
+  function g(id) { return document.getElementById(P + id); }
+  function set(id, v) { var el = g(id); if (el) el.textContent = v; }
+  function b64url(seg) {
+    var s = String(seg).replace(/-/g, '+').replace(/_/g, '/');
+    while (s.length % 4 !== 0) s += '=';
+    var bin;
+    try { bin = atob(s); } catch (e) { throw new Error('A part is not valid base64url.'); }
+    var bytes = new Uint8Array(bin.length), i;
+    for (i = 0; i < bin.length; i++) bytes[i] = bin.charCodeAt(i);
+    try { return new TextDecoder('utf-8', { fatal: true }).decode(bytes); }
+    catch (e) { throw new Error('A part is not valid UTF-8 JSON.'); }
+  }
+  function fmtDate(sec) {
+    var d = new Date(Number(sec) * 1000);
+    return isNaN(d.getTime()) ? 'invalid date' : d.toUTCString();
+  }
+  function decode() {
+    var tokEl = g('token');
+    if (!tokEl) return;
+    TN.clearErr(ERR);
+    TN.hide(P + 'result');
+    var token = tokEl.value.trim();
+    if (!token) return;
+    var parts = token.split('.');
+    if (parts.length !== 3) { TN.setErr(ERR, 'A JWT has exactly 3 dot-separated parts (header.payload.signature) — found ' + parts.length + '.'); return; }
+    var header, payload;
+    try {
+      header = JSON.parse(b64url(parts[0]));
+      payload = JSON.parse(b64url(parts[1]));
+    } catch (e) { TN.setErr(ERR, 'Could not decode the token: ' + (e && e.message ? e.message : e)); return; }
+    if (!header || typeof header !== 'object' || !payload || typeof payload !== 'object') {
+      TN.setErr(ERR, 'Header and payload must be JSON objects.'); return;
+    }
+    set('header', JSON.stringify(header, null, 2));
+    set('payload', JSON.stringify(payload, null, 2));
+    set('alg', header.alg ? String(header.alg) : 'none');
+    var claims = '';
+    function row(k, v) { claims += '<tr><th scope="row">' + TN.esc(k) + '</th><td>' + TN.esc(v) + '</td></tr>'; }
+    if (header.kid !== undefined) row('Key ID (kid)', String(header.kid));
+    if (payload.iss !== undefined) row('Issuer (iss)', String(payload.iss));
+    if (payload.sub !== undefined) row('Subject (sub)', String(payload.sub));
+    if (payload.aud !== undefined) row('Audience (aud)', String(payload.aud));
+    if (payload.iat !== undefined) row('Issued at (iat)', fmtDate(payload.iat));
+    if (payload.nbf !== undefined) row('Not before (nbf)', fmtDate(payload.nbf));
+    if (payload.exp !== undefined) {
+      row('Expires (exp)', fmtDate(payload.exp));
+      set('verdict', Number(payload.exp) * 1000 < Date.now() ? 'Expired' : 'Valid');
+    } else set('verdict', 'No exp');
+    var cEl = g('claims');
+    if (cEl) cEl.innerHTML = claims || '<tr><td class="muted">No standard claims found.</td></tr>';
+    var sig = parts[2];
+    set('signote', 'Signature part (' + sig.length + ' chars' + (sig.length > 24 ? ', shown truncated' : '') + '): ' + (sig.length > 24 ? sig.slice(0, 24) + '…' : sig) + ' — not verified.');
+    TN.show(P + 'result');
+  }
+  try {
+    TN.on(P + 'token', 'input', decode);
+    TN.on(P + 'sample', 'click', function () { var el = g('token'); if (el) { el.value = SAMPLE; decode(); } });
+    TN.on(P + 'clear', 'click', function () {
+      var el = g('token'); if (el) el.value = '';
+      TN.clearErr(ERR); TN.hide(P + 'result');
+    });
+  } catch (e) { /* never throw on load */ }
+})();
+
+</script>
+</body>
+</html>

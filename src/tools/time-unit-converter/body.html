@@ -1,0 +1,53 @@
+<div class="tool-card">
+  <div class="grid2">
+    <div class="field">
+      <label for="time-unit-converter-value">Value</label>
+      <input type="number" step="any" class="input" id="time-unit-converter-value" placeholder="e.g. 1">
+    </div>
+    <div class="field">
+      <label for="time-unit-converter-from">From</label>
+      <select class="select" id="time-unit-converter-from">
+        <option value="ms">Milliseconds (ms)</option>
+        <option value="s">Seconds (s)</option>
+        <option value="min">Minutes (min)</option>
+        <option value="hr" selected>Hours (hr)</option>
+        <option value="day">Days</option>
+        <option value="week">Weeks</option>
+        <option value="month">Months (30.44 d)</option>
+        <option value="year">Years (365.25 d)</option>
+      </select>
+    </div>
+  </div>
+  <div class="grid2">
+    <div class="field">
+      <label for="time-unit-converter-to">To</label>
+      <select class="select" id="time-unit-converter-to">
+        <option value="ms">Milliseconds (ms)</option>
+        <option value="s">Seconds (s)</option>
+        <option value="min" selected>Minutes (min)</option>
+        <option value="hr">Hours (hr)</option>
+        <option value="day">Days</option>
+        <option value="week">Weeks</option>
+        <option value="month">Months (30.44 d)</option>
+        <option value="year">Years (365.25 d)</option>
+      </select>
+    </div>
+    <div class="field">
+      <label aria-hidden="true">&nbsp;</label>
+      <div class="btn-row">
+        <button class="btn btn-outline" id="time-unit-converter-swap" type="button">⇄ Swap units</button>
+      </div>
+    </div>
+  </div>
+  <div class="error" id="time-unit-converter-error"></div>
+  <div class="result" id="time-unit-converter-result">
+    <div class="stat-cards">
+      <div class="stat-card"><div class="v" id="time-unit-converter-result-value">–</div><div class="l">Result</div></div>
+    </div>
+    <table class="data">
+      <thead><tr><th>Unit</th><th>Value</th></tr></thead>
+      <tbody id="time-unit-converter-table"></tbody>
+    </table>
+    <p class="note">A month is the average Gregorian month (30.44 days) and a year is 365.25 days.</p>
+  </div>
+</div>

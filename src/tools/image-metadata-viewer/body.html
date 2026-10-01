@@ -1,0 +1,28 @@
+<div class="tool-card">
+  <div class="dropzone" id="image-metadata-viewer-drop">
+    <span class="dz-icon">🖼️</span>
+    <strong>Drop an image here</strong> or click to browse
+    <input type="file" id="image-metadata-viewer-file" accept="image/*" class="hidden">
+  </div>
+  <div class="error" id="image-metadata-viewer-error"></div>
+  <div class="result hidden" id="image-metadata-viewer-result">
+    <div class="stat-cards">
+      <div class="stat-card"><div class="v" id="image-metadata-viewer-dims">–</div><div class="l">Dimensions</div></div>
+      <div class="stat-card"><div class="v" id="image-metadata-viewer-mp">–</div><div class="l">Megapixels</div></div>
+      <div class="stat-card"><div class="v" id="image-metadata-viewer-ratio">–</div><div class="l">Aspect ratio</div></div>
+    </div>
+    <table class="data">
+      <tbody>
+        <tr><th scope="row">File name</th><td id="image-metadata-viewer-name">–</td></tr>
+        <tr><th scope="row">File size</th><td id="image-metadata-viewer-size">–</td></tr>
+        <tr><th scope="row">MIME type</th><td id="image-metadata-viewer-type">–</td></tr>
+        <tr><th scope="row">Average color</th><td><span id="image-metadata-viewer-avgswatch" style="display:inline-block;width:28px;height:28px;border-radius:6px;vertical-align:middle;border:1px solid #d1d5db;"></span> <code id="image-metadata-viewer-avg">–</code></td></tr>
+      </tbody>
+    </table>
+    <div class="field">
+      <label>Luminance histogram (16 bins, dark → bright)</label>
+      <div id="image-metadata-viewer-hist" style="display:flex;align-items:flex-end;gap:3px;height:120px;background:#f3f4f6;border-radius:8px;padding:10px;"></div>
+    </div>
+    <p class="note">Shows file facts and pixel statistics only — this tool does not parse EXIF camera metadata. Everything is processed locally in your browser.</p>
+  </div>
+</div>

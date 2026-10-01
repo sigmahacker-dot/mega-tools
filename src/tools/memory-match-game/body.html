@@ -1,0 +1,25 @@
+<div class="tool-card">
+  <div class="stat-cards">
+    <div class="stat-card"><div class="v" id="memory-match-game-moves">0</div><div class="l">Moves</div></div>
+    <div class="stat-card"><div class="v" id="memory-match-game-time">0:00</div><div class="l">Time</div></div>
+    <div class="stat-card"><div class="v" id="memory-match-game-matched">0/16</div><div class="l">Matched</div></div>
+  </div>
+  <div class="center">
+    <div class="mm-grid" id="memory-match-game-grid"></div>
+  </div>
+  <div class="btn-row center">
+    <button type="button" class="btn btn-primary btn-sm" id="memory-match-game-restart">Restart</button>
+  </div>
+  <div class="error" id="memory-match-game-error"></div>
+  <div class="result hidden center" id="memory-match-game-result"></div>
+  <style>
+    .mm-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;max-width:340px;margin:6px auto}
+    .mm-card{aspect-ratio:1;font-size:1.9rem;border:2px solid #cbd5e1;border-radius:12px;background:#4D7C0F;color:#fff;cursor:pointer;line-height:1}
+    .mm-card:hover{filter:brightness(1.08)}
+    .mm-card .mm-front{display:none}
+    .mm-card.mm-flip,.mm-card.mm-done{background:#f8fafc;border-color:#94a3b8}
+    .mm-card.mm-flip .mm-front,.mm-card.mm-done .mm-front{display:inline}
+    .mm-card.mm-flip .mm-back,.mm-card.mm-done .mm-back{display:none}
+    .mm-card.mm-done{border-color:#16a34a;cursor:default}
+  </style>
+</div>

@@ -1,0 +1,45 @@
+<div class="tool-card">
+  <div class="grid2">
+    <div class="field">
+      <label for="compound-principal">Initial principal ($)</label>
+      <input type="number" class="input" id="compound-principal" min="0" step="any" placeholder="10000">
+    </div>
+    <div class="field">
+      <label for="compound-monthly">Monthly contribution ($)</label>
+      <input type="number" class="input" id="compound-monthly" min="0" step="any" placeholder="500">
+    </div>
+    <div class="field">
+      <label for="compound-rate">Annual interest rate (%)</label>
+      <input type="number" class="input" id="compound-rate" min="0" max="50" step="any" placeholder="7">
+    </div>
+    <div class="field">
+      <label for="compound-years">Years</label>
+      <input type="number" class="input" id="compound-years" min="1" max="60" step="1" placeholder="20">
+    </div>
+  </div>
+  <div class="field">
+    <label for="compound-freq">Compounding frequency</label>
+    <select class="select" id="compound-freq">
+      <option value="12">Monthly</option>
+      <option value="4">Quarterly</option>
+      <option value="1">Annually</option>
+    </select>
+  </div>
+  <div class="error" id="compound-interest-calculator-error"></div>
+  <div class="result" id="compound-interest-result">
+    <div class="stat-cards">
+      <div class="stat-card"><div class="v" id="compound-fv">–</div><div class="l">Future value</div></div>
+      <div class="stat-card"><div class="v" id="compound-contrib">–</div><div class="l">Total contributions</div></div>
+      <div class="stat-card"><div class="v" id="compound-interest">–</div><div class="l">Interest earned</div></div>
+    </div>
+    <table class="data">
+      <thead>
+        <tr><th>Year</th><th>Contributions</th><th>Interest earned</th><th>End balance</th></tr>
+      </thead>
+      <tbody id="compound-table-body">
+        <tr><td colspan="4" class="muted">Enter your savings details to see the growth projection.</td></tr>
+      </tbody>
+    </table>
+    <p class="note">Projection only — it does not account for inflation, taxes or fees.</p>
+  </div>
+</div>

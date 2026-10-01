@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fraction Calculator — Free Online | ToolNest</title>
+<meta name="description" content="Add, subtract, multiply and divide fractions with simplification.">
+<meta name="keywords" content="fraction calculator, add fractions, simplify fraction">
+<link rel="canonical" href="https://toolnest.vercel.app/tools/fraction-calculator/">
+<meta name="theme-color" content="#07070b">
+<meta property="og:title" content="Fraction Calculator — Free Online | ToolNest">
+<meta property="og:description" content="Add, subtract, multiply and divide fractions with simplification.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css?v=2">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%23e01111'/><text x='50' y='68' font-size='58' text-anchor='middle' fill='white' font-family='Arial' font-weight='bold'>T</text></svg>">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebApplication","name":"Fraction Calculator","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0"},"url":"https://toolnest.vercel.app/tools/fraction-calculator/","description":"Add, subtract, multiply and divide fractions with simplification."},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How is the fraction simplified?","acceptedAnswer":{"@type":"Answer","text":"With Euclid's algorithm: the greatest common divisor of the numerator and denominator is divided out of both."}},{"@type":"Question","name":"What if I enter a zero denominator?","acceptedAnswer":{"@type":"Answer","text":"The denominator must never be zero, and division by a fraction equal to zero is rejected with an error."}},{"@type":"Question","name":"Can I enter mixed numbers?","acceptedAnswer":{"@type":"Answer","text":"Yes — enter a whole part in the first box, or leave it blank for a pure fraction like 3/4."}}]}]}</script>
+</head>
+<body>
+<header class="site-header">
+  <div class="container">
+    <a class="logo" href="/"><span class="logo-mark">T</span> ToolNest</a>
+    <nav class="site-nav">
+      <a href="/">Home</a>
+      <a href="/#categories">Categories</a>
+      <a href="/#all-tools">All Tools</a>
+    </nav>
+  </div>
+</header>
+
+<!-- ADSTERRA-HEADER: paste your Adsterra banner ad code inside the div below -->
+<div class="container"><div class="ad-slot ad-leaderboard" data-ad="header"></div></div>
+
+<main class="container">
+  <nav class="crumbs"><a href="/">Home</a> &rsaquo; <a href="/#math">Math &amp; Numbers</a> &rsaquo; Fraction Calculator</nav>
+  <div class="tool-hero">
+    <h1>Fraction Calculator</h1>
+    <p>Add, subtract, multiply and divide fractions with simplification.</p>
+  </div>
+
+  <div class="tool-card">
+  <div class="grid2">
+    <div class="field">
+      <label>First fraction</label>
+      <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;">
+        <input type="number" class="input" id="fraction-calculator-a-whole" placeholder="Whole" step="1">
+        <input type="number" class="input" id="fraction-calculator-a-num" placeholder="Numer." step="1">
+        <input type="number" class="input" id="fraction-calculator-a-den" placeholder="Denom." step="1">
+      </div>
+    </div>
+    <div class="field">
+      <label>Second fraction</label>
+      <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;">
+        <input type="number" class="input" id="fraction-calculator-b-whole" placeholder="Whole" step="1">
+        <input type="number" class="input" id="fraction-calculator-b-num" placeholder="Numer." step="1">
+        <input type="number" class="input" id="fraction-calculator-b-den" placeholder="Denom." step="1">
+      </div>
+    </div>
+  </div>
+  <div class="grid2">
+    <div class="field">
+      <label for="fraction-calculator-op">Operation</label>
+      <select class="select" id="fraction-calculator-op">
+        <option value="+">Add (+)</option>
+        <option value="-">Subtract (&minus;)</option>
+        <option value="*">Multiply (&times;)</option>
+        <option value="/">Divide (&divide;)</option>
+      </select>
+    </div>
+    <div class="field">
+      <label>&nbsp;</label>
+      <button type="button" class="btn btn-primary" id="fraction-calculator-go">Calculate</button>
+    </div>
+  </div>
+  <div class="error" id="fraction-calculator-error"></div>
+  <div class="result" id="fraction-calculator-result">
+    <div class="stat-cards">
+      <div class="stat-card"><div class="v" id="fraction-calculator-simple">&ndash;</div><div class="l">Simplified</div></div>
+      <div class="stat-card"><div class="v" id="fraction-calculator-mixed">&ndash;</div><div class="l">Mixed number</div></div>
+      <div class="stat-card"><div class="v" id="fraction-calculator-decimal">&ndash;</div><div class="l">Decimal</div></div>
+    </div>
+  </div>
+</div>
+
+
+  <!-- ADSTERRA-INCONTENT: paste your Adsterra native/in-content ad code inside the div below -->
+  <div class="ad-slot" data-ad="incontent"></div>
+
+  <div class="info-grid">
+    <div class="info-card">
+      <h2>📖 How to use</h2>
+      <ol><li>Enter both fractions: whole part, numerator and denominator for each.</li><li>Pick the operator: add, subtract, multiply or divide.</li><li>Press Calculate to see the simplified fraction.</li><li>Also see the mixed-number form and the decimal value.</li></ol>
+    </div>
+    <div class="info-card">
+      <h2>❓ Frequently asked questions</h2>
+      <div class="faq"><details><summary>How is the fraction simplified?</summary><p>With Euclid&#39;s algorithm: the greatest common divisor of the numerator and denominator is divided out of both.</p></details><details><summary>What if I enter a zero denominator?</summary><p>The denominator must never be zero, and division by a fraction equal to zero is rejected with an error.</p></details><details><summary>Can I enter mixed numbers?</summary><p>Yes — enter a whole part in the first box, or leave it blank for a pure fraction like 3/4.</p></details></div>
+    </div>
+  </div>
+
+  <section class="section">
+    <h2>🔗 Related tools</h2>
+    <div class="tool-grid"><a class="tool-link" href="/tools/gcf-lcm-calculator/" data-search="gcf &amp; lcm calculator greatest common factor and least common multiple of any list. gcf calculator lcm calculator greatest common factor"><span class="t-ico">📐</span><span class="t-body"><b>GCF &amp; LCM Calculator</b><small>Greatest common factor and least common multiple of any list.</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/matrix-calculator/" data-search="matrix calculator add, multiply, invert and transpose 2x2 and 3x3 matrices. matrix calculator matrix inverse matrix multiplication"><span class="t-ico">📐</span><span class="t-body"><b>Matrix Calculator</b><small>Add, multiply, invert and transpose 2x2 and 3x3 matrices.</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/prime-number-checker/" data-search="prime number checker deterministic miller-rabin primality test for big integers. prime checker primality test miller rabin"><span class="t-ico">📐</span><span class="t-body"><b>Prime Number Checker</b><small>Deterministic Miller-Rabin primality test for big integers.</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/pythagorean-calculator/" data-search="pythagorean theorem calculator solve right-triangle sides, area and angles. pythagorean theorem right triangle calculator hypotenuse calculator"><span class="t-ico">📐</span><span class="t-body"><b>Pythagorean Theorem Calculator</b><small>Solve right-triangle sides, area and angles.</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/quadratic-equation-solver/" data-search="quadratic equation solver solve ax^2+bx+c=0 with full discriminant analysis. quadratic solver quadratic equation discriminant calculator"><span class="t-ico">📐</span><span class="t-body"><b>Quadratic Equation Solver</b><small>Solve ax^2+bx+c=0 with full discriminant analysis.</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/roman-numeral-converter/" data-search="roman numeral converter convert between 1-3999 and roman numerals, both ways. roman numeral converter roman to number number to roman"><span class="t-ico">📐</span><span class="t-body"><b>Roman Numeral Converter</b><small>Convert between 1-3999 and Roman numerals, both ways.</small></span><span class="t-arrow">→</span></a></div>
+  </section>
+</main>
+
+<!-- ADSTERRA-FOOTER: paste your Adsterra footer/banner ad code inside the div below -->
+<div class="container"><div class="ad-slot" data-ad="footer"></div></div>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="f-grid">
+      <div>
+        <span class="brandline"><span class="logo-mark">T</span> ToolNest</span>
+        <p>Free online tools that actually work. No sign-up, no watermarks — and your files never leave your device for client-side tools.</p>
+      </div>
+      <div>
+        <h4>Popular</h4>
+        <a href="/tools/qr-code-generator/">QR Code Generator</a>
+        <a href="/tools/background-remover/">Background Remover</a>
+        <a href="/tools/pdf-merger/">PDF Merger</a>
+        <a href="/tools/word-counter/">Word Counter</a>
+      </div>
+      <div>
+        <h4>Categories</h4>
+        <a href="/#image">Image Tools</a>
+        <a href="/#pdf">PDF &amp; Documents</a>
+        <a href="/#calculators">Calculators</a>
+        <a href="/#developer">Developer Tools</a>
+      </div>
+      <div>
+        <h4>Site</h4>
+        <a href="/">Home</a>
+        <a href="/#all-tools">All Tools</a>
+        <a href="/sitemap.xml">Sitemap</a>
+      </div>
+    </div>
+    <div class="f-bottom">© 2026 ToolNest · Free tools for everyone · Made with care</div>
+  </div>
+</footer>
+
+<script src="/assets/site.js?v=2"></script>
+
+<script>
+(function () {
+  'use strict';
+  var ERR = 'fraction-calculator-error';
+
+  function gcd(a, b) {
+    a = Math.abs(a); b = Math.abs(b);
+    while (b) { var t = a % b; a = b; b = t; }
+    return a;
+  }
+
+  function readFrac(prefix) {
+    function val(id) {
+      var el = TN.el(id);
+      var s = el ? el.value.trim() : '';
+      if (s === '') return 0;
+      var n = Number(s);
+      if (!isFinite(n) || Math.floor(n) !== n) throw new Error('Enter whole integers only.');
+      return n;
+    }
+    var w = val(prefix + '-whole');
+    var num = val(prefix + '-num');
+    var den = val(prefix + '-den');
+    if (den === 0) throw new Error('Denominator cannot be zero.');
+    var sign = (w < 0 || num < 0) ? -1 : 1;
+    var n = sign * (Math.abs(w) * Math.abs(den) + Math.abs(num));
+    var d = Math.abs(den);
+    return { n: n, d: d };
+  }
+
+  function simplify(n, d) {
+    if (d === 0) throw new Error('Denominator cannot be zero.');
+    if (d < 0) { n = -n; d = -d; }
+    var g = gcd(n, d) || 1;
+    return { n: n / g, d: d / g };
+  }
+
+  function toMixed(f) {
+    var n = f.n, d = f.d;
+    if (n === 0) return '0';
+    var whole = Math.trunc(n / d);
+    var rem = Math.abs(n % d);
+    if (rem === 0) return String(whole);
+    if (whole === 0) return (n < 0 ? '−' : '') + rem + '/' + d;
+    return whole + ' ' + rem + '/' + d;
+  }
+
+  function toSimple(f) {
+    if (f.d === 1) return String(f.n);
+    return f.n + '/' + f.d;
+  }
+
+  function calc() {
+    TN.clearErr(ERR);
+    try {
+      var a = readFrac('fraction-calculator-a');
+      var b = readFrac('fraction-calculator-b');
+      var opEl = TN.el('fraction-calculator-op');
+      var op = opEl ? opEl.value : '+';
+      var n, d;
+      if (op === '+') { n = a.n * b.d + b.n * a.d; d = a.d * b.d; }
+      else if (op === '-') { n = a.n * b.d - b.n * a.d; d = a.d * b.d; }
+      else if (op === '*') { n = a.n * b.n; d = a.d * b.d; }
+      else {
+        if (b.n === 0) throw new Error('Cannot divide by zero.');
+        n = a.n * b.d; d = a.d * b.n;
+      }
+      var f = simplify(n, d);
+      TN.el('fraction-calculator-simple').textContent = toSimple(f);
+      TN.el('fraction-calculator-mixed').textContent = toMixed(f);
+      TN.el('fraction-calculator-decimal').textContent = parseFloat((f.n / f.d).toFixed(8)).toString();
+    } catch (err) {
+      TN.setErr(ERR, err && err.message ? err.message : 'Invalid input.');
+    }
+  }
+
+  try {
+    TN.on('fraction-calculator-go', 'click', calc);
+  } catch (e) { /* never throw on load */ }
+})();
+
+</script>
+</body>
+</html>

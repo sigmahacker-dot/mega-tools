@@ -1,0 +1,90 @@
+<div class="tool-card">
+  <div class="field">
+    <label>Minute (0–59)</label>
+    <div style="display:flex;gap:8px;flex-wrap:wrap;align-items:center;">
+      <select class="select" id="cron-job-builder-minute-mode" style="max-width:200px;">
+        <option value="every" selected>Every (*)</option>
+        <option value="list">Specific values</option>
+        <option value="range">Range</option>
+        <option value="step">Step (every N)</option>
+      </select>
+      <input type="text" class="input hidden" id="cron-job-builder-minute-list" placeholder="e.g. 0,15,30,45" style="max-width:220px;">
+      <span class="hidden" id="cron-job-builder-minute-rangewrap"><input type="number" class="input" id="cron-job-builder-minute-r1" min="0" max="59" placeholder="From" style="width:88px;"> – <input type="number" class="input" id="cron-job-builder-minute-r2" min="0" max="59" placeholder="To" style="width:88px;"></span>
+      <span class="hidden" id="cron-job-builder-minute-stepwrap">*/ <input type="number" class="input" id="cron-job-builder-minute-step" min="1" max="59" placeholder="15" style="width:88px;"></span>
+    </div>
+  </div>
+  <div class="field">
+    <label>Hour (0–23)</label>
+    <div style="display:flex;gap:8px;flex-wrap:wrap;align-items:center;">
+      <select class="select" id="cron-job-builder-hour-mode" style="max-width:200px;">
+        <option value="every" selected>Every (*)</option>
+        <option value="list">Specific values</option>
+        <option value="range">Range</option>
+        <option value="step">Step (every N)</option>
+      </select>
+      <input type="text" class="input hidden" id="cron-job-builder-hour-list" placeholder="e.g. 9,17" style="max-width:220px;">
+      <span class="hidden" id="cron-job-builder-hour-rangewrap"><input type="number" class="input" id="cron-job-builder-hour-r1" min="0" max="23" placeholder="From" style="width:88px;"> – <input type="number" class="input" id="cron-job-builder-hour-r2" min="0" max="23" placeholder="To" style="width:88px;"></span>
+      <span class="hidden" id="cron-job-builder-hour-stepwrap">*/ <input type="number" class="input" id="cron-job-builder-hour-step" min="1" max="23" placeholder="2" style="width:88px;"></span>
+    </div>
+  </div>
+  <div class="field">
+    <label>Day of month (1–31)</label>
+    <div style="display:flex;gap:8px;flex-wrap:wrap;align-items:center;">
+      <select class="select" id="cron-job-builder-dom-mode" style="max-width:200px;">
+        <option value="every" selected>Every (*)</option>
+        <option value="list">Specific values</option>
+        <option value="range">Range</option>
+        <option value="step">Step (every N)</option>
+      </select>
+      <input type="text" class="input hidden" id="cron-job-builder-dom-list" placeholder="e.g. 1,15" style="max-width:220px;">
+      <span class="hidden" id="cron-job-builder-dom-rangewrap"><input type="number" class="input" id="cron-job-builder-dom-r1" min="1" max="31" placeholder="From" style="width:88px;"> – <input type="number" class="input" id="cron-job-builder-dom-r2" min="1" max="31" placeholder="To" style="width:88px;"></span>
+      <span class="hidden" id="cron-job-builder-dom-stepwrap">*/ <input type="number" class="input" id="cron-job-builder-dom-step" min="1" max="31" placeholder="5" style="width:88px;"></span>
+    </div>
+  </div>
+  <div class="field">
+    <label>Month (1–12)</label>
+    <div style="display:flex;gap:8px;flex-wrap:wrap;align-items:center;">
+      <select class="select" id="cron-job-builder-month-mode" style="max-width:200px;">
+        <option value="every" selected>Every (*)</option>
+        <option value="list">Specific values</option>
+        <option value="range">Range</option>
+        <option value="step">Step (every N)</option>
+      </select>
+      <input type="text" class="input hidden" id="cron-job-builder-month-list" placeholder="e.g. 1,6,12" style="max-width:220px;">
+      <span class="hidden" id="cron-job-builder-month-rangewrap"><input type="number" class="input" id="cron-job-builder-month-r1" min="1" max="12" placeholder="From" style="width:88px;"> – <input type="number" class="input" id="cron-job-builder-month-r2" min="1" max="12" placeholder="To" style="width:88px;"></span>
+      <span class="hidden" id="cron-job-builder-month-stepwrap">*/ <input type="number" class="input" id="cron-job-builder-month-step" min="1" max="12" placeholder="3" style="width:88px;"></span>
+    </div>
+  </div>
+  <div class="field">
+    <label>Day of week (0–6, Sunday = 0)</label>
+    <div style="display:flex;gap:8px;flex-wrap:wrap;align-items:center;">
+      <select class="select" id="cron-job-builder-dow-mode" style="max-width:200px;">
+        <option value="every" selected>Every (*)</option>
+        <option value="list">Specific values</option>
+        <option value="range">Range</option>
+        <option value="step">Step (every N)</option>
+      </select>
+      <input type="text" class="input hidden" id="cron-job-builder-dow-list" placeholder="e.g. 1,5" style="max-width:220px;">
+      <span class="hidden" id="cron-job-builder-dow-rangewrap"><input type="number" class="input" id="cron-job-builder-dow-r1" min="0" max="6" placeholder="From" style="width:88px;"> – <input type="number" class="input" id="cron-job-builder-dow-r2" min="0" max="6" placeholder="To" style="width:88px;"></span>
+      <span class="hidden" id="cron-job-builder-dow-stepwrap">*/ <input type="number" class="input" id="cron-job-builder-dow-step" min="1" max="6" placeholder="2" style="width:88px;"></span>
+    </div>
+  </div>
+  <div class="error" id="cron-job-builder-error"></div>
+  <div class="result" id="cron-job-builder-result">
+    <div class="field">
+      <label>Cron expression</label>
+      <div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap;">
+        <code id="cron-job-builder-expr" style="font-size:20px;font-family:monospace;background:#f3f4f6;padding:8px 14px;border-radius:8px;">* * * * *</code>
+        <button class="btn btn-outline btn-sm" id="cron-job-builder-copy">Copy</button>
+      </div>
+    </div>
+    <div class="stat-cards">
+      <div class="stat-card" style="flex:1 1 100%;"><div class="v" id="cron-job-builder-desc" style="font-size:16px;">–</div><div class="l">Plain-English schedule</div></div>
+    </div>
+    <div class="field">
+      <label>Next 3 run times <span class="muted">(approximate)</span></label>
+      <ul id="cron-job-builder-next" style="margin:0;padding-left:20px;"></ul>
+    </div>
+    <p class="note">When both day-of-month and day-of-week are restricted, standard cron runs when either matches (OR logic).</p>
+  </div>
+</div>

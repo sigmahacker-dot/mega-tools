@@ -1,0 +1,31 @@
+<div class="tool-card">
+  <h2>Text Diff Checker</h2>
+  <p class="muted">Word-level comparison of two texts with added/removed highlighting.</p>
+  <div class="grid2">
+    <div class="field">
+      <label for="text-diff-checker-a">Original text</label>
+      <textarea class="textarea" id="text-diff-checker-a" rows="8" placeholder="Paste the original text..."></textarea>
+    </div>
+    <div class="field">
+      <label for="text-diff-checker-b">Revised text</label>
+      <textarea class="textarea" id="text-diff-checker-b" rows="8" placeholder="Paste the revised text..."></textarea>
+    </div>
+  </div>
+  <div class="btn-row mt">
+    <button class="btn btn-primary" id="text-diff-checker-compare">Compare texts</button>
+    <button class="btn btn-outline" id="text-diff-checker-clear">Clear</button>
+  </div>
+  <div class="error" id="text-diff-checker-error"></div>
+  <div class="result" id="text-diff-checker-result">
+    <div class="stat-cards">
+      <div class="stat-card"><div class="v" id="text-diff-checker-added">–</div><div class="l">Words added</div></div>
+      <div class="stat-card"><div class="v" id="text-diff-checker-removed">–</div><div class="l">Words removed</div></div>
+      <div class="stat-card"><div class="v" id="text-diff-checker-same">–</div><div class="l">Words unchanged</div></div>
+    </div>
+    <div class="field">
+      <label>Diff result</label>
+      <div id="text-diff-checker-diff" class="diff-output" style="border:1px solid #e5e7eb;border-radius:8px;padding:12px;line-height:1.8;white-space:pre-wrap;word-break:break-word;"></div>
+    </div>
+    <p class="note"><span style="background:#dcfce7;padding:1px 6px;border-radius:4px;">green</span> = added &nbsp; <span style="background:#fee2e2;padding:1px 6px;border-radius:4px;text-decoration:line-through;">red</span> = removed</p>
+  </div>
+</div>

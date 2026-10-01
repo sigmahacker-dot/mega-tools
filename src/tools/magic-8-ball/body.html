@@ -1,0 +1,23 @@
+<div class="tool-card">
+  <div class="field">
+    <label for="magic-8-ball-q">Ask a yes-or-no question</label>
+    <input type="text" class="input" id="magic-8-ball-q" placeholder="Will I finish my project on time?" autocomplete="off" spellcheck="false">
+  </div>
+  <div class="center">
+    <div class="m8b-ball" id="magic-8-ball-ball">
+      <div class="m8b-window"><span id="magic-8-ball-answer">8</span></div>
+    </div>
+  </div>
+  <div class="btn-row center">
+    <button type="button" class="btn btn-primary" id="magic-8-ball-shake">SHAKE</button>
+  </div>
+  <div class="error" id="magic-8-ball-error"></div>
+  <div class="result hidden" id="magic-8-ball-result"></div>
+  <style>
+    .m8b-ball{width:230px;height:230px;border-radius:50%;background:radial-gradient(circle at 35% 30%,#3f3f46,#09090b 70%);display:flex;align-items:center;justify-content:center;margin:10px auto;box-shadow:0 10px 30px rgba(0,0,0,.35)}
+    .m8b-window{width:110px;height:110px;border-radius:50%;background:#e0f2fe;border:4px solid #0c4a6e;display:flex;align-items:center;justify-content:center;padding:10px;text-align:center}
+    .m8b-window span{font-size:.82rem;font-weight:600;color:#0c4a6e;line-height:1.3}
+    .m8b-shake{animation:m8bshake .65s ease-in-out}
+    @keyframes m8bshake{0%,100%{transform:translate(0,0) rotate(0)}15%{transform:translate(-14px,6px) rotate(-8deg)}30%{transform:translate(12px,-8px) rotate(7deg)}45%{transform:translate(-10px,-6px) rotate(-6deg)}60%{transform:translate(10px,8px) rotate(6deg)}75%{transform:translate(-6px,4px) rotate(-3deg)}}
+  </style>
+</div>

@@ -1,0 +1,37 @@
+<div class="tool-card">
+  <div class="stat-cards">
+    <div class="stat-card"><div class="v" id="snake-game-score">0</div><div class="l">Score</div></div>
+    <div class="stat-card"><div class="v" id="snake-game-best">0</div><div class="l">Best</div></div>
+  </div>
+  <div class="center">
+    <div class="sn-wrap">
+      <canvas id="snake-game-canvas" width="400" height="400" aria-label="Snake game"></canvas>
+      <div class="sn-overlay hidden" id="snake-game-overlay">
+        <div class="sn-box">
+          <div class="sn-title">Game Over</div>
+          <p id="snake-game-omsg"></p>
+          <button type="button" class="btn btn-primary btn-sm" id="snake-game-restart">Play again</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="btn-row center">
+    <button type="button" class="btn btn-primary btn-sm" id="snake-game-start">Start</button>
+  </div>
+  <div class="sn-pad" id="snake-game-pad" aria-label="Direction pad">
+    <span></span><button type="button" data-dx="0" data-dy="-1" aria-label="Up">▲</button><span></span>
+    <button type="button" data-dx="-1" data-dy="0" aria-label="Left">◀</button><button type="button" data-dx="0" data-dy="1" aria-label="Down">▼</button><button type="button" data-dx="1" data-dy="0" aria-label="Right">▶</button>
+  </div>
+  <div class="error" id="snake-game-error"></div>
+  <div class="result hidden" id="snake-game-result"></div>
+  <style>
+    .sn-wrap{position:relative;display:inline-block;max-width:100%}
+    #snake-game-canvas{max-width:100%;height:auto;border-radius:12px;background:#0f172a;display:block}
+    .sn-overlay{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(15,23,42,.72);border-radius:12px}
+    .sn-box{background:#fff;border-radius:12px;padding:22px 28px;text-align:center}
+    .sn-title{font-size:1.4rem;font-weight:800;color:#0f172a;margin-bottom:6px}
+    .sn-pad{display:grid;grid-template-columns:repeat(3,54px);gap:6px;justify-content:center;margin-top:12px}
+    .sn-pad button{height:54px;font-size:1.2rem;border:2px solid #cbd5e1;border-radius:12px;background:#f8fafc;cursor:pointer}
+    .sn-pad button:active{background:#e2e8f0}
+  </style>
+</div>

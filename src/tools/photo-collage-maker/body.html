@@ -1,0 +1,29 @@
+<div class="tool-card">
+  <div class="dropzone" id="photo-collage-maker-drop">
+    <span class="dz-icon">🖼️</span>
+    <strong>Drop 2–6 photos here</strong> or click to browse
+    <input type="file" id="photo-collage-maker-file" accept="image/*" multiple class="hidden">
+  </div>
+  <ul class="file-list" id="photo-collage-maker-list"></ul>
+  <div class="grid2">
+    <div class="field">
+      <label for="photo-collage-maker-gap">Gap: <span id="photo-collage-maker-gap-val">8</span>px</label>
+      <input type="range" id="photo-collage-maker-gap" min="0" max="40" value="8">
+    </div>
+    <div class="field">
+      <label for="photo-collage-maker-bg">Background color</label>
+      <input type="color" class="input" id="photo-collage-maker-bg" value="#ffffff" style="height:44px;padding:4px;">
+    </div>
+  </div>
+  <div class="btn-row hidden" id="photo-collage-maker-actions">
+    <button class="btn btn-outline btn-sm" id="photo-collage-maker-clear">Remove all</button>
+  </div>
+  <div class="error" id="photo-collage-maker-error"></div>
+  <div class="result hidden" id="photo-collage-maker-result">
+    <canvas class="preview" id="photo-collage-maker-canvas" style="max-width:100%;height:auto;border-radius:8px;"></canvas>
+    <div class="btn-row" style="margin-top:12px;">
+      <button class="btn btn-primary" id="photo-collage-maker-download">Download PNG</button>
+    </div>
+    <p class="note">Layout is chosen automatically by photo count. Photos are center-cropped to fill their cells — never stretched.</p>
+  </div>
+</div>

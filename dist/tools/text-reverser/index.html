@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Text Reverser — Free Online | ToolNest</title>
+<meta name="description" content="Reverse text by characters, words, lines, or reverse each line individually.">
+<meta name="keywords" content="reverse text, text reverser, flip text">
+<link rel="canonical" href="https://toolnest.vercel.app/tools/text-reverser/">
+<meta name="theme-color" content="#07070b">
+<meta property="og:title" content="Text Reverser — Free Online | ToolNest">
+<meta property="og:description" content="Reverse text by characters, words, lines, or reverse each line individually.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css?v=2">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%23e01111'/><text x='50' y='68' font-size='58' text-anchor='middle' fill='white' font-family='Arial' font-weight='bold'>T</text></svg>">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebApplication","name":"Text Reverser","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0"},"url":"https://toolnest.vercel.app/tools/text-reverser/","description":"Reverse text by characters, words, lines, or reverse each line individually."},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What do the four modes do?","acceptedAnswer":{"@type":"Answer","text":"Characters flips the whole string (\"abc\" → \"cba\"). Words keeps each word intact but reverses their order. Lines reverses line order; \"each line\" reverses the characters inside every line."}},{"@type":"Question","name":"Does it handle emoji correctly?","acceptedAnswer":{"@type":"Answer","text":"Yes — it uses Array.from, which splits text into full Unicode characters, so emoji and accented letters stay intact instead of breaking into halves."}},{"@type":"Question","name":"Is my text uploaded anywhere?","acceptedAnswer":{"@type":"Answer","text":"No. Reversing happens entirely in your browser; nothing is uploaded."}}]}]}</script>
+</head>
+<body>
+<header class="site-header">
+  <div class="container">
+    <a class="logo" href="/"><span class="logo-mark">T</span> ToolNest</a>
+    <nav class="site-nav">
+      <a href="/">Home</a>
+      <a href="/#categories">Categories</a>
+      <a href="/#all-tools">All Tools</a>
+    </nav>
+  </div>
+</header>
+
+<!-- ADSTERRA-HEADER: paste your Adsterra banner ad code inside the div below -->
+<div class="container"><div class="ad-slot ad-leaderboard" data-ad="header"></div></div>
+
+<main class="container">
+  <nav class="crumbs"><a href="/">Home</a> &rsaquo; <a href="/#text">Text &amp; Writing</a> &rsaquo; Text Reverser</nav>
+  <div class="tool-hero">
+    <h1>Text Reverser</h1>
+    <p>Reverse text by characters, words, lines, or reverse each line individually.</p>
+  </div>
+
+  <div class="tool-card">
+  <h2>Text Reverser</h2>
+  <p class="muted">Reverse text by characters, words or lines.</p>
+  <div class="field">
+    <label for="text-reverser-input">Your text</label>
+    <textarea class="textarea" id="text-reverser-input" rows="6" placeholder="Paste your text here..."></textarea>
+  </div>
+  <div class="field">
+    <label for="text-reverser-mode">Reverse mode</label>
+    <select class="select" id="text-reverser-mode">
+      <option value="chars">Characters (whole text backwards)</option>
+      <option value="words">Words (word order reversed)</option>
+      <option value="lines">Lines (line order reversed)</option>
+      <option value="eachline">Each line (characters reversed per line)</option>
+    </select>
+  </div>
+  <div class="btn-row mt">
+    <button class="btn btn-primary" id="text-reverser-run">Reverse text</button>
+    <button class="btn btn-outline" id="text-reverser-clear">Clear</button>
+  </div>
+  <div class="error" id="text-reverser-error"></div>
+  <div class="result" id="text-reverser-result">
+    <div class="field">
+      <label for="text-reverser-output">Result</label>
+      <textarea class="textarea" id="text-reverser-output" rows="6" readonly placeholder="Reversed text will appear here..."></textarea>
+    </div>
+    <div class="btn-row">
+      <button class="btn btn-outline" id="text-reverser-copy">Copy result</button>
+      <button class="btn btn-outline" id="text-reverser-download">Download .txt</button>
+    </div>
+  </div>
+</div>
+
+  <!-- ADSTERRA-INCONTENT: paste your Adsterra native/in-content ad code inside the div below -->
+  <div class="ad-slot" data-ad="incontent"></div>
+
+  <div class="info-grid">
+    <div class="info-card">
+      <h2>📖 How to use</h2>
+      <ol><li>Paste your text into the input box.</li><li>Choose a mode: characters, words, lines, or each line reversed.</li><li>Click &quot;Reverse text&quot;.</li><li>Copy or download the result.</li></ol>
+    </div>
+    <div class="info-card">
+      <h2>❓ Frequently asked questions</h2>
+      <div class="faq"><details><summary>What do the four modes do?</summary><p>Characters flips the whole string (&quot;abc&quot; → &quot;cba&quot;). Words keeps each word intact but reverses their order. Lines reverses line order; &quot;each line&quot; reverses the characters inside every line.</p></details><details><summary>Does it handle emoji correctly?</summary><p>Yes — it uses Array.from, which splits text into full Unicode characters, so emoji and accented letters stay intact instead of breaking into halves.</p></details><details><summary>Is my text uploaded anywhere?</summary><p>No. Reversing happens entirely in your browser; nothing is uploaded.</p></details></div>
+    </div>
+  </div>
+
+  <section class="section">
+    <h2>🔗 Related tools</h2>
+    <div class="tool-grid"><a class="tool-link" href="/tools/aes-text-encryptor/" data-search="aes text encryptor encrypt text with real aes-256-gcm using a password-derived key (pbkdf2), fully in your browser. aes encrypt text encrypt message password aes-gcm online"><span class="t-ico">✍️</span><span class="t-body"><b>AES Text Encryptor</b><small>Encrypt text with real AES-256-GCM using a password-derived key (PBKDF2), fully in your brow…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/article-rewriter/" data-search="article rewriter rewrite articles with a built-in synonym engine covering 130+ common english words. whole-word replacement with capitalization preserved and a change report. article rewriter paraphrasing tool rewrite text online"><span class="t-ico">✍️</span><span class="t-body"><b>Article Rewriter</b><small>Rewrite articles with a built-in synonym engine covering 130+ common English words. Whole-wo…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/case-converter/" data-search="case converter convert text to uppercase, lowercase, title case, sentence case, alternating case and inverse case instantly, then copy or download the result. case converter uppercase lowercase converter title case converter"><span class="t-ico">✍️</span><span class="t-body"><b>Case Converter</b><small>Convert text to UPPERCASE, lowercase, Title Case, Sentence case, aLtErNaTiNg cAsE and iNVERS…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/case-style-converter/" data-search="case style converter convert text between camelcase, pascalcase, snake_case, kebab-case and more. case converter camelcase to snakecase kebab case converter"><span class="t-ico">✍️</span><span class="t-body"><b>Case Style Converter</b><small>Convert text between camelCase, PascalCase, snake_case, kebab-case and more.</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/character-counter/" data-search="character counter count characters with and without spaces, words and lines in real time, with a live x/twitter 280-character limit gauge and sms segment indicator. character counter twitter character count count characters online"><span class="t-ico">✍️</span><span class="t-body"><b>Character Counter</b><small>Count characters with and without spaces, words and lines in real time, with a live X/Twitte…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/duplicate-line-remover/" data-search="duplicate line remover remove duplicate lines from any list, with options to ignore case, trim spaces and sort. remove duplicate lines dedupe lines unique lines"><span class="t-ico">✍️</span><span class="t-body"><b>Duplicate Line Remover</b><small>Remove duplicate lines from any list, with options to ignore case, trim spaces and sort.</small></span><span class="t-arrow">→</span></a></div>
+  </section>
+</main>
+
+<!-- ADSTERRA-FOOTER: paste your Adsterra footer/banner ad code inside the div below -->
+<div class="container"><div class="ad-slot" data-ad="footer"></div></div>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="f-grid">
+      <div>
+        <span class="brandline"><span class="logo-mark">T</span> ToolNest</span>
+        <p>Free online tools that actually work. No sign-up, no watermarks — and your files never leave your device for client-side tools.</p>
+      </div>
+      <div>
+        <h4>Popular</h4>
+        <a href="/tools/qr-code-generator/">QR Code Generator</a>
+        <a href="/tools/background-remover/">Background Remover</a>
+        <a href="/tools/pdf-merger/">PDF Merger</a>
+        <a href="/tools/word-counter/">Word Counter</a>
+      </div>
+      <div>
+        <h4>Categories</h4>
+        <a href="/#image">Image Tools</a>
+        <a href="/#pdf">PDF &amp; Documents</a>
+        <a href="/#calculators">Calculators</a>
+        <a href="/#developer">Developer Tools</a>
+      </div>
+      <div>
+        <h4>Site</h4>
+        <a href="/">Home</a>
+        <a href="/#all-tools">All Tools</a>
+        <a href="/sitemap.xml">Sitemap</a>
+      </div>
+    </div>
+    <div class="f-bottom">© 2026 ToolNest · Free tools for everyone · Made with care</div>
+  </div>
+</footer>
+
+<script src="/assets/site.js?v=2"></script>
+
+<script>
+/* Text Reverser — characters / words / lines / each-line, Unicode-safe. */
+(function () {
+  'use strict';
+
+  var SLUG = 'text-reverser';
+
+  function errId() { return SLUG + '-error'; }
+
+  function revStr(s) { return Array.from(s).reverse().join(''); }
+
+  function run() {
+    TN.clearErr(errId());
+    var ta = TN.el(SLUG + '-input');
+    var text = ta ? ta.value : '';
+    if (!text) {
+      TN.setErr(errId(), 'Please enter some text to reverse.');
+      return;
+    }
+    var modeEl = TN.el(SLUG + '-mode');
+    var mode = modeEl ? modeEl.value : 'chars';
+    var out;
+    if (mode === 'chars') {
+      out = revStr(text);
+    } else if (mode === 'words') {
+      // Reverse word order, keep whitespace separators in place.
+      var parts = text.split(/(\s+)/);
+      var words = parts.filter(function (t) { return /\S/.test(t); }).reverse();
+      var wi = 0;
+      out = parts.map(function (t) { return /\S/.test(t) ? words[wi++] : t; }).join('');
+    } else if (mode === 'lines') {
+      out = text.split(/\r\n|\r|\n/).reverse().join('\n');
+    } else { // eachline
+      out = text.split(/\r\n|\r|\n/).map(revStr).join('\n');
+    }
+    var outEl = TN.el(SLUG + '-output');
+    if (outEl) outEl.value = out;
+  }
+
+  function copy() {
+    var out = TN.el(SLUG + '-output');
+    if (!out || !out.value) { TN.setErr(errId(), 'Nothing to copy yet — reverse first.'); return; }
+    TN.clearErr(errId());
+    TN.copy(out.value).then(function (ok) {
+      if (!ok) TN.setErr(errId(), 'Copy failed — select the text manually and press Ctrl+C.');
+    });
+  }
+
+  function download() {
+    var out = TN.el(SLUG + '-output');
+    if (!out || !out.value) { TN.setErr(errId(), 'Nothing to download yet — reverse first.'); return; }
+    TN.clearErr(errId());
+    TN.downloadText(out.value, 'reversed.txt');
+  }
+
+  function clear() {
+    TN.clearErr(errId());
+    var ta = TN.el(SLUG + '-input'), out = TN.el(SLUG + '-output');
+    if (ta) ta.value = '';
+    if (out) out.value = '';
+  }
+
+  function init() {
+    try {
+      if (typeof TN === 'undefined') return;
+      var r = TN.el(SLUG + '-run');
+      if (r) TN.on(r, 'click', run);
+      var c = TN.el(SLUG + '-clear');
+      if (c) TN.on(c, 'click', clear);
+      var cp = TN.el(SLUG + '-copy');
+      if (cp) TN.on(cp, 'click', copy);
+      var d = TN.el(SLUG + '-download');
+      if (d) TN.on(d, 'click', download);
+    } catch (e) { /* never throw on load */ }
+  }
+
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init);
+  else init();
+})();
+</script>
+</body>
+</html>

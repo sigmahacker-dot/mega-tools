@@ -1,0 +1,34 @@
+<div class="tool-card">
+  <h2>AES Text Encryptor</h2>
+  <p class="muted">Real AES-256-GCM encryption with a PBKDF2 password key. Nothing leaves your browser.</p>
+  <div class="field">
+    <label for="aes-text-encryptor-mode">Mode</label>
+    <select class="select" id="aes-text-encryptor-mode">
+      <option value="encrypt">Encrypt</option>
+      <option value="decrypt">Decrypt</option>
+    </select>
+  </div>
+  <div class="field">
+    <label for="aes-text-encryptor-password">Password</label>
+    <input type="password" class="input" id="aes-text-encryptor-password" placeholder="Enter a strong password" autocomplete="off">
+  </div>
+  <div class="field">
+    <label for="aes-text-encryptor-input" id="aes-text-encryptor-input-label">Plain text</label>
+    <textarea class="textarea" id="aes-text-encryptor-input" rows="6" placeholder="Text to encrypt..."></textarea>
+  </div>
+  <div class="btn-row mt">
+    <button class="btn btn-primary" id="aes-text-encryptor-run">Encrypt</button>
+    <button class="btn btn-outline" id="aes-text-encryptor-clear">Clear</button>
+  </div>
+  <div class="error" id="aes-text-encryptor-error"></div>
+  <div class="result" id="aes-text-encryptor-result">
+    <div class="field">
+      <label for="aes-text-encryptor-output">Result</label>
+      <textarea class="textarea" id="aes-text-encryptor-output" rows="6" readonly placeholder="Result will appear here..."></textarea>
+    </div>
+    <div class="btn-row">
+      <button class="btn btn-outline" id="aes-text-encryptor-copy">Copy result</button>
+    </div>
+    <p class="note">Output is Base64(salt 16B | IV 12B | ciphertext). PBKDF2: 100,000 iterations, SHA-256, AES-256-GCM.</p>
+  </div>
+</div>

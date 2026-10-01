@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CAGR Calculator — Free Online | ToolNest</title>
+<meta name="description" content="Compute the compound annual growth rate (CAGR) of any investment, or project a future value from a given CAGR.">
+<meta name="keywords" content="CAGR calculator, compound annual growth rate, investment return calculator">
+<link rel="canonical" href="https://toolnest.vercel.app/tools/investment-return-calculator/">
+<meta name="theme-color" content="#07070b">
+<meta property="og:title" content="CAGR Calculator — Free Online | ToolNest">
+<meta property="og:description" content="Compute the compound annual growth rate (CAGR) of any investment, or project a future value from a given CAGR.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css?v=2">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%23e01111'/><text x='50' y='68' font-size='58' text-anchor='middle' fill='white' font-family='Arial' font-weight='bold'>T</text></svg>">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebApplication","name":"CAGR Calculator","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0"},"url":"https://toolnest.vercel.app/tools/investment-return-calculator/","description":"Compute the compound annual growth rate (CAGR) of any investment, or project a future value from a given CAGR."},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How is CAGR calculated?","acceptedAnswer":{"@type":"Answer","text":"CAGR = (end value / start value)^(1/years) - 1. It is the constant yearly rate that would grow the start value into the end value over the period."}},{"@type":"Question","name":"What does CAGR actually tell me?","acceptedAnswer":{"@type":"Answer","text":"It smooths real, bumpy returns into a single average rate. Two investments can have the same CAGR with very different year-to-year volatility."}},{"@type":"Question","name":"Can I project a future value from a CAGR?","acceptedAnswer":{"@type":"Answer","text":"Yes — switch to 'Project from CAGR' mode to grow a starting value at any CAGR you enter, for example your historical average."}}]}]}</script>
+</head>
+<body>
+<header class="site-header">
+  <div class="container">
+    <a class="logo" href="/"><span class="logo-mark">T</span> ToolNest</a>
+    <nav class="site-nav">
+      <a href="/">Home</a>
+      <a href="/#categories">Categories</a>
+      <a href="/#all-tools">All Tools</a>
+    </nav>
+  </div>
+</header>
+
+<!-- ADSTERRA-HEADER: paste your Adsterra banner ad code inside the div below -->
+<div class="container"><div class="ad-slot ad-leaderboard" data-ad="header"></div></div>
+
+<main class="container">
+  <nav class="crumbs"><a href="/">Home</a> &rsaquo; <a href="/#finance">Finance &amp; Money</a> &rsaquo; CAGR Calculator</nav>
+  <div class="tool-hero">
+    <h1>CAGR Calculator</h1>
+    <p>Compute the compound annual growth rate (CAGR) of any investment, or project a future value from a given CAGR.</p>
+  </div>
+
+  <div class="tool-card">
+  <div class="field">
+    <label for="invest-mode">Mode</label>
+    <select class="select" id="invest-mode">
+      <option value="cagr">Compute CAGR from values</option>
+      <option value="project">Project future value from CAGR</option>
+    </select>
+  </div>
+  <div id="invest-mode-a">
+    <div class="grid2">
+      <div class="field">
+        <label for="invest-start">Start value ($)</label>
+        <input type="number" class="input" id="invest-start" min="0.01" step="any" placeholder="10000">
+      </div>
+      <div class="field">
+        <label for="invest-end">End value ($)</label>
+        <input type="number" class="input" id="invest-end" min="0" step="any" placeholder="19671">
+      </div>
+      <div class="field">
+        <label for="invest-years">Years</label>
+        <input type="number" class="input" id="invest-years" min="0.1" step="any" placeholder="10">
+      </div>
+    </div>
+  </div>
+  <div id="invest-mode-b" class="hidden">
+    <div class="grid2">
+      <div class="field">
+        <label for="invest2-start">Start value ($)</label>
+        <input type="number" class="input" id="invest2-start" min="0.01" step="any" placeholder="10000">
+      </div>
+      <div class="field">
+        <label for="invest2-cagr">CAGR (%)</label>
+        <input type="number" class="input" id="invest2-cagr" step="any" placeholder="7">
+      </div>
+      <div class="field">
+        <label for="invest2-years">Years</label>
+        <input type="number" class="input" id="invest2-years" min="0.1" step="any" placeholder="10">
+      </div>
+    </div>
+  </div>
+  <div class="error" id="investment-return-calculator-error"></div>
+  <div class="result" id="invest-result">
+    <div id="invest-result-a">
+      <div class="stat-cards">
+        <div class="stat-card"><div class="v" id="invest-cagr">–</div><div class="l">CAGR</div></div>
+        <div class="stat-card"><div class="v" id="invest-total-return">–</div><div class="l">Total return</div></div>
+        <div class="stat-card"><div class="v" id="invest-double">–</div><div class="l">Doubling time</div></div>
+      </div>
+    </div>
+    <div id="invest-result-b" class="hidden">
+      <div class="stat-cards">
+        <div class="stat-card"><div class="v" id="invest2-fv">–</div><div class="l">Future value</div></div>
+        <div class="stat-card"><div class="v" id="invest2-gain">–</div><div class="l">Total gain</div></div>
+      </div>
+    </div>
+    <p class="note">CAGR is a smoothed average — it does not show year-to-year volatility.</p>
+  </div>
+</div>
+
+
+  <!-- ADSTERRA-INCONTENT: paste your Adsterra native/in-content ad code inside the div below -->
+  <div class="ad-slot" data-ad="incontent"></div>
+
+  <div class="info-grid">
+    <div class="info-card">
+      <h2>📖 How to use</h2>
+      <ol><li>Choose a mode: compute CAGR, or project from a CAGR.</li><li>For CAGR: enter start value, end value and the number of years.</li><li>For projection: enter start value, CAGR % and years.</li><li>Read the CAGR, total return, doubling time — or the projected future value.</li></ol>
+    </div>
+    <div class="info-card">
+      <h2>❓ Frequently asked questions</h2>
+      <div class="faq"><details><summary>How is CAGR calculated?</summary><p>CAGR = (end value / start value)^(1/years) - 1. It is the constant yearly rate that would grow the start value into the end value over the period.</p></details><details><summary>What does CAGR actually tell me?</summary><p>It smooths real, bumpy returns into a single average rate. Two investments can have the same CAGR with very different year-to-year volatility.</p></details><details><summary>Can I project a future value from a CAGR?</summary><p>Yes — switch to &#39;Project from CAGR&#39; mode to grow a starting value at any CAGR you enter, for example your historical average.</p></details></div>
+    </div>
+  </div>
+
+  <section class="section">
+    <h2>🔗 Related tools</h2>
+    <div class="tool-grid"><a class="tool-link" href="/tools/compound-interest-calculator/" data-search="compound interest calculator project how your savings grow over time with compound interest, regular monthly contributions and your choice of compounding frequency. compound interest calculator savings growth calculator compound interest with contributions"><span class="t-ico">💰</span><span class="t-body"><b>Compound Interest Calculator</b><small>Project how your savings grow over time with compound interest, regular monthly contribution…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/credit-card-validator/" data-search="credit card validator check any card number with the luhn algorithm and detect its brand — a format check only, never a real-card check. credit card validator luhn check card number checker card brand detector"><span class="t-ico">💰</span><span class="t-body"><b>Credit Card Validator</b><small>Check any card number with the Luhn algorithm and detect its brand — a format check only, ne…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/debt-payoff-calculator/" data-search="debt payoff planner build an avalanche payoff plan for up to 8 debts: payoff order, months to debt-free and total interest paid. debt payoff calculator debt avalanche calculator pay off debt planner"><span class="t-ico">💰</span><span class="t-body"><b>Debt Payoff Planner</b><small>Build an avalanche payoff plan for up to 8 debts: payoff order, months to debt-free and tota…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/freelance-rate-calculator/" data-search="freelance rate calculator derive your hourly freelance rate from your income goal, billable hours and a buffer for taxes and downtime. freelance rate calculator hourly rate calculator freelancer pricing calculator"><span class="t-ico">💰</span><span class="t-body"><b>Freelance Rate Calculator</b><small>Derive your hourly freelance rate from your income goal, billable hours and a buffer for tax…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/iban-validator/" data-search="iban validator validate any iban using the official iso 13616 mod-97 checksum, with clean grouped formatting. iban validator iban checker validate iban iban checksum"><span class="t-ico">💰</span><span class="t-body"><b>IBAN Validator</b><small>Validate any IBAN using the official ISO 13616 mod-97 checksum, with clean grouped formattin…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/mortgage-calculator/" data-search="mortgage calculator compute your monthly mortgage payment, total interest and a full year-by-year amortization schedule from price, down payment, rate and term. mortgage calculator monthly mortgage payment home loan calculator mortgage amortization schedule"><span class="t-ico">💰</span><span class="t-body"><b>Mortgage Calculator</b><small>Compute your monthly mortgage payment, total interest and a full year-by-year amortization s…</small></span><span class="t-arrow">→</span></a></div>
+  </section>
+</main>
+
+<!-- ADSTERRA-FOOTER: paste your Adsterra footer/banner ad code inside the div below -->
+<div class="container"><div class="ad-slot" data-ad="footer"></div></div>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="f-grid">
+      <div>
+        <span class="brandline"><span class="logo-mark">T</span> ToolNest</span>
+        <p>Free online tools that actually work. No sign-up, no watermarks — and your files never leave your device for client-side tools.</p>
+      </div>
+      <div>
+        <h4>Popular</h4>
+        <a href="/tools/qr-code-generator/">QR Code Generator</a>
+        <a href="/tools/background-remover/">Background Remover</a>
+        <a href="/tools/pdf-merger/">PDF Merger</a>
+        <a href="/tools/word-counter/">Word Counter</a>
+      </div>
+      <div>
+        <h4>Categories</h4>
+        <a href="/#image">Image Tools</a>
+        <a href="/#pdf">PDF &amp; Documents</a>
+        <a href="/#calculators">Calculators</a>
+        <a href="/#developer">Developer Tools</a>
+      </div>
+      <div>
+        <h4>Site</h4>
+        <a href="/">Home</a>
+        <a href="/#all-tools">All Tools</a>
+        <a href="/sitemap.xml">Sitemap</a>
+      </div>
+    </div>
+    <div class="f-bottom">© 2026 ToolNest · Free tools for everyone · Made with care</div>
+  </div>
+</footer>
+
+<script src="/assets/site.js?v=2"></script>
+
+<script>
+(function () {
+  'use strict';
+  var ERR = 'investment-return-calculator-error';
+  function money(n) {
+    try { return '$' + n.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 }); }
+    catch (e) { return '$' + String(Math.round(n * 100) / 100); }
+  }
+  function pct(x, d) {
+    try { return (x * 100).toLocaleString('en-US', { minimumFractionDigits: d == null ? 2 : d, maximumFractionDigits: d == null ? 2 : d }) + '%'; }
+    catch (e) { return String(Math.round(x * 10000) / 100) + '%'; }
+  }
+  function num(id) {
+    var el = TN.el(id);
+    if (!el) return NaN;
+    return parseFloat(el.value);
+  }
+  function mode() {
+    var el = TN.el('invest-mode');
+    return el ? el.value : 'cagr';
+  }
+  function calc() {
+    if (!TN.el('invest-start')) return;
+    TN.clearErr(ERR);
+    var m = mode();
+    if (m === 'cagr') {
+      TN.show('invest-mode-a'); TN.hide('invest-mode-b');
+      TN.show('invest-result-a'); TN.hide('invest-result-b');
+      var start = num('invest-start'), end = num('invest-end'), years = num('invest-years');
+      if (!(start > 0)) { TN.setErr(ERR, 'Enter a start value greater than 0.'); return; }
+      if (isNaN(end) || end < 0) { TN.setErr(ERR, 'Enter an end value of 0 or more.'); return; }
+      if (!(years > 0 && years <= 200)) { TN.setErr(ERR, 'Enter a period between 0 and 200 years.'); return; }
+      var cagr = Math.pow(end / start, 1 / years) - 1;
+      var totalRet = (end - start) / start;
+      TN.el('invest-cagr').textContent = pct(cagr);
+      TN.el('invest-total-return').textContent = pct(totalRet);
+      TN.el('invest-double').textContent = cagr > 0 ? (Math.log(2) / Math.log(1 + cagr)).toFixed(1) + ' years' : '–';
+    } else {
+      TN.hide('invest-mode-a'); TN.show('invest-mode-b');
+      TN.hide('invest-result-a'); TN.show('invest-result-b');
+      var s2 = num('invest2-start'), c2 = num('invest2-cagr'), y2 = num('invest2-years');
+      if (!(s2 > 0)) { TN.setErr(ERR, 'Enter a start value greater than 0.'); return; }
+      if (isNaN(c2) || c2 <= -100) { TN.setErr(ERR, 'Enter a CAGR greater than -100%.'); return; }
+      if (!(y2 > 0 && y2 <= 200)) { TN.setErr(ERR, 'Enter a period between 0 and 200 years.'); return; }
+      var fv = s2 * Math.pow(1 + c2 / 100, y2);
+      TN.el('invest2-fv').textContent = money(fv);
+      TN.el('invest2-gain').textContent = money(fv - s2);
+    }
+  }
+  try {
+    TN.on('invest-mode', 'change', calc);
+    ['invest-start', 'invest-end', 'invest-years', 'invest2-start', 'invest2-cagr', 'invest2-years'].forEach(function (id) {
+      TN.on(id, 'input', calc);
+    });
+    calc();
+  } catch (e) { /* never throw on load */ }
+})();
+
+</script>
+</body>
+</html>

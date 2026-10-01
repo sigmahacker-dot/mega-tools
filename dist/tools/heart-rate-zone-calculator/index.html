@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Heart Rate Zone Calculator — Free Online | ToolNest</title>
+<meta name="description" content="Find your five Karvonen heart-rate training zones from your age and resting heart rate, with BPM ranges.">
+<meta name="keywords" content="heart rate zones calculator, karvonen calculator, training zones bpm">
+<link rel="canonical" href="https://toolnest.vercel.app/tools/heart-rate-zone-calculator/">
+<meta name="theme-color" content="#07070b">
+<meta property="og:title" content="Heart Rate Zone Calculator — Free Online | ToolNest">
+<meta property="og:description" content="Find your five Karvonen heart-rate training zones from your age and resting heart rate, with BPM ranges.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css?v=2">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%23e01111'/><text x='50' y='68' font-size='58' text-anchor='middle' fill='white' font-family='Arial' font-weight='bold'>T</text></svg>">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebApplication","name":"Heart Rate Zone Calculator","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0"},"url":"https://toolnest.vercel.app/tools/heart-rate-zone-calculator/","description":"Find your five Karvonen heart-rate training zones from your age and resting heart rate, with BPM ranges."},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What is the Karvonen method?","acceptedAnswer":{"@type":"Answer","text":"Each zone is a percentage band of your heart-rate reserve (max HR minus resting HR) added back to your resting HR: zone HR = resting + reserve × %. It personalizes zones better than raw % of max HR."}},{"@type":"Question","name":"How accurate is 220 minus age?","acceptedAnswer":{"@type":"Answer","text":"Max heart rate is estimated as 220 − age. It is a rough population average — individual max can differ by 10–20 bpm, so treat zones as guidance, not precision."}},{"@type":"Question","name":"Is it safe to train in zone 5?","acceptedAnswer":{"@type":"Answer","text":"Stop, rest, and seek medical advice if you feel dizzy, chest pain or unusual shortness of breath. This tool is for general fitness guidance only."}}]}]}</script>
+</head>
+<body>
+<header class="site-header">
+  <div class="container">
+    <a class="logo" href="/"><span class="logo-mark">T</span> ToolNest</a>
+    <nav class="site-nav">
+      <a href="/">Home</a>
+      <a href="/#categories">Categories</a>
+      <a href="/#all-tools">All Tools</a>
+    </nav>
+  </div>
+</header>
+
+<!-- ADSTERRA-HEADER: paste your Adsterra banner ad code inside the div below -->
+<div class="container"><div class="ad-slot ad-leaderboard" data-ad="header"></div></div>
+
+<main class="container">
+  <nav class="crumbs"><a href="/">Home</a> &rsaquo; <a href="/#health">Health &amp; Fitness</a> &rsaquo; Heart Rate Zone Calculator</nav>
+  <div class="tool-hero">
+    <h1>Heart Rate Zone Calculator</h1>
+    <p>Find your five Karvonen heart-rate training zones from your age and resting heart rate, with BPM ranges.</p>
+  </div>
+
+  <div class="tool-card">
+  <div class="grid2">
+    <div class="field">
+      <label for="hr-age">Age (years)</label>
+      <input type="number" class="input" id="hr-age" min="10" max="100" step="1" placeholder="30">
+    </div>
+    <div class="field">
+      <label for="hr-resting">Resting heart rate (BPM)</label>
+      <input type="number" class="input" id="hr-resting" min="30" max="120" step="1" placeholder="60">
+    </div>
+  </div>
+  <div class="error" id="heart-rate-zone-calculator-error"></div>
+  <div class="result" id="hr-result">
+    <div class="stat-cards">
+      <div class="stat-card"><div class="v" id="hr-max">–</div><div class="l">Max heart rate (BPM)</div></div>
+    </div>
+    <table class="data">
+      <thead><tr><th>Zone</th><th>Intensity</th><th>BPM range</th><th>Purpose</th></tr></thead>
+      <tbody id="hr-zone-body">
+        <tr><td colspan="4" class="muted">Enter your age and resting heart rate to see your zones.</td></tr>
+      </tbody>
+    </table>
+    <p class="note">Max HR is estimated as 220 − age, a rough average. Zones are guidance, not medical precision.</p>
+  </div>
+</div>
+
+
+  <!-- ADSTERRA-INCONTENT: paste your Adsterra native/in-content ad code inside the div below -->
+  <div class="ad-slot" data-ad="incontent"></div>
+
+  <div class="info-grid">
+    <div class="info-card">
+      <h2>📖 How to use</h2>
+      <ol><li>Enter your age.</li><li>Enter your resting heart rate in BPM (measure it first thing in the morning).</li><li>Read your estimated max heart rate.</li><li>Use the five zone table to target the right intensity for each workout.</li></ol>
+    </div>
+    <div class="info-card">
+      <h2>❓ Frequently asked questions</h2>
+      <div class="faq"><details><summary>What is the Karvonen method?</summary><p>Each zone is a percentage band of your heart-rate reserve (max HR minus resting HR) added back to your resting HR: zone HR = resting + reserve × %. It personalizes zones better than raw % of max HR.</p></details><details><summary>How accurate is 220 minus age?</summary><p>Max heart rate is estimated as 220 − age. It is a rough population average — individual max can differ by 10–20 bpm, so treat zones as guidance, not precision.</p></details><details><summary>Is it safe to train in zone 5?</summary><p>Stop, rest, and seek medical advice if you feel dizzy, chest pain or unusual shortness of breath. This tool is for general fitness guidance only.</p></details></div>
+    </div>
+  </div>
+
+  <section class="section">
+    <h2>🔗 Related tools</h2>
+    <div class="tool-grid"><a class="tool-link" href="/tools/body-fat-calculator/" data-search="body fat calculator estimate body fat percentage with the us navy tape-measure method and see your fitness category. body fat calculator us navy body fat body fat percentage calculator"><span class="t-ico">❤️</span><span class="t-body"><b>Body Fat Calculator</b><small>Estimate body fat percentage with the US Navy tape-measure method and see your fitness categ…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/calorie-calculator/" data-search="tdee calorie calculator estimate your daily calorie needs with the mifflin-st jeor equation and get targets for losing, maintaining or gaining weight. tdee calculator calorie calculator mifflin st jeor daily calorie needs"><span class="t-ico">❤️</span><span class="t-body"><b>TDEE Calorie Calculator</b><small>Estimate your daily calorie needs with the Mifflin-St Jeor equation and get targets for losi…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/macro-calculator/" data-search="macro split calculator split your daily calories into protein, carb and fat targets in grams, calories and percentages for your goal. macro calculator macros calculator protein carbs fat calculator"><span class="t-ico">❤️</span><span class="t-body"><b>Macro Split Calculator</b><small>Split your daily calories into protein, carb and fat targets in grams, calories and percenta…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/one-rep-max-calculator/" data-search="one-rep max calculator estimate your one-rep max from any lift with the epley and brzycki formulas, plus a full percentage table. one rep max calculator 1rm calculator epley brzycki calculator"><span class="t-ico">❤️</span><span class="t-body"><b>One-Rep Max Calculator</b><small>Estimate your one-rep max from any lift with the Epley and Brzycki formulas, plus a full per…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/ovulation-calculator/" data-search="ovulation &amp; fertile window calculator estimate your ovulation day, fertile window and next period from your last period start and cycle length. ovulation calculator fertile window calculator ovulation calendar"><span class="t-ico">❤️</span><span class="t-body"><b>Ovulation &amp; Fertile Window Calculator</b><small>Estimate your ovulation day, fertile window and next period from your last period start and …</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/pace-calculator/" data-search="running pace calculator solve for running pace, finish time or distance — with one-tap presets for 5k, 10k, half and full marathon. running pace calculator race time predictor pace time distance calculator"><span class="t-ico">❤️</span><span class="t-body"><b>Running Pace Calculator</b><small>Solve for running pace, finish time or distance — with one-tap presets for 5K, 10K, half and…</small></span><span class="t-arrow">→</span></a></div>
+  </section>
+</main>
+
+<!-- ADSTERRA-FOOTER: paste your Adsterra footer/banner ad code inside the div below -->
+<div class="container"><div class="ad-slot" data-ad="footer"></div></div>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="f-grid">
+      <div>
+        <span class="brandline"><span class="logo-mark">T</span> ToolNest</span>
+        <p>Free online tools that actually work. No sign-up, no watermarks — and your files never leave your device for client-side tools.</p>
+      </div>
+      <div>
+        <h4>Popular</h4>
+        <a href="/tools/qr-code-generator/">QR Code Generator</a>
+        <a href="/tools/background-remover/">Background Remover</a>
+        <a href="/tools/pdf-merger/">PDF Merger</a>
+        <a href="/tools/word-counter/">Word Counter</a>
+      </div>
+      <div>
+        <h4>Categories</h4>
+        <a href="/#image">Image Tools</a>
+        <a href="/#pdf">PDF &amp; Documents</a>
+        <a href="/#calculators">Calculators</a>
+        <a href="/#developer">Developer Tools</a>
+      </div>
+      <div>
+        <h4>Site</h4>
+        <a href="/">Home</a>
+        <a href="/#all-tools">All Tools</a>
+        <a href="/sitemap.xml">Sitemap</a>
+      </div>
+    </div>
+    <div class="f-bottom">© 2026 ToolNest · Free tools for everyone · Made with care</div>
+  </div>
+</footer>
+
+<script src="/assets/site.js?v=2"></script>
+
+<script>
+(function () {
+  'use strict';
+  var ERR = 'heart-rate-zone-calculator-error';
+  var ZONES = [
+    { n: 'Zone 1', lo: 50, hi: 60, purpose: 'Recovery — easy warm-up and cool-down' },
+    { n: 'Zone 2', lo: 60, hi: 70, purpose: 'Fat burn — steady endurance base' },
+    { n: 'Zone 3', lo: 70, hi: 80, purpose: 'Aerobic — builds cardio fitness' },
+    { n: 'Zone 4', lo: 80, hi: 90, purpose: 'Threshold — challenging tempo efforts' },
+    { n: 'Zone 5', lo: 90, hi: 100, purpose: 'Maximum — short all-out intervals' }
+  ];
+  function calc() {
+    if (!TN.el('hr-age')) return;
+    TN.clearErr(ERR);
+    var age = parseFloat(TN.el('hr-age').value);
+    var resting = parseFloat(TN.el('hr-resting').value);
+    if (!(age >= 10 && age <= 100)) { TN.setErr(ERR, 'Enter an age between 10 and 100.'); return; }
+    if (!(resting >= 30 && resting <= 120)) { TN.setErr(ERR, 'Enter a resting heart rate between 30 and 120 BPM.'); return; }
+    var max = 220 - age;
+    if (resting >= max) { TN.setErr(ERR, 'Resting heart rate must be below your estimated max heart rate.'); return; }
+    var hrr = max - resting;
+    TN.el('hr-max').textContent = String(Math.round(max));
+    TN.el('hr-zone-body').innerHTML = ZONES.map(function (z) {
+      var lo = Math.round(resting + hrr * z.lo / 100);
+      var hi = Math.round(resting + hrr * z.hi / 100);
+      return '<tr><td>' + z.n + '</td><td>' + z.lo + '–' + z.hi + '%</td><td>' + lo + '–' + hi + ' BPM</td><td>' + z.purpose + '</td></tr>';
+    }).join('');
+  }
+  try {
+    TN.on('hr-age', 'input', calc);
+    TN.on('hr-resting', 'input', calc);
+    calc();
+  } catch (e) { /* never throw on load */ }
+})();
+
+</script>
+</body>
+</html>

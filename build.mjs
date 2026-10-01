@@ -22,6 +22,12 @@ const CATEGORIES = [
   { id: 'social', name: 'Social Media', icon: '📣', blurb: 'Fancy text, bios, captions and titles for your social posts.' },
   { id: 'developer', name: 'Developer Tools', icon: '💻', blurb: 'Formatters, minifiers, encoders, IP, DNS and port tools.' },
   { id: 'fun', name: 'Fun & Lifestyle', icon: '🎲', blurb: 'Games, clocks, timers, weather, notes and playful utilities.' },
+  { id: 'finance', name: 'Finance & Money', icon: '💰', blurb: 'Mortgages, compound interest, budgets, loans and money tools.' },
+  { id: 'health', name: 'Health & Fitness', icon: '❤️', blurb: 'Calories, macros, heart-rate zones, pace, sleep and fitness.' },
+  { id: 'math', name: 'Math & Numbers', icon: '📐', blurb: 'Scientific calculator, statistics, fractions, primes and more.' },
+  { id: 'time', name: 'Time & Date', icon: '⏰', blurb: 'Date math, countdowns, work hours, week numbers and planners.' },
+  { id: 'color', name: 'Color Tools', icon: '🎨', blurb: 'Pickers, palettes, contrast checkers and color-blindness simulators.' },
+  { id: 'converters', name: 'Converters', icon: '🔄', blurb: 'Temperature, length, weight, speed, data and unit converters.' },
 ];
 
 const LIB_CDN = {
@@ -87,7 +93,12 @@ function fill(tpl, vars) {
   return out;
 }
 const toolUrl = t => `/tools/${t.slug}/`;
-const toolCard = t => `<a class="tool-link" href="${toolUrl(t)}" data-search="${esc((t.title + ' ' + t.description + ' ' + (t.keywords || []).join(' ')).toLowerCase())}">${esc(t.title)}<small>${esc(t.description.slice(0, 70))}…</small></a>`;
+const toolCard = t => {
+  const cat = catById[t.category];
+  const icon = cat ? cat.icon : '🔧';
+  const d = t.description.length > 92 ? t.description.slice(0, 92) + '…' : t.description;
+  return `<a class="tool-link" href="${toolUrl(t)}" data-search="${esc((t.title + ' ' + t.description + ' ' + (t.keywords || []).join(' ')).toLowerCase())}"><span class="t-ico">${icon}</span><span class="t-body"><b>${esc(t.title)}</b><small>${esc(d)}</small></span><span class="t-arrow">→</span></a>`;
+};
 
 /* ---------- tool pages ---------- */
 for (const t of tools) {
@@ -155,13 +166,17 @@ const homeHtml = `<!DOCTYPE html>
 <meta property="og:title" content="${SITE_NAME} — Free Online Tools">
 <meta property="og:description" content="${tools.length}+ free tools: compress images, merge PDFs, generate QR codes, convert currency and more.">
 <meta property="og:type" content="website">
-<link rel="stylesheet" href="/assets/site.css?v=1">
-<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='22' fill='%234f46e5'/><text x='50' y='68' font-size='52' text-anchor='middle' fill='white' font-family='Arial' font-weight='bold'>T</text></svg>">
+<meta name="theme-color" content="#07070b">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css?v=2">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%23e01111'/><text x='50' y='68' font-size='58' text-anchor='middle' fill='white' font-family='Arial' font-weight='bold'>T</text></svg>">
 </head>
 <body>
 <header class="site-header">
   <div class="container">
-    <a class="logo" href="/"><span class="logo-mark">🧰</span> ${SITE_NAME}</a>
+    <a class="logo" href="/"><span class="logo-mark">T</span> ${SITE_NAME}</a>
     <nav class="site-nav">
       <a href="#categories">Categories</a>
       <a href="#all-tools">All Tools</a>
@@ -170,12 +185,14 @@ const homeHtml = `<!DOCTYPE html>
 </header>
 
 <section class="hero">
+  <span class="hero-orb o1"></span><span class="hero-orb o2"></span>
   <div class="container">
-    <h1>Every tool you need, <u>free</u> — and they actually work</h1>
-    <p>${tools.length}+ fast online tools: images, PDFs, video, text, calculators, generators &amp; more. No sign-up, no watermarks.</p>
+    <span class="hero-badge"><span class="pulse"></span> ${tools.length}+ tools · 100% free · no sign-up</span>
+    <h1>Every tool you need, <span class="grad">free</span> — and they actually work</h1>
+    <p>${tools.length}+ fast online tools: images, PDFs, video, finance, health, math, converters &amp; more. No sign-up, no watermarks.</p>
     <div class="search-wrap">
       <span class="sicon">🔍</span>
-      <input id="toolSearch" type="search" placeholder="Search tools… e.g. &quot;pdf merger&quot;, &quot;qr code&quot;, &quot;bmi&quot;" autocomplete="off">
+      <input id="toolSearch" type="search" placeholder="Search tools… e.g. &quot;mortgage&quot;, &quot;qr code&quot;, &quot;color picker&quot;" autocomplete="off">
     </div>
     <div class="hero-stats"><span><b>${tools.length}</b> tools</span><span><b>${CATEGORIES.length}</b> categories</span><span><b>100%</b> free</span></div>
   </div>
@@ -218,7 +235,7 @@ const homeHtml = `<!DOCTYPE html>
   <div class="container">
     <div class="f-grid">
       <div>
-        <span class="brandline">🧰 ${SITE_NAME}</span>
+        <span class="brandline"><span class="logo-mark">T</span> ${SITE_NAME}</span>
         <p>Free online tools that actually work. No sign-up, no watermarks — and your files never leave your device for client-side tools.</p>
       </div>
       <div>
@@ -230,9 +247,9 @@ const homeHtml = `<!DOCTYPE html>
       </div>
       <div>
         <h4>Categories</h4>
+        <a href="/#converters">Converters</a>
+        <a href="/#finance">Finance &amp; Money</a>
         <a href="/#image">Image Tools</a>
-        <a href="/#pdf">PDF &amp; Documents</a>
-        <a href="/#calculators">Calculators</a>
         <a href="/#developer">Developer Tools</a>
       </div>
       <div>
@@ -248,13 +265,15 @@ const homeHtml = `<!DOCTYPE html>
 
 <script>
 const TOOLS = ${JSON.stringify(toolsIndex).replace(/</g, '\\u003c')};
+const ICONS = ${JSON.stringify(Object.fromEntries(CATEGORIES.map(c => [c.id, c.icon])))};
 (function(){
   const input = document.getElementById('toolSearch');
   const box = document.getElementById('searchResults');
   const grid = document.getElementById('searchGrid');
   const all = document.getElementById('all-tools');
+  const escH = s => String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;');
   function card(t){
-    return '<a class="tool-link" href="/tools/'+t.slug+'/">'+t.title.replace(/&/g,'&amp;')+'<small>'+String(t.desc).slice(0,70).replace(/&/g,'&amp;')+'…</small></a>';
+    return '<a class="tool-link" href="/tools/'+t.slug+'/"><span class="t-ico">'+(ICONS[t.cat]||'🔧')+'</span><span class="t-body"><b>'+escH(t.title)+'</b><small>'+escH(String(t.desc).slice(0,92))+(String(t.desc).length>92?'…':'')+'</small></span><span class="t-arrow">→</span></a>';
   }
   input.addEventListener('input', function(){
     const q = input.value.trim().toLowerCase();

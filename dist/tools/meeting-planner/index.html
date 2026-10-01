@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Meeting Time Planner — Free Online | ToolNest</title>
+<meta name="description" content="Find overlapping work hours across time zones.">
+<meta name="keywords" content="meeting planner, time zone overlap, world clock meeting">
+<link rel="canonical" href="https://toolnest.vercel.app/tools/meeting-planner/">
+<meta name="theme-color" content="#07070b">
+<meta property="og:title" content="Meeting Time Planner — Free Online | ToolNest">
+<meta property="og:description" content="Find overlapping work hours across time zones.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css?v=2">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%23e01111'/><text x='50' y='68' font-size='58' text-anchor='middle' fill='white' font-family='Arial' font-weight='bold'>T</text></svg>">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebApplication","name":"Meeting Time Planner","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0"},"url":"https://toolnest.vercel.app/tools/meeting-planner/","description":"Find overlapping work hours across time zones."},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Why fixed offsets instead of real time zones?","acceptedAnswer":{"@type":"Answer","text":"They are fixed UTC offsets (UTC−05:00, UTC+05:30 and so on) with no daylight-saving rules, so the conversion is simple arithmetic: local time = your time + offset difference. That means it will be off by an hour for regions currently on DST."}},{"@type":"Question","name":"What makes a slot highlighted?","acceptedAnswer":{"@type":"Answer","text":"A slot counts only if the whole meeting — from its start to start plus length — falls inside 09:00–17:00 for every zone, including yours."}},{"@type":"Question","name":"Can I use fewer than 4 extra zones?","acceptedAnswer":{"@type":"Answer","text":"Yes — each of the four zone selectors has a 'None' option. Pick at least one."}}]}]}</script>
+</head>
+<body>
+<header class="site-header">
+  <div class="container">
+    <a class="logo" href="/"><span class="logo-mark">T</span> ToolNest</a>
+    <nav class="site-nav">
+      <a href="/">Home</a>
+      <a href="/#categories">Categories</a>
+      <a href="/#all-tools">All Tools</a>
+    </nav>
+  </div>
+</header>
+
+<!-- ADSTERRA-HEADER: paste your Adsterra banner ad code inside the div below -->
+<div class="container"><div class="ad-slot ad-leaderboard" data-ad="header"></div></div>
+
+<main class="container">
+  <nav class="crumbs"><a href="/">Home</a> &rsaquo; <a href="/#time">Time &amp; Date</a> &rsaquo; Meeting Time Planner</nav>
+  <div class="tool-hero">
+    <h1>Meeting Time Planner</h1>
+    <p>Find overlapping work hours across time zones.</p>
+  </div>
+
+  <div class="tool-card">
+  <div class="grid2">
+    <div class="field">
+      <label for="meeting-planner-mine">Your UTC offset</label>
+      <select class="select" id="meeting-planner-mine"></select>
+    </div>
+    <div class="field">
+      <label for="meeting-planner-len">Meeting length (minutes)</label>
+      <input type="number" class="input" id="meeting-planner-len" value="60" min="15" max="480" step="15">
+    </div>
+  </div>
+  <div class="grid2">
+    <div class="field"><label for="meeting-planner-z1">Other zone 1</label><select class="select" id="meeting-planner-z1"></select></div>
+    <div class="field"><label for="meeting-planner-z2">Other zone 2</label><select class="select" id="meeting-planner-z2"></select></div>
+  </div>
+  <div class="grid2">
+    <div class="field"><label for="meeting-planner-z3">Other zone 3</label><select class="select" id="meeting-planner-z3"></select></div>
+    <div class="field"><label for="meeting-planner-z4">Other zone 4</label><select class="select" id="meeting-planner-z4"></select></div>
+  </div>
+  <div class="btn-row">
+    <button type="button" class="btn btn-primary" id="meeting-planner-go">Find slots</button>
+  </div>
+  <div class="error" id="meeting-planner-error"></div>
+  <div class="result" id="meeting-planner-result">
+    <table class="data">
+      <thead><tr id="meeting-planner-head"><th>Your time</th></tr></thead>
+      <tbody id="meeting-planner-body"></tbody>
+    </table>
+    <p class="note">Highlighted rows: the full meeting fits inside 09:00–17:00 in every zone. Offsets are fixed (no daylight saving).</p>
+  </div>
+</div>
+
+
+  <!-- ADSTERRA-INCONTENT: paste your Adsterra native/in-content ad code inside the div below -->
+  <div class="ad-slot" data-ad="incontent"></div>
+
+  <div class="info-grid">
+    <div class="info-card">
+      <h2>📖 How to use</h2>
+      <ol><li>Pick your UTC offset (default UTC+05:00).</li><li>Add up to 4 other UTC offsets.</li><li>Set the meeting length in minutes.</li><li>Press Find slots — green rows work for everyone between 09:00 and 17:00.</li></ol>
+    </div>
+    <div class="info-card">
+      <h2>❓ Frequently asked questions</h2>
+      <div class="faq"><details><summary>Why fixed offsets instead of real time zones?</summary><p>They are fixed UTC offsets (UTC−05:00, UTC+05:30 and so on) with no daylight-saving rules, so the conversion is simple arithmetic: local time = your time + offset difference. That means it will be off by an hour for regions currently on DST.</p></details><details><summary>What makes a slot highlighted?</summary><p>A slot counts only if the whole meeting — from its start to start plus length — falls inside 09:00–17:00 for every zone, including yours.</p></details><details><summary>Can I use fewer than 4 extra zones?</summary><p>Yes — each of the four zone selectors has a &#39;None&#39; option. Pick at least one.</p></details></div>
+    </div>
+  </div>
+
+  <section class="section">
+    <h2>🔗 Related tools</h2>
+    <div class="tool-grid"><a class="tool-link" href="/tools/date-duration-calculator/" data-search="date duration calculator exact duration between two dates, plus business days. date duration calculator days between dates business days calculator"><span class="t-ico">⏰</span><span class="t-body"><b>Date Duration Calculator</b><small>Exact duration between two dates, plus business days.</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/event-countdown/" data-search="event countdown timer live ticking countdown to any future date and time. countdown timer event countdown countdown to date"><span class="t-ico">⏰</span><span class="t-body"><b>Event Countdown Timer</b><small>Live ticking countdown to any future date and time.</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/time-addition-calculator/" data-search="time addition calculator add up timesheet durations, one per line. time addition calculator timesheet calculator add hours minutes"><span class="t-ico">⏰</span><span class="t-body"><b>Time Addition Calculator</b><small>Add up timesheet durations, one per line.</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/week-number-calculator/" data-search="week number calculator iso week number, day-of-year and quarter for any date. week number calculator iso week day of year calculator"><span class="t-ico">⏰</span><span class="t-body"><b>Week Number Calculator</b><small>ISO week number, day-of-year and quarter for any date.</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/work-hours-calculator/" data-search="work hours calculator shift totals, weekly hours and overtime from clock times. work hours calculator timesheet hours overtime calculator"><span class="t-ico">⏰</span><span class="t-body"><b>Work Hours Calculator</b><small>Shift totals, weekly hours and overtime from clock times.</small></span><span class="t-arrow">→</span></a></div>
+  </section>
+</main>
+
+<!-- ADSTERRA-FOOTER: paste your Adsterra footer/banner ad code inside the div below -->
+<div class="container"><div class="ad-slot" data-ad="footer"></div></div>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="f-grid">
+      <div>
+        <span class="brandline"><span class="logo-mark">T</span> ToolNest</span>
+        <p>Free online tools that actually work. No sign-up, no watermarks — and your files never leave your device for client-side tools.</p>
+      </div>
+      <div>
+        <h4>Popular</h4>
+        <a href="/tools/qr-code-generator/">QR Code Generator</a>
+        <a href="/tools/background-remover/">Background Remover</a>
+        <a href="/tools/pdf-merger/">PDF Merger</a>
+        <a href="/tools/word-counter/">Word Counter</a>
+      </div>
+      <div>
+        <h4>Categories</h4>
+        <a href="/#image">Image Tools</a>
+        <a href="/#pdf">PDF &amp; Documents</a>
+        <a href="/#calculators">Calculators</a>
+        <a href="/#developer">Developer Tools</a>
+      </div>
+      <div>
+        <h4>Site</h4>
+        <a href="/">Home</a>
+        <a href="/#all-tools">All Tools</a>
+        <a href="/sitemap.xml">Sitemap</a>
+      </div>
+    </div>
+    <div class="f-bottom">© 2026 ToolNest · Free tools for everyone · Made with care</div>
+  </div>
+</footer>
+
+<script src="/assets/site.js?v=2"></script>
+
+<script>
+(function () {
+  'use strict';
+  var ERR = 'meeting-planner-error';
+
+  function offsets() {
+    var list = [];
+    for (var h = -12; h <= 14; h++) list.push(h);
+    list.push(5.5); // UTC+05:30
+    list.sort(function (a, b) { return a - b; });
+    return list;
+  }
+
+  function label(off) {
+    var sign = off < 0 ? '−' : '+';
+    var abs = Math.abs(off);
+    var h = Math.floor(abs);
+    var m = Math.round((abs - h) * 60);
+    return 'UTC' + sign + ('0' + h).slice(-2) + ':' + ('0' + m).slice(-2);
+  }
+
+  function fillSelect(el, includeNone, defVal) {
+    if (!el) return;
+    el.innerHTML = '';
+    if (includeNone) {
+      var none = document.createElement('option');
+      none.value = '';
+      none.textContent = '— None —';
+      el.appendChild(none);
+    }
+    offsets().forEach(function (off) {
+      var o = document.createElement('option');
+      o.value = String(off);
+      o.textContent = label(off);
+      if (defVal !== undefined && off === defVal) o.selected = true;
+      el.appendChild(o);
+    });
+  }
+
+  function fmtTime(mins) {
+    mins = ((mins % 1440) + 1440) % 1440;
+    var h = Math.floor(mins / 60);
+    var m = Math.round(mins % 60);
+    return ('0' + h).slice(-2) + ':' + ('0' + m).slice(-2);
+  }
+
+  function plan() {
+    TN.clearErr(ERR);
+    try {
+      var mine = parseFloat(TN.el('meeting-planner-mine').value);
+      var len = parseInt(TN.el('meeting-planner-len').value, 10);
+      if (!isFinite(len) || len < 15 || len > 480) throw new Error('Meeting length must be 15–480 minutes.');
+      var others = [];
+      ['meeting-planner-z1', 'meeting-planner-z2', 'meeting-planner-z3', 'meeting-planner-z4'].forEach(function (id) {
+        var v = TN.el(id).value;
+        if (v !== '') others.push(parseFloat(v));
+      });
+      if (!others.length) throw new Error('Pick at least one other zone.');
+
+      var zones = [{ off: mine, name: 'You (' + label(mine) + ')' }].concat(
+        others.map(function (o, i) { return { off: o, name: label(o) }; })
+      );
+
+      var head = TN.el('meeting-planner-head');
+      head.innerHTML = '';
+      zones.forEach(function (z) {
+        var th = document.createElement('th');
+        th.textContent = z.name;
+        head.appendChild(th);
+      });
+
+      var body = TN.el('meeting-planner-body');
+      body.innerHTML = '';
+      var good = 0;
+      for (var start = 8 * 60; start + len <= 20 * 60; start += 60) {
+        var tr = document.createElement('tr');
+        var allOk = true;
+        zones.forEach(function (z, zi) {
+          var localStart = start + (z.off - mine) * 60;
+          var localEnd = localStart + len;
+          var normStart = ((localStart % 1440) + 1440) % 1440;
+          var normEnd = ((localEnd % 1440) + 1440) % 1440;
+          // Must not cross midnight and must fit 09:00–17:00
+          var ok = normStart >= 9 * 60 && normEnd <= 17 * 60 && normEnd > normStart;
+          if (!ok) allOk = false;
+          var td = document.createElement('td');
+          td.textContent = fmtTime(localStart) + '–' + fmtTime(localEnd);
+          tr.appendChild(td);
+        });
+        if (allOk) {
+          tr.style.background = 'rgba(46, 125, 50, 0.22)';
+          good++;
+        }
+        body.appendChild(tr);
+      }
+      if (!body.children.length) throw new Error('No slots fit within your 08:00–20:00 window at that length.');
+      if (!good) {
+        var note = TN.el('meeting-planner-result').querySelector('.note');
+        if (note) note.textContent = 'No slot fits 09:00–17:00 in every zone — try a shorter meeting or different zones.';
+      }
+    } catch (err) {
+      TN.setErr(ERR, err && err.message ? err.message : 'Invalid input.');
+    }
+  }
+
+  try {
+    fillSelect(TN.el('meeting-planner-mine'), false, 5);
+    fillSelect(TN.el('meeting-planner-z1'), true, 0);
+    fillSelect(TN.el('meeting-planner-z2'), true, -5);
+    fillSelect(TN.el('meeting-planner-z3'), true, 1);
+    fillSelect(TN.el('meeting-planner-z4'), true, 8);
+    TN.on('meeting-planner-go', 'click', plan);
+  } catch (e) { /* never throw on load */ }
+})();
+
+</script>
+</body>
+</html>

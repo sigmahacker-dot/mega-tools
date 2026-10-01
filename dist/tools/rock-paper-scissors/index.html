@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rock Paper Scissors — Free Online | ToolNest</title>
+<meta name="description" content="Rock Paper Scissors against the computer — best of 5, first to 3 round wins takes the match.">
+<meta name="keywords" content="rock paper scissors, rock paper scissors game, rps game">
+<link rel="canonical" href="https://toolnest.vercel.app/tools/rock-paper-scissors/">
+<meta name="theme-color" content="#07070b">
+<meta property="og:title" content="Rock Paper Scissors — Free Online | ToolNest">
+<meta property="og:description" content="Rock Paper Scissors against the computer — best of 5, first to 3 round wins takes the match.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css?v=2">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%23e01111'/><text x='50' y='68' font-size='58' text-anchor='middle' fill='white' font-family='Arial' font-weight='bold'>T</text></svg>">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebApplication","name":"Rock Paper Scissors","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0"},"url":"https://toolnest.vercel.app/tools/rock-paper-scissors/","description":"Rock Paper Scissors against the computer — best of 5, first to 3 round wins takes the match."},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Does the computer cheat?","acceptedAnswer":{"@type":"Answer","text":"The computer picks uniformly at random each round. There's no pattern to learn — it's honest luck."}},{"@type":"Question","name":"How does scoring work?","acceptedAnswer":{"@type":"Answer","text":"It's best-of-5: the first player to win 3 rounds wins the match. Drawn rounds don't count for either side."}},{"@type":"Question","name":"Is there a keyboard shortcut?","acceptedAnswer":{"@type":"Answer","text":"Press R, P or S on your keyboard, or just tap the big buttons."}}]}]}</script>
+</head>
+<body>
+<header class="site-header">
+  <div class="container">
+    <a class="logo" href="/"><span class="logo-mark">T</span> ToolNest</a>
+    <nav class="site-nav">
+      <a href="/">Home</a>
+      <a href="/#categories">Categories</a>
+      <a href="/#all-tools">All Tools</a>
+    </nav>
+  </div>
+</header>
+
+<!-- ADSTERRA-HEADER: paste your Adsterra banner ad code inside the div below -->
+<div class="container"><div class="ad-slot ad-leaderboard" data-ad="header"></div></div>
+
+<main class="container">
+  <nav class="crumbs"><a href="/">Home</a> &rsaquo; <a href="/#fun">Fun &amp; Lifestyle</a> &rsaquo; Rock Paper Scissors</nav>
+  <div class="tool-hero">
+    <h1>Rock Paper Scissors</h1>
+    <p>Rock Paper Scissors against the computer — best of 5, first to 3 round wins takes the match.</p>
+  </div>
+
+  <div class="tool-card">
+  <div class="stat-cards">
+    <div class="stat-card"><div class="v" id="rock-paper-scissors-you">0</div><div class="l">You</div></div>
+    <div class="stat-card"><div class="v" id="rock-paper-scissors-comp">0</div><div class="l">Computer</div></div>
+    <div class="stat-card"><div class="v" id="rock-paper-scissors-round">1</div><div class="l">Round</div></div>
+  </div>
+  <div class="btn-row center rps-choices">
+    <button type="button" class="btn btn-outline rps-btn" data-choice="rock" id="rock-paper-scissors-c-rock">🪨<span>Rock</span></button>
+    <button type="button" class="btn btn-outline rps-btn" data-choice="paper" id="rock-paper-scissors-c-paper">📄<span>Paper</span></button>
+    <button type="button" class="btn btn-outline rps-btn" data-choice="scissors" id="rock-paper-scissors-c-scissors">✂️<span>Scissors</span></button>
+  </div>
+  <div class="error" id="rock-paper-scissors-error"></div>
+  <div class="result center" id="rock-paper-scissors-result">
+    <p class="muted">First to 3 round wins takes the match. Good luck!</p>
+  </div>
+  <div class="field">
+    <label>Round history</label>
+    <ul class="rps-history" id="rock-paper-scissors-history"><li class="muted">No rounds played yet.</li></ul>
+  </div>
+  <style>
+    .rps-choices{gap:10px}
+    .rps-btn{font-size:1.8rem;display:flex;flex-direction:column;align-items:center;gap:4px;padding:12px 22px}
+    .rps-btn span{font-size:.8rem}
+    .rps-btn:disabled{opacity:.45;cursor:default}
+    .rps-history{list-style:none;margin:0;padding:0;font-size:.92rem;line-height:1.9}
+    .rps-history li{border-bottom:1px dashed #e2e8f0}
+  </style>
+</div>
+
+
+  <!-- ADSTERRA-INCONTENT: paste your Adsterra native/in-content ad code inside the div below -->
+  <div class="ad-slot" data-ad="incontent"></div>
+
+  <div class="info-grid">
+    <div class="info-card">
+      <h2>📖 How to use</h2>
+      <ol><li>Pick Rock, Paper or Scissors (or press R / P / S).</li><li>The computer picks at the same time.</li><li>Round winner and running score update live.</li><li>First to 3 round wins takes the match — then play again.</li></ol>
+    </div>
+    <div class="info-card">
+      <h2>❓ Frequently asked questions</h2>
+      <div class="faq"><details><summary>Does the computer cheat?</summary><p>The computer picks uniformly at random each round. There&#39;s no pattern to learn — it&#39;s honest luck.</p></details><details><summary>How does scoring work?</summary><p>It&#39;s best-of-5: the first player to win 3 rounds wins the match. Drawn rounds don&#39;t count for either side.</p></details><details><summary>Is there a keyboard shortcut?</summary><p>Press R, P or S on your keyboard, or just tap the big buttons.</p></details></div>
+    </div>
+  </div>
+
+  <section class="section">
+    <h2>🔗 Related tools</h2>
+    <div class="tool-grid"><a class="tool-link" href="/tools/baby-name-generator/" data-search="baby name generator discover baby names by gender and origin — pakistani, arabic, western, indian or turkish — with meanings, random picks and tap-to-copy. baby name generator baby names with meanings muslim baby names boy girl names"><span class="t-ico">🎲</span><span class="t-body"><b>Baby Name Generator</b><small>Discover baby names by gender and origin — Pakistani, Arabic, Western, Indian or Turkish — w…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/battery-status-checker/" data-search="battery status checker check your device&#39;s battery level, charging status and estimated time remaining, with live updates — where your browser supports the battery api. battery status battery level checker laptop battery charging status"><span class="t-ico">🎲</span><span class="t-body"><b>Battery Status Checker</b><small>Check your device&#39;s battery level, charging status and estimated time remaining, with live u…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/birthday-countdown/" data-search="birthday countdown enter your birthday for a live countdown to your next one — days, hours, minutes and seconds — plus the age you&#39;ll turn and a fun message. birthday countdown countdown to birthday how old am i birthday timer"><span class="t-ico">🎲</span><span class="t-body"><b>Birthday Countdown</b><small>Enter your birthday for a live countdown to your next one — days, hours, minutes and seconds…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/calendar-generator/" data-search="calendar generator generate a monthly calendar for any month and year, with correct weekdays, leap years, today&#39;s date highlighted, and previous/next month navigation. calendar generator monthly calendar printable calendar month planner"><span class="t-ico">🎲</span><span class="t-body"><b>Calendar Generator</b><small>Generate a monthly calendar for any month and year, with correct weekdays, leap years, today…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/coin-flip/" data-search="coin flip flip a virtual coin with a fun animated toss. get instant heads or tails results, keep a running tally of both sides, and reset the count whenever you like. coin flip heads or tails coin toss random coin"><span class="t-ico">🎲</span><span class="t-body"><b>Coin Flip</b><small>Flip a virtual coin with a fun animated toss. Get instant Heads or Tails results, keep a run…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/decision-wheel/" data-search="decision wheel spinner can&#39;t decide? put your options on the wheel, give it a spin, and let randomness choose for you. decision wheel spin the wheel random picker wheel"><span class="t-ico">🎲</span><span class="t-body"><b>Decision Wheel Spinner</b><small>Can&#39;t decide? Put your options on the wheel, give it a spin, and let randomness choose for y…</small></span><span class="t-arrow">→</span></a></div>
+  </section>
+</main>
+
+<!-- ADSTERRA-FOOTER: paste your Adsterra footer/banner ad code inside the div below -->
+<div class="container"><div class="ad-slot" data-ad="footer"></div></div>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="f-grid">
+      <div>
+        <span class="brandline"><span class="logo-mark">T</span> ToolNest</span>
+        <p>Free online tools that actually work. No sign-up, no watermarks — and your files never leave your device for client-side tools.</p>
+      </div>
+      <div>
+        <h4>Popular</h4>
+        <a href="/tools/qr-code-generator/">QR Code Generator</a>
+        <a href="/tools/background-remover/">Background Remover</a>
+        <a href="/tools/pdf-merger/">PDF Merger</a>
+        <a href="/tools/word-counter/">Word Counter</a>
+      </div>
+      <div>
+        <h4>Categories</h4>
+        <a href="/#image">Image Tools</a>
+        <a href="/#pdf">PDF &amp; Documents</a>
+        <a href="/#calculators">Calculators</a>
+        <a href="/#developer">Developer Tools</a>
+      </div>
+      <div>
+        <h4>Site</h4>
+        <a href="/">Home</a>
+        <a href="/#all-tools">All Tools</a>
+        <a href="/sitemap.xml">Sitemap</a>
+      </div>
+    </div>
+    <div class="f-bottom">© 2026 ToolNest · Free tools for everyone · Made with care</div>
+  </div>
+</footer>
+
+<script src="/assets/site.js?v=2"></script>
+
+<script>
+(function () {
+  'use strict';
+  var P = 'rock-paper-scissors-';
+  var ERR = P + 'error';
+  var CHOICES = ['rock', 'paper', 'scissors'];
+  var EMOJI = { rock: '🪨', paper: '📄', scissors: '✂️' };
+  var LABEL = { rock: 'Rock', paper: 'Paper', scissors: 'Scissors' };
+  var BEATS = { rock: 'scissors', paper: 'rock', scissors: 'paper' };
+  var you = 0, comp = 0, round = 1, over = false, history = [];
+  function g(id) { return document.getElementById(P + id); }
+  function set(id, v) { var el = g(id); if (el) el.textContent = v; }
+  function setButtons(disabled) {
+    CHOICES.forEach(function (c) { var b = g('c-' + c); if (b) b.disabled = disabled; });
+  }
+  function renderScore() {
+    set('you', String(you)); set('comp', String(comp)); set('round', String(round));
+  }
+  function renderHistory() {
+    var ul = g('history');
+    if (!ul) return;
+    if (!history.length) { ul.innerHTML = '<li class="muted">No rounds played yet.</li>'; return; }
+    var html = '';
+    history.forEach(function (h, i) {
+      var txt = h.r === 'win' ? 'You win the round' : h.r === 'lose' ? 'Computer wins the round' : 'Draw';
+      html += '<li>Round ' + (history.length - i) + ': ' + EMOJI[h.p] + ' vs ' + EMOJI[h.c] + ' — ' + txt + '</li>';
+    });
+    ul.innerHTML = html;
+  }
+  function play(choice) {
+    if (over || CHOICES.indexOf(choice) === -1) return;
+    TN.clearErr(ERR);
+    var c = CHOICES[Math.floor(Math.random() * 3)], res;
+    if (choice === c) res = 'draw';
+    else if (BEATS[choice] === c) { res = 'win'; you++; }
+    else { res = 'lose'; comp++; }
+    history.unshift({ p: choice, c: c, r: res });
+    if (history.length > 10) history.pop();
+    var resEl = g('result');
+    var line = 'You: ' + EMOJI[choice] + ' ' + LABEL[choice] + ' &nbsp;vs&nbsp; Computer: ' + EMOJI[c] + ' ' + LABEL[c] + '<br>';
+    line += res === 'win' ? '<strong>You take the round!</strong>' : res === 'lose' ? '<strong>Computer takes the round.</strong>' : 'Draw — replay the round.';
+    if (resEl) resEl.innerHTML = '<p>' + line + '</p>';
+    if (res !== 'draw') round++;
+    renderScore();
+    renderHistory();
+    if (you === 3 || comp === 3) {
+      over = true;
+      setButtons(true);
+      var win = you === 3;
+      if (resEl) resEl.innerHTML = '<p class="rps-final">' + (win ? '🏆 You win the match ' + you + '–' + comp + '!' : '🤖 Computer wins the match ' + comp + '–' + you + '.') + '</p>' +
+        '<div class="btn-row center"><button type="button" class="btn btn-primary btn-sm" id="' + P + 'again">Play again</button></div>';
+      var again = g('again');
+      if (again) again.addEventListener('click', reset);
+    }
+  }
+  function reset() {
+    you = 0; comp = 0; round = 1; over = false; history = [];
+    TN.clearErr(ERR);
+    setButtons(false);
+    renderScore();
+    renderHistory();
+    var resEl = g('result');
+    if (resEl) resEl.innerHTML = '<p class="muted">First to 3 round wins takes the match. Good luck!</p>';
+  }
+  try {
+    CHOICES.forEach(function (c) {
+      TN.on(P + 'c-' + c, 'click', function () { play(c); });
+    });
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'r' || e.key === 'R') play('rock');
+      else if (e.key === 'p' || e.key === 'P') play('paper');
+      else if (e.key === 's' || e.key === 'S') play('scissors');
+    });
+    renderScore();
+  } catch (e) { /* never throw on load */ }
+})();
+
+</script>
+</body>
+</html>

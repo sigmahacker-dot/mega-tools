@@ -1,0 +1,61 @@
+<div class="tool-card">
+  <div class="field">
+    <label for="pace-mode">Solve for</label>
+    <select class="select" id="pace-mode">
+      <option value="pace">Pace (from distance + time)</option>
+      <option value="time">Time (from distance + pace)</option>
+      <option value="distance">Distance (from time + pace)</option>
+    </select>
+  </div>
+  <div class="btn-row">
+    <button class="btn btn-sm btn-outline" data-dist="5" data-unit="km">5K</button>
+    <button class="btn btn-sm btn-outline" data-dist="10" data-unit="km">10K</button>
+    <button class="btn btn-sm btn-outline" data-dist="21.0975" data-unit="km">Half marathon</button>
+    <button class="btn btn-sm btn-outline" data-dist="42.195" data-unit="km">Marathon</button>
+  </div>
+  <div class="grid2">
+    <div class="field">
+      <label for="pace-dist">Distance</label>
+      <input type="number" class="input" id="pace-dist" min="0" step="any" placeholder="10">
+    </div>
+    <div class="field">
+      <label for="pace-dist-unit">Distance unit</label>
+      <select class="select" id="pace-dist-unit">
+        <option value="km">km</option>
+        <option value="mi">miles</option>
+        <option value="m">meters</option>
+      </select>
+    </div>
+  </div>
+  <div class="field">
+    <label>Time</label>
+    <div class="row">
+      <input type="number" class="input" id="pace-time-h" min="0" max="99" step="1" placeholder="h" aria-label="hours">
+      <input type="number" class="input" id="pace-time-m" min="0" max="59" step="1" placeholder="m" aria-label="minutes">
+      <input type="number" class="input" id="pace-time-s" min="0" max="59" step="any" placeholder="s" aria-label="seconds">
+    </div>
+  </div>
+  <div class="grid2">
+    <div class="field">
+      <label>Pace</label>
+      <div class="row">
+        <input type="number" class="input" id="pace-pace-min" min="0" max="99" step="1" placeholder="min" aria-label="pace minutes">
+        <input type="number" class="input" id="pace-pace-sec" min="0" max="59" step="any" placeholder="sec" aria-label="pace seconds">
+      </div>
+    </div>
+    <div class="field">
+      <label for="pace-pace-unit">Pace unit</label>
+      <select class="select" id="pace-pace-unit">
+        <option value="km">min/km</option>
+        <option value="mi">min/mile</option>
+      </select>
+    </div>
+  </div>
+  <div class="error" id="pace-calculator-error"></div>
+  <div class="result" id="pace-result">
+    <div class="stat-cards">
+      <div class="stat-card"><div class="v" id="pace-answer">–</div><div class="l" id="pace-answer-label">Pace</div></div>
+    </div>
+    <p class="note">Assumes a perfectly even pace from start to finish.</p>
+  </div>
+</div>

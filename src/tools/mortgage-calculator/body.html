@@ -1,0 +1,37 @@
+<div class="tool-card">
+  <div class="grid2">
+    <div class="field">
+      <label for="mortgage-price">Home price ($)</label>
+      <input type="number" class="input" id="mortgage-price" min="1" step="any" placeholder="350000">
+    </div>
+    <div class="field">
+      <label for="mortgage-down">Down payment ($)</label>
+      <input type="number" class="input" id="mortgage-down" min="0" step="any" placeholder="70000">
+    </div>
+    <div class="field">
+      <label for="mortgage-rate">Annual interest rate (%)</label>
+      <input type="number" class="input" id="mortgage-rate" min="0" max="30" step="any" placeholder="6.5">
+    </div>
+    <div class="field">
+      <label for="mortgage-term">Loan term (years)</label>
+      <input type="number" class="input" id="mortgage-term" min="1" max="50" step="1" placeholder="30">
+    </div>
+  </div>
+  <div class="error" id="mortgage-calculator-error"></div>
+  <div class="result" id="mortgage-result">
+    <div class="stat-cards">
+      <div class="stat-card"><div class="v" id="mortgage-payment">–</div><div class="l">Monthly payment (P&amp;I)</div></div>
+      <div class="stat-card"><div class="v" id="mortgage-interest">–</div><div class="l">Total interest</div></div>
+      <div class="stat-card"><div class="v" id="mortgage-total">–</div><div class="l">Total paid</div></div>
+    </div>
+    <table class="data">
+      <thead>
+        <tr><th>Year</th><th>Principal paid</th><th>Interest paid</th><th>Balance</th></tr>
+      </thead>
+      <tbody id="mortgage-schedule-body">
+        <tr><td colspan="4" class="muted">Enter loan details to see the amortization schedule.</td></tr>
+      </tbody>
+    </table>
+    <p class="note">Principal &amp; interest only — taxes, insurance and PMI are not included.</p>
+  </div>
+</div>

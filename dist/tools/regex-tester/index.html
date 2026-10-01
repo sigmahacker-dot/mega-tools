@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Regex Tester — Free Online | ToolNest</title>
+<meta name="description" content="Test regular expressions live with match highlighting, match counts and capture-group details.">
+<meta name="keywords" content="regex tester, regular expression tester, regex match online">
+<link rel="canonical" href="https://toolnest.vercel.app/tools/regex-tester/">
+<meta name="theme-color" content="#07070b">
+<meta property="og:title" content="Regex Tester — Free Online | ToolNest">
+<meta property="og:description" content="Test regular expressions live with match highlighting, match counts and capture-group details.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css?v=2">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%23e01111'/><text x='50' y='68' font-size='58' text-anchor='middle' fill='white' font-family='Arial' font-weight='bold'>T</text></svg>">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebApplication","name":"Regex Tester","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0"},"url":"https://toolnest.vercel.app/tools/regex-tester/","description":"Test regular expressions live with match highlighting, match counts and capture-group details."},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Which regex flavor is used?","acceptedAnswer":{"@type":"Answer","text":"JavaScript's RegExp engine — the same one used in browsers and Node.js."}},{"@type":"Question","name":"Why do I see an error under the pattern?","acceptedAnswer":{"@type":"Answer","text":"The pattern failed to compile. The exact JavaScript error message is shown so you can fix it."}},{"@type":"Question","name":"What do the flags mean?","acceptedAnswer":{"@type":"Answer","text":"g = global, i = case-insensitive, m = multiline (^/$ per line), s = dot matches newlines, u = unicode, y = sticky."}}]}]}</script>
+</head>
+<body>
+<header class="site-header">
+  <div class="container">
+    <a class="logo" href="/"><span class="logo-mark">T</span> ToolNest</a>
+    <nav class="site-nav">
+      <a href="/">Home</a>
+      <a href="/#categories">Categories</a>
+      <a href="/#all-tools">All Tools</a>
+    </nav>
+  </div>
+</header>
+
+<!-- ADSTERRA-HEADER: paste your Adsterra banner ad code inside the div below -->
+<div class="container"><div class="ad-slot ad-leaderboard" data-ad="header"></div></div>
+
+<main class="container">
+  <nav class="crumbs"><a href="/">Home</a> &rsaquo; <a href="/#developer">Developer Tools</a> &rsaquo; Regex Tester</nav>
+  <div class="tool-hero">
+    <h1>Regex Tester</h1>
+    <p>Test regular expressions live with match highlighting, match counts and capture-group details.</p>
+  </div>
+
+  <div class="tool-card">
+  <div class="field">
+    <label for="regex-tester-pattern">Pattern</label>
+    <input type="text" class="input" id="regex-tester-pattern" placeholder="e.g. (\w+)@(\w+\.\w+)" autocomplete="off" autocapitalize="off" spellcheck="false">
+  </div>
+  <div class="field">
+    <span class="muted">Flags</span>
+    <div class="btn-row" id="regex-tester-flags">
+      <label><input type="checkbox" value="g" checked> g</label>
+      <label><input type="checkbox" value="i"> i</label>
+      <label><input type="checkbox" value="m"> m</label>
+      <label><input type="checkbox" value="s"> s</label>
+      <label><input type="checkbox" value="u"> u</label>
+      <label><input type="checkbox" value="y"> y</label>
+    </div>
+  </div>
+  <div class="field">
+    <label for="regex-tester-text">Test string</label>
+    <textarea class="textarea" id="regex-tester-text" rows="5" placeholder="Text to test against…" spellcheck="false"></textarea>
+  </div>
+  <div class="error" id="regex-tester-error"></div>
+  <div class="result" id="regex-tester-result">
+    <div class="stat-cards">
+      <div class="stat-card"><div class="v" id="regex-tester-count">0</div><div class="l">Matches</div></div>
+      <div class="stat-card"><div class="v" id="regex-tester-groups">0</div><div class="l">Capture groups</div></div>
+    </div>
+    <div class="field">
+      <label>Highlighted matches</label>
+      <div id="regex-tester-highlight" class="rt-out muted">Type something to test against.</div>
+    </div>
+    <div class="field">
+      <label>Match details</label>
+      <div id="regex-tester-details" class="rt-out muted">No matches yet.</div>
+    </div>
+  </div>
+  <style>
+    .rt-out{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:.92rem;line-height:1.7;background:#f8fafc;border:1.5px solid #e2e8f0;border-radius:10px;padding:12px 14px;white-space:pre-wrap;word-break:break-word;min-height:2.5em;max-height:320px;overflow:auto}
+    .rt-out mark{background:#fde047;padding:0 1px;border-radius:2px}
+    .rt-grp{margin:0 0 10px}
+    .rt-grp b{color:#0f172a}
+    #regex-tester-flags label{display:inline-flex;align-items:center;gap:6px;font-family:ui-monospace,Menlo,Consolas,monospace;cursor:pointer}
+  </style>
+</div>
+
+
+  <!-- ADSTERRA-INCONTENT: paste your Adsterra native/in-content ad code inside the div below -->
+  <div class="ad-slot" data-ad="incontent"></div>
+
+  <div class="info-grid">
+    <div class="info-card">
+      <h2>📖 How to use</h2>
+      <ol><li>Type your pattern and tick any flags.</li><li>Paste or type the test string below.</li><li>Matches highlight live with a running count.</li><li>Inspect any match to see its capture groups.</li></ol>
+    </div>
+    <div class="info-card">
+      <h2>❓ Frequently asked questions</h2>
+      <div class="faq"><details><summary>Which regex flavor is used?</summary><p>JavaScript&#39;s RegExp engine — the same one used in browsers and Node.js.</p></details><details><summary>Why do I see an error under the pattern?</summary><p>The pattern failed to compile. The exact JavaScript error message is shown so you can fix it.</p></details><details><summary>What do the flags mean?</summary><p>g = global, i = case-insensitive, m = multiline (^/$ per line), s = dot matches newlines, u = unicode, y = sticky.</p></details></div>
+    </div>
+  </div>
+
+  <section class="section">
+    <h2>🔗 Related tools</h2>
+    <div class="tool-grid"><a class="tool-link" href="/tools/base64-encoder-decoder/" data-search="base64 encoder / decoder encode text to base64 or decode base64 back to text, with full utf-8 support and a file-to-data-url converter. base64 encoder base64 decoder base64 encode base64 decode file to base64"><span class="t-ico">💻</span><span class="t-body"><b>Base64 Encoder / Decoder</b><small>Encode text to Base64 or decode Base64 back to text, with full UTF-8 support and a file-to-d…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/binary-text-converter/" data-search="binary and text converter convert text to binary or hex and back, with full utf-8 awareness and strict input validation. binary to text text to binary hex to text converter"><span class="t-ico">💻</span><span class="t-body"><b>Binary and Text Converter</b><small>Convert text to binary or hex and back, with full UTF-8 awareness and strict input validatio…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/color-code-converter/" data-search="color code converter type a color in hex, rgb or hsl format and instantly see it converted to all three formats with a preview swatch. color converter hex to rgb rgb to hex hsl converter color code"><span class="t-ico">💻</span><span class="t-body"><b>Color Code Converter</b><small>Type a color in HEX, RGB or HSL format and instantly see it converted to all three formats w…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/css-minifier/" data-search="css minifier compress css by stripping comments, collapsing whitespace and removing redundant semicolons, with before/after byte stats. css minifier minify css css compressor reduce css size"><span class="t-ico">💻</span><span class="t-body"><b>CSS Minifier</b><small>Compress CSS by stripping comments, collapsing whitespace and removing redundant semicolons,…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/csv-to-json-converter/" data-search="csv to json converter convert csv to json with a real parser that handles quoted commas, escaped quotes and multi-line fields. csv to json csv to json converter convert csv to json"><span class="t-ico">💻</span><span class="t-body"><b>CSV to JSON Converter</b><small>Convert CSV to JSON with a real parser that handles quoted commas, escaped quotes and multi-…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/dns-lookup/" data-search="dns lookup look up dns records (a, aaaa, cname, mx, txt, ns) for any hostname, resolved live from our server. dns lookup dns checker mx record lookup txt record lookup ns lookup online"><span class="t-ico">💻</span><span class="t-body"><b>DNS Lookup</b><small>Look up DNS records (A, AAAA, CNAME, MX, TXT, NS) for any hostname, resolved live from our s…</small></span><span class="t-arrow">→</span></a></div>
+  </section>
+</main>
+
+<!-- ADSTERRA-FOOTER: paste your Adsterra footer/banner ad code inside the div below -->
+<div class="container"><div class="ad-slot" data-ad="footer"></div></div>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="f-grid">
+      <div>
+        <span class="brandline"><span class="logo-mark">T</span> ToolNest</span>
+        <p>Free online tools that actually work. No sign-up, no watermarks — and your files never leave your device for client-side tools.</p>
+      </div>
+      <div>
+        <h4>Popular</h4>
+        <a href="/tools/qr-code-generator/">QR Code Generator</a>
+        <a href="/tools/background-remover/">Background Remover</a>
+        <a href="/tools/pdf-merger/">PDF Merger</a>
+        <a href="/tools/word-counter/">Word Counter</a>
+      </div>
+      <div>
+        <h4>Categories</h4>
+        <a href="/#image">Image Tools</a>
+        <a href="/#pdf">PDF &amp; Documents</a>
+        <a href="/#calculators">Calculators</a>
+        <a href="/#developer">Developer Tools</a>
+      </div>
+      <div>
+        <h4>Site</h4>
+        <a href="/">Home</a>
+        <a href="/#all-tools">All Tools</a>
+        <a href="/sitemap.xml">Sitemap</a>
+      </div>
+    </div>
+    <div class="f-bottom">© 2026 ToolNest · Free tools for everyone · Made with care</div>
+  </div>
+</footer>
+
+<script src="/assets/site.js?v=2"></script>
+
+<script>
+(function () {
+  'use strict';
+  var P = 'regex-tester-';
+  var ERR = P + 'error';
+  function g(id) { return document.getElementById(P + id); }
+  function set(id, v) { var el = g(id); if (el) el.textContent = v; }
+  function getFlags() {
+    var out = '', boxes = document.querySelectorAll('#' + P + 'flags input[type="checkbox"]');
+    for (var i = 0; i < boxes.length; i++) if (boxes[i].checked) out += boxes[i].value;
+    return out;
+  }
+  function resetEmpty() {
+    set('count', '0'); set('groups', '0');
+    var hl = g('highlight'), dt = g('details');
+    if (hl) { hl.textContent = 'Type something to test against.'; hl.className = 'rt-out muted'; }
+    if (dt) { dt.textContent = 'No matches yet.'; dt.className = 'rt-out muted'; }
+  }
+  function test() {
+    var patEl = g('pattern'), txtEl = g('text');
+    if (!patEl || !txtEl) return;
+    TN.clearErr(ERR);
+    var pattern = patEl.value, text = txtEl.value, fl = getFlags(), re;
+    try { re = new RegExp(pattern, fl); }
+    catch (e) {
+      TN.setErr(ERR, 'Invalid regular expression: ' + (e && e.message ? e.message : e));
+      resetEmpty();
+      return;
+    }
+    var gfl = fl.indexOf('g') === -1 ? fl + 'g' : fl, reG = re;
+    try { reG = new RegExp(pattern, gfl); } catch (e) { reG = re; }
+    var matches = [];
+    try {
+      var it = text.matchAll(reG), m;
+      while ((m = it.next()) && !m.done) {
+        matches.push(m.value);
+        if (matches.length >= 200) break;
+      }
+    } catch (e) { matches = []; }
+    set('count', String(matches.length));
+    set('groups', String(matches.length ? matches[0].length - 1 : 0));
+    var html = '', last = 0, i, mm, idx;
+    for (i = 0; i < matches.length; i++) {
+      mm = matches[i];
+      idx = mm.index == null ? 0 : mm.index;
+      html += TN.esc(text.slice(last, idx)) + '<mark>' + TN.esc(mm[0]) + '</mark>';
+      last = idx + mm[0].length;
+    }
+    html += TN.esc(text.slice(last));
+    var hl = g('highlight');
+    if (hl) {
+      if (!text) { hl.textContent = 'Type something to test against.'; hl.className = 'rt-out muted'; }
+      else { hl.innerHTML = html; hl.className = 'rt-out'; }
+    }
+    var dt = g('details'), det = '', lim = Math.min(matches.length, 20), k;
+    for (i = 0; i < lim; i++) {
+      mm = matches[i];
+      det += '<div class="rt-grp"><b>Match ' + (i + 1) + '</b> at index ' + mm.index + ': <code>' + TN.esc(mm[0]) + '</code>';
+      if (mm.length > 1) {
+        var gs = [];
+        for (k = 1; k < mm.length; k++) gs.push('Group ' + k + ' = ' + (mm[k] === undefined ? '(did not participate)' : '"' + mm[k] + '"'));
+        det += '<br>Groups: ' + TN.esc(gs.join('; '));
+      }
+      if (mm.groups) {
+        var names = Object.keys(mm.groups), ng = [];
+        for (k = 0; k < names.length; k++) ng.push(names[k] + '="' + mm.groups[names[k]] + '"');
+        det += '<br>Named: ' + TN.esc(ng.join('; '));
+      }
+      det += '</div>';
+    }
+    if (matches.length > 20) det += '<p class="muted">Showing 20 of ' + matches.length + ' matches (capped at 200).</p>';
+    if (dt) {
+      if (!matches.length) { dt.textContent = 'No matches yet.'; dt.className = 'rt-out muted'; }
+      else { dt.innerHTML = det; dt.className = 'rt-out'; }
+    }
+  }
+  try {
+    TN.on(P + 'pattern', 'input', test);
+    TN.on(P + 'text', 'input', test);
+    var boxes = document.querySelectorAll('#' + P + 'flags input[type="checkbox"]');
+    for (var i = 0; i < boxes.length; i++) boxes[i].addEventListener('change', test);
+  } catch (e) { /* never throw on load */ }
+})();
+
+</script>
+</body>
+</html>

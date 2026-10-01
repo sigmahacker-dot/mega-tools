@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Whitespace Cleaner — Free Online | ToolNest</title>
+<meta name="description" content="Normalize messy whitespace: trim lines, collapse blank lines, convert tabs and fix line endings.">
+<meta name="keywords" content="whitespace cleaner, remove extra spaces, normalize whitespace">
+<link rel="canonical" href="https://toolnest.vercel.app/tools/whitespace-cleaner/">
+<meta name="theme-color" content="#07070b">
+<meta property="og:title" content="Whitespace Cleaner — Free Online | ToolNest">
+<meta property="og:description" content="Normalize messy whitespace: trim lines, collapse blank lines, convert tabs and fix line endings.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css?v=2">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%23e01111'/><text x='50' y='68' font-size='58' text-anchor='middle' fill='white' font-family='Arial' font-weight='bold'>T</text></svg>">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebApplication","name":"Whitespace Cleaner","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0"},"url":"https://toolnest.vercel.app/tools/whitespace-cleaner/","description":"Normalize messy whitespace: trim lines, collapse blank lines, convert tabs and fix line endings."},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Does it fix tabs and Windows line endings?","acceptedAnswer":{"@type":"Answer","text":"Yes — tabs become spaces at your chosen width (2, 4 or 8) and Windows CRLF line endings become plain LF."}},{"@type":"Question","name":"What does “collapse blank lines” do?","acceptedAnswer":{"@type":"Answer","text":"Keep max 1 turns any run of blank lines into a single blank line; Keep max 2 allows two. Off leaves them alone."}},{"@type":"Question","name":"Is my text sent anywhere?","acceptedAnswer":{"@type":"Answer","text":"No. Everything runs locally in your browser — your text is never uploaded or stored."}}]}]}</script>
+</head>
+<body>
+<header class="site-header">
+  <div class="container">
+    <a class="logo" href="/"><span class="logo-mark">T</span> ToolNest</a>
+    <nav class="site-nav">
+      <a href="/">Home</a>
+      <a href="/#categories">Categories</a>
+      <a href="/#all-tools">All Tools</a>
+    </nav>
+  </div>
+</header>
+
+<!-- ADSTERRA-HEADER: paste your Adsterra banner ad code inside the div below -->
+<div class="container"><div class="ad-slot ad-leaderboard" data-ad="header"></div></div>
+
+<main class="container">
+  <nav class="crumbs"><a href="/">Home</a> &rsaquo; <a href="/#text">Text &amp; Writing</a> &rsaquo; Whitespace Cleaner</nav>
+  <div class="tool-hero">
+    <h1>Whitespace Cleaner</h1>
+    <p>Normalize messy whitespace: trim lines, collapse blank lines, convert tabs and fix line endings.</p>
+  </div>
+
+  <div class="tool-card">
+  <div class="field">
+    <label for="whitespace-cleaner-in">Messy text</label>
+    <textarea class="textarea" id="whitespace-cleaner-in" rows="6" placeholder="Paste messy text here…" spellcheck="false"></textarea>
+  </div>
+  <div class="grid2">
+    <div class="field">
+      <label class="wc-check"><input type="checkbox" id="whitespace-cleaner-opt-crlf" checked> Normalize line endings (CRLF → LF)</label>
+      <label class="wc-check"><input type="checkbox" id="whitespace-cleaner-opt-tabs" checked> Convert tabs to spaces</label>
+      <label class="wc-check"><input type="checkbox" id="whitespace-cleaner-opt-trim" checked> Trim each line's ends</label>
+      <label class="wc-check"><input type="checkbox" id="whitespace-cleaner-opt-trailing" checked> Strip trailing whitespace at end</label>
+    </div>
+    <div>
+      <div class="field">
+        <label for="whitespace-cleaner-opt-tabwidth">Tab width</label>
+        <select class="select" id="whitespace-cleaner-opt-tabwidth">
+          <option value="2">2 spaces</option>
+          <option value="4" selected>4 spaces</option>
+          <option value="8">8 spaces</option>
+        </select>
+      </div>
+      <div class="field">
+        <label for="whitespace-cleaner-opt-blanks">Collapse blank lines</label>
+        <select class="select" id="whitespace-cleaner-opt-blanks">
+          <option value="off">Off</option>
+          <option value="1" selected>Keep max 1</option>
+          <option value="2">Keep max 2</option>
+        </select>
+      </div>
+    </div>
+  </div>
+  <div class="btn-row">
+    <button type="button" class="btn btn-outline btn-sm" id="whitespace-cleaner-copy">Copy output</button>
+  </div>
+  <div class="error" id="whitespace-cleaner-error"></div>
+  <div class="result" id="whitespace-cleaner-result">
+    <div class="stat-cards">
+      <div class="stat-card"><div class="v" id="whitespace-cleaner-cbefore">0</div><div class="l">Chars before</div></div>
+      <div class="stat-card"><div class="v" id="whitespace-cleaner-cafter">0</div><div class="l">Chars after</div></div>
+      <div class="stat-card"><div class="v" id="whitespace-cleaner-lbefore">0</div><div class="l">Lines before</div></div>
+      <div class="stat-card"><div class="v" id="whitespace-cleaner-lafter">0</div><div class="l">Lines after</div></div>
+    </div>
+    <div class="field">
+      <label for="whitespace-cleaner-out">Cleaned text</label>
+      <textarea class="textarea" id="whitespace-cleaner-out" rows="6" readonly spellcheck="false"></textarea>
+    </div>
+  </div>
+  <style>
+    .wc-check{display:flex;align-items:center;gap:8px;margin:8px 0;cursor:pointer;font-weight:normal}
+  </style>
+</div>
+
+
+  <!-- ADSTERRA-INCONTENT: paste your Adsterra native/in-content ad code inside the div below -->
+  <div class="ad-slot" data-ad="incontent"></div>
+
+  <div class="info-grid">
+    <div class="info-card">
+      <h2>📖 How to use</h2>
+      <ol><li>Paste your messy text.</li><li>Tick the cleanups you want and set tab width.</li><li>The cleaned text appears live below.</li><li>Check the before/after stats, then copy it.</li></ol>
+    </div>
+    <div class="info-card">
+      <h2>❓ Frequently asked questions</h2>
+      <div class="faq"><details><summary>Does it fix tabs and Windows line endings?</summary><p>Yes — tabs become spaces at your chosen width (2, 4 or 8) and Windows CRLF line endings become plain LF.</p></details><details><summary>What does “collapse blank lines” do?</summary><p>Keep max 1 turns any run of blank lines into a single blank line; Keep max 2 allows two. Off leaves them alone.</p></details><details><summary>Is my text sent anywhere?</summary><p>No. Everything runs locally in your browser — your text is never uploaded or stored.</p></details></div>
+    </div>
+  </div>
+
+  <section class="section">
+    <h2>🔗 Related tools</h2>
+    <div class="tool-grid"><a class="tool-link" href="/tools/aes-text-encryptor/" data-search="aes text encryptor encrypt text with real aes-256-gcm using a password-derived key (pbkdf2), fully in your browser. aes encrypt text encrypt message password aes-gcm online"><span class="t-ico">✍️</span><span class="t-body"><b>AES Text Encryptor</b><small>Encrypt text with real AES-256-GCM using a password-derived key (PBKDF2), fully in your brow…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/article-rewriter/" data-search="article rewriter rewrite articles with a built-in synonym engine covering 130+ common english words. whole-word replacement with capitalization preserved and a change report. article rewriter paraphrasing tool rewrite text online"><span class="t-ico">✍️</span><span class="t-body"><b>Article Rewriter</b><small>Rewrite articles with a built-in synonym engine covering 130+ common English words. Whole-wo…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/case-converter/" data-search="case converter convert text to uppercase, lowercase, title case, sentence case, alternating case and inverse case instantly, then copy or download the result. case converter uppercase lowercase converter title case converter"><span class="t-ico">✍️</span><span class="t-body"><b>Case Converter</b><small>Convert text to UPPERCASE, lowercase, Title Case, Sentence case, aLtErNaTiNg cAsE and iNVERS…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/case-style-converter/" data-search="case style converter convert text between camelcase, pascalcase, snake_case, kebab-case and more. case converter camelcase to snakecase kebab case converter"><span class="t-ico">✍️</span><span class="t-body"><b>Case Style Converter</b><small>Convert text between camelCase, PascalCase, snake_case, kebab-case and more.</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/character-counter/" data-search="character counter count characters with and without spaces, words and lines in real time, with a live x/twitter 280-character limit gauge and sms segment indicator. character counter twitter character count count characters online"><span class="t-ico">✍️</span><span class="t-body"><b>Character Counter</b><small>Count characters with and without spaces, words and lines in real time, with a live X/Twitte…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/duplicate-line-remover/" data-search="duplicate line remover remove duplicate lines from any list, with options to ignore case, trim spaces and sort. remove duplicate lines dedupe lines unique lines"><span class="t-ico">✍️</span><span class="t-body"><b>Duplicate Line Remover</b><small>Remove duplicate lines from any list, with options to ignore case, trim spaces and sort.</small></span><span class="t-arrow">→</span></a></div>
+  </section>
+</main>
+
+<!-- ADSTERRA-FOOTER: paste your Adsterra footer/banner ad code inside the div below -->
+<div class="container"><div class="ad-slot" data-ad="footer"></div></div>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="f-grid">
+      <div>
+        <span class="brandline"><span class="logo-mark">T</span> ToolNest</span>
+        <p>Free online tools that actually work. No sign-up, no watermarks — and your files never leave your device for client-side tools.</p>
+      </div>
+      <div>
+        <h4>Popular</h4>
+        <a href="/tools/qr-code-generator/">QR Code Generator</a>
+        <a href="/tools/background-remover/">Background Remover</a>
+        <a href="/tools/pdf-merger/">PDF Merger</a>
+        <a href="/tools/word-counter/">Word Counter</a>
+      </div>
+      <div>
+        <h4>Categories</h4>
+        <a href="/#image">Image Tools</a>
+        <a href="/#pdf">PDF &amp; Documents</a>
+        <a href="/#calculators">Calculators</a>
+        <a href="/#developer">Developer Tools</a>
+      </div>
+      <div>
+        <h4>Site</h4>
+        <a href="/">Home</a>
+        <a href="/#all-tools">All Tools</a>
+        <a href="/sitemap.xml">Sitemap</a>
+      </div>
+    </div>
+    <div class="f-bottom">© 2026 ToolNest · Free tools for everyone · Made with care</div>
+  </div>
+</footer>
+
+<script src="/assets/site.js?v=2"></script>
+
+<script>
+(function () {
+  'use strict';
+  var P = 'whitespace-cleaner-';
+  var ERR = P + 'error';
+  var OPTS = ['opt-crlf', 'opt-tabs', 'opt-trim', 'opt-trailing', 'opt-tabwidth', 'opt-blanks'];
+  function g(id) { return document.getElementById(P + id); }
+  function set(id, v) { var el = g(id); if (el) el.textContent = v; }
+  function clean() {
+    var inEl = g('in'), outEl = g('out');
+    if (!inEl || !outEl) return;
+    TN.clearErr(ERR);
+    var src = inEl.value, t = src;
+    var linesBefore = src === '' ? 0 : src.split('\n').length;
+    try {
+      if (g('opt-crlf').checked) t = t.replace(/\r\n/g, '\n').replace(/\r/g, '\n');
+      if (g('opt-tabs').checked) {
+        var w = parseInt(g('opt-tabwidth').value, 10) || 4;
+        var sp = '';
+        for (var i = 0; i < w; i++) sp += ' ';
+        t = t.replace(/\t/g, sp);
+      }
+      if (g('opt-trim').checked) {
+        t = t.split('\n').map(function (l) { return l.replace(/^[\t ]+|[\t ]+$/g, ''); }).join('\n');
+      }
+      var blanks = g('opt-blanks').value;
+      if (blanks === '1') t = t.replace(/\n{3,}/g, '\n\n');
+      else if (blanks === '2') t = t.replace(/\n{4,}/g, '\n\n\n');
+      if (g('opt-trailing').checked) t = t.replace(/\s+$/, '');
+      outEl.value = t;
+      set('cbefore', String(src.length));
+      set('cafter', String(t.length));
+      set('lbefore', String(linesBefore));
+      set('lafter', String(t === '' ? 0 : t.split('\n').length));
+    } catch (e) {
+      TN.setErr(ERR, 'Cleaning failed: ' + (e && e.message ? e.message : e));
+    }
+  }
+  try {
+    TN.on(P + 'in', 'input', clean);
+    OPTS.forEach(function (o) {
+      var el = g(o);
+      if (el) el.addEventListener('change', clean);
+    });
+    TN.on(P + 'copy', 'click', function () { var o = g('out'); if (o && o.value) TN.copy(o.value); });
+  } catch (e) { /* never throw on load */ }
+})();
+
+</script>
+</body>
+</html>

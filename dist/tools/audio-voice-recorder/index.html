@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Voice Recorder — Free Online | ToolNest</title>
+<meta name="description" content="Record audio with your microphone, play it back and download it as a file.">
+<meta name="keywords" content="voice recorder, record audio online, microphone recorder">
+<link rel="canonical" href="https://toolnest.vercel.app/tools/audio-voice-recorder/">
+<meta name="theme-color" content="#07070b">
+<meta property="og:title" content="Voice Recorder — Free Online | ToolNest">
+<meta property="og:description" content="Record audio with your microphone, play it back and download it as a file.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css?v=2">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%23e01111'/><text x='50' y='68' font-size='58' text-anchor='middle' fill='white' font-family='Arial' font-weight='bold'>T</text></svg>">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebApplication","name":"Voice Recorder","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0"},"url":"https://toolnest.vercel.app/tools/audio-voice-recorder/","description":"Record audio with your microphone, play it back and download it as a file."},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How do I record?","acceptedAnswer":{"@type":"Answer","text":"Click \"Start recording\" and allow microphone access when the browser asks. The timer shows the recording length; click \"Stop\" to finish."}},{"@type":"Question","name":"What format is the download?","acceptedAnswer":{"@type":"Answer","text":"The download uses WebM (usually Opus audio), the most widely supported format for browser recording. It plays in Chrome, Edge, Firefox and most media players."}},{"@type":"Question","name":"Why do I get a microphone error?","acceptedAnswer":{"@type":"Answer","text":"The browser blocks microphone access without permission, on insecure pages, or when no mic is present. Serve the page over HTTPS (or localhost) and check your system mic settings."}},{"@type":"Question","name":"Is my recording uploaded anywhere?","acceptedAnswer":{"@type":"Answer","text":"No. Recording and encoding happen entirely in your browser; audio never leaves your device."}}]}]}</script>
+</head>
+<body>
+<header class="site-header">
+  <div class="container">
+    <a class="logo" href="/"><span class="logo-mark">T</span> ToolNest</a>
+    <nav class="site-nav">
+      <a href="/">Home</a>
+      <a href="/#categories">Categories</a>
+      <a href="/#all-tools">All Tools</a>
+    </nav>
+  </div>
+</header>
+
+<!-- ADSTERRA-HEADER: paste your Adsterra banner ad code inside the div below -->
+<div class="container"><div class="ad-slot ad-leaderboard" data-ad="header"></div></div>
+
+<main class="container">
+  <nav class="crumbs"><a href="/">Home</a> &rsaquo; <a href="/#video-audio">Video &amp; Audio</a> &rsaquo; Voice Recorder</nav>
+  <div class="tool-hero">
+    <h1>Voice Recorder</h1>
+    <p>Record audio with your microphone, play it back and download it as a file.</p>
+  </div>
+
+  <div class="tool-card">
+  <h2>Voice Recorder</h2>
+  <p class="muted">Record audio with your microphone, play it back and download it.</p>
+  <div class="stat-cards">
+    <div class="stat-card"><div class="v" id="audio-voice-recorder-timer">0:00</div><div class="l">Recording time</div></div>
+    <div class="stat-card"><div class="v" id="audio-voice-recorder-status">Ready</div><div class="l">Status</div></div>
+  </div>
+  <div class="btn-row mt">
+    <button class="btn btn-primary" id="audio-voice-recorder-start">Start recording</button>
+    <button class="btn btn-outline" id="audio-voice-recorder-stop" disabled>Stop recording</button>
+  </div>
+  <div class="error" id="audio-voice-recorder-error"></div>
+  <div class="result hidden" id="audio-voice-recorder-result">
+    <div class="field">
+      <label>Playback</label>
+      <audio id="audio-voice-recorder-audio" controls style="width:100%;"></audio>
+    </div>
+    <div class="btn-row">
+      <button class="btn btn-primary" id="audio-voice-recorder-download">Download .webm</button>
+      <button class="btn btn-outline" id="audio-voice-recorder-discard">Discard</button>
+    </div>
+    <p class="note" id="audio-voice-recorder-info"></p>
+  </div>
+  <p class="note">Your browser will ask for microphone permission. Recording stays on your device.</p>
+</div>
+
+  <!-- ADSTERRA-INCONTENT: paste your Adsterra native/in-content ad code inside the div below -->
+  <div class="ad-slot" data-ad="incontent"></div>
+
+  <div class="info-grid">
+    <div class="info-card">
+      <h2>📖 How to use</h2>
+      <ol><li>Click &quot;Start recording&quot; and allow microphone access.</li><li>Speak — the live timer shows elapsed time.</li><li>Click &quot;Stop recording&quot;.</li><li>Play back your recording below, then download it as a .webm file.</li></ol>
+    </div>
+    <div class="info-card">
+      <h2>❓ Frequently asked questions</h2>
+      <div class="faq"><details><summary>How do I record?</summary><p>Click &quot;Start recording&quot; and allow microphone access when the browser asks. The timer shows the recording length; click &quot;Stop&quot; to finish.</p></details><details><summary>What format is the download?</summary><p>The download uses WebM (usually Opus audio), the most widely supported format for browser recording. It plays in Chrome, Edge, Firefox and most media players.</p></details><details><summary>Why do I get a microphone error?</summary><p>The browser blocks microphone access without permission, on insecure pages, or when no mic is present. Serve the page over HTTPS (or localhost) and check your system mic settings.</p></details><details><summary>Is my recording uploaded anywhere?</summary><p>No. Recording and encoding happen entirely in your browser; audio never leaves your device.</p></details></div>
+    </div>
+  </div>
+
+  <section class="section">
+    <h2>🔗 Related tools</h2>
+    <div class="tool-grid"><a class="tool-link" href="/tools/audio-cutter/" data-search="audio cutter cut a section out of any audio file in your browser. set start and end times, preview the selection, then download it as an mp3. audio cutter cut audio online trim mp3 audio trimmer mp3 cutter"><span class="t-ico">🎬</span><span class="t-body"><b>Audio Cutter</b><small>Cut a section out of any audio file in your browser. Set start and end times, preview the se…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/stock-video-downloader/" data-search="royalty-free stock video downloader search thousands of royalty-free stock videos and download them free. every clip is pexels license — free for commercial use, no attribution needed. stock video downloader royalty free videos free stock footage pexels videos download"><span class="t-ico">🎬</span><span class="t-body"><b>Royalty-Free Stock Video Downloader</b><small>Search thousands of royalty-free stock videos and download them free. Every clip is Pexels L…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/video-compressor/" data-search="video compressor shrink a video file by re-encoding it at a lower bitrate. pick low, medium or high quality and compare the original and new file sizes. compress video reduce video size video compressor shrink mp4 webm converter"><span class="t-ico">🎬</span><span class="t-body"><b>Video Compressor</b><small>Shrink a video file by re-encoding it at a lower bitrate. Pick Low, Medium or High quality a…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/video-frame-extractor/" data-search="video frame extractor scrub through any video and capture any frame as a png image. video frame capture extract frame video video to png frame"><span class="t-ico">🎬</span><span class="t-body"><b>Video Frame Extractor</b><small>Scrub through any video and capture any frame as a PNG image.</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/video-merger/" data-search="video merger join multiple video clips into one file, right in your browser. clips play in order and are re-recorded into a single downloadable video. merge videos combine videos join video clips video joiner concatenate videos"><span class="t-ico">🎬</span><span class="t-body"><b>Video Merger</b><small>Join multiple video clips into one file, right in your browser. Clips play in order and are …</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/video-to-gif/" data-search="video to gif converter turn any short video clip into an animated gif. choose clip length, frame rate and width — frames are captured and encoded right in your browser. video to gif convert video to gif mp4 to gif gif maker"><span class="t-ico">🎬</span><span class="t-body"><b>Video to GIF Converter</b><small>Turn any short video clip into an animated GIF. Choose clip length, frame rate and width — f…</small></span><span class="t-arrow">→</span></a></div>
+  </section>
+</main>
+
+<!-- ADSTERRA-FOOTER: paste your Adsterra footer/banner ad code inside the div below -->
+<div class="container"><div class="ad-slot" data-ad="footer"></div></div>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="f-grid">
+      <div>
+        <span class="brandline"><span class="logo-mark">T</span> ToolNest</span>
+        <p>Free online tools that actually work. No sign-up, no watermarks — and your files never leave your device for client-side tools.</p>
+      </div>
+      <div>
+        <h4>Popular</h4>
+        <a href="/tools/qr-code-generator/">QR Code Generator</a>
+        <a href="/tools/background-remover/">Background Remover</a>
+        <a href="/tools/pdf-merger/">PDF Merger</a>
+        <a href="/tools/word-counter/">Word Counter</a>
+      </div>
+      <div>
+        <h4>Categories</h4>
+        <a href="/#image">Image Tools</a>
+        <a href="/#pdf">PDF &amp; Documents</a>
+        <a href="/#calculators">Calculators</a>
+        <a href="/#developer">Developer Tools</a>
+      </div>
+      <div>
+        <h4>Site</h4>
+        <a href="/">Home</a>
+        <a href="/#all-tools">All Tools</a>
+        <a href="/sitemap.xml">Sitemap</a>
+      </div>
+    </div>
+    <div class="f-bottom">© 2026 ToolNest · Free tools for everyone · Made with care</div>
+  </div>
+</footer>
+
+<script src="/assets/site.js?v=2"></script>
+
+<script>
+/* Voice Recorder — getUserMedia + MediaRecorder, timer, playback, .webm download. */
+(function () {
+  'use strict';
+
+  var SLUG = 'audio-voice-recorder';
+  var recorder = null;
+  var stream = null;
+  var chunks = [];
+  var timerId = null;
+  var startTs = 0;
+  var audioURL = '';
+  var audioBlob = null;
+
+  function errId() { return SLUG + '-error'; }
+  function setStatus(s) { var e = TN.el(SLUG + '-status'); if (e) e.textContent = s; }
+  function setTimer(t) { var e = TN.el(SLUG + '-timer'); if (e) e.textContent = t; }
+
+  function fmtElapsed(ms) {
+    var s = Math.floor(ms / 1000);
+    var m = Math.floor(s / 60);
+    s = s % 60;
+    return m + ':' + ('0' + s).slice(-2);
+  }
+
+  function tick() {
+    setTimer(fmtElapsed(Date.now() - startTs));
+  }
+
+  function setButtons(recording) {
+    var st = TN.el(SLUG + '-start');
+    var sp = TN.el(SLUG + '-stop');
+    if (st) st.disabled = recording;
+    if (sp) sp.disabled = !recording;
+  }
+
+  function stopTracks() {
+    if (stream) {
+      try {
+        stream.getTracks().forEach(function (t) { try { t.stop(); } catch (e) {} });
+      } catch (e) {}
+      stream = null;
+    }
+  }
+
+  function friendlyMicError(e) {
+    var name = e && e.name ? e.name : '';
+    if (name === 'NotAllowedError' || name === 'SecurityError') {
+      return 'Microphone access was denied. Allow microphone permission in your browser, then try again.';
+    }
+    if (name === 'NotFoundError' || name === 'OverconstrainedError') {
+      return 'No microphone was found. Connect a microphone and try again.';
+    }
+    if (name === 'NotReadableError') {
+      return 'Your microphone is busy (another app may be using it). Close other apps and try again.';
+    }
+    return 'Could not access the microphone. Use a modern browser over HTTPS (or localhost) with a working mic.';
+  }
+
+  function start() {
+    TN.clearErr(errId());
+    if (recorder && recorder.state === 'recording') return;
+    if (!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia) {
+      TN.setErr(errId(), 'Audio recording is not supported in this browser. Try a recent Chrome, Edge, Firefox or Safari.');
+      return;
+    }
+    if (typeof MediaRecorder === 'undefined') {
+      TN.setErr(errId(), 'MediaRecorder is not available in this browser. Try a recent Chrome, Edge, Firefox or Safari.');
+      return;
+    }
+    setButtons(true);
+    setStatus('Requesting mic…');
+    navigator.mediaDevices.getUserMedia({ audio: true }).then(function (s) {
+      stream = s;
+      chunks = [];
+      var mime = '';
+      try {
+        if (MediaRecorder.isTypeSupported('audio/webm;codecs=opus')) mime = 'audio/webm;codecs=opus';
+        else if (MediaRecorder.isTypeSupported('audio/webm')) mime = 'audio/webm';
+      } catch (e) {}
+      try {
+        recorder = mime ? new MediaRecorder(stream, { mimeType: mime }) : new MediaRecorder(stream);
+      } catch (e) {
+        stopTracks();
+        setButtons(false);
+        setStatus('Ready');
+        TN.setErr(errId(), 'Could not start the recorder in this browser.');
+        return;
+      }
+      recorder.ondataavailable = function (ev) {
+        if (ev.data && ev.data.size) chunks.push(ev.data);
+      };
+      recorder.onstop = onStopped;
+      recorder.onerror = function () {
+        TN.setErr(errId(), 'Recording error — please try again.');
+        cleanup();
+      };
+      try {
+        recorder.start(250);
+      } catch (e) {
+        stopTracks();
+        setButtons(false);
+        setStatus('Ready');
+        TN.setErr(errId(), 'Could not start recording.');
+        return;
+      }
+      startTs = Date.now();
+      setTimer('0:00');
+      timerId = setInterval(tick, 250);
+      setStatus('Recording…');
+    }).catch(function (e) {
+      setButtons(false);
+      setStatus('Ready');
+      TN.setErr(errId(), friendlyMicError(e));
+    });
+  }
+
+  function onStopped() {
+    try { if (timerId) clearInterval(timerId); } catch (e) {}
+    timerId = null;
+    stopTracks();
+    var type = (recorder && recorder.mimeType) || 'audio/webm';
+    audioBlob = new Blob(chunks, { type: type });
+    chunks = [];
+    if (audioURL) { try { URL.revokeObjectURL(audioURL); } catch (e) {} }
+    audioURL = URL.createObjectURL(audioBlob);
+    var audio = TN.el(SLUG + '-audio');
+    if (audio) audio.src = audioURL;
+    var info = TN.el(SLUG + '-info');
+    if (info) info.textContent = 'Recorded ' + fmtElapsed(Date.now() - startTs) + ' · ' + TN.fmtBytes(audioBlob.size) + ' · ' + type;
+    var res = TN.el(SLUG + '-result');
+    if (res) TN.show(res);
+    setStatus('Ready');
+    setTimer('0:00');
+    setButtons(false);
+    recorder = null;
+  }
+
+  function stop() {
+    if (recorder && recorder.state === 'recording') {
+      try { recorder.stop(); } catch (e) { cleanup(); }
+    }
+  }
+
+  function cleanup() {
+    try { if (timerId) clearInterval(timerId); } catch (e) {}
+    timerId = null;
+    stopTracks();
+    recorder = null;
+    setButtons(false);
+    setStatus('Ready');
+  }
+
+  function download() {
+    if (!audioBlob) { TN.setErr(errId(), 'Record something first.'); return; }
+    TN.clearErr(errId());
+    TN.download(audioBlob, 'voice-recording.webm');
+  }
+
+  function discard() {
+    TN.clearErr(errId());
+    if (audioURL) { try { URL.revokeObjectURL(audioURL); } catch (e) {} audioURL = ''; }
+    audioBlob = null;
+    var audio = TN.el(SLUG + '-audio');
+    if (audio) audio.removeAttribute('src');
+    var res = TN.el(SLUG + '-result');
+    if (res) TN.hide(res);
+  }
+
+  function init() {
+    try {
+      if (typeof TN === 'undefined') return;
+      var st = TN.el(SLUG + '-start');
+      if (st) TN.on(st, 'click', start);
+      var sp = TN.el(SLUG + '-stop');
+      if (sp) TN.on(sp, 'click', stop);
+      var dl = TN.el(SLUG + '-download');
+      if (dl) TN.on(dl, 'click', download);
+      var dc = TN.el(SLUG + '-discard');
+      if (dc) TN.on(dc, 'click', discard);
+      setTimer('0:00');
+    } catch (e) { /* never throw on load */ }
+  }
+
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init);
+  else init();
+})();
+</script>
+</body>
+</html>

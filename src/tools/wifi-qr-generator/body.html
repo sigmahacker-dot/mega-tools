@@ -1,0 +1,48 @@
+<div class="tool-card">
+  <div class="grid2">
+    <div class="field">
+      <label for="wifi-qr-generator-ssid">Network name (SSID)</label>
+      <input type="text" class="input" id="wifi-qr-generator-ssid" placeholder="MyWiFi" autocomplete="off">
+    </div>
+    <div class="field">
+      <label for="wifi-qr-generator-password">Password</label>
+      <input type="text" class="input" id="wifi-qr-generator-password" placeholder="••••••••" autocomplete="off">
+    </div>
+  </div>
+  <div class="grid2">
+    <div class="field">
+      <label for="wifi-qr-generator-encryption">Encryption</label>
+      <select class="select" id="wifi-qr-generator-encryption">
+        <option value="WPA" selected>WPA / WPA2 / WPA3</option>
+        <option value="WEP">WEP</option>
+        <option value="nopass">Open (no password)</option>
+      </select>
+    </div>
+    <div class="field">
+      <label for="wifi-qr-generator-size">QR size</label>
+      <select class="select" id="wifi-qr-generator-size">
+        <option value="256">256 px</option>
+        <option value="512" selected>512 px</option>
+        <option value="1024">1024 px</option>
+      </select>
+    </div>
+  </div>
+  <div class="field">
+    <label style="display:inline-flex;align-items:center;gap:6px;">
+      <input type="checkbox" id="wifi-qr-generator-hidden"> Hidden SSID (network does not broadcast its name)
+    </label>
+  </div>
+  <div class="btn-row">
+    <button class="btn btn-primary" id="wifi-qr-generator-generate">Generate QR code</button>
+    <button class="btn btn-outline hidden" id="wifi-qr-generator-download">Download PNG</button>
+  </div>
+  <div class="error" id="wifi-qr-generator-error"></div>
+  <div class="result hidden" id="wifi-qr-generator-preview-wrap">
+    <canvas class="preview" id="wifi-qr-generator-canvas" style="max-width:320px;width:100%;height:auto;"></canvas>
+    <div class="field" style="margin-top:12px;">
+      <label for="wifi-qr-generator-string">Encoded WiFi string (what the QR contains)</label>
+      <textarea class="textarea" id="wifi-qr-generator-string" rows="2" readonly></textarea>
+    </div>
+  </div>
+  <p class="note">Your SSID and password are encoded in the QR image itself — anyone who scans it can join the network.</p>
+</div>

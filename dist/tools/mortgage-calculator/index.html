@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mortgage Calculator — Free Online | ToolNest</title>
+<meta name="description" content="Compute your monthly mortgage payment, total interest and a full year-by-year amortization schedule from price, down payment, rate and term.">
+<meta name="keywords" content="mortgage calculator, monthly mortgage payment, home loan calculator, mortgage amortization schedule">
+<link rel="canonical" href="https://toolnest.vercel.app/tools/mortgage-calculator/">
+<meta name="theme-color" content="#07070b">
+<meta property="og:title" content="Mortgage Calculator — Free Online | ToolNest">
+<meta property="og:description" content="Compute your monthly mortgage payment, total interest and a full year-by-year amortization schedule from price, down payment, rate and term.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css?v=2">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%23e01111'/><text x='50' y='68' font-size='58' text-anchor='middle' fill='white' font-family='Arial' font-weight='bold'>T</text></svg>">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebApplication","name":"Mortgage Calculator","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0"},"url":"https://toolnest.vercel.app/tools/mortgage-calculator/","description":"Compute your monthly mortgage payment, total interest and a full year-by-year amortization schedule from price, down payment, rate and term."},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Does this include property taxes and insurance?","acceptedAnswer":{"@type":"Answer","text":"No. This calculates principal and interest (P&I) only. Property taxes, homeowner's insurance and PMI must be added separately to get the full monthly cost."}},{"@type":"Question","name":"How is the monthly payment calculated?","acceptedAnswer":{"@type":"Answer","text":"With the standard amortizing-loan formula M = P * r(1+r)^n / ((1+r)^n - 1), where r is the monthly interest rate and n is the total number of monthly payments."}},{"@type":"Question","name":"What does the amortization schedule assume?","acceptedAnswer":{"@type":"Answer","text":"The schedule assumes fixed on-time payments for the whole term. Extra principal payments would shorten the loan and reduce total interest, but they are not modeled here."}}]}]}</script>
+</head>
+<body>
+<header class="site-header">
+  <div class="container">
+    <a class="logo" href="/"><span class="logo-mark">T</span> ToolNest</a>
+    <nav class="site-nav">
+      <a href="/">Home</a>
+      <a href="/#categories">Categories</a>
+      <a href="/#all-tools">All Tools</a>
+    </nav>
+  </div>
+</header>
+
+<!-- ADSTERRA-HEADER: paste your Adsterra banner ad code inside the div below -->
+<div class="container"><div class="ad-slot ad-leaderboard" data-ad="header"></div></div>
+
+<main class="container">
+  <nav class="crumbs"><a href="/">Home</a> &rsaquo; <a href="/#finance">Finance &amp; Money</a> &rsaquo; Mortgage Calculator</nav>
+  <div class="tool-hero">
+    <h1>Mortgage Calculator</h1>
+    <p>Compute your monthly mortgage payment, total interest and a full year-by-year amortization schedule from price, down payment, rate and term.</p>
+  </div>
+
+  <div class="tool-card">
+  <div class="grid2">
+    <div class="field">
+      <label for="mortgage-price">Home price ($)</label>
+      <input type="number" class="input" id="mortgage-price" min="1" step="any" placeholder="350000">
+    </div>
+    <div class="field">
+      <label for="mortgage-down">Down payment ($)</label>
+      <input type="number" class="input" id="mortgage-down" min="0" step="any" placeholder="70000">
+    </div>
+    <div class="field">
+      <label for="mortgage-rate">Annual interest rate (%)</label>
+      <input type="number" class="input" id="mortgage-rate" min="0" max="30" step="any" placeholder="6.5">
+    </div>
+    <div class="field">
+      <label for="mortgage-term">Loan term (years)</label>
+      <input type="number" class="input" id="mortgage-term" min="1" max="50" step="1" placeholder="30">
+    </div>
+  </div>
+  <div class="error" id="mortgage-calculator-error"></div>
+  <div class="result" id="mortgage-result">
+    <div class="stat-cards">
+      <div class="stat-card"><div class="v" id="mortgage-payment">–</div><div class="l">Monthly payment (P&amp;I)</div></div>
+      <div class="stat-card"><div class="v" id="mortgage-interest">–</div><div class="l">Total interest</div></div>
+      <div class="stat-card"><div class="v" id="mortgage-total">–</div><div class="l">Total paid</div></div>
+    </div>
+    <table class="data">
+      <thead>
+        <tr><th>Year</th><th>Principal paid</th><th>Interest paid</th><th>Balance</th></tr>
+      </thead>
+      <tbody id="mortgage-schedule-body">
+        <tr><td colspan="4" class="muted">Enter loan details to see the amortization schedule.</td></tr>
+      </tbody>
+    </table>
+    <p class="note">Principal &amp; interest only — taxes, insurance and PMI are not included.</p>
+  </div>
+</div>
+
+
+  <!-- ADSTERRA-INCONTENT: paste your Adsterra native/in-content ad code inside the div below -->
+  <div class="ad-slot" data-ad="incontent"></div>
+
+  <div class="info-grid">
+    <div class="info-card">
+      <h2>📖 How to use</h2>
+      <ol><li>Enter the home price and your planned down payment.</li><li>Set the annual interest rate and the loan term in years.</li><li>Read your monthly payment, total interest and total cost instantly.</li><li>Scroll the yearly amortization table to see how each year&#39;s principal and interest split changes over time.</li></ol>
+    </div>
+    <div class="info-card">
+      <h2>❓ Frequently asked questions</h2>
+      <div class="faq"><details><summary>Does this include property taxes and insurance?</summary><p>No. This calculates principal and interest (P&amp;I) only. Property taxes, homeowner&#39;s insurance and PMI must be added separately to get the full monthly cost.</p></details><details><summary>How is the monthly payment calculated?</summary><p>With the standard amortizing-loan formula M = P * r(1+r)^n / ((1+r)^n - 1), where r is the monthly interest rate and n is the total number of monthly payments.</p></details><details><summary>What does the amortization schedule assume?</summary><p>The schedule assumes fixed on-time payments for the whole term. Extra principal payments would shorten the loan and reduce total interest, but they are not modeled here.</p></details></div>
+    </div>
+  </div>
+
+  <section class="section">
+    <h2>🔗 Related tools</h2>
+    <div class="tool-grid"><a class="tool-link" href="/tools/compound-interest-calculator/" data-search="compound interest calculator project how your savings grow over time with compound interest, regular monthly contributions and your choice of compounding frequency. compound interest calculator savings growth calculator compound interest with contributions"><span class="t-ico">💰</span><span class="t-body"><b>Compound Interest Calculator</b><small>Project how your savings grow over time with compound interest, regular monthly contribution…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/credit-card-validator/" data-search="credit card validator check any card number with the luhn algorithm and detect its brand — a format check only, never a real-card check. credit card validator luhn check card number checker card brand detector"><span class="t-ico">💰</span><span class="t-body"><b>Credit Card Validator</b><small>Check any card number with the Luhn algorithm and detect its brand — a format check only, ne…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/debt-payoff-calculator/" data-search="debt payoff planner build an avalanche payoff plan for up to 8 debts: payoff order, months to debt-free and total interest paid. debt payoff calculator debt avalanche calculator pay off debt planner"><span class="t-ico">💰</span><span class="t-body"><b>Debt Payoff Planner</b><small>Build an avalanche payoff plan for up to 8 debts: payoff order, months to debt-free and tota…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/freelance-rate-calculator/" data-search="freelance rate calculator derive your hourly freelance rate from your income goal, billable hours and a buffer for taxes and downtime. freelance rate calculator hourly rate calculator freelancer pricing calculator"><span class="t-ico">💰</span><span class="t-body"><b>Freelance Rate Calculator</b><small>Derive your hourly freelance rate from your income goal, billable hours and a buffer for tax…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/iban-validator/" data-search="iban validator validate any iban using the official iso 13616 mod-97 checksum, with clean grouped formatting. iban validator iban checker validate iban iban checksum"><span class="t-ico">💰</span><span class="t-body"><b>IBAN Validator</b><small>Validate any IBAN using the official ISO 13616 mod-97 checksum, with clean grouped formattin…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/investment-return-calculator/" data-search="cagr calculator compute the compound annual growth rate (cagr) of any investment, or project a future value from a given cagr. cagr calculator compound annual growth rate investment return calculator"><span class="t-ico">💰</span><span class="t-body"><b>CAGR Calculator</b><small>Compute the compound annual growth rate (CAGR) of any investment, or project a future value …</small></span><span class="t-arrow">→</span></a></div>
+  </section>
+</main>
+
+<!-- ADSTERRA-FOOTER: paste your Adsterra footer/banner ad code inside the div below -->
+<div class="container"><div class="ad-slot" data-ad="footer"></div></div>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="f-grid">
+      <div>
+        <span class="brandline"><span class="logo-mark">T</span> ToolNest</span>
+        <p>Free online tools that actually work. No sign-up, no watermarks — and your files never leave your device for client-side tools.</p>
+      </div>
+      <div>
+        <h4>Popular</h4>
+        <a href="/tools/qr-code-generator/">QR Code Generator</a>
+        <a href="/tools/background-remover/">Background Remover</a>
+        <a href="/tools/pdf-merger/">PDF Merger</a>
+        <a href="/tools/word-counter/">Word Counter</a>
+      </div>
+      <div>
+        <h4>Categories</h4>
+        <a href="/#image">Image Tools</a>
+        <a href="/#pdf">PDF &amp; Documents</a>
+        <a href="/#calculators">Calculators</a>
+        <a href="/#developer">Developer Tools</a>
+      </div>
+      <div>
+        <h4>Site</h4>
+        <a href="/">Home</a>
+        <a href="/#all-tools">All Tools</a>
+        <a href="/sitemap.xml">Sitemap</a>
+      </div>
+    </div>
+    <div class="f-bottom">© 2026 ToolNest · Free tools for everyone · Made with care</div>
+  </div>
+</footer>
+
+<script src="/assets/site.js?v=2"></script>
+
+<script>
+(function () {
+  'use strict';
+  var ERR = 'mortgage-calculator-error';
+  function money(n) {
+    try { return '$' + n.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 }); }
+    catch (e) { return '$' + String(Math.round(n * 100) / 100); }
+  }
+  function num(id) {
+    var el = TN.el(id);
+    if (!el) return NaN;
+    return parseFloat(el.value);
+  }
+  function calc() {
+    if (!TN.el('mortgage-price')) return;
+    TN.clearErr(ERR);
+    var price = num('mortgage-price');
+    var down = num('mortgage-down');
+    var rate = num('mortgage-rate');
+    var term = num('mortgage-term');
+    if (!(price > 0)) { TN.setErr(ERR, 'Enter a valid home price greater than 0.'); return; }
+    if (isNaN(down) || down < 0) { TN.setErr(ERR, 'Enter a valid down payment (0 or more).'); return; }
+    if (down >= price) { TN.setErr(ERR, 'Down payment must be less than the home price.'); return; }
+    if (isNaN(rate) || rate < 0 || rate > 30) { TN.setErr(ERR, 'Enter an annual interest rate between 0 and 30%.'); return; }
+    if (!(term >= 1 && term <= 50)) { TN.setErr(ERR, 'Enter a loan term between 1 and 50 years.'); return; }
+
+    var P = price - down;
+    var r = rate / 100 / 12;
+    var n = Math.round(term * 12);
+    var M = r === 0 ? P / n : P * r * Math.pow(1 + r, n) / (Math.pow(1 + r, n) - 1);
+
+    var bal = P, rows = [], totInt = 0, totPaid = 0;
+    for (var y = 1; y <= term; y++) {
+      var princ = 0, intr = 0;
+      for (var m = 0; m < 12; m++) {
+        var i = bal * r;
+        var pmt = Math.min(M, bal + i);
+        var pp = pmt - i;
+        bal -= pp;
+        princ += pp;
+        intr += i;
+        totPaid += pmt;
+        if (bal <= 0.005) { bal = 0; break; }
+      }
+      totInt += intr;
+      rows.push('<tr><td>' + y + '</td><td>' + money(princ) + '</td><td>' + money(intr) + '</td><td>' + money(bal) + '</td></tr>');
+      if (bal === 0) break;
+    }
+
+    TN.el('mortgage-payment').textContent = money(M);
+    TN.el('mortgage-interest').textContent = money(totInt);
+    TN.el('mortgage-total').textContent = money(totPaid);
+    TN.el('mortgage-schedule-body').innerHTML = rows.join('');
+  }
+  try {
+    TN.on('mortgage-price', 'input', calc);
+    TN.on('mortgage-down', 'input', calc);
+    TN.on('mortgage-rate', 'input', calc);
+    TN.on('mortgage-term', 'input', calc);
+    calc();
+  } catch (e) { /* never throw on load */ }
+})();
+
+</script>
+</body>
+</html>

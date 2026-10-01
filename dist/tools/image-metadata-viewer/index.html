@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Image Metadata Viewer — Free Online | ToolNest</title>
+<meta name="description" content="File facts and pixel statistics for any image.">
+<meta name="keywords" content="image metadata viewer, image info, photo histogram">
+<link rel="canonical" href="https://toolnest.vercel.app/tools/image-metadata-viewer/">
+<meta name="theme-color" content="#07070b">
+<meta property="og:title" content="Image Metadata Viewer — Free Online | ToolNest">
+<meta property="og:description" content="File facts and pixel statistics for any image.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css?v=2">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%23e01111'/><text x='50' y='68' font-size='58' text-anchor='middle' fill='white' font-family='Arial' font-weight='bold'>T</text></svg>">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebApplication","name":"Image Metadata Viewer","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0"},"url":"https://toolnest.vercel.app/tools/image-metadata-viewer/","description":"File facts and pixel statistics for any image."},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Does this show EXIF camera data?","acceptedAnswer":{"@type":"Answer","text":"No. It reads file facts (name, size, type, dimensions) and computes pixel statistics (average color, luminance histogram) — it does not parse EXIF, IPTC or XMP metadata."}},{"@type":"Question","name":"How is the average color calculated?","acceptedAnswer":{"@type":"Answer","text":"The average is computed from every pixel of a downscaled copy of your image, so it genuinely represents the whole picture."}},{"@type":"Question","name":"Is my image uploaded anywhere?","acceptedAnswer":{"@type":"Answer","text":"Yes — everything is processed locally in your browser. The file never leaves your device."}}]}]}</script>
+</head>
+<body>
+<header class="site-header">
+  <div class="container">
+    <a class="logo" href="/"><span class="logo-mark">T</span> ToolNest</a>
+    <nav class="site-nav">
+      <a href="/">Home</a>
+      <a href="/#categories">Categories</a>
+      <a href="/#all-tools">All Tools</a>
+    </nav>
+  </div>
+</header>
+
+<!-- ADSTERRA-HEADER: paste your Adsterra banner ad code inside the div below -->
+<div class="container"><div class="ad-slot ad-leaderboard" data-ad="header"></div></div>
+
+<main class="container">
+  <nav class="crumbs"><a href="/">Home</a> &rsaquo; <a href="/#image">Image Tools</a> &rsaquo; Image Metadata Viewer</nav>
+  <div class="tool-hero">
+    <h1>Image Metadata Viewer</h1>
+    <p>File facts and pixel statistics for any image.</p>
+  </div>
+
+  <div class="tool-card">
+  <div class="dropzone" id="image-metadata-viewer-drop">
+    <span class="dz-icon">🖼️</span>
+    <strong>Drop an image here</strong> or click to browse
+    <input type="file" id="image-metadata-viewer-file" accept="image/*" class="hidden">
+  </div>
+  <div class="error" id="image-metadata-viewer-error"></div>
+  <div class="result hidden" id="image-metadata-viewer-result">
+    <div class="stat-cards">
+      <div class="stat-card"><div class="v" id="image-metadata-viewer-dims">–</div><div class="l">Dimensions</div></div>
+      <div class="stat-card"><div class="v" id="image-metadata-viewer-mp">–</div><div class="l">Megapixels</div></div>
+      <div class="stat-card"><div class="v" id="image-metadata-viewer-ratio">–</div><div class="l">Aspect ratio</div></div>
+    </div>
+    <table class="data">
+      <tbody>
+        <tr><th scope="row">File name</th><td id="image-metadata-viewer-name">–</td></tr>
+        <tr><th scope="row">File size</th><td id="image-metadata-viewer-size">–</td></tr>
+        <tr><th scope="row">MIME type</th><td id="image-metadata-viewer-type">–</td></tr>
+        <tr><th scope="row">Average color</th><td><span id="image-metadata-viewer-avgswatch" style="display:inline-block;width:28px;height:28px;border-radius:6px;vertical-align:middle;border:1px solid #d1d5db;"></span> <code id="image-metadata-viewer-avg">–</code></td></tr>
+      </tbody>
+    </table>
+    <div class="field">
+      <label>Luminance histogram (16 bins, dark → bright)</label>
+      <div id="image-metadata-viewer-hist" style="display:flex;align-items:flex-end;gap:3px;height:120px;background:#f3f4f6;border-radius:8px;padding:10px;"></div>
+    </div>
+    <p class="note">Shows file facts and pixel statistics only — this tool does not parse EXIF camera metadata. Everything is processed locally in your browser.</p>
+  </div>
+</div>
+
+
+  <!-- ADSTERRA-INCONTENT: paste your Adsterra native/in-content ad code inside the div below -->
+  <div class="ad-slot" data-ad="incontent"></div>
+
+  <div class="info-grid">
+    <div class="info-card">
+      <h2>📖 How to use</h2>
+      <ol><li>Drop an image onto the dropzone or click to browse.</li><li>Wait a moment while the pixels are analyzed.</li><li>Read the file facts, dimensions and average color.</li><li>Study the 16-bin luminance histogram for the brightness spread.</li></ol>
+    </div>
+    <div class="info-card">
+      <h2>❓ Frequently asked questions</h2>
+      <div class="faq"><details><summary>Does this show EXIF camera data?</summary><p>No. It reads file facts (name, size, type, dimensions) and computes pixel statistics (average color, luminance histogram) — it does not parse EXIF, IPTC or XMP metadata.</p></details><details><summary>How is the average color calculated?</summary><p>The average is computed from every pixel of a downscaled copy of your image, so it genuinely represents the whole picture.</p></details><details><summary>Is my image uploaded anywhere?</summary><p>Yes — everything is processed locally in your browser. The file never leaves your device.</p></details></div>
+    </div>
+  </div>
+
+  <section class="section">
+    <h2>🔗 Related tools</h2>
+    <div class="tool-grid"><a class="tool-link" href="/tools/background-remover/" data-search="background remover remove the background from any photo with real on-device ai and download a transparent png. free, private and unlimited — no sign-up needed. background remover remove image background transparent png maker"><span class="t-ico">🖼️</span><span class="t-body"><b>Background Remover</b><small>Remove the background from any photo with real on-device AI and download a transparent PNG. …</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/favicon-generator/" data-search="favicon generator generate a complete png favicon set (16–512 px) from your logo in one click, download it as a zip, and copy the ready-to-paste html link tags. favicon generator favicon maker png favicon"><span class="t-ico">🖼️</span><span class="t-body"><b>Favicon Generator</b><small>Generate a complete PNG favicon set (16–512 px) from your logo in one click, download it as …</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/image-compressor/" data-search="image compressor shrink jpg, png and webp images right in your browser with an adjustable quality slider. compare before/after sizes, download each file or grab everything as a zip. image compressor compress jpg reduce image size"><span class="t-ico">🖼️</span><span class="t-body"><b>Image Compressor</b><small>Shrink JPG, PNG and WebP images right in your browser with an adjustable quality slider. Com…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/image-pixelator/" data-search="image pixelator pixelate any photo with an adjustable block size and download the result. pixelate image mosaic image censor photo"><span class="t-ico">🖼️</span><span class="t-body"><b>Image Pixelator</b><small>Pixelate any photo with an adjustable block size and download the result.</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/image-resizer/" data-search="image resizer resize any image to exact pixel dimensions with an aspect-ratio lock, quick presets and percentage scaling. preview the result and download as png, jpg or webp. image resizer resize photo change image dimensions"><span class="t-ico">🖼️</span><span class="t-body"><b>Image Resizer</b><small>Resize any image to exact pixel dimensions with an aspect-ratio lock, quick presets and perc…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/image-rotate-flip/" data-search="image rotate &amp; flip rotate 90/180/270 degrees and flip, in the browser. rotate image flip image image rotator"><span class="t-ico">🖼️</span><span class="t-body"><b>Image Rotate &amp; Flip</b><small>Rotate 90/180/270 degrees and flip, in the browser.</small></span><span class="t-arrow">→</span></a></div>
+  </section>
+</main>
+
+<!-- ADSTERRA-FOOTER: paste your Adsterra footer/banner ad code inside the div below -->
+<div class="container"><div class="ad-slot" data-ad="footer"></div></div>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="f-grid">
+      <div>
+        <span class="brandline"><span class="logo-mark">T</span> ToolNest</span>
+        <p>Free online tools that actually work. No sign-up, no watermarks — and your files never leave your device for client-side tools.</p>
+      </div>
+      <div>
+        <h4>Popular</h4>
+        <a href="/tools/qr-code-generator/">QR Code Generator</a>
+        <a href="/tools/background-remover/">Background Remover</a>
+        <a href="/tools/pdf-merger/">PDF Merger</a>
+        <a href="/tools/word-counter/">Word Counter</a>
+      </div>
+      <div>
+        <h4>Categories</h4>
+        <a href="/#image">Image Tools</a>
+        <a href="/#pdf">PDF &amp; Documents</a>
+        <a href="/#calculators">Calculators</a>
+        <a href="/#developer">Developer Tools</a>
+      </div>
+      <div>
+        <h4>Site</h4>
+        <a href="/">Home</a>
+        <a href="/#all-tools">All Tools</a>
+        <a href="/sitemap.xml">Sitemap</a>
+      </div>
+    </div>
+    <div class="f-bottom">© 2026 ToolNest · Free tools for everyone · Made with care</div>
+  </div>
+</footer>
+
+<script src="/assets/site.js?v=2"></script>
+
+<script>
+(function () {
+  'use strict';
+  var S = 'image-metadata-viewer';
+
+  function gcd(a, b) { return b ? gcd(b, a % b) : a; }
+
+  function looksLikeImage(f) {
+    var t = (f.type || '').toLowerCase();
+    if (t.indexOf('image/') === 0) return true;
+    return /\.(jpe?g|png|webp|gif|bmp|avif)$/i.test(f.name || '');
+  }
+
+  function analyze(file) {
+    TN.clearErr(S + '-error');
+    TN.readAsDataURL(file).then(TN.loadImage).then(function (img) {
+      var w = img.naturalWidth, h = img.naturalHeight;
+      if (!w || !h) throw new Error('Could not read the image dimensions.');
+      // Downscale for sampling (keeps it fast on huge photos)
+      var scale = Math.min(1, 200 / Math.max(w, h));
+      var sw = Math.max(1, Math.round(w * scale));
+      var sh = Math.max(1, Math.round(h * scale));
+      var canvas = document.createElement('canvas');
+      canvas.width = sw; canvas.height = sh;
+      var ctx = canvas.getContext('2d');
+      ctx.drawImage(img, 0, 0, sw, sh);
+      var data = ctx.getImageData(0, 0, sw, sh).data;
+      var r = 0, g = 0, b = 0;
+      var bins = [];
+      for (var i = 0; i < 16; i++) bins.push(0);
+      var n = data.length / 4;
+      for (var p = 0; p < data.length; p += 4) {
+        var pr = data[p], pg = data[p + 1], pb = data[p + 2];
+        r += pr; g += pg; b += pb;
+        var lum = 0.2126 * pr + 0.7152 * pg + 0.0722 * pb;
+        var bin = Math.min(15, Math.floor(lum / 16));
+        bins[bin]++;
+      }
+      var ar = Math.round(r / n), ag = Math.round(g / n), ab = Math.round(b / n);
+      var hex = '#' + ('0' + ar.toString(16)).slice(-2) + ('0' + ag.toString(16)).slice(-2) + ('0' + ab.toString(16)).slice(-2);
+
+      TN.el(S + '-name').textContent = file.name || 'unnamed image';
+      TN.el(S + '-size').textContent = TN.fmtBytes(file.size);
+      TN.el(S + '-type').textContent = file.type || 'unknown';
+      TN.el(S + '-dims').textContent = w + ' × ' + h;
+      TN.el(S + '-mp').textContent = (Math.round((w * h / 1000000) * 100) / 100) + ' MP';
+      var d = gcd(w, h);
+      TN.el(S + '-ratio').textContent = (w / d) + ':' + (h / d);
+      TN.el(S + '-avg').textContent = hex + '  rgb(' + ar + ', ' + ag + ', ' + ab + ')';
+      TN.el(S + '-avgswatch').style.background = hex;
+
+      var max = 0;
+      for (var k = 0; k < 16; k++) if (bins[k] > max) max = bins[k];
+      var hist = TN.el(S + '-hist');
+      var html = '';
+      for (var q = 0; q < 16; q++) {
+        var pct = max ? Math.round((bins[q] / max) * 100) : 0;
+        html += '<div title="Bin ' + q + ': ' + bins[q] + ' px" style="flex:1;background:#4D7C0F;border-radius:2px 2px 0 0;min-height:2px;height:' +
+          Math.max(2, pct) + '%;"></div>';
+      }
+      hist.innerHTML = html;
+      TN.show(S + '-result');
+    }).catch(function (e) {
+      TN.setErr(S + '-error', 'Could not analyze that file: ' + (e && e.message ? e.message : 'unknown error'));
+    });
+  }
+
+  function handleFiles(list) {
+    if (!list || !list.length) return;
+    var file = list[0];
+    if (!looksLikeImage(file)) {
+      TN.setErr(S + '-error', 'That does not look like an image file.');
+      return;
+    }
+    analyze(file);
+  }
+
+  function init() {
+    var dz = TN.el(S + '-drop');
+    var input = TN.el(S + '-file');
+    if (!dz || !input) return;
+    dz.addEventListener('click', function () { input.click(); });
+    input.addEventListener('change', function () {
+      handleFiles(input.files || []);
+      input.value = '';
+    });
+    ['dragover', 'dragenter'].forEach(function (ev) {
+      dz.addEventListener(ev, function (e) { e.preventDefault(); dz.classList.add('dragover'); });
+    });
+    ['dragleave', 'drop'].forEach(function (ev) {
+      dz.addEventListener(ev, function (e) { e.preventDefault(); dz.classList.remove('dragover'); });
+    });
+    dz.addEventListener('drop', function (e) {
+      if (e.dataTransfer && e.dataTransfer.files) handleFiles(e.dataTransfer.files);
+    });
+  }
+  try { init(); } catch (e) { /* never throw on load */ }
+})();
+
+</script>
+</body>
+</html>

@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PDF Page Numberer — Free Online | ToolNest</title>
+<meta name="description" content="Stamp page numbers onto every page of a PDF — choose position, format and starting number.">
+<meta name="keywords" content="add page numbers pdf, number pdf pages, pdf page numbering">
+<link rel="canonical" href="https://toolnest.vercel.app/tools/pdf-page-numberer/">
+<meta name="theme-color" content="#07070b">
+<meta property="og:title" content="PDF Page Numberer — Free Online | ToolNest">
+<meta property="og:description" content="Stamp page numbers onto every page of a PDF — choose position, format and starting number.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css?v=2">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%23e01111'/><text x='50' y='68' font-size='58' text-anchor='middle' fill='white' font-family='Arial' font-weight='bold'>T</text></svg>">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebApplication","name":"PDF Page Numberer","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0"},"url":"https://toolnest.vercel.app/tools/pdf-page-numberer/","description":"Stamp page numbers onto every page of a PDF — choose position, format and starting number."},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Are the numbers real text or images?","acceptedAnswer":{"@type":"Answer","text":"The numbers are drawn as real PDF text on each page with the standard Helvetica font, so they stay crisp at any zoom and survive printing."}},{"@type":"Question","name":"Can I start numbering from a number other than 1?","acceptedAnswer":{"@type":"Answer","text":"Yes — set the start number to 2 to skip numbering a cover page, or to any value your document needs."}},{"@type":"Question","name":"Is my PDF uploaded anywhere?","acceptedAnswer":{"@type":"Answer","text":"No. Your PDF is processed entirely in your browser with PDF-Lib; it is never uploaded."}}]}]}</script>
+</head>
+<body>
+<header class="site-header">
+  <div class="container">
+    <a class="logo" href="/"><span class="logo-mark">T</span> ToolNest</a>
+    <nav class="site-nav">
+      <a href="/">Home</a>
+      <a href="/#categories">Categories</a>
+      <a href="/#all-tools">All Tools</a>
+    </nav>
+  </div>
+</header>
+
+<!-- ADSTERRA-HEADER: paste your Adsterra banner ad code inside the div below -->
+<div class="container"><div class="ad-slot ad-leaderboard" data-ad="header"></div></div>
+
+<main class="container">
+  <nav class="crumbs"><a href="/">Home</a> &rsaquo; <a href="/#pdf">PDF &amp; Documents</a> &rsaquo; PDF Page Numberer</nav>
+  <div class="tool-hero">
+    <h1>PDF Page Numberer</h1>
+    <p>Stamp page numbers onto every page of a PDF — choose position, format and starting number.</p>
+  </div>
+
+  <div class="tool-card">
+  <h2>PDF Page Numberer</h2>
+  <p class="muted">Stamp page numbers onto every page of a PDF.</p>
+  <div class="field">
+    <label for="pdf-page-numberer-file">Choose a PDF</label>
+    <input type="file" class="input" id="pdf-page-numberer-file" accept=".pdf,application/pdf">
+  </div>
+  <div class="grid2">
+    <div class="field">
+      <label for="pdf-page-numberer-position">Position</label>
+      <select class="select" id="pdf-page-numberer-position">
+        <option value="bottom-center">Bottom center</option>
+        <option value="bottom-left">Bottom left</option>
+        <option value="bottom-right">Bottom right</option>
+        <option value="top-center">Top center</option>
+        <option value="top-left">Top left</option>
+        <option value="top-right">Top right</option>
+      </select>
+    </div>
+    <div class="field">
+      <label for="pdf-page-numberer-format">Format</label>
+      <select class="select" id="pdf-page-numberer-format">
+        <option value="n">1</option>
+        <option value="page-n">Page 1</option>
+        <option value="n-total">1 / 12</option>
+      </select>
+    </div>
+  </div>
+  <div class="grid2">
+    <div class="field">
+      <label for="pdf-page-numberer-start">Start number</label>
+      <input type="number" class="input" id="pdf-page-numberer-start" min="1" max="99999" value="1">
+    </div>
+    <div class="field">
+      <label for="pdf-page-numberer-size">Font size (pt)</label>
+      <input type="number" class="input" id="pdf-page-numberer-size" min="6" max="48" value="10">
+    </div>
+  </div>
+  <div class="btn-row mt">
+    <button class="btn btn-primary" id="pdf-page-numberer-run">Add page numbers</button>
+    <button class="btn btn-outline" id="pdf-page-numberer-clear">Clear</button>
+  </div>
+  <div class="progress mt hidden" id="pdf-page-numberer-progress"><div style="width:0%"></div></div>
+  <div class="error" id="pdf-page-numberer-error"></div>
+  <div class="result hidden" id="pdf-page-numberer-result"></div>
+  <p class="note">Numbers are drawn as real PDF text. Everything happens locally in your browser.</p>
+</div>
+
+  <!-- ADSTERRA-INCONTENT: paste your Adsterra native/in-content ad code inside the div below -->
+  <div class="ad-slot" data-ad="incontent"></div>
+
+  <div class="info-grid">
+    <div class="info-card">
+      <h2>📖 How to use</h2>
+      <ol><li>Choose a PDF file.</li><li>Pick the position (top/bottom × left/center/right) and the number format.</li><li>Set the start number and font size.</li><li>Click &quot;Add page numbers&quot; and download the stamped PDF.</li></ol>
+    </div>
+    <div class="info-card">
+      <h2>❓ Frequently asked questions</h2>
+      <div class="faq"><details><summary>Are the numbers real text or images?</summary><p>The numbers are drawn as real PDF text on each page with the standard Helvetica font, so they stay crisp at any zoom and survive printing.</p></details><details><summary>Can I start numbering from a number other than 1?</summary><p>Yes — set the start number to 2 to skip numbering a cover page, or to any value your document needs.</p></details><details><summary>Is my PDF uploaded anywhere?</summary><p>No. Your PDF is processed entirely in your browser with PDF-Lib; it is never uploaded.</p></details></div>
+    </div>
+  </div>
+
+  <section class="section">
+    <h2>🔗 Related tools</h2>
+    <div class="tool-grid"><a class="tool-link" href="/tools/esign-pdf/" data-search="esign pdf draw your signature and stamp it onto any page of a pdf. choose the page, position and size with sliders, then download the signed document. esign pdf sign pdf online electronic signature pdf"><span class="t-ico">📄</span><span class="t-body"><b>eSign PDF</b><small>Draw your signature and stamp it onto any page of a PDF. Choose the page, position and size …</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/pdf-compressor/" data-search="pdf compressor shrink a pdf&#39;s file size by re-rendering its pages as compressed images. choose low, medium or high quality and compare sizes before downloading. compress pdf reduce pdf size shrink pdf"><span class="t-ico">📄</span><span class="t-body"><b>PDF Compressor</b><small>Shrink a PDF&#39;s file size by re-rendering its pages as compressed images. Choose Low, Medium …</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/pdf-merger/" data-search="pdf merger combine multiple pdf files into one document. arrange the files in any order, preview each file&#39;s page count, then merge and download the result. merge pdf combine pdf join pdf files"><span class="t-ico">📄</span><span class="t-body"><b>PDF Merger</b><small>Combine multiple PDF files into one document. Arrange the files in any order, preview each f…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/pdf-metadata-editor/" data-search="pdf metadata editor read and edit a pdf&#39;s title, author, subject and keywords metadata. edit pdf metadata pdf title author pdf properties editor"><span class="t-ico">📄</span><span class="t-body"><b>PDF Metadata Editor</b><small>Read and edit a PDF&#39;s title, author, subject and keywords metadata.</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/pdf-splitter/" data-search="pdf splitter extract specific pages from a pdf. type page ranges like 1-3, 5, 8-10 and get a new pdf containing exactly those pages, in your order. split pdf extract pdf pages pdf page extractor"><span class="t-ico">📄</span><span class="t-body"><b>PDF Splitter</b><small>Extract specific pages from a PDF. Type page ranges like 1-3, 5, 8-10 and get a new PDF cont…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/pdf-to-images/" data-search="pdf to images convert every page of a pdf into png images — download pages individually or all as a zip. pdf to images pdf to png convert pdf pages"><span class="t-ico">📄</span><span class="t-body"><b>PDF to Images</b><small>Convert every page of a PDF into PNG images — download pages individually or all as a ZIP.</small></span><span class="t-arrow">→</span></a></div>
+  </section>
+</main>
+
+<!-- ADSTERRA-FOOTER: paste your Adsterra footer/banner ad code inside the div below -->
+<div class="container"><div class="ad-slot" data-ad="footer"></div></div>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="f-grid">
+      <div>
+        <span class="brandline"><span class="logo-mark">T</span> ToolNest</span>
+        <p>Free online tools that actually work. No sign-up, no watermarks — and your files never leave your device for client-side tools.</p>
+      </div>
+      <div>
+        <h4>Popular</h4>
+        <a href="/tools/qr-code-generator/">QR Code Generator</a>
+        <a href="/tools/background-remover/">Background Remover</a>
+        <a href="/tools/pdf-merger/">PDF Merger</a>
+        <a href="/tools/word-counter/">Word Counter</a>
+      </div>
+      <div>
+        <h4>Categories</h4>
+        <a href="/#image">Image Tools</a>
+        <a href="/#pdf">PDF &amp; Documents</a>
+        <a href="/#calculators">Calculators</a>
+        <a href="/#developer">Developer Tools</a>
+      </div>
+      <div>
+        <h4>Site</h4>
+        <a href="/">Home</a>
+        <a href="/#all-tools">All Tools</a>
+        <a href="/sitemap.xml">Sitemap</a>
+      </div>
+    </div>
+    <div class="f-bottom">© 2026 ToolNest · Free tools for everyone · Made with care</div>
+  </div>
+</footer>
+
+<script src="/assets/site.js?v=2"></script>
+<script src="https://cdn.jsdelivr.net/npm/pdf-lib@1.17.1/dist/pdf-lib.min.js" defer></script>
+<script>
+/* PDF Page Numberer — stamp page numbers with PDF-Lib. */
+(function () {
+  'use strict';
+
+  var SLUG = 'pdf-page-numberer';
+  var MARGIN = 36;
+
+  function errId() { return SLUG + '-error'; }
+
+  function setProgress(pct) {
+    try {
+      var wrap = TN.el(SLUG + '-progress');
+      if (!wrap) return;
+      var bar = wrap.querySelector('div');
+      if (pct === null) { TN.hide(wrap); if (bar) bar.style.width = '0%'; }
+      else { TN.show(wrap); if (bar) bar.style.width = pct + '%'; }
+    } catch (e) {}
+  }
+
+  function run() {
+    TN.clearErr(errId());
+    var res = TN.el(SLUG + '-result');
+    if (res) TN.hide(res);
+    var fileEl = TN.el(SLUG + '-file');
+    var file = fileEl && fileEl.files && fileEl.files[0];
+    if (!file) { TN.setErr(errId(), 'Please choose a PDF file first.'); return; }
+    if (typeof PDFLib === 'undefined') {
+      TN.setErr(errId(), 'PDF engine failed to load. Check your connection and reload the page.');
+      return;
+    }
+    var posEl = TN.el(SLUG + '-position');
+    var pos = posEl ? posEl.value : 'bottom-center';
+    var fmtEl = TN.el(SLUG + '-format');
+    var fmt = fmtEl ? fmtEl.value : 'n';
+    var startEl = TN.el(SLUG + '-start');
+    var start = startEl ? parseInt(startEl.value, 10) : 1;
+    if (isNaN(start) || start < 1) start = 1;
+    var sizeEl = TN.el(SLUG + '-size');
+    var size = sizeEl ? parseInt(sizeEl.value, 10) : 10;
+    if (isNaN(size) || size < 6) size = 6;
+    if (size > 48) size = 48;
+
+    var btn = TN.el(SLUG + '-run');
+    if (btn) btn.disabled = true;
+    setProgress(0);
+    (async function () {
+      try {
+        var buf = await TN.readAsArrayBuffer(file);
+        var doc = await PDFLib.PDFDocument.load(buf);
+        var font = await doc.embedFont(PDFLib.StandardFonts.Helvetica);
+        var n = doc.getPageCount();
+        for (var i = 0; i < n; i++) {
+          var page = doc.getPage(i);
+          var w = page.getWidth(), h = page.getHeight();
+          var num = start + i;
+          var text = fmt === 'page-n' ? 'Page ' + num : fmt === 'n-total' ? num + ' / ' + (start + n - 1) : String(num);
+          var tw = font.widthOfTextAtSize(text, size);
+          var x, y;
+          var horiz = pos.split('-')[1]; // left|center|right
+          var vert = pos.split('-')[0]; // top|bottom
+          if (horiz === 'left') x = MARGIN;
+          else if (horiz === 'right') x = w - MARGIN - tw;
+          else x = (w - tw) / 2;
+          y = vert === 'top' ? h - MARGIN - size : MARGIN;
+          page.drawText(text, { x: x, y: y, size: size, font: font, color: PDFLib.rgb(0.25, 0.25, 0.25) });
+          setProgress(Math.round(((i + 1) / n) * 100));
+          await new Promise(function (r) { setTimeout(r, 0); });
+        }
+        var bytes = await doc.save();
+        var name = file.name.replace(/\.pdf$/i, '') || 'document';
+        TN.download(new Blob([bytes], { type: 'application/pdf' }), name + '-numbered.pdf');
+        if (res) {
+          res.innerHTML = '<p class="success">Added page numbers to ' + n + ' page' + (n === 1 ? '' : 's')
+            + ' of <strong>' + TN.esc(file.name) + '</strong>.</p>';
+          TN.show(res);
+        }
+      } catch (e) {
+        TN.setErr(errId(), 'Could not process "' + file.name + '" — is it a valid PDF?');
+      } finally {
+        if (btn) btn.disabled = false;
+        setProgress(null);
+      }
+    })();
+  }
+
+  function clear() {
+    TN.clearErr(errId());
+    var f = TN.el(SLUG + '-file');
+    if (f) f.value = '';
+    var res = TN.el(SLUG + '-result');
+    if (res) TN.hide(res);
+    setProgress(null);
+  }
+
+  function init() {
+    try {
+      if (typeof TN === 'undefined') return;
+      var r = TN.el(SLUG + '-run');
+      if (r) TN.on(r, 'click', run);
+      var c = TN.el(SLUG + '-clear');
+      if (c) TN.on(c, 'click', clear);
+    } catch (e) { /* never throw on load */ }
+  }
+
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init);
+  else init();
+})();
+</script>
+</body>
+</html>

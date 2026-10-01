@@ -1,0 +1,31 @@
+<div class="tool-card">
+  <div class="grid2">
+    <div class="field">
+      <label for="meeting-planner-mine">Your UTC offset</label>
+      <select class="select" id="meeting-planner-mine"></select>
+    </div>
+    <div class="field">
+      <label for="meeting-planner-len">Meeting length (minutes)</label>
+      <input type="number" class="input" id="meeting-planner-len" value="60" min="15" max="480" step="15">
+    </div>
+  </div>
+  <div class="grid2">
+    <div class="field"><label for="meeting-planner-z1">Other zone 1</label><select class="select" id="meeting-planner-z1"></select></div>
+    <div class="field"><label for="meeting-planner-z2">Other zone 2</label><select class="select" id="meeting-planner-z2"></select></div>
+  </div>
+  <div class="grid2">
+    <div class="field"><label for="meeting-planner-z3">Other zone 3</label><select class="select" id="meeting-planner-z3"></select></div>
+    <div class="field"><label for="meeting-planner-z4">Other zone 4</label><select class="select" id="meeting-planner-z4"></select></div>
+  </div>
+  <div class="btn-row">
+    <button type="button" class="btn btn-primary" id="meeting-planner-go">Find slots</button>
+  </div>
+  <div class="error" id="meeting-planner-error"></div>
+  <div class="result" id="meeting-planner-result">
+    <table class="data">
+      <thead><tr id="meeting-planner-head"><th>Your time</th></tr></thead>
+      <tbody id="meeting-planner-body"></tbody>
+    </table>
+    <p class="note">Highlighted rows: the full meeting fits inside 09:00–17:00 in every zone. Offsets are fixed (no daylight saving).</p>
+  </div>
+</div>

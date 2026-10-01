@@ -1,0 +1,51 @@
+<div class="tool-card">
+  <div class="field">
+    <label for="whitespace-cleaner-in">Messy text</label>
+    <textarea class="textarea" id="whitespace-cleaner-in" rows="6" placeholder="Paste messy text here…" spellcheck="false"></textarea>
+  </div>
+  <div class="grid2">
+    <div class="field">
+      <label class="wc-check"><input type="checkbox" id="whitespace-cleaner-opt-crlf" checked> Normalize line endings (CRLF → LF)</label>
+      <label class="wc-check"><input type="checkbox" id="whitespace-cleaner-opt-tabs" checked> Convert tabs to spaces</label>
+      <label class="wc-check"><input type="checkbox" id="whitespace-cleaner-opt-trim" checked> Trim each line's ends</label>
+      <label class="wc-check"><input type="checkbox" id="whitespace-cleaner-opt-trailing" checked> Strip trailing whitespace at end</label>
+    </div>
+    <div>
+      <div class="field">
+        <label for="whitespace-cleaner-opt-tabwidth">Tab width</label>
+        <select class="select" id="whitespace-cleaner-opt-tabwidth">
+          <option value="2">2 spaces</option>
+          <option value="4" selected>4 spaces</option>
+          <option value="8">8 spaces</option>
+        </select>
+      </div>
+      <div class="field">
+        <label for="whitespace-cleaner-opt-blanks">Collapse blank lines</label>
+        <select class="select" id="whitespace-cleaner-opt-blanks">
+          <option value="off">Off</option>
+          <option value="1" selected>Keep max 1</option>
+          <option value="2">Keep max 2</option>
+        </select>
+      </div>
+    </div>
+  </div>
+  <div class="btn-row">
+    <button type="button" class="btn btn-outline btn-sm" id="whitespace-cleaner-copy">Copy output</button>
+  </div>
+  <div class="error" id="whitespace-cleaner-error"></div>
+  <div class="result" id="whitespace-cleaner-result">
+    <div class="stat-cards">
+      <div class="stat-card"><div class="v" id="whitespace-cleaner-cbefore">0</div><div class="l">Chars before</div></div>
+      <div class="stat-card"><div class="v" id="whitespace-cleaner-cafter">0</div><div class="l">Chars after</div></div>
+      <div class="stat-card"><div class="v" id="whitespace-cleaner-lbefore">0</div><div class="l">Lines before</div></div>
+      <div class="stat-card"><div class="v" id="whitespace-cleaner-lafter">0</div><div class="l">Lines after</div></div>
+    </div>
+    <div class="field">
+      <label for="whitespace-cleaner-out">Cleaned text</label>
+      <textarea class="textarea" id="whitespace-cleaner-out" rows="6" readonly spellcheck="false"></textarea>
+    </div>
+  </div>
+  <style>
+    .wc-check{display:flex;align-items:center;gap:8px;margin:8px 0;cursor:pointer;font-weight:normal}
+  </style>
+</div>

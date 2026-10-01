@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pythagorean Theorem Calculator — Free Online | ToolNest</title>
+<meta name="description" content="Solve right-triangle sides, area and angles.">
+<meta name="keywords" content="pythagorean theorem, right triangle calculator, hypotenuse calculator">
+<link rel="canonical" href="https://toolnest.vercel.app/tools/pythagorean-calculator/">
+<meta name="theme-color" content="#07070b">
+<meta property="og:title" content="Pythagorean Theorem Calculator — Free Online | ToolNest">
+<meta property="og:description" content="Solve right-triangle sides, area and angles.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css?v=2">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%23e01111'/><text x='50' y='68' font-size='58' text-anchor='middle' fill='white' font-family='Arial' font-weight='bold'>T</text></svg>">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebApplication","name":"Pythagorean Theorem Calculator","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0"},"url":"https://toolnest.vercel.app/tools/pythagorean-calculator/","description":"Solve right-triangle sides, area and angles."},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Which sides do I enter?","acceptedAnswer":{"@type":"Answer","text":"Leave exactly one of the three boxes empty. The tool solves the missing side; filling all three or only one shows an error."}},{"@type":"Question","name":"Why does it say the hypotenuse must be longest?","acceptedAnswer":{"@type":"Answer","text":"The hypotenuse must be strictly longer than either leg. If your 'c' is shorter, the inputs are checked and rejected."}},{"@type":"Question","name":"How are the angles found?","acceptedAnswer":{"@type":"Answer","text":"With inverse tangent: the acute angles are atan(a/b) and atan(b/a), converted to degrees. The right angle is always 90°."}}]}]}</script>
+</head>
+<body>
+<header class="site-header">
+  <div class="container">
+    <a class="logo" href="/"><span class="logo-mark">T</span> ToolNest</a>
+    <nav class="site-nav">
+      <a href="/">Home</a>
+      <a href="/#categories">Categories</a>
+      <a href="/#all-tools">All Tools</a>
+    </nav>
+  </div>
+</header>
+
+<!-- ADSTERRA-HEADER: paste your Adsterra banner ad code inside the div below -->
+<div class="container"><div class="ad-slot ad-leaderboard" data-ad="header"></div></div>
+
+<main class="container">
+  <nav class="crumbs"><a href="/">Home</a> &rsaquo; <a href="/#math">Math &amp; Numbers</a> &rsaquo; Pythagorean Theorem Calculator</nav>
+  <div class="tool-hero">
+    <h1>Pythagorean Theorem Calculator</h1>
+    <p>Solve right-triangle sides, area and angles.</p>
+  </div>
+
+  <div class="tool-card">
+  <p class="note">Enter any <strong>two</strong> sides and leave the third blank.</p>
+  <div class="grid2">
+    <div class="field">
+      <label for="pythagorean-calculator-a">Leg a</label>
+      <input type="number" class="input" id="pythagorean-calculator-a" step="any" min="0" placeholder="e.g. 3">
+    </div>
+    <div class="field">
+      <label for="pythagorean-calculator-b">Leg b</label>
+      <input type="number" class="input" id="pythagorean-calculator-b" step="any" min="0" placeholder="e.g. 4">
+    </div>
+  </div>
+  <div class="grid2">
+    <div class="field">
+      <label for="pythagorean-calculator-c">Hypotenuse c</label>
+      <input type="number" class="input" id="pythagorean-calculator-c" step="any" min="0" placeholder="e.g. 5">
+    </div>
+    <div class="field">
+      <label>&nbsp;</label>
+      <button type="button" class="btn btn-primary" id="pythagorean-calculator-go">Solve</button>
+    </div>
+  </div>
+  <div class="error" id="pythagorean-calculator-error"></div>
+  <div class="result" id="pythagorean-calculator-result">
+    <div class="stat-cards">
+      <div class="stat-card"><div class="v" id="pythagorean-calculator-side">&ndash;</div><div class="l">Missing side</div></div>
+      <div class="stat-card"><div class="v" id="pythagorean-calculator-area">&ndash;</div><div class="l">Area</div></div>
+      <div class="stat-card"><div class="v" id="pythagorean-calculator-perim">&ndash;</div><div class="l">Perimeter</div></div>
+    </div>
+    <table class="data">
+      <tbody>
+        <tr><th scope="row">Sides a / b / c</th><td id="pythagorean-calculator-sides">&ndash;</td></tr>
+        <tr><th scope="row">Angle opposite a</th><td id="pythagorean-calculator-angA">&ndash;</td></tr>
+        <tr><th scope="row">Angle opposite b</th><td id="pythagorean-calculator-angB">&ndash;</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+
+  <!-- ADSTERRA-INCONTENT: paste your Adsterra native/in-content ad code inside the div below -->
+  <div class="ad-slot" data-ad="incontent"></div>
+
+  <div class="info-grid">
+    <div class="info-card">
+      <h2>📖 How to use</h2>
+      <ol><li>Enter any two of the three sides: leg a, leg b, hypotenuse c.</li><li>Leave the unknown side blank.</li><li>Press Solve.</li><li>Read the missing side, area, perimeter and both acute angles.</li></ol>
+    </div>
+    <div class="info-card">
+      <h2>❓ Frequently asked questions</h2>
+      <div class="faq"><details><summary>Which sides do I enter?</summary><p>Leave exactly one of the three boxes empty. The tool solves the missing side; filling all three or only one shows an error.</p></details><details><summary>Why does it say the hypotenuse must be longest?</summary><p>The hypotenuse must be strictly longer than either leg. If your &#39;c&#39; is shorter, the inputs are checked and rejected.</p></details><details><summary>How are the angles found?</summary><p>With inverse tangent: the acute angles are atan(a/b) and atan(b/a), converted to degrees. The right angle is always 90°.</p></details></div>
+    </div>
+  </div>
+
+  <section class="section">
+    <h2>🔗 Related tools</h2>
+    <div class="tool-grid"><a class="tool-link" href="/tools/fraction-calculator/" data-search="fraction calculator add, subtract, multiply and divide fractions with simplification. fraction calculator add fractions simplify fraction"><span class="t-ico">📐</span><span class="t-body"><b>Fraction Calculator</b><small>Add, subtract, multiply and divide fractions with simplification.</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/gcf-lcm-calculator/" data-search="gcf &amp; lcm calculator greatest common factor and least common multiple of any list. gcf calculator lcm calculator greatest common factor"><span class="t-ico">📐</span><span class="t-body"><b>GCF &amp; LCM Calculator</b><small>Greatest common factor and least common multiple of any list.</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/matrix-calculator/" data-search="matrix calculator add, multiply, invert and transpose 2x2 and 3x3 matrices. matrix calculator matrix inverse matrix multiplication"><span class="t-ico">📐</span><span class="t-body"><b>Matrix Calculator</b><small>Add, multiply, invert and transpose 2x2 and 3x3 matrices.</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/prime-number-checker/" data-search="prime number checker deterministic miller-rabin primality test for big integers. prime checker primality test miller rabin"><span class="t-ico">📐</span><span class="t-body"><b>Prime Number Checker</b><small>Deterministic Miller-Rabin primality test for big integers.</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/quadratic-equation-solver/" data-search="quadratic equation solver solve ax^2+bx+c=0 with full discriminant analysis. quadratic solver quadratic equation discriminant calculator"><span class="t-ico">📐</span><span class="t-body"><b>Quadratic Equation Solver</b><small>Solve ax^2+bx+c=0 with full discriminant analysis.</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/roman-numeral-converter/" data-search="roman numeral converter convert between 1-3999 and roman numerals, both ways. roman numeral converter roman to number number to roman"><span class="t-ico">📐</span><span class="t-body"><b>Roman Numeral Converter</b><small>Convert between 1-3999 and Roman numerals, both ways.</small></span><span class="t-arrow">→</span></a></div>
+  </section>
+</main>
+
+<!-- ADSTERRA-FOOTER: paste your Adsterra footer/banner ad code inside the div below -->
+<div class="container"><div class="ad-slot" data-ad="footer"></div></div>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="f-grid">
+      <div>
+        <span class="brandline"><span class="logo-mark">T</span> ToolNest</span>
+        <p>Free online tools that actually work. No sign-up, no watermarks — and your files never leave your device for client-side tools.</p>
+      </div>
+      <div>
+        <h4>Popular</h4>
+        <a href="/tools/qr-code-generator/">QR Code Generator</a>
+        <a href="/tools/background-remover/">Background Remover</a>
+        <a href="/tools/pdf-merger/">PDF Merger</a>
+        <a href="/tools/word-counter/">Word Counter</a>
+      </div>
+      <div>
+        <h4>Categories</h4>
+        <a href="/#image">Image Tools</a>
+        <a href="/#pdf">PDF &amp; Documents</a>
+        <a href="/#calculators">Calculators</a>
+        <a href="/#developer">Developer Tools</a>
+      </div>
+      <div>
+        <h4>Site</h4>
+        <a href="/">Home</a>
+        <a href="/#all-tools">All Tools</a>
+        <a href="/sitemap.xml">Sitemap</a>
+      </div>
+    </div>
+    <div class="f-bottom">© 2026 ToolNest · Free tools for everyone · Made with care</div>
+  </div>
+</footer>
+
+<script src="/assets/site.js?v=2"></script>
+
+<script>
+(function () {
+  'use strict';
+  var ERR = 'pythagorean-calculator-error';
+
+  function fmt(v) {
+    if (!isFinite(v)) return '–';
+    return parseFloat(v.toPrecision(10)).toString();
+  }
+
+  function read(id) {
+    var el = TN.el(id);
+    var s = el ? el.value.trim() : '';
+    if (s === '') return null;
+    var v = Number(s);
+    if (!isFinite(v)) throw new Error('Sides must be numbers.');
+    if (v <= 0) throw new Error('Sides must be positive.');
+    return v;
+  }
+
+  function solve() {
+    TN.clearErr(ERR);
+    try {
+      var a = read('pythagorean-calculator-a');
+      var b = read('pythagorean-calculator-b');
+      var c = read('pythagorean-calculator-c');
+      var given = [a, b, c].filter(function (v) { return v !== null; }).length;
+      if (given !== 2) throw new Error('Enter exactly two sides — leave the unknown one blank.');
+      var missing;
+      if (a === null) {
+        if (c <= b) throw new Error('Hypotenuse c must be longer than leg b.');
+        a = Math.sqrt(c * c - b * b);
+        missing = 'a = ' + fmt(a);
+      } else if (b === null) {
+        if (c <= a) throw new Error('Hypotenuse c must be longer than leg a.');
+        b = Math.sqrt(c * c - a * a);
+        missing = 'b = ' + fmt(b);
+      } else {
+        c = Math.sqrt(a * a + b * b);
+        missing = 'c = ' + fmt(c);
+      }
+      var area = (a * b) / 2;
+      var perim = a + b + c;
+      var angA = Math.atan(a / b) * 180 / Math.PI;
+      var angB = 90 - angA;
+
+      TN.el('pythagorean-calculator-side').textContent = missing;
+      TN.el('pythagorean-calculator-area').textContent = fmt(area);
+      TN.el('pythagorean-calculator-perim').textContent = fmt(perim);
+      TN.el('pythagorean-calculator-sides').textContent = 'a = ' + fmt(a) + ', b = ' + fmt(b) + ', c = ' + fmt(c);
+      TN.el('pythagorean-calculator-angA').textContent = fmt(angA) + '°';
+      TN.el('pythagorean-calculator-angB').textContent = fmt(angB) + '°';
+    } catch (err) {
+      TN.setErr(ERR, err && err.message ? err.message : 'Invalid input.');
+    }
+  }
+
+  try {
+    TN.on('pythagorean-calculator-go', 'click', solve);
+  } catch (e) { /* never throw on load */ }
+})();
+
+</script>
+</body>
+</html>

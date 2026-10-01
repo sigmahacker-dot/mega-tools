@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Memory Match Game — Free Online | ToolNest</title>
+<meta name="description" content="Flip the cards and match all 8 emoji pairs — with a move counter, timer and win stats.">
+<meta name="keywords" content="memory match game, card matching game, memory game">
+<link rel="canonical" href="https://toolnest.vercel.app/tools/memory-match-game/">
+<meta name="theme-color" content="#07070b">
+<meta property="og:title" content="Memory Match Game — Free Online | ToolNest">
+<meta property="og:description" content="Flip the cards and match all 8 emoji pairs — with a move counter, timer and win stats.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css?v=2">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%23e01111'/><text x='50' y='68' font-size='58' text-anchor='middle' fill='white' font-family='Arial' font-weight='bold'>T</text></svg>">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebApplication","name":"Memory Match Game","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0"},"url":"https://toolnest.vercel.app/tools/memory-match-game/","description":"Flip the cards and match all 8 emoji pairs — with a move counter, timer and win stats."},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Are the cards in the same place each game?","acceptedAnswer":{"@type":"Answer","text":"No, they're shuffled fresh every game with an unbiased Fisher–Yates shuffle."}},{"@type":"Question","name":"How do I play?","acceptedAnswer":{"@type":"Answer","text":"Flip any two cards. Match all 8 pairs to win. Mismatched cards flip back after a moment."}},{"@type":"Question","name":"Is my time tracked?","acceptedAnswer":{"@type":"Answer","text":"Yes — the timer starts on your first flip and stops when you match the last pair."}}]}]}</script>
+</head>
+<body>
+<header class="site-header">
+  <div class="container">
+    <a class="logo" href="/"><span class="logo-mark">T</span> ToolNest</a>
+    <nav class="site-nav">
+      <a href="/">Home</a>
+      <a href="/#categories">Categories</a>
+      <a href="/#all-tools">All Tools</a>
+    </nav>
+  </div>
+</header>
+
+<!-- ADSTERRA-HEADER: paste your Adsterra banner ad code inside the div below -->
+<div class="container"><div class="ad-slot ad-leaderboard" data-ad="header"></div></div>
+
+<main class="container">
+  <nav class="crumbs"><a href="/">Home</a> &rsaquo; <a href="/#fun">Fun &amp; Lifestyle</a> &rsaquo; Memory Match Game</nav>
+  <div class="tool-hero">
+    <h1>Memory Match Game</h1>
+    <p>Flip the cards and match all 8 emoji pairs — with a move counter, timer and win stats.</p>
+  </div>
+
+  <div class="tool-card">
+  <div class="stat-cards">
+    <div class="stat-card"><div class="v" id="memory-match-game-moves">0</div><div class="l">Moves</div></div>
+    <div class="stat-card"><div class="v" id="memory-match-game-time">0:00</div><div class="l">Time</div></div>
+    <div class="stat-card"><div class="v" id="memory-match-game-matched">0/16</div><div class="l">Matched</div></div>
+  </div>
+  <div class="center">
+    <div class="mm-grid" id="memory-match-game-grid"></div>
+  </div>
+  <div class="btn-row center">
+    <button type="button" class="btn btn-primary btn-sm" id="memory-match-game-restart">Restart</button>
+  </div>
+  <div class="error" id="memory-match-game-error"></div>
+  <div class="result hidden center" id="memory-match-game-result"></div>
+  <style>
+    .mm-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;max-width:340px;margin:6px auto}
+    .mm-card{aspect-ratio:1;font-size:1.9rem;border:2px solid #cbd5e1;border-radius:12px;background:#4D7C0F;color:#fff;cursor:pointer;line-height:1}
+    .mm-card:hover{filter:brightness(1.08)}
+    .mm-card .mm-front{display:none}
+    .mm-card.mm-flip,.mm-card.mm-done{background:#f8fafc;border-color:#94a3b8}
+    .mm-card.mm-flip .mm-front,.mm-card.mm-done .mm-front{display:inline}
+    .mm-card.mm-flip .mm-back,.mm-card.mm-done .mm-back{display:none}
+    .mm-card.mm-done{border-color:#16a34a;cursor:default}
+  </style>
+</div>
+
+
+  <!-- ADSTERRA-INCONTENT: paste your Adsterra native/in-content ad code inside the div below -->
+  <div class="ad-slot" data-ad="incontent"></div>
+
+  <div class="info-grid">
+    <div class="info-card">
+      <h2>📖 How to use</h2>
+      <ol><li>Press Start (or just flip your first card).</li><li>Click two cards to flip them.</li><li>Matching pairs stay face-up; misses flip back.</li><li>Match all 8 pairs to see your time and move count.</li></ol>
+    </div>
+    <div class="info-card">
+      <h2>❓ Frequently asked questions</h2>
+      <div class="faq"><details><summary>Are the cards in the same place each game?</summary><p>No, they&#39;re shuffled fresh every game with an unbiased Fisher–Yates shuffle.</p></details><details><summary>How do I play?</summary><p>Flip any two cards. Match all 8 pairs to win. Mismatched cards flip back after a moment.</p></details><details><summary>Is my time tracked?</summary><p>Yes — the timer starts on your first flip and stops when you match the last pair.</p></details></div>
+    </div>
+  </div>
+
+  <section class="section">
+    <h2>🔗 Related tools</h2>
+    <div class="tool-grid"><a class="tool-link" href="/tools/baby-name-generator/" data-search="baby name generator discover baby names by gender and origin — pakistani, arabic, western, indian or turkish — with meanings, random picks and tap-to-copy. baby name generator baby names with meanings muslim baby names boy girl names"><span class="t-ico">🎲</span><span class="t-body"><b>Baby Name Generator</b><small>Discover baby names by gender and origin — Pakistani, Arabic, Western, Indian or Turkish — w…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/battery-status-checker/" data-search="battery status checker check your device&#39;s battery level, charging status and estimated time remaining, with live updates — where your browser supports the battery api. battery status battery level checker laptop battery charging status"><span class="t-ico">🎲</span><span class="t-body"><b>Battery Status Checker</b><small>Check your device&#39;s battery level, charging status and estimated time remaining, with live u…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/birthday-countdown/" data-search="birthday countdown enter your birthday for a live countdown to your next one — days, hours, minutes and seconds — plus the age you&#39;ll turn and a fun message. birthday countdown countdown to birthday how old am i birthday timer"><span class="t-ico">🎲</span><span class="t-body"><b>Birthday Countdown</b><small>Enter your birthday for a live countdown to your next one — days, hours, minutes and seconds…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/calendar-generator/" data-search="calendar generator generate a monthly calendar for any month and year, with correct weekdays, leap years, today&#39;s date highlighted, and previous/next month navigation. calendar generator monthly calendar printable calendar month planner"><span class="t-ico">🎲</span><span class="t-body"><b>Calendar Generator</b><small>Generate a monthly calendar for any month and year, with correct weekdays, leap years, today…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/coin-flip/" data-search="coin flip flip a virtual coin with a fun animated toss. get instant heads or tails results, keep a running tally of both sides, and reset the count whenever you like. coin flip heads or tails coin toss random coin"><span class="t-ico">🎲</span><span class="t-body"><b>Coin Flip</b><small>Flip a virtual coin with a fun animated toss. Get instant Heads or Tails results, keep a run…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/decision-wheel/" data-search="decision wheel spinner can&#39;t decide? put your options on the wheel, give it a spin, and let randomness choose for you. decision wheel spin the wheel random picker wheel"><span class="t-ico">🎲</span><span class="t-body"><b>Decision Wheel Spinner</b><small>Can&#39;t decide? Put your options on the wheel, give it a spin, and let randomness choose for y…</small></span><span class="t-arrow">→</span></a></div>
+  </section>
+</main>
+
+<!-- ADSTERRA-FOOTER: paste your Adsterra footer/banner ad code inside the div below -->
+<div class="container"><div class="ad-slot" data-ad="footer"></div></div>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="f-grid">
+      <div>
+        <span class="brandline"><span class="logo-mark">T</span> ToolNest</span>
+        <p>Free online tools that actually work. No sign-up, no watermarks — and your files never leave your device for client-side tools.</p>
+      </div>
+      <div>
+        <h4>Popular</h4>
+        <a href="/tools/qr-code-generator/">QR Code Generator</a>
+        <a href="/tools/background-remover/">Background Remover</a>
+        <a href="/tools/pdf-merger/">PDF Merger</a>
+        <a href="/tools/word-counter/">Word Counter</a>
+      </div>
+      <div>
+        <h4>Categories</h4>
+        <a href="/#image">Image Tools</a>
+        <a href="/#pdf">PDF &amp; Documents</a>
+        <a href="/#calculators">Calculators</a>
+        <a href="/#developer">Developer Tools</a>
+      </div>
+      <div>
+        <h4>Site</h4>
+        <a href="/">Home</a>
+        <a href="/#all-tools">All Tools</a>
+        <a href="/sitemap.xml">Sitemap</a>
+      </div>
+    </div>
+    <div class="f-bottom">© 2026 ToolNest · Free tools for everyone · Made with care</div>
+  </div>
+</footer>
+
+<script src="/assets/site.js?v=2"></script>
+
+<script>
+(function () {
+  'use strict';
+  var P = 'memory-match-game-';
+  var ERR = P + 'error';
+  var EMOJI = ['🐶', '🐱', '🐭', '🐹', '🐰', '🦊', '🐻', '🐼'];
+  var deck = [], cards = [], flipped = [], matched = 0, moves = 0;
+  var lock = false, started = false, won = false, timerId = null, startTs = 0;
+  function g(id) { return document.getElementById(P + id); }
+  function set(id, v) { var el = g(id); if (el) el.textContent = v; }
+  function shuffle(a) {
+    for (var i = a.length - 1; i > 0; i--) {
+      var j = Math.floor(Math.random() * (i + 1)), t = a[i];
+      a[i] = a[j]; a[j] = t;
+    }
+    return a;
+  }
+  function fmtTime(ms) {
+    var s = Math.floor(ms / 1000);
+    return Math.floor(s / 60) + ':' + ('0' + (s % 60)).slice(-2);
+  }
+  function stopTimer() {
+    if (timerId) { clearInterval(timerId); timerId = null; }
+  }
+  function startTimer() {
+    startTs = Date.now();
+    stopTimer();
+    timerId = setInterval(function () { set('time', fmtTime(Date.now() - startTs)); }, 500);
+  }
+  function buildCards() {
+    var grid = g('grid');
+    if (!grid) return;
+    grid.innerHTML = '';
+    cards = [];
+    deck.forEach(function (e, i) {
+      var b = document.createElement('button');
+      b.type = 'button';
+      b.className = 'mm-card';
+      b.setAttribute('aria-label', 'Card ' + (i + 1));
+      b.innerHTML = '<span class="mm-back">?</span><span class="mm-front">' + e + '</span>';
+      b.addEventListener('click', function () { flip(i); });
+      grid.appendChild(b);
+      cards.push(b);
+    });
+  }
+  function newGame() {
+    stopTimer();
+    deck = shuffle(EMOJI.concat(EMOJI));
+    flipped = []; matched = 0; moves = 0;
+    lock = false; started = false; won = false;
+    set('moves', '0'); set('time', '0:00'); set('matched', '0/16');
+    TN.clearErr(ERR);
+    var res = g('result');
+    if (res) { res.innerHTML = ''; res.classList.add('hidden'); }
+    buildCards();
+  }
+  function flip(i) {
+    if (lock || won || !cards[i]) return;
+    if (flipped.indexOf(i) !== -1 || cards[i].classList.contains('mm-done')) return;
+    if (!started) { started = true; startTimer(); }
+    cards[i].classList.add('mm-flip');
+    flipped.push(i);
+    if (flipped.length < 2) return;
+    moves++;
+    set('moves', String(moves));
+    var a = flipped[0], b = flipped[1];
+    if (deck[a] === deck[b]) {
+      cards[a].classList.add('mm-done');
+      cards[b].classList.add('mm-done');
+      flipped = [];
+      matched += 2;
+      set('matched', matched + '/16');
+      if (matched === 16) win();
+    } else {
+      lock = true;
+      setTimeout(function () {
+        if (cards[a]) cards[a].classList.remove('mm-flip');
+        if (cards[b]) cards[b].classList.remove('mm-flip');
+        flipped = [];
+        lock = false;
+      }, 700);
+    }
+  }
+  function win() {
+    won = true;
+    stopTimer();
+    var secs = fmtTime(Date.now() - startTs);
+    var res = g('result');
+    if (res) {
+      res.innerHTML = '<p>🎉 <strong>You matched them all!</strong><br>Time: ' + secs + ' &nbsp;•&nbsp; Moves: ' + moves + '</p>';
+      res.classList.remove('hidden');
+    }
+  }
+  try {
+    TN.on(P + 'restart', 'click', newGame);
+    newGame();
+  } catch (e) { /* never throw on load */ }
+})();
+
+</script>
+</body>
+</html>

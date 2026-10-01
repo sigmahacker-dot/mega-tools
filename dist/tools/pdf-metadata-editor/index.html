@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PDF Metadata Editor — Free Online | ToolNest</title>
+<meta name="description" content="Read and edit a PDF&#39;s title, author, subject and keywords metadata.">
+<meta name="keywords" content="edit pdf metadata, pdf title author, pdf properties editor">
+<link rel="canonical" href="https://toolnest.vercel.app/tools/pdf-metadata-editor/">
+<meta name="theme-color" content="#07070b">
+<meta property="og:title" content="PDF Metadata Editor — Free Online | ToolNest">
+<meta property="og:description" content="Read and edit a PDF&#39;s title, author, subject and keywords metadata.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css?v=2">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%23e01111'/><text x='50' y='68' font-size='58' text-anchor='middle' fill='white' font-family='Arial' font-weight='bold'>T</text></svg>">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebApplication","name":"PDF Metadata Editor","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0"},"url":"https://toolnest.vercel.app/tools/pdf-metadata-editor/","description":"Read and edit a PDF's title, author, subject and keywords metadata."},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Will other PDF readers see my changes?","acceptedAnswer":{"@type":"Answer","text":"Yes — title, author, subject and keywords are written into the document's info dictionary, so other PDF readers and search tools will see them."}},{"@type":"Question","name":"What happens to fields I leave empty?","acceptedAnswer":{"@type":"Answer","text":"Fields left empty are cleared from the metadata. Only the four editable fields are touched; the document content is never altered."}},{"@type":"Question","name":"Is my PDF uploaded anywhere?","acceptedAnswer":{"@type":"Answer","text":"No. Your PDF is read and rewritten entirely in your browser with PDF-Lib; it is never uploaded."}}]}]}</script>
+</head>
+<body>
+<header class="site-header">
+  <div class="container">
+    <a class="logo" href="/"><span class="logo-mark">T</span> ToolNest</a>
+    <nav class="site-nav">
+      <a href="/">Home</a>
+      <a href="/#categories">Categories</a>
+      <a href="/#all-tools">All Tools</a>
+    </nav>
+  </div>
+</header>
+
+<!-- ADSTERRA-HEADER: paste your Adsterra banner ad code inside the div below -->
+<div class="container"><div class="ad-slot ad-leaderboard" data-ad="header"></div></div>
+
+<main class="container">
+  <nav class="crumbs"><a href="/">Home</a> &rsaquo; <a href="/#pdf">PDF &amp; Documents</a> &rsaquo; PDF Metadata Editor</nav>
+  <div class="tool-hero">
+    <h1>PDF Metadata Editor</h1>
+    <p>Read and edit a PDF&#39;s title, author, subject and keywords metadata.</p>
+  </div>
+
+  <div class="tool-card">
+  <h2>PDF Metadata Editor</h2>
+  <p class="muted">Read and edit a PDF's title, author, subject and keywords.</p>
+  <div class="field">
+    <label for="pdf-metadata-editor-file">Choose a PDF</label>
+    <input type="file" class="input" id="pdf-metadata-editor-file" accept=".pdf,application/pdf">
+  </div>
+  <div class="error" id="pdf-metadata-editor-error"></div>
+  <div class="result hidden" id="pdf-metadata-editor-result">
+    <table class="data">
+      <tbody>
+        <tr><th scope="row">Current title</th><td id="pdf-metadata-editor-cur-title">–</td></tr>
+        <tr><th scope="row">Current author</th><td id="pdf-metadata-editor-cur-author">–</td></tr>
+        <tr><th scope="row">Current subject</th><td id="pdf-metadata-editor-cur-subject">–</td></tr>
+        <tr><th scope="row">Current keywords</th><td id="pdf-metadata-editor-cur-keywords">–</td></tr>
+      </tbody>
+    </table>
+    <div class="field">
+      <label for="pdf-metadata-editor-title">Title</label>
+      <input type="text" class="input" id="pdf-metadata-editor-title" placeholder="Document title">
+    </div>
+    <div class="field">
+      <label for="pdf-metadata-editor-author">Author</label>
+      <input type="text" class="input" id="pdf-metadata-editor-author" placeholder="Author name">
+    </div>
+    <div class="field">
+      <label for="pdf-metadata-editor-subject">Subject</label>
+      <input type="text" class="input" id="pdf-metadata-editor-subject" placeholder="Subject">
+    </div>
+    <div class="field">
+      <label for="pdf-metadata-editor-keywords">Keywords</label>
+      <input type="text" class="input" id="pdf-metadata-editor-keywords" placeholder="comma, separated, keywords">
+    </div>
+    <div class="btn-row">
+      <button class="btn btn-primary" id="pdf-metadata-editor-save">Save metadata</button>
+      <button class="btn btn-outline" id="pdf-metadata-editor-clear">Clear</button>
+    </div>
+    <p class="note">Empty fields are cleared from the metadata. Document content is never modified.</p>
+  </div>
+</div>
+
+  <!-- ADSTERRA-INCONTENT: paste your Adsterra native/in-content ad code inside the div below -->
+  <div class="ad-slot" data-ad="incontent"></div>
+
+  <div class="info-grid">
+    <div class="info-card">
+      <h2>📖 How to use</h2>
+      <ol><li>Choose a PDF file.</li><li>The current title, author, subject and keywords appear below (&quot;not set&quot; if empty).</li><li>Edit the fields you want to change.</li><li>Click &quot;Save metadata&quot; and download the updated PDF.</li></ol>
+    </div>
+    <div class="info-card">
+      <h2>❓ Frequently asked questions</h2>
+      <div class="faq"><details><summary>Will other PDF readers see my changes?</summary><p>Yes — title, author, subject and keywords are written into the document&#39;s info dictionary, so other PDF readers and search tools will see them.</p></details><details><summary>What happens to fields I leave empty?</summary><p>Fields left empty are cleared from the metadata. Only the four editable fields are touched; the document content is never altered.</p></details><details><summary>Is my PDF uploaded anywhere?</summary><p>No. Your PDF is read and rewritten entirely in your browser with PDF-Lib; it is never uploaded.</p></details></div>
+    </div>
+  </div>
+
+  <section class="section">
+    <h2>🔗 Related tools</h2>
+    <div class="tool-grid"><a class="tool-link" href="/tools/esign-pdf/" data-search="esign pdf draw your signature and stamp it onto any page of a pdf. choose the page, position and size with sliders, then download the signed document. esign pdf sign pdf online electronic signature pdf"><span class="t-ico">📄</span><span class="t-body"><b>eSign PDF</b><small>Draw your signature and stamp it onto any page of a PDF. Choose the page, position and size …</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/pdf-compressor/" data-search="pdf compressor shrink a pdf&#39;s file size by re-rendering its pages as compressed images. choose low, medium or high quality and compare sizes before downloading. compress pdf reduce pdf size shrink pdf"><span class="t-ico">📄</span><span class="t-body"><b>PDF Compressor</b><small>Shrink a PDF&#39;s file size by re-rendering its pages as compressed images. Choose Low, Medium …</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/pdf-merger/" data-search="pdf merger combine multiple pdf files into one document. arrange the files in any order, preview each file&#39;s page count, then merge and download the result. merge pdf combine pdf join pdf files"><span class="t-ico">📄</span><span class="t-body"><b>PDF Merger</b><small>Combine multiple PDF files into one document. Arrange the files in any order, preview each f…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/pdf-page-numberer/" data-search="pdf page numberer stamp page numbers onto every page of a pdf — choose position, format and starting number. add page numbers pdf number pdf pages pdf page numbering"><span class="t-ico">📄</span><span class="t-body"><b>PDF Page Numberer</b><small>Stamp page numbers onto every page of a PDF — choose position, format and starting number.</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/pdf-splitter/" data-search="pdf splitter extract specific pages from a pdf. type page ranges like 1-3, 5, 8-10 and get a new pdf containing exactly those pages, in your order. split pdf extract pdf pages pdf page extractor"><span class="t-ico">📄</span><span class="t-body"><b>PDF Splitter</b><small>Extract specific pages from a PDF. Type page ranges like 1-3, 5, 8-10 and get a new PDF cont…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/pdf-to-images/" data-search="pdf to images convert every page of a pdf into png images — download pages individually or all as a zip. pdf to images pdf to png convert pdf pages"><span class="t-ico">📄</span><span class="t-body"><b>PDF to Images</b><small>Convert every page of a PDF into PNG images — download pages individually or all as a ZIP.</small></span><span class="t-arrow">→</span></a></div>
+  </section>
+</main>
+
+<!-- ADSTERRA-FOOTER: paste your Adsterra footer/banner ad code inside the div below -->
+<div class="container"><div class="ad-slot" data-ad="footer"></div></div>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="f-grid">
+      <div>
+        <span class="brandline"><span class="logo-mark">T</span> ToolNest</span>
+        <p>Free online tools that actually work. No sign-up, no watermarks — and your files never leave your device for client-side tools.</p>
+      </div>
+      <div>
+        <h4>Popular</h4>
+        <a href="/tools/qr-code-generator/">QR Code Generator</a>
+        <a href="/tools/background-remover/">Background Remover</a>
+        <a href="/tools/pdf-merger/">PDF Merger</a>
+        <a href="/tools/word-counter/">Word Counter</a>
+      </div>
+      <div>
+        <h4>Categories</h4>
+        <a href="/#image">Image Tools</a>
+        <a href="/#pdf">PDF &amp; Documents</a>
+        <a href="/#calculators">Calculators</a>
+        <a href="/#developer">Developer Tools</a>
+      </div>
+      <div>
+        <h4>Site</h4>
+        <a href="/">Home</a>
+        <a href="/#all-tools">All Tools</a>
+        <a href="/sitemap.xml">Sitemap</a>
+      </div>
+    </div>
+    <div class="f-bottom">© 2026 ToolNest · Free tools for everyone · Made with care</div>
+  </div>
+</footer>
+
+<script src="/assets/site.js?v=2"></script>
+<script src="https://cdn.jsdelivr.net/npm/pdf-lib@1.17.1/dist/pdf-lib.min.js" defer></script>
+<script>
+/* PDF Metadata Editor — read/edit title, author, subject, keywords with PDF-Lib. */
+(function () {
+  'use strict';
+
+  var SLUG = 'pdf-metadata-editor';
+  var state = { doc: null, name: '' };
+
+  function errId() { return SLUG + '-error'; }
+  function set(id, v) { var e = TN.el(id); if (e) e.textContent = v; }
+  function field(k) { var e = TN.el(SLUG + '-' + k); return e ? e.value : ''; }
+
+  function show(v) { return v ? v : 'not set'; }
+
+  function onFile(ev) {
+    TN.clearErr(errId());
+    var f = ev.target && ev.target.files && ev.target.files[0];
+    var res = TN.el(SLUG + '-result');
+    if (!f) { if (res) TN.hide(res); state.doc = null; return; }
+    if (typeof PDFLib === 'undefined') {
+      TN.setErr(errId(), 'PDF engine failed to load. Check your connection and reload the page.');
+      return;
+    }
+    (async function () {
+      try {
+        var buf = await TN.readAsArrayBuffer(f);
+        var doc = await PDFLib.PDFDocument.load(buf);
+        state.doc = doc;
+        state.name = f.name.replace(/\.pdf$/i, '') || 'document';
+        var title = '', author = '', subject = '', keywords = '';
+        try { title = doc.getTitle() || ''; } catch (e) {}
+        try { author = doc.getAuthor() || ''; } catch (e) {}
+        try { subject = doc.getSubject() || ''; } catch (e) {}
+        try { keywords = doc.getKeywords() || ''; } catch (e) {}
+        set(SLUG + '-cur-title', show(title));
+        set(SLUG + '-cur-author', show(author));
+        set(SLUG + '-cur-subject', show(subject));
+        set(SLUG + '-cur-keywords', show(keywords));
+        var t = TN.el(SLUG + '-title'); if (t) t.value = title;
+        var a = TN.el(SLUG + '-author'); if (a) a.value = author;
+        var s = TN.el(SLUG + '-subject'); if (s) s.value = subject;
+        var k = TN.el(SLUG + '-keywords'); if (k) k.value = keywords;
+        if (res) TN.show(res);
+      } catch (e) {
+        state.doc = null;
+        if (res) TN.hide(res);
+        TN.setErr(errId(), 'Could not read "' + f.name + '" — is it a valid PDF?');
+      }
+      try { ev.target.value = ''; } catch (e) {}
+    })();
+  }
+
+  function save() {
+    TN.clearErr(errId());
+    if (!state.doc) { TN.setErr(errId(), 'Choose a PDF file first.'); return; }
+    var btn = TN.el(SLUG + '-save');
+    if (btn) btn.disabled = true;
+    (async function () {
+      try {
+        var doc = state.doc;
+        var title = field('title').trim();
+        var author = field('author').trim();
+        var subject = field('subject').trim();
+        var keywords = field('keywords').trim();
+        // pdf-lib setters accept undefined to clear; use try/catch per field.
+        try { doc.setTitle(title || undefined); } catch (e) {}
+        try { doc.setAuthor(author || undefined); } catch (e) {}
+        try { doc.setSubject(subject || undefined); } catch (e) {}
+        try { doc.setKeywords(keywords ? keywords.split(/\s*,\s*/) : undefined); } catch (e) {}
+        var bytes = await doc.save();
+        TN.download(new Blob([bytes], { type: 'application/pdf' }), state.name + '-metadata.pdf');
+        set(SLUG + '-cur-title', show(title));
+        set(SLUG + '-cur-author', show(author));
+        set(SLUG + '-cur-subject', show(subject));
+        set(SLUG + '-cur-keywords', show(keywords));
+      } catch (e) {
+        TN.setErr(errId(), 'Saving failed: ' + (e && e.message ? e.message : 'unknown error.'));
+      } finally {
+        if (btn) btn.disabled = false;
+      }
+    })();
+  }
+
+  function clear() {
+    TN.clearErr(errId());
+    state.doc = null;
+    state.name = '';
+    var f = TN.el(SLUG + '-file');
+    if (f) f.value = '';
+    ['title', 'author', 'subject', 'keywords'].forEach(function (k) {
+      var e = TN.el(SLUG + '-' + k);
+      if (e) e.value = '';
+    });
+    ['cur-title', 'cur-author', 'cur-subject', 'cur-keywords'].forEach(function (k) { set(SLUG + '-' + k, '–'); });
+    var res = TN.el(SLUG + '-result');
+    if (res) TN.hide(res);
+  }
+
+  function init() {
+    try {
+      if (typeof TN === 'undefined') return;
+      var f = TN.el(SLUG + '-file');
+      if (f) TN.on(f, 'change', onFile);
+      var s = TN.el(SLUG + '-save');
+      if (s) TN.on(s, 'click', save);
+      var c = TN.el(SLUG + '-clear');
+      if (c) TN.on(c, 'click', clear);
+    } catch (e) { /* never throw on load */ }
+  }
+
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init);
+  else init();
+})();
+</script>
+</body>
+</html>

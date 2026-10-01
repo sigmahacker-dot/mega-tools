@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TDEE Calorie Calculator — Free Online | ToolNest</title>
+<meta name="description" content="Estimate your daily calorie needs with the Mifflin-St Jeor equation and get targets for losing, maintaining or gaining weight.">
+<meta name="keywords" content="TDEE calculator, calorie calculator, Mifflin St Jeor, daily calorie needs">
+<link rel="canonical" href="https://toolnest.vercel.app/tools/calorie-calculator/">
+<meta name="theme-color" content="#07070b">
+<meta property="og:title" content="TDEE Calorie Calculator — Free Online | ToolNest">
+<meta property="og:description" content="Estimate your daily calorie needs with the Mifflin-St Jeor equation and get targets for losing, maintaining or gaining weight.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css?v=2">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%23e01111'/><text x='50' y='68' font-size='58' text-anchor='middle' fill='white' font-family='Arial' font-weight='bold'>T</text></svg>">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebApplication","name":"TDEE Calorie Calculator","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0"},"url":"https://toolnest.vercel.app/tools/calorie-calculator/","description":"Estimate your daily calorie needs with the Mifflin-St Jeor equation and get targets for losing, maintaining or gaining weight."},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What is the Mifflin-St Jeor equation?","acceptedAnswer":{"@type":"Answer","text":"Mifflin-St Jeor estimates basal metabolic rate (BMR) from sex, age, height and weight. It is considered one of the most accurate general formulas, but it is still an estimate — individual metabolism varies."}},{"@type":"Question","name":"How is TDEE different from BMR?","acceptedAnswer":{"@type":"Answer","text":"Your BMR is multiplied by an activity factor (1.2 for sedentary up to 1.9 for very active) to estimate total daily energy expenditure (TDEE)."}},{"@type":"Question","name":"Where do the lose/gain targets come from?","acceptedAnswer":{"@type":"Answer","text":"The tool shows TDEE − 500 for weight loss and TDEE + 300 for weight gain — common starting guidelines, not medical advice. Consult a professional before a major diet change."}}]}]}</script>
+</head>
+<body>
+<header class="site-header">
+  <div class="container">
+    <a class="logo" href="/"><span class="logo-mark">T</span> ToolNest</a>
+    <nav class="site-nav">
+      <a href="/">Home</a>
+      <a href="/#categories">Categories</a>
+      <a href="/#all-tools">All Tools</a>
+    </nav>
+  </div>
+</header>
+
+<!-- ADSTERRA-HEADER: paste your Adsterra banner ad code inside the div below -->
+<div class="container"><div class="ad-slot ad-leaderboard" data-ad="header"></div></div>
+
+<main class="container">
+  <nav class="crumbs"><a href="/">Home</a> &rsaquo; <a href="/#health">Health &amp; Fitness</a> &rsaquo; TDEE Calorie Calculator</nav>
+  <div class="tool-hero">
+    <h1>TDEE Calorie Calculator</h1>
+    <p>Estimate your daily calorie needs with the Mifflin-St Jeor equation and get targets for losing, maintaining or gaining weight.</p>
+  </div>
+
+  <div class="tool-card">
+  <div class="grid2">
+    <div class="field">
+      <label for="cal-sex">Sex</label>
+      <select class="select" id="cal-sex">
+        <option value="male">Male</option>
+        <option value="female">Female</option>
+      </select>
+    </div>
+    <div class="field">
+      <label for="cal-age">Age (years)</label>
+      <input type="number" class="input" id="cal-age" min="10" max="100" step="1" placeholder="30">
+    </div>
+    <div class="field">
+      <label for="cal-height">Height (cm)</label>
+      <input type="number" class="input" id="cal-height" min="100" max="250" step="any" placeholder="175">
+    </div>
+    <div class="field">
+      <label for="cal-weight">Weight (kg)</label>
+      <input type="number" class="input" id="cal-weight" min="25" max="400" step="any" placeholder="75">
+    </div>
+  </div>
+  <div class="field">
+    <label for="cal-activity">Activity level</label>
+    <select class="select" id="cal-activity">
+      <option value="1.2">Sedentary — little or no exercise</option>
+      <option value="1.375">Light — light exercise 1–3 days/week</option>
+      <option value="1.55">Moderate — moderate exercise 3–5 days/week</option>
+      <option value="1.725">Active — hard exercise 6–7 days/week</option>
+      <option value="1.9">Very active — physical job + hard exercise</option>
+    </select>
+  </div>
+  <div class="error" id="calorie-calculator-error"></div>
+  <div class="result" id="cal-result">
+    <div class="stat-cards">
+      <div class="stat-card"><div class="v" id="cal-bmr">–</div><div class="l">BMR (kcal/day)</div></div>
+      <div class="stat-card"><div class="v" id="cal-tdee">–</div><div class="l">TDEE (kcal/day)</div></div>
+    </div>
+    <table class="data">
+      <thead><tr><th>Goal</th><th>Daily calories</th></tr></thead>
+      <tbody>
+        <tr><th scope="row">Lose weight (gradual)</th><td id="cal-lose">–</td></tr>
+        <tr><th scope="row">Maintain weight</th><td id="cal-maintain">–</td></tr>
+        <tr><th scope="row">Gain weight (gradual)</th><td id="cal-gain">–</td></tr>
+      </tbody>
+    </table>
+    <p class="note">Estimate only, not medical advice. Individual needs vary — talk to a professional before a major diet change.</p>
+  </div>
+</div>
+
+
+  <!-- ADSTERRA-INCONTENT: paste your Adsterra native/in-content ad code inside the div below -->
+  <div class="ad-slot" data-ad="incontent"></div>
+
+  <div class="info-grid">
+    <div class="info-card">
+      <h2>📖 How to use</h2>
+      <ol><li>Select your sex and enter age, height and weight.</li><li>Choose the activity level closest to your lifestyle.</li><li>Read your BMR and TDEE instantly.</li><li>Use the lose / maintain / gain targets as starting guidelines.</li></ol>
+    </div>
+    <div class="info-card">
+      <h2>❓ Frequently asked questions</h2>
+      <div class="faq"><details><summary>What is the Mifflin-St Jeor equation?</summary><p>Mifflin-St Jeor estimates basal metabolic rate (BMR) from sex, age, height and weight. It is considered one of the most accurate general formulas, but it is still an estimate — individual metabolism varies.</p></details><details><summary>How is TDEE different from BMR?</summary><p>Your BMR is multiplied by an activity factor (1.2 for sedentary up to 1.9 for very active) to estimate total daily energy expenditure (TDEE).</p></details><details><summary>Where do the lose/gain targets come from?</summary><p>The tool shows TDEE − 500 for weight loss and TDEE + 300 for weight gain — common starting guidelines, not medical advice. Consult a professional before a major diet change.</p></details></div>
+    </div>
+  </div>
+
+  <section class="section">
+    <h2>🔗 Related tools</h2>
+    <div class="tool-grid"><a class="tool-link" href="/tools/body-fat-calculator/" data-search="body fat calculator estimate body fat percentage with the us navy tape-measure method and see your fitness category. body fat calculator us navy body fat body fat percentage calculator"><span class="t-ico">❤️</span><span class="t-body"><b>Body Fat Calculator</b><small>Estimate body fat percentage with the US Navy tape-measure method and see your fitness categ…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/heart-rate-zone-calculator/" data-search="heart rate zone calculator find your five karvonen heart-rate training zones from your age and resting heart rate, with bpm ranges. heart rate zones calculator karvonen calculator training zones bpm"><span class="t-ico">❤️</span><span class="t-body"><b>Heart Rate Zone Calculator</b><small>Find your five Karvonen heart-rate training zones from your age and resting heart rate, with…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/macro-calculator/" data-search="macro split calculator split your daily calories into protein, carb and fat targets in grams, calories and percentages for your goal. macro calculator macros calculator protein carbs fat calculator"><span class="t-ico">❤️</span><span class="t-body"><b>Macro Split Calculator</b><small>Split your daily calories into protein, carb and fat targets in grams, calories and percenta…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/one-rep-max-calculator/" data-search="one-rep max calculator estimate your one-rep max from any lift with the epley and brzycki formulas, plus a full percentage table. one rep max calculator 1rm calculator epley brzycki calculator"><span class="t-ico">❤️</span><span class="t-body"><b>One-Rep Max Calculator</b><small>Estimate your one-rep max from any lift with the Epley and Brzycki formulas, plus a full per…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/ovulation-calculator/" data-search="ovulation &amp; fertile window calculator estimate your ovulation day, fertile window and next period from your last period start and cycle length. ovulation calculator fertile window calculator ovulation calendar"><span class="t-ico">❤️</span><span class="t-body"><b>Ovulation &amp; Fertile Window Calculator</b><small>Estimate your ovulation day, fertile window and next period from your last period start and …</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/pace-calculator/" data-search="running pace calculator solve for running pace, finish time or distance — with one-tap presets for 5k, 10k, half and full marathon. running pace calculator race time predictor pace time distance calculator"><span class="t-ico">❤️</span><span class="t-body"><b>Running Pace Calculator</b><small>Solve for running pace, finish time or distance — with one-tap presets for 5K, 10K, half and…</small></span><span class="t-arrow">→</span></a></div>
+  </section>
+</main>
+
+<!-- ADSTERRA-FOOTER: paste your Adsterra footer/banner ad code inside the div below -->
+<div class="container"><div class="ad-slot" data-ad="footer"></div></div>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="f-grid">
+      <div>
+        <span class="brandline"><span class="logo-mark">T</span> ToolNest</span>
+        <p>Free online tools that actually work. No sign-up, no watermarks — and your files never leave your device for client-side tools.</p>
+      </div>
+      <div>
+        <h4>Popular</h4>
+        <a href="/tools/qr-code-generator/">QR Code Generator</a>
+        <a href="/tools/background-remover/">Background Remover</a>
+        <a href="/tools/pdf-merger/">PDF Merger</a>
+        <a href="/tools/word-counter/">Word Counter</a>
+      </div>
+      <div>
+        <h4>Categories</h4>
+        <a href="/#image">Image Tools</a>
+        <a href="/#pdf">PDF &amp; Documents</a>
+        <a href="/#calculators">Calculators</a>
+        <a href="/#developer">Developer Tools</a>
+      </div>
+      <div>
+        <h4>Site</h4>
+        <a href="/">Home</a>
+        <a href="/#all-tools">All Tools</a>
+        <a href="/sitemap.xml">Sitemap</a>
+      </div>
+    </div>
+    <div class="f-bottom">© 2026 ToolNest · Free tools for everyone · Made with care</div>
+  </div>
+</footer>
+
+<script src="/assets/site.js?v=2"></script>
+
+<script>
+(function () {
+  'use strict';
+  var ERR = 'calorie-calculator-error';
+  function whole(n) {
+    try { return Math.round(n).toLocaleString('en-US'); }
+    catch (e) { return String(Math.round(n)); }
+  }
+  function num(id) {
+    var el = TN.el(id);
+    if (!el) return NaN;
+    return parseFloat(el.value);
+  }
+  function calc() {
+    if (!TN.el('cal-age')) return;
+    TN.clearErr(ERR);
+    var sex = TN.el('cal-sex').value;
+    var age = num('cal-age');
+    var height = num('cal-height');
+    var weight = num('cal-weight');
+    var factor = parseFloat(TN.el('cal-activity').value);
+    if (!(age >= 10 && age <= 100)) { TN.setErr(ERR, 'Enter an age between 10 and 100.'); return; }
+    if (!(height >= 100 && height <= 250)) { TN.setErr(ERR, 'Enter a height between 100 and 250 cm.'); return; }
+    if (!(weight >= 25 && weight <= 400)) { TN.setErr(ERR, 'Enter a weight between 25 and 400 kg.'); return; }
+    // Mifflin-St Jeor
+    var bmr = 10 * weight + 6.25 * height - 5 * age + (sex === 'male' ? 5 : -161);
+    var tdee = bmr * factor;
+    TN.el('cal-bmr').textContent = whole(bmr);
+    TN.el('cal-tdee').textContent = whole(tdee);
+    TN.el('cal-lose').textContent = whole(tdee - 500) + ' kcal';
+    TN.el('cal-maintain').textContent = whole(tdee) + ' kcal';
+    TN.el('cal-gain').textContent = whole(tdee + 300) + ' kcal';
+  }
+  try {
+    ['cal-sex', 'cal-age', 'cal-height', 'cal-weight', 'cal-activity'].forEach(function (id) {
+      TN.on(id, 'input', calc);
+      TN.on(id, 'change', calc);
+    });
+    calc();
+  } catch (e) { /* never throw on load */ }
+})();
+
+</script>
+</body>
+</html>

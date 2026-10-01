@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Redirect Rule Generator — Free Online | ToolNest</title>
+<meta name="description" content="301 redirect rules for Apache, Nginx, HTML and JavaScript.">
+<meta name="keywords" content="redirect generator, 301 redirect, htaccess redirect">
+<link rel="canonical" href="https://toolnest.vercel.app/tools/redirect-rule-generator/">
+<meta name="theme-color" content="#07070b">
+<meta property="og:title" content="Redirect Rule Generator — Free Online | ToolNest">
+<meta property="og:description" content="301 redirect rules for Apache, Nginx, HTML and JavaScript.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css?v=2">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%23e01111'/><text x='50' y='68' font-size='58' text-anchor='middle' fill='white' font-family='Arial' font-weight='bold'>T</text></svg>">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebApplication","name":"Redirect Rule Generator","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0"},"url":"https://toolnest.vercel.app/tools/redirect-rule-generator/","description":"301 redirect rules for Apache, Nginx, HTML and JavaScript."},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Which redirect formats are generated?","acceptedAnswer":{"@type":"Answer","text":"Apache .htaccess uses Redirect 301, Nginx uses rewrite … permanent, HTML uses a meta refresh tag, and JavaScript uses window.location.replace — all four are generated from the same list."}},{"@type":"Question","name":"Is a 301 better than a meta refresh?","acceptedAnswer":{"@type":"Answer","text":"A 301 tells browsers and search engines the move is permanent, so link equity passes to the new URL. Meta refresh and JavaScript redirects are client-side fallbacks."}},{"@type":"Question","name":"Are special characters escaped?","acceptedAnswer":{"@type":"Answer","text":"Yes — old paths are regex-escaped for Nginx and quotes are escaped for Apache, HTML and JavaScript output."}}]}]}</script>
+</head>
+<body>
+<header class="site-header">
+  <div class="container">
+    <a class="logo" href="/"><span class="logo-mark">T</span> ToolNest</a>
+    <nav class="site-nav">
+      <a href="/">Home</a>
+      <a href="/#categories">Categories</a>
+      <a href="/#all-tools">All Tools</a>
+    </nav>
+  </div>
+</header>
+
+<!-- ADSTERRA-HEADER: paste your Adsterra banner ad code inside the div below -->
+<div class="container"><div class="ad-slot ad-leaderboard" data-ad="header"></div></div>
+
+<main class="container">
+  <nav class="crumbs"><a href="/">Home</a> &rsaquo; <a href="/#generators">Generators</a> &rsaquo; Redirect Rule Generator</nav>
+  <div class="tool-hero">
+    <h1>Redirect Rule Generator</h1>
+    <p>301 redirect rules for Apache, Nginx, HTML and JavaScript.</p>
+  </div>
+
+  <div class="tool-card">
+  <div class="field">
+    <label for="redirect-rule-generator-input">Redirects — one per line: <span class="muted">old-path -&gt; new-url</span></label>
+    <textarea class="textarea" id="redirect-rule-generator-input" rows="6" placeholder="/old-page -> https://example.com/new-page&#10;/blog/2020/post -> https://example.com/blog/post" spellcheck="false"></textarea>
+  </div>
+  <div class="btn-row">
+    <button class="btn btn-primary" id="redirect-rule-generator-generate">Generate redirects</button>
+  </div>
+  <div class="error" id="redirect-rule-generator-error"></div>
+  <div class="result" id="redirect-rule-generator-result">
+    <div class="btn-row" role="tablist" aria-label="Output format">
+      <button class="btn btn-sm btn-primary" data-tab="apache" type="button">Apache .htaccess</button>
+      <button class="btn btn-sm btn-outline" data-tab="nginx" type="button">Nginx</button>
+      <button class="btn btn-sm btn-outline" data-tab="html" type="button">HTML</button>
+      <button class="btn btn-sm btn-outline" data-tab="js" type="button">JavaScript</button>
+    </div>
+    <div class="field">
+      <label id="redirect-rule-generator-out-label">Apache .htaccess</label>
+      <pre id="redirect-rule-generator-out-apache" style="background:#111827;color:#e5e7eb;padding:12px;border-radius:8px;overflow-x:auto;font-size:13px;"></pre>
+      <pre id="redirect-rule-generator-out-nginx" class="hidden" style="background:#111827;color:#e5e7eb;padding:12px;border-radius:8px;overflow-x:auto;font-size:13px;"></pre>
+      <pre id="redirect-rule-generator-out-html" class="hidden" style="background:#111827;color:#e5e7eb;padding:12px;border-radius:8px;overflow-x:auto;font-size:13px;"></pre>
+      <pre id="redirect-rule-generator-out-js" class="hidden" style="background:#111827;color:#e5e7eb;padding:12px;border-radius:8px;overflow-x:auto;font-size:13px;"></pre>
+    </div>
+    <div class="btn-row">
+      <button class="btn btn-outline" id="redirect-rule-generator-copy">Copy current tab</button>
+    </div>
+    <p class="note">HTML and JavaScript redirects are client-side fallbacks — prefer a real server 301 whenever you can.</p>
+  </div>
+</div>
+
+
+  <!-- ADSTERRA-INCONTENT: paste your Adsterra native/in-content ad code inside the div below -->
+  <div class="ad-slot" data-ad="incontent"></div>
+
+  <div class="info-grid">
+    <div class="info-card">
+      <h2>📖 How to use</h2>
+      <ol><li>Enter one redirect per line as: old-path -&gt; new-url.</li><li>Click Generate redirects.</li><li>Switch between the Apache, Nginx, HTML and JavaScript tabs.</li><li>Copy the block you need into your server config or page.</li></ol>
+    </div>
+    <div class="info-card">
+      <h2>❓ Frequently asked questions</h2>
+      <div class="faq"><details><summary>Which redirect formats are generated?</summary><p>Apache .htaccess uses Redirect 301, Nginx uses rewrite … permanent, HTML uses a meta refresh tag, and JavaScript uses window.location.replace — all four are generated from the same list.</p></details><details><summary>Is a 301 better than a meta refresh?</summary><p>A 301 tells browsers and search engines the move is permanent, so link equity passes to the new URL. Meta refresh and JavaScript redirects are client-side fallbacks.</p></details><details><summary>Are special characters escaped?</summary><p>Yes — old paths are regex-escaped for Nginx and quotes are escaped for Apache, HTML and JavaScript output.</p></details></div>
+    </div>
+  </div>
+
+  <section class="section">
+    <h2>🔗 Related tools</h2>
+    <div class="tool-grid"><a class="tool-link" href="/tools/barcode-generator/" data-search="barcode generator generate barcodes in common formats — code128, code39, ean-13, ean-8, upc and itf-14 — and download them as png or svg images. barcode generator barcode maker ean13 barcode upc barcode generator"><span class="t-ico">⚙️</span><span class="t-body"><b>Barcode Generator</b><small>Generate barcodes in common formats — CODE128, CODE39, EAN-13, EAN-8, UPC and ITF-14 — and d…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/border-radius-generator/" data-search="border radius generator organic blob shapes with an 8-handle radius editor. border radius generator blob shape css border-radius css"><span class="t-ico">⚙️</span><span class="t-body"><b>Border Radius Generator</b><small>Organic blob shapes with an 8-handle radius editor.</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/box-shadow-generator/" data-search="box shadow generator visual css box-shadow builder with live preview. box shadow generator css shadow box-shadow css"><span class="t-ico">⚙️</span><span class="t-body"><b>Box Shadow Generator</b><small>Visual CSS box-shadow builder with live preview.</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/button-generator/" data-search="button generator design a custom button with your text, colors, border radius, padding and shadow — then copy the generated css and use it anywhere. button generator css button maker button css custom button design"><span class="t-ico">⚙️</span><span class="t-body"><b>Button Generator</b><small>Design a custom button with your text, colors, border radius, padding and shadow — then copy…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/color-palette-generator/" data-search="color palette generator harmonious color palettes from one base color. color palette generator color scheme generator color harmonies"><span class="t-ico">⚙️</span><span class="t-body"><b>Color Palette Generator</b><small>Harmonious color palettes from one base color.</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/color-picker/" data-search="color picker pick any color and instantly get its hex, rgb and hsl values with click-to-copy readouts, plus auto-generated shades, tints and a random color button. color picker hex color picker rgb to hex color codes"><span class="t-ico">⚙️</span><span class="t-body"><b>Color Picker</b><small>Pick any color and instantly get its HEX, RGB and HSL values with click-to-copy readouts, pl…</small></span><span class="t-arrow">→</span></a></div>
+  </section>
+</main>
+
+<!-- ADSTERRA-FOOTER: paste your Adsterra footer/banner ad code inside the div below -->
+<div class="container"><div class="ad-slot" data-ad="footer"></div></div>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="f-grid">
+      <div>
+        <span class="brandline"><span class="logo-mark">T</span> ToolNest</span>
+        <p>Free online tools that actually work. No sign-up, no watermarks — and your files never leave your device for client-side tools.</p>
+      </div>
+      <div>
+        <h4>Popular</h4>
+        <a href="/tools/qr-code-generator/">QR Code Generator</a>
+        <a href="/tools/background-remover/">Background Remover</a>
+        <a href="/tools/pdf-merger/">PDF Merger</a>
+        <a href="/tools/word-counter/">Word Counter</a>
+      </div>
+      <div>
+        <h4>Categories</h4>
+        <a href="/#image">Image Tools</a>
+        <a href="/#pdf">PDF &amp; Documents</a>
+        <a href="/#calculators">Calculators</a>
+        <a href="/#developer">Developer Tools</a>
+      </div>
+      <div>
+        <h4>Site</h4>
+        <a href="/">Home</a>
+        <a href="/#all-tools">All Tools</a>
+        <a href="/sitemap.xml">Sitemap</a>
+      </div>
+    </div>
+    <div class="f-bottom">© 2026 ToolNest · Free tools for everyone · Made with care</div>
+  </div>
+</footer>
+
+<script src="/assets/site.js?v=2"></script>
+
+<script>
+(function () {
+  'use strict';
+  var S = 'redirect-rule-generator';
+  var TABS = ['apache', 'nginx', 'html', 'js'];
+  var LABELS = { apache: 'Apache .htaccess', nginx: 'Nginx', html: 'HTML', js: 'JavaScript' };
+  var active = 'apache';
+
+  function escApache(s) { return s.replace(/"/g, '\\"'); }
+  function escNginxPath(s) { return s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'); }
+  function escHtml(s) { return s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;'); }
+  function escJs(s) { return s.replace(/\\/g, '\\\\').replace(/"/g, '\\"').replace(/\n/g, '\\n'); }
+
+  function parse() {
+    var raw = TN.el(S + '-input').value || '';
+    var lines = raw.split('\n');
+    var rules = [];
+    for (var i = 0; i < lines.length; i++) {
+      var line = lines[i].trim();
+      if (!line) continue;
+      var idx = line.indexOf('->');
+      if (idx < 0) throw new Error('Line ' + (i + 1) + ': use the format  old-path -> new-url');
+      var old = line.slice(0, idx).trim();
+      var to = line.slice(idx + 2).trim();
+      if (!old) throw new Error('Line ' + (i + 1) + ': the old path is empty.');
+      if (!to) throw new Error('Line ' + (i + 1) + ': the new URL is empty.');
+      if (old[0] !== '/') throw new Error('Line ' + (i + 1) + ': the old path must start with /');
+      if (!/^https?:\/\//i.test(to)) throw new Error('Line ' + (i + 1) + ': the new URL must start with http:// or https://');
+      rules.push({ old: old, to: to });
+    }
+    if (!rules.length) throw new Error('Enter at least one redirect line first.');
+    return rules;
+  }
+
+  function generate() {
+    try {
+      TN.clearErr(S + '-error');
+      var rules = parse();
+      var apache = '', nginx = '', html = '', js = '';
+      rules.forEach(function (r) {
+        apache += 'Redirect 301 "' + escApache(r.old) + '" "' + escApache(r.to) + '"\n';
+        nginx += 'rewrite ^' + escNginxPath(r.old) + '$ ' + r.to + ' permanent;\n';
+        html += '<!-- ' + r.old + ' -->\n<meta http-equiv="refresh" content="0; url=' + escHtml(r.to) + '">\n';
+        js += '// ' + r.old + '\nwindow.location.replace("' + escJs(r.to) + '");\n';
+      });
+      TN.el(S + '-out-apache').textContent = apache.replace(/\n$/, '');
+      TN.el(S + '-out-nginx').textContent = nginx.replace(/\n$/, '');
+      TN.el(S + '-out-html').textContent = html.replace(/\n$/, '');
+      TN.el(S + '-out-js').textContent = js.replace(/\n$/, '');
+    } catch (e) {
+      TN.setErr(S + '-error', e && e.message ? e.message : 'Could not generate redirects.');
+    }
+  }
+
+  function switchTab(tab) {
+    active = tab;
+    TABS.forEach(function (t) {
+      TN.el(S + '-out-' + t).classList.toggle('hidden', t !== tab);
+    });
+    TN.el(S + '-out-label').textContent = LABELS[tab];
+    var btns = document.querySelectorAll('[data-tab]');
+    for (var i = 0; i < btns.length; i++) {
+      var on = btns[i].getAttribute('data-tab') === tab;
+      btns[i].classList.toggle('btn-primary', on);
+      btns[i].classList.toggle('btn-outline', !on);
+    }
+  }
+
+  function copyTab() {
+    try {
+      var text = TN.el(S + '-out-' + active).textContent || '';
+      if (!text) { TN.setErr(S + '-error', 'Generate redirects first.'); return; }
+      TN.copy(text).then(function (ok) {
+        if (!ok) TN.setErr(S + '-error', 'Copy failed — select the text and copy it manually.');
+        else TN.clearErr(S + '-error');
+      });
+    } catch (e) { TN.setErr(S + '-error', 'Copy failed.'); }
+  }
+
+  function init() {
+    TN.on(S + '-generate', 'click', generate);
+    TN.on(S + '-copy', 'click', copyTab);
+    var btns = document.querySelectorAll('[data-tab]');
+    for (var i = 0; i < btns.length; i++) {
+      (function (b) {
+        b.addEventListener('click', function () { switchTab(b.getAttribute('data-tab')); });
+      })(btns[i]);
+    }
+  }
+  try { init(); } catch (e) { /* never throw on load */ }
+})();
+
+</script>
+</body>
+</html>

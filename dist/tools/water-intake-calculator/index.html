@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Daily Water Intake Calculator — Free Online | ToolNest</title>
+<meta name="description" content="Get a personalized daily hydration target in liters, glasses and fluid ounces from your weight and activity.">
+<meta name="keywords" content="water intake calculator, daily water calculator, hydration calculator">
+<link rel="canonical" href="https://toolnest.vercel.app/tools/water-intake-calculator/">
+<meta name="theme-color" content="#07070b">
+<meta property="og:title" content="Daily Water Intake Calculator — Free Online | ToolNest">
+<meta property="og:description" content="Get a personalized daily hydration target in liters, glasses and fluid ounces from your weight and activity.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css?v=2">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%23e01111'/><text x='50' y='68' font-size='58' text-anchor='middle' fill='white' font-family='Arial' font-weight='bold'>T</text></svg>">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebApplication","name":"Daily Water Intake Calculator","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0"},"url":"https://toolnest.vercel.app/tools/water-intake-calculator/","description":"Get a personalized daily hydration target in liters, glasses and fluid ounces from your weight and activity."},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How is the target calculated?","acceptedAnswer":{"@type":"Answer","text":"It starts at 35 ml per kg of body weight, then adds water for activity level and hot climates. It is a widely used guideline, not a medical prescription."}},{"@type":"Question","name":"What does the hot-climate toggle add?","acceptedAnswer":{"@type":"Answer","text":"The toggle adds a flat 500 ml, roughly what extra sweating in heat costs. On very hot or very active days you may need more — drink to thirst and watch urine color."}},{"@type":"Question","name":"Does food count toward the target?","acceptedAnswer":{"@type":"Answer","text":"Food also provides water (often 20–30% of intake), so the target covers total water needs, not just what you drink."}}]}]}</script>
+</head>
+<body>
+<header class="site-header">
+  <div class="container">
+    <a class="logo" href="/"><span class="logo-mark">T</span> ToolNest</a>
+    <nav class="site-nav">
+      <a href="/">Home</a>
+      <a href="/#categories">Categories</a>
+      <a href="/#all-tools">All Tools</a>
+    </nav>
+  </div>
+</header>
+
+<!-- ADSTERRA-HEADER: paste your Adsterra banner ad code inside the div below -->
+<div class="container"><div class="ad-slot ad-leaderboard" data-ad="header"></div></div>
+
+<main class="container">
+  <nav class="crumbs"><a href="/">Home</a> &rsaquo; <a href="/#health">Health &amp; Fitness</a> &rsaquo; Daily Water Intake Calculator</nav>
+  <div class="tool-hero">
+    <h1>Daily Water Intake Calculator</h1>
+    <p>Get a personalized daily hydration target in liters, glasses and fluid ounces from your weight and activity.</p>
+  </div>
+
+  <div class="tool-card">
+  <div class="grid2">
+    <div class="field">
+      <label for="water-weight">Body weight (kg)</label>
+      <input type="number" class="input" id="water-weight" min="25" max="400" step="any" placeholder="75">
+    </div>
+    <div class="field">
+      <label for="water-activity">Activity level</label>
+      <select class="select" id="water-activity">
+        <option value="sedentary">Sedentary</option>
+        <option value="light">Light activity</option>
+        <option value="moderate">Moderate activity</option>
+        <option value="intense">Intense activity</option>
+      </select>
+    </div>
+  </div>
+  <div class="field">
+    <label><input type="checkbox" id="water-hot"> Hot climate (adds ~500 ml)</label>
+  </div>
+  <div class="error" id="water-intake-calculator-error"></div>
+  <div class="result" id="water-result">
+    <div class="stat-cards">
+      <div class="stat-card"><div class="v" id="water-liters">–</div><div class="l">Liters per day</div></div>
+      <div class="stat-card"><div class="v" id="water-glasses">–</div><div class="l">Glasses (250 ml)</div></div>
+      <div class="stat-card"><div class="v" id="water-oz">–</div><div class="l">Fluid ounces</div></div>
+    </div>
+    <p class="note">Guideline only — food provides water too. On very hot or hard-training days, drink to thirst.</p>
+  </div>
+</div>
+
+
+  <!-- ADSTERRA-INCONTENT: paste your Adsterra native/in-content ad code inside the div below -->
+  <div class="ad-slot" data-ad="incontent"></div>
+
+  <div class="info-grid">
+    <div class="info-card">
+      <h2>📖 How to use</h2>
+      <ol><li>Enter your body weight in kg.</li><li>Choose your activity level.</li><li>Toggle hot climate if it applies.</li><li>Read your target in liters, 250 ml glasses and fluid ounces.</li></ol>
+    </div>
+    <div class="info-card">
+      <h2>❓ Frequently asked questions</h2>
+      <div class="faq"><details><summary>How is the target calculated?</summary><p>It starts at 35 ml per kg of body weight, then adds water for activity level and hot climates. It is a widely used guideline, not a medical prescription.</p></details><details><summary>What does the hot-climate toggle add?</summary><p>The toggle adds a flat 500 ml, roughly what extra sweating in heat costs. On very hot or very active days you may need more — drink to thirst and watch urine color.</p></details><details><summary>Does food count toward the target?</summary><p>Food also provides water (often 20–30% of intake), so the target covers total water needs, not just what you drink.</p></details></div>
+    </div>
+  </div>
+
+  <section class="section">
+    <h2>🔗 Related tools</h2>
+    <div class="tool-grid"><a class="tool-link" href="/tools/body-fat-calculator/" data-search="body fat calculator estimate body fat percentage with the us navy tape-measure method and see your fitness category. body fat calculator us navy body fat body fat percentage calculator"><span class="t-ico">❤️</span><span class="t-body"><b>Body Fat Calculator</b><small>Estimate body fat percentage with the US Navy tape-measure method and see your fitness categ…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/calorie-calculator/" data-search="tdee calorie calculator estimate your daily calorie needs with the mifflin-st jeor equation and get targets for losing, maintaining or gaining weight. tdee calculator calorie calculator mifflin st jeor daily calorie needs"><span class="t-ico">❤️</span><span class="t-body"><b>TDEE Calorie Calculator</b><small>Estimate your daily calorie needs with the Mifflin-St Jeor equation and get targets for losi…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/heart-rate-zone-calculator/" data-search="heart rate zone calculator find your five karvonen heart-rate training zones from your age and resting heart rate, with bpm ranges. heart rate zones calculator karvonen calculator training zones bpm"><span class="t-ico">❤️</span><span class="t-body"><b>Heart Rate Zone Calculator</b><small>Find your five Karvonen heart-rate training zones from your age and resting heart rate, with…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/macro-calculator/" data-search="macro split calculator split your daily calories into protein, carb and fat targets in grams, calories and percentages for your goal. macro calculator macros calculator protein carbs fat calculator"><span class="t-ico">❤️</span><span class="t-body"><b>Macro Split Calculator</b><small>Split your daily calories into protein, carb and fat targets in grams, calories and percenta…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/one-rep-max-calculator/" data-search="one-rep max calculator estimate your one-rep max from any lift with the epley and brzycki formulas, plus a full percentage table. one rep max calculator 1rm calculator epley brzycki calculator"><span class="t-ico">❤️</span><span class="t-body"><b>One-Rep Max Calculator</b><small>Estimate your one-rep max from any lift with the Epley and Brzycki formulas, plus a full per…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/ovulation-calculator/" data-search="ovulation &amp; fertile window calculator estimate your ovulation day, fertile window and next period from your last period start and cycle length. ovulation calculator fertile window calculator ovulation calendar"><span class="t-ico">❤️</span><span class="t-body"><b>Ovulation &amp; Fertile Window Calculator</b><small>Estimate your ovulation day, fertile window and next period from your last period start and …</small></span><span class="t-arrow">→</span></a></div>
+  </section>
+</main>
+
+<!-- ADSTERRA-FOOTER: paste your Adsterra footer/banner ad code inside the div below -->
+<div class="container"><div class="ad-slot" data-ad="footer"></div></div>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="f-grid">
+      <div>
+        <span class="brandline"><span class="logo-mark">T</span> ToolNest</span>
+        <p>Free online tools that actually work. No sign-up, no watermarks — and your files never leave your device for client-side tools.</p>
+      </div>
+      <div>
+        <h4>Popular</h4>
+        <a href="/tools/qr-code-generator/">QR Code Generator</a>
+        <a href="/tools/background-remover/">Background Remover</a>
+        <a href="/tools/pdf-merger/">PDF Merger</a>
+        <a href="/tools/word-counter/">Word Counter</a>
+      </div>
+      <div>
+        <h4>Categories</h4>
+        <a href="/#image">Image Tools</a>
+        <a href="/#pdf">PDF &amp; Documents</a>
+        <a href="/#calculators">Calculators</a>
+        <a href="/#developer">Developer Tools</a>
+      </div>
+      <div>
+        <h4>Site</h4>
+        <a href="/">Home</a>
+        <a href="/#all-tools">All Tools</a>
+        <a href="/sitemap.xml">Sitemap</a>
+      </div>
+    </div>
+    <div class="f-bottom">© 2026 ToolNest · Free tools for everyone · Made with care</div>
+  </div>
+</footer>
+
+<script src="/assets/site.js?v=2"></script>
+
+<script>
+(function () {
+  'use strict';
+  var ERR = 'water-intake-calculator-error';
+  var ACTIVITY_ML = { sedentary: 0, light: 250, moderate: 500, intense: 750 };
+  function r1(n) { return (Math.round(n * 10) / 10).toLocaleString('en-US'); }
+  function calc() {
+    if (!TN.el('water-weight')) return;
+    TN.clearErr(ERR);
+    var weight = parseFloat(TN.el('water-weight').value);
+    if (!(weight >= 25 && weight <= 400)) { TN.setErr(ERR, 'Enter a body weight between 25 and 400 kg.'); return; }
+    var activity = TN.el('water-activity').value;
+    var ml = weight * 35 + (ACTIVITY_ML[activity] || 0);
+    if (TN.el('water-hot').checked) ml += 500;
+    TN.el('water-liters').textContent = r1(ml / 1000) + ' L';
+    TN.el('water-glasses').textContent = r1(ml / 250);
+    TN.el('water-oz').textContent = r1(ml / 29.5735) + ' fl oz';
+  }
+  try {
+    TN.on('water-weight', 'input', calc);
+    TN.on('water-activity', 'change', calc);
+    TN.on('water-hot', 'change', calc);
+    calc();
+  } catch (e) { /* never throw on load */ }
+})();
+
+</script>
+</body>
+</html>

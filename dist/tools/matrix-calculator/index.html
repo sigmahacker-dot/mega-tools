@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Matrix Calculator — Free Online | ToolNest</title>
+<meta name="description" content="Add, multiply, invert and transpose 2x2 and 3x3 matrices.">
+<meta name="keywords" content="matrix calculator, matrix inverse, matrix multiplication">
+<link rel="canonical" href="https://toolnest.vercel.app/tools/matrix-calculator/">
+<meta name="theme-color" content="#07070b">
+<meta property="og:title" content="Matrix Calculator — Free Online | ToolNest">
+<meta property="og:description" content="Add, multiply, invert and transpose 2x2 and 3x3 matrices.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css?v=2">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%23e01111'/><text x='50' y='68' font-size='58' text-anchor='middle' fill='white' font-family='Arial' font-weight='bold'>T</text></svg>">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebApplication","name":"Matrix Calculator","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0"},"url":"https://toolnest.vercel.app/tools/matrix-calculator/","description":"Add, multiply, invert and transpose 2x2 and 3x3 matrices."},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How is the inverse computed?","acceptedAnswer":{"@type":"Answer","text":"By the adjugate-over-determinant formula. If the determinant is zero the matrix is singular (has no inverse) and the tool reports that instead of producing garbage."}},{"@type":"Question","name":"Does it work for 4x4 or larger?","acceptedAnswer":{"@type":"Answer","text":"No. This tool handles 2×2 and 3×3 matrices; larger sizes would need a general elimination algorithm this page does not include."}},{"@type":"Question","name":"Is AxB real matrix multiplication?","acceptedAnswer":{"@type":"Answer","text":"Yes — multiplication uses the standard row-times-column dot products, not element-wise multiplication."}}]}]}</script>
+</head>
+<body>
+<header class="site-header">
+  <div class="container">
+    <a class="logo" href="/"><span class="logo-mark">T</span> ToolNest</a>
+    <nav class="site-nav">
+      <a href="/">Home</a>
+      <a href="/#categories">Categories</a>
+      <a href="/#all-tools">All Tools</a>
+    </nav>
+  </div>
+</header>
+
+<!-- ADSTERRA-HEADER: paste your Adsterra banner ad code inside the div below -->
+<div class="container"><div class="ad-slot ad-leaderboard" data-ad="header"></div></div>
+
+<main class="container">
+  <nav class="crumbs"><a href="/">Home</a> &rsaquo; <a href="/#math">Math &amp; Numbers</a> &rsaquo; Matrix Calculator</nav>
+  <div class="tool-hero">
+    <h1>Matrix Calculator</h1>
+    <p>Add, multiply, invert and transpose 2x2 and 3x3 matrices.</p>
+  </div>
+
+  <div class="tool-card">
+  <div class="field">
+    <label for="matrix-calculator-size">Matrix size</label>
+    <select class="select" id="matrix-calculator-size">
+      <option value="2">2 &times; 2</option>
+      <option value="3">3 &times; 3</option>
+    </select>
+  </div>
+  <div class="grid2">
+    <div class="field">
+      <label>Matrix A</label>
+      <div id="matrix-calculator-grid-a" style="display:grid;gap:6px;"></div>
+    </div>
+    <div class="field">
+      <label>Matrix B</label>
+      <div id="matrix-calculator-grid-b" style="display:grid;gap:6px;"></div>
+    </div>
+  </div>
+  <div class="btn-row" id="matrix-calculator-ops" style="flex-wrap:wrap;gap:8px;">
+    <button type="button" class="btn btn-outline btn-sm" data-op="add">A + B</button>
+    <button type="button" class="btn btn-outline btn-sm" data-op="sub">A &minus; B</button>
+    <button type="button" class="btn btn-outline btn-sm" data-op="mul">A &times; B</button>
+    <button type="button" class="btn btn-outline btn-sm" data-op="detA">det(A)</button>
+    <button type="button" class="btn btn-outline btn-sm" data-op="detB">det(B)</button>
+    <button type="button" class="btn btn-outline btn-sm" data-op="invA">inv(A)</button>
+    <button type="button" class="btn btn-outline btn-sm" data-op="invB">inv(B)</button>
+    <button type="button" class="btn btn-outline btn-sm" data-op="trA">Aᵀ</button>
+    <button type="button" class="btn btn-outline btn-sm" data-op="trB">Bᵀ</button>
+  </div>
+  <div class="error" id="matrix-calculator-error"></div>
+  <div class="result" id="matrix-calculator-result">
+    <div class="field">
+      <label id="matrix-calculator-result-label">Result</label>
+      <div id="matrix-calculator-out" style="display:grid;gap:6px;max-width:280px;"></div>
+    </div>
+    <p class="note" id="matrix-calculator-note"></p>
+  </div>
+</div>
+
+
+  <!-- ADSTERRA-INCONTENT: paste your Adsterra native/in-content ad code inside the div below -->
+  <div class="ad-slot" data-ad="incontent"></div>
+
+  <div class="info-grid">
+    <div class="info-card">
+      <h2>📖 How to use</h2>
+      <ol><li>Choose 2x2 or 3x3 size.</li><li>Type the values of matrices A and B.</li><li>Press an operation: A+B, A−B, AxB, det, inverse or transpose.</li><li>Results appear as a grid below, or an error if the operation is impossible.</li></ol>
+    </div>
+    <div class="info-card">
+      <h2>❓ Frequently asked questions</h2>
+      <div class="faq"><details><summary>How is the inverse computed?</summary><p>By the adjugate-over-determinant formula. If the determinant is zero the matrix is singular (has no inverse) and the tool reports that instead of producing garbage.</p></details><details><summary>Does it work for 4x4 or larger?</summary><p>No. This tool handles 2×2 and 3×3 matrices; larger sizes would need a general elimination algorithm this page does not include.</p></details><details><summary>Is AxB real matrix multiplication?</summary><p>Yes — multiplication uses the standard row-times-column dot products, not element-wise multiplication.</p></details></div>
+    </div>
+  </div>
+
+  <section class="section">
+    <h2>🔗 Related tools</h2>
+    <div class="tool-grid"><a class="tool-link" href="/tools/fraction-calculator/" data-search="fraction calculator add, subtract, multiply and divide fractions with simplification. fraction calculator add fractions simplify fraction"><span class="t-ico">📐</span><span class="t-body"><b>Fraction Calculator</b><small>Add, subtract, multiply and divide fractions with simplification.</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/gcf-lcm-calculator/" data-search="gcf &amp; lcm calculator greatest common factor and least common multiple of any list. gcf calculator lcm calculator greatest common factor"><span class="t-ico">📐</span><span class="t-body"><b>GCF &amp; LCM Calculator</b><small>Greatest common factor and least common multiple of any list.</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/prime-number-checker/" data-search="prime number checker deterministic miller-rabin primality test for big integers. prime checker primality test miller rabin"><span class="t-ico">📐</span><span class="t-body"><b>Prime Number Checker</b><small>Deterministic Miller-Rabin primality test for big integers.</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/pythagorean-calculator/" data-search="pythagorean theorem calculator solve right-triangle sides, area and angles. pythagorean theorem right triangle calculator hypotenuse calculator"><span class="t-ico">📐</span><span class="t-body"><b>Pythagorean Theorem Calculator</b><small>Solve right-triangle sides, area and angles.</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/quadratic-equation-solver/" data-search="quadratic equation solver solve ax^2+bx+c=0 with full discriminant analysis. quadratic solver quadratic equation discriminant calculator"><span class="t-ico">📐</span><span class="t-body"><b>Quadratic Equation Solver</b><small>Solve ax^2+bx+c=0 with full discriminant analysis.</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/roman-numeral-converter/" data-search="roman numeral converter convert between 1-3999 and roman numerals, both ways. roman numeral converter roman to number number to roman"><span class="t-ico">📐</span><span class="t-body"><b>Roman Numeral Converter</b><small>Convert between 1-3999 and Roman numerals, both ways.</small></span><span class="t-arrow">→</span></a></div>
+  </section>
+</main>
+
+<!-- ADSTERRA-FOOTER: paste your Adsterra footer/banner ad code inside the div below -->
+<div class="container"><div class="ad-slot" data-ad="footer"></div></div>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="f-grid">
+      <div>
+        <span class="brandline"><span class="logo-mark">T</span> ToolNest</span>
+        <p>Free online tools that actually work. No sign-up, no watermarks — and your files never leave your device for client-side tools.</p>
+      </div>
+      <div>
+        <h4>Popular</h4>
+        <a href="/tools/qr-code-generator/">QR Code Generator</a>
+        <a href="/tools/background-remover/">Background Remover</a>
+        <a href="/tools/pdf-merger/">PDF Merger</a>
+        <a href="/tools/word-counter/">Word Counter</a>
+      </div>
+      <div>
+        <h4>Categories</h4>
+        <a href="/#image">Image Tools</a>
+        <a href="/#pdf">PDF &amp; Documents</a>
+        <a href="/#calculators">Calculators</a>
+        <a href="/#developer">Developer Tools</a>
+      </div>
+      <div>
+        <h4>Site</h4>
+        <a href="/">Home</a>
+        <a href="/#all-tools">All Tools</a>
+        <a href="/sitemap.xml">Sitemap</a>
+      </div>
+    </div>
+    <div class="f-bottom">© 2026 ToolNest · Free tools for everyone · Made with care</div>
+  </div>
+</footer>
+
+<script src="/assets/site.js?v=2"></script>
+
+<script>
+(function () {
+  'use strict';
+  var ERR = 'matrix-calculator-error';
+
+  function size() {
+    var el = TN.el('matrix-calculator-size');
+    return el ? parseInt(el.value, 10) : 2;
+  }
+
+  function buildGrid(containerId, prefix) {
+    var c = TN.el(containerId);
+    if (!c) return;
+    var n = size();
+    c.style.gridTemplateColumns = 'repeat(' + n + ', 1fr)';
+    c.innerHTML = '';
+    for (var r = 0; r < n; r++) {
+      for (var col = 0; col < n; col++) {
+        var inp = document.createElement('input');
+        inp.type = 'number';
+        inp.step = 'any';
+        inp.className = 'input';
+        inp.id = prefix + '-' + r + '-' + col;
+        inp.value = (r === col) ? '1' : '0';
+        inp.style.textAlign = 'center';
+        c.appendChild(inp);
+      }
+    }
+  }
+
+  function readMatrix(prefix) {
+    var n = size();
+    var m = [];
+    for (var r = 0; r < n; r++) {
+      var row = [];
+      for (var col = 0; col < n; col++) {
+        var el = TN.el(prefix + '-' + r + '-' + col);
+        var v = el ? Number(el.value) : 0;
+        if (!isFinite(v)) throw new Error('All matrix entries must be numbers.');
+        row.push(v);
+      }
+      m.push(row);
+    }
+    return m;
+  }
+
+  function det(m) {
+    if (m.length === 2) return m[0][0] * m[1][1] - m[0][1] * m[1][0];
+    var a = m[0][0], b = m[0][1], c = m[0][2];
+    var d = m[1][0], e = m[1][1], f = m[1][2];
+    var g = m[2][0], h = m[2][1], i = m[2][2];
+    return a * (e * i - f * h) - b * (d * i - f * g) + c * (d * h - e * g);
+  }
+
+  function inverse(m) {
+    var d = det(m);
+    if (Math.abs(d) < 1e-12) throw new Error('Singular matrix — determinant is zero, no inverse exists.');
+    var n = m.length, inv = [];
+    if (n === 2) {
+      return [[m[1][1] / d, -m[0][1] / d], [-m[1][0] / d, m[0][0] / d]];
+    }
+    // 3x3 adjugate
+    var cof = [];
+    for (var r = 0; r < 3; r++) {
+      cof[r] = [];
+      for (var c = 0; c < 3; c++) {
+        var rows = [0, 1, 2].filter(function (x) { return x !== r; });
+        var cols = [0, 1, 2].filter(function (x) { return x !== c; });
+        var minor = m[rows[0]][cols[0]] * m[rows[1]][cols[1]] - m[rows[0]][cols[1]] * m[rows[1]][cols[0]];
+        cof[r][c] = ((r + c) % 2 === 0 ? 1 : -1) * minor;
+      }
+    }
+    for (var i2 = 0; i2 < 3; i2++) {
+      inv[i2] = [];
+      for (var j2 = 0; j2 < 3; j2++) inv[i2][j2] = cof[j2][i2] / d;
+    }
+    return inv;
+  }
+
+  function fmtNum(v) {
+    if (!isFinite(v)) return '–';
+    if (Math.abs(v) < 1e-12) v = 0;
+    return parseFloat(v.toPrecision(8)).toString();
+  }
+
+  function renderMatrix(m, label, note) {
+    var n = m.length;
+    var out = TN.el('matrix-calculator-out');
+    out.style.gridTemplateColumns = 'repeat(' + n + ', 1fr)';
+    out.innerHTML = '';
+    m.forEach(function (row) {
+      row.forEach(function (v) {
+        var cell = document.createElement('div');
+        cell.className = 'stat-card';
+        cell.style.padding = '8px 4px';
+        cell.textContent = fmtNum(v);
+        out.appendChild(cell);
+      });
+    });
+    TN.el('matrix-calculator-result-label').textContent = label;
+    TN.el('matrix-calculator-note').textContent = note || '';
+  }
+
+  function run(op) {
+    TN.clearErr(ERR);
+    try {
+      var A = readMatrix('matrix-calculator-a');
+      var B = readMatrix('matrix-calculator-b');
+      var n = size();
+      var C, label = 'Result', note = '';
+      if (op === 'add' || op === 'sub') {
+        C = A.map(function (row, r) {
+          return row.map(function (v, c) { return op === 'add' ? v + B[r][c] : v - B[r][c]; });
+        });
+        label = op === 'add' ? 'A + B' : 'A − B';
+      } else if (op === 'mul') {
+        C = [];
+        for (var r = 0; r < n; r++) {
+          C[r] = [];
+          for (var c = 0; c < n; c++) {
+            var s = 0;
+            for (var k = 0; k < n; k++) s += A[r][k] * B[k][c];
+            C[r][c] = s;
+          }
+        }
+        label = 'A × B';
+      } else if (op === 'detA' || op === 'detB') {
+        var dd = det(op === 'detA' ? A : B);
+        renderMatrix([[dd]], op === 'detA' ? 'det(A)' : 'det(B)', '');
+        return;
+      } else if (op === 'invA' || op === 'invB') {
+        C = inverse(op === 'invA' ? A : B);
+        label = op === 'invA' ? 'Inverse of A' : 'Inverse of B';
+        note = 'Computed via adjugate ÷ determinant.';
+      } else if (op === 'trA' || op === 'trB') {
+        var M = op === 'trA' ? A : B;
+        C = M[0].map(function (_, c) { return M.map(function (row) { return row[c]; }); });
+        label = op === 'trA' ? 'Transpose of A' : 'Transpose of B';
+      }
+      renderMatrix(C, label, note);
+    } catch (err) {
+      TN.setErr(ERR, err && err.message ? err.message : 'Invalid input.');
+    }
+  }
+
+  function rebuild() {
+    buildGrid('matrix-calculator-grid-a', 'matrix-calculator-a');
+    buildGrid('matrix-calculator-grid-b', 'matrix-calculator-b');
+  }
+
+  try {
+    rebuild();
+    TN.on('matrix-calculator-size', 'change', rebuild);
+    var ops = TN.el('matrix-calculator-ops');
+    if (ops) {
+      TN.qsa('button[data-op]', ops).forEach(function (b) {
+        b.addEventListener('click', function () { run(b.getAttribute('data-op')); });
+      });
+    }
+  } catch (e) { /* never throw on load */ }
+})();
+
+</script>
+</body>
+</html>

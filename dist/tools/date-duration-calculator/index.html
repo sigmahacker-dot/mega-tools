@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Date Duration Calculator — Free Online | ToolNest</title>
+<meta name="description" content="Exact duration between two dates, plus business days.">
+<meta name="keywords" content="date duration calculator, days between dates, business days calculator">
+<link rel="canonical" href="https://toolnest.vercel.app/tools/date-duration-calculator/">
+<meta name="theme-color" content="#07070b">
+<meta property="og:title" content="Date Duration Calculator — Free Online | ToolNest">
+<meta property="og:description" content="Exact duration between two dates, plus business days.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css?v=2">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%23e01111'/><text x='50' y='68' font-size='58' text-anchor='middle' fill='white' font-family='Arial' font-weight='bold'>T</text></svg>">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebApplication","name":"Date Duration Calculator","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0"},"url":"https://toolnest.vercel.app/tools/date-duration-calculator/","description":"Exact duration between two dates, plus business days."},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How is the breakdown computed?","acceptedAnswer":{"@type":"Answer","text":"The years/months/days breakdown walks the calendar forward from the start date (clamping the day to each month's length), so it matches how calendars actually work. Total days is the exact day count including leap days."}},{"@type":"Question","name":"What counts as a business day?","acceptedAnswer":{"@type":"Answer","text":"Business days count Monday-to-Friday only, excluding Saturdays and Sundays. Public holidays are not excluded — only weekends."}},{"@type":"Question","name":"Does the order of the dates matter?","acceptedAnswer":{"@type":"Answer","text":"Yes — the order is normalized automatically, so the result is always the positive duration between the two dates."}}]}]}</script>
+</head>
+<body>
+<header class="site-header">
+  <div class="container">
+    <a class="logo" href="/"><span class="logo-mark">T</span> ToolNest</a>
+    <nav class="site-nav">
+      <a href="/">Home</a>
+      <a href="/#categories">Categories</a>
+      <a href="/#all-tools">All Tools</a>
+    </nav>
+  </div>
+</header>
+
+<!-- ADSTERRA-HEADER: paste your Adsterra banner ad code inside the div below -->
+<div class="container"><div class="ad-slot ad-leaderboard" data-ad="header"></div></div>
+
+<main class="container">
+  <nav class="crumbs"><a href="/">Home</a> &rsaquo; <a href="/#time">Time &amp; Date</a> &rsaquo; Date Duration Calculator</nav>
+  <div class="tool-hero">
+    <h1>Date Duration Calculator</h1>
+    <p>Exact duration between two dates, plus business days.</p>
+  </div>
+
+  <div class="tool-card">
+  <div class="grid2">
+    <div class="field">
+      <label for="date-duration-calculator-from">Start date</label>
+      <input type="date" class="input" id="date-duration-calculator-from">
+    </div>
+    <div class="field">
+      <label for="date-duration-calculator-to">End date</label>
+      <input type="date" class="input" id="date-duration-calculator-to">
+    </div>
+  </div>
+  <div class="field">
+    <label style="display:flex;align-items:center;gap:8px;cursor:pointer;">
+      <input type="checkbox" id="date-duration-calculator-business" checked> Count business days (Mon&ndash;Fri)
+    </label>
+  </div>
+  <div class="btn-row">
+    <button type="button" class="btn btn-primary" id="date-duration-calculator-go">Calculate</button>
+  </div>
+  <div class="error" id="date-duration-calculator-error"></div>
+  <div class="result" id="date-duration-calculator-result">
+    <div class="stat-cards">
+      <div class="stat-card"><div class="v" id="date-duration-calculator-ymd">&ndash;</div><div class="l">Duration</div></div>
+      <div class="stat-card"><div class="v" id="date-duration-calculator-days">&ndash;</div><div class="l">Total days</div></div>
+      <div class="stat-card"><div class="v" id="date-duration-calculator-bdays">&ndash;</div><div class="l">Business days</div></div>
+    </div>
+    <table class="data">
+      <tbody>
+        <tr><th scope="row">Total weeks</th><td id="date-duration-calculator-weeks">&ndash;</td></tr>
+        <tr><th scope="row">Total hours</th><td id="date-duration-calculator-hours">&ndash;</td></tr>
+        <tr><th scope="row">Total minutes</th><td id="date-duration-calculator-minutes">&ndash;</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+
+  <!-- ADSTERRA-INCONTENT: paste your Adsterra native/in-content ad code inside the div below -->
+  <div class="ad-slot" data-ad="incontent"></div>
+
+  <div class="info-grid">
+    <div class="info-card">
+      <h2>📖 How to use</h2>
+      <ol><li>Pick the start and end dates.</li><li>Tick the business-days option to count Mon–Fri too.</li><li>Read the years/months/days breakdown and totals.</li><li>Business days exclude Saturdays and Sundays only.</li></ol>
+    </div>
+    <div class="info-card">
+      <h2>❓ Frequently asked questions</h2>
+      <div class="faq"><details><summary>How is the breakdown computed?</summary><p>The years/months/days breakdown walks the calendar forward from the start date (clamping the day to each month&#39;s length), so it matches how calendars actually work. Total days is the exact day count including leap days.</p></details><details><summary>What counts as a business day?</summary><p>Business days count Monday-to-Friday only, excluding Saturdays and Sundays. Public holidays are not excluded — only weekends.</p></details><details><summary>Does the order of the dates matter?</summary><p>Yes — the order is normalized automatically, so the result is always the positive duration between the two dates.</p></details></div>
+    </div>
+  </div>
+
+  <section class="section">
+    <h2>🔗 Related tools</h2>
+    <div class="tool-grid"><a class="tool-link" href="/tools/event-countdown/" data-search="event countdown timer live ticking countdown to any future date and time. countdown timer event countdown countdown to date"><span class="t-ico">⏰</span><span class="t-body"><b>Event Countdown Timer</b><small>Live ticking countdown to any future date and time.</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/meeting-planner/" data-search="meeting time planner find overlapping work hours across time zones. meeting planner time zone overlap world clock meeting"><span class="t-ico">⏰</span><span class="t-body"><b>Meeting Time Planner</b><small>Find overlapping work hours across time zones.</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/time-addition-calculator/" data-search="time addition calculator add up timesheet durations, one per line. time addition calculator timesheet calculator add hours minutes"><span class="t-ico">⏰</span><span class="t-body"><b>Time Addition Calculator</b><small>Add up timesheet durations, one per line.</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/week-number-calculator/" data-search="week number calculator iso week number, day-of-year and quarter for any date. week number calculator iso week day of year calculator"><span class="t-ico">⏰</span><span class="t-body"><b>Week Number Calculator</b><small>ISO week number, day-of-year and quarter for any date.</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/work-hours-calculator/" data-search="work hours calculator shift totals, weekly hours and overtime from clock times. work hours calculator timesheet hours overtime calculator"><span class="t-ico">⏰</span><span class="t-body"><b>Work Hours Calculator</b><small>Shift totals, weekly hours and overtime from clock times.</small></span><span class="t-arrow">→</span></a></div>
+  </section>
+</main>
+
+<!-- ADSTERRA-FOOTER: paste your Adsterra footer/banner ad code inside the div below -->
+<div class="container"><div class="ad-slot" data-ad="footer"></div></div>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="f-grid">
+      <div>
+        <span class="brandline"><span class="logo-mark">T</span> ToolNest</span>
+        <p>Free online tools that actually work. No sign-up, no watermarks — and your files never leave your device for client-side tools.</p>
+      </div>
+      <div>
+        <h4>Popular</h4>
+        <a href="/tools/qr-code-generator/">QR Code Generator</a>
+        <a href="/tools/background-remover/">Background Remover</a>
+        <a href="/tools/pdf-merger/">PDF Merger</a>
+        <a href="/tools/word-counter/">Word Counter</a>
+      </div>
+      <div>
+        <h4>Categories</h4>
+        <a href="/#image">Image Tools</a>
+        <a href="/#pdf">PDF &amp; Documents</a>
+        <a href="/#calculators">Calculators</a>
+        <a href="/#developer">Developer Tools</a>
+      </div>
+      <div>
+        <h4>Site</h4>
+        <a href="/">Home</a>
+        <a href="/#all-tools">All Tools</a>
+        <a href="/sitemap.xml">Sitemap</a>
+      </div>
+    </div>
+    <div class="f-bottom">© 2026 ToolNest · Free tools for everyone · Made with care</div>
+  </div>
+</footer>
+
+<script src="/assets/site.js?v=2"></script>
+
+<script>
+(function () {
+  'use strict';
+  var ERR = 'date-duration-calculator-error';
+
+  function fmt(n) {
+    try { return n.toLocaleString('en-US'); } catch (e) { return String(n); }
+  }
+
+  function daysInMonth(y, m) { return new Date(y, m + 1, 0).getDate(); }
+
+  function clampAdd(date, years, months) {
+    var y = date.getFullYear() + years;
+    var m = date.getMonth() + months;
+    y += Math.floor(m / 12);
+    m = ((m % 12) + 12) % 12;
+    var d = Math.min(date.getDate(), daysInMonth(y, m));
+    return new Date(y, m, d, 0, 0, 0, 0);
+  }
+
+  function parse(d) {
+    if (!d) return null;
+    var dt = new Date(d + 'T00:00:00');
+    return isNaN(dt.getTime()) ? null : dt;
+  }
+
+  function businessDays(from, to) {
+    // Count Mon–Fri in [from, to)
+    var total = Math.floor((to - from) / 86400000);
+    var fullWeeks = Math.floor(total / 7);
+    var count = fullWeeks * 5;
+    var startDow = from.getDay(); // 0=Sun
+    for (var i = 0; i < total % 7; i++) {
+      var dow = (startDow + i) % 7;
+      if (dow !== 0 && dow !== 6) count++;
+    }
+    return count;
+  }
+
+  function calc() {
+    TN.clearErr(ERR);
+    try {
+      var from = parse(TN.el('date-duration-calculator-from').value);
+      var to = parse(TN.el('date-duration-calculator-to').value);
+      if (!from || !to) throw new Error('Please pick both dates.');
+      var start = from < to ? from : to;
+      var end = from < to ? to : from;
+
+      var y = 0;
+      while (clampAdd(start, y + 1, 0) <= end) y++;
+      var m = 0;
+      while (clampAdd(start, y, m + 1) <= end) m++;
+      var rest = clampAdd(start, y, m);
+      var d = Math.round((end - rest) / 86400000);
+
+      var totalDays = Math.round((end - start) / 86400000);
+      var weeks = Math.floor(totalDays / 7);
+      var remDays = totalDays % 7;
+
+      TN.el('date-duration-calculator-ymd').textContent = y + 'y ' + m + 'm ' + d + 'd';
+      TN.el('date-duration-calculator-days').textContent = fmt(totalDays);
+      var bizEl = TN.el('date-duration-calculator-business');
+      TN.el('date-duration-calculator-bdays').textContent =
+        (bizEl && bizEl.checked) ? fmt(businessDays(start, end)) : '–';
+      TN.el('date-duration-calculator-weeks').textContent = fmt(weeks) + ' weeks' + (remDays ? ' + ' + remDays + ' day' + (remDays === 1 ? '' : 's') : '');
+      TN.el('date-duration-calculator-hours').textContent = fmt(totalDays * 24);
+      TN.el('date-duration-calculator-minutes').textContent = fmt(totalDays * 24 * 60);
+    } catch (err) {
+      TN.setErr(ERR, err && err.message ? err.message : 'Invalid input.');
+    }
+  }
+
+  try {
+    TN.on('date-duration-calculator-go', 'click', calc);
+  } catch (e) { /* never throw on load */ }
+})();
+
+</script>
+</body>
+</html>

@@ -1,0 +1,30 @@
+<div class="tool-card">
+  <h2>Video Frame Extractor</h2>
+  <p class="muted">Scrub through a video and capture any frame as a PNG.</p>
+  <div class="field">
+    <label for="video-frame-extractor-file">Choose a video</label>
+    <input type="file" class="input" id="video-frame-extractor-file" accept="video/*">
+  </div>
+  <div class="error" id="video-frame-extractor-error"></div>
+  <div class="result hidden" id="video-frame-extractor-result">
+    <div class="field">
+      <label>Video</label>
+      <video id="video-frame-extractor-video" controls playsinline style="width:100%;border-radius:8px;background:#000;"></video>
+    </div>
+    <div class="field">
+      <label for="video-frame-extractor-scrub">Scrub: <span id="video-frame-extractor-time">0.0</span> s</label>
+      <input type="range" id="video-frame-extractor-scrub" min="0" max="100" step="0.01" value="0">
+    </div>
+    <div class="btn-row">
+      <button class="btn btn-primary" id="video-frame-extractor-capture">Capture frame</button>
+      <button class="btn btn-outline" id="video-frame-extractor-clear">Clear</button>
+    </div>
+    <div class="field mt" id="video-frame-extractor-preview-wrap" style="display:none;">
+      <label>Captured frame</label>
+      <canvas class="preview" id="video-frame-extractor-canvas" style="max-width:100%;border:1px solid #e5e7eb;border-radius:8px;"></canvas>
+      <div class="btn-row mt">
+        <button class="btn btn-outline" id="video-frame-extractor-download">Download PNG</button>
+      </div>
+    </div>
+  </div>
+</div>

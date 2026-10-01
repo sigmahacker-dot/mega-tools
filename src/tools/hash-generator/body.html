@@ -1,0 +1,30 @@
+<div class="tool-card">
+  <h2>Hash Generator</h2>
+  <p class="muted">SHA-256 / SHA-384 / SHA-512 / SHA-1 / MD5 digests for text or a file — computed locally.</p>
+  <div class="field">
+    <label for="hash-generator-text">Text (optional if you choose a file)</label>
+    <textarea class="textarea" id="hash-generator-text" rows="4" placeholder="Type or paste text to hash..."></textarea>
+  </div>
+  <div class="field">
+    <label for="hash-generator-file">Or choose a file</label>
+    <input type="file" class="input" id="hash-generator-file">
+    <p class="muted" id="hash-generator-filename"></p>
+  </div>
+  <div class="btn-row mt">
+    <button class="btn btn-primary" id="hash-generator-run">Generate hashes</button>
+    <button class="btn btn-outline" id="hash-generator-clear">Clear</button>
+  </div>
+  <div class="error" id="hash-generator-error"></div>
+  <div class="result" id="hash-generator-result">
+    <table class="data">
+      <tbody>
+        <tr><th scope="row">MD5</th><td><code id="hash-generator-md5" style="word-break:break-all;">–</code> <button class="btn btn-sm btn-outline" data-copy="hash-generator-md5">Copy</button></td></tr>
+        <tr><th scope="row">SHA-1</th><td><code id="hash-generator-sha1" style="word-break:break-all;">–</code> <button class="btn btn-sm btn-outline" data-copy="hash-generator-sha1">Copy</button></td></tr>
+        <tr><th scope="row">SHA-256</th><td><code id="hash-generator-sha256" style="word-break:break-all;">–</code> <button class="btn btn-sm btn-outline" data-copy="hash-generator-sha256">Copy</button></td></tr>
+        <tr><th scope="row">SHA-384</th><td><code id="hash-generator-sha384" style="word-break:break-all;">–</code> <button class="btn btn-sm btn-outline" data-copy="hash-generator-sha384">Copy</button></td></tr>
+        <tr><th scope="row">SHA-512</th><td><code id="hash-generator-sha512" style="word-break:break-all;">–</code> <button class="btn btn-sm btn-outline" data-copy="hash-generator-sha512">Copy</button></td></tr>
+      </tbody>
+    </table>
+    <p class="note">MD5 and SHA-1 are cryptographically broken — use them only for checksums, not security.</p>
+  </div>
+</div>

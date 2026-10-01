@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hangman Game — Free Online | ToolNest</title>
+<meta name="description" content="Classic Hangman: guess the hidden word letter by letter before the drawing is complete.">
+<meta name="keywords" content="hangman game, play hangman, hangman word game">
+<link rel="canonical" href="https://toolnest.vercel.app/tools/hangman-game/">
+<meta name="theme-color" content="#07070b">
+<meta property="og:title" content="Hangman Game — Free Online | ToolNest">
+<meta property="og:description" content="Classic Hangman: guess the hidden word letter by letter before the drawing is complete.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css?v=2">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%23e01111'/><text x='50' y='68' font-size='58' text-anchor='middle' fill='white' font-family='Arial' font-weight='bold'>T</text></svg>">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebApplication","name":"Hangman Game","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0"},"url":"https://toolnest.vercel.app/tools/hangman-game/","description":"Classic Hangman: guess the hidden word letter by letter before the drawing is complete."},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How many wrong guesses do I get?","acceptedAnswer":{"@type":"Answer","text":"You get 6 wrong guesses: head, body, two arms and two legs. The 6th wrong guess ends the game."}},{"@type":"Question","name":"Where do the words come from?","acceptedAnswer":{"@type":"Answer","text":"About 100 everyday English words across animals, food, sports, objects, nature and professions."}},{"@type":"Question","name":"Can I skip a word?","acceptedAnswer":{"@type":"Answer","text":"Click “New word” any time for a fresh word and a clean gallows."}}]}]}</script>
+</head>
+<body>
+<header class="site-header">
+  <div class="container">
+    <a class="logo" href="/"><span class="logo-mark">T</span> ToolNest</a>
+    <nav class="site-nav">
+      <a href="/">Home</a>
+      <a href="/#categories">Categories</a>
+      <a href="/#all-tools">All Tools</a>
+    </nav>
+  </div>
+</header>
+
+<!-- ADSTERRA-HEADER: paste your Adsterra banner ad code inside the div below -->
+<div class="container"><div class="ad-slot ad-leaderboard" data-ad="header"></div></div>
+
+<main class="container">
+  <nav class="crumbs"><a href="/">Home</a> &rsaquo; <a href="/#fun">Fun &amp; Lifestyle</a> &rsaquo; Hangman Game</nav>
+  <div class="tool-hero">
+    <h1>Hangman Game</h1>
+    <p>Classic Hangman: guess the hidden word letter by letter before the drawing is complete.</p>
+  </div>
+
+  <div class="tool-card">
+  <div class="center">
+    <canvas id="hangman-game-canvas" width="240" height="200" aria-label="Hangman drawing"></canvas>
+  </div>
+  <p class="center">Category: <strong id="hangman-game-category">–</strong> &nbsp;•&nbsp; Wrong guesses: <strong id="hangman-game-wrong">0 / 6</strong></p>
+  <div class="center hg-word" id="hangman-game-word"></div>
+  <div class="center">
+    <div class="hg-letters" id="hangman-game-letters"></div>
+  </div>
+  <div class="btn-row center">
+    <button type="button" class="btn btn-primary btn-sm" id="hangman-game-new">New word</button>
+  </div>
+  <div class="error" id="hangman-game-error"></div>
+  <div class="result hidden center" id="hangman-game-result"></div>
+  <style>
+    #hangman-game-canvas{max-width:100%;height:auto}
+    .hg-word{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin:10px 0}
+    .hg-slot{width:34px;height:44px;border-bottom:3px solid #0f172a;font-size:1.6rem;font-weight:700;display:flex;align-items:center;justify-content:center;color:#0f172a}
+    .hg-letters{display:grid;grid-template-columns:repeat(9,1fr);gap:6px;max-width:460px;margin:8px auto}
+    .hg-letters button{height:40px;font-weight:700;border:2px solid #cbd5e1;border-radius:8px;background:#f8fafc;cursor:pointer;color:#0f172a}
+    .hg-letters button:disabled{cursor:default;opacity:.4}
+    .hg-letters button.good{background:#dcfce7;border-color:#16a34a;opacity:1;color:#15803d}
+    .hg-letters button.bad{background:#fee2e2;border-color:#dc2626;opacity:1;color:#b91c1c}
+  </style>
+</div>
+
+
+  <!-- ADSTERRA-INCONTENT: paste your Adsterra native/in-content ad code inside the div below -->
+  <div class="ad-slot" data-ad="incontent"></div>
+
+  <div class="info-grid">
+    <div class="info-card">
+      <h2>📖 How to use</h2>
+      <ol><li>A random word is picked and its category shown.</li><li>Click letters A–Z to guess.</li><li>Wrong guesses draw the hangman, one part at a time.</li><li>Guess the word before 6 wrong guesses.</li></ol>
+    </div>
+    <div class="info-card">
+      <h2>❓ Frequently asked questions</h2>
+      <div class="faq"><details><summary>How many wrong guesses do I get?</summary><p>You get 6 wrong guesses: head, body, two arms and two legs. The 6th wrong guess ends the game.</p></details><details><summary>Where do the words come from?</summary><p>About 100 everyday English words across animals, food, sports, objects, nature and professions.</p></details><details><summary>Can I skip a word?</summary><p>Click “New word” any time for a fresh word and a clean gallows.</p></details></div>
+    </div>
+  </div>
+
+  <section class="section">
+    <h2>🔗 Related tools</h2>
+    <div class="tool-grid"><a class="tool-link" href="/tools/baby-name-generator/" data-search="baby name generator discover baby names by gender and origin — pakistani, arabic, western, indian or turkish — with meanings, random picks and tap-to-copy. baby name generator baby names with meanings muslim baby names boy girl names"><span class="t-ico">🎲</span><span class="t-body"><b>Baby Name Generator</b><small>Discover baby names by gender and origin — Pakistani, Arabic, Western, Indian or Turkish — w…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/battery-status-checker/" data-search="battery status checker check your device&#39;s battery level, charging status and estimated time remaining, with live updates — where your browser supports the battery api. battery status battery level checker laptop battery charging status"><span class="t-ico">🎲</span><span class="t-body"><b>Battery Status Checker</b><small>Check your device&#39;s battery level, charging status and estimated time remaining, with live u…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/birthday-countdown/" data-search="birthday countdown enter your birthday for a live countdown to your next one — days, hours, minutes and seconds — plus the age you&#39;ll turn and a fun message. birthday countdown countdown to birthday how old am i birthday timer"><span class="t-ico">🎲</span><span class="t-body"><b>Birthday Countdown</b><small>Enter your birthday for a live countdown to your next one — days, hours, minutes and seconds…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/calendar-generator/" data-search="calendar generator generate a monthly calendar for any month and year, with correct weekdays, leap years, today&#39;s date highlighted, and previous/next month navigation. calendar generator monthly calendar printable calendar month planner"><span class="t-ico">🎲</span><span class="t-body"><b>Calendar Generator</b><small>Generate a monthly calendar for any month and year, with correct weekdays, leap years, today…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/coin-flip/" data-search="coin flip flip a virtual coin with a fun animated toss. get instant heads or tails results, keep a running tally of both sides, and reset the count whenever you like. coin flip heads or tails coin toss random coin"><span class="t-ico">🎲</span><span class="t-body"><b>Coin Flip</b><small>Flip a virtual coin with a fun animated toss. Get instant Heads or Tails results, keep a run…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/decision-wheel/" data-search="decision wheel spinner can&#39;t decide? put your options on the wheel, give it a spin, and let randomness choose for you. decision wheel spin the wheel random picker wheel"><span class="t-ico">🎲</span><span class="t-body"><b>Decision Wheel Spinner</b><small>Can&#39;t decide? Put your options on the wheel, give it a spin, and let randomness choose for y…</small></span><span class="t-arrow">→</span></a></div>
+  </section>
+</main>
+
+<!-- ADSTERRA-FOOTER: paste your Adsterra footer/banner ad code inside the div below -->
+<div class="container"><div class="ad-slot" data-ad="footer"></div></div>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="f-grid">
+      <div>
+        <span class="brandline"><span class="logo-mark">T</span> ToolNest</span>
+        <p>Free online tools that actually work. No sign-up, no watermarks — and your files never leave your device for client-side tools.</p>
+      </div>
+      <div>
+        <h4>Popular</h4>
+        <a href="/tools/qr-code-generator/">QR Code Generator</a>
+        <a href="/tools/background-remover/">Background Remover</a>
+        <a href="/tools/pdf-merger/">PDF Merger</a>
+        <a href="/tools/word-counter/">Word Counter</a>
+      </div>
+      <div>
+        <h4>Categories</h4>
+        <a href="/#image">Image Tools</a>
+        <a href="/#pdf">PDF &amp; Documents</a>
+        <a href="/#calculators">Calculators</a>
+        <a href="/#developer">Developer Tools</a>
+      </div>
+      <div>
+        <h4>Site</h4>
+        <a href="/">Home</a>
+        <a href="/#all-tools">All Tools</a>
+        <a href="/sitemap.xml">Sitemap</a>
+      </div>
+    </div>
+    <div class="f-bottom">© 2026 ToolNest · Free tools for everyone · Made with care</div>
+  </div>
+</footer>
+
+<script src="/assets/site.js?v=2"></script>
+
+<script>
+(function () {
+  'use strict';
+  var P = 'hangman-game-';
+  var ERR = P + 'error';
+  var WORDS = [
+    ['ELEPHANT', 'Animals'], ['GIRAFFE', 'Animals'], ['PENGUIN', 'Animals'], ['KANGAROO', 'Animals'],
+    ['DOLPHIN', 'Animals'], ['CHEETAH', 'Animals'], ['CROCODILE', 'Animals'], ['BUTTERFLY', 'Animals'],
+    ['OCTOPUS', 'Animals'], ['LEOPARD', 'Animals'], ['RABBIT', 'Animals'], ['TIGER', 'Animals'],
+    ['ZEBRA', 'Animals'], ['MONKEY', 'Animals'], ['SNAKE', 'Animals'], ['WHALE', 'Animals'],
+    ['EAGLE', 'Animals'], ['SHARK', 'Animals'], ['BEAR', 'Animals'], ['WOLF', 'Animals'],
+    ['PIZZA', 'Food'], ['SPAGHETTI', 'Food'], ['CHOCOLATE', 'Food'], ['SANDWICH', 'Food'],
+    ['PANCAKE', 'Food'], ['WATERMELON', 'Food'], ['POPCORN', 'Food'], ['CHEESE', 'Food'],
+    ['BURGER', 'Food'], ['SALAD', 'Food'], ['COOKIE', 'Food'], ['HONEY', 'Food'],
+    ['BREAD', 'Food'], ['APPLE', 'Food'], ['BANANA', 'Food'], ['ORANGE', 'Food'],
+    ['GRAPE', 'Food'], ['CARROT', 'Food'], ['POTATO', 'Food'], ['TOMATO', 'Food'],
+    ['SOCCER', 'Sports'], ['TENNIS', 'Sports'], ['CRICKET', 'Sports'], ['RUGBY', 'Sports'],
+    ['BOXING', 'Sports'], ['SWIMMING', 'Sports'], ['CYCLING', 'Sports'], ['RUNNING', 'Sports'],
+    ['GOLF', 'Sports'], ['HOCKEY', 'Sports'], ['SKIING', 'Sports'], ['SURFING', 'Sports'],
+    ['KARATE', 'Sports'], ['YOGA', 'Sports'], ['DARTS', 'Sports'],
+    ['LAPTOP', 'Objects'], ['GUITAR', 'Objects'], ['UMBRELLA', 'Objects'], ['CAMERA', 'Objects'],
+    ['ROCKET', 'Objects'], ['CASTLE', 'Objects'], ['CANDLE', 'Objects'], ['MIRROR', 'Objects'],
+    ['PILLOW', 'Objects'], ['BLANKET', 'Objects'], ['BOTTLE', 'Objects'], ['CHAIR', 'Objects'],
+    ['TABLE', 'Objects'], ['PHONE', 'Objects'], ['CLOCK', 'Objects'], ['BOOK', 'Objects'],
+    ['PENCIL', 'Objects'], ['KEYBOARD', 'Objects'], ['WINDOW', 'Objects'], ['BRIDGE', 'Objects'],
+    ['MOUNTAIN', 'Nature'], ['RIVER', 'Nature'], ['DESERT', 'Nature'], ['VOLCANO', 'Nature'],
+    ['RAINBOW', 'Nature'], ['THUNDER', 'Nature'], ['OCEAN', 'Nature'], ['FOREST', 'Nature'],
+    ['CLOUD', 'Nature'], ['STORM', 'Nature'], ['SNOWFLAKE', 'Nature'], ['WATERFALL', 'Nature'],
+    ['SUNSET', 'Nature'], ['MEADOW', 'Nature'], ['ISLAND', 'Nature'],
+    ['DOCTOR', 'Professions'], ['PILOT', 'Professions'], ['CHEF', 'Professions'], ['FARMER', 'Professions'],
+    ['ASTRONAUT', 'Professions'], ['TEACHER', 'Professions'], ['BAKER', 'Professions'], ['DRIVER', 'Professions'],
+    ['NURSE', 'Professions'], ['ARTIST', 'Professions']
+  ];
+  var word = '', category = '', guessed = [], wrong = 0, finished = false, letterBtns = {};
+  function g(id) { return document.getElementById(P + id); }
+  function set(id, v) { var el = g(id); if (el) el.textContent = v; }
+  var canvas = g('canvas'), ctx = canvas ? canvas.getContext('2d') : null;
+  function line(x1, y1, x2, y2) {
+    ctx.beginPath(); ctx.moveTo(x1, y1); ctx.lineTo(x2, y2); ctx.stroke();
+  }
+  function drawGallows(stage) {
+    if (!ctx) return;
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    ctx.strokeStyle = '#0f172a'; ctx.lineWidth = 4; ctx.lineCap = 'round';
+    line(20, 188, 130, 188);
+    line(55, 188, 55, 20);
+    line(55, 20, 155, 20);
+    line(155, 20, 155, 48);
+    if (stage >= 1) { ctx.beginPath(); ctx.arc(155, 68, 20, 0, Math.PI * 2); ctx.stroke(); }
+    if (stage >= 2) line(155, 88, 155, 132);
+    if (stage >= 3) line(155, 98, 130, 118);
+    if (stage >= 4) line(155, 98, 180, 118);
+    if (stage >= 5) line(155, 132, 135, 162);
+    if (stage >= 6) line(155, 132, 175, 162);
+  }
+  function renderWord(reveal) {
+    var w = g('word');
+    if (!w) return;
+    var html = '';
+    for (var i = 0; i < word.length; i++) {
+      var ch = word.charAt(i);
+      html += '<span class="hg-slot">' + (reveal || guessed.indexOf(ch) !== -1 ? ch : '&nbsp;') + '</span>';
+    }
+    w.innerHTML = html;
+  }
+  function buildLetters() {
+    var box = g('letters');
+    if (!box) return;
+    box.innerHTML = '';
+    letterBtns = {};
+    for (var c = 65; c <= 90; c++) {
+      (function (L) {
+        var b = document.createElement('button');
+        b.type = 'button';
+        b.textContent = L;
+        b.setAttribute('aria-label', 'Guess ' + L);
+        b.addEventListener('click', function () { guess(L); });
+        box.appendChild(b);
+        letterBtns[L] = b;
+      })(String.fromCharCode(c));
+    }
+  }
+  function showResult(html) {
+    var res = g('result');
+    if (res) { res.innerHTML = html; res.classList.remove('hidden'); }
+  }
+  function hideResult() {
+    var res = g('result');
+    if (res) { res.innerHTML = ''; res.classList.add('hidden'); }
+  }
+  function guess(L) {
+    if (finished || guessed.indexOf(L) !== -1) return;
+    guessed.push(L);
+    var btn = letterBtns[L];
+    var hit = word.indexOf(L) !== -1;
+    if (btn) { btn.disabled = true; btn.classList.add(hit ? 'good' : 'bad'); }
+    if (!hit) {
+      wrong++;
+      set('wrong', wrong + ' / 6');
+      drawGallows(wrong);
+      if (wrong >= 6) {
+        finished = true;
+        renderWord(true);
+        showResult('<p>💀 <strong>Game over!</strong> The word was <strong>' + word + '</strong>.</p>');
+      }
+      return;
+    }
+    renderWord(false);
+    var allFound = true;
+    for (var i = 0; i < word.length; i++) {
+      if (guessed.indexOf(word.charAt(i)) === -1) { allFound = false; break; }
+    }
+    if (allFound) {
+      finished = true;
+      showResult('<p>🎉 <strong>You guessed it!</strong> The word was <strong>' + word + '</strong> with ' + wrong + ' wrong guess' + (wrong === 1 ? '' : 'es') + '.</p>');
+    }
+  }
+  function newWord() {
+    var pick = WORDS[Math.floor(Math.random() * WORDS.length)];
+    word = pick[0]; category = pick[1];
+    guessed = []; wrong = 0; finished = false;
+    TN.clearErr(ERR);
+    hideResult();
+    set('category', category);
+    set('wrong', '0 / 6');
+    drawGallows(0);
+    buildLetters();
+    renderWord(false);
+  }
+  try {
+    TN.on(P + 'new', 'click', newWord);
+    document.addEventListener('keydown', function (e) {
+      var k = String(e.key || '').toUpperCase();
+      if (/^[A-Z]$/.test(k) && letterBtns[k] && !letterBtns[k].disabled) guess(k);
+    });
+    newWord();
+  } catch (e) { /* never throw on load */ }
+})();
+
+</script>
+</body>
+</html>

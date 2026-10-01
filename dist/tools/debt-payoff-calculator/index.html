@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Debt Payoff Planner — Free Online | ToolNest</title>
+<meta name="description" content="Build an avalanche payoff plan for up to 8 debts: payoff order, months to debt-free and total interest paid.">
+<meta name="keywords" content="debt payoff calculator, debt avalanche calculator, pay off debt planner">
+<link rel="canonical" href="https://toolnest.vercel.app/tools/debt-payoff-calculator/">
+<meta name="theme-color" content="#07070b">
+<meta property="og:title" content="Debt Payoff Planner — Free Online | ToolNest">
+<meta property="og:description" content="Build an avalanche payoff plan for up to 8 debts: payoff order, months to debt-free and total interest paid.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css?v=2">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%23e01111'/><text x='50' y='68' font-size='58' text-anchor='middle' fill='white' font-family='Arial' font-weight='bold'>T</text></svg>">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebApplication","name":"Debt Payoff Planner","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0"},"url":"https://toolnest.vercel.app/tools/debt-payoff-calculator/","description":"Build an avalanche payoff plan for up to 8 debts: payoff order, months to debt-free and total interest paid."},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What is the avalanche method?","acceptedAnswer":{"@type":"Answer","text":"The avalanche method pays minimums on every debt, then puts any extra money toward the highest-APR debt first. Mathematically it minimizes total interest, though the snowball method (smallest balance first) can feel more motivating."}},{"@type":"Question","name":"What assumptions does the simulation make?","acceptedAnswer":{"@type":"Answer","text":"The plan assumes fixed minimum payments and APRs, on-time payments, and no new borrowing or fees. If a debt's minimum does not even cover its monthly interest, the tool tells you instead of simulating forever."}},{"@type":"Question","name":"Does this affect my credit or share my debts?","acceptedAnswer":{"@type":"Answer","text":"No — this is a planning estimate for your eyes only. Nothing is sent anywhere; it runs entirely in your browser."}}]}]}</script>
+</head>
+<body>
+<header class="site-header">
+  <div class="container">
+    <a class="logo" href="/"><span class="logo-mark">T</span> ToolNest</a>
+    <nav class="site-nav">
+      <a href="/">Home</a>
+      <a href="/#categories">Categories</a>
+      <a href="/#all-tools">All Tools</a>
+    </nav>
+  </div>
+</header>
+
+<!-- ADSTERRA-HEADER: paste your Adsterra banner ad code inside the div below -->
+<div class="container"><div class="ad-slot ad-leaderboard" data-ad="header"></div></div>
+
+<main class="container">
+  <nav class="crumbs"><a href="/">Home</a> &rsaquo; <a href="/#finance">Finance &amp; Money</a> &rsaquo; Debt Payoff Planner</nav>
+  <div class="tool-hero">
+    <h1>Debt Payoff Planner</h1>
+    <p>Build an avalanche payoff plan for up to 8 debts: payoff order, months to debt-free and total interest paid.</p>
+  </div>
+
+  <div class="tool-card">
+  <div id="debt-rows"></div>
+  <div class="btn-row">
+    <button class="btn btn-outline" id="debt-add">Add debt</button>
+  </div>
+  <div class="grid2">
+    <div class="field">
+      <label for="debt-extra">Extra monthly payment ($)</label>
+      <input type="number" class="input" id="debt-extra" min="0" step="any" placeholder="200">
+    </div>
+  </div>
+  <div class="error" id="debt-payoff-calculator-error"></div>
+  <div class="result" id="debt-result">
+    <div class="stat-cards">
+      <div class="stat-card"><div class="v" id="debt-months">–</div><div class="l">Months to debt-free</div></div>
+      <div class="stat-card"><div class="v" id="debt-interest">–</div><div class="l">Total interest</div></div>
+      <div class="stat-card"><div class="v" id="debt-first">–</div><div class="l">Pay off first</div></div>
+    </div>
+    <table class="data">
+      <thead>
+        <tr><th>#</th><th>Debt</th><th>Balance</th><th>APR</th><th>Payoff month</th></tr>
+      </thead>
+      <tbody id="debt-table-body">
+        <tr><td colspan="5" class="muted">Enter your debts above to build the payoff plan.</td></tr>
+      </tbody>
+    </table>
+    <p class="note">Avalanche method: minimums on every debt, extra money attacks the highest APR first.</p>
+  </div>
+</div>
+
+
+  <!-- ADSTERRA-INCONTENT: paste your Adsterra native/in-content ad code inside the div below -->
+  <div class="ad-slot" data-ad="incontent"></div>
+
+  <div class="info-grid">
+    <div class="info-card">
+      <h2>📖 How to use</h2>
+      <ol><li>Add one row per debt with its name, balance, APR and minimum payment (up to 8).</li><li>Enter any extra amount you can pay each month.</li><li>Read your payoff order, months to debt-free and total interest.</li><li>Check the per-debt table to see when each individual debt clears.</li></ol>
+    </div>
+    <div class="info-card">
+      <h2>❓ Frequently asked questions</h2>
+      <div class="faq"><details><summary>What is the avalanche method?</summary><p>The avalanche method pays minimums on every debt, then puts any extra money toward the highest-APR debt first. Mathematically it minimizes total interest, though the snowball method (smallest balance first) can feel more motivating.</p></details><details><summary>What assumptions does the simulation make?</summary><p>The plan assumes fixed minimum payments and APRs, on-time payments, and no new borrowing or fees. If a debt&#39;s minimum does not even cover its monthly interest, the tool tells you instead of simulating forever.</p></details><details><summary>Does this affect my credit or share my debts?</summary><p>No — this is a planning estimate for your eyes only. Nothing is sent anywhere; it runs entirely in your browser.</p></details></div>
+    </div>
+  </div>
+
+  <section class="section">
+    <h2>🔗 Related tools</h2>
+    <div class="tool-grid"><a class="tool-link" href="/tools/compound-interest-calculator/" data-search="compound interest calculator project how your savings grow over time with compound interest, regular monthly contributions and your choice of compounding frequency. compound interest calculator savings growth calculator compound interest with contributions"><span class="t-ico">💰</span><span class="t-body"><b>Compound Interest Calculator</b><small>Project how your savings grow over time with compound interest, regular monthly contribution…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/credit-card-validator/" data-search="credit card validator check any card number with the luhn algorithm and detect its brand — a format check only, never a real-card check. credit card validator luhn check card number checker card brand detector"><span class="t-ico">💰</span><span class="t-body"><b>Credit Card Validator</b><small>Check any card number with the Luhn algorithm and detect its brand — a format check only, ne…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/freelance-rate-calculator/" data-search="freelance rate calculator derive your hourly freelance rate from your income goal, billable hours and a buffer for taxes and downtime. freelance rate calculator hourly rate calculator freelancer pricing calculator"><span class="t-ico">💰</span><span class="t-body"><b>Freelance Rate Calculator</b><small>Derive your hourly freelance rate from your income goal, billable hours and a buffer for tax…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/iban-validator/" data-search="iban validator validate any iban using the official iso 13616 mod-97 checksum, with clean grouped formatting. iban validator iban checker validate iban iban checksum"><span class="t-ico">💰</span><span class="t-body"><b>IBAN Validator</b><small>Validate any IBAN using the official ISO 13616 mod-97 checksum, with clean grouped formattin…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/investment-return-calculator/" data-search="cagr calculator compute the compound annual growth rate (cagr) of any investment, or project a future value from a given cagr. cagr calculator compound annual growth rate investment return calculator"><span class="t-ico">💰</span><span class="t-body"><b>CAGR Calculator</b><small>Compute the compound annual growth rate (CAGR) of any investment, or project a future value …</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/mortgage-calculator/" data-search="mortgage calculator compute your monthly mortgage payment, total interest and a full year-by-year amortization schedule from price, down payment, rate and term. mortgage calculator monthly mortgage payment home loan calculator mortgage amortization schedule"><span class="t-ico">💰</span><span class="t-body"><b>Mortgage Calculator</b><small>Compute your monthly mortgage payment, total interest and a full year-by-year amortization s…</small></span><span class="t-arrow">→</span></a></div>
+  </section>
+</main>
+
+<!-- ADSTERRA-FOOTER: paste your Adsterra footer/banner ad code inside the div below -->
+<div class="container"><div class="ad-slot" data-ad="footer"></div></div>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="f-grid">
+      <div>
+        <span class="brandline"><span class="logo-mark">T</span> ToolNest</span>
+        <p>Free online tools that actually work. No sign-up, no watermarks — and your files never leave your device for client-side tools.</p>
+      </div>
+      <div>
+        <h4>Popular</h4>
+        <a href="/tools/qr-code-generator/">QR Code Generator</a>
+        <a href="/tools/background-remover/">Background Remover</a>
+        <a href="/tools/pdf-merger/">PDF Merger</a>
+        <a href="/tools/word-counter/">Word Counter</a>
+      </div>
+      <div>
+        <h4>Categories</h4>
+        <a href="/#image">Image Tools</a>
+        <a href="/#pdf">PDF &amp; Documents</a>
+        <a href="/#calculators">Calculators</a>
+        <a href="/#developer">Developer Tools</a>
+      </div>
+      <div>
+        <h4>Site</h4>
+        <a href="/">Home</a>
+        <a href="/#all-tools">All Tools</a>
+        <a href="/sitemap.xml">Sitemap</a>
+      </div>
+    </div>
+    <div class="f-bottom">© 2026 ToolNest · Free tools for everyone · Made with care</div>
+  </div>
+</footer>
+
+<script src="/assets/site.js?v=2"></script>
+
+<script>
+(function () {
+  'use strict';
+  var ERR = 'debt-payoff-calculator-error';
+  var MAX_ROWS = 8;
+  function money(n) {
+    try { return '$' + n.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 }); }
+    catch (e) { return '$' + String(Math.round(n * 100) / 100); }
+  }
+  function esc(s) { return TN.esc(s); }
+  function rowCount() {
+    return TN.qsa('#debt-rows .debt-row').length;
+  }
+  function addRow(name, bal, apr, min) {
+    if (rowCount() >= MAX_ROWS) return;
+    var wrap = TN.el('debt-rows');
+    var idx = rowCount() + 1;
+    var div = document.createElement('div');
+    div.className = 'debt-row grid2';
+    div.style.cssText = 'align-items:end;margin-bottom:12px;padding:12px;border:1px solid var(--border,#e5e7eb);border-radius:8px;';
+    div.innerHTML =
+      '<div class="field"><label>Debt name</label><input type="text" class="input debt-name" placeholder="Credit card" value="' + esc(name || '') + '"></div>' +
+      '<div class="field"><label>Balance ($)</label><input type="number" class="input debt-bal" min="0" step="any" placeholder="5000" value="' + (bal || '') + '"></div>' +
+      '<div class="field"><label>APR (%)</label><input type="number" class="input debt-apr" min="0" max="100" step="any" placeholder="19.99" value="' + (apr || '') + '"></div>' +
+      '<div class="field"><label>Min payment ($)</label><input type="number" class="input debt-min" min="0" step="any" placeholder="150" value="' + (min || '') + '"></div>';
+    if (idx > 1) {
+      var btnWrap = document.createElement('div');
+      btnWrap.className = 'field';
+      var btn = document.createElement('button');
+      btn.type = 'button';
+      btn.className = 'btn btn-sm btn-outline';
+      btn.textContent = 'Remove';
+      btn.addEventListener('click', function () { wrap.removeChild(div); calc(); });
+      btnWrap.appendChild(btn);
+      div.appendChild(btnWrap);
+    }
+    wrap.appendChild(div);
+    TN.qsa('input', div).forEach(function (inp) {
+      inp.addEventListener('input', calc);
+    });
+  }
+  function calc() {
+    if (!TN.el('debt-rows')) return;
+    TN.clearErr(ERR);
+    var rows = TN.qsa('#debt-rows .debt-row');
+    var debts = [];
+    for (var k = 0; k < rows.length; k++) {
+      var name = TN.qs('.debt-name', rows[k]).value.trim();
+      var bal = parseFloat(TN.qs('.debt-bal', rows[k]).value);
+      var apr = parseFloat(TN.qs('.debt-apr', rows[k]).value);
+      var min = parseFloat(TN.qs('.debt-min', rows[k]).value);
+      if (isNaN(bal) && isNaN(apr) && isNaN(min) && !name) continue; // empty row
+      if (!(bal > 0)) { TN.setErr(ERR, 'Row ' + (k + 1) + ': enter a balance greater than 0.'); return; }
+      if (isNaN(apr) || apr < 0 || apr > 100) { TN.setErr(ERR, 'Row ' + (k + 1) + ': enter an APR between 0 and 100.'); return; }
+      if (!(min > 0)) { TN.setErr(ERR, 'Row ' + (k + 1) + ': enter a minimum payment greater than 0.'); return; }
+      debts.push({ name: name || 'Debt ' + (debts.length + 1), bal: bal, apr: apr, min: min, payoffMonth: 0 });
+    }
+    if (debts.length === 0) {
+      TN.el('debt-months').textContent = '–';
+      TN.el('debt-interest').textContent = '–';
+      TN.el('debt-first').textContent = '–';
+      TN.el('debt-table-body').innerHTML = '<tr><td colspan="5" class="muted">Enter your debts above to build the payoff plan.</td></tr>';
+      return;
+    }
+    var extra = parseFloat(TN.el('debt-extra').value);
+    if (isNaN(extra) || extra < 0) { TN.setErr(ERR, 'Enter a valid extra monthly payment (0 or more).'); return; }
+
+    var sim = debts.map(function (d) { return { name: d.name, bal: d.bal, apr: d.apr, min: d.min, payoffMonth: 0, startBal: d.bal }; });
+    var budget = extra;
+    sim.forEach(function (d) { budget += d.min; });
+    var totalInterest = 0, month = 0, prevTotal = Infinity, done = false;
+    while (month < 1200) {
+      month++;
+      var active = sim.filter(function (d) { return d.bal > 0; });
+      if (active.length === 0) { done = true; break; }
+      // accrue interest
+      var mTotal = 0;
+      active.forEach(function (d) {
+        var i = d.bal * d.apr / 100 / 12;
+        d.bal += i;
+        totalInterest += i;
+        mTotal += d.bal;
+      });
+      if (mTotal > prevTotal + 0.01 && month > 1) {
+        TN.setErr(ERR, 'Payments do not cover the monthly interest — the total balance is growing. Increase minimum or extra payments.');
+        return;
+      }
+      prevTotal = mTotal;
+      // pay minimums
+      var paid = 0;
+      active.forEach(function (d) {
+        var p = Math.min(d.min, d.bal);
+        d.bal -= p;
+        paid += p;
+        if (d.bal <= 0.005) { d.bal = 0; if (!d.payoffMonth) d.payoffMonth = month; }
+      });
+      // avalanche: leftover to highest APR
+      var leftover = budget - paid;
+      var guard = 0;
+      while (leftover > 0.005 && guard++ < 100) {
+        var target = null;
+        sim.forEach(function (d) {
+          if (d.bal > 0 && (!target || d.apr > target.apr)) target = d;
+        });
+        if (!target) break;
+        var p2 = Math.min(leftover, target.bal);
+        target.bal -= p2;
+        leftover -= p2;
+        if (target.bal <= 0.005) { target.bal = 0; if (!target.payoffMonth) target.payoffMonth = month; }
+      }
+    }
+    if (!done) { TN.setErr(ERR, 'This plan would take over 100 years — increase your payments.'); return; }
+
+    var ordered = sim.slice().sort(function (a, b) { return a.payoffMonth - b.payoffMonth; });
+    TN.el('debt-months').textContent = String(month);
+    TN.el('debt-interest').textContent = money(totalInterest);
+    TN.el('debt-first').textContent = ordered[0].name;
+    TN.el('debt-table-body').innerHTML = ordered.map(function (d, i) {
+      return '<tr><td>' + (i + 1) + '</td><td>' + esc(d.name) + '</td><td>' + money(d.startBal) + '</td><td>' + d.apr + '%</td><td>Month ' + d.payoffMonth + '</td></tr>';
+    }).join('');
+  }
+  try {
+    addRow('', '', '', '');
+    addRow('', '', '', '');
+    TN.on('debt-add', 'click', function () {
+      if (rowCount() >= MAX_ROWS) { TN.setErr(ERR, 'Maximum ' + MAX_ROWS + ' debts.'); return; }
+      TN.clearErr(ERR);
+      addRow('', '', '', '');
+      calc();
+    });
+    TN.on('debt-extra', 'input', calc);
+  } catch (e) { /* never throw on load */ }
+})();
+
+</script>
+</body>
+</html>

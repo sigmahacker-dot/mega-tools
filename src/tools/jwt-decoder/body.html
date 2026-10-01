@@ -1,0 +1,35 @@
+<div class="tool-card">
+  <div class="field">
+    <label for="jwt-decoder-token">JWT</label>
+    <textarea class="textarea" id="jwt-decoder-token" rows="4" placeholder="Paste a JSON Web Token (header.payload.signature)…" spellcheck="false" autocomplete="off" autocapitalize="off"></textarea>
+  </div>
+  <div class="btn-row">
+    <button type="button" class="btn btn-outline btn-sm" id="jwt-decoder-sample">Load sample</button>
+    <button type="button" class="btn btn-outline btn-sm" id="jwt-decoder-clear">Clear</button>
+  </div>
+  <div class="error" id="jwt-decoder-error"></div>
+  <div class="result hidden" id="jwt-decoder-result">
+    <div class="stat-cards">
+      <div class="stat-card"><div class="v" id="jwt-decoder-alg">–</div><div class="l">Algorithm</div></div>
+      <div class="stat-card"><div class="v" id="jwt-decoder-verdict">–</div><div class="l">Expiry verdict</div></div>
+    </div>
+    <div class="grid2">
+      <div class="field">
+        <label>Header</label>
+        <pre class="jwt-pre" id="jwt-decoder-header"></pre>
+      </div>
+      <div class="field">
+        <label>Payload</label>
+        <pre class="jwt-pre" id="jwt-decoder-payload"></pre>
+      </div>
+    </div>
+    <table class="data">
+      <tbody id="jwt-decoder-claims"></tbody>
+    </table>
+    <p class="note" id="jwt-decoder-signote"></p>
+    <p class="note"><strong>Signature is NOT verified.</strong> This tool only decodes — it cannot tell you whether the token is authentic. Never trust a token just because it decodes.</p>
+  </div>
+  <style>
+    .jwt-pre{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:.85rem;line-height:1.6;background:#f8fafc;border:1.5px solid #e2e8f0;border-radius:10px;padding:12px 14px;white-space:pre-wrap;word-break:break-word;max-height:300px;overflow:auto;margin:0}
+  </style>
+</div>

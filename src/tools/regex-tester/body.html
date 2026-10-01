@@ -1,0 +1,43 @@
+<div class="tool-card">
+  <div class="field">
+    <label for="regex-tester-pattern">Pattern</label>
+    <input type="text" class="input" id="regex-tester-pattern" placeholder="e.g. (\w+)@(\w+\.\w+)" autocomplete="off" autocapitalize="off" spellcheck="false">
+  </div>
+  <div class="field">
+    <span class="muted">Flags</span>
+    <div class="btn-row" id="regex-tester-flags">
+      <label><input type="checkbox" value="g" checked> g</label>
+      <label><input type="checkbox" value="i"> i</label>
+      <label><input type="checkbox" value="m"> m</label>
+      <label><input type="checkbox" value="s"> s</label>
+      <label><input type="checkbox" value="u"> u</label>
+      <label><input type="checkbox" value="y"> y</label>
+    </div>
+  </div>
+  <div class="field">
+    <label for="regex-tester-text">Test string</label>
+    <textarea class="textarea" id="regex-tester-text" rows="5" placeholder="Text to test against…" spellcheck="false"></textarea>
+  </div>
+  <div class="error" id="regex-tester-error"></div>
+  <div class="result" id="regex-tester-result">
+    <div class="stat-cards">
+      <div class="stat-card"><div class="v" id="regex-tester-count">0</div><div class="l">Matches</div></div>
+      <div class="stat-card"><div class="v" id="regex-tester-groups">0</div><div class="l">Capture groups</div></div>
+    </div>
+    <div class="field">
+      <label>Highlighted matches</label>
+      <div id="regex-tester-highlight" class="rt-out muted">Type something to test against.</div>
+    </div>
+    <div class="field">
+      <label>Match details</label>
+      <div id="regex-tester-details" class="rt-out muted">No matches yet.</div>
+    </div>
+  </div>
+  <style>
+    .rt-out{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:.92rem;line-height:1.7;background:#f8fafc;border:1.5px solid #e2e8f0;border-radius:10px;padding:12px 14px;white-space:pre-wrap;word-break:break-word;min-height:2.5em;max-height:320px;overflow:auto}
+    .rt-out mark{background:#fde047;padding:0 1px;border-radius:2px}
+    .rt-grp{margin:0 0 10px}
+    .rt-grp b{color:#0f172a}
+    #regex-tester-flags label{display:inline-flex;align-items:center;gap:6px;font-family:ui-monospace,Menlo,Consolas,monospace;cursor:pointer}
+  </style>
+</div>

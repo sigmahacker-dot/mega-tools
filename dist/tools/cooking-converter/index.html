@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cooking Converter — Free Online | ToolNest</title>
+<meta name="description" content="Cups, spoons and milliliters — plus grams via ingredient density.">
+<meta name="keywords" content="cooking converter, cups to grams, cups to ml">
+<link rel="canonical" href="https://toolnest.vercel.app/tools/cooking-converter/">
+<meta name="theme-color" content="#07070b">
+<meta property="og:title" content="Cooking Converter — Free Online | ToolNest">
+<meta property="og:description" content="Cups, spoons and milliliters — plus grams via ingredient density.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css?v=2">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%23e01111'/><text x='50' y='68' font-size='58' text-anchor='middle' fill='white' font-family='Arial' font-weight='bold'>T</text></svg>">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebApplication","name":"Cooking Converter","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0"},"url":"https://toolnest.vercel.app/tools/cooking-converter/","description":"Cups, spoons and milliliters — plus grams via ingredient density."},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Which units and ingredients are supported?","acceptedAnswer":{"@type":"Answer","text":"Cups, tablespoons, teaspoons, fluid ounces, milliliters and liters. Volume is converted first, then multiplied by the ingredient's density to get grams."}},{"@type":"Question","name":"How accurate are the gram weights?","acceptedAnswer":{"@type":"Answer","text":"Densities are typical averages (e.g. all-purpose flour ≈ 0.53 g/ml). Brands and packing vary, so treat the gram weight as an estimate, not a lab measurement."}},{"@type":"Question","name":"How many milliliters are in a cup?","acceptedAnswer":{"@type":"Answer","text":"1 US cup = 236.588 ml. Note that some countries use a 250 ml metric cup."}}]}]}</script>
+</head>
+<body>
+<header class="site-header">
+  <div class="container">
+    <a class="logo" href="/"><span class="logo-mark">T</span> ToolNest</a>
+    <nav class="site-nav">
+      <a href="/">Home</a>
+      <a href="/#categories">Categories</a>
+      <a href="/#all-tools">All Tools</a>
+    </nav>
+  </div>
+</header>
+
+<!-- ADSTERRA-HEADER: paste your Adsterra banner ad code inside the div below -->
+<div class="container"><div class="ad-slot ad-leaderboard" data-ad="header"></div></div>
+
+<main class="container">
+  <nav class="crumbs"><a href="/">Home</a> &rsaquo; <a href="/#converters">Converters</a> &rsaquo; Cooking Converter</nav>
+  <div class="tool-hero">
+    <h1>Cooking Converter</h1>
+    <p>Cups, spoons and milliliters — plus grams via ingredient density.</p>
+  </div>
+
+  <div class="tool-card">
+  <div class="grid2">
+    <div class="field">
+      <label for="cooking-converter-value">Amount</label>
+      <input type="number" step="any" class="input" id="cooking-converter-value" placeholder="e.g. 2">
+    </div>
+    <div class="field">
+      <label for="cooking-converter-from">From unit</label>
+      <select class="select" id="cooking-converter-from">
+        <option value="cup" selected>Cups</option>
+        <option value="tbsp">Tablespoons</option>
+        <option value="tsp">Teaspoons</option>
+        <option value="floz">Fluid ounces</option>
+        <option value="ml">Milliliters</option>
+        <option value="l">Liters</option>
+      </select>
+    </div>
+  </div>
+  <div class="field">
+    <label for="cooking-converter-ingredient">Ingredient (for gram weight)</label>
+    <select class="select" id="cooking-converter-ingredient">
+      <option value="water" selected>Water</option>
+      <option value="flour">All-purpose flour</option>
+      <option value="sugar">Granulated sugar</option>
+      <option value="butter">Butter</option>
+      <option value="oil">Vegetable oil</option>
+      <option value="milk">Milk</option>
+      <option value="honey">Honey</option>
+      <option value="salt">Table salt</option>
+    </select>
+  </div>
+  <div class="error" id="cooking-converter-error"></div>
+  <div class="result" id="cooking-converter-result">
+    <div class="stat-cards">
+      <div class="stat-card"><div class="v" id="cooking-converter-grams">–</div><div class="l">Weight (grams)</div></div>
+    </div>
+    <table class="data">
+      <thead><tr><th>Unit</th><th>Volume</th></tr></thead>
+      <tbody id="cooking-converter-table"></tbody>
+    </table>
+    <p class="note">Gram weights use typical ingredient densities, so they are estimates. 1 US cup = 236.588 ml.</p>
+  </div>
+</div>
+
+
+  <!-- ADSTERRA-INCONTENT: paste your Adsterra native/in-content ad code inside the div below -->
+  <div class="ad-slot" data-ad="incontent"></div>
+
+  <div class="info-grid">
+    <div class="info-card">
+      <h2>📖 How to use</h2>
+      <ol><li>Enter the amount in the first field.</li><li>Pick the volume unit you are converting from.</li><li>Choose the ingredient to apply its density.</li><li>Read the volume in every unit plus the estimated weight in grams.</li></ol>
+    </div>
+    <div class="info-card">
+      <h2>❓ Frequently asked questions</h2>
+      <div class="faq"><details><summary>Which units and ingredients are supported?</summary><p>Cups, tablespoons, teaspoons, fluid ounces, milliliters and liters. Volume is converted first, then multiplied by the ingredient&#39;s density to get grams.</p></details><details><summary>How accurate are the gram weights?</summary><p>Densities are typical averages (e.g. all-purpose flour ≈ 0.53 g/ml). Brands and packing vary, so treat the gram weight as an estimate, not a lab measurement.</p></details><details><summary>How many milliliters are in a cup?</summary><p>1 US cup = 236.588 ml. Note that some countries use a 250 ml metric cup.</p></details></div>
+    </div>
+  </div>
+
+  <section class="section">
+    <h2>🔗 Related tools</h2>
+    <div class="tool-grid"><a class="tool-link" href="/tools/area-converter/" data-search="area converter square millimeters to square miles. area converter square feet to square meters acres to hectares"><span class="t-ico">🔄</span><span class="t-body"><b>Area Converter</b><small>Square millimeters to square miles.</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/data-storage-converter/" data-search="data storage converter bits to petabytes, decimal and binary modes. data converter bytes to mb gb to mb"><span class="t-ico">🔄</span><span class="t-body"><b>Data Storage Converter</b><small>Bits to petabytes, decimal and binary modes.</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/length-converter/" data-search="length converter millimeters to miles with live conversion. length converter mm to inches miles to kilometers"><span class="t-ico">🔄</span><span class="t-body"><b>Length Converter</b><small>Millimeters to miles with live conversion.</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/speed-converter/" data-search="speed converter m/s, km/h, mph, ft/s and knots. speed converter mph to kmh knots to kmh"><span class="t-ico">🔄</span><span class="t-body"><b>Speed Converter</b><small>m/s, km/h, mph, ft/s and knots.</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/temperature-converter/" data-search="temperature converter celsius, fahrenheit, kelvin and rankine with live sync. temperature converter celsius to fahrenheit fahrenheit to celsius"><span class="t-ico">🔄</span><span class="t-body"><b>Temperature Converter</b><small>Celsius, Fahrenheit, Kelvin and Rankine with live sync.</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/time-unit-converter/" data-search="time unit converter milliseconds to years with live sync. time converter hours to seconds days to years"><span class="t-ico">🔄</span><span class="t-body"><b>Time Unit Converter</b><small>Milliseconds to years with live sync.</small></span><span class="t-arrow">→</span></a></div>
+  </section>
+</main>
+
+<!-- ADSTERRA-FOOTER: paste your Adsterra footer/banner ad code inside the div below -->
+<div class="container"><div class="ad-slot" data-ad="footer"></div></div>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="f-grid">
+      <div>
+        <span class="brandline"><span class="logo-mark">T</span> ToolNest</span>
+        <p>Free online tools that actually work. No sign-up, no watermarks — and your files never leave your device for client-side tools.</p>
+      </div>
+      <div>
+        <h4>Popular</h4>
+        <a href="/tools/qr-code-generator/">QR Code Generator</a>
+        <a href="/tools/background-remover/">Background Remover</a>
+        <a href="/tools/pdf-merger/">PDF Merger</a>
+        <a href="/tools/word-counter/">Word Counter</a>
+      </div>
+      <div>
+        <h4>Categories</h4>
+        <a href="/#image">Image Tools</a>
+        <a href="/#pdf">PDF &amp; Documents</a>
+        <a href="/#calculators">Calculators</a>
+        <a href="/#developer">Developer Tools</a>
+      </div>
+      <div>
+        <h4>Site</h4>
+        <a href="/">Home</a>
+        <a href="/#all-tools">All Tools</a>
+        <a href="/sitemap.xml">Sitemap</a>
+      </div>
+    </div>
+    <div class="f-bottom">© 2026 ToolNest · Free tools for everyone · Made with care</div>
+  </div>
+</footer>
+
+<script src="/assets/site.js?v=2"></script>
+
+<script>
+(function () {
+  'use strict';
+  var S = 'cooking-converter';
+  var UNITS = [
+    ['cup', 'Cups', 236.5882365],
+    ['tbsp', 'Tablespoons', 14.7867648],
+    ['tsp', 'Teaspoons', 4.92892159],
+    ['floz', 'Fluid ounces', 29.5735296],
+    ['ml', 'Milliliters', 1],
+    ['l', 'Liters', 1000]
+  ];
+  var DENSITY = {
+    water: 1, flour: 0.529, sugar: 0.845, butter: 0.959,
+    oil: 0.917, milk: 1.03, honey: 1.42, salt: 1.217
+  };
+  function factorOf(code) {
+    for (var i = 0; i < UNITS.length; i++) if (UNITS[i][0] === code) return UNITS[i][2];
+    return 1;
+  }
+  function fmtNum(n) {
+    if (!isFinite(n)) return '–';
+    if (n === 0) return '0';
+    var a = Math.abs(n);
+    if (a >= 1e12 || a < 1e-4) return n.toExponential(3);
+    return String(Math.round(n * 1000) / 1000);
+  }
+  function convert() {
+    try {
+      TN.clearErr(S + '-error');
+      var raw = TN.el(S + '-value').value;
+      var tb = TN.el(S + '-table');
+      if (raw === '' || raw === null) {
+        TN.el(S + '-grams').textContent = '–';
+        if (tb) {
+          var h0 = '';
+          for (var j = 0; j < UNITS.length; j++) h0 += '<tr><td>' + UNITS[j][1] + '</td><td>–</td></tr>';
+          tb.innerHTML = h0;
+        }
+        return;
+      }
+      var v = parseFloat(raw);
+      if (!isFinite(v)) { TN.setErr(S + '-error', 'Please enter a valid number.'); return; }
+      if (v < 0) { TN.setErr(S + '-error', 'Amount cannot be negative.'); return; }
+      var ml = v * factorOf(TN.el(S + '-from').value);
+      var dens = DENSITY[TN.el(S + '-ingredient').value] || 1;
+      TN.el(S + '-grams').textContent = fmtNum(ml * dens) + ' g';
+      var html = '';
+      for (var i = 0; i < UNITS.length; i++) {
+        html += '<tr><td>' + UNITS[i][1] + '</td><td>' + fmtNum(ml / UNITS[i][2]) + '</td></tr>';
+      }
+      if (tb) tb.innerHTML = html;
+    } catch (e) { /* never throw on input */ }
+  }
+  function init() {
+    convert();
+    ['value', 'from', 'ingredient'].forEach(function (k) {
+      TN.on(S + '-' + k, 'input', convert);
+      TN.on(S + '-' + k, 'change', convert);
+    });
+  }
+  try { init(); } catch (e) { /* never throw on load */ }
+})();
+
+</script>
+</body>
+</html>

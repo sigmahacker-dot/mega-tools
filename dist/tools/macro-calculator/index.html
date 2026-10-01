@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Macro Split Calculator — Free Online | ToolNest</title>
+<meta name="description" content="Split your daily calories into protein, carb and fat targets in grams, calories and percentages for your goal.">
+<meta name="keywords" content="macro calculator, macros calculator, protein carbs fat calculator">
+<link rel="canonical" href="https://toolnest.vercel.app/tools/macro-calculator/">
+<meta name="theme-color" content="#07070b">
+<meta property="og:title" content="Macro Split Calculator — Free Online | ToolNest">
+<meta property="og:description" content="Split your daily calories into protein, carb and fat targets in grams, calories and percentages for your goal.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css?v=2">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%23e01111'/><text x='50' y='68' font-size='58' text-anchor='middle' fill='white' font-family='Arial' font-weight='bold'>T</text></svg>">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebApplication","name":"Macro Split Calculator","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0"},"url":"https://toolnest.vercel.app/tools/macro-calculator/","description":"Split your daily calories into protein, carb and fat targets in grams, calories and percentages for your goal."},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How are the macros calculated?","acceptedAnswer":{"@type":"Answer","text":"Protein is set from your body weight (2.2 g/kg when cutting, 2.0 g/kg otherwise), fat gets 25% of calories, and the remaining calories go to carbs."}},{"@type":"Question","name":"Why is protein higher when cutting?","acceptedAnswer":{"@type":"Answer","text":"Higher protein while cutting helps preserve muscle in a calorie deficit. When maintaining or bulking, 2.0 g/kg is a widely used guideline."}},{"@type":"Question","name":"Is this the right split for everyone?","acceptedAnswer":{"@type":"Answer","text":"It is a common starting split for general fitness goals. Athletes, medical conditions or strict diets (e.g. keto) need a customized plan from a professional."}}]}]}</script>
+</head>
+<body>
+<header class="site-header">
+  <div class="container">
+    <a class="logo" href="/"><span class="logo-mark">T</span> ToolNest</a>
+    <nav class="site-nav">
+      <a href="/">Home</a>
+      <a href="/#categories">Categories</a>
+      <a href="/#all-tools">All Tools</a>
+    </nav>
+  </div>
+</header>
+
+<!-- ADSTERRA-HEADER: paste your Adsterra banner ad code inside the div below -->
+<div class="container"><div class="ad-slot ad-leaderboard" data-ad="header"></div></div>
+
+<main class="container">
+  <nav class="crumbs"><a href="/">Home</a> &rsaquo; <a href="/#health">Health &amp; Fitness</a> &rsaquo; Macro Split Calculator</nav>
+  <div class="tool-hero">
+    <h1>Macro Split Calculator</h1>
+    <p>Split your daily calories into protein, carb and fat targets in grams, calories and percentages for your goal.</p>
+  </div>
+
+  <div class="tool-card">
+  <div class="grid2">
+    <div class="field">
+      <label for="macro-calories">Daily calories (kcal)</label>
+      <input type="number" class="input" id="macro-calories" min="800" max="10000" step="any" placeholder="2500">
+    </div>
+    <div class="field">
+      <label for="macro-weight">Body weight (kg)</label>
+      <input type="number" class="input" id="macro-weight" min="25" max="400" step="any" placeholder="75">
+    </div>
+  </div>
+  <div class="field">
+    <label for="macro-goal">Goal</label>
+    <select class="select" id="macro-goal">
+      <option value="cut">Cut (lose fat)</option>
+      <option value="maintain">Maintain</option>
+      <option value="bulk">Bulk (gain muscle)</option>
+    </select>
+  </div>
+  <div class="error" id="macro-calculator-error"></div>
+  <div class="result" id="macro-result">
+    <table class="data">
+      <thead><tr><th>Macro</th><th>Grams</th><th>Calories</th><th>% of calories</th></tr></thead>
+      <tbody>
+        <tr><th scope="row">Protein</th><td id="macro-p-g">–</td><td id="macro-p-kcal">–</td><td id="macro-p-pct">–</td></tr>
+        <tr><th scope="row">Fat</th><td id="macro-f-g">–</td><td id="macro-f-kcal">–</td><td id="macro-f-pct">–</td></tr>
+        <tr><th scope="row">Carbs</th><td id="macro-c-g">–</td><td id="macro-c-kcal">–</td><td id="macro-c-pct">–</td></tr>
+      </tbody>
+    </table>
+    <p class="note">Guideline only — protein 2.0–2.2 g/kg, fat 25% of calories, carbs fill the remainder. Not medical advice.</p>
+  </div>
+</div>
+
+
+  <!-- ADSTERRA-INCONTENT: paste your Adsterra native/in-content ad code inside the div below -->
+  <div class="ad-slot" data-ad="incontent"></div>
+
+  <div class="info-grid">
+    <div class="info-card">
+      <h2>📖 How to use</h2>
+      <ol><li>Enter your daily calorie target.</li><li>Enter your body weight in kg.</li><li>Choose your goal: cut, maintain or bulk.</li><li>Read your protein, fat and carb targets in grams, kcal and %.</li></ol>
+    </div>
+    <div class="info-card">
+      <h2>❓ Frequently asked questions</h2>
+      <div class="faq"><details><summary>How are the macros calculated?</summary><p>Protein is set from your body weight (2.2 g/kg when cutting, 2.0 g/kg otherwise), fat gets 25% of calories, and the remaining calories go to carbs.</p></details><details><summary>Why is protein higher when cutting?</summary><p>Higher protein while cutting helps preserve muscle in a calorie deficit. When maintaining or bulking, 2.0 g/kg is a widely used guideline.</p></details><details><summary>Is this the right split for everyone?</summary><p>It is a common starting split for general fitness goals. Athletes, medical conditions or strict diets (e.g. keto) need a customized plan from a professional.</p></details></div>
+    </div>
+  </div>
+
+  <section class="section">
+    <h2>🔗 Related tools</h2>
+    <div class="tool-grid"><a class="tool-link" href="/tools/body-fat-calculator/" data-search="body fat calculator estimate body fat percentage with the us navy tape-measure method and see your fitness category. body fat calculator us navy body fat body fat percentage calculator"><span class="t-ico">❤️</span><span class="t-body"><b>Body Fat Calculator</b><small>Estimate body fat percentage with the US Navy tape-measure method and see your fitness categ…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/calorie-calculator/" data-search="tdee calorie calculator estimate your daily calorie needs with the mifflin-st jeor equation and get targets for losing, maintaining or gaining weight. tdee calculator calorie calculator mifflin st jeor daily calorie needs"><span class="t-ico">❤️</span><span class="t-body"><b>TDEE Calorie Calculator</b><small>Estimate your daily calorie needs with the Mifflin-St Jeor equation and get targets for losi…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/heart-rate-zone-calculator/" data-search="heart rate zone calculator find your five karvonen heart-rate training zones from your age and resting heart rate, with bpm ranges. heart rate zones calculator karvonen calculator training zones bpm"><span class="t-ico">❤️</span><span class="t-body"><b>Heart Rate Zone Calculator</b><small>Find your five Karvonen heart-rate training zones from your age and resting heart rate, with…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/one-rep-max-calculator/" data-search="one-rep max calculator estimate your one-rep max from any lift with the epley and brzycki formulas, plus a full percentage table. one rep max calculator 1rm calculator epley brzycki calculator"><span class="t-ico">❤️</span><span class="t-body"><b>One-Rep Max Calculator</b><small>Estimate your one-rep max from any lift with the Epley and Brzycki formulas, plus a full per…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/ovulation-calculator/" data-search="ovulation &amp; fertile window calculator estimate your ovulation day, fertile window and next period from your last period start and cycle length. ovulation calculator fertile window calculator ovulation calendar"><span class="t-ico">❤️</span><span class="t-body"><b>Ovulation &amp; Fertile Window Calculator</b><small>Estimate your ovulation day, fertile window and next period from your last period start and …</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/pace-calculator/" data-search="running pace calculator solve for running pace, finish time or distance — with one-tap presets for 5k, 10k, half and full marathon. running pace calculator race time predictor pace time distance calculator"><span class="t-ico">❤️</span><span class="t-body"><b>Running Pace Calculator</b><small>Solve for running pace, finish time or distance — with one-tap presets for 5K, 10K, half and…</small></span><span class="t-arrow">→</span></a></div>
+  </section>
+</main>
+
+<!-- ADSTERRA-FOOTER: paste your Adsterra footer/banner ad code inside the div below -->
+<div class="container"><div class="ad-slot" data-ad="footer"></div></div>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="f-grid">
+      <div>
+        <span class="brandline"><span class="logo-mark">T</span> ToolNest</span>
+        <p>Free online tools that actually work. No sign-up, no watermarks — and your files never leave your device for client-side tools.</p>
+      </div>
+      <div>
+        <h4>Popular</h4>
+        <a href="/tools/qr-code-generator/">QR Code Generator</a>
+        <a href="/tools/background-remover/">Background Remover</a>
+        <a href="/tools/pdf-merger/">PDF Merger</a>
+        <a href="/tools/word-counter/">Word Counter</a>
+      </div>
+      <div>
+        <h4>Categories</h4>
+        <a href="/#image">Image Tools</a>
+        <a href="/#pdf">PDF &amp; Documents</a>
+        <a href="/#calculators">Calculators</a>
+        <a href="/#developer">Developer Tools</a>
+      </div>
+      <div>
+        <h4>Site</h4>
+        <a href="/">Home</a>
+        <a href="/#all-tools">All Tools</a>
+        <a href="/sitemap.xml">Sitemap</a>
+      </div>
+    </div>
+    <div class="f-bottom">© 2026 ToolNest · Free tools for everyone · Made with care</div>
+  </div>
+</footer>
+
+<script src="/assets/site.js?v=2"></script>
+
+<script>
+(function () {
+  'use strict';
+  var ERR = 'macro-calculator-error';
+  function r1(n) { return (Math.round(n * 10) / 10).toLocaleString('en-US'); }
+  function calc() {
+    if (!TN.el('macro-calories')) return;
+    TN.clearErr(ERR);
+    var cal = parseFloat(TN.el('macro-calories').value);
+    var weight = parseFloat(TN.el('macro-weight').value);
+    var goal = TN.el('macro-goal').value;
+    if (!(cal >= 800 && cal <= 10000)) { TN.setErr(ERR, 'Enter daily calories between 800 and 10000.'); return; }
+    if (!(weight >= 25 && weight <= 400)) { TN.setErr(ERR, 'Enter a body weight between 25 and 400 kg.'); return; }
+    var proteinFactor = goal === 'cut' ? 2.2 : 2.0;
+    var pG = proteinFactor * weight;
+    var pKcal = pG * 4;
+    var fKcal = 0.25 * cal;
+    var fG = fKcal / 9;
+    var cKcal = cal - pKcal - fKcal;
+    if (cKcal < 0) { TN.setErr(ERR, 'Protein and fat minimums exceed your calorie target — raise calories or lower body weight.'); return; }
+    var cG = cKcal / 4;
+    TN.el('macro-p-g').textContent = r1(pG) + ' g';
+    TN.el('macro-p-kcal').textContent = r1(pKcal) + ' kcal';
+    TN.el('macro-p-pct').textContent = r1(pKcal / cal * 100) + '%';
+    TN.el('macro-f-g').textContent = r1(fG) + ' g';
+    TN.el('macro-f-kcal').textContent = r1(fKcal) + ' kcal';
+    TN.el('macro-f-pct').textContent = r1(fKcal / cal * 100) + '%';
+    TN.el('macro-c-g').textContent = r1(cG) + ' g';
+    TN.el('macro-c-kcal').textContent = r1(cKcal) + ' kcal';
+    TN.el('macro-c-pct').textContent = r1(cKcal / cal * 100) + '%';
+  }
+  try {
+    ['macro-calories', 'macro-weight', 'macro-goal'].forEach(function (id) {
+      TN.on(id, 'input', calc);
+      TN.on(id, 'change', calc);
+    });
+    calc();
+  } catch (e) { /* never throw on load */ }
+})();
+
+</script>
+</body>
+</html>

@@ -1,0 +1,41 @@
+<div class="tool-card">
+  <div class="grid2">
+    <div class="field">
+      <label for="retire-age-now">Current age</label>
+      <input type="number" class="input" id="retire-age-now" min="16" max="90" step="1" placeholder="30">
+    </div>
+    <div class="field">
+      <label for="retire-age-retire">Retirement age</label>
+      <input type="number" class="input" id="retire-age-retire" min="17" max="100" step="1" placeholder="65">
+    </div>
+    <div class="field">
+      <label for="retire-savings">Current savings ($)</label>
+      <input type="number" class="input" id="retire-savings" min="0" step="any" placeholder="25000">
+    </div>
+    <div class="field">
+      <label for="retire-monthly">Monthly contribution ($)</label>
+      <input type="number" class="input" id="retire-monthly" min="0" step="any" placeholder="800">
+    </div>
+    <div class="field">
+      <label for="retire-return">Expected annual return (%)</label>
+      <input type="number" class="input" id="retire-return" min="0" max="30" step="any" placeholder="7">
+    </div>
+  </div>
+  <div class="error" id="retirement-calculator-error"></div>
+  <div class="result" id="retire-result">
+    <div class="stat-cards">
+      <div class="stat-card"><div class="v" id="retire-projected">–</div><div class="l">Projected at retirement</div></div>
+      <div class="stat-card"><div class="v" id="retire-contrib">–</div><div class="l">Total contributions</div></div>
+      <div class="stat-card"><div class="v" id="retire-growth">–</div><div class="l">Growth from returns</div></div>
+    </div>
+    <table class="data">
+      <thead>
+        <tr><th>Age</th><th>Contributions</th><th>Growth</th><th>Balance</th></tr>
+      </thead>
+      <tbody id="retire-table-body">
+        <tr><td colspan="4" class="muted">Enter your details to project your retirement savings.</td></tr>
+      </tbody>
+    </table>
+    <p class="note">Projection only — it assumes a constant return and ignores inflation, taxes and fees.</p>
+  </div>
+</div>

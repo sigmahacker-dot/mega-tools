@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GCF &amp; LCM Calculator — Free Online | ToolNest</title>
+<meta name="description" content="Greatest common factor and least common multiple of any list.">
+<meta name="keywords" content="GCF calculator, LCM calculator, greatest common factor">
+<link rel="canonical" href="https://toolnest.vercel.app/tools/gcf-lcm-calculator/">
+<meta name="theme-color" content="#07070b">
+<meta property="og:title" content="GCF &amp; LCM Calculator — Free Online | ToolNest">
+<meta property="og:description" content="Greatest common factor and least common multiple of any list.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css?v=2">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%23e01111'/><text x='50' y='68' font-size='58' text-anchor='middle' fill='white' font-family='Arial' font-weight='bold'>T</text></svg>">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebApplication","name":"GCF & LCM Calculator","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0"},"url":"https://toolnest.vercel.app/tools/gcf-lcm-calculator/","description":"Greatest common factor and least common multiple of any list."},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How are GCF and LCM computed?","acceptedAnswer":{"@type":"Answer","text":"With Euclid's algorithm applied pairwise across the list: GCF(a,b,c) = GCF(GCF(a,b),c), and LCM uses the identity LCM(a,b) = |a×b| ÷ GCF(a,b)."}},{"@type":"Question","name":"How are negative numbers and zeros handled?","acceptedAnswer":{"@type":"Answer","text":"Signs are ignored — both are computed on absolute values. Zeros are skipped for GCF; a zero in the list makes the LCM zero."}},{"@type":"Question","name":"How many numbers can I enter?","acceptedAnswer":{"@type":"Answer","text":"Yes, up to 100 integers. Very large values may lose precision because the LCM is computed in floating point."}}]}]}</script>
+</head>
+<body>
+<header class="site-header">
+  <div class="container">
+    <a class="logo" href="/"><span class="logo-mark">T</span> ToolNest</a>
+    <nav class="site-nav">
+      <a href="/">Home</a>
+      <a href="/#categories">Categories</a>
+      <a href="/#all-tools">All Tools</a>
+    </nav>
+  </div>
+</header>
+
+<!-- ADSTERRA-HEADER: paste your Adsterra banner ad code inside the div below -->
+<div class="container"><div class="ad-slot ad-leaderboard" data-ad="header"></div></div>
+
+<main class="container">
+  <nav class="crumbs"><a href="/">Home</a> &rsaquo; <a href="/#math">Math &amp; Numbers</a> &rsaquo; GCF &amp; LCM Calculator</nav>
+  <div class="tool-hero">
+    <h1>GCF &amp; LCM Calculator</h1>
+    <p>Greatest common factor and least common multiple of any list.</p>
+  </div>
+
+  <div class="tool-card">
+  <div class="field">
+    <label for="gcf-lcm-calculator-input">Numbers (comma, space or newline separated)</label>
+    <textarea class="textarea" id="gcf-lcm-calculator-input" rows="4" placeholder="e.g. 12, 18, 30"></textarea>
+  </div>
+  <div class="btn-row">
+    <button type="button" class="btn btn-primary" id="gcf-lcm-calculator-go">Calculate</button>
+  </div>
+  <div class="error" id="gcf-lcm-calculator-error"></div>
+  <div class="result" id="gcf-lcm-calculator-result">
+    <div class="stat-cards">
+      <div class="stat-card"><div class="v" id="gcf-lcm-calculator-gcf">&ndash;</div><div class="l">GCF</div></div>
+      <div class="stat-card"><div class="v" id="gcf-lcm-calculator-lcm">&ndash;</div><div class="l">LCM</div></div>
+      <div class="stat-card"><div class="v" id="gcf-lcm-calculator-count">&ndash;</div><div class="l">Numbers</div></div>
+    </div>
+    <p class="note">GCF via Euclid's algorithm; LCM via |a&times;b| &divide; GCF, chained across the list.</p>
+  </div>
+</div>
+
+
+  <!-- ADSTERRA-INCONTENT: paste your Adsterra native/in-content ad code inside the div below -->
+  <div class="ad-slot" data-ad="incontent"></div>
+
+  <div class="info-grid">
+    <div class="info-card">
+      <h2>📖 How to use</h2>
+      <ol><li>Type integers separated by commas, spaces or new lines.</li><li>Press Calculate.</li><li>Read the GCF and LCM plus how many numbers were used.</li><li>Edit the list any time — results update on demand.</li></ol>
+    </div>
+    <div class="info-card">
+      <h2>❓ Frequently asked questions</h2>
+      <div class="faq"><details><summary>How are GCF and LCM computed?</summary><p>With Euclid&#39;s algorithm applied pairwise across the list: GCF(a,b,c) = GCF(GCF(a,b),c), and LCM uses the identity LCM(a,b) = |a×b| ÷ GCF(a,b).</p></details><details><summary>How are negative numbers and zeros handled?</summary><p>Signs are ignored — both are computed on absolute values. Zeros are skipped for GCF; a zero in the list makes the LCM zero.</p></details><details><summary>How many numbers can I enter?</summary><p>Yes, up to 100 integers. Very large values may lose precision because the LCM is computed in floating point.</p></details></div>
+    </div>
+  </div>
+
+  <section class="section">
+    <h2>🔗 Related tools</h2>
+    <div class="tool-grid"><a class="tool-link" href="/tools/fraction-calculator/" data-search="fraction calculator add, subtract, multiply and divide fractions with simplification. fraction calculator add fractions simplify fraction"><span class="t-ico">📐</span><span class="t-body"><b>Fraction Calculator</b><small>Add, subtract, multiply and divide fractions with simplification.</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/matrix-calculator/" data-search="matrix calculator add, multiply, invert and transpose 2x2 and 3x3 matrices. matrix calculator matrix inverse matrix multiplication"><span class="t-ico">📐</span><span class="t-body"><b>Matrix Calculator</b><small>Add, multiply, invert and transpose 2x2 and 3x3 matrices.</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/prime-number-checker/" data-search="prime number checker deterministic miller-rabin primality test for big integers. prime checker primality test miller rabin"><span class="t-ico">📐</span><span class="t-body"><b>Prime Number Checker</b><small>Deterministic Miller-Rabin primality test for big integers.</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/pythagorean-calculator/" data-search="pythagorean theorem calculator solve right-triangle sides, area and angles. pythagorean theorem right triangle calculator hypotenuse calculator"><span class="t-ico">📐</span><span class="t-body"><b>Pythagorean Theorem Calculator</b><small>Solve right-triangle sides, area and angles.</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/quadratic-equation-solver/" data-search="quadratic equation solver solve ax^2+bx+c=0 with full discriminant analysis. quadratic solver quadratic equation discriminant calculator"><span class="t-ico">📐</span><span class="t-body"><b>Quadratic Equation Solver</b><small>Solve ax^2+bx+c=0 with full discriminant analysis.</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/roman-numeral-converter/" data-search="roman numeral converter convert between 1-3999 and roman numerals, both ways. roman numeral converter roman to number number to roman"><span class="t-ico">📐</span><span class="t-body"><b>Roman Numeral Converter</b><small>Convert between 1-3999 and Roman numerals, both ways.</small></span><span class="t-arrow">→</span></a></div>
+  </section>
+</main>
+
+<!-- ADSTERRA-FOOTER: paste your Adsterra footer/banner ad code inside the div below -->
+<div class="container"><div class="ad-slot" data-ad="footer"></div></div>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="f-grid">
+      <div>
+        <span class="brandline"><span class="logo-mark">T</span> ToolNest</span>
+        <p>Free online tools that actually work. No sign-up, no watermarks — and your files never leave your device for client-side tools.</p>
+      </div>
+      <div>
+        <h4>Popular</h4>
+        <a href="/tools/qr-code-generator/">QR Code Generator</a>
+        <a href="/tools/background-remover/">Background Remover</a>
+        <a href="/tools/pdf-merger/">PDF Merger</a>
+        <a href="/tools/word-counter/">Word Counter</a>
+      </div>
+      <div>
+        <h4>Categories</h4>
+        <a href="/#image">Image Tools</a>
+        <a href="/#pdf">PDF &amp; Documents</a>
+        <a href="/#calculators">Calculators</a>
+        <a href="/#developer">Developer Tools</a>
+      </div>
+      <div>
+        <h4>Site</h4>
+        <a href="/">Home</a>
+        <a href="/#all-tools">All Tools</a>
+        <a href="/sitemap.xml">Sitemap</a>
+      </div>
+    </div>
+    <div class="f-bottom">© 2026 ToolNest · Free tools for everyone · Made with care</div>
+  </div>
+</footer>
+
+<script src="/assets/site.js?v=2"></script>
+
+<script>
+(function () {
+  'use strict';
+  var ERR = 'gcf-lcm-calculator-error';
+
+  function gcd(a, b) {
+    a = Math.abs(a); b = Math.abs(b);
+    while (b) { var t = a % b; a = b; b = t; }
+    return a;
+  }
+
+  function calc() {
+    TN.clearErr(ERR);
+    try {
+      var el = TN.el('gcf-lcm-calculator-input');
+      var raw = el ? el.value : '';
+      var parts = raw.split(/[\s,;]+/).filter(function (s) { return s.length > 0; });
+      if (!parts.length) throw new Error('Enter at least one integer.');
+      if (parts.length > 100) throw new Error('Too many numbers — keep it to 100 or fewer.');
+      var nums = parts.map(function (s) {
+        if (!/^-?\d+$/.test(s)) throw new Error('"' + s + '" is not an integer.');
+        var n = Number(s);
+        if (!isFinite(n)) throw new Error('"' + s + '" is too large.');
+        return n;
+      });
+      var g = 0;
+      var l = 1;
+      nums.forEach(function (n) {
+        g = gcd(g, n);
+        if (n === 0) { l = 0; return; }
+        var lg = gcd(l, n) || 1;
+        l = Math.abs((l / lg) * n);
+        if (!isFinite(l)) throw new Error('LCM overflow — numbers too large.');
+      });
+      TN.el('gcf-lcm-calculator-gcf').textContent = String(g);
+      TN.el('gcf-lcm-calculator-lcm').textContent = String(l);
+      TN.el('gcf-lcm-calculator-count').textContent = String(nums.length);
+    } catch (err) {
+      TN.setErr(ERR, err && err.message ? err.message : 'Invalid input.');
+    }
+  }
+
+  try {
+    TN.on('gcf-lcm-calculator-go', 'click', calc);
+  } catch (e) { /* never throw on load */ }
+})();
+
+</script>
+</body>
+</html>

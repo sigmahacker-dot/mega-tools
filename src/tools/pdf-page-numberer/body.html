@@ -1,0 +1,47 @@
+<div class="tool-card">
+  <h2>PDF Page Numberer</h2>
+  <p class="muted">Stamp page numbers onto every page of a PDF.</p>
+  <div class="field">
+    <label for="pdf-page-numberer-file">Choose a PDF</label>
+    <input type="file" class="input" id="pdf-page-numberer-file" accept=".pdf,application/pdf">
+  </div>
+  <div class="grid2">
+    <div class="field">
+      <label for="pdf-page-numberer-position">Position</label>
+      <select class="select" id="pdf-page-numberer-position">
+        <option value="bottom-center">Bottom center</option>
+        <option value="bottom-left">Bottom left</option>
+        <option value="bottom-right">Bottom right</option>
+        <option value="top-center">Top center</option>
+        <option value="top-left">Top left</option>
+        <option value="top-right">Top right</option>
+      </select>
+    </div>
+    <div class="field">
+      <label for="pdf-page-numberer-format">Format</label>
+      <select class="select" id="pdf-page-numberer-format">
+        <option value="n">1</option>
+        <option value="page-n">Page 1</option>
+        <option value="n-total">1 / 12</option>
+      </select>
+    </div>
+  </div>
+  <div class="grid2">
+    <div class="field">
+      <label for="pdf-page-numberer-start">Start number</label>
+      <input type="number" class="input" id="pdf-page-numberer-start" min="1" max="99999" value="1">
+    </div>
+    <div class="field">
+      <label for="pdf-page-numberer-size">Font size (pt)</label>
+      <input type="number" class="input" id="pdf-page-numberer-size" min="6" max="48" value="10">
+    </div>
+  </div>
+  <div class="btn-row mt">
+    <button class="btn btn-primary" id="pdf-page-numberer-run">Add page numbers</button>
+    <button class="btn btn-outline" id="pdf-page-numberer-clear">Clear</button>
+  </div>
+  <div class="progress mt hidden" id="pdf-page-numberer-progress"><div style="width:0%"></div></div>
+  <div class="error" id="pdf-page-numberer-error"></div>
+  <div class="result hidden" id="pdf-page-numberer-result"></div>
+  <p class="note">Numbers are drawn as real PDF text. Everything happens locally in your browser.</p>
+</div>

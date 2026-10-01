@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Number Base Converter — Free Online | ToolNest</title>
+<meta name="description" content="Convert between binary, octal, decimal and hexadecimal with live syncing and per-base digit validation.">
+<meta name="keywords" content="number base converter, binary to hex, decimal to binary converter">
+<link rel="canonical" href="https://toolnest.vercel.app/tools/number-base-converter/">
+<meta name="theme-color" content="#07070b">
+<meta property="og:title" content="Number Base Converter — Free Online | ToolNest">
+<meta property="og:description" content="Convert between binary, octal, decimal and hexadecimal with live syncing and per-base digit validation.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css?v=2">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%23e01111'/><text x='50' y='68' font-size='58' text-anchor='middle' fill='white' font-family='Arial' font-weight='bold'>T</text></svg>">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebApplication","name":"Number Base Converter","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0"},"url":"https://toolnest.vercel.app/tools/number-base-converter/","description":"Convert between binary, octal, decimal and hexadecimal with live syncing and per-base digit validation."},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Why do I get an error when I type?","acceptedAnswer":{"@type":"Answer","text":"Each base only accepts its own digits: binary 0–1, octal 0–7, decimal 0–9, hexadecimal 0–9/A–F. Anything else is rejected with an error."}},{"@type":"Question","name":"Does it handle very large numbers?","acceptedAnswer":{"@type":"Answer","text":"Yes. Conversion uses BigInt, so there is no 32-bit or floating-point limit — numbers with hundreds of digits convert exactly."}},{"@type":"Question","name":"Can I convert negative or fractional numbers?","acceptedAnswer":{"@type":"Answer","text":"No. This tool supports non-negative integers only."}}]}]}</script>
+</head>
+<body>
+<header class="site-header">
+  <div class="container">
+    <a class="logo" href="/"><span class="logo-mark">T</span> ToolNest</a>
+    <nav class="site-nav">
+      <a href="/">Home</a>
+      <a href="/#categories">Categories</a>
+      <a href="/#all-tools">All Tools</a>
+    </nav>
+  </div>
+</header>
+
+<!-- ADSTERRA-HEADER: paste your Adsterra banner ad code inside the div below -->
+<div class="container"><div class="ad-slot ad-leaderboard" data-ad="header"></div></div>
+
+<main class="container">
+  <nav class="crumbs"><a href="/">Home</a> &rsaquo; <a href="/#developer">Developer Tools</a> &rsaquo; Number Base Converter</nav>
+  <div class="tool-hero">
+    <h1>Number Base Converter</h1>
+    <p>Convert between binary, octal, decimal and hexadecimal with live syncing and per-base digit validation.</p>
+  </div>
+
+  <div class="tool-card">
+  <div class="grid2">
+    <div class="field">
+      <label for="number-base-converter-bin">Binary (base 2)</label>
+      <input type="text" class="input" id="number-base-converter-bin" placeholder="e.g. 1010" autocomplete="off" autocapitalize="off" spellcheck="false">
+    </div>
+    <div class="field">
+      <label for="number-base-converter-oct">Octal (base 8)</label>
+      <input type="text" class="input" id="number-base-converter-oct" placeholder="e.g. 12" autocomplete="off" autocapitalize="off" spellcheck="false">
+    </div>
+    <div class="field">
+      <label for="number-base-converter-dec">Decimal (base 10)</label>
+      <input type="text" class="input" id="number-base-converter-dec" placeholder="e.g. 10" inputmode="numeric" autocomplete="off" spellcheck="false">
+    </div>
+    <div class="field">
+      <label for="number-base-converter-hex">Hexadecimal (base 16)</label>
+      <input type="text" class="input" id="number-base-converter-hex" placeholder="e.g. A" autocomplete="off" autocapitalize="off" spellcheck="false">
+    </div>
+  </div>
+  <div class="error" id="number-base-converter-error"></div>
+  <div class="result" id="number-base-converter-result">
+    <div class="stat-cards">
+      <div class="stat-card"><div class="v" id="number-base-converter-bits">–</div><div class="l">Bits</div></div>
+      <div class="stat-card"><div class="v" id="number-base-converter-digits">–</div><div class="l">Decimal digits</div></div>
+      <div class="stat-card"><div class="v" id="number-base-converter-bytes">–</div><div class="l">Bytes</div></div>
+    </div>
+    <p class="note">Non-negative integers only. Spaces and underscores are ignored. BigInt is used, so very large numbers convert exactly.</p>
+  </div>
+</div>
+
+
+  <!-- ADSTERRA-INCONTENT: paste your Adsterra native/in-content ad code inside the div below -->
+  <div class="ad-slot" data-ad="incontent"></div>
+
+  <div class="info-grid">
+    <div class="info-card">
+      <h2>📖 How to use</h2>
+      <ol><li>Type a number into any one of the four base fields.</li><li>The other three bases update instantly as you type.</li><li>Invalid digits for the chosen base show an error instead of converting.</li><li>See the bit length, decimal digit count and byte size below.</li></ol>
+    </div>
+    <div class="info-card">
+      <h2>❓ Frequently asked questions</h2>
+      <div class="faq"><details><summary>Why do I get an error when I type?</summary><p>Each base only accepts its own digits: binary 0–1, octal 0–7, decimal 0–9, hexadecimal 0–9/A–F. Anything else is rejected with an error.</p></details><details><summary>Does it handle very large numbers?</summary><p>Yes. Conversion uses BigInt, so there is no 32-bit or floating-point limit — numbers with hundreds of digits convert exactly.</p></details><details><summary>Can I convert negative or fractional numbers?</summary><p>No. This tool supports non-negative integers only.</p></details></div>
+    </div>
+  </div>
+
+  <section class="section">
+    <h2>🔗 Related tools</h2>
+    <div class="tool-grid"><a class="tool-link" href="/tools/base64-encoder-decoder/" data-search="base64 encoder / decoder encode text to base64 or decode base64 back to text, with full utf-8 support and a file-to-data-url converter. base64 encoder base64 decoder base64 encode base64 decode file to base64"><span class="t-ico">💻</span><span class="t-body"><b>Base64 Encoder / Decoder</b><small>Encode text to Base64 or decode Base64 back to text, with full UTF-8 support and a file-to-d…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/binary-text-converter/" data-search="binary and text converter convert text to binary or hex and back, with full utf-8 awareness and strict input validation. binary to text text to binary hex to text converter"><span class="t-ico">💻</span><span class="t-body"><b>Binary and Text Converter</b><small>Convert text to binary or hex and back, with full UTF-8 awareness and strict input validatio…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/color-code-converter/" data-search="color code converter type a color in hex, rgb or hsl format and instantly see it converted to all three formats with a preview swatch. color converter hex to rgb rgb to hex hsl converter color code"><span class="t-ico">💻</span><span class="t-body"><b>Color Code Converter</b><small>Type a color in HEX, RGB or HSL format and instantly see it converted to all three formats w…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/css-minifier/" data-search="css minifier compress css by stripping comments, collapsing whitespace and removing redundant semicolons, with before/after byte stats. css minifier minify css css compressor reduce css size"><span class="t-ico">💻</span><span class="t-body"><b>CSS Minifier</b><small>Compress CSS by stripping comments, collapsing whitespace and removing redundant semicolons,…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/csv-to-json-converter/" data-search="csv to json converter convert csv to json with a real parser that handles quoted commas, escaped quotes and multi-line fields. csv to json csv to json converter convert csv to json"><span class="t-ico">💻</span><span class="t-body"><b>CSV to JSON Converter</b><small>Convert CSV to JSON with a real parser that handles quoted commas, escaped quotes and multi-…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/dns-lookup/" data-search="dns lookup look up dns records (a, aaaa, cname, mx, txt, ns) for any hostname, resolved live from our server. dns lookup dns checker mx record lookup txt record lookup ns lookup online"><span class="t-ico">💻</span><span class="t-body"><b>DNS Lookup</b><small>Look up DNS records (A, AAAA, CNAME, MX, TXT, NS) for any hostname, resolved live from our s…</small></span><span class="t-arrow">→</span></a></div>
+  </section>
+</main>
+
+<!-- ADSTERRA-FOOTER: paste your Adsterra footer/banner ad code inside the div below -->
+<div class="container"><div class="ad-slot" data-ad="footer"></div></div>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="f-grid">
+      <div>
+        <span class="brandline"><span class="logo-mark">T</span> ToolNest</span>
+        <p>Free online tools that actually work. No sign-up, no watermarks — and your files never leave your device for client-side tools.</p>
+      </div>
+      <div>
+        <h4>Popular</h4>
+        <a href="/tools/qr-code-generator/">QR Code Generator</a>
+        <a href="/tools/background-remover/">Background Remover</a>
+        <a href="/tools/pdf-merger/">PDF Merger</a>
+        <a href="/tools/word-counter/">Word Counter</a>
+      </div>
+      <div>
+        <h4>Categories</h4>
+        <a href="/#image">Image Tools</a>
+        <a href="/#pdf">PDF &amp; Documents</a>
+        <a href="/#calculators">Calculators</a>
+        <a href="/#developer">Developer Tools</a>
+      </div>
+      <div>
+        <h4>Site</h4>
+        <a href="/">Home</a>
+        <a href="/#all-tools">All Tools</a>
+        <a href="/sitemap.xml">Sitemap</a>
+      </div>
+    </div>
+    <div class="f-bottom">© 2026 ToolNest · Free tools for everyone · Made with care</div>
+  </div>
+</footer>
+
+<script src="/assets/site.js?v=2"></script>
+
+<script>
+(function () {
+  'use strict';
+  var P = 'number-base-converter-';
+  var ERR = P + 'error';
+  var KEYS = ['bin', 'oct', 'dec', 'hex'];
+  var CFG = {
+    bin: { name: 'Binary', re: /^[01]+$/, hint: 'only 0 and 1' },
+    oct: { name: 'Octal', re: /^[0-7]+$/, hint: 'only digits 0–7' },
+    dec: { name: 'Decimal', re: /^[0-9]+$/, hint: 'only digits 0–9' },
+    hex: { name: 'Hexadecimal', re: /^[0-9a-fA-F]+$/, hint: 'only digits 0–9 and letters A–F' }
+  };
+  function g(id) { return document.getElementById(P + id); }
+  function set(id, v) { var el = g(id); if (el) el.textContent = v; }
+  function blank() {
+    KEYS.forEach(function (k) { var el = g(k); if (el) el.value = ''; });
+    set('bits', '–'); set('digits', '–'); set('bytes', '–');
+  }
+  function sync(from) {
+    TN.clearErr(ERR);
+    var src = g(from);
+    if (!src) return;
+    var raw = String(src.value).replace(/[\s_]/g, '').replace(/^0[xX]/, '');
+    if (raw === '') { blank(); return; }
+    var cfg = CFG[from];
+    if (raw.charAt(0) === '-') { TN.setErr(ERR, 'Only non-negative integers are supported.'); return; }
+    if (!cfg.re.test(raw)) { TN.setErr(ERR, cfg.name + ' accepts ' + cfg.hint + ' — invalid digit found.'); return; }
+    var n;
+    try {
+      n = BigInt((from === 'bin' ? '0b' : from === 'oct' ? '0o' : from === 'hex' ? '0x' : '') + raw);
+    } catch (e) { TN.setErr(ERR, 'Could not parse that number.'); return; }
+    var vals = { bin: n.toString(2), oct: n.toString(8), dec: n.toString(10), hex: n.toString(16).toUpperCase() };
+    KEYS.forEach(function (k) { if (k !== from) { var el = g(k); if (el) el.value = vals[k]; } });
+    var bits = vals.bin.length;
+    set('bits', String(bits));
+    set('digits', String(vals.dec.length));
+    set('bytes', String(Math.ceil(bits / 8)));
+  }
+  try {
+    KEYS.forEach(function (k) { TN.on(P + k, 'input', function () { sync(k); }); });
+  } catch (e) { /* never throw on load */ }
+})();
+
+</script>
+</body>
+</html>

@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Roman Numeral Converter — Free Online | ToolNest</title>
+<meta name="description" content="Convert between 1-3999 and Roman numerals, both ways.">
+<meta name="keywords" content="roman numeral converter, roman to number, number to roman">
+<link rel="canonical" href="https://toolnest.vercel.app/tools/roman-numeral-converter/">
+<meta name="theme-color" content="#07070b">
+<meta property="og:title" content="Roman Numeral Converter — Free Online | ToolNest">
+<meta property="og:description" content="Convert between 1-3999 and Roman numerals, both ways.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css?v=2">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%23e01111'/><text x='50' y='68' font-size='58' text-anchor='middle' fill='white' font-family='Arial' font-weight='bold'>T</text></svg>">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebApplication","name":"Roman Numeral Converter","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0"},"url":"https://toolnest.vercel.app/tools/roman-numeral-converter/","description":"Convert between 1-3999 and Roman numerals, both ways."},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Why only 1 to 3999?","acceptedAnswer":{"@type":"Answer","text":"Standard Roman numerals stop at 3999 because there is no standard single symbol for 5000 in basic notation. This tool converts integers from 1 to 3999."}},{"@type":"Question","name":"How are invalid numerals like IIII rejected?","acceptedAnswer":{"@type":"Answer","text":"After parsing, the result is converted back to Roman and compared with the input. Forms like IIII, VV or IL fail this round-trip check and are rejected."}},{"@type":"Question","name":"Can I convert Roman numerals back to numbers?","acceptedAnswer":{"@type":"Answer","text":"Yes — both directions are supported; pick the mode first."}}]}]}</script>
+</head>
+<body>
+<header class="site-header">
+  <div class="container">
+    <a class="logo" href="/"><span class="logo-mark">T</span> ToolNest</a>
+    <nav class="site-nav">
+      <a href="/">Home</a>
+      <a href="/#categories">Categories</a>
+      <a href="/#all-tools">All Tools</a>
+    </nav>
+  </div>
+</header>
+
+<!-- ADSTERRA-HEADER: paste your Adsterra banner ad code inside the div below -->
+<div class="container"><div class="ad-slot ad-leaderboard" data-ad="header"></div></div>
+
+<main class="container">
+  <nav class="crumbs"><a href="/">Home</a> &rsaquo; <a href="/#math">Math &amp; Numbers</a> &rsaquo; Roman Numeral Converter</nav>
+  <div class="tool-hero">
+    <h1>Roman Numeral Converter</h1>
+    <p>Convert between 1-3999 and Roman numerals, both ways.</p>
+  </div>
+
+  <div class="tool-card">
+  <div class="grid2">
+    <div class="field">
+      <label for="roman-numeral-converter-mode">Direction</label>
+      <select class="select" id="roman-numeral-converter-mode">
+        <option value="to-roman">Number &rarr; Roman</option>
+        <option value="to-num">Roman &rarr; Number</option>
+      </select>
+    </div>
+    <div class="field">
+      <label for="roman-numeral-converter-input">Value</label>
+      <input type="text" class="input" id="roman-numeral-converter-input" placeholder="e.g. 2026 or MMXXVI" autocomplete="off" spellcheck="false">
+    </div>
+  </div>
+  <div class="btn-row">
+    <button type="button" class="btn btn-primary" id="roman-numeral-converter-go">Convert</button>
+  </div>
+  <div class="error" id="roman-numeral-converter-error"></div>
+  <div class="result" id="roman-numeral-converter-result">
+    <div class="stat-cards">
+      <div class="stat-card"><div class="v" id="roman-numeral-converter-out">&ndash;</div><div class="l">Result</div></div>
+    </div>
+  </div>
+</div>
+
+
+  <!-- ADSTERRA-INCONTENT: paste your Adsterra native/in-content ad code inside the div below -->
+  <div class="ad-slot" data-ad="incontent"></div>
+
+  <div class="info-grid">
+    <div class="info-card">
+      <h2>📖 How to use</h2>
+      <ol><li>Choose the conversion direction.</li><li>Type a number (1-3999) or a Roman numeral.</li><li>Press Convert.</li><li>Non-canonical forms like IIII or VV are rejected with an error.</li></ol>
+    </div>
+    <div class="info-card">
+      <h2>❓ Frequently asked questions</h2>
+      <div class="faq"><details><summary>Why only 1 to 3999?</summary><p>Standard Roman numerals stop at 3999 because there is no standard single symbol for 5000 in basic notation. This tool converts integers from 1 to 3999.</p></details><details><summary>How are invalid numerals like IIII rejected?</summary><p>After parsing, the result is converted back to Roman and compared with the input. Forms like IIII, VV or IL fail this round-trip check and are rejected.</p></details><details><summary>Can I convert Roman numerals back to numbers?</summary><p>Yes — both directions are supported; pick the mode first.</p></details></div>
+    </div>
+  </div>
+
+  <section class="section">
+    <h2>🔗 Related tools</h2>
+    <div class="tool-grid"><a class="tool-link" href="/tools/fraction-calculator/" data-search="fraction calculator add, subtract, multiply and divide fractions with simplification. fraction calculator add fractions simplify fraction"><span class="t-ico">📐</span><span class="t-body"><b>Fraction Calculator</b><small>Add, subtract, multiply and divide fractions with simplification.</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/gcf-lcm-calculator/" data-search="gcf &amp; lcm calculator greatest common factor and least common multiple of any list. gcf calculator lcm calculator greatest common factor"><span class="t-ico">📐</span><span class="t-body"><b>GCF &amp; LCM Calculator</b><small>Greatest common factor and least common multiple of any list.</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/matrix-calculator/" data-search="matrix calculator add, multiply, invert and transpose 2x2 and 3x3 matrices. matrix calculator matrix inverse matrix multiplication"><span class="t-ico">📐</span><span class="t-body"><b>Matrix Calculator</b><small>Add, multiply, invert and transpose 2x2 and 3x3 matrices.</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/prime-number-checker/" data-search="prime number checker deterministic miller-rabin primality test for big integers. prime checker primality test miller rabin"><span class="t-ico">📐</span><span class="t-body"><b>Prime Number Checker</b><small>Deterministic Miller-Rabin primality test for big integers.</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/pythagorean-calculator/" data-search="pythagorean theorem calculator solve right-triangle sides, area and angles. pythagorean theorem right triangle calculator hypotenuse calculator"><span class="t-ico">📐</span><span class="t-body"><b>Pythagorean Theorem Calculator</b><small>Solve right-triangle sides, area and angles.</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/quadratic-equation-solver/" data-search="quadratic equation solver solve ax^2+bx+c=0 with full discriminant analysis. quadratic solver quadratic equation discriminant calculator"><span class="t-ico">📐</span><span class="t-body"><b>Quadratic Equation Solver</b><small>Solve ax^2+bx+c=0 with full discriminant analysis.</small></span><span class="t-arrow">→</span></a></div>
+  </section>
+</main>
+
+<!-- ADSTERRA-FOOTER: paste your Adsterra footer/banner ad code inside the div below -->
+<div class="container"><div class="ad-slot" data-ad="footer"></div></div>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="f-grid">
+      <div>
+        <span class="brandline"><span class="logo-mark">T</span> ToolNest</span>
+        <p>Free online tools that actually work. No sign-up, no watermarks — and your files never leave your device for client-side tools.</p>
+      </div>
+      <div>
+        <h4>Popular</h4>
+        <a href="/tools/qr-code-generator/">QR Code Generator</a>
+        <a href="/tools/background-remover/">Background Remover</a>
+        <a href="/tools/pdf-merger/">PDF Merger</a>
+        <a href="/tools/word-counter/">Word Counter</a>
+      </div>
+      <div>
+        <h4>Categories</h4>
+        <a href="/#image">Image Tools</a>
+        <a href="/#pdf">PDF &amp; Documents</a>
+        <a href="/#calculators">Calculators</a>
+        <a href="/#developer">Developer Tools</a>
+      </div>
+      <div>
+        <h4>Site</h4>
+        <a href="/">Home</a>
+        <a href="/#all-tools">All Tools</a>
+        <a href="/sitemap.xml">Sitemap</a>
+      </div>
+    </div>
+    <div class="f-bottom">© 2026 ToolNest · Free tools for everyone · Made with care</div>
+  </div>
+</footer>
+
+<script src="/assets/site.js?v=2"></script>
+
+<script>
+(function () {
+  'use strict';
+  var ERR = 'roman-numeral-converter-error';
+  var TABLE = [
+    [1000, 'M'], [900, 'CM'], [500, 'D'], [400, 'CD'],
+    [100, 'C'], [90, 'XC'], [50, 'L'], [40, 'XL'],
+    [10, 'X'], [9, 'IX'], [5, 'V'], [4, 'IV'], [1, 'I']
+  ];
+  var VALUES = { I: 1, V: 5, X: 10, L: 50, C: 100, D: 500, M: 1000 };
+
+  function toRoman(n) {
+    var s = '';
+    for (var i = 0; i < TABLE.length; i++) {
+      while (n >= TABLE[i][0]) { s += TABLE[i][1]; n -= TABLE[i][0]; }
+    }
+    return s;
+  }
+
+  function fromRoman(s) {
+    s = s.trim().toUpperCase();
+    if (!s || !/^[IVXLCDM]+$/.test(s)) throw new Error('Use only the letters I, V, X, L, C, D, M.');
+    var total = 0;
+    for (var i = 0; i < s.length; i++) {
+      var v = VALUES[s[i]];
+      var next = i + 1 < s.length ? VALUES[s[i + 1]] : 0;
+      total += (v < next) ? -v : v;
+    }
+    if (total < 1 || total > 3999) throw new Error('Roman numerals here cover 1 to 3999.');
+    // Canonical round-trip validation rejects IIII, VV, IL, etc.
+    if (toRoman(total) !== s) throw new Error('"' + s + '" is not valid canonical Roman form (try ' + toRoman(total) + ').');
+    return total;
+  }
+
+  function convert() {
+    TN.clearErr(ERR);
+    try {
+      var modeEl = TN.el('roman-numeral-converter-mode');
+      var mode = modeEl ? modeEl.value : 'to-roman';
+      var el = TN.el('roman-numeral-converter-input');
+      var s = el ? el.value.trim() : '';
+      if (!s) throw new Error('Enter a value to convert.');
+      var out;
+      if (mode === 'to-roman') {
+        if (!/^\d+$/.test(s)) throw new Error('Enter a whole number from 1 to 3999.');
+        var n = parseInt(s, 10);
+        if (n < 1 || n > 3999) throw new Error('Number must be between 1 and 3999.');
+        out = toRoman(n);
+      } else {
+        out = String(fromRoman(s));
+      }
+      TN.el('roman-numeral-converter-out').textContent = out;
+    } catch (err) {
+      TN.setErr(ERR, err && err.message ? err.message : 'Invalid input.');
+    }
+  }
+
+  try {
+    TN.on('roman-numeral-converter-go', 'click', convert);
+    TN.on('roman-numeral-converter-input', 'keydown', function (e) {
+      if (e.key === 'Enter') { e.preventDefault(); convert(); }
+    });
+  } catch (e) { /* never throw on load */ }
+})();
+
+</script>
+</body>
+</html>

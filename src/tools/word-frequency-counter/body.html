@@ -1,0 +1,35 @@
+<div class="tool-card">
+  <h2>Word Frequency Counter</h2>
+  <p class="muted">Find the most-used words in any text, with counts and a bar visualization.</p>
+  <div class="field">
+    <label for="word-frequency-counter-text">Your text</label>
+    <textarea class="textarea" id="word-frequency-counter-text" rows="8" placeholder="Paste your text here..."></textarea>
+  </div>
+  <div class="grid2">
+    <div class="field">
+      <label for="word-frequency-counter-minlen">Minimum word length</label>
+      <input type="number" class="input" id="word-frequency-counter-minlen" min="1" max="20" value="1">
+    </div>
+    <div class="field">
+      <label>&nbsp;</label>
+      <label class="checkbox-row"><input type="checkbox" id="word-frequency-counter-nocase" checked> Ignore case</label>
+      <label class="checkbox-row"><input type="checkbox" id="word-frequency-counter-stopwords"> Remove stopwords</label>
+    </div>
+  </div>
+  <div class="btn-row mt">
+    <button class="btn btn-primary" id="word-frequency-counter-analyze">Analyze</button>
+    <button class="btn btn-outline" id="word-frequency-counter-clear">Clear</button>
+  </div>
+  <div class="error" id="word-frequency-counter-error"></div>
+  <div class="result" id="word-frequency-counter-result">
+    <div class="stat-cards">
+      <div class="stat-card"><div class="v" id="word-frequency-counter-total">–</div><div class="l">Total words</div></div>
+      <div class="stat-card"><div class="v" id="word-frequency-counter-unique">–</div><div class="l">Unique words</div></div>
+    </div>
+    <table class="data" id="word-frequency-counter-table">
+      <thead><tr><th scope="col">#</th><th scope="col">Word</th><th scope="col">Count</th><th scope="col">Frequency</th></tr></thead>
+      <tbody id="word-frequency-counter-tbody"><tr><td colspan="4" class="muted">Run an analysis to see results.</td></tr></tbody>
+    </table>
+    <p class="note">Bars are scaled relative to the most frequent word.</p>
+  </div>
+</div>

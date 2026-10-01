@@ -1,0 +1,34 @@
+<div class="tool-card">
+  <h2>Duplicate Line Remover</h2>
+  <p class="muted">Drop duplicate lines from any list. The first occurrence of each line is kept.</p>
+  <div class="field">
+    <label for="duplicate-line-remover-input">Your list (one item per line)</label>
+    <textarea class="textarea" id="duplicate-line-remover-input" rows="8" placeholder="Paste your lines here..."></textarea>
+  </div>
+  <div class="field">
+    <label>Options</label>
+    <label class="checkbox-row"><input type="checkbox" id="duplicate-line-remover-nocase"> Case-insensitive comparison</label>
+    <label class="checkbox-row"><input type="checkbox" id="duplicate-line-remover-trim" checked> Trim whitespace before comparing</label>
+    <label class="checkbox-row"><input type="checkbox" id="duplicate-line-remover-sort"> Sort A-Z after removing duplicates</label>
+  </div>
+  <div class="btn-row mt">
+    <button class="btn btn-primary" id="duplicate-line-remover-run">Remove duplicates</button>
+    <button class="btn btn-outline" id="duplicate-line-remover-clear">Clear</button>
+  </div>
+  <div class="error" id="duplicate-line-remover-error"></div>
+  <div class="result" id="duplicate-line-remover-result">
+    <div class="stat-cards">
+      <div class="stat-card"><div class="v" id="duplicate-line-remover-in">–</div><div class="l">Input lines</div></div>
+      <div class="stat-card"><div class="v" id="duplicate-line-remover-out">–</div><div class="l">Unique lines</div></div>
+      <div class="stat-card"><div class="v" id="duplicate-line-remover-removed">–</div><div class="l">Duplicates removed</div></div>
+    </div>
+    <div class="field">
+      <label for="duplicate-line-remover-output">Result</label>
+      <textarea class="textarea" id="duplicate-line-remover-output" rows="8" readonly placeholder="Cleaned lines will appear here..."></textarea>
+    </div>
+    <div class="btn-row">
+      <button class="btn btn-outline" id="duplicate-line-remover-copy">Copy result</button>
+      <button class="btn btn-outline" id="duplicate-line-remover-download">Download .txt</button>
+    </div>
+  </div>
+</div>

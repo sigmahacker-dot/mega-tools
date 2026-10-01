@@ -1,0 +1,30 @@
+<div class="tool-card">
+  <div class="field">
+    <label for="tic-tac-toe-mode">Game mode</label>
+    <select class="select" id="tic-tac-toe-mode">
+      <option value="ai">Vs computer (unbeatable AI)</option>
+      <option value="2p">Two players</option>
+    </select>
+  </div>
+  <div class="stat-cards">
+    <div class="stat-card"><div class="v" id="tic-tac-toe-sx">0</div><div class="l">X wins</div></div>
+    <div class="stat-card"><div class="v" id="tic-tac-toe-so">0</div><div class="l">O wins</div></div>
+    <div class="stat-card"><div class="v" id="tic-tac-toe-sd">0</div><div class="l">Draws</div></div>
+  </div>
+  <p class="center muted" id="tic-tac-toe-status">Your turn (X)</p>
+  <div class="center">
+    <div class="ttt-grid" id="tic-tac-toe-grid"></div>
+  </div>
+  <div class="btn-row center">
+    <button type="button" class="btn btn-outline btn-sm" id="tic-tac-toe-reset">Reset board</button>
+  </div>
+  <div class="error" id="tic-tac-toe-error"></div>
+  <div class="result hidden" id="tic-tac-toe-result"></div>
+  <style>
+    .ttt-grid{display:grid;grid-template-columns:repeat(3,84px);gap:8px;justify-content:center;margin:6px auto}
+    .ttt-cell{width:84px;height:84px;font-size:2.2rem;font-weight:700;border:2px solid #cbd5e1;border-radius:12px;background:#f8fafc;cursor:pointer;color:#0f172a}
+    .ttt-cell:hover:not(:disabled){border-color:#4D7C0F}
+    .ttt-cell:disabled{cursor:default;opacity:1}
+    .ttt-cell.win{background:#dcfce7;border-color:#16a34a;color:#15803d}
+  </style>
+</div>

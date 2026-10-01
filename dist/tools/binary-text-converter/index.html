@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Binary and Text Converter — Free Online | ToolNest</title>
+<meta name="description" content="Convert text to binary or hex and back, with full UTF-8 awareness and strict input validation.">
+<meta name="keywords" content="binary to text, text to binary, hex to text converter">
+<link rel="canonical" href="https://toolnest.vercel.app/tools/binary-text-converter/">
+<meta name="theme-color" content="#07070b">
+<meta property="og:title" content="Binary and Text Converter — Free Online | ToolNest">
+<meta property="og:description" content="Convert text to binary or hex and back, with full UTF-8 awareness and strict input validation.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css?v=2">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%23e01111'/><text x='50' y='68' font-size='58' text-anchor='middle' fill='white' font-family='Arial' font-weight='bold'>T</text></svg>">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebApplication","name":"Binary and Text Converter","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0"},"url":"https://toolnest.vercel.app/tools/binary-text-converter/","description":"Convert text to binary or hex and back, with full UTF-8 awareness and strict input validation."},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Is multi-byte Unicode handled correctly?","acceptedAnswer":{"@type":"Answer","text":"Yes. Text is encoded and decoded as UTF-8, so emoji and non-Latin scripts round-trip correctly instead of breaking."}},{"@type":"Question","name":"Why does binary input need a multiple of 8 bits?","acceptedAnswer":{"@type":"Answer","text":"Each byte is 8 bits. A length that is not a multiple of 8 cannot be split into whole bytes, so it is rejected."}},{"@type":"Question","name":"Are spaces allowed in binary or hex input?","acceptedAnswer":{"@type":"Answer","text":"Yes — spaces and line breaks are ignored, so you can paste grouped output like “01001000 01101001” directly."}}]}]}</script>
+</head>
+<body>
+<header class="site-header">
+  <div class="container">
+    <a class="logo" href="/"><span class="logo-mark">T</span> ToolNest</a>
+    <nav class="site-nav">
+      <a href="/">Home</a>
+      <a href="/#categories">Categories</a>
+      <a href="/#all-tools">All Tools</a>
+    </nav>
+  </div>
+</header>
+
+<!-- ADSTERRA-HEADER: paste your Adsterra banner ad code inside the div below -->
+<div class="container"><div class="ad-slot ad-leaderboard" data-ad="header"></div></div>
+
+<main class="container">
+  <nav class="crumbs"><a href="/">Home</a> &rsaquo; <a href="/#developer">Developer Tools</a> &rsaquo; Binary and Text Converter</nav>
+  <div class="tool-hero">
+    <h1>Binary and Text Converter</h1>
+    <p>Convert text to binary or hex and back, with full UTF-8 awareness and strict input validation.</p>
+  </div>
+
+  <div class="tool-card">
+  <div class="field">
+    <label for="binary-text-converter-mode">Conversion direction</label>
+    <select class="select" id="binary-text-converter-mode">
+      <option value="t2b">Text → Binary (8-bit groups)</option>
+      <option value="t2h">Text → Hexadecimal</option>
+      <option value="b2t">Binary → Text</option>
+      <option value="h2t">Hexadecimal → Text</option>
+    </select>
+  </div>
+  <div class="field">
+    <label for="binary-text-converter-in">Input</label>
+    <textarea class="textarea" id="binary-text-converter-in" rows="4" placeholder="Type or paste here…" spellcheck="false"></textarea>
+  </div>
+  <div class="error" id="binary-text-converter-error"></div>
+  <div class="result" id="binary-text-converter-result">
+  <div class="field">
+    <label for="binary-text-converter-out">Output</label>
+    <textarea class="textarea" id="binary-text-converter-out" rows="4" readonly spellcheck="false"></textarea>
+  </div>
+  <div class="btn-row">
+    <button type="button" class="btn btn-outline btn-sm" id="binary-text-converter-copy">Copy output</button>
+    <button type="button" class="btn btn-outline btn-sm" id="binary-text-converter-swap">Swap direction</button>
+  </div>
+  </div>
+  <p class="note">UTF-8 is used throughout, so emoji and non-Latin text convert correctly.</p>
+</div>
+
+
+  <!-- ADSTERRA-INCONTENT: paste your Adsterra native/in-content ad code inside the div below -->
+  <div class="ad-slot" data-ad="incontent"></div>
+
+  <div class="info-grid">
+    <div class="info-card">
+      <h2>📖 How to use</h2>
+      <ol><li>Pick a conversion direction from the dropdown.</li><li>Type or paste your input — conversion happens live.</li><li>Invalid input (bad digits, wrong length) shows a clear error.</li><li>Copy the result or swap the direction with one click.</li></ol>
+    </div>
+    <div class="info-card">
+      <h2>❓ Frequently asked questions</h2>
+      <div class="faq"><details><summary>Is multi-byte Unicode handled correctly?</summary><p>Yes. Text is encoded and decoded as UTF-8, so emoji and non-Latin scripts round-trip correctly instead of breaking.</p></details><details><summary>Why does binary input need a multiple of 8 bits?</summary><p>Each byte is 8 bits. A length that is not a multiple of 8 cannot be split into whole bytes, so it is rejected.</p></details><details><summary>Are spaces allowed in binary or hex input?</summary><p>Yes — spaces and line breaks are ignored, so you can paste grouped output like “01001000 01101001” directly.</p></details></div>
+    </div>
+  </div>
+
+  <section class="section">
+    <h2>🔗 Related tools</h2>
+    <div class="tool-grid"><a class="tool-link" href="/tools/base64-encoder-decoder/" data-search="base64 encoder / decoder encode text to base64 or decode base64 back to text, with full utf-8 support and a file-to-data-url converter. base64 encoder base64 decoder base64 encode base64 decode file to base64"><span class="t-ico">💻</span><span class="t-body"><b>Base64 Encoder / Decoder</b><small>Encode text to Base64 or decode Base64 back to text, with full UTF-8 support and a file-to-d…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/color-code-converter/" data-search="color code converter type a color in hex, rgb or hsl format and instantly see it converted to all three formats with a preview swatch. color converter hex to rgb rgb to hex hsl converter color code"><span class="t-ico">💻</span><span class="t-body"><b>Color Code Converter</b><small>Type a color in HEX, RGB or HSL format and instantly see it converted to all three formats w…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/css-minifier/" data-search="css minifier compress css by stripping comments, collapsing whitespace and removing redundant semicolons, with before/after byte stats. css minifier minify css css compressor reduce css size"><span class="t-ico">💻</span><span class="t-body"><b>CSS Minifier</b><small>Compress CSS by stripping comments, collapsing whitespace and removing redundant semicolons,…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/csv-to-json-converter/" data-search="csv to json converter convert csv to json with a real parser that handles quoted commas, escaped quotes and multi-line fields. csv to json csv to json converter convert csv to json"><span class="t-ico">💻</span><span class="t-body"><b>CSV to JSON Converter</b><small>Convert CSV to JSON with a real parser that handles quoted commas, escaped quotes and multi-…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/dns-lookup/" data-search="dns lookup look up dns records (a, aaaa, cname, mx, txt, ns) for any hostname, resolved live from our server. dns lookup dns checker mx record lookup txt record lookup ns lookup online"><span class="t-ico">💻</span><span class="t-body"><b>DNS Lookup</b><small>Look up DNS records (A, AAAA, CNAME, MX, TXT, NS) for any hostname, resolved live from our s…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/html-entity-encoder/" data-search="html entity encoder escape text into html entities and decode entities back to text, both directions done correctly. html entity encoder html escape encode html entities"><span class="t-ico">💻</span><span class="t-body"><b>HTML Entity Encoder</b><small>Escape text into HTML entities and decode entities back to text, both directions done correc…</small></span><span class="t-arrow">→</span></a></div>
+  </section>
+</main>
+
+<!-- ADSTERRA-FOOTER: paste your Adsterra footer/banner ad code inside the div below -->
+<div class="container"><div class="ad-slot" data-ad="footer"></div></div>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="f-grid">
+      <div>
+        <span class="brandline"><span class="logo-mark">T</span> ToolNest</span>
+        <p>Free online tools that actually work. No sign-up, no watermarks — and your files never leave your device for client-side tools.</p>
+      </div>
+      <div>
+        <h4>Popular</h4>
+        <a href="/tools/qr-code-generator/">QR Code Generator</a>
+        <a href="/tools/background-remover/">Background Remover</a>
+        <a href="/tools/pdf-merger/">PDF Merger</a>
+        <a href="/tools/word-counter/">Word Counter</a>
+      </div>
+      <div>
+        <h4>Categories</h4>
+        <a href="/#image">Image Tools</a>
+        <a href="/#pdf">PDF &amp; Documents</a>
+        <a href="/#calculators">Calculators</a>
+        <a href="/#developer">Developer Tools</a>
+      </div>
+      <div>
+        <h4>Site</h4>
+        <a href="/">Home</a>
+        <a href="/#all-tools">All Tools</a>
+        <a href="/sitemap.xml">Sitemap</a>
+      </div>
+    </div>
+    <div class="f-bottom">© 2026 ToolNest · Free tools for everyone · Made with care</div>
+  </div>
+</footer>
+
+<script src="/assets/site.js?v=2"></script>
+
+<script>
+(function () {
+  'use strict';
+  var P = 'binary-text-converter-';
+  var ERR = P + 'error';
+  function g(id) { return document.getElementById(P + id); }
+  function bytesFromStr(s, chunk, radix) {
+    var arr = new Uint8Array(s.length / chunk);
+    for (var i = 0; i < arr.length; i++) arr[i] = parseInt(s.substr(i * chunk, chunk), radix);
+    return arr;
+  }
+  function decodeBytes(arr) {
+    try { return new TextDecoder('utf-8', { fatal: true }).decode(arr); }
+    catch (e) { throw new Error('Those bytes are not valid UTF-8 text.'); }
+  }
+  function convert() {
+    var modeEl = g('mode'), inEl = g('in'), outEl = g('out');
+    if (!modeEl || !inEl || !outEl) return;
+    TN.clearErr(ERR);
+    var mode = modeEl.value, inp = inEl.value, out = '';
+    try {
+      if (mode === 't2b' || mode === 't2h') {
+        var bytes = new TextEncoder().encode(inp), parts = [];
+        for (var i = 0; i < bytes.length; i++) {
+          parts.push(mode === 't2b'
+            ? ('0000000' + bytes[i].toString(2)).slice(-8)
+            : ('0' + bytes[i].toString(16)).slice(-2));
+        }
+        out = parts.join(' ');
+      } else if (mode === 'b2t') {
+        var bits = inp.replace(/\s+/g, '');
+        if (bits && !/^[01]+$/.test(bits)) throw new Error('Binary input may only contain the digits 0 and 1.');
+        if (bits.length % 8 !== 0) throw new Error('Binary length must be a multiple of 8 — found ' + bits.length + ' bits.');
+        out = decodeBytes(bytesFromStr(bits, 8, 2));
+      } else {
+        var hex = inp.replace(/\s+/g, '');
+        if (hex && !/^[0-9a-fA-F]+$/.test(hex)) throw new Error('Hex input may only contain digits 0–9 and letters A–F.');
+        if (hex.length % 2 !== 0) throw new Error('Hex length must be even — found ' + hex.length + ' characters.');
+        out = decodeBytes(bytesFromStr(hex, 2, 16));
+      }
+      outEl.value = out;
+    } catch (e) {
+      outEl.value = '';
+      TN.setErr(ERR, e && e.message ? e.message : 'Conversion failed.');
+    }
+  }
+  function swap() {
+    var modeEl = g('mode'), inEl = g('in'), outEl = g('out');
+    if (!modeEl || !inEl) return;
+    var map = { t2b: 'b2t', b2t: 't2b', t2h: 'h2t', h2t: 't2h' };
+    modeEl.value = map[modeEl.value] || 't2b';
+    inEl.value = outEl ? outEl.value : '';
+    convert();
+  }
+  try {
+    TN.on(P + 'mode', 'change', convert);
+    TN.on(P + 'in', 'input', convert);
+    TN.on(P + 'copy', 'click', function () { var o = g('out'); if (o && o.value) TN.copy(o.value); });
+    TN.on(P + 'swap', 'click', swap);
+  } catch (e) { /* never throw on load */ }
+})();
+
+</script>
+</body>
+</html>

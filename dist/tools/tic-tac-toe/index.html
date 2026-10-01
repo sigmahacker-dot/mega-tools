@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tic Tac Toe — Free Online | ToolNest</title>
+<meta name="description" content="Tic Tac Toe against an unbeatable minimax AI — or a friend in two-player mode.">
+<meta name="keywords" content="tic tac toe, tic tac toe game, unbeatable tic tac toe ai">
+<link rel="canonical" href="https://toolnest.vercel.app/tools/tic-tac-toe/">
+<meta name="theme-color" content="#07070b">
+<meta property="og:title" content="Tic Tac Toe — Free Online | ToolNest">
+<meta property="og:description" content="Tic Tac Toe against an unbeatable minimax AI — or a friend in two-player mode.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css?v=2">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%23e01111'/><text x='50' y='68' font-size='58' text-anchor='middle' fill='white' font-family='Arial' font-weight='bold'>T</text></svg>">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebApplication","name":"Tic Tac Toe","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0"},"url":"https://toolnest.vercel.app/tools/tic-tac-toe/","description":"Tic Tac Toe against an unbeatable minimax AI — or a friend in two-player mode."},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Is the computer really unbeatable?","acceptedAnswer":{"@type":"Answer","text":"It uses the minimax algorithm, which explores every possible game. Played perfectly it can never lose — the best you can do is a draw."}},{"@type":"Question","name":"Can two people play?","acceptedAnswer":{"@type":"Answer","text":"Yes — switch to “Two players” and pass the device back and forth. X always moves first."}},{"@type":"Question","name":"Why is the computer's move instant?","acceptedAnswer":{"@type":"Answer","text":"Minimax evaluates the whole game tree (at most a few thousand positions), so the move is instant."}}]}]}</script>
+</head>
+<body>
+<header class="site-header">
+  <div class="container">
+    <a class="logo" href="/"><span class="logo-mark">T</span> ToolNest</a>
+    <nav class="site-nav">
+      <a href="/">Home</a>
+      <a href="/#categories">Categories</a>
+      <a href="/#all-tools">All Tools</a>
+    </nav>
+  </div>
+</header>
+
+<!-- ADSTERRA-HEADER: paste your Adsterra banner ad code inside the div below -->
+<div class="container"><div class="ad-slot ad-leaderboard" data-ad="header"></div></div>
+
+<main class="container">
+  <nav class="crumbs"><a href="/">Home</a> &rsaquo; <a href="/#fun">Fun &amp; Lifestyle</a> &rsaquo; Tic Tac Toe</nav>
+  <div class="tool-hero">
+    <h1>Tic Tac Toe</h1>
+    <p>Tic Tac Toe against an unbeatable minimax AI — or a friend in two-player mode.</p>
+  </div>
+
+  <div class="tool-card">
+  <div class="field">
+    <label for="tic-tac-toe-mode">Game mode</label>
+    <select class="select" id="tic-tac-toe-mode">
+      <option value="ai">Vs computer (unbeatable AI)</option>
+      <option value="2p">Two players</option>
+    </select>
+  </div>
+  <div class="stat-cards">
+    <div class="stat-card"><div class="v" id="tic-tac-toe-sx">0</div><div class="l">X wins</div></div>
+    <div class="stat-card"><div class="v" id="tic-tac-toe-so">0</div><div class="l">O wins</div></div>
+    <div class="stat-card"><div class="v" id="tic-tac-toe-sd">0</div><div class="l">Draws</div></div>
+  </div>
+  <p class="center muted" id="tic-tac-toe-status">Your turn (X)</p>
+  <div class="center">
+    <div class="ttt-grid" id="tic-tac-toe-grid"></div>
+  </div>
+  <div class="btn-row center">
+    <button type="button" class="btn btn-outline btn-sm" id="tic-tac-toe-reset">Reset board</button>
+  </div>
+  <div class="error" id="tic-tac-toe-error"></div>
+  <div class="result hidden" id="tic-tac-toe-result"></div>
+  <style>
+    .ttt-grid{display:grid;grid-template-columns:repeat(3,84px);gap:8px;justify-content:center;margin:6px auto}
+    .ttt-cell{width:84px;height:84px;font-size:2.2rem;font-weight:700;border:2px solid #cbd5e1;border-radius:12px;background:#f8fafc;cursor:pointer;color:#0f172a}
+    .ttt-cell:hover:not(:disabled){border-color:#4D7C0F}
+    .ttt-cell:disabled{cursor:default;opacity:1}
+    .ttt-cell.win{background:#dcfce7;border-color:#16a34a;color:#15803d}
+  </style>
+</div>
+
+
+  <!-- ADSTERRA-INCONTENT: paste your Adsterra native/in-content ad code inside the div below -->
+  <div class="ad-slot" data-ad="incontent"></div>
+
+  <div class="info-grid">
+    <div class="info-card">
+      <h2>📖 How to use</h2>
+      <ol><li>Pick “Vs computer” or “Two players”.</li><li>Click a square — X moves first.</li><li>The AI answers with the perfect minimax move.</li><li>Wins, draws and the winning line are tracked below.</li></ol>
+    </div>
+    <div class="info-card">
+      <h2>❓ Frequently asked questions</h2>
+      <div class="faq"><details><summary>Is the computer really unbeatable?</summary><p>It uses the minimax algorithm, which explores every possible game. Played perfectly it can never lose — the best you can do is a draw.</p></details><details><summary>Can two people play?</summary><p>Yes — switch to “Two players” and pass the device back and forth. X always moves first.</p></details><details><summary>Why is the computer&#39;s move instant?</summary><p>Minimax evaluates the whole game tree (at most a few thousand positions), so the move is instant.</p></details></div>
+    </div>
+  </div>
+
+  <section class="section">
+    <h2>🔗 Related tools</h2>
+    <div class="tool-grid"><a class="tool-link" href="/tools/baby-name-generator/" data-search="baby name generator discover baby names by gender and origin — pakistani, arabic, western, indian or turkish — with meanings, random picks and tap-to-copy. baby name generator baby names with meanings muslim baby names boy girl names"><span class="t-ico">🎲</span><span class="t-body"><b>Baby Name Generator</b><small>Discover baby names by gender and origin — Pakistani, Arabic, Western, Indian or Turkish — w…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/battery-status-checker/" data-search="battery status checker check your device&#39;s battery level, charging status and estimated time remaining, with live updates — where your browser supports the battery api. battery status battery level checker laptop battery charging status"><span class="t-ico">🎲</span><span class="t-body"><b>Battery Status Checker</b><small>Check your device&#39;s battery level, charging status and estimated time remaining, with live u…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/birthday-countdown/" data-search="birthday countdown enter your birthday for a live countdown to your next one — days, hours, minutes and seconds — plus the age you&#39;ll turn and a fun message. birthday countdown countdown to birthday how old am i birthday timer"><span class="t-ico">🎲</span><span class="t-body"><b>Birthday Countdown</b><small>Enter your birthday for a live countdown to your next one — days, hours, minutes and seconds…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/calendar-generator/" data-search="calendar generator generate a monthly calendar for any month and year, with correct weekdays, leap years, today&#39;s date highlighted, and previous/next month navigation. calendar generator monthly calendar printable calendar month planner"><span class="t-ico">🎲</span><span class="t-body"><b>Calendar Generator</b><small>Generate a monthly calendar for any month and year, with correct weekdays, leap years, today…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/coin-flip/" data-search="coin flip flip a virtual coin with a fun animated toss. get instant heads or tails results, keep a running tally of both sides, and reset the count whenever you like. coin flip heads or tails coin toss random coin"><span class="t-ico">🎲</span><span class="t-body"><b>Coin Flip</b><small>Flip a virtual coin with a fun animated toss. Get instant Heads or Tails results, keep a run…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/decision-wheel/" data-search="decision wheel spinner can&#39;t decide? put your options on the wheel, give it a spin, and let randomness choose for you. decision wheel spin the wheel random picker wheel"><span class="t-ico">🎲</span><span class="t-body"><b>Decision Wheel Spinner</b><small>Can&#39;t decide? Put your options on the wheel, give it a spin, and let randomness choose for y…</small></span><span class="t-arrow">→</span></a></div>
+  </section>
+</main>
+
+<!-- ADSTERRA-FOOTER: paste your Adsterra footer/banner ad code inside the div below -->
+<div class="container"><div class="ad-slot" data-ad="footer"></div></div>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="f-grid">
+      <div>
+        <span class="brandline"><span class="logo-mark">T</span> ToolNest</span>
+        <p>Free online tools that actually work. No sign-up, no watermarks — and your files never leave your device for client-side tools.</p>
+      </div>
+      <div>
+        <h4>Popular</h4>
+        <a href="/tools/qr-code-generator/">QR Code Generator</a>
+        <a href="/tools/background-remover/">Background Remover</a>
+        <a href="/tools/pdf-merger/">PDF Merger</a>
+        <a href="/tools/word-counter/">Word Counter</a>
+      </div>
+      <div>
+        <h4>Categories</h4>
+        <a href="/#image">Image Tools</a>
+        <a href="/#pdf">PDF &amp; Documents</a>
+        <a href="/#calculators">Calculators</a>
+        <a href="/#developer">Developer Tools</a>
+      </div>
+      <div>
+        <h4>Site</h4>
+        <a href="/">Home</a>
+        <a href="/#all-tools">All Tools</a>
+        <a href="/sitemap.xml">Sitemap</a>
+      </div>
+    </div>
+    <div class="f-bottom">© 2026 ToolNest · Free tools for everyone · Made with care</div>
+  </div>
+</footer>
+
+<script src="/assets/site.js?v=2"></script>
+
+<script>
+(function () {
+  'use strict';
+  var P = 'tic-tac-toe-';
+  var ERR = P + 'error';
+  var LINES = [[0, 1, 2], [3, 4, 5], [6, 7, 8], [0, 3, 6], [1, 4, 7], [2, 5, 8], [0, 4, 8], [2, 4, 6]];
+  var board = [], turn = 'X', over = false, cells = [];
+  var scores = { X: 0, O: 0, D: 0 };
+  function g(id) { return document.getElementById(P + id); }
+  function set(id, v) { var el = g(id); if (el) el.textContent = v; }
+  function mode() { var el = g('mode'); return el ? el.value : 'ai'; }
+  function winnerOf(b) {
+    for (var i = 0; i < LINES.length; i++) {
+      var L = LINES[i];
+      if (b[L[0]] && b[L[0]] === b[L[1]] && b[L[0]] === b[L[2]]) return { who: b[L[0]], line: L };
+    }
+    return null;
+  }
+  function empties(b) {
+    var out = [];
+    for (var i = 0; i < 9; i++) if (!b[i]) out.push(i);
+    return out;
+  }
+  function minimax(b, isMax, depth) {
+    var w = winnerOf(b);
+    if (w) return w.who === 'O' ? 10 - depth : depth - 10;
+    var free = empties(b);
+    if (!free.length) return 0;
+    var best = isMax ? -Infinity : Infinity, i, s;
+    for (i = 0; i < free.length; i++) {
+      b[free[i]] = isMax ? 'O' : 'X';
+      s = minimax(b, !isMax, depth + 1);
+      b[free[i]] = '';
+      best = isMax ? Math.max(best, s) : Math.min(best, s);
+    }
+    return best;
+  }
+  function aiMove() {
+    if (over || turn !== 'O' || mode() !== 'ai') return;
+    var free = empties(board), best = -Infinity, mv = -1, i, s;
+    for (i = 0; i < free.length; i++) {
+      board[free[i]] = 'O';
+      s = minimax(board, false, 0);
+      board[free[i]] = '';
+      if (s > best) { best = s; mv = free[i]; }
+    }
+    if (mv !== -1) place(mv);
+  }
+  function drawCells() {
+    for (var i = 0; i < 9; i++) {
+      if (!cells[i]) continue;
+      cells[i].textContent = board[i] || '';
+      cells[i].disabled = over || !!board[i];
+      cells[i].classList.remove('win');
+    }
+  }
+  function updateStatus() {
+    var el = g('status');
+    if (!el) return;
+    if (over) { el.textContent = 'Game over'; return; }
+    if (mode() === 'ai') el.textContent = turn === 'X' ? 'Your turn (X)' : 'Computer is thinking…';
+    else el.textContent = turn === 'X' ? "Player X's turn" : "Player O's turn";
+  }
+  function renderScores() {
+    set('sx', String(scores.X)); set('so', String(scores.O)); set('sd', String(scores.D));
+  }
+  function place(i) {
+    if (over || board[i]) return;
+    board[i] = turn;
+    var w = winnerOf(board), full = !empties(board).length;
+    if (w) {
+      over = true;
+      drawCells();
+      for (var k = 0; k < w.line.length; k++) cells[w.line[k]].classList.add('win');
+      scores[w.who]++;
+      renderScores();
+      updateStatus();
+      var res = g('result');
+      var msg = w.who === 'X' ? (mode() === 'ai' ? '🎉 You win! You beat the unbeatable AI.' : '🎉 Player X wins!') : (mode() === 'ai' ? '🤖 The AI wins. Rematch?' : '🎉 Player O wins!');
+      if (res) { res.innerHTML = '<p>' + msg + '</p>'; res.classList.remove('hidden'); }
+      return;
+    }
+    if (full) {
+      over = true;
+      scores.D++;
+      renderScores();
+      drawCells();
+      updateStatus();
+      var r2 = g('result');
+      if (r2) { r2.innerHTML = '<p>It\'s a draw — against this AI, that\'s a victory.</p>'; r2.classList.remove('hidden'); }
+      return;
+    }
+    turn = turn === 'X' ? 'O' : 'X';
+    drawCells();
+    updateStatus();
+    if (mode() === 'ai' && turn === 'O') setTimeout(aiMove, 220);
+  }
+  function reset() {
+    board = ['', '', '', '', '', '', '', '', ''];
+    turn = 'X'; over = false;
+    TN.clearErr(ERR);
+    var res = g('result');
+    if (res) { res.innerHTML = ''; res.classList.add('hidden'); }
+    drawCells();
+    updateStatus();
+  }
+  function build() {
+    var grid = g('grid');
+    if (!grid) return;
+    grid.innerHTML = '';
+    cells = [];
+    for (var i = 0; i < 9; i++) {
+      (function (idx) {
+        var b = document.createElement('button');
+        b.type = 'button';
+        b.className = 'ttt-cell';
+        b.setAttribute('aria-label', 'Cell ' + (idx + 1));
+        b.addEventListener('click', function () { place(idx); });
+        grid.appendChild(b);
+        cells.push(b);
+      })(i);
+    }
+  }
+  try {
+    build();
+    reset();
+    TN.on(P + 'reset', 'click', reset);
+    TN.on(P + 'mode', 'change', reset);
+  } catch (e) { /* never throw on load */ }
+})();
+
+</script>
+</body>
+</html>

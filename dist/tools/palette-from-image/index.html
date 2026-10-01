@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Image Palette Extractor — Free Online | ToolNest</title>
+<meta name="description" content="Extract dominant colors from any image.">
+<meta name="keywords" content="palette from image, dominant colors, image color extractor">
+<link rel="canonical" href="https://toolnest.vercel.app/tools/palette-from-image/">
+<meta name="theme-color" content="#07070b">
+<meta property="og:title" content="Image Palette Extractor — Free Online | ToolNest">
+<meta property="og:description" content="Extract dominant colors from any image.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css?v=2">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%23e01111'/><text x='50' y='68' font-size='58' text-anchor='middle' fill='white' font-family='Arial' font-weight='bold'>T</text></svg>">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebApplication","name":"Image Palette Extractor","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0"},"url":"https://toolnest.vercel.app/tools/palette-from-image/","description":"Extract dominant colors from any image."},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How are dominant colors found?","acceptedAnswer":{"@type":"Answer","text":"The image is drawn at about 64px, its pixels are bucketed into 4-bit-per-channel color bins, and the 8 bins with the most pixels win. The displayed hex is the average color of each winning bin."}},{"@type":"Question","name":"Is it exact?","acceptedAnswer":{"@type":"Answer","text":"It is a fast approximation, not a perceptual clustering algorithm — near-identical shades can merge, and tiny but vivid accents may be missed."}},{"@type":"Question","name":"How do I copy a color?","acceptedAnswer":{"@type":"Answer","text":"Click any swatch to copy its HEX value to the clipboard."}}]}]}</script>
+</head>
+<body>
+<header class="site-header">
+  <div class="container">
+    <a class="logo" href="/"><span class="logo-mark">T</span> ToolNest</a>
+    <nav class="site-nav">
+      <a href="/">Home</a>
+      <a href="/#categories">Categories</a>
+      <a href="/#all-tools">All Tools</a>
+    </nav>
+  </div>
+</header>
+
+<!-- ADSTERRA-HEADER: paste your Adsterra banner ad code inside the div below -->
+<div class="container"><div class="ad-slot ad-leaderboard" data-ad="header"></div></div>
+
+<main class="container">
+  <nav class="crumbs"><a href="/">Home</a> &rsaquo; <a href="/#color">Color Tools</a> &rsaquo; Image Palette Extractor</nav>
+  <div class="tool-hero">
+    <h1>Image Palette Extractor</h1>
+    <p>Extract dominant colors from any image.</p>
+  </div>
+
+  <div class="tool-card">
+  <div class="field">
+    <label for="palette-from-image-file">Upload image</label>
+    <input type="file" class="input" id="palette-from-image-file" accept="image/*">
+  </div>
+  <div class="error" id="palette-from-image-error"></div>
+  <div class="result" id="palette-from-image-result">
+    <div class="field">
+      <label>Dominant colors (click to copy)</label>
+      <div id="palette-from-image-grid" style="display:grid;grid-template-columns:repeat(4,1fr);gap:10px;"></div>
+    </div>
+    <p class="note">Pixels are sampled at ~64px and bucketed into 4-bit color bins; the top 8 bins win.</p>
+  </div>
+</div>
+
+
+  <!-- ADSTERRA-INCONTENT: paste your Adsterra native/in-content ad code inside the div below -->
+  <div class="ad-slot" data-ad="incontent"></div>
+
+  <div class="info-grid">
+    <div class="info-card">
+      <h2>📖 How to use</h2>
+      <ol><li>Upload an image (PNG or JPG).</li><li>The 8 dominant colors are extracted automatically.</li><li>Click any swatch to copy its HEX value.</li><li>All processing happens locally — nothing is uploaded.</li></ol>
+    </div>
+    <div class="info-card">
+      <h2>❓ Frequently asked questions</h2>
+      <div class="faq"><details><summary>How are dominant colors found?</summary><p>The image is drawn at about 64px, its pixels are bucketed into 4-bit-per-channel color bins, and the 8 bins with the most pixels win. The displayed hex is the average color of each winning bin.</p></details><details><summary>Is it exact?</summary><p>It is a fast approximation, not a perceptual clustering algorithm — near-identical shades can merge, and tiny but vivid accents may be missed.</p></details><details><summary>How do I copy a color?</summary><p>Click any swatch to copy its HEX value to the clipboard.</p></details></div>
+    </div>
+  </div>
+
+  <section class="section">
+    <h2>🔗 Related tools</h2>
+    <div class="tool-grid"><a class="tool-link" href="/tools/color-blindness-simulator/" data-search="color blindness simulator see colors and images as color-blind viewers do. color blindness simulator protanopia simulator deuteranopia test"><span class="t-ico">🎨</span><span class="t-body"><b>Color Blindness Simulator</b><small>See colors and images as color-blind viewers do.</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/contrast-checker/" data-search="color contrast checker wcag contrast ratio with aa/aaa verdicts. contrast checker wcag contrast color contrast ratio"><span class="t-ico">🎨</span><span class="t-body"><b>Color Contrast Checker</b><small>WCAG contrast ratio with AA/AAA verdicts.</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/image-color-picker/" data-search="image color picker click any pixel of an uploaded image to get its color. image color picker eyedropper pixel color picker"><span class="t-ico">🎨</span><span class="t-body"><b>Image Color Picker</b><small>Click any pixel of an uploaded image to get its color.</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/shades-tints-generator/" data-search="shades &amp; tints generator full tint and shade scale from one base color. shades tints generator color scale generator tint shade palette"><span class="t-ico">🎨</span><span class="t-body"><b>Shades &amp; Tints Generator</b><small>Full tint and shade scale from one base color.</small></span><span class="t-arrow">→</span></a></div>
+  </section>
+</main>
+
+<!-- ADSTERRA-FOOTER: paste your Adsterra footer/banner ad code inside the div below -->
+<div class="container"><div class="ad-slot" data-ad="footer"></div></div>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="f-grid">
+      <div>
+        <span class="brandline"><span class="logo-mark">T</span> ToolNest</span>
+        <p>Free online tools that actually work. No sign-up, no watermarks — and your files never leave your device for client-side tools.</p>
+      </div>
+      <div>
+        <h4>Popular</h4>
+        <a href="/tools/qr-code-generator/">QR Code Generator</a>
+        <a href="/tools/background-remover/">Background Remover</a>
+        <a href="/tools/pdf-merger/">PDF Merger</a>
+        <a href="/tools/word-counter/">Word Counter</a>
+      </div>
+      <div>
+        <h4>Categories</h4>
+        <a href="/#image">Image Tools</a>
+        <a href="/#pdf">PDF &amp; Documents</a>
+        <a href="/#calculators">Calculators</a>
+        <a href="/#developer">Developer Tools</a>
+      </div>
+      <div>
+        <h4>Site</h4>
+        <a href="/">Home</a>
+        <a href="/#all-tools">All Tools</a>
+        <a href="/sitemap.xml">Sitemap</a>
+      </div>
+    </div>
+    <div class="f-bottom">© 2026 ToolNest · Free tools for everyone · Made with care</div>
+  </div>
+</footer>
+
+<script src="/assets/site.js?v=2"></script>
+
+<script>
+(function () {
+  'use strict';
+  var ERR = 'palette-from-image-error';
+
+  function toHex(r, g, b) {
+    function h(v) { return ('0' + Math.round(v).toString(16)).slice(-2); }
+    return '#' + h(r) + h(g) + h(b);
+  }
+
+  function extract(img) {
+    var S = 64;
+    var cv = document.createElement('canvas');
+    cv.width = S; cv.height = S;
+    var ctx = cv.getContext('2d');
+    // Cover-crop to a square
+    var side = Math.min(img.width, img.height);
+    var sx = (img.width - side) / 2, sy = (img.height - side) / 2;
+    ctx.drawImage(img, sx, sy, side, side, 0, 0, S, S);
+    var data = ctx.getImageData(0, 0, S, S).data;
+    var bins = {};
+    for (var i = 0; i < data.length; i += 4) {
+      var r = data[i], g = data[i + 1], b = data[i + 2];
+      var key = (r >> 4) + ',' + (g >> 4) + ',' + (b >> 4);
+      if (!bins[key]) bins[key] = { n: 0, r: 0, g: 0, b: 0 };
+      bins[key].n++;
+      bins[key].r += r; bins[key].g += g; bins[key].b += b;
+    }
+    var arr = Object.keys(bins).map(function (k) { return bins[k]; });
+    arr.sort(function (a, b) { return b.n - a.n; });
+    return arr.slice(0, 8).map(function (bin) {
+      return toHex(bin.r / bin.n, bin.g / bin.n, bin.b / bin.n).toUpperCase();
+    });
+  }
+
+  function loadFile(file) {
+    TN.clearErr(ERR);
+    if (!file || !file.type.match(/^image\//)) {
+      TN.setErr(ERR, 'Please choose an image file (PNG or JPG).');
+      return;
+    }
+    TN.readAsDataURL(file).then(function (url) {
+      return TN.loadImage(url);
+    }).then(function (img) {
+      var colors = extract(img);
+      var grid = TN.el('palette-from-image-grid');
+      grid.innerHTML = '';
+      colors.forEach(function (hex) {
+        var sw = document.createElement('button');
+        sw.type = 'button';
+        sw.style.background = hex;
+        sw.style.border = '1px solid rgba(0,0,0,0.2)';
+        sw.style.borderRadius = '10px';
+        sw.style.height = '76px';
+        sw.style.cursor = 'pointer';
+        sw.style.color = '#fff';
+        sw.style.fontSize = '12px';
+        sw.style.fontWeight = 'bold';
+        sw.style.textShadow = '0 1px 3px rgba(0,0,0,0.6)';
+        sw.textContent = hex;
+        sw.title = 'Copy ' + hex;
+        sw.addEventListener('click', function () {
+          TN.copy(hex).then(function (ok) {
+            sw.textContent = ok ? 'Copied!' : hex;
+            setTimeout(function () { sw.textContent = hex; }, 1000);
+          });
+        });
+        grid.appendChild(sw);
+      });
+    }).catch(function () {
+      TN.setErr(ERR, 'Could not read that image.');
+    });
+  }
+
+  try {
+    TN.on('palette-from-image-file', 'change', function (e) {
+      var t = e.target || e.srcElement;
+      if (t && t.files && t.files[0]) loadFile(t.files[0]);
+    });
+  } catch (e) { /* never throw on load */ }
+})();
+
+</script>
+</body>
+</html>

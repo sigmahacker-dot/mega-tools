@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Scientific Calculator — Free Online | ToolNest</title>
+<meta name="description" content="Evaluate expressions with trig, logs, powers and factorials.">
+<meta name="keywords" content="scientific calculator, expression calculator, trig calculator">
+<link rel="canonical" href="https://toolnest.vercel.app/tools/scientific-calculator/">
+<meta name="theme-color" content="#07070b">
+<meta property="og:title" content="Scientific Calculator — Free Online | ToolNest">
+<meta property="og:description" content="Evaluate expressions with trig, logs, powers and factorials.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css?v=2">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%23e01111'/><text x='50' y='68' font-size='58' text-anchor='middle' fill='white' font-family='Arial' font-weight='bold'>T</text></svg>">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebApplication","name":"Scientific Calculator","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0"},"url":"https://toolnest.vercel.app/tools/scientific-calculator/","description":"Evaluate expressions with trig, logs, powers and factorials."},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How is the expression evaluated?","acceptedAnswer":{"@type":"Answer","text":"With a hand-written tokenizer, shunting-yard parser and RPN evaluator — eval() is never used, so arbitrary code cannot run."}},{"@type":"Question","name":"What does the % key do?","acceptedAnswer":{"@type":"Answer","text":"It is a percentage: it divides the preceding value by 100. It is not the modulo operator."}},{"@type":"Question","name":"Why did sin(30) give 0.5?","acceptedAnswer":{"@type":"Answer","text":"The calculator defaults to degrees (DEG). Tap the DEG button to switch to radians if you need radian mode."}}]}]}</script>
+</head>
+<body>
+<header class="site-header">
+  <div class="container">
+    <a class="logo" href="/"><span class="logo-mark">T</span> ToolNest</a>
+    <nav class="site-nav">
+      <a href="/">Home</a>
+      <a href="/#categories">Categories</a>
+      <a href="/#all-tools">All Tools</a>
+    </nav>
+  </div>
+</header>
+
+<!-- ADSTERRA-HEADER: paste your Adsterra banner ad code inside the div below -->
+<div class="container"><div class="ad-slot ad-leaderboard" data-ad="header"></div></div>
+
+<main class="container">
+  <nav class="crumbs"><a href="/">Home</a> &rsaquo; <a href="/#math">Math &amp; Numbers</a> &rsaquo; Scientific Calculator</nav>
+  <div class="tool-hero">
+    <h1>Scientific Calculator</h1>
+    <p>Evaluate expressions with trig, logs, powers and factorials.</p>
+  </div>
+
+  <div class="tool-card">
+  <div class="field">
+    <label for="scientific-calculator-display">Expression</label>
+    <input type="text" class="input" id="scientific-calculator-display" placeholder="e.g. sin(30)+2^3" autocomplete="off" spellcheck="false">
+  </div>
+  <div class="btn-row">
+    <button type="button" class="btn btn-outline btn-sm" id="scientific-calculator-mode">DEG</button>
+    <button type="button" class="btn btn-outline btn-sm" id="scientific-calculator-back">&#9003;</button>
+  </div>
+  <div id="scientific-calculator-pad" style="display:grid;grid-template-columns:repeat(5,1fr);gap:8px;margin:12px 0;"></div>
+  <div class="btn-row">
+    <button type="button" class="btn btn-primary" id="scientific-calculator-equals">= Calculate</button>
+  </div>
+  <div class="error" id="scientific-calculator-error"></div>
+  <div class="result" id="scientific-calculator-result">
+    <div class="stat-cards">
+      <div class="stat-card"><div class="v" id="scientific-calculator-value">&ndash;</div><div class="l">Result</div></div>
+    </div>
+    <div class="field">
+      <label>History</label>
+      <ul id="scientific-calculator-history" class="muted"></ul>
+    </div>
+    <p class="note">% is percentage (divides by 100). n! needs a non-negative integer.</p>
+  </div>
+</div>
+
+
+  <!-- ADSTERRA-INCONTENT: paste your Adsterra native/in-content ad code inside the div below -->
+  <div class="ad-slot" data-ad="incontent"></div>
+
+  <div class="info-grid">
+    <div class="info-card">
+      <h2>📖 How to use</h2>
+      <ol><li>Type an expression or tap the pad buttons to build it, e.g. sin(30)+2^3.</li><li>Switch between DEG and RAD for the trig functions.</li><li>Press = or Enter to evaluate; everything runs locally in your browser.</li><li>See past calculations in the history list below the result.</li></ol>
+    </div>
+    <div class="info-card">
+      <h2>❓ Frequently asked questions</h2>
+      <div class="faq"><details><summary>How is the expression evaluated?</summary><p>With a hand-written tokenizer, shunting-yard parser and RPN evaluator — eval() is never used, so arbitrary code cannot run.</p></details><details><summary>What does the % key do?</summary><p>It is a percentage: it divides the preceding value by 100. It is not the modulo operator.</p></details><details><summary>Why did sin(30) give 0.5?</summary><p>The calculator defaults to degrees (DEG). Tap the DEG button to switch to radians if you need radian mode.</p></details></div>
+    </div>
+  </div>
+
+  <section class="section">
+    <h2>🔗 Related tools</h2>
+    <div class="tool-grid"><a class="tool-link" href="/tools/fraction-calculator/" data-search="fraction calculator add, subtract, multiply and divide fractions with simplification. fraction calculator add fractions simplify fraction"><span class="t-ico">📐</span><span class="t-body"><b>Fraction Calculator</b><small>Add, subtract, multiply and divide fractions with simplification.</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/gcf-lcm-calculator/" data-search="gcf &amp; lcm calculator greatest common factor and least common multiple of any list. gcf calculator lcm calculator greatest common factor"><span class="t-ico">📐</span><span class="t-body"><b>GCF &amp; LCM Calculator</b><small>Greatest common factor and least common multiple of any list.</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/matrix-calculator/" data-search="matrix calculator add, multiply, invert and transpose 2x2 and 3x3 matrices. matrix calculator matrix inverse matrix multiplication"><span class="t-ico">📐</span><span class="t-body"><b>Matrix Calculator</b><small>Add, multiply, invert and transpose 2x2 and 3x3 matrices.</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/prime-number-checker/" data-search="prime number checker deterministic miller-rabin primality test for big integers. prime checker primality test miller rabin"><span class="t-ico">📐</span><span class="t-body"><b>Prime Number Checker</b><small>Deterministic Miller-Rabin primality test for big integers.</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/pythagorean-calculator/" data-search="pythagorean theorem calculator solve right-triangle sides, area and angles. pythagorean theorem right triangle calculator hypotenuse calculator"><span class="t-ico">📐</span><span class="t-body"><b>Pythagorean Theorem Calculator</b><small>Solve right-triangle sides, area and angles.</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/quadratic-equation-solver/" data-search="quadratic equation solver solve ax^2+bx+c=0 with full discriminant analysis. quadratic solver quadratic equation discriminant calculator"><span class="t-ico">📐</span><span class="t-body"><b>Quadratic Equation Solver</b><small>Solve ax^2+bx+c=0 with full discriminant analysis.</small></span><span class="t-arrow">→</span></a></div>
+  </section>
+</main>
+
+<!-- ADSTERRA-FOOTER: paste your Adsterra footer/banner ad code inside the div below -->
+<div class="container"><div class="ad-slot" data-ad="footer"></div></div>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="f-grid">
+      <div>
+        <span class="brandline"><span class="logo-mark">T</span> ToolNest</span>
+        <p>Free online tools that actually work. No sign-up, no watermarks — and your files never leave your device for client-side tools.</p>
+      </div>
+      <div>
+        <h4>Popular</h4>
+        <a href="/tools/qr-code-generator/">QR Code Generator</a>
+        <a href="/tools/background-remover/">Background Remover</a>
+        <a href="/tools/pdf-merger/">PDF Merger</a>
+        <a href="/tools/word-counter/">Word Counter</a>
+      </div>
+      <div>
+        <h4>Categories</h4>
+        <a href="/#image">Image Tools</a>
+        <a href="/#pdf">PDF &amp; Documents</a>
+        <a href="/#calculators">Calculators</a>
+        <a href="/#developer">Developer Tools</a>
+      </div>
+      <div>
+        <h4>Site</h4>
+        <a href="/">Home</a>
+        <a href="/#all-tools">All Tools</a>
+        <a href="/sitemap.xml">Sitemap</a>
+      </div>
+    </div>
+    <div class="f-bottom">© 2026 ToolNest · Free tools for everyone · Made with care</div>
+  </div>
+</footer>
+
+<script src="/assets/site.js?v=2"></script>
+
+<script>
+(function () {
+  'use strict';
+  var ERR = 'scientific-calculator-error';
+  var DISP = 'scientific-calculator-display';
+  var deg = true;
+  var history = [];
+  var PREC = { '+': 2, '-': 2, '*': 3, '/': 3, '^': 4, 'neg': 4 };
+
+  function isDigit(c) { return c >= '0' && c <= '9'; }
+
+  function tokenize(s) {
+    var toks = [], i = 0, n = s.length;
+    while (i < n) {
+      var c = s[i];
+      if (c === ' ' || c === '\t') { i++; continue; }
+      if (isDigit(c) || c === '.') {
+        var j = i, dot = false;
+        while (j < n && (isDigit(s[j]) || (s[j] === '.' && !dot))) {
+          if (s[j] === '.') dot = true;
+          j++;
+        }
+        var num = parseFloat(s.slice(i, j));
+        if (isNaN(num)) throw new Error('Invalid number.');
+        toks.push({ t: 'num', v: num });
+        i = j;
+        continue;
+      }
+      if ((c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z') || c === 'π') {
+        if (c === 'π') { toks.push({ t: 'num', v: Math.PI }); i++; continue; }
+        var k = i;
+        while (k < n && /[a-zA-Z]/.test(s[k])) k++;
+        var name = s.slice(i, k).toLowerCase();
+        i = k;
+        if (name === 'pi') { toks.push({ t: 'num', v: Math.PI }); continue; }
+        if (name === 'e') { toks.push({ t: 'num', v: Math.E }); continue; }
+        if (['sin', 'cos', 'tan', 'log', 'ln', 'sqrt'].indexOf(name) >= 0) {
+          toks.push({ t: 'fn', v: name }); continue;
+        }
+        throw new Error('Unknown function "' + name + '".');
+      }
+      if (c === '+' || c === '-' || c === '*' || c === '/' || c === '^') {
+        toks.push({ t: 'op', v: c }); i++; continue;
+      }
+      if (c === '(') { toks.push({ t: 'lp' }); i++; continue; }
+      if (c === ')') { toks.push({ t: 'rp' }); i++; continue; }
+      if (c === '!' || c === '%') { toks.push({ t: 'post', v: c }); i++; continue; }
+      throw new Error('Unexpected character "' + c + '".');
+    }
+    // Mark unary minus/plus
+    var out = [];
+    for (var q = 0; q < toks.length; q++) {
+      var tk = toks[q];
+      if (tk.t === 'op' && (tk.v === '-' || tk.v === '+')) {
+        var prev = out[out.length - 1];
+        if (!prev || prev.t === 'op' || prev.t === 'lp' || prev.t === 'fn' || prev.t === 'uop') {
+          if (tk.v === '-') out.push({ t: 'uop', v: 'neg' });
+          continue; // unary plus is a no-op
+        }
+      }
+      out.push(tk);
+    }
+    return out;
+  }
+
+  function toRPN(toks) {
+    var out = [], st = [];
+    toks.forEach(function (tk) {
+      if (tk.t === 'num') { out.push(tk); return; }
+      if (tk.t === 'fn' || tk.t === 'uop') { st.push(tk); return; }
+      if (tk.t === 'post') { out.push(tk); return; }
+      if (tk.t === 'op') {
+        while (st.length) {
+          var top = st[st.length - 1];
+          if (top.t === 'lp') break;
+          var pt = top.t === 'fn' ? 7 : PREC[top.t === 'uop' ? 'neg' : top.v];
+          var pc = PREC[tk.v];
+          var right = tk.v === '^';
+          if (pt > pc || (pt === pc && !right)) { out.push(st.pop()); } else { break; }
+        }
+        st.push(tk);
+        return;
+      }
+      if (tk.t === 'lp') { st.push(tk); return; }
+      if (tk.t === 'rp') {
+        var found = false;
+        while (st.length) {
+          var x = st.pop();
+          if (x.t === 'lp') { found = true; break; }
+          out.push(x);
+        }
+        if (!found) throw new Error('Mismatched parentheses.');
+        if (st.length && st[st.length - 1].t === 'fn') out.push(st.pop());
+        return;
+      }
+    });
+    while (st.length) {
+      var y = st.pop();
+      if (y.t === 'lp') throw new Error('Mismatched parentheses.');
+      out.push(y);
+    }
+    return out;
+  }
+
+  function applyFn(name, x) {
+    switch (name) {
+      case 'sin': return Math.sin(deg ? x * Math.PI / 180 : x);
+      case 'cos': return Math.cos(deg ? x * Math.PI / 180 : x);
+      case 'tan': {
+        var v = deg ? x * Math.PI / 180 : x;
+        if (Math.abs(Math.cos(v)) < 1e-12) throw new Error('tan is undefined at this angle.');
+        return Math.tan(v);
+      }
+      case 'log':
+        if (x <= 0) throw new Error('log needs a positive number.');
+        return Math.log10 ? Math.log10(x) : Math.log(x) / Math.LN10;
+      case 'ln':
+        if (x <= 0) throw new Error('ln needs a positive number.');
+        return Math.log(x);
+      case 'sqrt':
+        if (x < 0) throw new Error('sqrt of a negative number.');
+        return Math.sqrt(x);
+    }
+    throw new Error('Unknown function.');
+  }
+
+  function evalRPN(rpn) {
+    var st = [];
+    rpn.forEach(function (tk) {
+      if (tk.t === 'num') { st.push(tk.v); return; }
+      if (tk.t === 'uop') {
+        var a = st.pop();
+        if (a === undefined) throw new Error('Invalid expression.');
+        st.push(-a); return;
+      }
+      if (tk.t === 'post') {
+        var b = st.pop();
+        if (b === undefined) throw new Error('Invalid expression.');
+        if (tk.v === '!') {
+          if (b < 0 || Math.floor(b) !== b) throw new Error('Factorial needs a non-negative integer.');
+          if (b > 170) throw new Error('Factorial result too large.');
+          var f = 1;
+          for (var i = 2; i <= b; i++) f *= i;
+          st.push(f);
+        } else {
+          st.push(b / 100);
+        }
+        return;
+      }
+      if (tk.t === 'fn') {
+        var c = st.pop();
+        if (c === undefined) throw new Error('Missing argument for ' + tk.v + '.');
+        st.push(applyFn(tk.v, c));
+        return;
+      }
+      if (tk.t === 'op') {
+        var d = st.pop(), e = st.pop();
+        if (d === undefined || e === undefined) throw new Error('Invalid expression.');
+        var r;
+        switch (tk.v) {
+          case '+': r = e + d; break;
+          case '-': r = e - d; break;
+          case '*': r = e * d; break;
+          case '/':
+            if (d === 0) throw new Error('Division by zero.');
+            r = e / d; break;
+          case '^':
+            r = Math.pow(e, d);
+            if (isNaN(r)) throw new Error('Invalid power.');
+            break;
+          default: throw new Error('Invalid expression.');
+        }
+        st.push(r);
+        return;
+      }
+      throw new Error('Invalid expression.');
+    });
+    if (st.length !== 1) throw new Error('Invalid expression.');
+    return st[0];
+  }
+
+  function fmtRes(v) {
+    if (!isFinite(v)) throw new Error('Result is not finite.');
+    var r = Math.abs(v) < 1e-12 ? 0 : v;
+    return parseFloat(r.toPrecision(12)).toString();
+  }
+
+  function calc() {
+    var el = TN.el(DISP);
+    if (!el) return;
+    TN.clearErr(ERR);
+    try {
+      var res = fmtRes(evalRPN(toRPN(tokenize(el.value))));
+      if (!tokenize(el.value).length) throw new Error('Enter an expression first.');
+      TN.el('scientific-calculator-value').textContent = res;
+      history.unshift({ e: el.value, r: res });
+      if (history.length > 20) history.pop();
+      renderHistory();
+    } catch (err) {
+      TN.setErr(ERR, err && err.message ? err.message : 'Invalid expression.');
+    }
+  }
+
+  function renderHistory() {
+    var ul = TN.el('scientific-calculator-history');
+    if (!ul) return;
+    ul.innerHTML = '';
+    history.forEach(function (h) {
+      var li = document.createElement('li');
+      li.textContent = h.e + ' = ' + h.r;
+      ul.appendChild(li);
+    });
+  }
+
+  var KEYS = [
+    ['7', '8', '9', '÷', '('],
+    ['4', '5', '6', '×', ')'],
+    ['1', '2', '3', '−', '^'],
+    ['0', '.', '%', '!', '='],
+    ['sin', 'cos', 'tan', '√', 'log'],
+    ['ln', 'π', 'e', '1/x', 'C']
+  ];
+
+  function onKey(label) {
+    var d = TN.el(DISP);
+    if (!d) return;
+    if (label === '=') { calc(); return; }
+    if (label === 'C') { d.value = ''; TN.clearErr(ERR); return; }
+    if (label === '1/x') {
+      if (d.value.trim()) d.value = '(1/(' + d.value + '))';
+      d.focus();
+      return;
+    }
+    var map = { '÷': '/', '×': '*', '−': '-', '√': 'sqrt(', 'π': 'π' };
+    var t = map[label] || label;
+    if (['sin', 'cos', 'tan', 'log', 'ln'].indexOf(label) >= 0) t = label + '(';
+    d.value += t;
+    d.focus();
+  }
+
+  try {
+    var pad = TN.el('scientific-calculator-pad');
+    if (pad) {
+      KEYS.forEach(function (row) {
+        row.forEach(function (label) {
+          var b = document.createElement('button');
+          b.type = 'button';
+          b.className = 'btn btn-outline btn-sm';
+          b.textContent = label;
+          b.addEventListener('click', function () { onKey(label); });
+          pad.appendChild(b);
+        });
+      });
+    }
+    TN.on('scientific-calculator-equals', 'click', calc);
+    TN.on('scientific-calculator-mode', 'click', function () {
+      deg = !deg;
+      var m = TN.el('scientific-calculator-mode');
+      if (m) m.textContent = deg ? 'DEG' : 'RAD';
+    });
+    TN.on('scientific-calculator-back', 'click', function () {
+      var el = TN.el(DISP);
+      if (el) el.value = el.value.slice(0, -1);
+    });
+    TN.on(DISP, 'keydown', function (e) {
+      if (e.key === 'Enter') { e.preventDefault(); calc(); }
+    });
+  } catch (e) { /* never throw on load */ }
+})();
+
+</script>
+</body>
+</html>
