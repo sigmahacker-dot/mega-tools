@@ -1,0 +1,48 @@
+<div class="tool-card">
+  <div class="field">
+    <label for="pdf-page-size-changer-file">PDF file</label>
+    <input type="file" class="input" id="pdf-page-size-changer-file" accept="application/pdf,.pdf">
+  </div>
+  <div class="grid2">
+    <div class="field">
+      <label for="pdf-page-size-changer-size">Target page size</label>
+      <select class="input select" id="pdf-page-size-changer-size">
+        <option value="595.28,841.89">A4 (210 × 297 mm)</option>
+        <option value="612,792">US Letter (8.5 × 11 in)</option>
+        <option value="612,1008">US Legal (8.5 × 14 in)</option>
+        <option value="841.89,1190.55">A3 (297 × 420 mm)</option>
+        <option value="419.53,595.28">A5 (148 × 210 mm)</option>
+        <option value="custom">Custom…</option>
+      </select>
+    </div>
+    <div class="field">
+      <label for="pdf-page-size-changer-fit">Scaling</label>
+      <select class="input select" id="pdf-page-size-changer-fit">
+        <option value="fit">Fit — no cropping</option>
+        <option value="fill">Fill — edge to edge (may crop)</option>
+      </select>
+    </div>
+  </div>
+  <div class="grid2 hidden" id="pdf-page-size-changer-custom">
+    <div class="field">
+      <label for="pdf-page-size-changer-w">Custom width (pt)</label>
+      <input type="number" class="input" id="pdf-page-size-changer-w" min="36" max="5000" value="612">
+    </div>
+    <div class="field">
+      <label for="pdf-page-size-changer-h">Custom height (pt)</label>
+      <input type="number" class="input" id="pdf-page-size-changer-h" min="36" max="5000" value="792">
+    </div>
+  </div>
+  <div class="btn-row">
+    <button class="btn" id="pdf-page-size-changer-go">Resize pages</button>
+    <button class="btn btn-outline" id="pdf-page-size-changer-dl" disabled>Download PDF</button>
+  </div>
+  <div class="error" id="pdf-page-size-changer-error"></div>
+  <div class="result hidden" id="pdf-page-size-changer-result">
+    <div class="stat-cards">
+      <div class="stat-card"><div class="v" id="pdf-page-size-changer-pages">–</div><div class="l">Pages resized</div></div>
+      <div class="stat-card"><div class="v" id="pdf-page-size-changer-dim">–</div><div class="l">New size (pt)</div></div>
+    </div>
+    <p class="note">1 pt = 1/72 inch. Content keeps its aspect ratio in Fit mode.</p>
+  </div>
+</div>

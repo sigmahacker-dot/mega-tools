@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Meeting Agenda Generator — Free Online | ToolNest</title>
+<meta name="description" content="Build a timed meeting agenda — add items with durations, get total time, then copy or download the agenda as text.">
+<meta name="keywords" content="meeting agenda, agenda maker, meeting agenda template, timed agenda, meeting planner">
+<link rel="canonical" href="https://toolnest.vercel.app/tools/meeting-agenda-generator/">
+<meta name="theme-color" content="#07070b">
+<meta property="og:title" content="Meeting Agenda Generator — Free Online | ToolNest">
+<meta property="og:description" content="Build a timed meeting agenda — add items with durations, get total time, then copy or download the agenda as text.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css?v=4">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%23e01111'/><text x='50' y='68' font-size='58' text-anchor='middle' fill='white' font-family='Arial' font-weight='bold'>T</text></svg>">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebApplication","name":"Meeting Agenda Generator","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0"},"url":"https://toolnest.vercel.app/tools/meeting-agenda-generator/","description":"Build a timed meeting agenda — add items with durations, get total time, then copy or download the agenda as text."},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What goes into an agenda item?","acceptedAnswer":{"@type":"Answer","text":"Each item has a title, an owner (optional), and a duration in minutes. Add as many as you like."}},{"@type":"Question","name":"Does it total the time?","acceptedAnswer":{"@type":"Answer","text":"The tool totals all durations and shows the meeting length live as you edit."}},{"@type":"Question","name":"Can I remove items?","acceptedAnswer":{"@type":"Answer","text":"Yes — remove any item with its ✕ button; the total updates instantly."}},{"@type":"Question","name":"How do I share the agenda?","acceptedAnswer":{"@type":"Answer","text":"Copy the formatted agenda or download it as a .txt file to share."}}]}]}</script>
+</head>
+<body>
+<header class="site-header">
+  <div class="container">
+    <a class="logo" href="/"><span class="logo-mark">T</span> ToolNest</a>
+    <div class="header-right">
+      <form class="nav-search" action="/" method="get" role="search">
+        <span class="ns-icon">🔍</span>
+        <input type="search" name="q" placeholder="Search tools…" aria-label="Search tools" autocomplete="off">
+      </form>
+      <div class="menu-wrap">
+        <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="menuPanel" aria-label="Open menu"><span></span><span></span><span></span></button>
+        <nav class="menu-panel" id="menuPanel" aria-label="Site">
+          <a href="/">Home</a>
+          <a href="/#categories">Categories</a>
+          <a href="/#all-tools">All Tools</a>
+        </nav>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ADSTERRA-HEADER: paste your Adsterra banner ad code inside the div below -->
+<div class="container"><div class="ad-slot ad-leaderboard" data-ad="header"></div></div>
+
+<main class="container">
+  <nav class="crumbs"><a href="/">Home</a> &rsaquo; <a href="/#text">Text &amp; Writing</a> &rsaquo; Meeting Agenda Generator</nav>
+  <div class="tool-hero">
+    <h1>Meeting Agenda Generator</h1>
+    <p>Build a timed meeting agenda — add items with durations, get total time, then copy or download the agenda as text.</p>
+  </div>
+
+  <div class="tool-card">
+  <div class="grid2">
+    <div class="field">
+      <label for="meeting-agenda-generator-title">Meeting title</label>
+      <input class="input" id="meeting-agenda-generator-title" type="text" placeholder="e.g. Weekly Team Sync" maxlength="80">
+    </div>
+    <div class="field">
+      <label for="meeting-agenda-generator-date">Date</label>
+      <input class="input" id="meeting-agenda-generator-date" type="date">
+    </div>
+  </div>
+  <div class="field">
+    <label>Add agenda item</label>
+    <div class="grid3">
+      <input class="input" id="meeting-agenda-generator-item" type="text" placeholder="Item title" maxlength="80">
+      <input class="input" id="meeting-agenda-generator-owner" type="text" placeholder="Owner (optional)" maxlength="40">
+      <div style="display:flex;gap:8px">
+        <input class="input" id="meeting-agenda-generator-mins" type="number" min="1" max="480" value="10" style="width:80px">
+        <button class="btn btn-outline btn-sm" id="meeting-agenda-generator-add" type="button" style="white-space:nowrap">+ Add</button>
+      </div>
+    </div>
+  </div>
+  <div class="error" id="meeting-agenda-generator-error"></div>
+  <div id="meeting-agenda-generator-list" style="margin-top:8px"></div>
+  <p class="muted" style="margin-top:8px">Total time: <strong id="meeting-agenda-generator-total">0 min</strong></p>
+  <div class="btn-row" style="margin-top:10px">
+    <button class="btn btn-primary btn-sm" id="meeting-agenda-generator-copy" type="button">Copy Agenda</button>
+    <button class="btn btn-outline btn-sm" id="meeting-agenda-generator-download" type="button">Download .txt</button>
+  </div>
+</div>
+
+
+  <!-- ADSTERRA-INCONTENT: paste your Adsterra native/in-content ad code inside the div below -->
+  <div class="ad-slot" data-ad="incontent"></div>
+
+  <div class="info-grid">
+    <div class="info-card">
+      <h2>📖 How to use</h2>
+      <ol><li>Enter the meeting title and date.</li><li>Add agenda items with durations.</li><li>Copy or download the finished agenda.</li></ol>
+    </div>
+    <div class="info-card">
+      <h2>❓ Frequently asked questions</h2>
+      <div class="faq"><details><summary>What goes into an agenda item?</summary><p>Each item has a title, an owner (optional), and a duration in minutes. Add as many as you like.</p></details><details><summary>Does it total the time?</summary><p>The tool totals all durations and shows the meeting length live as you edit.</p></details><details><summary>Can I remove items?</summary><p>Yes — remove any item with its ✕ button; the total updates instantly.</p></details><details><summary>How do I share the agenda?</summary><p>Copy the formatted agenda or download it as a .txt file to share.</p></details></div>
+    </div>
+  </div>
+
+  <section class="section">
+    <h2>🔗 Related tools</h2>
+    <div class="tool-grid"><a class="tool-link" href="/tools/acronym-generator/" data-search="acronym generator turn any phrase into an acronym instantly — first letters, with options to skip small words, add periods and force uppercase. acronym generator make acronym from words initialism generator phrase to acronym"><span class="t-ico">✍️</span><span class="t-body"><b>Acronym Generator</b><small>Turn any phrase into an acronym instantly — first letters, with options to skip small words,…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/acrostic-poem-generator/" data-search="acrostic poem generator turn any word into an acrostic poem — one poetic line per letter from built-in line banks. acrostic poem generator acrostic generator name poem acrostic maker poem from word"><span class="t-ico">✍️</span><span class="t-body"><b>Acrostic Poem Generator</b><small>Turn any word into an acrostic poem — one poetic line per letter from built-in line banks.</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/aes-text-encryptor/" data-search="aes text encryptor encrypt text with real aes-256-gcm using a password-derived key (pbkdf2), fully in your browser. aes encrypt text encrypt message password aes-gcm online"><span class="t-ico">✍️</span><span class="t-body"><b>AES Text Encryptor</b><small>Encrypt text with real AES-256-GCM using a password-derived key (PBKDF2), fully in your brow…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/alliteration-generator/" data-search="alliteration generator generate alliterative phrases — pick a letter and a theme, get tongue-twisting word combos. alliteration generator alliteration examples tongue twister generator alliterative phrases letter phrases"><span class="t-ico">✍️</span><span class="t-body"><b>Alliteration Generator</b><small>Generate alliterative phrases — pick a letter and a theme, get tongue-twisting word combos.</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/anagram-generator/" data-search="anagram generator find every real anagram of your word — all unique permutations checked against a built-in word list. anagram generator anagram solver find anagrams anagram finder word unscrambler"><span class="t-ico">✍️</span><span class="t-body"><b>Anagram Generator</b><small>Find every real anagram of your word — all unique permutations checked against a built-in wo…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/apology-generator/" data-search="apology generator build a sincere, structured apology from your situation — acknowledge, take responsibility, make amends, and promise change. apology generator sorry letter apology message write an apology apology text"><span class="t-ico">✍️</span><span class="t-body"><b>Apology Generator</b><small>Build a sincere, structured apology from your situation — acknowledge, take responsibility, …</small></span><span class="t-arrow">→</span></a></div>
+  </section>
+</main>
+
+<!-- ADSTERRA-FOOTER: paste your Adsterra footer/banner ad code inside the div below -->
+<div class="container"><div class="ad-slot" data-ad="footer"></div></div>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="f-grid">
+      <div>
+        <span class="brandline"><span class="logo-mark">T</span> ToolNest</span>
+        <p>Free online tools that actually work. No sign-up, no watermarks — and your files never leave your device for client-side tools.</p>
+      </div>
+      <div>
+        <h4>Popular</h4>
+        <a href="/tools/qr-code-generator/">QR Code Generator</a>
+        <a href="/tools/background-remover/">Background Remover</a>
+        <a href="/tools/pdf-merger/">PDF Merger</a>
+        <a href="/tools/word-counter/">Word Counter</a>
+      </div>
+      <div>
+        <h4>Categories</h4>
+        <a href="/#image">Image Tools</a>
+        <a href="/#pdf">PDF &amp; Documents</a>
+        <a href="/#calculators">Calculators</a>
+        <a href="/#developer">Developer Tools</a>
+      </div>
+      <div>
+        <h4>Site</h4>
+        <a href="/">Home</a>
+        <a href="/#all-tools">All Tools</a>
+        <a href="/sitemap.xml">Sitemap</a>
+      </div>
+    </div>
+    <div class="f-bottom">© 2026 ToolNest · Free tools for everyone · Made with care</div>
+  </div>
+</footer>
+
+<script src="/assets/site.js?v=5"></script>
+
+<script>
+/* Meeting Agenda Generator — timed agenda items, live total, copy/download. */
+(function () {
+  'use strict';
+  var SLUG = 'meeting-agenda-generator';
+  var items = [];
+
+  function fmtTotal(mins) {
+    if (mins < 60) return mins + ' min';
+    var h = Math.floor(mins / 60), m = mins % 60;
+    return h + 'h' + (m ? ' ' + m + 'm' : '');
+  }
+
+  function render() {
+    var list = TN.el(SLUG + '-list');
+    list.innerHTML = '';
+    var total = 0;
+    items.forEach(function (it, i) {
+      total += it.mins;
+      var row = document.createElement('div');
+      row.className = 'copy-row mt';
+      var res = document.createElement('div');
+      res.className = 'result';
+      res.style.flex = '1';
+      res.textContent = (i + 1) + '. ' + it.title + (it.owner ? '  (' + it.owner + ')' : '') + '  — ' + it.mins + ' min';
+      var del = document.createElement('button');
+      del.className = 'btn btn-outline btn-sm';
+      del.type = 'button';
+      del.textContent = '✕';
+      del.setAttribute('aria-label', 'Remove item');
+      del.addEventListener('click', function () { items.splice(i, 1); render(); });
+      row.appendChild(res);
+      row.appendChild(del);
+      list.appendChild(row);
+    });
+    if (!items.length) list.innerHTML = '<p class="muted">No items yet — add your first agenda item above.</p>';
+    TN.el(SLUG + '-total').textContent = fmtTotal(total);
+  }
+
+  function agendaText() {
+    var title = TN.el(SLUG + '-title').value.trim() || 'Meeting Agenda';
+    var date = TN.el(SLUG + '-date').value || '[date]';
+    var L = ['AGENDA: ' + title, 'Date: ' + date, ''];
+    var total = 0, t = 0;
+    items.forEach(function (it, i) {
+      total += it.mins;
+      L.push((i + 1) + '. ' + it.title + (it.owner ? ' [' + it.owner + ']' : '') + ' — ' + it.mins + ' min');
+      t += it.mins;
+    });
+    L.push('');
+    L.push('Total: ' + fmtTotal(total));
+    return L.join('\n');
+  }
+
+  function init() {
+    if (!TN.el(SLUG + '-add')) return;
+    render();
+    TN.on(SLUG + '-add', 'click', function () {
+      try {
+        TN.clearErr(SLUG + '-error');
+        var title = TN.el(SLUG + '-item').value.trim();
+        var owner = TN.el(SLUG + '-owner').value.trim();
+        var mins = parseInt(TN.el(SLUG + '-mins').value, 10);
+        if (!title) { TN.setErr(SLUG + '-error', 'Please enter an item title.'); return; }
+        if (!mins || mins < 1 || mins > 480) { TN.setErr(SLUG + '-error', 'Duration must be 1–480 minutes.'); return; }
+        items.push({ title: title, owner: owner, mins: mins });
+        TN.el(SLUG + '-item').value = '';
+        TN.el(SLUG + '-owner').value = '';
+        render();
+        TN.el(SLUG + '-item').focus();
+      } catch (e) { TN.setErr(SLUG + '-error', 'Could not add the item. Please try again.'); }
+    });
+    TN.on(SLUG + '-copy', 'click', function () {
+      if (!items.length) { TN.setErr(SLUG + '-error', 'Add at least one agenda item first.'); return; }
+      var btn = TN.el(SLUG + '-copy');
+      TN.copy(agendaText()).then(function (ok) {
+        btn.textContent = ok ? 'Copied ✓' : 'Copy Agenda';
+        setTimeout(function () { btn.textContent = 'Copy Agenda'; }, 1200);
+      });
+    });
+    TN.on(SLUG + '-download', 'click', function () {
+      if (!items.length) { TN.setErr(SLUG + '-error', 'Add at least one agenda item first.'); return; }
+      TN.downloadText(agendaText(), 'meeting-agenda.txt', 'text/plain');
+    });
+  }
+  try { init(); } catch (e) { /* never throw on load */ }
+})();
+
+</script>
+</body>
+</html>

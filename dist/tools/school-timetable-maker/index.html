@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>School Timetable Maker — Free Online | ToolNest</title>
+<meta name="description" content="Build a weekly school timetable: set days and periods, type subjects into each slot, auto-save to your browser and print the finished grid.">
+<meta name="keywords" content="school timetable, class schedule maker, weekly timetable, lesson planner">
+<link rel="canonical" href="https://toolnest.vercel.app/tools/school-timetable-maker/">
+<meta name="theme-color" content="#07070b">
+<meta property="og:title" content="School Timetable Maker — Free Online | ToolNest">
+<meta property="og:description" content="Build a weekly school timetable: set days and periods, type subjects into each slot, auto-save to your browser and print the finished grid.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css?v=4">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%23e01111'/><text x='50' y='68' font-size='58' text-anchor='middle' fill='white' font-family='Arial' font-weight='bold'>T</text></svg>">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebApplication","name":"School Timetable Maker","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0"},"url":"https://toolnest.vercel.app/tools/school-timetable-maker/","description":"Build a weekly school timetable: set days and periods, type subjects into each slot, auto-save to your browser and print the finished grid."},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Where is my timetable saved?","acceptedAnswer":{"@type":"Answer","text":"In your browser's localStorage under a key namespaced to this tool. It survives reloads on the same browser and device, but is not synced anywhere."}},{"@type":"Question","name":"Can I change the number of days or periods later?","acceptedAnswer":{"@type":"Answer","text":"Yes — change the numbers and rebuild. Existing entries that still fit are kept; slots outside the new size are dropped."}},{"@type":"Question","name":"Does it work for college or coaching schedules?","acceptedAnswer":{"@type":"Answer","text":"Yes — days and slots are generic, so it works for any repeating weekly class schedule."}}]}]}</script>
+</head>
+<body>
+<header class="site-header">
+  <div class="container">
+    <a class="logo" href="/"><span class="logo-mark">T</span> ToolNest</a>
+    <div class="header-right">
+      <form class="nav-search" action="/" method="get" role="search">
+        <span class="ns-icon">🔍</span>
+        <input type="search" name="q" placeholder="Search tools…" aria-label="Search tools" autocomplete="off">
+      </form>
+      <div class="menu-wrap">
+        <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="menuPanel" aria-label="Open menu"><span></span><span></span><span></span></button>
+        <nav class="menu-panel" id="menuPanel" aria-label="Site">
+          <a href="/">Home</a>
+          <a href="/#categories">Categories</a>
+          <a href="/#all-tools">All Tools</a>
+        </nav>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ADSTERRA-HEADER: paste your Adsterra banner ad code inside the div below -->
+<div class="container"><div class="ad-slot ad-leaderboard" data-ad="header"></div></div>
+
+<main class="container">
+  <nav class="crumbs"><a href="/">Home</a> &rsaquo; <a href="/#time">Time &amp; Date</a> &rsaquo; School Timetable Maker</nav>
+  <div class="tool-hero">
+    <h1>School Timetable Maker</h1>
+    <p>Build a weekly school timetable: set days and periods, type subjects into each slot, auto-save to your browser and print the finished grid.</p>
+  </div>
+
+  <div class="tool-card">
+  <div class="grid3">
+    <div class="field">
+      <label for="school-timetable-maker-days">Days per week</label>
+      <input class="input" id="school-timetable-maker-days" type="number" min="1" max="7" value="5">
+    </div>
+    <div class="field">
+      <label for="school-timetable-maker-periods">Periods per day</label>
+      <input class="input" id="school-timetable-maker-periods" type="number" min="1" max="12" value="6">
+    </div>
+    <div class="field" style="align-self:end">
+      <div class="btn-row">
+        <button type="button" class="btn" id="school-timetable-maker-build">Build grid</button>
+        <button type="button" class="btn btn-outline" id="school-timetable-maker-print">Print</button>
+      </div>
+    </div>
+  </div>
+  <div class="error" id="school-timetable-maker-error"></div>
+  <div id="school-timetable-maker-wrap" style="overflow-x:auto;margin-top:12px"></div>
+  <p class="muted">Auto-saves as you type. Day names default to Mon–Sun.</p>
+</div>
+
+
+  <!-- ADSTERRA-INCONTENT: paste your Adsterra native/in-content ad code inside the div below -->
+  <div class="ad-slot" data-ad="incontent"></div>
+
+  <div class="info-grid">
+    <div class="info-card">
+      <h2>📖 How to use</h2>
+      <ol><li>Choose how many days and periods per day your week has.</li><li>Click Build grid, then type a subject into each slot (optionally with room, e.g. &#39;Math R12&#39;).</li><li>Everything saves automatically to your browser as you type.</li><li>Press Print for a clean paper timetable.</li></ol>
+    </div>
+    <div class="info-card">
+      <h2>❓ Frequently asked questions</h2>
+      <div class="faq"><details><summary>Where is my timetable saved?</summary><p>In your browser&#39;s localStorage under a key namespaced to this tool. It survives reloads on the same browser and device, but is not synced anywhere.</p></details><details><summary>Can I change the number of days or periods later?</summary><p>Yes — change the numbers and rebuild. Existing entries that still fit are kept; slots outside the new size are dropped.</p></details><details><summary>Does it work for college or coaching schedules?</summary><p>Yes — days and slots are generic, so it works for any repeating weekly class schedule.</p></details></div>
+    </div>
+  </div>
+
+  <section class="section">
+    <h2>🔗 Related tools</h2>
+    <div class="tool-grid"><a class="tool-link" href="/tools/add-subtract-days-calculator/" data-search="add / subtract days calculator add or subtract days, weeks, months or years from any date. optional business-days-only mode skips weekends automatically. add days to date subtract days calculator date plus days business days calculator date arithmetic"><span class="t-ico">⏰</span><span class="t-body"><b>Add / Subtract Days Calculator</b><small>Add or subtract days, weeks, months or years from any date. Optional business-days-only mode…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/anniversary-calculator/" data-search="anniversary calculator track any anniversary: days until the next one, which number it is (10th, 25th…), total days together and the weekday it falls on. anniversary calculator wedding anniversary countdown how many days until anniversary anniversary date tracker years together calculator"><span class="t-ico">⏰</span><span class="t-body"><b>Anniversary Calculator</b><small>Track any anniversary: days until the next one, which number it is (10th, 25th…), total days…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/bill-due-tracker/" data-search="bill due tracker never miss a payment — track recurring monthly bills with automatic next-due dates, days remaining and urgency sorting. bill due tracker bill reminder recurring bills tracker monthly bills organizer due date tracker"><span class="t-ico">⏰</span><span class="t-body"><b>Bill Due Tracker</b><small>Never miss a payment — track recurring monthly bills with automatic next-due dates, days rem…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/billable-hours-calculator/" data-search="billable hours calculator turn hours into invoices: billable hours × rate, utilization percentage against non-billable time, and the final invoice total. billable hours invoice calculator utilization rate freelance rate calculator"><span class="t-ico">⏰</span><span class="t-body"><b>Billable Hours Calculator</b><small>Turn hours into invoices: billable hours × rate, utilization percentage against non-billable…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/birthday-reminder-list/" data-search="birthday reminder list never miss a birthday: names and dates with days-until countdowns, next upcoming birthday highlighted, saved in your browser. birthday reminder birthday tracker birthday countdown never forget birthday"><span class="t-ico">⏰</span><span class="t-body"><b>Birthday Reminder List</b><small>Never miss a birthday: names and dates with days-until countdowns, next upcoming birthday hi…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/business-days-calculator/" data-search="business days calculator count working days between two dates, excluding weekends and your own custom holidays, with a full breakdown. business days calculator working days calculator weekdays between dates net workdays business days excluding holidays"><span class="t-ico">⏰</span><span class="t-body"><b>Business Days Calculator</b><small>Count working days between two dates, excluding weekends and your own custom holidays, with …</small></span><span class="t-arrow">→</span></a></div>
+  </section>
+</main>
+
+<!-- ADSTERRA-FOOTER: paste your Adsterra footer/banner ad code inside the div below -->
+<div class="container"><div class="ad-slot" data-ad="footer"></div></div>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="f-grid">
+      <div>
+        <span class="brandline"><span class="logo-mark">T</span> ToolNest</span>
+        <p>Free online tools that actually work. No sign-up, no watermarks — and your files never leave your device for client-side tools.</p>
+      </div>
+      <div>
+        <h4>Popular</h4>
+        <a href="/tools/qr-code-generator/">QR Code Generator</a>
+        <a href="/tools/background-remover/">Background Remover</a>
+        <a href="/tools/pdf-merger/">PDF Merger</a>
+        <a href="/tools/word-counter/">Word Counter</a>
+      </div>
+      <div>
+        <h4>Categories</h4>
+        <a href="/#image">Image Tools</a>
+        <a href="/#pdf">PDF &amp; Documents</a>
+        <a href="/#calculators">Calculators</a>
+        <a href="/#developer">Developer Tools</a>
+      </div>
+      <div>
+        <h4>Site</h4>
+        <a href="/">Home</a>
+        <a href="/#all-tools">All Tools</a>
+        <a href="/sitemap.xml">Sitemap</a>
+      </div>
+    </div>
+    <div class="f-bottom">© 2026 ToolNest · Free tools for everyone · Made with care</div>
+  </div>
+</footer>
+
+<script src="/assets/site.js?v=5"></script>
+
+<script>
+(function () {
+  'use strict';
+  var P = 'school-timetable-maker-', ERR = P + 'error', LS = 'tn-school-timetable-maker-grid';
+  var DAYS = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
+  function g(id) { return TN.el(P + id); }
+  function load() {
+    try {
+      var raw = localStorage.getItem(LS);
+      return raw ? JSON.parse(raw) : null;
+    } catch (e) { return null; }
+  }
+  function save() {
+    try {
+      var data = { days: parseInt(g('days').value, 10), periods: parseInt(g('periods').value, 10), cells: {} };
+      var inputs = g('wrap').querySelectorAll('input[data-cell]');
+      for (var i = 0; i < inputs.length; i++) {
+        if (inputs[i].value) data.cells[inputs[i].getAttribute('data-cell')] = inputs[i].value;
+      }
+      localStorage.setItem(LS, JSON.stringify(data));
+    } catch (e) { /* storage may be unavailable */ }
+  }
+  var saveDeb = null;
+  function saveSoon() {
+    if (saveDeb) clearTimeout(saveDeb);
+    saveDeb = setTimeout(save, 400);
+  }
+  function build() {
+    try {
+      TN.clearErr(ERR);
+      var days = parseInt(g('days').value, 10), periods = parseInt(g('periods').value, 10);
+      if (isNaN(days) || days < 1 || days > 7) { TN.setErr(ERR, 'Days must be 1–7.'); return; }
+      if (isNaN(periods) || periods < 1 || periods > 12) { TN.setErr(ERR, 'Periods must be 1–12.'); return; }
+      var prev = load(), prevCells = {};
+      if (prev && prev.days === days && prev.periods === periods) prevCells = prev.cells || {};
+      var h = '<table class="data" style="border-collapse:collapse"><thead><tr><th></th>';
+      for (var p = 0; p < periods; p++) h += '<th>Period ' + (p + 1) + '</th>';
+      h += '</tr></thead><tbody>';
+      for (var d = 0; d < days; d++) {
+        h += '<tr><th>' + DAYS[d] + '</th>';
+        for (p = 0; p < periods; p++) {
+          var key = d + ':' + p;
+          var v = prevCells[key] ? ' value="' + prevCells[key].replace(/"/g, '&quot;') + '"' : '';
+          h += '<td><input class="input" data-cell="' + key + '"' + v + ' style="min-width:110px" placeholder="Subject"></td>';
+        }
+        h += '</tr>';
+      }
+      h += '</tbody></table>';
+      g('wrap').innerHTML = h;
+      var inputs = g('wrap').querySelectorAll('input[data-cell]');
+      for (var i = 0; i < inputs.length; i++) TN.on(inputs[i], 'input', saveSoon);
+      save();
+    } catch (e) { TN.setErr(ERR, e.message || 'Could not build the grid.'); }
+  }
+  try {
+    if (!TN.el(P + 'build')) return;
+    var prev = load();
+    if (prev) {
+      g('days').value = prev.days; g('periods').value = prev.periods;
+    }
+    build();
+    TN.on(P + 'build', 'click', build);
+    TN.on(P + 'print', 'click', function () { window.print(); });
+  } catch (e) { /* never throw on load */ }
+})();
+
+</script>
+</body>
+</html>

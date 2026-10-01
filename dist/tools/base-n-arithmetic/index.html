@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Base-N Arithmetic — Free Online | ToolNest</title>
+<meta name="description" content="Add, subtract, multiply and divide numbers in any base from 2 to 36 with exact BigInt math and a full conversion breakdown.">
+<meta name="keywords" content="base n arithmetic, binary addition, hexadecimal calculator, base 36 math">
+<link rel="canonical" href="https://toolnest.vercel.app/tools/base-n-arithmetic/">
+<meta name="theme-color" content="#07070b">
+<meta property="og:title" content="Base-N Arithmetic — Free Online | ToolNest">
+<meta property="og:description" content="Add, subtract, multiply and divide numbers in any base from 2 to 36 with exact BigInt math and a full conversion breakdown.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css?v=4">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%23e01111'/><text x='50' y='68' font-size='58' text-anchor='middle' fill='white' font-family='Arial' font-weight='bold'>T</text></svg>">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebApplication","name":"Base-N Arithmetic","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0"},"url":"https://toolnest.vercel.app/tools/base-n-arithmetic/","description":"Add, subtract, multiply and divide numbers in any base from 2 to 36 with exact BigInt math and a full conversion breakdown."},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Which digits are allowed in each base?","acceptedAnswer":{"@type":"Answer","text":"Digits go 0–9 then letters A–Z. Base 16 allows 0–9 and A–F; base 36 allows all digits and letters. The tool validates every character before computing."}},{"@type":"Question","name":"Why can division produce a fraction?","acceptedAnswer":{"@type":"Answer","text":"Integer division in another base still follows the same rules: a ÷ b gives a quotient and remainder. Both are converted back to your base so you can verify the result."}},{"@type":"Question","name":"Is the arithmetic exact for huge numbers?","acceptedAnswer":{"@type":"Answer","text":"Yes — operands are converted with BigInt, so arbitrarily long digit strings compute exactly with no floating-point rounding."}}]}]}</script>
+</head>
+<body>
+<header class="site-header">
+  <div class="container">
+    <a class="logo" href="/"><span class="logo-mark">T</span> ToolNest</a>
+    <div class="header-right">
+      <form class="nav-search" action="/" method="get" role="search">
+        <span class="ns-icon">🔍</span>
+        <input type="search" name="q" placeholder="Search tools…" aria-label="Search tools" autocomplete="off">
+      </form>
+      <div class="menu-wrap">
+        <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="menuPanel" aria-label="Open menu"><span></span><span></span><span></span></button>
+        <nav class="menu-panel" id="menuPanel" aria-label="Site">
+          <a href="/">Home</a>
+          <a href="/#categories">Categories</a>
+          <a href="/#all-tools">All Tools</a>
+        </nav>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ADSTERRA-HEADER: paste your Adsterra banner ad code inside the div below -->
+<div class="container"><div class="ad-slot ad-leaderboard" data-ad="header"></div></div>
+
+<main class="container">
+  <nav class="crumbs"><a href="/">Home</a> &rsaquo; <a href="/#math">Math &amp; Numbers</a> &rsaquo; Base-N Arithmetic</nav>
+  <div class="tool-hero">
+    <h1>Base-N Arithmetic</h1>
+    <p>Add, subtract, multiply and divide numbers in any base from 2 to 36 with exact BigInt math and a full conversion breakdown.</p>
+  </div>
+
+  <div class="tool-card">
+  <div class="grid3">
+    <div class="field">
+      <label for="base-n-arithmetic-base">Base (2–36)</label>
+      <input class="input" id="base-n-arithmetic-base" type="number" min="2" max="36" value="16">
+    </div>
+    <div class="field">
+      <label for="base-n-arithmetic-a">First operand</label>
+      <input class="input" id="base-n-arithmetic-a" type="text" placeholder="e.g. 1F" value="1F" style="font-family:monospace">
+    </div>
+    <div class="field">
+      <label for="base-n-arithmetic-b">Second operand</label>
+      <input class="input" id="base-n-arithmetic-b" type="text" placeholder="e.g. A" value="A" style="font-family:monospace">
+    </div>
+  </div>
+  <div class="grid2">
+    <div class="field">
+      <label for="base-n-arithmetic-op">Operation</label>
+      <select class="select" id="base-n-arithmetic-op">
+        <option value="+">+ Add</option>
+        <option value="-">− Subtract</option>
+        <option value="*">× Multiply</option>
+        <option value="/">÷ Divide (quotient + remainder)</option>
+      </select>
+    </div>
+    <div class="field" style="align-self:end">
+      <div class="btn-row">
+        <button type="button" class="btn" id="base-n-arithmetic-calc">Calculate</button>
+        <button type="button" class="btn btn-outline btn-sm" id="base-n-arithmetic-copy">Copy result</button>
+      </div>
+    </div>
+  </div>
+  <div class="error" id="base-n-arithmetic-error"></div>
+  <div id="base-n-arithmetic-out" class="hidden">
+    <div class="stat-cards">
+      <div class="stat-card"><div class="v" id="base-n-arithmetic-result" style="font-family:monospace">–</div><div class="l" id="base-n-arithmetic-result-l">Result</div></div>
+      <div class="stat-card"><div class="v" id="base-n-arithmetic-dec" style="font-family:monospace">–</div><div class="l">Decimal check</div></div>
+    </div>
+    <div class="result" id="base-n-arithmetic-rem-wrap" style="display:none">
+      <h3>Division detail</h3>
+      <p id="base-n-arithmetic-rem"></p>
+    </div>
+    <div class="result">
+      <h3>Steps</h3>
+      <div id="base-n-arithmetic-steps"></div>
+    </div>
+  </div>
+</div>
+
+
+  <!-- ADSTERRA-INCONTENT: paste your Adsterra native/in-content ad code inside the div below -->
+  <div class="ad-slot" data-ad="incontent"></div>
+
+  <div class="info-grid">
+    <div class="info-card">
+      <h2>📖 How to use</h2>
+      <ol><li>Pick a base between 2 and 36.</li><li>Type the two operands using valid digits for that base (0-9 then A-Z).</li><li>Choose +, −, × or ÷ and press Calculate.</li><li>Read the result in your base plus the decimal cross-check and conversion steps.</li></ol>
+    </div>
+    <div class="info-card">
+      <h2>❓ Frequently asked questions</h2>
+      <div class="faq"><details><summary>Which digits are allowed in each base?</summary><p>Digits go 0–9 then letters A–Z. Base 16 allows 0–9 and A–F; base 36 allows all digits and letters. The tool validates every character before computing.</p></details><details><summary>Why can division produce a fraction?</summary><p>Integer division in another base still follows the same rules: a ÷ b gives a quotient and remainder. Both are converted back to your base so you can verify the result.</p></details><details><summary>Is the arithmetic exact for huge numbers?</summary><p>Yes — operands are converted with BigInt, so arbitrarily long digit strings compute exactly with no floating-point rounding.</p></details></div>
+    </div>
+  </div>
+
+  <section class="section">
+    <h2>🔗 Related tools</h2>
+    <div class="tool-grid"><a class="tool-link" href="/tools/24-game-solver/" data-search="24 game solver solve the 24 game exhaustively: every ordering, operation and parenthesization is tried with exact fraction arithmetic, and all distinct solutions are shown. 24 game solver make 24 solver 24 puzzle arithmetic puzzle solver"><span class="t-ico">📐</span><span class="t-body"><b>24 Game Solver</b><small>Solve the 24 game exhaustively: every ordering, operation and parenthesization is tried with…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/ancient-numerals-converter/" data-search="ancient numerals converter convert decimal numbers to roman, egyptian hieroglyphic, babylonian cuneiform and mayan numerals — with roman numerals also decoded back to decimal. roman numerals egyptian numerals babylonian numerals mayan numerals ancient numbers"><span class="t-ico">📐</span><span class="t-body"><b>Ancient Numerals Converter</b><small>Convert decimal numbers to Roman, Egyptian hieroglyphic, Babylonian cuneiform and Mayan nume…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/arithmetic-sequence-calculator/" data-search="arithmetic sequence calculator from the first term and common difference get the nth term and the sum of the first n terms. arithmetic sequence arithmetic progression nth term sum of arithmetic series common difference"><span class="t-ico">📐</span><span class="t-body"><b>Arithmetic Sequence Calculator</b><small>From the first term and common difference get the nth term and the sum of the first n terms.</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/bayes-theorem-calculator/" data-search="bayes theorem calculator compute posterior probabilities from prior, sensitivity and specificity with the full bayes formula, natural frequencies and a probability tree. bayes theorem calculator posterior probability sensitivity specificity medical test probability"><span class="t-ico">📐</span><span class="t-body"><b>Bayes Theorem Calculator</b><small>Compute posterior probabilities from prior, sensitivity and specificity with the full Bayes …</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/bcd-converter/" data-search="bcd converter convert decimal numbers to binary-coded decimal (packed and unpacked) and decode bcd back to decimal, with per-digit nibble breakdowns. bcd converter binary coded decimal packed bcd unpacked bcd bcd decoder"><span class="t-ico">📐</span><span class="t-body"><b>BCD Converter</b><small>Convert decimal numbers to Binary-Coded Decimal (packed and unpacked) and decode BCD back to…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/binary-adder-calculator/" data-search="binary adder calculator add two binary numbers with every column addition and carry shown, plus a decimal check. binary addition add binary numbers binary adder binary sum binary carry"><span class="t-ico">📐</span><span class="t-body"><b>Binary Adder Calculator</b><small>Add two binary numbers with every column addition and carry shown, plus a decimal check.</small></span><span class="t-arrow">→</span></a></div>
+  </section>
+</main>
+
+<!-- ADSTERRA-FOOTER: paste your Adsterra footer/banner ad code inside the div below -->
+<div class="container"><div class="ad-slot" data-ad="footer"></div></div>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="f-grid">
+      <div>
+        <span class="brandline"><span class="logo-mark">T</span> ToolNest</span>
+        <p>Free online tools that actually work. No sign-up, no watermarks — and your files never leave your device for client-side tools.</p>
+      </div>
+      <div>
+        <h4>Popular</h4>
+        <a href="/tools/qr-code-generator/">QR Code Generator</a>
+        <a href="/tools/background-remover/">Background Remover</a>
+        <a href="/tools/pdf-merger/">PDF Merger</a>
+        <a href="/tools/word-counter/">Word Counter</a>
+      </div>
+      <div>
+        <h4>Categories</h4>
+        <a href="/#image">Image Tools</a>
+        <a href="/#pdf">PDF &amp; Documents</a>
+        <a href="/#calculators">Calculators</a>
+        <a href="/#developer">Developer Tools</a>
+      </div>
+      <div>
+        <h4>Site</h4>
+        <a href="/">Home</a>
+        <a href="/#all-tools">All Tools</a>
+        <a href="/sitemap.xml">Sitemap</a>
+      </div>
+    </div>
+    <div class="f-bottom">© 2026 ToolNest · Free tools for everyone · Made with care</div>
+  </div>
+</footer>
+
+<script src="/assets/site.js?v=5"></script>
+
+<script>
+(function () {
+  'use strict';
+  var P = 'base-n-arithmetic-', ERR = P + 'error';
+  var DIGITS = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+  function g(id) { return TN.el(P + id); }
+  function toBig(s, base) {
+    s = s.trim().toUpperCase().replace(/^\+/, '');
+    var neg = false;
+    if (s.charAt(0) === '-') { neg = true; s = s.slice(1); }
+    if (!s) throw new Error('Operand is empty.');
+    var v = 0n, b = BigInt(base);
+    for (var i = 0; i < s.length; i++) {
+      var d = DIGITS.indexOf(s[i]);
+      if (d < 0 || d >= base) throw new Error('Invalid digit "' + s[i] + '" for base ' + base + '.');
+      v = v * b + BigInt(d);
+    }
+    return neg ? -v : v;
+  }
+  function fromBig(v, base) {
+    if (v === 0n) return '0';
+    var neg = v < 0n, b = BigInt(base), out = '';
+    if (neg) v = -v;
+    while (v > 0n) { out = DIGITS[Number(v % b)] + out; v = v / b; }
+    return (neg ? '-' : '') + out;
+  }
+  function calc() {
+    try {
+      TN.clearErr(ERR);
+      var base = parseInt(g('base').value, 10);
+      if (isNaN(base) || base < 2 || base > 36) { TN.setErr(ERR, 'Base must be an integer from 2 to 36.'); return; }
+      var a, b;
+      try { a = toBig(g('a').value, base); } catch (e) { TN.setErr(ERR, 'First operand: ' + e.message); return; }
+      try { b = toBig(g('b').value, base); } catch (e) { TN.setErr(ERR, 'Second operand: ' + e.message); return; }
+      var op = g('op').value, res, decRes, steps = [];
+      steps.push('<li>Converted <code>' + TN.esc(g('a').value.trim().toUpperCase()) + '</code><sub>' + base + '</sub> → decimal <b>' + a.toString() + '</b>.</li>');
+      steps.push('<li>Converted <code>' + TN.esc(g('b').value.trim().toUpperCase()) + '</code><sub>' + base + '</sub> → decimal <b>' + b.toString() + '</b>.</li>');
+      var sym = op === '*' ? '×' : (op === '/' ? '÷' : op);
+      if (op === '+') { res = a + b; }
+      else if (op === '-') { res = a - b; }
+      else if (op === '*') { res = a * b; }
+      else {
+        if (b === 0n) { TN.setErr(ERR, 'Division by zero is not allowed.'); return; }
+        var q = a / b, r = a % b;
+        res = q;
+        steps.push('<li>Decimal: ' + a + ' ÷ ' + b + ' = quotient <b>' + q + '</b>, remainder <b>' + r + '</b>.</li>');
+        steps.push('<li>Quotient back to base ' + base + ': <b>' + fromBig(q, base) + '</b>; remainder: <b>' + fromBig(r, base) + '</b>.</li>');
+        g('rem-wrap').style.display = '';
+        g('rem').innerHTML = 'Quotient <b style="font-family:monospace">' + TN.esc(fromBig(q, base)) + '</b><sub>' + base + '</sub> &nbsp; Remainder <b style="font-family:monospace">' + TN.esc(fromBig(r, base)) + '</b><sub>' + base + '</sub>';
+      }
+      if (op !== '/') {
+        decRes = res.toString();
+        steps.push('<li>Decimal result: <b>' + a + ' ' + sym + ' ' + b + ' = ' + decRes + '</b>.</li>');
+        steps.push('<li>Converted back to base ' + base + ': <b>' + TN.esc(fromBig(res, base)) + '</b>.</li>');
+        g('rem-wrap').style.display = 'none';
+      } else { decRes = res.toString() + ' r ' + (a % b).toString(); }
+      steps.push('<li>Verification: <code>' + TN.esc(fromBig(res, base)) + '</code><sub>' + base + '</sub> converts back to decimal ' + res.toString() + ' ✓.</li>');
+      TN.show(P + 'out');
+      g('result').textContent = fromBig(res, base);
+      g('result-l').textContent = 'Result (base ' + base + ')';
+      g('result').setAttribute('data-r', fromBig(res, base));
+      g('dec').textContent = decRes;
+      g('steps').innerHTML = '<ol>' + steps.join('') + '</ol>';
+    } catch (e) { TN.setErr(ERR, e.message || 'Could not calculate.'); }
+  }
+  try {
+    if (!TN.el(P + 'calc')) return;
+    TN.on(P + 'calc', 'click', calc);
+    TN.on(P + 'copy', 'click', function () {
+      var r = g('result').getAttribute('data-r');
+      if (r) TN.copy(r);
+    });
+  } catch (e) { /* never throw on load */ }
+})();
+
+</script>
+</body>
+</html>

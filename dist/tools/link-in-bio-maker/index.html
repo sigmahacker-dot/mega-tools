@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Link in Bio Maker — Free Online | ToolNest</title>
+<meta name="description" content="Build a personal link-in-bio page and download it as a standalone HTML file.">
+<meta name="keywords" content="link in bio, linktree alternative, bio link page, personal links page">
+<link rel="canonical" href="https://toolnest.vercel.app/tools/link-in-bio-maker/">
+<meta name="theme-color" content="#07070b">
+<meta property="og:title" content="Link in Bio Maker — Free Online | ToolNest">
+<meta property="og:description" content="Build a personal link-in-bio page and download it as a standalone HTML file.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css?v=4">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%23e01111'/><text x='50' y='68' font-size='58' text-anchor='middle' fill='white' font-family='Arial' font-weight='bold'>T</text></svg>">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebApplication","name":"Link in Bio Maker","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0"},"url":"https://toolnest.vercel.app/tools/link-in-bio-maker/","description":"Build a personal link-in-bio page and download it as a standalone HTML file."},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How does it work?","acceptedAnswer":{"@type":"Answer","text":"Add your name, bio and links one by one, pick a theme, then click Download HTML — you get a single self-contained file you can host anywhere."}},{"@type":"Question","name":"Is the download standalone?","acceptedAnswer":{"@type":"Answer","text":"Yes — the download is one HTML file with inline styles; no external dependencies."}},{"@type":"Question","name":"Where can I host it?","acceptedAnswer":{"@type":"Answer","text":"Upload it to any static host (GitHub Pages, Netlify, Vercel) or use it as your bio link directly."}},{"@type":"Question","name":"Do links open in a new tab?","acceptedAnswer":{"@type":"Answer","text":"Links open in a new tab by default (target=_blank with rel=noopener)."}}]}]}</script>
+</head>
+<body>
+<header class="site-header">
+  <div class="container">
+    <a class="logo" href="/"><span class="logo-mark">T</span> ToolNest</a>
+    <div class="header-right">
+      <form class="nav-search" action="/" method="get" role="search">
+        <span class="ns-icon">🔍</span>
+        <input type="search" name="q" placeholder="Search tools…" aria-label="Search tools" autocomplete="off">
+      </form>
+      <div class="menu-wrap">
+        <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="menuPanel" aria-label="Open menu"><span></span><span></span><span></span></button>
+        <nav class="menu-panel" id="menuPanel" aria-label="Site">
+          <a href="/">Home</a>
+          <a href="/#categories">Categories</a>
+          <a href="/#all-tools">All Tools</a>
+        </nav>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ADSTERRA-HEADER: paste your Adsterra banner ad code inside the div below -->
+<div class="container"><div class="ad-slot ad-leaderboard" data-ad="header"></div></div>
+
+<main class="container">
+  <nav class="crumbs"><a href="/">Home</a> &rsaquo; <a href="/#social">Social Media</a> &rsaquo; Link in Bio Maker</nav>
+  <div class="tool-hero">
+    <h1>Link in Bio Maker</h1>
+    <p>Build a personal link-in-bio page and download it as a standalone HTML file.</p>
+  </div>
+
+  <div class="tool-card">
+  <div class="grid2">
+    <div class="field">
+      <label for="link-in-bio-maker-name">Name</label>
+      <input class="input" type="text" id="link-in-bio-maker-name" placeholder="Your name">
+    </div>
+    <div class="field">
+      <label for="link-in-bio-maker-tag">Tagline</label>
+      <input class="input" type="text" id="link-in-bio-maker-tag" placeholder="e.g. Traveler & photographer">
+    </div>
+  </div>
+  <div class="field">
+    <label for="link-in-bio-maker-bio">Bio</label>
+    <textarea class="textarea" id="link-in-bio-maker-bio" rows="2" placeholder="Short bio…"></textarea>
+  </div>
+  <div class="grid3">
+    <div class="field">
+      <label for="link-in-bio-maker-label">Link label</label>
+      <input class="input" type="text" id="link-in-bio-maker-label" placeholder="e.g. My YouTube">
+    </div>
+    <div class="field">
+      <label for="link-in-bio-maker-url">Link URL</label>
+      <input class="input" type="url" id="link-in-bio-maker-url" placeholder="https://…">
+    </div>
+    <div class="field">
+      <label>&nbsp;</label>
+      <div class="btn-row"><button class="btn btn-outline" id="link-in-bio-maker-add">Add Link</button></div>
+    </div>
+  </div>
+  <div class="field">
+    <label for="link-in-bio-maker-theme">Theme</label>
+    <select class="select" id="link-in-bio-maker-theme">
+      <option value="midnight">Midnight</option>
+      <option value="sunset">Sunset</option>
+      <option value="forest">Forest</option>
+      <option value="paper">Paper</option>
+    </select>
+  </div>
+  <div class="btn-row">
+    <button class="btn" id="link-in-bio-maker-dl">Download HTML</button>
+    <button class="btn btn-outline" id="link-in-bio-maker-clear">Clear Links</button>
+  </div>
+  <div class="error" id="link-in-bio-maker-error"></div>
+  <div id="link-in-bio-maker-links" style="margin-top:10px"></div>
+</div>
+
+<div class="tool-card">
+  <h3>Live preview</h3>
+  <div id="link-in-bio-maker-preview" style="max-width:420px;margin:0 auto"></div>
+</div>
+
+  <!-- ADSTERRA-INCONTENT: paste your Adsterra native/in-content ad code inside the div below -->
+  <div class="ad-slot" data-ad="incontent"></div>
+
+  <div class="info-grid">
+    <div class="info-card">
+      <h2>📖 How to use</h2>
+      <ol><li>Enter your name, tagline and bio.</li><li>Add links with labels and URLs.</li><li>Pick a theme and see the live preview.</li><li>Click Download HTML to get your page.</li></ol>
+    </div>
+    <div class="info-card">
+      <h2>❓ Frequently asked questions</h2>
+      <div class="faq"><details><summary>How does it work?</summary><p>Add your name, bio and links one by one, pick a theme, then click Download HTML — you get a single self-contained file you can host anywhere.</p></details><details><summary>Is the download standalone?</summary><p>Yes — the download is one HTML file with inline styles; no external dependencies.</p></details><details><summary>Where can I host it?</summary><p>Upload it to any static host (GitHub Pages, Netlify, Vercel) or use it as your bio link directly.</p></details><details><summary>Do links open in a new tab?</summary><p>Links open in a new tab by default (target=_blank with rel=noopener).</p></details></div>
+    </div>
+  </div>
+
+  <section class="section">
+    <h2>🔗 Related tools</h2>
+    <div class="tool-grid"><a class="tool-link" href="/tools/bio-generator/" data-search="bio generator create 4 polished social-media bios from your name, profession and interests in professional, funny, minimalist or inspirational tones. click to copy. bio generator instagram bio ideas social media bio"><span class="t-ico">📣</span><span class="t-body"><b>Bio Generator</b><small>Create 4 polished social-media bios from your name, profession and interests in Professional…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/caption-counter/" data-search="instagram caption counter write instagram captions with live stats — characters vs the 2,200 limit, hashtags, mentions and the 125-char fold preview. instagram caption counter caption character limit hashtag counter instagram caption length"><span class="t-ico">📣</span><span class="t-body"><b>Instagram Caption Counter</b><small>Write Instagram captions with live stats — characters vs the 2,200 limit, hashtags, mentions…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/caption-generator/" data-search="caption generator get 6 engaging captions for any topic in funny, aesthetic, motivational, savage or cute moods, plus a matching hashtag line. one-tap copy included. caption generator instagram captions social media captions"><span class="t-ico">📣</span><span class="t-body"><b>Caption Generator</b><small>Get 6 engaging captions for any topic in Funny, Aesthetic, Motivational, Savage or Cute mood…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/content-calendar-maker/" data-search="content calendar maker plan a month of social posts: schedule content per day, save and export. content calendar social media calendar post scheduler planner content planner"><span class="t-ico">📣</span><span class="t-body"><b>Content Calendar Maker</b><small>Plan a month of social posts: schedule content per day, save and export.</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/engagement-rate-calculator/" data-search="engagement rate calculator calculate engagement rate from likes, comments, shares and followers or reach. engagement rate calculator instagram engagement rate social media engagement er calculator"><span class="t-ico">📣</span><span class="t-body"><b>Engagement Rate Calculator</b><small>Calculate engagement rate from likes, comments, shares and followers or reach.</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/facebook-ad-copy-generator/" data-search="facebook ad copy generator generate facebook ad copy: primary text, headline and cta combinations. facebook ad copy fb ad generator ad copy generator facebook ads text"><span class="t-ico">📣</span><span class="t-body"><b>Facebook Ad Copy Generator</b><small>Generate Facebook ad copy: primary text, headline and CTA combinations.</small></span><span class="t-arrow">→</span></a></div>
+  </section>
+</main>
+
+<!-- ADSTERRA-FOOTER: paste your Adsterra footer/banner ad code inside the div below -->
+<div class="container"><div class="ad-slot" data-ad="footer"></div></div>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="f-grid">
+      <div>
+        <span class="brandline"><span class="logo-mark">T</span> ToolNest</span>
+        <p>Free online tools that actually work. No sign-up, no watermarks — and your files never leave your device for client-side tools.</p>
+      </div>
+      <div>
+        <h4>Popular</h4>
+        <a href="/tools/qr-code-generator/">QR Code Generator</a>
+        <a href="/tools/background-remover/">Background Remover</a>
+        <a href="/tools/pdf-merger/">PDF Merger</a>
+        <a href="/tools/word-counter/">Word Counter</a>
+      </div>
+      <div>
+        <h4>Categories</h4>
+        <a href="/#image">Image Tools</a>
+        <a href="/#pdf">PDF &amp; Documents</a>
+        <a href="/#calculators">Calculators</a>
+        <a href="/#developer">Developer Tools</a>
+      </div>
+      <div>
+        <h4>Site</h4>
+        <a href="/">Home</a>
+        <a href="/#all-tools">All Tools</a>
+        <a href="/sitemap.xml">Sitemap</a>
+      </div>
+    </div>
+    <div class="f-bottom">© 2026 ToolNest · Free tools for everyone · Made with care</div>
+  </div>
+</footer>
+
+<script src="/assets/site.js?v=5"></script>
+
+<script>
+/* Link in Bio Maker — build a personal links page → download standalone HTML. */
+(function () {
+  'use strict';
+
+  var SLUG = 'link-in-bio-maker';
+  var links = [];
+
+  var THEMES = {
+    midnight: { bg: 'linear-gradient(160deg,#0f172a,#1e1b4b)', fg: '#f8fafc', btn: 'rgba(255,255,255,0.12)', border: 'rgba(255,255,255,0.2)' },
+    sunset: { bg: 'linear-gradient(160deg,#7c2d12,#be123c)', fg: '#fff7ed', btn: 'rgba(255,255,255,0.16)', border: 'rgba(255,255,255,0.25)' },
+    forest: { bg: 'linear-gradient(160deg,#052e16,#14532d)', fg: '#ecfdf5', btn: 'rgba(255,255,255,0.12)', border: 'rgba(255,255,255,0.2)' },
+    paper: { bg: '#faf6ef', fg: '#1f2937', btn: '#ffffff', border: '#e5e0d5' }
+  };
+
+  function v(id) { return TN.el(SLUG + '-' + id).value.trim(); }
+
+  function escHtml(s) {
+    return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+  }
+
+  function buildPage(themeKey) {
+    var t = THEMES[themeKey] || THEMES.midnight;
+    var name = escHtml(v('name') || 'Your Name');
+    var tag = escHtml(v('tag'));
+    var bio = escHtml(v('bio'));
+    var linkHtml = links.map(function (l) {
+      return '<a href="' + escHtml(l.url) + '" target="_blank" rel="noopener" style="display:block;text-decoration:none;color:' + t.fg + ';background:' + t.btn + ';border:1px solid ' + t.border + ';border-radius:14px;padding:14px;margin:10px 0;font-weight:600;text-align:center">' + escHtml(l.label) + '</a>';
+    }).join('\n');
+    return '<!DOCTYPE html>\n<html lang="en">\n<head>\n<meta charset="UTF-8">\n' +
+      '<meta name="viewport" content="width=device-width,initial-scale=1">\n' +
+      '<title>' + name + ' — Links</title>\n</head>\n' +
+      '<body style="margin:0;min-height:100vh;background:' + t.bg + ';color:' + t.fg + ';font-family:-apple-system,Segoe UI,Roboto,sans-serif;display:flex;justify-content:center">\n' +
+      '<div style="width:100%;max-width:420px;padding:48px 20px;text-align:center">\n' +
+      '<div style="width:88px;height:88px;border-radius:50%;margin:0 auto 16px;background:' + t.btn + ';border:2px solid ' + t.border + ';display:flex;align-items:center;justify-content:center;font-size:32px;font-weight:bold">' + escHtml(name.charAt(0).toUpperCase()) + '</div>\n' +
+      '<h1 style="margin:0 0 4px;font-size:24px">' + name + '</h1>\n' +
+      (tag ? '<p style="margin:0 0 8px;opacity:.85">' + tag + '</p>\n' : '') +
+      (bio ? '<p style="margin:0 0 16px;opacity:.75;font-size:14px">' + bio + '</p>\n' : '') +
+      linkHtml + '\n</div>\n</body>\n</html>';
+  }
+
+  function render() {
+    var themeKey = TN.el(SLUG + '-theme').value;
+    var t = THEMES[themeKey];
+    var name = v('name') || 'Your Name';
+    var tag = v('tag');
+    var pv = TN.el(SLUG + '-preview');
+    pv.style.cssText = 'background:' + t.bg + ';color:' + t.fg + ';border-radius:20px;padding:32px 20px;text-align:center';
+    pv.innerHTML =
+      '<div style="width:72px;height:72px;border-radius:50%;margin:0 auto 12px;background:' + t.btn + ';border:2px solid ' + t.border + ';display:flex;align-items:center;justify-content:center;font-size:28px;font-weight:bold">' + TN.esc(name.charAt(0).toUpperCase()) + '</div>' +
+      '<h3 style="margin:0 0 4px">' + TN.esc(name) + '</h3>' +
+      (tag ? '<p style="margin:0 0 12px;opacity:.85;font-size:14px">' + TN.esc(tag) + '</p>' : '') +
+      links.map(function (l) {
+        return '<div style="background:' + t.btn + ';border:1px solid ' + t.border + ';border-radius:14px;padding:12px;margin:8px 0;font-weight:600">' + TN.esc(l.label) + '</div>';
+      }).join('');
+
+    var box = TN.el(SLUG + '-links');
+    if (!links.length) { box.innerHTML = '<p class="muted">No links yet.</p>'; return; }
+    box.innerHTML = links.map(function (l, i) {
+      return '<div style="margin:4px 0"><strong>' + TN.esc(l.label) + '</strong> <span class="muted">' + TN.esc(l.url) + '</span> ' +
+        '<button class="btn btn-sm btn-outline" data-del="' + i + '">×</button></div>';
+    }).join('');
+    var dels = box.querySelectorAll('[data-del]');
+    for (var i = 0; i < dels.length; i++) {
+      (function (b) {
+        b.addEventListener('click', function () {
+          links.splice(parseInt(b.getAttribute('data-del'), 10), 1);
+          render();
+        });
+      })(dels[i]);
+    }
+  }
+
+  function add() {
+    TN.clearErr(SLUG + '-error');
+    var label = v('label'), url = v('url');
+    if (!label) { TN.setErr(SLUG + '-error', 'Enter a link label.'); return; }
+    if (!url) { TN.setErr(SLUG + '-error', 'Enter the link URL.'); return; }
+    try { new URL(url); } catch (e) { TN.setErr(SLUG + '-error', 'That URL looks invalid.'); return; }
+    links.push({ label: label, url: url });
+    TN.el(SLUG + '-label').value = '';
+    TN.el(SLUG + '-url').value = '';
+    render();
+  }
+
+  function download() {
+    TN.clearErr(SLUG + '-error');
+    if (!links.length) { TN.setErr(SLUG + '-error', 'Add at least one link first.'); return; }
+    var html = buildPage(TN.el(SLUG + '-theme').value);
+    TN.downloadText(html, 'links.html', 'text/html');
+  }
+
+  function init() {
+    try {
+      if (!TN.el(SLUG + '-add')) return;
+      TN.on(SLUG + '-add', 'click', add);
+      TN.on(SLUG + '-dl', 'click', download);
+      TN.on(SLUG + '-clear', 'click', function () { links = []; render(); });
+      TN.el(SLUG + '-theme').addEventListener('change', render);
+      ['name', 'tag', 'bio'].forEach(function (k) {
+        TN.el(SLUG + '-' + k).addEventListener('input', render);
+      });
+      render();
+    } catch (e) { /* never throw on load */ }
+  }
+
+  init();
+})();
+</script>
+</body>
+</html>

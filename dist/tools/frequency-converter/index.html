@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Frequency Converter — Free Online | ToolNest</title>
+<meta name="description" content="Convert frequency (Hz to THz) and see the matching period in seconds, ms, µs and ns — T = 1/f.">
+<meta name="keywords" content="frequency converter, Hz to MHz, period calculator, wavelength frequency, GHz to Hz">
+<link rel="canonical" href="https://toolnest.vercel.app/tools/frequency-converter/">
+<meta name="theme-color" content="#07070b">
+<meta property="og:title" content="Frequency Converter — Free Online | ToolNest">
+<meta property="og:description" content="Convert frequency (Hz to THz) and see the matching period in seconds, ms, µs and ns — T = 1/f.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css?v=4">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%23e01111'/><text x='50' y='68' font-size='58' text-anchor='middle' fill='white' font-family='Arial' font-weight='bold'>T</text></svg>">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebApplication","name":"Frequency Converter","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0"},"url":"https://toolnest.vercel.app/tools/frequency-converter/","description":"Convert frequency (Hz to THz) and see the matching period in seconds, ms, µs and ns — T = 1/f."},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How are frequency and period related?","acceptedAnswer":{"@type":"Answer","text":"The period T and frequency f are exact reciprocals: T = 1/f. A 50 Hz signal has a period of 1/50 = 0.02 seconds (20 ms)."}},{"@type":"Question","name":"Is the conversion exact?","acceptedAnswer":{"@type":"Answer","text":"Yes — all frequency units are exact powers of ten, so conversions are exact. The period row is computed as the reciprocal and rounded for display."}},{"@type":"Question","name":"What is a hertz?","acceptedAnswer":{"@type":"Answer","text":"Hz (hertz) is the SI unit of frequency: one cycle per second, named after Heinrich Hertz."}}]}]}</script>
+</head>
+<body>
+<header class="site-header">
+  <div class="container">
+    <a class="logo" href="/"><span class="logo-mark">T</span> ToolNest</a>
+    <div class="header-right">
+      <form class="nav-search" action="/" method="get" role="search">
+        <span class="ns-icon">🔍</span>
+        <input type="search" name="q" placeholder="Search tools…" aria-label="Search tools" autocomplete="off">
+      </form>
+      <div class="menu-wrap">
+        <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="menuPanel" aria-label="Open menu"><span></span><span></span><span></span></button>
+        <nav class="menu-panel" id="menuPanel" aria-label="Site">
+          <a href="/">Home</a>
+          <a href="/#categories">Categories</a>
+          <a href="/#all-tools">All Tools</a>
+        </nav>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ADSTERRA-HEADER: paste your Adsterra banner ad code inside the div below -->
+<div class="container"><div class="ad-slot ad-leaderboard" data-ad="header"></div></div>
+
+<main class="container">
+  <nav class="crumbs"><a href="/">Home</a> &rsaquo; <a href="/#converters">Converters</a> &rsaquo; Frequency Converter</nav>
+  <div class="tool-hero">
+    <h1>Frequency Converter</h1>
+    <p>Convert frequency (Hz to THz) and see the matching period in seconds, ms, µs and ns — T = 1/f.</p>
+  </div>
+
+  <div class="tool-card">
+  <div class="grid2">
+    <div class="field">
+      <label for="frequency-converter-value">Frequency</label>
+      <input type="number" step="any" class="input" id="frequency-converter-value" placeholder="e.g. 440">
+    </div>
+    <div class="field">
+      <label for="frequency-converter-from">From unit</label>
+      <select class="select" id="frequency-converter-from">
+        <option value="Hz" selected>Hertz (Hz)</option>
+        <option value="kHz">Kilohertz (kHz)</option>
+        <option value="MHz">Megahertz (MHz)</option>
+        <option value="GHz">Gigahertz (GHz)</option>
+        <option value="THz">Terahertz (THz)</option>
+      </select>
+    </div>
+  </div>
+  <div class="error" id="frequency-converter-error"></div>
+  <div class="result" id="frequency-converter-result">
+    <div class="stat-cards">
+      <div class="stat-card"><div class="v" id="frequency-converter-period">–</div><div class="l">Period (T = 1/f)</div></div>
+    </div>
+    <table class="data">
+      <thead><tr><th>Unit</th><th>Value</th></tr></thead>
+      <tbody id="frequency-converter-table"></tbody>
+    </table>
+    <p class="note">Period units: s = seconds, ms = milliseconds, µs = microseconds, ns = nanoseconds.</p>
+  </div>
+</div>
+
+
+  <!-- ADSTERRA-INCONTENT: paste your Adsterra native/in-content ad code inside the div below -->
+  <div class="ad-slot" data-ad="incontent"></div>
+
+  <div class="info-grid">
+    <div class="info-card">
+      <h2>📖 How to use</h2>
+      <ol><li>Enter a frequency value.</li><li>Pick the frequency unit you are converting from.</li><li>Read the value in every frequency unit plus the exact period in s, ms, µs and ns.</li></ol>
+    </div>
+    <div class="info-card">
+      <h2>❓ Frequently asked questions</h2>
+      <div class="faq"><details><summary>How are frequency and period related?</summary><p>The period T and frequency f are exact reciprocals: T = 1/f. A 50 Hz signal has a period of 1/50 = 0.02 seconds (20 ms).</p></details><details><summary>Is the conversion exact?</summary><p>Yes — all frequency units are exact powers of ten, so conversions are exact. The period row is computed as the reciprocal and rounded for display.</p></details><details><summary>What is a hertz?</summary><p>Hz (hertz) is the SI unit of frequency: one cycle per second, named after Heinrich Hertz.</p></details></div>
+    </div>
+  </div>
+
+  <section class="section">
+    <h2>🔗 Related tools</h2>
+    <div class="tool-grid"><a class="tool-link" href="/tools/altitude-pressure-calculator/" data-search="altitude pressure calculator the barometric formula gives air pressure at any altitude (below 11,000 m) from sea-level pressure — in hpa, inhg and percent of sea level. altitude pressure calculator barometric formula air pressure at altitude pressure vs altitude qnh pressure calculator"><span class="t-ico">🔄</span><span class="t-body"><b>Altitude Pressure Calculator</b><small>The barometric formula gives air pressure at any altitude (below 11,000 m) from sea-level pr…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/angle-converter/" data-search="angle converter convert angles between degrees, radians, gradians, turns, arcminutes, arcseconds and mils. enter a value once and see it in every unit instantly. angle converter degrees to radians radians to degrees gradians converter mils to degrees"><span class="t-ico">🔄</span><span class="t-body"><b>Angle Converter</b><small>Convert angles between degrees, radians, gradians, turns, arcminutes, arcseconds and mils. E…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/area-converter/" data-search="area converter square millimeters to square miles. area converter square feet to square meters acres to hectares"><span class="t-ico">🔄</span><span class="t-body"><b>Area Converter</b><small>Square millimeters to square miles.</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/baking-pan-converter/" data-search="baking pan converter compare pan volumes from dimensions, then scale every ingredient by the exact ratio — plus a batter-fill check. baking pan converter pan size conversion cake pan volume recipe scaling pan size"><span class="t-ico">🔄</span><span class="t-body"><b>Baking Pan Converter</b><small>Compare pan volumes from dimensions, then scale every ingredient by the exact ratio — plus a…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/beaufort-scale-converter/" data-search="beaufort scale converter convert wind speed (km/h, mph, knots, m/s) to the beaufort scale number with official speed ranges and land/sea descriptions. beaufort scale converter wind speed to beaufort beaufort scale chart knots to beaufort gale wind speed"><span class="t-ico">🔄</span><span class="t-body"><b>Beaufort Scale Converter</b><small>Convert wind speed (km/h, mph, knots, m/s) to the Beaufort scale number with official speed …</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/cat-age-converter/" data-search="cat age converter convert cat years to human years with the accepted life-stage chart: 15 for year one, 9 for year two, then about 4 per year. cat age converter cat years to human years how old is my cat cat age chart cat life stages"><span class="t-ico">🔄</span><span class="t-body"><b>Cat Age Converter</b><small>Convert cat years to human years with the accepted life-stage chart: 15 for year one, 9 for …</small></span><span class="t-arrow">→</span></a></div>
+  </section>
+</main>
+
+<!-- ADSTERRA-FOOTER: paste your Adsterra footer/banner ad code inside the div below -->
+<div class="container"><div class="ad-slot" data-ad="footer"></div></div>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="f-grid">
+      <div>
+        <span class="brandline"><span class="logo-mark">T</span> ToolNest</span>
+        <p>Free online tools that actually work. No sign-up, no watermarks — and your files never leave your device for client-side tools.</p>
+      </div>
+      <div>
+        <h4>Popular</h4>
+        <a href="/tools/qr-code-generator/">QR Code Generator</a>
+        <a href="/tools/background-remover/">Background Remover</a>
+        <a href="/tools/pdf-merger/">PDF Merger</a>
+        <a href="/tools/word-counter/">Word Counter</a>
+      </div>
+      <div>
+        <h4>Categories</h4>
+        <a href="/#image">Image Tools</a>
+        <a href="/#pdf">PDF &amp; Documents</a>
+        <a href="/#calculators">Calculators</a>
+        <a href="/#developer">Developer Tools</a>
+      </div>
+      <div>
+        <h4>Site</h4>
+        <a href="/">Home</a>
+        <a href="/#all-tools">All Tools</a>
+        <a href="/sitemap.xml">Sitemap</a>
+      </div>
+    </div>
+    <div class="f-bottom">© 2026 ToolNest · Free tools for everyone · Made with care</div>
+  </div>
+</footer>
+
+<script src="/assets/site.js?v=5"></script>
+
+<script>
+(function () {
+  'use strict';
+  var S = 'frequency-converter';
+  var FREQ = [
+    ['Hz', 'Hertz', 1],
+    ['kHz', 'Kilohertz', 1e3],
+    ['MHz', 'Megahertz', 1e6],
+    ['GHz', 'Gigahertz', 1e9],
+    ['THz', 'Terahertz', 1e12]
+  ];
+  var PERIOD = [
+    ['s', 'Seconds', 1],
+    ['ms', 'Milliseconds', 1e-3],
+    ['µs', 'Microseconds', 1e-6],
+    ['ns', 'Nanoseconds', 1e-9]
+  ];
+  function factorOf(list, code) {
+    for (var i = 0; i < list.length; i++) if (list[i][0] === code) return list[i][2];
+    return 1;
+  }
+  function fmt(n) {
+    if (!isFinite(n) || n < 0) return '–';
+    if (n === 0) return '0';
+    var a = Math.abs(n);
+    if (a >= 1e15 || a < 1e-9) return n.toExponential(4);
+    return String(Math.round(n * 1e6) / 1e6);
+  }
+  function convert() {
+    try {
+      TN.clearErr(S + '-error');
+      var raw = TN.el(S + '-value').value;
+      var tb = TN.el(S + '-table');
+      var perEl = TN.el(S + '-period');
+      if (raw === '' || raw === null) {
+        if (perEl) perEl.textContent = '–';
+        if (tb) {
+          var h0 = '';
+          for (var j = 0; j < FREQ.length; j++) h0 += '<tr><td>' + FREQ[j][1] + ' (' + FREQ[j][0] + ')</td><td>–</td></tr>';
+          tb.innerHTML = h0;
+        }
+        return;
+      }
+      var v = parseFloat(raw);
+      if (!isFinite(v)) { TN.setErr(S + '-error', 'Please enter a valid number.'); return; }
+      if (v < 0) { TN.setErr(S + '-error', 'Frequency cannot be negative.'); return; }
+      var hz = v * factorOf(FREQ, TN.el(S + '-from').value);
+      var t = hz > 0 ? 1 / hz : 0;
+      /* show period in the largest unit with a readable value */
+      var plabel = fmt(t) + ' s';
+      if (t > 0) {
+        for (var p = PERIOD.length - 1; p >= 0; p--) {
+          var pv = t / PERIOD[p][2];
+          if (pv >= 1 && pv < 1e6) { plabel = fmt(pv) + ' ' + PERIOD[p][0]; break; }
+        }
+      }
+      if (perEl) perEl.textContent = hz > 0 ? plabel : '– (DC)';
+      if (tb) {
+        var html = '';
+        for (var i = 0; i < FREQ.length; i++) {
+          html += '<tr><td>' + FREQ[i][1] + ' (' + FREQ[i][0] + ')</td><td>' + fmt(hz / FREQ[i][2]) + '</td></tr>';
+        }
+        html += '<tr><td colspan="2"><strong>Period (T = 1/f)</strong></td></tr>';
+        for (var q = 0; q < PERIOD.length; q++) {
+          html += '<tr><td>' + PERIOD[q][1] + ' (' + PERIOD[q][0] + ')</td><td>' + fmt(t / PERIOD[q][2]) + '</td></tr>';
+        }
+        tb.innerHTML = html;
+      }
+    } catch (e) { /* never throw on input */ }
+  }
+  function init() {
+    convert();
+    ['value', 'from'].forEach(function (k) {
+      TN.on(S + '-' + k, 'input', convert);
+      TN.on(S + '-' + k, 'change', convert);
+    });
+  }
+  try { init(); } catch (e) { /* never throw on load */ }
+})();
+
+</script>
+</body>
+</html>

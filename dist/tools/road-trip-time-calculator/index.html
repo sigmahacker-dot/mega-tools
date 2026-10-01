@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Road Trip Time Calculator — Free Online | ToolNest</title>
+<meta name="description" content="Plan drive time honestly: distance ÷ average speed plus your rest stops gives driving time, total trip time and exact arrival time.">
+<meta name="keywords" content="road trip calculator, drive time calculator, trip arrival time, driving time with stops">
+<link rel="canonical" href="https://toolnest.vercel.app/tools/road-trip-time-calculator/">
+<meta name="theme-color" content="#07070b">
+<meta property="og:title" content="Road Trip Time Calculator — Free Online | ToolNest">
+<meta property="og:description" content="Plan drive time honestly: distance ÷ average speed plus your rest stops gives driving time, total trip time and exact arrival time.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css?v=4">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%23e01111'/><text x='50' y='68' font-size='58' text-anchor='middle' fill='white' font-family='Arial' font-weight='bold'>T</text></svg>">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebApplication","name":"Road Trip Time Calculator","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0"},"url":"https://toolnest.vercel.app/tools/road-trip-time-calculator/","description":"Plan drive time honestly: distance ÷ average speed plus your rest stops gives driving time, total trip time and exact arrival time."},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What average speed should I use?","acceptedAnswer":{"@type":"Answer","text":"Your realistic moving average including traffic and slower roads — usually 10–20% below the highway limit. The tool divides distance by this speed, so honesty here is what makes the arrival time right."}},{"@type":"Question","name":"How are stops counted?","acceptedAnswer":{"@type":"Answer","text":"Number of stops × minutes per stop, added to driving time. Fuel, food and rest breaks all count."}},{"@type":"Question","name":"Does it handle overnight trips?","acceptedAnswer":{"@type":"Answer","text":"Yes — departure is a full date and time, so arrival correctly rolls over to the next day (or later) with the date shown."}}]}]}</script>
+</head>
+<body>
+<header class="site-header">
+  <div class="container">
+    <a class="logo" href="/"><span class="logo-mark">T</span> ToolNest</a>
+    <div class="header-right">
+      <form class="nav-search" action="/" method="get" role="search">
+        <span class="ns-icon">🔍</span>
+        <input type="search" name="q" placeholder="Search tools…" aria-label="Search tools" autocomplete="off">
+      </form>
+      <div class="menu-wrap">
+        <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="menuPanel" aria-label="Open menu"><span></span><span></span><span></span></button>
+        <nav class="menu-panel" id="menuPanel" aria-label="Site">
+          <a href="/">Home</a>
+          <a href="/#categories">Categories</a>
+          <a href="/#all-tools">All Tools</a>
+        </nav>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ADSTERRA-HEADER: paste your Adsterra banner ad code inside the div below -->
+<div class="container"><div class="ad-slot ad-leaderboard" data-ad="header"></div></div>
+
+<main class="container">
+  <nav class="crumbs"><a href="/">Home</a> &rsaquo; <a href="/#time">Time &amp; Date</a> &rsaquo; Road Trip Time Calculator</nav>
+  <div class="tool-hero">
+    <h1>Road Trip Time Calculator</h1>
+    <p>Plan drive time honestly: distance ÷ average speed plus your rest stops gives driving time, total trip time and exact arrival time.</p>
+  </div>
+
+  <div class="tool-card">
+  <div class="grid3">
+    <div class="field">
+      <label for="road-trip-time-calculator-dist">Distance (km)</label>
+      <input class="input" id="road-trip-time-calculator-dist" type="number" min="0" step="any" value="450">
+    </div>
+    <div class="field">
+      <label for="road-trip-time-calculator-speed">Avg speed (km/h)</label>
+      <input class="input" id="road-trip-time-calculator-speed" type="number" min="1" step="any" value="80">
+    </div>
+    <div class="field">
+      <label for="road-trip-time-calculator-dep">Departure</label>
+      <input class="input" id="road-trip-time-calculator-dep" type="datetime-local">
+    </div>
+    <div class="field">
+      <label for="road-trip-time-calculator-stops">Number of stops</label>
+      <input class="input" id="road-trip-time-calculator-stops" type="number" min="0" step="1" value="2">
+    </div>
+    <div class="field">
+      <label for="road-trip-time-calculator-stopmin">Minutes per stop</label>
+      <input class="input" id="road-trip-time-calculator-stopmin" type="number" min="0" step="1" value="20">
+    </div>
+    <div class="field" style="align-self:end">
+      <button type="button" class="btn" id="road-trip-time-calculator-calc">Calculate</button>
+    </div>
+  </div>
+  <div class="error" id="road-trip-time-calculator-error"></div>
+  <div id="road-trip-time-calculator-out" class="hidden">
+    <div class="stat-cards">
+      <div class="stat-card"><div class="v" id="road-trip-time-calculator-drive">–</div><div class="l">Driving time</div></div>
+      <div class="stat-card"><div class="v" id="road-trip-time-calculator-stopt">–</div><div class="l">Stop time</div></div>
+      <div class="stat-card"><div class="v" id="road-trip-time-calculator-total">–</div><div class="l">Total trip time</div></div>
+      <div class="stat-card"><div class="v" id="road-trip-time-calculator-arr" style="font-size:1.05em">–</div><div class="l">Arrival</div></div>
+    </div>
+    <div class="result">
+      <h3>Breakdown</h3>
+      <div id="road-trip-time-calculator-steps"></div>
+    </div>
+  </div>
+</div>
+
+
+  <!-- ADSTERRA-INCONTENT: paste your Adsterra native/in-content ad code inside the div below -->
+  <div class="ad-slot" data-ad="incontent"></div>
+
+  <div class="info-grid">
+    <div class="info-card">
+      <h2>📖 How to use</h2>
+      <ol><li>Enter the total distance and your realistic average speed (not the speed limit).</li><li>Add how many stops you will take and how long each lasts.</li><li>Enter your departure date and time.</li><li>Press Calculate for pure driving time, stop time, total time and arrival.</li></ol>
+    </div>
+    <div class="info-card">
+      <h2>❓ Frequently asked questions</h2>
+      <div class="faq"><details><summary>What average speed should I use?</summary><p>Your realistic moving average including traffic and slower roads — usually 10–20% below the highway limit. The tool divides distance by this speed, so honesty here is what makes the arrival time right.</p></details><details><summary>How are stops counted?</summary><p>Number of stops × minutes per stop, added to driving time. Fuel, food and rest breaks all count.</p></details><details><summary>Does it handle overnight trips?</summary><p>Yes — departure is a full date and time, so arrival correctly rolls over to the next day (or later) with the date shown.</p></details></div>
+    </div>
+  </div>
+
+  <section class="section">
+    <h2>🔗 Related tools</h2>
+    <div class="tool-grid"><a class="tool-link" href="/tools/add-subtract-days-calculator/" data-search="add / subtract days calculator add or subtract days, weeks, months or years from any date. optional business-days-only mode skips weekends automatically. add days to date subtract days calculator date plus days business days calculator date arithmetic"><span class="t-ico">⏰</span><span class="t-body"><b>Add / Subtract Days Calculator</b><small>Add or subtract days, weeks, months or years from any date. Optional business-days-only mode…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/anniversary-calculator/" data-search="anniversary calculator track any anniversary: days until the next one, which number it is (10th, 25th…), total days together and the weekday it falls on. anniversary calculator wedding anniversary countdown how many days until anniversary anniversary date tracker years together calculator"><span class="t-ico">⏰</span><span class="t-body"><b>Anniversary Calculator</b><small>Track any anniversary: days until the next one, which number it is (10th, 25th…), total days…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/bill-due-tracker/" data-search="bill due tracker never miss a payment — track recurring monthly bills with automatic next-due dates, days remaining and urgency sorting. bill due tracker bill reminder recurring bills tracker monthly bills organizer due date tracker"><span class="t-ico">⏰</span><span class="t-body"><b>Bill Due Tracker</b><small>Never miss a payment — track recurring monthly bills with automatic next-due dates, days rem…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/billable-hours-calculator/" data-search="billable hours calculator turn hours into invoices: billable hours × rate, utilization percentage against non-billable time, and the final invoice total. billable hours invoice calculator utilization rate freelance rate calculator"><span class="t-ico">⏰</span><span class="t-body"><b>Billable Hours Calculator</b><small>Turn hours into invoices: billable hours × rate, utilization percentage against non-billable…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/birthday-reminder-list/" data-search="birthday reminder list never miss a birthday: names and dates with days-until countdowns, next upcoming birthday highlighted, saved in your browser. birthday reminder birthday tracker birthday countdown never forget birthday"><span class="t-ico">⏰</span><span class="t-body"><b>Birthday Reminder List</b><small>Never miss a birthday: names and dates with days-until countdowns, next upcoming birthday hi…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/business-days-calculator/" data-search="business days calculator count working days between two dates, excluding weekends and your own custom holidays, with a full breakdown. business days calculator working days calculator weekdays between dates net workdays business days excluding holidays"><span class="t-ico">⏰</span><span class="t-body"><b>Business Days Calculator</b><small>Count working days between two dates, excluding weekends and your own custom holidays, with …</small></span><span class="t-arrow">→</span></a></div>
+  </section>
+</main>
+
+<!-- ADSTERRA-FOOTER: paste your Adsterra footer/banner ad code inside the div below -->
+<div class="container"><div class="ad-slot" data-ad="footer"></div></div>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="f-grid">
+      <div>
+        <span class="brandline"><span class="logo-mark">T</span> ToolNest</span>
+        <p>Free online tools that actually work. No sign-up, no watermarks — and your files never leave your device for client-side tools.</p>
+      </div>
+      <div>
+        <h4>Popular</h4>
+        <a href="/tools/qr-code-generator/">QR Code Generator</a>
+        <a href="/tools/background-remover/">Background Remover</a>
+        <a href="/tools/pdf-merger/">PDF Merger</a>
+        <a href="/tools/word-counter/">Word Counter</a>
+      </div>
+      <div>
+        <h4>Categories</h4>
+        <a href="/#image">Image Tools</a>
+        <a href="/#pdf">PDF &amp; Documents</a>
+        <a href="/#calculators">Calculators</a>
+        <a href="/#developer">Developer Tools</a>
+      </div>
+      <div>
+        <h4>Site</h4>
+        <a href="/">Home</a>
+        <a href="/#all-tools">All Tools</a>
+        <a href="/sitemap.xml">Sitemap</a>
+      </div>
+    </div>
+    <div class="f-bottom">© 2026 ToolNest · Free tools for everyone · Made with care</div>
+  </div>
+</footer>
+
+<script src="/assets/site.js?v=5"></script>
+
+<script>
+(function () {
+  'use strict';
+  var P = 'road-trip-time-calculator-', ERR = P + 'error';
+  function g(id) { return TN.el(P + id); }
+  function fmtDur(mins) {
+    mins = Math.round(mins);
+    var h = Math.floor(mins / 60), m = mins % 60;
+    if (h === 0) return m + ' min';
+    return h + ' h ' + (m ? m + ' min' : '');
+  }
+  function fmtDT(d) {
+    var days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+    return days[d.getDay()] + ' ' + d.getFullYear() + '-' + String(d.getMonth() + 1).padStart(2, '0') + '-' + String(d.getDate()).padStart(2, '0') +
+      ' ' + String(d.getHours()).padStart(2, '0') + ':' + String(d.getMinutes()).padStart(2, '0');
+  }
+  function calc() {
+    try {
+      TN.clearErr(ERR);
+      var dist = parseFloat(g('dist').value), speed = parseFloat(g('speed').value);
+      var stops = parseInt(g('stops').value, 10), stopMin = parseFloat(g('stopmin').value);
+      var depV = g('dep').value;
+      if (isNaN(dist) || dist <= 0) { TN.setErr(ERR, 'Distance must be a positive number.'); return; }
+      if (isNaN(speed) || speed <= 0) { TN.setErr(ERR, 'Average speed must be positive.'); return; }
+      if (isNaN(stops) || stops < 0) { TN.setErr(ERR, 'Number of stops cannot be negative.'); return; }
+      if (isNaN(stopMin) || stopMin < 0) { TN.setErr(ERR, 'Minutes per stop cannot be negative.'); return; }
+      if (!depV) { TN.setErr(ERR, 'Pick a departure date and time.'); return; }
+      var driveMin = dist / speed * 60;
+      var stopTotal = stops * stopMin;
+      var totalMin = driveMin + stopTotal;
+      var dep = new Date(depV);
+      var arr = new Date(dep.getTime() + totalMin * 60000);
+      TN.show(P + 'out');
+      g('drive').textContent = fmtDur(driveMin);
+      g('stopt').textContent = fmtDur(stopTotal);
+      g('total').textContent = fmtDur(totalMin);
+      g('arr').textContent = fmtDT(arr);
+      g('steps').innerHTML = '<ol>' +
+        '<li>Driving time = distance ÷ speed = ' + dist + ' ÷ ' + speed + ' = <b>' + fmtDur(driveMin) + '</b>.</li>' +
+        '<li>Stop time = ' + stops + ' stops × ' + stopMin + ' min = <b>' + fmtDur(stopTotal) + '</b>.</li>' +
+        '<li>Total = <b>' + fmtDur(totalMin) + '</b>. Departing ' + fmtDT(dep) + ' → arrive <b>' + fmtDT(arr) + '</b>.</li>' +
+        '</ol><p class="note">Estimate only — traffic, weather and road conditions can change the real arrival.</p>';
+    } catch (e) { TN.setErr(ERR, e.message || 'Could not calculate.'); }
+  }
+  try {
+    if (!TN.el(P + 'calc')) return;
+    var now = new Date();
+    now.setMinutes(now.getMinutes() - now.getTimezoneOffset());
+    g('dep').value = now.toISOString().slice(0, 16);
+    TN.on(P + 'calc', 'click', calc);
+  } catch (e) { /* never throw on load */ }
+})();
+
+</script>
+</body>
+</html>

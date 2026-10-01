@@ -1,0 +1,34 @@
+<div class="tool-card">
+  <div class="field">
+    <label for="ringtone-maker-file">Audio file</label>
+    <input type="file" id="ringtone-maker-file" accept="audio/*" class="input">
+  </div>
+  <div class="grid2">
+    <div class="field">
+      <label for="ringtone-maker-start">Start: <span id="ringtone-maker-start-val">0.0</span>s</label>
+      <input type="range" id="ringtone-maker-start" min="0" max="100" step="0.1" value="0">
+    </div>
+    <div class="field">
+      <label for="ringtone-maker-end">End: <span id="ringtone-maker-end-val">30.0</span>s</label>
+      <input type="range" id="ringtone-maker-end" min="0" max="100" step="0.1" value="30">
+    </div>
+  </div>
+  <div class="grid2">
+    <div class="field">
+      <label for="ringtone-maker-fadein">Fade in: <span id="ringtone-maker-fadein-val">0.5</span>s</label>
+      <input type="range" id="ringtone-maker-fadein" min="0" max="5" step="0.1" value="0.5">
+    </div>
+    <div class="field">
+      <label for="ringtone-maker-fadeout">Fade out: <span id="ringtone-maker-fadeout-val">1.0</span>s</label>
+      <input type="range" id="ringtone-maker-fadeout" min="0" max="5" step="0.1" value="1">
+    </div>
+  </div>
+  <p class="muted" id="ringtone-maker-info"></p>
+  <div class="btn-row">
+    <button class="btn btn-primary" id="ringtone-maker-preview">Preview</button>
+    <button class="btn btn-outline" id="ringtone-maker-wav">Download WAV</button>
+    <button class="btn btn-outline" id="ringtone-maker-mp3">Download MP3</button>
+  </div>
+  <div class="error" id="ringtone-maker-error"></div>
+  <p class="note">WAV export always works. MP3 needs the lamejs encoder from the CDN. Everything is processed in your browser.</p>
+</div>

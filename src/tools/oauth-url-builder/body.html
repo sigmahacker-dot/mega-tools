@@ -1,0 +1,70 @@
+<div class="tool-card">
+  <div class="grid2">
+    <div class="field">
+      <label for="oauth-url-builder-provider">Provider</label>
+      <select class="select" id="oauth-url-builder-provider">
+        <option value="google">Google</option>
+        <option value="github">GitHub</option>
+        <option value="microsoft">Microsoft</option>
+        <option value="discord">Discord</option>
+        <option value="custom">Custom…</option>
+      </select>
+    </div>
+    <div class="field">
+      <label for="oauth-url-builder-endpoint">Authorization endpoint</label>
+      <input class="input" id="oauth-url-builder-endpoint" readonly>
+    </div>
+  </div>
+  <div class="field hidden" id="oauth-url-builder-customwrap">
+    <label for="oauth-url-builder-custom">Custom endpoint URL</label>
+    <input class="input" id="oauth-url-builder-custom" placeholder="https://auth.example.com/oauth/authorize">
+  </div>
+  <div class="grid2">
+    <div class="field">
+      <label for="oauth-url-builder-client">Client ID</label>
+      <input class="input" id="oauth-url-builder-client" placeholder="1234567890-abc.apps.googleusercontent.com">
+    </div>
+    <div class="field">
+      <label for="oauth-url-builder-redirect">Redirect URI</label>
+      <input class="input" id="oauth-url-builder-redirect" placeholder="https://myapp.com/auth/callback">
+    </div>
+  </div>
+  <div class="grid2">
+    <div class="field">
+      <label for="oauth-url-builder-scope">Scopes (space separated)</label>
+      <input class="input" id="oauth-url-builder-scope">
+    </div>
+    <div class="field">
+      <label for="oauth-url-builder-response">Response type</label>
+      <select class="select" id="oauth-url-builder-response">
+        <option value="code">code (authorization code flow)</option>
+        <option value="token">token (implicit)</option>
+        <option value="none">none (GitHub device / omit)</option>
+      </select>
+    </div>
+  </div>
+  <div class="grid2">
+    <div class="field">
+      <label for="oauth-url-builder-state">State (optional)</label>
+      <input class="input" id="oauth-url-builder-state" placeholder="random CSRF token">
+    </div>
+    <div class="field">
+      <label for="oauth-url-builder-extra">Extra params (one k=v per line)</label>
+      <input class="input" id="oauth-url-builder-extra" placeholder="access_type=offline">
+    </div>
+  </div>
+  <div class="btn-row">
+    <button class="btn" id="oauth-url-builder-build">Build URL</button>
+    <button class="btn btn-outline" id="oauth-url-builder-genstate">Generate state</button>
+  </div>
+  <div class="error" id="oauth-url-builder-error"></div>
+  <div class="field">
+    <label for="oauth-url-builder-output">Authorization URL</label>
+    <textarea class="textarea" id="oauth-url-builder-output" rows="5" readonly></textarea>
+  </div>
+  <div class="btn-row">
+    <button class="btn btn-outline" id="oauth-url-builder-copy">Copy URL</button>
+    <button class="btn btn-outline" id="oauth-url-builder-download">Download .txt</button>
+  </div>
+  <p class="note" id="oauth-url-builder-note"></p>
+</div>

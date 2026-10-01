@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Wind Chill Calculator — Free Online | ToolNest</title>
+<meta name="description" content="The official NWS wind chill formula (35.74 + 0.6215T − 35.75V^0.16 + 0.4275TV^0.16) with °C/km/h input support and validity warnings.">
+<meta name="keywords" content="wind chill calculator, wind chill formula, feels like temperature, NWS wind chill, frostbite wind chill">
+<link rel="canonical" href="https://toolnest.vercel.app/tools/wind-chill-calculator/">
+<meta name="theme-color" content="#07070b">
+<meta property="og:title" content="Wind Chill Calculator — Free Online | ToolNest">
+<meta property="og:description" content="The official NWS wind chill formula (35.74 + 0.6215T − 35.75V^0.16 + 0.4275TV^0.16) with °C/km/h input support and validity warnings.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css?v=4">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%23e01111'/><text x='50' y='68' font-size='58' text-anchor='middle' fill='white' font-family='Arial' font-weight='bold'>T</text></svg>">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebApplication","name":"Wind Chill Calculator","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0"},"url":"https://toolnest.vercel.app/tools/wind-chill-calculator/","description":"The official NWS wind chill formula (35.74 + 0.6215T − 35.75V^0.16 + 0.4275TV^0.16) with °C/km/h input support and validity warnings."},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What is the wind chill formula?","acceptedAnswer":{"@type":"Answer","text":"WC = 35.74 + 0.6215T − 35.75(V^0.16) + 0.4275T(V^0.16), with T in °F and V in mph. It is only valid for temperatures at or below 50°F (10°C) and wind speeds of 3 mph (4.8 km/h) or more."}},{"@type":"Question","name":"Does wind actually lower the temperature?","acceptedAnswer":{"@type":"Answer","text":"Wind does not make the air colder — it strips away the thin insulating layer of warm air around exposed skin, so the body loses heat faster and skin feels (and gets) colder."}},{"@type":"Question","name":"When is it dangerously cold?","acceptedAnswer":{"@type":"Answer","text":"The tool warns you when inputs are outside the formula's valid range. Below a −18°F (−28°C) wind chill, exposed skin can freeze in 30 minutes or less."}}]}]}</script>
+</head>
+<body>
+<header class="site-header">
+  <div class="container">
+    <a class="logo" href="/"><span class="logo-mark">T</span> ToolNest</a>
+    <div class="header-right">
+      <form class="nav-search" action="/" method="get" role="search">
+        <span class="ns-icon">🔍</span>
+        <input type="search" name="q" placeholder="Search tools…" aria-label="Search tools" autocomplete="off">
+      </form>
+      <div class="menu-wrap">
+        <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="menuPanel" aria-label="Open menu"><span></span><span></span><span></span></button>
+        <nav class="menu-panel" id="menuPanel" aria-label="Site">
+          <a href="/">Home</a>
+          <a href="/#categories">Categories</a>
+          <a href="/#all-tools">All Tools</a>
+        </nav>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ADSTERRA-HEADER: paste your Adsterra banner ad code inside the div below -->
+<div class="container"><div class="ad-slot ad-leaderboard" data-ad="header"></div></div>
+
+<main class="container">
+  <nav class="crumbs"><a href="/">Home</a> &rsaquo; <a href="/#converters">Converters</a> &rsaquo; Wind Chill Calculator</nav>
+  <div class="tool-hero">
+    <h1>Wind Chill Calculator</h1>
+    <p>The official NWS wind chill formula (35.74 + 0.6215T − 35.75V^0.16 + 0.4275TV^0.16) with °C/km/h input support and validity warnings.</p>
+  </div>
+
+  <div class="tool-card">
+  <div class="grid2">
+    <div class="field">
+      <label for="wind-chill-calculator-temp">Air temperature</label>
+      <input type="number" step="any" class="input" id="wind-chill-calculator-temp" placeholder="e.g. 20">
+    </div>
+    <div class="field">
+      <label for="wind-chill-calculator-tunit">Temperature unit</label>
+      <select class="select" id="wind-chill-calculator-tunit">
+        <option value="F" selected>Fahrenheit (°F)</option>
+        <option value="C">Celsius (°C)</option>
+      </select>
+    </div>
+  </div>
+  <div class="grid2">
+    <div class="field">
+      <label for="wind-chill-calculator-wind">Wind speed</label>
+      <input type="number" step="any" min="0" class="input" id="wind-chill-calculator-wind" placeholder="e.g. 15">
+    </div>
+    <div class="field">
+      <label for="wind-chill-calculator-wunit">Wind unit</label>
+      <select class="select" id="wind-chill-calculator-wunit">
+        <option value="mph" selected>mph</option>
+        <option value="kmh">km/h</option>
+      </select>
+    </div>
+  </div>
+  <div class="error" id="wind-chill-calculator-error"></div>
+  <div class="result" id="wind-chill-calculator-result">
+    <div class="stat-cards">
+      <div class="stat-card"><div class="v" id="wind-chill-calculator-wc">–</div><div class="l">Wind chill</div></div>
+      <div class="stat-card"><div class="v" id="wind-chill-calculator-diff">–</div><div class="l">Feels colder by</div></div>
+    </div>
+    <p class="note" id="wind-chill-calculator-note">NWS formula. Valid only at or below 50°F (10°C) with wind ≥ 3 mph (4.8 km/h).</p>
+  </div>
+</div>
+
+
+  <!-- ADSTERRA-INCONTENT: paste your Adsterra native/in-content ad code inside the div below -->
+  <div class="ad-slot" data-ad="incontent"></div>
+
+  <div class="info-grid">
+    <div class="info-card">
+      <h2>📖 How to use</h2>
+      <ol><li>Enter the air temperature (°F or °C).</li><li>Enter the wind speed (mph or km/h).</li><li>Read the wind chill plus a frostbite warning when it is dangerously cold.</li></ol>
+    </div>
+    <div class="info-card">
+      <h2>❓ Frequently asked questions</h2>
+      <div class="faq"><details><summary>What is the wind chill formula?</summary><p>WC = 35.74 + 0.6215T − 35.75(V^0.16) + 0.4275T(V^0.16), with T in °F and V in mph. It is only valid for temperatures at or below 50°F (10°C) and wind speeds of 3 mph (4.8 km/h) or more.</p></details><details><summary>Does wind actually lower the temperature?</summary><p>Wind does not make the air colder — it strips away the thin insulating layer of warm air around exposed skin, so the body loses heat faster and skin feels (and gets) colder.</p></details><details><summary>When is it dangerously cold?</summary><p>The tool warns you when inputs are outside the formula&#39;s valid range. Below a −18°F (−28°C) wind chill, exposed skin can freeze in 30 minutes or less.</p></details></div>
+    </div>
+  </div>
+
+  <section class="section">
+    <h2>🔗 Related tools</h2>
+    <div class="tool-grid"><a class="tool-link" href="/tools/altitude-pressure-calculator/" data-search="altitude pressure calculator the barometric formula gives air pressure at any altitude (below 11,000 m) from sea-level pressure — in hpa, inhg and percent of sea level. altitude pressure calculator barometric formula air pressure at altitude pressure vs altitude qnh pressure calculator"><span class="t-ico">🔄</span><span class="t-body"><b>Altitude Pressure Calculator</b><small>The barometric formula gives air pressure at any altitude (below 11,000 m) from sea-level pr…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/angle-converter/" data-search="angle converter convert angles between degrees, radians, gradians, turns, arcminutes, arcseconds and mils. enter a value once and see it in every unit instantly. angle converter degrees to radians radians to degrees gradians converter mils to degrees"><span class="t-ico">🔄</span><span class="t-body"><b>Angle Converter</b><small>Convert angles between degrees, radians, gradians, turns, arcminutes, arcseconds and mils. E…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/area-converter/" data-search="area converter square millimeters to square miles. area converter square feet to square meters acres to hectares"><span class="t-ico">🔄</span><span class="t-body"><b>Area Converter</b><small>Square millimeters to square miles.</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/baking-pan-converter/" data-search="baking pan converter compare pan volumes from dimensions, then scale every ingredient by the exact ratio — plus a batter-fill check. baking pan converter pan size conversion cake pan volume recipe scaling pan size"><span class="t-ico">🔄</span><span class="t-body"><b>Baking Pan Converter</b><small>Compare pan volumes from dimensions, then scale every ingredient by the exact ratio — plus a…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/beaufort-scale-converter/" data-search="beaufort scale converter convert wind speed (km/h, mph, knots, m/s) to the beaufort scale number with official speed ranges and land/sea descriptions. beaufort scale converter wind speed to beaufort beaufort scale chart knots to beaufort gale wind speed"><span class="t-ico">🔄</span><span class="t-body"><b>Beaufort Scale Converter</b><small>Convert wind speed (km/h, mph, knots, m/s) to the Beaufort scale number with official speed …</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/cat-age-converter/" data-search="cat age converter convert cat years to human years with the accepted life-stage chart: 15 for year one, 9 for year two, then about 4 per year. cat age converter cat years to human years how old is my cat cat age chart cat life stages"><span class="t-ico">🔄</span><span class="t-body"><b>Cat Age Converter</b><small>Convert cat years to human years with the accepted life-stage chart: 15 for year one, 9 for …</small></span><span class="t-arrow">→</span></a></div>
+  </section>
+</main>
+
+<!-- ADSTERRA-FOOTER: paste your Adsterra footer/banner ad code inside the div below -->
+<div class="container"><div class="ad-slot" data-ad="footer"></div></div>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="f-grid">
+      <div>
+        <span class="brandline"><span class="logo-mark">T</span> ToolNest</span>
+        <p>Free online tools that actually work. No sign-up, no watermarks — and your files never leave your device for client-side tools.</p>
+      </div>
+      <div>
+        <h4>Popular</h4>
+        <a href="/tools/qr-code-generator/">QR Code Generator</a>
+        <a href="/tools/background-remover/">Background Remover</a>
+        <a href="/tools/pdf-merger/">PDF Merger</a>
+        <a href="/tools/word-counter/">Word Counter</a>
+      </div>
+      <div>
+        <h4>Categories</h4>
+        <a href="/#image">Image Tools</a>
+        <a href="/#pdf">PDF &amp; Documents</a>
+        <a href="/#calculators">Calculators</a>
+        <a href="/#developer">Developer Tools</a>
+      </div>
+      <div>
+        <h4>Site</h4>
+        <a href="/">Home</a>
+        <a href="/#all-tools">All Tools</a>
+        <a href="/sitemap.xml">Sitemap</a>
+      </div>
+    </div>
+    <div class="f-bottom">© 2026 ToolNest · Free tools for everyone · Made with care</div>
+  </div>
+</footer>
+
+<script src="/assets/site.js?v=5"></script>
+
+<script>
+(function () {
+  'use strict';
+  var S = 'wind-chill-calculator';
+  function r1(n) { return Math.round(n * 10) / 10; }
+  function convert() {
+    try {
+      TN.clearErr(S + '-error');
+      var wcEl = TN.el(S + '-wc'), diffEl = TN.el(S + '-diff'), noteEl = TN.el(S + '-note');
+      var tRaw = TN.el(S + '-temp').value, wRaw = TN.el(S + '-wind').value;
+      if ((tRaw === '' || tRaw === null) && (wRaw === '' || wRaw === null)) {
+        if (wcEl) wcEl.textContent = '–';
+        if (diffEl) diffEl.textContent = '–';
+        if (noteEl) noteEl.textContent = 'NWS formula. Valid only at or below 50°F (10°C) with wind ≥ 3 mph (4.8 km/h).';
+        return;
+      }
+      var t = parseFloat(tRaw), w = parseFloat(wRaw);
+      if (!isFinite(t)) { TN.setErr(S + '-error', 'Enter a valid temperature.'); return; }
+      if (!isFinite(w) || w < 0) { TN.setErr(S + '-error', 'Enter a non-negative wind speed.'); return; }
+      var T = TN.el(S + '-tunit').value === 'C' ? t * 9 / 5 + 32 : t;
+      var V = TN.el(S + '-wunit').value === 'kmh' ? w / 1.609344 : w;
+      if (T > 50) { TN.setErr(S + '-error', 'Wind chill is only defined at or below 50°F (10°C).'); }
+      if (V < 3) { TN.setErr(S + '-error', 'Wind chill needs wind of at least 3 mph (4.8 km/h).'); }
+      var v16 = Math.pow(V, 0.16);
+      var wc = 35.74 + 0.6215 * T - 35.75 * v16 + 0.4275 * T * v16;
+      var wcC = (wc - 32) * 5 / 9;
+      if (wcEl) wcEl.textContent = Math.round(wc) + ' °F (' + Math.round(wcC) + ' °C)';
+      var diff = T - wc;
+      if (diffEl) diffEl.textContent = (diff > 0 ? r1(diff) + ' °F' : '≈ none') + ' ';
+      var note = 'Formula: 35.74 + 0.6215T − 35.75V^0.16 + 0.4275TV^0.16 (T in °F, V in mph).';
+      if (wc <= -18) note += ' DANGER: exposed skin can freeze in 30 minutes or less at this wind chill.';
+      else if (wc <= 0) note += ' Bitter cold — cover all exposed skin.';
+      if (noteEl) noteEl.textContent = note;
+    } catch (e) { /* never throw on input */ }
+  }
+  function init() {
+    ['temp', 'wind'].forEach(function (k) { TN.on(S + '-' + k, 'input', convert); });
+    ['tunit', 'wunit'].forEach(function (k) { TN.on(S + '-' + k, 'change', convert); });
+    convert();
+  }
+  try { init(); } catch (e) { /* never throw on load */ }
+})();
+
+</script>
+</body>
+</html>

@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Click Speed Test — Free Online | ToolNest</title>
+<meta name="description" content="Click Speed Test — how many clicks per second can you manage? 5 or 10 second sprint with countdown.">
+<meta name="keywords" content="click speed test, cps test, clicks per second test">
+<link rel="canonical" href="https://toolnest.vercel.app/tools/click-speed-test/">
+<meta name="theme-color" content="#07070b">
+<meta property="og:title" content="Click Speed Test — Free Online | ToolNest">
+<meta property="og:description" content="Click Speed Test — how many clicks per second can you manage? 5 or 10 second sprint with countdown.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css?v=4">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%23e01111'/><text x='50' y='68' font-size='58' text-anchor='middle' fill='white' font-family='Arial' font-weight='bold'>T</text></svg>">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebApplication","name":"Click Speed Test","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0"},"url":"https://toolnest.vercel.app/tools/click-speed-test/","description":"Click Speed Test — how many clicks per second can you manage? 5 or 10 second sprint with countdown."},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How is CPS calculated?","acceptedAnswer":{"@type":"Answer","text":"Clicks per second = total clicks ÷ seconds. The test counts only clicks inside the arena while the timer runs."}},{"@type":"Question","name":"Is my best saved?","acceptedAnswer":{"@type":"Answer","text":"Your best CPS for each duration (5s and 10s) is saved in your browser."}},{"@type":"Question","name":"What's a good score?","acceptedAnswer":{"@type":"Answer","text":"Most people tap 5–8 clicks per second with one finger; 10+ usually needs two fingers or a fast mouse."}}]}]}</script>
+</head>
+<body>
+<header class="site-header">
+  <div class="container">
+    <a class="logo" href="/"><span class="logo-mark">T</span> ToolNest</a>
+    <div class="header-right">
+      <form class="nav-search" action="/" method="get" role="search">
+        <span class="ns-icon">🔍</span>
+        <input type="search" name="q" placeholder="Search tools…" aria-label="Search tools" autocomplete="off">
+      </form>
+      <div class="menu-wrap">
+        <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="menuPanel" aria-label="Open menu"><span></span><span></span><span></span></button>
+        <nav class="menu-panel" id="menuPanel" aria-label="Site">
+          <a href="/">Home</a>
+          <a href="/#categories">Categories</a>
+          <a href="/#all-tools">All Tools</a>
+        </nav>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ADSTERRA-HEADER: paste your Adsterra banner ad code inside the div below -->
+<div class="container"><div class="ad-slot ad-leaderboard" data-ad="header"></div></div>
+
+<main class="container">
+  <nav class="crumbs"><a href="/">Home</a> &rsaquo; <a href="/#fun">Fun &amp; Lifestyle</a> &rsaquo; Click Speed Test</nav>
+  <div class="tool-hero">
+    <h1>Click Speed Test</h1>
+    <p>Click Speed Test — how many clicks per second can you manage? 5 or 10 second sprint with countdown.</p>
+  </div>
+
+  <div class="tool-card" style="text-align:center;max-width:520px;margin:0 auto">
+  <div class="grid3" style="margin-bottom:10px">
+    <div class="field" style="text-align:left">
+      <label for="click-speed-test-dur">Duration</label>
+      <select class="input" id="click-speed-test-dur">
+        <option value="5" selected>5 seconds</option>
+        <option value="10">10 seconds</option>
+      </select>
+    </div>
+    <div class="field" style="text-align:left">
+      <label>&nbsp;</label>
+      <button class="btn btn-primary" id="click-speed-test-start" style="width:100%">Start</button>
+    </div>
+    <div class="field" style="text-align:left">
+      <label>Best (this duration)</label>
+      <div class="input" id="click-speed-test-best" style="font-weight:800">—</div>
+    </div>
+  </div>
+  <div id="click-speed-test-arena" style="height:260px;border-radius:12px;background:#292524;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;cursor:pointer;user-select:none;touch-action:manipulation">
+    <div id="click-speed-test-big" style="font-size:52px;font-weight:800">Click Start</div>
+    <div id="click-speed-test-sub" class="muted">then click here as fast as you can</div>
+  </div>
+  <div class="stat-cards" style="margin-top:10px">
+    <div class="stat-card"><div class="v" id="click-speed-test-clicks">0</div><div class="l">Clicks</div></div>
+    <div class="stat-card"><div class="v" id="click-speed-test-time">0.0s</div><div class="l">Time left</div></div>
+    <div class="stat-card"><div class="v" id="click-speed-test-cps">0.0</div><div class="l">Clicks/sec</div></div>
+  </div>
+  <div class="error" id="click-speed-test-error"></div>
+</div>
+
+
+  <!-- ADSTERRA-INCONTENT: paste your Adsterra native/in-content ad code inside the div below -->
+  <div class="ad-slot" data-ad="incontent"></div>
+
+  <div class="info-grid">
+    <div class="info-card">
+      <h2>📖 How to use</h2>
+      <ol><li>Choose 5 or 10 seconds and press “Start”.</li><li>Wait for the 3-2-1 countdown — don&#39;t click early.</li><li>Click the arena as fast as you can until time&#39;s up.</li><li>See your clicks, CPS and best score.</li></ol>
+    </div>
+    <div class="info-card">
+      <h2>❓ Frequently asked questions</h2>
+      <div class="faq"><details><summary>How is CPS calculated?</summary><p>Clicks per second = total clicks ÷ seconds. The test counts only clicks inside the arena while the timer runs.</p></details><details><summary>Is my best saved?</summary><p>Your best CPS for each duration (5s and 10s) is saved in your browser.</p></details><details><summary>What&#39;s a good score?</summary><p>Most people tap 5–8 clicks per second with one finger; 10+ usually needs two fingers or a fast mouse.</p></details></div>
+    </div>
+  </div>
+
+  <section class="section">
+    <h2>🔗 Related tools</h2>
+    <div class="tool-grid"><a class="tool-link" href="/tools/100-day-challenge-tracker/" data-search="100-day challenge tracker track a 100-day challenge with a checkable 100-cell grid, streaks and stats. 100 day challenge habit tracker 100 days challenge tracker streak tracker"><span class="t-ico">🎲</span><span class="t-body"><b>100-Day Challenge Tracker</b><small>Track a 100-day challenge with a checkable 100-cell grid, streaks and stats.</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/24-game/" data-search="24 game the 24 game — combine four numbers with + − × ÷ to make 24. built-in solver guarantees every deal and gives hints. 24 game make 24 game 24 puzzle solver math puzzle game"><span class="t-ico">🎲</span><span class="t-body"><b>24 Game</b><small>The 24 Game — combine four numbers with + − × ÷ to make 24. Built-in solver guarantees every…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/aim-trainer-game/" data-search="aim trainer game test and train your aim — targets pop up at random spots for 30 seconds. hits, misses and accuracy are tracked live. aim trainer aim test reaction test click speed test fps aim trainer"><span class="t-ico">🎲</span><span class="t-body"><b>Aim Trainer Game</b><small>Test and train your aim — targets pop up at random spots for 30 seconds. Hits, misses and ac…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/asteroid-shooter/" data-search="asteroid shooter asteroid shooter — rotate, thrust and blast splitting asteroids on canvas. 3 lives, rising levels. asteroid shooter game asteroids game online space shooter canvas"><span class="t-ico">🎲</span><span class="t-body"><b>Asteroid Shooter</b><small>Asteroid Shooter — rotate, thrust and blast splitting asteroids on canvas. 3 lives, rising l…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/attendance-tracker/" data-search="attendance tracker track class attendance: roster with present/absent marks per date and % summaries. attendance tracker class attendance student attendance roll call app"><span class="t-ico">🎲</span><span class="t-body"><b>Attendance Tracker</b><small>Track class attendance: roster with present/absent marks per date and % summaries.</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/baby-name-generator/" data-search="baby name generator discover baby names by gender and origin — pakistani, arabic, western, indian or turkish — with meanings, random picks and tap-to-copy. baby name generator baby names with meanings muslim baby names boy girl names"><span class="t-ico">🎲</span><span class="t-body"><b>Baby Name Generator</b><small>Discover baby names by gender and origin — Pakistani, Arabic, Western, Indian or Turkish — w…</small></span><span class="t-arrow">→</span></a></div>
+  </section>
+</main>
+
+<!-- ADSTERRA-FOOTER: paste your Adsterra footer/banner ad code inside the div below -->
+<div class="container"><div class="ad-slot" data-ad="footer"></div></div>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="f-grid">
+      <div>
+        <span class="brandline"><span class="logo-mark">T</span> ToolNest</span>
+        <p>Free online tools that actually work. No sign-up, no watermarks — and your files never leave your device for client-side tools.</p>
+      </div>
+      <div>
+        <h4>Popular</h4>
+        <a href="/tools/qr-code-generator/">QR Code Generator</a>
+        <a href="/tools/background-remover/">Background Remover</a>
+        <a href="/tools/pdf-merger/">PDF Merger</a>
+        <a href="/tools/word-counter/">Word Counter</a>
+      </div>
+      <div>
+        <h4>Categories</h4>
+        <a href="/#image">Image Tools</a>
+        <a href="/#pdf">PDF &amp; Documents</a>
+        <a href="/#calculators">Calculators</a>
+        <a href="/#developer">Developer Tools</a>
+      </div>
+      <div>
+        <h4>Site</h4>
+        <a href="/">Home</a>
+        <a href="/#all-tools">All Tools</a>
+        <a href="/sitemap.xml">Sitemap</a>
+      </div>
+    </div>
+    <div class="f-bottom">© 2026 ToolNest · Free tools for everyone · Made with care</div>
+  </div>
+</footer>
+
+<script src="/assets/site.js?v=5"></script>
+
+<script>
+(function () {
+  'use strict';
+  var P = 'click-speed-test-';
+  function g(id) { return document.getElementById(P + id); }
+  var state = 'idle', clicks = 0, dur = 5, timeLeft = 0, timer = null, cdTimer = null;
+  function lsKey() { return 'tn-click-speed-test-best-' + dur; }
+  function getBest() {
+    try { return parseFloat(localStorage.getItem(lsKey()) || '0') || 0; } catch (e) { return 0; }
+  }
+  function setBest(v) {
+    try { localStorage.setItem(lsKey(), String(v)); } catch (e) {}
+  }
+  function fmtBest() {
+    var b = getBest();
+    return b > 0 ? b.toFixed(1) + ' cps' : '—';
+  }
+  function refreshBest() { var el = g('best'); if (el) el.textContent = fmtBest(); }
+  function big(t) { var el = g('big'); if (el) el.textContent = t; }
+  function sub(t) { var el = g('sub'); if (el) el.textContent = t; }
+  function stats() {
+    var c = g('clicks'); if (c) c.textContent = String(clicks);
+    var t = g('time'); if (t) t.textContent = Math.max(0, timeLeft).toFixed(1) + 's';
+    var cps = g('cps'); if (cps) cps.textContent = clicks > 0 && dur ? (clicks / (dur - Math.max(0, timeLeft))).toFixed(1) : '0.0';
+  }
+  function arenaColor(c) { var el = g('arena'); if (el) el.style.background = c; }
+  function start() {
+    stopAll();
+    dur = g('dur') ? parseInt(g('dur').value, 10) : 5;
+    state = 'countdown';
+    clicks = 0;
+    stats(); refreshBest();
+    arenaColor('#44403c');
+    var n = 3;
+    big(String(n));
+    sub('get ready…');
+    cdTimer = setInterval(function () {
+      n--;
+      if (n <= 0) { clearInterval(cdTimer); cdTimer = null; go(); }
+      else big(String(n));
+    }, 750);
+  }
+  function go() {
+    state = 'run';
+    timeLeft = dur;
+    clicks = 0;
+    arenaColor('#4D7C0F');
+    big('GO!');
+    sub('click as fast as you can!');
+    stats();
+    var last = performance.now();
+    timer = setInterval(function () {
+      var now = performance.now();
+      timeLeft -= (now - last) / 1000;
+      last = now;
+      if (timeLeft <= 0) { finish(); return; }
+      stats();
+    }, 50);
+  }
+  function finish() {
+    stopAll();
+    state = 'done';
+    timeLeft = 0;
+    var cps = clicks / dur;
+    arenaColor('#292524');
+    big(cps.toFixed(1) + ' cps');
+    var prev = getBest(), isBest = cps > prev && clicks > 0;
+    if (isBest) setBest(cps);
+    sub(clicks + ' clicks in ' + dur + 's' + (isBest ? ' — new best!' : ''));
+    stats();
+    var el = g('cps'); if (el) el.textContent = cps.toFixed(1);
+    refreshBest();
+  }
+  function stopAll() {
+    if (timer) { clearInterval(timer); timer = null; }
+    if (cdTimer) { clearInterval(cdTimer); cdTimer = null; }
+  }
+  function onArena(e) {
+    if (state !== 'run') return;
+    if (e && e.preventDefault) e.preventDefault();
+    clicks++;
+    stats();
+  }
+  try {
+    if (!g('arena')) return;
+    TN.on(P + 'start', 'click', start);
+    TN.on(P + 'dur', 'change', function () {
+      dur = parseInt(g('dur').value, 10);
+      refreshBest();
+      if (state === 'idle' || state === 'done') { clicks = 0; timeLeft = 0; stats(); }
+    });
+    var arena = g('arena');
+    arena.addEventListener('pointerdown', onArena);
+    refreshBest();
+    stats();
+  } catch (e) { /* never throw on load */ }
+})();
+
+</script>
+</body>
+</html>

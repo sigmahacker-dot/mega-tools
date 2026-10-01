@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Jet Lag Recovery Planner — Free Online | ToolNest</title>
+<meta name="description" content="Beat jet lag with a day-by-day plan: zones crossed and travel direction give your recovery timeline, light-exposure schedule and sleep-shift tips.">
+<meta name="keywords" content="jet lag, jet lag recovery, time zone adjustment, beat jet lag">
+<link rel="canonical" href="https://toolnest.vercel.app/tools/jet-lag-recovery-planner/">
+<meta name="theme-color" content="#07070b">
+<meta property="og:title" content="Jet Lag Recovery Planner — Free Online | ToolNest">
+<meta property="og:description" content="Beat jet lag with a day-by-day plan: zones crossed and travel direction give your recovery timeline, light-exposure schedule and sleep-shift tips.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css?v=4">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%23e01111'/><text x='50' y='68' font-size='58' text-anchor='middle' fill='white' font-family='Arial' font-weight='bold'>T</text></svg>">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebApplication","name":"Jet Lag Recovery Planner","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0"},"url":"https://toolnest.vercel.app/tools/jet-lag-recovery-planner/","description":"Beat jet lag with a day-by-day plan: zones crossed and travel direction give your recovery timeline, light-exposure schedule and sleep-shift tips."},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How is recovery time estimated?","acceptedAnswer":{"@type":"Answer","text":"Rule of thumb from sleep research: about 1 day per time zone traveling west, about 1.5 days per zone traveling east (eastward is harder). The plan covers that whole window."}},{"@type":"Question","name":"Why does direction matter?","acceptedAnswer":{"@type":"Answer","text":"Westward travel lengthens your day, which the body clock adapts to easily. Eastward travel shortens the day, forcing your clock to advance — physiologically harder."}},{"@type":"Question","name":"What actually helps?","acceptedAnswer":{"@type":"Answer","text":"Timed bright-light exposure, shifting sleep 1 hour per day before/after travel, and short strategic naps. The daily schedule below times these for your direction."}}]}]}</script>
+</head>
+<body>
+<header class="site-header">
+  <div class="container">
+    <a class="logo" href="/"><span class="logo-mark">T</span> ToolNest</a>
+    <div class="header-right">
+      <form class="nav-search" action="/" method="get" role="search">
+        <span class="ns-icon">🔍</span>
+        <input type="search" name="q" placeholder="Search tools…" aria-label="Search tools" autocomplete="off">
+      </form>
+      <div class="menu-wrap">
+        <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="menuPanel" aria-label="Open menu"><span></span><span></span><span></span></button>
+        <nav class="menu-panel" id="menuPanel" aria-label="Site">
+          <a href="/">Home</a>
+          <a href="/#categories">Categories</a>
+          <a href="/#all-tools">All Tools</a>
+        </nav>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ADSTERRA-HEADER: paste your Adsterra banner ad code inside the div below -->
+<div class="container"><div class="ad-slot ad-leaderboard" data-ad="header"></div></div>
+
+<main class="container">
+  <nav class="crumbs"><a href="/">Home</a> &rsaquo; <a href="/#time">Time &amp; Date</a> &rsaquo; Jet Lag Recovery Planner</nav>
+  <div class="tool-hero">
+    <h1>Jet Lag Recovery Planner</h1>
+    <p>Beat jet lag with a day-by-day plan: zones crossed and travel direction give your recovery timeline, light-exposure schedule and sleep-shift tips.</p>
+  </div>
+
+  <div class="tool-card">
+  <div class="grid3">
+    <div class="field">
+      <label for="jet-lag-recovery-planner-zones">Time zones crossed</label>
+      <input class="input" id="jet-lag-recovery-planner-zones" type="number" min="1" max="12" value="7">
+    </div>
+    <div class="field">
+      <label for="jet-lag-recovery-planner-dir">Direction</label>
+      <select class="select" id="jet-lag-recovery-planner-dir">
+        <option value="east">Eastward (harder)</option>
+        <option value="west" selected>Westward (easier)</option>
+      </select>
+    </div>
+    <div class="field">
+      <label for="jet-lag-recovery-planner-arr">Arrival date</label>
+      <input class="input" id="jet-lag-recovery-planner-arr" type="date">
+    </div>
+    <div class="field">
+      <label for="jet-lag-recovery-planner-bed">Usual bedtime</label>
+      <input class="input" id="jet-lag-recovery-planner-bed" type="time" value="23:00">
+    </div>
+    <div class="field" style="align-self:end">
+      <button type="button" class="btn" id="jet-lag-recovery-planner-plan">Plan recovery</button>
+    </div>
+  </div>
+  <div class="error" id="jet-lag-recovery-planner-error"></div>
+  <div id="jet-lag-recovery-planner-out" class="hidden">
+    <div class="stat-cards">
+      <div class="stat-card"><div class="v" id="jet-lag-recovery-planner-days">–</div><div class="l">Recovery days</div></div>
+      <div class="stat-card"><div class="v" id="jet-lag-recovery-planner-done">–</div><div class="l">Fully adjusted by</div></div>
+    </div>
+    <div class="result">
+      <h3>Daily plan</h3>
+      <div style="overflow-x:auto"><table class="data"><thead><tr><th>Day</th><th>Date</th><th>Sleep target</th><th>Light & tips</th></tr></thead><tbody id="jet-lag-recovery-planner-rows"></tbody></table></div>
+    </div>
+  </div>
+  <p class="note">General guidance based on common sleep-research rules of thumb — not medical advice.</p>
+</div>
+
+
+  <!-- ADSTERRA-INCONTENT: paste your Adsterra native/in-content ad code inside the div below -->
+  <div class="ad-slot" data-ad="incontent"></div>
+
+  <div class="info-grid">
+    <div class="info-card">
+      <h2>📖 How to use</h2>
+      <ol><li>Enter how many time zones you cross and whether you fly east or west.</li><li>Enter your arrival date (and usual bedtime).</li><li>Press Plan to get your estimated recovery days and a daily adjustment schedule.</li><li>Follow the light-exposure and sleep tips day by day.</li></ol>
+    </div>
+    <div class="info-card">
+      <h2>❓ Frequently asked questions</h2>
+      <div class="faq"><details><summary>How is recovery time estimated?</summary><p>Rule of thumb from sleep research: about 1 day per time zone traveling west, about 1.5 days per zone traveling east (eastward is harder). The plan covers that whole window.</p></details><details><summary>Why does direction matter?</summary><p>Westward travel lengthens your day, which the body clock adapts to easily. Eastward travel shortens the day, forcing your clock to advance — physiologically harder.</p></details><details><summary>What actually helps?</summary><p>Timed bright-light exposure, shifting sleep 1 hour per day before/after travel, and short strategic naps. The daily schedule below times these for your direction.</p></details></div>
+    </div>
+  </div>
+
+  <section class="section">
+    <h2>🔗 Related tools</h2>
+    <div class="tool-grid"><a class="tool-link" href="/tools/add-subtract-days-calculator/" data-search="add / subtract days calculator add or subtract days, weeks, months or years from any date. optional business-days-only mode skips weekends automatically. add days to date subtract days calculator date plus days business days calculator date arithmetic"><span class="t-ico">⏰</span><span class="t-body"><b>Add / Subtract Days Calculator</b><small>Add or subtract days, weeks, months or years from any date. Optional business-days-only mode…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/anniversary-calculator/" data-search="anniversary calculator track any anniversary: days until the next one, which number it is (10th, 25th…), total days together and the weekday it falls on. anniversary calculator wedding anniversary countdown how many days until anniversary anniversary date tracker years together calculator"><span class="t-ico">⏰</span><span class="t-body"><b>Anniversary Calculator</b><small>Track any anniversary: days until the next one, which number it is (10th, 25th…), total days…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/bill-due-tracker/" data-search="bill due tracker never miss a payment — track recurring monthly bills with automatic next-due dates, days remaining and urgency sorting. bill due tracker bill reminder recurring bills tracker monthly bills organizer due date tracker"><span class="t-ico">⏰</span><span class="t-body"><b>Bill Due Tracker</b><small>Never miss a payment — track recurring monthly bills with automatic next-due dates, days rem…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/billable-hours-calculator/" data-search="billable hours calculator turn hours into invoices: billable hours × rate, utilization percentage against non-billable time, and the final invoice total. billable hours invoice calculator utilization rate freelance rate calculator"><span class="t-ico">⏰</span><span class="t-body"><b>Billable Hours Calculator</b><small>Turn hours into invoices: billable hours × rate, utilization percentage against non-billable…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/birthday-reminder-list/" data-search="birthday reminder list never miss a birthday: names and dates with days-until countdowns, next upcoming birthday highlighted, saved in your browser. birthday reminder birthday tracker birthday countdown never forget birthday"><span class="t-ico">⏰</span><span class="t-body"><b>Birthday Reminder List</b><small>Never miss a birthday: names and dates with days-until countdowns, next upcoming birthday hi…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/business-days-calculator/" data-search="business days calculator count working days between two dates, excluding weekends and your own custom holidays, with a full breakdown. business days calculator working days calculator weekdays between dates net workdays business days excluding holidays"><span class="t-ico">⏰</span><span class="t-body"><b>Business Days Calculator</b><small>Count working days between two dates, excluding weekends and your own custom holidays, with …</small></span><span class="t-arrow">→</span></a></div>
+  </section>
+</main>
+
+<!-- ADSTERRA-FOOTER: paste your Adsterra footer/banner ad code inside the div below -->
+<div class="container"><div class="ad-slot" data-ad="footer"></div></div>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="f-grid">
+      <div>
+        <span class="brandline"><span class="logo-mark">T</span> ToolNest</span>
+        <p>Free online tools that actually work. No sign-up, no watermarks — and your files never leave your device for client-side tools.</p>
+      </div>
+      <div>
+        <h4>Popular</h4>
+        <a href="/tools/qr-code-generator/">QR Code Generator</a>
+        <a href="/tools/background-remover/">Background Remover</a>
+        <a href="/tools/pdf-merger/">PDF Merger</a>
+        <a href="/tools/word-counter/">Word Counter</a>
+      </div>
+      <div>
+        <h4>Categories</h4>
+        <a href="/#image">Image Tools</a>
+        <a href="/#pdf">PDF &amp; Documents</a>
+        <a href="/#calculators">Calculators</a>
+        <a href="/#developer">Developer Tools</a>
+      </div>
+      <div>
+        <h4>Site</h4>
+        <a href="/">Home</a>
+        <a href="/#all-tools">All Tools</a>
+        <a href="/sitemap.xml">Sitemap</a>
+      </div>
+    </div>
+    <div class="f-bottom">© 2026 ToolNest · Free tools for everyone · Made with care</div>
+  </div>
+</footer>
+
+<script src="/assets/site.js?v=5"></script>
+
+<script>
+(function () {
+  'use strict';
+  var P = 'jet-lag-recovery-planner-', ERR = P + 'error';
+  var DAY = 86400000;
+  function g(id) { return TN.el(P + id); }
+  function fmtD(d) {
+    var days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+    return days[d.getDay()] + ' ' + d.getFullYear() + '-' + String(d.getMonth() + 1).padStart(2, '0') + '-' + String(d.getDate()).padStart(2, '0');
+  }
+  function shiftTime(t, mins) {
+    var p = t.split(':');
+    var m = (parseInt(p[0], 10) * 60 + parseInt(p[1], 10) + mins) % 1440;
+    if (m < 0) m += 1440;
+    return String(Math.floor(m / 60)).padStart(2, '0') + ':' + String(m % 60).padStart(2, '0');
+  }
+  function plan() {
+    try {
+      TN.clearErr(ERR);
+      var zones = parseInt(g('zones').value, 10);
+      if (isNaN(zones) || zones < 1 || zones > 12) { TN.setErr(ERR, 'Time zones crossed must be 1–12.'); return; }
+      var dir = g('dir').value;
+      var arrV = g('arr').value;
+      if (!arrV) { TN.setErr(ERR, 'Enter your arrival date.'); return; }
+      var bed = g('bed').value || '23:00';
+      var days = dir === 'east' ? Math.ceil(zones * 1.5) : zones;
+      var ap = arrV.split('-');
+      var arr = new Date(ap[0], ap[1] - 1, ap[2]);
+      var rows = '';
+      for (var d = 1; d <= days; d++) {
+        var date = new Date(arr.getTime() + (d - 1) * DAY);
+        var remaining = zones - (d - 1) * (dir === 'east' ? 2 / 3 : 1);
+        var shiftMin = dir === 'east' ? -60 : 60; // move bedtime earlier (east) or later (west)
+        var target = shiftTime(bed, shiftMin * d);
+        var tip = dir === 'east'
+          ? 'Seek bright light in the <b>morning</b>, avoid it in the evening. ' + (d <= 2 ? 'A 20-min nap before 15:00 is OK; no caffeine after 14:00.' : 'Keep meals on local time.')
+          : 'Seek bright light in the <b>late afternoon/evening</b>, dim mornings. ' + (d <= 2 ? 'If sleepy early, a 20-min nap before 16:00 helps.' : 'Exercise in the afternoon to stay awake.');
+        rows += '<tr><td><b>Day ' + d + '</b></td><td>' + fmtD(date) + '</td><td>' + target + '</td><td>' + tip + '</td></tr>';
+      }
+      TN.show(P + 'out');
+      g('days').textContent = String(days);
+      g('done').textContent = fmtD(new Date(arr.getTime() + (days - 1) * DAY));
+      g('rows').innerHTML = rows;
+    } catch (e) { TN.setErr(ERR, e.message || 'Could not build the plan.'); }
+  }
+  try {
+    if (!TN.el(P + 'plan')) return;
+    var now = new Date();
+    g('arr').value = now.getFullYear() + '-' + String(now.getMonth() + 1).padStart(2, '0') + '-' + String(now.getDate()).padStart(2, '0');
+    TN.on(P + 'plan', 'click', plan);
+  } catch (e) { /* never throw on load */ }
+})();
+
+</script>
+</body>
+</html>

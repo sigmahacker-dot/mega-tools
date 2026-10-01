@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dog Age Converter — Free Online | ToolNest</title>
+<meta name="description" content="Convert dog years to human years with two real methods: the 2019 epigenetic formula (16·ln(age)+31) and the size-based life-stage chart.">
+<meta name="keywords" content="dog age converter, dog years to human years, how old is my dog, dog age calculator, epigenetic dog age formula">
+<link rel="canonical" href="https://toolnest.vercel.app/tools/dog-age-converter/">
+<meta name="theme-color" content="#07070b">
+<meta property="og:title" content="Dog Age Converter — Free Online | ToolNest">
+<meta property="og:description" content="Convert dog years to human years with two real methods: the 2019 epigenetic formula (16·ln(age)+31) and the size-based life-stage chart.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css?v=4">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%23e01111'/><text x='50' y='68' font-size='58' text-anchor='middle' fill='white' font-family='Arial' font-weight='bold'>T</text></svg>">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebApplication","name":"Dog Age Converter","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0"},"url":"https://toolnest.vercel.app/tools/dog-age-converter/","description":"Convert dog years to human years with two real methods: the 2019 epigenetic formula (16·ln(age)+31) and the size-based life-stage chart."},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What is the epigenetic dog-age formula?","acceptedAnswer":{"@type":"Answer","text":"human_age = 16 × ln(dog_age) + 31, published by Wang et al. in Cell Systems (2019), based on DNA-methylation comparison of Labrador retrievers and humans. It is not a straight multiplier — dogs age fast early, then slow down."}},{"@type":"Question","name":"Why do the two methods give different answers?","acceptedAnswer":{"@type":"Answer","text":"Small breeds age slowest per year: 1 yr = 15, 2 yrs = 24, then ≈ +4/yr. Large breeds age fastest: 6 yrs ≈ 45, 10 yrs ≈ 66. Pick your dog's size to see the difference."}},{"@type":"Question","name":"Is one method more accurate?","acceptedAnswer":{"@type":"Answer","text":"Yes — the size chart shows big dogs age faster per year, while the single epigenetic curve is breed-averaged. Presenting both lets you compare."}}]}]}</script>
+</head>
+<body>
+<header class="site-header">
+  <div class="container">
+    <a class="logo" href="/"><span class="logo-mark">T</span> ToolNest</a>
+    <div class="header-right">
+      <form class="nav-search" action="/" method="get" role="search">
+        <span class="ns-icon">🔍</span>
+        <input type="search" name="q" placeholder="Search tools…" aria-label="Search tools" autocomplete="off">
+      </form>
+      <div class="menu-wrap">
+        <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="menuPanel" aria-label="Open menu"><span></span><span></span><span></span></button>
+        <nav class="menu-panel" id="menuPanel" aria-label="Site">
+          <a href="/">Home</a>
+          <a href="/#categories">Categories</a>
+          <a href="/#all-tools">All Tools</a>
+        </nav>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ADSTERRA-HEADER: paste your Adsterra banner ad code inside the div below -->
+<div class="container"><div class="ad-slot ad-leaderboard" data-ad="header"></div></div>
+
+<main class="container">
+  <nav class="crumbs"><a href="/">Home</a> &rsaquo; <a href="/#converters">Converters</a> &rsaquo; Dog Age Converter</nav>
+  <div class="tool-hero">
+    <h1>Dog Age Converter</h1>
+    <p>Convert dog years to human years with two real methods: the 2019 epigenetic formula (16·ln(age)+31) and the size-based life-stage chart.</p>
+  </div>
+
+  <div class="tool-card">
+  <div class="grid2">
+    <div class="field">
+      <label for="dog-age-converter-age">Dog's age (years)</label>
+      <input type="number" step="any" min="0" class="input" id="dog-age-converter-age" placeholder="e.g. 5">
+    </div>
+    <div class="field">
+      <label for="dog-age-converter-size">Size class</label>
+      <select class="select" id="dog-age-converter-size">
+        <option value="small" selected>Small (under 20 lb / 9 kg)</option>
+        <option value="medium">Medium (21–50 lb / 9–23 kg)</option>
+        <option value="large">Large (over 50 lb / 23 kg)</option>
+      </select>
+    </div>
+  </div>
+  <div class="error" id="dog-age-converter-error"></div>
+  <div class="result" id="dog-age-converter-result">
+    <div class="stat-cards">
+      <div class="stat-card"><div class="v" id="dog-age-converter-epi">–</div><div class="l">Epigenetic formula (16·ln+31)</div></div>
+      <div class="stat-card"><div class="v" id="dog-age-converter-chart">–</div><div class="l">Size-based chart</div></div>
+      <div class="stat-card"><div class="v" id="dog-age-converter-stage">–</div><div class="l">Life stage</div></div>
+    </div>
+    <p class="note" id="dog-age-converter-note">Enter your dog's age to compare both methods.</p>
+    <p class="note">For information only — not veterinary advice. Ageing varies by breed, health and lifestyle.</p>
+  </div>
+</div>
+
+
+  <!-- ADSTERRA-INCONTENT: paste your Adsterra native/in-content ad code inside the div below -->
+  <div class="ad-slot" data-ad="incontent"></div>
+
+  <div class="info-grid">
+    <div class="info-card">
+      <h2>📖 How to use</h2>
+      <ol><li>Enter your dog&#39;s age in years (decimals allowed, e.g. 2.5).</li><li>Pick your dog&#39;s size class (small, medium or large).</li><li>Compare the epigenetic formula result with the size-based chart result and life stage.</li></ol>
+    </div>
+    <div class="info-card">
+      <h2>❓ Frequently asked questions</h2>
+      <div class="faq"><details><summary>What is the epigenetic dog-age formula?</summary><p>human_age = 16 × ln(dog_age) + 31, published by Wang et al. in Cell Systems (2019), based on DNA-methylation comparison of Labrador retrievers and humans. It is not a straight multiplier — dogs age fast early, then slow down.</p></details><details><summary>Why do the two methods give different answers?</summary><p>Small breeds age slowest per year: 1 yr = 15, 2 yrs = 24, then ≈ +4/yr. Large breeds age fastest: 6 yrs ≈ 45, 10 yrs ≈ 66. Pick your dog&#39;s size to see the difference.</p></details><details><summary>Is one method more accurate?</summary><p>Yes — the size chart shows big dogs age faster per year, while the single epigenetic curve is breed-averaged. Presenting both lets you compare.</p></details></div>
+    </div>
+  </div>
+
+  <section class="section">
+    <h2>🔗 Related tools</h2>
+    <div class="tool-grid"><a class="tool-link" href="/tools/altitude-pressure-calculator/" data-search="altitude pressure calculator the barometric formula gives air pressure at any altitude (below 11,000 m) from sea-level pressure — in hpa, inhg and percent of sea level. altitude pressure calculator barometric formula air pressure at altitude pressure vs altitude qnh pressure calculator"><span class="t-ico">🔄</span><span class="t-body"><b>Altitude Pressure Calculator</b><small>The barometric formula gives air pressure at any altitude (below 11,000 m) from sea-level pr…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/angle-converter/" data-search="angle converter convert angles between degrees, radians, gradians, turns, arcminutes, arcseconds and mils. enter a value once and see it in every unit instantly. angle converter degrees to radians radians to degrees gradians converter mils to degrees"><span class="t-ico">🔄</span><span class="t-body"><b>Angle Converter</b><small>Convert angles between degrees, radians, gradians, turns, arcminutes, arcseconds and mils. E…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/area-converter/" data-search="area converter square millimeters to square miles. area converter square feet to square meters acres to hectares"><span class="t-ico">🔄</span><span class="t-body"><b>Area Converter</b><small>Square millimeters to square miles.</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/baking-pan-converter/" data-search="baking pan converter compare pan volumes from dimensions, then scale every ingredient by the exact ratio — plus a batter-fill check. baking pan converter pan size conversion cake pan volume recipe scaling pan size"><span class="t-ico">🔄</span><span class="t-body"><b>Baking Pan Converter</b><small>Compare pan volumes from dimensions, then scale every ingredient by the exact ratio — plus a…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/beaufort-scale-converter/" data-search="beaufort scale converter convert wind speed (km/h, mph, knots, m/s) to the beaufort scale number with official speed ranges and land/sea descriptions. beaufort scale converter wind speed to beaufort beaufort scale chart knots to beaufort gale wind speed"><span class="t-ico">🔄</span><span class="t-body"><b>Beaufort Scale Converter</b><small>Convert wind speed (km/h, mph, knots, m/s) to the Beaufort scale number with official speed …</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/cat-age-converter/" data-search="cat age converter convert cat years to human years with the accepted life-stage chart: 15 for year one, 9 for year two, then about 4 per year. cat age converter cat years to human years how old is my cat cat age chart cat life stages"><span class="t-ico">🔄</span><span class="t-body"><b>Cat Age Converter</b><small>Convert cat years to human years with the accepted life-stage chart: 15 for year one, 9 for …</small></span><span class="t-arrow">→</span></a></div>
+  </section>
+</main>
+
+<!-- ADSTERRA-FOOTER: paste your Adsterra footer/banner ad code inside the div below -->
+<div class="container"><div class="ad-slot" data-ad="footer"></div></div>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="f-grid">
+      <div>
+        <span class="brandline"><span class="logo-mark">T</span> ToolNest</span>
+        <p>Free online tools that actually work. No sign-up, no watermarks — and your files never leave your device for client-side tools.</p>
+      </div>
+      <div>
+        <h4>Popular</h4>
+        <a href="/tools/qr-code-generator/">QR Code Generator</a>
+        <a href="/tools/background-remover/">Background Remover</a>
+        <a href="/tools/pdf-merger/">PDF Merger</a>
+        <a href="/tools/word-counter/">Word Counter</a>
+      </div>
+      <div>
+        <h4>Categories</h4>
+        <a href="/#image">Image Tools</a>
+        <a href="/#pdf">PDF &amp; Documents</a>
+        <a href="/#calculators">Calculators</a>
+        <a href="/#developer">Developer Tools</a>
+      </div>
+      <div>
+        <h4>Site</h4>
+        <a href="/">Home</a>
+        <a href="/#all-tools">All Tools</a>
+        <a href="/sitemap.xml">Sitemap</a>
+      </div>
+    </div>
+    <div class="f-bottom">© 2026 ToolNest · Free tools for everyone · Made with care</div>
+  </div>
+</footer>
+
+<script src="/assets/site.js?v=5"></script>
+
+<script>
+(function () {
+  'use strict';
+  var S = 'dog-age-converter';
+  /* size-based human-year charts, indexed by dog year (0..15) */
+  var CHARTS = {
+    small:  [0, 15, 24, 28, 32, 36, 40, 44, 48, 52, 56, 60, 64, 68, 72, 76],
+    medium: [0, 15, 24, 28, 32, 36, 42, 47, 51, 56, 60, 65, 69, 74, 78, 83],
+    large:  [0, 15, 24, 28, 32, 36, 45, 50, 55, 61, 66, 72, 77, 82, 88, 93]
+  };
+  function chartAge(age, chart) {
+    if (age >= chart.length - 1) {
+      /* extrapolate with the last interval's slope */
+      var n = chart.length - 1;
+      return chart[n] + (age - n) * (chart[n] - chart[n - 1]);
+    }
+    var lo = Math.floor(age), hi = Math.ceil(age);
+    if (lo === hi) return chart[lo];
+    return chart[lo] + (chart[hi] - chart[lo]) * (age - lo);
+  }
+  function lifeStage(age) {
+    if (age < 1) return 'Puppy';
+    if (age < 3) return 'Young adult';
+    if (age < 7) return 'Adult';
+    return 'Senior';
+  }
+  function convert() {
+    try {
+      TN.clearErr(S + '-error');
+      var epiEl = TN.el(S + '-epi'), chEl = TN.el(S + '-chart'), stEl = TN.el(S + '-stage');
+      var noteEl = TN.el(S + '-note');
+      var raw = TN.el(S + '-age').value;
+      if (raw === '' || raw === null) {
+        [epiEl, chEl, stEl].forEach(function (el) { if (el) el.textContent = '–'; });
+        if (noteEl) noteEl.textContent = 'Enter your dog\'s age to compare both methods.';
+        return;
+      }
+      var age = parseFloat(raw);
+      if (!isFinite(age) || age < 0) { TN.setErr(S + '-error', 'Enter a non-negative age.'); return; }
+      if (age > 30) { TN.setErr(S + '-error', 'That age seems unrealistic — check your value.'); return; }
+      var epi = age <= 0 ? 0 : 16 * Math.log(age) + 31;
+      var chart = chartAge(age, CHARTS[TN.el(S + '-size').value] || CHARTS.small);
+      if (epiEl) epiEl.textContent = Math.round(epi) + ' human yrs';
+      if (chEl) chEl.textContent = Math.round(chart) + ' human yrs';
+      if (stEl) stEl.textContent = lifeStage(age);
+      if (noteEl) {
+        noteEl.textContent = 'Epigenetic (Wang et al., Cell Systems 2019): human_age = 16·ln(' + age + ') + 31 ≈ ' +
+          (Math.round(epi * 10) / 10) + '. Size-chart interpolation: ≈ ' + (Math.round(chart * 10) / 10) + '.';
+      }
+    } catch (e) { /* never throw on input */ }
+  }
+  function init() {
+    TN.on(S + '-age', 'input', convert);
+    TN.on(S + '-size', 'change', convert);
+    convert();
+  }
+  try { init(); } catch (e) { /* never throw on load */ }
+})();
+
+</script>
+</body>
+</html>

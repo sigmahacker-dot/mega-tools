@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>T-Test Calculator — Free Online | ToolNest</title>
+<meta name="description" content="Run real one-sample and two-sample Student&#39;s t-tests: t statistic, degrees of freedom and two-tailed p-value from the incomplete beta function.">
+<meta name="keywords" content="t test calculator, students t test, one sample t test, two sample t test, p-value">
+<link rel="canonical" href="https://toolnest.vercel.app/tools/t-test-calculator/">
+<meta name="theme-color" content="#07070b">
+<meta property="og:title" content="T-Test Calculator — Free Online | ToolNest">
+<meta property="og:description" content="Run real one-sample and two-sample Student&#39;s t-tests: t statistic, degrees of freedom and two-tailed p-value from the incomplete beta function.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css?v=4">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%23e01111'/><text x='50' y='68' font-size='58' text-anchor='middle' fill='white' font-family='Arial' font-weight='bold'>T</text></svg>">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebApplication","name":"T-Test Calculator","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0"},"url":"https://toolnest.vercel.app/tools/t-test-calculator/","description":"Run real one-sample and two-sample Student's t-tests: t statistic, degrees of freedom and two-tailed p-value from the incomplete beta function."},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How is the p-value computed?","acceptedAnswer":{"@type":"Answer","text":"From Student's t distribution via the regularized incomplete beta function — the same computation R and SciPy use — evaluated in your browser."}},{"@type":"Question","name":"One-sample or two-sample?","acceptedAnswer":{"@type":"Answer","text":"One-sample compares your data's mean against a claimed value μ₀. Two-sample compares the means of two independent groups using pooled variance."}},{"@type":"Question","name":"What are the assumptions?","acceptedAnswer":{"@type":"Answer","text":"Roughly normal data (or n ≥ 30 by the CLT) and, for the two-sample version, equal variances. The tool reports each sample's size, mean and standard deviation so you can judge."}}]}]}</script>
+</head>
+<body>
+<header class="site-header">
+  <div class="container">
+    <a class="logo" href="/"><span class="logo-mark">T</span> ToolNest</a>
+    <div class="header-right">
+      <form class="nav-search" action="/" method="get" role="search">
+        <span class="ns-icon">🔍</span>
+        <input type="search" name="q" placeholder="Search tools…" aria-label="Search tools" autocomplete="off">
+      </form>
+      <div class="menu-wrap">
+        <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="menuPanel" aria-label="Open menu"><span></span><span></span><span></span></button>
+        <nav class="menu-panel" id="menuPanel" aria-label="Site">
+          <a href="/">Home</a>
+          <a href="/#categories">Categories</a>
+          <a href="/#all-tools">All Tools</a>
+        </nav>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ADSTERRA-HEADER: paste your Adsterra banner ad code inside the div below -->
+<div class="container"><div class="ad-slot ad-leaderboard" data-ad="header"></div></div>
+
+<main class="container">
+  <nav class="crumbs"><a href="/">Home</a> &rsaquo; <a href="/#math">Math &amp; Numbers</a> &rsaquo; T-Test Calculator</nav>
+  <div class="tool-hero">
+    <h1>T-Test Calculator</h1>
+    <p>Run real one-sample and two-sample Student&#39;s t-tests: t statistic, degrees of freedom and two-tailed p-value from the incomplete beta function.</p>
+  </div>
+
+  <div class="tool-card">
+  <div class="grid3">
+    <div class="field">
+      <label for="t-test-calculator-mode">Test type</label>
+      <select class="select" id="t-test-calculator-mode">
+        <option value="one">One-sample</option>
+        <option value="two">Two-sample</option>
+      </select>
+    </div>
+    <div class="field" id="t-test-calculator-mu-wrap">
+      <label for="t-test-calculator-mu">Claimed mean μ₀</label>
+      <input class="input" id="t-test-calculator-mu" type="number" step="any" value="100">
+    </div>
+    <div class="field" style="align-self:end">
+      <button type="button" class="btn" id="t-test-calculator-calc">Calculate</button>
+    </div>
+  </div>
+  <div class="field">
+    <label for="t-test-calculator-d1">Sample 1 (comma separated)</label>
+    <textarea class="textarea" id="t-test-calculator-d1" rows="3">98, 102, 95, 105, 101, 99, 103, 97, 100, 104</textarea>
+  </div>
+  <div class="field" id="t-test-calculator-d2-wrap" style="display:none">
+    <label for="t-test-calculator-d2">Sample 2 (comma separated)</label>
+    <textarea class="textarea" id="t-test-calculator-d2" rows="3">110, 108, 112, 105, 109, 111, 107, 113, 106, 110</textarea>
+  </div>
+  <div class="error" id="t-test-calculator-error"></div>
+  <div id="t-test-calculator-out" class="hidden">
+    <div class="stat-cards">
+      <div class="stat-card"><div class="v" id="t-test-calculator-t">–</div><div class="l">t statistic</div></div>
+      <div class="stat-card"><div class="v" id="t-test-calculator-df">–</div><div class="l">df</div></div>
+      <div class="stat-card"><div class="v" id="t-test-calculator-p">–</div><div class="l">p-value (two-tailed)</div></div>
+    </div>
+    <div class="result">
+      <h3>Verdict (α = 0.05)</h3>
+      <p id="t-test-calculator-verdict"></p>
+    </div>
+    <div class="result">
+      <h3>Detail</h3>
+      <div id="t-test-calculator-steps"></div>
+    </div>
+  </div>
+  <p class="note">Educational tool — for information only, not a substitute for proper statistical review.</p>
+</div>
+
+
+  <!-- ADSTERRA-INCONTENT: paste your Adsterra native/in-content ad code inside the div below -->
+  <div class="ad-slot" data-ad="incontent"></div>
+
+  <div class="info-grid">
+    <div class="info-card">
+      <h2>📖 How to use</h2>
+      <ol><li>Choose a one-sample test (data vs a claimed mean) or a two-sample test (compare two groups).</li><li>Type each sample as comma-separated numbers.</li><li>Press Calculate to get t, df and the two-tailed p-value.</li><li>Read the verdict at α = 0.05 and check the assumption notes.</li></ol>
+    </div>
+    <div class="info-card">
+      <h2>❓ Frequently asked questions</h2>
+      <div class="faq"><details><summary>How is the p-value computed?</summary><p>From Student&#39;s t distribution via the regularized incomplete beta function — the same computation R and SciPy use — evaluated in your browser.</p></details><details><summary>One-sample or two-sample?</summary><p>One-sample compares your data&#39;s mean against a claimed value μ₀. Two-sample compares the means of two independent groups using pooled variance.</p></details><details><summary>What are the assumptions?</summary><p>Roughly normal data (or n ≥ 30 by the CLT) and, for the two-sample version, equal variances. The tool reports each sample&#39;s size, mean and standard deviation so you can judge.</p></details></div>
+    </div>
+  </div>
+
+  <section class="section">
+    <h2>🔗 Related tools</h2>
+    <div class="tool-grid"><a class="tool-link" href="/tools/24-game-solver/" data-search="24 game solver solve the 24 game exhaustively: every ordering, operation and parenthesization is tried with exact fraction arithmetic, and all distinct solutions are shown. 24 game solver make 24 solver 24 puzzle arithmetic puzzle solver"><span class="t-ico">📐</span><span class="t-body"><b>24 Game Solver</b><small>Solve the 24 game exhaustively: every ordering, operation and parenthesization is tried with…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/ancient-numerals-converter/" data-search="ancient numerals converter convert decimal numbers to roman, egyptian hieroglyphic, babylonian cuneiform and mayan numerals — with roman numerals also decoded back to decimal. roman numerals egyptian numerals babylonian numerals mayan numerals ancient numbers"><span class="t-ico">📐</span><span class="t-body"><b>Ancient Numerals Converter</b><small>Convert decimal numbers to Roman, Egyptian hieroglyphic, Babylonian cuneiform and Mayan nume…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/arithmetic-sequence-calculator/" data-search="arithmetic sequence calculator from the first term and common difference get the nth term and the sum of the first n terms. arithmetic sequence arithmetic progression nth term sum of arithmetic series common difference"><span class="t-ico">📐</span><span class="t-body"><b>Arithmetic Sequence Calculator</b><small>From the first term and common difference get the nth term and the sum of the first n terms.</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/base-n-arithmetic/" data-search="base-n arithmetic add, subtract, multiply and divide numbers in any base from 2 to 36 with exact bigint math and a full conversion breakdown. base n arithmetic binary addition hexadecimal calculator base 36 math"><span class="t-ico">📐</span><span class="t-body"><b>Base-N Arithmetic</b><small>Add, subtract, multiply and divide numbers in any base from 2 to 36 with exact BigInt math a…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/bayes-theorem-calculator/" data-search="bayes theorem calculator compute posterior probabilities from prior, sensitivity and specificity with the full bayes formula, natural frequencies and a probability tree. bayes theorem calculator posterior probability sensitivity specificity medical test probability"><span class="t-ico">📐</span><span class="t-body"><b>Bayes Theorem Calculator</b><small>Compute posterior probabilities from prior, sensitivity and specificity with the full Bayes …</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/bcd-converter/" data-search="bcd converter convert decimal numbers to binary-coded decimal (packed and unpacked) and decode bcd back to decimal, with per-digit nibble breakdowns. bcd converter binary coded decimal packed bcd unpacked bcd bcd decoder"><span class="t-ico">📐</span><span class="t-body"><b>BCD Converter</b><small>Convert decimal numbers to Binary-Coded Decimal (packed and unpacked) and decode BCD back to…</small></span><span class="t-arrow">→</span></a></div>
+  </section>
+</main>
+
+<!-- ADSTERRA-FOOTER: paste your Adsterra footer/banner ad code inside the div below -->
+<div class="container"><div class="ad-slot" data-ad="footer"></div></div>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="f-grid">
+      <div>
+        <span class="brandline"><span class="logo-mark">T</span> ToolNest</span>
+        <p>Free online tools that actually work. No sign-up, no watermarks — and your files never leave your device for client-side tools.</p>
+      </div>
+      <div>
+        <h4>Popular</h4>
+        <a href="/tools/qr-code-generator/">QR Code Generator</a>
+        <a href="/tools/background-remover/">Background Remover</a>
+        <a href="/tools/pdf-merger/">PDF Merger</a>
+        <a href="/tools/word-counter/">Word Counter</a>
+      </div>
+      <div>
+        <h4>Categories</h4>
+        <a href="/#image">Image Tools</a>
+        <a href="/#pdf">PDF &amp; Documents</a>
+        <a href="/#calculators">Calculators</a>
+        <a href="/#developer">Developer Tools</a>
+      </div>
+      <div>
+        <h4>Site</h4>
+        <a href="/">Home</a>
+        <a href="/#all-tools">All Tools</a>
+        <a href="/sitemap.xml">Sitemap</a>
+      </div>
+    </div>
+    <div class="f-bottom">© 2026 ToolNest · Free tools for everyone · Made with care</div>
+  </div>
+</footer>
+
+<script src="/assets/site.js?v=5"></script>
+
+<script>
+(function () {
+  'use strict';
+  var P = 't-test-calculator-', ERR = P + 'error';
+  function g(id) { return TN.el(P + id); }
+  // regularized incomplete beta I_x(a,b) — Numerical Recipes betai
+  function betacf(a, b, x) {
+    var qab = a + b, qap = a + 1, qam = a - 1;
+    var c = 1, d = 1 - qab * x / qap;
+    if (Math.abs(d) < 1e-300) d = 1e-300;
+    d = 1 / d; var h = d, m, aa, del;
+    for (m = 1; m <= 200; m++) {
+      var m2 = 2 * m;
+      aa = m * (b - m) * x / ((qam + m2) * (a + m2));
+      d = 1 + aa * d; if (Math.abs(d) < 1e-300) d = 1e-300;
+      c = 1 + aa / c; if (Math.abs(c) < 1e-300) c = 1e-300;
+      d = 1 / d; h *= d * c;
+      aa = -(a + m) * (qab + m) * x / ((a + m2) * (qap + m2));
+      d = 1 + aa * d; if (Math.abs(d) < 1e-300) d = 1e-300;
+      c = 1 + aa / c; if (Math.abs(c) < 1e-300) c = 1e-300;
+      d = 1 / d; del = d * c; h *= del;
+      if (Math.abs(del - 1) < 3e-14) break;
+    }
+    return h;
+  }
+  function gammaln(x) {
+    var c = [76.18009172947146, -86.50532032961677, 24.01409824083091, -1.231739572450155, 0.001208650973866179, -0.000005395239384953];
+    var y = x, tmp = x + 5.5, ser = 1.000000000190015, j;
+    tmp -= (x + 0.5) * Math.log(tmp);
+    for (j = 0; j < 6; j++) { y++; ser += c[j] / y; }
+    return -tmp + Math.log(2.5066282746310005 * ser / x);
+  }
+  function betai(a, b, x) {
+    if (x < 0 || x > 1) return NaN;
+    if (x === 0 || x === 1) return x;
+    var bt = Math.exp(gammaln(a + b) - gammaln(a) - gammaln(b) + a * Math.log(x) + b * Math.log(1 - x));
+    if (x < (a + 1) / (a + b + 2)) return bt * betacf(a, b, x) / a;
+    return 1 - bt * betacf(b, a, 1 - x) / b;
+  }
+  function tCDF(t, df) { // P(T <= t)
+    var x = df / (df + t * t);
+    var ib = betai(df / 2, 0.5, x);
+    return t >= 0 ? 1 - 0.5 * ib : 0.5 * ib;
+  }
+  function tP2(t, df) { return 2 * (1 - tCDF(Math.abs(t), df)); }
+  function mean(a) { return a.reduce(function (s, v) { return s + v; }, 0) / a.length; }
+  function sd(a, m) {
+    var s = 0;
+    for (var i = 0; i < a.length; i++) s += Math.pow(a[i] - m, 2);
+    return Math.sqrt(s / (a.length - 1));
+  }
+  function fmt(x, d) {
+    if (!isFinite(x)) return String(x);
+    if (x !== 0 && (Math.abs(x) < 1e-4 || Math.abs(x) >= 1e10)) return x.toExponential(4);
+    return String(parseFloat(x.toPrecision(d || 6)));
+  }
+  function parseData(s, name) {
+    var parts = s.split(/[\s,;]+/).filter(Boolean), out = [];
+    for (var i = 0; i < parts.length; i++) {
+      var v = parseFloat(parts[i]);
+      if (isNaN(v)) throw new Error(name + ': "' + parts[i] + '" is not a number.');
+      out.push(v);
+    }
+    if (out.length < 2) throw new Error(name + ' needs at least 2 values.');
+    return out;
+  }
+  function calc() {
+    try {
+      TN.clearErr(ERR);
+      var mode = g('mode').value;
+      var d1 = parseData(g('d1').value, 'Sample 1');
+      var m1 = mean(d1), s1 = sd(d1, m1);
+      var t, df, steps = [];
+      if (mode === 'one') {
+        var mu0 = parseFloat(g('mu').value);
+        if (isNaN(mu0)) { TN.setErr(ERR, 'Claimed mean μ₀ must be a number.'); return; }
+        if (s1 === 0) { TN.setErr(ERR, 'Sample 1 has zero variance — the t statistic is undefined.'); return; }
+        var se = s1 / Math.sqrt(d1.length);
+        t = (m1 - mu0) / se;
+        df = d1.length - 1;
+        steps.push('<li>H₀: μ = ' + fmt(mu0) + '. Sample: n = ' + d1.length + ', x̄ = ' + fmt(m1) + ', s = ' + fmt(s1) + '.</li>');
+        steps.push('<li>Standard error SE = s/√n = ' + fmt(s1) + '/√' + d1.length + ' = ' + fmt(se) + '.</li>');
+        steps.push('<li>t = (x̄ − μ₀)/SE = (' + fmt(m1) + ' − ' + fmt(mu0) + ')/' + fmt(se) + ' = <b>' + fmt(t) + '</b>, df = n − 1 = ' + df + '.</li>');
+      } else {
+        var d2 = parseData(g('d2').value, 'Sample 2');
+        var m2 = mean(d2), s2 = sd(d2, m2);
+        var n1 = d1.length, n2 = d2.length;
+        if (s1 === 0 && s2 === 0) { TN.setErr(ERR, 'Both samples have zero variance — the t statistic is undefined.'); return; }
+        var sp2 = ((n1 - 1) * s1 * s1 + (n2 - 1) * s2 * s2) / (n1 + n2 - 2);
+        var se2 = Math.sqrt(sp2 * (1 / n1 + 1 / n2));
+        if (se2 === 0) { TN.setErr(ERR, 'Standard error is zero — the t statistic is undefined.'); return; }
+        t = (m1 - m2) / se2;
+        df = n1 + n2 - 2;
+        steps.push('<li>H₀: μ₁ = μ₂ (equal-variance two-sample t-test). Sample 1: n = ' + n1 + ', x̄ = ' + fmt(m1) + ', s = ' + fmt(s1) + '. Sample 2: n = ' + n2 + ', x̄ = ' + fmt(m2) + ', s = ' + fmt(s2) + '.</li>');
+        steps.push('<li>Pooled variance s_p² = [(n₁−1)s₁² + (n₂−1)s₂²]/(n₁+n₂−2) = ' + fmt(sp2) + '.</li>');
+        steps.push('<li>SE = √(s_p²(1/n₁ + 1/n₂)) = ' + fmt(se2) + '.</li>');
+        steps.push('<li>t = (x̄₁ − x̄₂)/SE = <b>' + fmt(t) + '</b>, df = n₁ + n₂ − 2 = ' + df + '.</li>');
+      }
+      var p = tP2(t, df);
+      TN.show(P + 'out');
+      g('t').textContent = fmt(t);
+      g('df').textContent = String(df);
+      g('p').textContent = fmt(p);
+      steps.push('<li>Two-tailed p-value = 2·P(T &gt; |t|) = <b>' + fmt(p) + '</b> (Student t, df = ' + df + ').</li>');
+      var sig = p < 0.05;
+      g('verdict').innerHTML = 'p = ' + fmt(p) + (sig
+        ? ' &lt; 0.05 → <b>reject H₀</b>: the difference is statistically significant at the 5% level.'
+        : ' ≥ 0.05 → <b>fail to reject H₀</b>: no significant difference at the 5% level.');
+      g('steps').innerHTML = '<ol>' + steps.join('') + '</ol><p class="muted">Assumes roughly normal data (or n ≥ 30); the two-sample version also assumes equal variances.</p>';
+    } catch (e) { TN.setErr(ERR, e.message || 'Could not calculate.'); }
+  }
+  try {
+    if (!TN.el(P + 'calc')) return;
+    TN.on(P + 'calc', 'click', calc);
+    TN.on(P + 'mode', 'change', function () {
+      var two = g('mode').value === 'two';
+      g('d2-wrap').style.display = two ? '' : 'none';
+      g('mu-wrap').style.display = two ? 'none' : '';
+      TN.hide(P + 'out');
+    });
+  } catch (e) { /* never throw on load */ }
+})();
+
+</script>
+</body>
+</html>

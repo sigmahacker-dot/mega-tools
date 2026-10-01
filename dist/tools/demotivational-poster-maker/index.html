@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Demotivational Poster Maker — Free Online | ToolNest</title>
+<meta name="description" content="Turn any photo into a classic black demotivational poster with a big bold title and a sarcastic caption underneath.">
+<meta name="keywords" content="demotivational poster, meme poster, funny poster maker, motivational parody">
+<link rel="canonical" href="https://toolnest.vercel.app/tools/demotivational-poster-maker/">
+<meta name="theme-color" content="#07070b">
+<meta property="og:title" content="Demotivational Poster Maker — Free Online | ToolNest">
+<meta property="og:description" content="Turn any photo into a classic black demotivational poster with a big bold title and a sarcastic caption underneath.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css?v=4">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%23e01111'/><text x='50' y='68' font-size='58' text-anchor='middle' fill='white' font-family='Arial' font-weight='bold'>T</text></svg>">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebApplication","name":"Demotivational Poster Maker","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0"},"url":"https://toolnest.vercel.app/tools/demotivational-poster-maker/","description":"Turn any photo into a classic black demotivational poster with a big bold title and a sarcastic caption underneath."},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What size is the poster?","acceptedAnswer":{"@type":"Answer","text":"Posters are rendered at 900 × 1150 pixels — sharp enough for sharing on social media and decent small prints."}},{"@type":"Question","name":"Is my photo uploaded anywhere?","acceptedAnswer":{"@type":"Answer","text":"Yes. Everything runs in your browser on a canvas; your photo is never uploaded to any server."}},{"@type":"Question","name":"What font style do real demotivational posters use?","acceptedAnswer":{"@type":"Answer","text":"Classic demotivational posters use a serif font (like Times/Georgia) in all caps with wide letter spacing for the title, and small italic text for the caption. This tool applies that style automatically."}}]}]}</script>
+</head>
+<body>
+<header class="site-header">
+  <div class="container">
+    <a class="logo" href="/"><span class="logo-mark">T</span> ToolNest</a>
+    <div class="header-right">
+      <form class="nav-search" action="/" method="get" role="search">
+        <span class="ns-icon">🔍</span>
+        <input type="search" name="q" placeholder="Search tools…" aria-label="Search tools" autocomplete="off">
+      </form>
+      <div class="menu-wrap">
+        <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="menuPanel" aria-label="Open menu"><span></span><span></span><span></span></button>
+        <nav class="menu-panel" id="menuPanel" aria-label="Site">
+          <a href="/">Home</a>
+          <a href="/#categories">Categories</a>
+          <a href="/#all-tools">All Tools</a>
+        </nav>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ADSTERRA-HEADER: paste your Adsterra banner ad code inside the div below -->
+<div class="container"><div class="ad-slot ad-leaderboard" data-ad="header"></div></div>
+
+<main class="container">
+  <nav class="crumbs"><a href="/">Home</a> &rsaquo; <a href="/#image">Image Tools</a> &rsaquo; Demotivational Poster Maker</nav>
+  <div class="tool-hero">
+    <h1>Demotivational Poster Maker</h1>
+    <p>Turn any photo into a classic black demotivational poster with a big bold title and a sarcastic caption underneath.</p>
+  </div>
+
+  <div class="tool-card">
+  <div class="field">
+    <label for="demotivational-poster-maker-file">Photo</label>
+    <input type="file" id="demotivational-poster-maker-file" accept="image/*" class="input">
+  </div>
+  <div class="grid2">
+    <div class="field">
+      <label for="demotivational-poster-maker-title">Title</label>
+      <input type="text" id="demotivational-poster-maker-title" class="input" value="PROCRASTINATION" maxlength="60">
+    </div>
+    <div class="field">
+      <label for="demotivational-poster-maker-size">Title size: <span id="demotivational-poster-maker-size-val">72</span>px</label>
+      <input type="range" id="demotivational-poster-maker-size" min="36" max="110" value="72">
+    </div>
+  </div>
+  <div class="field">
+    <label for="demotivational-poster-maker-caption">Caption</label>
+    <input type="text" id="demotivational-poster-maker-caption" class="input" value="Hard work pays off eventually — but laziness pays off right now." maxlength="160">
+  </div>
+  <div class="btn-row">
+    <button class="btn btn-primary" id="demotivational-poster-maker-download">Download poster</button>
+  </div>
+  <div class="result" id="demotivational-poster-maker-preview-wrap">
+    <canvas id="demotivational-poster-maker-canvas" style="width:100%;max-width:450px;border:1px solid #e5e7eb;border-radius:8px;"></canvas>
+  </div>
+  <div class="error" id="demotivational-poster-maker-error"></div>
+  <p class="note">Classic demotivator style: black background, white-bordered photo, serif title in caps, italic caption. Everything is processed in your browser.</p>
+</div>
+
+
+  <!-- ADSTERRA-INCONTENT: paste your Adsterra native/in-content ad code inside the div below -->
+  <div class="ad-slot" data-ad="incontent"></div>
+
+  <div class="info-grid">
+    <div class="info-card">
+      <h2>📖 How to use</h2>
+      <ol><li>Click &quot;Choose image&quot; and pick the photo for your poster.</li><li>Type a dramatic title (in ALL CAPS for the classic look) and a caption.</li><li>Adjust the title size if you want it bigger or smaller — the preview updates live.</li><li>Click &quot;Download poster&quot; to save your demotivational poster as a PNG.</li></ol>
+    </div>
+    <div class="info-card">
+      <h2>❓ Frequently asked questions</h2>
+      <div class="faq"><details><summary>What size is the poster?</summary><p>Posters are rendered at 900 × 1150 pixels — sharp enough for sharing on social media and decent small prints.</p></details><details><summary>Is my photo uploaded anywhere?</summary><p>Yes. Everything runs in your browser on a canvas; your photo is never uploaded to any server.</p></details><details><summary>What font style do real demotivational posters use?</summary><p>Classic demotivational posters use a serif font (like Times/Georgia) in all caps with wide letter spacing for the title, and small italic text for the caption. This tool applies that style automatically.</p></details></div>
+    </div>
+  </div>
+
+  <section class="section">
+    <h2>🔗 Related tools</h2>
+    <div class="tool-grid"><a class="tool-link" href="/tools/app-icon-resizer/" data-search="app icon resizer generate every common app icon size from one image — 16, 32, 48, 180, 192 and 512 px — with instant preview and one-click png downloads. app icon resizer icon generator favicon sizes pwa icon apple touch icon generator"><span class="t-ico">🖼️</span><span class="t-body"><b>App Icon Resizer</b><small>Generate every common app icon size from one image — 16, 32, 48, 180, 192 and 512 px — with …</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/background-remover/" data-search="background remover remove the background from any photo with real on-device ai and download a transparent png. free, private and unlimited — no sign-up needed. background remover remove image background transparent png maker"><span class="t-ico">🖼️</span><span class="t-body"><b>Background Remover</b><small>Remove the background from any photo with real on-device AI and download a transparent PNG. …</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/before-after-slider-maker/" data-search="before/after slider maker upload two photos and get a standalone before/after comparison slider as an html file. before after slider image comparison slider photo compare html before after html"><span class="t-ico">🖼️</span><span class="t-body"><b>Before/After Slider Maker</b><small>Upload two photos and get a standalone before/after comparison slider as an HTML file.</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/business-card-maker/" data-search="business card maker design a business card front (1050×600): your name, role and contact details, color themes, live preview, and a png download. business card maker business card design business card png visiting card maker card designer"><span class="t-ico">🖼️</span><span class="t-body"><b>Business Card Maker</b><small>Design a business card front (1050×600): your name, role and contact details, color themes, …</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/certificate-maker/" data-search="certificate maker design printable certificates: recipient name, course title, date and signature line, live preview, and a high-res png download. certificate maker certificate generator certificate png award certificate maker printable certificate"><span class="t-ico">🖼️</span><span class="t-body"><b>Certificate Maker</b><small>Design printable certificates: recipient name, course title, date and signature line, live p…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/color-splash-effect/" data-search="color splash effect pick a color to keep and turn everything else black-and-white — the classic color splash effect with a tolerance slider. color splash selective color color pop effect black and white photo"><span class="t-ico">🖼️</span><span class="t-body"><b>Color Splash Effect</b><small>Pick a color to keep and turn everything else black-and-white — the classic color splash eff…</small></span><span class="t-arrow">→</span></a></div>
+  </section>
+</main>
+
+<!-- ADSTERRA-FOOTER: paste your Adsterra footer/banner ad code inside the div below -->
+<div class="container"><div class="ad-slot" data-ad="footer"></div></div>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="f-grid">
+      <div>
+        <span class="brandline"><span class="logo-mark">T</span> ToolNest</span>
+        <p>Free online tools that actually work. No sign-up, no watermarks — and your files never leave your device for client-side tools.</p>
+      </div>
+      <div>
+        <h4>Popular</h4>
+        <a href="/tools/qr-code-generator/">QR Code Generator</a>
+        <a href="/tools/background-remover/">Background Remover</a>
+        <a href="/tools/pdf-merger/">PDF Merger</a>
+        <a href="/tools/word-counter/">Word Counter</a>
+      </div>
+      <div>
+        <h4>Categories</h4>
+        <a href="/#image">Image Tools</a>
+        <a href="/#pdf">PDF &amp; Documents</a>
+        <a href="/#calculators">Calculators</a>
+        <a href="/#developer">Developer Tools</a>
+      </div>
+      <div>
+        <h4>Site</h4>
+        <a href="/">Home</a>
+        <a href="/#all-tools">All Tools</a>
+        <a href="/sitemap.xml">Sitemap</a>
+      </div>
+    </div>
+    <div class="f-bottom">© 2026 ToolNest · Free tools for everyone · Made with care</div>
+  </div>
+</footer>
+
+<script src="/assets/site.js?v=5"></script>
+
+<script>
+/* Demotivational Poster Maker — black poster, bordered photo, serif title + italic caption. */
+(function () {
+  'use strict';
+  var SLUG = 'demotivational-poster-maker';
+  var ERR = SLUG + '-error';
+  var W = 900, H = 1150;
+  var img = null;
+
+  function draw() {
+    var canvas = document.getElementById(SLUG + '-canvas');
+    if (!canvas) return;
+    canvas.width = W; canvas.height = H;
+    var ctx = canvas.getContext('2d');
+    ctx.fillStyle = '#000';
+    ctx.fillRect(0, 0, W, H);
+
+    // photo area
+    var m = 60, bw = 4; // margin, border
+    var areaW = W - m * 2, areaH = 660;
+    if (img) {
+      var s = Math.min(areaW / img.naturalWidth, areaH / img.naturalHeight);
+      var dw = Math.round(img.naturalWidth * s), dh = Math.round(img.naturalHeight * s);
+      var dx = Math.round((W - dw) / 2), dy = m + Math.round((areaH - dh) / 2);
+      ctx.fillStyle = '#fff';
+      ctx.fillRect(dx - bw, dy - bw, dw + bw * 2, dh + bw * 2);
+      ctx.drawImage(img, dx, dy, dw, dh);
+    } else {
+      ctx.strokeStyle = '#333';
+      ctx.lineWidth = 2;
+      ctx.strokeRect(m, m, areaW, areaH);
+      ctx.fillStyle = '#666';
+      ctx.font = '28px Georgia, serif';
+      ctx.textAlign = 'center';
+      ctx.fillText('Choose an image to begin', W / 2, m + areaH / 2);
+    }
+
+    // title
+    var titleEl = document.getElementById(SLUG + '-title');
+    var sizeEl = document.getElementById(SLUG + '-size');
+    var title = titleEl ? titleEl.value.trim() : '';
+    var size = sizeEl ? parseInt(sizeEl.value, 10) || 72 : 72;
+    ctx.fillStyle = '#f5f5f5';
+    ctx.textAlign = 'center';
+    try { ctx.letterSpacing = '8px'; } catch (e) {}
+    ctx.font = size + 'px Georgia, "Times New Roman", serif';
+    var ty = m + areaH + 110;
+    // shrink to fit
+    while (ctx.measureText(title).width > W - 120 && size > 24) {
+      size -= 2;
+      ctx.font = size + 'px Georgia, "Times New Roman", serif';
+    }
+    ctx.fillText(title, W / 2, ty);
+    try { ctx.letterSpacing = '0px'; } catch (e) {}
+
+    // caption
+    var capEl = document.getElementById(SLUG + '-caption');
+    var cap = capEl ? capEl.value.trim() : '';
+    if (cap) {
+      ctx.fillStyle = '#cfcfcf';
+      ctx.font = 'italic 30px Georgia, serif';
+      var words = cap.split(/\s+/), lines = [], line = '';
+      words.forEach(function (w) {
+        var t = line ? line + ' ' + w : w;
+        if (ctx.measureText(t).width > W - 160) { lines.push(line); line = w; }
+        else line = t;
+      });
+      if (line) lines.push(line);
+      lines.slice(0, 3).forEach(function (ln, i) {
+        ctx.fillText(ln, W / 2, ty + 70 + i * 44);
+      });
+    }
+  }
+
+  function canvasToBlob(canvas) {
+    return new Promise(function (res, rej) {
+      try {
+        canvas.toBlob(function (b) { b ? res(b) : rej(new Error('encode failed')); }, 'image/png');
+      } catch (e) { rej(e); }
+    });
+  }
+
+  try {
+    if (!document.getElementById(SLUG + '-canvas')) return;
+    draw();
+    TN.on(SLUG + '-file', 'change', function () {
+      var f = this.files && this.files[0];
+      if (!f) return;
+      TN.clearErr(ERR);
+      TN.readAsDataURL(f).then(TN.loadImage).then(function (im) {
+        img = im;
+        draw();
+      }).catch(function () {
+        TN.setErr(ERR, 'That file could not be read as an image. Try a JPG, PNG or WebP file.');
+      });
+    });
+    TN.on(SLUG + '-title', 'input', TN.debounce(draw, 120));
+    TN.on(SLUG + '-caption', 'input', TN.debounce(draw, 120));
+    TN.on(SLUG + '-size', 'input', function () {
+      var v = document.getElementById(SLUG + '-size-val');
+      if (v) v.textContent = this.value;
+      draw();
+    });
+    TN.on(SLUG + '-download', 'click', function () {
+      TN.clearErr(ERR);
+      if (!img) { TN.setErr(ERR, 'Choose a photo first.'); return; }
+      draw();
+      canvasToBlob(document.getElementById(SLUG + '-canvas')).then(function (b) {
+        TN.download(b, 'demotivational-poster.png');
+      }).catch(function () {
+        TN.setErr(ERR, 'Could not export the poster. Try a different browser.');
+      });
+    });
+  } catch (e) {
+    TN.setErr(ERR, 'This tool could not start: ' + (e && e.message || e));
+  }
+})();
+
+</script>
+</body>
+</html>

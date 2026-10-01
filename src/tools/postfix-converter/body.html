@@ -1,0 +1,27 @@
+<div class="tool-card">
+  <div class="field">
+    <label for="postfix-converter-expr">Infix expression</label>
+    <input class="input" id="postfix-converter-expr" type="text" placeholder="e.g. (3 + 4) * 2 ^ 2 - 5" value="(3 + 4) * 2 ^ 2 - 5">
+  </div>
+  <div class="btn-row">
+    <button type="button" class="btn" id="postfix-converter-convert">Convert</button>
+    <button type="button" class="btn btn-outline" id="postfix-converter-clear">Clear</button>
+  </div>
+  <div class="error" id="postfix-converter-error"></div>
+  <div id="postfix-converter-out" class="hidden">
+    <div class="result">
+      <h3>Postfix result</h3>
+      <p id="postfix-converter-result" style="font-size:1.2em;font-weight:bold;font-family:monospace"></p>
+      <div class="btn-row"><button type="button" class="btn btn-outline btn-sm" id="postfix-converter-copy">Copy postfix</button></div>
+    </div>
+    <div class="result">
+      <h3>Shunting-yard steps</h3>
+      <div style="overflow-x:auto">
+      <table class="data">
+        <thead><tr><th>Step</th><th>Token</th><th>Action</th><th>Operator stack</th><th>Output</th></tr></thead>
+        <tbody id="postfix-converter-steps"></tbody>
+      </table>
+      </div>
+    </div>
+  </div>
+</div>

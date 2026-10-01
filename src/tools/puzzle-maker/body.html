@@ -1,0 +1,30 @@
+<div class="tool-card">
+  <div class="field">
+    <label for="puzzle-maker-file">Photo</label>
+    <input type="file" id="puzzle-maker-file" accept="image/*" class="input">
+  </div>
+  <div class="grid2">
+    <div class="field">
+      <label for="puzzle-maker-rows">Rows: <span id="puzzle-maker-rows-val">3</span></label>
+      <input type="range" id="puzzle-maker-rows" min="2" max="8" value="3">
+    </div>
+    <div class="field">
+      <label for="puzzle-maker-cols">Columns: <span id="puzzle-maker-cols-val">4</span></label>
+      <input type="range" id="puzzle-maker-cols" min="2" max="8" value="4">
+    </div>
+  </div>
+  <div class="field checkline">
+    <input type="checkbox" id="puzzle-maker-numbers" checked>
+    <label for="puzzle-maker-numbers">Show tile numbers on preview</label>
+  </div>
+  <div class="btn-row">
+    <button class="btn btn-primary" id="puzzle-maker-zip">Download tiles (ZIP)</button>
+    <button class="btn btn-outline" id="puzzle-maker-sheet">Download contact sheet</button>
+  </div>
+  <div class="result">
+    <canvas id="puzzle-maker-canvas" style="width:100%;border-radius:8px;"></canvas>
+    <p class="muted" id="puzzle-maker-info" style="margin-top:8px"></p>
+  </div>
+  <div class="error" id="puzzle-maker-error"></div>
+  <p class="note">Tiles are cut at full resolution. Everything happens in your browser.</p>
+</div>

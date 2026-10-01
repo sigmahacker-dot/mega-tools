@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Attendance Tracker — Free Online | ToolNest</title>
+<meta name="description" content="Track class attendance: roster with present/absent marks per date and % summaries.">
+<meta name="keywords" content="attendance tracker, class attendance, student attendance, roll call app">
+<link rel="canonical" href="https://toolnest.vercel.app/tools/attendance-tracker/">
+<meta name="theme-color" content="#07070b">
+<meta property="og:title" content="Attendance Tracker — Free Online | ToolNest">
+<meta property="og:description" content="Track class attendance: roster with present/absent marks per date and % summaries.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css?v=4">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%23e01111'/><text x='50' y='68' font-size='58' text-anchor='middle' fill='white' font-family='Arial' font-weight='bold'>T</text></svg>">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebApplication","name":"Attendance Tracker","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0"},"url":"https://toolnest.vercel.app/tools/attendance-tracker/","description":"Track class attendance: roster with present/absent marks per date and % summaries."},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How do I take attendance?","acceptedAnswer":{"@type":"Answer","text":"Add student names to the roster, pick a date, then click Present or Absent next to each name. Marks are saved per date."}},{"@type":"Question","name":"How do I record a different day?","acceptedAnswer":{"@type":"Answer","text":"Change the date picker and mark again — each date has its own record."}},{"@type":"Question","name":"What does the summary show?","acceptedAnswer":{"@type":"Answer","text":"The summary shows per-student: present days, total days, and attendance %."}},{"@type":"Question","name":"Where is the data stored?","acceptedAnswer":{"@type":"Answer","text":"In this browser's localStorage — private to this device."}}]}]}</script>
+</head>
+<body>
+<header class="site-header">
+  <div class="container">
+    <a class="logo" href="/"><span class="logo-mark">T</span> ToolNest</a>
+    <div class="header-right">
+      <form class="nav-search" action="/" method="get" role="search">
+        <span class="ns-icon">🔍</span>
+        <input type="search" name="q" placeholder="Search tools…" aria-label="Search tools" autocomplete="off">
+      </form>
+      <div class="menu-wrap">
+        <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="menuPanel" aria-label="Open menu"><span></span><span></span><span></span></button>
+        <nav class="menu-panel" id="menuPanel" aria-label="Site">
+          <a href="/">Home</a>
+          <a href="/#categories">Categories</a>
+          <a href="/#all-tools">All Tools</a>
+        </nav>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ADSTERRA-HEADER: paste your Adsterra banner ad code inside the div below -->
+<div class="container"><div class="ad-slot ad-leaderboard" data-ad="header"></div></div>
+
+<main class="container">
+  <nav class="crumbs"><a href="/">Home</a> &rsaquo; <a href="/#fun">Fun &amp; Lifestyle</a> &rsaquo; Attendance Tracker</nav>
+  <div class="tool-hero">
+    <h1>Attendance Tracker</h1>
+    <p>Track class attendance: roster with present/absent marks per date and % summaries.</p>
+  </div>
+
+  <div class="tool-card">
+  <div class="grid2">
+    <div class="field">
+      <label for="attendance-tracker-name">Student name</label>
+      <input class="input" type="text" id="attendance-tracker-name" placeholder="e.g. Ayesha Khan">
+    </div>
+    <div class="field">
+      <label for="attendance-tracker-date">Date</label>
+      <input class="input" type="date" id="attendance-tracker-date">
+    </div>
+  </div>
+  <div class="btn-row">
+    <button class="btn" id="attendance-tracker-add">Add Student</button>
+    <button class="btn btn-outline" id="attendance-tracker-markall">Mark All Present</button>
+  </div>
+  <div class="error" id="attendance-tracker-error"></div>
+</div>
+
+<div class="tool-card">
+  <h3>Roster — <span id="attendance-tracker-datelabel"></span></h3>
+  <div id="attendance-tracker-roster"></div>
+</div>
+
+<div class="tool-card">
+  <h3>Attendance summary</h3>
+  <div id="attendance-tracker-summary"></div>
+</div>
+
+  <!-- ADSTERRA-INCONTENT: paste your Adsterra native/in-content ad code inside the div below -->
+  <div class="ad-slot" data-ad="incontent"></div>
+
+  <div class="info-grid">
+    <div class="info-card">
+      <h2>📖 How to use</h2>
+      <ol><li>Add student names to the roster.</li><li>Pick a date.</li><li>Click Present or Absent for each student — saved automatically.</li><li>View per-student attendance % in the summary.</li></ol>
+    </div>
+    <div class="info-card">
+      <h2>❓ Frequently asked questions</h2>
+      <div class="faq"><details><summary>How do I take attendance?</summary><p>Add student names to the roster, pick a date, then click Present or Absent next to each name. Marks are saved per date.</p></details><details><summary>How do I record a different day?</summary><p>Change the date picker and mark again — each date has its own record.</p></details><details><summary>What does the summary show?</summary><p>The summary shows per-student: present days, total days, and attendance %.</p></details><details><summary>Where is the data stored?</summary><p>In this browser&#39;s localStorage — private to this device.</p></details></div>
+    </div>
+  </div>
+
+  <section class="section">
+    <h2>🔗 Related tools</h2>
+    <div class="tool-grid"><a class="tool-link" href="/tools/100-day-challenge-tracker/" data-search="100-day challenge tracker track a 100-day challenge with a checkable 100-cell grid, streaks and stats. 100 day challenge habit tracker 100 days challenge tracker streak tracker"><span class="t-ico">🎲</span><span class="t-body"><b>100-Day Challenge Tracker</b><small>Track a 100-day challenge with a checkable 100-cell grid, streaks and stats.</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/24-game/" data-search="24 game the 24 game — combine four numbers with + − × ÷ to make 24. built-in solver guarantees every deal and gives hints. 24 game make 24 game 24 puzzle solver math puzzle game"><span class="t-ico">🎲</span><span class="t-body"><b>24 Game</b><small>The 24 Game — combine four numbers with + − × ÷ to make 24. Built-in solver guarantees every…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/aim-trainer-game/" data-search="aim trainer game test and train your aim — targets pop up at random spots for 30 seconds. hits, misses and accuracy are tracked live. aim trainer aim test reaction test click speed test fps aim trainer"><span class="t-ico">🎲</span><span class="t-body"><b>Aim Trainer Game</b><small>Test and train your aim — targets pop up at random spots for 30 seconds. Hits, misses and ac…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/asteroid-shooter/" data-search="asteroid shooter asteroid shooter — rotate, thrust and blast splitting asteroids on canvas. 3 lives, rising levels. asteroid shooter game asteroids game online space shooter canvas"><span class="t-ico">🎲</span><span class="t-body"><b>Asteroid Shooter</b><small>Asteroid Shooter — rotate, thrust and blast splitting asteroids on canvas. 3 lives, rising l…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/baby-name-generator/" data-search="baby name generator discover baby names by gender and origin — pakistani, arabic, western, indian or turkish — with meanings, random picks and tap-to-copy. baby name generator baby names with meanings muslim baby names boy girl names"><span class="t-ico">🎲</span><span class="t-body"><b>Baby Name Generator</b><small>Discover baby names by gender and origin — Pakistani, Arabic, Western, Indian or Turkish — w…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/battery-status-checker/" data-search="battery status checker check your device&#39;s battery level, charging status and estimated time remaining, with live updates — where your browser supports the battery api. battery status battery level checker laptop battery charging status"><span class="t-ico">🎲</span><span class="t-body"><b>Battery Status Checker</b><small>Check your device&#39;s battery level, charging status and estimated time remaining, with live u…</small></span><span class="t-arrow">→</span></a></div>
+  </section>
+</main>
+
+<!-- ADSTERRA-FOOTER: paste your Adsterra footer/banner ad code inside the div below -->
+<div class="container"><div class="ad-slot" data-ad="footer"></div></div>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="f-grid">
+      <div>
+        <span class="brandline"><span class="logo-mark">T</span> ToolNest</span>
+        <p>Free online tools that actually work. No sign-up, no watermarks — and your files never leave your device for client-side tools.</p>
+      </div>
+      <div>
+        <h4>Popular</h4>
+        <a href="/tools/qr-code-generator/">QR Code Generator</a>
+        <a href="/tools/background-remover/">Background Remover</a>
+        <a href="/tools/pdf-merger/">PDF Merger</a>
+        <a href="/tools/word-counter/">Word Counter</a>
+      </div>
+      <div>
+        <h4>Categories</h4>
+        <a href="/#image">Image Tools</a>
+        <a href="/#pdf">PDF &amp; Documents</a>
+        <a href="/#calculators">Calculators</a>
+        <a href="/#developer">Developer Tools</a>
+      </div>
+      <div>
+        <h4>Site</h4>
+        <a href="/">Home</a>
+        <a href="/#all-tools">All Tools</a>
+        <a href="/sitemap.xml">Sitemap</a>
+      </div>
+    </div>
+    <div class="f-bottom">© 2026 ToolNest · Free tools for everyone · Made with care</div>
+  </div>
+</footer>
+
+<script src="/assets/site.js?v=5"></script>
+
+<script>
+/* Attendance Tracker — roster + present/absent per date, % summary. */
+(function () {
+  'use strict';
+
+  var SLUG = 'attendance-tracker';
+  var KEY = 'tn-' + SLUG + '-data';
+
+  function load() {
+    try {
+      var obj = JSON.parse(localStorage.getItem(KEY) || '{}');
+      if (obj && typeof obj === 'object') {
+        return { students: Array.isArray(obj.students) ? obj.students : [], marks: (obj.marks && typeof obj.marks === 'object') ? obj.marks : {} };
+      }
+    } catch (e) { /* fall through */ }
+    return { students: [], marks: {} };
+  }
+
+  function persist(data) {
+    try { localStorage.setItem(KEY, JSON.stringify(data)); }
+    catch (e) { TN.setErr(SLUG + '-error', 'Could not save — browser storage is unavailable.'); }
+  }
+
+  function todayStr() {
+    var d = new Date();
+    return d.getFullYear() + '-' + ('0' + (d.getMonth() + 1)).slice(-2) + '-' + ('0' + d.getDate()).slice(-2);
+  }
+
+  function curDate() { return TN.el(SLUG + '-date').value || todayStr(); }
+
+  function render() {
+    var data = load();
+    var date = curDate();
+    TN.el(SLUG + '-datelabel').textContent = date;
+    var roster = TN.el(SLUG + '-roster');
+    if (!data.students.length) {
+      roster.innerHTML = '<p class="muted">Add students to the roster first.</p>';
+    } else {
+      roster.innerHTML = data.students.map(function (s, i) {
+        var m = (data.marks[date] || {})[i];
+        return '<div style="display:flex;align-items:center;gap:8px;margin:6px 0">' +
+          '<span style="flex:1"><strong>' + TN.esc(s) + '</strong></span>' +
+          '<button class="btn btn-sm ' + (m === 'P' ? '' : 'btn-outline') + '" data-mark="' + i + '|P">Present</button>' +
+          '<button class="btn btn-sm ' + (m === 'A' ? '' : 'btn-outline') + '" data-mark="' + i + '|A">Absent</button>' +
+          '<button class="btn btn-sm btn-outline" data-del="' + i + '">×</button></div>';
+      }).join('');
+      var mbtns = roster.querySelectorAll('[data-mark]');
+      for (var i = 0; i < mbtns.length; i++) {
+        (function (b) {
+          b.addEventListener('click', function () {
+            var parts = b.getAttribute('data-mark').split('|');
+            var d = load();
+            if (!d.marks[date]) d.marks[date] = {};
+            d.marks[date][parts[0]] = parts[1];
+            persist(d); render();
+          });
+        })(mbtns[i]);
+      }
+      var dels = roster.querySelectorAll('[data-del]');
+      for (i = 0; i < dels.length; i++) {
+        (function (b) {
+          b.addEventListener('click', function () {
+            var idx = parseInt(b.getAttribute('data-del'), 10);
+            var d = load();
+            d.students.splice(idx, 1);
+            // reindex marks
+            Object.keys(d.marks).forEach(function (dt) {
+              var nm = {};
+              Object.keys(d.marks[dt]).forEach(function (k) {
+                var ki = parseInt(k, 10);
+                if (ki < idx) nm[ki] = d.marks[dt][k];
+                else if (ki > idx) nm[ki - 1] = d.marks[dt][k];
+              });
+              d.marks[dt] = nm;
+            });
+            persist(d); render();
+          });
+        })(dels[i]);
+      }
+    }
+    // summary
+    var dates = Object.keys(data.marks).sort();
+    var sum = TN.el(SLUG + '-summary');
+    if (!data.students.length || !dates.length) {
+      sum.innerHTML = '<p class="muted">No attendance recorded yet.</p>';
+      return;
+    }
+    var rows = data.students.map(function (s, i) {
+      var p = 0, t = 0;
+      dates.forEach(function (dt) {
+        var m = (data.marks[dt] || {})[i];
+        if (m === 'P') { p++; t++; }
+        else if (m === 'A') { t++; }
+      });
+      var pct = t ? Math.round(p / t * 100) : 0;
+      return '<tr><td style="padding:6px;border-top:1px solid rgba(255,255,255,0.08)">' + TN.esc(s) + '</td>' +
+        '<td style="padding:6px;border-top:1px solid rgba(255,255,255,0.08)">' + p + '/' + t + '</td>' +
+        '<td style="padding:6px;border-top:1px solid rgba(255,255,255,0.08)">' + pct + '%</td></tr>';
+    }).join('');
+    sum.innerHTML = '<table style="width:100%;border-collapse:collapse">' +
+      '<tr><th style="text-align:left;padding:6px">Student</th><th style="text-align:left;padding:6px">Present</th><th style="text-align:left;padding:6px">%</th></tr>' +
+      rows + '</table><p class="muted">' + dates.length + ' day(s) recorded.</p>';
+  }
+
+  function add() {
+    TN.clearErr(SLUG + '-error');
+    var name = TN.el(SLUG + '-name').value.trim();
+    if (!name) { TN.setErr(SLUG + '-error', 'Enter a student name.'); return; }
+    var data = load();
+    data.students.push(name);
+    persist(data);
+    TN.el(SLUG + '-name').value = '';
+    render();
+  }
+
+  function init() {
+    try {
+      if (!TN.el(SLUG + '-add')) return;
+      TN.el(SLUG + '-date').value = todayStr();
+      TN.on(SLUG + '-add', 'click', add);
+      TN.el(SLUG + '-date').addEventListener('change', render);
+      TN.on(SLUG + '-markall', 'click', function () {
+        var d = load();
+        var date = curDate();
+        if (!d.marks[date]) d.marks[date] = {};
+        d.students.forEach(function (_, i) { d.marks[date][i] = 'P'; });
+        persist(d); render();
+      });
+      render();
+    } catch (e) { /* never throw on load */ }
+  }
+
+  init();
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,38 @@
+<div class="tool-card">
+  <div class="grid3">
+    <div class="field">
+      <label for="api-key-generator-format">Format</label>
+      <select class="select" id="api-key-generator-format">
+        <option value="hex">Hex</option>
+        <option value="base64">Base64</option>
+        <option value="base64url">Base64 URL-safe</option>
+        <option value="uuid">UUID v4</option>
+      </select>
+    </div>
+    <div class="field">
+      <label for="api-key-generator-bytes">Random bytes</label>
+      <input class="input" id="api-key-generator-bytes" type="number" value="32" min="8" max="128">
+    </div>
+    <div class="field">
+      <label for="api-key-generator-count">Count</label>
+      <input class="input" id="api-key-generator-count" type="number" value="1" min="1" max="20">
+    </div>
+  </div>
+  <div class="field">
+    <label for="api-key-generator-prefix">Prefix (optional, e.g. sk_live_)</label>
+    <input class="input" id="api-key-generator-prefix" placeholder="sk_live_">
+  </div>
+  <div class="btn-row">
+    <button class="btn" id="api-key-generator-generate">Generate keys</button>
+  </div>
+  <div class="error" id="api-key-generator-error"></div>
+  <div class="field">
+    <label for="api-key-generator-output">Generated keys</label>
+    <textarea class="textarea" id="api-key-generator-output" rows="8" readonly></textarea>
+  </div>
+  <div class="btn-row">
+    <button class="btn btn-outline" id="api-key-generator-copy">Copy all</button>
+    <button class="btn btn-outline" id="api-key-generator-download">Download .txt</button>
+  </div>
+  <p class="note">Keys are generated locally with crypto.getRandomValues — never sent anywhere.</p>
+</div>

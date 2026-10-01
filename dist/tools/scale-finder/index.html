@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Scale Finder — Free Online | ToolNest</title>
+<meta name="description" content="Type in notes and instantly find every matching scale — all major modes, pentatonics, blues, harmonic minor and more.">
+<meta name="keywords" content="scale finder, music scales, what scale, guitar scales">
+<link rel="canonical" href="https://toolnest.vercel.app/tools/scale-finder/">
+<meta name="theme-color" content="#07070b">
+<meta property="og:title" content="Scale Finder — Free Online | ToolNest">
+<meta property="og:description" content="Type in notes and instantly find every matching scale — all major modes, pentatonics, blues, harmonic minor and more.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css?v=4">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%23e01111'/><text x='50' y='68' font-size='58' text-anchor='middle' fill='white' font-family='Arial' font-weight='bold'>T</text></svg>">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebApplication","name":"Scale Finder","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0"},"url":"https://toolnest.vercel.app/tools/scale-finder/","description":"Type in notes and instantly find every matching scale — all major modes, pentatonics, blues, harmonic minor and more."},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How does the matching work?","acceptedAnswer":{"@type":"Answer","text":"Notes you type are matched as subsets of each scale across all 12 roots. Exact matches (same notes) rank first, then partial matches by coverage."}},{"@type":"Question","name":"How do I enter notes?","acceptedAnswer":{"@type":"Answer","text":"Write note names separated by spaces, e.g. \"C E G\" or \"A C D E G\". Use # and b for sharps and flats."}},{"@type":"Question","name":"How many scales does it check?","acceptedAnswer":{"@type":"Answer","text":"18 scale types × 12 roots = 216 scales are checked against your notes."}}]}]}</script>
+</head>
+<body>
+<header class="site-header">
+  <div class="container">
+    <a class="logo" href="/"><span class="logo-mark">T</span> ToolNest</a>
+    <div class="header-right">
+      <form class="nav-search" action="/" method="get" role="search">
+        <span class="ns-icon">🔍</span>
+        <input type="search" name="q" placeholder="Search tools…" aria-label="Search tools" autocomplete="off">
+      </form>
+      <div class="menu-wrap">
+        <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="menuPanel" aria-label="Open menu"><span></span><span></span><span></span></button>
+        <nav class="menu-panel" id="menuPanel" aria-label="Site">
+          <a href="/">Home</a>
+          <a href="/#categories">Categories</a>
+          <a href="/#all-tools">All Tools</a>
+        </nav>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ADSTERRA-HEADER: paste your Adsterra banner ad code inside the div below -->
+<div class="container"><div class="ad-slot ad-leaderboard" data-ad="header"></div></div>
+
+<main class="container">
+  <nav class="crumbs"><a href="/">Home</a> &rsaquo; <a href="/#video-audio">Video &amp; Audio</a> &rsaquo; Scale Finder</nav>
+  <div class="tool-hero">
+    <h1>Scale Finder</h1>
+    <p>Type in notes and instantly find every matching scale — all major modes, pentatonics, blues, harmonic minor and more.</p>
+  </div>
+
+  <div class="tool-card">
+  <div class="field">
+    <label for="scale-finder-notes">Your notes (space separated)</label>
+    <input type="text" id="scale-finder-notes" class="input" value="A C D E G" maxlength="80" placeholder="e.g. C D E F# G A B">
+    <span class="hint">Use # and b for sharps/flats: F#, Bb, Eb…</span>
+  </div>
+  <div class="btn-row">
+    <button class="btn btn-primary" id="scale-finder-go">Find scales</button>
+  </div>
+  <div class="result hidden" id="scale-finder-result">
+    <p class="muted" id="scale-finder-summary"></p>
+    <div id="scale-finder-list"></div>
+  </div>
+  <div class="error" id="scale-finder-error"></div>
+  <p class="note">216 scales checked (18 types × 12 roots). Enharmonic equivalents (F# = Gb) are treated as the same pitch.</p>
+</div>
+
+
+  <!-- ADSTERRA-INCONTENT: paste your Adsterra native/in-content ad code inside the div below -->
+  <div class="ad-slot" data-ad="incontent"></div>
+
+  <div class="info-grid">
+    <div class="info-card">
+      <h2>📖 How to use</h2>
+      <ol><li>Type your notes separated by spaces (e.g. C D E F# G A B).</li><li>Click &quot;Find scales&quot;.</li><li>Exact matches appear first with a badge; partial matches follow with coverage %.</li><li>Click any result to see the full scale notes.</li></ol>
+    </div>
+    <div class="info-card">
+      <h2>❓ Frequently asked questions</h2>
+      <div class="faq"><details><summary>How does the matching work?</summary><p>Notes you type are matched as subsets of each scale across all 12 roots. Exact matches (same notes) rank first, then partial matches by coverage.</p></details><details><summary>How do I enter notes?</summary><p>Write note names separated by spaces, e.g. &quot;C E G&quot; or &quot;A C D E G&quot;. Use # and b for sharps and flats.</p></details><details><summary>How many scales does it check?</summary><p>18 scale types × 12 roots = 216 scales are checked against your notes.</p></details></div>
+    </div>
+  </div>
+
+  <section class="section">
+    <h2>🔗 Related tools</h2>
+    <div class="tool-grid"><a class="tool-link" href="/tools/8d-audio-panner/" data-search="8d audio panner the viral 8d audio effect: your track circles around your head with a rotating stereo-pan lfo. play it and download it. 8d audio 8d converter surround sound effect panning effect"><span class="t-ico">🎬</span><span class="t-body"><b>8D Audio Panner</b><small>The viral 8D audio effect: your track circles around your head with a rotating stereo-pan LF…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/audio-cutter/" data-search="audio cutter cut a section out of any audio file in your browser. set start and end times, preview the selection, then download it as an mp3. audio cutter cut audio online trim mp3 audio trimmer mp3 cutter"><span class="t-ico">🎬</span><span class="t-body"><b>Audio Cutter</b><small>Cut a section out of any audio file in your browser. Set start and end times, preview the se…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/audio-fade-in-out/" data-search="audio fade in/out add smooth fade-in and fade-out to any audio track and export as wav. audio fade in out fade audio add fade to mp3 fade in fade out"><span class="t-ico">🎬</span><span class="t-body"><b>Audio Fade In/Out</b><small>Add smooth fade-in and fade-out to any audio track and export as WAV.</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/audio-joiner/" data-search="audio joiner merge several audio files end-to-end into one wav download. join audio merge audio files combine mp3 audio joiner"><span class="t-ico">🎬</span><span class="t-body"><b>Audio Joiner</b><small>Merge several audio files end-to-end into one WAV download.</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/audio-normalizer/" data-search="audio normalizer peak-normalize any audio to your target level with a real offlineaudiocontext gain stage — see before/after peaks. audio normalizer normalize volume peak normalize loudness"><span class="t-ico">🎬</span><span class="t-body"><b>Audio Normalizer</b><small>Peak-normalize any audio to your target level with a real OfflineAudioContext gain stage — s…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/audio-reverse/" data-search="audio reverse reverse any audio file backwards and export it as a wav. reverse audio backwards audio reverse mp3 audio reverser"><span class="t-ico">🎬</span><span class="t-body"><b>Audio Reverse</b><small>Reverse any audio file backwards and export it as a WAV.</small></span><span class="t-arrow">→</span></a></div>
+  </section>
+</main>
+
+<!-- ADSTERRA-FOOTER: paste your Adsterra footer/banner ad code inside the div below -->
+<div class="container"><div class="ad-slot" data-ad="footer"></div></div>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="f-grid">
+      <div>
+        <span class="brandline"><span class="logo-mark">T</span> ToolNest</span>
+        <p>Free online tools that actually work. No sign-up, no watermarks — and your files never leave your device for client-side tools.</p>
+      </div>
+      <div>
+        <h4>Popular</h4>
+        <a href="/tools/qr-code-generator/">QR Code Generator</a>
+        <a href="/tools/background-remover/">Background Remover</a>
+        <a href="/tools/pdf-merger/">PDF Merger</a>
+        <a href="/tools/word-counter/">Word Counter</a>
+      </div>
+      <div>
+        <h4>Categories</h4>
+        <a href="/#image">Image Tools</a>
+        <a href="/#pdf">PDF &amp; Documents</a>
+        <a href="/#calculators">Calculators</a>
+        <a href="/#developer">Developer Tools</a>
+      </div>
+      <div>
+        <h4>Site</h4>
+        <a href="/">Home</a>
+        <a href="/#all-tools">All Tools</a>
+        <a href="/sitemap.xml">Sitemap</a>
+      </div>
+    </div>
+    <div class="f-bottom">© 2026 ToolNest · Free tools for everyone · Made with care</div>
+  </div>
+</footer>
+
+<script src="/assets/site.js?v=5"></script>
+
+<script>
+/* Scale Finder — match note sets against 216 real scales. */
+(function () {
+  'use strict';
+  var SLUG = 'scale-finder';
+  var ERR = SLUG + '-error';
+
+  var NAMES = ['C', 'C#', 'D', 'D#', 'E', 'F', 'F#', 'G', 'G#', 'A', 'A#', 'B'];
+  var SCALES = [
+    ['Major (Ionian)', [0, 2, 4, 5, 7, 9, 11]],
+    ['Natural minor (Aeolian)', [0, 2, 3, 5, 7, 8, 10]],
+    ['Harmonic minor', [0, 2, 3, 5, 7, 8, 11]],
+    ['Melodic minor', [0, 2, 3, 5, 7, 9, 11]],
+    ['Dorian', [0, 2, 3, 5, 7, 9, 10]],
+    ['Phrygian', [0, 1, 3, 5, 7, 8, 10]],
+    ['Lydian', [0, 2, 4, 6, 7, 9, 11]],
+    ['Mixolydian', [0, 2, 4, 5, 7, 9, 10]],
+    ['Locrian', [0, 1, 3, 5, 6, 8, 10]],
+    ['Major pentatonic', [0, 2, 4, 7, 9]],
+    ['Minor pentatonic', [0, 3, 5, 7, 10]],
+    ['Blues', [0, 3, 5, 6, 7, 10]],
+    ['Major blues', [0, 2, 3, 4, 7, 9]],
+    ['Whole tone', [0, 2, 4, 6, 8, 10]],
+    ['Diminished (whole-half)', [0, 2, 3, 5, 6, 8, 9, 11]],
+    ['Phrygian dominant', [0, 1, 4, 5, 7, 8, 10]],
+    ['Hungarian minor', [0, 2, 3, 6, 7, 8, 11]],
+    ['Chromatic', [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]]
+  ];
+
+  var BASE = { C: 0, D: 2, E: 4, F: 5, G: 7, A: 9, B: 11 };
+
+  function parseNote(tok) {
+    tok = tok.trim().replace(/♯/g, '#').replace(/♭/g, 'b');
+    if (!tok) return -1;
+    var m = tok.match(/^([A-Ga-g])([#bx]*)$/);
+    if (!m) return -1;
+    var pc = BASE[m[1].toUpperCase()];
+    var acc = m[2];
+    for (var i = 0; i < acc.length; i++) {
+      if (acc[i] === '#') pc += 1;
+      else if (acc[i] === 'b') pc -= 1;
+      else if (acc[i] === 'x') pc += 2;
+    }
+    return ((pc % 12) + 12) % 12;
+  }
+
+  function find() {
+    TN.clearErr(ERR);
+    var raw = document.getElementById(SLUG + '-notes').value || '';
+    var pcs = [];
+    var bad = [];
+    raw.split(/[\s,]+/).forEach(function (t) {
+      if (!t) return;
+      var pc = parseNote(t);
+      if (pc < 0) bad.push(t);
+      else if (pcs.indexOf(pc) < 0) pcs.push(pc);
+    });
+    if (bad.length) { TN.setErr(ERR, 'Could not read these as notes: ' + bad.join(', ') + '. Use names like C, F#, Bb.'); return; }
+    if (!pcs.length) { TN.setErr(ERR, 'Type at least one note first.'); return; }
+    if (pcs.length > 12) { TN.setErr(ERR, 'Too many distinct notes (max 12).'); return; }
+
+    var matches = [];
+    for (var root = 0; root < 12; root++) {
+      SCALES.forEach(function (sc) {
+        var name = sc[0], iv = sc[1];
+        var scalePcs = iv.map(function (x) { return (root + x) % 12; });
+        var ok = pcs.every(function (p) { return scalePcs.indexOf(p) >= 0; });
+        if (ok) {
+          var exact = pcs.length === scalePcs.length;
+          var coverage = Math.round(pcs.length / scalePcs.length * 100);
+          matches.push({
+            root: root, name: name, notes: scalePcs.map(function (p) { return NAMES[p]; }),
+            exact: exact, coverage: coverage, extra: scalePcs.length - pcs.length
+          });
+        }
+      });
+    }
+    matches.sort(function (a, b) {
+      if (a.exact !== b.exact) return a.exact ? -1 : 1;
+      if (a.coverage !== b.coverage) return b.coverage - a.coverage;
+      return a.extra - b.extra;
+    });
+
+    var res = document.getElementById(SLUG + '-result');
+    var list = document.getElementById(SLUG + '-list');
+    var sum = document.getElementById(SLUG + '-summary');
+    list.innerHTML = '';
+    if (!matches.length) {
+      sum.textContent = 'No scale contains exactly these notes.';
+    } else {
+      sum.textContent = matches.length + ' matching scale' + (matches.length === 1 ? '' : 's') +
+        ' for [' + pcs.map(function (p) { return NAMES[p]; }).join(' ') + ']';
+      matches.slice(0, 60).forEach(function (m) {
+        var d = document.createElement('div');
+        d.className = 'field';
+        d.style.cssText = 'border:1px solid #e5e7eb;border-radius:10px;padding:10px 12px;margin-bottom:8px;';
+        var badge = m.exact
+          ? '<span style="background:#166534;color:#fff;border-radius:6px;padding:2px 8px;font-size:12px;">EXACT</span> '
+          : '<span style="background:#eef2f6;color:#334155;border-radius:6px;padding:2px 8px;font-size:12px;">' + m.coverage + '%</span> ';
+        d.innerHTML = '<strong>' + badge + NAMES[m.root] + ' ' + m.name + '</strong>' +
+          '<div class="muted">' + m.notes.join(' – ') + '</div>';
+        list.appendChild(d);
+      });
+      if (matches.length > 60) {
+        var more = document.createElement('p');
+        more.className = 'muted';
+        more.textContent = '…and ' + (matches.length - 60) + ' more partial matches.';
+        list.appendChild(more);
+      }
+    }
+    res.classList.remove('hidden');
+  }
+
+  try {
+    if (!document.getElementById(SLUG + '-go')) return;
+    TN.on(SLUG + '-go', 'click', find);
+    TN.on(SLUG + '-notes', 'keydown', function (e) {
+      if (e.key === 'Enter') find();
+    });
+  } catch (e) {
+    TN.setErr(ERR, 'This tool could not start: ' + (e && e.message || e));
+  }
+})();
+
+</script>
+</body>
+</html>

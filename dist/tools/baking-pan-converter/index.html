@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Baking Pan Converter — Free Online | ToolNest</title>
+<meta name="description" content="Compare pan volumes from dimensions, then scale every ingredient by the exact ratio — plus a batter-fill check.">
+<meta name="keywords" content="baking pan converter, pan size conversion, cake pan volume, recipe scaling pan size">
+<link rel="canonical" href="https://toolnest.vercel.app/tools/baking-pan-converter/">
+<meta name="theme-color" content="#07070b">
+<meta property="og:title" content="Baking Pan Converter — Free Online | ToolNest">
+<meta property="og:description" content="Compare pan volumes from dimensions, then scale every ingredient by the exact ratio — plus a batter-fill check.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css?v=4">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%23e01111'/><text x='50' y='68' font-size='58' text-anchor='middle' fill='white' font-family='Arial' font-weight='bold'>T</text></svg>">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebApplication","name":"Baking Pan Converter","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0"},"url":"https://toolnest.vercel.app/tools/baking-pan-converter/","description":"Compare pan volumes from dimensions, then scale every ingredient by the exact ratio — plus a batter-fill check."},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How is the scaling factor calculated?","acceptedAnswer":{"@type":"Answer","text":"Volume of pan B divided by volume of pan A. Round pans use π·(d/2)²·depth; square/rectangular pans use length × width × depth."}},{"@type":"Question","name":"How full should I fill the pan?","acceptedAnswer":{"@type":"Answer","text":"Aim to fill a pan between one-half and two-thirds full. Below half the cake may overbake and dry out; above two-thirds the batter can overflow or dome badly."}},{"@type":"Question","name":"What if my pans have different depths?","acceptedAnswer":{"@type":"Answer","text":"Change the shape and the dimensions of the second pan. Use the depth field to match tall (3 in) versus standard (2 in) pans."}}]}]}</script>
+</head>
+<body>
+<header class="site-header">
+  <div class="container">
+    <a class="logo" href="/"><span class="logo-mark">T</span> ToolNest</a>
+    <div class="header-right">
+      <form class="nav-search" action="/" method="get" role="search">
+        <span class="ns-icon">🔍</span>
+        <input type="search" name="q" placeholder="Search tools…" aria-label="Search tools" autocomplete="off">
+      </form>
+      <div class="menu-wrap">
+        <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="menuPanel" aria-label="Open menu"><span></span><span></span><span></span></button>
+        <nav class="menu-panel" id="menuPanel" aria-label="Site">
+          <a href="/">Home</a>
+          <a href="/#categories">Categories</a>
+          <a href="/#all-tools">All Tools</a>
+        </nav>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ADSTERRA-HEADER: paste your Adsterra banner ad code inside the div below -->
+<div class="container"><div class="ad-slot ad-leaderboard" data-ad="header"></div></div>
+
+<main class="container">
+  <nav class="crumbs"><a href="/">Home</a> &rsaquo; <a href="/#converters">Converters</a> &rsaquo; Baking Pan Converter</nav>
+  <div class="tool-hero">
+    <h1>Baking Pan Converter</h1>
+    <p>Compare pan volumes from dimensions, then scale every ingredient by the exact ratio — plus a batter-fill check.</p>
+  </div>
+
+  <div class="tool-card">
+  <div class="grid2">
+    <div class="field">
+      <label for="baking-pan-converter-shapeA">Original pan (A) shape</label>
+      <select class="select" id="baking-pan-converter-shapeA">
+        <option value="round" selected>Round</option>
+        <option value="rect">Square / rectangular</option>
+      </select>
+    </div>
+    <div class="field">
+      <label for="baking-pan-converter-shapeB">New pan (B) shape</label>
+      <select class="select" id="baking-pan-converter-shapeB">
+        <option value="round" selected>Round</option>
+        <option value="rect">Square / rectangular</option>
+      </select>
+    </div>
+  </div>
+  <div class="grid2">
+    <div class="field">
+      <label for="baking-pan-converter-a1">Pan A: diameter or length</label>
+      <input type="number" step="any" min="0" class="input" id="baking-pan-converter-a1" placeholder="e.g. 8">
+    </div>
+    <div class="field">
+      <label for="baking-pan-converter-depthA">Pan A: depth (height)</label>
+      <input type="number" step="any" min="0" class="input" id="baking-pan-converter-depthA" placeholder="e.g. 2" value="2">
+    </div>
+  </div>
+  <div class="grid2">
+    <div class="field">
+      <label for="baking-pan-converter-b1">Pan B: diameter or length</label>
+      <input type="number" step="any" min="0" class="input" id="baking-pan-converter-b1" placeholder="e.g. 9">
+    </div>
+    <div class="field">
+      <label for="baking-pan-converter-depthB">Pan B: depth (height)</label>
+      <input type="number" step="any" min="0" class="input" id="baking-pan-converter-depthB" placeholder="e.g. 3" value="3">
+    </div>
+  </div>
+  <div class="grid2">
+    <div class="field hidden" id="baking-pan-converter-a2-wrap">
+      <label for="baking-pan-converter-a2">Pan A: width (rectangular only)</label>
+      <input type="number" step="any" min="0" class="input" id="baking-pan-converter-a2" placeholder="e.g. 8">
+    </div>
+    <div class="field hidden" id="baking-pan-converter-b2-wrap">
+      <label for="baking-pan-converter-b2">Pan B: width (rectangular only)</label>
+      <input type="number" step="any" min="0" class="input" id="baking-pan-converter-b2" placeholder="e.g. 13">
+    </div>
+  </div>
+  <div class="field">
+    <label for="baking-pan-converter-units">Units</label>
+    <select class="select" id="baking-pan-converter-units">
+      <option value="in" selected>Inches</option>
+      <option value="cm">Centimetres</option>
+    </select>
+  </div>
+  <div class="error" id="baking-pan-converter-error"></div>
+  <div class="result" id="baking-pan-converter-result">
+    <div class="stat-cards">
+      <div class="stat-card"><div class="v" id="baking-pan-converter-factor">–</div><div class="l">Scale factor (× recipe)</div></div>
+      <div class="stat-card"><div class="v" id="baking-pan-converter-volA">–</div><div class="l">Pan A volume</div></div>
+      <div class="stat-card"><div class="v" id="baking-pan-converter-volB">–</div><div class="l">Pan B volume</div></div>
+    </div>
+    <p class="note" id="baking-pan-converter-note">Enter both pans' dimensions to compare.</p>
+  </div>
+</div>
+
+
+  <!-- ADSTERRA-INCONTENT: paste your Adsterra native/in-content ad code inside the div below -->
+  <div class="ad-slot" data-ad="incontent"></div>
+
+  <div class="info-grid">
+    <div class="info-card">
+      <h2>📖 How to use</h2>
+      <ol><li>Enter the shape, dimensions and depth of your original pan (A).</li><li>Enter the shape, dimensions and depth of the new pan (B).</li><li>Read the scaling factor and the batter-fill warning, then multiply every ingredient by the factor.</li></ol>
+    </div>
+    <div class="info-card">
+      <h2>❓ Frequently asked questions</h2>
+      <div class="faq"><details><summary>How is the scaling factor calculated?</summary><p>Volume of pan B divided by volume of pan A. Round pans use π·(d/2)²·depth; square/rectangular pans use length × width × depth.</p></details><details><summary>How full should I fill the pan?</summary><p>Aim to fill a pan between one-half and two-thirds full. Below half the cake may overbake and dry out; above two-thirds the batter can overflow or dome badly.</p></details><details><summary>What if my pans have different depths?</summary><p>Change the shape and the dimensions of the second pan. Use the depth field to match tall (3 in) versus standard (2 in) pans.</p></details></div>
+    </div>
+  </div>
+
+  <section class="section">
+    <h2>🔗 Related tools</h2>
+    <div class="tool-grid"><a class="tool-link" href="/tools/altitude-pressure-calculator/" data-search="altitude pressure calculator the barometric formula gives air pressure at any altitude (below 11,000 m) from sea-level pressure — in hpa, inhg and percent of sea level. altitude pressure calculator barometric formula air pressure at altitude pressure vs altitude qnh pressure calculator"><span class="t-ico">🔄</span><span class="t-body"><b>Altitude Pressure Calculator</b><small>The barometric formula gives air pressure at any altitude (below 11,000 m) from sea-level pr…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/angle-converter/" data-search="angle converter convert angles between degrees, radians, gradians, turns, arcminutes, arcseconds and mils. enter a value once and see it in every unit instantly. angle converter degrees to radians radians to degrees gradians converter mils to degrees"><span class="t-ico">🔄</span><span class="t-body"><b>Angle Converter</b><small>Convert angles between degrees, radians, gradians, turns, arcminutes, arcseconds and mils. E…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/area-converter/" data-search="area converter square millimeters to square miles. area converter square feet to square meters acres to hectares"><span class="t-ico">🔄</span><span class="t-body"><b>Area Converter</b><small>Square millimeters to square miles.</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/beaufort-scale-converter/" data-search="beaufort scale converter convert wind speed (km/h, mph, knots, m/s) to the beaufort scale number with official speed ranges and land/sea descriptions. beaufort scale converter wind speed to beaufort beaufort scale chart knots to beaufort gale wind speed"><span class="t-ico">🔄</span><span class="t-body"><b>Beaufort Scale Converter</b><small>Convert wind speed (km/h, mph, knots, m/s) to the Beaufort scale number with official speed …</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/cat-age-converter/" data-search="cat age converter convert cat years to human years with the accepted life-stage chart: 15 for year one, 9 for year two, then about 4 per year. cat age converter cat years to human years how old is my cat cat age chart cat life stages"><span class="t-ico">🔄</span><span class="t-body"><b>Cat Age Converter</b><small>Convert cat years to human years with the accepted life-stage chart: 15 for year one, 9 for …</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/clothing-size-converter/" data-search="clothing size converter convert clothing and shoe sizes between us, uk, eu and international systems for men&#39;s tops, pants, women&#39;s dresses and footwear. clothing size converter us to eu size uk to us shoe size dress size conversion pant size converter"><span class="t-ico">🔄</span><span class="t-body"><b>Clothing Size Converter</b><small>Convert clothing and shoe sizes between US, UK, EU and international systems for men&#39;s tops,…</small></span><span class="t-arrow">→</span></a></div>
+  </section>
+</main>
+
+<!-- ADSTERRA-FOOTER: paste your Adsterra footer/banner ad code inside the div below -->
+<div class="container"><div class="ad-slot" data-ad="footer"></div></div>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="f-grid">
+      <div>
+        <span class="brandline"><span class="logo-mark">T</span> ToolNest</span>
+        <p>Free online tools that actually work. No sign-up, no watermarks — and your files never leave your device for client-side tools.</p>
+      </div>
+      <div>
+        <h4>Popular</h4>
+        <a href="/tools/qr-code-generator/">QR Code Generator</a>
+        <a href="/tools/background-remover/">Background Remover</a>
+        <a href="/tools/pdf-merger/">PDF Merger</a>
+        <a href="/tools/word-counter/">Word Counter</a>
+      </div>
+      <div>
+        <h4>Categories</h4>
+        <a href="/#image">Image Tools</a>
+        <a href="/#pdf">PDF &amp; Documents</a>
+        <a href="/#calculators">Calculators</a>
+        <a href="/#developer">Developer Tools</a>
+      </div>
+      <div>
+        <h4>Site</h4>
+        <a href="/">Home</a>
+        <a href="/#all-tools">All Tools</a>
+        <a href="/sitemap.xml">Sitemap</a>
+      </div>
+    </div>
+    <div class="f-bottom">© 2026 ToolNest · Free tools for everyone · Made with care</div>
+  </div>
+</footer>
+
+<script src="/assets/site.js?v=5"></script>
+
+<script>
+(function () {
+  'use strict';
+  var S = 'baking-pan-converter';
+  function num(id) {
+    var v = parseFloat(TN.el(id).value);
+    return isFinite(v) && v > 0 ? v : NaN;
+  }
+  function fmtMl(ml) {
+    if (!isFinite(ml)) return '–';
+    var cups = ml / 236.5882365;
+    return Math.round(ml) + ' ml (' + (Math.round(cups * 10) / 10) + ' cups)';
+  }
+  function panVolume(shape, d1, d2, depth) {
+    if (shape === 'round') {
+      if (!isFinite(d1) || !isFinite(depth)) return NaN;
+      return Math.PI * Math.pow(d1 / 2, 2) * depth;
+    }
+    if (!isFinite(d1) || !isFinite(d2) || !isFinite(depth)) return NaN;
+    return d1 * d2 * depth;
+  }
+  function convert() {
+    try {
+      TN.clearErr(S + '-error');
+      var noteEl = TN.el(S + '-note');
+      var shapeA = TN.el(S + '-shapeA').value;
+      var shapeB = TN.el(S + '-shapeB').value;
+      var toCm = TN.el(S + '-units').value === 'in' ? 2.54 : 1;
+      var volA = panVolume(shapeA, num(S + '-a1') * toCm, num(S + '-a2') * toCm, num(S + '-depthA') * toCm);
+      var volB = panVolume(shapeB, num(S + '-b1') * toCm, num(S + '-b2') * toCm, num(S + '-depthB') * toCm);
+      if (TN.el(S + '-volA')) TN.el(S + '-volA').textContent = fmtMl(volA);
+      if (TN.el(S + '-volB')) TN.el(S + '-volB').textContent = fmtMl(volB);
+      if (!isFinite(volA) || !isFinite(volB)) {
+        if (TN.el(S + '-factor')) TN.el(S + '-factor').textContent = '–';
+        if (noteEl) noteEl.textContent = 'Enter both pans\' dimensions to compare. Round pans use diameter; square/rectangular pans need length, width and depth.';
+        return;
+      }
+      var factor = volB / volA;
+      if (TN.el(S + '-factor')) TN.el(S + '-factor').textContent = '× ' + (Math.round(factor * 100) / 100);
+      /* assume batter filled pan A to half; estimate fill level of pan B */
+      var estFillB = 0.5 / factor;
+      var warn;
+      if (estFillB > 0.67) warn = ' Warning: the same batter would fill pan B to about ' + Math.round(estFillB * 100) + '% — over two-thirds full, risk of overflow.';
+      else if (estFillB < 0.5) warn = ' Note: the same batter would only fill pan B to about ' + Math.round(estFillB * 100) + '% — under half full, so the bake may dry out unless you scale the recipe up.';
+      else warn = ' Fill looks healthy: about ' + Math.round(estFillB * 100) + '% full (target ½–⅔).';
+      if (noteEl) noteEl.textContent = 'Multiply every ingredient by ×' + (Math.round(factor * 100) / 100) + '.' + warn;
+    } catch (e) { /* never throw on input */ }
+  }
+  function syncShapes() {
+    try {
+      if (TN.el(S + '-shapeA').value === 'rect') TN.show(S + '-a2-wrap'); else TN.hide(S + '-a2-wrap');
+      if (TN.el(S + '-shapeB').value === 'rect') TN.show(S + '-b2-wrap'); else TN.hide(S + '-b2-wrap');
+    } catch (e) { /* never throw on input */ }
+  }
+  function init() {
+    ['a1', 'a2', 'b1', 'b2', 'depthA', 'depthB'].forEach(function (k) {
+      TN.on(S + '-' + k, 'input', convert);
+    });
+    ['shapeA', 'shapeB', 'units'].forEach(function (k) {
+      TN.on(S + '-' + k, 'change', function () { syncShapes(); convert(); });
+    });
+    syncShapes();
+    convert();
+  }
+  try { init(); } catch (e) { /* never throw on load */ }
+})();
+
+</script>
+</body>
+</html>

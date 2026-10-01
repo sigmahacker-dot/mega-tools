@@ -1,0 +1,37 @@
+<div class="tool-card">
+  <div class="grid2">
+    <div class="field">
+      <label>Draw polygon — click to add points</label>
+      <div id="clip-path-generator-canvas" style="position:relative;width:100%;height:240px;border:1px dashed #3f3f46;border-radius:12px;background:#18181b;cursor:crosshair;overflow:hidden;touch-action:none"></div>
+      <div class="btn-row" style="margin-top:8px">
+        <button class="btn btn-sm btn-outline" id="clip-path-generator-undo">Undo point</button>
+        <button class="btn btn-sm btn-outline" id="clip-path-generator-clear">Clear</button>
+      </div>
+    </div>
+    <div class="field">
+      <label>Live preview</label>
+      <div id="clip-path-generator-preview" style="display:flex;align-items:center;justify-content:center;height:240px;border:1px solid #27272a;border-radius:12px;background:#18181b;overflow:hidden">
+        <div id="clip-path-generator-box" style="width:200px;height:160px;background:linear-gradient(135deg,#4d7c0f,#84cc16)"></div>
+      </div>
+      <div class="btn-row" style="margin-top:8px">
+        <button class="btn btn-sm btn-outline" id="clip-path-generator-preset-rect">Rectangle</button>
+        <button class="btn btn-sm btn-outline" id="clip-path-generator-preset-tri">Triangle</button>
+        <button class="btn btn-sm btn-outline" id="clip-path-generator-preset-dia">Diamond</button>
+      </div>
+    </div>
+  </div>
+  <div class="field">
+    <label for="clip-path-generator-color">Preview gradient color</label>
+    <input class="input" id="clip-path-generator-color" type="color" value="#4d7c0f">
+  </div>
+  <div class="error" id="clip-path-generator-error"></div>
+  <div class="field">
+    <label for="clip-path-generator-output">clip-path CSS</label>
+    <textarea class="textarea" id="clip-path-generator-output" rows="4" readonly></textarea>
+  </div>
+  <div class="btn-row">
+    <button class="btn btn-outline" id="clip-path-generator-copy">Copy CSS</button>
+    <button class="btn btn-outline" id="clip-path-generator-download">Download .css</button>
+  </div>
+  <p class="note">Tip: click points around the outline of the shape you want, in order.</p>
+</div>

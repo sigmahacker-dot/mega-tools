@@ -1,0 +1,29 @@
+<div class="tool-card">
+  <div class="field">
+    <label for="image-perspective-tilt-file">Photo</label>
+    <input type="file" id="image-perspective-tilt-file" accept="image/*" class="input">
+  </div>
+  <div class="grid3">
+    <div class="field">
+      <label for="image-perspective-tilt-rot">Rotate: <span id="image-perspective-tilt-rot-val">0</span>°</label>
+      <input type="range" id="image-perspective-tilt-rot" min="-45" max="45" value="0" step="1">
+    </div>
+    <div class="field">
+      <label for="image-perspective-tilt-skewx">Skew X: <span id="image-perspective-tilt-skewx-val">0</span>°</label>
+      <input type="range" id="image-perspective-tilt-skewx" min="-30" max="30" value="0" step="1">
+    </div>
+    <div class="field">
+      <label for="image-perspective-tilt-skewy">Skew Y: <span id="image-perspective-tilt-skewy-val">0</span>°</label>
+      <input type="range" id="image-perspective-tilt-skewy" min="-30" max="30" value="0" step="1">
+    </div>
+  </div>
+  <div class="btn-row">
+    <button class="btn btn-primary" id="image-perspective-tilt-download">Download image</button>
+    <button class="btn btn-outline" id="image-perspective-tilt-reset">Reset</button>
+  </div>
+  <div class="result">
+    <canvas id="image-perspective-tilt-canvas" style="width:100%;border-radius:8px;"></canvas>
+  </div>
+  <div class="error" id="image-perspective-tilt-error"></div>
+  <p class="note">The canvas auto-sizes to the transformed bounding box, so nothing is cropped. Processed locally in your browser.</p>
+</div>

@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bucket List Tracker — Free Online | ToolNest</title>
+<meta name="description" content="Track your bucket list goals with done toggles and an overall progress bar.">
+<meta name="keywords" content="bucket list, life goals tracker, bucket list app, goals list">
+<link rel="canonical" href="https://toolnest.vercel.app/tools/bucket-list-tracker/">
+<meta name="theme-color" content="#07070b">
+<meta property="og:title" content="Bucket List Tracker — Free Online | ToolNest">
+<meta property="og:description" content="Track your bucket list goals with done toggles and an overall progress bar.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css?v=4">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%23e01111'/><text x='50' y='68' font-size='58' text-anchor='middle' fill='white' font-family='Arial' font-weight='bold'>T</text></svg>">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebApplication","name":"Bucket List Tracker","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0"},"url":"https://toolnest.vercel.app/tools/bucket-list-tracker/","description":"Track your bucket list goals with done toggles and an overall progress bar."},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How do I use it?","acceptedAnswer":{"@type":"Answer","text":"Add a goal with an optional category, then toggle it done when you complete it. The progress bar shows your overall completion %."}},{"@type":"Question","name":"How do I star an important goal?","acceptedAnswer":{"@type":"Answer","text":"Click the star button on a card. Starred goals are highlighted so your dreams stay visible."}},{"@type":"Question","name":"What do the stats show?","acceptedAnswer":{"@type":"Answer","text":"The completion percentage across all goals, with counts of completed vs total."}},{"@type":"Question","name":"Where is my list stored?","acceptedAnswer":{"@type":"Answer","text":"In this browser's localStorage — private to this device."}}]}]}</script>
+</head>
+<body>
+<header class="site-header">
+  <div class="container">
+    <a class="logo" href="/"><span class="logo-mark">T</span> ToolNest</a>
+    <div class="header-right">
+      <form class="nav-search" action="/" method="get" role="search">
+        <span class="ns-icon">🔍</span>
+        <input type="search" name="q" placeholder="Search tools…" aria-label="Search tools" autocomplete="off">
+      </form>
+      <div class="menu-wrap">
+        <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="menuPanel" aria-label="Open menu"><span></span><span></span><span></span></button>
+        <nav class="menu-panel" id="menuPanel" aria-label="Site">
+          <a href="/">Home</a>
+          <a href="/#categories">Categories</a>
+          <a href="/#all-tools">All Tools</a>
+        </nav>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ADSTERRA-HEADER: paste your Adsterra banner ad code inside the div below -->
+<div class="container"><div class="ad-slot ad-leaderboard" data-ad="header"></div></div>
+
+<main class="container">
+  <nav class="crumbs"><a href="/">Home</a> &rsaquo; <a href="/#fun">Fun &amp; Lifestyle</a> &rsaquo; Bucket List Tracker</nav>
+  <div class="tool-hero">
+    <h1>Bucket List Tracker</h1>
+    <p>Track your bucket list goals with done toggles and an overall progress bar.</p>
+  </div>
+
+  <div class="tool-card">
+  <div class="stat-cards">
+    <div class="stat-card"><div class="v" id="bucket-list-tracker-done">0/0</div><div class="l">Completed</div></div>
+    <div class="stat-card"><div class="v" id="bucket-list-tracker-pct">0%</div><div class="l">Progress</div></div>
+  </div>
+  <div style="background:#222;border-radius:8px;height:14px;margin:12px 0">
+    <div id="bucket-list-tracker-bar" style="background:#4D7C0F;height:14px;border-radius:8px;width:0%;transition:width .3s"></div>
+  </div>
+  <div class="grid2">
+    <div class="field">
+      <label for="bucket-list-tracker-goal">Goal</label>
+      <input class="input" type="text" id="bucket-list-tracker-goal" placeholder="e.g. See the Northern Lights">
+    </div>
+    <div class="field">
+      <label for="bucket-list-tracker-cat">Category</label>
+      <select class="select" id="bucket-list-tracker-cat">
+        <option value="Travel">Travel</option>
+        <option value="Adventure">Adventure</option>
+        <option value="Career">Career</option>
+        <option value="Health">Health</option>
+        <option value="Relationships">Relationships</option>
+        <option value="Other">Other</option>
+      </select>
+    </div>
+  </div>
+  <div class="btn-row">
+    <button class="btn" id="bucket-list-tracker-add">Add Goal</button>
+  </div>
+  <div class="error" id="bucket-list-tracker-error"></div>
+</div>
+
+<div class="tool-card">
+  <div id="bucket-list-tracker-list"></div>
+</div>
+
+  <!-- ADSTERRA-INCONTENT: paste your Adsterra native/in-content ad code inside the div below -->
+  <div class="ad-slot" data-ad="incontent"></div>
+
+  <div class="info-grid">
+    <div class="info-card">
+      <h2>📖 How to use</h2>
+      <ol><li>Enter a goal and pick a category.</li><li>Click Add Goal.</li><li>Toggle Done when you complete a goal — watch the progress bar grow.</li><li>Star the goals that matter most.</li></ol>
+    </div>
+    <div class="info-card">
+      <h2>❓ Frequently asked questions</h2>
+      <div class="faq"><details><summary>How do I use it?</summary><p>Add a goal with an optional category, then toggle it done when you complete it. The progress bar shows your overall completion %.</p></details><details><summary>How do I star an important goal?</summary><p>Click the star button on a card. Starred goals are highlighted so your dreams stay visible.</p></details><details><summary>What do the stats show?</summary><p>The completion percentage across all goals, with counts of completed vs total.</p></details><details><summary>Where is my list stored?</summary><p>In this browser&#39;s localStorage — private to this device.</p></details></div>
+    </div>
+  </div>
+
+  <section class="section">
+    <h2>🔗 Related tools</h2>
+    <div class="tool-grid"><a class="tool-link" href="/tools/100-day-challenge-tracker/" data-search="100-day challenge tracker track a 100-day challenge with a checkable 100-cell grid, streaks and stats. 100 day challenge habit tracker 100 days challenge tracker streak tracker"><span class="t-ico">🎲</span><span class="t-body"><b>100-Day Challenge Tracker</b><small>Track a 100-day challenge with a checkable 100-cell grid, streaks and stats.</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/24-game/" data-search="24 game the 24 game — combine four numbers with + − × ÷ to make 24. built-in solver guarantees every deal and gives hints. 24 game make 24 game 24 puzzle solver math puzzle game"><span class="t-ico">🎲</span><span class="t-body"><b>24 Game</b><small>The 24 Game — combine four numbers with + − × ÷ to make 24. Built-in solver guarantees every…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/aim-trainer-game/" data-search="aim trainer game test and train your aim — targets pop up at random spots for 30 seconds. hits, misses and accuracy are tracked live. aim trainer aim test reaction test click speed test fps aim trainer"><span class="t-ico">🎲</span><span class="t-body"><b>Aim Trainer Game</b><small>Test and train your aim — targets pop up at random spots for 30 seconds. Hits, misses and ac…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/asteroid-shooter/" data-search="asteroid shooter asteroid shooter — rotate, thrust and blast splitting asteroids on canvas. 3 lives, rising levels. asteroid shooter game asteroids game online space shooter canvas"><span class="t-ico">🎲</span><span class="t-body"><b>Asteroid Shooter</b><small>Asteroid Shooter — rotate, thrust and blast splitting asteroids on canvas. 3 lives, rising l…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/attendance-tracker/" data-search="attendance tracker track class attendance: roster with present/absent marks per date and % summaries. attendance tracker class attendance student attendance roll call app"><span class="t-ico">🎲</span><span class="t-body"><b>Attendance Tracker</b><small>Track class attendance: roster with present/absent marks per date and % summaries.</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/baby-name-generator/" data-search="baby name generator discover baby names by gender and origin — pakistani, arabic, western, indian or turkish — with meanings, random picks and tap-to-copy. baby name generator baby names with meanings muslim baby names boy girl names"><span class="t-ico">🎲</span><span class="t-body"><b>Baby Name Generator</b><small>Discover baby names by gender and origin — Pakistani, Arabic, Western, Indian or Turkish — w…</small></span><span class="t-arrow">→</span></a></div>
+  </section>
+</main>
+
+<!-- ADSTERRA-FOOTER: paste your Adsterra footer/banner ad code inside the div below -->
+<div class="container"><div class="ad-slot" data-ad="footer"></div></div>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="f-grid">
+      <div>
+        <span class="brandline"><span class="logo-mark">T</span> ToolNest</span>
+        <p>Free online tools that actually work. No sign-up, no watermarks — and your files never leave your device for client-side tools.</p>
+      </div>
+      <div>
+        <h4>Popular</h4>
+        <a href="/tools/qr-code-generator/">QR Code Generator</a>
+        <a href="/tools/background-remover/">Background Remover</a>
+        <a href="/tools/pdf-merger/">PDF Merger</a>
+        <a href="/tools/word-counter/">Word Counter</a>
+      </div>
+      <div>
+        <h4>Categories</h4>
+        <a href="/#image">Image Tools</a>
+        <a href="/#pdf">PDF &amp; Documents</a>
+        <a href="/#calculators">Calculators</a>
+        <a href="/#developer">Developer Tools</a>
+      </div>
+      <div>
+        <h4>Site</h4>
+        <a href="/">Home</a>
+        <a href="/#all-tools">All Tools</a>
+        <a href="/sitemap.xml">Sitemap</a>
+      </div>
+    </div>
+    <div class="f-bottom">© 2026 ToolNest · Free tools for everyone · Made with care</div>
+  </div>
+</footer>
+
+<script src="/assets/site.js?v=5"></script>
+
+<script>
+/* Bucket List Tracker — goals with done toggle + progress %, localStorage. */
+(function () {
+  'use strict';
+
+  var SLUG = 'bucket-list-tracker';
+  var KEY = 'tn-' + SLUG + '-goals';
+
+  function load() {
+    try {
+      var arr = JSON.parse(localStorage.getItem(KEY) || '[]');
+      return Array.isArray(arr) ? arr : [];
+    } catch (e) { return []; }
+  }
+
+  function persist(goals) {
+    try { localStorage.setItem(KEY, JSON.stringify(goals)); }
+    catch (e) { TN.setErr(SLUG + '-error', 'Could not save — browser storage is unavailable.'); }
+  }
+
+  function render() {
+    var goals = load();
+    var done = goals.filter(function (g) { return g.done; }).length;
+    var pct = goals.length ? Math.round(done / goals.length * 100) : 0;
+    TN.el(SLUG + '-done').textContent = done + '/' + goals.length;
+    TN.el(SLUG + '-pct').textContent = pct + '%';
+    TN.el(SLUG + '-bar').style.width = pct + '%';
+    var list = TN.el(SLUG + '-list');
+    if (!goals.length) { list.innerHTML = '<p class="muted">No goals yet — dream big and add your first.</p>'; return; }
+    var ordered = goals.slice().sort(function (a, b) {
+      if (a.done !== b.done) return a.done - b.done;
+      return (b.starred ? 1 : 0) - (a.starred ? 1 : 0);
+    });
+    list.innerHTML = ordered.map(function (g) {
+      return '<div class="tool-card" style="margin:8px 0;' + (g.done ? 'opacity:0.6' : '') + '">' +
+        '<span style="font-size:20px;cursor:pointer" data-toggle="' + g.id + '" title="toggle done">' +
+        (g.done ? '✅' : '⬜') + '</span> ' +
+        '<strong style="' + (g.done ? 'text-decoration:line-through' : '') + '">' + TN.esc(g.goal) + '</strong> ' +
+        '<span class="muted">(' + TN.esc(g.cat) + ')</span> ' +
+        '<span data-star="' + g.id + '" style="cursor:pointer;font-size:18px" title="star">' + (g.starred ? '⭐' : '☆') + '</span>' +
+        '<button class="btn btn-sm btn-outline" data-del="' + g.id + '" style="float:right">Delete</button></div>';
+    }).join('');
+    var i, btns;
+    btns = list.querySelectorAll('[data-toggle]');
+    for (i = 0; i < btns.length; i++) (function (el) {
+      el.addEventListener('click', function () {
+        var gs = load();
+        var g = gs.filter(function (x) { return String(x.id) === el.getAttribute('data-toggle'); })[0];
+        if (g) { g.done = !g.done; persist(gs); render(); }
+      });
+    })(btns[i]);
+    btns = list.querySelectorAll('[data-star]');
+    for (i = 0; i < btns.length; i++) (function (el) {
+      el.addEventListener('click', function () {
+        var gs = load();
+        var g = gs.filter(function (x) { return String(x.id) === el.getAttribute('data-star'); })[0];
+        if (g) { g.starred = !g.starred; persist(gs); render(); }
+      });
+    })(btns[i]);
+    btns = list.querySelectorAll('[data-del]');
+    for (i = 0; i < btns.length; i++) (function (b) {
+      b.addEventListener('click', function () {
+        persist(load().filter(function (x) { return String(x.id) !== b.getAttribute('data-del'); }));
+        render();
+      });
+    })(btns[i]);
+  }
+
+  function add() {
+    TN.clearErr(SLUG + '-error');
+    var goal = TN.el(SLUG + '-goal').value.trim();
+    var cat = TN.el(SLUG + '-cat').value;
+    if (!goal) { TN.setErr(SLUG + '-error', 'Please describe your goal.'); return; }
+    var goals = load();
+    goals.push({ id: Date.now(), goal: goal, cat: cat, done: false, starred: false });
+    persist(goals);
+    TN.el(SLUG + '-goal').value = '';
+    render();
+  }
+
+  function init() {
+    try {
+      if (!TN.el(SLUG + '-add')) return;
+      TN.on(SLUG + '-add', 'click', add);
+      render();
+    } catch (e) { /* never throw on load */ }
+  }
+
+  init();
+})();
+</script>
+</body>
+</html>

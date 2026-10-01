@@ -1,0 +1,51 @@
+<div class="tool-card">
+  <div class="grid2">
+    <div class="field">
+      <label for="allergy-tracker-date">Date</label>
+      <input type="date" class="input" id="allergy-tracker-date">
+    </div>
+    <div class="field">
+      <label for="allergy-tracker-allergen">Suspected allergen</label>
+      <input type="text" class="input" id="allergy-tracker-allergen" list="allergy-tracker-list" placeholder="e.g. pollen, peanuts">
+      <datalist id="allergy-tracker-list">
+        <option value="Pollen"></option><option value="Dust mites"></option><option value="Pet dander"></option>
+        <option value="Peanuts"></option><option value="Dairy"></option><option value="Shellfish"></option>
+        <option value="Mold"></option><option value="Latex"></option>
+      </datalist>
+    </div>
+  </div>
+  <div class="field">
+    <label>Symptoms</label>
+    <div class="btn-row" style="flex-wrap:wrap" id="allergy-tracker-symptoms">
+      <label class="checkline"><input type="checkbox" value="Sneezing"> Sneezing</label>
+      <label class="checkline"><input type="checkbox" value="Itchy eyes"> Itchy eyes</label>
+      <label class="checkline"><input type="checkbox" value="Congestion"> Congestion</label>
+      <label class="checkline"><input type="checkbox" value="Rash/hives"> Rash/hives</label>
+      <label class="checkline"><input type="checkbox" value="Wheezing"> Wheezing</label>
+      <label class="checkline"><input type="checkbox" value="Stomach upset"> Stomach upset</label>
+    </div>
+  </div>
+  <div class="grid2">
+    <div class="field">
+      <label for="allergy-tracker-severity">Severity (1 mild – 5 severe)</label>
+      <select class="select" id="allergy-tracker-severity">
+        <option>1</option><option>2</option><option selected>3</option><option>4</option><option>5</option>
+      </select>
+    </div>
+    <div class="field">
+      <label for="allergy-tracker-notes">Notes (optional)</label>
+      <input type="text" class="input" id="allergy-tracker-notes" placeholder="e.g. after park visit">
+    </div>
+  </div>
+  <div class="btn-row"><button class="btn" id="allergy-tracker-add" type="button">Log episode</button></div>
+  <div class="error" id="allergy-tracker-error"></div>
+  <div class="result" id="allergy-tracker-result">
+    <div class="stat-cards">
+      <div class="stat-card"><div class="v" id="allergy-tracker-count">0</div><div class="l">Episodes</div></div>
+      <div class="stat-card"><div class="v" id="allergy-tracker-avg">–</div><div class="l">Avg severity</div></div>
+      <div class="stat-card"><div class="v" id="allergy-tracker-top">–</div><div class="l">Most common allergen</div></div>
+    </div>
+    <div id="allergy-tracker-out"></div>
+    <p class="note">Personal log only, not a diagnosis. For information only &mdash; not medical advice.</p>
+  </div>
+</div>

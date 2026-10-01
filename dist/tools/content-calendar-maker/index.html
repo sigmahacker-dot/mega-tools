@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Content Calendar Maker — Free Online | ToolNest</title>
+<meta name="description" content="Plan a month of social posts: schedule content per day, save and export.">
+<meta name="keywords" content="content calendar, social media calendar, post scheduler planner, content planner">
+<link rel="canonical" href="https://toolnest.vercel.app/tools/content-calendar-maker/">
+<meta name="theme-color" content="#07070b">
+<meta property="og:title" content="Content Calendar Maker — Free Online | ToolNest">
+<meta property="og:description" content="Plan a month of social posts: schedule content per day, save and export.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css?v=4">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%23e01111'/><text x='50' y='68' font-size='58' text-anchor='middle' fill='white' font-family='Arial' font-weight='bold'>T</text></svg>">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebApplication","name":"Content Calendar Maker","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0"},"url":"https://toolnest.vercel.app/tools/content-calendar-maker/","description":"Plan a month of social posts: schedule content per day, save and export."},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How do I schedule posts?","acceptedAnswer":{"@type":"Answer","text":"Pick a month, click any day to add a post (platform + text), and it saves automatically to this browser."}},{"@type":"Question","name":"Can I set the platform per post?","acceptedAnswer":{"@type":"Answer","text":"Yes — each post stores its platform (Instagram, TikTok, YouTube, X, Facebook, LinkedIn) shown as a badge on the day."}},{"@type":"Question","name":"How do I export the calendar?","acceptedAnswer":{"@type":"Answer","text":"Click Export Text to download the whole month as a readable schedule."}},{"@type":"Question","name":"Where is the calendar saved?","acceptedAnswer":{"@type":"Answer","text":"In this browser's localStorage, keyed by month."}}]}]}</script>
+</head>
+<body>
+<header class="site-header">
+  <div class="container">
+    <a class="logo" href="/"><span class="logo-mark">T</span> ToolNest</a>
+    <div class="header-right">
+      <form class="nav-search" action="/" method="get" role="search">
+        <span class="ns-icon">🔍</span>
+        <input type="search" name="q" placeholder="Search tools…" aria-label="Search tools" autocomplete="off">
+      </form>
+      <div class="menu-wrap">
+        <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="menuPanel" aria-label="Open menu"><span></span><span></span><span></span></button>
+        <nav class="menu-panel" id="menuPanel" aria-label="Site">
+          <a href="/">Home</a>
+          <a href="/#categories">Categories</a>
+          <a href="/#all-tools">All Tools</a>
+        </nav>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ADSTERRA-HEADER: paste your Adsterra banner ad code inside the div below -->
+<div class="container"><div class="ad-slot ad-leaderboard" data-ad="header"></div></div>
+
+<main class="container">
+  <nav class="crumbs"><a href="/">Home</a> &rsaquo; <a href="/#social">Social Media</a> &rsaquo; Content Calendar Maker</nav>
+  <div class="tool-hero">
+    <h1>Content Calendar Maker</h1>
+    <p>Plan a month of social posts: schedule content per day, save and export.</p>
+  </div>
+
+  <div class="tool-card">
+  <div class="grid2">
+    <div class="field">
+      <label for="content-calendar-maker-month">Month</label>
+      <input class="input" type="month" id="content-calendar-maker-month">
+    </div>
+    <div class="field">
+      <label>&nbsp;</label>
+      <div class="btn-row"><button class="btn btn-outline" id="content-calendar-maker-export">Export Text</button></div>
+    </div>
+  </div>
+  <div class="error" id="content-calendar-maker-error"></div>
+</div>
+
+<div class="tool-card">
+  <h3 id="content-calendar-maker-title"></h3>
+  <div id="content-calendar-maker-grid" style="display:grid;grid-template-columns:repeat(7,1fr);gap:4px"></div>
+  <p class="muted">Click a day to schedule or view posts.</p>
+</div>
+
+<div class="tool-card" id="content-calendar-maker-daypane" style="display:none">
+  <h3>Posts for <span id="content-calendar-maker-daylabel"></span></h3>
+  <div class="grid2">
+    <div class="field">
+      <label for="content-calendar-maker-platform">Platform</label>
+      <select class="select" id="content-calendar-maker-platform">
+        <option value="Instagram">Instagram</option>
+        <option value="TikTok">TikTok</option>
+        <option value="YouTube">YouTube</option>
+        <option value="X">X</option>
+        <option value="Facebook">Facebook</option>
+        <option value="LinkedIn">LinkedIn</option>
+      </select>
+    </div>
+    <div class="field">
+      <label for="content-calendar-maker-text">Post idea / caption</label>
+      <input class="input" type="text" id="content-calendar-maker-text" placeholder="What to post…">
+    </div>
+  </div>
+  <div class="btn-row">
+    <button class="btn" id="content-calendar-maker-add">Schedule Post</button>
+  </div>
+  <div id="content-calendar-maker-posts" style="margin-top:10px"></div>
+</div>
+
+  <!-- ADSTERRA-INCONTENT: paste your Adsterra native/in-content ad code inside the div below -->
+  <div class="ad-slot" data-ad="incontent"></div>
+
+  <div class="info-grid">
+    <div class="info-card">
+      <h2>📖 How to use</h2>
+      <ol><li>Pick a month with the month picker.</li><li>Click a day to add a post (platform + text).</li><li>Click a scheduled post to edit or delete it.</li><li>Export the month as text when ready.</li></ol>
+    </div>
+    <div class="info-card">
+      <h2>❓ Frequently asked questions</h2>
+      <div class="faq"><details><summary>How do I schedule posts?</summary><p>Pick a month, click any day to add a post (platform + text), and it saves automatically to this browser.</p></details><details><summary>Can I set the platform per post?</summary><p>Yes — each post stores its platform (Instagram, TikTok, YouTube, X, Facebook, LinkedIn) shown as a badge on the day.</p></details><details><summary>How do I export the calendar?</summary><p>Click Export Text to download the whole month as a readable schedule.</p></details><details><summary>Where is the calendar saved?</summary><p>In this browser&#39;s localStorage, keyed by month.</p></details></div>
+    </div>
+  </div>
+
+  <section class="section">
+    <h2>🔗 Related tools</h2>
+    <div class="tool-grid"><a class="tool-link" href="/tools/bio-generator/" data-search="bio generator create 4 polished social-media bios from your name, profession and interests in professional, funny, minimalist or inspirational tones. click to copy. bio generator instagram bio ideas social media bio"><span class="t-ico">📣</span><span class="t-body"><b>Bio Generator</b><small>Create 4 polished social-media bios from your name, profession and interests in Professional…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/caption-counter/" data-search="instagram caption counter write instagram captions with live stats — characters vs the 2,200 limit, hashtags, mentions and the 125-char fold preview. instagram caption counter caption character limit hashtag counter instagram caption length"><span class="t-ico">📣</span><span class="t-body"><b>Instagram Caption Counter</b><small>Write Instagram captions with live stats — characters vs the 2,200 limit, hashtags, mentions…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/caption-generator/" data-search="caption generator get 6 engaging captions for any topic in funny, aesthetic, motivational, savage or cute moods, plus a matching hashtag line. one-tap copy included. caption generator instagram captions social media captions"><span class="t-ico">📣</span><span class="t-body"><b>Caption Generator</b><small>Get 6 engaging captions for any topic in Funny, Aesthetic, Motivational, Savage or Cute mood…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/engagement-rate-calculator/" data-search="engagement rate calculator calculate engagement rate from likes, comments, shares and followers or reach. engagement rate calculator instagram engagement rate social media engagement er calculator"><span class="t-ico">📣</span><span class="t-body"><b>Engagement Rate Calculator</b><small>Calculate engagement rate from likes, comments, shares and followers or reach.</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/facebook-ad-copy-generator/" data-search="facebook ad copy generator generate facebook ad copy: primary text, headline and cta combinations. facebook ad copy fb ad generator ad copy generator facebook ads text"><span class="t-ico">📣</span><span class="t-body"><b>Facebook Ad Copy Generator</b><small>Generate Facebook ad copy: primary text, headline and CTA combinations.</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/fancy-text-generator/" data-search="fancy text generator turn plain text into 24 stylish unicode fonts and emoji styles — bold, italic, script, fraktur, monospace, circled, upside-down, sparkle-wrapped, emoji-framed and more — with one-tap copy on each style. fancy text generator stylish text unicode text styles"><span class="t-ico">📣</span><span class="t-body"><b>Fancy Text Generator</b><small>Turn plain text into 24 stylish Unicode fonts and emoji styles — bold, italic, script, frakt…</small></span><span class="t-arrow">→</span></a></div>
+  </section>
+</main>
+
+<!-- ADSTERRA-FOOTER: paste your Adsterra footer/banner ad code inside the div below -->
+<div class="container"><div class="ad-slot" data-ad="footer"></div></div>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="f-grid">
+      <div>
+        <span class="brandline"><span class="logo-mark">T</span> ToolNest</span>
+        <p>Free online tools that actually work. No sign-up, no watermarks — and your files never leave your device for client-side tools.</p>
+      </div>
+      <div>
+        <h4>Popular</h4>
+        <a href="/tools/qr-code-generator/">QR Code Generator</a>
+        <a href="/tools/background-remover/">Background Remover</a>
+        <a href="/tools/pdf-merger/">PDF Merger</a>
+        <a href="/tools/word-counter/">Word Counter</a>
+      </div>
+      <div>
+        <h4>Categories</h4>
+        <a href="/#image">Image Tools</a>
+        <a href="/#pdf">PDF &amp; Documents</a>
+        <a href="/#calculators">Calculators</a>
+        <a href="/#developer">Developer Tools</a>
+      </div>
+      <div>
+        <h4>Site</h4>
+        <a href="/">Home</a>
+        <a href="/#all-tools">All Tools</a>
+        <a href="/sitemap.xml">Sitemap</a>
+      </div>
+    </div>
+    <div class="f-bottom">© 2026 ToolNest · Free tools for everyone · Made with care</div>
+  </div>
+</footer>
+
+<script src="/assets/site.js?v=5"></script>
+
+<script>
+/* Content Calendar Maker — month grid, schedule posts per day, localStorage, export. */
+(function () {
+  'use strict';
+
+  var SLUG = 'content-calendar-maker';
+  var KEY = 'tn-' + SLUG + '-cal';
+  var selectedDay = null;
+
+  var PLAT_COLORS = { Instagram: '#e1306c', TikTok: '#25f4ee', YouTube: '#ff0000', X: '#aaa', Facebook: '#1877f2', LinkedIn: '#0a66c2' };
+
+  function load() {
+    try {
+      var obj = JSON.parse(localStorage.getItem(KEY) || '{}');
+      return (obj && typeof obj === 'object') ? obj : {};
+    } catch (e) { return {}; }
+  }
+
+  function persist(cal) {
+    try { localStorage.setItem(KEY, JSON.stringify(cal)); }
+    catch (e) { TN.setErr(SLUG + '-error', 'Could not save — browser storage is unavailable.'); }
+  }
+
+  function monthStr() {
+    var d = new Date();
+    return d.getFullYear() + '-' + ('0' + (d.getMonth() + 1)).slice(-2);
+  }
+
+  function pad(n) { return ('0' + n).slice(-2); }
+
+  function render() {
+    var ym = TN.el(SLUG + '-month').value || monthStr();
+    var parts = ym.split('-');
+    var y = parseInt(parts[0], 10), m = parseInt(parts[1], 10) - 1;
+    var cal = load();
+    TN.el(SLUG + '-title').textContent = new Date(y, m, 1).toLocaleDateString(undefined, { month: 'long', year: 'numeric' });
+
+    var first = new Date(y, m, 1);
+    var startDow = (first.getDay() + 6) % 7; // Monday first
+    var daysInMonth = new Date(y, m + 1, 0).getDate();
+    var grid = TN.el(SLUG + '-grid');
+    grid.innerHTML = '';
+    ['M', 'T', 'W', 'T', 'F', 'S', 'S'].forEach(function (d) {
+      var h = document.createElement('div');
+      h.style.cssText = 'text-align:center;font-weight:bold;font-size:12px;color:#888;padding:4px';
+      h.textContent = d;
+      grid.appendChild(h);
+    });
+    for (var i = 0; i < startDow; i++) grid.appendChild(document.createElement('div'));
+    for (var day = 1; day <= daysInMonth; day++) {
+      (function (d) {
+        var key = y + '-' + pad(m + 1) + '-' + pad(d);
+        var cell = document.createElement('button');
+        cell.type = 'button';
+        var posts = cal[key] || [];
+        cell.innerHTML = '<div style="font-weight:bold">' + d + '</div>' +
+          (posts.length ? '<div style="font-size:10px">' + posts.slice(0, 3).map(function (p) {
+            return '<span style="display:inline-block;background:' + (PLAT_COLORS[p.platform] || '#666') + ';color:#fff;border-radius:6px;padding:1px 5px;margin:1px" title="' + TN.esc(p.text) + '">' + TN.esc(p.platform.slice(0, 2)) + '</span>';
+          }).join('') + (posts.length > 3 ? '<span class="muted">+' + (posts.length - 3) + '</span>' : '') + '</div>' : '');
+        cell.style.cssText = 'min-height:64px;border-radius:8px;border:1px solid ' +
+          (key === selectedDay ? '#4D7C0F' : '#444') + ';background:#1b1b1b;color:#fff;cursor:pointer;padding:4px;font-size:12px';
+        cell.addEventListener('click', function () { selectDay(key); });
+        grid.appendChild(cell);
+      })(day);
+    }
+  }
+
+  function selectDay(key) {
+    selectedDay = key;
+    render();
+    TN.el(SLUG + '-daypane').style.display = 'block';
+    TN.el(SLUG + '-daylabel').textContent = key;
+    renderPosts();
+  }
+
+  function renderPosts() {
+    var cal = load();
+    var posts = cal[selectedDay] || [];
+    var box = TN.el(SLUG + '-posts');
+    if (!posts.length) { box.innerHTML = '<p class="muted">No posts scheduled for this day.</p>'; return; }
+    box.innerHTML = posts.map(function (p, i) {
+      return '<div class="tool-card" style="margin:6px 0">' +
+        '<span style="background:' + (PLAT_COLORS[p.platform] || '#666') + ';color:#fff;border-radius:8px;padding:2px 8px;font-size:12px;font-weight:bold">' + TN.esc(p.platform) + '</span> ' +
+        TN.esc(p.text) +
+        ' <button class="btn btn-sm btn-outline" data-del="' + i + '" style="float:right">×</button></div>';
+    }).join('');
+    var dels = box.querySelectorAll('[data-del]');
+    for (var i = 0; i < dels.length; i++) {
+      (function (b) {
+        b.addEventListener('click', function () {
+          var c = load();
+          (c[selectedDay] || []).splice(parseInt(b.getAttribute('data-del'), 10), 1);
+          if (!(c[selectedDay] || []).length) delete c[selectedDay];
+          persist(c);
+          render(); renderPosts();
+        });
+      })(dels[i]);
+    }
+  }
+
+  function addPost() {
+    TN.clearErr(SLUG + '-error');
+    if (!selectedDay) { TN.setErr(SLUG + '-error', 'Click a day first.'); return; }
+    var text = TN.el(SLUG + '-text').value.trim();
+    var platform = TN.el(SLUG + '-platform').value;
+    if (!text) { TN.setErr(SLUG + '-error', 'Type the post idea first.'); return; }
+    var cal = load();
+    if (!cal[selectedDay]) cal[selectedDay] = [];
+    cal[selectedDay].push({ platform: platform, text: text });
+    persist(cal);
+    TN.el(SLUG + '-text').value = '';
+    render(); renderPosts();
+  }
+
+  function exportText() {
+    TN.clearErr(SLUG + '-error');
+    var cal = load();
+    var keys = Object.keys(cal).sort();
+    if (!keys.length) { TN.setErr(SLUG + '-error', 'Nothing scheduled yet.'); return; }
+    var out = 'CONTENT CALENDAR\n\n' + keys.map(function (k) {
+      return k + '\n' + cal[k].map(function (p) { return '  [' + p.platform + '] ' + p.text; }).join('\n');
+    }).join('\n\n') + '\n';
+    TN.downloadText(out, 'content-calendar.txt', 'text/plain');
+  }
+
+  function init() {
+    try {
+      if (!TN.el(SLUG + '-month')) return;
+      TN.el(SLUG + '-month').value = monthStr();
+      TN.el(SLUG + '-month').addEventListener('change', function () { selectedDay = null; TN.el(SLUG + '-daypane').style.display = 'none'; render(); });
+      TN.on(SLUG + '-add', 'click', addPost);
+      TN.on(SLUG + '-export', 'click', exportText);
+      render();
+    } catch (e) { /* never throw on load */ }
+  }
+
+  init();
+})();
+</script>
+</body>
+</html>

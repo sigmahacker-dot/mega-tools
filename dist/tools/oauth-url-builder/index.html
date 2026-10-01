@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>OAuth URL Builder — Free Online | ToolNest</title>
+<meta name="description" content="Build OAuth 2.0 authorization URLs for Google, GitHub, Microsoft, Discord or a custom provider.">
+<meta name="keywords" content="oauth url builder, oauth2 authorization url, google oauth url, github oauth authorize">
+<link rel="canonical" href="https://toolnest.vercel.app/tools/oauth-url-builder/">
+<meta name="theme-color" content="#07070b">
+<meta property="og:title" content="OAuth URL Builder — Free Online | ToolNest">
+<meta property="og:description" content="Build OAuth 2.0 authorization URLs for Google, GitHub, Microsoft, Discord or a custom provider.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css?v=4">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%23e01111'/><text x='50' y='68' font-size='58' text-anchor='middle' fill='white' font-family='Arial' font-weight='bold'>T</text></svg>">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebApplication","name":"OAuth URL Builder","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0"},"url":"https://toolnest.vercel.app/tools/oauth-url-builder/","description":"Build OAuth 2.0 authorization URLs for Google, GitHub, Microsoft, Discord or a custom provider."},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Which providers are supported?","acceptedAnswer":{"@type":"Answer","text":"Google, GitHub, Microsoft (common endpoint) and Discord, plus a Custom option where you paste any authorization endpoint."}},{"@type":"Question","name":"What scopes should I use?","acceptedAnswer":{"@type":"Answer","text":"Each provider preselects sensible defaults (e.g. openid email profile for Google). Adjust to the permissions your app needs."}},{"@type":"Question","name":"What is the state parameter?","acceptedAnswer":{"@type":"Answer","text":"A random value your app checks on callback to prevent CSRF attacks. Use the Generate button for a cryptographically random one."}},{"@type":"Question","name":"Does this complete the OAuth flow?","acceptedAnswer":{"@type":"Answer","text":"No — it builds the authorization URL you redirect users to. Your backend still exchanges the returned code for tokens."}}]}]}</script>
+</head>
+<body>
+<header class="site-header">
+  <div class="container">
+    <a class="logo" href="/"><span class="logo-mark">T</span> ToolNest</a>
+    <div class="header-right">
+      <form class="nav-search" action="/" method="get" role="search">
+        <span class="ns-icon">🔍</span>
+        <input type="search" name="q" placeholder="Search tools…" aria-label="Search tools" autocomplete="off">
+      </form>
+      <div class="menu-wrap">
+        <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="menuPanel" aria-label="Open menu"><span></span><span></span><span></span></button>
+        <nav class="menu-panel" id="menuPanel" aria-label="Site">
+          <a href="/">Home</a>
+          <a href="/#categories">Categories</a>
+          <a href="/#all-tools">All Tools</a>
+        </nav>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ADSTERRA-HEADER: paste your Adsterra banner ad code inside the div below -->
+<div class="container"><div class="ad-slot ad-leaderboard" data-ad="header"></div></div>
+
+<main class="container">
+  <nav class="crumbs"><a href="/">Home</a> &rsaquo; <a href="/#developer">Developer Tools</a> &rsaquo; OAuth URL Builder</nav>
+  <div class="tool-hero">
+    <h1>OAuth URL Builder</h1>
+    <p>Build OAuth 2.0 authorization URLs for Google, GitHub, Microsoft, Discord or a custom provider.</p>
+  </div>
+
+  <div class="tool-card">
+  <div class="grid2">
+    <div class="field">
+      <label for="oauth-url-builder-provider">Provider</label>
+      <select class="select" id="oauth-url-builder-provider">
+        <option value="google">Google</option>
+        <option value="github">GitHub</option>
+        <option value="microsoft">Microsoft</option>
+        <option value="discord">Discord</option>
+        <option value="custom">Custom…</option>
+      </select>
+    </div>
+    <div class="field">
+      <label for="oauth-url-builder-endpoint">Authorization endpoint</label>
+      <input class="input" id="oauth-url-builder-endpoint" readonly>
+    </div>
+  </div>
+  <div class="field hidden" id="oauth-url-builder-customwrap">
+    <label for="oauth-url-builder-custom">Custom endpoint URL</label>
+    <input class="input" id="oauth-url-builder-custom" placeholder="https://auth.example.com/oauth/authorize">
+  </div>
+  <div class="grid2">
+    <div class="field">
+      <label for="oauth-url-builder-client">Client ID</label>
+      <input class="input" id="oauth-url-builder-client" placeholder="1234567890-abc.apps.googleusercontent.com">
+    </div>
+    <div class="field">
+      <label for="oauth-url-builder-redirect">Redirect URI</label>
+      <input class="input" id="oauth-url-builder-redirect" placeholder="https://myapp.com/auth/callback">
+    </div>
+  </div>
+  <div class="grid2">
+    <div class="field">
+      <label for="oauth-url-builder-scope">Scopes (space separated)</label>
+      <input class="input" id="oauth-url-builder-scope">
+    </div>
+    <div class="field">
+      <label for="oauth-url-builder-response">Response type</label>
+      <select class="select" id="oauth-url-builder-response">
+        <option value="code">code (authorization code flow)</option>
+        <option value="token">token (implicit)</option>
+        <option value="none">none (GitHub device / omit)</option>
+      </select>
+    </div>
+  </div>
+  <div class="grid2">
+    <div class="field">
+      <label for="oauth-url-builder-state">State (optional)</label>
+      <input class="input" id="oauth-url-builder-state" placeholder="random CSRF token">
+    </div>
+    <div class="field">
+      <label for="oauth-url-builder-extra">Extra params (one k=v per line)</label>
+      <input class="input" id="oauth-url-builder-extra" placeholder="access_type=offline">
+    </div>
+  </div>
+  <div class="btn-row">
+    <button class="btn" id="oauth-url-builder-build">Build URL</button>
+    <button class="btn btn-outline" id="oauth-url-builder-genstate">Generate state</button>
+  </div>
+  <div class="error" id="oauth-url-builder-error"></div>
+  <div class="field">
+    <label for="oauth-url-builder-output">Authorization URL</label>
+    <textarea class="textarea" id="oauth-url-builder-output" rows="5" readonly></textarea>
+  </div>
+  <div class="btn-row">
+    <button class="btn btn-outline" id="oauth-url-builder-copy">Copy URL</button>
+    <button class="btn btn-outline" id="oauth-url-builder-download">Download .txt</button>
+  </div>
+  <p class="note" id="oauth-url-builder-note"></p>
+</div>
+
+
+  <!-- ADSTERRA-INCONTENT: paste your Adsterra native/in-content ad code inside the div below -->
+  <div class="ad-slot" data-ad="incontent"></div>
+
+  <div class="info-grid">
+    <div class="info-card">
+      <h2>📖 How to use</h2>
+      <ol><li>Choose the provider (or Custom for your own endpoint).</li><li>Enter client ID, redirect URI and scopes.</li><li>Optionally generate a random state value.</li><li>Copy the authorization URL or download it.</li></ol>
+    </div>
+    <div class="info-card">
+      <h2>❓ Frequently asked questions</h2>
+      <div class="faq"><details><summary>Which providers are supported?</summary><p>Google, GitHub, Microsoft (common endpoint) and Discord, plus a Custom option where you paste any authorization endpoint.</p></details><details><summary>What scopes should I use?</summary><p>Each provider preselects sensible defaults (e.g. openid email profile for Google). Adjust to the permissions your app needs.</p></details><details><summary>What is the state parameter?</summary><p>A random value your app checks on callback to prevent CSRF attacks. Use the Generate button for a cryptographically random one.</p></details><details><summary>Does this complete the OAuth flow?</summary><p>No — it builds the authorization URL you redirect users to. Your backend still exchanges the returned code for tokens.</p></details></div>
+    </div>
+  </div>
+
+  <section class="section">
+    <h2>🔗 Related tools</h2>
+    <div class="tool-grid"><a class="tool-link" href="/tools/api-key-generator/" data-search="api key generator generate cryptographically secure api keys with crypto.getrandomvalues — hex, base64, base64url or uuid v4. api key generator random api key uuid generator secure token generator"><span class="t-ico">💻</span><span class="t-body"><b>API Key Generator</b><small>Generate cryptographically secure API keys with crypto.getRandomValues — hex, base64, base64…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/ascii-table-reference/" data-search="ascii table reference full ascii table 0–127: decimal, hex, octal, character, control-code names and html entities — searchable. ascii table ascii codes ascii chart control characters ascii reference"><span class="t-ico">💻</span><span class="t-body"><b>ASCII Table Reference</b><small>Full ASCII table 0–127: decimal, hex, octal, character, control-code names and HTML entities…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/badge-generator/" data-search="badge generator design css badges and pills — colors, sizes, shapes — with live preview and copy-ready html/css. badge css generator css pill badge status badge code label badge html"><span class="t-ico">💻</span><span class="t-body"><b>Badge Generator</b><small>Design CSS badges and pills — colors, sizes, shapes — with live preview and copy-ready HTML/…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/base64-encoder-decoder/" data-search="base64 encoder / decoder encode text to base64 or decode base64 back to text, with full utf-8 support and a file-to-data-url converter. base64 encoder base64 decoder base64 encode base64 decode file to base64"><span class="t-ico">💻</span><span class="t-body"><b>Base64 Encoder / Decoder</b><small>Encode text to Base64 or decode Base64 back to text, with full UTF-8 support and a file-to-d…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/basic-auth-header-generator/" data-search="basic auth header generator encode username:password to a base64 authorization header (unicode-safe) — copy or download. basic auth header base64 authorization http basic auth generator authorization header"><span class="t-ico">💻</span><span class="t-body"><b>Basic Auth Header Generator</b><small>Encode username:password to a Base64 Authorization header (Unicode-safe) — copy or download.</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/binary-text-converter/" data-search="binary and text converter convert text to binary or hex and back, with full utf-8 awareness and strict input validation. binary to text text to binary hex to text converter"><span class="t-ico">💻</span><span class="t-body"><b>Binary and Text Converter</b><small>Convert text to binary or hex and back, with full UTF-8 awareness and strict input validatio…</small></span><span class="t-arrow">→</span></a></div>
+  </section>
+</main>
+
+<!-- ADSTERRA-FOOTER: paste your Adsterra footer/banner ad code inside the div below -->
+<div class="container"><div class="ad-slot" data-ad="footer"></div></div>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="f-grid">
+      <div>
+        <span class="brandline"><span class="logo-mark">T</span> ToolNest</span>
+        <p>Free online tools that actually work. No sign-up, no watermarks — and your files never leave your device for client-side tools.</p>
+      </div>
+      <div>
+        <h4>Popular</h4>
+        <a href="/tools/qr-code-generator/">QR Code Generator</a>
+        <a href="/tools/background-remover/">Background Remover</a>
+        <a href="/tools/pdf-merger/">PDF Merger</a>
+        <a href="/tools/word-counter/">Word Counter</a>
+      </div>
+      <div>
+        <h4>Categories</h4>
+        <a href="/#image">Image Tools</a>
+        <a href="/#pdf">PDF &amp; Documents</a>
+        <a href="/#calculators">Calculators</a>
+        <a href="/#developer">Developer Tools</a>
+      </div>
+      <div>
+        <h4>Site</h4>
+        <a href="/">Home</a>
+        <a href="/#all-tools">All Tools</a>
+        <a href="/sitemap.xml">Sitemap</a>
+      </div>
+    </div>
+    <div class="f-bottom">© 2026 ToolNest · Free tools for everyone · Made with care</div>
+  </div>
+</footer>
+
+<script src="/assets/site.js?v=5"></script>
+
+<script>
+/* OAuth URL Builder — provider presets → authorization URL with proper encoding. */
+(function () {
+  'use strict';
+  var SLUG = 'oauth-url-builder';
+  var PROVIDERS = {
+    google: { endpoint: 'https://accounts.google.com/o/oauth2/v2/auth', scope: 'openid email profile',
+      note: 'Google: use response_type=code and exchange the code at https://oauth2.googleapis.com/token.' },
+    github: { endpoint: 'https://github.com/login/oauth/authorize', scope: 'read:user user:email',
+      note: 'GitHub: response_type is not used — select "none" to omit it. Exchange the code at https://github.com/login/oauth/access_token.' },
+    microsoft: { endpoint: 'https://login.microsoftonline.com/common/oauth2/v2.0/authorize', scope: 'openid profile email',
+      note: 'Microsoft: replace "common" with your tenant ID for single-tenant apps.' },
+    discord: { endpoint: 'https://discord.com/api/oauth2/authorize', scope: 'identify email',
+      note: 'Discord: exchange the code at https://discord.com/api/oauth2/token.' },
+    custom: { endpoint: '', scope: '', note: 'Custom: paste your provider\u2019s authorization endpoint above.' }
+  };
+  function el(id) { return document.getElementById(id); }
+  function fail(msg) { TN.setErr(SLUG + '-error', msg); }
+  function clear() { TN.clearErr(SLUG + '-error'); }
+
+  function applyProvider() {
+    var p = PROVIDERS[el(SLUG + '-provider').value];
+    var isCustom = el(SLUG + '-provider').value === 'custom';
+    TN.show(SLUG + '-customwrap');
+    if (!isCustom) TN.hide(SLUG + '-customwrap');
+    el(SLUG + '-endpoint').value = isCustom ? (el(SLUG + '-custom').value.trim() || '(enter custom endpoint)') : p.endpoint;
+    if (!el(SLUG + '-scope').dataset.touched) el(SLUG + '-scope').value = p.scope;
+    if (el(SLUG + '-provider').value === 'github') el(SLUG + '-response').value = 'none';
+    el(SLUG + '-note').textContent = p.note;
+  }
+
+  function build() {
+    clear();
+    var pkey = el(SLUG + '-provider').value;
+    var endpoint = pkey === 'custom' ? el(SLUG + '-custom').value.trim() : PROVIDERS[pkey].endpoint;
+    var client = el(SLUG + '-client').value.trim();
+    var redirect = el(SLUG + '-redirect').value.trim();
+    if (!endpoint || endpoint.charAt(0) !== 'h') { fail('Enter a valid authorization endpoint.'); return; }
+    if (!client) { fail('Enter your client ID.'); return; }
+    if (!redirect) { fail('Enter the redirect URI.'); return; }
+    var params = [['client_id', client]];
+    var rt = el(SLUG + '-response').value;
+    if (rt !== 'none') params.push(['response_type', rt]);
+    params.push(['redirect_uri', redirect]);
+    var scope = el(SLUG + '-scope').value.trim();
+    if (scope) params.push(['scope', scope]);
+    var state = el(SLUG + '-state').value.trim();
+    if (state) params.push(['state', state]);
+    el(SLUG + '-extra').value.split('\n').forEach(function (l) {
+      l = l.trim();
+      if (!l) return;
+      var i = l.indexOf('=');
+      if (i > 0) params.push([l.slice(0, i).trim(), l.slice(i + 1).trim()]);
+    });
+    var qs = params.map(function (kv) {
+      return encodeURIComponent(kv[0]) + '=' + encodeURIComponent(kv[1]);
+    }).join('&');
+    el(SLUG + '-output').value = endpoint + (endpoint.indexOf('?') >= 0 ? '&' : '?') + qs;
+  }
+
+  try {
+    if (!el(SLUG + '-provider')) return;
+    TN.on(SLUG + '-provider', 'change', function () { delete el(SLUG + '-scope').dataset.touched; applyProvider(); });
+    TN.on(SLUG + '-custom', 'input', applyProvider);
+    TN.on(SLUG + '-scope', 'input', function () { el(SLUG + '-scope').dataset.touched = '1'; });
+    TN.on(SLUG + '-genstate', 'click', function () {
+      var b = new Uint8Array(16);
+      crypto.getRandomValues(b);
+      var s = '';
+      for (var i = 0; i < b.length; i++) s += ('0' + b[i].toString(16)).slice(-2);
+      el(SLUG + '-state').value = s;
+    });
+    TN.on(SLUG + '-build', 'click', build);
+    TN.on(SLUG + '-copy', 'click', function () {
+      var v = el(SLUG + '-output').value;
+      if (!v) { fail('Build the URL first.'); return; }
+      TN.copy(v).then(function (ok) { if (!ok) fail('Copy failed — select the text manually.'); });
+    });
+    TN.on(SLUG + '-download', 'click', function () {
+      var v = el(SLUG + '-output').value;
+      if (!v) { fail('Build the URL first.'); return; }
+      TN.downloadText(v + '\n', 'oauth-url.txt', 'text/plain');
+    });
+    applyProvider();
+  } catch (e) { /* never throw on load */ }
+})();
+
+</script>
+</body>
+</html>

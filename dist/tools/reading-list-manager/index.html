@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Reading List — Free Online | ToolNest</title>
+<meta name="description" content="Track your reading list: to-read, reading with progress, and finished books.">
+<meta name="keywords" content="reading list, book tracker app, to read list, reading progress">
+<link rel="canonical" href="https://toolnest.vercel.app/tools/reading-list-manager/">
+<meta name="theme-color" content="#07070b">
+<meta property="og:title" content="Reading List — Free Online | ToolNest">
+<meta property="og:description" content="Track your reading list: to-read, reading with progress, and finished books.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css?v=4">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%23e01111'/><text x='50' y='68' font-size='58' text-anchor='middle' fill='white' font-family='Arial' font-weight='bold'>T</text></svg>">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebApplication","name":"Reading List","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0"},"url":"https://toolnest.vercel.app/tools/reading-list-manager/","description":"Track your reading list: to-read, reading with progress, and finished books."},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How do I add a book?","acceptedAnswer":{"@type":"Answer","text":"Add a title (and optional author), then set its status. Use the progress slider for books you are currently reading."}},{"@type":"Question","name":"What are the three lists?","acceptedAnswer":{"@type":"Answer","text":"The three status lanes are To Read, Reading, and Finished. You can change a book's status any time."}},{"@type":"Question","name":"What does the progress % mean?","acceptedAnswer":{"@type":"Answer","text":"The number is the percentage of the book you have read — just your own estimate."}},{"@type":"Question","name":"Is my reading list saved?","acceptedAnswer":{"@type":"Answer","text":"Yes, stored in this browser's localStorage. It stays private on this device."}}]}]}</script>
+</head>
+<body>
+<header class="site-header">
+  <div class="container">
+    <a class="logo" href="/"><span class="logo-mark">T</span> ToolNest</a>
+    <div class="header-right">
+      <form class="nav-search" action="/" method="get" role="search">
+        <span class="ns-icon">🔍</span>
+        <input type="search" name="q" placeholder="Search tools…" aria-label="Search tools" autocomplete="off">
+      </form>
+      <div class="menu-wrap">
+        <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="menuPanel" aria-label="Open menu"><span></span><span></span><span></span></button>
+        <nav class="menu-panel" id="menuPanel" aria-label="Site">
+          <a href="/">Home</a>
+          <a href="/#categories">Categories</a>
+          <a href="/#all-tools">All Tools</a>
+        </nav>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ADSTERRA-HEADER: paste your Adsterra banner ad code inside the div below -->
+<div class="container"><div class="ad-slot ad-leaderboard" data-ad="header"></div></div>
+
+<main class="container">
+  <nav class="crumbs"><a href="/">Home</a> &rsaquo; <a href="/#fun">Fun &amp; Lifestyle</a> &rsaquo; Reading List</nav>
+  <div class="tool-hero">
+    <h1>Reading List</h1>
+    <p>Track your reading list: to-read, reading with progress, and finished books.</p>
+  </div>
+
+  <div class="tool-card">
+  <div class="grid3">
+    <div class="field">
+      <label for="reading-list-manager-title">Title</label>
+      <input class="input" type="text" id="reading-list-manager-title" placeholder="Book title">
+    </div>
+    <div class="field">
+      <label for="reading-list-manager-author">Author (optional)</label>
+      <input class="input" type="text" id="reading-list-manager-author" placeholder="Author">
+    </div>
+    <div class="field">
+      <label for="reading-list-manager-status">Status</label>
+      <select class="select" id="reading-list-manager-status">
+        <option value="toread">To Read</option>
+        <option value="reading">Reading</option>
+        <option value="finished">Finished</option>
+      </select>
+    </div>
+  </div>
+  <div class="btn-row">
+    <button class="btn" id="reading-list-manager-add">Add Book</button>
+  </div>
+  <div class="error" id="reading-list-manager-error"></div>
+</div>
+
+<div class="tool-card">
+  <div class="grid3">
+    <div><h3>📚 To Read <span class="muted" id="reading-list-manager-c1"></span></h3><div id="reading-list-manager-l1"></div></div>
+    <div><h3>📖 Reading <span class="muted" id="reading-list-manager-c2"></span></h3><div id="reading-list-manager-l2"></div></div>
+    <div><h3>✅ Finished <span class="muted" id="reading-list-manager-c3"></span></h3><div id="reading-list-manager-l3"></div></div>
+  </div>
+</div>
+
+  <!-- ADSTERRA-INCONTENT: paste your Adsterra native/in-content ad code inside the div below -->
+  <div class="ad-slot" data-ad="incontent"></div>
+
+  <div class="info-grid">
+    <div class="info-card">
+      <h2>📖 How to use</h2>
+      <ol><li>Enter the book title and author, pick a status, and click Add Book.</li><li>Move books between lists by changing status on each card.</li><li>Adjust the progress % slider for books you are reading.</li><li>Delete books you no longer want to track.</li></ol>
+    </div>
+    <div class="info-card">
+      <h2>❓ Frequently asked questions</h2>
+      <div class="faq"><details><summary>How do I add a book?</summary><p>Add a title (and optional author), then set its status. Use the progress slider for books you are currently reading.</p></details><details><summary>What are the three lists?</summary><p>The three status lanes are To Read, Reading, and Finished. You can change a book&#39;s status any time.</p></details><details><summary>What does the progress % mean?</summary><p>The number is the percentage of the book you have read — just your own estimate.</p></details><details><summary>Is my reading list saved?</summary><p>Yes, stored in this browser&#39;s localStorage. It stays private on this device.</p></details></div>
+    </div>
+  </div>
+
+  <section class="section">
+    <h2>🔗 Related tools</h2>
+    <div class="tool-grid"><a class="tool-link" href="/tools/100-day-challenge-tracker/" data-search="100-day challenge tracker track a 100-day challenge with a checkable 100-cell grid, streaks and stats. 100 day challenge habit tracker 100 days challenge tracker streak tracker"><span class="t-ico">🎲</span><span class="t-body"><b>100-Day Challenge Tracker</b><small>Track a 100-day challenge with a checkable 100-cell grid, streaks and stats.</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/24-game/" data-search="24 game the 24 game — combine four numbers with + − × ÷ to make 24. built-in solver guarantees every deal and gives hints. 24 game make 24 game 24 puzzle solver math puzzle game"><span class="t-ico">🎲</span><span class="t-body"><b>24 Game</b><small>The 24 Game — combine four numbers with + − × ÷ to make 24. Built-in solver guarantees every…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/aim-trainer-game/" data-search="aim trainer game test and train your aim — targets pop up at random spots for 30 seconds. hits, misses and accuracy are tracked live. aim trainer aim test reaction test click speed test fps aim trainer"><span class="t-ico">🎲</span><span class="t-body"><b>Aim Trainer Game</b><small>Test and train your aim — targets pop up at random spots for 30 seconds. Hits, misses and ac…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/asteroid-shooter/" data-search="asteroid shooter asteroid shooter — rotate, thrust and blast splitting asteroids on canvas. 3 lives, rising levels. asteroid shooter game asteroids game online space shooter canvas"><span class="t-ico">🎲</span><span class="t-body"><b>Asteroid Shooter</b><small>Asteroid Shooter — rotate, thrust and blast splitting asteroids on canvas. 3 lives, rising l…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/attendance-tracker/" data-search="attendance tracker track class attendance: roster with present/absent marks per date and % summaries. attendance tracker class attendance student attendance roll call app"><span class="t-ico">🎲</span><span class="t-body"><b>Attendance Tracker</b><small>Track class attendance: roster with present/absent marks per date and % summaries.</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/baby-name-generator/" data-search="baby name generator discover baby names by gender and origin — pakistani, arabic, western, indian or turkish — with meanings, random picks and tap-to-copy. baby name generator baby names with meanings muslim baby names boy girl names"><span class="t-ico">🎲</span><span class="t-body"><b>Baby Name Generator</b><small>Discover baby names by gender and origin — Pakistani, Arabic, Western, Indian or Turkish — w…</small></span><span class="t-arrow">→</span></a></div>
+  </section>
+</main>
+
+<!-- ADSTERRA-FOOTER: paste your Adsterra footer/banner ad code inside the div below -->
+<div class="container"><div class="ad-slot" data-ad="footer"></div></div>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="f-grid">
+      <div>
+        <span class="brandline"><span class="logo-mark">T</span> ToolNest</span>
+        <p>Free online tools that actually work. No sign-up, no watermarks — and your files never leave your device for client-side tools.</p>
+      </div>
+      <div>
+        <h4>Popular</h4>
+        <a href="/tools/qr-code-generator/">QR Code Generator</a>
+        <a href="/tools/background-remover/">Background Remover</a>
+        <a href="/tools/pdf-merger/">PDF Merger</a>
+        <a href="/tools/word-counter/">Word Counter</a>
+      </div>
+      <div>
+        <h4>Categories</h4>
+        <a href="/#image">Image Tools</a>
+        <a href="/#pdf">PDF &amp; Documents</a>
+        <a href="/#calculators">Calculators</a>
+        <a href="/#developer">Developer Tools</a>
+      </div>
+      <div>
+        <h4>Site</h4>
+        <a href="/">Home</a>
+        <a href="/#all-tools">All Tools</a>
+        <a href="/sitemap.xml">Sitemap</a>
+      </div>
+    </div>
+    <div class="f-bottom">© 2026 ToolNest · Free tools for everyone · Made with care</div>
+  </div>
+</footer>
+
+<script src="/assets/site.js?v=5"></script>
+
+<script>
+/* Reading List — to-read / reading / finished with progress %, localStorage. */
+(function () {
+  'use strict';
+
+  var SLUG = 'reading-list-manager';
+  var KEY = 'tn-' + SLUG + '-books';
+  var STATUSES = { toread: 'To Read', reading: 'Reading', finished: 'Finished' };
+
+  function load() {
+    try {
+      var arr = JSON.parse(localStorage.getItem(KEY) || '[]');
+      return Array.isArray(arr) ? arr : [];
+    } catch (e) { return []; }
+  }
+
+  function persist(books) {
+    try { localStorage.setItem(KEY, JSON.stringify(books)); }
+    catch (e) { TN.setErr(SLUG + '-error', 'Could not save — browser storage is unavailable.'); }
+  }
+
+  function card(b) {
+    var html = '<div class="tool-card" style="margin:8px 0">' +
+      '<strong>' + TN.esc(b.title) + '</strong>' +
+      (b.author ? '<p class="muted" style="margin:2px 0">' + TN.esc(b.author) + '</p>' : '') +
+      '<div class="field" style="margin:6px 0"><label>Progress: <span data-prog-label="' + b.id + '">' + b.progress + '%</span></label>' +
+      '<input type="range" min="0" max="100" value="' + b.progress + '" data-prog="' + b.id + '" style="width:100%"></div>' +
+      '<div class="btn-row">' +
+      '<select class="select" data-status="' + b.id + '" style="max-width:150px">' +
+      Object.keys(STATUSES).map(function (k) {
+        return '<option value="' + k + '"' + (k === b.status ? ' selected' : '') + '>' + STATUSES[k] + '</option>';
+      }).join('') + '</select>' +
+      '<button class="btn btn-sm btn-outline" data-del="' + b.id + '">Delete</button>' +
+      '</div></div>';
+    return html;
+  }
+
+  function bind(scope, books) {
+    var dels = scope.querySelectorAll('[data-del]');
+    var sels = scope.querySelectorAll('[data-status]');
+    var progs = scope.querySelectorAll('[data-prog]');
+    var i;
+    for (i = 0; i < dels.length; i++) {
+      (function (btn) {
+        btn.addEventListener('click', function () {
+          persist(load().filter(function (b) { return String(b.id) !== btn.getAttribute('data-del'); }));
+          render();
+        });
+      })(dels[i]);
+    }
+    for (i = 0; i < sels.length; i++) {
+      (function (sel) {
+        sel.addEventListener('change', function () {
+          var books2 = load();
+          var b = books2.filter(function (x) { return String(x.id) === sel.getAttribute('data-status'); })[0];
+          if (b) {
+            b.status = sel.value;
+            if (sel.value === 'finished') b.progress = 100;
+            if (sel.value === 'toread') b.progress = 0;
+            persist(books2); render();
+          }
+        });
+      })(sels[i]);
+    }
+    for (i = 0; i < progs.length; i++) {
+      (function (rg) {
+        rg.addEventListener('input', function () {
+          var label = scope.querySelector('[data-prog-label="' + rg.getAttribute('data-prog') + '"]');
+          if (label) label.textContent = rg.value + '%';
+        });
+        rg.addEventListener('change', function () {
+          var books2 = load();
+          var b = books2.filter(function (x) { return String(x.id) === rg.getAttribute('data-prog'); })[0];
+          if (b) { b.progress = parseInt(rg.value, 10); persist(books2); }
+        });
+      })(progs[i]);
+    }
+  }
+
+  function render() {
+    var books = load();
+    ['l1', 'l2', 'l3'].forEach(function (l) { TN.el(SLUG + '-' + l).innerHTML = ''; });
+    var lanes = { toread: [], reading: [], finished: [] };
+    books.forEach(function (b) { (lanes[b.status] || lanes.toread).push(b); });
+    var map = { toread: 'l1', reading: 'l2', finished: 'l3' };
+    var cnt = { toread: 'c1', reading: 'c2', finished: 'c3' };
+    Object.keys(map).forEach(function (k) {
+      var box = TN.el(SLUG + '-' + map[k]);
+      TN.el(SLUG + '-' + cnt[k]).textContent = '(' + lanes[k].length + ')';
+      if (!lanes[k].length) { box.innerHTML = '<p class="muted">Empty.</p>'; return; }
+      box.innerHTML = lanes[k].map(card).join('');
+      bind(box);
+    });
+  }
+
+  function add() {
+    TN.clearErr(SLUG + '-error');
+    var title = TN.el(SLUG + '-title').value.trim();
+    var author = TN.el(SLUG + '-author').value.trim();
+    var status = TN.el(SLUG + '-status').value;
+    if (!title) { TN.setErr(SLUG + '-error', 'Please enter a book title.'); return; }
+    var books = load();
+    books.push({ id: Date.now(), title: title, author: author, status: status, progress: status === 'finished' ? 100 : 0 });
+    persist(books);
+    TN.el(SLUG + '-title').value = '';
+    TN.el(SLUG + '-author').value = '';
+    render();
+  }
+
+  function init() {
+    try {
+      if (!TN.el(SLUG + '-add')) return;
+      TN.on(SLUG + '-add', 'click', add);
+      render();
+    } catch (e) { /* never throw on load */ }
+  }
+
+  init();
+})();
+</script>
+</body>
+</html>

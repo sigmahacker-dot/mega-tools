@@ -1,0 +1,71 @@
+<div class="tool-card">
+  <div class="grid3">
+    <div class="field checkline" style="align-self:end">
+      <input type="checkbox" id="editorconfig-generator-root" checked>
+      <label for="editorconfig-generator-root">root = true</label>
+    </div>
+    <div class="field">
+      <label for="editorconfig-generator-charset">Charset</label>
+      <select class="select" id="editorconfig-generator-charset">
+        <option value="utf-8">utf-8</option>
+        <option value="utf-8-bom">utf-8-bom</option>
+        <option value="latin1">latin1</option>
+      </select>
+    </div>
+    <div class="field">
+      <label for="editorconfig-generator-eol">End of line</label>
+      <select class="select" id="editorconfig-generator-eol">
+        <option value="lf">lf</option>
+        <option value="crlf">crlf</option>
+        <option value="cr">cr</option>
+      </select>
+    </div>
+  </div>
+  <div class="grid3">
+    <div class="field">
+      <label for="editorconfig-generator-indent">Indent style</label>
+      <select class="select" id="editorconfig-generator-indent">
+        <option value="space">space</option>
+        <option value="tab">tab</option>
+      </select>
+    </div>
+    <div class="field">
+      <label for="editorconfig-generator-size">Indent size</label>
+      <input class="input" id="editorconfig-generator-size" type="number" value="2" min="1" max="8">
+    </div>
+    <div class="field">
+      <label for="editorconfig-generator-maxlen">Max line length (0 = unset)</label>
+      <input class="input" id="editorconfig-generator-maxlen" type="number" value="0" min="0" max="200">
+    </div>
+  </div>
+  <div class="grid2">
+    <div class="field checkline">
+      <input type="checkbox" id="editorconfig-generator-trim" checked>
+      <label for="editorconfig-generator-trim">trim_trailing_whitespace</label>
+    </div>
+    <div class="field checkline">
+      <input type="checkbox" id="editorconfig-generator-final" checked>
+      <label for="editorconfig-generator-final">insert_final_newline</label>
+    </div>
+  </div>
+  <div class="field">
+    <label for="editorconfig-generator-section">Extra section (blank = none; e.g. [*.{js,ts}] with overrides)</label>
+    <textarea class="textarea" id="editorconfig-generator-section" rows="3" style="font-family:monospace">[*.{js,ts}]
+indent_size = 2
+
+[*.md]
+trim_trailing_whitespace = false</textarea>
+  </div>
+  <div class="btn-row">
+    <button class="btn" id="editorconfig-generator-generate">Generate .editorconfig</button>
+  </div>
+  <div class="error" id="editorconfig-generator-error"></div>
+  <div class="field">
+    <label for="editorconfig-generator-output">.editorconfig</label>
+    <textarea class="textarea" id="editorconfig-generator-output" rows="14" readonly style="font-family:monospace"></textarea>
+  </div>
+  <div class="btn-row">
+    <button class="btn btn-outline" id="editorconfig-generator-copy">Copy config</button>
+    <button class="btn btn-outline" id="editorconfig-generator-download">Download .editorconfig</button>
+  </div>
+</div>

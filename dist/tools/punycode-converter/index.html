@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Punycode Converter — Free Online | ToolNest</title>
+<meta name="description" content="Real IDN punycode encode/decode (RFC 3492, implemented locally) — verified against known test vectors.">
+<meta name="keywords" content="punycode converter, idn encode, xn-- decoder, internationalized domain">
+<link rel="canonical" href="https://toolnest.vercel.app/tools/punycode-converter/">
+<meta name="theme-color" content="#07070b">
+<meta property="og:title" content="Punycode Converter — Free Online | ToolNest">
+<meta property="og:description" content="Real IDN punycode encode/decode (RFC 3492, implemented locally) — verified against known test vectors.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css?v=4">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%23e01111'/><text x='50' y='68' font-size='58' text-anchor='middle' fill='white' font-family='Arial' font-weight='bold'>T</text></svg>">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebApplication","name":"Punycode Converter","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0"},"url":"https://toolnest.vercel.app/tools/punycode-converter/","description":"Real IDN punycode encode/decode (RFC 3492, implemented locally) — verified against known test vectors."},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What is punycode?","acceptedAnswer":{"@type":"Answer","text":"The RFC 3492 encoding that represents Unicode domain labels in ASCII, e.g. münchen → xn--mnchen-3ya."}},{"@type":"Question","name":"How do I know it is correct?","acceptedAnswer":{"@type":"Answer","text":"The tool self-tests on load against the known vector \"münchen\" ↔ \"xn--mnchen-3ya\" and shows PASS/FAIL."}},{"@type":"Question","name":"Does it handle full domains?","acceptedAnswer":{"@type":"Answer","text":"Yes — each dot-separated label is converted independently; ASCII labels pass through."}},{"@type":"Question","name":"Is anything sent to a server?","acceptedAnswer":{"@type":"Answer","text":"No — the algorithm is implemented in JavaScript and runs entirely in your browser."}}]}]}</script>
+</head>
+<body>
+<header class="site-header">
+  <div class="container">
+    <a class="logo" href="/"><span class="logo-mark">T</span> ToolNest</a>
+    <div class="header-right">
+      <form class="nav-search" action="/" method="get" role="search">
+        <span class="ns-icon">🔍</span>
+        <input type="search" name="q" placeholder="Search tools…" aria-label="Search tools" autocomplete="off">
+      </form>
+      <div class="menu-wrap">
+        <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="menuPanel" aria-label="Open menu"><span></span><span></span><span></span></button>
+        <nav class="menu-panel" id="menuPanel" aria-label="Site">
+          <a href="/">Home</a>
+          <a href="/#categories">Categories</a>
+          <a href="/#all-tools">All Tools</a>
+        </nav>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ADSTERRA-HEADER: paste your Adsterra banner ad code inside the div below -->
+<div class="container"><div class="ad-slot ad-leaderboard" data-ad="header"></div></div>
+
+<main class="container">
+  <nav class="crumbs"><a href="/">Home</a> &rsaquo; <a href="/#developer">Developer Tools</a> &rsaquo; Punycode Converter</nav>
+  <div class="tool-hero">
+    <h1>Punycode Converter</h1>
+    <p>Real IDN punycode encode/decode (RFC 3492, implemented locally) — verified against known test vectors.</p>
+  </div>
+
+  <div class="tool-card">
+  <div class="field">
+    <label for="punycode-converter-input">Domain or label</label>
+    <input class="input" id="punycode-converter-input" value="münchen.de">
+  </div>
+  <div class="btn-row">
+    <button class="btn" id="punycode-converter-encode">Encode → punycode</button>
+    <button class="btn btn-outline" id="punycode-converter-decode">Decode → Unicode</button>
+  </div>
+  <div class="error" id="punycode-converter-error"></div>
+  <div class="field">
+    <label for="punycode-converter-output">Result</label>
+    <textarea class="textarea" id="punycode-converter-output" rows="3" readonly style="font-family:monospace"></textarea>
+  </div>
+  <div class="btn-row">
+    <button class="btn btn-outline" id="punycode-converter-copy">Copy result</button>
+    <button class="btn btn-outline" id="punycode-converter-download">Download .txt</button>
+  </div>
+  <p class="note" id="punycode-converter-selftest">Self-test: running…</p>
+</div>
+
+
+  <!-- ADSTERRA-INCONTENT: paste your Adsterra native/in-content ad code inside the div below -->
+  <div class="ad-slot" data-ad="incontent"></div>
+
+  <div class="info-grid">
+    <div class="info-card">
+      <h2>📖 How to use</h2>
+      <ol><li>Type a domain or label (e.g. münchen.de).</li><li>Click Encode for punycode, Decode for Unicode.</li><li>Check the built-in self-test result.</li><li>Copy or download the conversion.</li></ol>
+    </div>
+    <div class="info-card">
+      <h2>❓ Frequently asked questions</h2>
+      <div class="faq"><details><summary>What is punycode?</summary><p>The RFC 3492 encoding that represents Unicode domain labels in ASCII, e.g. münchen → xn--mnchen-3ya.</p></details><details><summary>How do I know it is correct?</summary><p>The tool self-tests on load against the known vector &quot;münchen&quot; ↔ &quot;xn--mnchen-3ya&quot; and shows PASS/FAIL.</p></details><details><summary>Does it handle full domains?</summary><p>Yes — each dot-separated label is converted independently; ASCII labels pass through.</p></details><details><summary>Is anything sent to a server?</summary><p>No — the algorithm is implemented in JavaScript and runs entirely in your browser.</p></details></div>
+    </div>
+  </div>
+
+  <section class="section">
+    <h2>🔗 Related tools</h2>
+    <div class="tool-grid"><a class="tool-link" href="/tools/api-key-generator/" data-search="api key generator generate cryptographically secure api keys with crypto.getrandomvalues — hex, base64, base64url or uuid v4. api key generator random api key uuid generator secure token generator"><span class="t-ico">💻</span><span class="t-body"><b>API Key Generator</b><small>Generate cryptographically secure API keys with crypto.getRandomValues — hex, base64, base64…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/ascii-table-reference/" data-search="ascii table reference full ascii table 0–127: decimal, hex, octal, character, control-code names and html entities — searchable. ascii table ascii codes ascii chart control characters ascii reference"><span class="t-ico">💻</span><span class="t-body"><b>ASCII Table Reference</b><small>Full ASCII table 0–127: decimal, hex, octal, character, control-code names and HTML entities…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/badge-generator/" data-search="badge generator design css badges and pills — colors, sizes, shapes — with live preview and copy-ready html/css. badge css generator css pill badge status badge code label badge html"><span class="t-ico">💻</span><span class="t-body"><b>Badge Generator</b><small>Design CSS badges and pills — colors, sizes, shapes — with live preview and copy-ready HTML/…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/base64-encoder-decoder/" data-search="base64 encoder / decoder encode text to base64 or decode base64 back to text, with full utf-8 support and a file-to-data-url converter. base64 encoder base64 decoder base64 encode base64 decode file to base64"><span class="t-ico">💻</span><span class="t-body"><b>Base64 Encoder / Decoder</b><small>Encode text to Base64 or decode Base64 back to text, with full UTF-8 support and a file-to-d…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/basic-auth-header-generator/" data-search="basic auth header generator encode username:password to a base64 authorization header (unicode-safe) — copy or download. basic auth header base64 authorization http basic auth generator authorization header"><span class="t-ico">💻</span><span class="t-body"><b>Basic Auth Header Generator</b><small>Encode username:password to a Base64 Authorization header (Unicode-safe) — copy or download.</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/binary-text-converter/" data-search="binary and text converter convert text to binary or hex and back, with full utf-8 awareness and strict input validation. binary to text text to binary hex to text converter"><span class="t-ico">💻</span><span class="t-body"><b>Binary and Text Converter</b><small>Convert text to binary or hex and back, with full UTF-8 awareness and strict input validatio…</small></span><span class="t-arrow">→</span></a></div>
+  </section>
+</main>
+
+<!-- ADSTERRA-FOOTER: paste your Adsterra footer/banner ad code inside the div below -->
+<div class="container"><div class="ad-slot" data-ad="footer"></div></div>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="f-grid">
+      <div>
+        <span class="brandline"><span class="logo-mark">T</span> ToolNest</span>
+        <p>Free online tools that actually work. No sign-up, no watermarks — and your files never leave your device for client-side tools.</p>
+      </div>
+      <div>
+        <h4>Popular</h4>
+        <a href="/tools/qr-code-generator/">QR Code Generator</a>
+        <a href="/tools/background-remover/">Background Remover</a>
+        <a href="/tools/pdf-merger/">PDF Merger</a>
+        <a href="/tools/word-counter/">Word Counter</a>
+      </div>
+      <div>
+        <h4>Categories</h4>
+        <a href="/#image">Image Tools</a>
+        <a href="/#pdf">PDF &amp; Documents</a>
+        <a href="/#calculators">Calculators</a>
+        <a href="/#developer">Developer Tools</a>
+      </div>
+      <div>
+        <h4>Site</h4>
+        <a href="/">Home</a>
+        <a href="/#all-tools">All Tools</a>
+        <a href="/sitemap.xml">Sitemap</a>
+      </div>
+    </div>
+    <div class="f-bottom">© 2026 ToolNest · Free tools for everyone · Made with care</div>
+  </div>
+</footer>
+
+<script src="/assets/site.js?v=5"></script>
+
+<script>
+/* Punycode Converter — RFC 3492 encode/decode implemented locally, self-tested. */
+(function () {
+  'use strict';
+  var SLUG = 'punycode-converter';
+  var maxInt = 2147483647, base = 36, tMin = 1, tMax = 26, skew = 38, damp = 700;
+  var initialBias = 72, initialN = 128, delimiter = '-';
+  function el(id) { return document.getElementById(id); }
+  function fail(msg) { TN.setErr(SLUG + '-error', msg); }
+  function clear() { TN.clearErr(SLUG + '-error'); }
+
+  function ucs2decode(s) {
+    var out = [], i = 0;
+    while (i < s.length) {
+      var c = s.charCodeAt(i++);
+      if (c >= 0xD800 && c <= 0xDBFF && i < s.length) {
+        var d = s.charCodeAt(i);
+        if (d >= 0xDC00 && d <= 0xDFFF) { out.push(((c - 0xD800) * 0x400) + (d - 0xDC00) + 0x10000); i++; continue; }
+      }
+      out.push(c);
+    }
+    return out;
+  }
+  function ucs2encode(arr) {
+    var s = '';
+    for (var i = 0; i < arr.length; i++) {
+      var v = arr[i];
+      if (v > 0xFFFF) { v -= 0x10000; s += String.fromCharCode((v >> 10) + 0xD800, (v % 0x400) + 0xDC00); }
+      else s += String.fromCharCode(v);
+    }
+    return s;
+  }
+  function digitToBasic(d, flag) {
+    return d + 22 + 75 * (d < 26 ? 1 : 0) - ((flag !== 0 ? 1 : 0) << 5);
+  }
+  function basicToDigit(cp) {
+    if (cp - 48 < 10) return cp - 22;
+    if (cp - 65 < 26) return cp - 65;
+    if (cp - 97 < 26) return cp - 97;
+    return base;
+  }
+  function adapt(delta, numPoints, firstTime) {
+    var k = 0;
+    delta = firstTime ? Math.floor(delta / damp) : (delta >> 1);
+    delta += Math.floor(delta / numPoints);
+    for (; delta > (((base - tMin) * tMax) >> 1); k += base) delta = Math.floor(delta / (base - tMin));
+    return Math.floor(k + ((base - tMin + 1) * delta) / (delta + skew));
+  }
+  function encodeLabel(input) {
+    var output = [], n = initialN, delta = 0, bias = initialBias, h, b, j, m, q, k, t;
+    var cps = ucs2decode(input);
+    for (j = 0; j < cps.length; j++) if (cps[j] < 0x80) output.push(String.fromCharCode(cps[j]));
+    h = b = output.length;
+    if (b > 0) output.push(delimiter);
+    while (h < cps.length) {
+      m = maxInt;
+      for (j = 0; j < cps.length; j++) { var c = cps[j]; if (c >= n && c < m) m = c; }
+      if (m - n > Math.floor((maxInt - delta) / (h + 1))) throw new Error('Overflow.');
+      delta += (m - n) * (h + 1);
+      n = m;
+      for (j = 0; j < cps.length; j++) {
+        c = cps[j];
+        if (c < n) { if (++delta > maxInt) throw new Error('Overflow.'); }
+        if (c === n) {
+          q = delta;
+          for (k = base; ; k += base) {
+            t = k <= bias ? tMin : (k >= bias + tMax ? tMax : k - bias);
+            if (q < t) break;
+            output.push(String.fromCharCode(digitToBasic(t + ((q - t) % (base - t)), 0)));
+            q = Math.floor((q - t) / (base - t));
+          }
+          output.push(String.fromCharCode(digitToBasic(q, 0)));
+          bias = adapt(delta, h + 1, h === b);
+          delta = 0;
+          h++;
+        }
+      }
+      delta++; n++;
+    }
+    return output.join('');
+  }
+  function decodeLabel(input) {
+    var output = [], n = initialN, i = 0, bias = initialBias, j, index, oldi, w, k, digit, t;
+    var basic = input.lastIndexOf(delimiter);
+    if (basic < 0) basic = 0;
+    for (j = 0; j < basic; j++) {
+      if (input.charCodeAt(j) >= 0x80) throw new Error('Non-basic code point.');
+      output.push(input.charCodeAt(j));
+    }
+    index = basic > 0 ? basic + 1 : 0;
+    while (index < input.length) {
+      oldi = i; w = 1;
+      for (k = base; ; k += base) {
+        if (index >= input.length) throw new Error('Invalid input.');
+        digit = basicToDigit(input.charCodeAt(index++));
+        if (digit >= base || digit > Math.floor((maxInt - i) / w)) throw new Error('Overflow.');
+        i += digit * w;
+        t = k <= bias ? tMin : (k >= bias + tMax ? tMax : k - bias);
+        if (digit < t) break;
+        if (w > Math.floor(maxInt / (base - t))) throw new Error('Overflow.');
+        w *= base - t;
+      }
+      var out = output.length + 1;
+      bias = adapt(i - oldi, out, oldi === 0);
+      if (Math.floor(i / out) > maxInt - n) throw new Error('Overflow.');
+      n += Math.floor(i / out);
+      i %= out;
+      output.splice(i++, 0, n);
+    }
+    return ucs2encode(output);
+  }
+  function toASCII(domain) {
+    return domain.split('.').map(function (label) {
+      return /[^\x00-\x7F]/.test(label) ? 'xn--' + encodeLabel(label) : label;
+    }).join('.');
+  }
+  function toUnicode(domain) {
+    return domain.split('.').map(function (label) {
+      return /^xn--/i.test(label) ? decodeLabel(label.slice(4).toLowerCase()) : label;
+    }).join('.');
+  }
+
+  function convert(dir) {
+    clear();
+    var v = el(SLUG + '-input').value.trim();
+    if (!v) { fail('Enter a domain or label.'); return; }
+    try {
+      el(SLUG + '-output').value = dir === 'encode' ? toASCII(v.toLowerCase()) : toUnicode(v);
+    } catch (e) {
+      fail('Conversion failed: ' + e.message);
+    }
+  }
+
+  try {
+    if (!el(SLUG + '-encode')) return;
+    var st = el(SLUG + '-selftest');
+    try {
+      var ok = encodeLabel('münchen') === 'xn--mnchen-3ya'.slice(4) &&
+               decodeLabel('mnchen-3ya') === 'münchen' &&
+               toASCII('münchen.de') === 'xn--mnchen-3ya.de' &&
+               toUnicode('xn--mnchen-3ya.de') === 'münchen.de';
+      st.textContent = 'Self-test: ' + (ok ? 'PASS' : 'FAIL') + ' — verified "münchen" ↔ "xn--mnchen-3ya".';
+      st.style.color = ok ? '#4ade80' : '#f87171';
+    } catch (e) {
+      st.textContent = 'Self-test: FAIL — ' + e.message;
+      st.style.color = '#f87171';
+    }
+    TN.on(SLUG + '-encode', 'click', function () { convert('encode'); });
+    TN.on(SLUG + '-decode', 'click', function () { convert('decode'); });
+    TN.on(SLUG + '-copy', 'click', function () {
+      var v = el(SLUG + '-output').value;
+      if (!v) { fail('Convert something first.'); return; }
+      TN.copy(v).then(function (ok) { if (!ok) fail('Copy failed — select the text manually.'); });
+    });
+    TN.on(SLUG + '-download', 'click', function () {
+      var v = el(SLUG + '-output').value;
+      if (!v) { fail('Convert something first.'); return; }
+      TN.downloadText(v + '\n', 'punycode.txt', 'text/plain');
+    });
+    convert('encode');
+  } catch (e) { /* never throw on load */ }
+})();
+
+</script>
+</body>
+</html>

@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Heat Index Calculator — Free Online | ToolNest</title>
+<meta name="description" content="The NWS Rothfusz regression for heat index with both low-humidity and high-humidity adjustments, plus danger-level bands.">
+<meta name="keywords" content="heat index calculator, feels like temperature, Rothfusz regression, humidex vs heat index, heat danger level">
+<link rel="canonical" href="https://toolnest.vercel.app/tools/heat-index-calculator/">
+<meta name="theme-color" content="#07070b">
+<meta property="og:title" content="Heat Index Calculator — Free Online | ToolNest">
+<meta property="og:description" content="The NWS Rothfusz regression for heat index with both low-humidity and high-humidity adjustments, plus danger-level bands.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css?v=4">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%23e01111'/><text x='50' y='68' font-size='58' text-anchor='middle' fill='white' font-family='Arial' font-weight='bold'>T</text></svg>">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebApplication","name":"Heat Index Calculator","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0"},"url":"https://toolnest.vercel.app/tools/heat-index-calculator/","description":"The NWS Rothfusz regression for heat index with both low-humidity and high-humidity adjustments, plus danger-level bands."},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What is the heat index formula?","acceptedAnswer":{"@type":"Answer","text":"The Rothfusz regression, published by the US National Weather Service, combines air temperature (°F) and relative humidity (%) into one 'feels like' number. Low-humidity (≤13%) and high-humidity (>85%) adjustments from the NWS are applied."}},{"@type":"Question","name":"What are the heat danger levels?","acceptedAnswer":{"@type":"Answer","text":"80–90°F caution, 91–103°F extreme caution, 104–124°F danger, 125°F+ extreme danger. The tool labels your result automatically."}},{"@type":"Question","name":"Does shade change the heat index?","acceptedAnswer":{"@type":"Answer","text":"Shade can make it feel up to 15°F cooler, while full sun can add up to 15°F to the heat index value."}}]}]}</script>
+</head>
+<body>
+<header class="site-header">
+  <div class="container">
+    <a class="logo" href="/"><span class="logo-mark">T</span> ToolNest</a>
+    <div class="header-right">
+      <form class="nav-search" action="/" method="get" role="search">
+        <span class="ns-icon">🔍</span>
+        <input type="search" name="q" placeholder="Search tools…" aria-label="Search tools" autocomplete="off">
+      </form>
+      <div class="menu-wrap">
+        <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="menuPanel" aria-label="Open menu"><span></span><span></span><span></span></button>
+        <nav class="menu-panel" id="menuPanel" aria-label="Site">
+          <a href="/">Home</a>
+          <a href="/#categories">Categories</a>
+          <a href="/#all-tools">All Tools</a>
+        </nav>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ADSTERRA-HEADER: paste your Adsterra banner ad code inside the div below -->
+<div class="container"><div class="ad-slot ad-leaderboard" data-ad="header"></div></div>
+
+<main class="container">
+  <nav class="crumbs"><a href="/">Home</a> &rsaquo; <a href="/#converters">Converters</a> &rsaquo; Heat Index Calculator</nav>
+  <div class="tool-hero">
+    <h1>Heat Index Calculator</h1>
+    <p>The NWS Rothfusz regression for heat index with both low-humidity and high-humidity adjustments, plus danger-level bands.</p>
+  </div>
+
+  <div class="tool-card">
+  <div class="grid2">
+    <div class="field">
+      <label for="heat-index-calculator-temp">Air temperature</label>
+      <input type="number" step="any" class="input" id="heat-index-calculator-temp" placeholder="e.g. 90">
+    </div>
+    <div class="field">
+      <label for="heat-index-calculator-tunit">Temperature unit</label>
+      <select class="select" id="heat-index-calculator-tunit">
+        <option value="F" selected>Fahrenheit (°F)</option>
+        <option value="C">Celsius (°C)</option>
+      </select>
+    </div>
+  </div>
+  <div class="field">
+    <label for="heat-index-calculator-rh">Relative humidity (%)</label>
+    <input type="number" step="any" min="0" max="100" class="input" id="heat-index-calculator-rh" placeholder="e.g. 60">
+  </div>
+  <div class="error" id="heat-index-calculator-error"></div>
+  <div class="result" id="heat-index-calculator-result">
+    <div class="stat-cards">
+      <div class="stat-card"><div class="v" id="heat-index-calculator-hi">–</div><div class="l">Heat index (feels like)</div></div>
+      <div class="stat-card"><div class="v" id="heat-index-calculator-band">–</div><div class="l">Danger level</div></div>
+    </div>
+    <p class="note" id="heat-index-calculator-note">Rothfusz regression with NWS low/high-humidity adjustments. Bands: 80–90 caution · 91–103 extreme caution · 104–124 danger · 125+ extreme danger.</p>
+  </div>
+</div>
+
+
+  <!-- ADSTERRA-INCONTENT: paste your Adsterra native/in-content ad code inside the div below -->
+  <div class="ad-slot" data-ad="incontent"></div>
+
+  <div class="info-grid">
+    <div class="info-card">
+      <h2>📖 How to use</h2>
+      <ol><li>Enter the air temperature (°F or °C).</li><li>Enter the relative humidity (%).</li><li>Read the heat index and its danger-level band.</li></ol>
+    </div>
+    <div class="info-card">
+      <h2>❓ Frequently asked questions</h2>
+      <div class="faq"><details><summary>What is the heat index formula?</summary><p>The Rothfusz regression, published by the US National Weather Service, combines air temperature (°F) and relative humidity (%) into one &#39;feels like&#39; number. Low-humidity (≤13%) and high-humidity (&gt;85%) adjustments from the NWS are applied.</p></details><details><summary>What are the heat danger levels?</summary><p>80–90°F caution, 91–103°F extreme caution, 104–124°F danger, 125°F+ extreme danger. The tool labels your result automatically.</p></details><details><summary>Does shade change the heat index?</summary><p>Shade can make it feel up to 15°F cooler, while full sun can add up to 15°F to the heat index value.</p></details></div>
+    </div>
+  </div>
+
+  <section class="section">
+    <h2>🔗 Related tools</h2>
+    <div class="tool-grid"><a class="tool-link" href="/tools/altitude-pressure-calculator/" data-search="altitude pressure calculator the barometric formula gives air pressure at any altitude (below 11,000 m) from sea-level pressure — in hpa, inhg and percent of sea level. altitude pressure calculator barometric formula air pressure at altitude pressure vs altitude qnh pressure calculator"><span class="t-ico">🔄</span><span class="t-body"><b>Altitude Pressure Calculator</b><small>The barometric formula gives air pressure at any altitude (below 11,000 m) from sea-level pr…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/angle-converter/" data-search="angle converter convert angles between degrees, radians, gradians, turns, arcminutes, arcseconds and mils. enter a value once and see it in every unit instantly. angle converter degrees to radians radians to degrees gradians converter mils to degrees"><span class="t-ico">🔄</span><span class="t-body"><b>Angle Converter</b><small>Convert angles between degrees, radians, gradians, turns, arcminutes, arcseconds and mils. E…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/area-converter/" data-search="area converter square millimeters to square miles. area converter square feet to square meters acres to hectares"><span class="t-ico">🔄</span><span class="t-body"><b>Area Converter</b><small>Square millimeters to square miles.</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/baking-pan-converter/" data-search="baking pan converter compare pan volumes from dimensions, then scale every ingredient by the exact ratio — plus a batter-fill check. baking pan converter pan size conversion cake pan volume recipe scaling pan size"><span class="t-ico">🔄</span><span class="t-body"><b>Baking Pan Converter</b><small>Compare pan volumes from dimensions, then scale every ingredient by the exact ratio — plus a…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/beaufort-scale-converter/" data-search="beaufort scale converter convert wind speed (km/h, mph, knots, m/s) to the beaufort scale number with official speed ranges and land/sea descriptions. beaufort scale converter wind speed to beaufort beaufort scale chart knots to beaufort gale wind speed"><span class="t-ico">🔄</span><span class="t-body"><b>Beaufort Scale Converter</b><small>Convert wind speed (km/h, mph, knots, m/s) to the Beaufort scale number with official speed …</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/cat-age-converter/" data-search="cat age converter convert cat years to human years with the accepted life-stage chart: 15 for year one, 9 for year two, then about 4 per year. cat age converter cat years to human years how old is my cat cat age chart cat life stages"><span class="t-ico">🔄</span><span class="t-body"><b>Cat Age Converter</b><small>Convert cat years to human years with the accepted life-stage chart: 15 for year one, 9 for …</small></span><span class="t-arrow">→</span></a></div>
+  </section>
+</main>
+
+<!-- ADSTERRA-FOOTER: paste your Adsterra footer/banner ad code inside the div below -->
+<div class="container"><div class="ad-slot" data-ad="footer"></div></div>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="f-grid">
+      <div>
+        <span class="brandline"><span class="logo-mark">T</span> ToolNest</span>
+        <p>Free online tools that actually work. No sign-up, no watermarks — and your files never leave your device for client-side tools.</p>
+      </div>
+      <div>
+        <h4>Popular</h4>
+        <a href="/tools/qr-code-generator/">QR Code Generator</a>
+        <a href="/tools/background-remover/">Background Remover</a>
+        <a href="/tools/pdf-merger/">PDF Merger</a>
+        <a href="/tools/word-counter/">Word Counter</a>
+      </div>
+      <div>
+        <h4>Categories</h4>
+        <a href="/#image">Image Tools</a>
+        <a href="/#pdf">PDF &amp; Documents</a>
+        <a href="/#calculators">Calculators</a>
+        <a href="/#developer">Developer Tools</a>
+      </div>
+      <div>
+        <h4>Site</h4>
+        <a href="/">Home</a>
+        <a href="/#all-tools">All Tools</a>
+        <a href="/sitemap.xml">Sitemap</a>
+      </div>
+    </div>
+    <div class="f-bottom">© 2026 ToolNest · Free tools for everyone · Made with care</div>
+  </div>
+</footer>
+
+<script src="/assets/site.js?v=5"></script>
+
+<script>
+(function () {
+  'use strict';
+  var S = 'heat-index-calculator';
+  function rothfusz(T, R) {
+    var hi = -42.379 + 2.04901523 * T + 10.14333127 * R - 0.22475541 * T * R
+      - 0.00683783 * T * T - 0.05481717 * R * R + 0.00122874 * T * T * R
+      + 0.00085282 * T * R * R - 0.00000199 * T * T * R * R;
+    if (hi < 80) {
+      var simple = 0.5 * (T + 61.0 + ((T - 68.0) * 1.2) + (R * 0.094));
+      if ((simple + T) / 2 < 80) hi = simple;
+    } else {
+      if (R <= 13 && T >= 80 && T <= 112) {
+        hi -= ((13 - R) / 4) * Math.sqrt((17 - Math.abs(T - 95)) / 17);
+      } else if (R > 85 && T >= 80 && T <= 87) {
+        hi += ((R - 85) / 10) * ((87 - T) / 5);
+      }
+    }
+    return hi;
+  }
+  function band(hi) {
+    if (hi < 80) return 'No caution';
+    if (hi <= 90) return 'Caution';
+    if (hi <= 103) return 'Extreme caution';
+    if (hi <= 124) return 'Danger';
+    return 'Extreme danger';
+  }
+  function convert() {
+    try {
+      TN.clearErr(S + '-error');
+      var hiEl = TN.el(S + '-hi'), bEl = TN.el(S + '-band'), noteEl = TN.el(S + '-note');
+      var tRaw = TN.el(S + '-temp').value, rRaw = TN.el(S + '-rh').value;
+      if ((tRaw === '' || tRaw === null) && (rRaw === '' || rRaw === null)) {
+        if (hiEl) hiEl.textContent = '–';
+        if (bEl) bEl.textContent = '–';
+        return;
+      }
+      var t = parseFloat(tRaw), R = parseFloat(rRaw);
+      if (!isFinite(t)) { TN.setErr(S + '-error', 'Enter a valid temperature.'); return; }
+      if (!isFinite(R) || R < 0 || R > 100) { TN.setErr(S + '-error', 'Enter humidity between 0 and 100%.'); return; }
+      var T = TN.el(S + '-tunit').value === 'C' ? t * 9 / 5 + 32 : t;
+      if (T < 80 || R < 40) {
+        if (noteEl) noteEl.textContent = 'Note: the heat index is designed for temperatures ≥ 80°F (27°C) and humidity ≥ 40% — outside that range it is close to the actual temperature.';
+      }
+      var hi = rothfusz(T, R);
+      var hiC = (hi - 32) * 5 / 9;
+      if (hiEl) hiEl.textContent = Math.round(hi) + ' °F (' + Math.round(hiC) + ' °C)';
+      if (bEl) bEl.textContent = band(hi);
+    } catch (e) { /* never throw on input */ }
+  }
+  function init() {
+    ['temp', 'rh'].forEach(function (k) { TN.on(S + '-' + k, 'input', convert); });
+    TN.on(S + '-tunit', 'change', convert);
+    convert();
+  }
+  try { init(); } catch (e) { /* never throw on load */ }
+})();
+
+</script>
+</body>
+</html>

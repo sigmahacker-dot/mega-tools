@@ -1,0 +1,63 @@
+<div class="tool-card">
+  <div class="grid3">
+    <div class="field">
+      <label for="tsconfig-generator-target">target</label>
+      <select class="select" id="tsconfig-generator-target">
+        <option>ES2022</option><option>ES2021</option><option>ES2020</option>
+        <option>ES2019</option><option>ES2018</option><option>ES2017</option>
+        <option>ES2016</option><option>ES2015</option><option>ESNext</option>
+      </select>
+    </div>
+    <div class="field">
+      <label for="tsconfig-generator-module">module</label>
+      <select class="select" id="tsconfig-generator-module">
+        <option>NodeNext</option><option>ESNext</option><option>CommonJS</option>
+        <option>Node16</option><option>UMD</option><option>System</option>
+      </select>
+    </div>
+    <div class="field">
+      <label for="tsconfig-generator-lib">lib (comma separated, blank = default)</label>
+      <input class="input" id="tsconfig-generator-lib" placeholder="ES2022, DOM">
+    </div>
+  </div>
+  <div class="grid3">
+    <div class="field checkline"><input type="checkbox" id="tsconfig-generator-strict" checked><label for="tsconfig-generator-strict">strict</label></div>
+    <div class="field checkline"><input type="checkbox" id="tsconfig-generator-esinterop" checked><label for="tsconfig-generator-esinterop">esModuleInterop</label></div>
+    <div class="field checkline"><input type="checkbox" id="tsconfig-generator-skiplib" checked><label for="tsconfig-generator-skiplib">skipLibCheck</label></div>
+    <div class="field checkline"><input type="checkbox" id="tsconfig-generator-casing" checked><label for="tsconfig-generator-casing">forceConsistentCasingInFileNames</label></div>
+    <div class="field checkline"><input type="checkbox" id="tsconfig-generator-decl"><label for="tsconfig-generator-decl">declaration</label></div>
+    <div class="field checkline"><input type="checkbox" id="tsconfig-generator-sourcemap" checked><label for="tsconfig-generator-sourcemap">sourceMap</label></div>
+    <div class="field checkline"><input type="checkbox" id="tsconfig-generator-resolvejson"><label for="tsconfig-generator-resolvejson">resolveJsonModule</label></div>
+    <div class="field checkline"><input type="checkbox" id="tsconfig-generator-allowjs"><label for="tsconfig-generator-allowjs">allowJs</label></div>
+    <div class="field checkline"><input type="checkbox" id="tsconfig-generator-isolated" checked><label for="tsconfig-generator-isolated">isolatedModules</label></div>
+  </div>
+  <div class="grid2">
+    <div class="field">
+      <label for="tsconfig-generator-outdir">outDir</label>
+      <input class="input" id="tsconfig-generator-outdir" value="dist">
+    </div>
+    <div class="field">
+      <label for="tsconfig-generator-rootdir">rootDir</label>
+      <input class="input" id="tsconfig-generator-rootdir" value="src">
+    </div>
+  </div>
+  <div class="grid2">
+    <div class="field">
+      <label for="tsconfig-generator-include">include (comma separated)</label>
+      <input class="input" id="tsconfig-generator-include" value="src">
+    </div>
+    <div class="field">
+      <label for="tsconfig-generator-exclude">exclude (comma separated)</label>
+      <input class="input" id="tsconfig-generator-exclude" value="node_modules, dist">
+    </div>
+  </div>
+  <div class="error" id="tsconfig-generator-error"></div>
+  <div class="field">
+    <label for="tsconfig-generator-output">tsconfig.json</label>
+    <textarea class="textarea" id="tsconfig-generator-output" rows="18" readonly style="font-family:monospace"></textarea>
+  </div>
+  <div class="btn-row">
+    <button class="btn btn-outline" id="tsconfig-generator-copy">Copy config</button>
+    <button class="btn btn-outline" id="tsconfig-generator-download">Download tsconfig.json</button>
+  </div>
+</div>

@@ -1,0 +1,20 @@
+{
+  "slug": "bcd-converter",
+  "title": "BCD Converter",
+  "category": "math",
+  "description": "Convert decimal numbers to Binary-Coded Decimal (packed and unpacked) and decode BCD back to decimal, with per-digit nibble breakdowns.",
+  "keywords": ["bcd converter", "binary coded decimal", "packed bcd", "unpacked bcd", "bcd decoder"],
+  "howto": [
+    "Choose decimal → BCD or BCD → decimal.",
+    "For decimal → BCD pick packed (two digits per byte) or unpacked (one nibble per digit) display.",
+    "Press Convert to see each digit as a 4-bit nibble plus the byte/hex view.",
+    "For BCD → decimal, paste nibbles like 1001 0011 and get the decoded number."
+  ],
+  "faqs": [
+    {"q": "What is BCD?", "a": "Binary-Coded Decimal encodes each decimal digit in its own 4-bit nibble (0→0000 … 9→1001). Packed BCD stores two digits per byte; unpacked BCD uses one byte per digit."},
+    {"q": "Why use BCD instead of binary?", "a": "BCD avoids binary↔decimal rounding surprises, so it is used in financial systems, digital clocks and seven-segment display drivers where exact decimal digits matter."},
+    {"q": "Which nibbles are invalid in BCD?", "a": "1010 through 1111 (A–F) are not valid BCD digits. The decoder rejects them and tells you exactly which nibble is bad."}
+  ],
+  "libs": [],
+  "module": false
+}

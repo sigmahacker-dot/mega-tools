@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Baby Cost Calculator — Free Online | ToolNest</title>
+<meta name="description" content="Estimate first-year baby costs from editable monthly and one-time line items.">
+<meta name="keywords" content="baby cost, first year baby expenses, newborn cost">
+<link rel="canonical" href="https://toolnest.vercel.app/tools/baby-cost-calculator/">
+<meta name="theme-color" content="#07070b">
+<meta property="og:title" content="Baby Cost Calculator — Free Online | ToolNest">
+<meta property="og:description" content="Estimate first-year baby costs from editable monthly and one-time line items.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css?v=4">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%23e01111'/><text x='50' y='68' font-size='58' text-anchor='middle' fill='white' font-family='Arial' font-weight='bold'>T</text></svg>">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebApplication","name":"Baby Cost Calculator","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0"},"url":"https://toolnest.vercel.app/tools/baby-cost-calculator/","description":"Estimate first-year baby costs from editable monthly and one-time line items."},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What is included in the defaults?","acceptedAnswer":{"@type":"Answer","text":"Common first-year items: diapers, feeding, clothing, childcare, medical, and one-time gear. Edit everything to match your situation."}},{"@type":"Question","name":"Does it include lost income?","acceptedAnswer":{"@type":"Answer","text":"No. It estimates out-of-pocket costs only, not unpaid leave or reduced earnings."}},{"@type":"Question","name":"How accurate is this?","acceptedAnswer":{"@type":"Answer","text":"It is a planning estimate. Childcare alone varies enormously by city, so adjust the defaults."}}]}]}</script>
+</head>
+<body>
+<header class="site-header">
+  <div class="container">
+    <a class="logo" href="/"><span class="logo-mark">T</span> ToolNest</a>
+    <div class="header-right">
+      <form class="nav-search" action="/" method="get" role="search">
+        <span class="ns-icon">🔍</span>
+        <input type="search" name="q" placeholder="Search tools…" aria-label="Search tools" autocomplete="off">
+      </form>
+      <div class="menu-wrap">
+        <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="menuPanel" aria-label="Open menu"><span></span><span></span><span></span></button>
+        <nav class="menu-panel" id="menuPanel" aria-label="Site">
+          <a href="/">Home</a>
+          <a href="/#categories">Categories</a>
+          <a href="/#all-tools">All Tools</a>
+        </nav>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ADSTERRA-HEADER: paste your Adsterra banner ad code inside the div below -->
+<div class="container"><div class="ad-slot ad-leaderboard" data-ad="header"></div></div>
+
+<main class="container">
+  <nav class="crumbs"><a href="/">Home</a> &rsaquo; <a href="/#finance">Finance &amp; Money</a> &rsaquo; Baby Cost Calculator</nav>
+  <div class="tool-hero">
+    <h1>Baby Cost Calculator</h1>
+    <p>Estimate first-year baby costs from editable monthly and one-time line items.</p>
+  </div>
+
+  <div class="tool-card">
+  <div class="field">
+    <label>First-year cost items</label>
+    <div id="baby-cost-calculator-items"></div>
+    <div class="btn-row" style="margin-top:8px">
+      <button class="btn btn-sm btn-outline" id="baby-cost-calculator-add" type="button">+ Add item</button>
+    </div>
+    <p class="muted">Monthly items are multiplied by 12; one-time items are added once.</p>
+  </div>
+  <div class="error" id="baby-cost-calculator-error"></div>
+  <div class="result" id="baby-cost-calculator-result">
+    <div class="stat-cards">
+      <div class="stat-card"><div class="v" id="baby-cost-calculator-monthly">&ndash;</div><div class="l">Monthly recurring</div></div>
+      <div class="stat-card"><div class="v" id="baby-cost-calculator-onetime">&ndash;</div><div class="l">One-time total</div></div>
+      <div class="stat-card"><div class="v" id="baby-cost-calculator-total">&ndash;</div><div class="l">First-year total</div></div>
+    </div>
+    <div id="baby-cost-calculator-out"></div>
+    <p class="note">For information only &mdash; not financial advice. Costs vary widely by location and choices.</p>
+  </div>
+</div>
+
+  <!-- ADSTERRA-INCONTENT: paste your Adsterra native/in-content ad code inside the div below -->
+  <div class="ad-slot" data-ad="incontent"></div>
+
+  <div class="info-grid">
+    <div class="info-card">
+      <h2>📖 How to use</h2>
+      <ol><li>Review the default line items and edit any monthly or one-time cost.</li><li>Add your own items or remove ones that do not apply.</li><li>Monthly items are multiplied by 12 automatically.</li><li>Read the estimated first-year total.</li></ol>
+    </div>
+    <div class="info-card">
+      <h2>❓ Frequently asked questions</h2>
+      <div class="faq"><details><summary>What is included in the defaults?</summary><p>Common first-year items: diapers, feeding, clothing, childcare, medical, and one-time gear. Edit everything to match your situation.</p></details><details><summary>Does it include lost income?</summary><p>No. It estimates out-of-pocket costs only, not unpaid leave or reduced earnings.</p></details><details><summary>How accurate is this?</summary><p>It is a planning estimate. Childcare alone varies enormously by city, so adjust the defaults.</p></details></div>
+    </div>
+  </div>
+
+  <section class="section">
+    <h2>🔗 Related tools</h2>
+    <div class="tool-grid"><a class="tool-link" href="/tools/apr-calculator/" data-search="apr calculator solve the true annual percentage rate of a loan by bisection — including upfront fees — and compare it with the nominal rate. apr calculator true apr calculator annual percentage rate calculator loan apr calculator nominal vs effective rate"><span class="t-ico">💰</span><span class="t-body"><b>APR Calculator</b><small>Solve the true Annual Percentage Rate of a loan by bisection — including upfront fees — and …</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/balloon-payment-calculator/" data-search="balloon payment calculator compute the monthly payment on a balloon loan and the lump-sum balloon balance still due at the end of the term. balloon payment calculator balloon loan calculator balloon mortgage calculator balloon balance calculator lump sum loan calculator"><span class="t-ico">💰</span><span class="t-body"><b>Balloon Payment Calculator</b><small>Compute the monthly payment on a balloon loan and the lump-sum balloon balance still due at …</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/benefits-value-calculator/" data-search="benefits value calculator compute total compensation: salary plus health, retirement match and pto value. benefits calculator total compensation job benefits value"><span class="t-ico">💰</span><span class="t-body"><b>Benefits Value Calculator</b><small>Compute total compensation: salary plus health, retirement match and PTO value.</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/break-even-calculator/" data-search="break-even calculator find your break-even point in units and revenue from fixed costs, price per unit and variable cost per unit. break even calculator breakeven point calculator break even analysis units to break even business break even calculator"><span class="t-ico">💰</span><span class="t-body"><b>Break-Even Calculator</b><small>Find your break-even point in units and revenue from fixed costs, price per unit and variabl…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/budget-50-30-20-calculator/" data-search="50/30/20 budget calculator split your take-home pay into needs (50%), wants (30%) and savings (20%), then compare with your actual spending. 50 30 20 budget budget calculator needs wants savings monthly budget planner budget rule calculator"><span class="t-ico">💰</span><span class="t-body"><b>50/30/20 Budget Calculator</b><small>Split your take-home pay into needs (50%), wants (30%) and savings (20%), then compare with …</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/business-profit-margin-calculator/" data-search="business profit margin calculator compute gross, operating and net profit margins from revenue, cost of goods sold and operating expenses. profit margin calculator business profit calculator gross margin calculator net margin calculator operating margin calculator"><span class="t-ico">💰</span><span class="t-body"><b>Business Profit Margin Calculator</b><small>Compute gross, operating and net profit margins from revenue, cost of goods sold and operati…</small></span><span class="t-arrow">→</span></a></div>
+  </section>
+</main>
+
+<!-- ADSTERRA-FOOTER: paste your Adsterra footer/banner ad code inside the div below -->
+<div class="container"><div class="ad-slot" data-ad="footer"></div></div>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="f-grid">
+      <div>
+        <span class="brandline"><span class="logo-mark">T</span> ToolNest</span>
+        <p>Free online tools that actually work. No sign-up, no watermarks — and your files never leave your device for client-side tools.</p>
+      </div>
+      <div>
+        <h4>Popular</h4>
+        <a href="/tools/qr-code-generator/">QR Code Generator</a>
+        <a href="/tools/background-remover/">Background Remover</a>
+        <a href="/tools/pdf-merger/">PDF Merger</a>
+        <a href="/tools/word-counter/">Word Counter</a>
+      </div>
+      <div>
+        <h4>Categories</h4>
+        <a href="/#image">Image Tools</a>
+        <a href="/#pdf">PDF &amp; Documents</a>
+        <a href="/#calculators">Calculators</a>
+        <a href="/#developer">Developer Tools</a>
+      </div>
+      <div>
+        <h4>Site</h4>
+        <a href="/">Home</a>
+        <a href="/#all-tools">All Tools</a>
+        <a href="/sitemap.xml">Sitemap</a>
+      </div>
+    </div>
+    <div class="f-bottom">© 2026 ToolNest · Free tools for everyone · Made with care</div>
+  </div>
+</footer>
+
+<script src="/assets/site.js?v=5"></script>
+
+<script>
+(function(){
+'use strict';
+var S='baby-cost-calculator', ERR=S+'-error';
+function money(n){ return '$'+Number(n).toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2}); }
+function rows(){ return Array.prototype.slice.call(TN.el(S+'-items').querySelectorAll('[data-row]')); }
+function addItem(name,monthly,onetime){
+  var wrap=TN.el(S+'-items');
+  var div=document.createElement('div');
+  div.setAttribute('data-row','1');
+  div.style.cssText='display:flex;gap:8px;margin-bottom:8px;align-items:flex-end';
+  div.innerHTML=
+    '<div class="field" style="flex:2;min-width:0"><label>Item</label><input class="input" data-name placeholder="Diapers" value="'+TN.esc(name||'')+'"></div>'+
+    '<div class="field" style="flex:1;min-width:0"><label>$/month</label><input type="number" class="input" data-monthly min="0" step="any" placeholder="0" value="'+(monthly==null?'':monthly)+'"></div>'+
+    '<div class="field" style="flex:1;min-width:0"><label>One-time $</label><input type="number" class="input" data-onetime min="0" step="any" placeholder="0" value="'+(onetime==null?'':onetime)+'"></div>'+
+    '<button class="btn btn-sm btn-outline" data-remove type="button" aria-label="Remove item">X</button>';
+  wrap.appendChild(div);
+  div.querySelector('[data-remove]').addEventListener('click',function(){ div.remove(); calc(); });
+  Array.prototype.forEach.call(div.querySelectorAll('input'),function(inp){ inp.addEventListener('input',calc); });
+}
+function calc(){
+  if(!TN.el(S+'-items')) return;
+  TN.clearErr(ERR);
+  var out=TN.el(S+'-out'); out.innerHTML='';
+  var items=rows().map(function(r,i){
+    return { name:(r.querySelector('[data-name]').value||'').trim()||('Item '+(i+1)),
+             m:parseFloat(r.querySelector('[data-monthly]').value)||0,
+             o:parseFloat(r.querySelector('[data-onetime]').value)||0 };
+  });
+  if(!items.length){ TN.setErr(ERR,'Add at least one item.'); return; }
+  if(items.some(function(x){ return x.m<0||x.o<0; })){ TN.setErr(ERR,'Costs cannot be negative.'); return; }
+  var mTot=items.reduce(function(a,x){ return a+x.m; },0);
+  var oTot=items.reduce(function(a,x){ return a+x.o; },0);
+  var total=mTot*12+oTot;
+  TN.el(S+'-monthly').textContent=money(mTot);
+  TN.el(S+'-onetime').textContent=money(oTot);
+  TN.el(S+'-total').textContent=money(total);
+  var html='<table class="data"><thead><tr><th>Item</th><th>Monthly</th><th>One-time</th><th>First-year</th></tr></thead><tbody>';
+  items.forEach(function(x){
+    html+='<tr><td>'+TN.esc(x.name)+'</td><td>'+money(x.m)+'</td><td>'+money(x.o)+'</td><td>'+money(x.m*12+x.o)+'</td></tr>';
+  });
+  out.innerHTML=html+'</tbody></table>';
+}
+try{
+  addItem('Diapers',70,0); addItem('Formula & feeding',120,0); addItem('Clothing',40,0);
+  addItem('Childcare',800,0); addItem('Health & medical',60,0); addItem('Gear & furniture',0,1500);
+  TN.on(S+'-add','click',function(){ addItem('',0,0); });
+  calc();
+}catch(e){}
+})();
+
+</script>
+</body>
+</html>

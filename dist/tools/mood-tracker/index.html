@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mood Tracker — Free Online | ToolNest</title>
+<meta name="description" content="Log your daily mood on a 1–5 scale and see a 30-day bar chart of your emotional trend.">
+<meta name="keywords" content="mood tracker, daily mood log, mood chart, mental health tracker">
+<link rel="canonical" href="https://toolnest.vercel.app/tools/mood-tracker/">
+<meta name="theme-color" content="#07070b">
+<meta property="og:title" content="Mood Tracker — Free Online | ToolNest">
+<meta property="og:description" content="Log your daily mood on a 1–5 scale and see a 30-day bar chart of your emotional trend.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css?v=4">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%23e01111'/><text x='50' y='68' font-size='58' text-anchor='middle' fill='white' font-family='Arial' font-weight='bold'>T</text></svg>">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebApplication","name":"Mood Tracker","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0"},"url":"https://toolnest.vercel.app/tools/mood-tracker/","description":"Log your daily mood on a 1–5 scale and see a 30-day bar chart of your emotional trend."},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How do I log my mood?","acceptedAnswer":{"@type":"Answer","text":"Open the page, pick how today feels from 1 (very low) to 5 (great), optionally add a note, and save. One entry per day — saving again overwrites today's entry."}},{"@type":"Question","name":"Is my mood data private?","acceptedAnswer":{"@type":"Answer","text":"Mood data lives only in this browser's localStorage. It is never uploaded or shared."}},{"@type":"Question","name":"Why are there gaps in the chart?","acceptedAnswer":{"@type":"Answer","text":"The chart shows the last 30 calendar days. Days without an entry appear as empty slots."}},{"@type":"Question","name":"Can I export my mood history?","acceptedAnswer":{"@type":"Answer","text":"Export is not built in, but your entries persist on this device as long as browser data is not cleared."}}]}]}</script>
+</head>
+<body>
+<header class="site-header">
+  <div class="container">
+    <a class="logo" href="/"><span class="logo-mark">T</span> ToolNest</a>
+    <div class="header-right">
+      <form class="nav-search" action="/" method="get" role="search">
+        <span class="ns-icon">🔍</span>
+        <input type="search" name="q" placeholder="Search tools…" aria-label="Search tools" autocomplete="off">
+      </form>
+      <div class="menu-wrap">
+        <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="menuPanel" aria-label="Open menu"><span></span><span></span><span></span></button>
+        <nav class="menu-panel" id="menuPanel" aria-label="Site">
+          <a href="/">Home</a>
+          <a href="/#categories">Categories</a>
+          <a href="/#all-tools">All Tools</a>
+        </nav>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ADSTERRA-HEADER: paste your Adsterra banner ad code inside the div below -->
+<div class="container"><div class="ad-slot ad-leaderboard" data-ad="header"></div></div>
+
+<main class="container">
+  <nav class="crumbs"><a href="/">Home</a> &rsaquo; <a href="/#fun">Fun &amp; Lifestyle</a> &rsaquo; Mood Tracker</nav>
+  <div class="tool-hero">
+    <h1>Mood Tracker</h1>
+    <p>Log your daily mood on a 1–5 scale and see a 30-day bar chart of your emotional trend.</p>
+  </div>
+
+  <div class="tool-card">
+  <div class="field">
+    <label>Mood for <span id="mood-tracker-today"></span> (1 = very low, 5 = great)</label>
+    <div class="btn-row" id="mood-tracker-pick">
+      <button class="btn btn-outline" data-m="1">1 😞</button>
+      <button class="btn btn-outline" data-m="2">2 😕</button>
+      <button class="btn btn-outline" data-m="3">3 😐</button>
+      <button class="btn btn-outline" data-m="4">4 🙂</button>
+      <button class="btn btn-outline" data-m="5">5 😄</button>
+    </div>
+  </div>
+  <div class="field">
+    <label for="mood-tracker-note">Note (optional)</label>
+    <input class="input" type="text" id="mood-tracker-note" placeholder="Why do you feel this way?">
+  </div>
+  <div class="btn-row">
+    <button class="btn" id="mood-tracker-save">Save Mood</button>
+  </div>
+  <div class="error" id="mood-tracker-error"></div>
+</div>
+
+<div class="tool-card">
+  <h3>Last 30 days</h3>
+  <canvas id="mood-tracker-chart" width="900" height="260" style="width:100%;height:auto"></canvas>
+  <div class="stat-cards" id="mood-tracker-stats"></div>
+  <p class="note">For information only — not medical advice. If you are struggling, consider talking to a professional.</p>
+</div>
+
+  <!-- ADSTERRA-INCONTENT: paste your Adsterra native/in-content ad code inside the div below -->
+  <div class="ad-slot" data-ad="incontent"></div>
+
+  <div class="info-grid">
+    <div class="info-card">
+      <h2>📖 How to use</h2>
+      <ol><li>Pick today&#39;s mood from 1 (very low) to 5 (great).</li><li>Add an optional short note about why.</li><li>Click Save Mood — it overwrites today&#39;s entry if you already saved one.</li><li>Watch the 30-day bar chart update below.</li></ol>
+    </div>
+    <div class="info-card">
+      <h2>❓ Frequently asked questions</h2>
+      <div class="faq"><details><summary>How do I log my mood?</summary><p>Open the page, pick how today feels from 1 (very low) to 5 (great), optionally add a note, and save. One entry per day — saving again overwrites today&#39;s entry.</p></details><details><summary>Is my mood data private?</summary><p>Mood data lives only in this browser&#39;s localStorage. It is never uploaded or shared.</p></details><details><summary>Why are there gaps in the chart?</summary><p>The chart shows the last 30 calendar days. Days without an entry appear as empty slots.</p></details><details><summary>Can I export my mood history?</summary><p>Export is not built in, but your entries persist on this device as long as browser data is not cleared.</p></details></div>
+    </div>
+  </div>
+
+  <section class="section">
+    <h2>🔗 Related tools</h2>
+    <div class="tool-grid"><a class="tool-link" href="/tools/100-day-challenge-tracker/" data-search="100-day challenge tracker track a 100-day challenge with a checkable 100-cell grid, streaks and stats. 100 day challenge habit tracker 100 days challenge tracker streak tracker"><span class="t-ico">🎲</span><span class="t-body"><b>100-Day Challenge Tracker</b><small>Track a 100-day challenge with a checkable 100-cell grid, streaks and stats.</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/24-game/" data-search="24 game the 24 game — combine four numbers with + − × ÷ to make 24. built-in solver guarantees every deal and gives hints. 24 game make 24 game 24 puzzle solver math puzzle game"><span class="t-ico">🎲</span><span class="t-body"><b>24 Game</b><small>The 24 Game — combine four numbers with + − × ÷ to make 24. Built-in solver guarantees every…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/aim-trainer-game/" data-search="aim trainer game test and train your aim — targets pop up at random spots for 30 seconds. hits, misses and accuracy are tracked live. aim trainer aim test reaction test click speed test fps aim trainer"><span class="t-ico">🎲</span><span class="t-body"><b>Aim Trainer Game</b><small>Test and train your aim — targets pop up at random spots for 30 seconds. Hits, misses and ac…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/asteroid-shooter/" data-search="asteroid shooter asteroid shooter — rotate, thrust and blast splitting asteroids on canvas. 3 lives, rising levels. asteroid shooter game asteroids game online space shooter canvas"><span class="t-ico">🎲</span><span class="t-body"><b>Asteroid Shooter</b><small>Asteroid Shooter — rotate, thrust and blast splitting asteroids on canvas. 3 lives, rising l…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/attendance-tracker/" data-search="attendance tracker track class attendance: roster with present/absent marks per date and % summaries. attendance tracker class attendance student attendance roll call app"><span class="t-ico">🎲</span><span class="t-body"><b>Attendance Tracker</b><small>Track class attendance: roster with present/absent marks per date and % summaries.</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/baby-name-generator/" data-search="baby name generator discover baby names by gender and origin — pakistani, arabic, western, indian or turkish — with meanings, random picks and tap-to-copy. baby name generator baby names with meanings muslim baby names boy girl names"><span class="t-ico">🎲</span><span class="t-body"><b>Baby Name Generator</b><small>Discover baby names by gender and origin — Pakistani, Arabic, Western, Indian or Turkish — w…</small></span><span class="t-arrow">→</span></a></div>
+  </section>
+</main>
+
+<!-- ADSTERRA-FOOTER: paste your Adsterra footer/banner ad code inside the div below -->
+<div class="container"><div class="ad-slot" data-ad="footer"></div></div>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="f-grid">
+      <div>
+        <span class="brandline"><span class="logo-mark">T</span> ToolNest</span>
+        <p>Free online tools that actually work. No sign-up, no watermarks — and your files never leave your device for client-side tools.</p>
+      </div>
+      <div>
+        <h4>Popular</h4>
+        <a href="/tools/qr-code-generator/">QR Code Generator</a>
+        <a href="/tools/background-remover/">Background Remover</a>
+        <a href="/tools/pdf-merger/">PDF Merger</a>
+        <a href="/tools/word-counter/">Word Counter</a>
+      </div>
+      <div>
+        <h4>Categories</h4>
+        <a href="/#image">Image Tools</a>
+        <a href="/#pdf">PDF &amp; Documents</a>
+        <a href="/#calculators">Calculators</a>
+        <a href="/#developer">Developer Tools</a>
+      </div>
+      <div>
+        <h4>Site</h4>
+        <a href="/">Home</a>
+        <a href="/#all-tools">All Tools</a>
+        <a href="/sitemap.xml">Sitemap</a>
+      </div>
+    </div>
+    <div class="f-bottom">© 2026 ToolNest · Free tools for everyone · Made with care</div>
+  </div>
+</footer>
+
+<script src="/assets/site.js?v=5"></script>
+
+<script>
+/* Mood Tracker — daily 1-5 log with 30-day canvas bar chart. */
+(function () {
+  'use strict';
+
+  var SLUG = 'mood-tracker';
+  var KEY = 'tn-' + SLUG + '-log';
+  var picked = 0;
+
+  var COLORS = { 1: '#e74c3c', 2: '#e67e22', 3: '#f1c40f', 4: '#2ecc71', 5: '#27ae60' };
+
+  function load() {
+    try {
+      var arr = JSON.parse(localStorage.getItem(KEY) || '{}');
+      return (arr && typeof arr === 'object') ? arr : {};
+    } catch (e) { return {}; }
+  }
+
+  function saveLog(log) {
+    try { localStorage.setItem(KEY, JSON.stringify(log)); }
+    catch (e) { TN.setErr(SLUG + '-error', 'Could not save — browser storage is unavailable.'); }
+  }
+
+  function todayStr() {
+    var d = new Date();
+    return d.getFullYear() + '-' + ('0' + (d.getMonth() + 1)).slice(-2) + '-' + ('0' + d.getDate()).slice(-2);
+  }
+
+  function last30() {
+    var days = [];
+    var d = new Date();
+    for (var i = 29; i >= 0; i--) {
+      var t = new Date(d.getTime() - i * 86400000);
+      days.push(t.getFullYear() + '-' + ('0' + (t.getMonth() + 1)).slice(-2) + '-' + ('0' + t.getDate()).slice(-2));
+    }
+    return days;
+  }
+
+  function pickButtons() {
+    var btns = TN.el(SLUG + '-pick').querySelectorAll('button');
+    for (var i = 0; i < btns.length; i++) {
+      (function (b) {
+        b.addEventListener('click', function () {
+          picked = parseInt(b.getAttribute('data-m'), 10);
+          for (var j = 0; j < btns.length; j++) btns[j].classList.remove('btn');
+          b.classList.add('btn');
+          TN.clearErr(SLUG + '-error');
+        });
+      })(btns[i]);
+    }
+  }
+
+  function drawChart(log, days) {
+    var cv = TN.el(SLUG + '-chart');
+    if (!cv || !cv.getContext) return;
+    var ctx = cv.getContext('2d');
+    var W = cv.width, H = cv.height;
+    ctx.clearRect(0, 0, W, H);
+    var pad = 30, bw = (W - pad * 2) / 30;
+    for (var g = 1; g <= 5; g++) {
+      var y = H - pad - (g / 5) * (H - pad * 2);
+      ctx.strokeStyle = 'rgba(255,255,255,0.08)';
+      ctx.beginPath(); ctx.moveTo(pad, y); ctx.lineTo(W - pad, y); ctx.stroke();
+      ctx.fillStyle = 'rgba(255,255,255,0.45)';
+      ctx.font = '12px sans-serif';
+      ctx.fillText(String(g), 8, y + 4);
+    }
+    days.forEach(function (day, i) {
+      var m = log[day] && log[day].m;
+      var x = pad + i * bw + bw * 0.15;
+      var w = bw * 0.7;
+      if (m) {
+        var h = (m / 5) * (H - pad * 2);
+        var y2 = H - pad - h;
+        ctx.fillStyle = COLORS[m];
+        ctx.fillRect(x, y2, w, h);
+        ctx.fillStyle = 'rgba(255,255,255,0.7)';
+        ctx.font = '10px sans-serif';
+        ctx.fillText(day.slice(8), x, H - 8);
+      } else {
+        ctx.fillStyle = 'rgba(255,255,255,0.06)';
+        ctx.fillRect(x, H - pad - 3, w, 3);
+      }
+    });
+  }
+
+  function renderStats(log, days) {
+    var box = TN.el(SLUG + '-stats');
+    if (!box) return;
+    var vals = days.map(function (d) { return log[d] && log[d].m; }).filter(Boolean);
+    var avg = vals.length ? (vals.reduce(function (a, b) { return a + b; }, 0) / vals.length) : 0;
+    var best = vals.length ? Math.max.apply(null, vals) : 0;
+    box.innerHTML =
+      stat('Entries', vals.length + '/30') +
+      stat('Average', vals.length ? avg.toFixed(1) : '—') +
+      stat('Best mood', best ? best + '/5' : '—');
+    function stat(l, v) {
+      return '<div class="stat-card"><div class="v">' + TN.esc(String(v)) + '</div><div class="l">' + TN.esc(l) + '</div></div>';
+    }
+  }
+
+  function refresh() {
+    var log = load();
+    var days = last30();
+    drawChart(log, days);
+    renderStats(log, days);
+  }
+
+  function saveMood() {
+    TN.clearErr(SLUG + '-error');
+    if (!picked) { TN.setErr(SLUG + '-error', 'Pick a mood from 1 to 5 first.'); return; }
+    var log = load();
+    log[todayStr()] = { m: picked, note: TN.el(SLUG + '-note').value.trim() };
+    saveLog(log);
+    TN.el(SLUG + '-note').value = '';
+    refresh();
+  }
+
+  function init() {
+    try {
+      if (!TN.el(SLUG + '-pick')) return;
+      TN.el(SLUG + '-today').textContent = todayStr();
+      pickButtons();
+      TN.on(SLUG + '-save', 'click', saveMood);
+      refresh();
+    } catch (e) { /* never throw on load */ }
+  }
+
+  init();
+})();
+</script>
+</body>
+</html>

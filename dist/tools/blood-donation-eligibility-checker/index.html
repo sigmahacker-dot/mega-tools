@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Blood Donation Eligibility Checker — Free Online | ToolNest</title>
+<meta name="description" content="Check common blood donation eligibility rules: age, weight, hemoglobin, intervals.">
+<meta name="keywords" content="blood donation eligibility, can I donate blood, donor requirements">
+<link rel="canonical" href="https://toolnest.vercel.app/tools/blood-donation-eligibility-checker/">
+<meta name="theme-color" content="#07070b">
+<meta property="og:title" content="Blood Donation Eligibility Checker — Free Online | ToolNest">
+<meta property="og:description" content="Check common blood donation eligibility rules: age, weight, hemoglobin, intervals.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css?v=4">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%23e01111'/><text x='50' y='68' font-size='58' text-anchor='middle' fill='white' font-family='Arial' font-weight='bold'>T</text></svg>">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebApplication","name":"Blood Donation Eligibility Checker","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0"},"url":"https://toolnest.vercel.app/tools/blood-donation-eligibility-checker/","description":"Check common blood donation eligibility rules: age, weight, hemoglobin, intervals."},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Why 56 days between donations?","acceptedAnswer":{"@type":"Answer","text":"That is the standard minimum interval for whole blood in many countries, giving your body time to replace red cells."}},{"@type":"Question","name":"Why does hemoglobin matter?","acceptedAnswer":{"@type":"Answer","text":"Donation removes iron-rich red cells. Minimum hemoglobin protects donors from becoming anemic."}},{"@type":"Question","name":"Is this a final decision?","acceptedAnswer":{"@type":"Answer","text":"No. Donation centers do their own screening and medical history review. This is informational only."}}]}]}</script>
+</head>
+<body>
+<header class="site-header">
+  <div class="container">
+    <a class="logo" href="/"><span class="logo-mark">T</span> ToolNest</a>
+    <div class="header-right">
+      <form class="nav-search" action="/" method="get" role="search">
+        <span class="ns-icon">🔍</span>
+        <input type="search" name="q" placeholder="Search tools…" aria-label="Search tools" autocomplete="off">
+      </form>
+      <div class="menu-wrap">
+        <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="menuPanel" aria-label="Open menu"><span></span><span></span><span></span></button>
+        <nav class="menu-panel" id="menuPanel" aria-label="Site">
+          <a href="/">Home</a>
+          <a href="/#categories">Categories</a>
+          <a href="/#all-tools">All Tools</a>
+        </nav>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ADSTERRA-HEADER: paste your Adsterra banner ad code inside the div below -->
+<div class="container"><div class="ad-slot ad-leaderboard" data-ad="header"></div></div>
+
+<main class="container">
+  <nav class="crumbs"><a href="/">Home</a> &rsaquo; <a href="/#health">Health &amp; Fitness</a> &rsaquo; Blood Donation Eligibility Checker</nav>
+  <div class="tool-hero">
+    <h1>Blood Donation Eligibility Checker</h1>
+    <p>Check common blood donation eligibility rules: age, weight, hemoglobin, intervals.</p>
+  </div>
+
+  <div class="tool-card">
+  <div class="grid2">
+    <div class="field">
+      <label for="blood-donation-eligibility-checker-age">Age (years)</label>
+      <input type="number" class="input" id="blood-donation-eligibility-checker-age" min="1" max="120" step="1" placeholder="28">
+    </div>
+    <div class="field">
+      <label for="blood-donation-eligibility-checker-weight">Weight (kg)</label>
+      <input type="number" class="input" id="blood-donation-eligibility-checker-weight" min="1" step="any" placeholder="70">
+    </div>
+    <div class="field">
+      <label for="blood-donation-eligibility-checker-hb">Hemoglobin (g/dL)</label>
+      <input type="number" class="input" id="blood-donation-eligibility-checker-hb" min="1" step="any" placeholder="14">
+    </div>
+    <div class="field">
+      <label for="blood-donation-eligibility-checker-sex">Sex (for hemoglobin threshold)</label>
+      <select class="select" id="blood-donation-eligibility-checker-sex">
+        <option value="male">Male (min 13.0)</option>
+        <option value="female">Female (min 12.5)</option>
+      </select>
+    </div>
+    <div class="field">
+      <label for="blood-donation-eligibility-checker-last">Last whole-blood donation (optional)</label>
+      <input type="date" class="input" id="blood-donation-eligibility-checker-last">
+    </div>
+  </div>
+  <div class="field">
+    <label class="checkline"><input type="checkbox" id="blood-donation-eligibility-checker-well"> I feel healthy and well today</label>
+    <label class="checkline"><input type="checkbox" id="blood-donation-eligibility-checker-abx"> No antibiotics or active infection in the last 7 days</label>
+    <label class="checkline"><input type="checkbox" id="blood-donation-eligibility-checker-tat"> No new tattoo, piercing, or transfusion in the last 3 months</label>
+    <label class="checkline"><input type="checkbox" id="blood-donation-eligibility-checker-preg"> Not pregnant and not given birth in the last 6 weeks</label>
+  </div>
+  <div class="btn-row"><button class="btn" id="blood-donation-eligibility-checker-go" type="button">Check eligibility</button></div>
+  <div class="error" id="blood-donation-eligibility-checker-error"></div>
+  <div class="result" id="blood-donation-eligibility-checker-result">
+    <div id="blood-donation-eligibility-checker-out"></div>
+    <p class="note">Informational only &mdash; the donation center makes the final decision after its own screening. For information only &mdash; not medical advice.</p>
+  </div>
+</div>
+
+  <!-- ADSTERRA-INCONTENT: paste your Adsterra native/in-content ad code inside the div below -->
+  <div class="ad-slot" data-ad="incontent"></div>
+
+  <div class="info-grid">
+    <div class="info-card">
+      <h2>📖 How to use</h2>
+      <ol><li>Enter your age, weight, hemoglobin, and sex.</li><li>Enter your last whole-blood donation date if any.</li><li>Answer the health questions honestly.</li><li>Read which rules you pass or fail, and your earliest next donation date.</li></ol>
+    </div>
+    <div class="info-card">
+      <h2>❓ Frequently asked questions</h2>
+      <div class="faq"><details><summary>Why 56 days between donations?</summary><p>That is the standard minimum interval for whole blood in many countries, giving your body time to replace red cells.</p></details><details><summary>Why does hemoglobin matter?</summary><p>Donation removes iron-rich red cells. Minimum hemoglobin protects donors from becoming anemic.</p></details><details><summary>Is this a final decision?</summary><p>No. Donation centers do their own screening and medical history review. This is informational only.</p></details></div>
+    </div>
+  </div>
+
+  <section class="section">
+    <h2>🔗 Related tools</h2>
+    <div class="tool-grid"><a class="tool-link" href="/tools/allergy-tracker/" data-search="allergy tracker log allergy exposures, symptoms, and severity with summaries, saved in your browser. allergy tracker allergy diary symptom log"><span class="t-ico">❤️</span><span class="t-body"><b>Allergy Tracker</b><small>Log allergy exposures, symptoms, and severity with summaries, saved in your browser.</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/baby-feeding-log/" data-search="baby feeding log log nursing and bottle sessions with timestamps, daily totals, saved in your browser. baby feeding log nursing tracker bottle feeding log"><span class="t-ico">❤️</span><span class="t-body"><b>Baby Feeding Log</b><small>Log nursing and bottle sessions with timestamps, daily totals, saved in your browser.</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/baby-growth-tracker/" data-search="baby growth tracker log your baby&#39;s weight and height over time and see a growth log with typical-range guidance. baby growth tracker baby weight tracker infant growth chart baby height log newborn growth"><span class="t-ico">❤️</span><span class="t-body"><b>Baby Growth Tracker</b><small>Log your baby&#39;s weight and height over time and see a growth log with typical-range guidance…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/balance-test-timer/" data-search="balance test timer single-leg stance stopwatch with age benchmarks for balance testing. balance test single leg stance balance timer"><span class="t-ico">❤️</span><span class="t-body"><b>Balance Test Timer</b><small>Single-leg stance stopwatch with age benchmarks for balance testing.</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/blood-pressure-tracker/" data-search="blood pressure tracker log blood pressure readings with automatic aha category classification, averages and history saved in your browser. blood pressure tracker bp log blood pressure chart hypertension tracker bp monitor log"><span class="t-ico">❤️</span><span class="t-body"><b>Blood Pressure Tracker</b><small>Log blood pressure readings with automatic AHA category classification, averages and history…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/body-fat-calculator/" data-search="body fat calculator estimate body fat percentage with the us navy tape-measure method and see your fitness category. body fat calculator us navy body fat body fat percentage calculator"><span class="t-ico">❤️</span><span class="t-body"><b>Body Fat Calculator</b><small>Estimate body fat percentage with the US Navy tape-measure method and see your fitness categ…</small></span><span class="t-arrow">→</span></a></div>
+  </section>
+</main>
+
+<!-- ADSTERRA-FOOTER: paste your Adsterra footer/banner ad code inside the div below -->
+<div class="container"><div class="ad-slot" data-ad="footer"></div></div>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="f-grid">
+      <div>
+        <span class="brandline"><span class="logo-mark">T</span> ToolNest</span>
+        <p>Free online tools that actually work. No sign-up, no watermarks — and your files never leave your device for client-side tools.</p>
+      </div>
+      <div>
+        <h4>Popular</h4>
+        <a href="/tools/qr-code-generator/">QR Code Generator</a>
+        <a href="/tools/background-remover/">Background Remover</a>
+        <a href="/tools/pdf-merger/">PDF Merger</a>
+        <a href="/tools/word-counter/">Word Counter</a>
+      </div>
+      <div>
+        <h4>Categories</h4>
+        <a href="/#image">Image Tools</a>
+        <a href="/#pdf">PDF &amp; Documents</a>
+        <a href="/#calculators">Calculators</a>
+        <a href="/#developer">Developer Tools</a>
+      </div>
+      <div>
+        <h4>Site</h4>
+        <a href="/">Home</a>
+        <a href="/#all-tools">All Tools</a>
+        <a href="/sitemap.xml">Sitemap</a>
+      </div>
+    </div>
+    <div class="f-bottom">© 2026 ToolNest · Free tools for everyone · Made with care</div>
+  </div>
+</footer>
+
+<script src="/assets/site.js?v=5"></script>
+
+<script>
+(function(){
+'use strict';
+var S='blood-donation-eligibility-checker', ERR=S+'-error';
+function check(){
+  if(!TN.el(S+'-age')) return;
+  TN.clearErr(ERR);
+  var out=TN.el(S+'-out'); out.innerHTML='';
+  var age=parseFloat(TN.el(S+'-age').value);
+  var wt=parseFloat(TN.el(S+'-weight').value);
+  var hb=parseFloat(TN.el(S+'-hb').value);
+  var female=TN.el(S+'-sex').value==='female';
+  if(!(age>=1)||!(wt>=1)||!(hb>=1)){ TN.setErr(ERR,'Enter your age, weight, and hemoglobin.'); return; }
+  var rules=[
+    {ok:age>=17, t:'Age 17 or older (16 with parental consent in some regions)', v:'age '+age},
+    {ok:wt>=50, t:'Weight at least 50 kg (110 lb)', v:wt+' kg'},
+    {ok:hb>=(female?12.5:13.0), t:'Hemoglobin at least '+(female?'12.5':'13.0')+' g/dL', v:hb+' g/dL'},
+    {ok:TN.el(S+'-well').checked, t:'Feeling healthy and well today', v:TN.el(S+'-well').checked?'yes':'no'},
+    {ok:TN.el(S+'-abx').checked, t:'No antibiotics or active infection in the last 7 days', v:TN.el(S+'-abx').checked?'yes':'no'},
+    {ok:TN.el(S+'-tat').checked, t:'No new tattoo, piercing, or transfusion in the last 3 months', v:TN.el(S+'-tat').checked?'yes':'no'},
+    {ok:TN.el(S+'-preg').checked, t:'Not pregnant / no birth in the last 6 weeks', v:TN.el(S+'-preg').checked?'yes':'no'}
+  ];
+  var lastVal=TN.el(S+'-last').value;
+  var nextDate=null;
+  if(lastVal){
+    var last=new Date(lastVal+'T12:00:00');
+    var next=new Date(last.getTime()+56*86400000);
+    nextDate=next;
+    var daysLeft=Math.ceil((next-new Date())/86400000);
+    rules.push({ok:daysLeft<=0, t:'At least 56 days since last whole-blood donation', v:daysLeft<=0?'satisfied':daysLeft+' day(s) to wait'});
+  }
+  var failed=rules.filter(function(r){ return !r.ok; });
+  var html='<table class="data"><thead><tr><th>Rule</th><th>Your answer</th><th>Status</th></tr></thead><tbody>';
+  rules.forEach(function(r){
+    html+='<tr><td>'+TN.esc(r.t)+'</td><td>'+TN.esc(String(r.v))+'</td><td style="color:'+(r.ok?'#84cc16':'#ef4444')+';font-weight:bold">'+(r.ok?'Pass':'Fail')+'</td></tr>';
+  });
+  html+='</tbody></table>';
+  if(nextDate){
+    html+='<p class="note">Earliest next donation date: <strong>'+nextDate.toISOString().slice(0,10)+'</strong></p>';
+  }
+  html+='<p class="note" style="margin-top:10px"><strong>'+(failed.length?'You do not appear eligible right now ('+failed.length+' rule(s) not met).':'You appear to meet the common eligibility rules.')+'</strong> Final eligibility is decided at the donation center.</p>';
+  out.innerHTML=html;
+}
+try{
+  TN.on(S+'-go','click',check);
+}catch(e){}
+})();
+
+</script>
+</body>
+</html>

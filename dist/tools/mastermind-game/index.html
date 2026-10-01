@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mastermind — Free Online | ToolNest</title>
+<meta name="description" content="Mastermind — crack the secret 4-color code in 10 tries with black/white peg feedback.">
+<meta name="keywords" content="mastermind game, mastermind code breaker, color code puzzle">
+<link rel="canonical" href="https://toolnest.vercel.app/tools/mastermind-game/">
+<meta name="theme-color" content="#07070b">
+<meta property="og:title" content="Mastermind — Free Online | ToolNest">
+<meta property="og:description" content="Mastermind — crack the secret 4-color code in 10 tries with black/white peg feedback.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css?v=4">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%23e01111'/><text x='50' y='68' font-size='58' text-anchor='middle' fill='white' font-family='Arial' font-weight='bold'>T</text></svg>">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebApplication","name":"Mastermind","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0"},"url":"https://toolnest.vercel.app/tools/mastermind-game/","description":"Mastermind — crack the secret 4-color code in 10 tries with black/white peg feedback."},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What do the black and white pegs mean?","acceptedAnswer":{"@type":"Answer","text":"A black peg means one of your colors is exactly right (right color, right spot). A white peg means a color is right but in the wrong spot. Pegs are not lined up with specific holes — count them, don't map them."}},{"@type":"Question","name":"Can a color appear more than once?","acceptedAnswer":{"@type":"Answer","text":"Yes, colors can repeat in the secret code — don't assume four different colors."}},{"@type":"Question","name":"Any strategy tips?","acceptedAnswer":{"@type":"Answer","text":"Start with four different colors to maximize information, then use the peg counts to eliminate possibilities. Watch out for duplicate-color feedback."}}]}]}</script>
+</head>
+<body>
+<header class="site-header">
+  <div class="container">
+    <a class="logo" href="/"><span class="logo-mark">T</span> ToolNest</a>
+    <div class="header-right">
+      <form class="nav-search" action="/" method="get" role="search">
+        <span class="ns-icon">🔍</span>
+        <input type="search" name="q" placeholder="Search tools…" aria-label="Search tools" autocomplete="off">
+      </form>
+      <div class="menu-wrap">
+        <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="menuPanel" aria-label="Open menu"><span></span><span></span><span></span></button>
+        <nav class="menu-panel" id="menuPanel" aria-label="Site">
+          <a href="/">Home</a>
+          <a href="/#categories">Categories</a>
+          <a href="/#all-tools">All Tools</a>
+        </nav>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ADSTERRA-HEADER: paste your Adsterra banner ad code inside the div below -->
+<div class="container"><div class="ad-slot ad-leaderboard" data-ad="header"></div></div>
+
+<main class="container">
+  <nav class="crumbs"><a href="/">Home</a> &rsaquo; <a href="/#fun">Fun &amp; Lifestyle</a> &rsaquo; Mastermind</nav>
+  <div class="tool-hero">
+    <h1>Mastermind</h1>
+    <p>Mastermind — crack the secret 4-color code in 10 tries with black/white peg feedback.</p>
+  </div>
+
+  <div class="tool-card" style="text-align:center">
+  <div class="btn-row" style="max-width:440px;margin:0 auto 10px">
+    <button class="btn btn-primary" id="mastermind-game-new">New game</button>
+    <button class="btn btn-outline" id="mastermind-game-reveal">Reveal code</button>
+  </div>
+  <p class="muted" id="mastermind-game-status" style="min-height:24px;font-weight:600"></p>
+  <div id="mastermind-game-secret" style="display:flex;gap:8px;justify-content:center;margin-bottom:12px"></div>
+  <div class="field" style="max-width:440px;margin:0 auto 8px;text-align:left">
+    <label>Your guess — pick 4 colors</label>
+    <div id="mastermind-game-pick" style="display:flex;gap:8px;margin-bottom:8px"></div>
+    <div id="mastermind-game-palette" style="display:flex;gap:8px;flex-wrap:wrap"></div>
+  </div>
+  <div class="btn-row" style="margin:8px 0">
+    <button class="btn btn-primary" id="mastermind-game-check">Check guess</button>
+    <button class="btn btn-outline" id="mastermind-game-clear">Clear</button>
+  </div>
+  <div id="mastermind-game-history" style="max-width:440px;margin:0 auto;display:flex;flex-direction:column;gap:6px"></div>
+  <div class="error" id="mastermind-game-error"></div>
+</div>
+
+
+  <!-- ADSTERRA-INCONTENT: paste your Adsterra native/in-content ad code inside the div below -->
+  <div class="ad-slot" data-ad="incontent"></div>
+
+  <div class="info-grid">
+    <div class="info-card">
+      <h2>📖 How to use</h2>
+      <ol><li>Pick 4 colors and press “Check guess”.</li><li>Black peg = right color in the right spot.</li><li>White peg = right color, wrong spot.</li><li>Crack the code within 10 attempts to win.</li></ol>
+    </div>
+    <div class="info-card">
+      <h2>❓ Frequently asked questions</h2>
+      <div class="faq"><details><summary>What do the black and white pegs mean?</summary><p>A black peg means one of your colors is exactly right (right color, right spot). A white peg means a color is right but in the wrong spot. Pegs are not lined up with specific holes — count them, don&#39;t map them.</p></details><details><summary>Can a color appear more than once?</summary><p>Yes, colors can repeat in the secret code — don&#39;t assume four different colors.</p></details><details><summary>Any strategy tips?</summary><p>Start with four different colors to maximize information, then use the peg counts to eliminate possibilities. Watch out for duplicate-color feedback.</p></details></div>
+    </div>
+  </div>
+
+  <section class="section">
+    <h2>🔗 Related tools</h2>
+    <div class="tool-grid"><a class="tool-link" href="/tools/100-day-challenge-tracker/" data-search="100-day challenge tracker track a 100-day challenge with a checkable 100-cell grid, streaks and stats. 100 day challenge habit tracker 100 days challenge tracker streak tracker"><span class="t-ico">🎲</span><span class="t-body"><b>100-Day Challenge Tracker</b><small>Track a 100-day challenge with a checkable 100-cell grid, streaks and stats.</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/24-game/" data-search="24 game the 24 game — combine four numbers with + − × ÷ to make 24. built-in solver guarantees every deal and gives hints. 24 game make 24 game 24 puzzle solver math puzzle game"><span class="t-ico">🎲</span><span class="t-body"><b>24 Game</b><small>The 24 Game — combine four numbers with + − × ÷ to make 24. Built-in solver guarantees every…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/aim-trainer-game/" data-search="aim trainer game test and train your aim — targets pop up at random spots for 30 seconds. hits, misses and accuracy are tracked live. aim trainer aim test reaction test click speed test fps aim trainer"><span class="t-ico">🎲</span><span class="t-body"><b>Aim Trainer Game</b><small>Test and train your aim — targets pop up at random spots for 30 seconds. Hits, misses and ac…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/asteroid-shooter/" data-search="asteroid shooter asteroid shooter — rotate, thrust and blast splitting asteroids on canvas. 3 lives, rising levels. asteroid shooter game asteroids game online space shooter canvas"><span class="t-ico">🎲</span><span class="t-body"><b>Asteroid Shooter</b><small>Asteroid Shooter — rotate, thrust and blast splitting asteroids on canvas. 3 lives, rising l…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/attendance-tracker/" data-search="attendance tracker track class attendance: roster with present/absent marks per date and % summaries. attendance tracker class attendance student attendance roll call app"><span class="t-ico">🎲</span><span class="t-body"><b>Attendance Tracker</b><small>Track class attendance: roster with present/absent marks per date and % summaries.</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/baby-name-generator/" data-search="baby name generator discover baby names by gender and origin — pakistani, arabic, western, indian or turkish — with meanings, random picks and tap-to-copy. baby name generator baby names with meanings muslim baby names boy girl names"><span class="t-ico">🎲</span><span class="t-body"><b>Baby Name Generator</b><small>Discover baby names by gender and origin — Pakistani, Arabic, Western, Indian or Turkish — w…</small></span><span class="t-arrow">→</span></a></div>
+  </section>
+</main>
+
+<!-- ADSTERRA-FOOTER: paste your Adsterra footer/banner ad code inside the div below -->
+<div class="container"><div class="ad-slot" data-ad="footer"></div></div>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="f-grid">
+      <div>
+        <span class="brandline"><span class="logo-mark">T</span> ToolNest</span>
+        <p>Free online tools that actually work. No sign-up, no watermarks — and your files never leave your device for client-side tools.</p>
+      </div>
+      <div>
+        <h4>Popular</h4>
+        <a href="/tools/qr-code-generator/">QR Code Generator</a>
+        <a href="/tools/background-remover/">Background Remover</a>
+        <a href="/tools/pdf-merger/">PDF Merger</a>
+        <a href="/tools/word-counter/">Word Counter</a>
+      </div>
+      <div>
+        <h4>Categories</h4>
+        <a href="/#image">Image Tools</a>
+        <a href="/#pdf">PDF &amp; Documents</a>
+        <a href="/#calculators">Calculators</a>
+        <a href="/#developer">Developer Tools</a>
+      </div>
+      <div>
+        <h4>Site</h4>
+        <a href="/">Home</a>
+        <a href="/#all-tools">All Tools</a>
+        <a href="/sitemap.xml">Sitemap</a>
+      </div>
+    </div>
+    <div class="f-bottom">© 2026 ToolNest · Free tools for everyone · Made with care</div>
+  </div>
+</footer>
+
+<script src="/assets/site.js?v=5"></script>
+
+<script>
+(function () {
+  'use strict';
+  var P = 'mastermind-game-';
+  function g(id) { return document.getElementById(P + id); }
+  var COLORS = [
+    { n: 'Red', c: '#dc2626' }, { n: 'Blue', c: '#2563eb' }, { n: 'Green', c: '#16a34a' },
+    { n: 'Yellow', c: '#eab308' }, { n: 'Purple', c: '#9333ea' }, { n: 'Orange', c: '#ea580c' }
+  ];
+  var MAX = 10, secret = [], guess = [], attempts = 0, over = false;
+  function peg(color, size) {
+    return '<span title="' + color.n + '" style="display:inline-block;width:' + size + 'px;height:' + size + 'px;border-radius:50%;background:' + color.c + ';border:2px solid rgba(0,0,0,.35);box-shadow:0 1px 3px rgba(0,0,0,.4)"></span>';
+  }
+  function emptyPeg(size) {
+    return '<span style="display:inline-block;width:' + size + 'px;height:' + size + 'px;border-radius:50%;background:#292524;border:2px dashed #57534e"></span>';
+  }
+  function setup() {
+    secret = [];
+    for (var i = 0; i < 4; i++) secret.push(Math.floor(Math.random() * COLORS.length));
+    guess = []; attempts = 0; over = false;
+  }
+  function status(t) { var el = g('status'); if (el) el.textContent = t; }
+  function renderSecret(reveal) {
+    var el = g('secret'); if (!el) return;
+    var h = '';
+    for (var i = 0; i < 4; i++) h += reveal ? peg(COLORS[secret[i]], 30) : '<span style="display:inline-block;width:30px;height:30px;border-radius:50%;background:#44403c;border:2px solid #57534e;color:#a8a29e;font-weight:800;line-height:28px">?</span>';
+    el.innerHTML = h;
+  }
+  function renderPick() {
+    var el = g('pick'); if (!el) return;
+    var h = '';
+    for (var i = 0; i < 4; i++) h += guess[i] === undefined ? emptyPeg(30) : peg(COLORS[guess[i]], 30);
+    el.innerHTML = h;
+  }
+  function renderPalette() {
+    var el = g('palette'); if (!el) return;
+    el.innerHTML = '';
+    for (var i = 0; i < COLORS.length; i++) {
+      (function (idx) {
+        var b = document.createElement('button');
+        b.type = 'button';
+        b.innerHTML = peg(COLORS[idx], 30);
+        b.style.cssText = 'border:0;background:transparent;padding:2px;cursor:pointer;border-radius:50%';
+        b.setAttribute('aria-label', 'Pick ' + COLORS[idx].n);
+        b.addEventListener('click', function () {
+          if (over) return;
+          if (guess.length < 4) { guess.push(idx); TN.clearErr(P + 'error'); renderPick(); }
+        });
+        el.appendChild(b);
+      })(i);
+    }
+  }
+  function feedback() {
+    var s = secret.slice(), gu = guess.slice(), black = 0, white = 0, i;
+    for (i = 0; i < 4; i++) if (gu[i] === s[i]) { black++; s[i] = gu[i] = -1; }
+    for (i = 0; i < 4; i++) {
+      if (gu[i] === -1) continue;
+      var j = s.indexOf(gu[i]);
+      if (j !== -1) { white++; s[j] = -1; }
+    }
+    return { black: black, white: white };
+  }
+  function check() {
+    if (over) return;
+    if (guess.length < 4) { TN.setErr(P + 'error', 'Pick 4 colors first.'); return; }
+    TN.clearErr(P + 'error');
+    var fb = feedback();
+    attempts++;
+    var hist = g('history');
+    if (hist) {
+      var row = document.createElement('div');
+      row.style.cssText = 'display:flex;align-items:center;gap:6px;justify-content:space-between;background:#292524;border-radius:8px;padding:6px 10px';
+      var gh = '';
+      for (var i = 0; i < 4; i++) gh += peg(COLORS[guess[i]], 22);
+      var fh = '';
+      for (var b = 0; b < fb.black; b++) fh += '<span style="display:inline-block;width:12px;height:12px;border-radius:50%;background:#fafaf9;margin:1px"></span>';
+      for (var w = 0; w < fb.white; w++) fh += '<span style="display:inline-block;width:12px;height:12px;border-radius:50%;background:#78716c;margin:1px"></span>';
+      row.innerHTML = '<span style="color:#a8a29e;font-size:12px;width:20px">#' + attempts + '</span><span style="display:flex;gap:4px">' + gh + '</span><span style="min-width:60px;text-align:right">' + (fh || '<span style="color:#57534e;font-size:12px">none</span>') + '</span>';
+      hist.insertBefore(row, hist.firstChild);
+    }
+    guess = [];
+    renderPick();
+    if (fb.black === 4) {
+      over = true; renderSecret(true);
+      status('🎉 Code cracked in ' + attempts + ' ' + (attempts === 1 ? 'try' : 'tries') + '!');
+    } else if (attempts >= MAX) {
+      over = true; renderSecret(true);
+      status('😞 Out of attempts — the code was revealed above.');
+    } else {
+      status('Attempt ' + attempts + '/' + MAX + ': ' + fb.black + ' black, ' + fb.white + ' white. Try again.');
+    }
+  }
+  function reset() {
+    setup();
+    TN.clearErr(P + 'error');
+    var hist = g('history'); if (hist) hist.innerHTML = '';
+    renderSecret(false); renderPick();
+    status('Guess the secret 4-color code. Colors may repeat.');
+  }
+  try {
+    if (!g('pick')) return;
+    renderPalette();
+    TN.on(P + 'check', 'click', check);
+    TN.on(P + 'clear', 'click', function () { guess = []; renderPick(); TN.clearErr(P + 'error'); });
+    TN.on(P + 'new', 'click', reset);
+    TN.on(P + 'reveal', 'click', function () { if (!over) { over = true; renderSecret(true); status('The code was revealed. Start a new game to play again.'); } });
+    reset();
+  } catch (e) { /* never throw on load */ }
+})();
+
+</script>
+</body>
+</html>

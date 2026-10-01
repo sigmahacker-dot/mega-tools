@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Recipe Box — Free Online | ToolNest</title>
+<meta name="description" content="Save your own recipes with ingredients and steps, search them anytime.">
+<meta name="keywords" content="recipe box, save recipes, recipe organizer, my recipes">
+<link rel="canonical" href="https://toolnest.vercel.app/tools/recipe-box/">
+<meta name="theme-color" content="#07070b">
+<meta property="og:title" content="Recipe Box — Free Online | ToolNest">
+<meta property="og:description" content="Save your own recipes with ingredients and steps, search them anytime.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css?v=4">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%23e01111'/><text x='50' y='68' font-size='58' text-anchor='middle' fill='white' font-family='Arial' font-weight='bold'>T</text></svg>">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebApplication","name":"Recipe Box","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0"},"url":"https://toolnest.vercel.app/tools/recipe-box/","description":"Save your own recipes with ingredients and steps, search them anytime."},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How do I add a recipe?","acceptedAnswer":{"@type":"Answer","text":"Give the recipe a name, list one ingredient per line, then the steps (also one per line), and click Save Recipe."}},{"@type":"Question","name":"How does search work?","acceptedAnswer":{"@type":"Answer","text":"The search box matches the recipe name, ingredients and steps at once."}},{"@type":"Question","name":"How do I view a full recipe?","acceptedAnswer":{"@type":"Answer","text":"Click a recipe card to expand its full ingredients and steps. The × button deletes it."}},{"@type":"Question","name":"Where are recipes stored?","acceptedAnswer":{"@type":"Answer","text":"In this browser's localStorage — private to this device, no account needed."}}]}]}</script>
+</head>
+<body>
+<header class="site-header">
+  <div class="container">
+    <a class="logo" href="/"><span class="logo-mark">T</span> ToolNest</a>
+    <div class="header-right">
+      <form class="nav-search" action="/" method="get" role="search">
+        <span class="ns-icon">🔍</span>
+        <input type="search" name="q" placeholder="Search tools…" aria-label="Search tools" autocomplete="off">
+      </form>
+      <div class="menu-wrap">
+        <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="menuPanel" aria-label="Open menu"><span></span><span></span><span></span></button>
+        <nav class="menu-panel" id="menuPanel" aria-label="Site">
+          <a href="/">Home</a>
+          <a href="/#categories">Categories</a>
+          <a href="/#all-tools">All Tools</a>
+        </nav>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ADSTERRA-HEADER: paste your Adsterra banner ad code inside the div below -->
+<div class="container"><div class="ad-slot ad-leaderboard" data-ad="header"></div></div>
+
+<main class="container">
+  <nav class="crumbs"><a href="/">Home</a> &rsaquo; <a href="/#fun">Fun &amp; Lifestyle</a> &rsaquo; Recipe Box</nav>
+  <div class="tool-hero">
+    <h1>Recipe Box</h1>
+    <p>Save your own recipes with ingredients and steps, search them anytime.</p>
+  </div>
+
+  <div class="tool-card">
+  <div class="grid2">
+    <div class="field">
+      <label for="recipe-box-name">Recipe name</label>
+      <input class="input" type="text" id="recipe-box-name" placeholder="e.g. Chicken Biryani">
+    </div>
+    <div class="field">
+      <label for="recipe-box-cat">Category</label>
+      <select class="select" id="recipe-box-cat">
+        <option value="Main">Main</option>
+        <option value="Breakfast">Breakfast</option>
+        <option value="Dessert">Dessert</option>
+        <option value="Snack">Snack</option>
+        <option value="Drink">Drink</option>
+        <option value="Other">Other</option>
+      </select>
+    </div>
+  </div>
+  <div class="field">
+    <label for="recipe-box-ing">Ingredients (one per line)</label>
+    <textarea class="textarea" id="recipe-box-ing" rows="4" placeholder="2 cups rice&#10;500g chicken&#10;2 onions"></textarea>
+  </div>
+  <div class="field">
+    <label for="recipe-box-steps">Steps (one per line)</label>
+    <textarea class="textarea" id="recipe-box-steps" rows="4" placeholder="Marinate the chicken…&#10;Fry the onions…"></textarea>
+  </div>
+  <div class="btn-row">
+    <button class="btn" id="recipe-box-add">Save Recipe</button>
+  </div>
+  <div class="error" id="recipe-box-error"></div>
+</div>
+
+<div class="tool-card">
+  <div class="field">
+    <label for="recipe-box-search">Search recipes</label>
+    <input class="input" type="text" id="recipe-box-search" placeholder="Search name, ingredients, steps…">
+  </div>
+  <div id="recipe-box-list"></div>
+</div>
+
+  <!-- ADSTERRA-INCONTENT: paste your Adsterra native/in-content ad code inside the div below -->
+  <div class="ad-slot" data-ad="incontent"></div>
+
+  <div class="info-grid">
+    <div class="info-card">
+      <h2>📖 How to use</h2>
+      <ol><li>Name your recipe and pick a category.</li><li>List ingredients and steps, one per line each.</li><li>Click Save Recipe.</li><li>Click a card to expand it; search to find recipes fast.</li></ol>
+    </div>
+    <div class="info-card">
+      <h2>❓ Frequently asked questions</h2>
+      <div class="faq"><details><summary>How do I add a recipe?</summary><p>Give the recipe a name, list one ingredient per line, then the steps (also one per line), and click Save Recipe.</p></details><details><summary>How does search work?</summary><p>The search box matches the recipe name, ingredients and steps at once.</p></details><details><summary>How do I view a full recipe?</summary><p>Click a recipe card to expand its full ingredients and steps. The × button deletes it.</p></details><details><summary>Where are recipes stored?</summary><p>In this browser&#39;s localStorage — private to this device, no account needed.</p></details></div>
+    </div>
+  </div>
+
+  <section class="section">
+    <h2>🔗 Related tools</h2>
+    <div class="tool-grid"><a class="tool-link" href="/tools/100-day-challenge-tracker/" data-search="100-day challenge tracker track a 100-day challenge with a checkable 100-cell grid, streaks and stats. 100 day challenge habit tracker 100 days challenge tracker streak tracker"><span class="t-ico">🎲</span><span class="t-body"><b>100-Day Challenge Tracker</b><small>Track a 100-day challenge with a checkable 100-cell grid, streaks and stats.</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/24-game/" data-search="24 game the 24 game — combine four numbers with + − × ÷ to make 24. built-in solver guarantees every deal and gives hints. 24 game make 24 game 24 puzzle solver math puzzle game"><span class="t-ico">🎲</span><span class="t-body"><b>24 Game</b><small>The 24 Game — combine four numbers with + − × ÷ to make 24. Built-in solver guarantees every…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/aim-trainer-game/" data-search="aim trainer game test and train your aim — targets pop up at random spots for 30 seconds. hits, misses and accuracy are tracked live. aim trainer aim test reaction test click speed test fps aim trainer"><span class="t-ico">🎲</span><span class="t-body"><b>Aim Trainer Game</b><small>Test and train your aim — targets pop up at random spots for 30 seconds. Hits, misses and ac…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/asteroid-shooter/" data-search="asteroid shooter asteroid shooter — rotate, thrust and blast splitting asteroids on canvas. 3 lives, rising levels. asteroid shooter game asteroids game online space shooter canvas"><span class="t-ico">🎲</span><span class="t-body"><b>Asteroid Shooter</b><small>Asteroid Shooter — rotate, thrust and blast splitting asteroids on canvas. 3 lives, rising l…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/attendance-tracker/" data-search="attendance tracker track class attendance: roster with present/absent marks per date and % summaries. attendance tracker class attendance student attendance roll call app"><span class="t-ico">🎲</span><span class="t-body"><b>Attendance Tracker</b><small>Track class attendance: roster with present/absent marks per date and % summaries.</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/baby-name-generator/" data-search="baby name generator discover baby names by gender and origin — pakistani, arabic, western, indian or turkish — with meanings, random picks and tap-to-copy. baby name generator baby names with meanings muslim baby names boy girl names"><span class="t-ico">🎲</span><span class="t-body"><b>Baby Name Generator</b><small>Discover baby names by gender and origin — Pakistani, Arabic, Western, Indian or Turkish — w…</small></span><span class="t-arrow">→</span></a></div>
+  </section>
+</main>
+
+<!-- ADSTERRA-FOOTER: paste your Adsterra footer/banner ad code inside the div below -->
+<div class="container"><div class="ad-slot" data-ad="footer"></div></div>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="f-grid">
+      <div>
+        <span class="brandline"><span class="logo-mark">T</span> ToolNest</span>
+        <p>Free online tools that actually work. No sign-up, no watermarks — and your files never leave your device for client-side tools.</p>
+      </div>
+      <div>
+        <h4>Popular</h4>
+        <a href="/tools/qr-code-generator/">QR Code Generator</a>
+        <a href="/tools/background-remover/">Background Remover</a>
+        <a href="/tools/pdf-merger/">PDF Merger</a>
+        <a href="/tools/word-counter/">Word Counter</a>
+      </div>
+      <div>
+        <h4>Categories</h4>
+        <a href="/#image">Image Tools</a>
+        <a href="/#pdf">PDF &amp; Documents</a>
+        <a href="/#calculators">Calculators</a>
+        <a href="/#developer">Developer Tools</a>
+      </div>
+      <div>
+        <h4>Site</h4>
+        <a href="/">Home</a>
+        <a href="/#all-tools">All Tools</a>
+        <a href="/sitemap.xml">Sitemap</a>
+      </div>
+    </div>
+    <div class="f-bottom">© 2026 ToolNest · Free tools for everyone · Made with care</div>
+  </div>
+</footer>
+
+<script src="/assets/site.js?v=5"></script>
+
+<script>
+/* Recipe Box — save recipes with ingredients/steps, search, localStorage. */
+(function () {
+  'use strict';
+
+  var SLUG = 'recipe-box';
+  var KEY = 'tn-' + SLUG + '-recipes';
+
+  function load() {
+    try {
+      var arr = JSON.parse(localStorage.getItem(KEY) || '[]');
+      return Array.isArray(arr) ? arr : [];
+    } catch (e) { return []; }
+  }
+
+  function persist(recipes) {
+    try { localStorage.setItem(KEY, JSON.stringify(recipes)); }
+    catch (e) { TN.setErr(SLUG + '-error', 'Could not save — browser storage is unavailable.'); }
+  }
+
+  function lines(s) {
+    return s.split('\n').map(function (l) { return l.trim(); }).filter(Boolean);
+  }
+
+  function card(r) {
+    var ing = lines(r.ing).map(function (l) { return '<li>' + TN.esc(l) + '</li>'; }).join('');
+    var steps = lines(r.steps).map(function (l) { return '<li>' + TN.esc(l) + '</li>'; }).join('');
+    return '<div class="tool-card" style="margin:8px 0">' +
+      '<strong>' + TN.esc(r.name) + '</strong> <span class="muted">(' + TN.esc(r.cat) + ')</span>' +
+      '<div class="hidden" data-detail="' + r.id + '" style="margin-top:6px">' +
+      '<p><strong>Ingredients</strong></p><ul style="margin-top:0">' + ing + '</ul>' +
+      '<p><strong>Steps</strong></p><ol style="margin-top:0">' + steps + '</ol></div>' +
+      '<div class="btn-row" style="margin-top:6px">' +
+      '<button class="btn btn-sm btn-outline" data-toggle="' + r.id + '">View</button>' +
+      '<button class="btn btn-sm btn-outline" data-del="' + r.id + '">Delete</button>' +
+      '</div></div>';
+  }
+
+  function render() {
+    var recipes = load();
+    var q = (TN.el(SLUG + '-search').value || '').toLowerCase();
+    var shown = recipes.filter(function (r) {
+      if (!q) return true;
+      return (r.name + ' ' + r.ing + ' ' + r.steps).toLowerCase().indexOf(q) !== -1;
+    }).slice().reverse();
+    var list = TN.el(SLUG + '-list');
+    if (!shown.length) { list.innerHTML = '<p class="muted">No recipes yet.</p>'; return; }
+    list.innerHTML = shown.map(card).join('');
+    var i;
+    var toggles = list.querySelectorAll('[data-toggle]');
+    for (i = 0; i < toggles.length; i++) {
+      (function (b) {
+        b.addEventListener('click', function () {
+          var d = list.querySelector('[data-detail="' + b.getAttribute('data-toggle') + '"]');
+          if (d) { d.classList.toggle('hidden'); b.textContent = d.classList.contains('hidden') ? 'View' : 'Hide'; }
+        });
+      })(toggles[i]);
+    }
+    var dels = list.querySelectorAll('[data-del]');
+    for (i = 0; i < dels.length; i++) {
+      (function (b) {
+        b.addEventListener('click', function () {
+          persist(load().filter(function (x) { return String(x.id) !== b.getAttribute('data-del'); }));
+          render();
+        });
+      })(dels[i]);
+    }
+  }
+
+  function add() {
+    TN.clearErr(SLUG + '-error');
+    var name = TN.el(SLUG + '-name').value.trim();
+    var cat = TN.el(SLUG + '-cat').value;
+    var ing = TN.el(SLUG + '-ing').value.trim();
+    var steps = TN.el(SLUG + '-steps').value.trim();
+    if (!name) { TN.setErr(SLUG + '-error', 'Please name the recipe.'); return; }
+    if (!ing) { TN.setErr(SLUG + '-error', 'Add at least one ingredient.'); return; }
+    var recipes = load();
+    recipes.push({ id: Date.now(), name: name, cat: cat, ing: ing, steps: steps });
+    persist(recipes);
+    TN.el(SLUG + '-name').value = '';
+    TN.el(SLUG + '-ing').value = '';
+    TN.el(SLUG + '-steps').value = '';
+    render();
+  }
+
+  function init() {
+    try {
+      if (!TN.el(SLUG + '-add')) return;
+      TN.on(SLUG + '-add', 'click', add);
+      TN.el(SLUG + '-search').addEventListener('input', render);
+      render();
+    } catch (e) { /* never throw on load */ }
+  }
+
+  init();
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CSS Shape Generator — Free Online | ToolNest</title>
+<meta name="description" content="Generate CSS shapes — triangles, circles, stars, hexagons, diamonds and more — with live preview and copy-ready CSS.">
+<meta name="keywords" content="css shape, css triangle, clip-path shapes, css star, css hexagon">
+<link rel="canonical" href="https://toolnest.vercel.app/tools/css-shape-generator/">
+<meta name="theme-color" content="#07070b">
+<meta property="og:title" content="CSS Shape Generator — Free Online | ToolNest">
+<meta property="og:description" content="Generate CSS shapes — triangles, circles, stars, hexagons, diamonds and more — with live preview and copy-ready CSS.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css?v=4">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%23e01111'/><text x='50' y='68' font-size='58' text-anchor='middle' fill='white' font-family='Arial' font-weight='bold'>T</text></svg>">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebApplication","name":"CSS Shape Generator","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0"},"url":"https://toolnest.vercel.app/tools/css-shape-generator/","description":"Generate CSS shapes — triangles, circles, stars, hexagons, diamonds and more — with live preview and copy-ready CSS."},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Which shapes are supported?","acceptedAnswer":{"@type":"Answer","text":"Triangle (4 directions), circle, oval, square, diamond, pentagon, hexagon, star, cross, arrow, chevron, parallelogram and trapezoid."}},{"@type":"Question","name":"How are the shapes drawn?","acceptedAnswer":{"@type":"Answer","text":"Triangles use the classic border trick; all other shapes use clip-path polygons, so they scale cleanly at any size."}},{"@type":"Question","name":"Will the CSS work in all browsers?","acceptedAnswer":{"@type":"Answer","text":"Border triangles and border-radius shapes work everywhere. clip-path polygons work in all modern browsers; very old browsers ignore them."}},{"@type":"Question","name":"Can I change the color later?","acceptedAnswer":{"@type":"Answer","text":"Yes — every shape takes its color from a single background or border-color value you can edit freely."}}]}]}</script>
+</head>
+<body>
+<header class="site-header">
+  <div class="container">
+    <a class="logo" href="/"><span class="logo-mark">T</span> ToolNest</a>
+    <div class="header-right">
+      <form class="nav-search" action="/" method="get" role="search">
+        <span class="ns-icon">🔍</span>
+        <input type="search" name="q" placeholder="Search tools…" aria-label="Search tools" autocomplete="off">
+      </form>
+      <div class="menu-wrap">
+        <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="menuPanel" aria-label="Open menu"><span></span><span></span><span></span></button>
+        <nav class="menu-panel" id="menuPanel" aria-label="Site">
+          <a href="/">Home</a>
+          <a href="/#categories">Categories</a>
+          <a href="/#all-tools">All Tools</a>
+        </nav>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ADSTERRA-HEADER: paste your Adsterra banner ad code inside the div below -->
+<div class="container"><div class="ad-slot ad-leaderboard" data-ad="header"></div></div>
+
+<main class="container">
+  <nav class="crumbs"><a href="/">Home</a> &rsaquo; <a href="/#developer">Developer Tools</a> &rsaquo; CSS Shape Generator</nav>
+  <div class="tool-hero">
+    <h1>CSS Shape Generator</h1>
+    <p>Generate CSS shapes — triangles, circles, stars, hexagons, diamonds and more — with live preview and copy-ready CSS.</p>
+  </div>
+
+  <div class="tool-card">
+  <div class="grid2">
+    <div class="field">
+      <label for="css-shape-generator-shape">Shape</label>
+      <select class="select" id="css-shape-generator-shape">
+        <option value="triangle-up">Triangle ▲ up</option>
+        <option value="triangle-down">Triangle ▼ down</option>
+        <option value="triangle-left">Triangle ◀ left</option>
+        <option value="triangle-right">Triangle ▶ right</option>
+        <option value="circle">Circle</option>
+        <option value="oval">Oval</option>
+        <option value="square">Square</option>
+        <option value="diamond">Diamond</option>
+        <option value="pentagon">Pentagon</option>
+        <option value="hexagon">Hexagon</option>
+        <option value="star">Star</option>
+        <option value="cross">Cross / Plus</option>
+        <option value="arrow-right">Arrow →</option>
+        <option value="chevron">Chevron »</option>
+        <option value="parallelogram">Parallelogram</option>
+        <option value="trapezoid">Trapezoid</option>
+      </select>
+    </div>
+    <div class="field">
+      <label for="css-shape-generator-size">Size (px)</label>
+      <input class="input" id="css-shape-generator-size" type="number" value="120" min="10" max="600">
+    </div>
+  </div>
+  <div class="grid2">
+    <div class="field">
+      <label for="css-shape-generator-color">Color</label>
+      <input class="input" id="css-shape-generator-color" type="color" value="#4d7c0f">
+    </div>
+    <div class="field">
+      <label for="css-shape-generator-bg">Preview background</label>
+      <select class="select" id="css-shape-generator-bg">
+        <option value="dark">Dark</option>
+        <option value="light">Light</option>
+      </select>
+    </div>
+  </div>
+  <div class="field">
+    <label>Live preview</label>
+    <div id="css-shape-generator-preview" style="display:flex;align-items:center;justify-content:center;min-height:230px;border:1px dashed #3f3f46;border-radius:12px;background:#18181b;overflow:hidden"></div>
+  </div>
+  <div class="error" id="css-shape-generator-error"></div>
+  <div class="field">
+    <label for="css-shape-generator-output">CSS</label>
+    <textarea class="textarea" id="css-shape-generator-output" rows="12" readonly></textarea>
+  </div>
+  <div class="btn-row">
+    <button class="btn btn-outline" id="css-shape-generator-copy">Copy CSS</button>
+    <button class="btn btn-outline" id="css-shape-generator-download">Download .css</button>
+  </div>
+</div>
+
+
+  <!-- ADSTERRA-INCONTENT: paste your Adsterra native/in-content ad code inside the div below -->
+  <div class="ad-slot" data-ad="incontent"></div>
+
+  <div class="info-grid">
+    <div class="info-card">
+      <h2>📖 How to use</h2>
+      <ol><li>Pick a shape, size and color from the controls.</li><li>Watch the live preview update as you change options.</li><li>Copy the generated CSS or download it as a .css file.</li><li>Paste the .csg-shape rule into your project and add the class to any element.</li></ol>
+    </div>
+    <div class="info-card">
+      <h2>❓ Frequently asked questions</h2>
+      <div class="faq"><details><summary>Which shapes are supported?</summary><p>Triangle (4 directions), circle, oval, square, diamond, pentagon, hexagon, star, cross, arrow, chevron, parallelogram and trapezoid.</p></details><details><summary>How are the shapes drawn?</summary><p>Triangles use the classic border trick; all other shapes use clip-path polygons, so they scale cleanly at any size.</p></details><details><summary>Will the CSS work in all browsers?</summary><p>Border triangles and border-radius shapes work everywhere. clip-path polygons work in all modern browsers; very old browsers ignore them.</p></details><details><summary>Can I change the color later?</summary><p>Yes — every shape takes its color from a single background or border-color value you can edit freely.</p></details></div>
+    </div>
+  </div>
+
+  <section class="section">
+    <h2>🔗 Related tools</h2>
+    <div class="tool-grid"><a class="tool-link" href="/tools/api-key-generator/" data-search="api key generator generate cryptographically secure api keys with crypto.getrandomvalues — hex, base64, base64url or uuid v4. api key generator random api key uuid generator secure token generator"><span class="t-ico">💻</span><span class="t-body"><b>API Key Generator</b><small>Generate cryptographically secure API keys with crypto.getRandomValues — hex, base64, base64…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/ascii-table-reference/" data-search="ascii table reference full ascii table 0–127: decimal, hex, octal, character, control-code names and html entities — searchable. ascii table ascii codes ascii chart control characters ascii reference"><span class="t-ico">💻</span><span class="t-body"><b>ASCII Table Reference</b><small>Full ASCII table 0–127: decimal, hex, octal, character, control-code names and HTML entities…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/badge-generator/" data-search="badge generator design css badges and pills — colors, sizes, shapes — with live preview and copy-ready html/css. badge css generator css pill badge status badge code label badge html"><span class="t-ico">💻</span><span class="t-body"><b>Badge Generator</b><small>Design CSS badges and pills — colors, sizes, shapes — with live preview and copy-ready HTML/…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/base64-encoder-decoder/" data-search="base64 encoder / decoder encode text to base64 or decode base64 back to text, with full utf-8 support and a file-to-data-url converter. base64 encoder base64 decoder base64 encode base64 decode file to base64"><span class="t-ico">💻</span><span class="t-body"><b>Base64 Encoder / Decoder</b><small>Encode text to Base64 or decode Base64 back to text, with full UTF-8 support and a file-to-d…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/basic-auth-header-generator/" data-search="basic auth header generator encode username:password to a base64 authorization header (unicode-safe) — copy or download. basic auth header base64 authorization http basic auth generator authorization header"><span class="t-ico">💻</span><span class="t-body"><b>Basic Auth Header Generator</b><small>Encode username:password to a Base64 Authorization header (Unicode-safe) — copy or download.</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/binary-text-converter/" data-search="binary and text converter convert text to binary or hex and back, with full utf-8 awareness and strict input validation. binary to text text to binary hex to text converter"><span class="t-ico">💻</span><span class="t-body"><b>Binary and Text Converter</b><small>Convert text to binary or hex and back, with full UTF-8 awareness and strict input validatio…</small></span><span class="t-arrow">→</span></a></div>
+  </section>
+</main>
+
+<!-- ADSTERRA-FOOTER: paste your Adsterra footer/banner ad code inside the div below -->
+<div class="container"><div class="ad-slot" data-ad="footer"></div></div>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="f-grid">
+      <div>
+        <span class="brandline"><span class="logo-mark">T</span> ToolNest</span>
+        <p>Free online tools that actually work. No sign-up, no watermarks — and your files never leave your device for client-side tools.</p>
+      </div>
+      <div>
+        <h4>Popular</h4>
+        <a href="/tools/qr-code-generator/">QR Code Generator</a>
+        <a href="/tools/background-remover/">Background Remover</a>
+        <a href="/tools/pdf-merger/">PDF Merger</a>
+        <a href="/tools/word-counter/">Word Counter</a>
+      </div>
+      <div>
+        <h4>Categories</h4>
+        <a href="/#image">Image Tools</a>
+        <a href="/#pdf">PDF &amp; Documents</a>
+        <a href="/#calculators">Calculators</a>
+        <a href="/#developer">Developer Tools</a>
+      </div>
+      <div>
+        <h4>Site</h4>
+        <a href="/">Home</a>
+        <a href="/#all-tools">All Tools</a>
+        <a href="/sitemap.xml">Sitemap</a>
+      </div>
+    </div>
+    <div class="f-bottom">© 2026 ToolNest · Free tools for everyone · Made with care</div>
+  </div>
+</footer>
+
+<script src="/assets/site.js?v=5"></script>
+
+<script>
+/* CSS Shape Generator — shape/size/color → clip-path or border-triangle CSS, live preview. */
+(function () {
+  'use strict';
+  var SLUG = 'css-shape-generator';
+  function el(id) { return document.getElementById(id); }
+  function fail(msg) { TN.setErr(SLUG + '-error', msg); }
+  function clear() { TN.clearErr(SLUG + '-error'); }
+
+  var POLYS = {
+    diamond: 'polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%)',
+    pentagon: 'polygon(50% 0%, 100% 38%, 81% 100%, 19% 100%, 0% 38%)',
+    hexagon: 'polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%)',
+    star: 'polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%)',
+    cross: 'polygon(20% 0%, 80% 0%, 80% 20%, 100% 20%, 100% 80%, 80% 80%, 80% 100%, 20% 100%, 20% 80%, 0% 80%, 0% 20%, 20% 20%)',
+    'arrow-right': 'polygon(0% 20%, 60% 20%, 60% 0%, 100% 50%, 60% 100%, 60% 80%, 0% 80%)',
+    chevron: 'polygon(0% 20%, 45% 50%, 0% 80%, 20% 100%, 65% 50%, 20% 0%)',
+    parallelogram: 'polygon(25% 0%, 100% 0%, 75% 100%, 0% 100%)',
+    trapezoid: 'polygon(20% 0%, 80% 0%, 100% 100%, 0% 100%)'
+  };
+
+  function cssFor(shape, size, color) {
+    var s = Math.max(10, Math.min(600, size || 120));
+    var half = Math.round(s / 2);
+    var L = ['.csg-shape {'];
+    if (shape === 'triangle-up') {
+      L.push('  width: 0;', '  height: 0;',
+        '  border-left: ' + half + 'px solid transparent;',
+        '  border-right: ' + half + 'px solid transparent;',
+        '  border-bottom: ' + s + 'px solid ' + color + ';');
+    } else if (shape === 'triangle-down') {
+      L.push('  width: 0;', '  height: 0;',
+        '  border-left: ' + half + 'px solid transparent;',
+        '  border-right: ' + half + 'px solid transparent;',
+        '  border-top: ' + s + 'px solid ' + color + ';');
+    } else if (shape === 'triangle-left') {
+      L.push('  width: 0;', '  height: 0;',
+        '  border-top: ' + half + 'px solid transparent;',
+        '  border-bottom: ' + half + 'px solid transparent;',
+        '  border-right: ' + s + 'px solid ' + color + ';');
+    } else if (shape === 'triangle-right') {
+      L.push('  width: 0;', '  height: 0;',
+        '  border-top: ' + half + 'px solid transparent;',
+        '  border-bottom: ' + half + 'px solid transparent;',
+        '  border-left: ' + s + 'px solid ' + color + ';');
+    } else if (shape === 'circle') {
+      L.push('  width: ' + s + 'px;', '  height: ' + s + 'px;',
+        '  background: ' + color + ';', '  border-radius: 50%;');
+    } else if (shape === 'oval') {
+      L.push('  width: ' + Math.round(s * 1.6) + 'px;', '  height: ' + s + 'px;',
+        '  background: ' + color + ';', '  border-radius: 50%;');
+    } else if (shape === 'square') {
+      L.push('  width: ' + s + 'px;', '  height: ' + s + 'px;', '  background: ' + color + ';');
+    } else {
+      L.push('  width: ' + s + 'px;', '  height: ' + s + 'px;',
+        '  background: ' + color + ';',
+        '  clip-path: ' + POLYS[shape] + ';');
+    }
+    L.push('}');
+    return L.join('\n');
+  }
+
+  function update() {
+    clear();
+    var shape = el(SLUG + '-shape').value;
+    var size = parseInt(el(SLUG + '-size').value, 10);
+    var color = el(SLUG + '-color').value;
+    if (!(size >= 10 && size <= 600)) { fail('Size must be between 10 and 600 px.'); return; }
+    var css = cssFor(shape, size, color);
+    el(SLUG + '-output').value = css + '\n';
+    var pv = el(SLUG + '-preview');
+    pv.style.background = el(SLUG + '-bg').value === 'light' ? '#f4f4f5' : '#18181b';
+    pv.innerHTML = '<style>' + css + '</style><div class="csg-shape"></div>';
+  }
+
+  try {
+    if (!el(SLUG + '-shape')) return;
+    ['shape', 'bg'].forEach(function (k) { TN.on(SLUG + '-' + k, 'change', update); });
+    ['size', 'color'].forEach(function (k) { TN.on(SLUG + '-' + k, 'input', update); });
+    TN.on(SLUG + '-copy', 'click', function () {
+      var v = el(SLUG + '-output').value;
+      if (!v) { fail('Nothing to copy yet.'); return; }
+      TN.copy(v).then(function (ok) { if (!ok) fail('Copy failed — select the text manually.'); });
+    });
+    TN.on(SLUG + '-download', 'click', function () {
+      var v = el(SLUG + '-output').value;
+      if (!v) { fail('Nothing to download yet.'); return; }
+      TN.downloadText(v, 'shape.css', 'text/css');
+    });
+    update();
+  } catch (e) { /* never throw on load */ }
+})();
+
+</script>
+</body>
+</html>

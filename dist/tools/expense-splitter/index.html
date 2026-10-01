@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Expense Splitter — Free Online | ToolNest</title>
+<meta name="description" content="Log group expenses and get the minimal set of settle-up payments.">
+<meta name="keywords" content="expense splitter, split bills, settle up calculator, group expense tracker">
+<link rel="canonical" href="https://toolnest.vercel.app/tools/expense-splitter/">
+<meta name="theme-color" content="#07070b">
+<meta property="og:title" content="Expense Splitter — Free Online | ToolNest">
+<meta property="og:description" content="Log group expenses and get the minimal set of settle-up payments.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css?v=4">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%23e01111'/><text x='50' y='68' font-size='58' text-anchor='middle' fill='white' font-family='Arial' font-weight='bold'>T</text></svg>">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebApplication","name":"Expense Splitter","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0"},"url":"https://toolnest.vercel.app/tools/expense-splitter/","description":"Log group expenses and get the minimal set of settle-up payments."},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How does it work?","acceptedAnswer":{"@type":"Answer","text":"For each expense enter who paid, how much, and who shared it (comma-separated names). The tool computes balances and the fewest transfers to settle."}},{"@type":"Question","name":"How are settle-up payments minimized?","acceptedAnswer":{"@type":"Answer","text":"The balances are netted: each person ends with a single owed amount, then a greedy algorithm pairs debtors with creditors so nobody makes more payments than needed."}},{"@type":"Question","name":"Is it only for roommates?","acceptedAnswer":{"@type":"Answer","text":"No — it supports a free-form group; just use consistent names for each person."}},{"@type":"Question","name":"Is the expense log saved?","acceptedAnswer":{"@type":"Answer","text":"Yes, the expense log is stored in this browser's localStorage."}}]}]}</script>
+</head>
+<body>
+<header class="site-header">
+  <div class="container">
+    <a class="logo" href="/"><span class="logo-mark">T</span> ToolNest</a>
+    <div class="header-right">
+      <form class="nav-search" action="/" method="get" role="search">
+        <span class="ns-icon">🔍</span>
+        <input type="search" name="q" placeholder="Search tools…" aria-label="Search tools" autocomplete="off">
+      </form>
+      <div class="menu-wrap">
+        <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="menuPanel" aria-label="Open menu"><span></span><span></span><span></span></button>
+        <nav class="menu-panel" id="menuPanel" aria-label="Site">
+          <a href="/">Home</a>
+          <a href="/#categories">Categories</a>
+          <a href="/#all-tools">All Tools</a>
+        </nav>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ADSTERRA-HEADER: paste your Adsterra banner ad code inside the div below -->
+<div class="container"><div class="ad-slot ad-leaderboard" data-ad="header"></div></div>
+
+<main class="container">
+  <nav class="crumbs"><a href="/">Home</a> &rsaquo; <a href="/#fun">Fun &amp; Lifestyle</a> &rsaquo; Expense Splitter</nav>
+  <div class="tool-hero">
+    <h1>Expense Splitter</h1>
+    <p>Log group expenses and get the minimal set of settle-up payments.</p>
+  </div>
+
+  <div class="tool-card">
+  <div class="grid3">
+    <div class="field">
+      <label for="expense-splitter-payer">Paid by</label>
+      <input class="input" type="text" id="expense-splitter-payer" placeholder="e.g. Ali">
+    </div>
+    <div class="field">
+      <label for="expense-splitter-amount">Amount</label>
+      <input class="input" type="number" id="expense-splitter-amount" min="0" step="0.01" placeholder="0.00">
+    </div>
+    <div class="field">
+      <label for="expense-splitter-for">Shared by (comma-separated)</label>
+      <input class="input" type="text" id="expense-splitter-for" placeholder="Ali, Sara, Omar">
+    </div>
+  </div>
+  <div class="field">
+    <label for="expense-splitter-desc">Description (optional)</label>
+    <input class="input" type="text" id="expense-splitter-desc" placeholder="Dinner at…">
+  </div>
+  <div class="btn-row">
+    <button class="btn" id="expense-splitter-add">Add Expense</button>
+    <button class="btn btn-outline" id="expense-splitter-clear">Clear All</button>
+  </div>
+  <div class="error" id="expense-splitter-error"></div>
+</div>
+
+<div class="tool-card">
+  <h3>Expenses</h3>
+  <div id="expense-splitter-list"></div>
+  <div class="btn-row">
+    <button class="btn" id="expense-splitter-calc">Calculate Settle-Up</button>
+  </div>
+  <div class="result" id="expense-splitter-result" style="margin-top:12px"></div>
+</div>
+
+  <!-- ADSTERRA-INCONTENT: paste your Adsterra native/in-content ad code inside the div below -->
+  <div class="ad-slot" data-ad="incontent"></div>
+
+  <div class="info-grid">
+    <div class="info-card">
+      <h2>📖 How to use</h2>
+      <ol><li>Enter who paid, the amount, and who shared the expense.</li><li>Click Add Expense — repeat for every expense.</li><li>Click Calculate Settle-Up to see who pays whom.</li><li>The result is the minimal set of transfers to even out.</li></ol>
+    </div>
+    <div class="info-card">
+      <h2>❓ Frequently asked questions</h2>
+      <div class="faq"><details><summary>How does it work?</summary><p>For each expense enter who paid, how much, and who shared it (comma-separated names). The tool computes balances and the fewest transfers to settle.</p></details><details><summary>How are settle-up payments minimized?</summary><p>The balances are netted: each person ends with a single owed amount, then a greedy algorithm pairs debtors with creditors so nobody makes more payments than needed.</p></details><details><summary>Is it only for roommates?</summary><p>No — it supports a free-form group; just use consistent names for each person.</p></details><details><summary>Is the expense log saved?</summary><p>Yes, the expense log is stored in this browser&#39;s localStorage.</p></details></div>
+    </div>
+  </div>
+
+  <section class="section">
+    <h2>🔗 Related tools</h2>
+    <div class="tool-grid"><a class="tool-link" href="/tools/100-day-challenge-tracker/" data-search="100-day challenge tracker track a 100-day challenge with a checkable 100-cell grid, streaks and stats. 100 day challenge habit tracker 100 days challenge tracker streak tracker"><span class="t-ico">🎲</span><span class="t-body"><b>100-Day Challenge Tracker</b><small>Track a 100-day challenge with a checkable 100-cell grid, streaks and stats.</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/24-game/" data-search="24 game the 24 game — combine four numbers with + − × ÷ to make 24. built-in solver guarantees every deal and gives hints. 24 game make 24 game 24 puzzle solver math puzzle game"><span class="t-ico">🎲</span><span class="t-body"><b>24 Game</b><small>The 24 Game — combine four numbers with + − × ÷ to make 24. Built-in solver guarantees every…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/aim-trainer-game/" data-search="aim trainer game test and train your aim — targets pop up at random spots for 30 seconds. hits, misses and accuracy are tracked live. aim trainer aim test reaction test click speed test fps aim trainer"><span class="t-ico">🎲</span><span class="t-body"><b>Aim Trainer Game</b><small>Test and train your aim — targets pop up at random spots for 30 seconds. Hits, misses and ac…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/asteroid-shooter/" data-search="asteroid shooter asteroid shooter — rotate, thrust and blast splitting asteroids on canvas. 3 lives, rising levels. asteroid shooter game asteroids game online space shooter canvas"><span class="t-ico">🎲</span><span class="t-body"><b>Asteroid Shooter</b><small>Asteroid Shooter — rotate, thrust and blast splitting asteroids on canvas. 3 lives, rising l…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/attendance-tracker/" data-search="attendance tracker track class attendance: roster with present/absent marks per date and % summaries. attendance tracker class attendance student attendance roll call app"><span class="t-ico">🎲</span><span class="t-body"><b>Attendance Tracker</b><small>Track class attendance: roster with present/absent marks per date and % summaries.</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/baby-name-generator/" data-search="baby name generator discover baby names by gender and origin — pakistani, arabic, western, indian or turkish — with meanings, random picks and tap-to-copy. baby name generator baby names with meanings muslim baby names boy girl names"><span class="t-ico">🎲</span><span class="t-body"><b>Baby Name Generator</b><small>Discover baby names by gender and origin — Pakistani, Arabic, Western, Indian or Turkish — w…</small></span><span class="t-arrow">→</span></a></div>
+  </section>
+</main>
+
+<!-- ADSTERRA-FOOTER: paste your Adsterra footer/banner ad code inside the div below -->
+<div class="container"><div class="ad-slot" data-ad="footer"></div></div>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="f-grid">
+      <div>
+        <span class="brandline"><span class="logo-mark">T</span> ToolNest</span>
+        <p>Free online tools that actually work. No sign-up, no watermarks — and your files never leave your device for client-side tools.</p>
+      </div>
+      <div>
+        <h4>Popular</h4>
+        <a href="/tools/qr-code-generator/">QR Code Generator</a>
+        <a href="/tools/background-remover/">Background Remover</a>
+        <a href="/tools/pdf-merger/">PDF Merger</a>
+        <a href="/tools/word-counter/">Word Counter</a>
+      </div>
+      <div>
+        <h4>Categories</h4>
+        <a href="/#image">Image Tools</a>
+        <a href="/#pdf">PDF &amp; Documents</a>
+        <a href="/#calculators">Calculators</a>
+        <a href="/#developer">Developer Tools</a>
+      </div>
+      <div>
+        <h4>Site</h4>
+        <a href="/">Home</a>
+        <a href="/#all-tools">All Tools</a>
+        <a href="/sitemap.xml">Sitemap</a>
+      </div>
+    </div>
+    <div class="f-bottom">© 2026 ToolNest · Free tools for everyone · Made with care</div>
+  </div>
+</footer>
+
+<script src="/assets/site.js?v=5"></script>
+
+<script>
+/* Expense Splitter — log expenses, compute minimal settle-up transactions. */
+(function () {
+  'use strict';
+
+  var SLUG = 'expense-splitter';
+  var KEY = 'tn-' + SLUG + '-expenses';
+
+  function load() {
+    try {
+      var arr = JSON.parse(localStorage.getItem(KEY) || '[]');
+      return Array.isArray(arr) ? arr : [];
+    } catch (e) { return []; }
+  }
+
+  function persist(expenses) {
+    try { localStorage.setItem(KEY, JSON.stringify(expenses)); }
+    catch (e) { TN.setErr(SLUG + '-error', 'Could not save — browser storage is unavailable.'); }
+  }
+
+  function names(s) {
+    return s.split(',').map(function (n) { return n.trim(); }).filter(Boolean);
+  }
+
+  function render() {
+    var expenses = load();
+    var list = TN.el(SLUG + '-list');
+    if (!expenses.length) { list.innerHTML = '<p class="muted">No expenses yet.</p>'; return; }
+    list.innerHTML = expenses.slice().reverse().map(function (e) {
+      return '<div class="tool-card" style="margin:8px 0">' +
+        '<strong>' + TN.esc(e.desc || 'Expense') + '</strong> — ' + e.amount.toFixed(2) +
+        ' <span class="muted">paid by ' + TN.esc(e.payer) + ', shared by ' + TN.esc(e.for.join(', ')) + '</span>' +
+        '<button class="btn btn-sm btn-outline" data-del="' + e.id + '" style="margin-left:8px">Delete</button></div>';
+    }).join('');
+    var dels = list.querySelectorAll('[data-del]');
+    for (var i = 0; i < dels.length; i++) {
+      (function (b) {
+        b.addEventListener('click', function () {
+          persist(load().filter(function (x) { return String(x.id) !== b.getAttribute('data-del'); }));
+          render();
+          TN.el(SLUG + '-result').innerHTML = '';
+        });
+      })(dels[i]);
+    }
+  }
+
+  function add() {
+    TN.clearErr(SLUG + '-error');
+    var payer = TN.el(SLUG + '-payer').value.trim();
+    var amount = parseFloat(TN.el(SLUG + '-amount').value);
+    var forList = names(TN.el(SLUG + '-for').value);
+    var desc = TN.el(SLUG + '-desc').value.trim();
+    if (!payer) { TN.setErr(SLUG + '-error', 'Enter who paid.'); return; }
+    if (isNaN(amount) || amount <= 0) { TN.setErr(SLUG + '-error', 'Enter a valid amount.'); return; }
+    if (!forList.length) { TN.setErr(SLUG + '-error', 'Enter who shared the expense.'); return; }
+    var expenses = load();
+    expenses.push({ id: Date.now(), payer: payer, amount: amount, for: forList, desc: desc });
+    persist(expenses);
+    TN.el(SLUG + '-payer').value = '';
+    TN.el(SLUG + '-amount').value = '';
+    TN.el(SLUG + '-for').value = '';
+    TN.el(SLUG + '-desc').value = '';
+    render();
+  }
+
+  function settle() {
+    TN.clearErr(SLUG + '-error');
+    var expenses = load();
+    var out = TN.el(SLUG + '-result');
+    if (!expenses.length) { TN.setErr(SLUG + '-error', 'Add at least one expense first.'); return; }
+    var balances = {};
+    expenses.forEach(function (e) {
+      var share = e.amount / e.for.length;
+      e.for.forEach(function (p) {
+        if (!(p in balances)) balances[p] = 0;
+        balances[p] -= share;
+      });
+      if (!(e.payer in balances)) balances[e.payer] = 0;
+      balances[e.payer] += e.amount;
+    });
+    var debtors = [], creditors = [];
+    Object.keys(balances).forEach(function (p) {
+      var b = Math.round(balances[p] * 100) / 100;
+      if (b < -0.005) debtors.push({ name: p, amt: -b });
+      else if (b > 0.005) creditors.push({ name: p, amt: b });
+    });
+    debtors.sort(function (a, b) { return b.amt - a.amt; });
+    creditors.sort(function (a, b) { return b.amt - a.amt; });
+    var transfers = [];
+    var i = 0, j = 0;
+    while (i < debtors.length && j < creditors.length) {
+      var pay = Math.min(debtors[i].amt, creditors[j].amt);
+      pay = Math.round(pay * 100) / 100;
+      transfers.push({ from: debtors[i].name, to: creditors[j].name, amt: pay });
+      debtors[i].amt = Math.round((debtors[i].amt - pay) * 100) / 100;
+      creditors[j].amt = Math.round((creditors[j].amt - pay) * 100) / 100;
+      if (debtors[i].amt < 0.005) i++;
+      if (creditors[j].amt < 0.005) j++;
+    }
+    if (!transfers.length) {
+      out.innerHTML = '<p>🎉 Everyone is already settled up!</p>';
+      return;
+    }
+    out.innerHTML = '<p><strong>' + transfers.length + ' payment' + (transfers.length > 1 ? 's' : '') + ' to settle:</strong></p><ul>' +
+      transfers.map(function (t) {
+        return '<li>' + TN.esc(t.from) + ' → ' + TN.esc(t.to) + ': <strong>' + t.amt.toFixed(2) + '</strong></li>';
+      }).join('') + '</ul>';
+  }
+
+  function init() {
+    try {
+      if (!TN.el(SLUG + '-add')) return;
+      TN.on(SLUG + '-add', 'click', add);
+      TN.on(SLUG + '-calc', 'click', settle);
+      TN.on(SLUG + '-clear', 'click', function () {
+        if (!window.confirm('Delete all expenses?')) return;
+        persist([]); render(); TN.el(SLUG + '-result').innerHTML = '';
+      });
+      render();
+    } catch (e) { /* never throw on load */ }
+  }
+
+  init();
+})();
+</script>
+</body>
+</html>

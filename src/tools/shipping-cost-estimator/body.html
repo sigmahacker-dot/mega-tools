@@ -1,0 +1,47 @@
+<div class="tool-card">
+  <div class="grid2">
+    <div class="field">
+      <label for="shipping-cost-estimator-units">Units</label>
+      <select class="select" id="shipping-cost-estimator-units">
+        <option value="metric">cm / kg</option>
+        <option value="imperial">in / lb</option>
+      </select>
+    </div>
+    <div class="field">
+      <label for="shipping-cost-estimator-divisor">Dimensional divisor</label>
+      <input type="number" class="input" id="shipping-cost-estimator-divisor" min="1" step="any" value="5000">
+    </div>
+    <div class="field">
+      <label for="shipping-cost-estimator-length">Length</label>
+      <input type="number" class="input" id="shipping-cost-estimator-length" min="0" step="any" placeholder="40">
+    </div>
+    <div class="field">
+      <label for="shipping-cost-estimator-width">Width</label>
+      <input type="number" class="input" id="shipping-cost-estimator-width" min="0" step="any" placeholder="30">
+    </div>
+    <div class="field">
+      <label for="shipping-cost-estimator-height">Height</label>
+      <input type="number" class="input" id="shipping-cost-estimator-height" min="0" step="any" placeholder="25">
+    </div>
+    <div class="field">
+      <label for="shipping-cost-estimator-weight">Actual weight</label>
+      <input type="number" class="input" id="shipping-cost-estimator-weight" min="0" step="any" placeholder="4">
+    </div>
+  </div>
+  <div class="field">
+    <label>Zone rates (editable)</label>
+    <div id="shipping-cost-estimator-zones"></div>
+    <div class="btn-row" style="margin-top:8px">
+      <button class="btn btn-sm btn-outline" id="shipping-cost-estimator-add" type="button">+ Add zone</button>
+    </div>
+  </div>
+  <div class="error" id="shipping-cost-estimator-error"></div>
+  <div class="result" id="shipping-cost-estimator-result">
+    <div class="stat-cards">
+      <div class="stat-card"><div class="v" id="shipping-cost-estimator-dim">&ndash;</div><div class="l">Dimensional weight</div></div>
+      <div class="stat-card"><div class="v" id="shipping-cost-estimator-charge">&ndash;</div><div class="l">Chargeable weight</div></div>
+    </div>
+    <div id="shipping-cost-estimator-out"></div>
+    <p class="note">You are charged on the greater of actual and dimensional weight. For information only &mdash; not financial advice.</p>
+  </div>
+</div>

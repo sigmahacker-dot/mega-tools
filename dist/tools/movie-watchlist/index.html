@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Movie Watchlist — Free Online | ToolNest</title>
+<meta name="description" content="Keep a movie watchlist with personal ratings and a watched toggle.">
+<meta name="keywords" content="movie watchlist, film watchlist, movies to watch list, movie ratings">
+<link rel="canonical" href="https://toolnest.vercel.app/tools/movie-watchlist/">
+<meta name="theme-color" content="#07070b">
+<meta property="og:title" content="Movie Watchlist — Free Online | ToolNest">
+<meta property="og:description" content="Keep a movie watchlist with personal ratings and a watched toggle.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css?v=4">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%23e01111'/><text x='50' y='68' font-size='58' text-anchor='middle' fill='white' font-family='Arial' font-weight='bold'>T</text></svg>">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebApplication","name":"Movie Watchlist","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0"},"url":"https://toolnest.vercel.app/tools/movie-watchlist/","description":"Keep a movie watchlist with personal ratings and a watched toggle."},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How do I add and rate a movie?","acceptedAnswer":{"@type":"Answer","text":"Add the movie title and year, then rate it 1–5 stars. The star buttons set your personal rating."}},{"@type":"Question","name":"How do I mark a movie as watched?","acceptedAnswer":{"@type":"Answer","text":"Click the Watched toggle on the card. Watched movies move to the Watched section."}},{"@type":"Question","name":"Does it show my average rating?","acceptedAnswer":{"@type":"Answer","text":"Yes — the average of all your rated movies is shown at the top."}},{"@type":"Question","name":"Where is my watchlist stored?","acceptedAnswer":{"@type":"Answer","text":"In this browser's localStorage, private to this device."}}]}]}</script>
+</head>
+<body>
+<header class="site-header">
+  <div class="container">
+    <a class="logo" href="/"><span class="logo-mark">T</span> ToolNest</a>
+    <div class="header-right">
+      <form class="nav-search" action="/" method="get" role="search">
+        <span class="ns-icon">🔍</span>
+        <input type="search" name="q" placeholder="Search tools…" aria-label="Search tools" autocomplete="off">
+      </form>
+      <div class="menu-wrap">
+        <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="menuPanel" aria-label="Open menu"><span></span><span></span><span></span></button>
+        <nav class="menu-panel" id="menuPanel" aria-label="Site">
+          <a href="/">Home</a>
+          <a href="/#categories">Categories</a>
+          <a href="/#all-tools">All Tools</a>
+        </nav>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ADSTERRA-HEADER: paste your Adsterra banner ad code inside the div below -->
+<div class="container"><div class="ad-slot ad-leaderboard" data-ad="header"></div></div>
+
+<main class="container">
+  <nav class="crumbs"><a href="/">Home</a> &rsaquo; <a href="/#fun">Fun &amp; Lifestyle</a> &rsaquo; Movie Watchlist</nav>
+  <div class="tool-hero">
+    <h1>Movie Watchlist</h1>
+    <p>Keep a movie watchlist with personal ratings and a watched toggle.</p>
+  </div>
+
+  <div class="tool-card">
+  <div class="stat-cards">
+    <div class="stat-card"><div class="v" id="movie-watchlist-avg">—</div><div class="l">Average rating</div></div>
+    <div class="stat-card"><div class="v" id="movie-watchlist-count">0</div><div class="l">Movies</div></div>
+  </div>
+  <div class="grid3">
+    <div class="field">
+      <label for="movie-watchlist-title">Movie title</label>
+      <input class="input" type="text" id="movie-watchlist-title" placeholder="Movie title">
+    </div>
+    <div class="field">
+      <label for="movie-watchlist-year">Year</label>
+      <input class="input" type="number" id="movie-watchlist-year" placeholder="2024" min="1888" max="2100">
+    </div>
+    <div class="field">
+      <label>Your rating</label>
+      <div class="btn-row" id="movie-watchlist-stars">
+        <button class="btn btn-outline btn-sm" data-r="1">★</button>
+        <button class="btn btn-outline btn-sm" data-r="2">★</button>
+        <button class="btn btn-outline btn-sm" data-r="3">★</button>
+        <button class="btn btn-outline btn-sm" data-r="4">★</button>
+        <button class="btn btn-outline btn-sm" data-r="5">★</button>
+      </div>
+    </div>
+  </div>
+  <div class="btn-row">
+    <button class="btn" id="movie-watchlist-add">Add Movie</button>
+  </div>
+  <div class="error" id="movie-watchlist-error"></div>
+</div>
+
+<div class="tool-card">
+  <div class="btn-row">
+    <button class="btn btn-sm" data-filter="all">All</button>
+    <button class="btn btn-sm btn-outline" data-filter="towatch">To Watch</button>
+    <button class="btn btn-sm btn-outline" data-filter="watched">Watched</button>
+  </div>
+  <div id="movie-watchlist-list"></div>
+</div>
+
+  <!-- ADSTERRA-INCONTENT: paste your Adsterra native/in-content ad code inside the div below -->
+  <div class="ad-slot" data-ad="incontent"></div>
+
+  <div class="info-grid">
+    <div class="info-card">
+      <h2>📖 How to use</h2>
+      <ol><li>Enter the movie title, optional year, and your 1–5 star rating.</li><li>Click Add Movie.</li><li>Toggle Watched on a card when you&#39;ve seen it.</li><li>Filter by All / To Watch / Watched to browse.</li></ol>
+    </div>
+    <div class="info-card">
+      <h2>❓ Frequently asked questions</h2>
+      <div class="faq"><details><summary>How do I add and rate a movie?</summary><p>Add the movie title and year, then rate it 1–5 stars. The star buttons set your personal rating.</p></details><details><summary>How do I mark a movie as watched?</summary><p>Click the Watched toggle on the card. Watched movies move to the Watched section.</p></details><details><summary>Does it show my average rating?</summary><p>Yes — the average of all your rated movies is shown at the top.</p></details><details><summary>Where is my watchlist stored?</summary><p>In this browser&#39;s localStorage, private to this device.</p></details></div>
+    </div>
+  </div>
+
+  <section class="section">
+    <h2>🔗 Related tools</h2>
+    <div class="tool-grid"><a class="tool-link" href="/tools/100-day-challenge-tracker/" data-search="100-day challenge tracker track a 100-day challenge with a checkable 100-cell grid, streaks and stats. 100 day challenge habit tracker 100 days challenge tracker streak tracker"><span class="t-ico">🎲</span><span class="t-body"><b>100-Day Challenge Tracker</b><small>Track a 100-day challenge with a checkable 100-cell grid, streaks and stats.</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/24-game/" data-search="24 game the 24 game — combine four numbers with + − × ÷ to make 24. built-in solver guarantees every deal and gives hints. 24 game make 24 game 24 puzzle solver math puzzle game"><span class="t-ico">🎲</span><span class="t-body"><b>24 Game</b><small>The 24 Game — combine four numbers with + − × ÷ to make 24. Built-in solver guarantees every…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/aim-trainer-game/" data-search="aim trainer game test and train your aim — targets pop up at random spots for 30 seconds. hits, misses and accuracy are tracked live. aim trainer aim test reaction test click speed test fps aim trainer"><span class="t-ico">🎲</span><span class="t-body"><b>Aim Trainer Game</b><small>Test and train your aim — targets pop up at random spots for 30 seconds. Hits, misses and ac…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/asteroid-shooter/" data-search="asteroid shooter asteroid shooter — rotate, thrust and blast splitting asteroids on canvas. 3 lives, rising levels. asteroid shooter game asteroids game online space shooter canvas"><span class="t-ico">🎲</span><span class="t-body"><b>Asteroid Shooter</b><small>Asteroid Shooter — rotate, thrust and blast splitting asteroids on canvas. 3 lives, rising l…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/attendance-tracker/" data-search="attendance tracker track class attendance: roster with present/absent marks per date and % summaries. attendance tracker class attendance student attendance roll call app"><span class="t-ico">🎲</span><span class="t-body"><b>Attendance Tracker</b><small>Track class attendance: roster with present/absent marks per date and % summaries.</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/baby-name-generator/" data-search="baby name generator discover baby names by gender and origin — pakistani, arabic, western, indian or turkish — with meanings, random picks and tap-to-copy. baby name generator baby names with meanings muslim baby names boy girl names"><span class="t-ico">🎲</span><span class="t-body"><b>Baby Name Generator</b><small>Discover baby names by gender and origin — Pakistani, Arabic, Western, Indian or Turkish — w…</small></span><span class="t-arrow">→</span></a></div>
+  </section>
+</main>
+
+<!-- ADSTERRA-FOOTER: paste your Adsterra footer/banner ad code inside the div below -->
+<div class="container"><div class="ad-slot" data-ad="footer"></div></div>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="f-grid">
+      <div>
+        <span class="brandline"><span class="logo-mark">T</span> ToolNest</span>
+        <p>Free online tools that actually work. No sign-up, no watermarks — and your files never leave your device for client-side tools.</p>
+      </div>
+      <div>
+        <h4>Popular</h4>
+        <a href="/tools/qr-code-generator/">QR Code Generator</a>
+        <a href="/tools/background-remover/">Background Remover</a>
+        <a href="/tools/pdf-merger/">PDF Merger</a>
+        <a href="/tools/word-counter/">Word Counter</a>
+      </div>
+      <div>
+        <h4>Categories</h4>
+        <a href="/#image">Image Tools</a>
+        <a href="/#pdf">PDF &amp; Documents</a>
+        <a href="/#calculators">Calculators</a>
+        <a href="/#developer">Developer Tools</a>
+      </div>
+      <div>
+        <h4>Site</h4>
+        <a href="/">Home</a>
+        <a href="/#all-tools">All Tools</a>
+        <a href="/sitemap.xml">Sitemap</a>
+      </div>
+    </div>
+    <div class="f-bottom">© 2026 ToolNest · Free tools for everyone · Made with care</div>
+  </div>
+</footer>
+
+<script src="/assets/site.js?v=5"></script>
+
+<script>
+/* Movie Watchlist — personal ratings, watched toggle, localStorage. */
+(function () {
+  'use strict';
+
+  var SLUG = 'movie-watchlist';
+  var KEY = 'tn-' + SLUG + '-movies';
+  var rating = 0;
+  var filter = 'all';
+
+  function load() {
+    try {
+      var arr = JSON.parse(localStorage.getItem(KEY) || '[]');
+      return Array.isArray(arr) ? arr : [];
+    } catch (e) { return []; }
+  }
+
+  function persist(movies) {
+    try { localStorage.setItem(KEY, JSON.stringify(movies)); }
+    catch (e) { TN.setErr(SLUG + '-error', 'Could not save — browser storage is unavailable.'); }
+  }
+
+  function stars(n) {
+    var s = '';
+    for (var i = 1; i <= 5; i++) s += i <= n ? '★' : '☆';
+    return s;
+  }
+
+  function paintStars() {
+    var btns = TN.el(SLUG + '-stars').querySelectorAll('button');
+    for (var i = 0; i < btns.length; i++) {
+      var r = parseInt(btns[i].getAttribute('data-r'), 10);
+      btns[i].style.color = r <= rating ? '#f1c40f' : '';
+    }
+  }
+
+  function render() {
+    var movies = load();
+    var rated = movies.filter(function (m) { return m.rating > 0; });
+    TN.el(SLUG + '-avg').textContent = rated.length
+      ? (rated.reduce(function (a, m) { return a + m.rating; }, 0) / rated.length).toFixed(1) + ' ★'
+      : '—';
+    TN.el(SLUG + '-count').textContent = movies.length;
+    var shown = movies.filter(function (m) {
+      if (filter === 'towatch') return !m.watched;
+      if (filter === 'watched') return m.watched;
+      return true;
+    }).slice().reverse();
+    var list = TN.el(SLUG + '-list');
+    if (!shown.length) { list.innerHTML = '<p class="muted">Nothing here yet.</p>'; return; }
+    list.innerHTML = shown.map(function (m) {
+      return '<div class="tool-card" style="margin:8px 0">' +
+        '<strong>' + TN.esc(m.title) + '</strong>' +
+        (m.year ? ' <span class="muted">(' + m.year + ')</span>' : '') +
+        '<p style="margin:4px 0;color:#f1c40f">' + stars(m.rating) + '</p>' +
+        '<div class="btn-row">' +
+        '<button class="btn btn-sm ' + (m.watched ? '' : 'btn-outline') + '" data-watch="' + m.id + '">' +
+        (m.watched ? '✓ Watched' : 'Mark watched') + '</button>' +
+        '<button class="btn btn-sm btn-outline" data-del="' + m.id + '">Delete</button>' +
+        '</div></div>';
+    }).join('');
+    var i;
+    var wbtns = list.querySelectorAll('[data-watch]');
+    for (i = 0; i < wbtns.length; i++) {
+      (function (b) {
+        b.addEventListener('click', function () {
+          var ms = load();
+          var m = ms.filter(function (x) { return String(x.id) === b.getAttribute('data-watch'); })[0];
+          if (m) { m.watched = !m.watched; persist(ms); render(); }
+        });
+      })(wbtns[i]);
+    }
+    var dbtns = list.querySelectorAll('[data-del]');
+    for (i = 0; i < dbtns.length; i++) {
+      (function (b) {
+        b.addEventListener('click', function () {
+          persist(load().filter(function (x) { return String(x.id) !== b.getAttribute('data-del'); }));
+          render();
+        });
+      })(dbtns[i]);
+    }
+  }
+
+  function add() {
+    TN.clearErr(SLUG + '-error');
+    var title = TN.el(SLUG + '-title').value.trim();
+    var year = parseInt(TN.el(SLUG + '-year').value, 10);
+    if (!title) { TN.setErr(SLUG + '-error', 'Please enter a movie title.'); return; }
+    var movies = load();
+    movies.push({ id: Date.now(), title: title, year: year || 0, rating: rating, watched: false });
+    persist(movies);
+    TN.el(SLUG + '-title').value = '';
+    TN.el(SLUG + '-year').value = '';
+    rating = 0; paintStars();
+    render();
+  }
+
+  function init() {
+    try {
+      if (!TN.el(SLUG + '-add')) return;
+      var btns = TN.el(SLUG + '-stars').querySelectorAll('button');
+      for (var i = 0; i < btns.length; i++) {
+        (function (b) {
+          b.addEventListener('click', function () {
+            rating = parseInt(b.getAttribute('data-r'), 10);
+            paintStars();
+          });
+        })(btns[i]);
+      }
+      var fbtns = document.querySelectorAll('[data-filter]');
+      for (i = 0; i < fbtns.length; i++) {
+        (function (b) {
+          b.addEventListener('click', function () {
+            filter = b.getAttribute('data-filter');
+            for (var j = 0; j < fbtns.length; j++) fbtns[j].classList.add('btn-outline');
+            b.classList.remove('btn-outline');
+            render();
+          });
+        })(fbtns[i]);
+      }
+      TN.on(SLUG + '-add', 'click', add);
+      render();
+    } catch (e) { /* never throw on load */ }
+  }
+
+  init();
+})();
+</script>
+</body>
+</html>

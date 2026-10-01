@@ -1,0 +1,38 @@
+{
+  "slug": "json-schema-generator",
+  "title": "JSON Schema Generator",
+  "category": "developer",
+  "description": "Infer a draft-07 JSON Schema from sample JSON \u2014 nested objects, arrays, formats and required fields.",
+  "keywords": [
+    "json schema generator",
+    "json to schema",
+    "infer json schema",
+    "draft-07 schema"
+  ],
+  "howto": [
+    "Paste sample JSON (object or array).",
+    "Click Generate to infer the schema.",
+    "Review detected types and string formats.",
+    "Copy the schema or download schema.json."
+  ],
+  "faqs": [
+    {
+      "q": "How is the schema inferred?",
+      "a": "The sample is walked recursively: objects become properties, arrays merge their item types, and strings are checked for date-time, email and UUID formats."
+    },
+    {
+      "q": "What does \"required\" contain?",
+      "a": "All keys seen in the sample \u2014 inferred from a single sample, so review it against your real data."
+    },
+    {
+      "q": "How are mixed-type arrays handled?",
+      "a": "Item types are merged with anyOf so every observed shape stays valid."
+    },
+    {
+      "q": "Which draft is generated?",
+      "a": "JSON Schema draft-07, the most widely supported draft."
+    }
+  ],
+  "libs": [],
+  "module": false
+}

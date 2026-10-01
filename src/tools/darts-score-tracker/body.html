@@ -1,0 +1,51 @@
+<div class="tool-card" style="max-width:640px;margin:0 auto">
+  <div class="grid3" style="margin-bottom:10px">
+    <div class="field" style="text-align:left">
+      <label for="darts-score-tracker-game">Game</label>
+      <select class="input" id="darts-score-tracker-game">
+        <option value="501" selected>501</option>
+        <option value="301">301</option>
+      </select>
+    </div>
+    <div class="field" style="text-align:left">
+      <label for="darts-score-tracker-p1">Player 1</label>
+      <input class="input" id="darts-score-tracker-p1" value="Player 1" maxlength="16">
+    </div>
+    <div class="field" style="text-align:left">
+      <label for="darts-score-tracker-p2">Player 2</label>
+      <input class="input" id="darts-score-tracker-p2" value="Player 2" maxlength="16">
+    </div>
+  </div>
+  <div class="btn-row" style="margin-bottom:10px">
+    <button class="btn btn-primary" id="darts-score-tracker-new">New match</button>
+    <button class="btn btn-outline" id="darts-score-tracker-leg">New leg</button>
+    <button class="btn btn-outline" id="darts-score-tracker-undo">Undo visit</button>
+  </div>
+  <div class="grid2" style="margin-bottom:10px">
+    <div class="stat-card" id="darts-score-tracker-card0" style="text-align:center">
+      <div class="l" id="darts-score-tracker-n0">Player 1</div>
+      <div class="v" id="darts-score-tracker-r0" style="font-size:44px">501</div>
+      <div class="l">Legs: <span id="darts-score-tracker-l0">0</span></div>
+    </div>
+    <div class="stat-card" id="darts-score-tracker-card1" style="text-align:center">
+      <div class="l" id="darts-score-tracker-n1">Player 2</div>
+      <div class="v" id="darts-score-tracker-r1" style="font-size:44px">501</div>
+      <div class="l">Legs: <span id="darts-score-tracker-l1">0</span></div>
+    </div>
+  </div>
+  <p class="muted" id="darts-score-tracker-status" style="min-height:24px;font-weight:600;text-align:center"></p>
+  <p id="darts-score-tracker-checkout" style="text-align:center;font-weight:700;color:#4ade80;min-height:24px"></p>
+  <div class="field" style="max-width:460px;margin:0 auto">
+    <label>Visit — 3 dart scores (0–60 each)</label>
+    <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin-bottom:8px">
+      <input class="input" id="darts-score-tracker-d1" inputmode="numeric" placeholder="Dart 1" style="text-align:center">
+      <input class="input" id="darts-score-tracker-d2" inputmode="numeric" placeholder="Dart 2" style="text-align:center">
+      <input class="input" id="darts-score-tracker-d3" inputmode="numeric" placeholder="Dart 3" style="text-align:center">
+    </div>
+    <label class="checkline" style="margin-bottom:8px"><input type="checkbox" id="darts-score-tracker-double"> Final dart was a double (or bull)</label>
+    <button class="btn btn-primary" id="darts-score-tracker-submit" style="width:100%">Submit visit</button>
+  </div>
+  <div id="darts-score-tracker-log" style="max-width:460px;margin:10px auto 0;display:flex;flex-direction:column;gap:4px;max-height:160px;overflow:auto"></div>
+  <p class="note" style="max-width:460px;margin:8px auto 0">Double-in is not required. Dart scores are 0–60 (T20 = 60). Bull = 50 and counts as a double for checkouts.</p>
+  <div class="error" id="darts-score-tracker-error"></div>
+</div>

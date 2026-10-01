@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Webhook Signature Verifier — Free Online | ToolNest</title>
+<meta name="description" content="Verify HMAC-SHA256 webhook signatures (GitHub, Stripe-style) with SubtleCrypto — paste payload, secret and signature.">
+<meta name="keywords" content="webhook signature verify, hmac sha256 verifier, github webhook secret, stripe signature check">
+<link rel="canonical" href="https://toolnest.vercel.app/tools/webhook-signature-verifier/">
+<meta name="theme-color" content="#07070b">
+<meta property="og:title" content="Webhook Signature Verifier — Free Online | ToolNest">
+<meta property="og:description" content="Verify HMAC-SHA256 webhook signatures (GitHub, Stripe-style) with SubtleCrypto — paste payload, secret and signature.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css?v=4">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%23e01111'/><text x='50' y='68' font-size='58' text-anchor='middle' fill='white' font-family='Arial' font-weight='bold'>T</text></svg>">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebApplication","name":"Webhook Signature Verifier","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0"},"url":"https://toolnest.vercel.app/tools/webhook-signature-verifier/","description":"Verify HMAC-SHA256 webhook signatures (GitHub, Stripe-style) with SubtleCrypto — paste payload, secret and signature."},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Which signature formats are supported?","acceptedAnswer":{"@type":"Answer","text":"Raw hex, base64, \"sha256=\" prefixed hex (GitHub) and Stripe-style \"t=…,v1=…\" headers — the v1 value is extracted automatically."}},{"@type":"Question","name":"Why does verification fail on a real payload?","acceptedAnswer":{"@type":"Answer","text":"The payload must be byte-identical to what was signed — even one changed whitespace or encoding difference breaks HMAC."}},{"@type":"Question","name":"Is my secret sent anywhere?","acceptedAnswer":{"@type":"Answer","text":"No — HMAC is computed locally with SubtleCrypto. Nothing leaves your browser."}},{"@type":"Question","name":"Which algorithm is used?","acceptedAnswer":{"@type":"Answer","text":"HMAC-SHA256, which is what GitHub, Stripe and most providers sign with."}}]}]}</script>
+</head>
+<body>
+<header class="site-header">
+  <div class="container">
+    <a class="logo" href="/"><span class="logo-mark">T</span> ToolNest</a>
+    <div class="header-right">
+      <form class="nav-search" action="/" method="get" role="search">
+        <span class="ns-icon">🔍</span>
+        <input type="search" name="q" placeholder="Search tools…" aria-label="Search tools" autocomplete="off">
+      </form>
+      <div class="menu-wrap">
+        <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="menuPanel" aria-label="Open menu"><span></span><span></span><span></span></button>
+        <nav class="menu-panel" id="menuPanel" aria-label="Site">
+          <a href="/">Home</a>
+          <a href="/#categories">Categories</a>
+          <a href="/#all-tools">All Tools</a>
+        </nav>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ADSTERRA-HEADER: paste your Adsterra banner ad code inside the div below -->
+<div class="container"><div class="ad-slot ad-leaderboard" data-ad="header"></div></div>
+
+<main class="container">
+  <nav class="crumbs"><a href="/">Home</a> &rsaquo; <a href="/#developer">Developer Tools</a> &rsaquo; Webhook Signature Verifier</nav>
+  <div class="tool-hero">
+    <h1>Webhook Signature Verifier</h1>
+    <p>Verify HMAC-SHA256 webhook signatures (GitHub, Stripe-style) with SubtleCrypto — paste payload, secret and signature.</p>
+  </div>
+
+  <div class="tool-card">
+  <div class="field">
+    <label for="webhook-signature-verifier-payload">Raw payload (exact bytes as received)</label>
+    <textarea class="textarea" id="webhook-signature-verifier-payload" rows="5" placeholder='{"id":"evt_123","amount":5000}'></textarea>
+  </div>
+  <div class="grid2">
+    <div class="field">
+      <label for="webhook-signature-verifier-secret">Webhook secret</label>
+      <input class="input" id="webhook-signature-verifier-secret" type="password" placeholder="whsec_…">
+    </div>
+    <div class="field">
+      <label for="webhook-signature-verifier-format">Signature format</label>
+      <select class="select" id="webhook-signature-verifier-format">
+        <option value="hex">Hex</option>
+        <option value="sha256hex">sha256=… (GitHub)</option>
+        <option value="base64">Base64</option>
+        <option value="stripe">Stripe header (t=…,v1=…)</option>
+      </select>
+    </div>
+  </div>
+  <div class="field">
+    <label for="webhook-signature-verifier-sig">Signature (from the request header)</label>
+    <input class="input" id="webhook-signature-verifier-sig" placeholder="sha256=abc123…">
+  </div>
+  <div class="btn-row">
+    <button class="btn" id="webhook-signature-verifier-verify">Verify signature</button>
+  </div>
+  <div class="error" id="webhook-signature-verifier-error"></div>
+  <div class="result hidden" id="webhook-signature-verifier-result">
+    <div class="stat-cards">
+      <div class="stat-card"><div class="v" id="webhook-signature-verifier-verdict">–</div><div class="l">Verdict</div></div>
+    </div>
+    <div class="field" style="margin-top:12px">
+      <label for="webhook-signature-verifier-expected">Computed HMAC-SHA256 (hex)</label>
+      <textarea class="textarea" id="webhook-signature-verifier-expected" rows="2" readonly></textarea>
+    </div>
+  </div>
+  <p class="note">Computed locally with SubtleCrypto — your secret never leaves the browser.</p>
+</div>
+
+
+  <!-- ADSTERRA-INCONTENT: paste your Adsterra native/in-content ad code inside the div below -->
+  <div class="ad-slot" data-ad="incontent"></div>
+
+  <div class="info-grid">
+    <div class="info-card">
+      <h2>📖 How to use</h2>
+      <ol><li>Paste the exact raw request payload.</li><li>Enter the webhook secret.</li><li>Paste the signature from the request header and pick its format.</li><li>Click Verify to get a valid/invalid verdict.</li></ol>
+    </div>
+    <div class="info-card">
+      <h2>❓ Frequently asked questions</h2>
+      <div class="faq"><details><summary>Which signature formats are supported?</summary><p>Raw hex, base64, &quot;sha256=&quot; prefixed hex (GitHub) and Stripe-style &quot;t=…,v1=…&quot; headers — the v1 value is extracted automatically.</p></details><details><summary>Why does verification fail on a real payload?</summary><p>The payload must be byte-identical to what was signed — even one changed whitespace or encoding difference breaks HMAC.</p></details><details><summary>Is my secret sent anywhere?</summary><p>No — HMAC is computed locally with SubtleCrypto. Nothing leaves your browser.</p></details><details><summary>Which algorithm is used?</summary><p>HMAC-SHA256, which is what GitHub, Stripe and most providers sign with.</p></details></div>
+    </div>
+  </div>
+
+  <section class="section">
+    <h2>🔗 Related tools</h2>
+    <div class="tool-grid"><a class="tool-link" href="/tools/api-key-generator/" data-search="api key generator generate cryptographically secure api keys with crypto.getrandomvalues — hex, base64, base64url or uuid v4. api key generator random api key uuid generator secure token generator"><span class="t-ico">💻</span><span class="t-body"><b>API Key Generator</b><small>Generate cryptographically secure API keys with crypto.getRandomValues — hex, base64, base64…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/ascii-table-reference/" data-search="ascii table reference full ascii table 0–127: decimal, hex, octal, character, control-code names and html entities — searchable. ascii table ascii codes ascii chart control characters ascii reference"><span class="t-ico">💻</span><span class="t-body"><b>ASCII Table Reference</b><small>Full ASCII table 0–127: decimal, hex, octal, character, control-code names and HTML entities…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/badge-generator/" data-search="badge generator design css badges and pills — colors, sizes, shapes — with live preview and copy-ready html/css. badge css generator css pill badge status badge code label badge html"><span class="t-ico">💻</span><span class="t-body"><b>Badge Generator</b><small>Design CSS badges and pills — colors, sizes, shapes — with live preview and copy-ready HTML/…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/base64-encoder-decoder/" data-search="base64 encoder / decoder encode text to base64 or decode base64 back to text, with full utf-8 support and a file-to-data-url converter. base64 encoder base64 decoder base64 encode base64 decode file to base64"><span class="t-ico">💻</span><span class="t-body"><b>Base64 Encoder / Decoder</b><small>Encode text to Base64 or decode Base64 back to text, with full UTF-8 support and a file-to-d…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/basic-auth-header-generator/" data-search="basic auth header generator encode username:password to a base64 authorization header (unicode-safe) — copy or download. basic auth header base64 authorization http basic auth generator authorization header"><span class="t-ico">💻</span><span class="t-body"><b>Basic Auth Header Generator</b><small>Encode username:password to a Base64 Authorization header (Unicode-safe) — copy or download.</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/binary-text-converter/" data-search="binary and text converter convert text to binary or hex and back, with full utf-8 awareness and strict input validation. binary to text text to binary hex to text converter"><span class="t-ico">💻</span><span class="t-body"><b>Binary and Text Converter</b><small>Convert text to binary or hex and back, with full UTF-8 awareness and strict input validatio…</small></span><span class="t-arrow">→</span></a></div>
+  </section>
+</main>
+
+<!-- ADSTERRA-FOOTER: paste your Adsterra footer/banner ad code inside the div below -->
+<div class="container"><div class="ad-slot" data-ad="footer"></div></div>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="f-grid">
+      <div>
+        <span class="brandline"><span class="logo-mark">T</span> ToolNest</span>
+        <p>Free online tools that actually work. No sign-up, no watermarks — and your files never leave your device for client-side tools.</p>
+      </div>
+      <div>
+        <h4>Popular</h4>
+        <a href="/tools/qr-code-generator/">QR Code Generator</a>
+        <a href="/tools/background-remover/">Background Remover</a>
+        <a href="/tools/pdf-merger/">PDF Merger</a>
+        <a href="/tools/word-counter/">Word Counter</a>
+      </div>
+      <div>
+        <h4>Categories</h4>
+        <a href="/#image">Image Tools</a>
+        <a href="/#pdf">PDF &amp; Documents</a>
+        <a href="/#calculators">Calculators</a>
+        <a href="/#developer">Developer Tools</a>
+      </div>
+      <div>
+        <h4>Site</h4>
+        <a href="/">Home</a>
+        <a href="/#all-tools">All Tools</a>
+        <a href="/sitemap.xml">Sitemap</a>
+      </div>
+    </div>
+    <div class="f-bottom">© 2026 ToolNest · Free tools for everyone · Made with care</div>
+  </div>
+</footer>
+
+<script src="/assets/site.js?v=5"></script>
+
+<script>
+/* Webhook Signature Verifier — HMAC-SHA256 via SubtleCrypto, constant-time compare. */
+(function () {
+  'use strict';
+  var SLUG = 'webhook-signature-verifier';
+  function el(id) { return document.getElementById(id); }
+  function fail(msg) { TN.setErr(SLUG + '-error', msg); }
+  function clear() { TN.clearErr(SLUG + '-error'); }
+
+  function hexToBytes(hex) {
+    if (!/^[0-9a-fA-F]+$/.test(hex) || hex.length % 2) throw new Error('bad hex');
+    var b = new Uint8Array(hex.length / 2);
+    for (var i = 0; i < b.length; i++) b[i] = parseInt(hex.substr(i * 2, 2), 16);
+    return b;
+  }
+  function b64ToBytes(s) {
+    var bin = atob(s.replace(/\s/g, ''));
+    var b = new Uint8Array(bin.length);
+    for (var i = 0; i < bin.length; i++) b[i] = bin.charCodeAt(i);
+    return b;
+  }
+  function bytesToHex(b) {
+    var s = '';
+    for (var i = 0; i < b.length; i++) s += ('0' + b[i].toString(16)).slice(-2);
+    return s;
+  }
+  function constantTimeEqual(a, b) {
+    if (a.length !== b.length) return false;
+    var d = 0;
+    for (var i = 0; i < a.length; i++) d |= a[i] ^ b[i];
+    return d === 0;
+  }
+
+  function verify() {
+    clear();
+    TN.hide(SLUG + '-result');
+    var payload = el(SLUG + '-payload').value;
+    var secret = el(SLUG + '-secret').value;
+    var sigRaw = el(SLUG + '-sig').value.trim();
+    var format = el(SLUG + '-format').value;
+    if (!payload) { fail('Paste the raw payload.'); return; }
+    if (!secret) { fail('Enter the webhook secret.'); return; }
+    if (!sigRaw) { fail('Paste the signature.'); return; }
+    var sigText = sigRaw;
+    try {
+      if (format === 'sha256hex') {
+        if (sigText.toLowerCase().indexOf('sha256=') === 0) sigText = sigText.slice(7);
+      } else if (format === 'stripe') {
+        var m = sigText.match(/v1=([0-9a-fA-F]+)/);
+        if (!m) { fail('Could not find v1= in the Stripe-style header.'); return; }
+        sigText = m[1];
+      }
+      var sigBytes = format === 'base64' ? b64ToBytes(sigText) : hexToBytes(sigText);
+      var enc = new TextEncoder();
+      crypto.subtle.importKey('raw', enc.encode(secret), { name: 'HMAC', hash: 'SHA-256' }, false, ['sign'])
+        .then(function (key) { return crypto.subtle.sign('HMAC', key, enc.encode(payload)); })
+        .then(function (mac) {
+          var macBytes = new Uint8Array(mac);
+          el(SLUG + '-expected').value = bytesToHex(macBytes);
+          var ok = constantTimeEqual(macBytes, sigBytes);
+          el(SLUG + '-verdict').textContent = ok ? '✓ VALID' : '✗ INVALID';
+          el(SLUG + '-verdict').style.color = ok ? '#4ade80' : '#f87171';
+          TN.show(SLUG + '-result');
+        })
+        .catch(function () { fail('Verification failed — check the inputs and try again.'); });
+    } catch (e) {
+      fail('Could not parse the signature — check the format selection.');
+    }
+  }
+
+  try {
+    if (!el(SLUG + '-verify')) return;
+    TN.on(SLUG + '-verify', 'click', verify);
+  } catch (e) { /* never throw on load */ }
+})();
+
+</script>
+</body>
+</html>

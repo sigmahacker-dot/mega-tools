@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sudoku Solver — Free Online | ToolNest</title>
+<meta name="description" content="Solve any valid Sudoku with a real backtracking search: type the givens, get the full solution plus the solver&#39;s step and backtrack counts.">
+<meta name="keywords" content="sudoku solver, solve sudoku, backtracking sudoku, sudoku solution">
+<link rel="canonical" href="https://toolnest.vercel.app/tools/sudoku-solver/">
+<meta name="theme-color" content="#07070b">
+<meta property="og:title" content="Sudoku Solver — Free Online | ToolNest">
+<meta property="og:description" content="Solve any valid Sudoku with a real backtracking search: type the givens, get the full solution plus the solver&#39;s step and backtrack counts.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css?v=4">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%23e01111'/><text x='50' y='68' font-size='58' text-anchor='middle' fill='white' font-family='Arial' font-weight='bold'>T</text></svg>">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebApplication","name":"Sudoku Solver","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0"},"url":"https://toolnest.vercel.app/tools/sudoku-solver/","description":"Solve any valid Sudoku with a real backtracking search: type the givens, get the full solution plus the solver's step and backtrack counts."},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How does the solver work?","acceptedAnswer":{"@type":"Answer","text":"Depth-first backtracking: it picks the empty cell with the fewest candidates, tries each, and recurses. If a branch dead-ends it backtracks. The step counter shows every placement attempt."}},{"@type":"Question","name":"What if my puzzle has no solution?","acceptedAnswer":{"@type":"Answer","text":"The tool detects contradictions (including invalid givens that break Sudoku rules) and tells you the puzzle is unsolvable instead of guessing."}},{"@type":"Question","name":"Can it handle multiple solutions?","acceptedAnswer":{"@type":"Answer","text":"It returns the first solution found. A well-posed Sudoku has exactly one; if yours has several, the tool still gives a valid completion."}}]}]}</script>
+</head>
+<body>
+<header class="site-header">
+  <div class="container">
+    <a class="logo" href="/"><span class="logo-mark">T</span> ToolNest</a>
+    <div class="header-right">
+      <form class="nav-search" action="/" method="get" role="search">
+        <span class="ns-icon">🔍</span>
+        <input type="search" name="q" placeholder="Search tools…" aria-label="Search tools" autocomplete="off">
+      </form>
+      <div class="menu-wrap">
+        <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="menuPanel" aria-label="Open menu"><span></span><span></span><span></span></button>
+        <nav class="menu-panel" id="menuPanel" aria-label="Site">
+          <a href="/">Home</a>
+          <a href="/#categories">Categories</a>
+          <a href="/#all-tools">All Tools</a>
+        </nav>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ADSTERRA-HEADER: paste your Adsterra banner ad code inside the div below -->
+<div class="container"><div class="ad-slot ad-leaderboard" data-ad="header"></div></div>
+
+<main class="container">
+  <nav class="crumbs"><a href="/">Home</a> &rsaquo; <a href="/#math">Math &amp; Numbers</a> &rsaquo; Sudoku Solver</nav>
+  <div class="tool-hero">
+    <h1>Sudoku Solver</h1>
+    <p>Solve any valid Sudoku with a real backtracking search: type the givens, get the full solution plus the solver&#39;s step and backtrack counts.</p>
+  </div>
+
+  <div class="tool-card">
+  <div id="sudoku-solver-grid" style="display:grid;grid-template-columns:repeat(9,1fr);gap:2px;max-width:450px;margin:0 auto"></div>
+  <div class="btn-row" style="margin-top:12px;justify-content:center">
+    <button type="button" class="btn" id="sudoku-solver-solve">Solve</button>
+    <button type="button" class="btn btn-outline" id="sudoku-solver-sample">Sample</button>
+    <button type="button" class="btn btn-outline" id="sudoku-solver-clear">Clear</button>
+  </div>
+  <div class="error" id="sudoku-solver-error"></div>
+  <div id="sudoku-solver-out" class="hidden">
+    <div class="stat-cards">
+      <div class="stat-card"><div class="v" id="sudoku-solver-steps">–</div><div class="l">Placement attempts</div></div>
+      <div class="stat-card"><div class="v" id="sudoku-solver-backs">–</div><div class="l">Backtracks</div></div>
+      <div class="stat-card"><div class="v" id="sudoku-solver-time">–</div><div class="l">Solve time</div></div>
+    </div>
+    <p class="muted">Solution below — your original givens are shown in <b>bold green</b>.</p>
+  </div>
+</div>
+
+
+  <!-- ADSTERRA-INCONTENT: paste your Adsterra native/in-content ad code inside the div below -->
+  <div class="ad-slot" data-ad="incontent"></div>
+
+  <div class="info-grid">
+    <div class="info-card">
+      <h2>📖 How to use</h2>
+      <ol><li>Type the given digits into the 9×9 grid (leave unknown cells blank or 0).</li><li>Press Solve — a backtracking search fills the grid.</li><li>Read the solution with your original givens highlighted, plus steps and backtracks.</li><li>Use Clear to reset or Sample to load a classic puzzle.</li></ol>
+    </div>
+    <div class="info-card">
+      <h2>❓ Frequently asked questions</h2>
+      <div class="faq"><details><summary>How does the solver work?</summary><p>Depth-first backtracking: it picks the empty cell with the fewest candidates, tries each, and recurses. If a branch dead-ends it backtracks. The step counter shows every placement attempt.</p></details><details><summary>What if my puzzle has no solution?</summary><p>The tool detects contradictions (including invalid givens that break Sudoku rules) and tells you the puzzle is unsolvable instead of guessing.</p></details><details><summary>Can it handle multiple solutions?</summary><p>It returns the first solution found. A well-posed Sudoku has exactly one; if yours has several, the tool still gives a valid completion.</p></details></div>
+    </div>
+  </div>
+
+  <section class="section">
+    <h2>🔗 Related tools</h2>
+    <div class="tool-grid"><a class="tool-link" href="/tools/24-game-solver/" data-search="24 game solver solve the 24 game exhaustively: every ordering, operation and parenthesization is tried with exact fraction arithmetic, and all distinct solutions are shown. 24 game solver make 24 solver 24 puzzle arithmetic puzzle solver"><span class="t-ico">📐</span><span class="t-body"><b>24 Game Solver</b><small>Solve the 24 game exhaustively: every ordering, operation and parenthesization is tried with…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/ancient-numerals-converter/" data-search="ancient numerals converter convert decimal numbers to roman, egyptian hieroglyphic, babylonian cuneiform and mayan numerals — with roman numerals also decoded back to decimal. roman numerals egyptian numerals babylonian numerals mayan numerals ancient numbers"><span class="t-ico">📐</span><span class="t-body"><b>Ancient Numerals Converter</b><small>Convert decimal numbers to Roman, Egyptian hieroglyphic, Babylonian cuneiform and Mayan nume…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/arithmetic-sequence-calculator/" data-search="arithmetic sequence calculator from the first term and common difference get the nth term and the sum of the first n terms. arithmetic sequence arithmetic progression nth term sum of arithmetic series common difference"><span class="t-ico">📐</span><span class="t-body"><b>Arithmetic Sequence Calculator</b><small>From the first term and common difference get the nth term and the sum of the first n terms.</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/base-n-arithmetic/" data-search="base-n arithmetic add, subtract, multiply and divide numbers in any base from 2 to 36 with exact bigint math and a full conversion breakdown. base n arithmetic binary addition hexadecimal calculator base 36 math"><span class="t-ico">📐</span><span class="t-body"><b>Base-N Arithmetic</b><small>Add, subtract, multiply and divide numbers in any base from 2 to 36 with exact BigInt math a…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/bayes-theorem-calculator/" data-search="bayes theorem calculator compute posterior probabilities from prior, sensitivity and specificity with the full bayes formula, natural frequencies and a probability tree. bayes theorem calculator posterior probability sensitivity specificity medical test probability"><span class="t-ico">📐</span><span class="t-body"><b>Bayes Theorem Calculator</b><small>Compute posterior probabilities from prior, sensitivity and specificity with the full Bayes …</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/bcd-converter/" data-search="bcd converter convert decimal numbers to binary-coded decimal (packed and unpacked) and decode bcd back to decimal, with per-digit nibble breakdowns. bcd converter binary coded decimal packed bcd unpacked bcd bcd decoder"><span class="t-ico">📐</span><span class="t-body"><b>BCD Converter</b><small>Convert decimal numbers to Binary-Coded Decimal (packed and unpacked) and decode BCD back to…</small></span><span class="t-arrow">→</span></a></div>
+  </section>
+</main>
+
+<!-- ADSTERRA-FOOTER: paste your Adsterra footer/banner ad code inside the div below -->
+<div class="container"><div class="ad-slot" data-ad="footer"></div></div>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="f-grid">
+      <div>
+        <span class="brandline"><span class="logo-mark">T</span> ToolNest</span>
+        <p>Free online tools that actually work. No sign-up, no watermarks — and your files never leave your device for client-side tools.</p>
+      </div>
+      <div>
+        <h4>Popular</h4>
+        <a href="/tools/qr-code-generator/">QR Code Generator</a>
+        <a href="/tools/background-remover/">Background Remover</a>
+        <a href="/tools/pdf-merger/">PDF Merger</a>
+        <a href="/tools/word-counter/">Word Counter</a>
+      </div>
+      <div>
+        <h4>Categories</h4>
+        <a href="/#image">Image Tools</a>
+        <a href="/#pdf">PDF &amp; Documents</a>
+        <a href="/#calculators">Calculators</a>
+        <a href="/#developer">Developer Tools</a>
+      </div>
+      <div>
+        <h4>Site</h4>
+        <a href="/">Home</a>
+        <a href="/#all-tools">All Tools</a>
+        <a href="/sitemap.xml">Sitemap</a>
+      </div>
+    </div>
+    <div class="f-bottom">© 2026 ToolNest · Free tools for everyone · Made with care</div>
+  </div>
+</footer>
+
+<script src="/assets/site.js?v=5"></script>
+
+<script>
+(function () {
+  'use strict';
+  var P = 'sudoku-solver-', ERR = P + 'error';
+  var SAMPLE = [
+    5, 3, 0, 0, 7, 0, 0, 0, 0,
+    6, 0, 0, 1, 9, 5, 0, 0, 0,
+    0, 9, 8, 0, 0, 0, 0, 6, 0,
+    8, 0, 0, 0, 6, 0, 0, 0, 3,
+    4, 0, 0, 8, 0, 3, 0, 0, 1,
+    7, 0, 0, 0, 2, 0, 0, 0, 6,
+    0, 6, 0, 0, 0, 0, 2, 8, 0,
+    0, 0, 0, 4, 1, 9, 0, 0, 5,
+    0, 0, 0, 0, 8, 0, 0, 7, 9
+  ];
+  function g(id) { return TN.el(P + id); }
+  function buildGrid() {
+    var wrap = g('grid'), h = '';
+    for (var i = 0; i < 81; i++) {
+      var r = Math.floor(i / 9), c = i % 9;
+      var extra = '';
+      if (c === 2 || c === 5) extra += 'margin-right:6px;';
+      if (r === 2 || r === 5) extra += 'margin-bottom:6px;';
+      h += '<input class="input" id="' + P + 'c' + i + '" type="text" inputmode="numeric" maxlength="1" ' +
+        'style="text-align:center;padding:6px 2px;font-size:1.05em;' + extra + '" aria-label="row ' + (r + 1) + ' column ' + (c + 1) + '">';
+    }
+    wrap.innerHTML = h;
+    for (var j = 0; j < 81; j++) {
+      (function (idx) {
+        TN.on(P + 'c' + idx, 'input', function () {
+          var el = TN.el(P + 'c' + idx);
+          el.value = el.value.replace(/[^1-9]/g, '').slice(0, 1);
+          el.style.fontWeight = el.value ? 'bold' : 'normal';
+          el.style.color = '';
+          TN.hide(P + 'out');
+        });
+      })(j);
+    }
+  }
+  function readGrid() {
+    var vals = [];
+    for (var i = 0; i < 81; i++) {
+      var v = TN.el(P + 'c' + i).value.trim();
+      if (v === '') { vals.push(0); continue; }
+      var n = parseInt(v, 10);
+      if (isNaN(n) || n < 1 || n > 9) throw new Error('Cell ' + (i + 1) + ' must be a digit 1–9 or blank.');
+      vals.push(n);
+    }
+    return vals;
+  }
+  function validInitial(grid) {
+    function hasDup(cells) {
+      var seen = {};
+      for (var i = 0; i < 9; i++) {
+        var v = grid[cells[i]];
+        if (v && seen[v]) return true;
+        seen[v] = 1;
+      }
+      return false;
+    }
+    for (var r = 0; r < 9; r++) {
+      var row = []; for (var c = 0; c < 9; c++) row.push(r * 9 + c);
+      if (hasDup(row)) return false;
+    }
+    for (var c2 = 0; c2 < 9; c2++) {
+      var col = []; for (var r2 = 0; r2 < 9; r2++) col.push(r2 * 9 + c2);
+      if (hasDup(col)) return false;
+    }
+    for (var br = 0; br < 3; br++) for (var bc = 0; bc < 3; bc++) {
+      var box = [];
+      for (var dr = 0; dr < 3; dr++) for (var dc = 0; dc < 3; dc++) box.push((br * 3 + dr) * 9 + bc * 3 + dc);
+      if (hasDup(box)) return false;
+    }
+    return true;
+  }
+  function candidates(grid, idx) {
+    var r = Math.floor(idx / 9), c = idx % 9, used = {}, i;
+    for (i = 0; i < 9; i++) { used[grid[r * 9 + i]] = 1; used[grid[i * 9 + c]] = 1; }
+    var br = Math.floor(r / 3) * 3, bc = Math.floor(c / 3) * 3;
+    for (var dr = 0; dr < 3; dr++) for (var dc = 0; dc < 3; dc++) used[grid[(br + dr) * 9 + bc + dc]] = 1;
+    var out = [];
+    for (i = 1; i <= 9; i++) if (!used[i]) out.push(i);
+    return out;
+  }
+  function solve() {
+    try {
+      TN.clearErr(ERR);
+      var grid = readGrid();
+      if (!validInitial(grid)) { TN.setErr(ERR, 'The givens contradict Sudoku rules (a duplicate in a row, column or box). Fix the highlighted conflict.'); return; }
+      var givens = grid.slice();
+      var steps = 0, backtracks = 0;
+      var t0 = (typeof performance !== 'undefined' && performance.now) ? performance.now() : Date.now();
+      function bt() {
+        // MRV: empty cell with fewest candidates
+        var best = -1, bestC = null, i;
+        for (i = 0; i < 81; i++) {
+          if (grid[i] === 0) {
+            var cs = candidates(grid, i);
+            if (!cs.length) return false;
+            if (!bestC || cs.length < bestC.length) { best = i; bestC = cs; if (cs.length === 1) break; }
+          }
+        }
+        if (best === -1) return true;
+        for (var k = 0; k < bestC.length; k++) {
+          steps++;
+          grid[best] = bestC[k];
+          if (bt()) return true;
+          backtracks++;
+          grid[best] = 0;
+        }
+        return false;
+      }
+      var solved = bt();
+      var t1 = (typeof performance !== 'undefined' && performance.now) ? performance.now() : Date.now();
+      if (!solved) { TN.setErr(ERR, 'No solution exists for this puzzle (search exhausted all ' + steps + ' placements).'); return; }
+      for (var i2 = 0; i2 < 81; i2++) {
+        var el = TN.el(P + 'c' + i2);
+        el.value = String(grid[i2]);
+        if (givens[i2]) { el.style.fontWeight = 'bold'; el.style.color = '#4ade80'; }
+        else { el.style.fontWeight = 'normal'; el.style.color = '#e2e8f0'; }
+      }
+      TN.show(P + 'out');
+      g('steps').textContent = String(steps);
+      g('backs').textContent = String(backtracks);
+      g('time').textContent = (t1 - t0).toFixed(1) + ' ms';
+    } catch (e) { TN.setErr(ERR, e.message || 'Could not solve.'); }
+  }
+  try {
+    if (!TN.el(P + 'solve')) return;
+    buildGrid();
+    TN.on(P + 'solve', 'click', solve);
+    TN.on(P + 'sample', 'click', function () {
+      for (var i = 0; i < 81; i++) {
+        var el = TN.el(P + 'c' + i);
+        el.value = SAMPLE[i] ? String(SAMPLE[i]) : '';
+        el.style.fontWeight = SAMPLE[i] ? 'bold' : 'normal';
+        el.style.color = '';
+      }
+      TN.hide(P + 'out'); TN.clearErr(ERR);
+    });
+    TN.on(P + 'clear', 'click', function () {
+      for (var i = 0; i < 81; i++) {
+        var el = TN.el(P + 'c' + i);
+        el.value = ''; el.style.fontWeight = 'normal'; el.style.color = '';
+      }
+      TN.hide(P + 'out'); TN.clearErr(ERR);
+    });
+    // preload sample
+    for (var s = 0; s < 81; s++) {
+      if (SAMPLE[s]) { var e2 = TN.el(P + 'c' + s); e2.value = String(SAMPLE[s]); e2.style.fontWeight = 'bold'; }
+    }
+  } catch (e) { /* never throw on load */ }
+})();
+
+</script>
+</body>
+</html>

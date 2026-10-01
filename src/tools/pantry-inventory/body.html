@@ -1,0 +1,38 @@
+<div class="tool-card">
+  <div class="grid3">
+    <div class="field">
+      <label for="pantry-inventory-name">Item</label>
+      <input class="input" type="text" id="pantry-inventory-name" placeholder="e.g. Olive oil">
+    </div>
+    <div class="field">
+      <label for="pantry-inventory-qty">Quantity</label>
+      <input class="input" type="number" id="pantry-inventory-qty" min="0" step="0.5" value="1">
+    </div>
+    <div class="field">
+      <label for="pantry-inventory-unit">Unit</label>
+      <select class="select" id="pantry-inventory-unit">
+        <option value="pcs">pcs</option>
+        <option value="kg">kg</option>
+        <option value="g">g</option>
+        <option value="L">L</option>
+        <option value="ml">ml</option>
+        <option value="pack">pack</option>
+        <option value="can">can</option>
+      </select>
+    </div>
+  </div>
+  <div class="field">
+    <label for="pantry-inventory-exp">Expiry date (optional)</label>
+    <input class="input" type="date" id="pantry-inventory-exp">
+  </div>
+  <div class="btn-row">
+    <button class="btn" id="pantry-inventory-add">Add Item</button>
+  </div>
+  <div class="error" id="pantry-inventory-error"></div>
+</div>
+
+<div class="tool-card">
+  <h3>Inventory <span class="muted" id="pantry-inventory-count"></span></h3>
+  <div id="pantry-inventory-list"></div>
+  <p class="note">🟡 = expires within 7 days &nbsp; 🔴 = expired</p>
+</div>

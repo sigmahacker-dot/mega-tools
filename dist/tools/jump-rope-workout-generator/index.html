@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Jump Rope Workout Generator — Free Online | ToolNest</title>
+<meta name="description" content="Interval jump-rope workouts by level and duration, with a full round table.">
+<meta name="keywords" content="jump rope workout, skipping workout, jump rope intervals">
+<link rel="canonical" href="https://toolnest.vercel.app/tools/jump-rope-workout-generator/">
+<meta name="theme-color" content="#07070b">
+<meta property="og:title" content="Jump Rope Workout Generator — Free Online | ToolNest">
+<meta property="og:description" content="Interval jump-rope workouts by level and duration, with a full round table.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css?v=4">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%23e01111'/><text x='50' y='68' font-size='58' text-anchor='middle' fill='white' font-family='Arial' font-weight='bold'>T</text></svg>">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebApplication","name":"Jump Rope Workout Generator","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0"},"url":"https://toolnest.vercel.app/tools/jump-rope-workout-generator/","description":"Interval jump-rope workouts by level and duration, with a full round table."},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How are the intervals set?","acceptedAnswer":{"@type":"Answer","text":"Beginner: 30s work / 30s rest; intermediate: 40s / 20s; advanced: 50s / 10s, with a warm-up and cool-down around the rounds."}},{"@type":"Question","name":"What if my duration is short?","acceptedAnswer":{"@type":"Answer","text":"Warm-up and cool-down shrink automatically so at least one work round always fits."}},{"@type":"Question","name":"Can I repeat the workout?","acceptedAnswer":{"@type":"Answer","text":"Yes. Generating again with the same settings gives the same plan, so you can track progress."}}]}]}</script>
+</head>
+<body>
+<header class="site-header">
+  <div class="container">
+    <a class="logo" href="/"><span class="logo-mark">T</span> ToolNest</a>
+    <div class="header-right">
+      <form class="nav-search" action="/" method="get" role="search">
+        <span class="ns-icon">🔍</span>
+        <input type="search" name="q" placeholder="Search tools…" aria-label="Search tools" autocomplete="off">
+      </form>
+      <div class="menu-wrap">
+        <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="menuPanel" aria-label="Open menu"><span></span><span></span><span></span></button>
+        <nav class="menu-panel" id="menuPanel" aria-label="Site">
+          <a href="/">Home</a>
+          <a href="/#categories">Categories</a>
+          <a href="/#all-tools">All Tools</a>
+        </nav>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ADSTERRA-HEADER: paste your Adsterra banner ad code inside the div below -->
+<div class="container"><div class="ad-slot ad-leaderboard" data-ad="header"></div></div>
+
+<main class="container">
+  <nav class="crumbs"><a href="/">Home</a> &rsaquo; <a href="/#health">Health &amp; Fitness</a> &rsaquo; Jump Rope Workout Generator</nav>
+  <div class="tool-hero">
+    <h1>Jump Rope Workout Generator</h1>
+    <p>Interval jump-rope workouts by level and duration, with a full round table.</p>
+  </div>
+
+  <div class="tool-card">
+  <div class="grid2">
+    <div class="field">
+      <label for="jump-rope-workout-generator-level">Level</label>
+      <select class="select" id="jump-rope-workout-generator-level">
+        <option value="beginner">Beginner</option>
+        <option value="intermediate">Intermediate</option>
+        <option value="advanced">Advanced</option>
+      </select>
+    </div>
+    <div class="field">
+      <label for="jump-rope-workout-generator-duration">Duration (minutes, 5–60)</label>
+      <input type="number" class="input" id="jump-rope-workout-generator-duration" min="5" max="60" step="1" value="20">
+    </div>
+  </div>
+  <div class="btn-row"><button class="btn" id="jump-rope-workout-generator-go" type="button">Generate workout</button></div>
+  <div class="error" id="jump-rope-workout-generator-error"></div>
+  <div class="result" id="jump-rope-workout-generator-result">
+    <div class="stat-cards">
+      <div class="stat-card"><div class="v" id="jump-rope-workout-generator-rounds">&ndash;</div><div class="l">Rounds</div></div>
+      <div class="stat-card"><div class="v" id="jump-rope-workout-generator-work">&ndash;</div><div class="l">Work time</div></div>
+      <div class="stat-card"><div class="v" id="jump-rope-workout-generator-total">&ndash;</div><div class="l">Total time</div></div>
+    </div>
+    <div id="jump-rope-workout-generator-out"></div>
+    <p class="note">Warm up before intense exercise and stop if you feel pain or dizziness. For information only &mdash; not medical advice.</p>
+  </div>
+</div>
+
+  <!-- ADSTERRA-INCONTENT: paste your Adsterra native/in-content ad code inside the div below -->
+  <div class="ad-slot" data-ad="incontent"></div>
+
+  <div class="info-grid">
+    <div class="info-card">
+      <h2>📖 How to use</h2>
+      <ol><li>Choose your level: beginner, intermediate, or advanced.</li><li>Enter the total workout duration in minutes (5-60).</li><li>Click Generate workout.</li><li>Follow the round table: exercise, work seconds, rest seconds, and elapsed time.</li></ol>
+    </div>
+    <div class="info-card">
+      <h2>❓ Frequently asked questions</h2>
+      <div class="faq"><details><summary>How are the intervals set?</summary><p>Beginner: 30s work / 30s rest; intermediate: 40s / 20s; advanced: 50s / 10s, with a warm-up and cool-down around the rounds.</p></details><details><summary>What if my duration is short?</summary><p>Warm-up and cool-down shrink automatically so at least one work round always fits.</p></details><details><summary>Can I repeat the workout?</summary><p>Yes. Generating again with the same settings gives the same plan, so you can track progress.</p></details></div>
+    </div>
+  </div>
+
+  <section class="section">
+    <h2>🔗 Related tools</h2>
+    <div class="tool-grid"><a class="tool-link" href="/tools/allergy-tracker/" data-search="allergy tracker log allergy exposures, symptoms, and severity with summaries, saved in your browser. allergy tracker allergy diary symptom log"><span class="t-ico">❤️</span><span class="t-body"><b>Allergy Tracker</b><small>Log allergy exposures, symptoms, and severity with summaries, saved in your browser.</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/baby-feeding-log/" data-search="baby feeding log log nursing and bottle sessions with timestamps, daily totals, saved in your browser. baby feeding log nursing tracker bottle feeding log"><span class="t-ico">❤️</span><span class="t-body"><b>Baby Feeding Log</b><small>Log nursing and bottle sessions with timestamps, daily totals, saved in your browser.</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/baby-growth-tracker/" data-search="baby growth tracker log your baby&#39;s weight and height over time and see a growth log with typical-range guidance. baby growth tracker baby weight tracker infant growth chart baby height log newborn growth"><span class="t-ico">❤️</span><span class="t-body"><b>Baby Growth Tracker</b><small>Log your baby&#39;s weight and height over time and see a growth log with typical-range guidance…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/balance-test-timer/" data-search="balance test timer single-leg stance stopwatch with age benchmarks for balance testing. balance test single leg stance balance timer"><span class="t-ico">❤️</span><span class="t-body"><b>Balance Test Timer</b><small>Single-leg stance stopwatch with age benchmarks for balance testing.</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/blood-donation-eligibility-checker/" data-search="blood donation eligibility checker check common blood donation eligibility rules: age, weight, hemoglobin, intervals. blood donation eligibility can i donate blood donor requirements"><span class="t-ico">❤️</span><span class="t-body"><b>Blood Donation Eligibility Checker</b><small>Check common blood donation eligibility rules: age, weight, hemoglobin, intervals.</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/blood-pressure-tracker/" data-search="blood pressure tracker log blood pressure readings with automatic aha category classification, averages and history saved in your browser. blood pressure tracker bp log blood pressure chart hypertension tracker bp monitor log"><span class="t-ico">❤️</span><span class="t-body"><b>Blood Pressure Tracker</b><small>Log blood pressure readings with automatic AHA category classification, averages and history…</small></span><span class="t-arrow">→</span></a></div>
+  </section>
+</main>
+
+<!-- ADSTERRA-FOOTER: paste your Adsterra footer/banner ad code inside the div below -->
+<div class="container"><div class="ad-slot" data-ad="footer"></div></div>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="f-grid">
+      <div>
+        <span class="brandline"><span class="logo-mark">T</span> ToolNest</span>
+        <p>Free online tools that actually work. No sign-up, no watermarks — and your files never leave your device for client-side tools.</p>
+      </div>
+      <div>
+        <h4>Popular</h4>
+        <a href="/tools/qr-code-generator/">QR Code Generator</a>
+        <a href="/tools/background-remover/">Background Remover</a>
+        <a href="/tools/pdf-merger/">PDF Merger</a>
+        <a href="/tools/word-counter/">Word Counter</a>
+      </div>
+      <div>
+        <h4>Categories</h4>
+        <a href="/#image">Image Tools</a>
+        <a href="/#pdf">PDF &amp; Documents</a>
+        <a href="/#calculators">Calculators</a>
+        <a href="/#developer">Developer Tools</a>
+      </div>
+      <div>
+        <h4>Site</h4>
+        <a href="/">Home</a>
+        <a href="/#all-tools">All Tools</a>
+        <a href="/sitemap.xml">Sitemap</a>
+      </div>
+    </div>
+    <div class="f-bottom">© 2026 ToolNest · Free tools for everyone · Made with care</div>
+  </div>
+</footer>
+
+<script src="/assets/site.js?v=5"></script>
+
+<script>
+(function(){
+'use strict';
+var S='jump-rope-workout-generator', ERR=S+'-error';
+var PLANS={
+  beginner:{work:30,rest:30,warm:2,cool:2,
+    ex:['Basic bounce','Alternate-foot step','Boxer step'],
+    warmEx:'March in place + arm circles',coolEx:'Walk + full-body stretch'},
+  intermediate:{work:40,rest:20,warm:3,cool:2,
+    ex:['Basic bounce','High knees','Side swing','Alternate-foot step','Boxer step'],
+    warmEx:'Light bounce + dynamic leg swings',coolEx:'Walk + stretch'},
+  advanced:{work:50,rest:10,warm:3,cool:3,
+    ex:['Double unders','Criss-cross','High knees','Boxer step','Side swing','Alternate-foot step'],
+    warmEx:'Easy bounce + mobility drills',coolEx:'Walk + deep stretch'}
+};
+function fmtS(s){
+  var m=Math.floor(s/60), r=Math.round(s%60);
+  return (m>0?m+'m ':'')+r+'s';
+}
+function gen(){
+  if(!TN.el(S+'-level')) return;
+  TN.clearErr(ERR);
+  var out=TN.el(S+'-out'); out.innerHTML='';
+  var level=TN.el(S+'-level').value;
+  var mins=parseFloat(TN.el(S+'-duration').value);
+  if(!(mins>=5&&mins<=60)){ TN.setErr(ERR,'Enter a duration between 5 and 60 minutes.'); return; }
+  var p=PLANS[level];
+  var totalS=Math.round(mins*60);
+  var warmS=Math.min(p.warm*60,Math.floor(totalS*0.2));
+  var coolS=Math.min(p.cool*60,Math.floor(totalS*0.2));
+  var roundS=p.work+p.rest;
+  var rounds=Math.max(1,Math.floor((totalS-warmS-coolS)/roundS));
+  var workTot=rounds*p.work;
+  var elapsed=warmS;
+  var html='<table class="data"><thead><tr><th>#</th><th>Exercise</th><th>Work</th><th>Rest</th><th>Elapsed</th></tr></thead><tbody>';
+  html+='<tr><td>–</td><td>Warm-up: '+TN.esc(p.warmEx)+'</td><td>'+fmtS(warmS)+'</td><td>–</td><td>'+fmtS(elapsed)+'</td></tr>';
+  for(var i=0;i<rounds;i++){
+    var ex=p.ex[i%p.ex.length];
+    elapsed+=p.work;
+    var elWork=fmtS(elapsed);
+    elapsed+=p.rest;
+    html+='<tr><td>'+(i+1)+'</td><td>'+TN.esc(ex)+'</td><td>'+p.work+'s</td><td>'+p.rest+'s</td><td>'+fmtS(elapsed)+'</td></tr>';
+  }
+  elapsed+=coolS;
+  html+='<tr><td>–</td><td>Cool-down: '+TN.esc(p.coolEx)+'</td><td>'+fmtS(coolS)+'</td><td>–</td><td>'+fmtS(elapsed)+'</td></tr>';
+  html+='</tbody></table>';
+  if(elapsed<totalS){
+    html+='<p class="note">Finishing '+fmtS(totalS-elapsed)+' early — add easy bounce rounds if you want the full '+mins+' minutes.</p>';
+  }
+  TN.el(S+'-rounds').textContent=rounds;
+  TN.el(S+'-work').textContent=fmtS(workTot);
+  TN.el(S+'-total').textContent=fmtS(elapsed);
+  out.innerHTML=html;
+}
+try{
+  TN.on(S+'-go','click',gen);
+  TN.on(S+'-level','change',gen);
+  TN.on(S+'-duration','input',gen);
+  gen();
+}catch(e){}
+})();
+
+</script>
+</body>
+</html>

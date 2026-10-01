@@ -1,0 +1,39 @@
+<div class="tool-card">
+  <div class="grid2">
+    <div class="field">
+      <label for="http-client-snippet-generator-method">Method</label>
+      <select class="select" id="http-client-snippet-generator-method">
+        <option>GET</option><option>POST</option><option>PUT</option>
+        <option>PATCH</option><option>DELETE</option><option>HEAD</option><option>OPTIONS</option>
+      </select>
+    </div>
+    <div class="field">
+      <label for="http-client-snippet-generator-url">URL</label>
+      <input class="input" id="http-client-snippet-generator-url" value="https://api.example.com/v1/users">
+    </div>
+  </div>
+  <div class="field">
+    <label for="http-client-snippet-generator-headers">Headers (one "Name: value" per line)</label>
+    <textarea class="textarea" id="http-client-snippet-generator-headers" rows="2">Authorization: Bearer TOKEN
+Content-Type: application/json</textarea>
+  </div>
+  <div class="field">
+    <label for="http-client-snippet-generator-body">Body</label>
+    <textarea class="textarea" id="http-client-snippet-generator-body" rows="4">{"name": "Ada", "role": "admin"}</textarea>
+  </div>
+  <div class="btn-row" id="http-client-snippet-generator-tabs" style="margin-bottom:12px">
+    <button class="btn btn-sm" data-tab="fetch">fetch</button>
+    <button class="btn btn-sm btn-outline" data-tab="axios">axios</button>
+    <button class="btn btn-sm btn-outline" data-tab="curl">cURL</button>
+    <button class="btn btn-sm btn-outline" data-tab="python">Python</button>
+  </div>
+  <div class="error" id="http-client-snippet-generator-error"></div>
+  <div class="field">
+    <label for="http-client-snippet-generator-output">Snippet</label>
+    <textarea class="textarea" id="http-client-snippet-generator-output" rows="14" readonly style="font-family:monospace"></textarea>
+  </div>
+  <div class="btn-row">
+    <button class="btn btn-outline" id="http-client-snippet-generator-copy">Copy snippet</button>
+    <button class="btn btn-outline" id="http-client-snippet-generator-download">Download all (.txt)</button>
+  </div>
+</div>

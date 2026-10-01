@@ -1,0 +1,39 @@
+<div class="tool-card">
+  <div class="field">
+    <label for="webhook-signature-verifier-payload">Raw payload (exact bytes as received)</label>
+    <textarea class="textarea" id="webhook-signature-verifier-payload" rows="5" placeholder='{"id":"evt_123","amount":5000}'></textarea>
+  </div>
+  <div class="grid2">
+    <div class="field">
+      <label for="webhook-signature-verifier-secret">Webhook secret</label>
+      <input class="input" id="webhook-signature-verifier-secret" type="password" placeholder="whsec_…">
+    </div>
+    <div class="field">
+      <label for="webhook-signature-verifier-format">Signature format</label>
+      <select class="select" id="webhook-signature-verifier-format">
+        <option value="hex">Hex</option>
+        <option value="sha256hex">sha256=… (GitHub)</option>
+        <option value="base64">Base64</option>
+        <option value="stripe">Stripe header (t=…,v1=…)</option>
+      </select>
+    </div>
+  </div>
+  <div class="field">
+    <label for="webhook-signature-verifier-sig">Signature (from the request header)</label>
+    <input class="input" id="webhook-signature-verifier-sig" placeholder="sha256=abc123…">
+  </div>
+  <div class="btn-row">
+    <button class="btn" id="webhook-signature-verifier-verify">Verify signature</button>
+  </div>
+  <div class="error" id="webhook-signature-verifier-error"></div>
+  <div class="result hidden" id="webhook-signature-verifier-result">
+    <div class="stat-cards">
+      <div class="stat-card"><div class="v" id="webhook-signature-verifier-verdict">–</div><div class="l">Verdict</div></div>
+    </div>
+    <div class="field" style="margin-top:12px">
+      <label for="webhook-signature-verifier-expected">Computed HMAC-SHA256 (hex)</label>
+      <textarea class="textarea" id="webhook-signature-verifier-expected" rows="2" readonly></textarea>
+    </div>
+  </div>
+  <p class="note">Computed locally with SubtleCrypto — your secret never leaves the browser.</p>
+</div>

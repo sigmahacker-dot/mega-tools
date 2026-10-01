@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bayes Theorem Calculator — Free Online | ToolNest</title>
+<meta name="description" content="Compute posterior probabilities from prior, sensitivity and specificity with the full Bayes formula, natural frequencies and a probability tree.">
+<meta name="keywords" content="bayes theorem calculator, posterior probability, sensitivity specificity, medical test probability">
+<link rel="canonical" href="https://toolnest.vercel.app/tools/bayes-theorem-calculator/">
+<meta name="theme-color" content="#07070b">
+<meta property="og:title" content="Bayes Theorem Calculator — Free Online | ToolNest">
+<meta property="og:description" content="Compute posterior probabilities from prior, sensitivity and specificity with the full Bayes formula, natural frequencies and a probability tree.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css?v=4">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%23e01111'/><text x='50' y='68' font-size='58' text-anchor='middle' fill='white' font-family='Arial' font-weight='bold'>T</text></svg>">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebApplication","name":"Bayes Theorem Calculator","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0"},"url":"https://toolnest.vercel.app/tools/bayes-theorem-calculator/","description":"Compute posterior probabilities from prior, sensitivity and specificity with the full Bayes formula, natural frequencies and a probability tree."},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What is Bayes' theorem?","acceptedAnswer":{"@type":"Answer","text":"P(D|+) = P(+|D)·P(D) / P(+), where P(+) = P(+|D)·P(D) + P(+|¬D)·P(¬D). It updates the prior probability with the evidence from the test result."}},{"@type":"Question","name":"Why can P(D|+) be low even with a 99% accurate test?","acceptedAnswer":{"@type":"Answer","text":"The base-rate effect: if the condition is rare, most positives come from the large healthy group, so false positives dominate. The natural-frequency table makes this visible."}},{"@type":"Question","name":"What do sensitivity and specificity mean?","acceptedAnswer":{"@type":"Answer","text":"Sensitivity is P(positive | has condition) — the true positive rate. Specificity is P(negative | no condition) — the true negative rate."}}]}]}</script>
+</head>
+<body>
+<header class="site-header">
+  <div class="container">
+    <a class="logo" href="/"><span class="logo-mark">T</span> ToolNest</a>
+    <div class="header-right">
+      <form class="nav-search" action="/" method="get" role="search">
+        <span class="ns-icon">🔍</span>
+        <input type="search" name="q" placeholder="Search tools…" aria-label="Search tools" autocomplete="off">
+      </form>
+      <div class="menu-wrap">
+        <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="menuPanel" aria-label="Open menu"><span></span><span></span><span></span></button>
+        <nav class="menu-panel" id="menuPanel" aria-label="Site">
+          <a href="/">Home</a>
+          <a href="/#categories">Categories</a>
+          <a href="/#all-tools">All Tools</a>
+        </nav>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ADSTERRA-HEADER: paste your Adsterra banner ad code inside the div below -->
+<div class="container"><div class="ad-slot ad-leaderboard" data-ad="header"></div></div>
+
+<main class="container">
+  <nav class="crumbs"><a href="/">Home</a> &rsaquo; <a href="/#math">Math &amp; Numbers</a> &rsaquo; Bayes Theorem Calculator</nav>
+  <div class="tool-hero">
+    <h1>Bayes Theorem Calculator</h1>
+    <p>Compute posterior probabilities from prior, sensitivity and specificity with the full Bayes formula, natural frequencies and a probability tree.</p>
+  </div>
+
+  <div class="tool-card">
+  <div class="grid3">
+    <div class="field">
+      <label for="bayes-theorem-calculator-prior">Prior P(D) %</label>
+      <input class="input" id="bayes-theorem-calculator-prior" type="number" min="0" max="100" step="any" value="1">
+    </div>
+    <div class="field">
+      <label for="bayes-theorem-calculator-sens">Sensitivity P(+|D) %</label>
+      <input class="input" id="bayes-theorem-calculator-sens" type="number" min="0" max="100" step="any" value="99">
+    </div>
+    <div class="field">
+      <label for="bayes-theorem-calculator-spec">Specificity P(−|¬D) %</label>
+      <input class="input" id="bayes-theorem-calculator-spec" type="number" min="0" max="100" step="any" value="99">
+    </div>
+  </div>
+  <div class="btn-row">
+    <button type="button" class="btn" id="bayes-theorem-calculator-calc">Calculate</button>
+  </div>
+  <div class="error" id="bayes-theorem-calculator-error"></div>
+  <div id="bayes-theorem-calculator-out" class="hidden">
+    <div class="stat-cards">
+      <div class="stat-card"><div class="v" id="bayes-theorem-calculator-post-pos">–</div><div class="l">P(D|+) — positive result</div></div>
+      <div class="stat-card"><div class="v" id="bayes-theorem-calculator-post-neg">–</div><div class="l">P(D|−) — negative result</div></div>
+      <div class="stat-card"><div class="v" id="bayes-theorem-calculator-p-pos">–</div><div class="l">P(+) overall</div></div>
+    </div>
+    <div class="result">
+      <h3>Formula steps</h3>
+      <div id="bayes-theorem-calculator-steps"></div>
+    </div>
+    <div class="result">
+      <h3>Natural frequencies (per 10,000 people)</h3>
+      <div style="overflow-x:auto"><table class="data"><thead><tr><th></th><th>Test +</th><th>Test −</th><th>Total</th></tr></thead><tbody id="bayes-theorem-calculator-freq"></tbody></table></div>
+    </div>
+  </div>
+</div>
+
+
+  <!-- ADSTERRA-INCONTENT: paste your Adsterra native/in-content ad code inside the div below -->
+  <div class="ad-slot" data-ad="incontent"></div>
+
+  <div class="info-grid">
+    <div class="info-card">
+      <h2>📖 How to use</h2>
+      <ol><li>Enter the prior probability P(D) — how common the condition is.</li><li>Enter the test&#39;s sensitivity P(+|D) and specificity P(−|¬D).</li><li>Press Calculate to get P(D|+) and P(D|−) with every formula step.</li><li>Read the natural-frequency view (per 10,000 people) to build intuition.</li></ol>
+    </div>
+    <div class="info-card">
+      <h2>❓ Frequently asked questions</h2>
+      <div class="faq"><details><summary>What is Bayes&#39; theorem?</summary><p>P(D|+) = P(+|D)·P(D) / P(+), where P(+) = P(+|D)·P(D) + P(+|¬D)·P(¬D). It updates the prior probability with the evidence from the test result.</p></details><details><summary>Why can P(D|+) be low even with a 99% accurate test?</summary><p>The base-rate effect: if the condition is rare, most positives come from the large healthy group, so false positives dominate. The natural-frequency table makes this visible.</p></details><details><summary>What do sensitivity and specificity mean?</summary><p>Sensitivity is P(positive | has condition) — the true positive rate. Specificity is P(negative | no condition) — the true negative rate.</p></details></div>
+    </div>
+  </div>
+
+  <section class="section">
+    <h2>🔗 Related tools</h2>
+    <div class="tool-grid"><a class="tool-link" href="/tools/24-game-solver/" data-search="24 game solver solve the 24 game exhaustively: every ordering, operation and parenthesization is tried with exact fraction arithmetic, and all distinct solutions are shown. 24 game solver make 24 solver 24 puzzle arithmetic puzzle solver"><span class="t-ico">📐</span><span class="t-body"><b>24 Game Solver</b><small>Solve the 24 game exhaustively: every ordering, operation and parenthesization is tried with…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/ancient-numerals-converter/" data-search="ancient numerals converter convert decimal numbers to roman, egyptian hieroglyphic, babylonian cuneiform and mayan numerals — with roman numerals also decoded back to decimal. roman numerals egyptian numerals babylonian numerals mayan numerals ancient numbers"><span class="t-ico">📐</span><span class="t-body"><b>Ancient Numerals Converter</b><small>Convert decimal numbers to Roman, Egyptian hieroglyphic, Babylonian cuneiform and Mayan nume…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/arithmetic-sequence-calculator/" data-search="arithmetic sequence calculator from the first term and common difference get the nth term and the sum of the first n terms. arithmetic sequence arithmetic progression nth term sum of arithmetic series common difference"><span class="t-ico">📐</span><span class="t-body"><b>Arithmetic Sequence Calculator</b><small>From the first term and common difference get the nth term and the sum of the first n terms.</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/base-n-arithmetic/" data-search="base-n arithmetic add, subtract, multiply and divide numbers in any base from 2 to 36 with exact bigint math and a full conversion breakdown. base n arithmetic binary addition hexadecimal calculator base 36 math"><span class="t-ico">📐</span><span class="t-body"><b>Base-N Arithmetic</b><small>Add, subtract, multiply and divide numbers in any base from 2 to 36 with exact BigInt math a…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/bcd-converter/" data-search="bcd converter convert decimal numbers to binary-coded decimal (packed and unpacked) and decode bcd back to decimal, with per-digit nibble breakdowns. bcd converter binary coded decimal packed bcd unpacked bcd bcd decoder"><span class="t-ico">📐</span><span class="t-body"><b>BCD Converter</b><small>Convert decimal numbers to Binary-Coded Decimal (packed and unpacked) and decode BCD back to…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/binary-adder-calculator/" data-search="binary adder calculator add two binary numbers with every column addition and carry shown, plus a decimal check. binary addition add binary numbers binary adder binary sum binary carry"><span class="t-ico">📐</span><span class="t-body"><b>Binary Adder Calculator</b><small>Add two binary numbers with every column addition and carry shown, plus a decimal check.</small></span><span class="t-arrow">→</span></a></div>
+  </section>
+</main>
+
+<!-- ADSTERRA-FOOTER: paste your Adsterra footer/banner ad code inside the div below -->
+<div class="container"><div class="ad-slot" data-ad="footer"></div></div>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="f-grid">
+      <div>
+        <span class="brandline"><span class="logo-mark">T</span> ToolNest</span>
+        <p>Free online tools that actually work. No sign-up, no watermarks — and your files never leave your device for client-side tools.</p>
+      </div>
+      <div>
+        <h4>Popular</h4>
+        <a href="/tools/qr-code-generator/">QR Code Generator</a>
+        <a href="/tools/background-remover/">Background Remover</a>
+        <a href="/tools/pdf-merger/">PDF Merger</a>
+        <a href="/tools/word-counter/">Word Counter</a>
+      </div>
+      <div>
+        <h4>Categories</h4>
+        <a href="/#image">Image Tools</a>
+        <a href="/#pdf">PDF &amp; Documents</a>
+        <a href="/#calculators">Calculators</a>
+        <a href="/#developer">Developer Tools</a>
+      </div>
+      <div>
+        <h4>Site</h4>
+        <a href="/">Home</a>
+        <a href="/#all-tools">All Tools</a>
+        <a href="/sitemap.xml">Sitemap</a>
+      </div>
+    </div>
+    <div class="f-bottom">© 2026 ToolNest · Free tools for everyone · Made with care</div>
+  </div>
+</footer>
+
+<script src="/assets/site.js?v=5"></script>
+
+<script>
+(function () {
+  'use strict';
+  var P = 'bayes-theorem-calculator-', ERR = P + 'error';
+  function g(id) { return TN.el(P + id); }
+  function pct(x) { return (x * 100).toFixed(2) + '%'; }
+  function f4(x) { return String(parseFloat(x.toPrecision(6))); }
+  function calc() {
+    try {
+      TN.clearErr(ERR);
+      function get(id, name) {
+        var v = parseFloat(g(id).value);
+        if (isNaN(v) || v < 0 || v > 100) throw new Error(name + ' must be a percentage between 0 and 100.');
+        return v / 100;
+      }
+      var prior = get('prior', 'Prior'), sens = get('sens', 'Sensitivity'), spec = get('spec', 'Specificity');
+      var pNotD = 1 - prior;
+      var pPosGivenNotD = 1 - spec;
+      var pPos = sens * prior + pPosGivenNotD * pNotD;
+      var pNeg = 1 - pPos;
+      var postPos = pPos === 0 ? NaN : sens * prior / pPos;
+      var postNeg = pNeg === 0 ? NaN : (1 - sens) * prior / pNeg;
+      TN.show(P + 'out');
+      g('post-pos').textContent = isNaN(postPos) ? '—' : pct(postPos);
+      g('post-neg').textContent = isNaN(postNeg) ? '—' : pct(postNeg);
+      g('p-pos').textContent = pct(pPos);
+      var steps = '<ol>' +
+        '<li>P(D) = ' + f4(prior) + ', P(¬D) = ' + f4(pNotD) + ', P(+|D) = ' + f4(sens) + ', P(−|¬D) = ' + f4(spec) + ', so P(+|¬D) = ' + f4(pPosGivenNotD) + '.</li>' +
+        '<li>Total probability of a positive: P(+) = P(+|D)·P(D) + P(+|¬D)·P(¬D) = ' + f4(sens) + '·' + f4(prior) + ' + ' + f4(pPosGivenNotD) + '·' + f4(pNotD) + ' = <b>' + f4(pPos) + '</b>.</li>' +
+        '<li>Bayes: P(D|+) = P(+|D)·P(D) / P(+) = ' + f4(sens * prior) + ' / ' + f4(pPos) + ' = <b>' + pct(postPos) + '</b>.</li>' +
+        '<li>P(D|−) = P(−|D)·P(D) / P(−) = ' + f4((1 - sens) * prior) + ' / ' + f4(pNeg) + ' = <b>' + pct(postNeg) + '</b>.</li>' +
+        '</ol>';
+      g('steps').innerHTML = steps;
+      var N = 10000;
+      var dPos = Math.round(N * prior * sens), dNeg = Math.round(N * prior * (1 - sens));
+      var hPos = Math.round(N * pNotD * (1 - spec)), hNeg = Math.round(N * pNotD * spec);
+      g('freq').innerHTML =
+        '<tr><th>Has condition</th><td>' + dPos + '</td><td>' + dNeg + '</td><td>' + (dPos + dNeg) + '</td></tr>' +
+        '<tr><th>No condition</th><td>' + hPos + '</td><td>' + hNeg + '</td><td>' + (hPos + hNeg) + '</td></tr>' +
+        '<tr><th>Total</th><td><b>' + (dPos + hPos) + '</b></td><td>' + (dNeg + hNeg) + '</td><td>' + N + '</td></tr>' +
+        '<tr><td colspan="4" class="muted">Of the ' + (dPos + hPos) + ' positive results, only ' + dPos + ' truly have the condition → ' + pct(dPos / Math.max(1, dPos + hPos)) + '.</td></tr>';
+    } catch (e) { TN.setErr(ERR, e.message || 'Could not calculate.'); }
+  }
+  try {
+    if (!TN.el(P + 'calc')) return;
+    TN.on(P + 'calc', 'click', calc);
+  } catch (e) { /* never throw on load */ }
+})();
+
+</script>
+</body>
+</html>

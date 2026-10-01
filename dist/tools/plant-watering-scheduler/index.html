@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Plant Watering Scheduler — Free Online | ToolNest</title>
+<meta name="description" content="Never forget to water again: per-plant watering intervals, next-due dates computed from the last watering, and one-tap &#39;watered&#39; check-off.">
+<meta name="keywords" content="plant watering, watering schedule, plant care reminder, houseplant tracker">
+<link rel="canonical" href="https://toolnest.vercel.app/tools/plant-watering-scheduler/">
+<meta name="theme-color" content="#07070b">
+<meta property="og:title" content="Plant Watering Scheduler — Free Online | ToolNest">
+<meta property="og:description" content="Never forget to water again: per-plant watering intervals, next-due dates computed from the last watering, and one-tap &#39;watered&#39; check-off.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css?v=4">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%23e01111'/><text x='50' y='68' font-size='58' text-anchor='middle' fill='white' font-family='Arial' font-weight='bold'>T</text></svg>">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebApplication","name":"Plant Watering Scheduler","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0"},"url":"https://toolnest.vercel.app/tools/plant-watering-scheduler/","description":"Never forget to water again: per-plant watering intervals, next-due dates computed from the last watering, and one-tap 'watered' check-off."},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Where is my plant list stored?","acceptedAnswer":{"@type":"Answer","text":"In your browser's localStorage, namespaced to this tool. It stays on this device and browser."}},{"@type":"Question","name":"How is the next due date computed?","acceptedAnswer":{"@type":"Answer","text":"Last-watered date + interval days. Tapping 'Watered' sets last-watered to today and moves the due date forward."}},{"@type":"Question","name":"What counts as overdue?","acceptedAnswer":{"@type":"Answer","text":"Any plant whose due date is before today is highlighted red; due today is amber; the rest are green."}}]}]}</script>
+</head>
+<body>
+<header class="site-header">
+  <div class="container">
+    <a class="logo" href="/"><span class="logo-mark">T</span> ToolNest</a>
+    <div class="header-right">
+      <form class="nav-search" action="/" method="get" role="search">
+        <span class="ns-icon">🔍</span>
+        <input type="search" name="q" placeholder="Search tools…" aria-label="Search tools" autocomplete="off">
+      </form>
+      <div class="menu-wrap">
+        <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="menuPanel" aria-label="Open menu"><span></span><span></span><span></span></button>
+        <nav class="menu-panel" id="menuPanel" aria-label="Site">
+          <a href="/">Home</a>
+          <a href="/#categories">Categories</a>
+          <a href="/#all-tools">All Tools</a>
+        </nav>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ADSTERRA-HEADER: paste your Adsterra banner ad code inside the div below -->
+<div class="container"><div class="ad-slot ad-leaderboard" data-ad="header"></div></div>
+
+<main class="container">
+  <nav class="crumbs"><a href="/">Home</a> &rsaquo; <a href="/#time">Time &amp; Date</a> &rsaquo; Plant Watering Scheduler</nav>
+  <div class="tool-hero">
+    <h1>Plant Watering Scheduler</h1>
+    <p>Never forget to water again: per-plant watering intervals, next-due dates computed from the last watering, and one-tap &#39;watered&#39; check-off.</p>
+  </div>
+
+  <div class="tool-card">
+  <div class="grid3">
+    <div class="field">
+      <label for="plant-watering-scheduler-name">Plant name</label>
+      <input class="input" id="plant-watering-scheduler-name" type="text" placeholder="e.g. Monstera">
+    </div>
+    <div class="field">
+      <label for="plant-watering-scheduler-interval">Water every (days)</label>
+      <input class="input" id="plant-watering-scheduler-interval" type="number" min="1" max="365" value="7">
+    </div>
+    <div class="field">
+      <label for="plant-watering-scheduler-last">Last watered</label>
+      <input class="input" id="plant-watering-scheduler-last" type="date">
+    </div>
+  </div>
+  <div class="btn-row">
+    <button type="button" class="btn" id="plant-watering-scheduler-add">Add plant</button>
+  </div>
+  <div class="error" id="plant-watering-scheduler-error"></div>
+  <div class="result">
+    <h3>My plants</h3>
+    <div style="overflow-x:auto"><table class="data"><thead><tr><th>Plant</th><th>Every</th><th>Last watered</th><th>Next due</th><th>Status</th><th></th></tr></thead><tbody id="plant-watering-scheduler-list"></tbody></table></div>
+  </div>
+</div>
+
+
+  <!-- ADSTERRA-INCONTENT: paste your Adsterra native/in-content ad code inside the div below -->
+  <div class="ad-slot" data-ad="incontent"></div>
+
+  <div class="info-grid">
+    <div class="info-card">
+      <h2>📖 How to use</h2>
+      <ol><li>Add each plant with its watering interval in days and when you last watered it.</li><li>The list shows next-due dates, sorted with the thirstiest first and overdue in red.</li><li>Tap &#39;Watered&#39; when you water — the due date recalculates instantly.</li><li>Everything is saved in your browser automatically.</li></ol>
+    </div>
+    <div class="info-card">
+      <h2>❓ Frequently asked questions</h2>
+      <div class="faq"><details><summary>Where is my plant list stored?</summary><p>In your browser&#39;s localStorage, namespaced to this tool. It stays on this device and browser.</p></details><details><summary>How is the next due date computed?</summary><p>Last-watered date + interval days. Tapping &#39;Watered&#39; sets last-watered to today and moves the due date forward.</p></details><details><summary>What counts as overdue?</summary><p>Any plant whose due date is before today is highlighted red; due today is amber; the rest are green.</p></details></div>
+    </div>
+  </div>
+
+  <section class="section">
+    <h2>🔗 Related tools</h2>
+    <div class="tool-grid"><a class="tool-link" href="/tools/add-subtract-days-calculator/" data-search="add / subtract days calculator add or subtract days, weeks, months or years from any date. optional business-days-only mode skips weekends automatically. add days to date subtract days calculator date plus days business days calculator date arithmetic"><span class="t-ico">⏰</span><span class="t-body"><b>Add / Subtract Days Calculator</b><small>Add or subtract days, weeks, months or years from any date. Optional business-days-only mode…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/anniversary-calculator/" data-search="anniversary calculator track any anniversary: days until the next one, which number it is (10th, 25th…), total days together and the weekday it falls on. anniversary calculator wedding anniversary countdown how many days until anniversary anniversary date tracker years together calculator"><span class="t-ico">⏰</span><span class="t-body"><b>Anniversary Calculator</b><small>Track any anniversary: days until the next one, which number it is (10th, 25th…), total days…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/bill-due-tracker/" data-search="bill due tracker never miss a payment — track recurring monthly bills with automatic next-due dates, days remaining and urgency sorting. bill due tracker bill reminder recurring bills tracker monthly bills organizer due date tracker"><span class="t-ico">⏰</span><span class="t-body"><b>Bill Due Tracker</b><small>Never miss a payment — track recurring monthly bills with automatic next-due dates, days rem…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/billable-hours-calculator/" data-search="billable hours calculator turn hours into invoices: billable hours × rate, utilization percentage against non-billable time, and the final invoice total. billable hours invoice calculator utilization rate freelance rate calculator"><span class="t-ico">⏰</span><span class="t-body"><b>Billable Hours Calculator</b><small>Turn hours into invoices: billable hours × rate, utilization percentage against non-billable…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/birthday-reminder-list/" data-search="birthday reminder list never miss a birthday: names and dates with days-until countdowns, next upcoming birthday highlighted, saved in your browser. birthday reminder birthday tracker birthday countdown never forget birthday"><span class="t-ico">⏰</span><span class="t-body"><b>Birthday Reminder List</b><small>Never miss a birthday: names and dates with days-until countdowns, next upcoming birthday hi…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/business-days-calculator/" data-search="business days calculator count working days between two dates, excluding weekends and your own custom holidays, with a full breakdown. business days calculator working days calculator weekdays between dates net workdays business days excluding holidays"><span class="t-ico">⏰</span><span class="t-body"><b>Business Days Calculator</b><small>Count working days between two dates, excluding weekends and your own custom holidays, with …</small></span><span class="t-arrow">→</span></a></div>
+  </section>
+</main>
+
+<!-- ADSTERRA-FOOTER: paste your Adsterra footer/banner ad code inside the div below -->
+<div class="container"><div class="ad-slot" data-ad="footer"></div></div>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="f-grid">
+      <div>
+        <span class="brandline"><span class="logo-mark">T</span> ToolNest</span>
+        <p>Free online tools that actually work. No sign-up, no watermarks — and your files never leave your device for client-side tools.</p>
+      </div>
+      <div>
+        <h4>Popular</h4>
+        <a href="/tools/qr-code-generator/">QR Code Generator</a>
+        <a href="/tools/background-remover/">Background Remover</a>
+        <a href="/tools/pdf-merger/">PDF Merger</a>
+        <a href="/tools/word-counter/">Word Counter</a>
+      </div>
+      <div>
+        <h4>Categories</h4>
+        <a href="/#image">Image Tools</a>
+        <a href="/#pdf">PDF &amp; Documents</a>
+        <a href="/#calculators">Calculators</a>
+        <a href="/#developer">Developer Tools</a>
+      </div>
+      <div>
+        <h4>Site</h4>
+        <a href="/">Home</a>
+        <a href="/#all-tools">All Tools</a>
+        <a href="/sitemap.xml">Sitemap</a>
+      </div>
+    </div>
+    <div class="f-bottom">© 2026 ToolNest · Free tools for everyone · Made with care</div>
+  </div>
+</footer>
+
+<script src="/assets/site.js?v=5"></script>
+
+<script>
+(function () {
+  'use strict';
+  var P = 'plant-watering-scheduler-', ERR = P + 'error', LS = 'tn-plant-watering-scheduler';
+  var DAY = 86400000;
+  var plants = [];
+  function g(id) { return TN.el(P + id); }
+  function load() {
+    try {
+      var raw = localStorage.getItem(LS);
+      plants = raw ? JSON.parse(raw) : [];
+    } catch (e) { plants = []; }
+  }
+  function save() {
+    try { localStorage.setItem(LS, JSON.stringify(plants)); } catch (e) { /* unavailable */ }
+  }
+  function dstr(d) {
+    return d.getFullYear() + '-' + String(d.getMonth() + 1).padStart(2, '0') + '-' + String(d.getDate()).padStart(2, '0');
+  }
+  function pdate(s) { var p = s.split('-'); return new Date(p[0], p[1] - 1, p[2]); }
+  function today() { var n = new Date(); return new Date(n.getFullYear(), n.getMonth(), n.getDate()); }
+  function render() {
+    var body = g('list'), t = today();
+    if (!plants.length) { body.innerHTML = '<tr><td colspan="6" class="muted">No plants yet — add your first one above.</td></tr>'; return; }
+    var rows = plants.map(function (pl, i) {
+      var due = new Date(pdate(pl.last).getTime() + pl.interval * DAY);
+      var diff = Math.round((due - t) / DAY);
+      return { pl: pl, i: i, due: due, diff: diff };
+    }).sort(function (a, b) { return a.diff - b.diff; });
+    body.innerHTML = rows.map(function (r) {
+      var st, color;
+      if (r.diff < 0) { st = 'Overdue by ' + (-r.diff) + 'd'; color = '#f87171'; }
+      else if (r.diff === 0) { st = 'Due today'; color = '#fbbf24'; }
+      else { st = 'In ' + r.diff + 'd'; color = '#4ade80'; }
+      return '<tr><td><b>' + TN.esc(r.pl.name) + '</b></td><td>' + r.pl.interval + 'd</td><td>' + TN.esc(r.pl.last) + '</td><td>' + dstr(r.due) + '</td>' +
+        '<td style="color:' + color + ';font-weight:bold">' + st + '</td>' +
+        '<td><div class="btn-row"><button type="button" class="btn btn-outline btn-sm" data-water="' + r.i + '">Watered</button>' +
+        '<button type="button" class="btn btn-outline btn-sm" data-del="' + r.i + '">✕</button></div></td></tr>';
+    }).join('');
+    function wire(attr, fn) {
+      var els = body.querySelectorAll('[' + attr + ']');
+      for (var i = 0; i < els.length; i++) {
+        (function (b) {
+          TN.on(b, 'click', function () { fn(parseInt(b.getAttribute(attr), 10)); });
+        })(els[i]);
+      }
+    }
+    wire('data-water', function (i) { plants[i].last = dstr(today()); save(); render(); });
+    wire('data-del', function (i) { plants.splice(i, 1); save(); render(); });
+  }
+  try {
+    if (!TN.el(P + 'add')) return;
+    load(); render();
+    var n = new Date();
+    g('last').value = n.getFullYear() + '-' + String(n.getMonth() + 1).padStart(2, '0') + '-' + String(n.getDate()).padStart(2, '0');
+    TN.on(P + 'add', 'click', function () {
+      TN.clearErr(ERR);
+      var name = g('name').value.trim();
+      var interval = parseInt(g('interval').value, 10);
+      var last = g('last').value;
+      if (!name) { TN.setErr(ERR, 'Give the plant a name.'); return; }
+      if (isNaN(interval) || interval < 1 || interval > 365) { TN.setErr(ERR, 'Interval must be 1–365 days.'); return; }
+      if (!last) { TN.setErr(ERR, 'Pick the last-watered date.'); return; }
+      if (pdate(last) > today()) { TN.setErr(ERR, 'Last-watered cannot be in the future.'); return; }
+      plants.push({ name: name, interval: interval, last: last });
+      g('name').value = '';
+      save(); render();
+    });
+  } catch (e) { /* never throw on load */ }
+})();
+
+</script>
+</body>
+</html>

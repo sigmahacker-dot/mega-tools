@@ -1,0 +1,35 @@
+<div class="tool-card">
+  <div class="field">
+    <label for="makefile-generator-vars">Variables (one NAME=value per line)</label>
+    <textarea class="textarea" id="makefile-generator-vars" rows="3" style="font-family:monospace">CC = gcc
+CFLAGS = -Wall -O2
+SRC = main.c util.c</textarea>
+  </div>
+  <div class="field">
+    <label for="makefile-generator-targets">Targets ("name: deps" line, then "&gt; command" lines)</label>
+    <textarea class="textarea" id="makefile-generator-targets" rows="8" style="font-family:monospace">all: build
+> @echo "Done"
+build: $(SRC)
+> $(CC) $(CFLAGS) -o app $(SRC)
+test: build
+> ./app --test
+clean:
+> rm -f app *.o</textarea>
+  </div>
+  <div class="field checkline">
+    <input type="checkbox" id="makefile-generator-phony" checked>
+    <label for="makefile-generator-phony">Add .PHONY for targets without file outputs</label>
+  </div>
+  <div class="btn-row">
+    <button class="btn" id="makefile-generator-generate">Generate Makefile</button>
+  </div>
+  <div class="error" id="makefile-generator-error"></div>
+  <div class="field">
+    <label for="makefile-generator-output">Makefile</label>
+    <textarea class="textarea" id="makefile-generator-output" rows="16" readonly style="font-family:monospace"></textarea>
+  </div>
+  <div class="btn-row">
+    <button class="btn btn-outline" id="makefile-generator-copy">Copy Makefile</button>
+    <button class="btn btn-outline" id="makefile-generator-download">Download Makefile</button>
+  </div>
+</div>

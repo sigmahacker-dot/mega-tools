@@ -1,0 +1,67 @@
+<div class="tool-card">
+  <div class="field">
+    <label for="schema-markup-generator-type">Schema type</label>
+    <select class="select" id="schema-markup-generator-type">
+      <option value="article">Article</option>
+      <option value="local">LocalBusiness</option>
+      <option value="product">Product</option>
+      <option value="faq">FAQPage</option>
+    </select>
+  </div>
+
+  <div id="schema-markup-generator-f-article">
+    <div class="grid2">
+      <div class="field"><label for="schema-markup-generator-a-title">Headline</label><input class="input" type="text" id="schema-markup-generator-a-title"></div>
+      <div class="field"><label for="schema-markup-generator-a-author">Author</label><input class="input" type="text" id="schema-markup-generator-a-author"></div>
+      <div class="field"><label for="schema-markup-generator-a-date">Date published</label><input class="input" type="date" id="schema-markup-generator-a-date"></div>
+      <div class="field"><label for="schema-markup-generator-a-img">Image URL</label><input class="input" type="url" id="schema-markup-generator-a-img"></div>
+      <div class="field"><label for="schema-markup-generator-a-url">Article URL</label><input class="input" type="url" id="schema-markup-generator-a-url"></div>
+      <div class="field"><label for="schema-markup-generator-a-desc">Description</label><input class="input" type="text" id="schema-markup-generator-a-desc"></div>
+    </div>
+  </div>
+
+  <div id="schema-markup-generator-f-local" class="hidden">
+    <div class="grid2">
+      <div class="field"><label for="schema-markup-generator-l-name">Business name</label><input class="input" type="text" id="schema-markup-generator-l-name"></div>
+      <div class="field"><label for="schema-markup-generator-l-phone">Phone</label><input class="input" type="tel" id="schema-markup-generator-l-phone"></div>
+      <div class="field"><label for="schema-markup-generator-l-street">Street address</label><input class="input" type="text" id="schema-markup-generator-l-street"></div>
+      <div class="field"><label for="schema-markup-generator-l-city">City</label><input class="input" type="text" id="schema-markup-generator-l-city"></div>
+      <div class="field"><label for="schema-markup-generator-l-region">Region</label><input class="input" type="text" id="schema-markup-generator-l-region"></div>
+      <div class="field"><label for="schema-markup-generator-l-postal">Postal code</label><input class="input" type="text" id="schema-markup-generator-l-postal"></div>
+      <div class="field"><label for="schema-markup-generator-l-hours">Opening hours (e.g. Mo-Fr 09:00-17:00)</label><input class="input" type="text" id="schema-markup-generator-l-hours"></div>
+      <div class="field"><label for="schema-markup-generator-l-url">Website URL</label><input class="input" type="url" id="schema-markup-generator-l-url"></div>
+    </div>
+  </div>
+
+  <div id="schema-markup-generator-f-product" class="hidden">
+    <div class="grid2">
+      <div class="field"><label for="schema-markup-generator-p-name">Product name</label><input class="input" type="text" id="schema-markup-generator-p-name"></div>
+      <div class="field"><label for="schema-markup-generator-p-brand">Brand</label><input class="input" type="text" id="schema-markup-generator-p-brand"></div>
+      <div class="field"><label for="schema-markup-generator-p-price">Price</label><input class="input" type="number" id="schema-markup-generator-p-price" min="0" step="0.01"></div>
+      <div class="field"><label for="schema-markup-generator-p-cur">Currency (e.g. USD)</label><input class="input" type="text" id="schema-markup-generator-p-cur" value="USD"></div>
+      <div class="field"><label for="schema-markup-generator-p-rating">Aggregate rating (1–5)</label><input class="input" type="number" id="schema-markup-generator-p-rating" min="1" max="5" step="0.1"></div>
+      <div class="field"><label for="schema-markup-generator-p-count">Review count</label><input class="input" type="number" id="schema-markup-generator-p-count" min="0"></div>
+      <div class="field"><label for="schema-markup-generator-p-desc">Description</label><input class="input" type="text" id="schema-markup-generator-p-desc"></div>
+      <div class="field"><label for="schema-markup-generator-p-img">Image URL</label><input class="input" type="url" id="schema-markup-generator-p-img"></div>
+    </div>
+  </div>
+
+  <div id="schema-markup-generator-f-faq" class="hidden">
+    <div class="field">
+      <label for="schema-markup-generator-f-pairs">Q&A pairs — one per line as "question | answer"</label>
+      <textarea class="textarea" id="schema-markup-generator-f-pairs" rows="5" placeholder="What is schema? | Structured data for search engines."></textarea>
+    </div>
+  </div>
+
+  <div class="btn-row" style="margin-top:10px">
+    <button class="btn" id="schema-markup-generator-gen">Generate Schema</button>
+    <button class="btn btn-outline" id="schema-markup-generator-copy">Copy JSON-LD</button>
+    <button class="btn btn-outline" id="schema-markup-generator-dl">Download .json</button>
+  </div>
+  <div class="error" id="schema-markup-generator-error"></div>
+</div>
+
+<div class="tool-card">
+  <h3>JSON-LD output</h3>
+  <pre id="schema-markup-generator-out" style="white-space:pre-wrap;font-family:monospace;font-size:13px"></pre>
+</div>

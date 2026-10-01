@@ -1,0 +1,37 @@
+<div class="tool-card">
+  <div class="grid3">
+    <div class="field">
+      <label for="eslint-config-generator-preset">Rule preset</label>
+      <select class="select" id="eslint-config-generator-preset">
+        <option value="minimal">Minimal (eslint:recommended)</option>
+        <option value="plus" selected>Recommended + style</option>
+        <option value="strict">Strict</option>
+      </select>
+    </div>
+    <div class="field checkline" style="align-self:end">
+      <input type="checkbox" id="eslint-config-generator-browser" checked>
+      <label for="eslint-config-generator-browser">Browser globals</label>
+    </div>
+    <div class="field checkline" style="align-self:end">
+      <input type="checkbox" id="eslint-config-generator-node">
+      <label for="eslint-config-generator-node">Node.js globals</label>
+    </div>
+  </div>
+  <div class="field">
+    <label for="eslint-config-generator-rules">Custom rules (one "name: severity" per line)</label>
+    <textarea class="textarea" id="eslint-config-generator-rules" rows="3" style="font-family:monospace">no-console: warn</textarea>
+  </div>
+  <div class="btn-row">
+    <button class="btn" id="eslint-config-generator-generate">Generate config</button>
+  </div>
+  <div class="error" id="eslint-config-generator-error"></div>
+  <div class="field">
+    <label for="eslint-config-generator-output">eslint.config.js</label>
+    <textarea class="textarea" id="eslint-config-generator-output" rows="20" readonly style="font-family:monospace"></textarea>
+  </div>
+  <div class="btn-row">
+    <button class="btn btn-outline" id="eslint-config-generator-copy">Copy config</button>
+    <button class="btn btn-outline" id="eslint-config-generator-download">Download eslint.config.js</button>
+  </div>
+  <p class="note">Requires: npm i -D eslint @eslint/js globals</p>
+</div>

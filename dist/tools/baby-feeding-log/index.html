@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Baby Feeding Log — Free Online | ToolNest</title>
+<meta name="description" content="Log nursing and bottle sessions with timestamps, daily totals, saved in your browser.">
+<meta name="keywords" content="baby feeding log, nursing tracker, bottle feeding log">
+<link rel="canonical" href="https://toolnest.vercel.app/tools/baby-feeding-log/">
+<meta name="theme-color" content="#07070b">
+<meta property="og:title" content="Baby Feeding Log — Free Online | ToolNest">
+<meta property="og:description" content="Log nursing and bottle sessions with timestamps, daily totals, saved in your browser.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css?v=4">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%23e01111'/><text x='50' y='68' font-size='58' text-anchor='middle' fill='white' font-family='Arial' font-weight='bold'>T</text></svg>">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebApplication","name":"Baby Feeding Log","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0"},"url":"https://toolnest.vercel.app/tools/baby-feeding-log/","description":"Log nursing and bottle sessions with timestamps, daily totals, saved in your browser."},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Where is the log stored?","acceptedAnswer":{"@type":"Answer","text":"Only in your browser's localStorage. Nothing is uploaded."}},{"@type":"Question","name":"Can I log for a different day?","acceptedAnswer":{"@type":"Answer","text":"Yes. Change the date/time field before adding the session."}},{"@type":"Question","name":"What do the daily totals show?","acceptedAnswer":{"@type":"Answer","text":"Number of sessions, total nursing minutes, and total bottle milliliters for the selected date."}}]}]}</script>
+</head>
+<body>
+<header class="site-header">
+  <div class="container">
+    <a class="logo" href="/"><span class="logo-mark">T</span> ToolNest</a>
+    <div class="header-right">
+      <form class="nav-search" action="/" method="get" role="search">
+        <span class="ns-icon">🔍</span>
+        <input type="search" name="q" placeholder="Search tools…" aria-label="Search tools" autocomplete="off">
+      </form>
+      <div class="menu-wrap">
+        <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="menuPanel" aria-label="Open menu"><span></span><span></span><span></span></button>
+        <nav class="menu-panel" id="menuPanel" aria-label="Site">
+          <a href="/">Home</a>
+          <a href="/#categories">Categories</a>
+          <a href="/#all-tools">All Tools</a>
+        </nav>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ADSTERRA-HEADER: paste your Adsterra banner ad code inside the div below -->
+<div class="container"><div class="ad-slot ad-leaderboard" data-ad="header"></div></div>
+
+<main class="container">
+  <nav class="crumbs"><a href="/">Home</a> &rsaquo; <a href="/#health">Health &amp; Fitness</a> &rsaquo; Baby Feeding Log</nav>
+  <div class="tool-hero">
+    <h1>Baby Feeding Log</h1>
+    <p>Log nursing and bottle sessions with timestamps, daily totals, saved in your browser.</p>
+  </div>
+
+  <div class="tool-card">
+  <div class="grid2">
+    <div class="field">
+      <label for="baby-feeding-log-type">Session type</label>
+      <select class="select" id="baby-feeding-log-type">
+        <option value="nursing">Nursing</option>
+        <option value="bottle">Bottle</option>
+      </select>
+    </div>
+    <div class="field">
+      <label for="baby-feeding-log-when">Date & time</label>
+      <input type="datetime-local" class="input" id="baby-feeding-log-when">
+    </div>
+    <div class="field" id="baby-feeding-log-nursingwrap">
+      <label for="baby-feeding-log-side">Side</label>
+      <select class="select" id="baby-feeding-log-side">
+        <option>Left</option><option>Right</option><option>Both</option>
+      </select>
+    </div>
+    <div class="field" id="baby-feeding-log-durationwrap">
+      <label for="baby-feeding-log-duration">Duration (minutes)</label>
+      <input type="number" class="input" id="baby-feeding-log-duration" min="0" step="any" placeholder="20">
+    </div>
+    <div class="field" id="baby-feeding-log-bottlwrap" style="display:none">
+      <label for="baby-feeding-log-ml">Amount (ml)</label>
+      <input type="number" class="input" id="baby-feeding-log-ml" min="0" step="any" placeholder="120">
+    </div>
+    <div class="field" style="display:flex;align-items:flex-end">
+      <button class="btn" id="baby-feeding-log-add" type="button">Log session</button>
+    </div>
+  </div>
+  <div class="field" style="max-width:240px">
+    <label for="baby-feeding-log-date">Show date</label>
+    <input type="date" class="input" id="baby-feeding-log-date">
+  </div>
+  <div class="error" id="baby-feeding-log-error"></div>
+  <div class="result" id="baby-feeding-log-result">
+    <div class="stat-cards">
+      <div class="stat-card"><div class="v" id="baby-feeding-log-sessions">0</div><div class="l">Sessions</div></div>
+      <div class="stat-card"><div class="v" id="baby-feeding-log-nursemin">0</div><div class="l">Nursing minutes</div></div>
+      <div class="stat-card"><div class="v" id="baby-feeding-log-bottleml">0</div><div class="l">Bottle ml</div></div>
+    </div>
+    <div id="baby-feeding-log-out"></div>
+    <p class="note">Saved in your browser only. For information only &mdash; not medical advice.</p>
+  </div>
+</div>
+
+  <!-- ADSTERRA-INCONTENT: paste your Adsterra native/in-content ad code inside the div below -->
+  <div class="ad-slot" data-ad="incontent"></div>
+
+  <div class="info-grid">
+    <div class="info-card">
+      <h2>📖 How to use</h2>
+      <ol><li>Choose nursing or bottle.</li><li>For nursing enter side and minutes; for bottle enter milliliters.</li><li>The time defaults to now; change it if logging later.</li><li>See today&#39;s totals and full history; delete mistakes.</li></ol>
+    </div>
+    <div class="info-card">
+      <h2>❓ Frequently asked questions</h2>
+      <div class="faq"><details><summary>Where is the log stored?</summary><p>Only in your browser&#39;s localStorage. Nothing is uploaded.</p></details><details><summary>Can I log for a different day?</summary><p>Yes. Change the date/time field before adding the session.</p></details><details><summary>What do the daily totals show?</summary><p>Number of sessions, total nursing minutes, and total bottle milliliters for the selected date.</p></details></div>
+    </div>
+  </div>
+
+  <section class="section">
+    <h2>🔗 Related tools</h2>
+    <div class="tool-grid"><a class="tool-link" href="/tools/allergy-tracker/" data-search="allergy tracker log allergy exposures, symptoms, and severity with summaries, saved in your browser. allergy tracker allergy diary symptom log"><span class="t-ico">❤️</span><span class="t-body"><b>Allergy Tracker</b><small>Log allergy exposures, symptoms, and severity with summaries, saved in your browser.</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/baby-growth-tracker/" data-search="baby growth tracker log your baby&#39;s weight and height over time and see a growth log with typical-range guidance. baby growth tracker baby weight tracker infant growth chart baby height log newborn growth"><span class="t-ico">❤️</span><span class="t-body"><b>Baby Growth Tracker</b><small>Log your baby&#39;s weight and height over time and see a growth log with typical-range guidance…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/balance-test-timer/" data-search="balance test timer single-leg stance stopwatch with age benchmarks for balance testing. balance test single leg stance balance timer"><span class="t-ico">❤️</span><span class="t-body"><b>Balance Test Timer</b><small>Single-leg stance stopwatch with age benchmarks for balance testing.</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/blood-donation-eligibility-checker/" data-search="blood donation eligibility checker check common blood donation eligibility rules: age, weight, hemoglobin, intervals. blood donation eligibility can i donate blood donor requirements"><span class="t-ico">❤️</span><span class="t-body"><b>Blood Donation Eligibility Checker</b><small>Check common blood donation eligibility rules: age, weight, hemoglobin, intervals.</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/blood-pressure-tracker/" data-search="blood pressure tracker log blood pressure readings with automatic aha category classification, averages and history saved in your browser. blood pressure tracker bp log blood pressure chart hypertension tracker bp monitor log"><span class="t-ico">❤️</span><span class="t-body"><b>Blood Pressure Tracker</b><small>Log blood pressure readings with automatic AHA category classification, averages and history…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/body-fat-calculator/" data-search="body fat calculator estimate body fat percentage with the us navy tape-measure method and see your fitness category. body fat calculator us navy body fat body fat percentage calculator"><span class="t-ico">❤️</span><span class="t-body"><b>Body Fat Calculator</b><small>Estimate body fat percentage with the US Navy tape-measure method and see your fitness categ…</small></span><span class="t-arrow">→</span></a></div>
+  </section>
+</main>
+
+<!-- ADSTERRA-FOOTER: paste your Adsterra footer/banner ad code inside the div below -->
+<div class="container"><div class="ad-slot" data-ad="footer"></div></div>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="f-grid">
+      <div>
+        <span class="brandline"><span class="logo-mark">T</span> ToolNest</span>
+        <p>Free online tools that actually work. No sign-up, no watermarks — and your files never leave your device for client-side tools.</p>
+      </div>
+      <div>
+        <h4>Popular</h4>
+        <a href="/tools/qr-code-generator/">QR Code Generator</a>
+        <a href="/tools/background-remover/">Background Remover</a>
+        <a href="/tools/pdf-merger/">PDF Merger</a>
+        <a href="/tools/word-counter/">Word Counter</a>
+      </div>
+      <div>
+        <h4>Categories</h4>
+        <a href="/#image">Image Tools</a>
+        <a href="/#pdf">PDF &amp; Documents</a>
+        <a href="/#calculators">Calculators</a>
+        <a href="/#developer">Developer Tools</a>
+      </div>
+      <div>
+        <h4>Site</h4>
+        <a href="/">Home</a>
+        <a href="/#all-tools">All Tools</a>
+        <a href="/sitemap.xml">Sitemap</a>
+      </div>
+    </div>
+    <div class="f-bottom">© 2026 ToolNest · Free tools for everyone · Made with care</div>
+  </div>
+</footer>
+
+<script src="/assets/site.js?v=5"></script>
+
+<script>
+(function(){
+'use strict';
+var S='baby-feeding-log', ERR=S+'-error', LS='tn-baby-feeding-log';
+function today(){ var d=new Date(); return d.getFullYear()+'-'+('0'+(d.getMonth()+1)).slice(-2)+'-'+('0'+d.getDate()).slice(-2); }
+function nowLocal(){ var d=new Date(); function p(n){ return ('0'+n).slice(-2); } return d.getFullYear()+'-'+p(d.getMonth()+1)+'-'+p(d.getDate())+'T'+p(d.getHours())+':'+p(d.getMinutes()); }
+function read(){ try{ return JSON.parse(localStorage.getItem(LS)||'[]'); }catch(e){ return []; } }
+function write(a){ try{ localStorage.setItem(LS,JSON.stringify(a)); }catch(e){} }
+function fmtWhen(w){ return w.slice(0,10)+' '+w.slice(11,16); }
+function render(){
+  if(!TN.el(S+'-type')) return;
+  TN.clearErr(ERR);
+  var date=TN.el(S+'-date').value||today();
+  var all=read().filter(function(e){ return e.when.slice(0,10)===date; })
+    .sort(function(a,b){ return a.when<b.when?-1:1; });
+  var nMin=0,bMl=0;
+  all.forEach(function(e){ if(e.type==='nursing') nMin+=e.minutes; else bMl+=e.ml; });
+  TN.el(S+'-sessions').textContent=all.length;
+  TN.el(S+'-nursemin').textContent=Math.round(nMin*10)/10;
+  TN.el(S+'-bottleml').textContent=Math.round(bMl*10)/10;
+  var html='';
+  if(all.length){
+    html='<table class="data"><thead><tr><th>Time</th><th>Type</th><th>Detail</th><th></th></tr></thead><tbody>';
+    all.forEach(function(e){
+      var det=e.type==='nursing'?(e.side+' · '+e.minutes+' min'):(e.ml+' ml');
+      html+='<tr><td>'+TN.esc(fmtWhen(e.when))+'</td><td>'+(e.type==='nursing'?'Nursing':'Bottle')+'</td><td>'+TN.esc(det)+'</td>'+
+        '<td><button class="btn btn-sm btn-outline" data-del="'+e.id+'" type="button">X</button></td></tr>';
+    });
+    html+='</tbody></table>';
+  } else {
+    html='<p class="muted">No sessions logged for this date.</p>';
+  }
+  TN.el(S+'-out').innerHTML=html;
+  Array.prototype.forEach.call(TN.el(S+'-out').querySelectorAll('[data-del]'),function(btn){
+    btn.addEventListener('click',function(){
+      var id=btn.getAttribute('data-del');
+      write(read().filter(function(e){ return String(e.id)!==id; }));
+      render();
+    });
+  });
+}
+try{
+  TN.el(S+'-when').value=nowLocal();
+  TN.el(S+'-date').value=today();
+  TN.on(S+'-type','change',function(){
+    var nursing=TN.el(S+'-type').value==='nursing';
+    TN.el(S+'-nursingwrap').style.display=nursing?'':'none';
+    TN.el(S+'-durationwrap').style.display=nursing?'':'none';
+    TN.el(S+'-bottlwrap').style.display=nursing?'none':'';
+  });
+  TN.on(S+'-add','click',function(){
+    TN.clearErr(ERR);
+    var type=TN.el(S+'-type').value;
+    var when=TN.el(S+'-when').value||nowLocal();
+    var entry={id:Date.now(),type:type,when:when};
+    if(type==='nursing'){
+      var mins=parseFloat(TN.el(S+'-duration').value);
+      if(!(mins>0)){ TN.setErr(ERR,'Enter nursing duration in minutes.'); return; }
+      entry.side=TN.el(S+'-side').value; entry.minutes=mins;
+      TN.el(S+'-duration').value='';
+    } else {
+      var ml=parseFloat(TN.el(S+'-ml').value);
+      if(!(ml>0)){ TN.setErr(ERR,'Enter the bottle amount in ml.'); return; }
+      entry.ml=ml;
+      TN.el(S+'-ml').value='';
+    }
+    var all=read(); all.push(entry); write(all);
+    TN.el(S+'-when').value=nowLocal();
+    TN.el(S+'-date').value=when.slice(0,10);
+    render();
+  });
+  TN.on(S+'-date','change',render);
+  render();
+}catch(e){}
+})();
+
+</script>
+</body>
+</html>

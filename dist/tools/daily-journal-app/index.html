@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Daily Journal — Free Online | ToolNest</title>
+<meta name="description" content="Write dated journal entries, search them, and keep them saved in your browser.">
+<meta name="keywords" content="daily journal, journal app, diary online, journaling tool">
+<link rel="canonical" href="https://toolnest.vercel.app/tools/daily-journal-app/">
+<meta name="theme-color" content="#07070b">
+<meta property="og:title" content="Daily Journal — Free Online | ToolNest">
+<meta property="og:description" content="Write dated journal entries, search them, and keep them saved in your browser.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css?v=4">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%23e01111'/><text x='50' y='68' font-size='58' text-anchor='middle' fill='white' font-family='Arial' font-weight='bold'>T</text></svg>">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebApplication","name":"Daily Journal","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0"},"url":"https://toolnest.vercel.app/tools/daily-journal-app/","description":"Write dated journal entries, search them, and keep them saved in your browser."},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Where are my entries stored?","acceptedAnswer":{"@type":"Answer","text":"Entries are stored in your browser's localStorage on this device. They never leave your computer — there is no server involved."}},{"@type":"Question","name":"How does search work?","acceptedAnswer":{"@type":"Answer","text":"The search box matches text in the entry title and body. Entries are sorted newest-first."}},{"@type":"Question","name":"How do I edit an old entry?","acceptedAnswer":{"@type":"Answer","text":"The date picker defaults to today. Click any date in the entry list to load it for editing."}},{"@type":"Question","name":"Can I export or delete entries?","acceptedAnswer":{"@type":"Answer","text":"Use your browser's export to save entries, or clear them with the delete button. Back up anything important elsewhere."}}]}]}</script>
+</head>
+<body>
+<header class="site-header">
+  <div class="container">
+    <a class="logo" href="/"><span class="logo-mark">T</span> ToolNest</a>
+    <div class="header-right">
+      <form class="nav-search" action="/" method="get" role="search">
+        <span class="ns-icon">🔍</span>
+        <input type="search" name="q" placeholder="Search tools…" aria-label="Search tools" autocomplete="off">
+      </form>
+      <div class="menu-wrap">
+        <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="menuPanel" aria-label="Open menu"><span></span><span></span><span></span></button>
+        <nav class="menu-panel" id="menuPanel" aria-label="Site">
+          <a href="/">Home</a>
+          <a href="/#categories">Categories</a>
+          <a href="/#all-tools">All Tools</a>
+        </nav>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ADSTERRA-HEADER: paste your Adsterra banner ad code inside the div below -->
+<div class="container"><div class="ad-slot ad-leaderboard" data-ad="header"></div></div>
+
+<main class="container">
+  <nav class="crumbs"><a href="/">Home</a> &rsaquo; <a href="/#fun">Fun &amp; Lifestyle</a> &rsaquo; Daily Journal</nav>
+  <div class="tool-hero">
+    <h1>Daily Journal</h1>
+    <p>Write dated journal entries, search them, and keep them saved in your browser.</p>
+  </div>
+
+  <div class="tool-card">
+  <div class="grid2">
+    <div class="field">
+      <label for="daily-journal-app-date">Date</label>
+      <input class="input" type="date" id="daily-journal-app-date">
+    </div>
+    <div class="field">
+      <label for="daily-journal-app-title">Title</label>
+      <input class="input" type="text" id="daily-journal-app-title" placeholder="A title for today…">
+    </div>
+  </div>
+  <div class="field">
+    <label for="daily-journal-app-body">Entry</label>
+    <textarea class="textarea" id="daily-journal-app-body" rows="8" placeholder="Write about your day…"></textarea>
+  </div>
+  <div class="btn-row">
+    <button class="btn" id="daily-journal-app-save">Save Entry</button>
+    <button class="btn btn-outline" id="daily-journal-app-clear">New Entry</button>
+    <button class="btn btn-outline" id="daily-journal-app-delete">Delete</button>
+  </div>
+  <div class="error" id="daily-journal-app-error"></div>
+</div>
+
+<div class="tool-card">
+  <div class="field">
+    <label for="daily-journal-app-search">Search entries</label>
+    <input class="input" type="text" id="daily-journal-app-search" placeholder="Search title or text…">
+  </div>
+  <div id="daily-journal-app-list"></div>
+  <p class="muted" id="daily-journal-app-count"></p>
+</div>
+
+  <!-- ADSTERRA-INCONTENT: paste your Adsterra native/in-content ad code inside the div below -->
+  <div class="ad-slot" data-ad="incontent"></div>
+
+  <div class="info-grid">
+    <div class="info-card">
+      <h2>📖 How to use</h2>
+      <ol><li>The date picker defaults to today — change it to write for another day.</li><li>Give the entry a title, write your thoughts, and click Save Entry.</li><li>Search past entries with the search box; click an entry to load it for editing.</li><li>Delete an entry you no longer want with the Delete button.</li></ol>
+    </div>
+    <div class="info-card">
+      <h2>❓ Frequently asked questions</h2>
+      <div class="faq"><details><summary>Where are my entries stored?</summary><p>Entries are stored in your browser&#39;s localStorage on this device. They never leave your computer — there is no server involved.</p></details><details><summary>How does search work?</summary><p>The search box matches text in the entry title and body. Entries are sorted newest-first.</p></details><details><summary>How do I edit an old entry?</summary><p>The date picker defaults to today. Click any date in the entry list to load it for editing.</p></details><details><summary>Can I export or delete entries?</summary><p>Use your browser&#39;s export to save entries, or clear them with the delete button. Back up anything important elsewhere.</p></details></div>
+    </div>
+  </div>
+
+  <section class="section">
+    <h2>🔗 Related tools</h2>
+    <div class="tool-grid"><a class="tool-link" href="/tools/100-day-challenge-tracker/" data-search="100-day challenge tracker track a 100-day challenge with a checkable 100-cell grid, streaks and stats. 100 day challenge habit tracker 100 days challenge tracker streak tracker"><span class="t-ico">🎲</span><span class="t-body"><b>100-Day Challenge Tracker</b><small>Track a 100-day challenge with a checkable 100-cell grid, streaks and stats.</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/24-game/" data-search="24 game the 24 game — combine four numbers with + − × ÷ to make 24. built-in solver guarantees every deal and gives hints. 24 game make 24 game 24 puzzle solver math puzzle game"><span class="t-ico">🎲</span><span class="t-body"><b>24 Game</b><small>The 24 Game — combine four numbers with + − × ÷ to make 24. Built-in solver guarantees every…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/aim-trainer-game/" data-search="aim trainer game test and train your aim — targets pop up at random spots for 30 seconds. hits, misses and accuracy are tracked live. aim trainer aim test reaction test click speed test fps aim trainer"><span class="t-ico">🎲</span><span class="t-body"><b>Aim Trainer Game</b><small>Test and train your aim — targets pop up at random spots for 30 seconds. Hits, misses and ac…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/asteroid-shooter/" data-search="asteroid shooter asteroid shooter — rotate, thrust and blast splitting asteroids on canvas. 3 lives, rising levels. asteroid shooter game asteroids game online space shooter canvas"><span class="t-ico">🎲</span><span class="t-body"><b>Asteroid Shooter</b><small>Asteroid Shooter — rotate, thrust and blast splitting asteroids on canvas. 3 lives, rising l…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/attendance-tracker/" data-search="attendance tracker track class attendance: roster with present/absent marks per date and % summaries. attendance tracker class attendance student attendance roll call app"><span class="t-ico">🎲</span><span class="t-body"><b>Attendance Tracker</b><small>Track class attendance: roster with present/absent marks per date and % summaries.</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/baby-name-generator/" data-search="baby name generator discover baby names by gender and origin — pakistani, arabic, western, indian or turkish — with meanings, random picks and tap-to-copy. baby name generator baby names with meanings muslim baby names boy girl names"><span class="t-ico">🎲</span><span class="t-body"><b>Baby Name Generator</b><small>Discover baby names by gender and origin — Pakistani, Arabic, Western, Indian or Turkish — w…</small></span><span class="t-arrow">→</span></a></div>
+  </section>
+</main>
+
+<!-- ADSTERRA-FOOTER: paste your Adsterra footer/banner ad code inside the div below -->
+<div class="container"><div class="ad-slot" data-ad="footer"></div></div>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="f-grid">
+      <div>
+        <span class="brandline"><span class="logo-mark">T</span> ToolNest</span>
+        <p>Free online tools that actually work. No sign-up, no watermarks — and your files never leave your device for client-side tools.</p>
+      </div>
+      <div>
+        <h4>Popular</h4>
+        <a href="/tools/qr-code-generator/">QR Code Generator</a>
+        <a href="/tools/background-remover/">Background Remover</a>
+        <a href="/tools/pdf-merger/">PDF Merger</a>
+        <a href="/tools/word-counter/">Word Counter</a>
+      </div>
+      <div>
+        <h4>Categories</h4>
+        <a href="/#image">Image Tools</a>
+        <a href="/#pdf">PDF &amp; Documents</a>
+        <a href="/#calculators">Calculators</a>
+        <a href="/#developer">Developer Tools</a>
+      </div>
+      <div>
+        <h4>Site</h4>
+        <a href="/">Home</a>
+        <a href="/#all-tools">All Tools</a>
+        <a href="/sitemap.xml">Sitemap</a>
+      </div>
+    </div>
+    <div class="f-bottom">© 2026 ToolNest · Free tools for everyone · Made with care</div>
+  </div>
+</footer>
+
+<script src="/assets/site.js?v=5"></script>
+
+<script>
+/* Daily Journal — dated entries with search, stored in localStorage. */
+(function () {
+  'use strict';
+
+  var SLUG = 'daily-journal-app';
+  var KEY = 'tn-' + SLUG + '-entries';
+
+  function load() {
+    try {
+      var raw = localStorage.getItem(KEY);
+      if (!raw) return [];
+      var arr = JSON.parse(raw);
+      return Array.isArray(arr) ? arr : [];
+    } catch (e) { return []; }
+  }
+
+  function save(entries) {
+    try { localStorage.setItem(KEY, JSON.stringify(entries)); }
+    catch (e) { TN.setErr(SLUG + '-error', 'Could not save — browser storage is unavailable.'); }
+  }
+
+  function todayStr() {
+    var d = new Date();
+    return d.getFullYear() + '-' + ('0' + (d.getMonth() + 1)).slice(-2) + '-' + ('0' + d.getDate()).slice(-2);
+  }
+
+  function renderList() {
+    var list = TN.el(SLUG + '-list');
+    if (!list) return;
+    var q = (TN.el(SLUG + '-search').value || '').toLowerCase();
+    var entries = load().slice().sort(function (a, b) { return b.date < a.date ? -1 : 1; });
+    if (q) {
+      entries = entries.filter(function (e) {
+        return (e.title + ' ' + e.body).toLowerCase().indexOf(q) !== -1;
+      });
+    }
+    if (!entries.length) {
+      list.innerHTML = '<p class="muted">No entries yet. Write your first one above.</p>';
+    } else {
+      list.innerHTML = entries.map(function (e) {
+        var preview = e.body.length > 120 ? e.body.slice(0, 120) + '…' : e.body;
+        return '<div class="tool-card" style="margin:8px 0;cursor:pointer" data-date="' + TN.esc(e.date) + '">' +
+          '<strong>' + TN.esc(e.date) + '</strong> — ' + TN.esc(e.title || '(untitled)') +
+          '<p class="muted" style="margin:4px 0 0">' + TN.esc(preview) + '</p></div>';
+      }).join('');
+      var cards = list.querySelectorAll('[data-date]');
+      for (var i = 0; i < cards.length; i++) {
+        (function (card) {
+          card.addEventListener('click', function () { loadEntry(card.getAttribute('data-date')); });
+        })(cards[i]);
+      }
+    }
+    var count = TN.el(SLUG + '-count');
+    if (count) count.textContent = load().length + ' entr' + (load().length === 1 ? 'y' : 'ies') + ' saved.';
+  }
+
+  function loadEntry(date) {
+    var e = load().filter(function (x) { return x.date === date; })[0];
+    if (!e) return;
+    TN.el(SLUG + '-date').value = e.date;
+    TN.el(SLUG + '-title').value = e.title;
+    TN.el(SLUG + '-body').value = e.body;
+    TN.el(SLUG + '-date').scrollIntoView({ behavior: 'smooth', block: 'center' });
+  }
+
+  function saveEntry() {
+    TN.clearErr(SLUG + '-error');
+    var date = TN.el(SLUG + '-date').value;
+    var title = TN.el(SLUG + '-title').value.trim();
+    var body = TN.el(SLUG + '-body').value.trim();
+    if (!date) { TN.setErr(SLUG + '-error', 'Please pick a date.'); return; }
+    if (!body) { TN.setErr(SLUG + '-error', 'The entry is empty — write something first.'); return; }
+    var entries = load().filter(function (e) { return e.date !== date; });
+    entries.push({ date: date, title: title, body: body });
+    save(entries);
+    renderList();
+    TN.el(SLUG + '-title').value = '';
+    TN.el(SLUG + '-body').value = '';
+  }
+
+  function deleteEntry() {
+    TN.clearErr(SLUG + '-error');
+    var date = TN.el(SLUG + '-date').value;
+    var entries = load();
+    if (!entries.some(function (e) { return e.date === date; })) {
+      TN.setErr(SLUG + '-error', 'No entry exists for this date.'); return;
+    }
+    if (!window.confirm('Delete the entry for ' + date + '?')) return;
+    save(entries.filter(function (e) { return e.date !== date; }));
+    TN.el(SLUG + '-title').value = '';
+    TN.el(SLUG + '-body').value = '';
+    renderList();
+  }
+
+  function clearForm() {
+    TN.clearErr(SLUG + '-error');
+    TN.el(SLUG + '-date').value = todayStr();
+    TN.el(SLUG + '-title').value = '';
+    TN.el(SLUG + '-body').value = '';
+  }
+
+  function init() {
+    try {
+      if (!TN.el(SLUG + '-date')) return;
+      TN.el(SLUG + '-date').value = todayStr();
+      TN.on(SLUG + '-save', 'click', saveEntry);
+      TN.on(SLUG + '-delete', 'click', deleteEntry);
+      TN.on(SLUG + '-clear', 'click', clearForm);
+      TN.el(SLUG + '-search').addEventListener('input', renderList);
+      renderList();
+    } catch (e) { /* never throw on load */ }
+  }
+
+  init();
+})();
+</script>
+</body>
+</html>

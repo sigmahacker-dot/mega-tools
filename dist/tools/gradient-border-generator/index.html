@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gradient Border Generator — Free Online | ToolNest</title>
+<meta name="description" content="Create gradient border effects with angle, colors, width and radius — live preview plus CSS.">
+<meta name="keywords" content="gradient border css, border gradient generator, css border image, glow border css">
+<link rel="canonical" href="https://toolnest.vercel.app/tools/gradient-border-generator/">
+<meta name="theme-color" content="#07070b">
+<meta property="og:title" content="Gradient Border Generator — Free Online | ToolNest">
+<meta property="og:description" content="Create gradient border effects with angle, colors, width and radius — live preview plus CSS.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css?v=4">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%23e01111'/><text x='50' y='68' font-size='58' text-anchor='middle' fill='white' font-family='Arial' font-weight='bold'>T</text></svg>">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebApplication","name":"Gradient Border Generator","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0"},"url":"https://toolnest.vercel.app/tools/gradient-border-generator/","description":"Create gradient border effects with angle, colors, width and radius — live preview plus CSS."},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How does the gradient border work?","acceptedAnswer":{"@type":"Answer","text":"It uses a double-background trick: a solid background clipped to the padding box, and the gradient clipped to the border box, with a transparent border."}},{"@type":"Question","name":"How many colors can I use?","acceptedAnswer":{"@type":"Answer","text":"Two or more — one hex color per line. Stops are spread evenly across the angle."}},{"@type":"Question","name":"Will it work in all browsers?","acceptedAnswer":{"@type":"Answer","text":"Yes — background-clip with two layers works in all modern browsers."}},{"@type":"Question","name":"Can I use it on images or buttons?","acceptedAnswer":{"@type":"Answer","text":"Yes — apply the .gb-box class to any element; adjust padding to taste."}}]}]}</script>
+</head>
+<body>
+<header class="site-header">
+  <div class="container">
+    <a class="logo" href="/"><span class="logo-mark">T</span> ToolNest</a>
+    <div class="header-right">
+      <form class="nav-search" action="/" method="get" role="search">
+        <span class="ns-icon">🔍</span>
+        <input type="search" name="q" placeholder="Search tools…" aria-label="Search tools" autocomplete="off">
+      </form>
+      <div class="menu-wrap">
+        <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="menuPanel" aria-label="Open menu"><span></span><span></span><span></span></button>
+        <nav class="menu-panel" id="menuPanel" aria-label="Site">
+          <a href="/">Home</a>
+          <a href="/#categories">Categories</a>
+          <a href="/#all-tools">All Tools</a>
+        </nav>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ADSTERRA-HEADER: paste your Adsterra banner ad code inside the div below -->
+<div class="container"><div class="ad-slot ad-leaderboard" data-ad="header"></div></div>
+
+<main class="container">
+  <nav class="crumbs"><a href="/">Home</a> &rsaquo; <a href="/#developer">Developer Tools</a> &rsaquo; Gradient Border Generator</nav>
+  <div class="tool-hero">
+    <h1>Gradient Border Generator</h1>
+    <p>Create gradient border effects with angle, colors, width and radius — live preview plus CSS.</p>
+  </div>
+
+  <div class="tool-card">
+  <div class="grid3">
+    <div class="field">
+      <label for="gradient-border-generator-width">Border width (px)</label>
+      <input class="input" id="gradient-border-generator-width" type="number" value="4" min="1" max="30">
+    </div>
+    <div class="field">
+      <label for="gradient-border-generator-radius">Corner radius (px)</label>
+      <input class="input" id="gradient-border-generator-radius" type="number" value="16" min="0" max="60">
+    </div>
+    <div class="field">
+      <label for="gradient-border-generator-angle">Angle (deg)</label>
+      <input class="input" id="gradient-border-generator-angle" type="number" value="135" min="0" max="360">
+    </div>
+  </div>
+  <div class="grid2">
+    <div class="field">
+      <label for="gradient-border-generator-colors">Gradient colors (one hex per line)</label>
+      <textarea class="textarea" id="gradient-border-generator-colors" rows="3">#ff0080
+#7928ca
+#4d7c0f</textarea>
+    </div>
+    <div class="field">
+      <label for="gradient-border-generator-inner">Inner background</label>
+      <input class="input" id="gradient-border-generator-inner" type="color" value="#18181b">
+      <label for="gradient-border-generator-text" style="margin-top:12px;display:block">Preview text</label>
+      <input class="input" id="gradient-border-generator-text" value="Gradient border">
+    </div>
+  </div>
+  <div class="field">
+    <label>Live preview</label>
+    <div id="gradient-border-generator-preview" style="border:1px solid #27272a;border-radius:12px;padding:48px 24px;background:#0e0e10;display:flex;justify-content:center"></div>
+  </div>
+  <div class="error" id="gradient-border-generator-error"></div>
+  <div class="field">
+    <label for="gradient-border-generator-output">CSS</label>
+    <textarea class="textarea" id="gradient-border-generator-output" rows="12" readonly></textarea>
+  </div>
+  <div class="btn-row">
+    <button class="btn btn-outline" id="gradient-border-generator-copy">Copy CSS</button>
+    <button class="btn btn-outline" id="gradient-border-generator-download">Download .css</button>
+  </div>
+</div>
+
+
+  <!-- ADSTERRA-INCONTENT: paste your Adsterra native/in-content ad code inside the div below -->
+  <div class="ad-slot" data-ad="incontent"></div>
+
+  <div class="info-grid">
+    <div class="info-card">
+      <h2>📖 How to use</h2>
+      <ol><li>Set the border width, corner radius and gradient angle.</li><li>Add color stops (one hex per line).</li><li>Pick the inner background and preview box text.</li><li>Copy the CSS or download it as gradient-border.css.</li></ol>
+    </div>
+    <div class="info-card">
+      <h2>❓ Frequently asked questions</h2>
+      <div class="faq"><details><summary>How does the gradient border work?</summary><p>It uses a double-background trick: a solid background clipped to the padding box, and the gradient clipped to the border box, with a transparent border.</p></details><details><summary>How many colors can I use?</summary><p>Two or more — one hex color per line. Stops are spread evenly across the angle.</p></details><details><summary>Will it work in all browsers?</summary><p>Yes — background-clip with two layers works in all modern browsers.</p></details><details><summary>Can I use it on images or buttons?</summary><p>Yes — apply the .gb-box class to any element; adjust padding to taste.</p></details></div>
+    </div>
+  </div>
+
+  <section class="section">
+    <h2>🔗 Related tools</h2>
+    <div class="tool-grid"><a class="tool-link" href="/tools/api-key-generator/" data-search="api key generator generate cryptographically secure api keys with crypto.getrandomvalues — hex, base64, base64url or uuid v4. api key generator random api key uuid generator secure token generator"><span class="t-ico">💻</span><span class="t-body"><b>API Key Generator</b><small>Generate cryptographically secure API keys with crypto.getRandomValues — hex, base64, base64…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/ascii-table-reference/" data-search="ascii table reference full ascii table 0–127: decimal, hex, octal, character, control-code names and html entities — searchable. ascii table ascii codes ascii chart control characters ascii reference"><span class="t-ico">💻</span><span class="t-body"><b>ASCII Table Reference</b><small>Full ASCII table 0–127: decimal, hex, octal, character, control-code names and HTML entities…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/badge-generator/" data-search="badge generator design css badges and pills — colors, sizes, shapes — with live preview and copy-ready html/css. badge css generator css pill badge status badge code label badge html"><span class="t-ico">💻</span><span class="t-body"><b>Badge Generator</b><small>Design CSS badges and pills — colors, sizes, shapes — with live preview and copy-ready HTML/…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/base64-encoder-decoder/" data-search="base64 encoder / decoder encode text to base64 or decode base64 back to text, with full utf-8 support and a file-to-data-url converter. base64 encoder base64 decoder base64 encode base64 decode file to base64"><span class="t-ico">💻</span><span class="t-body"><b>Base64 Encoder / Decoder</b><small>Encode text to Base64 or decode Base64 back to text, with full UTF-8 support and a file-to-d…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/basic-auth-header-generator/" data-search="basic auth header generator encode username:password to a base64 authorization header (unicode-safe) — copy or download. basic auth header base64 authorization http basic auth generator authorization header"><span class="t-ico">💻</span><span class="t-body"><b>Basic Auth Header Generator</b><small>Encode username:password to a Base64 Authorization header (Unicode-safe) — copy or download.</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/binary-text-converter/" data-search="binary and text converter convert text to binary or hex and back, with full utf-8 awareness and strict input validation. binary to text text to binary hex to text converter"><span class="t-ico">💻</span><span class="t-body"><b>Binary and Text Converter</b><small>Convert text to binary or hex and back, with full UTF-8 awareness and strict input validatio…</small></span><span class="t-arrow">→</span></a></div>
+  </section>
+</main>
+
+<!-- ADSTERRA-FOOTER: paste your Adsterra footer/banner ad code inside the div below -->
+<div class="container"><div class="ad-slot" data-ad="footer"></div></div>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="f-grid">
+      <div>
+        <span class="brandline"><span class="logo-mark">T</span> ToolNest</span>
+        <p>Free online tools that actually work. No sign-up, no watermarks — and your files never leave your device for client-side tools.</p>
+      </div>
+      <div>
+        <h4>Popular</h4>
+        <a href="/tools/qr-code-generator/">QR Code Generator</a>
+        <a href="/tools/background-remover/">Background Remover</a>
+        <a href="/tools/pdf-merger/">PDF Merger</a>
+        <a href="/tools/word-counter/">Word Counter</a>
+      </div>
+      <div>
+        <h4>Categories</h4>
+        <a href="/#image">Image Tools</a>
+        <a href="/#pdf">PDF &amp; Documents</a>
+        <a href="/#calculators">Calculators</a>
+        <a href="/#developer">Developer Tools</a>
+      </div>
+      <div>
+        <h4>Site</h4>
+        <a href="/">Home</a>
+        <a href="/#all-tools">All Tools</a>
+        <a href="/sitemap.xml">Sitemap</a>
+      </div>
+    </div>
+    <div class="f-bottom">© 2026 ToolNest · Free tools for everyone · Made with care</div>
+  </div>
+</footer>
+
+<script src="/assets/site.js?v=5"></script>
+
+<script>
+/* Gradient Border Generator — angle/colors/width/radius → gradient border CSS, live preview. */
+(function () {
+  'use strict';
+  var SLUG = 'gradient-border-generator';
+  function el(id) { return document.getElementById(id); }
+  function fail(msg) { TN.setErr(SLUG + '-error', msg); }
+  function clear() { TN.clearErr(SLUG + '-error'); }
+
+  function parseColors(text) {
+    return text.split('\n').map(function (l) { return l.trim(); })
+      .filter(function (l) { return /^#([0-9a-fA-F]{3}|[0-9a-fA-F]{6})$/.test(l); });
+  }
+
+  function update() {
+    clear();
+    var width = Math.max(1, Math.min(30, parseInt(el(SLUG + '-width').value, 10) || 0));
+    var radius = Math.max(0, Math.min(60, parseInt(el(SLUG + '-radius').value, 10) || 0));
+    var angle = Math.max(0, Math.min(360, parseInt(el(SLUG + '-angle').value, 10) || 0));
+    var colors = parseColors(el(SLUG + '-colors').value);
+    if (colors.length < 2) { fail('Enter at least two valid hex colors, one per line.'); return; }
+    var inner = el(SLUG + '-inner').value;
+    var text = el(SLUG + '-text').value.trim() || 'Gradient border';
+    var grad = 'linear-gradient(' + angle + 'deg, ' + colors.join(', ') + ')';
+    var css =
+      '.gb-box {\n' +
+      '  border: ' + width + 'px solid transparent;\n' +
+      '  border-radius: ' + radius + 'px;\n' +
+      '  background:\n' +
+      '    linear-gradient(' + inner + ', ' + inner + ') padding-box,\n' +
+      '    ' + grad + ' border-box;\n' +
+      '  padding: 32px 40px;\n' +
+      '  color: #fff;\n' +
+      '  font-family: system-ui, sans-serif;\n' +
+      '  font-size: 20px;\n' +
+      '  font-weight: 700;\n' +
+      '  text-align: center;\n' +
+      '}';
+    el(SLUG + '-preview').innerHTML = '<style>' + css + '</style><div class="gb-box">' + TN.esc(text) + '</div>';
+    el(SLUG + '-output').value = css + '\n';
+  }
+
+  try {
+    if (!el(SLUG + '-width')) return;
+    ['width', 'radius', 'angle', 'colors', 'text'].forEach(function (k) { TN.on(SLUG + '-' + k, 'input', update); });
+    TN.on(SLUG + '-inner', 'input', update);
+    TN.on(SLUG + '-copy', 'click', function () {
+      var v = el(SLUG + '-output').value;
+      if (!v) { fail('Nothing to copy yet.'); return; }
+      TN.copy(v).then(function (ok) { if (!ok) fail('Copy failed — select the text manually.'); });
+    });
+    TN.on(SLUG + '-download', 'click', function () {
+      var v = el(SLUG + '-output').value;
+      if (!v) { fail('Nothing to download yet.'); return; }
+      TN.downloadText(v, 'gradient-border.css', 'text/css');
+    });
+    update();
+  } catch (e) { /* never throw on load */ }
+})();
+
+</script>
+</body>
+</html>

@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>2×2 Eigenvalue Calculator — Free Online | ToolNest</title>
+<meta name="description" content="Compute the characteristic polynomial, eigenvalues (real or complex) and eigenvectors of any 2×2 matrix, with the full derivation shown.">
+<meta name="keywords" content="eigenvalue calculator, 2x2 eigenvalues, characteristic polynomial, eigenvector calculator">
+<link rel="canonical" href="https://toolnest.vercel.app/tools/eigenvalue-2x2-calculator/">
+<meta name="theme-color" content="#07070b">
+<meta property="og:title" content="2×2 Eigenvalue Calculator — Free Online | ToolNest">
+<meta property="og:description" content="Compute the characteristic polynomial, eigenvalues (real or complex) and eigenvectors of any 2×2 matrix, with the full derivation shown.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css?v=4">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%23e01111'/><text x='50' y='68' font-size='58' text-anchor='middle' fill='white' font-family='Arial' font-weight='bold'>T</text></svg>">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebApplication","name":"2×2 Eigenvalue Calculator","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0"},"url":"https://toolnest.vercel.app/tools/eigenvalue-2x2-calculator/","description":"Compute the characteristic polynomial, eigenvalues (real or complex) and eigenvectors of any 2×2 matrix, with the full derivation shown."},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What is the characteristic polynomial of a 2×2 matrix?","acceptedAnswer":{"@type":"Answer","text":"For [[a,b],[c,d]] it is det(A − λI) = λ² − (a+d)·λ + (ad−bc). Its roots are exactly the eigenvalues of the matrix."}},{"@type":"Question","name":"What does a complex eigenvalue mean?","acceptedAnswer":{"@type":"Answer","text":"A complex pair α ± βi means the matrix acts as a rotation combined with scaling by √(α²+β²) — typical for rotation matrices."}},{"@type":"Question","name":"How is an eigenvector found?","acceptedAnswer":{"@type":"Answer","text":"For each eigenvalue λ, the tool solves (A − λI)·v = 0 by picking the row with the larger entries and setting v = (−(d−λ), c) or ((b), −(a−λ)), then verifies A·v = λ·v numerically."}}]}]}</script>
+</head>
+<body>
+<header class="site-header">
+  <div class="container">
+    <a class="logo" href="/"><span class="logo-mark">T</span> ToolNest</a>
+    <div class="header-right">
+      <form class="nav-search" action="/" method="get" role="search">
+        <span class="ns-icon">🔍</span>
+        <input type="search" name="q" placeholder="Search tools…" aria-label="Search tools" autocomplete="off">
+      </form>
+      <div class="menu-wrap">
+        <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="menuPanel" aria-label="Open menu"><span></span><span></span><span></span></button>
+        <nav class="menu-panel" id="menuPanel" aria-label="Site">
+          <a href="/">Home</a>
+          <a href="/#categories">Categories</a>
+          <a href="/#all-tools">All Tools</a>
+        </nav>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ADSTERRA-HEADER: paste your Adsterra banner ad code inside the div below -->
+<div class="container"><div class="ad-slot ad-leaderboard" data-ad="header"></div></div>
+
+<main class="container">
+  <nav class="crumbs"><a href="/">Home</a> &rsaquo; <a href="/#math">Math &amp; Numbers</a> &rsaquo; 2×2 Eigenvalue Calculator</nav>
+  <div class="tool-hero">
+    <h1>2×2 Eigenvalue Calculator</h1>
+    <p>Compute the characteristic polynomial, eigenvalues (real or complex) and eigenvectors of any 2×2 matrix, with the full derivation shown.</p>
+  </div>
+
+  <div class="tool-card">
+  <p class="muted">Matrix A = [[a, b], [c, d]]</p>
+  <div class="grid3" style="max-width:520px">
+    <div class="field"><label for="eigenvalue-2x2-calculator-a">a</label><input class="input" id="eigenvalue-2x2-calculator-a" type="number" step="any" value="4"></div>
+    <div class="field"><label for="eigenvalue-2x2-calculator-b">b</label><input class="input" id="eigenvalue-2x2-calculator-b" type="number" step="any" value="2"></div>
+    <div class="field"><label for="eigenvalue-2x2-calculator-c">c</label><input class="input" id="eigenvalue-2x2-calculator-c" type="number" step="any" value="1"></div>
+    <div class="field"><label for="eigenvalue-2x2-calculator-d">d</label><input class="input" id="eigenvalue-2x2-calculator-d" type="number" step="any" value="3"></div>
+  </div>
+  <div class="btn-row">
+    <button type="button" class="btn" id="eigenvalue-2x2-calculator-calc">Calculate</button>
+    <button type="button" class="btn btn-outline btn-sm" id="eigenvalue-2x2-calculator-copy">Copy results</button>
+  </div>
+  <div class="error" id="eigenvalue-2x2-calculator-error"></div>
+  <div id="eigenvalue-2x2-calculator-out" class="hidden">
+    <div class="stat-cards">
+      <div class="stat-card"><div class="v" id="eigenvalue-2x2-calculator-l1" style="font-size:1.05em">–</div><div class="l">λ₁</div></div>
+      <div class="stat-card"><div class="v" id="eigenvalue-2x2-calculator-l2" style="font-size:1.05em">–</div><div class="l">λ₂</div></div>
+      <div class="stat-card"><div class="v" id="eigenvalue-2x2-calculator-tr">–</div><div class="l">Trace</div></div>
+      <div class="stat-card"><div class="v" id="eigenvalue-2x2-calculator-det">–</div><div class="l">Determinant</div></div>
+    </div>
+    <div class="result">
+      <h3>Derivation</h3>
+      <div id="eigenvalue-2x2-calculator-steps"></div>
+    </div>
+  </div>
+</div>
+
+
+  <!-- ADSTERRA-INCONTENT: paste your Adsterra native/in-content ad code inside the div below -->
+  <div class="ad-slot" data-ad="incontent"></div>
+
+  <div class="info-grid">
+    <div class="info-card">
+      <h2>📖 How to use</h2>
+      <ol><li>Enter the four entries a, b, c, d of the matrix [[a,b],[c,d]].</li><li>Press Calculate to get trace, determinant and the characteristic polynomial λ² − tr·λ + det = 0.</li><li>Read the eigenvalues — real, repeated, or complex conjugate pairs — with the quadratic-formula steps.</li><li>For real eigenvalues, the corresponding eigenvectors are shown and verified by A·v = λ·v.</li></ol>
+    </div>
+    <div class="info-card">
+      <h2>❓ Frequently asked questions</h2>
+      <div class="faq"><details><summary>What is the characteristic polynomial of a 2×2 matrix?</summary><p>For [[a,b],[c,d]] it is det(A − λI) = λ² − (a+d)·λ + (ad−bc). Its roots are exactly the eigenvalues of the matrix.</p></details><details><summary>What does a complex eigenvalue mean?</summary><p>A complex pair α ± βi means the matrix acts as a rotation combined with scaling by √(α²+β²) — typical for rotation matrices.</p></details><details><summary>How is an eigenvector found?</summary><p>For each eigenvalue λ, the tool solves (A − λI)·v = 0 by picking the row with the larger entries and setting v = (−(d−λ), c) or ((b), −(a−λ)), then verifies A·v = λ·v numerically.</p></details></div>
+    </div>
+  </div>
+
+  <section class="section">
+    <h2>🔗 Related tools</h2>
+    <div class="tool-grid"><a class="tool-link" href="/tools/24-game-solver/" data-search="24 game solver solve the 24 game exhaustively: every ordering, operation and parenthesization is tried with exact fraction arithmetic, and all distinct solutions are shown. 24 game solver make 24 solver 24 puzzle arithmetic puzzle solver"><span class="t-ico">📐</span><span class="t-body"><b>24 Game Solver</b><small>Solve the 24 game exhaustively: every ordering, operation and parenthesization is tried with…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/ancient-numerals-converter/" data-search="ancient numerals converter convert decimal numbers to roman, egyptian hieroglyphic, babylonian cuneiform and mayan numerals — with roman numerals also decoded back to decimal. roman numerals egyptian numerals babylonian numerals mayan numerals ancient numbers"><span class="t-ico">📐</span><span class="t-body"><b>Ancient Numerals Converter</b><small>Convert decimal numbers to Roman, Egyptian hieroglyphic, Babylonian cuneiform and Mayan nume…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/arithmetic-sequence-calculator/" data-search="arithmetic sequence calculator from the first term and common difference get the nth term and the sum of the first n terms. arithmetic sequence arithmetic progression nth term sum of arithmetic series common difference"><span class="t-ico">📐</span><span class="t-body"><b>Arithmetic Sequence Calculator</b><small>From the first term and common difference get the nth term and the sum of the first n terms.</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/base-n-arithmetic/" data-search="base-n arithmetic add, subtract, multiply and divide numbers in any base from 2 to 36 with exact bigint math and a full conversion breakdown. base n arithmetic binary addition hexadecimal calculator base 36 math"><span class="t-ico">📐</span><span class="t-body"><b>Base-N Arithmetic</b><small>Add, subtract, multiply and divide numbers in any base from 2 to 36 with exact BigInt math a…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/bayes-theorem-calculator/" data-search="bayes theorem calculator compute posterior probabilities from prior, sensitivity and specificity with the full bayes formula, natural frequencies and a probability tree. bayes theorem calculator posterior probability sensitivity specificity medical test probability"><span class="t-ico">📐</span><span class="t-body"><b>Bayes Theorem Calculator</b><small>Compute posterior probabilities from prior, sensitivity and specificity with the full Bayes …</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/bcd-converter/" data-search="bcd converter convert decimal numbers to binary-coded decimal (packed and unpacked) and decode bcd back to decimal, with per-digit nibble breakdowns. bcd converter binary coded decimal packed bcd unpacked bcd bcd decoder"><span class="t-ico">📐</span><span class="t-body"><b>BCD Converter</b><small>Convert decimal numbers to Binary-Coded Decimal (packed and unpacked) and decode BCD back to…</small></span><span class="t-arrow">→</span></a></div>
+  </section>
+</main>
+
+<!-- ADSTERRA-FOOTER: paste your Adsterra footer/banner ad code inside the div below -->
+<div class="container"><div class="ad-slot" data-ad="footer"></div></div>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="f-grid">
+      <div>
+        <span class="brandline"><span class="logo-mark">T</span> ToolNest</span>
+        <p>Free online tools that actually work. No sign-up, no watermarks — and your files never leave your device for client-side tools.</p>
+      </div>
+      <div>
+        <h4>Popular</h4>
+        <a href="/tools/qr-code-generator/">QR Code Generator</a>
+        <a href="/tools/background-remover/">Background Remover</a>
+        <a href="/tools/pdf-merger/">PDF Merger</a>
+        <a href="/tools/word-counter/">Word Counter</a>
+      </div>
+      <div>
+        <h4>Categories</h4>
+        <a href="/#image">Image Tools</a>
+        <a href="/#pdf">PDF &amp; Documents</a>
+        <a href="/#calculators">Calculators</a>
+        <a href="/#developer">Developer Tools</a>
+      </div>
+      <div>
+        <h4>Site</h4>
+        <a href="/">Home</a>
+        <a href="/#all-tools">All Tools</a>
+        <a href="/sitemap.xml">Sitemap</a>
+      </div>
+    </div>
+    <div class="f-bottom">© 2026 ToolNest · Free tools for everyone · Made with care</div>
+  </div>
+</footer>
+
+<script src="/assets/site.js?v=5"></script>
+
+<script>
+(function () {
+  'use strict';
+  var P = 'eigenvalue-2x2-calculator-', ERR = P + 'error';
+  function g(id) { return TN.el(P + id); }
+  function fmt(x) {
+    if (!isFinite(x)) return String(x);
+    var r = parseFloat(x.toPrecision(10));
+    return String(r);
+  }
+  function fmtC(re, im) {
+    if (Math.abs(im) < 1e-9) return fmt(re);
+    var s = fmt(re);
+    s += (im >= 0 ? ' + ' : ' − ') + fmt(Math.abs(im)) + 'i';
+    return s;
+  }
+  function num(id) {
+    var v = parseFloat(g(id).value);
+    if (isNaN(v)) throw new Error('Entry "' + id + '" must be a number.');
+    return v;
+  }
+  function calc() {
+    try {
+      TN.clearErr(ERR);
+      var a = num('a'), b = num('b'), c = num('c'), d = num('d');
+      var tr = a + d, det = a * d - b * c;
+      var disc = tr * tr - 4 * det;
+      var steps = [];
+      steps.push('<li>Trace tr(A) = a + d = ' + fmt(a) + ' + ' + fmt(d) + ' = <b>' + fmt(tr) + '</b>.</li>');
+      steps.push('<li>Determinant det(A) = ad − bc = ' + fmt(a) + '·' + fmt(d) + ' − ' + fmt(b) + '·' + fmt(c) + ' = <b>' + fmt(det) + '</b>.</li>');
+      steps.push('<li>Characteristic polynomial: det(A − λI) = λ² − tr·λ + det = <b>λ² − (' + fmt(tr) + ')λ + (' + fmt(det) + ') = 0</b>.</li>');
+      steps.push('<li>Discriminant Δ = tr² − 4·det = ' + fmt(tr * tr) + ' − ' + fmt(4 * det) + ' = <b>' + fmt(disc) + '</b>.</li>');
+      var l1, l2, complex = false, l1s, l2s;
+      if (disc > 1e-12) {
+        var sq = Math.sqrt(disc);
+        l1 = (tr + sq) / 2; l2 = (tr - sq) / 2;
+        l1s = fmt(l1); l2s = fmt(l2);
+        steps.push('<li>Δ &gt; 0: two distinct real eigenvalues λ = (tr ± √Δ)/2 = (' + fmt(tr) + ' ± ' + fmt(sq) + ')/2.</li>');
+        steps.push('<li>λ₁ = <b>' + l1s + '</b>, λ₂ = <b>' + l2s + '</b>.</li>');
+      } else if (Math.abs(disc) <= 1e-12) {
+        l1 = l2 = tr / 2;
+        l1s = l2s = fmt(l1);
+        steps.push('<li>Δ = 0: repeated eigenvalue λ = tr/2 = <b>' + l1s + '</b> (algebraic multiplicity 2).</li>');
+      } else {
+        complex = true;
+        var re = tr / 2, im = Math.sqrt(-disc) / 2;
+        l1s = fmtC(re, im); l2s = fmtC(re, -im);
+        steps.push('<li>Δ &lt; 0: complex conjugate pair λ = (tr ± i√|Δ|)/2.</li>');
+        steps.push('<li>λ₁ = <b>' + l1s + '</b>, λ₂ = <b>' + l2s + '</b>. Modulus |λ| = ' + fmt(Math.sqrt(re * re + im * im)) + '.</li>');
+      }
+      var plain = '';
+      if (!complex) {
+        [l1, l2].forEach(function (lam, ix) {
+          // solve (A - lam I) v = 0
+          var m11 = a - lam, m12 = b, m21 = c, m22 = d - lam;
+          var v;
+          if (Math.abs(m11) + Math.abs(m12) >= Math.abs(m21) + Math.abs(m22)) {
+            v = [-m12, m11];
+            if (Math.abs(v[0]) + Math.abs(v[1]) < 1e-12) v = [-m22, m21];
+          } else {
+            v = [-m22, m21];
+            if (Math.abs(v[0]) + Math.abs(v[1]) < 1e-12) v = [-m12, m11];
+          }
+          var nrm = Math.hypot(v[0], v[1]);
+          var vs = '[' + fmt(v[0] / nrm) + ', ' + fmt(v[1] / nrm) + ']';
+          // verify A v = lam v
+          var Av0 = a * v[0] + b * v[1], Av1 = c * v[0] + d * v[1];
+          var lv0 = lam * v[0], lv1 = lam * v[1];
+          var err = Math.hypot(Av0 - lv0, Av1 - lv1) / (nrm || 1);
+          steps.push('<li>Eigenvector for λ' + (ix + 1) + ' = ' + fmt(lam) + ': solve (A − λI)v = 0 → v' + (ix + 1) + ' = <b>' + vs + '</b> (normalized). Check: A·v = [' + fmt(Av0 / nrm) + ', ' + fmt(Av1 / nrm) + '], λ·v = [' + fmt(lv0 / nrm) + ', ' + fmt(lv1 / nrm) + '], residual ' + fmt(err) + ' ✓.</li>');
+          plain += 'lambda' + (ix + 1) + '=' + fmt(lam) + ' v' + (ix + 1) + '=' + vs + '\n';
+        });
+      } else {
+        steps.push('<li>Eigenvectors for complex eigenvalues are complex; they are omitted — eigenvalues fully describe the rotation+scaling action.</li>');
+      }
+      TN.show(P + 'out');
+      g('l1').textContent = l1s;
+      g('l2').textContent = l2s;
+      g('tr').textContent = fmt(tr);
+      g('det').textContent = fmt(det);
+      g('steps').innerHTML = '<ol>' + steps.join('') + '</ol>';
+      g('copy').setAttribute('data-r', 'lambda1=' + l1s + '\nlambda2=' + l2s + '\ntrace=' + fmt(tr) + '\ndet=' + fmt(det) + '\n' + plain);
+    } catch (e) { TN.setErr(ERR, e.message || 'Could not calculate.'); }
+  }
+  try {
+    if (!TN.el(P + 'calc')) return;
+    TN.on(P + 'calc', 'click', calc);
+    TN.on(P + 'copy', 'click', function () {
+      var r = g('copy').getAttribute('data-r');
+      if (r) TN.copy(r);
+    });
+  } catch (e) { /* never throw on load */ }
+})();
+
+</script>
+</body>
+</html>

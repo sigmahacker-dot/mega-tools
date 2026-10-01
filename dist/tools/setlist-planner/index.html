@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Setlist Planner — Free Online | ToolNest</title>
+<meta name="description" content="Plan your gig: ordered setlist with song durations, total stage time, encore split and automatic saving.">
+<meta name="keywords" content="setlist planner, gig planner, set list maker, band setlist">
+<link rel="canonical" href="https://toolnest.vercel.app/tools/setlist-planner/">
+<meta name="theme-color" content="#07070b">
+<meta property="og:title" content="Setlist Planner — Free Online | ToolNest">
+<meta property="og:description" content="Plan your gig: ordered setlist with song durations, total stage time, encore split and automatic saving.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css?v=4">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%23e01111'/><text x='50' y='68' font-size='58' text-anchor='middle' fill='white' font-family='Arial' font-weight='bold'>T</text></svg>">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebApplication","name":"Setlist Planner","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0"},"url":"https://toolnest.vercel.app/tools/setlist-planner/","description":"Plan your gig: ordered setlist with song durations, total stage time, encore split and automatic saving."},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Is my setlist saved?","acceptedAnswer":{"@type":"Answer","text":"Yes — your setlist is saved in this browser's localStorage automatically and restored when you return."}},{"@type":"Question","name":"How does the encore split work?","acceptedAnswer":{"@type":"Answer","text":"Tick the encore box on any song — encore songs get their own subtotal below the main set."}},{"@type":"Question","name":"What duration formats work?","acceptedAnswer":{"@type":"Answer","text":"Type minutes:seconds (3:45) or decimal minutes (3.75) — both are understood."}}]}]}</script>
+</head>
+<body>
+<header class="site-header">
+  <div class="container">
+    <a class="logo" href="/"><span class="logo-mark">T</span> ToolNest</a>
+    <div class="header-right">
+      <form class="nav-search" action="/" method="get" role="search">
+        <span class="ns-icon">🔍</span>
+        <input type="search" name="q" placeholder="Search tools…" aria-label="Search tools" autocomplete="off">
+      </form>
+      <div class="menu-wrap">
+        <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="menuPanel" aria-label="Open menu"><span></span><span></span><span></span></button>
+        <nav class="menu-panel" id="menuPanel" aria-label="Site">
+          <a href="/">Home</a>
+          <a href="/#categories">Categories</a>
+          <a href="/#all-tools">All Tools</a>
+        </nav>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ADSTERRA-HEADER: paste your Adsterra banner ad code inside the div below -->
+<div class="container"><div class="ad-slot ad-leaderboard" data-ad="header"></div></div>
+
+<main class="container">
+  <nav class="crumbs"><a href="/">Home</a> &rsaquo; <a href="/#video-audio">Video &amp; Audio</a> &rsaquo; Setlist Planner</nav>
+  <div class="tool-hero">
+    <h1>Setlist Planner</h1>
+    <p>Plan your gig: ordered setlist with song durations, total stage time, encore split and automatic saving.</p>
+  </div>
+
+  <div class="tool-card">
+  <div class="grid3">
+    <div class="field">
+      <label for="setlist-planner-name">Song name</label>
+      <input type="text" id="setlist-planner-name" class="input" maxlength="80" placeholder="e.g. Midnight Run">
+    </div>
+    <div class="field">
+      <label for="setlist-planner-dur">Duration</label>
+      <input type="text" id="setlist-planner-dur" class="input" placeholder="3:45 or 3.75" maxlength="10">
+    </div>
+    <div class="field">
+      <label>&nbsp;</label>
+      <button class="btn btn-primary" id="setlist-planner-add" style="width:100%">Add song</button>
+    </div>
+  </div>
+  <div class="result" id="setlist-planner-list-wrap">
+    <table class="data">
+      <thead><tr><th>#</th><th>Song</th><th>Duration</th><th>Encore</th><th></th></tr></thead>
+      <tbody id="setlist-planner-rows"></tbody>
+    </table>
+    <p class="muted" id="setlist-planner-empty">No songs yet — add your first song above.</p>
+  </div>
+  <div class="stat-cards">
+    <div class="stat-card"><div class="v" id="setlist-planner-main">0:00</div><div class="l">Main set</div></div>
+    <div class="stat-card"><div class="v" id="setlist-planner-encore">0:00</div><div class="l">Encore</div></div>
+    <div class="stat-card"><div class="v" id="setlist-planner-total">0:00</div><div class="l">Total stage time</div></div>
+  </div>
+  <div class="btn-row">
+    <button class="btn btn-outline" id="setlist-planner-copy">Copy setlist</button>
+    <button class="btn btn-outline" id="setlist-planner-clear">Clear all</button>
+  </div>
+  <div class="error" id="setlist-planner-error"></div>
+  <p class="note">Saved automatically in this browser. Durations accept m:ss or decimal minutes.</p>
+</div>
+
+
+  <!-- ADSTERRA-INCONTENT: paste your Adsterra native/in-content ad code inside the div below -->
+  <div class="ad-slot" data-ad="incontent"></div>
+
+  <div class="info-grid">
+    <div class="info-card">
+      <h2>📖 How to use</h2>
+      <ol><li>Type a song name and duration, then click &quot;Add song&quot;.</li><li>Reorder with the ↑ ↓ buttons; tick &quot;encore&quot; for encore songs.</li><li>Watch the main-set, encore and total times update live.</li><li>Copy the setlist to share it with your band.</li></ol>
+    </div>
+    <div class="info-card">
+      <h2>❓ Frequently asked questions</h2>
+      <div class="faq"><details><summary>Is my setlist saved?</summary><p>Yes — your setlist is saved in this browser&#39;s localStorage automatically and restored when you return.</p></details><details><summary>How does the encore split work?</summary><p>Tick the encore box on any song — encore songs get their own subtotal below the main set.</p></details><details><summary>What duration formats work?</summary><p>Type minutes:seconds (3:45) or decimal minutes (3.75) — both are understood.</p></details></div>
+    </div>
+  </div>
+
+  <section class="section">
+    <h2>🔗 Related tools</h2>
+    <div class="tool-grid"><a class="tool-link" href="/tools/8d-audio-panner/" data-search="8d audio panner the viral 8d audio effect: your track circles around your head with a rotating stereo-pan lfo. play it and download it. 8d audio 8d converter surround sound effect panning effect"><span class="t-ico">🎬</span><span class="t-body"><b>8D Audio Panner</b><small>The viral 8D audio effect: your track circles around your head with a rotating stereo-pan LF…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/audio-cutter/" data-search="audio cutter cut a section out of any audio file in your browser. set start and end times, preview the selection, then download it as an mp3. audio cutter cut audio online trim mp3 audio trimmer mp3 cutter"><span class="t-ico">🎬</span><span class="t-body"><b>Audio Cutter</b><small>Cut a section out of any audio file in your browser. Set start and end times, preview the se…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/audio-fade-in-out/" data-search="audio fade in/out add smooth fade-in and fade-out to any audio track and export as wav. audio fade in out fade audio add fade to mp3 fade in fade out"><span class="t-ico">🎬</span><span class="t-body"><b>Audio Fade In/Out</b><small>Add smooth fade-in and fade-out to any audio track and export as WAV.</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/audio-joiner/" data-search="audio joiner merge several audio files end-to-end into one wav download. join audio merge audio files combine mp3 audio joiner"><span class="t-ico">🎬</span><span class="t-body"><b>Audio Joiner</b><small>Merge several audio files end-to-end into one WAV download.</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/audio-normalizer/" data-search="audio normalizer peak-normalize any audio to your target level with a real offlineaudiocontext gain stage — see before/after peaks. audio normalizer normalize volume peak normalize loudness"><span class="t-ico">🎬</span><span class="t-body"><b>Audio Normalizer</b><small>Peak-normalize any audio to your target level with a real OfflineAudioContext gain stage — s…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/audio-reverse/" data-search="audio reverse reverse any audio file backwards and export it as a wav. reverse audio backwards audio reverse mp3 audio reverser"><span class="t-ico">🎬</span><span class="t-body"><b>Audio Reverse</b><small>Reverse any audio file backwards and export it as a WAV.</small></span><span class="t-arrow">→</span></a></div>
+  </section>
+</main>
+
+<!-- ADSTERRA-FOOTER: paste your Adsterra footer/banner ad code inside the div below -->
+<div class="container"><div class="ad-slot" data-ad="footer"></div></div>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="f-grid">
+      <div>
+        <span class="brandline"><span class="logo-mark">T</span> ToolNest</span>
+        <p>Free online tools that actually work. No sign-up, no watermarks — and your files never leave your device for client-side tools.</p>
+      </div>
+      <div>
+        <h4>Popular</h4>
+        <a href="/tools/qr-code-generator/">QR Code Generator</a>
+        <a href="/tools/background-remover/">Background Remover</a>
+        <a href="/tools/pdf-merger/">PDF Merger</a>
+        <a href="/tools/word-counter/">Word Counter</a>
+      </div>
+      <div>
+        <h4>Categories</h4>
+        <a href="/#image">Image Tools</a>
+        <a href="/#pdf">PDF &amp; Documents</a>
+        <a href="/#calculators">Calculators</a>
+        <a href="/#developer">Developer Tools</a>
+      </div>
+      <div>
+        <h4>Site</h4>
+        <a href="/">Home</a>
+        <a href="/#all-tools">All Tools</a>
+        <a href="/sitemap.xml">Sitemap</a>
+      </div>
+    </div>
+    <div class="f-bottom">© 2026 ToolNest · Free tools for everyone · Made with care</div>
+  </div>
+</footer>
+
+<script src="/assets/site.js?v=5"></script>
+
+<script>
+/* Setlist Planner — ordered songs with durations, encore split, localStorage. */
+(function () {
+  'use strict';
+  var SLUG = 'setlist-planner';
+  var ERR = SLUG + '-error';
+  var KEY = 'tn-' + SLUG + '-songs';
+  var songs = []; // {name, secs, encore}
+
+  function parseDur(s) {
+    s = (s || '').trim();
+    if (!s) return -1;
+    var m = s.match(/^(\d+):([0-5]?\d)$/);
+    if (m) return parseInt(m[1], 10) * 60 + parseInt(m[2], 10);
+    var f = parseFloat(s);
+    if (!isNaN(f) && f > 0 && f < 600) return Math.round(f * 60);
+    return -1;
+  }
+
+  function fmt(secs) {
+    secs = Math.round(secs);
+    var h = Math.floor(secs / 3600), m = Math.floor((secs % 3600) / 60), s = secs % 60;
+    var mm = (h ? (m < 10 ? '0' : '') : '') + m;
+    var base = (h ? h + ':' : '') + mm + ':' + (s < 10 ? '0' : '') + s;
+    return base;
+  }
+
+  function save() {
+    try { localStorage.setItem(KEY, JSON.stringify(songs)); } catch (e) {}
+  }
+
+  function load() {
+    try {
+      var raw = localStorage.getItem(KEY);
+      if (raw) {
+        var arr = JSON.parse(raw);
+        if (Array.isArray(arr)) songs = arr.filter(function (x) { return x && x.name; });
+      }
+    } catch (e) {}
+  }
+
+  function render() {
+    var rows = document.getElementById(SLUG + '-rows');
+    rows.innerHTML = '';
+    var main = 0, enc = 0;
+    songs.forEach(function (sg, i) {
+      if (sg.encore) enc += sg.secs; else main += sg.secs;
+      var tr = document.createElement('tr');
+      if (sg.encore) tr.style.background = 'rgba(22,101,52,0.06)';
+      function td(txt) { var d = document.createElement('td'); d.textContent = txt; return d; }
+      tr.appendChild(td(i + 1));
+      var tn = document.createElement('td');
+      tn.innerHTML = '<strong>' + TN.esc(sg.name) + '</strong>';
+      tr.appendChild(tn);
+      tr.appendChild(td(fmt(sg.secs)));
+      var te = document.createElement('td');
+      var cb = document.createElement('input');
+      cb.type = 'checkbox'; cb.checked = !!sg.encore;
+      cb.title = 'Encore song';
+      cb.onchange = function () { sg.encore = cb.checked; save(); render(); };
+      te.appendChild(cb);
+      tr.appendChild(te);
+      var ta = document.createElement('td');
+      ta.style.whiteSpace = 'nowrap';
+      [['↑', -1], ['↓', 1]].forEach(function (mv) {
+        var b = document.createElement('button');
+        b.className = 'btn btn-sm btn-outline';
+        b.textContent = mv[0];
+        b.style.marginRight = '4px';
+        b.title = mv[1] < 0 ? 'Move up' : 'Move down';
+        b.onclick = function () {
+          var j = i + mv[1];
+          if (j < 0 || j >= songs.length) return;
+          var tmp = songs[i]; songs[i] = songs[j]; songs[j] = tmp;
+          save(); render();
+        };
+        ta.appendChild(b);
+      });
+      var del = document.createElement('button');
+      del.className = 'btn btn-sm btn-outline';
+      del.textContent = '×';
+      del.title = 'Remove';
+      del.onclick = function () { songs.splice(i, 1); save(); render(); };
+      ta.appendChild(del);
+      tr.appendChild(ta);
+      rows.appendChild(tr);
+    });
+    document.getElementById(SLUG + '-empty').style.display = songs.length ? 'none' : '';
+    document.getElementById(SLUG + '-main').textContent = fmt(main);
+    document.getElementById(SLUG + '-encore').textContent = fmt(enc);
+    document.getElementById(SLUG + '-total').textContent = fmt(main + enc);
+  }
+
+  try {
+    if (!document.getElementById(SLUG + '-add')) return;
+    load();
+    render();
+    function add() {
+      TN.clearErr(ERR);
+      var nameEl = document.getElementById(SLUG + '-name');
+      var durEl = document.getElementById(SLUG + '-dur');
+      var name = nameEl.value.trim();
+      var secs = parseDur(durEl.value);
+      if (!name) { TN.setErr(ERR, 'Type a song name first.'); return; }
+      if (secs < 0) { TN.setErr(ERR, 'Duration not understood — use m:ss (3:45) or minutes (3.75).'); return; }
+      songs.push({ name: name, secs: secs, encore: false });
+      nameEl.value = ''; durEl.value = '';
+      nameEl.focus();
+      save(); render();
+    }
+    TN.on(SLUG + '-add', 'click', add);
+    TN.on(SLUG + '-name', 'keydown', function (e) { if (e.key === 'Enter') add(); });
+    TN.on(SLUG + '-dur', 'keydown', function (e) { if (e.key === 'Enter') add(); });
+    TN.on(SLUG + '-clear', 'click', function () {
+      if (!songs.length) return;
+      songs = []; save(); render();
+    });
+    TN.on(SLUG + '-copy', 'click', function () {
+      if (!songs.length) { TN.setErr(ERR, 'Nothing to copy — add songs first.'); return; }
+      var lines = songs.map(function (sg, i) {
+        return (i + 1) + '. ' + sg.name + ' — ' + fmt(sg.secs) + (sg.encore ? ' (encore)' : '');
+      });
+      TN.copy('SETLIST\n' + lines.join('\n')).then(function () {
+        TN.clearErr(ERR);
+      }).catch(function () { TN.setErr(ERR, 'Copy failed — select the list manually.'); });
+    });
+  } catch (e) {
+    TN.setErr(ERR, 'This tool could not start: ' + (e && e.message || e));
+  }
+})();
+
+</script>
+</body>
+</html>

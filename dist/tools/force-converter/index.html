@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Force Converter — Free Online | ToolNest</title>
+<meta name="description" content="Convert between newtons, kilonewtons, pounds-force, kilograms-force, dynes and ounces-force with exact factors.">
+<meta name="keywords" content="force converter, newtons to pounds, lbf to N, kgf to newtons, dyne converter">
+<link rel="canonical" href="https://toolnest.vercel.app/tools/force-converter/">
+<meta name="theme-color" content="#07070b">
+<meta property="og:title" content="Force Converter — Free Online | ToolNest">
+<meta property="og:description" content="Convert between newtons, kilonewtons, pounds-force, kilograms-force, dynes and ounces-force with exact factors.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css?v=4">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%23e01111'/><text x='50' y='68' font-size='58' text-anchor='middle' fill='white' font-family='Arial' font-weight='bold'>T</text></svg>">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebApplication","name":"Force Converter","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0"},"url":"https://toolnest.vercel.app/tools/force-converter/","description":"Convert between newtons, kilonewtons, pounds-force, kilograms-force, dynes and ounces-force with exact factors."},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How many newtons are in a pound-force?","acceptedAnswer":{"@type":"Answer","text":"1 lbf = 4.4482216152605 N exactly (defined by the international avoirdupois pound, 0.45359237 kg, times standard gravity 9.80665 m/s²)."}},{"@type":"Question","name":"Are kgf and dyn exact?","acceptedAnswer":{"@type":"Answer","text":"Yes. 1 kgf is defined as exactly 9.80665 N, and 1 dyn is defined as exactly 1e-5 N (the CGS unit of force)."}},{"@type":"Question","name":"What is the difference between kgf and kg?","acceptedAnswer":{"@type":"Answer","text":"Force is mass times acceleration. kgf measures weight (mass × standard gravity), while kg is mass. The converter treats 1 kgf = 9.80665 N under standard gravity."}}]}]}</script>
+</head>
+<body>
+<header class="site-header">
+  <div class="container">
+    <a class="logo" href="/"><span class="logo-mark">T</span> ToolNest</a>
+    <div class="header-right">
+      <form class="nav-search" action="/" method="get" role="search">
+        <span class="ns-icon">🔍</span>
+        <input type="search" name="q" placeholder="Search tools…" aria-label="Search tools" autocomplete="off">
+      </form>
+      <div class="menu-wrap">
+        <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="menuPanel" aria-label="Open menu"><span></span><span></span><span></span></button>
+        <nav class="menu-panel" id="menuPanel" aria-label="Site">
+          <a href="/">Home</a>
+          <a href="/#categories">Categories</a>
+          <a href="/#all-tools">All Tools</a>
+        </nav>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ADSTERRA-HEADER: paste your Adsterra banner ad code inside the div below -->
+<div class="container"><div class="ad-slot ad-leaderboard" data-ad="header"></div></div>
+
+<main class="container">
+  <nav class="crumbs"><a href="/">Home</a> &rsaquo; <a href="/#converters">Converters</a> &rsaquo; Force Converter</nav>
+  <div class="tool-hero">
+    <h1>Force Converter</h1>
+    <p>Convert between newtons, kilonewtons, pounds-force, kilograms-force, dynes and ounces-force with exact factors.</p>
+  </div>
+
+  <div class="tool-card">
+  <div class="grid2">
+    <div class="field">
+      <label for="force-converter-value">Value</label>
+      <input type="number" step="any" class="input" id="force-converter-value" placeholder="e.g. 100">
+    </div>
+    <div class="field">
+      <label for="force-converter-from">From unit</label>
+      <select class="select" id="force-converter-from">
+        <option value="N" selected>Newtons (N)</option>
+        <option value="kN">Kilonewtons (kN)</option>
+        <option value="lbf">Pounds-force (lbf)</option>
+        <option value="kgf">Kilograms-force (kgf)</option>
+        <option value="dyn">Dynes (dyn)</option>
+        <option value="ozf">Ounces-force (ozf)</option>
+      </select>
+    </div>
+  </div>
+  <div class="error" id="force-converter-error"></div>
+  <div class="result" id="force-converter-result">
+    <table class="data">
+      <thead><tr><th>Unit</th><th>Value</th></tr></thead>
+      <tbody id="force-converter-table"></tbody>
+    </table>
+    <p class="note">Factors: 1 lbf = 4.4482216152605 N, 1 kgf = 9.80665 N, 1 dyn = 10<sup>−5</sup> N, 1 ozf = lbf/16.</p>
+  </div>
+</div>
+
+
+  <!-- ADSTERRA-INCONTENT: paste your Adsterra native/in-content ad code inside the div below -->
+  <div class="ad-slot" data-ad="incontent"></div>
+
+  <div class="info-grid">
+    <div class="info-card">
+      <h2>📖 How to use</h2>
+      <ol><li>Enter a force value in the first field.</li><li>Pick the unit you are converting from.</li><li>Read the value converted to every other unit in the table.</li></ol>
+    </div>
+    <div class="info-card">
+      <h2>❓ Frequently asked questions</h2>
+      <div class="faq"><details><summary>How many newtons are in a pound-force?</summary><p>1 lbf = 4.4482216152605 N exactly (defined by the international avoirdupois pound, 0.45359237 kg, times standard gravity 9.80665 m/s²).</p></details><details><summary>Are kgf and dyn exact?</summary><p>Yes. 1 kgf is defined as exactly 9.80665 N, and 1 dyn is defined as exactly 1e-5 N (the CGS unit of force).</p></details><details><summary>What is the difference between kgf and kg?</summary><p>Force is mass times acceleration. kgf measures weight (mass × standard gravity), while kg is mass. The converter treats 1 kgf = 9.80665 N under standard gravity.</p></details></div>
+    </div>
+  </div>
+
+  <section class="section">
+    <h2>🔗 Related tools</h2>
+    <div class="tool-grid"><a class="tool-link" href="/tools/altitude-pressure-calculator/" data-search="altitude pressure calculator the barometric formula gives air pressure at any altitude (below 11,000 m) from sea-level pressure — in hpa, inhg and percent of sea level. altitude pressure calculator barometric formula air pressure at altitude pressure vs altitude qnh pressure calculator"><span class="t-ico">🔄</span><span class="t-body"><b>Altitude Pressure Calculator</b><small>The barometric formula gives air pressure at any altitude (below 11,000 m) from sea-level pr…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/angle-converter/" data-search="angle converter convert angles between degrees, radians, gradians, turns, arcminutes, arcseconds and mils. enter a value once and see it in every unit instantly. angle converter degrees to radians radians to degrees gradians converter mils to degrees"><span class="t-ico">🔄</span><span class="t-body"><b>Angle Converter</b><small>Convert angles between degrees, radians, gradians, turns, arcminutes, arcseconds and mils. E…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/area-converter/" data-search="area converter square millimeters to square miles. area converter square feet to square meters acres to hectares"><span class="t-ico">🔄</span><span class="t-body"><b>Area Converter</b><small>Square millimeters to square miles.</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/baking-pan-converter/" data-search="baking pan converter compare pan volumes from dimensions, then scale every ingredient by the exact ratio — plus a batter-fill check. baking pan converter pan size conversion cake pan volume recipe scaling pan size"><span class="t-ico">🔄</span><span class="t-body"><b>Baking Pan Converter</b><small>Compare pan volumes from dimensions, then scale every ingredient by the exact ratio — plus a…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/beaufort-scale-converter/" data-search="beaufort scale converter convert wind speed (km/h, mph, knots, m/s) to the beaufort scale number with official speed ranges and land/sea descriptions. beaufort scale converter wind speed to beaufort beaufort scale chart knots to beaufort gale wind speed"><span class="t-ico">🔄</span><span class="t-body"><b>Beaufort Scale Converter</b><small>Convert wind speed (km/h, mph, knots, m/s) to the Beaufort scale number with official speed …</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/cat-age-converter/" data-search="cat age converter convert cat years to human years with the accepted life-stage chart: 15 for year one, 9 for year two, then about 4 per year. cat age converter cat years to human years how old is my cat cat age chart cat life stages"><span class="t-ico">🔄</span><span class="t-body"><b>Cat Age Converter</b><small>Convert cat years to human years with the accepted life-stage chart: 15 for year one, 9 for …</small></span><span class="t-arrow">→</span></a></div>
+  </section>
+</main>
+
+<!-- ADSTERRA-FOOTER: paste your Adsterra footer/banner ad code inside the div below -->
+<div class="container"><div class="ad-slot" data-ad="footer"></div></div>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="f-grid">
+      <div>
+        <span class="brandline"><span class="logo-mark">T</span> ToolNest</span>
+        <p>Free online tools that actually work. No sign-up, no watermarks — and your files never leave your device for client-side tools.</p>
+      </div>
+      <div>
+        <h4>Popular</h4>
+        <a href="/tools/qr-code-generator/">QR Code Generator</a>
+        <a href="/tools/background-remover/">Background Remover</a>
+        <a href="/tools/pdf-merger/">PDF Merger</a>
+        <a href="/tools/word-counter/">Word Counter</a>
+      </div>
+      <div>
+        <h4>Categories</h4>
+        <a href="/#image">Image Tools</a>
+        <a href="/#pdf">PDF &amp; Documents</a>
+        <a href="/#calculators">Calculators</a>
+        <a href="/#developer">Developer Tools</a>
+      </div>
+      <div>
+        <h4>Site</h4>
+        <a href="/">Home</a>
+        <a href="/#all-tools">All Tools</a>
+        <a href="/sitemap.xml">Sitemap</a>
+      </div>
+    </div>
+    <div class="f-bottom">© 2026 ToolNest · Free tools for everyone · Made with care</div>
+  </div>
+</footer>
+
+<script src="/assets/site.js?v=5"></script>
+
+<script>
+(function () {
+  'use strict';
+  var S = 'force-converter';
+  /* exact factors: newtons per unit */
+  var UNITS = [
+    ['N', 'Newtons', 1],
+    ['kN', 'Kilonewtons', 1000],
+    ['lbf', 'Pounds-force', 4.4482216152605],
+    ['kgf', 'Kilograms-force', 9.80665],
+    ['dyn', 'Dynes', 1e-5],
+    ['ozf', 'Ounces-force', 4.4482216152605 / 16]
+  ];
+  function factorOf(code) {
+    for (var i = 0; i < UNITS.length; i++) if (UNITS[i][0] === code) return UNITS[i][2];
+    return 1;
+  }
+  function fmt(n) {
+    if (!isFinite(n)) return '–';
+    if (n === 0) return '0';
+    var a = Math.abs(n);
+    if (a >= 1e12 || a < 1e-6) return n.toExponential(4);
+    var r = Math.round(n * 10000) / 10000;
+    return String(r);
+  }
+  function render(nt) {
+    var tb = TN.el(S + '-table');
+    if (!tb) return;
+    var html = '';
+    if (!isFinite(nt)) {
+      for (var j = 0; j < UNITS.length; j++) html += '<tr><td>' + UNITS[j][1] + ' (' + UNITS[j][0] + ')</td><td>–</td></tr>';
+    } else {
+      for (var i = 0; i < UNITS.length; i++) {
+        html += '<tr><td>' + UNITS[i][1] + ' (' + UNITS[i][0] + ')</td><td>' + fmt(nt / UNITS[i][2]) + '</td></tr>';
+      }
+    }
+    tb.innerHTML = html;
+  }
+  function convert() {
+    try {
+      TN.clearErr(S + '-error');
+      var raw = TN.el(S + '-value').value;
+      if (raw === '' || raw === null) { render(NaN); return; }
+      var v = parseFloat(raw);
+      if (!isFinite(v)) { TN.setErr(S + '-error', 'Please enter a valid number.'); render(NaN); return; }
+      render(v * factorOf(TN.el(S + '-from').value));
+    } catch (e) { /* never throw on input */ }
+  }
+  function init() {
+    render(NaN);
+    ['value', 'from'].forEach(function (k) {
+      TN.on(S + '-' + k, 'input', convert);
+      TN.on(S + '-' + k, 'change', convert);
+    });
+  }
+  try { init(); } catch (e) { /* never throw on load */ }
+})();
+
+</script>
+</body>
+</html>

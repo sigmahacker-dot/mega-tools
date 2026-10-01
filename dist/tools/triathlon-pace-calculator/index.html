@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Triathlon Pace Calculator — Free Online | ToolNest</title>
+<meta name="description" content="Combine swim, bike, run splits plus transitions into a total finish time.">
+<meta name="keywords" content="triathlon calculator, triathlon pace, tri finish time">
+<link rel="canonical" href="https://toolnest.vercel.app/tools/triathlon-pace-calculator/">
+<meta name="theme-color" content="#07070b">
+<meta property="og:title" content="Triathlon Pace Calculator — Free Online | ToolNest">
+<meta property="og:description" content="Combine swim, bike, run splits plus transitions into a total finish time.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css?v=4">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%23e01111'/><text x='50' y='68' font-size='58' text-anchor='middle' fill='white' font-family='Arial' font-weight='bold'>T</text></svg>">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebApplication","name":"Triathlon Pace Calculator","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0"},"url":"https://toolnest.vercel.app/tools/triathlon-pace-calculator/","description":"Combine swim, bike, run splits plus transitions into a total finish time."},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What time format is accepted?","acceptedAnswer":{"@type":"Answer","text":"mm:ss (e.g. 32:00) or h:mm:ss (e.g. 1:05:00)."}},{"@type":"Question","name":"What paces are shown?","acceptedAnswer":{"@type":"Answer","text":"Swim pace per 100 m, bike speed in km/h, and run pace per km."}},{"@type":"Question","name":"Are transitions really that important?","acceptedAnswer":{"@type":"Answer","text":"They count in your official time. Even 2 spare minutes in transition is free speed."}}]}]}</script>
+</head>
+<body>
+<header class="site-header">
+  <div class="container">
+    <a class="logo" href="/"><span class="logo-mark">T</span> ToolNest</a>
+    <div class="header-right">
+      <form class="nav-search" action="/" method="get" role="search">
+        <span class="ns-icon">🔍</span>
+        <input type="search" name="q" placeholder="Search tools…" aria-label="Search tools" autocomplete="off">
+      </form>
+      <div class="menu-wrap">
+        <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="menuPanel" aria-label="Open menu"><span></span><span></span><span></span></button>
+        <nav class="menu-panel" id="menuPanel" aria-label="Site">
+          <a href="/">Home</a>
+          <a href="/#categories">Categories</a>
+          <a href="/#all-tools">All Tools</a>
+        </nav>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ADSTERRA-HEADER: paste your Adsterra banner ad code inside the div below -->
+<div class="container"><div class="ad-slot ad-leaderboard" data-ad="header"></div></div>
+
+<main class="container">
+  <nav class="crumbs"><a href="/">Home</a> &rsaquo; <a href="/#health">Health &amp; Fitness</a> &rsaquo; Triathlon Pace Calculator</nav>
+  <div class="tool-hero">
+    <h1>Triathlon Pace Calculator</h1>
+    <p>Combine swim, bike, run splits plus transitions into a total finish time.</p>
+  </div>
+
+  <div class="tool-card">
+  <div class="grid2">
+    <div class="field">
+      <label for="triathlon-pace-calculator-swimdist">Swim distance (m)</label>
+      <input type="number" class="input" id="triathlon-pace-calculator-swimdist" min="0" step="any" placeholder="1500">
+    </div>
+    <div class="field">
+      <label for="triathlon-pace-calculator-swimtime">Swim time (mm:ss)</label>
+      <input type="text" class="input" id="triathlon-pace-calculator-swimtime" placeholder="28:00">
+    </div>
+    <div class="field">
+      <label for="triathlon-pace-calculator-t1">T1 (mm:ss)</label>
+      <input type="text" class="input" id="triathlon-pace-calculator-t1" placeholder="3:00">
+    </div>
+    <div class="field">
+      <label for="triathlon-pace-calculator-bikedist">Bike distance (km)</label>
+      <input type="number" class="input" id="triathlon-pace-calculator-bikedist" min="0" step="any" placeholder="40">
+    </div>
+    <div class="field">
+      <label for="triathlon-pace-calculator-biketime">Bike time (h:mm:ss)</label>
+      <input type="text" class="input" id="triathlon-pace-calculator-biketime" placeholder="1:10:00">
+    </div>
+    <div class="field">
+      <label for="triathlon-pace-calculator-t2">T2 (mm:ss)</label>
+      <input type="text" class="input" id="triathlon-pace-calculator-t2" placeholder="2:00">
+    </div>
+    <div class="field">
+      <label for="triathlon-pace-calculator-rundist">Run distance (km)</label>
+      <input type="number" class="input" id="triathlon-pace-calculator-rundist" min="0" step="any" placeholder="10">
+    </div>
+    <div class="field">
+      <label for="triathlon-pace-calculator-runtime">Run time (mm:ss)</label>
+      <input type="text" class="input" id="triathlon-pace-calculator-runtime" placeholder="48:00">
+    </div>
+  </div>
+  <div class="error" id="triathlon-pace-calculator-error"></div>
+  <div class="result" id="triathlon-pace-calculator-result">
+    <div class="stat-cards">
+      <div class="stat-card"><div class="v" id="triathlon-pace-calculator-total">&ndash;</div><div class="l">Total finish time</div></div>
+      <div class="stat-card"><div class="v" id="triathlon-pace-calculator-swimpace">&ndash;</div><div class="l">Swim /100m</div></div>
+      <div class="stat-card"><div class="v" id="triathlon-pace-calculator-bikespeed">&ndash;</div><div class="l">Bike speed</div></div>
+      <div class="stat-card"><div class="v" id="triathlon-pace-calculator-runpace">&ndash;</div><div class="l">Run /km</div></div>
+    </div>
+    <div id="triathlon-pace-calculator-out"></div>
+    <p class="note">For information only &mdash; not medical advice.</p>
+  </div>
+</div>
+
+  <!-- ADSTERRA-INCONTENT: paste your Adsterra native/in-content ad code inside the div below -->
+  <div class="ad-slot" data-ad="incontent"></div>
+
+  <div class="info-grid">
+    <div class="info-card">
+      <h2>📖 How to use</h2>
+      <ol><li>Enter your swim distance and time.</li><li>Enter T1, bike distance and time, T2, run distance and time (mm:ss or h:mm:ss).</li><li>Read each discipline&#39;s pace plus the total finish time.</li><li>Adjust any split to see how the total changes.</li></ol>
+    </div>
+    <div class="info-card">
+      <h2>❓ Frequently asked questions</h2>
+      <div class="faq"><details><summary>What time format is accepted?</summary><p>mm:ss (e.g. 32:00) or h:mm:ss (e.g. 1:05:00).</p></details><details><summary>What paces are shown?</summary><p>Swim pace per 100 m, bike speed in km/h, and run pace per km.</p></details><details><summary>Are transitions really that important?</summary><p>They count in your official time. Even 2 spare minutes in transition is free speed.</p></details></div>
+    </div>
+  </div>
+
+  <section class="section">
+    <h2>🔗 Related tools</h2>
+    <div class="tool-grid"><a class="tool-link" href="/tools/allergy-tracker/" data-search="allergy tracker log allergy exposures, symptoms, and severity with summaries, saved in your browser. allergy tracker allergy diary symptom log"><span class="t-ico">❤️</span><span class="t-body"><b>Allergy Tracker</b><small>Log allergy exposures, symptoms, and severity with summaries, saved in your browser.</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/baby-feeding-log/" data-search="baby feeding log log nursing and bottle sessions with timestamps, daily totals, saved in your browser. baby feeding log nursing tracker bottle feeding log"><span class="t-ico">❤️</span><span class="t-body"><b>Baby Feeding Log</b><small>Log nursing and bottle sessions with timestamps, daily totals, saved in your browser.</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/baby-growth-tracker/" data-search="baby growth tracker log your baby&#39;s weight and height over time and see a growth log with typical-range guidance. baby growth tracker baby weight tracker infant growth chart baby height log newborn growth"><span class="t-ico">❤️</span><span class="t-body"><b>Baby Growth Tracker</b><small>Log your baby&#39;s weight and height over time and see a growth log with typical-range guidance…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/balance-test-timer/" data-search="balance test timer single-leg stance stopwatch with age benchmarks for balance testing. balance test single leg stance balance timer"><span class="t-ico">❤️</span><span class="t-body"><b>Balance Test Timer</b><small>Single-leg stance stopwatch with age benchmarks for balance testing.</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/blood-donation-eligibility-checker/" data-search="blood donation eligibility checker check common blood donation eligibility rules: age, weight, hemoglobin, intervals. blood donation eligibility can i donate blood donor requirements"><span class="t-ico">❤️</span><span class="t-body"><b>Blood Donation Eligibility Checker</b><small>Check common blood donation eligibility rules: age, weight, hemoglobin, intervals.</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/blood-pressure-tracker/" data-search="blood pressure tracker log blood pressure readings with automatic aha category classification, averages and history saved in your browser. blood pressure tracker bp log blood pressure chart hypertension tracker bp monitor log"><span class="t-ico">❤️</span><span class="t-body"><b>Blood Pressure Tracker</b><small>Log blood pressure readings with automatic AHA category classification, averages and history…</small></span><span class="t-arrow">→</span></a></div>
+  </section>
+</main>
+
+<!-- ADSTERRA-FOOTER: paste your Adsterra footer/banner ad code inside the div below -->
+<div class="container"><div class="ad-slot" data-ad="footer"></div></div>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="f-grid">
+      <div>
+        <span class="brandline"><span class="logo-mark">T</span> ToolNest</span>
+        <p>Free online tools that actually work. No sign-up, no watermarks — and your files never leave your device for client-side tools.</p>
+      </div>
+      <div>
+        <h4>Popular</h4>
+        <a href="/tools/qr-code-generator/">QR Code Generator</a>
+        <a href="/tools/background-remover/">Background Remover</a>
+        <a href="/tools/pdf-merger/">PDF Merger</a>
+        <a href="/tools/word-counter/">Word Counter</a>
+      </div>
+      <div>
+        <h4>Categories</h4>
+        <a href="/#image">Image Tools</a>
+        <a href="/#pdf">PDF &amp; Documents</a>
+        <a href="/#calculators">Calculators</a>
+        <a href="/#developer">Developer Tools</a>
+      </div>
+      <div>
+        <h4>Site</h4>
+        <a href="/">Home</a>
+        <a href="/#all-tools">All Tools</a>
+        <a href="/sitemap.xml">Sitemap</a>
+      </div>
+    </div>
+    <div class="f-bottom">© 2026 ToolNest · Free tools for everyone · Made with care</div>
+  </div>
+</footer>
+
+<script src="/assets/site.js?v=5"></script>
+
+<script>
+(function(){
+'use strict';
+var S='triathlon-pace-calculator', ERR=S+'-error';
+function parseTime(str){
+  var m=String(str).trim().match(/^(\d+):([0-5]?\d)(?::([0-5]?\d))?$/);
+  if(!m) return NaN;
+  if(m[3]!==undefined) return parseInt(m[1],10)*3600+parseInt(m[2],10)*60+parseInt(m[3],10);
+  return parseInt(m[1],10)*60+parseInt(m[2],10);
+}
+function fmt(sec){
+  sec=Math.round(sec);
+  var h=Math.floor(sec/3600), m=Math.floor(sec%3600/60), s=sec%60;
+  return (h>0?h+':':'')+(h>0&&m<10?'0':'')+m+':'+(s<10?'0':'')+s;
+}
+function fmtPace(sec){
+  var m=Math.floor(sec/60), s=Math.round(sec%60);
+  if(s===60){ m++; s=0; }
+  return m+':'+(s<10?'0':'')+s;
+}
+function calc(){
+  if(!TN.el(S+'-swimdist')) return;
+  TN.clearErr(ERR);
+  var out=TN.el(S+'-out'); out.innerHTML='';
+  var sd=parseFloat(TN.el(S+'-swimdist').value), st=parseTime(TN.el(S+'-swimtime').value);
+  var t1=parseTime(TN.el(S+'-t1').value);
+  var bd=parseFloat(TN.el(S+'-bikedist').value), bt=parseTime(TN.el(S+'-biketime').value);
+  var t2=parseTime(TN.el(S+'-t2').value);
+  var rd=parseFloat(TN.el(S+'-rundist').value), rt=parseTime(TN.el(S+'-runtime').value);
+  if(!(sd>0)||isNaN(st)||!(st>0)){ TN.setErr(ERR,'Enter a valid swim distance and time.'); return; }
+  if(isNaN(t1)||t1<0){ TN.setErr(ERR,'Enter T1 as mm:ss.'); return; }
+  if(!(bd>0)||isNaN(bt)||!(bt>0)){ TN.setErr(ERR,'Enter a valid bike distance and time.'); return; }
+  if(isNaN(t2)||t2<0){ TN.setErr(ERR,'Enter T2 as mm:ss.'); return; }
+  if(!(rd>0)||isNaN(rt)||!(rt>0)){ TN.setErr(ERR,'Enter a valid run distance and time.'); return; }
+  var total=st+t1+bt+t2+rt;
+  TN.el(S+'-total').textContent=fmt(total);
+  TN.el(S+'-swimpace').textContent=fmtPace(st/(sd/100));
+  TN.el(S+'-bikespeed').textContent=(Math.round(bd/(bt/3600)*10)/10)+' km/h';
+  TN.el(S+'-runpace').textContent=fmtPace(rt/rd);
+  var parts=[['Swim',st],['T1',t1],['Bike',bt],['T2',t2],['Run',rt]];
+  var html='<table class="data"><thead><tr><th>Split</th><th>Time</th><th>% of total</th></tr></thead><tbody>';
+  parts.forEach(function(p){
+    html+='<tr><td>'+p[0]+'</td><td>'+fmt(p[1])+'</td><td>'+Math.round(p[1]/total*1000)/10+'%</td></tr>';
+  });
+  out.innerHTML=html+'</tbody></table>';
+}
+try{
+  ['swimdist','swimtime','t1','bikedist','biketime','t2','rundist','runtime'].forEach(function(f){ TN.on(S+'-'+f,'input',calc); });
+  calc();
+}catch(e){}
+})();
+
+</script>
+</body>
+</html>

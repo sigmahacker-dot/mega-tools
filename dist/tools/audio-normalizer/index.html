@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Audio Normalizer — Free Online | ToolNest</title>
+<meta name="description" content="Peak-normalize any audio to your target level with a real OfflineAudioContext gain stage — see before/after peaks.">
+<meta name="keywords" content="audio normalizer, normalize volume, peak normalize, loudness">
+<link rel="canonical" href="https://toolnest.vercel.app/tools/audio-normalizer/">
+<meta name="theme-color" content="#07070b">
+<meta property="og:title" content="Audio Normalizer — Free Online | ToolNest">
+<meta property="og:description" content="Peak-normalize any audio to your target level with a real OfflineAudioContext gain stage — see before/after peaks.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css?v=4">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%23e01111'/><text x='50' y='68' font-size='58' text-anchor='middle' fill='white' font-family='Arial' font-weight='bold'>T</text></svg>">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebApplication","name":"Audio Normalizer","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0"},"url":"https://toolnest.vercel.app/tools/audio-normalizer/","description":"Peak-normalize any audio to your target level with a real OfflineAudioContext gain stage — see before/after peaks."},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How does normalization work?","acceptedAnswer":{"@type":"Answer","text":"The highest peak is measured, then every sample is scaled so that peak hits exactly your target dB. Nothing clips, nothing is compressed."}},{"@type":"Question","name":"Why can't I pick 0 dB or higher?","acceptedAnswer":{"@type":"Answer","text":"0 dBFS is the digital maximum — peaks can't go above it without clipping, so targets stay at or below −0.5 dB for safety."}},{"@type":"Question","name":"Is my audio uploaded?","acceptedAnswer":{"@type":"Answer","text":"Yes — decoding, measuring and gain all happen in your browser."}}]}]}</script>
+</head>
+<body>
+<header class="site-header">
+  <div class="container">
+    <a class="logo" href="/"><span class="logo-mark">T</span> ToolNest</a>
+    <div class="header-right">
+      <form class="nav-search" action="/" method="get" role="search">
+        <span class="ns-icon">🔍</span>
+        <input type="search" name="q" placeholder="Search tools…" aria-label="Search tools" autocomplete="off">
+      </form>
+      <div class="menu-wrap">
+        <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="menuPanel" aria-label="Open menu"><span></span><span></span><span></span></button>
+        <nav class="menu-panel" id="menuPanel" aria-label="Site">
+          <a href="/">Home</a>
+          <a href="/#categories">Categories</a>
+          <a href="/#all-tools">All Tools</a>
+        </nav>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ADSTERRA-HEADER: paste your Adsterra banner ad code inside the div below -->
+<div class="container"><div class="ad-slot ad-leaderboard" data-ad="header"></div></div>
+
+<main class="container">
+  <nav class="crumbs"><a href="/">Home</a> &rsaquo; <a href="/#video-audio">Video &amp; Audio</a> &rsaquo; Audio Normalizer</nav>
+  <div class="tool-hero">
+    <h1>Audio Normalizer</h1>
+    <p>Peak-normalize any audio to your target level with a real OfflineAudioContext gain stage — see before/after peaks.</p>
+  </div>
+
+  <div class="tool-card">
+  <div class="field">
+    <label for="audio-normalizer-file">Audio file</label>
+    <input type="file" id="audio-normalizer-file" accept="audio/*" class="input">
+  </div>
+  <div class="field">
+    <label for="audio-normalizer-target">Target peak: <span id="audio-normalizer-target-val">−1.0</span> dB</label>
+    <input type="range" id="audio-normalizer-target" min="-12" max="-0.5" step="0.5" value="-1">
+    <span class="hint">−1 dB for music masters · −3 dB for podcasts/voice.</span>
+  </div>
+  <div class="btn-row">
+    <button class="btn btn-primary" id="audio-normalizer-go">Normalize</button>
+  </div>
+  <div class="result hidden" id="audio-normalizer-result">
+    <div class="stat-cards">
+      <div class="stat-card"><div class="v" id="audio-normalizer-before">–</div><div class="l">Original peak</div></div>
+      <div class="stat-card"><div class="v" id="audio-normalizer-gain">–</div><div class="l">Gain applied</div></div>
+      <div class="stat-card"><div class="v" id="audio-normalizer-after">–</div><div class="l">New peak</div></div>
+    </div>
+    <div class="btn-row">
+      <button class="btn btn-primary" id="audio-normalizer-download">Download WAV</button>
+    </div>
+  </div>
+  <div class="error" id="audio-normalizer-error"></div>
+  <p class="note">True peak normalization via an OfflineAudioContext gain stage — no limiting, no compression. Runs in your browser.</p>
+</div>
+
+
+  <!-- ADSTERRA-INCONTENT: paste your Adsterra native/in-content ad code inside the div below -->
+  <div class="ad-slot" data-ad="incontent"></div>
+
+  <div class="info-grid">
+    <div class="info-card">
+      <h2>📖 How to use</h2>
+      <ol><li>Choose an audio file.</li><li>Set the target peak level (e.g. −1 dB for masters, −3 dB for podcasts).</li><li>Click &quot;Normalize&quot; — original and new peaks are shown.</li><li>Download the normalized WAV.</li></ol>
+    </div>
+    <div class="info-card">
+      <h2>❓ Frequently asked questions</h2>
+      <div class="faq"><details><summary>How does normalization work?</summary><p>The highest peak is measured, then every sample is scaled so that peak hits exactly your target dB. Nothing clips, nothing is compressed.</p></details><details><summary>Why can&#39;t I pick 0 dB or higher?</summary><p>0 dBFS is the digital maximum — peaks can&#39;t go above it without clipping, so targets stay at or below −0.5 dB for safety.</p></details><details><summary>Is my audio uploaded?</summary><p>Yes — decoding, measuring and gain all happen in your browser.</p></details></div>
+    </div>
+  </div>
+
+  <section class="section">
+    <h2>🔗 Related tools</h2>
+    <div class="tool-grid"><a class="tool-link" href="/tools/8d-audio-panner/" data-search="8d audio panner the viral 8d audio effect: your track circles around your head with a rotating stereo-pan lfo. play it and download it. 8d audio 8d converter surround sound effect panning effect"><span class="t-ico">🎬</span><span class="t-body"><b>8D Audio Panner</b><small>The viral 8D audio effect: your track circles around your head with a rotating stereo-pan LF…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/audio-cutter/" data-search="audio cutter cut a section out of any audio file in your browser. set start and end times, preview the selection, then download it as an mp3. audio cutter cut audio online trim mp3 audio trimmer mp3 cutter"><span class="t-ico">🎬</span><span class="t-body"><b>Audio Cutter</b><small>Cut a section out of any audio file in your browser. Set start and end times, preview the se…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/audio-fade-in-out/" data-search="audio fade in/out add smooth fade-in and fade-out to any audio track and export as wav. audio fade in out fade audio add fade to mp3 fade in fade out"><span class="t-ico">🎬</span><span class="t-body"><b>Audio Fade In/Out</b><small>Add smooth fade-in and fade-out to any audio track and export as WAV.</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/audio-joiner/" data-search="audio joiner merge several audio files end-to-end into one wav download. join audio merge audio files combine mp3 audio joiner"><span class="t-ico">🎬</span><span class="t-body"><b>Audio Joiner</b><small>Merge several audio files end-to-end into one WAV download.</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/audio-reverse/" data-search="audio reverse reverse any audio file backwards and export it as a wav. reverse audio backwards audio reverse mp3 audio reverser"><span class="t-ico">🎬</span><span class="t-body"><b>Audio Reverse</b><small>Reverse any audio file backwards and export it as a WAV.</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/audio-speed-changer/" data-search="audio speed changer change audio speed from 0.5× to 2× with real resampling and export as wav. audio speed changer speed up audio slow down audio change playback speed"><span class="t-ico">🎬</span><span class="t-body"><b>Audio Speed Changer</b><small>Change audio speed from 0.5× to 2× with real resampling and export as WAV.</small></span><span class="t-arrow">→</span></a></div>
+  </section>
+</main>
+
+<!-- ADSTERRA-FOOTER: paste your Adsterra footer/banner ad code inside the div below -->
+<div class="container"><div class="ad-slot" data-ad="footer"></div></div>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="f-grid">
+      <div>
+        <span class="brandline"><span class="logo-mark">T</span> ToolNest</span>
+        <p>Free online tools that actually work. No sign-up, no watermarks — and your files never leave your device for client-side tools.</p>
+      </div>
+      <div>
+        <h4>Popular</h4>
+        <a href="/tools/qr-code-generator/">QR Code Generator</a>
+        <a href="/tools/background-remover/">Background Remover</a>
+        <a href="/tools/pdf-merger/">PDF Merger</a>
+        <a href="/tools/word-counter/">Word Counter</a>
+      </div>
+      <div>
+        <h4>Categories</h4>
+        <a href="/#image">Image Tools</a>
+        <a href="/#pdf">PDF &amp; Documents</a>
+        <a href="/#calculators">Calculators</a>
+        <a href="/#developer">Developer Tools</a>
+      </div>
+      <div>
+        <h4>Site</h4>
+        <a href="/">Home</a>
+        <a href="/#all-tools">All Tools</a>
+        <a href="/sitemap.xml">Sitemap</a>
+      </div>
+    </div>
+    <div class="f-bottom">© 2026 ToolNest · Free tools for everyone · Made with care</div>
+  </div>
+</footer>
+
+<script src="/assets/site.js?v=5"></script>
+
+<script>
+/* Audio Normalizer — peak normalize to target dB via OfflineAudioContext gain. */
+(function () {
+  'use strict';
+  var SLUG = 'audio-normalizer';
+  var ERR = SLUG + '-error';
+  var audioBuf = null, fileName = 'audio';
+  var outBuf = null;
+  var busy = false;
+
+  function AC() { return window.AudioContext || window.webkitAudioContext; }
+
+  function db(v) { return 20 * Math.log10(Math.max(1e-9, v)); }
+
+  function go() {
+    if (busy) return;
+    TN.clearErr(ERR);
+    if (!audioBuf) { TN.setErr(ERR, 'Choose an audio file first.'); return; }
+    var targetDb = parseFloat(document.getElementById(SLUG + '-target').value);
+    if (isNaN(targetDb)) targetDb = -1;
+    var Ctor = window.OfflineAudioContext || window.webkitOfflineAudioContext;
+    if (!Ctor) { TN.setErr(ERR, 'Offline rendering is not supported in this browser.'); return; }
+
+    // measure true peak
+    var peak = 0;
+    for (var c = 0; c < audioBuf.numberOfChannels; c++) {
+      var d = audioBuf.getChannelData(c);
+      for (var i = 0; i < d.length; i++) {
+        var a = Math.abs(d[i]);
+        if (a > peak) peak = a;
+      }
+    }
+    if (peak < 1e-9) { TN.setErr(ERR, 'This file is completely silent — there is nothing to normalize.'); return; }
+    var targetLin = Math.pow(10, targetDb / 20);
+    var gain = targetLin / peak;
+
+    busy = true;
+    var btn = document.getElementById(SLUG + '-go');
+    if (btn) btn.disabled = true;
+    var res = document.getElementById(SLUG + '-result');
+    if (res) res.classList.add('hidden');
+    outBuf = null;
+
+    try {
+      var ch = Math.min(audioBuf.numberOfChannels, 2);
+      var off = new Ctor(ch, audioBuf.length, audioBuf.sampleRate);
+      var src = off.createBufferSource();
+      src.buffer = audioBuf;
+      var g = off.createGain();
+      g.gain.value = gain; // the normalization stage
+      src.connect(g); g.connect(off.destination);
+      src.start(0);
+      off.startRendering().then(function (rendered) {
+        outBuf = rendered;
+        document.getElementById(SLUG + '-before').textContent = db(peak).toFixed(1) + ' dB';
+        document.getElementById(SLUG + '-gain').textContent = (gain >= 1 ? '+' : '') + db(gain).toFixed(1) + ' dB';
+        document.getElementById(SLUG + '-after').textContent = targetDb.toFixed(1) + ' dB';
+        res.classList.remove('hidden');
+        busy = false;
+        if (btn) btn.disabled = false;
+      }).catch(function () {
+        TN.setErr(ERR, 'Normalization failed.');
+        busy = false;
+        if (btn) btn.disabled = false;
+      });
+    } catch (e) {
+      TN.setErr(ERR, 'Normalization failed: ' + (e && e.message || e));
+      busy = false;
+      if (btn) btn.disabled = false;
+    }
+  }
+
+  function encodeWav(ab) {
+    var ch = Math.min(ab.numberOfChannels, 2), sr = ab.sampleRate, len = ab.length;
+    var bytes = 44 + len * ch * 2;
+    var buf = new ArrayBuffer(bytes), v = new DataView(buf);
+    function ws(o, s) { for (var i = 0; i < s.length; i++) v.setUint8(o + i, s.charCodeAt(i)); }
+    ws(0, 'RIFF'); v.setUint32(4, bytes - 8, true); ws(8, 'WAVE'); ws(12, 'fmt ');
+    v.setUint32(16, 16, true); v.setUint16(20, 1, true); v.setUint16(22, ch, true);
+    v.setUint32(24, sr, true); v.setUint32(28, sr * ch * 2, true); v.setUint16(32, ch * 2, true);
+    v.setUint16(34, 16, true); ws(36, 'data'); v.setUint32(40, len * ch * 2, true);
+    var chans = [];
+    for (var c = 0; c < ch; c++) chans.push(ab.getChannelData(c));
+    var off = 44;
+    for (var i = 0; i < len; i++) {
+      for (var cc = 0; cc < ch; cc++) {
+        var s = Math.max(-1, Math.min(1, chans[cc][i]));
+        v.setInt16(off, s < 0 ? s * 0x8000 : s * 0x7FFF, true);
+        off += 2;
+      }
+    }
+    return new Blob([buf], { type: 'audio/wav' });
+  }
+
+  try {
+    if (!document.getElementById(SLUG + '-go')) return;
+    TN.on(SLUG + '-file', 'change', function () {
+      var f = this.files && this.files[0];
+      outBuf = null;
+      document.getElementById(SLUG + '-result').classList.add('hidden');
+      if (!f) return;
+      TN.clearErr(ERR);
+      fileName = (f.name || 'audio').replace(/\.[^.]+$/, '') || 'audio';
+      var Ctor = AC();
+      if (!Ctor) { TN.setErr(ERR, 'Your browser does not support Web Audio.'); return; }
+      var tmp = new Ctor();
+      TN.readAsArrayBuffer(f).then(function (b) { return tmp.decodeAudioData(b); }).then(function (ab) {
+        audioBuf = ab;
+        try { tmp.close(); } catch (e) {}
+      }).catch(function () {
+        try { tmp.close(); } catch (e2) {}
+        TN.setErr(ERR, 'Could not decode this file. It may use a format your browser cannot read.');
+      });
+    });
+    TN.on(SLUG + '-target', 'input', function () {
+      document.getElementById(SLUG + '-target-val').textContent = '−' + Math.abs(parseFloat(this.value)).toFixed(1);
+    });
+    TN.on(SLUG + '-go', 'click', go);
+    TN.on(SLUG + '-download', 'click', function () {
+      if (!outBuf) return;
+      TN.download(encodeWav(outBuf), fileName + '-normalized.wav');
+    });
+  } catch (e) {
+    TN.setErr(ERR, 'This tool could not start: ' + (e && e.message || e));
+  }
+})();
+
+</script>
+</body>
+</html>

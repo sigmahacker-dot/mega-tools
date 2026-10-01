@@ -1,0 +1,43 @@
+<div class="tool-card">
+  <div class="grid2">
+    <div class="field">
+      <label for="riemann-sum-visualizer-fn">f(x)</label>
+      <input class="input" id="riemann-sum-visualizer-fn" type="text" placeholder="e.g. x^2" value="x^2" style="font-family:monospace">
+    </div>
+    <div class="field">
+      <label for="riemann-sum-visualizer-method">Draw method</label>
+      <select class="select" id="riemann-sum-visualizer-method">
+        <option value="left">Left endpoints</option>
+        <option value="right">Right endpoints</option>
+        <option value="midpoint" selected>Midpoints</option>
+        <option value="trapezoid">Trapezoids</option>
+      </select>
+    </div>
+    <div class="field">
+      <label for="riemann-sum-visualizer-a">a</label>
+      <input class="input" id="riemann-sum-visualizer-a" type="number" step="any" value="0">
+    </div>
+    <div class="field">
+      <label for="riemann-sum-visualizer-b">b</label>
+      <input class="input" id="riemann-sum-visualizer-b" type="number" step="any" value="3">
+    </div>
+    <div class="field">
+      <label for="riemann-sum-visualizer-n">Rectangles n (1–200)</label>
+      <input class="input" id="riemann-sum-visualizer-n" type="number" min="1" max="200" step="1" value="8">
+    </div>
+    <div class="field" style="align-self:end">
+      <button type="button" class="btn" id="riemann-sum-visualizer-draw">Draw</button>
+    </div>
+  </div>
+  <div class="error" id="riemann-sum-visualizer-error"></div>
+  <div id="riemann-sum-visualizer-out" class="hidden">
+    <canvas id="riemann-sum-visualizer-cv" width="680" height="360" style="width:100%;height:auto;border-radius:8px;background:#0b1220"></canvas>
+    <div class="stat-cards" style="margin-top:12px">
+      <div class="stat-card"><div class="v" id="riemann-sum-visualizer-s-left">–</div><div class="l">Left sum</div></div>
+      <div class="stat-card"><div class="v" id="riemann-sum-visualizer-s-right">–</div><div class="l">Right sum</div></div>
+      <div class="stat-card"><div class="v" id="riemann-sum-visualizer-s-mid">–</div><div class="l">Midpoint sum</div></div>
+      <div class="stat-card"><div class="v" id="riemann-sum-visualizer-s-trap">–</div><div class="l">Trapezoid sum</div></div>
+    </div>
+    <p class="muted" id="riemann-sum-visualizer-note"></p>
+  </div>
+</div>

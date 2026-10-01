@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Beaufort Scale Converter — Free Online | ToolNest</title>
+<meta name="description" content="Convert wind speed (km/h, mph, knots, m/s) to the Beaufort scale number with official speed ranges and land/sea descriptions.">
+<meta name="keywords" content="Beaufort scale converter, wind speed to Beaufort, Beaufort scale chart, knots to Beaufort, gale wind speed">
+<link rel="canonical" href="https://toolnest.vercel.app/tools/beaufort-scale-converter/">
+<meta name="theme-color" content="#07070b">
+<meta property="og:title" content="Beaufort Scale Converter — Free Online | ToolNest">
+<meta property="og:description" content="Convert wind speed (km/h, mph, knots, m/s) to the Beaufort scale number with official speed ranges and land/sea descriptions.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css?v=4">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%23e01111'/><text x='50' y='68' font-size='58' text-anchor='middle' fill='white' font-family='Arial' font-weight='bold'>T</text></svg>">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebApplication","name":"Beaufort Scale Converter","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0"},"url":"https://toolnest.vercel.app/tools/beaufort-scale-converter/","description":"Convert wind speed (km/h, mph, knots, m/s) to the Beaufort scale number with official speed ranges and land/sea descriptions."},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What do the Beaufort numbers mean?","acceptedAnswer":{"@type":"Answer","text":"The Beaufort scale runs 0–12: 0 calm, 1–3 light-to-gentle breezes, 4–5 moderate-to-fresh, 6–7 strong-to-near-gale, 8–9 gale, 10 storm, 11 violent storm, 12 hurricane force."}},{"@type":"Question","name":"At what speed is it hurricane force?","acceptedAnswer":{"@type":"Answer","text":"Force 12 begins at 118 km/h (73 mph / 64 knots). A tropical cyclone is classed as hurricane force on the Beaufort scale from that speed."}},{"@type":"Question","name":"How do knots convert to km/h?","acceptedAnswer":{"@type":"Answer","text":"1 knot = 1.852 km/h exactly (one nautical mile per hour). 1 m/s = 3.6 km/h exactly."}}]}]}</script>
+</head>
+<body>
+<header class="site-header">
+  <div class="container">
+    <a class="logo" href="/"><span class="logo-mark">T</span> ToolNest</a>
+    <div class="header-right">
+      <form class="nav-search" action="/" method="get" role="search">
+        <span class="ns-icon">🔍</span>
+        <input type="search" name="q" placeholder="Search tools…" aria-label="Search tools" autocomplete="off">
+      </form>
+      <div class="menu-wrap">
+        <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="menuPanel" aria-label="Open menu"><span></span><span></span><span></span></button>
+        <nav class="menu-panel" id="menuPanel" aria-label="Site">
+          <a href="/">Home</a>
+          <a href="/#categories">Categories</a>
+          <a href="/#all-tools">All Tools</a>
+        </nav>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ADSTERRA-HEADER: paste your Adsterra banner ad code inside the div below -->
+<div class="container"><div class="ad-slot ad-leaderboard" data-ad="header"></div></div>
+
+<main class="container">
+  <nav class="crumbs"><a href="/">Home</a> &rsaquo; <a href="/#converters">Converters</a> &rsaquo; Beaufort Scale Converter</nav>
+  <div class="tool-hero">
+    <h1>Beaufort Scale Converter</h1>
+    <p>Convert wind speed (km/h, mph, knots, m/s) to the Beaufort scale number with official speed ranges and land/sea descriptions.</p>
+  </div>
+
+  <div class="tool-card">
+  <div class="grid2">
+    <div class="field">
+      <label for="beaufort-scale-converter-speed">Wind speed</label>
+      <input type="number" step="any" min="0" class="input" id="beaufort-scale-converter-speed" placeholder="e.g. 45">
+    </div>
+    <div class="field">
+      <label for="beaufort-scale-converter-unit">Unit</label>
+      <select class="select" id="beaufort-scale-converter-unit">
+        <option value="kmh" selected>km/h</option>
+        <option value="mph">mph</option>
+        <option value="kt">knots</option>
+        <option value="ms">m/s</option>
+      </select>
+    </div>
+  </div>
+  <div class="error" id="beaufort-scale-converter-error"></div>
+  <div class="result" id="beaufort-scale-converter-result">
+    <div class="stat-cards">
+      <div class="stat-card"><div class="v" id="beaufort-scale-converter-num">–</div><div class="l">Beaufort number</div></div>
+      <div class="stat-card"><div class="v" id="beaufort-scale-converter-term">–</div><div class="l">Term</div></div>
+    </div>
+    <p class="note" id="beaufort-scale-converter-land"></p>
+    <p class="note" id="beaufort-scale-converter-sea"></p>
+    <table class="data">
+      <thead><tr><th>Force</th><th>km/h</th><th>Term</th></tr></thead>
+      <tbody id="beaufort-scale-converter-table"></tbody>
+    </table>
+  </div>
+</div>
+
+
+  <!-- ADSTERRA-INCONTENT: paste your Adsterra native/in-content ad code inside the div below -->
+  <div class="ad-slot" data-ad="incontent"></div>
+
+  <div class="info-grid">
+    <div class="info-card">
+      <h2>📖 How to use</h2>
+      <ol><li>Enter the wind speed.</li><li>Pick the unit (km/h, mph, knots or m/s).</li><li>Read the Beaufort number, its name and what it looks like on land and sea.</li></ol>
+    </div>
+    <div class="info-card">
+      <h2>❓ Frequently asked questions</h2>
+      <div class="faq"><details><summary>What do the Beaufort numbers mean?</summary><p>The Beaufort scale runs 0–12: 0 calm, 1–3 light-to-gentle breezes, 4–5 moderate-to-fresh, 6–7 strong-to-near-gale, 8–9 gale, 10 storm, 11 violent storm, 12 hurricane force.</p></details><details><summary>At what speed is it hurricane force?</summary><p>Force 12 begins at 118 km/h (73 mph / 64 knots). A tropical cyclone is classed as hurricane force on the Beaufort scale from that speed.</p></details><details><summary>How do knots convert to km/h?</summary><p>1 knot = 1.852 km/h exactly (one nautical mile per hour). 1 m/s = 3.6 km/h exactly.</p></details></div>
+    </div>
+  </div>
+
+  <section class="section">
+    <h2>🔗 Related tools</h2>
+    <div class="tool-grid"><a class="tool-link" href="/tools/altitude-pressure-calculator/" data-search="altitude pressure calculator the barometric formula gives air pressure at any altitude (below 11,000 m) from sea-level pressure — in hpa, inhg and percent of sea level. altitude pressure calculator barometric formula air pressure at altitude pressure vs altitude qnh pressure calculator"><span class="t-ico">🔄</span><span class="t-body"><b>Altitude Pressure Calculator</b><small>The barometric formula gives air pressure at any altitude (below 11,000 m) from sea-level pr…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/angle-converter/" data-search="angle converter convert angles between degrees, radians, gradians, turns, arcminutes, arcseconds and mils. enter a value once and see it in every unit instantly. angle converter degrees to radians radians to degrees gradians converter mils to degrees"><span class="t-ico">🔄</span><span class="t-body"><b>Angle Converter</b><small>Convert angles between degrees, radians, gradians, turns, arcminutes, arcseconds and mils. E…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/area-converter/" data-search="area converter square millimeters to square miles. area converter square feet to square meters acres to hectares"><span class="t-ico">🔄</span><span class="t-body"><b>Area Converter</b><small>Square millimeters to square miles.</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/baking-pan-converter/" data-search="baking pan converter compare pan volumes from dimensions, then scale every ingredient by the exact ratio — plus a batter-fill check. baking pan converter pan size conversion cake pan volume recipe scaling pan size"><span class="t-ico">🔄</span><span class="t-body"><b>Baking Pan Converter</b><small>Compare pan volumes from dimensions, then scale every ingredient by the exact ratio — plus a…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/cat-age-converter/" data-search="cat age converter convert cat years to human years with the accepted life-stage chart: 15 for year one, 9 for year two, then about 4 per year. cat age converter cat years to human years how old is my cat cat age chart cat life stages"><span class="t-ico">🔄</span><span class="t-body"><b>Cat Age Converter</b><small>Convert cat years to human years with the accepted life-stage chart: 15 for year one, 9 for …</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/clothing-size-converter/" data-search="clothing size converter convert clothing and shoe sizes between us, uk, eu and international systems for men&#39;s tops, pants, women&#39;s dresses and footwear. clothing size converter us to eu size uk to us shoe size dress size conversion pant size converter"><span class="t-ico">🔄</span><span class="t-body"><b>Clothing Size Converter</b><small>Convert clothing and shoe sizes between US, UK, EU and international systems for men&#39;s tops,…</small></span><span class="t-arrow">→</span></a></div>
+  </section>
+</main>
+
+<!-- ADSTERRA-FOOTER: paste your Adsterra footer/banner ad code inside the div below -->
+<div class="container"><div class="ad-slot" data-ad="footer"></div></div>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="f-grid">
+      <div>
+        <span class="brandline"><span class="logo-mark">T</span> ToolNest</span>
+        <p>Free online tools that actually work. No sign-up, no watermarks — and your files never leave your device for client-side tools.</p>
+      </div>
+      <div>
+        <h4>Popular</h4>
+        <a href="/tools/qr-code-generator/">QR Code Generator</a>
+        <a href="/tools/background-remover/">Background Remover</a>
+        <a href="/tools/pdf-merger/">PDF Merger</a>
+        <a href="/tools/word-counter/">Word Counter</a>
+      </div>
+      <div>
+        <h4>Categories</h4>
+        <a href="/#image">Image Tools</a>
+        <a href="/#pdf">PDF &amp; Documents</a>
+        <a href="/#calculators">Calculators</a>
+        <a href="/#developer">Developer Tools</a>
+      </div>
+      <div>
+        <h4>Site</h4>
+        <a href="/">Home</a>
+        <a href="/#all-tools">All Tools</a>
+        <a href="/sitemap.xml">Sitemap</a>
+      </div>
+    </div>
+    <div class="f-bottom">© 2026 ToolNest · Free tools for everyone · Made with care</div>
+  </div>
+</footer>
+
+<script src="/assets/site.js?v=5"></script>
+
+<script>
+(function () {
+  'use strict';
+  var S = 'beaufort-scale-converter';
+  /* [number, minKmh (inclusive), term, land description, sea description] */
+  var SCALE = [
+    [0, 0, 'Calm', 'Smoke rises vertically.', 'Sea like a mirror.'],
+    [1, 1, 'Light air', 'Wind direction shown by smoke drift, not vanes.', 'Ripples with no foam crests.'],
+    [2, 6, 'Light breeze', 'Wind felt on face; leaves rustle.', 'Small wavelets; crests do not break.'],
+    [3, 12, 'Gentle breeze', 'Leaves and small twigs in constant motion.', 'Large wavelets; scattered whitecaps.'],
+    [4, 20, 'Moderate breeze', 'Raises dust and loose paper; small branches move.', 'Small waves; frequent whitecaps.'],
+    [5, 29, 'Fresh breeze', 'Small trees in leaf begin to sway.', 'Moderate waves; many whitecaps, some spray.'],
+    [6, 39, 'Strong breeze', 'Large branches in motion; whistling heard in wires.', 'Large waves; extensive whitecaps, spray.'],
+    [7, 50, 'Near gale', 'Whole trees in motion; effort needed to walk against wind.', 'Sea heaps up; white foam blown in streaks.'],
+    [8, 62, 'Gale', 'Twigs break off trees; progress on foot seriously impeded.', 'Moderately high waves; crests break into spindrift.'],
+    [9, 75, 'Strong gale', 'Slight structural damage occurs.', 'High waves; dense foam streaks; sea begins to roll.'],
+    [10, 89, 'Storm', 'Trees uprooted; considerable structural damage.', 'Very high waves; sea surface white with foam.'],
+    [11, 103, 'Violent storm', 'Widespread structural damage.', 'Exceptionally high waves; visibility reduced.'],
+    [12, 118, 'Hurricane force', 'Devastation.', 'Air filled with foam and spray; sea completely white.']
+  ];
+  function toKmh(v, unit) {
+    if (unit === 'mph') return v * 1.609344;
+    if (unit === 'kt') return v * 1.852;
+    if (unit === 'ms') return v * 3.6;
+    return v;
+  }
+  function lookup(kmh) {
+    var cur = SCALE[0];
+    for (var i = 0; i < SCALE.length; i++) {
+      if (kmh >= SCALE[i][1]) cur = SCALE[i];
+    }
+    return cur;
+  }
+  function convert() {
+    try {
+      TN.clearErr(S + '-error');
+      var nEl = TN.el(S + '-num'), tEl = TN.el(S + '-term');
+      var landEl = TN.el(S + '-land'), seaEl = TN.el(S + '-sea');
+      var raw = TN.el(S + '-speed').value;
+      if (raw === '' || raw === null) {
+        if (nEl) nEl.textContent = '–';
+        if (tEl) tEl.textContent = '–';
+        if (landEl) landEl.textContent = '';
+        if (seaEl) seaEl.textContent = '';
+        return;
+      }
+      var v = parseFloat(raw);
+      if (!isFinite(v) || v < 0) { TN.setErr(S + '-error', 'Enter a non-negative wind speed.'); return; }
+      var kmh = toKmh(v, TN.el(S + '-unit').value);
+      var b = lookup(kmh);
+      if (nEl) nEl.textContent = 'Force ' + b[0];
+      if (tEl) tEl.textContent = b[2];
+      if (landEl) landEl.textContent = 'On land: ' + b[3];
+      if (seaEl) seaEl.textContent = 'At sea: ' + b[4];
+    } catch (e) { /* never throw on input */ }
+  }
+  function init() {
+    var tb = TN.el(S + '-table');
+    if (tb) {
+      var html = '';
+      for (var i = 0; i < SCALE.length; i++) {
+        var range = i < SCALE.length - 1 ? SCALE[i][1] + '–' + (SCALE[i + 1][1] - 1) : '≥ ' + SCALE[i][1];
+        html += '<tr><td>' + SCALE[i][0] + '</td><td>' + range + '</td><td>' + SCALE[i][2] + '</td></tr>';
+      }
+      tb.innerHTML = html;
+    }
+    ['speed', 'unit'].forEach(function (k) {
+      TN.on(S + '-' + k, 'input', convert);
+      TN.on(S + '-' + k, 'change', convert);
+    });
+    convert();
+  }
+  try { init(); } catch (e) { /* never throw on load */ }
+})();
+
+</script>
+</body>
+</html>

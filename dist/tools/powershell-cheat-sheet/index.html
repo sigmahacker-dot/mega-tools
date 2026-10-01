@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PowerShell Cheat Sheet — Free Online | ToolNest</title>
+<meta name="description" content="Searchable reference of 90+ real PowerShell cmdlets with descriptions and aliases.">
+<meta name="keywords" content="powershell cheat sheet, powershell commands, powershell cmdlets reference, ps commands list">
+<link rel="canonical" href="https://toolnest.vercel.app/tools/powershell-cheat-sheet/">
+<meta name="theme-color" content="#07070b">
+<meta property="og:title" content="PowerShell Cheat Sheet — Free Online | ToolNest">
+<meta property="og:description" content="Searchable reference of 90+ real PowerShell cmdlets with descriptions and aliases.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css?v=4">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%23e01111'/><text x='50' y='68' font-size='58' text-anchor='middle' fill='white' font-family='Arial' font-weight='bold'>T</text></svg>">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebApplication","name":"PowerShell Cheat Sheet","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0"},"url":"https://toolnest.vercel.app/tools/powershell-cheat-sheet/","description":"Searchable reference of 90+ real PowerShell cmdlets with descriptions and aliases."},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How many cmdlets are listed?","acceptedAnswer":{"@type":"Answer","text":"Over 90 real cmdlets across file system, processes, services, network, web, data and more."}},{"@type":"Question","name":"What do the aliases mean?","acceptedAnswer":{"@type":"Answer","text":"Short built-in aliases shown in the alias column — e.g. gci for Get-ChildItem."}},{"@type":"Question","name":"Does this work for PowerShell 7?","acceptedAnswer":{"@type":"Answer","text":"Yes — the listed cmdlets exist in Windows PowerShell 5.1 and PowerShell 7 unless noted."}},{"@type":"Question","name":"Can I copy a cmdlet?","acceptedAnswer":{"@type":"Answer","text":"Click any row to copy the cmdlet name to your clipboard."}}]}]}</script>
+</head>
+<body>
+<header class="site-header">
+  <div class="container">
+    <a class="logo" href="/"><span class="logo-mark">T</span> ToolNest</a>
+    <div class="header-right">
+      <form class="nav-search" action="/" method="get" role="search">
+        <span class="ns-icon">🔍</span>
+        <input type="search" name="q" placeholder="Search tools…" aria-label="Search tools" autocomplete="off">
+      </form>
+      <div class="menu-wrap">
+        <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="menuPanel" aria-label="Open menu"><span></span><span></span><span></span></button>
+        <nav class="menu-panel" id="menuPanel" aria-label="Site">
+          <a href="/">Home</a>
+          <a href="/#categories">Categories</a>
+          <a href="/#all-tools">All Tools</a>
+        </nav>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ADSTERRA-HEADER: paste your Adsterra banner ad code inside the div below -->
+<div class="container"><div class="ad-slot ad-leaderboard" data-ad="header"></div></div>
+
+<main class="container">
+  <nav class="crumbs"><a href="/">Home</a> &rsaquo; <a href="/#developer">Developer Tools</a> &rsaquo; PowerShell Cheat Sheet</nav>
+  <div class="tool-hero">
+    <h1>PowerShell Cheat Sheet</h1>
+    <p>Searchable reference of 90+ real PowerShell cmdlets with descriptions and aliases.</p>
+  </div>
+
+  <div class="tool-card">
+  <div class="grid2">
+    <div class="field">
+      <label for="powershell-cheat-sheet-q">Search cmdlets</label>
+      <input class="input" id="powershell-cheat-sheet-q" placeholder="e.g. process, network, csv…">
+    </div>
+    <div class="field">
+      <label for="powershell-cheat-sheet-cat">Category</label>
+      <select class="select" id="powershell-cheat-sheet-cat"><option value="">All categories</option></select>
+    </div>
+  </div>
+  <p class="muted" id="powershell-cheat-sheet-count"></p>
+  <div style="overflow:auto">
+    <table style="width:100%;border-collapse:collapse;font-size:14px" id="powershell-cheat-sheet-table">
+      <thead><tr style="text-align:left;border-bottom:1px solid #3f3f46">
+        <th style="padding:8px">Cmdlet</th><th style="padding:8px">Alias</th><th style="padding:8px">Category</th><th style="padding:8px">Description</th>
+      </tr></thead>
+      <tbody id="powershell-cheat-sheet-body"></tbody>
+    </table>
+  </div>
+  <div class="error" id="powershell-cheat-sheet-error"></div>
+  <div class="btn-row" style="margin-top:12px">
+    <button class="btn btn-outline" id="powershell-cheat-sheet-download">Download as Markdown</button>
+  </div>
+</div>
+
+
+  <!-- ADSTERRA-INCONTENT: paste your Adsterra native/in-content ad code inside the div below -->
+  <div class="ad-slot" data-ad="incontent"></div>
+
+  <div class="info-grid">
+    <div class="info-card">
+      <h2>📖 How to use</h2>
+      <ol><li>Type in the search box to filter cmdlets instantly.</li><li>Use the category dropdown to browse one area.</li><li>Click a row to copy the cmdlet name.</li><li>All entries are real cmdlets — verify with Get-Help.</li></ol>
+    </div>
+    <div class="info-card">
+      <h2>❓ Frequently asked questions</h2>
+      <div class="faq"><details><summary>How many cmdlets are listed?</summary><p>Over 90 real cmdlets across file system, processes, services, network, web, data and more.</p></details><details><summary>What do the aliases mean?</summary><p>Short built-in aliases shown in the alias column — e.g. gci for Get-ChildItem.</p></details><details><summary>Does this work for PowerShell 7?</summary><p>Yes — the listed cmdlets exist in Windows PowerShell 5.1 and PowerShell 7 unless noted.</p></details><details><summary>Can I copy a cmdlet?</summary><p>Click any row to copy the cmdlet name to your clipboard.</p></details></div>
+    </div>
+  </div>
+
+  <section class="section">
+    <h2>🔗 Related tools</h2>
+    <div class="tool-grid"><a class="tool-link" href="/tools/api-key-generator/" data-search="api key generator generate cryptographically secure api keys with crypto.getrandomvalues — hex, base64, base64url or uuid v4. api key generator random api key uuid generator secure token generator"><span class="t-ico">💻</span><span class="t-body"><b>API Key Generator</b><small>Generate cryptographically secure API keys with crypto.getRandomValues — hex, base64, base64…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/ascii-table-reference/" data-search="ascii table reference full ascii table 0–127: decimal, hex, octal, character, control-code names and html entities — searchable. ascii table ascii codes ascii chart control characters ascii reference"><span class="t-ico">💻</span><span class="t-body"><b>ASCII Table Reference</b><small>Full ASCII table 0–127: decimal, hex, octal, character, control-code names and HTML entities…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/badge-generator/" data-search="badge generator design css badges and pills — colors, sizes, shapes — with live preview and copy-ready html/css. badge css generator css pill badge status badge code label badge html"><span class="t-ico">💻</span><span class="t-body"><b>Badge Generator</b><small>Design CSS badges and pills — colors, sizes, shapes — with live preview and copy-ready HTML/…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/base64-encoder-decoder/" data-search="base64 encoder / decoder encode text to base64 or decode base64 back to text, with full utf-8 support and a file-to-data-url converter. base64 encoder base64 decoder base64 encode base64 decode file to base64"><span class="t-ico">💻</span><span class="t-body"><b>Base64 Encoder / Decoder</b><small>Encode text to Base64 or decode Base64 back to text, with full UTF-8 support and a file-to-d…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/basic-auth-header-generator/" data-search="basic auth header generator encode username:password to a base64 authorization header (unicode-safe) — copy or download. basic auth header base64 authorization http basic auth generator authorization header"><span class="t-ico">💻</span><span class="t-body"><b>Basic Auth Header Generator</b><small>Encode username:password to a Base64 Authorization header (Unicode-safe) — copy or download.</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/binary-text-converter/" data-search="binary and text converter convert text to binary or hex and back, with full utf-8 awareness and strict input validation. binary to text text to binary hex to text converter"><span class="t-ico">💻</span><span class="t-body"><b>Binary and Text Converter</b><small>Convert text to binary or hex and back, with full UTF-8 awareness and strict input validatio…</small></span><span class="t-arrow">→</span></a></div>
+  </section>
+</main>
+
+<!-- ADSTERRA-FOOTER: paste your Adsterra footer/banner ad code inside the div below -->
+<div class="container"><div class="ad-slot" data-ad="footer"></div></div>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="f-grid">
+      <div>
+        <span class="brandline"><span class="logo-mark">T</span> ToolNest</span>
+        <p>Free online tools that actually work. No sign-up, no watermarks — and your files never leave your device for client-side tools.</p>
+      </div>
+      <div>
+        <h4>Popular</h4>
+        <a href="/tools/qr-code-generator/">QR Code Generator</a>
+        <a href="/tools/background-remover/">Background Remover</a>
+        <a href="/tools/pdf-merger/">PDF Merger</a>
+        <a href="/tools/word-counter/">Word Counter</a>
+      </div>
+      <div>
+        <h4>Categories</h4>
+        <a href="/#image">Image Tools</a>
+        <a href="/#pdf">PDF &amp; Documents</a>
+        <a href="/#calculators">Calculators</a>
+        <a href="/#developer">Developer Tools</a>
+      </div>
+      <div>
+        <h4>Site</h4>
+        <a href="/">Home</a>
+        <a href="/#all-tools">All Tools</a>
+        <a href="/sitemap.xml">Sitemap</a>
+      </div>
+    </div>
+    <div class="f-bottom">© 2026 ToolNest · Free tools for everyone · Made with care</div>
+  </div>
+</footer>
+
+<script src="/assets/site.js?v=5"></script>
+
+<script>
+/* PowerShell Cheat Sheet — searchable reference of real cmdlets. */
+(function () {
+  'use strict';
+  var SLUG = 'powershell-cheat-sheet';
+  var DATA = [{"cat": "File system", "cmd": "Get-ChildItem", "alias": "gci, ls, dir", "desc": "List files and directories."}, {"cat": "File system", "cmd": "Set-Location", "alias": "sl, cd", "desc": "Change the current directory."}, {"cat": "File system", "cmd": "Get-Location", "alias": "gl, pwd", "desc": "Show the current directory."}, {"cat": "File system", "cmd": "Copy-Item", "alias": "cpi, cp", "desc": "Copy files or directories."}, {"cat": "File system", "cmd": "Move-Item", "alias": "mi, mv", "desc": "Move files or directories."}, {"cat": "File system", "cmd": "Remove-Item", "alias": "ri, rm", "desc": "Delete files or directories."}, {"cat": "File system", "cmd": "Rename-Item", "alias": "rni, ren", "desc": "Rename a file or directory."}, {"cat": "File system", "cmd": "New-Item", "alias": "ni", "desc": "Create a file or directory."}, {"cat": "File system", "cmd": "Get-Content", "alias": "gc, cat, type", "desc": "Read the contents of a file."}, {"cat": "File system", "cmd": "Set-Content", "alias": "sc", "desc": "Write content to a file, overwriting it."}, {"cat": "File system", "cmd": "Add-Content", "alias": "ac", "desc": "Append content to a file."}, {"cat": "File system", "cmd": "Clear-Content", "alias": "clc", "desc": "Delete a file's contents but keep the file."}, {"cat": "File system", "cmd": "Get-Item", "alias": "gi", "desc": "Get a file or directory object."}, {"cat": "File system", "cmd": "Test-Path", "alias": "", "desc": "Check whether a path exists."}, {"cat": "File system", "cmd": "Resolve-Path", "alias": "", "desc": "Resolve wildcards to full paths."}, {"cat": "File system", "cmd": "Get-Acl", "alias": "", "desc": "Get file/folder permissions."}, {"cat": "File system", "cmd": "Set-Acl", "alias": "", "desc": "Set file/folder permissions."}, {"cat": "Processes", "cmd": "Get-Process", "alias": "gps, ps", "desc": "List running processes."}, {"cat": "Processes", "cmd": "Stop-Process", "alias": "spps, kill", "desc": "Stop a running process."}, {"cat": "Processes", "cmd": "Start-Process", "alias": "saps, start", "desc": "Start a new process."}, {"cat": "Services", "cmd": "Get-Service", "alias": "gsv", "desc": "List Windows services."}, {"cat": "Services", "cmd": "Start-Service", "alias": "sasv", "desc": "Start a service."}, {"cat": "Services", "cmd": "Stop-Service", "alias": "spsv", "desc": "Stop a service."}, {"cat": "Services", "cmd": "Restart-Service", "alias": "", "desc": "Restart a service."}, {"cat": "Services", "cmd": "Set-Service", "alias": "", "desc": "Change a service's startup type or description."}, {"cat": "System", "cmd": "Get-ComputerInfo", "alias": "", "desc": "Show OS and hardware details."}, {"cat": "System", "cmd": "Get-CimInstance", "alias": "", "desc": "Query WMI/CIM classes (e.g. Win32_OperatingSystem)."}, {"cat": "System", "cmd": "Get-HotFix", "alias": "", "desc": "List installed Windows updates."}, {"cat": "System", "cmd": "Get-WinEvent", "alias": "", "desc": "Read Windows event logs."}, {"cat": "System", "cmd": "Restart-Computer", "alias": "", "desc": "Restart the local or a remote computer."}, {"cat": "System", "cmd": "Stop-Computer", "alias": "", "desc": "Shut down the local or a remote computer."}, {"cat": "Network", "cmd": "Test-Connection", "alias": "", "desc": "Ping a host."}, {"cat": "Network", "cmd": "Test-NetConnection", "alias": "tnc", "desc": "Test TCP connectivity and trace routes."}, {"cat": "Network", "cmd": "Resolve-DnsName", "alias": "", "desc": "Resolve DNS records (like nslookup)."}, {"cat": "Network", "cmd": "Get-NetIPAddress", "alias": "", "desc": "Show IP addresses."}, {"cat": "Network", "cmd": "Get-NetAdapter", "alias": "", "desc": "List network adapters."}, {"cat": "Network", "cmd": "Get-NetRoute", "alias": "", "desc": "Show the routing table."}, {"cat": "Network", "cmd": "Get-NetTCPConnection", "alias": "", "desc": "List active TCP connections."}, {"cat": "Web", "cmd": "Invoke-WebRequest", "alias": "iwr, curl, wget", "desc": "Make an HTTP request; returns a parsed response object."}, {"cat": "Web", "cmd": "Invoke-RestMethod", "alias": "irm", "desc": "Make an HTTP request; returns deserialized data."}, {"cat": "Web", "cmd": "Start-BitsTransfer", "alias": "", "desc": "Download files using BITS."}, {"cat": "Discovery", "cmd": "Get-Command", "alias": "gcm", "desc": "Find available commands and cmdlets."}, {"cat": "Discovery", "cmd": "Get-Help", "alias": "", "desc": "Show help for a cmdlet."}, {"cat": "Discovery", "cmd": "Get-Alias", "alias": "gal", "desc": "List command aliases."}, {"cat": "Discovery", "cmd": "New-Alias", "alias": "", "desc": "Create a command alias."}, {"cat": "Modules", "cmd": "Get-Module", "alias": "", "desc": "List loaded modules."}, {"cat": "Modules", "cmd": "Import-Module", "alias": "ipmo", "desc": "Load a module into the session."}, {"cat": "Modules", "cmd": "Find-Module", "alias": "", "desc": "Search the PowerShell Gallery."}, {"cat": "Modules", "cmd": "Install-Module", "alias": "", "desc": "Install a module from the Gallery."}, {"cat": "Modules", "cmd": "Update-Module", "alias": "", "desc": "Update an installed module."}, {"cat": "Policy", "cmd": "Get-ExecutionPolicy", "alias": "", "desc": "Show the script execution policy."}, {"cat": "Policy", "cmd": "Set-ExecutionPolicy", "alias": "", "desc": "Set the script execution policy."}, {"cat": "History", "cmd": "Get-History", "alias": "h", "desc": "Show command history."}, {"cat": "History", "cmd": "Invoke-History", "alias": "r", "desc": "Re-run a command from history."}, {"cat": "History", "cmd": "Clear-History", "alias": "clhy", "desc": "Clear the command history."}, {"cat": "Variables", "cmd": "Get-Variable", "alias": "gv", "desc": "List variables."}, {"cat": "Variables", "cmd": "Set-Variable", "alias": "sv, set", "desc": "Create or change a variable."}, {"cat": "Variables", "cmd": "Remove-Variable", "alias": "rv", "desc": "Delete a variable."}, {"cat": "Variables", "cmd": "Clear-Variable", "alias": "clv", "desc": "Clear a variable's value."}, {"cat": "Data", "cmd": "Measure-Object", "alias": "measure", "desc": "Count, sum or average objects."}, {"cat": "Data", "cmd": "Sort-Object", "alias": "sort", "desc": "Sort objects by property."}, {"cat": "Data", "cmd": "Where-Object", "alias": "?, where", "desc": "Filter objects in the pipeline."}, {"cat": "Data", "cmd": "ForEach-Object", "alias": "%, foreach", "desc": "Run a block for each object."}, {"cat": "Data", "cmd": "Select-Object", "alias": "select", "desc": "Select properties of objects."}, {"cat": "Data", "cmd": "Group-Object", "alias": "group", "desc": "Group objects by a property value."}, {"cat": "Data", "cmd": "Compare-Object", "alias": "diff", "desc": "Compare two sets of objects."}, {"cat": "Data", "cmd": "Tee-Object", "alias": "tee", "desc": "Send pipeline output in two directions."}, {"cat": "Data", "cmd": "Export-Csv", "alias": "", "desc": "Export objects to a CSV file."}, {"cat": "Data", "cmd": "Import-Csv", "alias": "", "desc": "Import a CSV file as objects."}, {"cat": "Data", "cmd": "ConvertTo-Json", "alias": "", "desc": "Convert objects to JSON."}, {"cat": "Data", "cmd": "ConvertFrom-Json", "alias": "", "desc": "Parse JSON into objects."}, {"cat": "Data", "cmd": "Select-String", "alias": "sls", "desc": "Search text with patterns (grep-like)."}, {"cat": "Data", "cmd": "Out-File", "alias": "", "desc": "Write output to a file."}, {"cat": "Data", "cmd": "Out-GridView", "alias": "ogv", "desc": "Show output in an interactive GUI table."}, {"cat": "Archives", "cmd": "Compress-Archive", "alias": "", "desc": "Create a zip archive."}, {"cat": "Archives", "cmd": "Expand-Archive", "alias": "", "desc": "Extract a zip archive."}, {"cat": "Remoting", "cmd": "Enable-PSRemoting", "alias": "", "desc": "Enable PowerShell remoting on a machine."}, {"cat": "Remoting", "cmd": "Enter-PSSession", "alias": "", "desc": "Start an interactive remote session."}, {"cat": "Remoting", "cmd": "Invoke-Command", "alias": "icm", "desc": "Run commands on remote computers."}, {"cat": "Remoting", "cmd": "New-PSSession", "alias": "", "desc": "Create a persistent remote session."}, {"cat": "Jobs", "cmd": "Get-Job", "alias": "", "desc": "List background jobs."}, {"cat": "Jobs", "cmd": "Start-Job", "alias": "", "desc": "Start a background job."}, {"cat": "Jobs", "cmd": "Receive-Job", "alias": "", "desc": "Get the results of a background job."}, {"cat": "Jobs", "cmd": "Wait-Job", "alias": "", "desc": "Wait for background jobs to finish."}, {"cat": "Jobs", "cmd": "Stop-Job", "alias": "", "desc": "Stop a background job."}, {"cat": "Misc", "cmd": "Get-Date", "alias": "", "desc": "Show the current date and time."}, {"cat": "Misc", "cmd": "Start-Sleep", "alias": "sleep", "desc": "Pause execution for a time."}, {"cat": "Misc", "cmd": "Get-Random", "alias": "", "desc": "Generate a random number."}, {"cat": "Misc", "cmd": "Get-Credential", "alias": "", "desc": "Prompt for a username and password."}, {"cat": "Misc", "cmd": "ConvertTo-SecureString", "alias": "", "desc": "Convert text to a secure string."}, {"cat": "Misc", "cmd": "Write-Host", "alias": "", "desc": "Write directly to the console."}, {"cat": "Misc", "cmd": "Write-Output", "alias": "echo", "desc": "Write objects to the pipeline."}, {"cat": "Misc", "cmd": "Read-Host", "alias": "", "desc": "Prompt the user for input."}, {"cat": "Misc", "cmd": "Register-ScheduledTask", "alias": "", "desc": "Create a Windows scheduled task."}, {"cat": "Misc", "cmd": "Get-ScheduledTask", "alias": "", "desc": "List scheduled tasks."}];
+  function el(id) { return document.getElementById(id); }
+  function fail(msg) { TN.setErr(SLUG + '-error', msg); }
+  function clear() { TN.clearErr(SLUG + '-error'); }
+
+  function render() {
+    clear();
+    var q = el(SLUG + '-q').value.trim().toLowerCase();
+    var cat = el(SLUG + '-cat').value;
+    var body = el(SLUG + '-body');
+    body.innerHTML = '';
+    var n = 0;
+    DATA.forEach(function (e) {
+      if (cat && e.cat !== cat) return;
+      var hay = (e.cmd + ' ' + e.alias + ' ' + e.cat + ' ' + e.desc).toLowerCase();
+      if (q && hay.indexOf(q) < 0) return;
+      var tr = document.createElement('tr');
+      tr.style.cssText = 'border-bottom:1px solid #27272a;cursor:pointer';
+      tr.title = 'Click to copy';
+      tr.innerHTML = '<td style="padding:8px;font-family:monospace;color:#a3e635">' + TN.esc(e.cmd) + '</td>' +
+        '<td style="padding:8px;font-family:monospace;color:#a1a1aa">' + TN.esc(e.alias || '—') + '</td>' +
+        '<td style="padding:8px;color:#a1a1aa">' + TN.esc(e.cat) + '</td>' +
+        '<td style="padding:8px">' + TN.esc(e.desc) + '</td>';
+      (function (cmd) {
+        tr.addEventListener('click', function () {
+          TN.copy(cmd).then(function (ok) { if (!ok) fail('Copy failed.'); });
+        });
+      })(e.cmd);
+      body.appendChild(tr);
+      n++;
+    });
+    el(SLUG + '-count').textContent = n + ' of ' + DATA.length + ' cmdlets — click a row to copy.';
+  }
+
+  try {
+    if (!el(SLUG + '-q')) return;
+    var cats = {};
+    DATA.forEach(function (e) { cats[e.cat] = 1; });
+    var sel = el(SLUG + '-cat');
+    Object.keys(cats).sort().forEach(function (c) {
+      var o = document.createElement('option');
+      o.value = c; o.textContent = c;
+      sel.appendChild(o);
+    });
+    TN.on(SLUG + '-q', 'input', render);
+    TN.on(SLUG + '-cat', 'change', render);
+    TN.on(SLUG + '-download', 'click', function () {
+      var md = '# PowerShell Cheat Sheet\n\n| Cmdlet | Alias | Category | Description |\n|---|---|---|---|\n' +
+        DATA.map(function (e) { return '| ' + e.cmd + ' | ' + (e.alias || '') + ' | ' + e.cat + ' | ' + e.desc + ' |'; }).join('\n') + '\n';
+      TN.downloadText(md, 'powershell-cheatsheet.md', 'text/markdown');
+    });
+    render();
+  } catch (e) { /* never throw on load */ }
+})();
+
+</script>
+</body>
+</html>

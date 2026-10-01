@@ -1,0 +1,27 @@
+<div class="tool-card">
+  <div class="grid2">
+    <div class="field">
+      <label for="heat-index-calculator-temp">Air temperature</label>
+      <input type="number" step="any" class="input" id="heat-index-calculator-temp" placeholder="e.g. 90">
+    </div>
+    <div class="field">
+      <label for="heat-index-calculator-tunit">Temperature unit</label>
+      <select class="select" id="heat-index-calculator-tunit">
+        <option value="F" selected>Fahrenheit (°F)</option>
+        <option value="C">Celsius (°C)</option>
+      </select>
+    </div>
+  </div>
+  <div class="field">
+    <label for="heat-index-calculator-rh">Relative humidity (%)</label>
+    <input type="number" step="any" min="0" max="100" class="input" id="heat-index-calculator-rh" placeholder="e.g. 60">
+  </div>
+  <div class="error" id="heat-index-calculator-error"></div>
+  <div class="result" id="heat-index-calculator-result">
+    <div class="stat-cards">
+      <div class="stat-card"><div class="v" id="heat-index-calculator-hi">–</div><div class="l">Heat index (feels like)</div></div>
+      <div class="stat-card"><div class="v" id="heat-index-calculator-band">–</div><div class="l">Danger level</div></div>
+    </div>
+    <p class="note" id="heat-index-calculator-note">Rothfusz regression with NWS low/high-humidity adjustments. Bands: 80–90 caution · 91–103 extreme caution · 104–124 danger · 125+ extreme danger.</p>
+  </div>
+</div>

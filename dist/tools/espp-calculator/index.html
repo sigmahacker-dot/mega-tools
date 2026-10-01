@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ESPP Calculator — Free Online | ToolNest</title>
+<meta name="description" content="Estimate employee stock purchase plan gains with discount and lookback price.">
+<meta name="keywords" content="ESPP calculator, employee stock purchase, ESPP discount">
+<link rel="canonical" href="https://toolnest.vercel.app/tools/espp-calculator/">
+<meta name="theme-color" content="#07070b">
+<meta property="og:title" content="ESPP Calculator — Free Online | ToolNest">
+<meta property="og:description" content="Estimate employee stock purchase plan gains with discount and lookback price.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css?v=4">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%23e01111'/><text x='50' y='68' font-size='58' text-anchor='middle' fill='white' font-family='Arial' font-weight='bold'>T</text></svg>">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebApplication","name":"ESPP Calculator","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0"},"url":"https://toolnest.vercel.app/tools/espp-calculator/","description":"Estimate employee stock purchase plan gains with discount and lookback price."},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What is the lookback?","acceptedAnswer":{"@type":"Answer","text":"Many ESPPs price shares using the lower of the FMV at the offering date or the purchase date, before applying the discount. This tool models that."}},{"@type":"Question","name":"What is a qualifying disposition?","acceptedAnswer":{"@type":"Answer","text":"Holding the shares long enough (generally 2 years from offering and 1 year from purchase) can change how the discount is taxed. The gain math here is the same either way."}},{"@type":"Question","name":"What if the stock fell?","acceptedAnswer":{"@type":"Answer","text":"The discount and lookback cushion losses. If the purchase-date FMV is below the discounted price, most plans let you withdraw instead of buying."}}]}]}</script>
+</head>
+<body>
+<header class="site-header">
+  <div class="container">
+    <a class="logo" href="/"><span class="logo-mark">T</span> ToolNest</a>
+    <div class="header-right">
+      <form class="nav-search" action="/" method="get" role="search">
+        <span class="ns-icon">🔍</span>
+        <input type="search" name="q" placeholder="Search tools…" aria-label="Search tools" autocomplete="off">
+      </form>
+      <div class="menu-wrap">
+        <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="menuPanel" aria-label="Open menu"><span></span><span></span><span></span></button>
+        <nav class="menu-panel" id="menuPanel" aria-label="Site">
+          <a href="/">Home</a>
+          <a href="/#categories">Categories</a>
+          <a href="/#all-tools">All Tools</a>
+        </nav>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ADSTERRA-HEADER: paste your Adsterra banner ad code inside the div below -->
+<div class="container"><div class="ad-slot ad-leaderboard" data-ad="header"></div></div>
+
+<main class="container">
+  <nav class="crumbs"><a href="/">Home</a> &rsaquo; <a href="/#finance">Finance &amp; Money</a> &rsaquo; ESPP Calculator</nav>
+  <div class="tool-hero">
+    <h1>ESPP Calculator</h1>
+    <p>Estimate employee stock purchase plan gains with discount and lookback price.</p>
+  </div>
+
+  <div class="tool-card">
+  <div class="grid2">
+    <div class="field">
+      <label for="espp-calculator-fmvstart">FMV at offering date ($)</label>
+      <input type="number" class="input" id="espp-calculator-fmvstart" min="0" step="any" placeholder="50">
+    </div>
+    <div class="field">
+      <label for="espp-calculator-fmvend">FMV at purchase date ($)</label>
+      <input type="number" class="input" id="espp-calculator-fmvend" min="0" step="any" placeholder="60">
+    </div>
+    <div class="field">
+      <label for="espp-calculator-discount">Discount (%)</label>
+      <input type="number" class="input" id="espp-calculator-discount" min="0" max="100" step="any" placeholder="15">
+    </div>
+    <div class="field">
+      <label for="espp-calculator-contrib">Your contribution ($)</label>
+      <input type="number" class="input" id="espp-calculator-contrib" min="0" step="any" placeholder="3000">
+    </div>
+  </div>
+  <div class="error" id="espp-calculator-error"></div>
+  <div class="result" id="espp-calculator-result">
+    <div class="stat-cards">
+      <div class="stat-card"><div class="v" id="espp-calculator-price">&ndash;</div><div class="l">Purchase price / share</div></div>
+      <div class="stat-card"><div class="v" id="espp-calculator-shares">&ndash;</div><div class="l">Shares purchased</div></div>
+      <div class="stat-card"><div class="v" id="espp-calculator-value">&ndash;</div><div class="l">Market value</div></div>
+      <div class="stat-card"><div class="v" id="espp-calculator-gain">&ndash;</div><div class="l">Instant gain</div></div>
+      <div class="stat-card"><div class="v" id="espp-calculator-return">&ndash;</div><div class="l">Return</div></div>
+    </div>
+    <p class="note">For information only &mdash; not financial advice. Assumes a lookback to the lower FMV; check your plan document.</p>
+  </div>
+</div>
+
+  <!-- ADSTERRA-INCONTENT: paste your Adsterra native/in-content ad code inside the div below -->
+  <div class="ad-slot" data-ad="incontent"></div>
+
+  <div class="info-grid">
+    <div class="info-card">
+      <h2>📖 How to use</h2>
+      <ol><li>Enter the fair market value at the offering date and at the purchase date.</li><li>Enter your plan discount % and total contribution for the period.</li><li>The purchase price uses the lower of the two FMVs (lookback) minus the discount.</li><li>Read shares bought, market value, gain, and return %.</li></ol>
+    </div>
+    <div class="info-card">
+      <h2>❓ Frequently asked questions</h2>
+      <div class="faq"><details><summary>What is the lookback?</summary><p>Many ESPPs price shares using the lower of the FMV at the offering date or the purchase date, before applying the discount. This tool models that.</p></details><details><summary>What is a qualifying disposition?</summary><p>Holding the shares long enough (generally 2 years from offering and 1 year from purchase) can change how the discount is taxed. The gain math here is the same either way.</p></details><details><summary>What if the stock fell?</summary><p>The discount and lookback cushion losses. If the purchase-date FMV is below the discounted price, most plans let you withdraw instead of buying.</p></details></div>
+    </div>
+  </div>
+
+  <section class="section">
+    <h2>🔗 Related tools</h2>
+    <div class="tool-grid"><a class="tool-link" href="/tools/apr-calculator/" data-search="apr calculator solve the true annual percentage rate of a loan by bisection — including upfront fees — and compare it with the nominal rate. apr calculator true apr calculator annual percentage rate calculator loan apr calculator nominal vs effective rate"><span class="t-ico">💰</span><span class="t-body"><b>APR Calculator</b><small>Solve the true Annual Percentage Rate of a loan by bisection — including upfront fees — and …</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/baby-cost-calculator/" data-search="baby cost calculator estimate first-year baby costs from editable monthly and one-time line items. baby cost first year baby expenses newborn cost"><span class="t-ico">💰</span><span class="t-body"><b>Baby Cost Calculator</b><small>Estimate first-year baby costs from editable monthly and one-time line items.</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/balloon-payment-calculator/" data-search="balloon payment calculator compute the monthly payment on a balloon loan and the lump-sum balloon balance still due at the end of the term. balloon payment calculator balloon loan calculator balloon mortgage calculator balloon balance calculator lump sum loan calculator"><span class="t-ico">💰</span><span class="t-body"><b>Balloon Payment Calculator</b><small>Compute the monthly payment on a balloon loan and the lump-sum balloon balance still due at …</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/benefits-value-calculator/" data-search="benefits value calculator compute total compensation: salary plus health, retirement match and pto value. benefits calculator total compensation job benefits value"><span class="t-ico">💰</span><span class="t-body"><b>Benefits Value Calculator</b><small>Compute total compensation: salary plus health, retirement match and PTO value.</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/break-even-calculator/" data-search="break-even calculator find your break-even point in units and revenue from fixed costs, price per unit and variable cost per unit. break even calculator breakeven point calculator break even analysis units to break even business break even calculator"><span class="t-ico">💰</span><span class="t-body"><b>Break-Even Calculator</b><small>Find your break-even point in units and revenue from fixed costs, price per unit and variabl…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/budget-50-30-20-calculator/" data-search="50/30/20 budget calculator split your take-home pay into needs (50%), wants (30%) and savings (20%), then compare with your actual spending. 50 30 20 budget budget calculator needs wants savings monthly budget planner budget rule calculator"><span class="t-ico">💰</span><span class="t-body"><b>50/30/20 Budget Calculator</b><small>Split your take-home pay into needs (50%), wants (30%) and savings (20%), then compare with …</small></span><span class="t-arrow">→</span></a></div>
+  </section>
+</main>
+
+<!-- ADSTERRA-FOOTER: paste your Adsterra footer/banner ad code inside the div below -->
+<div class="container"><div class="ad-slot" data-ad="footer"></div></div>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="f-grid">
+      <div>
+        <span class="brandline"><span class="logo-mark">T</span> ToolNest</span>
+        <p>Free online tools that actually work. No sign-up, no watermarks — and your files never leave your device for client-side tools.</p>
+      </div>
+      <div>
+        <h4>Popular</h4>
+        <a href="/tools/qr-code-generator/">QR Code Generator</a>
+        <a href="/tools/background-remover/">Background Remover</a>
+        <a href="/tools/pdf-merger/">PDF Merger</a>
+        <a href="/tools/word-counter/">Word Counter</a>
+      </div>
+      <div>
+        <h4>Categories</h4>
+        <a href="/#image">Image Tools</a>
+        <a href="/#pdf">PDF &amp; Documents</a>
+        <a href="/#calculators">Calculators</a>
+        <a href="/#developer">Developer Tools</a>
+      </div>
+      <div>
+        <h4>Site</h4>
+        <a href="/">Home</a>
+        <a href="/#all-tools">All Tools</a>
+        <a href="/sitemap.xml">Sitemap</a>
+      </div>
+    </div>
+    <div class="f-bottom">© 2026 ToolNest · Free tools for everyone · Made with care</div>
+  </div>
+</footer>
+
+<script src="/assets/site.js?v=5"></script>
+
+<script>
+(function(){
+'use strict';
+var S='espp-calculator', ERR=S+'-error';
+function money(n){ return '$'+Number(n).toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2}); }
+function calc(){
+  if(!TN.el(S+'-fmvstart')) return;
+  TN.clearErr(ERR);
+  var fmvS=parseFloat(TN.el(S+'-fmvstart').value);
+  var fmvE=parseFloat(TN.el(S+'-fmvend').value);
+  var disc=parseFloat(TN.el(S+'-discount').value);
+  var contrib=parseFloat(TN.el(S+'-contrib').value);
+  if(!(fmvS>0)||!(fmvE>0)){ TN.setErr(ERR,'Enter FMVs greater than 0.'); return; }
+  if(isNaN(disc)||disc<0||disc>=100){ TN.setErr(ERR,'Enter a discount between 0 and 100.'); return; }
+  if(!(contrib>0)){ TN.setErr(ERR,'Enter a contribution greater than 0.'); return; }
+  var price=Math.min(fmvS,fmvE)*(1-disc/100);
+  var shares=contrib/price;
+  var value=shares*fmvE;
+  var gain=value-contrib;
+  TN.el(S+'-price').textContent=money(price);
+  TN.el(S+'-shares').textContent=(Math.round(shares*1000)/1000).toLocaleString('en-US');
+  TN.el(S+'-value').textContent=money(value);
+  TN.el(S+'-gain').textContent=money(gain);
+  TN.el(S+'-return').textContent=(Math.round(gain/contrib*10000)/100)+'%';
+}
+try{
+  ['fmvstart','fmvend','discount','contrib'].forEach(function(f){ TN.on(S+'-'+f,'input',calc); });
+  calc();
+}catch(e){}
+})();
+
+</script>
+</body>
+</html>

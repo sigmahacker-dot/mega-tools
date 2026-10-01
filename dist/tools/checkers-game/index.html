@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Checkers — Free Online | ToolNest</title>
+<meta name="description" content="Play English draughts (checkers) with full rules — forced captures, multi-jumps and kinging — against a greedy AI or a friend.">
+<meta name="keywords" content="checkers game, draughts game, play checkers online, checkers vs computer">
+<link rel="canonical" href="https://toolnest.vercel.app/tools/checkers-game/">
+<meta name="theme-color" content="#07070b">
+<meta property="og:title" content="Checkers — Free Online | ToolNest">
+<meta property="og:description" content="Play English draughts (checkers) with full rules — forced captures, multi-jumps and kinging — against a greedy AI or a friend.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css?v=4">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%23e01111'/><text x='50' y='68' font-size='58' text-anchor='middle' fill='white' font-family='Arial' font-weight='bold'>T</text></svg>">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebApplication","name":"Checkers","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0"},"url":"https://toolnest.vercel.app/tools/checkers-game/","description":"Play English draughts (checkers) with full rules — forced captures, multi-jumps and kinging — against a greedy AI or a friend."},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Are captures really forced?","acceptedAnswer":{"@type":"Answer","text":"Yes. If any of your pieces can capture, you must take a capture — the game only lets you pick capturing moves, and multi-jumps must be completed."}},{"@type":"Question","name":"How does a piece become a king?","acceptedAnswer":{"@type":"Answer","text":"Any man that reaches the farthest row is crowned a king and can then move and capture diagonally in both directions."}},{"@type":"Question","name":"How strong is the computer?","acceptedAnswer":{"@type":"Answer","text":"The computer prefers the capture that takes the most pieces and otherwise moves randomly — it plays fast but makes mistakes you can exploit."}},{"@type":"Question","name":"How do you win?","acceptedAnswer":{"@type":"Answer","text":"You win by capturing all enemy pieces, or when the opponent has no legal move left on their turn."}}]}]}</script>
+</head>
+<body>
+<header class="site-header">
+  <div class="container">
+    <a class="logo" href="/"><span class="logo-mark">T</span> ToolNest</a>
+    <div class="header-right">
+      <form class="nav-search" action="/" method="get" role="search">
+        <span class="ns-icon">🔍</span>
+        <input type="search" name="q" placeholder="Search tools…" aria-label="Search tools" autocomplete="off">
+      </form>
+      <div class="menu-wrap">
+        <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="menuPanel" aria-label="Open menu"><span></span><span></span><span></span></button>
+        <nav class="menu-panel" id="menuPanel" aria-label="Site">
+          <a href="/">Home</a>
+          <a href="/#categories">Categories</a>
+          <a href="/#all-tools">All Tools</a>
+        </nav>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ADSTERRA-HEADER: paste your Adsterra banner ad code inside the div below -->
+<div class="container"><div class="ad-slot ad-leaderboard" data-ad="header"></div></div>
+
+<main class="container">
+  <nav class="crumbs"><a href="/">Home</a> &rsaquo; <a href="/#fun">Fun &amp; Lifestyle</a> &rsaquo; Checkers</nav>
+  <div class="tool-hero">
+    <h1>Checkers</h1>
+    <p>Play English draughts (checkers) with full rules — forced captures, multi-jumps and kinging — against a greedy AI or a friend.</p>
+  </div>
+
+  <div class="tool-card" style="text-align:center">
+  <div class="grid2" style="max-width:440px;margin:0 auto 10px">
+    <div class="field" style="text-align:left">
+      <label for="checkers-game-mode">Mode</label>
+      <select class="input" id="checkers-game-mode">
+        <option value="ai" selected>Vs Computer (you are dark)</option>
+        <option value="2p">Two players</option>
+      </select>
+    </div>
+    <div class="field" style="text-align:left">
+      <label>&nbsp;</label>
+      <button class="btn btn-primary" id="checkers-game-new" style="width:100%">New game</button>
+    </div>
+  </div>
+  <p class="muted" id="checkers-game-status" style="min-height:24px;font-weight:600"></p>
+  <div style="display:inline-block;max-width:100%;overflow:auto">
+    <div id="checkers-game-board" style="display:inline-grid;grid-template-columns:repeat(8,minmax(34px,52px));gap:0;border:3px solid #4D7C0F;border-radius:8px;overflow:hidden"></div>
+  </div>
+  <div class="stat-cards" style="max-width:440px;margin:12px auto 0">
+    <div class="stat-card"><div class="v" id="checkers-game-you">12</div><div class="l">Your pieces</div></div>
+    <div class="stat-card"><div class="v" id="checkers-game-opp">12</div><div class="l">Opponent pieces</div></div>
+    <div class="stat-card"><div class="v" id="checkers-game-turn">You</div><div class="l">Turn</div></div>
+  </div>
+  <p class="note" style="max-width:440px;margin:10px auto 0">Captures are forced — when a jump is available the game highlights only capturing moves. Kings move diagonally in both directions.</p>
+  <div class="error" id="checkers-game-error"></div>
+</div>
+
+
+  <!-- ADSTERRA-INCONTENT: paste your Adsterra native/in-content ad code inside the div below -->
+  <div class="ad-slot" data-ad="incontent"></div>
+
+  <div class="info-grid">
+    <div class="info-card">
+      <h2>📖 How to use</h2>
+      <ol><li>Pick “Vs computer” or “Two players”, then press New game.</li><li>Click one of your pieces — legal destinations light up.</li><li>Captures are forced: when a jump is available you must take it, and keep jumping while you can.</li><li>Reach the far row to crown a king. First to capture everything wins.</li></ol>
+    </div>
+    <div class="info-card">
+      <h2>❓ Frequently asked questions</h2>
+      <div class="faq"><details><summary>Are captures really forced?</summary><p>Yes. If any of your pieces can capture, you must take a capture — the game only lets you pick capturing moves, and multi-jumps must be completed.</p></details><details><summary>How does a piece become a king?</summary><p>Any man that reaches the farthest row is crowned a king and can then move and capture diagonally in both directions.</p></details><details><summary>How strong is the computer?</summary><p>The computer prefers the capture that takes the most pieces and otherwise moves randomly — it plays fast but makes mistakes you can exploit.</p></details><details><summary>How do you win?</summary><p>You win by capturing all enemy pieces, or when the opponent has no legal move left on their turn.</p></details></div>
+    </div>
+  </div>
+
+  <section class="section">
+    <h2>🔗 Related tools</h2>
+    <div class="tool-grid"><a class="tool-link" href="/tools/100-day-challenge-tracker/" data-search="100-day challenge tracker track a 100-day challenge with a checkable 100-cell grid, streaks and stats. 100 day challenge habit tracker 100 days challenge tracker streak tracker"><span class="t-ico">🎲</span><span class="t-body"><b>100-Day Challenge Tracker</b><small>Track a 100-day challenge with a checkable 100-cell grid, streaks and stats.</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/24-game/" data-search="24 game the 24 game — combine four numbers with + − × ÷ to make 24. built-in solver guarantees every deal and gives hints. 24 game make 24 game 24 puzzle solver math puzzle game"><span class="t-ico">🎲</span><span class="t-body"><b>24 Game</b><small>The 24 Game — combine four numbers with + − × ÷ to make 24. Built-in solver guarantees every…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/aim-trainer-game/" data-search="aim trainer game test and train your aim — targets pop up at random spots for 30 seconds. hits, misses and accuracy are tracked live. aim trainer aim test reaction test click speed test fps aim trainer"><span class="t-ico">🎲</span><span class="t-body"><b>Aim Trainer Game</b><small>Test and train your aim — targets pop up at random spots for 30 seconds. Hits, misses and ac…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/asteroid-shooter/" data-search="asteroid shooter asteroid shooter — rotate, thrust and blast splitting asteroids on canvas. 3 lives, rising levels. asteroid shooter game asteroids game online space shooter canvas"><span class="t-ico">🎲</span><span class="t-body"><b>Asteroid Shooter</b><small>Asteroid Shooter — rotate, thrust and blast splitting asteroids on canvas. 3 lives, rising l…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/attendance-tracker/" data-search="attendance tracker track class attendance: roster with present/absent marks per date and % summaries. attendance tracker class attendance student attendance roll call app"><span class="t-ico">🎲</span><span class="t-body"><b>Attendance Tracker</b><small>Track class attendance: roster with present/absent marks per date and % summaries.</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/baby-name-generator/" data-search="baby name generator discover baby names by gender and origin — pakistani, arabic, western, indian or turkish — with meanings, random picks and tap-to-copy. baby name generator baby names with meanings muslim baby names boy girl names"><span class="t-ico">🎲</span><span class="t-body"><b>Baby Name Generator</b><small>Discover baby names by gender and origin — Pakistani, Arabic, Western, Indian or Turkish — w…</small></span><span class="t-arrow">→</span></a></div>
+  </section>
+</main>
+
+<!-- ADSTERRA-FOOTER: paste your Adsterra footer/banner ad code inside the div below -->
+<div class="container"><div class="ad-slot" data-ad="footer"></div></div>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="f-grid">
+      <div>
+        <span class="brandline"><span class="logo-mark">T</span> ToolNest</span>
+        <p>Free online tools that actually work. No sign-up, no watermarks — and your files never leave your device for client-side tools.</p>
+      </div>
+      <div>
+        <h4>Popular</h4>
+        <a href="/tools/qr-code-generator/">QR Code Generator</a>
+        <a href="/tools/background-remover/">Background Remover</a>
+        <a href="/tools/pdf-merger/">PDF Merger</a>
+        <a href="/tools/word-counter/">Word Counter</a>
+      </div>
+      <div>
+        <h4>Categories</h4>
+        <a href="/#image">Image Tools</a>
+        <a href="/#pdf">PDF &amp; Documents</a>
+        <a href="/#calculators">Calculators</a>
+        <a href="/#developer">Developer Tools</a>
+      </div>
+      <div>
+        <h4>Site</h4>
+        <a href="/">Home</a>
+        <a href="/#all-tools">All Tools</a>
+        <a href="/sitemap.xml">Sitemap</a>
+      </div>
+    </div>
+    <div class="f-bottom">© 2026 ToolNest · Free tools for everyone · Made with care</div>
+  </div>
+</footer>
+
+<script src="/assets/site.js?v=5"></script>
+
+<script>
+(function () {
+  'use strict';
+  var P = 'checkers-game-';
+  function g(id) { return document.getElementById(P + id); }
+  var N = 8, board = [], turn = 1, over = false, sel = null, selMoves = [], mustContinue = null;
+  var DIRS = { '1': [[-1, -1], [-1, 1]], '-1': [[1, -1], [1, 1]] };
+  function inB(r, c) { return r >= 0 && r < N && c >= 0 && c < N; }
+  function isKing(v) { return Math.abs(v) === 2; }
+  function colorOf(v) { return v > 0 ? 1 : (v < 0 ? -1 : 0); }
+  function dirsOf(v) {
+    if (isKing(v)) return [[-1, -1], [-1, 1], [1, -1], [1, 1]];
+    return DIRS[String(colorOf(v))];
+  }
+  function setup() {
+    board = [];
+    for (var r = 0; r < N; r++) {
+      board.push([]);
+      for (var c = 0; c < N; c++) {
+        var v = 0;
+        if ((r + c) % 2 === 1) {
+          if (r < 3) v = -1; else if (r > 4) v = 1;
+        }
+        board[r].push(v);
+      }
+    }
+    turn = 1; over = false; sel = null; selMoves = []; mustContinue = null;
+  }
+  // all capture sequences for one piece: list of {path:[[r,c]...], caps:[[r,c]...]}
+  function capSeqs(b, r, c, v, path, caps, out) {
+    var found = false, ds = dirsOf(v);
+    for (var i = 0; i < ds.length; i++) {
+      var r1 = r + ds[i][0], c1 = c + ds[i][1], r2 = r + 2 * ds[i][0], c2 = c + 2 * ds[i][1];
+      if (!inB(r2, c2) || b[r2][c2] !== 0) continue;
+      if (!inB(r1, c1)) continue;
+      var mid = b[r1][c1];
+      if (mid === 0 || colorOf(mid) === colorOf(v)) continue;
+      found = true;
+      b[r][c] = 0; b[r1][c1] = 0; b[r2][c2] = v;
+      path.push([r2, c2]); caps.push([r1, c1]);
+      capSeqs(b, r2, c2, v, path, caps, out);
+      path.pop(); caps.pop();
+      b[r][c] = v; b[r1][c1] = mid; b[r2][c2] = 0;
+    }
+    if (!found && caps.length) out.push({ path: path.slice(), caps: caps.slice() });
+  }
+  function quietMoves(b, r, c, v) {
+    var out = [], ds = dirsOf(v);
+    for (var i = 0; i < ds.length; i++) {
+      var r2 = r + ds[i][0], c2 = c + ds[i][1];
+      if (inB(r2, c2) && b[r2][c2] === 0) out.push({ path: [[r2, c2]], caps: [] });
+    }
+    return out;
+  }
+  function movesFor(b, color, r, c) {
+    var v = b[r][c];
+    if (colorOf(v) !== color) return [];
+    var out = [];
+    capSeqs(b, r, c, v, [], [], out);
+    if (out.length) return out.map(function (s) { return { from: [r, c], path: s.path, caps: s.caps }; });
+    return quietMoves(b, r, c, v).map(function (s) { return { from: [r, c], path: s.path, caps: s.caps }; });
+  }
+  function allMoves(b, color) {
+    var caps = [], quiet = [];
+    for (var r = 0; r < N; r++) for (var c = 0; c < N; c++) {
+      if (colorOf(b[r][c]) !== color) continue;
+      var ms = movesFor(b, color, r, c);
+      for (var i = 0; i < ms.length; i++) (ms[i].caps.length ? caps : quiet).push(ms[i]);
+    }
+    return caps.length ? caps : quiet; // forced captures
+  }
+  function applyMove(b, m) {
+    var fr = m.from[0], fc = m.from[1], v = b[fr][fc];
+    b[fr][fc] = 0;
+    for (var i = 0; i < m.caps.length; i++) b[m.caps[i][0]][m.caps[i][1]] = 0;
+    var lr = m.path[m.path.length - 1][0];
+    if (!isKing(v) && ((v === 1 && lr === 0) || (v === -1 && lr === N - 1))) v = v * 2; // crown
+    b[lr][m.path[m.path.length - 1][1]] = v;
+  }
+  function count(color) {
+    var n = 0;
+    for (var r = 0; r < N; r++) for (var c = 0; c < N; c++) if (colorOf(board[r][c]) === color) n++;
+    return n;
+  }
+  function mode() { var el = g('mode'); return el ? el.value : 'ai'; }
+  function status(t) { var el = g('status'); if (el) el.textContent = t; }
+  function turnLabel() {
+    if (mode() === 'ai') return turn === 1 ? 'You' : 'Computer';
+    return turn === 1 ? 'Dark' : 'Light';
+  }
+  function render() {
+    var bd = g('board'); if (!bd) return;
+    bd.innerHTML = '';
+    var all = mustContinue ? null : allMoves(board, turn);
+    for (var r = 0; r < N; r++) for (var c = 0; c < N; c++) {
+      (function (rr, cc) {
+        var d = document.createElement('button');
+        d.type = 'button';
+        var dark = (rr + cc) % 2 === 1;
+        d.style.cssText = 'width:100%;aspect-ratio:1;border:0;padding:0;cursor:' + (dark ? 'pointer' : 'default') + ';background:' + (dark ? '#3f6212' : '#ecfccb') + ';position:relative;font-size:26px;line-height:1;';
+        d.setAttribute('aria-label', 'Square ' + (rr + 1) + ',' + (cc + 1));
+        var v = board[rr][cc];
+        if (v !== 0) {
+          var king = isKing(v), you = colorOf(v) === 1;
+          d.innerHTML = '<span style="display:inline-block;width:72%;height:72%;border-radius:50%;background:' + (you ? '#1c1917' : '#f5f5f4') + ';border:3px solid ' + (you ? '#a3e635' : '#b91c1c') + ';box-shadow:0 2px 4px rgba(0,0,0,.4);position:relative">' +
+            (king ? '<span style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;color:' + (you ? '#fde047' : '#f59e0b') + ';font-size:15px">♛</span>' : '') + '</span>';
+        }
+        if (sel && sel[0] === rr && sel[1] === cc) d.style.outline = '3px solid #fde047';
+        if (selMoves.length) {
+          for (var i = 0; i < selMoves.length; i++) {
+            var dest = selMoves[i].path[0];
+            if (dest[0] === rr && dest[1] === cc) {
+              d.innerHTML = '<span style="display:inline-block;width:34%;height:34%;border-radius:50%;background:#fde047;opacity:.85"></span>';
+            }
+          }
+        }
+        if (dark && !over) d.addEventListener('click', function () { onSquare(rr, cc); });
+        bd.appendChild(d);
+      })(r, c);
+    }
+    var y = g('you'), o = g('opp'), t = g('turn');
+    if (y) y.textContent = String(count(1));
+    if (o) o.textContent = String(count(-1));
+    if (t) t.textContent = over ? '—' : turnLabel();
+  }
+  function legalDests() {
+    if (mustContinue) {
+      var out = [], v = board[mustContinue[0]][mustContinue[1]];
+      var seqs = [];
+      capSeqs(board, mustContinue[0], mustContinue[1], v, [], [], seqs);
+      for (var i = 0; i < seqs.length; i++) out.push({ from: mustContinue, path: [seqs[i].path[0]], caps: [seqs[i].caps[0]], full: seqs[i] });
+      return out;
+    }
+    return allMoves(board, turn).filter(function (m) { return sel && m.from[0] === sel[0] && m.from[1] === sel[1]; });
+  }
+  function onSquare(r, c) {
+    if (over) return;
+    if (mode() === 'ai' && turn !== 1) return;
+    var v = board[r][c];
+    if (selMoves.length) {
+      for (var i = 0; i < selMoves.length; i++) {
+        var dest = selMoves[i].path[0];
+        if (dest[0] === r && dest[1] === c) { doMove(selMoves[i]); return; }
+      }
+    }
+    if (colorOf(v) === turn && !(mustContinue && (mustContinue[0] !== r || mustContinue[1] !== c))) {
+      sel = [r, c];
+      selMoves = legalDests();
+      if (!selMoves.length) { sel = null; status('That piece has no legal move.'); }
+      else status(turnLabel() + ': choose a highlighted destination.');
+      render();
+    } else { sel = null; selMoves = []; render(); }
+  }
+  function doMove(m) {
+    var wasCapture = m.caps.length > 0;
+    applyMove(board, m);
+    var lr = m.path[m.path.length - 1][0], lc = m.path[m.path.length - 1][1];
+    sel = null; selMoves = [];
+    // multi-jump continuation (forced) — but not if the piece was just crowned
+    var v = board[lr][lc];
+    var justCrowned = wasCapture && isKing(v) && m.full === undefined && false; // crowning ends the sequence anyway below
+    var cont = [];
+    if (wasCapture && !isKing(v)) capSeqs(board, lr, lc, v, [], [], cont);
+    if (wasCapture && cont.length && !justCrowned) {
+      mustContinue = [lr, lc];
+      status(turnLabel() + ': keep jumping — another capture is forced!');
+      render();
+      return;
+    }
+    mustContinue = null;
+    // win check
+    var other = -turn;
+    if (count(other) === 0 || allMoves(board, other).length === 0) {
+      over = true;
+      render();
+      var w = mode() === 'ai' ? (turn === 1 ? '🎉 You win! All opponent pieces captured.' : '🤖 Computer wins. Try again!') : (turn === 1 ? '🎉 Dark wins!' : '🎉 Light wins!');
+      status(w);
+      return;
+    }
+    turn = other;
+    render();
+    status(turnLabel() + (turnLabel() === 'Computer' ? ' is thinking…' : ' to move.') + (allMoves(board, turn).length && allMoves(board, turn)[0].caps.length ? ' A capture is forced!' : ''));
+    if (mode() === 'ai' && turn === -1 && !over) setTimeout(aiMove, 450);
+  }
+  function aiMove() {
+    if (over || turn !== -1) return;
+    var ms = allMoves(board, -1);
+    if (!ms.length) { over = true; status('🎉 You win! Computer has no legal move.'); render(); return; }
+    var caps = ms.filter(function (m) { return m.caps.length; });
+    var pool = caps.length ? caps : ms;
+    var best = pool[0], bestScore = -1;
+    for (var i = 0; i < pool.length; i++) {
+      var s = pool[i].caps.length * 10 + (isKing(board[pool[i].from[0]][pool[i].from[1]]) ? 0 : 1) + Math.random();
+      if (s > bestScore) { bestScore = s; best = pool[i]; }
+    }
+    doMove(best);
+  }
+  function reset() {
+    setup();
+    TN.clearErr(P + 'error');
+    status('Your move — dark pieces. Click a piece.');
+    render();
+  }
+  try {
+    if (!g('board')) return;
+    TN.on(P + 'new', 'click', reset);
+    TN.on(P + 'mode', 'change', reset);
+    reset();
+  } catch (e) { /* never throw on load */ }
+})();
+
+</script>
+</body>
+</html>

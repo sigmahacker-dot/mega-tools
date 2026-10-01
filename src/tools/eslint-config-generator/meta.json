@@ -1,0 +1,38 @@
+{
+  "slug": "eslint-config-generator",
+  "title": "ESLint Config Generator",
+  "category": "developer",
+  "description": "Generate a flat-config eslint.config.js \u2014 rule presets, browser/node globals and custom rules.",
+  "keywords": [
+    "eslint config generator",
+    "eslint.config.js",
+    "eslint flat config",
+    "eslint rules"
+  ],
+  "howto": [
+    "Pick a rule preset (minimal, recommended-plus, strict).",
+    "Toggle browser and Node.js globals.",
+    "Add custom rules (\"name: severity\").",
+    "Copy the config or download eslint.config.js."
+  ],
+  "faqs": [
+    {
+      "q": "What is the flat config?",
+      "a": "The eslint.config.js format used by ESLint 9 \u2014 an exported array instead of the old .eslintrc files."
+    },
+    {
+      "q": "What do I need to install?",
+      "a": "npm i -D eslint @eslint/js globals \u2014 the generated file imports @eslint/js and optionally globals."
+    },
+    {
+      "q": "How are custom rules formatted?",
+      "a": "One per line as \"rule-name: error\" (or warn/off). They override the preset."
+    },
+    {
+      "q": "What do the environment toggles do?",
+      "a": "They add the right globals (window/document for browser, process/__dirname for Node) so ESLint does not flag them as undefined."
+    }
+  ],
+  "libs": [],
+  "module": false
+}

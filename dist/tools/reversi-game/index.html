@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Reversi — Free Online | ToolNest</title>
+<meta name="description" content="Reversi (Othello) with full flipping rules, pass handling and a greedy max-flip AI.">
+<meta name="keywords" content="reversi game, othello game online, reversi vs computer">
+<link rel="canonical" href="https://toolnest.vercel.app/tools/reversi-game/">
+<meta name="theme-color" content="#07070b">
+<meta property="og:title" content="Reversi — Free Online | ToolNest">
+<meta property="og:description" content="Reversi (Othello) with full flipping rules, pass handling and a greedy max-flip AI.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css?v=4">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%23e01111'/><text x='50' y='68' font-size='58' text-anchor='middle' fill='white' font-family='Arial' font-weight='bold'>T</text></svg>">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebApplication","name":"Reversi","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0"},"url":"https://toolnest.vercel.app/tools/reversi-game/","description":"Reversi (Othello) with full flipping rules, pass handling and a greedy max-flip AI."},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What happens if I have no legal move?","acceptedAnswer":{"@type":"Answer","text":"If you have no legal move on your turn, you must pass — the game does this automatically and tells you. If neither player can move, the game ends and discs are counted."}},{"@type":"Question","name":"How does the computer play?","acceptedAnswer":{"@type":"Answer","text":"The computer evaluates every legal move and picks the one that flips the most discs, with a strong preference for corners. It's beatable — mobility matters more than disc count early on."}},{"@type":"Question","name":"Any strategy tips?","acceptedAnswer":{"@type":"Answer","text":"Disc count only matters at the end. Early on, having fewer discs is often better because it gives you more moves. Corners can never be flipped — fight for them."}}]}]}</script>
+</head>
+<body>
+<header class="site-header">
+  <div class="container">
+    <a class="logo" href="/"><span class="logo-mark">T</span> ToolNest</a>
+    <div class="header-right">
+      <form class="nav-search" action="/" method="get" role="search">
+        <span class="ns-icon">🔍</span>
+        <input type="search" name="q" placeholder="Search tools…" aria-label="Search tools" autocomplete="off">
+      </form>
+      <div class="menu-wrap">
+        <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="menuPanel" aria-label="Open menu"><span></span><span></span><span></span></button>
+        <nav class="menu-panel" id="menuPanel" aria-label="Site">
+          <a href="/">Home</a>
+          <a href="/#categories">Categories</a>
+          <a href="/#all-tools">All Tools</a>
+        </nav>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ADSTERRA-HEADER: paste your Adsterra banner ad code inside the div below -->
+<div class="container"><div class="ad-slot ad-leaderboard" data-ad="header"></div></div>
+
+<main class="container">
+  <nav class="crumbs"><a href="/">Home</a> &rsaquo; <a href="/#fun">Fun &amp; Lifestyle</a> &rsaquo; Reversi</nav>
+  <div class="tool-hero">
+    <h1>Reversi</h1>
+    <p>Reversi (Othello) with full flipping rules, pass handling and a greedy max-flip AI.</p>
+  </div>
+
+  <div class="tool-card" style="text-align:center">
+  <div class="grid2" style="max-width:440px;margin:0 auto 10px">
+    <div class="field" style="text-align:left">
+      <label for="reversi-game-mode">Mode</label>
+      <select class="input" id="reversi-game-mode">
+        <option value="ai" selected>Vs Computer (you are black)</option>
+        <option value="2p">Two players</option>
+      </select>
+    </div>
+    <div class="field" style="text-align:left">
+      <label>&nbsp;</label>
+      <button class="btn btn-primary" id="reversi-game-new" style="width:100%">New game</button>
+    </div>
+  </div>
+  <p class="muted" id="reversi-game-status" style="min-height:24px;font-weight:600"></p>
+  <div style="display:inline-block;max-width:100%;overflow:auto">
+    <div id="reversi-game-board" style="display:inline-grid;grid-template-columns:repeat(8,minmax(34px,50px));gap:2px;background:#166534;padding:6px;border-radius:8px"></div>
+  </div>
+  <div class="stat-cards" style="max-width:440px;margin:12px auto 0">
+    <div class="stat-card"><div class="v" id="reversi-game-sb">2</div><div class="l">Black</div></div>
+    <div class="stat-card"><div class="v" id="reversi-game-sw">2</div><div class="l">White</div></div>
+    <div class="stat-card"><div class="v" id="reversi-game-moves">0</div><div class="l">Moves</div></div>
+  </div>
+  <div class="error" id="reversi-game-error"></div>
+</div>
+
+
+  <!-- ADSTERRA-INCONTENT: paste your Adsterra native/in-content ad code inside the div below -->
+  <div class="ad-slot" data-ad="incontent"></div>
+
+  <div class="info-grid">
+    <div class="info-card">
+      <h2>📖 How to use</h2>
+      <ol><li>You play black — click a highlighted square to place a disc.</li><li>You must outflank white discs; all flipped discs turn black.</li><li>If you can&#39;t move, you pass automatically.</li><li>Most discs when neither side can move wins.</li></ol>
+    </div>
+    <div class="info-card">
+      <h2>❓ Frequently asked questions</h2>
+      <div class="faq"><details><summary>What happens if I have no legal move?</summary><p>If you have no legal move on your turn, you must pass — the game does this automatically and tells you. If neither player can move, the game ends and discs are counted.</p></details><details><summary>How does the computer play?</summary><p>The computer evaluates every legal move and picks the one that flips the most discs, with a strong preference for corners. It&#39;s beatable — mobility matters more than disc count early on.</p></details><details><summary>Any strategy tips?</summary><p>Disc count only matters at the end. Early on, having fewer discs is often better because it gives you more moves. Corners can never be flipped — fight for them.</p></details></div>
+    </div>
+  </div>
+
+  <section class="section">
+    <h2>🔗 Related tools</h2>
+    <div class="tool-grid"><a class="tool-link" href="/tools/100-day-challenge-tracker/" data-search="100-day challenge tracker track a 100-day challenge with a checkable 100-cell grid, streaks and stats. 100 day challenge habit tracker 100 days challenge tracker streak tracker"><span class="t-ico">🎲</span><span class="t-body"><b>100-Day Challenge Tracker</b><small>Track a 100-day challenge with a checkable 100-cell grid, streaks and stats.</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/24-game/" data-search="24 game the 24 game — combine four numbers with + − × ÷ to make 24. built-in solver guarantees every deal and gives hints. 24 game make 24 game 24 puzzle solver math puzzle game"><span class="t-ico">🎲</span><span class="t-body"><b>24 Game</b><small>The 24 Game — combine four numbers with + − × ÷ to make 24. Built-in solver guarantees every…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/aim-trainer-game/" data-search="aim trainer game test and train your aim — targets pop up at random spots for 30 seconds. hits, misses and accuracy are tracked live. aim trainer aim test reaction test click speed test fps aim trainer"><span class="t-ico">🎲</span><span class="t-body"><b>Aim Trainer Game</b><small>Test and train your aim — targets pop up at random spots for 30 seconds. Hits, misses and ac…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/asteroid-shooter/" data-search="asteroid shooter asteroid shooter — rotate, thrust and blast splitting asteroids on canvas. 3 lives, rising levels. asteroid shooter game asteroids game online space shooter canvas"><span class="t-ico">🎲</span><span class="t-body"><b>Asteroid Shooter</b><small>Asteroid Shooter — rotate, thrust and blast splitting asteroids on canvas. 3 lives, rising l…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/attendance-tracker/" data-search="attendance tracker track class attendance: roster with present/absent marks per date and % summaries. attendance tracker class attendance student attendance roll call app"><span class="t-ico">🎲</span><span class="t-body"><b>Attendance Tracker</b><small>Track class attendance: roster with present/absent marks per date and % summaries.</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/baby-name-generator/" data-search="baby name generator discover baby names by gender and origin — pakistani, arabic, western, indian or turkish — with meanings, random picks and tap-to-copy. baby name generator baby names with meanings muslim baby names boy girl names"><span class="t-ico">🎲</span><span class="t-body"><b>Baby Name Generator</b><small>Discover baby names by gender and origin — Pakistani, Arabic, Western, Indian or Turkish — w…</small></span><span class="t-arrow">→</span></a></div>
+  </section>
+</main>
+
+<!-- ADSTERRA-FOOTER: paste your Adsterra footer/banner ad code inside the div below -->
+<div class="container"><div class="ad-slot" data-ad="footer"></div></div>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="f-grid">
+      <div>
+        <span class="brandline"><span class="logo-mark">T</span> ToolNest</span>
+        <p>Free online tools that actually work. No sign-up, no watermarks — and your files never leave your device for client-side tools.</p>
+      </div>
+      <div>
+        <h4>Popular</h4>
+        <a href="/tools/qr-code-generator/">QR Code Generator</a>
+        <a href="/tools/background-remover/">Background Remover</a>
+        <a href="/tools/pdf-merger/">PDF Merger</a>
+        <a href="/tools/word-counter/">Word Counter</a>
+      </div>
+      <div>
+        <h4>Categories</h4>
+        <a href="/#image">Image Tools</a>
+        <a href="/#pdf">PDF &amp; Documents</a>
+        <a href="/#calculators">Calculators</a>
+        <a href="/#developer">Developer Tools</a>
+      </div>
+      <div>
+        <h4>Site</h4>
+        <a href="/">Home</a>
+        <a href="/#all-tools">All Tools</a>
+        <a href="/sitemap.xml">Sitemap</a>
+      </div>
+    </div>
+    <div class="f-bottom">© 2026 ToolNest · Free tools for everyone · Made with care</div>
+  </div>
+</footer>
+
+<script src="/assets/site.js?v=5"></script>
+
+<script>
+(function () {
+  'use strict';
+  var P = 'reversi-game-';
+  function g(id) { return document.getElementById(P + id); }
+  var N = 8, board = [], turn = 1, over = false, moveCount = 0;
+  var DIRS = [[-1, -1], [-1, 0], [-1, 1], [0, -1], [0, 1], [1, -1], [1, 0], [1, 1]];
+  function inB(r, c) { return r >= 0 && r < N && c >= 0 && c < N; }
+  function setup() {
+    board = [];
+    for (var r = 0; r < N; r++) { board.push([]); for (var c = 0; c < N; c++) board[r].push(0); }
+    board[3][3] = -1; board[3][4] = 1; board[4][3] = 1; board[4][4] = -1;
+    turn = 1; over = false; moveCount = 0;
+  }
+  function mode() { var el = g('mode'); return el ? el.value : 'ai'; }
+  function status(t) { var el = g('status'); if (el) el.textContent = t; }
+  function flipsFor(b, r, c, p) {
+    if (b[r][c] !== 0) return [];
+    var out = [];
+    for (var d = 0; d < DIRS.length; d++) {
+      var dr = DIRS[d][0], dc = DIRS[d][1], rr = r + dr, cc = c + dc, line = [];
+      while (inB(rr, cc) && b[rr][cc] === -p) { line.push([rr, cc]); rr += dr; cc += dc; }
+      if (line.length && inB(rr, cc) && b[rr][cc] === p) out = out.concat(line);
+    }
+    return out;
+  }
+  function legalMoves(b, p) {
+    var out = [];
+    for (var r = 0; r < N; r++) for (var c = 0; c < N; c++)
+      if (flipsFor(b, r, c, p).length) out.push([r, c]);
+    return out;
+  }
+  function applyMove(b, r, c, p) {
+    var f = flipsFor(b, r, c, p);
+    b[r][c] = p;
+    for (var i = 0; i < f.length; i++) b[f[i][0]][f[i][1]] = p;
+    return f.length;
+  }
+  function counts() {
+    var b = 0, w = 0;
+    for (var r = 0; r < N; r++) for (var c = 0; c < N; c++) { if (board[r][c] === 1) b++; else if (board[r][c] === -1) w++; }
+    return [b, w];
+  }
+  function nameOf(p) {
+    if (mode() === '2p') return p === 1 ? 'Black' : 'White';
+    return p === 1 ? 'You (black)' : 'Computer (white)';
+  }
+  function aiPick(moves) {
+    var best = moves[0], bestS = -1e9;
+    for (var i = 0; i < moves.length; i++) {
+      var r = moves[i][0], c = moves[i][1];
+      var s = flipsFor(board, r, c, -1).length + Math.random() * 0.5;
+      var corner = (r === 0 || r === 7) && (c === 0 || c === 7);
+      var edge = (r === 0 || r === 7 || c === 0 || c === 7);
+      if (corner) s += 50;
+      else if (edge) s += 5;
+      // avoid giving corner-adjacent squares early
+      var adj = (r <= 1 || r >= 6) && (c <= 1 || c >= 6) && !corner;
+      if (adj) s -= 8;
+      if (s > bestS) { bestS = s; best = moves[i]; }
+    }
+    return best;
+  }
+  function render(legal) {
+    var bd = g('board'); if (!bd) return;
+    bd.innerHTML = '';
+    var legalSet = {};
+    for (var i = 0; i < (legal || []).length; i++) legalSet[legal[i][0] + ',' + legal[i][1]] = 1;
+    for (var r = 0; r < N; r++) for (var c = 0; c < N; c++) {
+      (function (rr, cc) {
+        var b = document.createElement('button');
+        b.type = 'button';
+        b.style.cssText = 'width:100%;aspect-ratio:1;border:0;padding:0;background:#15803d;border-radius:4px;position:relative;cursor:' + (legalSet[rr + ',' + cc] ? 'pointer' : 'default') + ';';
+        var v = board[rr][cc];
+        if (v) {
+          b.innerHTML = '<span style="position:absolute;left:10%;top:10%;width:80%;height:80%;border-radius:50%;background:' + (v === 1 ? '#1c1917' : '#fafaf9') + ';box-shadow:0 2px 4px rgba(0,0,0,.5)"></span>';
+        } else if (legalSet[rr + ',' + cc]) {
+          b.innerHTML = '<span style="position:absolute;left:38%;top:38%;width:24%;height:24%;border-radius:50%;background:#fde047;opacity:.9"></span>';
+          b.addEventListener('click', function () { onPlay(rr, cc); });
+        }
+        bd.appendChild(b);
+      })(r, c);
+    }
+    var ct = counts(), sb = g('sb'), sw = g('sw'), mv = g('moves');
+    if (sb) sb.textContent = String(ct[0]);
+    if (sw) sw.textContent = String(ct[1]);
+    if (mv) mv.textContent = String(moveCount);
+  }
+  function onPlay(r, c) {
+    if (over) return;
+    if (mode() === 'ai' && turn !== 1) return;
+    if (!flipsFor(board, r, c, turn).length) return;
+    doMove(r, c);
+  }
+  function doMove(r, c) {
+    applyMove(board, r, c, turn);
+    moveCount++;
+    advance();
+  }
+  function advance() {
+    var other = -turn;
+    var myMoves = legalMoves(board, other);
+    if (myMoves.length) {
+      turn = other;
+      render(myMoves);
+      if (mode() === 'ai' && turn === -1) { status('Computer is thinking…'); setTimeout(aiTurn, 450); }
+      else status(nameOf(turn) + ' to move.');
+      return;
+    }
+    // other must pass — can current player move?
+    var stillMine = legalMoves(board, turn);
+    if (stillMine.length) {
+      render(stillMine);
+      status(nameOf(other) + ' has no legal move and passes. ' + nameOf(turn) + ' moves again.');
+      if (mode() === 'ai' && turn === -1) setTimeout(aiTurn, 450);
+      return;
+    }
+    over = true;
+    render([]);
+    var ct = counts();
+    var msg = ct[0] > ct[1] ? '🎉 Black wins ' + ct[0] + '–' + ct[1] + '!' :
+      (ct[1] > ct[0] ? '🎉 White wins ' + ct[1] + '–' + ct[0] + '!' : '🤝 Draw, ' + ct[0] + '–' + ct[1] + '!');
+    if (mode() === 'ai') msg = (ct[0] > ct[1] ? '🎉 You win ' : (ct[1] > ct[0] ? '🤖 Computer wins ' : '🤝 Draw, ')) + ct[0] + '–' + ct[1] + '!';
+    status(msg);
+  }
+  function aiTurn() {
+    if (over || turn !== -1) return;
+    var moves = legalMoves(board, -1);
+    if (!moves.length) { advance(); return; }
+    var m = aiPick(moves);
+    doMove(m[0], m[1]);
+  }
+  function reset() {
+    setup();
+    TN.clearErr(P + 'error');
+    var moves = legalMoves(board, 1);
+    render(moves);
+    status('Your move (black). Black squares are legal moves.');
+  }
+  try {
+    if (!g('board')) return;
+    TN.on(P + 'new', 'click', reset);
+    TN.on(P + 'mode', 'change', reset);
+    reset();
+  } catch (e) { /* never throw on load */ }
+})();
+
+</script>
+</body>
+</html>

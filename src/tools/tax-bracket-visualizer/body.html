@@ -1,0 +1,24 @@
+<div class="tool-card">
+  <div class="field">
+    <label for="tax-bracket-visualizer-income">Taxable income ($/yr)</label>
+    <input type="number" class="input" id="tax-bracket-visualizer-income" min="0" step="any" placeholder="85000">
+  </div>
+  <div class="field">
+    <label>Tax brackets (marginal)</label>
+    <div id="tax-bracket-visualizer-brackets"></div>
+    <div class="btn-row" style="margin-top:8px">
+      <button class="btn btn-sm btn-outline" id="tax-bracket-visualizer-add" type="button">+ Add bracket</button>
+    </div>
+    <p class="muted">Defaults are illustrative only. Leave the last bracket's "Up to" empty for no cap.</p>
+  </div>
+  <div class="error" id="tax-bracket-visualizer-error"></div>
+  <div class="result" id="tax-bracket-visualizer-result">
+    <div class="stat-cards">
+      <div class="stat-card"><div class="v" id="tax-bracket-visualizer-total">&ndash;</div><div class="l">Total tax</div></div>
+      <div class="stat-card"><div class="v" id="tax-bracket-visualizer-effective">&ndash;</div><div class="l">Effective rate</div></div>
+      <div class="stat-card"><div class="v" id="tax-bracket-visualizer-marginal">&ndash;</div><div class="l">Marginal rate</div></div>
+    </div>
+    <div id="tax-bracket-visualizer-out"></div>
+    <p class="note">Illustrative &mdash; not tax advice. Enter brackets from your actual tax code for a real estimate.</p>
+  </div>
+</div>

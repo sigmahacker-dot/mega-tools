@@ -1,0 +1,34 @@
+<div class="tool-card">
+  <div class="grid2">
+    <div class="field">
+      <label for="running-race-predictor-dist">Known race distance</label>
+      <select class="select" id="running-race-predictor-dist">
+        <option value="1.5">1500 m</option>
+        <option value="1.60934">1 mile</option>
+        <option value="5" selected>5K</option>
+        <option value="10">10K</option>
+        <option value="16.0934">10 miles</option>
+        <option value="21.0975">Half marathon</option>
+        <option value="42.195">Marathon</option>
+        <option value="custom">Custom...</option>
+      </select>
+    </div>
+    <div class="field" id="running-race-predictor-customwrap" style="display:none">
+      <label for="running-race-predictor-custom">Custom distance (km)</label>
+      <input type="number" class="input" id="running-race-predictor-custom" min="0" step="any" placeholder="15">
+    </div>
+    <div class="field">
+      <label for="running-race-predictor-time">Your time (mm:ss or h:mm:ss)</label>
+      <input type="text" class="input" id="running-race-predictor-time" placeholder="24:30">
+    </div>
+    <div class="field">
+      <label for="running-race-predictor-target">Extra target distance (km, optional)</label>
+      <input type="number" class="input" id="running-race-predictor-target" min="0" step="any" placeholder="e.g. 15">
+    </div>
+  </div>
+  <div class="error" id="running-race-predictor-error"></div>
+  <div class="result" id="running-race-predictor-result">
+    <div id="running-race-predictor-out"></div>
+    <p class="note">Riegel formula predictions; assumes similar fitness and conditions. For information only &mdash; not medical advice.</p>
+  </div>
+</div>

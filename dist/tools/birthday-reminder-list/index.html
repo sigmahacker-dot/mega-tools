@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Birthday Reminder List — Free Online | ToolNest</title>
+<meta name="description" content="Never miss a birthday: names and dates with days-until countdowns, next upcoming birthday highlighted, saved in your browser.">
+<meta name="keywords" content="birthday reminder, birthday tracker, birthday countdown, never forget birthday">
+<link rel="canonical" href="https://toolnest.vercel.app/tools/birthday-reminder-list/">
+<meta name="theme-color" content="#07070b">
+<meta property="og:title" content="Birthday Reminder List — Free Online | ToolNest">
+<meta property="og:description" content="Never miss a birthday: names and dates with days-until countdowns, next upcoming birthday highlighted, saved in your browser.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css?v=4">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%23e01111'/><text x='50' y='68' font-size='58' text-anchor='middle' fill='white' font-family='Arial' font-weight='bold'>T</text></svg>">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebApplication","name":"Birthday Reminder List","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0"},"url":"https://toolnest.vercel.app/tools/birthday-reminder-list/","description":"Never miss a birthday: names and dates with days-until countdowns, next upcoming birthday highlighted, saved in your browser."},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How is the countdown computed?","acceptedAnswer":{"@type":"Answer","text":"From today to the next occurrence of the birthday — this year's date if it is still ahead, otherwise next year's. Leap-day birthdays (Feb 29) are shown on Feb 28 in non-leap years."}},{"@type":"Question","name":"Where is my list stored?","acceptedAnswer":{"@type":"Answer","text":"In your browser's localStorage, namespaced to this tool — it stays on this device and browser."}},{"@type":"Question","name":"Does it notify me?","acceptedAnswer":{"@type":"Answer","text":"No — this is a static page tool with no background notifications. Check the list weekly, or keep the tab bookmarked."}}]}]}</script>
+</head>
+<body>
+<header class="site-header">
+  <div class="container">
+    <a class="logo" href="/"><span class="logo-mark">T</span> ToolNest</a>
+    <div class="header-right">
+      <form class="nav-search" action="/" method="get" role="search">
+        <span class="ns-icon">🔍</span>
+        <input type="search" name="q" placeholder="Search tools…" aria-label="Search tools" autocomplete="off">
+      </form>
+      <div class="menu-wrap">
+        <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="menuPanel" aria-label="Open menu"><span></span><span></span><span></span></button>
+        <nav class="menu-panel" id="menuPanel" aria-label="Site">
+          <a href="/">Home</a>
+          <a href="/#categories">Categories</a>
+          <a href="/#all-tools">All Tools</a>
+        </nav>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ADSTERRA-HEADER: paste your Adsterra banner ad code inside the div below -->
+<div class="container"><div class="ad-slot ad-leaderboard" data-ad="header"></div></div>
+
+<main class="container">
+  <nav class="crumbs"><a href="/">Home</a> &rsaquo; <a href="/#time">Time &amp; Date</a> &rsaquo; Birthday Reminder List</nav>
+  <div class="tool-hero">
+    <h1>Birthday Reminder List</h1>
+    <p>Never miss a birthday: names and dates with days-until countdowns, next upcoming birthday highlighted, saved in your browser.</p>
+  </div>
+
+  <div class="tool-card">
+  <div class="grid3">
+    <div class="field">
+      <label for="birthday-reminder-list-name">Name</label>
+      <input class="input" id="birthday-reminder-list-name" type="text" placeholder="e.g. Ayesha">
+    </div>
+    <div class="field">
+      <label for="birthday-reminder-list-date">Birth date</label>
+      <input class="input" id="birthday-reminder-list-date" type="date">
+    </div>
+    <div class="field" style="align-self:end">
+      <button type="button" class="btn" id="birthday-reminder-list-add">Add birthday</button>
+    </div>
+  </div>
+  <div class="error" id="birthday-reminder-list-error"></div>
+  <div id="birthday-reminder-list-next" class="hidden">
+    <div class="stat-cards">
+      <div class="stat-card"><div class="v" id="birthday-reminder-list-who">–</div><div class="l">Next birthday</div></div>
+      <div class="stat-card"><div class="v" id="birthday-reminder-list-when">–</div><div class="l">Date</div></div>
+      <div class="stat-card"><div class="v" id="birthday-reminder-list-count">–</div><div class="l">Days away</div></div>
+    </div>
+  </div>
+  <div class="result">
+    <h3>All birthdays</h3>
+    <div style="overflow-x:auto"><table class="data"><thead><tr><th>Name</th><th>Birthday</th><th>Turning</th><th>In</th><th></th></tr></thead><tbody id="birthday-reminder-list-list"></tbody></table></div>
+  </div>
+</div>
+
+
+  <!-- ADSTERRA-INCONTENT: paste your Adsterra native/in-content ad code inside the div below -->
+  <div class="ad-slot" data-ad="incontent"></div>
+
+  <div class="info-grid">
+    <div class="info-card">
+      <h2>📖 How to use</h2>
+      <ol><li>Add each person with their name and birth date.</li><li>The list shows their upcoming birthday, turning age and days until.</li><li>The next upcoming birthday is highlighted at the top.</li><li>Everything is saved in your browser automatically.</li></ol>
+    </div>
+    <div class="info-card">
+      <h2>❓ Frequently asked questions</h2>
+      <div class="faq"><details><summary>How is the countdown computed?</summary><p>From today to the next occurrence of the birthday — this year&#39;s date if it is still ahead, otherwise next year&#39;s. Leap-day birthdays (Feb 29) are shown on Feb 28 in non-leap years.</p></details><details><summary>Where is my list stored?</summary><p>In your browser&#39;s localStorage, namespaced to this tool — it stays on this device and browser.</p></details><details><summary>Does it notify me?</summary><p>No — this is a static page tool with no background notifications. Check the list weekly, or keep the tab bookmarked.</p></details></div>
+    </div>
+  </div>
+
+  <section class="section">
+    <h2>🔗 Related tools</h2>
+    <div class="tool-grid"><a class="tool-link" href="/tools/add-subtract-days-calculator/" data-search="add / subtract days calculator add or subtract days, weeks, months or years from any date. optional business-days-only mode skips weekends automatically. add days to date subtract days calculator date plus days business days calculator date arithmetic"><span class="t-ico">⏰</span><span class="t-body"><b>Add / Subtract Days Calculator</b><small>Add or subtract days, weeks, months or years from any date. Optional business-days-only mode…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/anniversary-calculator/" data-search="anniversary calculator track any anniversary: days until the next one, which number it is (10th, 25th…), total days together and the weekday it falls on. anniversary calculator wedding anniversary countdown how many days until anniversary anniversary date tracker years together calculator"><span class="t-ico">⏰</span><span class="t-body"><b>Anniversary Calculator</b><small>Track any anniversary: days until the next one, which number it is (10th, 25th…), total days…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/bill-due-tracker/" data-search="bill due tracker never miss a payment — track recurring monthly bills with automatic next-due dates, days remaining and urgency sorting. bill due tracker bill reminder recurring bills tracker monthly bills organizer due date tracker"><span class="t-ico">⏰</span><span class="t-body"><b>Bill Due Tracker</b><small>Never miss a payment — track recurring monthly bills with automatic next-due dates, days rem…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/billable-hours-calculator/" data-search="billable hours calculator turn hours into invoices: billable hours × rate, utilization percentage against non-billable time, and the final invoice total. billable hours invoice calculator utilization rate freelance rate calculator"><span class="t-ico">⏰</span><span class="t-body"><b>Billable Hours Calculator</b><small>Turn hours into invoices: billable hours × rate, utilization percentage against non-billable…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/business-days-calculator/" data-search="business days calculator count working days between two dates, excluding weekends and your own custom holidays, with a full breakdown. business days calculator working days calculator weekdays between dates net workdays business days excluding holidays"><span class="t-ico">⏰</span><span class="t-body"><b>Business Days Calculator</b><small>Count working days between two dates, excluding weekends and your own custom holidays, with …</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/car-maintenance-tracker/" data-search="car maintenance tracker track car services by mileage and date intervals: oil, filters, tires and more — with due, due-soon and overdue status at a glance. car maintenance service reminder oil change tracker vehicle maintenance log"><span class="t-ico">⏰</span><span class="t-body"><b>Car Maintenance Tracker</b><small>Track car services by mileage and date intervals: oil, filters, tires and more — with due, d…</small></span><span class="t-arrow">→</span></a></div>
+  </section>
+</main>
+
+<!-- ADSTERRA-FOOTER: paste your Adsterra footer/banner ad code inside the div below -->
+<div class="container"><div class="ad-slot" data-ad="footer"></div></div>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="f-grid">
+      <div>
+        <span class="brandline"><span class="logo-mark">T</span> ToolNest</span>
+        <p>Free online tools that actually work. No sign-up, no watermarks — and your files never leave your device for client-side tools.</p>
+      </div>
+      <div>
+        <h4>Popular</h4>
+        <a href="/tools/qr-code-generator/">QR Code Generator</a>
+        <a href="/tools/background-remover/">Background Remover</a>
+        <a href="/tools/pdf-merger/">PDF Merger</a>
+        <a href="/tools/word-counter/">Word Counter</a>
+      </div>
+      <div>
+        <h4>Categories</h4>
+        <a href="/#image">Image Tools</a>
+        <a href="/#pdf">PDF &amp; Documents</a>
+        <a href="/#calculators">Calculators</a>
+        <a href="/#developer">Developer Tools</a>
+      </div>
+      <div>
+        <h4>Site</h4>
+        <a href="/">Home</a>
+        <a href="/#all-tools">All Tools</a>
+        <a href="/sitemap.xml">Sitemap</a>
+      </div>
+    </div>
+    <div class="f-bottom">© 2026 ToolNest · Free tools for everyone · Made with care</div>
+  </div>
+</footer>
+
+<script src="/assets/site.js?v=5"></script>
+
+<script>
+(function () {
+  'use strict';
+  var P = 'birthday-reminder-list-', ERR = P + 'error', LS = 'tn-birthday-reminder-list';
+  var DAY = 86400000;
+  var people = [];
+  function g(id) { return TN.el(P + id); }
+  function load() {
+    try {
+      var raw = localStorage.getItem(LS);
+      people = raw ? JSON.parse(raw) : [];
+    } catch (e) { people = []; }
+  }
+  function save() {
+    try { localStorage.setItem(LS, JSON.stringify(people)); } catch (e) { /* unavailable */ }
+  }
+  function isLeap(y) { return (y % 4 === 0 && y % 100 !== 0) || y % 400 === 0; }
+  function today() { var n = new Date(); return new Date(n.getFullYear(), n.getMonth(), n.getDate()); }
+  function nextBday(m, d) {
+    var t = today(), y = t.getFullYear();
+    function mk(yy) {
+      var dd = d;
+      if (m === 2 && d === 29 && !isLeap(yy)) dd = 28;
+      return new Date(yy, m - 1, dd);
+    }
+    var c = mk(y);
+    if (c < t) c = mk(y + 1);
+    return c;
+  }
+  function dstr(d) {
+    return d.getFullYear() + '-' + String(d.getMonth() + 1).padStart(2, '0') + '-' + String(d.getDate()).padStart(2, '0');
+  }
+  function render() {
+    var body = g('list'), t = today();
+    if (!people.length) {
+      body.innerHTML = '<tr><td colspan="5" class="muted">No birthdays yet — add someone above.</td></tr>';
+      TN.hide(P + 'next');
+      return;
+    }
+    var rows = people.map(function (p, i) {
+      var dp = p.date.split('-');
+      var m = parseInt(dp[1], 10), d = parseInt(dp[2], 10), by = parseInt(dp[0], 10);
+      var nb = nextBday(m, d);
+      var days = Math.round((nb - t) / DAY);
+      return { p: p, i: i, nb: nb, days: days, age: nb.getFullYear() - by };
+    }).sort(function (a, b) { return a.days - b.days; });
+    body.innerHTML = rows.map(function (r) {
+      var dp = r.p.date.split('-');
+      var bd = dp[2] + '/' + dp[1];
+      var inStr = r.days === 0 ? '<b style="color:#fbbf24">TODAY!</b>' : 'in ' + r.days + 'd';
+      return '<tr><td><b>' + TN.esc(r.p.name) + '</b></td><td>' + bd + '</td><td>' + r.age + '</td><td>' + inStr + '</td>' +
+        '<td><button type="button" class="btn btn-outline btn-sm" data-del="' + r.i + '">✕</button></td></tr>';
+    }).join('');
+    var dels = body.querySelectorAll('[data-del]');
+    for (var i = 0; i < dels.length; i++) {
+      (function (b) {
+        TN.on(b, 'click', function () {
+          people.splice(parseInt(b.getAttribute('data-del'), 10), 1);
+          save(); render();
+        });
+      })(dels[i]);
+    }
+    var r0 = rows[0];
+    TN.show(P + 'next');
+    g('who').textContent = r0.p.name;
+    g('when').textContent = dstr(r0.nb);
+    g('count').textContent = r0.days === 0 ? 'Today!' : String(r0.days);
+  }
+  try {
+    if (!TN.el(P + 'add')) return;
+    load(); render();
+    TN.on(P + 'add', 'click', function () {
+      TN.clearErr(ERR);
+      var name = g('name').value.trim(), dv = g('date').value;
+      if (!name) { TN.setErr(ERR, 'Enter a name.'); return; }
+      if (!dv) { TN.setErr(ERR, 'Pick a birth date.'); return; }
+      if (new Date(dv + 'T00:00') > today()) { TN.setErr(ERR, 'Birth date cannot be in the future.'); return; }
+      people.push({ name: name, date: dv });
+      g('name').value = '';
+      save(); render();
+    });
+  } catch (e) { /* never throw on load */ }
+})();
+
+</script>
+</body>
+</html>

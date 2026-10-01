@@ -1,0 +1,51 @@
+<div class="tool-card">
+  <div class="grid3">
+    <div class="field">
+      <label for="layover-planner-arr">Inbound arrival</label>
+      <input class="input" id="layover-planner-arr" type="datetime-local">
+    </div>
+    <div class="field">
+      <label for="layover-planner-dep">Outbound departure</label>
+      <input class="input" id="layover-planner-dep" type="datetime-local">
+    </div>
+    <div class="field">
+      <label for="layover-planner-airport">Connecting airport</label>
+      <select class="select" id="layover-planner-airport">
+        <option value="45">Dubai (DXB) ~45 min</option>
+        <option value="60" selected>Istanbul (IST) ~60 min</option>
+        <option value="60">Doha (DOH) ~60 min</option>
+        <option value="90">London Heathrow (LHR) ~90 min</option>
+        <option value="90">New York JFK ~90 min</option>
+        <option value="45">Singapore (SIN) ~45 min</option>
+        <option value="60">Lahore (LHE) ~60 min</option>
+        <option value="60">Karachi (KHI) ~60 min</option>
+        <option value="custom">Custom…</option>
+      </select>
+    </div>
+    <div class="field" id="layover-planner-custom-wrap" style="display:none">
+      <label for="layover-planner-custom">Custom MCT (min)</label>
+      <input class="input" id="layover-planner-custom" type="number" min="15" max="480" value="60">
+    </div>
+    <div class="field">
+      <label>Extras</label>
+      <div class="checkbox-row"><input type="checkbox" id="layover-planner-imm"> <label for="layover-planner-imm">Immigration (+30 min)</label></div>
+      <div class="checkbox-row"><input type="checkbox" id="layover-planner-bag"> <label for="layover-planner-bag">Re-check bags (+20 min)</label></div>
+    </div>
+    <div class="field" style="align-self:end">
+      <button type="button" class="btn" id="layover-planner-check">Check connection</button>
+    </div>
+  </div>
+  <div class="error" id="layover-planner-error"></div>
+  <div id="layover-planner-out" class="hidden">
+    <div class="stat-cards">
+      <div class="stat-card"><div class="v" id="layover-planner-lay">–</div><div class="l">Layover length</div></div>
+      <div class="stat-card"><div class="v" id="layover-planner-need">–</div><div class="l">Time needed</div></div>
+      <div class="stat-card"><div class="v" id="layover-planner-verdict">–</div><div class="l">Verdict</div></div>
+    </div>
+    <div class="result">
+      <h3>Guidance</h3>
+      <div id="layover-planner-steps"></div>
+    </div>
+  </div>
+  <p class="note">Typical minimum connect times — always confirm the official MCT with your airline before booking.</p>
+</div>

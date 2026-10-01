@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tip Pooling Calculator — Free Online | ToolNest</title>
+<meta name="description" content="Split pooled tips among staff by hours worked or role weights.">
+<meta name="keywords" content="tip pooling, split tips, restaurant tip pool">
+<link rel="canonical" href="https://toolnest.vercel.app/tools/tip-pooling-calculator/">
+<meta name="theme-color" content="#07070b">
+<meta property="og:title" content="Tip Pooling Calculator — Free Online | ToolNest">
+<meta property="og:description" content="Split pooled tips among staff by hours worked or role weights.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css?v=4">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%23e01111'/><text x='50' y='68' font-size='58' text-anchor='middle' fill='white' font-family='Arial' font-weight='bold'>T</text></svg>">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebApplication","name":"Tip Pooling Calculator","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0"},"url":"https://toolnest.vercel.app/tools/tip-pooling-calculator/","description":"Split pooled tips among staff by hours worked or role weights."},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How are leftover pennies handled?","acceptedAnswer":{"@type":"Answer","text":"Each share is rounded down to the cent, then leftover pennies are given one by one to the people with the largest fractional remainders, so the payouts always add up to the exact total."}},{"@type":"Question","name":"What is role weight?","acceptedAnswer":{"@type":"Answer","text":"A multiplier for different roles, e.g. servers 1.0, bussers 0.7. A person's points equal hours worked times their role weight."}},{"@type":"Question","name":"Is my data saved anywhere?","acceptedAnswer":{"@type":"Answer","text":"Your staff list is saved only in your browser's localStorage so it is there next time. Nothing is sent to any server."}}]}]}</script>
+</head>
+<body>
+<header class="site-header">
+  <div class="container">
+    <a class="logo" href="/"><span class="logo-mark">T</span> ToolNest</a>
+    <div class="header-right">
+      <form class="nav-search" action="/" method="get" role="search">
+        <span class="ns-icon">🔍</span>
+        <input type="search" name="q" placeholder="Search tools…" aria-label="Search tools" autocomplete="off">
+      </form>
+      <div class="menu-wrap">
+        <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="menuPanel" aria-label="Open menu"><span></span><span></span><span></span></button>
+        <nav class="menu-panel" id="menuPanel" aria-label="Site">
+          <a href="/">Home</a>
+          <a href="/#categories">Categories</a>
+          <a href="/#all-tools">All Tools</a>
+        </nav>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ADSTERRA-HEADER: paste your Adsterra banner ad code inside the div below -->
+<div class="container"><div class="ad-slot ad-leaderboard" data-ad="header"></div></div>
+
+<main class="container">
+  <nav class="crumbs"><a href="/">Home</a> &rsaquo; <a href="/#finance">Finance &amp; Money</a> &rsaquo; Tip Pooling Calculator</nav>
+  <div class="tool-hero">
+    <h1>Tip Pooling Calculator</h1>
+    <p>Split pooled tips among staff by hours worked or role weights.</p>
+  </div>
+
+  <div class="tool-card">
+  <div class="grid2">
+    <div class="field">
+      <label for="tip-pooling-calculator-total">Total tips collected ($)</label>
+      <input type="number" class="input" id="tip-pooling-calculator-total" min="0" step="any" placeholder="240.00">
+    </div>
+    <div class="field">
+      <label for="tip-pooling-calculator-method">Split method</label>
+      <select class="select" id="tip-pooling-calculator-method">
+        <option value="hours">By hours worked</option>
+        <option value="weighted">By hours &times; role weight</option>
+      </select>
+    </div>
+  </div>
+  <div class="field">
+    <label>Staff members</label>
+    <div id="tip-pooling-calculator-staff"></div>
+    <div class="btn-row" style="margin-top:8px">
+      <button class="btn btn-sm btn-outline" id="tip-pooling-calculator-add" type="button">+ Add staff member</button>
+    </div>
+  </div>
+  <div class="error" id="tip-pooling-calculator-error"></div>
+  <div class="result" id="tip-pooling-calculator-result">
+    <div id="tip-pooling-calculator-out"></div>
+    <p class="note">Shares are rounded to the cent; leftover pennies go to the largest fractional remainders so payouts always sum to the exact total.</p>
+    <p class="note">For information only &mdash; not financial advice.</p>
+  </div>
+</div>
+
+  <!-- ADSTERRA-INCONTENT: paste your Adsterra native/in-content ad code inside the div below -->
+  <div class="ad-slot" data-ad="incontent"></div>
+
+  <div class="info-grid">
+    <div class="info-card">
+      <h2>📖 How to use</h2>
+      <ol><li>Enter the total tips collected for the shift.</li><li>Choose a split method: hours worked, or hours multiplied by role weight.</li><li>Add each staff member with their hours (and weight if using weights).</li><li>Read each person&#39;s share. Leftover pennies go to the largest remainders.</li></ol>
+    </div>
+    <div class="info-card">
+      <h2>❓ Frequently asked questions</h2>
+      <div class="faq"><details><summary>How are leftover pennies handled?</summary><p>Each share is rounded down to the cent, then leftover pennies are given one by one to the people with the largest fractional remainders, so the payouts always add up to the exact total.</p></details><details><summary>What is role weight?</summary><p>A multiplier for different roles, e.g. servers 1.0, bussers 0.7. A person&#39;s points equal hours worked times their role weight.</p></details><details><summary>Is my data saved anywhere?</summary><p>Your staff list is saved only in your browser&#39;s localStorage so it is there next time. Nothing is sent to any server.</p></details></div>
+    </div>
+  </div>
+
+  <section class="section">
+    <h2>🔗 Related tools</h2>
+    <div class="tool-grid"><a class="tool-link" href="/tools/apr-calculator/" data-search="apr calculator solve the true annual percentage rate of a loan by bisection — including upfront fees — and compare it with the nominal rate. apr calculator true apr calculator annual percentage rate calculator loan apr calculator nominal vs effective rate"><span class="t-ico">💰</span><span class="t-body"><b>APR Calculator</b><small>Solve the true Annual Percentage Rate of a loan by bisection — including upfront fees — and …</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/baby-cost-calculator/" data-search="baby cost calculator estimate first-year baby costs from editable monthly and one-time line items. baby cost first year baby expenses newborn cost"><span class="t-ico">💰</span><span class="t-body"><b>Baby Cost Calculator</b><small>Estimate first-year baby costs from editable monthly and one-time line items.</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/balloon-payment-calculator/" data-search="balloon payment calculator compute the monthly payment on a balloon loan and the lump-sum balloon balance still due at the end of the term. balloon payment calculator balloon loan calculator balloon mortgage calculator balloon balance calculator lump sum loan calculator"><span class="t-ico">💰</span><span class="t-body"><b>Balloon Payment Calculator</b><small>Compute the monthly payment on a balloon loan and the lump-sum balloon balance still due at …</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/benefits-value-calculator/" data-search="benefits value calculator compute total compensation: salary plus health, retirement match and pto value. benefits calculator total compensation job benefits value"><span class="t-ico">💰</span><span class="t-body"><b>Benefits Value Calculator</b><small>Compute total compensation: salary plus health, retirement match and PTO value.</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/break-even-calculator/" data-search="break-even calculator find your break-even point in units and revenue from fixed costs, price per unit and variable cost per unit. break even calculator breakeven point calculator break even analysis units to break even business break even calculator"><span class="t-ico">💰</span><span class="t-body"><b>Break-Even Calculator</b><small>Find your break-even point in units and revenue from fixed costs, price per unit and variabl…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/budget-50-30-20-calculator/" data-search="50/30/20 budget calculator split your take-home pay into needs (50%), wants (30%) and savings (20%), then compare with your actual spending. 50 30 20 budget budget calculator needs wants savings monthly budget planner budget rule calculator"><span class="t-ico">💰</span><span class="t-body"><b>50/30/20 Budget Calculator</b><small>Split your take-home pay into needs (50%), wants (30%) and savings (20%), then compare with …</small></span><span class="t-arrow">→</span></a></div>
+  </section>
+</main>
+
+<!-- ADSTERRA-FOOTER: paste your Adsterra footer/banner ad code inside the div below -->
+<div class="container"><div class="ad-slot" data-ad="footer"></div></div>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="f-grid">
+      <div>
+        <span class="brandline"><span class="logo-mark">T</span> ToolNest</span>
+        <p>Free online tools that actually work. No sign-up, no watermarks — and your files never leave your device for client-side tools.</p>
+      </div>
+      <div>
+        <h4>Popular</h4>
+        <a href="/tools/qr-code-generator/">QR Code Generator</a>
+        <a href="/tools/background-remover/">Background Remover</a>
+        <a href="/tools/pdf-merger/">PDF Merger</a>
+        <a href="/tools/word-counter/">Word Counter</a>
+      </div>
+      <div>
+        <h4>Categories</h4>
+        <a href="/#image">Image Tools</a>
+        <a href="/#pdf">PDF &amp; Documents</a>
+        <a href="/#calculators">Calculators</a>
+        <a href="/#developer">Developer Tools</a>
+      </div>
+      <div>
+        <h4>Site</h4>
+        <a href="/">Home</a>
+        <a href="/#all-tools">All Tools</a>
+        <a href="/sitemap.xml">Sitemap</a>
+      </div>
+    </div>
+    <div class="f-bottom">© 2026 ToolNest · Free tools for everyone · Made with care</div>
+  </div>
+</footer>
+
+<script src="/assets/site.js?v=5"></script>
+
+<script>
+(function(){
+'use strict';
+var S='tip-pooling-calculator', ERR=S+'-error', LS='tn-tip-pooling-calculator';
+function money(n){ return '$'+Number(n).toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2}); }
+function staffRows(){ return Array.prototype.slice.call(TN.el(S+'-staff').querySelectorAll('[data-row]')); }
+function readStaff(){
+  return staffRows().map(function(r,i){
+    return {
+      name:(r.querySelector('[data-name]').value||'').trim()||('Staff '+(i+1)),
+      hours:parseFloat(r.querySelector('[data-hours]').value)||0,
+      weight:parseFloat(r.querySelector('[data-weight]').value)
+    };
+  });
+}
+function applyMethod(){
+  var w=TN.el(S+'-method').value==='weighted';
+  staffRows().forEach(function(r){ r.querySelector('[data-weightwrap]').style.display=w?'':'none'; });
+}
+function addRow(name,hours,weight){
+  var wrap=TN.el(S+'-staff');
+  var div=document.createElement('div');
+  div.setAttribute('data-row','1');
+  div.style.cssText='display:flex;gap:8px;margin-bottom:8px;align-items:flex-end';
+  div.innerHTML=
+    '<div class="field" style="flex:2;min-width:0"><label>Name</label><input class="input" data-name placeholder="Sam" value="'+TN.esc(name||'')+'"></div>'+
+    '<div class="field" style="flex:1;min-width:0"><label>Hours</label><input type="number" class="input" data-hours min="0" step="any" placeholder="8" value="'+(hours==null||hours===''?'':hours)+'"></div>'+
+    '<div class="field" style="flex:1;min-width:0" data-weightwrap><label>Weight</label><input type="number" class="input" data-weight min="0" step="any" value="'+(weight==null||isNaN(weight)?1:weight)+'"></div>'+
+    '<button class="btn btn-sm btn-outline" data-remove type="button" aria-label="Remove staff member">X</button>';
+  wrap.appendChild(div);
+  var rerun=function(){ calc(); save(); };
+  div.querySelector('[data-remove]').addEventListener('click',function(){ div.remove(); rerun(); });
+  Array.prototype.forEach.call(div.querySelectorAll('input'),function(inp){ inp.addEventListener('input',rerun); });
+  applyMethod();
+}
+function save(){
+  try{
+    localStorage.setItem(LS,JSON.stringify({
+      total:TN.el(S+'-total').value, method:TN.el(S+'-method').value,
+      staff:readStaff().map(function(s){ return {n:s.name,h:s.hours,w:s.weight}; })
+    }));
+  }catch(e){}
+}
+function load(){
+  try{
+    var d=JSON.parse(localStorage.getItem(LS)||'null');
+    if(!d) return false;
+    TN.el(S+'-total').value=d.total||'';
+    TN.el(S+'-method').value=d.method||'hours';
+    (d.staff||[]).forEach(function(s){ addRow(s.n,s.h,s.w); });
+    return (d.staff||[]).length>0;
+  }catch(e){ return false; }
+}
+function calc(){
+  if(!TN.el(S+'-total')) return;
+  TN.clearErr(ERR);
+  var out=TN.el(S+'-out'); out.innerHTML='';
+  var total=parseFloat(TN.el(S+'-total').value);
+  if(!(total>0)) return;
+  var method=TN.el(S+'-method').value;
+  var staff=readStaff();
+  if(!staff.length){ TN.setErr(ERR,'Add at least one staff member.'); return; }
+  var pts=staff.map(function(s){
+    var w=method==='weighted'?(isNaN(s.weight)?0:Math.max(0,s.weight)):1;
+    return Math.max(0,s.hours)*w;
+  });
+  var sum=pts.reduce(function(a,b){ return a+b; },0);
+  if(!(sum>0)){ TN.setErr(ERR,'Enter hours above 0 for at least one staff member.'); return; }
+  var exact=pts.map(function(p){ return total*p/sum; });
+  var floored=exact.map(function(e){ return Math.floor(e*100+1e-6)/100; });
+  var paid=floored.reduce(function(a,b){ return a+b; },0);
+  var pennies=Math.round((total-paid)*100);
+  var order=exact.map(function(e,i){ return {i:i,frac:e-floored[i]}; })
+    .sort(function(a,b){ return b.frac-a.frac; });
+  var share=floored.slice();
+  for(var k=0;k<pennies&&k<order.length;k++){ share[order[k].i]=Math.round((share[order[k].i]+0.01)*100)/100; }
+  var html='<div class="stat-cards">';
+  html+='<div class="stat-card"><div class="v">'+money(total)+'</div><div class="l">Total tips</div></div>';
+  html+='<div class="stat-card"><div class="v">'+staff.length+'</div><div class="l">Staff sharing</div></div>';
+  html+='<div class="stat-card"><div class="v">'+money(total/staff.length)+'</div><div class="l">Equal-split reference</div></div></div>';
+  html+='<table class="data"><thead><tr><th>Name</th><th>Hours</th>'+(method==='weighted'?'<th>Weight</th>':'')+'<th>Points</th><th>Share</th></tr></thead><tbody>';
+  staff.forEach(function(s,i){
+    html+='<tr><td>'+TN.esc(s.name)+'</td><td>'+s.hours+'</td>'+(method==='weighted'?'<td>'+(isNaN(s.weight)?0:s.weight)+'</td>':'')+'<td>'+(Math.round(pts[i]*100)/100)+'</td><td><strong>'+money(share[i])+'</strong></td></tr>';
+  });
+  html+='</tbody></table>';
+  out.innerHTML=html;
+}
+try{
+  if(!load()){ addRow('',8,1); addRow('',6,1); addRow('',4,1); }
+  TN.on(S+'-total','input',function(){ calc(); save(); });
+  TN.on(S+'-method','change',function(){ applyMethod(); calc(); save(); });
+  TN.on(S+'-add','click',function(){ addRow('','',1); save(); });
+  applyMethod(); calc();
+}catch(e){}
+})();
+
+</script>
+</body>
+</html>

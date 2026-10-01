@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Image Perspective Tilt — Free Online | ToolNest</title>
+<meta name="description" content="Tilt and rotate your photo at any angle with skew control — the canvas auto-sizes to fit the transformed image.">
+<meta name="keywords" content="image rotate, tilt photo, perspective tilt, skew image">
+<link rel="canonical" href="https://toolnest.vercel.app/tools/image-perspective-tilt/">
+<meta name="theme-color" content="#07070b">
+<meta property="og:title" content="Image Perspective Tilt — Free Online | ToolNest">
+<meta property="og:description" content="Tilt and rotate your photo at any angle with skew control — the canvas auto-sizes to fit the transformed image.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css?v=4">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%23e01111'/><text x='50' y='68' font-size='58' text-anchor='middle' fill='white' font-family='Arial' font-weight='bold'>T</text></svg>">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebApplication","name":"Image Perspective Tilt","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0"},"url":"https://toolnest.vercel.app/tools/image-perspective-tilt/","description":"Tilt and rotate your photo at any angle with skew control — the canvas auto-sizes to fit the transformed image."},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What's the difference between rotate and skew?","acceptedAnswer":{"@type":"Answer","text":"Rotation spins the photo; horizontal and vertical skew shear it for a dynamic tilted look. Combine them for a perspective feel."}},{"@type":"Question","name":"Will the corners get cut off?","acceptedAnswer":{"@type":"Answer","text":"The canvas grows automatically to the bounding box of the rotated image, so no corners are ever cut off."}},{"@type":"Question","name":"Is my photo uploaded?","acceptedAnswer":{"@type":"Answer","text":"Yes — the transform is computed and drawn in your browser; nothing is uploaded."}}]}]}</script>
+</head>
+<body>
+<header class="site-header">
+  <div class="container">
+    <a class="logo" href="/"><span class="logo-mark">T</span> ToolNest</a>
+    <div class="header-right">
+      <form class="nav-search" action="/" method="get" role="search">
+        <span class="ns-icon">🔍</span>
+        <input type="search" name="q" placeholder="Search tools…" aria-label="Search tools" autocomplete="off">
+      </form>
+      <div class="menu-wrap">
+        <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="menuPanel" aria-label="Open menu"><span></span><span></span><span></span></button>
+        <nav class="menu-panel" id="menuPanel" aria-label="Site">
+          <a href="/">Home</a>
+          <a href="/#categories">Categories</a>
+          <a href="/#all-tools">All Tools</a>
+        </nav>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ADSTERRA-HEADER: paste your Adsterra banner ad code inside the div below -->
+<div class="container"><div class="ad-slot ad-leaderboard" data-ad="header"></div></div>
+
+<main class="container">
+  <nav class="crumbs"><a href="/">Home</a> &rsaquo; <a href="/#image">Image Tools</a> &rsaquo; Image Perspective Tilt</nav>
+  <div class="tool-hero">
+    <h1>Image Perspective Tilt</h1>
+    <p>Tilt and rotate your photo at any angle with skew control — the canvas auto-sizes to fit the transformed image.</p>
+  </div>
+
+  <div class="tool-card">
+  <div class="field">
+    <label for="image-perspective-tilt-file">Photo</label>
+    <input type="file" id="image-perspective-tilt-file" accept="image/*" class="input">
+  </div>
+  <div class="grid3">
+    <div class="field">
+      <label for="image-perspective-tilt-rot">Rotate: <span id="image-perspective-tilt-rot-val">0</span>°</label>
+      <input type="range" id="image-perspective-tilt-rot" min="-45" max="45" value="0" step="1">
+    </div>
+    <div class="field">
+      <label for="image-perspective-tilt-skewx">Skew X: <span id="image-perspective-tilt-skewx-val">0</span>°</label>
+      <input type="range" id="image-perspective-tilt-skewx" min="-30" max="30" value="0" step="1">
+    </div>
+    <div class="field">
+      <label for="image-perspective-tilt-skewy">Skew Y: <span id="image-perspective-tilt-skewy-val">0</span>°</label>
+      <input type="range" id="image-perspective-tilt-skewy" min="-30" max="30" value="0" step="1">
+    </div>
+  </div>
+  <div class="btn-row">
+    <button class="btn btn-primary" id="image-perspective-tilt-download">Download image</button>
+    <button class="btn btn-outline" id="image-perspective-tilt-reset">Reset</button>
+  </div>
+  <div class="result">
+    <canvas id="image-perspective-tilt-canvas" style="width:100%;border-radius:8px;"></canvas>
+  </div>
+  <div class="error" id="image-perspective-tilt-error"></div>
+  <p class="note">The canvas auto-sizes to the transformed bounding box, so nothing is cropped. Processed locally in your browser.</p>
+</div>
+
+
+  <!-- ADSTERRA-INCONTENT: paste your Adsterra native/in-content ad code inside the div below -->
+  <div class="ad-slot" data-ad="incontent"></div>
+
+  <div class="info-grid">
+    <div class="info-card">
+      <h2>📖 How to use</h2>
+      <ol><li>Choose a photo.</li><li>Drag the rotate slider to spin it (-45° to +45°).</li><li>Add horizontal or vertical skew for a tilted look.</li><li>Click &quot;Download image&quot; to save the PNG.</li></ol>
+    </div>
+    <div class="info-card">
+      <h2>❓ Frequently asked questions</h2>
+      <div class="faq"><details><summary>What&#39;s the difference between rotate and skew?</summary><p>Rotation spins the photo; horizontal and vertical skew shear it for a dynamic tilted look. Combine them for a perspective feel.</p></details><details><summary>Will the corners get cut off?</summary><p>The canvas grows automatically to the bounding box of the rotated image, so no corners are ever cut off.</p></details><details><summary>Is my photo uploaded?</summary><p>Yes — the transform is computed and drawn in your browser; nothing is uploaded.</p></details></div>
+    </div>
+  </div>
+
+  <section class="section">
+    <h2>🔗 Related tools</h2>
+    <div class="tool-grid"><a class="tool-link" href="/tools/app-icon-resizer/" data-search="app icon resizer generate every common app icon size from one image — 16, 32, 48, 180, 192 and 512 px — with instant preview and one-click png downloads. app icon resizer icon generator favicon sizes pwa icon apple touch icon generator"><span class="t-ico">🖼️</span><span class="t-body"><b>App Icon Resizer</b><small>Generate every common app icon size from one image — 16, 32, 48, 180, 192 and 512 px — with …</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/background-remover/" data-search="background remover remove the background from any photo with real on-device ai and download a transparent png. free, private and unlimited — no sign-up needed. background remover remove image background transparent png maker"><span class="t-ico">🖼️</span><span class="t-body"><b>Background Remover</b><small>Remove the background from any photo with real on-device AI and download a transparent PNG. …</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/before-after-slider-maker/" data-search="before/after slider maker upload two photos and get a standalone before/after comparison slider as an html file. before after slider image comparison slider photo compare html before after html"><span class="t-ico">🖼️</span><span class="t-body"><b>Before/After Slider Maker</b><small>Upload two photos and get a standalone before/after comparison slider as an HTML file.</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/business-card-maker/" data-search="business card maker design a business card front (1050×600): your name, role and contact details, color themes, live preview, and a png download. business card maker business card design business card png visiting card maker card designer"><span class="t-ico">🖼️</span><span class="t-body"><b>Business Card Maker</b><small>Design a business card front (1050×600): your name, role and contact details, color themes, …</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/certificate-maker/" data-search="certificate maker design printable certificates: recipient name, course title, date and signature line, live preview, and a high-res png download. certificate maker certificate generator certificate png award certificate maker printable certificate"><span class="t-ico">🖼️</span><span class="t-body"><b>Certificate Maker</b><small>Design printable certificates: recipient name, course title, date and signature line, live p…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/color-splash-effect/" data-search="color splash effect pick a color to keep and turn everything else black-and-white — the classic color splash effect with a tolerance slider. color splash selective color color pop effect black and white photo"><span class="t-ico">🖼️</span><span class="t-body"><b>Color Splash Effect</b><small>Pick a color to keep and turn everything else black-and-white — the classic color splash eff…</small></span><span class="t-arrow">→</span></a></div>
+  </section>
+</main>
+
+<!-- ADSTERRA-FOOTER: paste your Adsterra footer/banner ad code inside the div below -->
+<div class="container"><div class="ad-slot" data-ad="footer"></div></div>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="f-grid">
+      <div>
+        <span class="brandline"><span class="logo-mark">T</span> ToolNest</span>
+        <p>Free online tools that actually work. No sign-up, no watermarks — and your files never leave your device for client-side tools.</p>
+      </div>
+      <div>
+        <h4>Popular</h4>
+        <a href="/tools/qr-code-generator/">QR Code Generator</a>
+        <a href="/tools/background-remover/">Background Remover</a>
+        <a href="/tools/pdf-merger/">PDF Merger</a>
+        <a href="/tools/word-counter/">Word Counter</a>
+      </div>
+      <div>
+        <h4>Categories</h4>
+        <a href="/#image">Image Tools</a>
+        <a href="/#pdf">PDF &amp; Documents</a>
+        <a href="/#calculators">Calculators</a>
+        <a href="/#developer">Developer Tools</a>
+      </div>
+      <div>
+        <h4>Site</h4>
+        <a href="/">Home</a>
+        <a href="/#all-tools">All Tools</a>
+        <a href="/sitemap.xml">Sitemap</a>
+      </div>
+    </div>
+    <div class="f-bottom">© 2026 ToolNest · Free tools for everyone · Made with care</div>
+  </div>
+</footer>
+
+<script src="/assets/site.js?v=5"></script>
+
+<script>
+/* Image Perspective Tilt — rotate + skew transform with auto-sized canvas. */
+(function () {
+  'use strict';
+  var SLUG = 'image-perspective-tilt';
+  var ERR = SLUG + '-error';
+  var img = null;
+  var MAXW = 1600;
+
+  function params() {
+    function gv(id) {
+      var el = document.getElementById(SLUG + '-' + id);
+      return el ? parseFloat(el.value) || 0 : 0;
+    }
+    return { rot: gv('rot') * Math.PI / 180, sx: gv('skewx') * Math.PI / 180, sy: gv('skewy') * Math.PI / 180 };
+  }
+
+  // transform matrix: skew applied first, then rotate (matches canvas setTransform(a,b,c,d,e,f))
+  function computeMatrix(p) {
+    var cr = Math.cos(p.rot), sr = Math.sin(p.rot);
+    var tx = Math.tan(p.sx), ty = Math.tan(p.sy);
+    // S = [[1, tx],[ty, 1]] applied first, then R
+    return {
+      a: cr - sr * ty,
+      b: sr + cr * ty,
+      c: cr * tx - sr,
+      d: sr * tx + cr
+    };
+  }
+
+  function apply() {
+    var canvas = document.getElementById(SLUG + '-canvas');
+    if (!canvas) return;
+    if (!img) {
+      canvas.width = 800; canvas.height = 400;
+      var c0 = canvas.getContext('2d');
+      c0.fillStyle = '#e5e7eb';
+      c0.fillRect(0, 0, 800, 400);
+      c0.fillStyle = '#9aa0a8';
+      c0.font = '28px Arial, sans-serif';
+      c0.textAlign = 'center';
+      c0.fillText('Choose a photo', 400, 200);
+      return;
+    }
+    var s = Math.min(1, MAXW / img.naturalWidth);
+    var w = img.naturalWidth * s, h = img.naturalHeight * s;
+    var m = computeMatrix(params());
+    // bounding box of transformed corners
+    var corners = [[0, 0], [w, 0], [w, h], [0, h]];
+    var xs = [], ys = [];
+    corners.forEach(function (pt) {
+      xs.push(m.a * pt[0] + m.c * pt[1]);
+      ys.push(m.b * pt[0] + m.d * pt[1]);
+    });
+    var minX = Math.min.apply(null, xs), maxX = Math.max.apply(null, xs);
+    var minY = Math.min.apply(null, ys), maxY = Math.max.apply(null, ys);
+    canvas.width = Math.ceil(maxX - minX);
+    canvas.height = Math.ceil(maxY - minY);
+    var ctx = canvas.getContext('2d');
+    ctx.setTransform(m.a, m.b, m.c, m.d, -minX, -minY);
+    ctx.drawImage(img, 0, 0, w, h);
+    try { ctx.setTransform(1, 0, 0, 1, 0, 0); } catch (e) {}
+  }
+
+  try {
+    if (!document.getElementById(SLUG + '-canvas')) return;
+    apply();
+    TN.on(SLUG + '-file', 'change', function () {
+      var f = this.files && this.files[0];
+      if (!f) return;
+      TN.clearErr(ERR);
+      TN.readAsDataURL(f).then(TN.loadImage).then(function (im) { img = im; apply(); })
+        .catch(function () { TN.setErr(ERR, 'That file could not be read as an image. Try a JPG, PNG or WebP file.'); });
+    });
+    [['rot', '°'], ['skewx', '°'], ['skewy', '°']].forEach(function (k) {
+      TN.on(SLUG + '-' + k[0], 'input', function () {
+        var v = document.getElementById(SLUG + '-' + k[0] + '-val');
+        if (v) v.textContent = this.value;
+        apply();
+      });
+    });
+    TN.on(SLUG + '-reset', 'click', function () {
+      ['rot', 'skewx', 'skewy'].forEach(function (k) {
+        var el = document.getElementById(SLUG + '-' + k);
+        if (el) { el.value = 0; var v = document.getElementById(SLUG + '-' + k + '-val'); if (v) v.textContent = '0'; }
+      });
+      apply();
+    });
+    TN.on(SLUG + '-download', 'click', function () {
+      TN.clearErr(ERR);
+      var canvas = document.getElementById(SLUG + '-canvas');
+      if (!img) { TN.setErr(ERR, 'Choose a photo first.'); return; }
+      try {
+        canvas.toBlob(function (b) {
+          if (b) TN.download(b, 'tilted-image.png');
+          else TN.setErr(ERR, 'Could not export the image.');
+        }, 'image/png');
+      } catch (e) { TN.setErr(ERR, 'Could not export the image.'); }
+    });
+  } catch (e) {
+    TN.setErr(ERR, 'This tool could not start: ' + (e && e.message || e));
+  }
+})();
+
+</script>
+</body>
+</html>

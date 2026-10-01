@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PDF Page Size Changer — Free Online | ToolNest</title>
+<meta name="description" content="Resize every page of a PDF to A4, Letter, Legal, A3, A5 or a custom size — content is scaled proportionally, nothing is cropped.">
+<meta name="keywords" content="pdf page size changer, resize pdf pages, pdf a4 to letter, change pdf paper size">
+<link rel="canonical" href="https://toolnest.vercel.app/tools/pdf-page-size-changer/">
+<meta name="theme-color" content="#07070b">
+<meta property="og:title" content="PDF Page Size Changer — Free Online | ToolNest">
+<meta property="og:description" content="Resize every page of a PDF to A4, Letter, Legal, A3, A5 or a custom size — content is scaled proportionally, nothing is cropped.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css?v=4">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%23e01111'/><text x='50' y='68' font-size='58' text-anchor='middle' fill='white' font-family='Arial' font-weight='bold'>T</text></svg>">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebApplication","name":"PDF Page Size Changer","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0"},"url":"https://toolnest.vercel.app/tools/pdf-page-size-changer/","description":"Resize every page of a PDF to A4, Letter, Legal, A3, A5 or a custom size — content is scaled proportionally, nothing is cropped."},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Will my content be cropped?","acceptedAnswer":{"@type":"Answer","text":"No — pages are scaled to fit the target size while keeping their aspect ratio (letterboxed). Use the Fill option if you prefer edge-to-edge scaling with cropping."}},{"@type":"Question","name":"Does resizing reduce quality?","acceptedAnswer":{"@type":"Answer","text":"Vector text and graphics scale perfectly at any size. Scanned/image pages are resampled by your PDF viewer when printed."}},{"@type":"Question","name":"Is my PDF uploaded anywhere?","acceptedAnswer":{"@type":"Answer","text":"No. Everything is processed in your browser; the PDF never leaves your device."}}]}]}</script>
+</head>
+<body>
+<header class="site-header">
+  <div class="container">
+    <a class="logo" href="/"><span class="logo-mark">T</span> ToolNest</a>
+    <div class="header-right">
+      <form class="nav-search" action="/" method="get" role="search">
+        <span class="ns-icon">🔍</span>
+        <input type="search" name="q" placeholder="Search tools…" aria-label="Search tools" autocomplete="off">
+      </form>
+      <div class="menu-wrap">
+        <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="menuPanel" aria-label="Open menu"><span></span><span></span><span></span></button>
+        <nav class="menu-panel" id="menuPanel" aria-label="Site">
+          <a href="/">Home</a>
+          <a href="/#categories">Categories</a>
+          <a href="/#all-tools">All Tools</a>
+        </nav>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ADSTERRA-HEADER: paste your Adsterra banner ad code inside the div below -->
+<div class="container"><div class="ad-slot ad-leaderboard" data-ad="header"></div></div>
+
+<main class="container">
+  <nav class="crumbs"><a href="/">Home</a> &rsaquo; <a href="/#pdf">PDF &amp; Documents</a> &rsaquo; PDF Page Size Changer</nav>
+  <div class="tool-hero">
+    <h1>PDF Page Size Changer</h1>
+    <p>Resize every page of a PDF to A4, Letter, Legal, A3, A5 or a custom size — content is scaled proportionally, nothing is cropped.</p>
+  </div>
+
+  <div class="tool-card">
+  <div class="field">
+    <label for="pdf-page-size-changer-file">PDF file</label>
+    <input type="file" class="input" id="pdf-page-size-changer-file" accept="application/pdf,.pdf">
+  </div>
+  <div class="grid2">
+    <div class="field">
+      <label for="pdf-page-size-changer-size">Target page size</label>
+      <select class="input select" id="pdf-page-size-changer-size">
+        <option value="595.28,841.89">A4 (210 × 297 mm)</option>
+        <option value="612,792">US Letter (8.5 × 11 in)</option>
+        <option value="612,1008">US Legal (8.5 × 14 in)</option>
+        <option value="841.89,1190.55">A3 (297 × 420 mm)</option>
+        <option value="419.53,595.28">A5 (148 × 210 mm)</option>
+        <option value="custom">Custom…</option>
+      </select>
+    </div>
+    <div class="field">
+      <label for="pdf-page-size-changer-fit">Scaling</label>
+      <select class="input select" id="pdf-page-size-changer-fit">
+        <option value="fit">Fit — no cropping</option>
+        <option value="fill">Fill — edge to edge (may crop)</option>
+      </select>
+    </div>
+  </div>
+  <div class="grid2 hidden" id="pdf-page-size-changer-custom">
+    <div class="field">
+      <label for="pdf-page-size-changer-w">Custom width (pt)</label>
+      <input type="number" class="input" id="pdf-page-size-changer-w" min="36" max="5000" value="612">
+    </div>
+    <div class="field">
+      <label for="pdf-page-size-changer-h">Custom height (pt)</label>
+      <input type="number" class="input" id="pdf-page-size-changer-h" min="36" max="5000" value="792">
+    </div>
+  </div>
+  <div class="btn-row">
+    <button class="btn" id="pdf-page-size-changer-go">Resize pages</button>
+    <button class="btn btn-outline" id="pdf-page-size-changer-dl" disabled>Download PDF</button>
+  </div>
+  <div class="error" id="pdf-page-size-changer-error"></div>
+  <div class="result hidden" id="pdf-page-size-changer-result">
+    <div class="stat-cards">
+      <div class="stat-card"><div class="v" id="pdf-page-size-changer-pages">–</div><div class="l">Pages resized</div></div>
+      <div class="stat-card"><div class="v" id="pdf-page-size-changer-dim">–</div><div class="l">New size (pt)</div></div>
+    </div>
+    <p class="note">1 pt = 1/72 inch. Content keeps its aspect ratio in Fit mode.</p>
+  </div>
+</div>
+
+
+  <!-- ADSTERRA-INCONTENT: paste your Adsterra native/in-content ad code inside the div below -->
+  <div class="ad-slot" data-ad="incontent"></div>
+
+  <div class="info-grid">
+    <div class="info-card">
+      <h2>📖 How to use</h2>
+      <ol><li>Upload a PDF file.</li><li>Pick a target page size (A4, Letter, Legal, A3, A5 or custom).</li><li>Choose Fit (no cropping) or Fill (edge-to-edge).</li><li>Click Resize pages, then download the new PDF.</li></ol>
+    </div>
+    <div class="info-card">
+      <h2>❓ Frequently asked questions</h2>
+      <div class="faq"><details><summary>Will my content be cropped?</summary><p>No — pages are scaled to fit the target size while keeping their aspect ratio (letterboxed). Use the Fill option if you prefer edge-to-edge scaling with cropping.</p></details><details><summary>Does resizing reduce quality?</summary><p>Vector text and graphics scale perfectly at any size. Scanned/image pages are resampled by your PDF viewer when printed.</p></details><details><summary>Is my PDF uploaded anywhere?</summary><p>No. Everything is processed in your browser; the PDF never leaves your device.</p></details></div>
+    </div>
+  </div>
+
+  <section class="section">
+    <h2>🔗 Related tools</h2>
+    <div class="tool-grid"><a class="tool-link" href="/tools/esign-pdf/" data-search="esign pdf draw your signature and stamp it onto any page of a pdf. choose the page, position and size with sliders, then download the signed document. esign pdf sign pdf online electronic signature pdf"><span class="t-ico">📄</span><span class="t-body"><b>eSign PDF</b><small>Draw your signature and stamp it onto any page of a PDF. Choose the page, position and size …</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/pdf-bates-stamper/" data-search="pdf bates stamper stamp sequential bates numbers (prefix-000001) on every page corner — the legal document numbering standard. bates stamp bates numbering legal pdf numbering page numbering stamp"><span class="t-ico">📄</span><span class="t-body"><b>PDF Bates Stamper</b><small>Stamp sequential Bates numbers (PREFIX-000001) on every page corner — the legal document num…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/pdf-blank-page-adder/" data-search="pdf blank page adder insert blank pages into a pdf — at the start, at the end, or after any page. choose page size and how many to add. add blank pages pdf insert blank page pdf pdf blank page add pages to pdf pdf insert pages"><span class="t-ico">📄</span><span class="t-body"><b>PDF Blank Page Adder</b><small>Insert blank pages into a PDF — at the start, at the end, or after any page. Choose page siz…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/pdf-booklet-imposer/" data-search="pdf booklet imposer impose pdf pages into booklet spreads (4 pages per sheet) in correct print order — ready for double-sided printing and folding. pdf booklet booklet imposition print booklet saddle stitch pdf"><span class="t-ico">📄</span><span class="t-body"><b>PDF Booklet Imposer</b><small>Impose PDF pages into booklet spreads (4 pages per sheet) in correct print order — ready for…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/pdf-compressor/" data-search="pdf compressor shrink a pdf&#39;s file size by re-rendering its pages as compressed images. choose low, medium or high quality and compare sizes before downloading. compress pdf reduce pdf size shrink pdf"><span class="t-ico">📄</span><span class="t-body"><b>PDF Compressor</b><small>Shrink a PDF&#39;s file size by re-rendering its pages as compressed images. Choose Low, Medium …</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/pdf-form-filler/" data-search="pdf form filler fill pdf forms in your browser: upload a pdf, see its detected text fields, type your answers, and download the filled document. fill pdf form pdf form filler fill pdf online fillable pdf pdf acroform"><span class="t-ico">📄</span><span class="t-body"><b>PDF Form Filler</b><small>Fill PDF forms in your browser: upload a PDF, see its detected text fields, type your answer…</small></span><span class="t-arrow">→</span></a></div>
+  </section>
+</main>
+
+<!-- ADSTERRA-FOOTER: paste your Adsterra footer/banner ad code inside the div below -->
+<div class="container"><div class="ad-slot" data-ad="footer"></div></div>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="f-grid">
+      <div>
+        <span class="brandline"><span class="logo-mark">T</span> ToolNest</span>
+        <p>Free online tools that actually work. No sign-up, no watermarks — and your files never leave your device for client-side tools.</p>
+      </div>
+      <div>
+        <h4>Popular</h4>
+        <a href="/tools/qr-code-generator/">QR Code Generator</a>
+        <a href="/tools/background-remover/">Background Remover</a>
+        <a href="/tools/pdf-merger/">PDF Merger</a>
+        <a href="/tools/word-counter/">Word Counter</a>
+      </div>
+      <div>
+        <h4>Categories</h4>
+        <a href="/#image">Image Tools</a>
+        <a href="/#pdf">PDF &amp; Documents</a>
+        <a href="/#calculators">Calculators</a>
+        <a href="/#developer">Developer Tools</a>
+      </div>
+      <div>
+        <h4>Site</h4>
+        <a href="/">Home</a>
+        <a href="/#all-tools">All Tools</a>
+        <a href="/sitemap.xml">Sitemap</a>
+      </div>
+    </div>
+    <div class="f-bottom">© 2026 ToolNest · Free tools for everyone · Made with care</div>
+  </div>
+</footer>
+
+<script src="/assets/site.js?v=5"></script>
+<script src="https://cdn.jsdelivr.net/npm/pdf-lib@1.17.1/dist/pdf-lib.min.js" defer></script>
+<script>
+/* PDF Page Size Changer — resize every page to a target paper size with pdf-lib. */
+(function () {
+  'use strict';
+  var S = 'pdf-page-size-changer';
+  var outBytes = null;
+
+  function targetSize() {
+    var v = TN.el(S + '-size').value;
+    if (v === 'custom') {
+      var w = parseFloat(TN.el(S + '-w').value);
+      var h = parseFloat(TN.el(S + '-h').value);
+      if (!(w >= 36 && w <= 5000 && h >= 36 && h <= 5000)) return null;
+      return { w: w, h: h };
+    }
+    var p = v.split(',');
+    return { w: parseFloat(p[0]), h: parseFloat(p[1]) };
+  }
+
+  function run() {
+    TN.clearErr(S + '-error');
+    if (typeof PDFLib === 'undefined') { TN.setErr(S + '-error', 'PDF engine is still loading — please try again in a moment.'); return; }
+    var f = TN.el(S + '-file').files[0];
+    if (!f) { TN.setErr(S + '-error', 'Choose a PDF file first.'); return; }
+    var size = targetSize();
+    if (!size) { TN.setErr(S + '-error', 'Enter a valid custom size (36–5000 pt).'); return; }
+    var fit = TN.el(S + '-fit').value === 'fit';
+    var goBtn = TN.el(S + '-go');
+    goBtn.disabled = true;
+    TN.readAsArrayBuffer(f).then(function (buf) {
+      return PDFLib.PDFDocument.load(buf, { ignoreEncryption: true });
+    }).then(function (src) {
+      return PDFLib.PDFDocument.create().then(function (out) {
+        var pages = src.getPages();
+        var chain = Promise.resolve();
+        pages.forEach(function (pg) {
+          chain = chain.then(function () {
+            return out.embedPage(pg).then(function (emb) {
+              var pw = pg.getWidth(), ph = pg.getHeight();
+              var sc = fit ? Math.min(size.w / pw, size.h / ph) : Math.max(size.w / pw, size.h / ph);
+              var dw = pw * sc, dh = ph * sc;
+              var np = out.addPage([size.w, size.h]);
+              np.drawPage(emb, { x: (size.w - dw) / 2, y: (size.h - dh) / 2, width: dw, height: dh });
+            });
+          });
+        });
+        return chain.then(function () { return { doc: out, n: pages.length }; });
+      });
+    }).then(function (r) {
+      return r.doc.save().then(function (bytes) {
+        outBytes = bytes;
+        TN.el(S + '-pages').textContent = String(r.n);
+        TN.el(S + '-dim').textContent = Math.round(size.w) + ' × ' + Math.round(size.h);
+        TN.show(S + '-result');
+        TN.el(S + '-dl').disabled = false;
+        goBtn.disabled = false;
+      });
+    }).catch(function (e) {
+      goBtn.disabled = false;
+      TN.setErr(S + '-error', 'Could not process this PDF: ' + (e && e.message ? e.message : e));
+    });
+  }
+
+  try {
+    if (!TN.el(S + '-file')) return;
+    TN.on(S + '-size', 'change', function () {
+      TN.el(S + '-custom').classList.toggle('hidden', TN.el(S + '-size').value !== 'custom');
+    });
+    TN.on(S + '-go', 'click', run);
+    TN.on(S + '-dl', 'click', function () {
+      if (outBytes) TN.download(new Blob([outBytes], { type: 'application/pdf' }), 'resized-pages.pdf');
+    });
+  } catch (e) { /* never throw on load */ }
+})();
+
+</script>
+</body>
+</html>

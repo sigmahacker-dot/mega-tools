@@ -1,0 +1,35 @@
+<div class="tool-card">
+  <div class="field">
+    <label for="noise-gate-lite-file">Audio file</label>
+    <input type="file" id="noise-gate-lite-file" accept="audio/*" class="input">
+  </div>
+  <div class="grid3">
+    <div class="field">
+      <label for="noise-gate-lite-thr">Threshold: <span id="noise-gate-lite-thr-val">−40</span> dB</label>
+      <input type="range" id="noise-gate-lite-thr" min="-60" max="-10" step="1" value="-40">
+    </div>
+    <div class="field">
+      <label for="noise-gate-lite-attack">Attack: <span id="noise-gate-lite-attack-val">5</span> ms</label>
+      <input type="range" id="noise-gate-lite-attack" min="0.5" max="50" step="0.5" value="5">
+    </div>
+    <div class="field">
+      <label for="noise-gate-lite-release">Release: <span id="noise-gate-lite-release-val">120</span> ms</label>
+      <input type="range" id="noise-gate-lite-release" min="10" max="500" step="10" value="120">
+    </div>
+  </div>
+  <div class="btn-row">
+    <button class="btn btn-primary" id="noise-gate-lite-go">Apply gate</button>
+  </div>
+  <div class="result hidden" id="noise-gate-lite-result">
+    <div class="stat-cards">
+      <div class="stat-card"><div class="v" id="noise-gate-lite-gated">–</div><div class="l">Audio gated</div></div>
+      <div class="stat-card"><div class="v" id="noise-gate-lite-noise">–</div><div class="l">Est. noise floor</div></div>
+    </div>
+    <div class="btn-row">
+      <button class="btn btn-outline" id="noise-gate-lite-play">Preview</button>
+      <button class="btn btn-primary" id="noise-gate-lite-download">Download WAV</button>
+    </div>
+  </div>
+  <div class="error" id="noise-gate-lite-error"></div>
+  <p class="note">A gentle cleanup tool — it silences audio below the threshold, it can't remove noise sitting under loud signal. Runs in your browser.</p>
+</div>

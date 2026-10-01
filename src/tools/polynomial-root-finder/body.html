@@ -1,0 +1,26 @@
+<div class="tool-card">
+  <div class="field">
+    <label for="polynomial-root-finder-coeffs">Coefficients (highest degree → constant, space or comma separated)</label>
+    <input class="input" id="polynomial-root-finder-coeffs" type="text" placeholder="e.g. 1 -6 11 -6" value="1 -6 11 -6" style="font-family:monospace">
+  </div>
+  <div class="btn-row">
+    <button type="button" class="btn" id="polynomial-root-finder-find">Find Roots</button>
+    <button type="button" class="btn btn-outline btn-sm" id="polynomial-root-finder-copy">Copy roots</button>
+  </div>
+  <div class="error" id="polynomial-root-finder-error"></div>
+  <div id="polynomial-root-finder-out" class="hidden">
+    <div class="result">
+      <h3>Polynomial</h3>
+      <p id="polynomial-root-finder-poly" style="font-family:monospace;font-size:1.15em"></p>
+    </div>
+    <div class="result">
+      <h3>Roots</h3>
+      <div style="overflow-x:auto"><table class="data"><thead><tr><th>#</th><th>Root</th><th>Type</th><th>P(root) ≈ 0?</th></tr></thead><tbody id="polynomial-root-finder-roots"></tbody></table></div>
+      <p class="muted" id="polynomial-root-finder-iter"></p>
+    </div>
+    <div class="result">
+      <h3>Method & steps</h3>
+      <div id="polynomial-root-finder-steps"></div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Engagement Rate Calculator — Free Online | ToolNest</title>
+<meta name="description" content="Calculate engagement rate from likes, comments, shares and followers or reach.">
+<meta name="keywords" content="engagement rate calculator, instagram engagement rate, social media engagement, er calculator">
+<link rel="canonical" href="https://toolnest.vercel.app/tools/engagement-rate-calculator/">
+<meta name="theme-color" content="#07070b">
+<meta property="og:title" content="Engagement Rate Calculator — Free Online | ToolNest">
+<meta property="og:description" content="Calculate engagement rate from likes, comments, shares and followers or reach.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css?v=4">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%23e01111'/><text x='50' y='68' font-size='58' text-anchor='middle' fill='white' font-family='Arial' font-weight='bold'>T</text></svg>">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebApplication","name":"Engagement Rate Calculator","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0"},"url":"https://toolnest.vercel.app/tools/engagement-rate-calculator/","description":"Calculate engagement rate from likes, comments, shares and followers or reach."},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How is engagement rate calculated?","acceptedAnswer":{"@type":"Answer","text":"Enter likes, comments, shares and either follower count or reach. ER = (likes+comments+shares) ÷ followers (or reach) × 100."}},{"@type":"Question","name":"By followers or by reach?","acceptedAnswer":{"@type":"Answer","text":"Both are standard: by followers shows audience loyalty, by reach shows content performance. This tool computes both."}},{"@type":"Question","name":"What is a good engagement rate?","acceptedAnswer":{"@type":"Answer","text":"Roughly: \u003c1% low, 1–3% average, 3–6% good, 6%+ excellent — varies by platform and niche."}},{"@type":"Question","name":"Should I use one post or an average?","acceptedAnswer":{"@type":"Answer","text":"Use averages across your last 10–20 posts for a stable number, not a single viral post."}}]}]}</script>
+</head>
+<body>
+<header class="site-header">
+  <div class="container">
+    <a class="logo" href="/"><span class="logo-mark">T</span> ToolNest</a>
+    <div class="header-right">
+      <form class="nav-search" action="/" method="get" role="search">
+        <span class="ns-icon">🔍</span>
+        <input type="search" name="q" placeholder="Search tools…" aria-label="Search tools" autocomplete="off">
+      </form>
+      <div class="menu-wrap">
+        <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="menuPanel" aria-label="Open menu"><span></span><span></span><span></span></button>
+        <nav class="menu-panel" id="menuPanel" aria-label="Site">
+          <a href="/">Home</a>
+          <a href="/#categories">Categories</a>
+          <a href="/#all-tools">All Tools</a>
+        </nav>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ADSTERRA-HEADER: paste your Adsterra banner ad code inside the div below -->
+<div class="container"><div class="ad-slot ad-leaderboard" data-ad="header"></div></div>
+
+<main class="container">
+  <nav class="crumbs"><a href="/">Home</a> &rsaquo; <a href="/#social">Social Media</a> &rsaquo; Engagement Rate Calculator</nav>
+  <div class="tool-hero">
+    <h1>Engagement Rate Calculator</h1>
+    <p>Calculate engagement rate from likes, comments, shares and followers or reach.</p>
+  </div>
+
+  <div class="tool-card">
+  <div class="grid3">
+    <div class="field">
+      <label for="engagement-rate-calculator-likes">Likes</label>
+      <input class="input" type="number" id="engagement-rate-calculator-likes" min="0" placeholder="1200">
+    </div>
+    <div class="field">
+      <label for="engagement-rate-calculator-comments">Comments</label>
+      <input class="input" type="number" id="engagement-rate-calculator-comments" min="0" placeholder="80">
+    </div>
+    <div class="field">
+      <label for="engagement-rate-calculator-shares">Shares / saves</label>
+      <input class="input" type="number" id="engagement-rate-calculator-shares" min="0" placeholder="40">
+    </div>
+    <div class="field">
+      <label for="engagement-rate-calculator-followers">Followers</label>
+      <input class="input" type="number" id="engagement-rate-calculator-followers" min="0" placeholder="50000">
+    </div>
+    <div class="field">
+      <label for="engagement-rate-calculator-reach">Reach (optional)</label>
+      <input class="input" type="number" id="engagement-rate-calculator-reach" min="0" placeholder="30000">
+    </div>
+  </div>
+  <div class="btn-row">
+    <button class="btn" id="engagement-rate-calculator-calc">Calculate</button>
+  </div>
+  <div class="error" id="engagement-rate-calculator-error"></div>
+</div>
+
+<div class="tool-card">
+  <div class="stat-cards">
+    <div class="stat-card"><div class="v" id="engagement-rate-calculator-erf">—</div><div class="l">ER by followers</div></div>
+    <div class="stat-card"><div class="v" id="engagement-rate-calculator-err">—</div><div class="l">ER by reach</div></div>
+    <div class="stat-card"><div class="v" id="engagement-rate-calculator-rating">—</div><div class="l">Rating</div></div>
+  </div>
+  <div class="result" id="engagement-rate-calculator-detail"></div>
+</div>
+
+  <!-- ADSTERRA-INCONTENT: paste your Adsterra native/in-content ad code inside the div below -->
+  <div class="ad-slot" data-ad="incontent"></div>
+
+  <div class="info-grid">
+    <div class="info-card">
+      <h2>📖 How to use</h2>
+      <ol><li>Enter likes, comments and shares.</li><li>Enter followers (or reach).</li><li>Click Calculate.</li><li>See ER by followers and by reach, with a rating.</li></ol>
+    </div>
+    <div class="info-card">
+      <h2>❓ Frequently asked questions</h2>
+      <div class="faq"><details><summary>How is engagement rate calculated?</summary><p>Enter likes, comments, shares and either follower count or reach. ER = (likes+comments+shares) ÷ followers (or reach) × 100.</p></details><details><summary>By followers or by reach?</summary><p>Both are standard: by followers shows audience loyalty, by reach shows content performance. This tool computes both.</p></details><details><summary>What is a good engagement rate?</summary><p>Roughly: &lt;1% low, 1–3% average, 3–6% good, 6%+ excellent — varies by platform and niche.</p></details><details><summary>Should I use one post or an average?</summary><p>Use averages across your last 10–20 posts for a stable number, not a single viral post.</p></details></div>
+    </div>
+  </div>
+
+  <section class="section">
+    <h2>🔗 Related tools</h2>
+    <div class="tool-grid"><a class="tool-link" href="/tools/bio-generator/" data-search="bio generator create 4 polished social-media bios from your name, profession and interests in professional, funny, minimalist or inspirational tones. click to copy. bio generator instagram bio ideas social media bio"><span class="t-ico">📣</span><span class="t-body"><b>Bio Generator</b><small>Create 4 polished social-media bios from your name, profession and interests in Professional…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/caption-counter/" data-search="instagram caption counter write instagram captions with live stats — characters vs the 2,200 limit, hashtags, mentions and the 125-char fold preview. instagram caption counter caption character limit hashtag counter instagram caption length"><span class="t-ico">📣</span><span class="t-body"><b>Instagram Caption Counter</b><small>Write Instagram captions with live stats — characters vs the 2,200 limit, hashtags, mentions…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/caption-generator/" data-search="caption generator get 6 engaging captions for any topic in funny, aesthetic, motivational, savage or cute moods, plus a matching hashtag line. one-tap copy included. caption generator instagram captions social media captions"><span class="t-ico">📣</span><span class="t-body"><b>Caption Generator</b><small>Get 6 engaging captions for any topic in Funny, Aesthetic, Motivational, Savage or Cute mood…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/content-calendar-maker/" data-search="content calendar maker plan a month of social posts: schedule content per day, save and export. content calendar social media calendar post scheduler planner content planner"><span class="t-ico">📣</span><span class="t-body"><b>Content Calendar Maker</b><small>Plan a month of social posts: schedule content per day, save and export.</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/facebook-ad-copy-generator/" data-search="facebook ad copy generator generate facebook ad copy: primary text, headline and cta combinations. facebook ad copy fb ad generator ad copy generator facebook ads text"><span class="t-ico">📣</span><span class="t-body"><b>Facebook Ad Copy Generator</b><small>Generate Facebook ad copy: primary text, headline and CTA combinations.</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/fancy-text-generator/" data-search="fancy text generator turn plain text into 24 stylish unicode fonts and emoji styles — bold, italic, script, fraktur, monospace, circled, upside-down, sparkle-wrapped, emoji-framed and more — with one-tap copy on each style. fancy text generator stylish text unicode text styles"><span class="t-ico">📣</span><span class="t-body"><b>Fancy Text Generator</b><small>Turn plain text into 24 stylish Unicode fonts and emoji styles — bold, italic, script, frakt…</small></span><span class="t-arrow">→</span></a></div>
+  </section>
+</main>
+
+<!-- ADSTERRA-FOOTER: paste your Adsterra footer/banner ad code inside the div below -->
+<div class="container"><div class="ad-slot" data-ad="footer"></div></div>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="f-grid">
+      <div>
+        <span class="brandline"><span class="logo-mark">T</span> ToolNest</span>
+        <p>Free online tools that actually work. No sign-up, no watermarks — and your files never leave your device for client-side tools.</p>
+      </div>
+      <div>
+        <h4>Popular</h4>
+        <a href="/tools/qr-code-generator/">QR Code Generator</a>
+        <a href="/tools/background-remover/">Background Remover</a>
+        <a href="/tools/pdf-merger/">PDF Merger</a>
+        <a href="/tools/word-counter/">Word Counter</a>
+      </div>
+      <div>
+        <h4>Categories</h4>
+        <a href="/#image">Image Tools</a>
+        <a href="/#pdf">PDF &amp; Documents</a>
+        <a href="/#calculators">Calculators</a>
+        <a href="/#developer">Developer Tools</a>
+      </div>
+      <div>
+        <h4>Site</h4>
+        <a href="/">Home</a>
+        <a href="/#all-tools">All Tools</a>
+        <a href="/sitemap.xml">Sitemap</a>
+      </div>
+    </div>
+    <div class="f-bottom">© 2026 ToolNest · Free tools for everyone · Made with care</div>
+  </div>
+</footer>
+
+<script src="/assets/site.js?v=5"></script>
+
+<script>
+/* Engagement Rate Calculator — (likes+comments+shares) ÷ followers/reach. */
+(function () {
+  'use strict';
+
+  var SLUG = 'engagement-rate-calculator';
+
+  function num(id) {
+    var n = parseFloat(TN.el(SLUG + '-' + id).value);
+    return isNaN(n) || n < 0 ? 0 : n;
+  }
+
+  function rating(er) {
+    if (er >= 6) return '🔥 Excellent';
+    if (er >= 3) return '✅ Good';
+    if (er >= 1) return '➖ Average';
+    return '⚠️ Low';
+  }
+
+  function calc() {
+    TN.clearErr(SLUG + '-error');
+    var likes = num('likes'), comments = num('comments'), shares = num('shares');
+    var followers = num('followers'), reach = num('reach');
+    var interactions = likes + comments + shares;
+    if (interactions === 0) { TN.setErr(SLUG + '-error', 'Enter at least one interaction (likes, comments or shares).'); return; }
+    if (followers === 0 && reach === 0) { TN.setErr(SLUG + '-error', 'Enter followers or reach.'); return; }
+
+    var erf = followers > 0 ? interactions / followers * 100 : null;
+    var err = reach > 0 ? interactions / reach * 100 : null;
+
+    TN.el(SLUG + '-erf').textContent = erf !== null ? erf.toFixed(2) + '%' : '—';
+    TN.el(SLUG + '-err').textContent = err !== null ? err.toFixed(2) + '%' : '—';
+    var primary = erf !== null ? erf : err;
+    TN.el(SLUG + '-rating').textContent = rating(primary);
+    TN.el(SLUG + '-detail').innerHTML =
+      '<p class="muted">' + interactions.toLocaleString() + ' total interactions ' +
+      '(👍 ' + likes.toLocaleString() + ' + 💬 ' + comments.toLocaleString() + ' + 🔁 ' + shares.toLocaleString() + ')</p>' +
+      '<p class="muted">Benchmarks: &lt;1% low · 1–3% average · 3–6% good · 6%+ excellent (varies by platform).</p>';
+  }
+
+  function init() {
+    try {
+      if (!TN.el(SLUG + '-calc')) return;
+      TN.on(SLUG + '-calc', 'click', calc);
+    } catch (e) { /* never throw on load */ }
+  }
+
+  init();
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cooking Temp Converter — Free Online | ToolNest</title>
+<meta name="description" content="Convert oven temperature between °F and °C, find the matching gas mark, and get the classic oven descriptor (slow, moderate, hot…).">
+<meta name="keywords" content="cooking temperature converter, gas mark chart, oven temp converter, fahrenheit to celsius oven, slow oven temperature">
+<link rel="canonical" href="https://toolnest.vercel.app/tools/cooking-temp-converter/">
+<meta name="theme-color" content="#07070b">
+<meta property="og:title" content="Cooking Temp Converter — Free Online | ToolNest">
+<meta property="og:description" content="Convert oven temperature between °F and °C, find the matching gas mark, and get the classic oven descriptor (slow, moderate, hot…).">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css?v=4">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%23e01111'/><text x='50' y='68' font-size='58' text-anchor='middle' fill='white' font-family='Arial' font-weight='bold'>T</text></svg>">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebApplication","name":"Cooking Temp Converter","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0"},"url":"https://toolnest.vercel.app/tools/cooking-temp-converter/","description":"Convert oven temperature between °F and °C, find the matching gas mark, and get the classic oven descriptor (slow, moderate, hot…)."},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What temperature is gas mark 4?","acceptedAnswer":{"@type":"Answer","text":"Gas marks come from British gas ovens. Mark 1 = 140°C/275°F, 2 = 150°C/300°F, 3 = 170°C/325°F, 4 = 180°C/350°F, 5 = 190°C/375°F, 6 = 200°C/400°F, 7 = 220°C/425°F, 8 = 230°C/450°F, 9 = 240°C/475°F. This tool picks the closest mark to your temperature."}},{"@type":"Question","name":"My oven is 175°C — which gas mark is that?","acceptedAnswer":{"@type":"Answer","text":"This tool shows the NEAREST whole gas mark. Between marks, the temperature simply falls between two marks — e.g. 175°C sits between mark 3 (170°C) and mark 4 (180°C)."}},{"@type":"Question","name":"What is a moderate oven in degrees?","acceptedAnswer":{"@type":"Answer","text":"A slow oven is around 150–160°C (300–325°F), a moderate oven 175–190°C (350–375°F), and a hot oven 200–220°C (400–425°F). The tool labels your temperature automatically."}}]}]}</script>
+</head>
+<body>
+<header class="site-header">
+  <div class="container">
+    <a class="logo" href="/"><span class="logo-mark">T</span> ToolNest</a>
+    <div class="header-right">
+      <form class="nav-search" action="/" method="get" role="search">
+        <span class="ns-icon">🔍</span>
+        <input type="search" name="q" placeholder="Search tools…" aria-label="Search tools" autocomplete="off">
+      </form>
+      <div class="menu-wrap">
+        <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="menuPanel" aria-label="Open menu"><span></span><span></span><span></span></button>
+        <nav class="menu-panel" id="menuPanel" aria-label="Site">
+          <a href="/">Home</a>
+          <a href="/#categories">Categories</a>
+          <a href="/#all-tools">All Tools</a>
+        </nav>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ADSTERRA-HEADER: paste your Adsterra banner ad code inside the div below -->
+<div class="container"><div class="ad-slot ad-leaderboard" data-ad="header"></div></div>
+
+<main class="container">
+  <nav class="crumbs"><a href="/">Home</a> &rsaquo; <a href="/#converters">Converters</a> &rsaquo; Cooking Temp Converter</nav>
+  <div class="tool-hero">
+    <h1>Cooking Temp Converter</h1>
+    <p>Convert oven temperature between °F and °C, find the matching gas mark, and get the classic oven descriptor (slow, moderate, hot…).</p>
+  </div>
+
+  <div class="tool-card">
+  <div class="grid2">
+    <div class="field">
+      <label for="cooking-temp-converter-value">Oven temperature</label>
+      <input type="number" step="any" class="input" id="cooking-temp-converter-value" placeholder="e.g. 350">
+    </div>
+    <div class="field">
+      <label for="cooking-temp-converter-from">Entered as</label>
+      <select class="select" id="cooking-temp-converter-from">
+        <option value="F" selected>Fahrenheit (°F)</option>
+        <option value="C">Celsius (°C)</option>
+      </select>
+    </div>
+  </div>
+  <div class="error" id="cooking-temp-converter-error"></div>
+  <div class="result" id="cooking-temp-converter-result">
+    <div class="stat-cards">
+      <div class="stat-card"><div class="v" id="cooking-temp-converter-converted">–</div><div class="l">Converted</div></div>
+      <div class="stat-card"><div class="v" id="cooking-temp-converter-gasmark">–</div><div class="l">Nearest gas mark</div></div>
+      <div class="stat-card"><div class="v" id="cooking-temp-converter-desc">–</div><div class="l">Oven descriptor</div></div>
+    </div>
+    <table class="data">
+      <thead><tr><th>Gas mark</th><th>°C</th><th>°F</th></tr></thead>
+      <tbody id="cooking-temp-converter-table"></tbody>
+    </table>
+  </div>
+</div>
+
+
+  <!-- ADSTERRA-INCONTENT: paste your Adsterra native/in-content ad code inside the div below -->
+  <div class="ad-slot" data-ad="incontent"></div>
+
+  <div class="info-grid">
+    <div class="info-card">
+      <h2>📖 How to use</h2>
+      <ol><li>Enter the oven temperature.</li><li>Pick whether you entered Fahrenheit or Celsius.</li><li>Read the converted temperature, nearest gas mark and the classic oven descriptor.</li></ol>
+    </div>
+    <div class="info-card">
+      <h2>❓ Frequently asked questions</h2>
+      <div class="faq"><details><summary>What temperature is gas mark 4?</summary><p>Gas marks come from British gas ovens. Mark 1 = 140°C/275°F, 2 = 150°C/300°F, 3 = 170°C/325°F, 4 = 180°C/350°F, 5 = 190°C/375°F, 6 = 200°C/400°F, 7 = 220°C/425°F, 8 = 230°C/450°F, 9 = 240°C/475°F. This tool picks the closest mark to your temperature.</p></details><details><summary>My oven is 175°C — which gas mark is that?</summary><p>This tool shows the NEAREST whole gas mark. Between marks, the temperature simply falls between two marks — e.g. 175°C sits between mark 3 (170°C) and mark 4 (180°C).</p></details><details><summary>What is a moderate oven in degrees?</summary><p>A slow oven is around 150–160°C (300–325°F), a moderate oven 175–190°C (350–375°F), and a hot oven 200–220°C (400–425°F). The tool labels your temperature automatically.</p></details></div>
+    </div>
+  </div>
+
+  <section class="section">
+    <h2>🔗 Related tools</h2>
+    <div class="tool-grid"><a class="tool-link" href="/tools/altitude-pressure-calculator/" data-search="altitude pressure calculator the barometric formula gives air pressure at any altitude (below 11,000 m) from sea-level pressure — in hpa, inhg and percent of sea level. altitude pressure calculator barometric formula air pressure at altitude pressure vs altitude qnh pressure calculator"><span class="t-ico">🔄</span><span class="t-body"><b>Altitude Pressure Calculator</b><small>The barometric formula gives air pressure at any altitude (below 11,000 m) from sea-level pr…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/angle-converter/" data-search="angle converter convert angles between degrees, radians, gradians, turns, arcminutes, arcseconds and mils. enter a value once and see it in every unit instantly. angle converter degrees to radians radians to degrees gradians converter mils to degrees"><span class="t-ico">🔄</span><span class="t-body"><b>Angle Converter</b><small>Convert angles between degrees, radians, gradians, turns, arcminutes, arcseconds and mils. E…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/area-converter/" data-search="area converter square millimeters to square miles. area converter square feet to square meters acres to hectares"><span class="t-ico">🔄</span><span class="t-body"><b>Area Converter</b><small>Square millimeters to square miles.</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/baking-pan-converter/" data-search="baking pan converter compare pan volumes from dimensions, then scale every ingredient by the exact ratio — plus a batter-fill check. baking pan converter pan size conversion cake pan volume recipe scaling pan size"><span class="t-ico">🔄</span><span class="t-body"><b>Baking Pan Converter</b><small>Compare pan volumes from dimensions, then scale every ingredient by the exact ratio — plus a…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/beaufort-scale-converter/" data-search="beaufort scale converter convert wind speed (km/h, mph, knots, m/s) to the beaufort scale number with official speed ranges and land/sea descriptions. beaufort scale converter wind speed to beaufort beaufort scale chart knots to beaufort gale wind speed"><span class="t-ico">🔄</span><span class="t-body"><b>Beaufort Scale Converter</b><small>Convert wind speed (km/h, mph, knots, m/s) to the Beaufort scale number with official speed …</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/cat-age-converter/" data-search="cat age converter convert cat years to human years with the accepted life-stage chart: 15 for year one, 9 for year two, then about 4 per year. cat age converter cat years to human years how old is my cat cat age chart cat life stages"><span class="t-ico">🔄</span><span class="t-body"><b>Cat Age Converter</b><small>Convert cat years to human years with the accepted life-stage chart: 15 for year one, 9 for …</small></span><span class="t-arrow">→</span></a></div>
+  </section>
+</main>
+
+<!-- ADSTERRA-FOOTER: paste your Adsterra footer/banner ad code inside the div below -->
+<div class="container"><div class="ad-slot" data-ad="footer"></div></div>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="f-grid">
+      <div>
+        <span class="brandline"><span class="logo-mark">T</span> ToolNest</span>
+        <p>Free online tools that actually work. No sign-up, no watermarks — and your files never leave your device for client-side tools.</p>
+      </div>
+      <div>
+        <h4>Popular</h4>
+        <a href="/tools/qr-code-generator/">QR Code Generator</a>
+        <a href="/tools/background-remover/">Background Remover</a>
+        <a href="/tools/pdf-merger/">PDF Merger</a>
+        <a href="/tools/word-counter/">Word Counter</a>
+      </div>
+      <div>
+        <h4>Categories</h4>
+        <a href="/#image">Image Tools</a>
+        <a href="/#pdf">PDF &amp; Documents</a>
+        <a href="/#calculators">Calculators</a>
+        <a href="/#developer">Developer Tools</a>
+      </div>
+      <div>
+        <h4>Site</h4>
+        <a href="/">Home</a>
+        <a href="/#all-tools">All Tools</a>
+        <a href="/sitemap.xml">Sitemap</a>
+      </div>
+    </div>
+    <div class="f-bottom">© 2026 ToolNest · Free tools for everyone · Made with care</div>
+  </div>
+</footer>
+
+<script src="/assets/site.js?v=5"></script>
+
+<script>
+(function () {
+  'use strict';
+  var S = 'cooking-temp-converter';
+  /* standard UK gas mark table */
+  var MARKS = [
+    [1, 140, 275], [2, 150, 300], [3, 170, 325], [4, 180, 350],
+    [5, 190, 375], [6, 200, 400], [7, 220, 425], [8, 230, 450], [9, 240, 475]
+  ];
+  /* classic oven descriptors by Celsius */
+  var DESCRIPTORS = [
+    [120, 'Very slow oven'], [140, 'Slow oven'], [160, 'Moderately slow oven'],
+    [175, 'Moderate oven'], [190, 'Moderately hot oven'], [200, 'Hot oven'],
+    [220, 'Very hot oven'], [9999, 'Extremely hot oven']
+  ];
+  function describe(c) {
+    var d = DESCRIPTORS[DESCRIPTORS.length - 1][1];
+    for (var i = 0; i < DESCRIPTORS.length; i++) {
+      if (c < DESCRIPTORS[i][0]) { d = DESCRIPTORS[i][1]; break; }
+    }
+    return d;
+  }
+  function nearestMark(c) {
+    var best = MARKS[0], bd = 1e9;
+    for (var i = 0; i < MARKS.length; i++) {
+      var d = Math.abs(c - MARKS[i][1]);
+      if (d < bd) { bd = d; best = MARKS[i]; }
+    }
+    return best;
+  }
+  function convert() {
+    try {
+      TN.clearErr(S + '-error');
+      var raw = TN.el(S + '-value').value;
+      var convEl = TN.el(S + '-converted'), gmEl = TN.el(S + '-gasmark'), dEl = TN.el(S + '-desc');
+      if (raw === '' || raw === null) {
+        if (convEl) convEl.textContent = '–';
+        if (gmEl) gmEl.textContent = '–';
+        if (dEl) dEl.textContent = '–';
+        return;
+      }
+      var v = parseFloat(raw);
+      if (!isFinite(v)) { TN.setErr(S + '-error', 'Please enter a valid number.'); return; }
+      var f, c;
+      if (TN.el(S + '-from').value === 'F') { f = v; c = (v - 32) * 5 / 9; }
+      else { c = v; f = v * 9 / 5 + 32; }
+      if (f < -459.67) { TN.setErr(S + '-error', 'Below absolute zero — check your value.'); return; }
+      var gm = nearestMark(c);
+      if (convEl) convEl.textContent = Math.round(c) + ' °C / ' + Math.round(f) + ' °F';
+      if (gmEl) gmEl.textContent = 'Mark ' + gm[0] + ' (' + gm[1] + '°C / ' + gm[2] + '°F)';
+      if (dEl) dEl.textContent = describe(c);
+    } catch (e) { /* never throw on input */ }
+  }
+  function init() {
+    var tb = TN.el(S + '-table');
+    if (tb) {
+      var html = '';
+      for (var i = 0; i < MARKS.length; i++) {
+        html += '<tr><td>' + MARKS[i][0] + '</td><td>' + MARKS[i][1] + ' °C</td><td>' + MARKS[i][2] + ' °F</td></tr>';
+      }
+      tb.innerHTML = html;
+    }
+    convert();
+    ['value', 'from'].forEach(function (k) {
+      TN.on(S + '-' + k, 'input', convert);
+      TN.on(S + '-' + k, 'change', convert);
+    });
+  }
+  try { init(); } catch (e) { /* never throw on load */ }
+})();
+
+</script>
+</body>
+</html>

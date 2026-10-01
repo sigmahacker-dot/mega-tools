@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cramer&#39;s Rule Solver — Free Online | ToolNest</title>
+<meta name="description" content="Solve 2×2 and 3×3 linear systems with Cramer&#39;s rule: see every determinant (D, Dx, Dy, Dz) computed step by step.">
+<meta name="keywords" content="cramers rule, cramer&#39;s rule solver, linear system solver, determinant method">
+<link rel="canonical" href="https://toolnest.vercel.app/tools/cramers-rule-solver/">
+<meta name="theme-color" content="#07070b">
+<meta property="og:title" content="Cramer&#39;s Rule Solver — Free Online | ToolNest">
+<meta property="og:description" content="Solve 2×2 and 3×3 linear systems with Cramer&#39;s rule: see every determinant (D, Dx, Dy, Dz) computed step by step.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css?v=4">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%23e01111'/><text x='50' y='68' font-size='58' text-anchor='middle' fill='white' font-family='Arial' font-weight='bold'>T</text></svg>">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebApplication","name":"Cramer's Rule Solver","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0"},"url":"https://toolnest.vercel.app/tools/cramers-rule-solver/","description":"Solve 2×2 and 3×3 linear systems with Cramer's rule: see every determinant (D, Dx, Dy, Dz) computed step by step."},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What is Cramer's rule?","acceptedAnswer":{"@type":"Answer","text":"For a system A·x = b with det(A) ≠ 0, each unknown equals the determinant of A with its column replaced by b, divided by det(A): xᵢ = Dᵢ/D."}},{"@type":"Question","name":"What if D = 0?","acceptedAnswer":{"@type":"Answer","text":"Then Cramer's rule does not apply: the system has no solution or infinitely many (the equations are dependent or inconsistent). The tool reports this instead of dividing by zero."}},{"@type":"Question","name":"How is the 3×3 determinant computed?","acceptedAnswer":{"@type":"Answer","text":"With the Rule of Sarrus / cofactor expansion, shown term by term so you can follow each of the six products."}}]}]}</script>
+</head>
+<body>
+<header class="site-header">
+  <div class="container">
+    <a class="logo" href="/"><span class="logo-mark">T</span> ToolNest</a>
+    <div class="header-right">
+      <form class="nav-search" action="/" method="get" role="search">
+        <span class="ns-icon">🔍</span>
+        <input type="search" name="q" placeholder="Search tools…" aria-label="Search tools" autocomplete="off">
+      </form>
+      <div class="menu-wrap">
+        <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="menuPanel" aria-label="Open menu"><span></span><span></span><span></span></button>
+        <nav class="menu-panel" id="menuPanel" aria-label="Site">
+          <a href="/">Home</a>
+          <a href="/#categories">Categories</a>
+          <a href="/#all-tools">All Tools</a>
+        </nav>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ADSTERRA-HEADER: paste your Adsterra banner ad code inside the div below -->
+<div class="container"><div class="ad-slot ad-leaderboard" data-ad="header"></div></div>
+
+<main class="container">
+  <nav class="crumbs"><a href="/">Home</a> &rsaquo; <a href="/#math">Math &amp; Numbers</a> &rsaquo; Cramer&#39;s Rule Solver</nav>
+  <div class="tool-hero">
+    <h1>Cramer&#39;s Rule Solver</h1>
+    <p>Solve 2×2 and 3×3 linear systems with Cramer&#39;s rule: see every determinant (D, Dx, Dy, Dz) computed step by step.</p>
+  </div>
+
+  <div class="tool-card">
+  <div class="field" style="max-width:260px">
+    <label for="cramers-rule-solver-size">System size</label>
+    <select class="select" id="cramers-rule-solver-size">
+      <option value="2">2×2</option>
+      <option value="3" selected>3×3</option>
+    </select>
+  </div>
+  <div id="cramers-rule-solver-grid"></div>
+  <div class="btn-row">
+    <button type="button" class="btn" id="cramers-rule-solver-solve">Solve</button>
+    <button type="button" class="btn btn-outline" id="cramers-rule-solver-sample">Load sample</button>
+  </div>
+  <div class="error" id="cramers-rule-solver-error"></div>
+  <div id="cramers-rule-solver-out" class="hidden">
+    <div class="stat-cards" id="cramers-rule-solver-cards"></div>
+    <div class="result">
+      <h3>Determinant steps</h3>
+      <div id="cramers-rule-solver-steps"></div>
+    </div>
+  </div>
+</div>
+
+
+  <!-- ADSTERRA-INCONTENT: paste your Adsterra native/in-content ad code inside the div below -->
+  <div class="ad-slot" data-ad="incontent"></div>
+
+  <div class="info-grid">
+    <div class="info-card">
+      <h2>📖 How to use</h2>
+      <ol><li>Pick a 2×2 or 3×3 system.</li><li>Enter the coefficients and the right-hand-side constants.</li><li>Press Solve to see D, Dx, Dy (and Dz) with their full determinant expansions.</li><li>Read x = Dx/D, y = Dy/D (z = Dz/D). A zero D is flagged as no unique solution.</li></ol>
+    </div>
+    <div class="info-card">
+      <h2>❓ Frequently asked questions</h2>
+      <div class="faq"><details><summary>What is Cramer&#39;s rule?</summary><p>For a system A·x = b with det(A) ≠ 0, each unknown equals the determinant of A with its column replaced by b, divided by det(A): xᵢ = Dᵢ/D.</p></details><details><summary>What if D = 0?</summary><p>Then Cramer&#39;s rule does not apply: the system has no solution or infinitely many (the equations are dependent or inconsistent). The tool reports this instead of dividing by zero.</p></details><details><summary>How is the 3×3 determinant computed?</summary><p>With the Rule of Sarrus / cofactor expansion, shown term by term so you can follow each of the six products.</p></details></div>
+    </div>
+  </div>
+
+  <section class="section">
+    <h2>🔗 Related tools</h2>
+    <div class="tool-grid"><a class="tool-link" href="/tools/24-game-solver/" data-search="24 game solver solve the 24 game exhaustively: every ordering, operation and parenthesization is tried with exact fraction arithmetic, and all distinct solutions are shown. 24 game solver make 24 solver 24 puzzle arithmetic puzzle solver"><span class="t-ico">📐</span><span class="t-body"><b>24 Game Solver</b><small>Solve the 24 game exhaustively: every ordering, operation and parenthesization is tried with…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/ancient-numerals-converter/" data-search="ancient numerals converter convert decimal numbers to roman, egyptian hieroglyphic, babylonian cuneiform and mayan numerals — with roman numerals also decoded back to decimal. roman numerals egyptian numerals babylonian numerals mayan numerals ancient numbers"><span class="t-ico">📐</span><span class="t-body"><b>Ancient Numerals Converter</b><small>Convert decimal numbers to Roman, Egyptian hieroglyphic, Babylonian cuneiform and Mayan nume…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/arithmetic-sequence-calculator/" data-search="arithmetic sequence calculator from the first term and common difference get the nth term and the sum of the first n terms. arithmetic sequence arithmetic progression nth term sum of arithmetic series common difference"><span class="t-ico">📐</span><span class="t-body"><b>Arithmetic Sequence Calculator</b><small>From the first term and common difference get the nth term and the sum of the first n terms.</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/base-n-arithmetic/" data-search="base-n arithmetic add, subtract, multiply and divide numbers in any base from 2 to 36 with exact bigint math and a full conversion breakdown. base n arithmetic binary addition hexadecimal calculator base 36 math"><span class="t-ico">📐</span><span class="t-body"><b>Base-N Arithmetic</b><small>Add, subtract, multiply and divide numbers in any base from 2 to 36 with exact BigInt math a…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/bayes-theorem-calculator/" data-search="bayes theorem calculator compute posterior probabilities from prior, sensitivity and specificity with the full bayes formula, natural frequencies and a probability tree. bayes theorem calculator posterior probability sensitivity specificity medical test probability"><span class="t-ico">📐</span><span class="t-body"><b>Bayes Theorem Calculator</b><small>Compute posterior probabilities from prior, sensitivity and specificity with the full Bayes …</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/bcd-converter/" data-search="bcd converter convert decimal numbers to binary-coded decimal (packed and unpacked) and decode bcd back to decimal, with per-digit nibble breakdowns. bcd converter binary coded decimal packed bcd unpacked bcd bcd decoder"><span class="t-ico">📐</span><span class="t-body"><b>BCD Converter</b><small>Convert decimal numbers to Binary-Coded Decimal (packed and unpacked) and decode BCD back to…</small></span><span class="t-arrow">→</span></a></div>
+  </section>
+</main>
+
+<!-- ADSTERRA-FOOTER: paste your Adsterra footer/banner ad code inside the div below -->
+<div class="container"><div class="ad-slot" data-ad="footer"></div></div>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="f-grid">
+      <div>
+        <span class="brandline"><span class="logo-mark">T</span> ToolNest</span>
+        <p>Free online tools that actually work. No sign-up, no watermarks — and your files never leave your device for client-side tools.</p>
+      </div>
+      <div>
+        <h4>Popular</h4>
+        <a href="/tools/qr-code-generator/">QR Code Generator</a>
+        <a href="/tools/background-remover/">Background Remover</a>
+        <a href="/tools/pdf-merger/">PDF Merger</a>
+        <a href="/tools/word-counter/">Word Counter</a>
+      </div>
+      <div>
+        <h4>Categories</h4>
+        <a href="/#image">Image Tools</a>
+        <a href="/#pdf">PDF &amp; Documents</a>
+        <a href="/#calculators">Calculators</a>
+        <a href="/#developer">Developer Tools</a>
+      </div>
+      <div>
+        <h4>Site</h4>
+        <a href="/">Home</a>
+        <a href="/#all-tools">All Tools</a>
+        <a href="/sitemap.xml">Sitemap</a>
+      </div>
+    </div>
+    <div class="f-bottom">© 2026 ToolNest · Free tools for everyone · Made with care</div>
+  </div>
+</footer>
+
+<script src="/assets/site.js?v=5"></script>
+
+<script>
+(function () {
+  'use strict';
+  var P = 'cramers-rule-solver-', ERR = P + 'error';
+  function g(id) { return TN.el(P + id); }
+  function fmt(x) {
+    if (!isFinite(x)) return String(x);
+    return String(parseFloat(x.toPrecision(10)));
+  }
+  function det2(m) { return m[0][0] * m[1][1] - m[0][1] * m[1][0]; }
+  function det2Steps(m, name) {
+    return '<li>' + name + ' = (' + fmt(m[0][0]) + ')(' + fmt(m[1][1]) + ') − (' + fmt(m[0][1]) + ')(' + fmt(m[1][0]) + ') = ' + fmt(m[0][0] * m[1][1]) + ' − ' + fmt(m[0][1] * m[1][0]) + ' = <b>' + fmt(det2(m)) + '</b>.</li>';
+  }
+  function det3(m) {
+    return m[0][0] * (m[1][1] * m[2][2] - m[1][2] * m[2][1])
+         - m[0][1] * (m[1][0] * m[2][2] - m[1][2] * m[2][0])
+         + m[0][2] * (m[1][0] * m[2][1] - m[1][1] * m[2][0]);
+  }
+  function det3Steps(m, name) {
+    var t1 = m[0][0] * (m[1][1] * m[2][2] - m[1][2] * m[2][1]);
+    var t2 = m[0][1] * (m[1][0] * m[2][2] - m[1][2] * m[2][0]);
+    var t3 = m[0][2] * (m[1][0] * m[2][1] - m[1][1] * m[2][0]);
+    return '<li>' + name + ' = ' + fmt(m[0][0]) + '·(' + fmt(m[1][1] * m[2][2] - m[1][2] * m[2][1]) + ') − ' + fmt(m[0][1]) + '·(' + fmt(m[1][0] * m[2][2] - m[1][2] * m[2][0]) + ') + ' + fmt(m[0][2]) + '·(' + fmt(m[1][0] * m[2][1] - m[1][1] * m[2][0]) + ')' +
+      ' = ' + fmt(t1) + ' − ' + fmt(t2) + ' + ' + fmt(t3) + ' = <b>' + fmt(t1 - t2 + t3) + '</b>.</li>';
+  }
+  function buildGrid() {
+    var n = parseInt(g('size').value, 10);
+    var vars = ['x', 'y', 'z'];
+    var h = '<table class="data"><tbody>';
+    for (var i = 0; i < n; i++) {
+      h += '<tr>';
+      for (var j = 0; j < n; j++) {
+        h += '<td><input class="input" style="width:70px" id="' + P + 'a' + i + j + '" type="number" step="any" value="0" aria-label="a' + (i + 1) + (j + 1) + '"></td>' +
+             (j < n - 1 ? '<td class="muted">' + vars[j] + ' +</td>' : '<td class="muted">' + vars[j] + ' =</td>');
+      }
+      h += '<td><input class="input" style="width:70px" id="' + P + 'b' + i + '" type="number" step="any" value="0" aria-label="b' + (i + 1) + '"></td></tr>';
+    }
+    h += '</tbody></table>';
+    g('grid').innerHTML = h;
+    TN.hide(P + 'out');
+  }
+  function val(id) {
+    var v = parseFloat(TN.el(id).value);
+    if (isNaN(v)) throw new Error('All coefficients must be numbers.');
+    return v;
+  }
+  function solve() {
+    try {
+      TN.clearErr(ERR);
+      var n = parseInt(g('size').value, 10);
+      var A = [], B = [], i, j;
+      for (i = 0; i < n; i++) {
+        A.push([]);
+        for (j = 0; j < n; j++) A[i].push(val(P + 'a' + i + j));
+        B.push(val(P + 'b' + i));
+      }
+      var steps = [], names = ['x', 'y', 'z'], cards = '', plain = '';
+      var D, Ds = [];
+      if (n === 2) {
+        D = det2(A);
+        steps.push(det2Steps(A, 'D'));
+        for (var k = 0; k < 2; k++) {
+          var M = [A[0].slice(), A[1].slice()];
+          M[0][k] = B[0]; M[1][k] = B[1];
+          Ds.push(det2(M));
+          steps.push(det2Steps(M, 'D' + names[k] + ' (column ' + (k + 1) + ' replaced by constants)'));
+        }
+      } else {
+        D = det3(A);
+        steps.push(det3Steps(A, 'D'));
+        for (var k2 = 0; k2 < 3; k2++) {
+          var M2 = A.map(function (row, ri) { return row.map(function (v, cj) { return cj === k2 ? B[ri] : v; }); });
+          Ds.push(det3(M2));
+          steps.push(det3Steps(M2, 'D' + names[k2] + ' (column ' + (k2 + 1) + ' replaced by constants)'));
+        }
+      }
+      if (Math.abs(D) < 1e-12) {
+        TN.show(P + 'out');
+        g('cards').innerHTML = '<div class="stat-card"><div class="v">D = 0</div><div class="l">No unique solution</div></div>';
+        g('steps').innerHTML = '<ol>' + steps.join('') + '</ol><p class="note">D = 0, so Cramer\'s rule does not apply: the system is singular — it has either no solution or infinitely many solutions.</p>';
+        return;
+      }
+      for (var s = 0; s < n; s++) {
+        var sol = Ds[s] / D;
+        cards += '<div class="stat-card"><div class="v">' + fmt(sol) + '</div><div class="l">' + names[s] + ' = D' + names[s] + '/D = ' + fmt(Ds[s]) + '/' + fmt(D) + '</div></div>';
+        plain += names[s] + '=' + fmt(sol) + '\n';
+      }
+      steps.push('<li>Divide: ' + names.slice(0, n).map(function (nm, ix) { return nm + ' = ' + fmt(Ds[ix]) + ' / ' + fmt(D) + ' = <b>' + fmt(Ds[ix] / D) + '</b>'; }).join('; ') + '.</li>');
+      // verification
+      var chk = [];
+      for (i = 0; i < n; i++) {
+        var lhs = 0;
+        for (j = 0; j < n; j++) lhs += A[i][j] * (Ds[j] / D);
+        chk.push(Math.abs(lhs - B[i]) < 1e-6);
+      }
+      steps.push('<li>Verification: substituting back gives residuals ≈ 0 for all ' + n + ' equations ' + (chk.every(Boolean) ? '✓' : '(check rounding)') + '.</li>');
+      TN.show(P + 'out');
+      g('cards').innerHTML = cards;
+      g('steps').innerHTML = '<ol>' + steps.join('') + '</ol>';
+      g('solve').setAttribute('data-r', plain.trim());
+    } catch (e) { TN.setErr(ERR, e.message || 'Could not solve.'); }
+  }
+  try {
+    if (!TN.el(P + 'solve')) return;
+    buildGrid();
+    TN.on(P + 'size', 'change', buildGrid);
+    TN.on(P + 'solve', 'click', solve);
+    TN.on(P + 'sample', 'click', function () {
+      var n = parseInt(g('size').value, 10);
+      var A, B;
+      if (n === 2) { A = [[2, 1], [1, -1]]; B = [5, 1]; }
+      else { A = [[2, 1, -1], [-3, -1, 2], [-2, 1, 2]]; B = [8, -11, -3]; }
+      for (var i = 0; i < n; i++) {
+        for (var j = 0; j < n; j++) TN.el(P + 'a' + i + j).value = A[i][j];
+        TN.el(P + 'b' + i).value = B[i];
+      }
+      TN.clearErr(ERR);
+    });
+  } catch (e) { /* never throw on load */ }
+})();
+
+</script>
+</body>
+</html>

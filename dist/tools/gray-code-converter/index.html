@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gray Code Converter — Free Online | ToolNest</title>
+<meta name="description" content="Convert binary to Gray code and Gray code back to binary in both directions, with the bit-flip steps and a 0–15 reference table.">
+<meta name="keywords" content="gray code converter, binary to gray, gray to binary, reflected binary code">
+<link rel="canonical" href="https://toolnest.vercel.app/tools/gray-code-converter/">
+<meta name="theme-color" content="#07070b">
+<meta property="og:title" content="Gray Code Converter — Free Online | ToolNest">
+<meta property="og:description" content="Convert binary to Gray code and Gray code back to binary in both directions, with the bit-flip steps and a 0–15 reference table.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css?v=4">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%23e01111'/><text x='50' y='68' font-size='58' text-anchor='middle' fill='white' font-family='Arial' font-weight='bold'>T</text></svg>">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebApplication","name":"Gray Code Converter","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0"},"url":"https://toolnest.vercel.app/tools/gray-code-converter/","description":"Convert binary to Gray code and Gray code back to binary in both directions, with the bit-flip steps and a 0–15 reference table."},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What is Gray code?","acceptedAnswer":{"@type":"Answer","text":"Gray code (reflected binary code) orders binary values so consecutive numbers differ in exactly one bit. It is used in rotary encoders, Karnaugh maps and error-tolerant digital communication."}},{"@type":"Question","name":"How is binary converted to Gray?","acceptedAnswer":{"@type":"Answer","text":"Keep the most significant bit, then each next Gray bit is the XOR of the current and previous binary bit: G = B XOR (B >> 1)."}},{"@type":"Question","name":"How is Gray converted back to binary?","acceptedAnswer":{"@type":"Answer","text":"Keep the most significant bit, then each binary bit is the XOR of the previous binary bit and the current Gray bit, cascading left to right."}}]}]}</script>
+</head>
+<body>
+<header class="site-header">
+  <div class="container">
+    <a class="logo" href="/"><span class="logo-mark">T</span> ToolNest</a>
+    <div class="header-right">
+      <form class="nav-search" action="/" method="get" role="search">
+        <span class="ns-icon">🔍</span>
+        <input type="search" name="q" placeholder="Search tools…" aria-label="Search tools" autocomplete="off">
+      </form>
+      <div class="menu-wrap">
+        <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="menuPanel" aria-label="Open menu"><span></span><span></span><span></span></button>
+        <nav class="menu-panel" id="menuPanel" aria-label="Site">
+          <a href="/">Home</a>
+          <a href="/#categories">Categories</a>
+          <a href="/#all-tools">All Tools</a>
+        </nav>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ADSTERRA-HEADER: paste your Adsterra banner ad code inside the div below -->
+<div class="container"><div class="ad-slot ad-leaderboard" data-ad="header"></div></div>
+
+<main class="container">
+  <nav class="crumbs"><a href="/">Home</a> &rsaquo; <a href="/#math">Math &amp; Numbers</a> &rsaquo; Gray Code Converter</nav>
+  <div class="tool-hero">
+    <h1>Gray Code Converter</h1>
+    <p>Convert binary to Gray code and Gray code back to binary in both directions, with the bit-flip steps and a 0–15 reference table.</p>
+  </div>
+
+  <div class="tool-card">
+  <div class="grid3">
+    <div class="field">
+      <label for="gray-code-converter-dir">Direction</label>
+      <select class="select" id="gray-code-converter-dir">
+        <option value="b2g">Binary → Gray</option>
+        <option value="g2b">Gray → Binary</option>
+      </select>
+    </div>
+    <div class="field">
+      <label for="gray-code-converter-mode">Input as</label>
+      <select class="select" id="gray-code-converter-mode">
+        <option value="bits">Bit string</option>
+        <option value="dec">Decimal number</option>
+      </select>
+    </div>
+    <div class="field">
+      <label for="gray-code-converter-in">Input</label>
+      <input class="input" id="gray-code-converter-in" type="text" placeholder="e.g. 10110" value="10110" style="font-family:monospace">
+    </div>
+  </div>
+  <div class="btn-row">
+    <button type="button" class="btn" id="gray-code-converter-convert">Convert</button>
+    <button type="button" class="btn btn-outline btn-sm" id="gray-code-converter-copy">Copy result</button>
+  </div>
+  <div class="error" id="gray-code-converter-error"></div>
+  <div id="gray-code-converter-out" class="hidden">
+    <div class="stat-cards">
+      <div class="stat-card"><div class="v" id="gray-code-converter-out-bits" style="font-family:monospace">–</div><div class="l" id="gray-code-converter-out-l">Gray code</div></div>
+      <div class="stat-card"><div class="v" id="gray-code-converter-out-dec" style="font-family:monospace">–</div><div class="l">Decimal value</div></div>
+    </div>
+    <div class="result">
+      <h3>Steps</h3>
+      <div id="gray-code-converter-steps"></div>
+    </div>
+    <div class="result">
+      <h3>Reference table (0–15)</h3>
+      <div style="overflow-x:auto"><table class="data"><thead><tr><th>Decimal</th><th>Binary</th><th>Gray</th></tr></thead><tbody id="gray-code-converter-table"></tbody></table></div>
+    </div>
+  </div>
+</div>
+
+
+  <!-- ADSTERRA-INCONTENT: paste your Adsterra native/in-content ad code inside the div below -->
+  <div class="ad-slot" data-ad="incontent"></div>
+
+  <div class="info-grid">
+    <div class="info-card">
+      <h2>📖 How to use</h2>
+      <ol><li>Choose the conversion direction: binary → Gray or Gray → binary.</li><li>Type the bit string (e.g. 10110) or switch to decimal input mode.</li><li>Press Convert to see the result plus the XOR steps used.</li><li>Check the 0–15 table to see the pattern: only one bit changes between neighbours.</li></ol>
+    </div>
+    <div class="info-card">
+      <h2>❓ Frequently asked questions</h2>
+      <div class="faq"><details><summary>What is Gray code?</summary><p>Gray code (reflected binary code) orders binary values so consecutive numbers differ in exactly one bit. It is used in rotary encoders, Karnaugh maps and error-tolerant digital communication.</p></details><details><summary>How is binary converted to Gray?</summary><p>Keep the most significant bit, then each next Gray bit is the XOR of the current and previous binary bit: G = B XOR (B &gt;&gt; 1).</p></details><details><summary>How is Gray converted back to binary?</summary><p>Keep the most significant bit, then each binary bit is the XOR of the previous binary bit and the current Gray bit, cascading left to right.</p></details></div>
+    </div>
+  </div>
+
+  <section class="section">
+    <h2>🔗 Related tools</h2>
+    <div class="tool-grid"><a class="tool-link" href="/tools/24-game-solver/" data-search="24 game solver solve the 24 game exhaustively: every ordering, operation and parenthesization is tried with exact fraction arithmetic, and all distinct solutions are shown. 24 game solver make 24 solver 24 puzzle arithmetic puzzle solver"><span class="t-ico">📐</span><span class="t-body"><b>24 Game Solver</b><small>Solve the 24 game exhaustively: every ordering, operation and parenthesization is tried with…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/ancient-numerals-converter/" data-search="ancient numerals converter convert decimal numbers to roman, egyptian hieroglyphic, babylonian cuneiform and mayan numerals — with roman numerals also decoded back to decimal. roman numerals egyptian numerals babylonian numerals mayan numerals ancient numbers"><span class="t-ico">📐</span><span class="t-body"><b>Ancient Numerals Converter</b><small>Convert decimal numbers to Roman, Egyptian hieroglyphic, Babylonian cuneiform and Mayan nume…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/arithmetic-sequence-calculator/" data-search="arithmetic sequence calculator from the first term and common difference get the nth term and the sum of the first n terms. arithmetic sequence arithmetic progression nth term sum of arithmetic series common difference"><span class="t-ico">📐</span><span class="t-body"><b>Arithmetic Sequence Calculator</b><small>From the first term and common difference get the nth term and the sum of the first n terms.</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/base-n-arithmetic/" data-search="base-n arithmetic add, subtract, multiply and divide numbers in any base from 2 to 36 with exact bigint math and a full conversion breakdown. base n arithmetic binary addition hexadecimal calculator base 36 math"><span class="t-ico">📐</span><span class="t-body"><b>Base-N Arithmetic</b><small>Add, subtract, multiply and divide numbers in any base from 2 to 36 with exact BigInt math a…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/bayes-theorem-calculator/" data-search="bayes theorem calculator compute posterior probabilities from prior, sensitivity and specificity with the full bayes formula, natural frequencies and a probability tree. bayes theorem calculator posterior probability sensitivity specificity medical test probability"><span class="t-ico">📐</span><span class="t-body"><b>Bayes Theorem Calculator</b><small>Compute posterior probabilities from prior, sensitivity and specificity with the full Bayes …</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/bcd-converter/" data-search="bcd converter convert decimal numbers to binary-coded decimal (packed and unpacked) and decode bcd back to decimal, with per-digit nibble breakdowns. bcd converter binary coded decimal packed bcd unpacked bcd bcd decoder"><span class="t-ico">📐</span><span class="t-body"><b>BCD Converter</b><small>Convert decimal numbers to Binary-Coded Decimal (packed and unpacked) and decode BCD back to…</small></span><span class="t-arrow">→</span></a></div>
+  </section>
+</main>
+
+<!-- ADSTERRA-FOOTER: paste your Adsterra footer/banner ad code inside the div below -->
+<div class="container"><div class="ad-slot" data-ad="footer"></div></div>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="f-grid">
+      <div>
+        <span class="brandline"><span class="logo-mark">T</span> ToolNest</span>
+        <p>Free online tools that actually work. No sign-up, no watermarks — and your files never leave your device for client-side tools.</p>
+      </div>
+      <div>
+        <h4>Popular</h4>
+        <a href="/tools/qr-code-generator/">QR Code Generator</a>
+        <a href="/tools/background-remover/">Background Remover</a>
+        <a href="/tools/pdf-merger/">PDF Merger</a>
+        <a href="/tools/word-counter/">Word Counter</a>
+      </div>
+      <div>
+        <h4>Categories</h4>
+        <a href="/#image">Image Tools</a>
+        <a href="/#pdf">PDF &amp; Documents</a>
+        <a href="/#calculators">Calculators</a>
+        <a href="/#developer">Developer Tools</a>
+      </div>
+      <div>
+        <h4>Site</h4>
+        <a href="/">Home</a>
+        <a href="/#all-tools">All Tools</a>
+        <a href="/sitemap.xml">Sitemap</a>
+      </div>
+    </div>
+    <div class="f-bottom">© 2026 ToolNest · Free tools for everyone · Made with care</div>
+  </div>
+</footer>
+
+<script src="/assets/site.js?v=5"></script>
+
+<script>
+(function () {
+  'use strict';
+  var P = 'gray-code-converter-', ERR = P + 'error';
+  function g(id) { return TN.el(P + id); }
+  function bin2gray(b) {
+    var res = b.charAt(0), steps = ['Keep MSB: <code>' + b.charAt(0) + '</code>.'];
+    for (var i = 1; i < b.length; i++) {
+      var x = (b.charCodeAt(i - 1) - 48) ^ (b.charCodeAt(i) - 48);
+      res += x;
+      steps.push('G<sub>' + (b.length - i) + '</sub> = B<sub>' + (b.length - i + 1) + '</sub> ⊕ B<sub>' + (b.length - i) + '</sub> = ' + b.charAt(i - 1) + ' ⊕ ' + b.charAt(i) + ' = <b>' + x + '</b>');
+    }
+    return { out: res, steps: steps };
+  }
+  function gray2bin(gr) {
+    var res = gr.charAt(0), steps = ['Keep MSB: <code>' + gr.charAt(0) + '</code>.'];
+    for (var i = 1; i < gr.length; i++) {
+      var x = (res.charCodeAt(i - 1) - 48) ^ (gr.charCodeAt(i) - 48);
+      res += x;
+      steps.push('B<sub>' + (gr.length - i) + '</sub> = B<sub>' + (gr.length - i + 1) + '</sub> ⊕ G<sub>' + (gr.length - i) + '</sub> = ' + res.charAt(i - 1) + ' ⊕ ' + gr.charAt(i) + ' = <b>' + x + '</b>');
+    }
+    return { out: res, steps: steps };
+  }
+  function convert() {
+    try {
+      TN.clearErr(ERR);
+      var dir = g('dir').value, mode = g('mode').value;
+      var raw = g('in').value.trim();
+      if (!raw) { TN.setErr(ERR, 'Type an input value first.'); return; }
+      var bits, dec;
+      if (mode === 'dec') {
+        if (!/^\d+$/.test(raw)) { TN.setErr(ERR, 'Decimal mode needs a non-negative integer.'); return; }
+        dec = parseInt(raw, 10);
+        if (dec > 1048575) { TN.setErr(ERR, 'Keep decimal input ≤ 1,048,575 (20 bits).'); return; }
+        bits = dec.toString(2);
+      } else {
+        if (!/^[01]+$/.test(raw)) { TN.setErr(ERR, 'Bit-string mode needs only 0s and 1s.'); return; }
+        if (raw.length > 32) { TN.setErr(ERR, 'Keep the bit string to 32 bits or fewer.'); return; }
+        bits = raw.replace(/^0+(?=[01])/, '');
+        if (!bits) bits = '0';
+        dec = parseInt(bits, 2);
+      }
+      var r = dir === 'b2g' ? bin2gray(bits) : gray2bin(bits);
+      var outDec = parseInt(r.out, 2);
+      TN.show(P + 'out');
+      g('out-bits').textContent = r.out;
+      g('out-bits').setAttribute('data-r', r.out);
+      g('out-l').textContent = dir === 'b2g' ? 'Gray code' : 'Binary';
+      g('out-dec').textContent = String(outDec);
+      var intro = dir === 'b2g'
+        ? 'Binary <code>' + TN.esc(bits) + '</code> → Gray: G = B ⊕ (B ≫ 1).'
+        : 'Gray <code>' + TN.esc(bits) + '</code> → Binary: cascade XOR from the MSB.';
+      g('steps').innerHTML = '<p>' + intro + '</p><ol><li>' + r.steps.join('</li><li>') + '</li></ol>';
+      var th = '';
+      for (var n = 0; n <= 15; n++) {
+        var b4 = n.toString(2).padStart(4, '0');
+        var gr4 = bin2gray(b4).out;
+        th += '<tr' + (n === outDec % 16 && bits.length <= 4 ? ' style="background:#16653422"' : '') + '><td>' + n + '</td><td><code>' + b4 + '</code></td><td><code>' + gr4 + '</code></td></tr>';
+      }
+      g('table').innerHTML = th;
+    } catch (e) { TN.setErr(ERR, e.message || 'Could not convert.'); }
+  }
+  try {
+    if (!TN.el(P + 'convert')) return;
+    TN.on(P + 'convert', 'click', convert);
+    TN.on(P + 'dir', 'change', convert);
+    TN.on(P + 'mode', 'change', function () {
+      g('in').placeholder = g('mode').value === 'dec' ? 'e.g. 22' : 'e.g. 10110';
+      TN.hide(P + 'out');
+    });
+    TN.on(P + 'copy', 'click', function () {
+      var r = g('out-bits').getAttribute('data-r');
+      if (r) TN.copy(r);
+    });
+  } catch (e) { /* never throw on load */ }
+})();
+
+</script>
+</body>
+</html>

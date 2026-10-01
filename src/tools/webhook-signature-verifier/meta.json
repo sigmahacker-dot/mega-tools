@@ -1,0 +1,38 @@
+{
+  "slug": "webhook-signature-verifier",
+  "title": "Webhook Signature Verifier",
+  "category": "developer",
+  "description": "Verify HMAC-SHA256 webhook signatures (GitHub, Stripe-style) with SubtleCrypto \u2014 paste payload, secret and signature.",
+  "keywords": [
+    "webhook signature verify",
+    "hmac sha256 verifier",
+    "github webhook secret",
+    "stripe signature check"
+  ],
+  "howto": [
+    "Paste the exact raw request payload.",
+    "Enter the webhook secret.",
+    "Paste the signature from the request header and pick its format.",
+    "Click Verify to get a valid/invalid verdict."
+  ],
+  "faqs": [
+    {
+      "q": "Which signature formats are supported?",
+      "a": "Raw hex, base64, \"sha256=\" prefixed hex (GitHub) and Stripe-style \"t=\u2026,v1=\u2026\" headers \u2014 the v1 value is extracted automatically."
+    },
+    {
+      "q": "Why does verification fail on a real payload?",
+      "a": "The payload must be byte-identical to what was signed \u2014 even one changed whitespace or encoding difference breaks HMAC."
+    },
+    {
+      "q": "Is my secret sent anywhere?",
+      "a": "No \u2014 HMAC is computed locally with SubtleCrypto. Nothing leaves your browser."
+    },
+    {
+      "q": "Which algorithm is used?",
+      "a": "HMAC-SHA256, which is what GitHub, Stripe and most providers sign with."
+    }
+  ],
+  "libs": [],
+  "module": false
+}

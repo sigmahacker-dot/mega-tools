@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Quiz Maker — Free Online | ToolNest</title>
+<meta name="description" content="Author multiple-choice quizzes, then take them with instant scoring.">
+<meta name="keywords" content="quiz maker, mcq quiz creator, make a quiz, online quiz maker">
+<link rel="canonical" href="https://toolnest.vercel.app/tools/quiz-maker/">
+<meta name="theme-color" content="#07070b">
+<meta property="og:title" content="Quiz Maker — Free Online | ToolNest">
+<meta property="og:description" content="Author multiple-choice quizzes, then take them with instant scoring.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css?v=4">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%23e01111'/><text x='50' y='68' font-size='58' text-anchor='middle' fill='white' font-family='Arial' font-weight='bold'>T</text></svg>">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebApplication","name":"Quiz Maker","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0"},"url":"https://toolnest.vercel.app/tools/quiz-maker/","description":"Author multiple-choice quizzes, then take them with instant scoring."},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How do I create and take a quiz?","acceptedAnswer":{"@type":"Answer","text":"Click Author mode, add questions with 4 options and mark the correct one. Switch to Take mode to answer and get scored."}},{"@type":"Question","name":"What does a valid question need?","acceptedAnswer":{"@type":"Answer","text":"Each question needs its text, all four options filled, and exactly one correct answer selected."}},{"@type":"Question","name":"How is the quiz scored?","acceptedAnswer":{"@type":"Answer","text":"The score screen shows your %, and each question marked right or wrong with the correct answer revealed."}},{"@type":"Question","name":"Is my quiz saved?","acceptedAnswer":{"@type":"Answer","text":"In this browser's localStorage — the quiz you author is saved between visits."}}]}]}</script>
+</head>
+<body>
+<header class="site-header">
+  <div class="container">
+    <a class="logo" href="/"><span class="logo-mark">T</span> ToolNest</a>
+    <div class="header-right">
+      <form class="nav-search" action="/" method="get" role="search">
+        <span class="ns-icon">🔍</span>
+        <input type="search" name="q" placeholder="Search tools…" aria-label="Search tools" autocomplete="off">
+      </form>
+      <div class="menu-wrap">
+        <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="menuPanel" aria-label="Open menu"><span></span><span></span><span></span></button>
+        <nav class="menu-panel" id="menuPanel" aria-label="Site">
+          <a href="/">Home</a>
+          <a href="/#categories">Categories</a>
+          <a href="/#all-tools">All Tools</a>
+        </nav>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ADSTERRA-HEADER: paste your Adsterra banner ad code inside the div below -->
+<div class="container"><div class="ad-slot ad-leaderboard" data-ad="header"></div></div>
+
+<main class="container">
+  <nav class="crumbs"><a href="/">Home</a> &rsaquo; <a href="/#fun">Fun &amp; Lifestyle</a> &rsaquo; Quiz Maker</nav>
+  <div class="tool-hero">
+    <h1>Quiz Maker</h1>
+    <p>Author multiple-choice quizzes, then take them with instant scoring.</p>
+  </div>
+
+  <div class="tool-card">
+  <div class="btn-row">
+    <button class="btn btn-sm" id="quiz-maker-tab-author">Author</button>
+    <button class="btn btn-sm btn-outline" id="quiz-maker-tab-take">Take Quiz</button>
+  </div>
+  <div class="error" id="quiz-maker-error"></div>
+</div>
+
+<div class="tool-card" id="quiz-maker-author-pane">
+  <h3>Author questions</h3>
+  <div class="field">
+    <label for="quiz-maker-q">Question</label>
+    <input class="input" type="text" id="quiz-maker-q" placeholder="Question text">
+  </div>
+  <div class="grid2">
+    <div class="field"><label for="quiz-maker-o1">Option A</label><input class="input" type="text" id="quiz-maker-o1"></div>
+    <div class="field"><label for="quiz-maker-o2">Option B</label><input class="input" type="text" id="quiz-maker-o2"></div>
+    <div class="field"><label for="quiz-maker-o3">Option C</label><input class="input" type="text" id="quiz-maker-o3"></div>
+    <div class="field"><label for="quiz-maker-o4">Option D</label><input class="input" type="text" id="quiz-maker-o4"></div>
+  </div>
+  <div class="field">
+    <label for="quiz-maker-correct">Correct answer</label>
+    <select class="select" id="quiz-maker-correct">
+      <option value="0">A</option>
+      <option value="1">B</option>
+      <option value="2">C</option>
+      <option value="3">D</option>
+    </select>
+  </div>
+  <div class="btn-row">
+    <button class="btn" id="quiz-maker-add">Add Question</button>
+    <button class="btn btn-outline" id="quiz-maker-clear">Clear Quiz</button>
+  </div>
+  <div id="quiz-maker-qlist" style="margin-top:12px"></div>
+</div>
+
+<div class="tool-card hidden" id="quiz-maker-take-pane">
+  <h3>Take the quiz</h3>
+  <div id="quiz-maker-take"></div>
+  <div class="btn-row" style="margin-top:10px">
+    <button class="btn" id="quiz-maker-submit">Submit Answers</button>
+    <button class="btn btn-outline" id="quiz-maker-retry">Retry</button>
+  </div>
+  <div class="result" id="quiz-maker-result" style="margin-top:10px"></div>
+</div>
+
+  <!-- ADSTERRA-INCONTENT: paste your Adsterra native/in-content ad code inside the div below -->
+  <div class="ad-slot" data-ad="incontent"></div>
+
+  <div class="info-grid">
+    <div class="info-card">
+      <h2>📖 How to use</h2>
+      <ol><li>Stay in Author mode and add questions with 4 options each.</li><li>Mark the correct option for each question.</li><li>Switch to Take Quiz mode and answer all questions.</li><li>Submit to see your score with answer review.</li></ol>
+    </div>
+    <div class="info-card">
+      <h2>❓ Frequently asked questions</h2>
+      <div class="faq"><details><summary>How do I create and take a quiz?</summary><p>Click Author mode, add questions with 4 options and mark the correct one. Switch to Take mode to answer and get scored.</p></details><details><summary>What does a valid question need?</summary><p>Each question needs its text, all four options filled, and exactly one correct answer selected.</p></details><details><summary>How is the quiz scored?</summary><p>The score screen shows your %, and each question marked right or wrong with the correct answer revealed.</p></details><details><summary>Is my quiz saved?</summary><p>In this browser&#39;s localStorage — the quiz you author is saved between visits.</p></details></div>
+    </div>
+  </div>
+
+  <section class="section">
+    <h2>🔗 Related tools</h2>
+    <div class="tool-grid"><a class="tool-link" href="/tools/100-day-challenge-tracker/" data-search="100-day challenge tracker track a 100-day challenge with a checkable 100-cell grid, streaks and stats. 100 day challenge habit tracker 100 days challenge tracker streak tracker"><span class="t-ico">🎲</span><span class="t-body"><b>100-Day Challenge Tracker</b><small>Track a 100-day challenge with a checkable 100-cell grid, streaks and stats.</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/24-game/" data-search="24 game the 24 game — combine four numbers with + − × ÷ to make 24. built-in solver guarantees every deal and gives hints. 24 game make 24 game 24 puzzle solver math puzzle game"><span class="t-ico">🎲</span><span class="t-body"><b>24 Game</b><small>The 24 Game — combine four numbers with + − × ÷ to make 24. Built-in solver guarantees every…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/aim-trainer-game/" data-search="aim trainer game test and train your aim — targets pop up at random spots for 30 seconds. hits, misses and accuracy are tracked live. aim trainer aim test reaction test click speed test fps aim trainer"><span class="t-ico">🎲</span><span class="t-body"><b>Aim Trainer Game</b><small>Test and train your aim — targets pop up at random spots for 30 seconds. Hits, misses and ac…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/asteroid-shooter/" data-search="asteroid shooter asteroid shooter — rotate, thrust and blast splitting asteroids on canvas. 3 lives, rising levels. asteroid shooter game asteroids game online space shooter canvas"><span class="t-ico">🎲</span><span class="t-body"><b>Asteroid Shooter</b><small>Asteroid Shooter — rotate, thrust and blast splitting asteroids on canvas. 3 lives, rising l…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/attendance-tracker/" data-search="attendance tracker track class attendance: roster with present/absent marks per date and % summaries. attendance tracker class attendance student attendance roll call app"><span class="t-ico">🎲</span><span class="t-body"><b>Attendance Tracker</b><small>Track class attendance: roster with present/absent marks per date and % summaries.</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/baby-name-generator/" data-search="baby name generator discover baby names by gender and origin — pakistani, arabic, western, indian or turkish — with meanings, random picks and tap-to-copy. baby name generator baby names with meanings muslim baby names boy girl names"><span class="t-ico">🎲</span><span class="t-body"><b>Baby Name Generator</b><small>Discover baby names by gender and origin — Pakistani, Arabic, Western, Indian or Turkish — w…</small></span><span class="t-arrow">→</span></a></div>
+  </section>
+</main>
+
+<!-- ADSTERRA-FOOTER: paste your Adsterra footer/banner ad code inside the div below -->
+<div class="container"><div class="ad-slot" data-ad="footer"></div></div>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="f-grid">
+      <div>
+        <span class="brandline"><span class="logo-mark">T</span> ToolNest</span>
+        <p>Free online tools that actually work. No sign-up, no watermarks — and your files never leave your device for client-side tools.</p>
+      </div>
+      <div>
+        <h4>Popular</h4>
+        <a href="/tools/qr-code-generator/">QR Code Generator</a>
+        <a href="/tools/background-remover/">Background Remover</a>
+        <a href="/tools/pdf-merger/">PDF Merger</a>
+        <a href="/tools/word-counter/">Word Counter</a>
+      </div>
+      <div>
+        <h4>Categories</h4>
+        <a href="/#image">Image Tools</a>
+        <a href="/#pdf">PDF &amp; Documents</a>
+        <a href="/#calculators">Calculators</a>
+        <a href="/#developer">Developer Tools</a>
+      </div>
+      <div>
+        <h4>Site</h4>
+        <a href="/">Home</a>
+        <a href="/#all-tools">All Tools</a>
+        <a href="/sitemap.xml">Sitemap</a>
+      </div>
+    </div>
+    <div class="f-bottom">© 2026 ToolNest · Free tools for everyone · Made with care</div>
+  </div>
+</footer>
+
+<script src="/assets/site.js?v=5"></script>
+
+<script>
+/* Quiz Maker — author MCQs, then take the quiz with scoring. */
+(function () {
+  'use strict';
+
+  var SLUG = 'quiz-maker';
+  var KEY = 'tn-' + SLUG + '-questions';
+
+  function load() {
+    try {
+      var arr = JSON.parse(localStorage.getItem(KEY) || '[]');
+      return Array.isArray(arr) ? arr : [];
+    } catch (e) { return []; }
+  }
+
+  function persist(qs) {
+    try { localStorage.setItem(KEY, JSON.stringify(qs)); }
+    catch (e) { TN.setErr(SLUG + '-error', 'Could not save — browser storage is unavailable.'); }
+  }
+
+  function renderAuthor() {
+    var qs = load();
+    var box = TN.el(SLUG + '-qlist');
+    if (!qs.length) { box.innerHTML = '<p class="muted">No questions yet.</p>'; return; }
+    box.innerHTML = qs.map(function (q, i) {
+      return '<div class="tool-card" style="margin:8px 0"><strong>' + (i + 1) + '. ' + TN.esc(q.q) + '</strong>' +
+        '<ol type="A" style="margin:4px 0"><li>' + q.opts.map(TN.esc).join('</li><li>') + '</li></ol>' +
+        '<p class="muted" style="margin:0">Correct: ' + 'ABCD'[q.correct] + '</p>' +
+        '<button class="btn btn-sm btn-outline" data-del="' + i + '" style="margin-top:6px">Delete</button></div>';
+    }).join('');
+    var dels = box.querySelectorAll('[data-del]');
+    for (var i = 0; i < dels.length; i++) {
+      (function (b) {
+        b.addEventListener('click', function () {
+          var qs2 = load();
+          qs2.splice(parseInt(b.getAttribute('data-del'), 10), 1);
+          persist(qs2); renderAuthor();
+        });
+      })(dels[i]);
+    }
+  }
+
+  function addQuestion() {
+    TN.clearErr(SLUG + '-error');
+    var q = TN.el(SLUG + '-q').value.trim();
+    var opts = [TN.el(SLUG + '-o1').value.trim(), TN.el(SLUG + '-o2').value.trim(),
+                TN.el(SLUG + '-o3').value.trim(), TN.el(SLUG + '-o4').value.trim()];
+    var correct = parseInt(TN.el(SLUG + '-correct').value, 10);
+    if (!q) { TN.setErr(SLUG + '-error', 'Enter the question text.'); return; }
+    if (opts.some(function (o) { return !o; })) { TN.setErr(SLUG + '-error', 'Fill in all four options.'); return; }
+    var qs = load();
+    qs.push({ q: q, opts: opts, correct: correct });
+    persist(qs);
+    ['q', 'o1', 'o2', 'o3', 'o4'].forEach(function (k) { TN.el(SLUG + '-' + k).value = ''; });
+    renderAuthor();
+  }
+
+  function renderTake() {
+    var qs = load();
+    var box = TN.el(SLUG + '-take');
+    TN.el(SLUG + '-result').innerHTML = '';
+    if (!qs.length) { box.innerHTML = '<p class="muted">Author some questions first.</p>'; return; }
+    // shuffle question order
+    var order = qs.map(function (_, i) { return i; });
+    for (var i = order.length - 1; i > 0; i--) {
+      var j = Math.floor(Math.random() * (i + 1));
+      var t = order[i]; order[i] = order[j]; order[j] = t;
+    }
+    box.innerHTML = order.map(function (qi, n) {
+      var q = qs[qi];
+      return '<div class="tool-card" style="margin:8px 0" data-qidx="' + qi + '">' +
+        '<strong>' + (n + 1) + '. ' + TN.esc(q.q) + '</strong>' +
+        q.opts.map(function (o, oi) {
+          return '<label class="checkline"><input type="radio" name="' + SLUG + '-ans-' + n + '" value="' + oi + '"> ' + TN.esc(o) + '</label>';
+        }).join('') + '</div>';
+    }).join('');
+  }
+
+  function submit() {
+    TN.clearErr(SLUG + '-error');
+    var qs = load();
+    var cards = TN.el(SLUG + '-take').querySelectorAll('[data-qidx]');
+    if (!cards.length) { TN.setErr(SLUG + '-error', 'No questions to answer.'); return; }
+    var correct = 0, review = '';
+    for (var n = 0; n < cards.length; n++) {
+      var qi = parseInt(cards[n].getAttribute('data-qidx'), 10);
+      var q = qs[qi];
+      var sel = cards[n].querySelector('input[name="' + SLUG + '-ans-' + n + '"]:checked');
+      var got = sel ? parseInt(sel.value, 10) : -1;
+      var ok = got === q.correct;
+      if (ok) correct++;
+      review += '<p style="margin:6px 0">' + (ok ? '✅' : '❌') + ' <strong>' + TN.esc(q.q) + '</strong><br>' +
+        '<span class="muted">Your answer: ' + (got >= 0 ? TN.esc(q.opts[got]) : 'none') +
+        ' | Correct: ' + TN.esc(q.opts[q.correct]) + '</span></p>';
+    }
+    var pct = Math.round(correct / cards.length * 100);
+    TN.el(SLUG + '-result').innerHTML =
+      '<p><strong>Score: ' + correct + '/' + cards.length + ' (' + pct + '%)</strong></p>' + review;
+  }
+
+  function switchTab(take) {
+    TN.el(SLUG + '-author-pane').classList.toggle('hidden', take);
+    TN.el(SLUG + '-take-pane').classList.toggle('hidden', !take);
+    TN.el(SLUG + '-tab-author').classList.toggle('btn-outline', take);
+    TN.el(SLUG + '-tab-take').classList.toggle('btn-outline', !take);
+    if (take) renderTake();
+  }
+
+  function init() {
+    try {
+      if (!TN.el(SLUG + '-add')) return;
+      TN.on(SLUG + '-add', 'click', addQuestion);
+      TN.on(SLUG + '-submit', 'click', submit);
+      TN.on(SLUG + '-retry', 'click', renderTake);
+      TN.on(SLUG + '-tab-author', 'click', function () { switchTab(false); });
+      TN.on(SLUG + '-tab-take', 'click', function () { switchTab(true); });
+      TN.on(SLUG + '-clear', 'click', function () {
+        if (!window.confirm('Delete all questions?')) return;
+        persist([]); renderAuthor();
+      });
+      renderAuthor();
+    } catch (e) { /* never throw on load */ }
+  }
+
+  init();
+})();
+</script>
+</body>
+</html>

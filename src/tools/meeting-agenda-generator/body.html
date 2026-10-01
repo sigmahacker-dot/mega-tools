@@ -1,0 +1,30 @@
+<div class="tool-card">
+  <div class="grid2">
+    <div class="field">
+      <label for="meeting-agenda-generator-title">Meeting title</label>
+      <input class="input" id="meeting-agenda-generator-title" type="text" placeholder="e.g. Weekly Team Sync" maxlength="80">
+    </div>
+    <div class="field">
+      <label for="meeting-agenda-generator-date">Date</label>
+      <input class="input" id="meeting-agenda-generator-date" type="date">
+    </div>
+  </div>
+  <div class="field">
+    <label>Add agenda item</label>
+    <div class="grid3">
+      <input class="input" id="meeting-agenda-generator-item" type="text" placeholder="Item title" maxlength="80">
+      <input class="input" id="meeting-agenda-generator-owner" type="text" placeholder="Owner (optional)" maxlength="40">
+      <div style="display:flex;gap:8px">
+        <input class="input" id="meeting-agenda-generator-mins" type="number" min="1" max="480" value="10" style="width:80px">
+        <button class="btn btn-outline btn-sm" id="meeting-agenda-generator-add" type="button" style="white-space:nowrap">+ Add</button>
+      </div>
+    </div>
+  </div>
+  <div class="error" id="meeting-agenda-generator-error"></div>
+  <div id="meeting-agenda-generator-list" style="margin-top:8px"></div>
+  <p class="muted" style="margin-top:8px">Total time: <strong id="meeting-agenda-generator-total">0 min</strong></p>
+  <div class="btn-row" style="margin-top:10px">
+    <button class="btn btn-primary btn-sm" id="meeting-agenda-generator-copy" type="button">Copy Agenda</button>
+    <button class="btn btn-outline btn-sm" id="meeting-agenda-generator-download" type="button">Download .txt</button>
+  </div>
+</div>

@@ -1,0 +1,20 @@
+{
+  "slug": "24-game-solver",
+  "title": "24 Game Solver",
+  "category": "math",
+  "description": "Solve the 24 game exhaustively: every ordering, operation and parenthesization is tried with exact fraction arithmetic, and all distinct solutions are shown.",
+  "keywords": ["24 game solver", "make 24 solver", "24 puzzle", "arithmetic puzzle solver"],
+  "howto": [
+    "Type your four numbers (duplicates allowed).",
+    "Press Solve — the tool tries all 4! orders × 64 operation combos × 5 parenthesizations.",
+    "Read every distinct expression that equals 24, using + − × ÷ and parentheses.",
+    "If none exists, the tool says so honestly after the full exhaustive search."
+  ],
+  "faqs": [
+    {"q": "How does the exhaustive search work?", "a": "It recursively combines pairs of numbers with +, −, ×, ÷ (both orders for − and ÷) until one value remains, tracking the expression string. With exact fractions there are no floating-point false positives or misses."},
+    {"q": "Why use fractions instead of decimals?", "a": "Expressions like (5 − 1/5) × 5 need exact thirds/fifths. Fraction arithmetic with GCD reduction guarantees a solution is reported only when it is exactly 24."},
+    {"q": "Do all puzzles have a solution?", "a": "No — e.g. 1, 1, 1, 1 cannot make 24. The solver searches the entire space (over 7,000 combinations) before concluding none exists."}
+  ],
+  "libs": [],
+  "module": false
+}

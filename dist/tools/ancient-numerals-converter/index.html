@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ancient Numerals Converter — Free Online | ToolNest</title>
+<meta name="description" content="Convert decimal numbers to Roman, Egyptian hieroglyphic, Babylonian cuneiform and Mayan numerals — with Roman numerals also decoded back to decimal.">
+<meta name="keywords" content="roman numerals, egyptian numerals, babylonian numerals, mayan numerals, ancient numbers">
+<link rel="canonical" href="https://toolnest.vercel.app/tools/ancient-numerals-converter/">
+<meta name="theme-color" content="#07070b">
+<meta property="og:title" content="Ancient Numerals Converter — Free Online | ToolNest">
+<meta property="og:description" content="Convert decimal numbers to Roman, Egyptian hieroglyphic, Babylonian cuneiform and Mayan numerals — with Roman numerals also decoded back to decimal.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css?v=4">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%23e01111'/><text x='50' y='68' font-size='58' text-anchor='middle' fill='white' font-family='Arial' font-weight='bold'>T</text></svg>">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebApplication","name":"Ancient Numerals Converter","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0"},"url":"https://toolnest.vercel.app/tools/ancient-numerals-converter/","description":"Convert decimal numbers to Roman, Egyptian hieroglyphic, Babylonian cuneiform and Mayan numerals — with Roman numerals also decoded back to decimal."},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How do Egyptian hieroglyphic numerals work?","acceptedAnswer":{"@type":"Answer","text":"Purely additive: 𓏺=1, 𓎆=10, 𓍢=100, 𓆼=1,000, 𓂭=10,000, 𓆐=100,000, 𓁨=1,000,000. The number 234 is written as 𓍢𓍢𓎆𓎆𓎆𓏺𓏺𓏺𓏺 — symbols are simply repeated and added."}},{"@type":"Question","name":"How do Babylonian numerals work?","acceptedAnswer":{"@type":"Answer","text":"Base 60 (sexagesimal): each position holds 0–59 written with 𒁹 (1) and 𒌋 (10), positions separated here by spaces. 75 = 1·60 + 15, shown as 𒁹 𒌋𒁹𒁹𒁹𒁹𒁹."}},{"@type":"Question","name":"How do Mayan numerals work?","acceptedAnswer":{"@type":"Answer","text":"Base 20 (vigesimal): each position holds 0–19 using dots (1) and bars (5), written vertically. Here positions are shown top (highest) to bottom, separated by spaces."}}]}]}</script>
+</head>
+<body>
+<header class="site-header">
+  <div class="container">
+    <a class="logo" href="/"><span class="logo-mark">T</span> ToolNest</a>
+    <div class="header-right">
+      <form class="nav-search" action="/" method="get" role="search">
+        <span class="ns-icon">🔍</span>
+        <input type="search" name="q" placeholder="Search tools…" aria-label="Search tools" autocomplete="off">
+      </form>
+      <div class="menu-wrap">
+        <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="menuPanel" aria-label="Open menu"><span></span><span></span><span></span></button>
+        <nav class="menu-panel" id="menuPanel" aria-label="Site">
+          <a href="/">Home</a>
+          <a href="/#categories">Categories</a>
+          <a href="/#all-tools">All Tools</a>
+        </nav>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ADSTERRA-HEADER: paste your Adsterra banner ad code inside the div below -->
+<div class="container"><div class="ad-slot ad-leaderboard" data-ad="header"></div></div>
+
+<main class="container">
+  <nav class="crumbs"><a href="/">Home</a> &rsaquo; <a href="/#math">Math &amp; Numbers</a> &rsaquo; Ancient Numerals Converter</nav>
+  <div class="tool-hero">
+    <h1>Ancient Numerals Converter</h1>
+    <p>Convert decimal numbers to Roman, Egyptian hieroglyphic, Babylonian cuneiform and Mayan numerals — with Roman numerals also decoded back to decimal.</p>
+  </div>
+
+  <div class="tool-card">
+  <div class="grid2">
+    <div class="field">
+      <label for="ancient-numerals-converter-mode">Mode</label>
+      <select class="select" id="ancient-numerals-converter-mode">
+        <option value="dec">Decimal → all ancient systems</option>
+        <option value="roman">Roman → decimal</option>
+      </select>
+    </div>
+    <div class="field">
+      <label for="ancient-numerals-converter-in">Input</label>
+      <input class="input" id="ancient-numerals-converter-in" type="text" value="2026" style="font-family:monospace">
+    </div>
+  </div>
+  <div class="btn-row">
+    <button type="button" class="btn" id="ancient-numerals-converter-convert">Convert</button>
+  </div>
+  <div class="error" id="ancient-numerals-converter-error"></div>
+  <div id="ancient-numerals-converter-out" class="hidden">
+    <div class="result" id="ancient-numerals-converter-results"></div>
+  </div>
+</div>
+
+
+  <!-- ADSTERRA-INCONTENT: paste your Adsterra native/in-content ad code inside the div below -->
+  <div class="ad-slot" data-ad="incontent"></div>
+
+  <div class="info-grid">
+    <div class="info-card">
+      <h2>📖 How to use</h2>
+      <ol><li>Type a decimal number (1–3999 for full Roman support).</li><li>Press Convert to see it in all four ancient systems at once.</li><li>Or switch to Roman → decimal mode and paste numerals like MCMXCIV to decode.</li><li>Each system shows how its symbols add up to your number.</li></ol>
+    </div>
+    <div class="info-card">
+      <h2>❓ Frequently asked questions</h2>
+      <div class="faq"><details><summary>How do Egyptian hieroglyphic numerals work?</summary><p>Purely additive: 𓏺=1, 𓎆=10, 𓍢=100, 𓆼=1,000, 𓂭=10,000, 𓆐=100,000, 𓁨=1,000,000. The number 234 is written as 𓍢𓍢𓎆𓎆𓎆𓏺𓏺𓏺𓏺 — symbols are simply repeated and added.</p></details><details><summary>How do Babylonian numerals work?</summary><p>Base 60 (sexagesimal): each position holds 0–59 written with 𒁹 (1) and 𒌋 (10), positions separated here by spaces. 75 = 1·60 + 15, shown as 𒁹 𒌋𒁹𒁹𒁹𒁹𒁹.</p></details><details><summary>How do Mayan numerals work?</summary><p>Base 20 (vigesimal): each position holds 0–19 using dots (1) and bars (5), written vertically. Here positions are shown top (highest) to bottom, separated by spaces.</p></details></div>
+    </div>
+  </div>
+
+  <section class="section">
+    <h2>🔗 Related tools</h2>
+    <div class="tool-grid"><a class="tool-link" href="/tools/24-game-solver/" data-search="24 game solver solve the 24 game exhaustively: every ordering, operation and parenthesization is tried with exact fraction arithmetic, and all distinct solutions are shown. 24 game solver make 24 solver 24 puzzle arithmetic puzzle solver"><span class="t-ico">📐</span><span class="t-body"><b>24 Game Solver</b><small>Solve the 24 game exhaustively: every ordering, operation and parenthesization is tried with…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/arithmetic-sequence-calculator/" data-search="arithmetic sequence calculator from the first term and common difference get the nth term and the sum of the first n terms. arithmetic sequence arithmetic progression nth term sum of arithmetic series common difference"><span class="t-ico">📐</span><span class="t-body"><b>Arithmetic Sequence Calculator</b><small>From the first term and common difference get the nth term and the sum of the first n terms.</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/base-n-arithmetic/" data-search="base-n arithmetic add, subtract, multiply and divide numbers in any base from 2 to 36 with exact bigint math and a full conversion breakdown. base n arithmetic binary addition hexadecimal calculator base 36 math"><span class="t-ico">📐</span><span class="t-body"><b>Base-N Arithmetic</b><small>Add, subtract, multiply and divide numbers in any base from 2 to 36 with exact BigInt math a…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/bayes-theorem-calculator/" data-search="bayes theorem calculator compute posterior probabilities from prior, sensitivity and specificity with the full bayes formula, natural frequencies and a probability tree. bayes theorem calculator posterior probability sensitivity specificity medical test probability"><span class="t-ico">📐</span><span class="t-body"><b>Bayes Theorem Calculator</b><small>Compute posterior probabilities from prior, sensitivity and specificity with the full Bayes …</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/bcd-converter/" data-search="bcd converter convert decimal numbers to binary-coded decimal (packed and unpacked) and decode bcd back to decimal, with per-digit nibble breakdowns. bcd converter binary coded decimal packed bcd unpacked bcd bcd decoder"><span class="t-ico">📐</span><span class="t-body"><b>BCD Converter</b><small>Convert decimal numbers to Binary-Coded Decimal (packed and unpacked) and decode BCD back to…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/binary-adder-calculator/" data-search="binary adder calculator add two binary numbers with every column addition and carry shown, plus a decimal check. binary addition add binary numbers binary adder binary sum binary carry"><span class="t-ico">📐</span><span class="t-body"><b>Binary Adder Calculator</b><small>Add two binary numbers with every column addition and carry shown, plus a decimal check.</small></span><span class="t-arrow">→</span></a></div>
+  </section>
+</main>
+
+<!-- ADSTERRA-FOOTER: paste your Adsterra footer/banner ad code inside the div below -->
+<div class="container"><div class="ad-slot" data-ad="footer"></div></div>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="f-grid">
+      <div>
+        <span class="brandline"><span class="logo-mark">T</span> ToolNest</span>
+        <p>Free online tools that actually work. No sign-up, no watermarks — and your files never leave your device for client-side tools.</p>
+      </div>
+      <div>
+        <h4>Popular</h4>
+        <a href="/tools/qr-code-generator/">QR Code Generator</a>
+        <a href="/tools/background-remover/">Background Remover</a>
+        <a href="/tools/pdf-merger/">PDF Merger</a>
+        <a href="/tools/word-counter/">Word Counter</a>
+      </div>
+      <div>
+        <h4>Categories</h4>
+        <a href="/#image">Image Tools</a>
+        <a href="/#pdf">PDF &amp; Documents</a>
+        <a href="/#calculators">Calculators</a>
+        <a href="/#developer">Developer Tools</a>
+      </div>
+      <div>
+        <h4>Site</h4>
+        <a href="/">Home</a>
+        <a href="/#all-tools">All Tools</a>
+        <a href="/sitemap.xml">Sitemap</a>
+      </div>
+    </div>
+    <div class="f-bottom">© 2026 ToolNest · Free tools for everyone · Made with care</div>
+  </div>
+</footer>
+
+<script src="/assets/site.js?v=5"></script>
+
+<script>
+(function () {
+  'use strict';
+  var P = 'ancient-numerals-converter-', ERR = P + 'error';
+  function g(id) { return TN.el(P + id); }
+  var ROMAN = [[1000, 'M'], [900, 'CM'], [500, 'D'], [400, 'CD'], [100, 'C'], [90, 'XC'], [50, 'L'], [40, 'XL'], [10, 'X'], [9, 'IX'], [5, 'V'], [4, 'IV'], [1, 'I']];
+  function toRoman(n) {
+    var s = '';
+    for (var i = 0; i < ROMAN.length; i++) while (n >= ROMAN[i][0]) { s += ROMAN[i][1]; n -= ROMAN[i][0]; }
+    return s;
+  }
+  function fromRoman(s) {
+    s = s.toUpperCase().replace(/\s+/g, '');
+    if (!/^[MDCLXVI]+$/.test(s)) throw new Error('Roman numerals use only M, D, C, L, X, V, I.');
+    var val = { I: 1, V: 5, X: 10, L: 50, C: 100, D: 500, M: 1000 };
+    var total = 0;
+    for (var i = 0; i < s.length; i++) {
+      var v = val[s[i]], nx = i + 1 < s.length ? val[s[i + 1]] : 0;
+      total += v < nx ? -v : v;
+    }
+    if (toRoman(total) !== s) throw new Error('"' + s + '" is not a well-formed Roman numeral (did you mean ' + toRoman(total) + ' = ' + total + '?).');
+    return total;
+  }
+  var EGYPT = [[1000000, '𓁨'], [100000, '𓆐'], [10000, '𓂭'], [1000, '𓆼'], [100, '𓍢'], [10, '𓎆'], [1, '𓏺']];
+  function toEgyptian(n) {
+    var s = '', parts = [];
+    for (var i = 0; i < EGYPT.length; i++) {
+      var c = Math.floor(n / EGYPT[i][0]);
+      if (c) { s += EGYPT[i][1].repeat(c); parts.push(c + ' × ' + EGYPT[i][1] + ' (' + EGYPT[i][0] + ')'); n -= c * EGYPT[i][0]; }
+    }
+    return { s: s || '—', parts: parts };
+  }
+  function toBabylonian(n) {
+    if (n === 0) return { s: '(no zero symbol — Babylonians left a space)', parts: [] };
+    var digits = [];
+    while (n > 0) { digits.unshift(n % 60); n = Math.floor(n / 60); }
+    var s = digits.map(function (d) {
+      if (d === 0) return '⋯';
+      return '𒌋'.repeat(Math.floor(d / 10)) + '𒁹'.repeat(d % 10);
+    }).join('  ');
+    var parts = digits.map(function (d, i) { return d + ' × 60^' + (digits.length - 1 - i); });
+    return { s: s, parts: parts };
+  }
+  var MAYAN_D = ['𝋠', '𝋡', '𝋢', '𝋣', '𝋤', '𝋥', '𝋦', '𝋧', '𝋨', '𝋩', '𝋪', '𝋫', '𝋬', '𝋭', '𝋮', '𝋯', '𝋰', '𝋱', '𝋲', '𝋳'];
+  function toMayan(n) {
+    if (n === 0) return { s: MAYAN_D[0], parts: ['0 (shell glyph)'] };
+    var digits = [];
+    while (n > 0) { digits.unshift(n % 20); n = Math.floor(n / 20); }
+    var s = digits.map(function (d) { return MAYAN_D[d]; }).join(' ');
+    var parts = digits.map(function (d, i) { return d + ' × 20^' + (digits.length - 1 - i); });
+    return { s: s, parts: parts };
+  }
+  function convert() {
+    try {
+      TN.clearErr(ERR);
+      var mode = g('mode').value, raw = g('in').value.trim();
+      if (!raw) { TN.setErr(ERR, 'Type an input value first.'); return; }
+      TN.show(P + 'out');
+      var box = g('results'), h = '';
+      if (mode === 'roman') {
+        var dec;
+        try { dec = fromRoman(raw); } catch (e) { TN.setErr(ERR, e.message); return; }
+        h = '<h3>Roman → decimal</h3><p style="font-size:1.4em"><code>' + TN.esc(raw.toUpperCase()) + '</code> = <b>' + dec + '</b></p>' +
+          '<p class="muted">Decoded left to right: a smaller symbol before a larger one subtracts (IV = 4), otherwise symbols add.</p>';
+      } else {
+        if (!/^\d+$/.test(raw)) { TN.setErr(ERR, 'Decimal mode needs a positive whole number.'); return; }
+        var n = parseInt(raw, 10);
+        if (n < 1 || n > 3999999) { TN.setErr(ERR, 'Enter a number from 1 to 3,999,999.'); return; }
+        var eg = toEgyptian(n), bb = toBabylonian(n), my = toMayan(n);
+        h = '<h3>' + n + ' in ancient systems</h3><table class="data"><tbody>' +
+          '<tr><td><b>Roman</b></td><td style="font-size:1.3em"><code>' + (n <= 3999 ? toRoman(n) : '(Romans had no standard form above 3999)') + '</code></td></tr>' +
+          '<tr><td><b>Egyptian</b><br><span class="muted">hieroglyphic, additive</span></td><td style="font-size:1.6em">' + eg.s + '<br><span class="muted" style="font-size:0.65em">' + TN.esc(eg.parts.join(' + ')) + '</span></td></tr>' +
+          '<tr><td><b>Babylonian</b><br><span class="muted">cuneiform, base 60</span></td><td style="font-size:1.6em">' + bb.s + '<br><span class="muted" style="font-size:0.65em">' + TN.esc(bb.parts.join(' + ')) + '<br>𒁹 = 1, 𒌋 = 10; positions right→left are 60⁰, 60¹, 60²…</span></td></tr>' +
+          '<tr><td><b>Mayan</b><br><span class="muted">vigesimal, base 20</span></td><td style="font-size:1.6em">' + my.s + '<br><span class="muted" style="font-size:0.65em">' + TN.esc(my.parts.join(' + ')) + '<br>positions right→left are 20⁰, 20¹, 20²…</span></td></tr>' +
+          '</tbody></table>';
+      }
+      box.innerHTML = h;
+    } catch (e) { TN.setErr(ERR, e.message || 'Could not convert.'); }
+  }
+  try {
+    if (!TN.el(P + 'convert')) return;
+    TN.on(P + 'convert', 'click', convert);
+    TN.on(P + 'mode', 'change', function () {
+      g('in').value = g('mode').value === 'roman' ? 'MCMXCIV' : '2026';
+      TN.hide(P + 'out');
+    });
+  } catch (e) { /* never throw on load */ }
+})();
+
+</script>
+</body>
+</html>

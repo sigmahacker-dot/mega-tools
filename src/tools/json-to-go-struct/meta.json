@@ -1,0 +1,38 @@
+{
+  "slug": "json-to-go-struct",
+  "title": "JSON to Go Struct",
+  "category": "developer",
+  "description": "Convert JSON to Go structs with json tags \u2014 nested structs, slices and omitempty included.",
+  "keywords": [
+    "json to go",
+    "json to struct",
+    "go struct generator",
+    "golang json model"
+  ],
+  "howto": [
+    "Paste your JSON sample.",
+    "Set the root struct name.",
+    "Click Generate to build the structs.",
+    "Copy the code or download types.go."
+  ],
+  "faqs": [
+    {
+      "q": "How are nested objects handled?",
+      "a": "Each nested object becomes its own named struct, referenced by the parent field."
+    },
+    {
+      "q": "What do the struct tags look like?",
+      "a": "Every field gets a `json:\"key\"` tag; nullable fields also get `,omitempty`."
+    },
+    {
+      "q": "How are arrays typed?",
+      "a": "As slices \u2014 []string, []int, or []NestedStruct. Mixed or empty arrays become []interface{}."
+    },
+    {
+      "q": "Does the output compile?",
+      "a": "Yes \u2014 paste it into any Go file. No imports are needed unless you add time.Time fields yourself."
+    }
+  ],
+  "libs": [],
+  "module": false
+}

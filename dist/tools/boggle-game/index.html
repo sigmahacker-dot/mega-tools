@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Boggle — Free Online | ToolNest</title>
+<meta name="description" content="Boggle — shake the 4×4 board of real Boggle dice, find words in 3 minutes, beat your best score.">
+<meta name="keywords" content="boggle game, boggle online, word search game 4x4">
+<link rel="canonical" href="https://toolnest.vercel.app/tools/boggle-game/">
+<meta name="theme-color" content="#07070b">
+<meta property="og:title" content="Boggle — Free Online | ToolNest">
+<meta property="og:description" content="Boggle — shake the 4×4 board of real Boggle dice, find words in 3 minutes, beat your best score.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css?v=4">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%23e01111'/><text x='50' y='68' font-size='58' text-anchor='middle' fill='white' font-family='Arial' font-weight='bold'>T</text></svg>">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebApplication","name":"Boggle","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0"},"url":"https://toolnest.vercel.app/tools/boggle-game/","description":"Boggle — shake the 4×4 board of real Boggle dice, find words in 3 minutes, beat your best score."},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What counts as a valid word?","acceptedAnswer":{"@type":"Answer","text":"Words must be at least 3 letters, formed by chaining adjacent letters (including diagonals) without reusing a cube, and must be in the 5,200-word dictionary. The Q cube counts as “Qu”."}},{"@type":"Question","name":"How is scoring calculated?","acceptedAnswer":{"@type":"Answer","text":"3–4 letters = 1 point, 5 = 2, 6 = 3, 7 = 5, 8+ = 11. Longer words are where the big scores hide."}},{"@type":"Question","name":"Are the dice real?","acceptedAnswer":{"@type":"Answer","text":"The board uses the 16 official Boggle dice with their real letter distributions, shuffled and rolled fresh every game."}}]}]}</script>
+</head>
+<body>
+<header class="site-header">
+  <div class="container">
+    <a class="logo" href="/"><span class="logo-mark">T</span> ToolNest</a>
+    <div class="header-right">
+      <form class="nav-search" action="/" method="get" role="search">
+        <span class="ns-icon">🔍</span>
+        <input type="search" name="q" placeholder="Search tools…" aria-label="Search tools" autocomplete="off">
+      </form>
+      <div class="menu-wrap">
+        <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="menuPanel" aria-label="Open menu"><span></span><span></span><span></span></button>
+        <nav class="menu-panel" id="menuPanel" aria-label="Site">
+          <a href="/">Home</a>
+          <a href="/#categories">Categories</a>
+          <a href="/#all-tools">All Tools</a>
+        </nav>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ADSTERRA-HEADER: paste your Adsterra banner ad code inside the div below -->
+<div class="container"><div class="ad-slot ad-leaderboard" data-ad="header"></div></div>
+
+<main class="container">
+  <nav class="crumbs"><a href="/">Home</a> &rsaquo; <a href="/#fun">Fun &amp; Lifestyle</a> &rsaquo; Boggle</nav>
+  <div class="tool-hero">
+    <h1>Boggle</h1>
+    <p>Boggle — shake the 4×4 board of real Boggle dice, find words in 3 minutes, beat your best score.</p>
+  </div>
+
+  <div class="tool-card" style="text-align:center;max-width:560px;margin:0 auto">
+  <div class="btn-row" style="margin-bottom:10px">
+    <button class="btn btn-primary" id="boggle-game-new">New game</button>
+    <button class="btn btn-outline" id="boggle-game-end">End game</button>
+  </div>
+  <div class="stat-cards" style="margin-bottom:10px">
+    <div class="stat-card"><div class="v" id="boggle-game-time">3:00</div><div class="l">Time left</div></div>
+    <div class="stat-card"><div class="v" id="boggle-game-score">0</div><div class="l">Score</div></div>
+    <div class="stat-card"><div class="v" id="boggle-game-words">0</div><div class="l">Words found</div></div>
+    <div class="stat-card"><div class="v" id="boggle-game-possible">—</div><div class="l">Possible</div></div>
+  </div>
+  <p class="muted" id="boggle-game-status" style="min-height:24px;font-weight:600"></p>
+  <div id="boggle-game-board" style="display:inline-grid;grid-template-columns:repeat(4,minmax(56px,76px));gap:8px;margin:8px 0"></div>
+  <div style="font-size:26px;font-weight:800;letter-spacing:4px;min-height:40px" id="boggle-game-current"></div>
+  <div class="btn-row" style="margin:8px 0">
+    <button class="btn btn-primary" id="boggle-game-submit">Submit word</button>
+    <button class="btn btn-outline" id="boggle-game-clear">Clear</button>
+  </div>
+  <div id="boggle-game-found" style="display:flex;flex-wrap:wrap;gap:6px;justify-content:center;max-height:130px;overflow:auto;margin-top:8px"></div>
+  <div class="stat-cards" style="margin-top:10px">
+    <div class="stat-card"><div class="v" id="boggle-game-best">0</div><div class="l">Best score</div></div>
+  </div>
+  <div class="error" id="boggle-game-error"></div>
+</div>
+
+
+  <!-- ADSTERRA-INCONTENT: paste your Adsterra native/in-content ad code inside the div below -->
+  <div class="ad-slot" data-ad="incontent"></div>
+
+  <div class="info-grid">
+    <div class="info-card">
+      <h2>📖 How to use</h2>
+      <ol><li>Press “New game” to shake the board — the 3:00 timer starts.</li><li>Click adjacent letters to build a word (Q counts as Qu).</li><li>Press “Submit word” — valid new words score by length.</li><li>Find as many as you can before time runs out.</li></ol>
+    </div>
+    <div class="info-card">
+      <h2>❓ Frequently asked questions</h2>
+      <div class="faq"><details><summary>What counts as a valid word?</summary><p>Words must be at least 3 letters, formed by chaining adjacent letters (including diagonals) without reusing a cube, and must be in the 5,200-word dictionary. The Q cube counts as “Qu”.</p></details><details><summary>How is scoring calculated?</summary><p>3–4 letters = 1 point, 5 = 2, 6 = 3, 7 = 5, 8+ = 11. Longer words are where the big scores hide.</p></details><details><summary>Are the dice real?</summary><p>The board uses the 16 official Boggle dice with their real letter distributions, shuffled and rolled fresh every game.</p></details></div>
+    </div>
+  </div>
+
+  <section class="section">
+    <h2>🔗 Related tools</h2>
+    <div class="tool-grid"><a class="tool-link" href="/tools/100-day-challenge-tracker/" data-search="100-day challenge tracker track a 100-day challenge with a checkable 100-cell grid, streaks and stats. 100 day challenge habit tracker 100 days challenge tracker streak tracker"><span class="t-ico">🎲</span><span class="t-body"><b>100-Day Challenge Tracker</b><small>Track a 100-day challenge with a checkable 100-cell grid, streaks and stats.</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/24-game/" data-search="24 game the 24 game — combine four numbers with + − × ÷ to make 24. built-in solver guarantees every deal and gives hints. 24 game make 24 game 24 puzzle solver math puzzle game"><span class="t-ico">🎲</span><span class="t-body"><b>24 Game</b><small>The 24 Game — combine four numbers with + − × ÷ to make 24. Built-in solver guarantees every…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/aim-trainer-game/" data-search="aim trainer game test and train your aim — targets pop up at random spots for 30 seconds. hits, misses and accuracy are tracked live. aim trainer aim test reaction test click speed test fps aim trainer"><span class="t-ico">🎲</span><span class="t-body"><b>Aim Trainer Game</b><small>Test and train your aim — targets pop up at random spots for 30 seconds. Hits, misses and ac…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/asteroid-shooter/" data-search="asteroid shooter asteroid shooter — rotate, thrust and blast splitting asteroids on canvas. 3 lives, rising levels. asteroid shooter game asteroids game online space shooter canvas"><span class="t-ico">🎲</span><span class="t-body"><b>Asteroid Shooter</b><small>Asteroid Shooter — rotate, thrust and blast splitting asteroids on canvas. 3 lives, rising l…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/attendance-tracker/" data-search="attendance tracker track class attendance: roster with present/absent marks per date and % summaries. attendance tracker class attendance student attendance roll call app"><span class="t-ico">🎲</span><span class="t-body"><b>Attendance Tracker</b><small>Track class attendance: roster with present/absent marks per date and % summaries.</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/baby-name-generator/" data-search="baby name generator discover baby names by gender and origin — pakistani, arabic, western, indian or turkish — with meanings, random picks and tap-to-copy. baby name generator baby names with meanings muslim baby names boy girl names"><span class="t-ico">🎲</span><span class="t-body"><b>Baby Name Generator</b><small>Discover baby names by gender and origin — Pakistani, Arabic, Western, Indian or Turkish — w…</small></span><span class="t-arrow">→</span></a></div>
+  </section>
+</main>
+
+<!-- ADSTERRA-FOOTER: paste your Adsterra footer/banner ad code inside the div below -->
+<div class="container"><div class="ad-slot" data-ad="footer"></div></div>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="f-grid">
+      <div>
+        <span class="brandline"><span class="logo-mark">T</span> ToolNest</span>
+        <p>Free online tools that actually work. No sign-up, no watermarks — and your files never leave your device for client-side tools.</p>
+      </div>
+      <div>
+        <h4>Popular</h4>
+        <a href="/tools/qr-code-generator/">QR Code Generator</a>
+        <a href="/tools/background-remover/">Background Remover</a>
+        <a href="/tools/pdf-merger/">PDF Merger</a>
+        <a href="/tools/word-counter/">Word Counter</a>
+      </div>
+      <div>
+        <h4>Categories</h4>
+        <a href="/#image">Image Tools</a>
+        <a href="/#pdf">PDF &amp; Documents</a>
+        <a href="/#calculators">Calculators</a>
+        <a href="/#developer">Developer Tools</a>
+      </div>
+      <div>
+        <h4>Site</h4>
+        <a href="/">Home</a>
+        <a href="/#all-tools">All Tools</a>
+        <a href="/sitemap.xml">Sitemap</a>
+      </div>
+    </div>
+    <div class="f-bottom">© 2026 ToolNest · Free tools for everyone · Made with care</div>
+  </div>
+</footer>
+
+<script src="/assets/site.js?v=5"></script>
+
+<script>
+(function () {
+  'use strict';
+  var P = 'boggle-game-';
+  function g(id) { return document.getElementById(P + id); }
+  // Official Boggle dice
+  var DICE = [
+    'AAEEGN', 'ABBJOO', 'ACHOPS', 'AFFKPS', 'AOOTTW', 'CIMOTU',
+    'DEILRX', 'DELRVY', 'DISTTY', 'EEGHNW', 'EEINSU', 'EHRTVW',
+    'EIOSST', 'ELRTTY', 'HIMNQU', 'HLNNRZ'
+  ];
+  var WORDS = 'the,and,for,that,this,with,you,not,are,from,your,all,have,new,more,was,will,home,can,about,page,has,search,free,but,our,one,other,time,they,site,may,what,which,their,news,out,use,any,there,see,only,his,when,contact,here,business,who,web,also,now,help,get,view,online,first,been,would,how,were,services,some,these,click,its,like,service,than,find,price,date,back,top,people,had,list,name,just,over,state,year,day,into,email,two,health,world,next,used,work,last,most,products,music,buy,data,make,them,should,product,system,post,her,city,add,policy,number,such,please,support,message,after,best,software,then,jan,good,video,well,where,info,rights,public,books,high,school,through,each,links,she,review,years,order,very,privacy,book,items,company,read,group,sex,need,many,user,said,does,set,under,general,research,january,mail,full,map,reviews,program,life,know,games,way,days,part,could,great,united,hotel,real,item,center,must,store,travel,comments,made,report,off,member,details,line,terms,before,hotels,did,send,right,type,because,local,those,using,results,office,national,car,design,take,posted,internet,address,within,states,area,want,phone,shipping,reserved,subject,between,forum,family,long,based,code,show,even,black,check,special,prices,index,being,women,much,sign,file,link,open,today,south,case,project,same,pages,version,section,own,found,sports,house,related,security,both,county,american,photo,game,members,power,while,care,network,down,computer,systems,three,total,place,end,download,him,without,per,access,think,north,current,posts,big,media,law,control,water,history,pictures,size,art,personal,since,guide,shop,board,location,change,white,text,small,rating,rate,children,during,usa,return,students,shopping,account,times,sites,level,digital,profile,previous,form,events,love,old,john,main,call,hours,image,title,non,another,why,shall,property,class,still,money,quality,every,listing,content,country,private,little,visit,save,tools,low,reply,customer,december,compare,movies,include,college,value,article,york,man,card,jobs,provide,food,source,author,press,learn,sale,around,print,course,job,canada,process,teen,room,stock,training,too,credit,point,join,science,men,advanced,west,sales,look,english,left,team,estate,box,select,windows,photos,gay,thread,week,category,note,live,large,gallery,table,register,however,june,october,november,market,library,really,action,start,series,model,features,air,industry,plan,human,provided,yes,required,second,hot,cost,movie,forums,march,better,say,july,yahoo,going,medical,test,friend,come,dec,server,study,cart,staff,articles,san,feedback,again,play,looking,issues,april,never,users,complete,street,topic,comment,things,working,against,standard,tax,person,below,mobile,less,got,party,payment,login,student,let,programs,offers,legal,above,recent,park,stores,side,act,problem,red,give,memory,social,august,quote,language,story,sell,options,rates,create,key,body,young,america,field,few,east,paper,single,age,club,example,girls,password,latest,road,gift,question,changes,night,hard,texas,oct,pay,four,poker,status,browse,issue,range,building,seller,court,february,always,result,audio,light,write,war,nov,offer,blue,groups,easy,given,files,event,release,analysis,request,fax,china,making,picture,needs,possible,might,yet,month,major,star,areas,future,space,hand,sun,cards,problems,london,meeting,become,interest,child,keep,enter,share,similar,garden,schools,million,added,listed,baby,learning,energy,run,delivery,net,popular,term,film,stories,put,journal,reports,try,welcome,central,images,notice,god,original,head,radio,until,cell,color,self,council,away,includes,track,archive,once,others,format,least,society,months,log,safety,friends,sure,faq,trade,edition,cars,messages,tell,further,updated,able,having,provides,david,fun,already,green,studies,close,common,drive,specific,several,gold,living,sep,called,short,arts,lot,ask,display,limited,powered,means,director,daily,beach,past,natural,whether,due,five,upon,period,planning,database,says,official,weather,mar,land,average,done,window,france,pro,region,island,record,direct,records,district,calendar,costs,style,front,update,parts,aug,ever,early,miles,sound,resource,present,either,ago,document,word,works,material,bill,apr,written,talk,federal,hosting,rules,final,adult,tickets,thing,centre,via,cheap,nude,kids,finance,true,minutes,else,mark,third,rock,gifts,europe,reading,topics,bad,tips,plus,auto,cover,usually,edit,together,videos,percent,fast,function,fact,unit,getting,global,tech,meet,far,economic,player,projects,lyrics,often,submit,germany,amount,watch,included,feel,though,bank,risk,thanks,deals,various,words,james,weight,town,heart,received,choose,archives,points,magazine,error,camera,jun,girl,toys,clear,golf,receive,domain,methods,chapter,makes,policies,loan,wide,beauty,manager,india,position,taken,sort,listings,models,michael,known,half,cases,step,florida,simple,quick,none,wireless,license,paul,friday,lake,whole,annual,later,basic,shows,church,method,purchase,active,response,practice,hardware,figure,fire,holiday,chat,enough,designed,along,among,death,writing,speed,loss,face,brand,discount,higher,effects,created,remember,oil,bit,yellow,increase,kingdom,base,near,thought,stuff,french,storage,japan,doing,loans,shoes,entry,stay,nature,orders,africa,summary,turn,mean,growth,notes,agency,king,monday,european,activity,copy,although,drug,pics,western,income,force,cash,overall,bay,river,package,contents,seen,players,engine,port,album,regional,stop,supplies,started,bar,views,plans,double,dog,build,screen,exchange,types,soon,lines,continue,across,benefits,needed,season,apply,someone,held,anything,printer,believe,effect,asked,mind,sunday,casino,lost,tour,menu,volume,cross,anyone,mortgage,hope,silver,wish,inside,solution,mature,role,rather,weeks,addition,came,supply,nothing,certain,running,lower,union,jewelry,clothing,mon,com,fine,names,robert,hour,gas,skills,six,bush,islands,advice,career,military,rental,decision,leave,british,teens,pre,huge,sat,woman,zip,bid,kind,sellers,middle,move,cable,taking,values,division,coming,tuesday,object,lesbian,machine,logo,length,actually,nice,score,client,returns,capital,follow,sample,sent,shown,saturday,england,culture,band,flash,lead,george,choice,went,starting,thursday,courses,consumer,airport,foreign,artist,outside,levels,channel,letter,mode,phones,ideas,fund,summer,allow,degree,contract,button,releases,wed,homes,super,male,matter,custom,virginia,almost,took,located,multiple,asian,editor,inn,cause,song,focus,late,fall,featured,idea,rooms,female,inc,win,thomas,primary,cancer,numbers,reason,tool,browser,spring,answer,voice,friendly,schedule,purpose,feature,bed,comes,police,everyone,approach,cameras,brown,physical,hill,maps,medicine,deal,hold,ratings,chicago,forms,glass,happy,tue,smith,wanted,thank,safe,unique,survey,prior,sport,ready,feed,animal,sources,mexico,regular,secure,simply,evidence,station,round,favorite,option,master,valley,recently,probably,rentals,sea,built,blood,cut,improve,hall,larger,anti,networks,earth,parents,impact,transfer,kitchen,strong,tel,carolina,wedding,hospital,ground,overview,ship,owners,disease,paid,italy,perfect,hair,kit,classic,basis,command,cities,william,express,award,distance,tree,peter,ensure,thus,wall,involved,extra,partners,budget,rated,guides,success,maximum,existing,quite,selected,boy,amazon,patients,warning,wine,horse,vote,forward,flowers,stars,lists,owner,retail,animals,useful,directly,ways,est,son,rule,mac,housing,takes,iii,bring,catalog,searches,max,trying,mother,told,traffic,joined,input,strategy,feet,agent,valid,bin,modern,senior,ireland,teaching,door,grand,testing,trial,charge,units,instead,canadian,cool,normal,wrote,ships,entire,leading,metal,positive,fitness,chinese,opinion,asia,football,abstract,uses,output,funds,greater,likely,develop,artists,java,guest,seems,pass,trust,van,contains,session,multi,republic,fees,vacation,century,academic,skin,graphics,indian,prev,ads,mary,expected,ring,grade,dating,pacific,mountain,pop,filter,mailing,vehicle,longer,consider,int,northern,behind,panel,floor,german,buying,match,proposed,default,require,iraq,boys,outdoor,deep,morning,allows,rest,protein,plant,reported,hit,pool,mini,politics,partner,authors,boards,faculty,parties,fish,mission,eye,string,sense,modified,pack,released,stage,internal,goods,born,unless,richard,detailed,japanese,race,approved,target,except,ability,maybe,moving,brands,places,pretty,spain,southern,yourself,etc,winter,battery,youth,pressure,boston,debt,keywords,medium,core,break,purposes,sets,dance,wood,itself,defined,papers,playing,awards,fee,studio,reader,virtual,device,answers,rent,las,remote,dark,external,apple,min,offered,theory,enjoy,remove,aid,surface,minimum,visual,host,variety,teachers,martin,manual,block,subjects,agents,repair,fair,civil,steel,songs,fixed,wrong,hands,finally,updates,desktop,classes,paris,ohio,gets,sector,capacity,requires,jersey,fat,fully,father,electric,saw,quotes,officer,driver,dead,respect,unknown,mike,trip,pst,worth,poor,teacher,xxx,eyes,workers,farm,georgia,peace,campus,tom,showing,creative,coast,benefit,progress,funding,devices,lord,grant,sub,agree,fiction,hear,watches,careers,beyond,goes,families,led,museum,fan,wife,accepted,former,ten,hits,zone,complex,cat,die,jack,flat,flow,agencies,parent,spanish,michigan,columbia,setting,scale,stand,economy,highest,helpful,monthly,critical,frame,musical,angeles,path,employee,chief,gives,bottom,packages,detail,laws,changed,pet,heard,begin,colorado,royal,clean,switch,russian,largest,african,guy,titles,relevant,justice,connect,bible,dev,cup,basket,applied,weekly,vol,demand,suite,vegas,square,chris,advance,skip,diet,army,auction,gear,lee,allowed,correct,charles,nation,selling,lots,piece,sheet,firm,seven,older,illinois,elements,species,jump,cells,module,resort,facility,random,pricing,minister,motion,looks,fashion,visitors,monitor,trading,forest,calls,whose,coverage,couple,giving,chance,vision,ball,ending,clients,actions,listen,discuss,accept,naked,goal,sold,wind,clinical,sciences,markets,lowest,highly,appear,lives,currency,leather,palm,patient,actual,stone,bob,commerce,perhaps,persons,fit,tests,village,accounts,amateur,met,pain,factors,coffee,settings,buyer,cultural,steve,easily,oral,ford,poster,edge,root,closed,holidays,ice,pink,zealand,balance,graduate,replies,shot,initial,label,thinking,scott,sec,canon,hardcore,league,waste,minute,bus,provider,optional,cold,sections,chair,fishing,effort,phase,fields,bag,fantasy,letters,motor,context,install,shirt,apparel,foot,mass,crime,count,breast,ibm,johnson,quickly,dollars,religion,claim,driving,surgery,patch,heat,wild,measures,kansas,miss,chemical,doctor,task,reduce,brought,himself,nor,enable,exercise,bug,santa,mid,leader,diamond,israel,soft,servers,alone,meetings,seconds,jones,arizona,keyword,flight,congress,fuel,walk,produced,italian,wait,pocket,saint,rose,freedom,argument,creating,jim,drugs,joint,premium,fresh,attorney,upgrade,factor,growing,stream,pick,hearing,eastern,auctions,therapy,entries,dates,signed,upper,serious,prime,limit,began,louis,steps,errors,shops,bondage,del,efforts,informed,thoughts,creek,worked,quantity,urban,sorted,myself,tours,platform,load,labor,admin,nursing,defense,machines,tags,heavy,covered,recovery,joe,guys,merchant,expert,protect,drop,solid,became,orange,vehicles,prevent,theme,rich,campaign,marine,guitar,finding,examples,saying,spirit,claims,seem,affairs,touch,intended,towards,goals,hire,election,suggest,branch,charges,serve,reasons,magic,mount,smart,talking,gave,ones,latin,avoid,manage,corner,rank,oregon,element,birth,virus,abuse,requests,separate,quarter,tables,define,racing,facts,kong,column,plants,faith,chain,identify,avenue,missing,died,domestic,moved,houston,reach,mental,viewed,moment,extended,sequence,inch,attack,sorry,centers,opening,damage,lab,reserve,recipes,gamma,plastic,produce,snow,placed,truth,counter,failure,follows,weekend,dollar,camp,ontario,des,films,bridge,native,fill,williams,movement,printing,baseball,owned,approval,draft,chart,played,contacts,jesus,readers,clubs,lcd,jackson,equal,matching,offering,shirts,profit,leaders,posters,variable,ave,expect,parking,compared,workshop,russia,gone,codes,kinds,seattle,golden,teams,fort,lighting,senate,forces,funny,brother,gene,turned,portable,tried,disc,returned,pattern,boat,named,theatre,laser,earlier,sponsor,icon,warranty,indiana,harry,objects,ends,delete,evening,assembly,nuclear,taxes,mouse,signal,criminal,issued,brain,sexual,powerful,dream,obtained,false,cast,flower,felt,passed,supplied,falls,pic,soul,aids,opinions,promote,stated,stats,hawaii,appears,carry,flag,decided,covers,hello,designs,maintain,tourism,priority,adults,clips,savings,graphic,atom,payments,binding,brief,ended,winning,eight,iron,straight,script,served,wants,prepared,void,dining,alert,atlanta,dakota,tag,mix,disk,queen,credits,clearly,fix,handle,sweet,desk,criteria,dave,diego,hong,vice,truck,behavior,enlarge,ray,revenue,measure,changing,votes,duty,looked,bear,gain,festival,ocean,flights,experts,signs,lack,depth,iowa,whatever,logged,laptop,vintage,train,exactly,dry,explore,maryland,spa,concept,nearly,eligible,checkout,reality,forgot,handling,origin,knew,gaming,feeds,billion,scotland,faster,dallas,bought,con,ups,nations,route,followed,broken,frank,alaska,zoom,blow,battle,anime,speak,protocol,query,clip,equity,speech,wire,rural,shared,sounds,tape,judge,spam,acid,bytes,cent,forced,fight,height,null,zero,speaker,filed,obtain,offices,designer,remain,managed,failed,marriage,roll,korea,banks,secret,bath,kelly,leads,negative,austin,toronto,theater,springs,missouri,andrew,var,perform,healthy,font,assets,injury,joseph,ministry,drivers,lawyer,figures,married,proposal,sharing,portal,waiting,birthday,beta,fail,gratis,banking,brian,toward,won,slightly,assist,conduct,lingerie,calling,jazz,serving,bags,profiles,miami,comics,matters,houses,doc,postal,wear,controls,breaking,combined,ultimate,wales,minor,finish,noted,mom,reduced,physics,rare,spent,extreme,samples,davis,daniel,bars,reviewed,row,forecast,removed,helps,singles,cycle,amounts,contain,accuracy,dual,rise,sleep,bird,pharmacy,brazil,creation,static,scene,hunter,lady,crystal,famous,writer,chairman,violence,fans,oklahoma,speakers,drink,academy,dynamic,gender,eat,dell,cleaning,seat,concerns,colour,vendor,intel,officers,aim,bids,referred,supports,regions,junior,toll,les,cape,ann,rings,meaning,tip,mine,ladies,henry,ticket,guess,agreed,whom,ski,soccer,math,import,posting,presence,instant,viewing,majority,christ,dan,dogs,aspects,austria,ahead,moon,scheme,utility,preview,fly,manner,matrix,devel,despite,strength,turkey,proper,degrees,delta,fear,seeking,inches,phoenix,shares,daughter,standing,voyeur,comfort,colors,wars,cisco,ordering,kept,alpha,appeal,cruise,bonus,hey,bookmark,specials,beat,disney,adobe,smoking,becomes,drives,arms,alabama,tea,improved,trees,avg,achieve,dress,dealer,sky,utah,nearby,rom,carried,happen,exposure,hide,gambling,refer,miller,outdoors,clothes,caused,luxury,babes,frames,indeed,toy,circuit,layer,printed,slow,removal,easier,hip,printers,nine,adding,kentucky,mostly,eric,spot,taylor,prints,spend,factory,interior,revised,grow,optical,relative,amazing,clock,dot,identity,suites,feeling,hidden,victoria,serial,relief,revision,ratio,rain,onto,planet,copies,recipe,permit,seeing,proof,diff,tennis,bass,bedroom,empty,instance,hole,pets,ride,licensed,orlando,tim,bureau,maine,pair,ideal,specs,recorded,don,pieces,finished,parks,dinner,lawyers,sydney,stress,cream,runs,trends,yeah,discover,patterns,boxes,hills,fourth,advisor,evil,aware,wilson,shape,irish,stations,gps,remains,acc,greatest,firms,euro,operator,generic,usage,cap,ink,charts,mixed,census,peak,exist,wheel,transit,salt,compact,poetry,lights,tracking,angel,bell,keeping,attempt,matches,width,noise,engines,forget,array,accurate,stephen,climate,pin,alcohol,greek,managing,sister,raw,walking,explain,smaller,newest,gnu,happened,jeff,extent,sharp,lesbians,ben,lane,kill,export,managers,aircraft,modules,sweden,conflict,versions,employer,occur,knows,describe,concern,backup,citizens,heritage,holding,trouble,spread,coach,kevin,expand,audience,assigned,jordan,ages,plug,cook,affect,virgin,raised,hat,directed,dealers,sporting,helping,affected,lib,bike,totally,plate,expenses,indicate,blonde,anderson,der,lose,organic,seek,albums,cheats,guests,hosted,diseases,tony,nevada,kits,thailand,agenda,anyway,tracks,advisory,cam,logic,template,prince,circle,soil,grants,anywhere,atlantic,wet,edward,investor,ram,leaving,wildlife,matt,cooking,speaking,sponsors,fox,respond,sizes,plain,exit,entered,iran,arm,keys,launch,wave,checking,costa,belgium,holy,acts,guidance,mesh,trail,symbol,crafts,highway,buddy,observed,dean,setup,poll,booking,glossary,fiscal,styles,denver,unix,filled,bond,channels,appendix,notify,blues,pub,portion,scope,supplier,cables,cotton,biology,dental,killed,border,ancient,debate,starts,causes,arkansas,leisure,learned,notebook,explorer,historic,attached,opened,husband,disabled,crazy,upcoming,britain,concert,scores,comedy,adopted,linear,bears,jean,hop,carrier,edited,constant,visa,mouth,jewish,meter,linked,portland,concepts,gun,reflect,pure,deliver,wonder,hell,lessons,fruit,begins,reform,lens,alerts,treated,draw,relating,assume,alliance,confirm,warm,neither,lewis,howard,offline,leaves,engineer,replace,suck,babe,checks,reached,becoming,safari,sugar,crew,legs,sam,stick,allen,relation,enabled,genre,slide,montana,tested,rear,enhance,exact,bound,adapter,node,formal,lock,hockey,storm,micro,colleges,mile,showed,editors,mens,threads,bowl,supreme,brothers,presents,ref,tank,dolls,estimate,navy,kid,cancel,limits,weapons,paint,delay,pilot,outlet,czech,novel,pan,ultra,winner,idaho,episode,potter,dish,plays,bulletin,modify,oxford,adam,truly,painting,universe,patent,slot,eating,planned,watching,lodge,mirror,sterling,sessions,kernel,stocks,buyers,journals,gray,jennifer,antonio,charged,broad,taiwan,chosen,demo,greece,swiss,sarah,clark,labour,hate,terminal,nights,behalf,liquid,rice,nebraska,loop,salary,foods,gourmet,guard,properly,orleans,saving,empire,resume,twenty,newly,raise,prepare,avatar,gary,illegal,vary,hundreds,rome,arab,lincoln,helped,premier,tomorrow,milk,decide,consent,drama,visiting,downtown,keyboard,contest,bands,boot,suitable,millions,lunch,audit,push,chamber,guinea,findings,muscle,iso,clicking,polls,typical,tower,yours,sum,misc,chicken,attend,shower,alan,sending,jason,tonight,dear,shell,province,catholic,oak,vat,governor,beer,seemed,swimming,formula,solar,jose,catch,jane,pakistan,reliable,sir,doubt,earn,finder,unable,periods,tasks,attacks,kim,const,doors,symptoms,resorts,biggest,memorial,visitor,twin,forth,insert,gateway,dont,alumni,drawing,ordered,fighting,happens,spy,romance,bruce,split,themes,powers,heaven,bits,pregnant,twice,focused,egypt,bargain,cellular,norway,vermont,asking,blocks,normally,hunting,diabetes,suit,shift,chip,res,sit,bodies,cutting,wow,simon,writers,marks,flexible,loved,mapping,numerous,birds,char,indexed,superior,saved,paying,cartoon,shots,moore,granted,choices,carbon,spending,magnetic,registry,crisis,outlook,massive,denmark,employed,bright,treat,header,poverty,formed,piano,echo,que,grid,sheets,patrick,puerto,displays,plasma,allowing,earnings,mystery,journey,delaware,bidding,risks,banner,charter,fig,barbara,counties,ports,dreams,stands,teach,occurred,rapid,pull,hairy,reverse,deposit,seminar,nasa,wheels,specify,dutch,formats,tab,depends,boots,holds,router,concrete,editing,poland,folder,upload,pulse,voting,courts,notices,detroit,metro,strip,pearl,accident,nick,resident,plot,qty,possibly,airline,regard,pump,exists,smooth,strike,flashing,narrow,threat,surveys,sitting,putting,vietnam,trailer,anne,castle,gardens,missed,malaysia,antique,labels,willing,bio,acting,heads,stored,exam,logos,antiques,density,hundred,strange,beds,breasts,mention,grey,parallel,honda,amended,operate,bills,bold,bathroom,stable,opera,von,doctors,lesson,cinema,asset,scan,drinking,blowjobs,reaction,blank,enhanced,entitled,severe,generate,deluxe,humor,aged,monitors,lived,duration,bulk,pursuant,sci,fabric,visits,tight,domains,contrast,flying,sin,berlin,cute,para,siemens,adoption,meant,capture,pounds,buffalo,plane,seed,desire,camping,meets,welfare,peer,caught,marked,driven,measured,bottle,marshall,massage,rubber,closing,tampa,thousand,meat,legend,grace,susan,ing,adams,python,monster,alex,bang,villa,bone,columns,bugs,hamilton,cookies,inner,tutorial,med,entity,cruises,gate,holder,portugal,lawrence,roman,duties,valuable,tone,ethics,forever,dragon,busy,captain,imagine,brings,heating,leg,neck,wing,scripts,abc,stereo,taste,dealing,commit,tiny,rail,airlines,liberal,jay,trips,gap,sides,tube,turns,cache,belt,jacket,oracle,matthew,lease,aviation,hobbies,proud,excess,disaster,console,commands,giant,achieved,injuries,shipped,seats,biz,alarm,voltage,anthony,usual,loading,stamps,appeared,franklin,angle,rob,vinyl,mining,ongoing,worst,imaging,betting,liberty,wyoming,era,convert,analyst,garage,exciting,thongs,finland,morgan,derived,pleasure,honor,asp,oriented,eagle,pants,columbus,nurse,prayer,quiet,luck,postage,producer,dial,cheese,comic,jet,crown,par,maker,crack,picks,gang,semester,fetish,applies,casinos,smoke,apache,filters,craft,cake,apart,fellow,blind,lounge,mad,semi,coins,andy,gross,strongly,cafe,ken,proteins,horror,exp,familiar,capable,douglas,till,pen,shoe,elected,carrying,victory,sand,madison,joy,editions,cpu,mainly,ethnic,ran,actor,finds,seal,fifth,citizen,vertical,prize,occurs,jon,absolute,consists,anytime,lies,pipe,soldiers,guardian,lecture,layout,ill,classics,lbs,lay,horses,dirty,deck,wayne,donate,taught,worker,alive,temple,prove,wings,breaks,genetic,waters,promise,thin,prefer,ridge,cabinet,modem,harris,mph,bringing,sick,dose,evaluate,tiffany,tropical,collect,bet,toyota,streets,vector,shaved,turning,buffer,purple,larry,def,lets,mutual,pipeline,syntax,prison,skill,chairs,everyday,moves,inquiry,ethernet,checked,exhibit,throw,trend,sierra,visible,cats,desert,oldest,busty,mercury,steven,handbook,greg,navigate,worse,summit,victims,epa,spaces,burning,escape,coupons,somewhat,receiver,boats,glance,scottish,arcade,richmond,ron,russell,tells,obvious,fiber,graph,covering,platinum,judgment,bedrooms,talks,filing,foster,modeling,passing,awarded,trials,tissue,clinton,masters,bonds,alberta,folk,org,commons,fraud,spectrum,arrival,okay,pottery,emphasis,roger,aspect,awesome,mexican,counts,priced,hist,crash,lift,desired,inter,closer,assumes,heights,shadow,riding,lisa,expense,grove,venture,clinic,korean,healing,princess,mall,entering,packet,spray,studios,dad,buttons,funded,thompson,winners,extend,roads,pat,dublin,rolling,fell,yard,memories,nelson,arrived,creates,faces,tourist,mayor,murder,sean,adequate,senator,yield,grades,cartoons,pour,digest,reg,lodging,dust,hence,entirely,replaced,radar,rescue,losses,combat,reducing,stopped,lakes,butt,closely,diary,kings,shooting,kent,adds,ear,flags,pci,baker,launched,shock,walls,abroad,ebony,tie,ward,drawn,arthur,ian,visited,roof,walker,suggests,kiss,beast,operated,targets,overseas,dodge,counsel,pizza,invited,yards,gordon,mod,farmers,queries,rush,ukraine,absence,nearest,cluster,vendors,whereas,yoga,serves,woods,surprise,lamp,partial,shoppers,phil,couples,ranking,jokes,cst,simpson,sublime,palace,glad,wins,verify,globe,trusted,copper,rack,rep,kerry,receipt,supposed,ordinary,nobody,ghost,mit,applying,boss,pride,knowing,reporter,keith,champion,cloudy,linda,ross,chile,anna,plenty,solo,sentence,throat,ignore,maria,uniform,wealth,tall,vacuum,dancing,brass,writes,plaza,outcomes,survival,quest,publish,sri,toe,trans,jonathan,whenever,nova,lifetime,pioneer,booty,acrobat,plates,acres,venue,athletic,thermal,essays,vital,telling,fairly,coastal,charity,excel,modes,campbell,wake,stupid,harbor,hungary,traveler,segment,realize,lan,enemy,puzzle,rising,aluminum,wells,opens,insight,secrets,lucky,latter,thick,trailers,repeat,syndrome,penalty,drum,glasses,enables,iraqi,builder,vista,jessica,chips,terry,flood,ease,arena,pupils,stewart,tabs,outcome,expanded,casual,grown,polish,lovely,extras,centres,jerry,clause,smile,lands,troops,indoor,bulgaria,armed,broker,charger,believed,pine,cooling,tend,gulf,rick,trucks,divorce,laura,shopper,tokyo,partly,nikon,candy,pills,tiger,donald,folks,sensor,exposed,hunt,angels,deputy,sealed,thai,loaded,fred,scenes,balls,boost,spanking,mill,founded,chronic,icons,moral,den,catering,aud,finger,keeps,pound,locate,trained,burn,roses,labs,bread,tobacco,wooden,motors,tough,roberts,incident,gonna,dynamics,lie,decrease,chest,pension,billy,revenues,emerging,worship,craig,herself,churches,damages,reserves,solve,shorts,minority,diverse,amp,johnny,sole,recorder,facing,nancy,tones,passion,sight,laid,clay,defence,patches,weak,refund,towns,divided,blvd,wise,cyprus,odds,insider,seminars,makers,hearts,worry,eve,carter,legacy,marc,pleased,danger,vitamin,widely,phrase,genuine,raising,paradise,hybrid,reads,roles,sons,leaf,pad,glory,bigger,billing,diesel,versus,combine,exceed,rod,saudi,fault,cuba,hrs,silk,kate,babies,karen,compiled,romantic,revealed,albert,examine,jimmy,graham,bristol,margaret,sad,wolf,slowly,rugby,cal,portions,infant,sectors,samuel,fluid,grounds,fits,kick,regards,meal,hurt,unlike,equation,baskets,pot,wright,barry,proven,cached,warren,slip,studied,reviewer,involves,rpm,profits,devil,grass,comply,marie,florist,cherry,kenya,cuts,funeral,earrings,enjoyed,chapters,pee,charlie,quebec,dennis,mars,francis,sized,manga,noticed,socket,silent,literary,egg,mhz,signals,caps,pill,theft,swing,symbols,lat,meta,humans,analog,facial,choosing,talent,dated,seeker,wisdom,shoot,boundary,mint,offset,payday,philip,elite,spin,holders,believes,swedish,poems,deadline,robot,witness,collins,equipped,stages,sur,winds,powder,broadway,acquired,assess,wash,stones,entrance,gnome,roots,losing,attempts,gadgets,noble,glasgow,impacts,rev,gospel,shore,loves,induced,knight,loose,aims,linking,appeals,earned,illness,islamic,ieee,pending,parker,lebanon,corp,kennedy,teenage,soap,triple,cooper,vincent,jam,secured,unusual,answered,slots,disorder,routine,rocks,titans,wearing,axis,sought,genes,mounted,habitat,firewall,median,guns,scanner,herein,animated,judicial,rio,hero,integer,bachelor,attitude,engaged,falling,basics,montreal,carpet,struct,lenses,binary,genetics,attended,punk,dropped,duke,walter,pace,besides,wage,arc,hosts,moments,atlas,strings,dawn,feels,torture,carl,deleted,coat,mitchell,mrs,ralph,warner,app,embedded,wizard,corps,actors,liver,liable,brochure,morris,petition,recall,antenna,picked,assumed,belief,killing,bikini,memphis,shoulder,decor,lookup,texts,harvard,brokers,roy,ion,diameter,ottawa,doll,tit,seasons,peru,refine,bidder,singer,evans,herald,literacy,fails,aging,nike,pissing,fed,diving,invite,alice,suppose,reed,involve,moderate,terror,younger,thirty,mice,opposite,rapidly,ban,temp,intro,mercedes,fisting,clerk,vast,mills,outline,holland,receives,jeans,fonts,odd,wrap,refers,mood,favor,veterans,quiz,sigma,occasion,victim,demands,sleeping,careful,ext,beam,arrive,sunset,tracked,moreover,minimal,lottery,tops,framed,aside,licence,michelle,essay,amy,dialogue,camps,declared,aaron,trace,disposal,shut,florists,packs,switches,thou,consult,greatly,mask,cycling,midnight,commonly,inform,turkish,coal,cry,quantum,murray,intent,zoo,largely,pleasant,announce,spoke,aka,arrow,sampling,rough,weird,tee,lion,inspired,holes,weddings,blade,suddenly,oxygen,cookie,meals,canyon,goto,meters,merely,passes,pointer,stretch,durham,permits,muslim,neil,sleeve,cleaner,cricket,beef,feeding,stroke,township,rankings,cad,hats,robin,robinson,strap,sharon,crowd,surf,olympic,remained,dir,entities,customs,rainbow,hook,roulette,decline,gloves,israeli,medicare,cord,skiing,cloud,valve,val,explains,proceed,feelings,knife,jamaica,shelf,timing,liked,adopt,denied,donation,outer,crop,deaths,rivers,tales,katrina,islam,nodes,thumbs,seeds,cited,lite,hub,targeted,realized,twelve,founder,decade,dispute,tired,adverse,excerpt,eng,steam,drinks,ace,voices,acute,climbing,stood,sing,tons,perfume,carol,honest,albany,restore,stack,somebody,sue,hang,curve,creator,amber,museums,coding,tracker,passage,trunk,hiking,damn,pierre,headset,oakland,colombia,waves,camel,lamps,hood,suicide,archived,chi,arabia,juice,chase,logical,sauce,fame,extract,panama,payable,courtesy,athens,judges,retired,remarks,detected,decades,walked,arising,bracelet,ins,eggs,juvenile,afraid,acoustic,railway,cassette,pointed,causing,mistake,locked,fusion,mineral,ruby,steering,beads,fortune,canvas,parish,claimed,screens,cemetery,planner,flows,stadium,mins,fewer,coupon,nurses,stem,proxy,gangbang,opt,edwards,drew,contests,flu,costume,tagged,berkeley,voted,killer,bikes,gates,adjusted,rap,tune,bishop,pulled,corn,shaped,seasonal,farmer,counters,puts,grew,tin,slave,cultures,norfolk,coaching,examined,trek,encoding,heroes,painted,artwork,cosmetic,resulted,portrait,ethical,carriers,mobility,floral,builders,ties,struggle,schemes,neutral,fisher,rat,spears,bedding,joining,heading,equally,bearing,brad,combo,seniors,worlds,guilty,haven,tablet,jury,dos,tail,charm,lawn,violent,basin,soup,ranch,crossing,cottage,drunk,crimes,resolved,byte,toner,nose,latex,branches,anymore,delhi,holdings,alien,locator,broke,nepal,zimbabwe,juan,msg,browsing,resolve,cod,melissa,moscow,thesis,thru,jews,nylon,discs,rocky,bargains,frequent,trim,nigeria,ceiling,pixels,ensuring,hispanic,gen,anybody,diamonds,fleet,untitled,bunch,totals,singing,afford,starring,referral,optimal,quit,distinct,lung,turner,sucking,cents,gel,todd,spoken,omega,stayed,civic,manuals,doug,sees,watched,saver,thereof,grill,redeem,rogers,grain,aaa,regime,wanna,wishes,bull,depend,differ,ranging,monica,repairs,breath,cole,mart,candle,hanging,colored,tale,verified,lynn,formerly,situated,std,seeks,herbal,loving,strictly,routing,docs,stanley,retailer,vitamins,elegant,gains,renewal,opposed,deemed,scoring,panties,brooklyn,sisters,critics,spots,hacker,madrid,margin,coin,solely,fake,salon,norman,turbo,headed,voters,cure,madonna,arch,murphy,thinks,thats,soldier,aimed,justin,bomb,harm,interval,mirrors,tricks,reset,brush,thy,panels,repeated,assault,spare,deer,kodak,tongue,bowling,tri,danish,pal,monkey,filename,skirt,florence,invest,honey,analyses,drawings,scenario,lovers,atomic,approx,arabic,gauge,junction,faced,mat,rachel,solving,weekends,produces,oven,ted,chains,kingston,sixth,engage,deviant,noon,quoted,adapters,farms,imports,cheat,bronze,sandy,suspect,macro,sender,crucial,gym,adjacent,tuition,spouse,exotic,viewer,threats,puzzles,reaching,damaged,cams,receptor,piss,laugh,joel,surgical,destroy,citation,pitch,autos,premises,perry,proved,imperial,dozen,benjamin,teeth,cloth,studying,stamp,lotus,salmon,olympus,proc,cargo,tan,salem,mate,starter,upgrades,likes,butter,pepper,weapon,luggage,burden,chef,tapes,zones,races,isle,stylish,slim,maple,luke,grocery,offshore,depot,kenneth,comp,alt,pie,blend,harrison,julie,emission,pete,spec,finest,realty,janet,bow,apparent,autumn,probe,midi,toilet,ranked,jackets,routes,packed,excited,outreach,helen,mounting,recover,tied,balanced,timely,talked,debug,delayed,chuck,hon,dale,explicit,villas,exclude,peeing,brooks,newton,oils,sept,anxiety,bingo,whilst,spatial,unto,ceramic,prompt,precious,minds,annually,scanners,atm,pays,cox,fingers,sunny,delivers,necklace,leeds,cedar,arranged,lang,theaters,advocacy,stud,fold,threaded,qualify,blair,hopes,mason,diagram,burns,pumps,footwear,vic,peoples,victor,mario,pos,attach,licenses,removing,advised,spider,phys,ranges,pairs,trails,hudson,isolated,calgary,interim,assisted,divine,approve,chose,compound,abortion,dialog,venues,blast,wellness,calcium,newport,pole,indians,shield,harvest,membrane,prague,previews,locally,pickup,mothers,iceland,candles,bend,sailing,moms,sacred,morocco,chrome,tommy,refused,brake,exterior,greeting,ecology,oliver,congo,glen,botswana,nav,delays,olive,cyber,scored,clone,velocity,lambda,relay,composed,tears,oasis,baseline,cab,angry,silicon,compete,ist,lover,belong,honolulu,beatles,lips,escort,pond,rolls,malta,daddy,ferry,rabbit,seating,dam,das,exports,omaha,tire,chad,electron,loads,heather,passport,motel,unions,treasury,warrant,frozen,occupied,josh,royalty,scales,rally,observer,sunshine,strain,drag,ceremony,somehow,arrested,ripe,rely,hebrew,gained,dying,laundry,stuck,solomon,placing,stops,homework,adjust,assessed,enabling,filling,imposed,silence,focuses,soviet,treaty,vocal,trainer,organ,stronger,volumes,advances,lemon,toxic,darkness,pty,nuts,nail,vienna,implied,span,stanford,sox,joke,packing,statute,rejected,satisfy,shelter,chapel,layers,guided,bahamas,mixture,bench,univ,tub,rider,radius,logging,borders,pads,butts,inns,bobby,sheep,railroad,lectures,wines,nursery,harder,cups,ash,cheapest,stuart,salvador,salad,monroe,tender,foam,paste,clouds,tanzania,preserve,poem,vibrator,unsigned,staying,easter,theories,praise,jeremy,venice,estonia,veteran,streams,landing,signing,executed,katie,showcase,integral,asks,relax,synopsis,hardly,prairie,reunion,composer,bean,sword,absent,sells,ecuador,hoping,accessed,spirits,coral,pixel,float,colin,bias,imported,paths,bubble,por,acquire,contrary,tribune,vessel,acids,focusing,viruses,cheaper,admitted,dairy,admit,mem,fancy,equality,samoa,tap,stickers,leasing,beliefs,squad,analyze,scroll,relate,swim,wages,suffer,forests,invalid,concerts,martial,males,retain,colours,execute,tunnel,genres,cambodia,patents,chaos,wheat,beaver,updating,readings,confused,compiler,eagles,bases,vii,accused,bee,unity,loud,bride,rats,defines,airports,begun,brunette,packets,anchor,socks,parade,stat,trigger,gathered,essex,notified,beaches,folders,dramatic,surfaces,terrible,routers,pendant,dresses,baptist,hiring,clocks,bios,females,reflects,taxation,fever,cuisine,surely,theorem,thee,ruth,pray,stylus,pope,drums,topless,arnold,jeep,chicks,bare,hung,cattle,radical,rover,treasure,reload,flame,tanks,assuming,monetary,elderly,pit,mono,floating,tile,bolivia,spell,hottest,kuwait,emily,alleged,compile,webster,struck,plymouth,warnings,bridal,annex,mag,tribal,curious,freight,rebate,eclipse,sudan,rec,shuttle,stunning,cycles,affects,detect,actively,ciao,knee,prep,chem,fastest,butler,injured,payroll,cookbook,ton,courier,uploaded,hints,collapse,americas,unlikely,gif,pros,beverage,tribute,wired,elvis,immune,latvia,forestry,barriers,cant,rarely,infected,martha,genesis,barrier,argue,trains,metals,bicycle,letting,arise,celtic,thereby,jamie,particle,minerals,advise,humidity,bottles,boxing,bangkok,sara,bra,hughes,jeffrey,chess,operates,brisbane,survive,oscar,menus,joan,duck,reveal,canal,amino,phi,herbs,clinics,cow,manitoba,missions,watson,lying,costumes,strict,dive,drill,offense,bryan,protest,hobby,tries,nickname,fiji,inline,washing,staffing,trick,enquiry,closure,raid,timber,volt,intense,div,showers,ruling,steady,dirt,statutes,drops,wider,enrolled,sensors,screw,publicly,hourly,blame,geneva,acer,reseller,dist,handed,suffered,intake,informal,tucson,heavily,swingers,fifty,headers,mistakes,ons,geek,uncle,defining,counting,sink,assure,devoted,jacob,sodium,randy,hormone,timothy,brick,grip,naval,medieval,bridges,captured,watt,decent,casting,dayton,shortly,pins,carlos,reno,donna,andreas,warrior,diploma,cabin,innocent,scanning,ide,polo,valium,copying,cordless,patricia,horn,eddie,uganda,fired,trivia,frog,grammar,syria,disagree,harvey,tires,logs,hazard,retro,leo,gregory,episodes,boolean,circular,anger,mainland,suits,chances,interact,snap,arg,bizarre,glenn,auckland,olympics,fruits,geo,ribbon,doe,startup,suzuki,trinidad,ati,kissing,handy,swap,exempt,crops,reduces,geometry,abs,flip,guild,gorgeous,capitol,sim,dishes,barbados,chrysler,nervous,refuse,extends,mcdonald,replica,plumbing,brussels,tribe,trades,superb,buzz,nuke,rid,trinity,handled,legends,boom,calm,floors,exhaust,shanghai,speaks,burton,copied,scotia,farming,gibson,fork,troy,roller,batch,organize,alter,latino,ghana,edges,mixing,handles,skilled,fitted,harmony,asthma,twins,rip,triangle,amend,oriental,reward,windsor,zambia,hydrogen,sprint,chick,advocate,sims,tray,inputs,genome,escorts,thong,medal,coaches,vessels,harbour,walks,sucks,sol,sage,knives,eco,arrange,artistic,bat,honors,booth,unified,bones,breed,detector,ignored,polar,fallen,precise,sussex,invoice,lip,sap,gather,backed,alfred,colonial,carey,motels,forming,embassy,cave,danny,rebecca,slight,proceeds,indirect,amongst,wool,arrest,horizon,deeply,toolbox,marina,prizes,browsers,patio,surfing,lloyd,optics,pursue,overcome,eyed,grab,attract,beans,disable,snake,succeed,leonard,lending,oops,reminder,searched,plains,raymond,insights,midwest,karaoke,trap,lonely,fool,hereby,observe,julia,karl,berry,collar,racial,bermuda,amanda,mobiles,exhibits,dies,terrace,bacteria,pts,replied,seafood,novels,playboy,ought,jail,safely,finite,kidney,fixes,sends,durable,mazda,allied,throws,moisture,roster,spencer,wichita,uruguay,timer,tablets,tuning,gotten,tyler,futures,verse,highs,wanting,custody,scratch,launches,comm,ellen,rocket,aye,bullet,towers,racks,lace,nasty,latitude,tumor,ugly,deposits,beverly,mistress,trustees,watts,duncan,reprints,hart,bernard,ment,forty,tubes,col,midlands,priest,floyd,ronald,analysts,queue,trance,locale,nicholas,biol,bundle,hammer,invasion,runner,rows,notion,skins,mailed,spelling,arctic,exams,rewards,beneath,defend,medicaid,infrared,seventh,gods,welsh,belly,tex,quarters,stolen,cia,soonest,haiti,poly,ears,dod,fist,naturals,neo,lenders,fitting,fixtures,mere,agrees,cons,surplus,elder,sonic,cheers,dig,taxi,nat,zoning,gravity,thumb,guitars,essence,flooring,ethiopia,mighty,athletes,humanity,holmes,scholars,gis,galaxy,chester,snapshot,caring,loc,worn,shaw,segments,expo,dominant,twist,stomach,buried,minimize,darwin,ranks,debut,bradley,deny,anatomy,bali,judy,fraction,trio,cube,defects,milton,marker,clarity,rugs,sandra,adelaide,monaco,settled,folding,emirates,airfare,vaccine,crap,fate,promised,penny,robust,bookings,porter,gras,jungle,ver,rim,zen,ivory,alpine,dis,fabulous,remix,alias,newer,kay,spice,oval,implies,soma,ser,cooler,maritime,periodic,overhead,ascii,prospect,shipment,breeding,donor,tension,trash,shapes,tier,fwd,earl,manor,envelope,diane,homeland,excluded,andrea,breeds,rapids,disco,bailey,aus,emotions,incoming,cleaners,hwy,eternal,cashiers,guam,cite,rotation,nam,eugene,pig,metric,minus,joshua,armenia,varied,grande,closest,actress,mess,assign,lit,tigers,aurora,una,slides,milan,premiere,lender,villages,shade,chorus,rhythm,digit,argued,dietary,symphony,clarke,sudden,marilyn,lions,ada,pools,lyric,claire,speeds,matched,rope,carroll,rational,fighters,chambers,dump,warming,vocals,fountain,chubby,grave,burner,yrs,foo,finnish,gentle,deeper,muslims,hose,footage,worthy,reveals,saints,carries,sig,duo,devon,helena,saves,regarded,fog,marion,lobby,egyptian,tunisia,outlined,headline,treating,punch,str,gotta,cowboy,enormous,karma,consist,betty,queens,pubs,tribes,vip,defeat,clicks,honduras,naughty,hazards,insured,harper,mardi,tenant,cabinets,tattoo,shake,algebra,shadows,holly,silly,yea,mercy,hartford,freely,sunrise,wrapping,mild,fur,tar,belongs,readily,soc,fence,nudist,infinite,diana,ensures,lindsay,clan,legally,shame,sync,civilian,mesa,fatal,remedy,realtors,briefly,genius,fighter,flesh,retreat,adapted,barely,wherever,estates,rug,democrat,borough,failing,retained,pamela,marble,jesse,hull,surrey,briefing,dem,highland,modular,brandon,giants,shed,balloon,winston,memo,ham,solved,tide,hawaiian,consoles,funk,fbi,qatar,magnet,cayman,jaguar,reel,sheer,posing,wang,bind,rand,urgent,infants,gothic,cylinder,witch,buck,cohen,sie,puppy,kathy,acre,graphs,surround,revenge,expires,enemies,lows,aqua,chen,emma,finances,accepts,enjoying,eva,patrol,smell,pest,carnival,roughly,sticker,promises,reef,divide,cornell,satin,bon,deserve,promo,chan,worried,tunes,garbage,combines,mas,beth,bradford,len,phrases,kai,boring,dom,jill,speeches,reaches,schema,sofa,catalogs,quizzes,obj,prefix,lucia,savannah,barrel,typing,nerve,planets,deficit,boulder,pointing,renew,coupled,viii,harold,circuits,floppy,texture,handbags,jar,somerset,incurred,thunder,tent,caution,locks,namely,dept,hack,dare,euros,pirates,aerial,hawk,rebel,origins,hired,makeup,textile,lamb,nathan,cos,indexes,pac,hindu,licking,markers,weights,albania,lasting,wicked,eds,kills,roommate,pushed,junk,wax,lucy,hans,slope,reggae,failures,poet,surname,theology,nails,evident,whats,rides,epic,saturn,nut,allergy,sake,twisted,merit,enzyme,planes,tackle,disks,condo,retrieve,vernon,sans,titanium,irs,fairy,builds,shaft,lean,bye,leslie,deutsche,ana,postings,kitty,dude,drain,monte,fires,algeria,blessed,luis,cornwall,favors,potato,panic,sticks,leone,excuse,reforms,basement,onion,strand,sandwich,lawsuit,alto,cheque,banners,reject,eau,circles,italic,beats,merry,mil,scuba,gore,cult,dash,passive,valued,cage,courage,verde,gazette,batman,hearings,hugh,lap,jake,eval,anaheim,ping,textbook,dried,luther,frontier,settle,stopping,refugees,knights,palmer,flux,derby,sao,peaceful,altered,pontiac,doctrine,scenic,trainers,sewing,conclude,munich,oman,celebs,propose,lighter,rage,prix,advisors,pavilion,tactics,trusts,talented,annie,pillow,derek,shorter,relying,finals,paraguay,steal,parcel,refined,fifteen,fears,predict,boutique,acrylic,rolled,tuner,rays,shannon,toddler,flavor,alike,walt,homeless,horrible,hungry,metallic,acne,blocked,warriors,libs,undo,cadillac,malawi,dana,halo,ppm,curtis,parental,strikes,lesser,marathon,ant,gays,pressing,gasoline,apt,dressed,scout,belfast,exec,dealt,niagara,inf,eos,warcraft,charms,catalyst,trader,bucks,denial,uri,thrown,prepaid,raises,gem,electro,badge,wrist,analyzed,heath,ballot,varying,remedies,validity,trustee,weighted,angola,squirt,performs,plastics,realm,jenny,helmet,salaries,postcard,elephant,yemen,tsunami,scholar,nickel,psi,buses,geology,pct,coating,wallet,cleared,boating,drainage,corners,broader,rouge,yeast,yale,pas,clearing,coated,intend,doom,louise,kenny,owen,routines,hitting,yukon,beings,bite,aquatic,reliance,habits,striking,myth,singh,gig,gilbert,brook,outputs,ensemble,insulin,assured,biblical,weed,accent,eleven,wives,ambient,utilize,mileage,prostate,adaptor,auburn,unlock,pledge,vampire,angela,relates,nitrogen,xerox,dice,merger,softball,quad,dock,mods,framing,musician,blocking,sorts,limiting,dispatch,papua,restored,hint,armor,riders,chargers,remark,dozens,varies,liz,rendered,picking,guards,openings,buys,councils,nudity,pockets,granny,pork,viral,inquire,pipes,laden,cottages,realtor,merge,edgar,develops,chassis,barn,pushing,fleece,boc,fare,pierce,allan,dressing,sperm,bald,craps,fuji,frost,leon,mold,dame,sally,yacht,tracy,prefers,drilling,herb,ate,breach,whale,tomatoes,bedford,idle,mustang,clusters,antibody,momentum,fin,wiring,pastor,mud,calvin,uni,shark,phases,grateful,emerald,laughing,grows,cliff,tract,ballet,abraham,bumper,garlic,hostels,shine,senegal,banned,wendy,briefs,cove,ozone,casa,radios,tariff,opponent,pasta,muscles,serum,wrapped,swift,runtime,focal,eden,distant,incl,ala,decimal,dip,samba,hostel,employ,mongolia,penguin,magical,miracle,manually,reprint,reid,centered,flex,yearly,wound,belle,rosa,hash,writings,hamburg,lazy,mpg,cindy,fathers,charging,marvel,lined,dow,petite,terrain,dui,pens,yen,strips,gossip,rangers,rotary,worm,discrete,beginner,boxed,lid,cubic,deaf,sapphire,kinase,skirts,mats,labeled,marking,serbia,sheriff,griffin,declined,guyana,spies,blah,mime,neighbor,elect,highways,intimate,deadly,bunny,chevy,rounds,longest,dentists,keen,flyer,peas,dosage,variance,cameroon,baking,adaptive,computed,needle,baths,brakes,nirvana,owns,til,invision,sticky,destiny,generous,madness,climb,blowing,heated,jackie,hay,cardiac,dover,adrian,vatican,brutal,learners,token,zinc,seekers,guru,yields,levy,suited,numeric,skating,aberdeen,emperor,grad,dylan,bras,belts,blacks,educated,rebates,burke,proudly,pix,inserted,pulling,basename,kyle,obesity,curves,suburban,touring,clara,vertex,tomato,andorra,expired,travels,flush,waiver,pale,hayes,delight,survivor,cingular,moses,counted,declare,johns,valves,gaps,impaired,donors,tear,jewel,teddy,ata,teaches,ventures,nil,stranger,tragedy,julian,nest,pam,dryer,painful,velvet,tribunal,ruled,nato,pensions,prayers,funky,nowhere,cop,gale,joins,wesley,dim,lately,scary,mattress,likewise,banana,slovak,cakes,stan,idol,bloody,mixer,remind,charming,tooth,annoying,stays,disclose,affair,drove,washer,upset,restrict,springer,beside,mines,rebound,logan,mentor,fought,baghdad,metres,pencil,freeze,abu,titled,sphere,moss,ratios,concord,endorsed,walnut,lance,ladder,liberia,sherman,cork,maximize,senators,workout,mali,bleeding,colon,lanes,purse,optimize,stating,dome,caroline,leu,align,bless,engaging,crest,triumph,welding,orgasm,deferred,heel,alloy,condos,plots,polished,yang,gently,tulsa,locking,casey,draws,fridge,blanket,bloom,lou,elliott,fraser,justify,blades,loops,surge,trauma,advert,possess,sip,flashers,vanilla,picnic,souls,arrivals,spank,dumb,hollow,vault,securely,groove,pursuit,wires,mails,backing,sleeps,blake,dee,travis,endless,figured,orbit,bacon,heater,colony,cannon,circus,promoted,mae,mel,spine,trout,enclosed,feat,cooked,thriller,transmit,fatty,gerald,pressed,scanned,hunger,sic,joyce,surgeon,cement,planners,disputes,textiles,missile,intranet,closes,seq,deborah,conf,marco,assists,glow,gabriel,auditor,aquarium,violin,prophet,cir,bracket,isaac,oxide,oaks,erik,naples,promptly,modems,harmful,sexually,dividend,newark,paso,glucose,phantom,norm,playback,turtle,ips,warned,neural,ware,fossil,mia,hometown,badly,apollo,wan,persian,handmade,robots,grenada,jade,scoop,foul,keno,earning,mailman,nested,somalia,movers,verbal,blink,seas,carlo,novelty,tiles,switched,tamil,pose,fuzzy,grams,budgets,toolkit,goat,render,carmen,ira,sen,hardwood,temporal,sail,forge,dense,brave,awful,airplane,istanbul,impose,viewers,asbestos,enters,pod,savage,willow,resumes,bolt,gage,throwing,existed,wagon,dat,favour,knock,urge,potatoes,thorough,kurt,peers,roland,optimum,neon,quilt,creature,ours,mounts,syracuse,lone,refresh,michel,subtle,notre,stripes,firmware,cope,shepherd,canberra,cradle,mambo,lime,kirk,flour,bool,sympathy,choir,avoiding,blond,expects,cho,jumping,fabrics,polymer,hygiene,wit,poultry,virtue,burst,surgeons,bouquet,promotes,mandate,bbs,spas,ind,corpus,fibre,shades,jets,indices,qui,intl,prisoner,daisy,halifax,cursor,earliest,donated,stuffed,insects,crude,maiden,examines,viking,myrtle,bored,cleanup,yarn,knit,mug,bother,budapest,knitting,attacked,bhutan,mating,compute,redhead,arrives,tractor,allah,unwrap,fares,resist,hoped,pike,safer,ids,hugo,wagner,touched,cologne,wishing,ranger,smallest,marsh,ricky,ctrl,scared,theta,bent,laos,monsters,asylum,stake,cocktail,outlets,arbor,poison'.split(',');
+  var SET = {};
+  for (var wi = 0; wi < WORDS.length; wi++) SET[WORDS[wi]] = 1;
+  // trie for the solver
+  var TRIE = {};
+  for (var ti = 0; ti < WORDS.length; ti++) {
+    var w = WORDS[ti], node = TRIE;
+    for (var ci = 0; ci < w.length; ci++) {
+      var ch = w[ci];
+      node[ch] = node[ch] || {};
+      node = node[ch];
+    }
+    node.$ = 1;
+  }
+  var board = [], sel = [], found = [], score = 0, secs = 180, timer = null, playing = false;
+  var best = 0, LS = 'tn-boggle-game-best';
+  try { var b0 = localStorage.getItem(LS); if (b0) best = parseInt(b0, 10) || 0; } catch (e) {}
+  function status(t) { var el = g('status'); if (el) el.textContent = t; }
+  function fmt(s) { return Math.floor(s / 60) + ':' + ('0' + (s % 60)).slice(-2); }
+  function wordScore(w) {
+    var L = w.length;
+    if (L <= 4) return 1;
+    if (L === 5) return 2;
+    if (L === 6) return 3;
+    if (L === 7) return 5;
+    return 11;
+  }
+  function faceOf(ch) { return ch === 'Q' ? 'Qu' : ch; }
+  function valOf(ch) { return ch === 'Q' ? 'QU' : ch; }
+  function shake() {
+    var dice = DICE.slice(), b = [];
+    for (var i = 0; i < 16; i++) {
+      var j = Math.floor(Math.random() * dice.length);
+      var die = dice.splice(j, 1)[0];
+      b.push(die[Math.floor(Math.random() * 6)]);
+    }
+    return b;
+  }
+  function adjacent(a, b) {
+    return Math.abs(a[0] - b[0]) <= 1 && Math.abs(a[1] - b[1]) <= 1 && !(a[0] === b[0] && a[1] === b[1]);
+  }
+  // count all possible words on this board (trie DFS)
+  function countPossible() {
+    var letters = [];
+    for (var r = 0; r < 4; r++) { letters.push([]); for (var c = 0; c < 4; c++) letters[r].push(valOf(board[r * 4 + c])); }
+    var foundSet = {}, total = 0;
+    function dfs(r, c, node, word, used) {
+      var L = letters[r][c], n2 = node;
+      for (var i = 0; i < L.length; i++) {
+        n2 = n2[L[i]];
+        if (!n2) return;
+      }
+      word += L;
+      if (n2.$ && word.length >= 3 && !foundSet[word]) { foundSet[word] = 1; total++; }
+      used[r * 4 + c] = 1;
+      for (var dr = -1; dr <= 1; dr++) for (var dc = -1; dc <= 1; dc++) {
+        if (!dr && !dc) continue;
+        var rr = r + dr, cc = c + dc;
+        if (rr < 0 || rr > 3 || cc < 0 || cc > 3 || used[rr * 4 + cc]) continue;
+        dfs(rr, cc, n2, word, used);
+      }
+      used[r * 4 + c] = 0;
+    }
+    for (var r2 = 0; r2 < 4; r2++) for (var c2 = 0; c2 < 4; c2++) {
+      var used = new Array(16).fill(0);
+      dfs(r2, c2, TRIE, '', used);
+    }
+    return total;
+  }
+  function curWord() {
+    var s = '';
+    for (var i = 0; i < sel.length; i++) s += valOf(board[sel[i][0] * 4 + sel[i][1]]);
+    return s.toLowerCase();
+  }
+  function render() {
+    var bd = g('board'); if (!bd) return;
+    bd.innerHTML = '';
+    var selSet = {};
+    for (var i = 0; i < sel.length; i++) selSet[sel[i][0] + ',' + sel[i][1]] = i + 1;
+    for (var r = 0; r < 4; r++) for (var c = 0; c < 4; c++) {
+      (function (rr, cc) {
+        var b = document.createElement('button');
+        b.type = 'button';
+        var n = selSet[rr + ',' + cc];
+        b.style.cssText = 'aspect-ratio:1;border:0;border-radius:10px;font-size:24px;font-weight:800;cursor:pointer;background:' + (n ? '#4D7C0F' : '#e7e5e4') + ';color:' + (n ? '#fff' : '#1c1917') + ';box-shadow:0 2px 5px rgba(0,0,0,.35)';
+        b.innerHTML = TN.esc(faceOf(board[rr * 4 + cc])) + (n ? '<span style="font-size:11px;vertical-align:super"> ' + n + '</span>' : '');
+        b.setAttribute('aria-label', 'Letter ' + faceOf(board[rr * 4 + cc]));
+        b.addEventListener('click', function () { onTile(rr, cc); });
+        bd.appendChild(b);
+      })(r, c);
+    }
+    var cur = g('current'); if (cur) cur.textContent = curWord().toUpperCase();
+    var sc = g('score'); if (sc) sc.textContent = String(score);
+    var wf = g('words'); if (wf) wf.textContent = String(found.length);
+    var tm = g('time'); if (tm) tm.textContent = fmt(secs);
+    var be = g('best'); if (be) be.textContent = String(best);
+  }
+  function onTile(r, c) {
+    if (!playing) return;
+    if (sel.length) {
+      var last = sel[sel.length - 1];
+      if (last[0] === r && last[1] === c) { sel.pop(); render(); return; } // tap to undo
+      if (!adjacent(last, [r, c])) { status('Letters must touch — including diagonally.'); return; }
+      for (var i = 0; i < sel.length; i++) if (sel[i][0] === r && sel[i][1] === c) { status('Cube already used in this word.'); return; }
+    }
+    sel.push([r, c]);
+    TN.clearErr(P + 'error');
+    render();
+  }
+  function submit() {
+    if (!playing) return;
+    var w = curWord();
+    if (w.length < 3) { TN.setErr(P + 'error', 'Words need at least 3 letters.'); return; }
+    if (!SET[w]) { TN.setErr(P + 'error', '“' + w.toUpperCase() + '” is not in the dictionary.'); sel = []; render(); return; }
+    if (found.indexOf(w) !== -1) { TN.setErr(P + 'error', 'You already found that word.'); sel = []; render(); return; }
+    TN.clearErr(P + 'error');
+    found.push(w);
+    var pts = wordScore(w);
+    score += pts;
+    var fl = g('found');
+    if (fl) {
+      var chip = document.createElement('span');
+      chip.style.cssText = 'background:#292524;border-radius:12px;padding:3px 10px;font-size:13px';
+      chip.textContent = w.toUpperCase() + ' +' + pts;
+      fl.appendChild(chip);
+    }
+    status('Nice! ' + w.toUpperCase() + ' scores ' + pts + '.');
+    sel = [];
+    render();
+  }
+  function stopTimer() { if (timer) { clearInterval(timer); timer = null; } }
+  function endGame() {
+    if (!playing) return;
+    playing = false;
+    stopTimer();
+    if (score > best) {
+      best = score;
+      try { localStorage.setItem(LS, String(best)); } catch (e) {}
+    }
+    render();
+    status('⏰ Time! You found ' + found.length + ' words for ' + score + ' points.' + (score >= best && score > 0 ? ' New best!' : ''));
+  }
+  function newGame() {
+    stopTimer();
+    board = shake();
+    sel = []; found = []; score = 0; secs = 180; playing = true;
+    TN.clearErr(P + 'error');
+    var fl = g('found'); if (fl) fl.innerHTML = '';
+    status('Go! 3 minutes on the clock.');
+    var poss = g('possible'); if (poss) poss.textContent = '…';
+    render();
+    setTimeout(function () {
+      try {
+        var n = countPossible();
+        var p2 = g('possible');
+        if (p2 && playing) p2.textContent = String(n);
+      } catch (e) {}
+    }, 50);
+    timer = setInterval(function () {
+      secs--;
+      var tm = g('time'); if (tm) tm.textContent = fmt(Math.max(0, secs));
+      if (secs <= 0) endGame();
+    }, 1000);
+  }
+  try {
+    if (!g('board')) return;
+    TN.on(P + 'new', 'click', newGame);
+    TN.on(P + 'end', 'click', endGame);
+    TN.on(P + 'submit', 'click', submit);
+    TN.on(P + 'clear', 'click', function () { sel = []; render(); });
+    board = shake();
+    render();
+    status('Press “New game” to start the 3-minute timer.');
+  } catch (e) { /* never throw on load */ }
+})();
+
+</script>
+</body>
+</html>

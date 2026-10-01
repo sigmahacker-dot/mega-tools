@@ -1,0 +1,58 @@
+<div class="tool-card">
+  <div class="grid3">
+    <div class="field">
+      <label for="github-actions-workflow-generator-name">Workflow name</label>
+      <input class="input" id="github-actions-workflow-generator-name" value="CI">
+    </div>
+    <div class="field">
+      <label for="github-actions-workflow-generator-lang">Language</label>
+      <select class="select" id="github-actions-workflow-generator-lang">
+        <option value="node">Node.js</option>
+        <option value="python">Python</option>
+        <option value="go">Go</option>
+        <option value="java">Java (Maven)</option>
+        <option value="dotnet">.NET</option>
+        <option value="rust">Rust</option>
+      </select>
+    </div>
+    <div class="field">
+      <label for="github-actions-workflow-generator-os">Runs on</label>
+      <select class="select" id="github-actions-workflow-generator-os">
+        <option value="ubuntu-latest">ubuntu-latest</option>
+        <option value="windows-latest">windows-latest</option>
+        <option value="macos-latest">macos-latest</option>
+      </select>
+    </div>
+  </div>
+  <div class="grid3">
+    <div class="field checkline"><input type="checkbox" id="github-actions-workflow-generator-push" checked><label for="github-actions-workflow-generator-push">On push</label></div>
+    <div class="field checkline"><input type="checkbox" id="github-actions-workflow-generator-pr" checked><label for="github-actions-workflow-generator-pr">On pull request</label></div>
+    <div class="field checkline"><input type="checkbox" id="github-actions-workflow-generator-test" checked><label for="github-actions-workflow-generator-test">Run tests</label></div>
+  </div>
+  <div class="grid2">
+    <div class="field">
+      <label for="github-actions-workflow-generator-branches">Branches (comma separated)</label>
+      <input class="input" id="github-actions-workflow-generator-branches" value="main">
+    </div>
+    <div class="field">
+      <label for="github-actions-workflow-generator-version">Language version</label>
+      <input class="input" id="github-actions-workflow-generator-version" value="20">
+    </div>
+  </div>
+  <div class="field">
+    <label for="github-actions-workflow-generator-extra">Extra steps (one per line: "Step name: command")</label>
+    <textarea class="textarea" id="github-actions-workflow-generator-extra" rows="2"></textarea>
+  </div>
+  <div class="btn-row">
+    <button class="btn" id="github-actions-workflow-generator-generate">Generate workflow</button>
+  </div>
+  <div class="error" id="github-actions-workflow-generator-error"></div>
+  <div class="field">
+    <label for="github-actions-workflow-generator-output">Workflow YAML</label>
+    <textarea class="textarea" id="github-actions-workflow-generator-output" rows="20" readonly style="font-family:monospace"></textarea>
+  </div>
+  <div class="btn-row">
+    <button class="btn btn-outline" id="github-actions-workflow-generator-copy">Copy YAML</button>
+    <button class="btn btn-outline" id="github-actions-workflow-generator-download">Download ci.yml</button>
+  </div>
+</div>

@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>REST API Quick Tester — Free Online | ToolNest</title>
+<meta name="description" content="Send GET/POST/PUT/DELETE requests from your browser and inspect status, timing, headers and body.">
+<meta name="keywords" content="rest api tester, http request tester, api testing tool, test rest endpoint">
+<link rel="canonical" href="https://toolnest.vercel.app/tools/rest-api-quick-tester/">
+<meta name="theme-color" content="#07070b">
+<meta property="og:title" content="REST API Quick Tester — Free Online | ToolNest">
+<meta property="og:description" content="Send GET/POST/PUT/DELETE requests from your browser and inspect status, timing, headers and body.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css?v=4">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%23e01111'/><text x='50' y='68' font-size='58' text-anchor='middle' fill='white' font-family='Arial' font-weight='bold'>T</text></svg>">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebApplication","name":"REST API Quick Tester","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0"},"url":"https://toolnest.vercel.app/tools/rest-api-quick-tester/","description":"Send GET/POST/PUT/DELETE requests from your browser and inspect status, timing, headers and body."},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Why do I get a network/CORS error?","acceptedAnswer":{"@type":"Answer","text":"Browsers block cross-origin requests unless the server sends CORS headers (Access-Control-Allow-Origin). The request never left your browser — this is a browser security rule, not a tool bug."}},{"@type":"Question","name":"Is my data sent anywhere else?","acceptedAnswer":{"@type":"Answer","text":"No — requests go directly from your browser to the URL you entered."}},{"@type":"Question","name":"Can I test authenticated endpoints?","acceptedAnswer":{"@type":"Answer","text":"Yes — add an Authorization header. Credentials are only sent to the URL you typed."}},{"@type":"Question","name":"What does the timing measure?","acceptedAnswer":{"@type":"Answer","text":"Wall-clock time from fetch start to the full response body being read, in milliseconds."}}]}]}</script>
+</head>
+<body>
+<header class="site-header">
+  <div class="container">
+    <a class="logo" href="/"><span class="logo-mark">T</span> ToolNest</a>
+    <div class="header-right">
+      <form class="nav-search" action="/" method="get" role="search">
+        <span class="ns-icon">🔍</span>
+        <input type="search" name="q" placeholder="Search tools…" aria-label="Search tools" autocomplete="off">
+      </form>
+      <div class="menu-wrap">
+        <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="menuPanel" aria-label="Open menu"><span></span><span></span><span></span></button>
+        <nav class="menu-panel" id="menuPanel" aria-label="Site">
+          <a href="/">Home</a>
+          <a href="/#categories">Categories</a>
+          <a href="/#all-tools">All Tools</a>
+        </nav>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ADSTERRA-HEADER: paste your Adsterra banner ad code inside the div below -->
+<div class="container"><div class="ad-slot ad-leaderboard" data-ad="header"></div></div>
+
+<main class="container">
+  <nav class="crumbs"><a href="/">Home</a> &rsaquo; <a href="/#developer">Developer Tools</a> &rsaquo; REST API Quick Tester</nav>
+  <div class="tool-hero">
+    <h1>REST API Quick Tester</h1>
+    <p>Send GET/POST/PUT/DELETE requests from your browser and inspect status, timing, headers and body.</p>
+  </div>
+
+  <div class="tool-card">
+  <p class="note"><strong>Honest note:</strong> Only works with CORS-enabled endpoints; browser blocks others. If the server does not send <code>Access-Control-Allow-Origin</code>, the browser refuses the request and this tool cannot work around it.</p>
+  <div class="grid2">
+    <div class="field">
+      <label for="rest-api-quick-tester-method">Method</label>
+      <select class="select" id="rest-api-quick-tester-method">
+        <option>GET</option><option>POST</option><option>PUT</option><option>PATCH</option><option>DELETE</option>
+      </select>
+    </div>
+    <div class="field">
+      <label for="rest-api-quick-tester-url">URL</label>
+      <input class="input" id="rest-api-quick-tester-url" value="https://jsonplaceholder.typicode.com/posts/1">
+    </div>
+  </div>
+  <div class="field">
+    <label for="rest-api-quick-tester-headers">Headers (one "Name: value" per line)</label>
+    <textarea class="textarea" id="rest-api-quick-tester-headers" rows="2"></textarea>
+  </div>
+  <div class="field">
+    <label for="rest-api-quick-tester-body">Body (sent for POST/PUT/PATCH)</label>
+    <textarea class="textarea" id="rest-api-quick-tester-body" rows="3"></textarea>
+  </div>
+  <div class="btn-row">
+    <button class="btn" id="rest-api-quick-tester-send">Send request</button>
+    <button class="btn btn-outline" id="rest-api-quick-tester-clear">Clear response</button>
+  </div>
+  <div class="error" id="rest-api-quick-tester-error"></div>
+  <div class="result hidden" id="rest-api-quick-tester-result">
+    <div class="stat-cards">
+      <div class="stat-card"><div class="v" id="rest-api-quick-tester-status">–</div><div class="l">Status</div></div>
+      <div class="stat-card"><div class="v" id="rest-api-quick-tester-time">–</div><div class="l">Time</div></div>
+      <div class="stat-card"><div class="v" id="rest-api-quick-tester-size">–</div><div class="l">Body size</div></div>
+    </div>
+    <div class="field" style="margin-top:12px">
+      <label for="rest-api-quick-tester-respheaders">Response headers</label>
+      <textarea class="textarea" id="rest-api-quick-tester-respheaders" rows="3" readonly style="font-family:monospace"></textarea>
+    </div>
+    <div class="field">
+      <label for="rest-api-quick-tester-respbody">Response body</label>
+      <textarea class="textarea" id="rest-api-quick-tester-respbody" rows="10" readonly style="font-family:monospace"></textarea>
+    </div>
+  </div>
+</div>
+
+
+  <!-- ADSTERRA-INCONTENT: paste your Adsterra native/in-content ad code inside the div below -->
+  <div class="ad-slot" data-ad="incontent"></div>
+
+  <div class="info-grid">
+    <div class="info-card">
+      <h2>📖 How to use</h2>
+      <ol><li>Enter the endpoint URL and choose the method.</li><li>Add headers and a request body if needed.</li><li>Click Send and inspect status, time, headers and body.</li><li>Note: only CORS-enabled endpoints can be tested from a browser.</li></ol>
+    </div>
+    <div class="info-card">
+      <h2>❓ Frequently asked questions</h2>
+      <div class="faq"><details><summary>Why do I get a network/CORS error?</summary><p>Browsers block cross-origin requests unless the server sends CORS headers (Access-Control-Allow-Origin). The request never left your browser — this is a browser security rule, not a tool bug.</p></details><details><summary>Is my data sent anywhere else?</summary><p>No — requests go directly from your browser to the URL you entered.</p></details><details><summary>Can I test authenticated endpoints?</summary><p>Yes — add an Authorization header. Credentials are only sent to the URL you typed.</p></details><details><summary>What does the timing measure?</summary><p>Wall-clock time from fetch start to the full response body being read, in milliseconds.</p></details></div>
+    </div>
+  </div>
+
+  <section class="section">
+    <h2>🔗 Related tools</h2>
+    <div class="tool-grid"><a class="tool-link" href="/tools/api-key-generator/" data-search="api key generator generate cryptographically secure api keys with crypto.getrandomvalues — hex, base64, base64url or uuid v4. api key generator random api key uuid generator secure token generator"><span class="t-ico">💻</span><span class="t-body"><b>API Key Generator</b><small>Generate cryptographically secure API keys with crypto.getRandomValues — hex, base64, base64…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/ascii-table-reference/" data-search="ascii table reference full ascii table 0–127: decimal, hex, octal, character, control-code names and html entities — searchable. ascii table ascii codes ascii chart control characters ascii reference"><span class="t-ico">💻</span><span class="t-body"><b>ASCII Table Reference</b><small>Full ASCII table 0–127: decimal, hex, octal, character, control-code names and HTML entities…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/badge-generator/" data-search="badge generator design css badges and pills — colors, sizes, shapes — with live preview and copy-ready html/css. badge css generator css pill badge status badge code label badge html"><span class="t-ico">💻</span><span class="t-body"><b>Badge Generator</b><small>Design CSS badges and pills — colors, sizes, shapes — with live preview and copy-ready HTML/…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/base64-encoder-decoder/" data-search="base64 encoder / decoder encode text to base64 or decode base64 back to text, with full utf-8 support and a file-to-data-url converter. base64 encoder base64 decoder base64 encode base64 decode file to base64"><span class="t-ico">💻</span><span class="t-body"><b>Base64 Encoder / Decoder</b><small>Encode text to Base64 or decode Base64 back to text, with full UTF-8 support and a file-to-d…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/basic-auth-header-generator/" data-search="basic auth header generator encode username:password to a base64 authorization header (unicode-safe) — copy or download. basic auth header base64 authorization http basic auth generator authorization header"><span class="t-ico">💻</span><span class="t-body"><b>Basic Auth Header Generator</b><small>Encode username:password to a Base64 Authorization header (Unicode-safe) — copy or download.</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/binary-text-converter/" data-search="binary and text converter convert text to binary or hex and back, with full utf-8 awareness and strict input validation. binary to text text to binary hex to text converter"><span class="t-ico">💻</span><span class="t-body"><b>Binary and Text Converter</b><small>Convert text to binary or hex and back, with full UTF-8 awareness and strict input validatio…</small></span><span class="t-arrow">→</span></a></div>
+  </section>
+</main>
+
+<!-- ADSTERRA-FOOTER: paste your Adsterra footer/banner ad code inside the div below -->
+<div class="container"><div class="ad-slot" data-ad="footer"></div></div>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="f-grid">
+      <div>
+        <span class="brandline"><span class="logo-mark">T</span> ToolNest</span>
+        <p>Free online tools that actually work. No sign-up, no watermarks — and your files never leave your device for client-side tools.</p>
+      </div>
+      <div>
+        <h4>Popular</h4>
+        <a href="/tools/qr-code-generator/">QR Code Generator</a>
+        <a href="/tools/background-remover/">Background Remover</a>
+        <a href="/tools/pdf-merger/">PDF Merger</a>
+        <a href="/tools/word-counter/">Word Counter</a>
+      </div>
+      <div>
+        <h4>Categories</h4>
+        <a href="/#image">Image Tools</a>
+        <a href="/#pdf">PDF &amp; Documents</a>
+        <a href="/#calculators">Calculators</a>
+        <a href="/#developer">Developer Tools</a>
+      </div>
+      <div>
+        <h4>Site</h4>
+        <a href="/">Home</a>
+        <a href="/#all-tools">All Tools</a>
+        <a href="/sitemap.xml">Sitemap</a>
+      </div>
+    </div>
+    <div class="f-bottom">© 2026 ToolNest · Free tools for everyone · Made with care</div>
+  </div>
+</footer>
+
+<script src="/assets/site.js?v=5"></script>
+
+<script>
+/* REST API Quick Tester — fetch with timing, status, headers, body. CORS-limited, stated honestly. */
+(function () {
+  'use strict';
+  var SLUG = 'rest-api-quick-tester';
+  function el(id) { return document.getElementById(id); }
+  function fail(msg) { TN.setErr(SLUG + '-error', msg); }
+  function clear() { TN.clearErr(SLUG + '-error'); }
+
+  function send() {
+    clear();
+    var url = el(SLUG + '-url').value.trim();
+    var method = el(SLUG + '-method').value;
+    if (!url) { fail('Enter a URL.'); return; }
+    if (!/^https?:\/\//i.test(url)) { fail('URL must start with http:// or https://'); return; }
+    var headers = {};
+    el(SLUG + '-headers').value.split('\n').forEach(function (l) {
+      var i = l.indexOf(':');
+      if (i > 0) headers[l.slice(0, i).trim()] = l.slice(i + 1).trim();
+    });
+    var body = el(SLUG + '-body').value;
+    var opts = { method: method, headers: headers };
+    if (body && method !== 'GET' && method !== 'HEAD') opts.body = body;
+    var btn = el(SLUG + '-send');
+    btn.disabled = true;
+    btn.textContent = 'Sending…';
+    TN.hide(SLUG + '-result');
+    var t0 = performance.now();
+    fetch(url, opts).then(function (res) {
+      var ms = Math.round(performance.now() - t0);
+      var hdrs = [];
+      res.headers.forEach(function (v, k) { hdrs.push(k + ': ' + v); });
+      return res.text().then(function (text) {
+        el(SLUG + '-status').textContent = res.status + ' ' + res.statusText;
+        el(SLUG + '-status').style.color = res.ok ? '#4ade80' : '#f87171';
+        el(SLUG + '-time').textContent = ms + ' ms';
+        el(SLUG + '-size').textContent = TN.fmtBytes(new Blob([text]).size);
+        el(SLUG + '-respheaders').value = hdrs.join('\n') || '(no headers exposed)';
+        var pretty = text;
+        try { pretty = JSON.stringify(JSON.parse(text), null, 2); } catch (e) { /* keep raw */ }
+        el(SLUG + '-respbody').value = pretty.slice(0, 50000);
+        TN.show(SLUG + '-result');
+      });
+    }).catch(function (err) {
+      fail('Request failed: ' + (err && err.message ? err.message : err) +
+        ' — this usually means the endpoint blocks CORS or is unreachable from your browser.');
+    }).then(function () {
+      btn.disabled = false;
+      btn.textContent = 'Send request';
+    });
+  }
+
+  try {
+    if (!el(SLUG + '-send')) return;
+    TN.on(SLUG + '-send', 'click', send);
+    TN.on(SLUG + '-clear', 'click', function () { TN.hide(SLUG + '-result'); clear(); });
+  } catch (e) { /* never throw on load */ }
+})();
+
+</script>
+</body>
+</html>

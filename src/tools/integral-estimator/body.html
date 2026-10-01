@@ -1,0 +1,47 @@
+<div class="tool-card">
+  <div class="grid2">
+    <div class="field">
+      <label for="integral-estimator-fn">Integrand f(x)</label>
+      <input class="input" id="integral-estimator-fn" type="text" placeholder="e.g. sin(x) + x^2" value="sin(x)" style="font-family:monospace">
+    </div>
+    <div class="field">
+      <label for="integral-estimator-method">Rule</label>
+      <select class="select" id="integral-estimator-method">
+        <option value="simpson">Simpson's rule</option>
+        <option value="trapezoid">Trapezoidal rule</option>
+        <option value="midpoint">Midpoint rule</option>
+      </select>
+    </div>
+    <div class="field">
+      <label for="integral-estimator-a">Lower limit a</label>
+      <input class="input" id="integral-estimator-a" type="number" step="any" value="0">
+    </div>
+    <div class="field">
+      <label for="integral-estimator-b">Upper limit b</label>
+      <input class="input" id="integral-estimator-b" type="number" step="any" value="3.14159">
+    </div>
+    <div class="field">
+      <label for="integral-estimator-n">Subintervals n</label>
+      <input class="input" id="integral-estimator-n" type="number" min="1" max="100000" step="1" value="100">
+    </div>
+    <div class="field" style="align-self:end">
+      <button type="button" class="btn" id="integral-estimator-go">Integrate</button>
+    </div>
+  </div>
+  <div class="error" id="integral-estimator-error"></div>
+  <div id="integral-estimator-out" class="hidden">
+    <div class="stat-cards">
+      <div class="stat-card"><div class="v" id="integral-estimator-result">–</div><div class="l">Estimate</div></div>
+      <div class="stat-card"><div class="v" id="integral-estimator-h">–</div><div class="l">Step h = (b−a)/n</div></div>
+      <div class="stat-card"><div class="v" id="integral-estimator-evals">–</div><div class="l">Function evaluations</div></div>
+    </div>
+    <div class="result">
+      <h3>How it was computed</h3>
+      <div id="integral-estimator-steps"></div>
+    </div>
+    <div class="result">
+      <h3>Convergence check (n doubled)</h3>
+      <div style="overflow-x:auto"><table class="data"><thead><tr><th>n</th><th>Estimate</th><th>Change</th></tr></thead><tbody id="integral-estimator-conv"></tbody></table></div>
+    </div>
+  </div>
+</div>

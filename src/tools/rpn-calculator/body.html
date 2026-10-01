@@ -1,0 +1,38 @@
+<div class="tool-card">
+  <div class="field">
+    <label>Entry</label>
+    <input class="input" id="rpn-calculator-entry" type="text" inputmode="decimal" placeholder="Type a number, then Enter to push" style="font-size:1.3em;text-align:right">
+  </div>
+  <div class="btn-row" style="margin-bottom:8px">
+    <button type="button" class="btn" id="rpn-calculator-enter">Enter</button>
+    <button type="button" class="btn btn-outline" id="rpn-calculator-neg">±</button>
+    <button type="button" class="btn btn-outline" id="rpn-calculator-back">⌫</button>
+  </div>
+  <div id="rpn-calculator-keys" style="display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-bottom:12px">
+    <button type="button" class="btn btn-outline" data-k="7">7</button>
+    <button type="button" class="btn btn-outline" data-k="8">8</button>
+    <button type="button" class="btn btn-outline" data-k="9">9</button>
+    <button type="button" class="btn" data-op="/">÷</button>
+    <button type="button" class="btn btn-outline" data-k="4">4</button>
+    <button type="button" class="btn btn-outline" data-k="5">5</button>
+    <button type="button" class="btn btn-outline" data-k="6">6</button>
+    <button type="button" class="btn" data-op="*">×</button>
+    <button type="button" class="btn btn-outline" data-k="1">1</button>
+    <button type="button" class="btn btn-outline" data-k="2">2</button>
+    <button type="button" class="btn btn-outline" data-k="3">3</button>
+    <button type="button" class="btn" data-op="-">−</button>
+    <button type="button" class="btn btn-outline" data-k="0">0</button>
+    <button type="button" class="btn btn-outline" data-k=".">.</button>
+    <button type="button" class="btn btn-outline" id="rpn-calculator-drop">Drop</button>
+    <button type="button" class="btn" data-op="+">+</button>
+  </div>
+  <div class="btn-row">
+    <button type="button" class="btn btn-outline" id="rpn-calculator-swap">Swap</button>
+    <button type="button" class="btn btn-outline" id="rpn-calculator-clear">Clear stack</button>
+  </div>
+  <div class="error" id="rpn-calculator-error"></div>
+  <div class="result">
+    <h3>Stack (X = top)</h3>
+    <table class="data"><tbody id="rpn-calculator-stack"><tr><td class="muted">Stack is empty — type a number and press Enter.</td></tr></tbody></table>
+  </div>
+</div>

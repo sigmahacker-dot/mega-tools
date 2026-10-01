@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FTP Estimator — Free Online | ToolNest</title>
+<meta name="description" content="Estimate functional threshold power from a 20-minute test, plus the 7 training zones.">
+<meta name="keywords" content="FTP calculator, cycling power zones, functional threshold power">
+<link rel="canonical" href="https://toolnest.vercel.app/tools/ftp-estimator/">
+<meta name="theme-color" content="#07070b">
+<meta property="og:title" content="FTP Estimator — Free Online | ToolNest">
+<meta property="og:description" content="Estimate functional threshold power from a 20-minute test, plus the 7 training zones.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css?v=4">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%23e01111'/><text x='50' y='68' font-size='58' text-anchor='middle' fill='white' font-family='Arial' font-weight='bold'>T</text></svg>">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebApplication","name":"FTP Estimator","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0"},"url":"https://toolnest.vercel.app/tools/ftp-estimator/","description":"Estimate functional threshold power from a 20-minute test, plus the 7 training zones."},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Why multiply by 0.95?","acceptedAnswer":{"@type":"Answer","text":"Almost nobody can hold 20-minute power for a full hour. The 0.95 factor converts a 20-minute test to an estimated one-hour threshold power."}},{"@type":"Question","name":"What are the 7 zones?","acceptedAnswer":{"@type":"Answer","text":"The classic Coggan power zones: recovery, endurance, tempo, threshold, VO2max, anaerobic, and neuromuscular, as percentages of FTP."}},{"@type":"Question","name":"Should I retest often?","acceptedAnswer":{"@type":"Answer","text":"Every 6-10 weeks, or when training feels systematically too easy or too hard. FTP changes with fitness."}}]}]}</script>
+</head>
+<body>
+<header class="site-header">
+  <div class="container">
+    <a class="logo" href="/"><span class="logo-mark">T</span> ToolNest</a>
+    <div class="header-right">
+      <form class="nav-search" action="/" method="get" role="search">
+        <span class="ns-icon">🔍</span>
+        <input type="search" name="q" placeholder="Search tools…" aria-label="Search tools" autocomplete="off">
+      </form>
+      <div class="menu-wrap">
+        <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="menuPanel" aria-label="Open menu"><span></span><span></span><span></span></button>
+        <nav class="menu-panel" id="menuPanel" aria-label="Site">
+          <a href="/">Home</a>
+          <a href="/#categories">Categories</a>
+          <a href="/#all-tools">All Tools</a>
+        </nav>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ADSTERRA-HEADER: paste your Adsterra banner ad code inside the div below -->
+<div class="container"><div class="ad-slot ad-leaderboard" data-ad="header"></div></div>
+
+<main class="container">
+  <nav class="crumbs"><a href="/">Home</a> &rsaquo; <a href="/#health">Health &amp; Fitness</a> &rsaquo; FTP Estimator</nav>
+  <div class="tool-hero">
+    <h1>FTP Estimator</h1>
+    <p>Estimate functional threshold power from a 20-minute test, plus the 7 training zones.</p>
+  </div>
+
+  <div class="tool-card">
+  <div class="field">
+    <label for="ftp-estimator-power">20-minute average power (watts)</label>
+    <input type="number" class="input" id="ftp-estimator-power" min="0" step="any" placeholder="250">
+  </div>
+  <div class="error" id="ftp-estimator-error"></div>
+  <div class="result" id="ftp-estimator-result">
+    <div class="stat-cards">
+      <div class="stat-card"><div class="v" id="ftp-estimator-ftp">&ndash;</div><div class="l">Estimated FTP (W)</div></div>
+      <div class="stat-card"><div class="v" id="ftp-estimator-wkg">&ndash;</div><div class="l">W/kg (enter weight below)</div></div>
+    </div>
+    <div class="field" style="max-width:240px">
+      <label for="ftp-estimator-weight">Your weight (kg, optional)</label>
+      <input type="number" class="input" id="ftp-estimator-weight" min="0" step="any" placeholder="75">
+    </div>
+    <div id="ftp-estimator-out"></div>
+    <p class="note">For information only &mdash; not medical advice.</p>
+  </div>
+</div>
+
+  <!-- ADSTERRA-INCONTENT: paste your Adsterra native/in-content ad code inside the div below -->
+  <div class="ad-slot" data-ad="incontent"></div>
+
+  <div class="info-grid">
+    <div class="info-card">
+      <h2>📖 How to use</h2>
+      <ol><li>Ride an all-out 20-minute effort and note your average power in watts.</li><li>Enter that average power.</li><li>Your FTP is estimated at 95% of the 20-minute power.</li><li>Read the 7 power training zones in watts.</li></ol>
+    </div>
+    <div class="info-card">
+      <h2>❓ Frequently asked questions</h2>
+      <div class="faq"><details><summary>Why multiply by 0.95?</summary><p>Almost nobody can hold 20-minute power for a full hour. The 0.95 factor converts a 20-minute test to an estimated one-hour threshold power.</p></details><details><summary>What are the 7 zones?</summary><p>The classic Coggan power zones: recovery, endurance, tempo, threshold, VO2max, anaerobic, and neuromuscular, as percentages of FTP.</p></details><details><summary>Should I retest often?</summary><p>Every 6-10 weeks, or when training feels systematically too easy or too hard. FTP changes with fitness.</p></details></div>
+    </div>
+  </div>
+
+  <section class="section">
+    <h2>🔗 Related tools</h2>
+    <div class="tool-grid"><a class="tool-link" href="/tools/allergy-tracker/" data-search="allergy tracker log allergy exposures, symptoms, and severity with summaries, saved in your browser. allergy tracker allergy diary symptom log"><span class="t-ico">❤️</span><span class="t-body"><b>Allergy Tracker</b><small>Log allergy exposures, symptoms, and severity with summaries, saved in your browser.</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/baby-feeding-log/" data-search="baby feeding log log nursing and bottle sessions with timestamps, daily totals, saved in your browser. baby feeding log nursing tracker bottle feeding log"><span class="t-ico">❤️</span><span class="t-body"><b>Baby Feeding Log</b><small>Log nursing and bottle sessions with timestamps, daily totals, saved in your browser.</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/baby-growth-tracker/" data-search="baby growth tracker log your baby&#39;s weight and height over time and see a growth log with typical-range guidance. baby growth tracker baby weight tracker infant growth chart baby height log newborn growth"><span class="t-ico">❤️</span><span class="t-body"><b>Baby Growth Tracker</b><small>Log your baby&#39;s weight and height over time and see a growth log with typical-range guidance…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/balance-test-timer/" data-search="balance test timer single-leg stance stopwatch with age benchmarks for balance testing. balance test single leg stance balance timer"><span class="t-ico">❤️</span><span class="t-body"><b>Balance Test Timer</b><small>Single-leg stance stopwatch with age benchmarks for balance testing.</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/blood-donation-eligibility-checker/" data-search="blood donation eligibility checker check common blood donation eligibility rules: age, weight, hemoglobin, intervals. blood donation eligibility can i donate blood donor requirements"><span class="t-ico">❤️</span><span class="t-body"><b>Blood Donation Eligibility Checker</b><small>Check common blood donation eligibility rules: age, weight, hemoglobin, intervals.</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/blood-pressure-tracker/" data-search="blood pressure tracker log blood pressure readings with automatic aha category classification, averages and history saved in your browser. blood pressure tracker bp log blood pressure chart hypertension tracker bp monitor log"><span class="t-ico">❤️</span><span class="t-body"><b>Blood Pressure Tracker</b><small>Log blood pressure readings with automatic AHA category classification, averages and history…</small></span><span class="t-arrow">→</span></a></div>
+  </section>
+</main>
+
+<!-- ADSTERRA-FOOTER: paste your Adsterra footer/banner ad code inside the div below -->
+<div class="container"><div class="ad-slot" data-ad="footer"></div></div>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="f-grid">
+      <div>
+        <span class="brandline"><span class="logo-mark">T</span> ToolNest</span>
+        <p>Free online tools that actually work. No sign-up, no watermarks — and your files never leave your device for client-side tools.</p>
+      </div>
+      <div>
+        <h4>Popular</h4>
+        <a href="/tools/qr-code-generator/">QR Code Generator</a>
+        <a href="/tools/background-remover/">Background Remover</a>
+        <a href="/tools/pdf-merger/">PDF Merger</a>
+        <a href="/tools/word-counter/">Word Counter</a>
+      </div>
+      <div>
+        <h4>Categories</h4>
+        <a href="/#image">Image Tools</a>
+        <a href="/#pdf">PDF &amp; Documents</a>
+        <a href="/#calculators">Calculators</a>
+        <a href="/#developer">Developer Tools</a>
+      </div>
+      <div>
+        <h4>Site</h4>
+        <a href="/">Home</a>
+        <a href="/#all-tools">All Tools</a>
+        <a href="/sitemap.xml">Sitemap</a>
+      </div>
+    </div>
+    <div class="f-bottom">© 2026 ToolNest · Free tools for everyone · Made with care</div>
+  </div>
+</footer>
+
+<script src="/assets/site.js?v=5"></script>
+
+<script>
+(function(){
+'use strict';
+var S='ftp-estimator', ERR=S+'-error';
+var ZONES=[
+  ['1','Active Recovery','< 55%',0,0.55],
+  ['2','Endurance','55–74%',0.55,0.75],
+  ['3','Tempo','75–89%',0.75,0.90],
+  ['4','Lactate Threshold','90–104%',0.90,1.05],
+  ['5','VO2 Max','105–120%',1.05,1.21],
+  ['6','Anaerobic Capacity','121–150%',1.21,1.51],
+  ['7','Neuromuscular Power','max efforts',null,null]
+];
+function calc(){
+  if(!TN.el(S+'-power')) return;
+  TN.clearErr(ERR);
+  var out=TN.el(S+'-out'); out.innerHTML='';
+  TN.el(S+'-ftp').textContent='–'; TN.el(S+'-wkg').textContent='–';
+  var p=parseFloat(TN.el(S+'-power').value);
+  if(!(p>0)){ TN.setErr(ERR,'Enter your 20-minute average power in watts.'); return; }
+  var ftp=p*0.95;
+  TN.el(S+'-ftp').textContent=Math.round(ftp)+' W';
+  var w=parseFloat(TN.el(S+'-weight').value);
+  if(w>0) TN.el(S+'-wkg').textContent=(Math.round(ftp/w*100)/100)+' W/kg';
+  var html='<table class="data"><thead><tr><th>Zone</th><th>Name</th><th>% of FTP</th><th>Watts</th></tr></thead><tbody>';
+  ZONES.forEach(function(z){
+    var watts=z[3]==null?'—':Math.round(ftp*z[3])+' – '+Math.round(ftp*z[4]-1)+' W';
+    html+='<tr><td>'+z[0]+'</td><td>'+z[1]+'</td><td>'+z[2]+'</td><td><strong>'+watts+'</strong></td></tr>';
+  });
+  out.innerHTML=html+'</tbody></table>';
+}
+try{
+  ['power','weight'].forEach(function(f){ TN.on(S+'-'+f,'input',calc); });
+  calc();
+}catch(e){}
+})();
+
+</script>
+</body>
+</html>

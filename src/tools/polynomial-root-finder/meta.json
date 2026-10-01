@@ -1,0 +1,20 @@
+{
+  "slug": "polynomial-root-finder",
+  "title": "Polynomial Root Finder",
+  "category": "math",
+  "description": "Find all roots of a polynomial: exact quadratic formula for degree 2, Durand–Kerner iteration for higher degrees, with complex roots and verification.",
+  "keywords": ["polynomial root finder", "find polynomial roots", "durand kerner", "quadratic formula", "complex roots"],
+  "howto": [
+    "Type the coefficients from highest degree to constant, separated by spaces or commas (e.g. 1 -3 2).",
+    "Press Find Roots. Quadratics use the exact quadratic formula; degree 3+ uses the Durand–Kerner method.",
+    "Read every root — real and complex — with the iteration count.",
+    "Check the verification: each root plugged back into the polynomial ≈ 0."
+  ],
+  "faqs": [
+    {"q": "What is the Durand–Kerner method?", "a": "An iterative root-finding algorithm that refines all roots simultaneously: each root estimate is updated by dividing the polynomial's value at that point by the product of differences to the other estimates, converging to all roots including complex ones."},
+    {"q": "How accurate are the roots?", "a": "Iteration stops when every root changes by less than 10⁻¹² between steps (max 500 iterations), and the tool verifies each root by evaluating the polynomial at it."},
+    {"q": "What coefficient order do I type?", "a": "Highest degree first: for x³ − 6x² + 11x − 6 type 1 -6 11 -6. The degree is the number of coefficients minus one (max 8)."}
+  ],
+  "libs": [],
+  "module": false
+}

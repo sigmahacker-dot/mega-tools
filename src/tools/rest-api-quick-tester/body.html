@@ -1,0 +1,43 @@
+<div class="tool-card">
+  <p class="note"><strong>Honest note:</strong> Only works with CORS-enabled endpoints; browser blocks others. If the server does not send <code>Access-Control-Allow-Origin</code>, the browser refuses the request and this tool cannot work around it.</p>
+  <div class="grid2">
+    <div class="field">
+      <label for="rest-api-quick-tester-method">Method</label>
+      <select class="select" id="rest-api-quick-tester-method">
+        <option>GET</option><option>POST</option><option>PUT</option><option>PATCH</option><option>DELETE</option>
+      </select>
+    </div>
+    <div class="field">
+      <label for="rest-api-quick-tester-url">URL</label>
+      <input class="input" id="rest-api-quick-tester-url" value="https://jsonplaceholder.typicode.com/posts/1">
+    </div>
+  </div>
+  <div class="field">
+    <label for="rest-api-quick-tester-headers">Headers (one "Name: value" per line)</label>
+    <textarea class="textarea" id="rest-api-quick-tester-headers" rows="2"></textarea>
+  </div>
+  <div class="field">
+    <label for="rest-api-quick-tester-body">Body (sent for POST/PUT/PATCH)</label>
+    <textarea class="textarea" id="rest-api-quick-tester-body" rows="3"></textarea>
+  </div>
+  <div class="btn-row">
+    <button class="btn" id="rest-api-quick-tester-send">Send request</button>
+    <button class="btn btn-outline" id="rest-api-quick-tester-clear">Clear response</button>
+  </div>
+  <div class="error" id="rest-api-quick-tester-error"></div>
+  <div class="result hidden" id="rest-api-quick-tester-result">
+    <div class="stat-cards">
+      <div class="stat-card"><div class="v" id="rest-api-quick-tester-status">–</div><div class="l">Status</div></div>
+      <div class="stat-card"><div class="v" id="rest-api-quick-tester-time">–</div><div class="l">Time</div></div>
+      <div class="stat-card"><div class="v" id="rest-api-quick-tester-size">–</div><div class="l">Body size</div></div>
+    </div>
+    <div class="field" style="margin-top:12px">
+      <label for="rest-api-quick-tester-respheaders">Response headers</label>
+      <textarea class="textarea" id="rest-api-quick-tester-respheaders" rows="3" readonly style="font-family:monospace"></textarea>
+    </div>
+    <div class="field">
+      <label for="rest-api-quick-tester-respbody">Response body</label>
+      <textarea class="textarea" id="rest-api-quick-tester-respbody" rows="10" readonly style="font-family:monospace"></textarea>
+    </div>
+  </div>
+</div>

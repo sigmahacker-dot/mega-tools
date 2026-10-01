@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PDF OCR Tool — Free Online | ToolNest</title>
+<meta name="description" content="Extract text from scanned PDFs with real OCR: pages are rendered and recognized in your browser, then shown with copy and download.">
+<meta name="keywords" content="pdf ocr, scan to text, ocr pdf online, extract text from scan">
+<link rel="canonical" href="https://toolnest.vercel.app/tools/pdf-ocr-tool/">
+<meta name="theme-color" content="#07070b">
+<meta property="og:title" content="PDF OCR Tool — Free Online | ToolNest">
+<meta property="og:description" content="Extract text from scanned PDFs with real OCR: pages are rendered and recognized in your browser, then shown with copy and download.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css?v=4">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%23e01111'/><text x='50' y='68' font-size='58' text-anchor='middle' fill='white' font-family='Arial' font-weight='bold'>T</text></svg>">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebApplication","name":"PDF OCR Tool","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0"},"url":"https://toolnest.vercel.app/tools/pdf-ocr-tool/","description":"Extract text from scanned PDFs with real OCR: pages are rendered and recognized in your browser, then shown with copy and download."},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Does this need the internet?","acceptedAnswer":{"@type":"Answer","text":"Tesseract.js is loaded on demand from the jsDelivr CDN when you start OCR. If it can't load (offline/blocked), you'll get an honest error instead of a fake result."}},{"@type":"Question","name":"How accurate is the OCR?","acceptedAnswer":{"@type":"Answer","text":"Clean, high-contrast scans at 150+ DPI work best. Handwriting, skewed pages and tiny fonts reduce accuracy."}},{"@type":"Question","name":"Is my PDF uploaded?","acceptedAnswer":{"@type":"Answer","text":"Yes — rendering and recognition run entirely in your browser. The OCR engine loads from a CDN but your PDF is never uploaded anywhere."}}]}]}</script>
+</head>
+<body>
+<header class="site-header">
+  <div class="container">
+    <a class="logo" href="/"><span class="logo-mark">T</span> ToolNest</a>
+    <div class="header-right">
+      <form class="nav-search" action="/" method="get" role="search">
+        <span class="ns-icon">🔍</span>
+        <input type="search" name="q" placeholder="Search tools…" aria-label="Search tools" autocomplete="off">
+      </form>
+      <div class="menu-wrap">
+        <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="menuPanel" aria-label="Open menu"><span></span><span></span><span></span></button>
+        <nav class="menu-panel" id="menuPanel" aria-label="Site">
+          <a href="/">Home</a>
+          <a href="/#categories">Categories</a>
+          <a href="/#all-tools">All Tools</a>
+        </nav>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ADSTERRA-HEADER: paste your Adsterra banner ad code inside the div below -->
+<div class="container"><div class="ad-slot ad-leaderboard" data-ad="header"></div></div>
+
+<main class="container">
+  <nav class="crumbs"><a href="/">Home</a> &rsaquo; <a href="/#pdf">PDF &amp; Documents</a> &rsaquo; PDF OCR Tool</nav>
+  <div class="tool-hero">
+    <h1>PDF OCR Tool</h1>
+    <p>Extract text from scanned PDFs with real OCR: pages are rendered and recognized in your browser, then shown with copy and download.</p>
+  </div>
+
+  <div class="tool-card">
+  <div class="grid2">
+    <div class="field">
+      <label for="pdf-ocr-tool-file">Scanned PDF</label>
+      <input type="file" id="pdf-ocr-tool-file" accept="application/pdf" class="input">
+    </div>
+    <div class="field">
+      <label for="pdf-ocr-tool-lang">OCR language</label>
+      <select class="select" id="pdf-ocr-tool-lang">
+        <option value="eng">English</option>
+        <option value="spa">Spanish</option>
+        <option value="fra">French</option>
+        <option value="deu">German</option>
+        <option value="ita">Italian</option>
+        <option value="por">Portuguese</option>
+        <option value="ara">Arabic</option>
+        <option value="urd">Urdu</option>
+        <option value="hin">Hindi</option>
+      </select>
+    </div>
+  </div>
+  <div class="btn-row">
+    <button class="btn btn-primary" id="pdf-ocr-tool-go">Run OCR</button>
+    <button class="btn btn-outline hidden" id="pdf-ocr-tool-download">Download all text</button>
+  </div>
+  <div class="result hidden" id="pdf-ocr-tool-progress-wrap">
+    <p class="muted" id="pdf-ocr-tool-progress">Starting…</p>
+  </div>
+  <div class="result hidden" id="pdf-ocr-tool-result">
+    <div id="pdf-ocr-tool-pages"></div>
+  </div>
+  <div class="error" id="pdf-ocr-tool-error"></div>
+  <p class="note">Real OCR with Tesseract.js, loaded on demand from a CDN. Your PDF is rendered and recognized locally — never uploaded. Scanned/image PDFs only; text-based PDFs don't need OCR.</p>
+</div>
+
+
+  <!-- ADSTERRA-INCONTENT: paste your Adsterra native/in-content ad code inside the div below -->
+  <div class="ad-slot" data-ad="incontent"></div>
+
+  <div class="info-grid">
+    <div class="info-card">
+      <h2>📖 How to use</h2>
+      <ol><li>Choose a scanned/image PDF.</li><li>Pick the OCR language.</li><li>Click &quot;Run OCR&quot; and wait while each page is recognized.</li><li>Copy text per page or download everything as a .txt file.</li></ol>
+    </div>
+    <div class="info-card">
+      <h2>❓ Frequently asked questions</h2>
+      <div class="faq"><details><summary>Does this need the internet?</summary><p>Tesseract.js is loaded on demand from the jsDelivr CDN when you start OCR. If it can&#39;t load (offline/blocked), you&#39;ll get an honest error instead of a fake result.</p></details><details><summary>How accurate is the OCR?</summary><p>Clean, high-contrast scans at 150+ DPI work best. Handwriting, skewed pages and tiny fonts reduce accuracy.</p></details><details><summary>Is my PDF uploaded?</summary><p>Yes — rendering and recognition run entirely in your browser. The OCR engine loads from a CDN but your PDF is never uploaded anywhere.</p></details></div>
+    </div>
+  </div>
+
+  <section class="section">
+    <h2>🔗 Related tools</h2>
+    <div class="tool-grid"><a class="tool-link" href="/tools/esign-pdf/" data-search="esign pdf draw your signature and stamp it onto any page of a pdf. choose the page, position and size with sliders, then download the signed document. esign pdf sign pdf online electronic signature pdf"><span class="t-ico">📄</span><span class="t-body"><b>eSign PDF</b><small>Draw your signature and stamp it onto any page of a PDF. Choose the page, position and size …</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/pdf-bates-stamper/" data-search="pdf bates stamper stamp sequential bates numbers (prefix-000001) on every page corner — the legal document numbering standard. bates stamp bates numbering legal pdf numbering page numbering stamp"><span class="t-ico">📄</span><span class="t-body"><b>PDF Bates Stamper</b><small>Stamp sequential Bates numbers (PREFIX-000001) on every page corner — the legal document num…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/pdf-blank-page-adder/" data-search="pdf blank page adder insert blank pages into a pdf — at the start, at the end, or after any page. choose page size and how many to add. add blank pages pdf insert blank page pdf pdf blank page add pages to pdf pdf insert pages"><span class="t-ico">📄</span><span class="t-body"><b>PDF Blank Page Adder</b><small>Insert blank pages into a PDF — at the start, at the end, or after any page. Choose page siz…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/pdf-booklet-imposer/" data-search="pdf booklet imposer impose pdf pages into booklet spreads (4 pages per sheet) in correct print order — ready for double-sided printing and folding. pdf booklet booklet imposition print booklet saddle stitch pdf"><span class="t-ico">📄</span><span class="t-body"><b>PDF Booklet Imposer</b><small>Impose PDF pages into booklet spreads (4 pages per sheet) in correct print order — ready for…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/pdf-compressor/" data-search="pdf compressor shrink a pdf&#39;s file size by re-rendering its pages as compressed images. choose low, medium or high quality and compare sizes before downloading. compress pdf reduce pdf size shrink pdf"><span class="t-ico">📄</span><span class="t-body"><b>PDF Compressor</b><small>Shrink a PDF&#39;s file size by re-rendering its pages as compressed images. Choose Low, Medium …</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/pdf-form-filler/" data-search="pdf form filler fill pdf forms in your browser: upload a pdf, see its detected text fields, type your answers, and download the filled document. fill pdf form pdf form filler fill pdf online fillable pdf pdf acroform"><span class="t-ico">📄</span><span class="t-body"><b>PDF Form Filler</b><small>Fill PDF forms in your browser: upload a PDF, see its detected text fields, type your answer…</small></span><span class="t-arrow">→</span></a></div>
+  </section>
+</main>
+
+<!-- ADSTERRA-FOOTER: paste your Adsterra footer/banner ad code inside the div below -->
+<div class="container"><div class="ad-slot" data-ad="footer"></div></div>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="f-grid">
+      <div>
+        <span class="brandline"><span class="logo-mark">T</span> ToolNest</span>
+        <p>Free online tools that actually work. No sign-up, no watermarks — and your files never leave your device for client-side tools.</p>
+      </div>
+      <div>
+        <h4>Popular</h4>
+        <a href="/tools/qr-code-generator/">QR Code Generator</a>
+        <a href="/tools/background-remover/">Background Remover</a>
+        <a href="/tools/pdf-merger/">PDF Merger</a>
+        <a href="/tools/word-counter/">Word Counter</a>
+      </div>
+      <div>
+        <h4>Categories</h4>
+        <a href="/#image">Image Tools</a>
+        <a href="/#pdf">PDF &amp; Documents</a>
+        <a href="/#calculators">Calculators</a>
+        <a href="/#developer">Developer Tools</a>
+      </div>
+      <div>
+        <h4>Site</h4>
+        <a href="/">Home</a>
+        <a href="/#all-tools">All Tools</a>
+        <a href="/sitemap.xml">Sitemap</a>
+      </div>
+    </div>
+    <div class="f-bottom">© 2026 ToolNest · Free tools for everyone · Made with care</div>
+  </div>
+</footer>
+
+<script src="/assets/site.js?v=5"></script>
+<script src="https://cdn.jsdelivr.net/npm/pdfjs-dist@3.11.174/build/pdf.min.js" defer></script>
+<script>
+/* PDF OCR Tool — render pages with pdf.js, recognize with Tesseract.js (loaded dynamically). */
+(function () {
+  'use strict';
+  var SLUG = 'pdf-ocr-tool';
+  var ERR = SLUG + '-error';
+  var TESS_URL = 'https://cdn.jsdelivr.net/npm/tesseract.js@5/dist/tesseract.min.js';
+  var PDF_WORKER = 'https://cdn.jsdelivr.net/npm/pdfjs-dist@3.11.174/build/pdf.worker.min.js';
+  var SCALE = 1.8;
+  var results = []; // {page, text}
+  var busy = false;
+
+  function setProgress(t) {
+    var w = document.getElementById(SLUG + '-progress-wrap');
+    var p = document.getElementById(SLUG + '-progress');
+    if (!w) return;
+    if (t === null) { w.classList.add('hidden'); }
+    else { w.classList.remove('hidden'); if (p) p.textContent = t; }
+  }
+
+  function loadTesseract() {
+    return new Promise(function (res, rej) {
+      if (typeof Tesseract !== 'undefined') { res(); return; }
+      var s = document.createElement('script');
+      s.src = TESS_URL;
+      s.onload = function () {
+        if (typeof Tesseract !== 'undefined') res();
+        else rej(new Error('loaded but unavailable'));
+      };
+      s.onerror = function () { rej(new Error('load failed')); };
+      document.head.appendChild(s);
+      setTimeout(function () {
+        if (typeof Tesseract === 'undefined') rej(new Error('timed out'));
+      }, 30000);
+    });
+  }
+
+  function go() {
+    if (busy) return;
+    TN.clearErr(ERR);
+    var fileEl = document.getElementById(SLUG + '-file');
+    var file = fileEl && fileEl.files && fileEl.files[0];
+    if (!file) { TN.setErr(ERR, 'Please choose a PDF file first.'); return; }
+    if (typeof pdfjsLib === 'undefined') {
+      TN.setErr(ERR, 'The PDF engine failed to load. Check your connection and reload the page.');
+      return;
+    }
+    busy = true;
+    var btn = document.getElementById(SLUG + '-go');
+    if (btn) btn.disabled = true;
+    var res = document.getElementById(SLUG + '-result');
+    if (res) res.classList.add('hidden');
+    var dl = document.getElementById(SLUG + '-download');
+    if (dl) dl.classList.add('hidden');
+    results = [];
+    var lang = document.getElementById(SLUG + '-lang').value || 'eng';
+
+    setProgress('Loading OCR engine…');
+    loadTesseract().then(function () {
+      try { pdfjsLib.GlobalWorkerOptions.workerSrc = PDF_WORKER; } catch (e) {}
+      setProgress('Reading PDF…');
+      return TN.readAsArrayBuffer(file);
+    }).then(function (buf) {
+      return pdfjsLib.getDocument({ data: buf }).promise;
+    }).then(function (pdf) {
+      var n = pdf.numPages;
+      var chain = Promise.resolve();
+      for (var p = 1; p <= n; p++) {
+        (function (p) {
+          chain = chain.then(function () {
+            setProgress('Recognizing page ' + p + ' of ' + n + '…');
+            return pdf.getPage(p).then(function (page) {
+              var vp = page.getViewport({ scale: SCALE });
+              var canvas = document.createElement('canvas');
+              canvas.width = Math.floor(vp.width);
+              canvas.height = Math.floor(vp.height);
+              return page.render({ canvasContext: canvas.getContext('2d'), viewport: vp }).promise.then(function () {
+                return Tesseract.recognize(canvas, lang);
+              }).then(function (r) {
+                var text = (r && r.data && r.data.text || '').trim();
+                results.push({ page: p, text: text });
+              });
+            });
+          });
+        })(p);
+      }
+      return chain;
+    }).then(function () {
+      setProgress(null);
+      renderResults(file.name);
+    }).catch(function (e) {
+      setProgress(null);
+      var msg = (e && e.message) || String(e);
+      if (/load failed|timed out|unavailable/.test(msg)) {
+        TN.setErr(ERR, 'The OCR engine (Tesseract.js) could not be loaded from the CDN. Check your internet connection and try again — no fake results were produced.');
+      } else {
+        TN.setErr(ERR, 'OCR failed: ' + msg);
+      }
+    }).then(function () {
+      busy = false;
+      if (btn) btn.disabled = false;
+    });
+  }
+
+  function renderResults(name) {
+    var wrap = document.getElementById(SLUG + '-pages');
+    var res = document.getElementById(SLUG + '-result');
+    var dl = document.getElementById(SLUG + '-download');
+    if (!wrap || !res) return;
+    wrap.innerHTML = '';
+    results.sort(function (a, b) { return a.page - b.page; });
+    results.forEach(function (r) {
+      var d = document.createElement('div');
+      d.className = 'field';
+      d.style.cssText = 'border:1px solid #e5e7eb;border-radius:10px;padding:12px;margin-bottom:12px;';
+      var label = document.createElement('label');
+      label.textContent = 'Page ' + r.page + ' — ' + (r.text ? r.text.length + ' characters' : 'no text recognized');
+      var ta = document.createElement('textarea');
+      ta.className = 'textarea';
+      ta.rows = 6;
+      ta.readOnly = true;
+      ta.value = r.text || '(no text recognized on this page)';
+      var row = document.createElement('div');
+      row.className = 'btn-row';
+      row.style.marginTop = '8px';
+      var cp = document.createElement('button');
+      cp.className = 'btn btn-sm btn-outline';
+      cp.textContent = 'Copy page text';
+      cp.onclick = function () {
+        TN.copy(r.text || '').then(function () { cp.textContent = 'Copied ✓'; setTimeout(function () { cp.textContent = 'Copy page text'; }, 1500); })
+          .catch(function () { TN.setErr(ERR, 'Copy failed — select the text manually.'); });
+      };
+      row.appendChild(cp);
+      d.appendChild(label); d.appendChild(ta); d.appendChild(row);
+      wrap.appendChild(d);
+    });
+    res.classList.remove('hidden');
+    if (dl) dl.classList.remove('hidden');
+    TN.clearErr(ERR);
+    if (!results.some(function (r) { return r.text; })) {
+      TN.setErr(ERR, 'No text was recognized in any page. The PDF may be blank, or the scan quality too low.');
+    }
+  }
+
+  try {
+    if (!document.getElementById(SLUG + '-go')) return;
+    TN.on(SLUG + '-go', 'click', go);
+    TN.on(SLUG + '-download', 'click', function () {
+      if (!results.length) return;
+      var txt = results.map(function (r) {
+        return '===== Page ' + r.page + ' =====\n' + (r.text || '(no text recognized)') + '\n';
+      }).join('\n');
+      TN.downloadText(txt, 'ocr-output.txt', 'text/plain');
+    });
+  } catch (e) {
+    TN.setErr(ERR, 'This tool could not start: ' + (e && e.message || e));
+  }
+})();
+
+</script>
+</body>
+</html>

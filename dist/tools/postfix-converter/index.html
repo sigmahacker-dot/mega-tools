@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Infix to Postfix Converter — Free Online | ToolNest</title>
+<meta name="description" content="Convert infix expressions to postfix (Reverse Polish) notation with the shunting-yard algorithm, showing every step: token actions, operator stack and output queue.">
+<meta name="keywords" content="infix to postfix, shunting yard, reverse polish notation, expression converter">
+<link rel="canonical" href="https://toolnest.vercel.app/tools/postfix-converter/">
+<meta name="theme-color" content="#07070b">
+<meta property="og:title" content="Infix to Postfix Converter — Free Online | ToolNest">
+<meta property="og:description" content="Convert infix expressions to postfix (Reverse Polish) notation with the shunting-yard algorithm, showing every step: token actions, operator stack and output queue.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css?v=4">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%23e01111'/><text x='50' y='68' font-size='58' text-anchor='middle' fill='white' font-family='Arial' font-weight='bold'>T</text></svg>">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebApplication","name":"Infix to Postfix Converter","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0"},"url":"https://toolnest.vercel.app/tools/postfix-converter/","description":"Convert infix expressions to postfix (Reverse Polish) notation with the shunting-yard algorithm, showing every step: token actions, operator stack and output queue."},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What is postfix notation?","acceptedAnswer":{"@type":"Answer","text":"Postfix (Reverse Polish) notation puts operators after their operands, e.g. 3 4 + instead of 3 + 4. It needs no parentheses and is how stack-based calculators evaluate expressions."}},{"@type":"Question","name":"How is operator precedence handled?","acceptedAnswer":{"@type":"Answer","text":"The converter uses ^ (highest, right-associative), then * and /, then + and - (left-associative). Parentheses override precedence as usual."}},{"@type":"Question","name":"Are negative numbers supported?","acceptedAnswer":{"@type":"Answer","text":"Yes — a minus sign at the start of the expression, after an opening parenthesis, or after another operator is treated as a negative number, e.g. -3 + 4."}}]}]}</script>
+</head>
+<body>
+<header class="site-header">
+  <div class="container">
+    <a class="logo" href="/"><span class="logo-mark">T</span> ToolNest</a>
+    <div class="header-right">
+      <form class="nav-search" action="/" method="get" role="search">
+        <span class="ns-icon">🔍</span>
+        <input type="search" name="q" placeholder="Search tools…" aria-label="Search tools" autocomplete="off">
+      </form>
+      <div class="menu-wrap">
+        <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="menuPanel" aria-label="Open menu"><span></span><span></span><span></span></button>
+        <nav class="menu-panel" id="menuPanel" aria-label="Site">
+          <a href="/">Home</a>
+          <a href="/#categories">Categories</a>
+          <a href="/#all-tools">All Tools</a>
+        </nav>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ADSTERRA-HEADER: paste your Adsterra banner ad code inside the div below -->
+<div class="container"><div class="ad-slot ad-leaderboard" data-ad="header"></div></div>
+
+<main class="container">
+  <nav class="crumbs"><a href="/">Home</a> &rsaquo; <a href="/#math">Math &amp; Numbers</a> &rsaquo; Infix to Postfix Converter</nav>
+  <div class="tool-hero">
+    <h1>Infix to Postfix Converter</h1>
+    <p>Convert infix expressions to postfix (Reverse Polish) notation with the shunting-yard algorithm, showing every step: token actions, operator stack and output queue.</p>
+  </div>
+
+  <div class="tool-card">
+  <div class="field">
+    <label for="postfix-converter-expr">Infix expression</label>
+    <input class="input" id="postfix-converter-expr" type="text" placeholder="e.g. (3 + 4) * 2 ^ 2 - 5" value="(3 + 4) * 2 ^ 2 - 5">
+  </div>
+  <div class="btn-row">
+    <button type="button" class="btn" id="postfix-converter-convert">Convert</button>
+    <button type="button" class="btn btn-outline" id="postfix-converter-clear">Clear</button>
+  </div>
+  <div class="error" id="postfix-converter-error"></div>
+  <div id="postfix-converter-out" class="hidden">
+    <div class="result">
+      <h3>Postfix result</h3>
+      <p id="postfix-converter-result" style="font-size:1.2em;font-weight:bold;font-family:monospace"></p>
+      <div class="btn-row"><button type="button" class="btn btn-outline btn-sm" id="postfix-converter-copy">Copy postfix</button></div>
+    </div>
+    <div class="result">
+      <h3>Shunting-yard steps</h3>
+      <div style="overflow-x:auto">
+      <table class="data">
+        <thead><tr><th>Step</th><th>Token</th><th>Action</th><th>Operator stack</th><th>Output</th></tr></thead>
+        <tbody id="postfix-converter-steps"></tbody>
+      </table>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+  <!-- ADSTERRA-INCONTENT: paste your Adsterra native/in-content ad code inside the div below -->
+  <div class="ad-slot" data-ad="incontent"></div>
+
+  <div class="info-grid">
+    <div class="info-card">
+      <h2>📖 How to use</h2>
+      <ol><li>Type an infix expression like (3 + 4) * 2 ^ 2 - 5.</li><li>Press Convert to run the shunting-yard algorithm.</li><li>Read the step table: each token, what the algorithm did with it, the operator stack and the output so far.</li><li>Copy the final postfix expression from the result box.</li></ol>
+    </div>
+    <div class="info-card">
+      <h2>❓ Frequently asked questions</h2>
+      <div class="faq"><details><summary>What is postfix notation?</summary><p>Postfix (Reverse Polish) notation puts operators after their operands, e.g. 3 4 + instead of 3 + 4. It needs no parentheses and is how stack-based calculators evaluate expressions.</p></details><details><summary>How is operator precedence handled?</summary><p>The converter uses ^ (highest, right-associative), then * and /, then + and - (left-associative). Parentheses override precedence as usual.</p></details><details><summary>Are negative numbers supported?</summary><p>Yes — a minus sign at the start of the expression, after an opening parenthesis, or after another operator is treated as a negative number, e.g. -3 + 4.</p></details></div>
+    </div>
+  </div>
+
+  <section class="section">
+    <h2>🔗 Related tools</h2>
+    <div class="tool-grid"><a class="tool-link" href="/tools/24-game-solver/" data-search="24 game solver solve the 24 game exhaustively: every ordering, operation and parenthesization is tried with exact fraction arithmetic, and all distinct solutions are shown. 24 game solver make 24 solver 24 puzzle arithmetic puzzle solver"><span class="t-ico">📐</span><span class="t-body"><b>24 Game Solver</b><small>Solve the 24 game exhaustively: every ordering, operation and parenthesization is tried with…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/ancient-numerals-converter/" data-search="ancient numerals converter convert decimal numbers to roman, egyptian hieroglyphic, babylonian cuneiform and mayan numerals — with roman numerals also decoded back to decimal. roman numerals egyptian numerals babylonian numerals mayan numerals ancient numbers"><span class="t-ico">📐</span><span class="t-body"><b>Ancient Numerals Converter</b><small>Convert decimal numbers to Roman, Egyptian hieroglyphic, Babylonian cuneiform and Mayan nume…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/arithmetic-sequence-calculator/" data-search="arithmetic sequence calculator from the first term and common difference get the nth term and the sum of the first n terms. arithmetic sequence arithmetic progression nth term sum of arithmetic series common difference"><span class="t-ico">📐</span><span class="t-body"><b>Arithmetic Sequence Calculator</b><small>From the first term and common difference get the nth term and the sum of the first n terms.</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/base-n-arithmetic/" data-search="base-n arithmetic add, subtract, multiply and divide numbers in any base from 2 to 36 with exact bigint math and a full conversion breakdown. base n arithmetic binary addition hexadecimal calculator base 36 math"><span class="t-ico">📐</span><span class="t-body"><b>Base-N Arithmetic</b><small>Add, subtract, multiply and divide numbers in any base from 2 to 36 with exact BigInt math a…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/bayes-theorem-calculator/" data-search="bayes theorem calculator compute posterior probabilities from prior, sensitivity and specificity with the full bayes formula, natural frequencies and a probability tree. bayes theorem calculator posterior probability sensitivity specificity medical test probability"><span class="t-ico">📐</span><span class="t-body"><b>Bayes Theorem Calculator</b><small>Compute posterior probabilities from prior, sensitivity and specificity with the full Bayes …</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/bcd-converter/" data-search="bcd converter convert decimal numbers to binary-coded decimal (packed and unpacked) and decode bcd back to decimal, with per-digit nibble breakdowns. bcd converter binary coded decimal packed bcd unpacked bcd bcd decoder"><span class="t-ico">📐</span><span class="t-body"><b>BCD Converter</b><small>Convert decimal numbers to Binary-Coded Decimal (packed and unpacked) and decode BCD back to…</small></span><span class="t-arrow">→</span></a></div>
+  </section>
+</main>
+
+<!-- ADSTERRA-FOOTER: paste your Adsterra footer/banner ad code inside the div below -->
+<div class="container"><div class="ad-slot" data-ad="footer"></div></div>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="f-grid">
+      <div>
+        <span class="brandline"><span class="logo-mark">T</span> ToolNest</span>
+        <p>Free online tools that actually work. No sign-up, no watermarks — and your files never leave your device for client-side tools.</p>
+      </div>
+      <div>
+        <h4>Popular</h4>
+        <a href="/tools/qr-code-generator/">QR Code Generator</a>
+        <a href="/tools/background-remover/">Background Remover</a>
+        <a href="/tools/pdf-merger/">PDF Merger</a>
+        <a href="/tools/word-counter/">Word Counter</a>
+      </div>
+      <div>
+        <h4>Categories</h4>
+        <a href="/#image">Image Tools</a>
+        <a href="/#pdf">PDF &amp; Documents</a>
+        <a href="/#calculators">Calculators</a>
+        <a href="/#developer">Developer Tools</a>
+      </div>
+      <div>
+        <h4>Site</h4>
+        <a href="/">Home</a>
+        <a href="/#all-tools">All Tools</a>
+        <a href="/sitemap.xml">Sitemap</a>
+      </div>
+    </div>
+    <div class="f-bottom">© 2026 ToolNest · Free tools for everyone · Made with care</div>
+  </div>
+</footer>
+
+<script src="/assets/site.js?v=5"></script>
+
+<script>
+(function () {
+  'use strict';
+  var P = 'postfix-converter-', ERR = P + 'error';
+  function g(id) { return TN.el(P + id); }
+  var PREC = { '^': 4, '*': 3, '/': 3, '+': 2, '-': 2 };
+  var RIGHT = { '^': true };
+  function isOp(t) { return PREC.hasOwnProperty(t); }
+  function tokenize(s) {
+    var toks = [], i = 0, prev = null; // prev: 'num' | 'op' | '(' | ')' | null
+    while (i < s.length) {
+      var c = s[i];
+      if (/\s/.test(c)) { i++; continue; }
+      if (/[0-9.]/.test(c)) {
+        var j = i;
+        while (j < s.length && /[0-9.]/.test(s[j])) j++;
+        var num = s.slice(i, j);
+        if ((num.match(/\./g) || []).length > 1 || num === '.') throw new Error('Bad number: "' + num + '".');
+        toks.push(num); prev = 'num'; i = j; continue;
+      }
+      if (c === '-' && (prev === null || prev === 'op' || prev === '(')) {
+        // unary minus: merge into number if a number follows, else 0 - (...)
+        var k = i + 1;
+        while (k < s.length && /\s/.test(s[k])) k++;
+        if (k < s.length && /[0-9.]/.test(s[k])) {
+          var j2 = k;
+          while (j2 < s.length && /[0-9.]/.test(s[j2])) j2++;
+          var num2 = s.slice(k, j2);
+          if ((num2.match(/\./g) || []).length > 1) throw new Error('Bad number: "' + num2 + '".');
+          toks.push('-' + num2); prev = 'num'; i = j2; continue;
+        }
+        toks.push('0'); toks.push('-'); prev = 'op'; i++; continue;
+      }
+      if ('+-*/^()'.indexOf(c) >= 0) { toks.push(c); prev = (c === '(') ? '(' : (c === ')' ? ')' : 'op'); i++; continue; }
+      throw new Error('Unexpected character: "' + c + '". Use digits, + - * / ^ and parentheses.');
+    }
+    return toks;
+  }
+  function convert() {
+    try {
+      TN.clearErr(ERR);
+      var expr = g('expr').value.trim();
+      if (!expr) { TN.setErr(ERR, 'Type an infix expression first.'); return; }
+      var toks = tokenize(expr);
+      var out = [], stack = [], steps = [];
+      function snap(tok, action) {
+        steps.push({ tok: tok, action: action, stack: stack.slice().reverse().join(' ') || '—', out: out.join(' ') || '—' });
+      }
+      for (var i = 0; i < toks.length; i++) {
+        var t = toks[i];
+        if (/^-?[0-9.]/.test(t)) { out.push(t); snap(t, 'Number → push to output'); }
+        else if (isOp(t)) {
+          while (stack.length && isOp(stack[stack.length - 1]) &&
+            ((RIGHT[t] && PREC[t] < PREC[stack[stack.length - 1]]) ||
+             (!RIGHT[t] && PREC[t] <= PREC[stack[stack.length - 1]]))) {
+            out.push(stack.pop());
+          }
+          stack.push(t); snap(t, 'Operator → push onto stack (popped higher/equal precedence first)');
+        }
+        else if (t === '(') { stack.push(t); snap(t, 'Left parenthesis → push onto stack'); }
+        else if (t === ')') {
+          var found = false;
+          while (stack.length) {
+            var x = stack.pop();
+            if (x === '(') { found = true; break; }
+            out.push(x);
+          }
+          if (!found) throw new Error('Mismatched parentheses: ")" without "(".');
+          snap(t, 'Right parenthesis → pop to output until "("');
+        }
+      }
+      while (stack.length) {
+        var r = stack.pop();
+        if (r === '(') throw new Error('Mismatched parentheses: "(" without ")".');
+        out.push(r);
+      }
+      snap('—', 'End of input → drain remaining operators to output');
+      var result = out.join(' ');
+      TN.show(P + 'out');
+      g('result').textContent = result;
+      g('result').setAttribute('data-r', result);
+      g('steps').innerHTML = steps.map(function (s, ix) {
+        return '<tr><td>' + (ix + 1) + '</td><td><code>' + TN.esc(s.tok) + '</code></td><td>' + TN.esc(s.action) + '</td><td><code>' + TN.esc(s.stack) + '</code></td><td><code>' + TN.esc(s.out) + '</code></td></tr>';
+      }).join('');
+    } catch (e) { TN.setErr(ERR, e.message || 'Could not convert. Check the expression.'); }
+  }
+  try {
+    if (!TN.el(P + 'convert')) return;
+    TN.on(P + 'convert', 'click', convert);
+    TN.on(P + 'expr', 'keydown', function (e) { if (e.key === 'Enter') convert(); });
+    TN.on(P + 'clear', 'click', function () { g('expr').value = ''; TN.hide(P + 'out'); TN.clearErr(ERR); });
+    TN.on(P + 'copy', 'click', function () {
+      var r = g('result').getAttribute('data-r') || '';
+      if (r) TN.copy(r);
+    });
+  } catch (e) { /* never throw on load */ }
+})();
+
+</script>
+</body>
+</html>

@@ -1,0 +1,26 @@
+<div class="tool-card">
+  <div class="grid2">
+    <div class="field">
+      <label for="pdf-split-by-size-file">PDF file</label>
+      <input type="file" id="pdf-split-by-size-file" accept="application/pdf" class="input">
+    </div>
+    <div class="field">
+      <label for="pdf-split-by-size-mb">Max size per part: <span id="pdf-split-by-size-mb-val">5</span> MB</label>
+      <input type="range" id="pdf-split-by-size-mb" min="0.5" max="50" step="0.5" value="5">
+    </div>
+  </div>
+  <div class="btn-row">
+    <button class="btn btn-primary" id="pdf-split-by-size-go">Split</button>
+  </div>
+  <div class="result hidden" id="pdf-split-by-size-result">
+    <table class="data">
+      <thead><tr><th>Part</th><th>Pages</th><th>Size</th><th></th></tr></thead>
+      <tbody id="pdf-split-by-size-rows"></tbody>
+    </table>
+    <div class="btn-row">
+      <button class="btn btn-primary" id="pdf-split-by-size-zip">Download all as ZIP</button>
+    </div>
+  </div>
+  <div class="error" id="pdf-split-by-size-error"></div>
+  <p class="note">Parts are measured by actually saving them, so limits are enforced on real bytes. Large PDFs may take a while — everything runs in your browser.</p>
+</div>

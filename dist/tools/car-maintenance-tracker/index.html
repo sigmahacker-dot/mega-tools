@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Car Maintenance Tracker — Free Online | ToolNest</title>
+<meta name="description" content="Track car services by mileage and date intervals: oil, filters, tires and more — with due, due-soon and overdue status at a glance.">
+<meta name="keywords" content="car maintenance, service reminder, oil change tracker, vehicle maintenance log">
+<link rel="canonical" href="https://toolnest.vercel.app/tools/car-maintenance-tracker/">
+<meta name="theme-color" content="#07070b">
+<meta property="og:title" content="Car Maintenance Tracker — Free Online | ToolNest">
+<meta property="og:description" content="Track car services by mileage and date intervals: oil, filters, tires and more — with due, due-soon and overdue status at a glance.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css?v=4">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%23e01111'/><text x='50' y='68' font-size='58' text-anchor='middle' fill='white' font-family='Arial' font-weight='bold'>T</text></svg>">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebApplication","name":"Car Maintenance Tracker","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0"},"url":"https://toolnest.vercel.app/tools/car-maintenance-tracker/","description":"Track car services by mileage and date intervals: oil, filters, tires and more — with due, due-soon and overdue status at a glance."},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How is 'due' decided?","acceptedAnswer":{"@type":"Answer","text":"A service is due when either its date interval or its mileage interval is reached — whichever comes first. Due-soon warns 30 days or 500 miles ahead."}},{"@type":"Question","name":"Where is my data stored?","acceptedAnswer":{"@type":"Answer","text":"In your browser's localStorage, namespaced to this tool — it stays on this device."}},{"@type":"Question","name":"What does 'Done' do?","acceptedAnswer":{"@type":"Answer","text":"It stamps the service as completed today at your current mileage, restarting both intervals."}}]}]}</script>
+</head>
+<body>
+<header class="site-header">
+  <div class="container">
+    <a class="logo" href="/"><span class="logo-mark">T</span> ToolNest</a>
+    <div class="header-right">
+      <form class="nav-search" action="/" method="get" role="search">
+        <span class="ns-icon">🔍</span>
+        <input type="search" name="q" placeholder="Search tools…" aria-label="Search tools" autocomplete="off">
+      </form>
+      <div class="menu-wrap">
+        <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="menuPanel" aria-label="Open menu"><span></span><span></span><span></span></button>
+        <nav class="menu-panel" id="menuPanel" aria-label="Site">
+          <a href="/">Home</a>
+          <a href="/#categories">Categories</a>
+          <a href="/#all-tools">All Tools</a>
+        </nav>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ADSTERRA-HEADER: paste your Adsterra banner ad code inside the div below -->
+<div class="container"><div class="ad-slot ad-leaderboard" data-ad="header"></div></div>
+
+<main class="container">
+  <nav class="crumbs"><a href="/">Home</a> &rsaquo; <a href="/#time">Time &amp; Date</a> &rsaquo; Car Maintenance Tracker</nav>
+  <div class="tool-hero">
+    <h1>Car Maintenance Tracker</h1>
+    <p>Track car services by mileage and date intervals: oil, filters, tires and more — with due, due-soon and overdue status at a glance.</p>
+  </div>
+
+  <div class="tool-card">
+  <div class="grid3">
+    <div class="field">
+      <label for="car-maintenance-tracker-cur">Current mileage</label>
+      <input class="input" id="car-maintenance-tracker-cur" type="number" min="0" step="1" placeholder="e.g. 45200">
+    </div>
+    <div class="field">
+      <label for="car-maintenance-tracker-name">Service</label>
+      <input class="input" id="car-maintenance-tracker-name" type="text" placeholder="e.g. Oil change">
+    </div>
+    <div class="field">
+      <label for="car-maintenance-tracker-lastd">Last done (date)</label>
+      <input class="input" id="car-maintenance-tracker-lastd" type="date">
+    </div>
+    <div class="field">
+      <label for="car-maintenance-tracker-lastm">Last done (mileage)</label>
+      <input class="input" id="car-maintenance-tracker-lastm" type="number" min="0" step="1" placeholder="e.g. 40000">
+    </div>
+    <div class="field">
+      <label for="car-maintenance-tracker-intm">Interval (months)</label>
+      <input class="input" id="car-maintenance-tracker-intm" type="number" min="1" max="60" value="6">
+    </div>
+    <div class="field">
+      <label for="car-maintenance-tracker-intmi">Interval (miles)</label>
+      <input class="input" id="car-maintenance-tracker-intmi" type="number" min="100" step="100" value="5000">
+    </div>
+  </div>
+  <div class="btn-row">
+    <button type="button" class="btn" id="car-maintenance-tracker-add">Add service</button>
+    <button type="button" class="btn btn-outline btn-sm" id="car-maintenance-tracker-savem">Save mileage</button>
+  </div>
+  <div class="error" id="car-maintenance-tracker-error"></div>
+  <div class="result">
+    <h3>Services</h3>
+    <div style="overflow-x:auto"><table class="data"><thead><tr><th>Service</th><th>Due by date</th><th>Due by mileage</th><th>Status</th><th></th></tr></thead><tbody id="car-maintenance-tracker-list"></tbody></table></div>
+  </div>
+</div>
+
+
+  <!-- ADSTERRA-INCONTENT: paste your Adsterra native/in-content ad code inside the div below -->
+  <div class="ad-slot" data-ad="incontent"></div>
+
+  <div class="info-grid">
+    <div class="info-card">
+      <h2>📖 How to use</h2>
+      <ol><li>Add each service: name, last date, last mileage, and its intervals (months / miles).</li><li>Enter your car&#39;s current mileage so due-by-mileage is computed.</li><li>The list shows OK, due soon (within 30 days or 500 miles) or overdue status.</li><li>Tap &#39;Done&#39; after a service to reset its last date/mileage to today.</li></ol>
+    </div>
+    <div class="info-card">
+      <h2>❓ Frequently asked questions</h2>
+      <div class="faq"><details><summary>How is &#39;due&#39; decided?</summary><p>A service is due when either its date interval or its mileage interval is reached — whichever comes first. Due-soon warns 30 days or 500 miles ahead.</p></details><details><summary>Where is my data stored?</summary><p>In your browser&#39;s localStorage, namespaced to this tool — it stays on this device.</p></details><details><summary>What does &#39;Done&#39; do?</summary><p>It stamps the service as completed today at your current mileage, restarting both intervals.</p></details></div>
+    </div>
+  </div>
+
+  <section class="section">
+    <h2>🔗 Related tools</h2>
+    <div class="tool-grid"><a class="tool-link" href="/tools/add-subtract-days-calculator/" data-search="add / subtract days calculator add or subtract days, weeks, months or years from any date. optional business-days-only mode skips weekends automatically. add days to date subtract days calculator date plus days business days calculator date arithmetic"><span class="t-ico">⏰</span><span class="t-body"><b>Add / Subtract Days Calculator</b><small>Add or subtract days, weeks, months or years from any date. Optional business-days-only mode…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/anniversary-calculator/" data-search="anniversary calculator track any anniversary: days until the next one, which number it is (10th, 25th…), total days together and the weekday it falls on. anniversary calculator wedding anniversary countdown how many days until anniversary anniversary date tracker years together calculator"><span class="t-ico">⏰</span><span class="t-body"><b>Anniversary Calculator</b><small>Track any anniversary: days until the next one, which number it is (10th, 25th…), total days…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/bill-due-tracker/" data-search="bill due tracker never miss a payment — track recurring monthly bills with automatic next-due dates, days remaining and urgency sorting. bill due tracker bill reminder recurring bills tracker monthly bills organizer due date tracker"><span class="t-ico">⏰</span><span class="t-body"><b>Bill Due Tracker</b><small>Never miss a payment — track recurring monthly bills with automatic next-due dates, days rem…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/billable-hours-calculator/" data-search="billable hours calculator turn hours into invoices: billable hours × rate, utilization percentage against non-billable time, and the final invoice total. billable hours invoice calculator utilization rate freelance rate calculator"><span class="t-ico">⏰</span><span class="t-body"><b>Billable Hours Calculator</b><small>Turn hours into invoices: billable hours × rate, utilization percentage against non-billable…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/birthday-reminder-list/" data-search="birthday reminder list never miss a birthday: names and dates with days-until countdowns, next upcoming birthday highlighted, saved in your browser. birthday reminder birthday tracker birthday countdown never forget birthday"><span class="t-ico">⏰</span><span class="t-body"><b>Birthday Reminder List</b><small>Never miss a birthday: names and dates with days-until countdowns, next upcoming birthday hi…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/business-days-calculator/" data-search="business days calculator count working days between two dates, excluding weekends and your own custom holidays, with a full breakdown. business days calculator working days calculator weekdays between dates net workdays business days excluding holidays"><span class="t-ico">⏰</span><span class="t-body"><b>Business Days Calculator</b><small>Count working days between two dates, excluding weekends and your own custom holidays, with …</small></span><span class="t-arrow">→</span></a></div>
+  </section>
+</main>
+
+<!-- ADSTERRA-FOOTER: paste your Adsterra footer/banner ad code inside the div below -->
+<div class="container"><div class="ad-slot" data-ad="footer"></div></div>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="f-grid">
+      <div>
+        <span class="brandline"><span class="logo-mark">T</span> ToolNest</span>
+        <p>Free online tools that actually work. No sign-up, no watermarks — and your files never leave your device for client-side tools.</p>
+      </div>
+      <div>
+        <h4>Popular</h4>
+        <a href="/tools/qr-code-generator/">QR Code Generator</a>
+        <a href="/tools/background-remover/">Background Remover</a>
+        <a href="/tools/pdf-merger/">PDF Merger</a>
+        <a href="/tools/word-counter/">Word Counter</a>
+      </div>
+      <div>
+        <h4>Categories</h4>
+        <a href="/#image">Image Tools</a>
+        <a href="/#pdf">PDF &amp; Documents</a>
+        <a href="/#calculators">Calculators</a>
+        <a href="/#developer">Developer Tools</a>
+      </div>
+      <div>
+        <h4>Site</h4>
+        <a href="/">Home</a>
+        <a href="/#all-tools">All Tools</a>
+        <a href="/sitemap.xml">Sitemap</a>
+      </div>
+    </div>
+    <div class="f-bottom">© 2026 ToolNest · Free tools for everyone · Made with care</div>
+  </div>
+</footer>
+
+<script src="/assets/site.js?v=5"></script>
+
+<script>
+(function () {
+  'use strict';
+  var P = 'car-maintenance-tracker-', ERR = P + 'error', LS = 'tn-car-maintenance-tracker';
+  var DAY = 86400000;
+  var state = { mileage: 0, services: [] };
+  function g(id) { return TN.el(P + id); }
+  function load() {
+    try {
+      var raw = localStorage.getItem(LS);
+      if (raw) state = JSON.parse(raw);
+    } catch (e) { state = { mileage: 0, services: [] }; }
+  }
+  function save() {
+    try { localStorage.setItem(LS, JSON.stringify(state)); } catch (e) { /* unavailable */ }
+  }
+  function pdate(s) { var p = s.split('-'); return new Date(p[0], p[1] - 1, p[2]); }
+  function dstr(d) {
+    return d.getFullYear() + '-' + String(d.getMonth() + 1).padStart(2, '0') + '-' + String(d.getDate()).padStart(2, '0');
+  }
+  function addMonths(d, m) { var x = new Date(d); x.setMonth(x.getMonth() + m); return x; }
+  function today() { var n = new Date(); return new Date(n.getFullYear(), n.getMonth(), n.getDate()); }
+  function status(s) {
+    var t = today();
+    var dueDate = addMonths(pdate(s.lastDate), s.intMonths);
+    var dueMiles = s.lastMiles + s.intMiles;
+    var daysLeft = Math.round((dueDate - t) / DAY);
+    var milesLeft = dueMiles - state.mileage;
+    if (daysLeft < 0 || milesLeft < 0) return { label: 'OVERDUE', color: '#f87171', why: (daysLeft < 0 ? (-daysLeft) + ' days over' : '') + (daysLeft < 0 && milesLeft < 0 ? ' & ' : '') + (milesLeft < 0 ? (-milesLeft) + ' mi over' : '') };
+    if (daysLeft <= 30 || milesLeft <= 500) return { label: 'DUE SOON', color: '#fbbf24', why: Math.min(daysLeft, 9999) + ' days / ' + Math.max(milesLeft, 0) + ' mi left' };
+    return { label: 'OK', color: '#4ade80', why: daysLeft + ' days / ' + milesLeft + ' mi left' };
+  }
+  function render() {
+    var body = g('list');
+    if (!state.services.length) { body.innerHTML = '<tr><td colspan="5" class="muted">No services yet — add oil changes, filters, tires…</td></tr>'; return; }
+    body.innerHTML = state.services.map(function (s, i) {
+      var dueDate = dstr(addMonths(pdate(s.lastDate), s.intMonths));
+      var dueMiles = s.lastMiles + s.intMiles;
+      var st = status(s);
+      return '<tr><td><b>' + TN.esc(s.name) + '</b></td><td>' + dueDate + '</td><td>' + dueMiles.toLocaleString('en-US') + ' mi</td>' +
+        '<td style="color:' + st.color + ';font-weight:bold">' + st.label + '<br><span class="muted" style="font-weight:normal">' + TN.esc(st.why) + '</span></td>' +
+        '<td><div class="btn-row"><button type="button" class="btn btn-outline btn-sm" data-done="' + i + '">Done</button>' +
+        '<button type="button" class="btn btn-outline btn-sm" data-del="' + i + '">✕</button></div></td></tr>';
+    }).join('');
+    function wire(attr, fn) {
+      var els = body.querySelectorAll('[' + attr + ']');
+      for (var i = 0; i < els.length; i++) {
+        (function (b) {
+          TN.on(b, 'click', function () { fn(parseInt(b.getAttribute(attr), 10)); });
+        })(els[i]);
+      }
+    }
+    wire('data-done', function (i) {
+      var t = today();
+      state.services[i].lastDate = dstr(t);
+      state.services[i].lastMiles = state.mileage;
+      save(); render();
+    });
+    wire('data-del', function (i) { state.services.splice(i, 1); save(); render(); });
+  }
+  try {
+    if (!TN.el(P + 'add')) return;
+    load();
+    if (state.mileage) g('cur').value = state.mileage;
+    render();
+    TN.on(P + 'savem', 'click', function () {
+      TN.clearErr(ERR);
+      var m = parseInt(g('cur').value, 10);
+      if (isNaN(m) || m < 0) { TN.setErr(ERR, 'Current mileage must be ≥ 0.'); return; }
+      state.mileage = m; save(); render();
+    });
+    TN.on(P + 'add', 'click', function () {
+      TN.clearErr(ERR);
+      var name = g('name').value.trim();
+      var ld = g('lastd').value, lm = parseInt(g('lastm').value, 10);
+      var im = parseInt(g('intm').value, 10), imi = parseInt(g('intmi').value, 10);
+      if (!name) { TN.setErr(ERR, 'Name the service (e.g. Oil change).'); return; }
+      if (!ld) { TN.setErr(ERR, 'Pick the last-done date.'); return; }
+      if (isNaN(lm) || lm < 0) { TN.setErr(ERR, 'Last mileage must be ≥ 0.'); return; }
+      if (isNaN(im) || im < 1 || im > 60) { TN.setErr(ERR, 'Month interval must be 1–60.'); return; }
+      if (isNaN(imi) || imi < 100) { TN.setErr(ERR, 'Mile interval must be ≥ 100.'); return; }
+      if (pdate(ld) > today()) { TN.setErr(ERR, 'Last-done date cannot be in the future.'); return; }
+      state.services.push({ name: name, lastDate: ld, lastMiles: lm, intMonths: im, intMiles: imi });
+      g('name').value = '';
+      save(); render();
+    });
+  } catch (e) { /* never throw on load */ }
+})();
+
+</script>
+</body>
+</html>

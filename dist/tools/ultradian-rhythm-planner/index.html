@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ultradian Rhythm Planner — Free Online | ToolNest</title>
+<meta name="description" content="Schedule your day around 90-minute ultradian focus cycles: wake and bed times become timed deep-work blocks with real breaks.">
+<meta name="keywords" content="ultradian rhythm, 90 minute focus, deep work schedule, productivity planner">
+<link rel="canonical" href="https://toolnest.vercel.app/tools/ultradian-rhythm-planner/">
+<meta name="theme-color" content="#07070b">
+<meta property="og:title" content="Ultradian Rhythm Planner — Free Online | ToolNest">
+<meta property="og:description" content="Schedule your day around 90-minute ultradian focus cycles: wake and bed times become timed deep-work blocks with real breaks.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css?v=4">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%23e01111'/><text x='50' y='68' font-size='58' text-anchor='middle' fill='white' font-family='Arial' font-weight='bold'>T</text></svg>">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebApplication","name":"Ultradian Rhythm Planner","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0"},"url":"https://toolnest.vercel.app/tools/ultradian-rhythm-planner/","description":"Schedule your day around 90-minute ultradian focus cycles: wake and bed times become timed deep-work blocks with real breaks."},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What is an ultradian rhythm?","acceptedAnswer":{"@type":"Answer","text":"A ~90-minute cycle of high-to-low alertness the brain runs through the day. Aligning deep work to these cycles — 90 minutes on, 20 minutes off — matches how focus naturally rises and falls."}},{"@type":"Question","name":"Why not just work all day?","acceptedAnswer":{"@type":"Answer","text":"Focus degrades without breaks; the 20-minute rest lets the cycle reset so the next block starts sharp. The last partial block is shortened rather than crammed."}},{"@type":"Question","name":"Can I change 90/20?","acceptedAnswer":{"@type":"Answer","text":"Yes — some people prefer 50/10 or 120/30. The planner lays out whatever cycle you choose across your waking hours."}}]}]}</script>
+</head>
+<body>
+<header class="site-header">
+  <div class="container">
+    <a class="logo" href="/"><span class="logo-mark">T</span> ToolNest</a>
+    <div class="header-right">
+      <form class="nav-search" action="/" method="get" role="search">
+        <span class="ns-icon">🔍</span>
+        <input type="search" name="q" placeholder="Search tools…" aria-label="Search tools" autocomplete="off">
+      </form>
+      <div class="menu-wrap">
+        <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="menuPanel" aria-label="Open menu"><span></span><span></span><span></span></button>
+        <nav class="menu-panel" id="menuPanel" aria-label="Site">
+          <a href="/">Home</a>
+          <a href="/#categories">Categories</a>
+          <a href="/#all-tools">All Tools</a>
+        </nav>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ADSTERRA-HEADER: paste your Adsterra banner ad code inside the div below -->
+<div class="container"><div class="ad-slot ad-leaderboard" data-ad="header"></div></div>
+
+<main class="container">
+  <nav class="crumbs"><a href="/">Home</a> &rsaquo; <a href="/#time">Time &amp; Date</a> &rsaquo; Ultradian Rhythm Planner</nav>
+  <div class="tool-hero">
+    <h1>Ultradian Rhythm Planner</h1>
+    <p>Schedule your day around 90-minute ultradian focus cycles: wake and bed times become timed deep-work blocks with real breaks.</p>
+  </div>
+
+  <div class="tool-card">
+  <div class="grid3">
+    <div class="field">
+      <label for="ultradian-rhythm-planner-wake">Wake up</label>
+      <input class="input" id="ultradian-rhythm-planner-wake" type="time" value="07:00">
+    </div>
+    <div class="field">
+      <label for="ultradian-rhythm-planner-bed">Bedtime</label>
+      <input class="input" id="ultradian-rhythm-planner-bed" type="time" value="23:00">
+    </div>
+    <div class="field">
+      <label for="ultradian-rhythm-planner-focus">Focus block (min)</label>
+      <input class="input" id="ultradian-rhythm-planner-focus" type="number" min="25" max="180" value="90">
+    </div>
+    <div class="field">
+      <label for="ultradian-rhythm-planner-break">Break (min)</label>
+      <input class="input" id="ultradian-rhythm-planner-break" type="number" min="5" max="60" value="20">
+    </div>
+    <div class="field">
+      <label for="ultradian-rhythm-planner-warmup">Morning warm-up (min)</label>
+      <input class="input" id="ultradian-rhythm-planner-warmup" type="number" min="0" max="180" value="60">
+    </div>
+    <div class="field" style="align-self:end">
+      <button type="button" class="btn" id="ultradian-rhythm-planner-plan">Plan day</button>
+    </div>
+  </div>
+  <div class="error" id="ultradian-rhythm-planner-error"></div>
+  <div id="ultradian-rhythm-planner-out" class="hidden">
+    <div class="stat-cards">
+      <div class="stat-card"><div class="v" id="ultradian-rhythm-planner-nblocks">–</div><div class="l">Focus blocks</div></div>
+      <div class="stat-card"><div class="v" id="ultradian-rhythm-planner-focus-t">–</div><div class="l">Total deep work</div></div>
+    </div>
+    <div class="result">
+      <h3>Your day</h3>
+      <div style="overflow-x:auto"><table class="data"><thead><tr><th>Time</th><th>Block</th><th>Do</th></tr></thead><tbody id="ultradian-rhythm-planner-rows"></tbody></table></div>
+    </div>
+  </div>
+</div>
+
+
+  <!-- ADSTERRA-INCONTENT: paste your Adsterra native/in-content ad code inside the div below -->
+  <div class="ad-slot" data-ad="incontent"></div>
+
+  <div class="info-grid">
+    <div class="info-card">
+      <h2>📖 How to use</h2>
+      <ol><li>Enter your wake-up time and bedtime.</li><li>Choose focus block length (90 min classic) and break length.</li><li>Press Plan to lay out focus blocks across your waking hours.</li><li>Work with full intensity during blocks, truly disconnect during breaks.</li></ol>
+    </div>
+    <div class="info-card">
+      <h2>❓ Frequently asked questions</h2>
+      <div class="faq"><details><summary>What is an ultradian rhythm?</summary><p>A ~90-minute cycle of high-to-low alertness the brain runs through the day. Aligning deep work to these cycles — 90 minutes on, 20 minutes off — matches how focus naturally rises and falls.</p></details><details><summary>Why not just work all day?</summary><p>Focus degrades without breaks; the 20-minute rest lets the cycle reset so the next block starts sharp. The last partial block is shortened rather than crammed.</p></details><details><summary>Can I change 90/20?</summary><p>Yes — some people prefer 50/10 or 120/30. The planner lays out whatever cycle you choose across your waking hours.</p></details></div>
+    </div>
+  </div>
+
+  <section class="section">
+    <h2>🔗 Related tools</h2>
+    <div class="tool-grid"><a class="tool-link" href="/tools/add-subtract-days-calculator/" data-search="add / subtract days calculator add or subtract days, weeks, months or years from any date. optional business-days-only mode skips weekends automatically. add days to date subtract days calculator date plus days business days calculator date arithmetic"><span class="t-ico">⏰</span><span class="t-body"><b>Add / Subtract Days Calculator</b><small>Add or subtract days, weeks, months or years from any date. Optional business-days-only mode…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/anniversary-calculator/" data-search="anniversary calculator track any anniversary: days until the next one, which number it is (10th, 25th…), total days together and the weekday it falls on. anniversary calculator wedding anniversary countdown how many days until anniversary anniversary date tracker years together calculator"><span class="t-ico">⏰</span><span class="t-body"><b>Anniversary Calculator</b><small>Track any anniversary: days until the next one, which number it is (10th, 25th…), total days…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/bill-due-tracker/" data-search="bill due tracker never miss a payment — track recurring monthly bills with automatic next-due dates, days remaining and urgency sorting. bill due tracker bill reminder recurring bills tracker monthly bills organizer due date tracker"><span class="t-ico">⏰</span><span class="t-body"><b>Bill Due Tracker</b><small>Never miss a payment — track recurring monthly bills with automatic next-due dates, days rem…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/billable-hours-calculator/" data-search="billable hours calculator turn hours into invoices: billable hours × rate, utilization percentage against non-billable time, and the final invoice total. billable hours invoice calculator utilization rate freelance rate calculator"><span class="t-ico">⏰</span><span class="t-body"><b>Billable Hours Calculator</b><small>Turn hours into invoices: billable hours × rate, utilization percentage against non-billable…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/birthday-reminder-list/" data-search="birthday reminder list never miss a birthday: names and dates with days-until countdowns, next upcoming birthday highlighted, saved in your browser. birthday reminder birthday tracker birthday countdown never forget birthday"><span class="t-ico">⏰</span><span class="t-body"><b>Birthday Reminder List</b><small>Never miss a birthday: names and dates with days-until countdowns, next upcoming birthday hi…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/business-days-calculator/" data-search="business days calculator count working days between two dates, excluding weekends and your own custom holidays, with a full breakdown. business days calculator working days calculator weekdays between dates net workdays business days excluding holidays"><span class="t-ico">⏰</span><span class="t-body"><b>Business Days Calculator</b><small>Count working days between two dates, excluding weekends and your own custom holidays, with …</small></span><span class="t-arrow">→</span></a></div>
+  </section>
+</main>
+
+<!-- ADSTERRA-FOOTER: paste your Adsterra footer/banner ad code inside the div below -->
+<div class="container"><div class="ad-slot" data-ad="footer"></div></div>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="f-grid">
+      <div>
+        <span class="brandline"><span class="logo-mark">T</span> ToolNest</span>
+        <p>Free online tools that actually work. No sign-up, no watermarks — and your files never leave your device for client-side tools.</p>
+      </div>
+      <div>
+        <h4>Popular</h4>
+        <a href="/tools/qr-code-generator/">QR Code Generator</a>
+        <a href="/tools/background-remover/">Background Remover</a>
+        <a href="/tools/pdf-merger/">PDF Merger</a>
+        <a href="/tools/word-counter/">Word Counter</a>
+      </div>
+      <div>
+        <h4>Categories</h4>
+        <a href="/#image">Image Tools</a>
+        <a href="/#pdf">PDF &amp; Documents</a>
+        <a href="/#calculators">Calculators</a>
+        <a href="/#developer">Developer Tools</a>
+      </div>
+      <div>
+        <h4>Site</h4>
+        <a href="/">Home</a>
+        <a href="/#all-tools">All Tools</a>
+        <a href="/sitemap.xml">Sitemap</a>
+      </div>
+    </div>
+    <div class="f-bottom">© 2026 ToolNest · Free tools for everyone · Made with care</div>
+  </div>
+</footer>
+
+<script src="/assets/site.js?v=5"></script>
+
+<script>
+(function () {
+  'use strict';
+  var P = 'ultradian-rhythm-planner-', ERR = P + 'error';
+  function g(id) { return TN.el(P + id); }
+  function toMin(t) { var p = t.split(':'); return parseInt(p[0], 10) * 60 + parseInt(p[1], 10); }
+  function fmtT(m) {
+    m = ((m % 1440) + 1440) % 1440;
+    return String(Math.floor(m / 60)).padStart(2, '0') + ':' + String(m % 60).padStart(2, '0');
+  }
+  function plan() {
+    try {
+      TN.clearErr(ERR);
+      var wake = toMin(g('wake').value), bed = toMin(g('bed').value);
+      var focus = parseInt(g('focus').value, 10), brk = parseInt(g('break').value, 10);
+      var warm = parseInt(g('warmup').value, 10);
+      if (isNaN(wake) || isNaN(bed)) { TN.setErr(ERR, 'Enter wake-up and bedtime.'); return; }
+      if (bed <= wake) bed += 1440;
+      if (isNaN(focus) || focus < 25 || focus > 180) { TN.setErr(ERR, 'Focus block must be 25–180 minutes.'); return; }
+      if (isNaN(brk) || brk < 5 || brk > 60) { TN.setErr(ERR, 'Break must be 5–60 minutes.'); return; }
+      if (isNaN(warm) || warm < 0 || warm > 180) { TN.setErr(ERR, 'Warm-up must be 0–180 minutes.'); return; }
+      var t = wake + warm, rows = '', nBlocks = 0, focusTotal = 0, i = 1;
+      if (warm > 0) rows += '<tr><td>' + fmtT(wake) + ' – ' + fmtT(t) + '</td><td>Warm-up</td><td class="muted">Light tasks, email, planning — ease in.</td></tr>';
+      while (t + 30 <= bed) {
+        var fLen = Math.min(focus, bed - t);
+        var fEnd = t + fLen;
+        rows += '<tr style="background:#16653422"><td><b>' + fmtT(t) + ' – ' + fmtT(fEnd) + '</b></td><td><b>Focus ' + i + '</b> (' + fLen + ' min)</td><td>Deep work — phone away, single task.</td></tr>';
+        nBlocks++; focusTotal += fLen; t = fEnd;
+        if (t + brk <= bed && t + 30 <= bed) {
+          rows += '<tr><td>' + fmtT(t) + ' – ' + fmtT(t + brk) + '</td><td>Break</td><td class="muted">Walk, water, daylight — no screens.</td></tr>';
+          t += brk;
+        }
+        i++;
+        if (i > 20) break;
+      }
+      if (t < bed) rows += '<tr><td>' + fmtT(t) + ' – ' + fmtT(bed) + '</td><td>Wind down</td><td class="muted">Light admin, review tomorrow, relax.</td></tr>';
+      rows += '<tr><td>' + fmtT(bed) + '</td><td>Sleep</td><td class="muted">Screens off.</td></tr>';
+      TN.show(P + 'out');
+      g('nblocks').textContent = String(nBlocks);
+      g('focus-t').textContent = Math.floor(focusTotal / 60) + 'h ' + (focusTotal % 60) + 'm';
+      g('rows').innerHTML = rows;
+    } catch (e) { TN.setErr(ERR, e.message || 'Could not plan the day.'); }
+  }
+  try {
+    if (!TN.el(P + 'plan')) return;
+    TN.on(P + 'plan', 'click', plan);
+  } catch (e) { /* never throw on load */ }
+})();
+
+</script>
+</body>
+</html>

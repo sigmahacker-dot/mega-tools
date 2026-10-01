@@ -1,0 +1,38 @@
+{
+  "slug": "json-to-python-dataclass",
+  "title": "JSON to Python Dataclass",
+  "category": "developer",
+  "description": "Convert JSON to Python @dataclass models \u2014 nested classes, List/Dict/Optional typing included.",
+  "keywords": [
+    "json to python",
+    "json to dataclass",
+    "python dataclass generator",
+    "json python model"
+  ],
+  "howto": [
+    "Paste your JSON sample.",
+    "Set the root class name.",
+    "Click Generate to build the dataclasses.",
+    "Copy the code or download models.py."
+  ],
+  "faqs": [
+    {
+      "q": "How are nested objects handled?",
+      "a": "Each nested object becomes its own @dataclass, referenced by the parent field."
+    },
+    {
+      "q": "How are lists typed?",
+      "a": "As List[ItemType] with field(default_factory=list) so mutable defaults are safe."
+    },
+    {
+      "q": "What about null values?",
+      "a": "They become Optional[UnknownType] = None \u2014 the real type cannot be known from null alone."
+    },
+    {
+      "q": "Which Python version works?",
+      "a": "The output uses dataclasses and typing, so Python 3.7+."
+    }
+  ],
+  "libs": [],
+  "module": false
+}

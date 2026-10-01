@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pricing Table Generator — Free Online | ToolNest</title>
+<meta name="description" content="Design a 2–4 tier pricing table — live preview plus production-ready HTML and CSS.">
+<meta name="keywords" content="pricing table html, pricing table css, pricing plans generator, subscription table code">
+<link rel="canonical" href="https://toolnest.vercel.app/tools/pricing-table-generator/">
+<meta name="theme-color" content="#07070b">
+<meta property="og:title" content="Pricing Table Generator — Free Online | ToolNest">
+<meta property="og:description" content="Design a 2–4 tier pricing table — live preview plus production-ready HTML and CSS.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css?v=4">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%23e01111'/><text x='50' y='68' font-size='58' text-anchor='middle' fill='white' font-family='Arial' font-weight='bold'>T</text></svg>">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebApplication","name":"Pricing Table Generator","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0"},"url":"https://toolnest.vercel.app/tools/pricing-table-generator/","description":"Design a 2–4 tier pricing table — live preview plus production-ready HTML and CSS."},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How do I mark the popular plan?","acceptedAnswer":{"@type":"Answer","text":"Use the \"Highlight tier\" dropdown — that plan gets a scaled-up card, a badge, and the accent border."}},{"@type":"Question","name":"Can I use a different currency?","acceptedAnswer":{"@type":"Answer","text":"Yes — just type any currency symbol or code into the price fields."}},{"@type":"Question","name":"Is the table responsive?","acceptedAnswer":{"@type":"Answer","text":"Yes. The grid collapses to a single column on narrow screens."}},{"@type":"Question","name":"Can I embed it in my site?","acceptedAnswer":{"@type":"Answer","text":"Copy the markup and the embedded \u003cstyle> block. All classes are prefixed with pt- to avoid conflicts."}}]}]}</script>
+</head>
+<body>
+<header class="site-header">
+  <div class="container">
+    <a class="logo" href="/"><span class="logo-mark">T</span> ToolNest</a>
+    <div class="header-right">
+      <form class="nav-search" action="/" method="get" role="search">
+        <span class="ns-icon">🔍</span>
+        <input type="search" name="q" placeholder="Search tools…" aria-label="Search tools" autocomplete="off">
+      </form>
+      <div class="menu-wrap">
+        <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="menuPanel" aria-label="Open menu"><span></span><span></span><span></span></button>
+        <nav class="menu-panel" id="menuPanel" aria-label="Site">
+          <a href="/">Home</a>
+          <a href="/#categories">Categories</a>
+          <a href="/#all-tools">All Tools</a>
+        </nav>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ADSTERRA-HEADER: paste your Adsterra banner ad code inside the div below -->
+<div class="container"><div class="ad-slot ad-leaderboard" data-ad="header"></div></div>
+
+<main class="container">
+  <nav class="crumbs"><a href="/">Home</a> &rsaquo; <a href="/#developer">Developer Tools</a> &rsaquo; Pricing Table Generator</nav>
+  <div class="tool-hero">
+    <h1>Pricing Table Generator</h1>
+    <p>Design a 2–4 tier pricing table — live preview plus production-ready HTML and CSS.</p>
+  </div>
+
+  <div class="tool-card">
+  <div class="grid3">
+    <div class="field">
+      <label for="pricing-table-generator-tiers">Number of tiers</label>
+      <select class="select" id="pricing-table-generator-tiers">
+        <option value="2">2</option>
+        <option value="3" selected>3</option>
+        <option value="4">4</option>
+      </select>
+    </div>
+    <div class="field">
+      <label for="pricing-table-generator-accent">Accent color</label>
+      <input class="input" id="pricing-table-generator-accent" type="color" value="#4d7c0f">
+    </div>
+    <div class="field">
+      <label for="pricing-table-generator-theme">Theme</label>
+      <select class="select" id="pricing-table-generator-theme">
+        <option value="dark">Dark</option>
+        <option value="light">Light</option>
+      </select>
+    </div>
+  </div>
+  <div id="pricing-table-generator-tierinputs"></div>
+  <div class="field">
+    <label for="pricing-table-generator-highlight">Highlight tier (0 = none)</label>
+    <select class="select" id="pricing-table-generator-highlight">
+      <option value="0">None</option>
+      <option value="1">Tier 1</option>
+      <option value="2" selected>Tier 2</option>
+      <option value="3">Tier 3</option>
+      <option value="4">Tier 4</option>
+    </select>
+  </div>
+  <div class="field">
+    <label>Live preview</label>
+    <div id="pricing-table-generator-preview" style="border:1px solid #27272a;border-radius:12px;padding:20px;background:#18181b;overflow:auto"></div>
+  </div>
+  <div class="error" id="pricing-table-generator-error"></div>
+  <div class="field">
+    <label for="pricing-table-generator-output">HTML + CSS</label>
+    <textarea class="textarea" id="pricing-table-generator-output" rows="14" readonly></textarea>
+  </div>
+  <div class="btn-row">
+    <button class="btn btn-outline" id="pricing-table-generator-copy">Copy code</button>
+    <button class="btn btn-outline" id="pricing-table-generator-download">Download pricing.html</button>
+  </div>
+</div>
+
+
+  <!-- ADSTERRA-INCONTENT: paste your Adsterra native/in-content ad code inside the div below -->
+  <div class="ad-slot" data-ad="incontent"></div>
+
+  <div class="info-grid">
+    <div class="info-card">
+      <h2>📖 How to use</h2>
+      <ol><li>Choose the number of tiers (2–4) and fill in each plan.</li><li>Add one feature per line and mark the popular plan.</li><li>Preview the table live, tweak colors and theme.</li><li>Copy the code or download the self-contained pricing.html.</li></ol>
+    </div>
+    <div class="info-card">
+      <h2>❓ Frequently asked questions</h2>
+      <div class="faq"><details><summary>How do I mark the popular plan?</summary><p>Use the &quot;Highlight tier&quot; dropdown — that plan gets a scaled-up card, a badge, and the accent border.</p></details><details><summary>Can I use a different currency?</summary><p>Yes — just type any currency symbol or code into the price fields.</p></details><details><summary>Is the table responsive?</summary><p>Yes. The grid collapses to a single column on narrow screens.</p></details><details><summary>Can I embed it in my site?</summary><p>Copy the markup and the embedded &lt;style&gt; block. All classes are prefixed with pt- to avoid conflicts.</p></details></div>
+    </div>
+  </div>
+
+  <section class="section">
+    <h2>🔗 Related tools</h2>
+    <div class="tool-grid"><a class="tool-link" href="/tools/api-key-generator/" data-search="api key generator generate cryptographically secure api keys with crypto.getrandomvalues — hex, base64, base64url or uuid v4. api key generator random api key uuid generator secure token generator"><span class="t-ico">💻</span><span class="t-body"><b>API Key Generator</b><small>Generate cryptographically secure API keys with crypto.getRandomValues — hex, base64, base64…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/ascii-table-reference/" data-search="ascii table reference full ascii table 0–127: decimal, hex, octal, character, control-code names and html entities — searchable. ascii table ascii codes ascii chart control characters ascii reference"><span class="t-ico">💻</span><span class="t-body"><b>ASCII Table Reference</b><small>Full ASCII table 0–127: decimal, hex, octal, character, control-code names and HTML entities…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/badge-generator/" data-search="badge generator design css badges and pills — colors, sizes, shapes — with live preview and copy-ready html/css. badge css generator css pill badge status badge code label badge html"><span class="t-ico">💻</span><span class="t-body"><b>Badge Generator</b><small>Design CSS badges and pills — colors, sizes, shapes — with live preview and copy-ready HTML/…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/base64-encoder-decoder/" data-search="base64 encoder / decoder encode text to base64 or decode base64 back to text, with full utf-8 support and a file-to-data-url converter. base64 encoder base64 decoder base64 encode base64 decode file to base64"><span class="t-ico">💻</span><span class="t-body"><b>Base64 Encoder / Decoder</b><small>Encode text to Base64 or decode Base64 back to text, with full UTF-8 support and a file-to-d…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/basic-auth-header-generator/" data-search="basic auth header generator encode username:password to a base64 authorization header (unicode-safe) — copy or download. basic auth header base64 authorization http basic auth generator authorization header"><span class="t-ico">💻</span><span class="t-body"><b>Basic Auth Header Generator</b><small>Encode username:password to a Base64 Authorization header (Unicode-safe) — copy or download.</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/binary-text-converter/" data-search="binary and text converter convert text to binary or hex and back, with full utf-8 awareness and strict input validation. binary to text text to binary hex to text converter"><span class="t-ico">💻</span><span class="t-body"><b>Binary and Text Converter</b><small>Convert text to binary or hex and back, with full UTF-8 awareness and strict input validatio…</small></span><span class="t-arrow">→</span></a></div>
+  </section>
+</main>
+
+<!-- ADSTERRA-FOOTER: paste your Adsterra footer/banner ad code inside the div below -->
+<div class="container"><div class="ad-slot" data-ad="footer"></div></div>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="f-grid">
+      <div>
+        <span class="brandline"><span class="logo-mark">T</span> ToolNest</span>
+        <p>Free online tools that actually work. No sign-up, no watermarks — and your files never leave your device for client-side tools.</p>
+      </div>
+      <div>
+        <h4>Popular</h4>
+        <a href="/tools/qr-code-generator/">QR Code Generator</a>
+        <a href="/tools/background-remover/">Background Remover</a>
+        <a href="/tools/pdf-merger/">PDF Merger</a>
+        <a href="/tools/word-counter/">Word Counter</a>
+      </div>
+      <div>
+        <h4>Categories</h4>
+        <a href="/#image">Image Tools</a>
+        <a href="/#pdf">PDF &amp; Documents</a>
+        <a href="/#calculators">Calculators</a>
+        <a href="/#developer">Developer Tools</a>
+      </div>
+      <div>
+        <h4>Site</h4>
+        <a href="/">Home</a>
+        <a href="/#all-tools">All Tools</a>
+        <a href="/sitemap.xml">Sitemap</a>
+      </div>
+    </div>
+    <div class="f-bottom">© 2026 ToolNest · Free tools for everyone · Made with care</div>
+  </div>
+</footer>
+
+<script src="/assets/site.js?v=5"></script>
+
+<script>
+/* Pricing Table Generator — 2–4 tiers → responsive pricing table HTML+CSS with live preview. */
+(function () {
+  'use strict';
+  var SLUG = 'pricing-table-generator';
+  var DEFAULTS = [
+    { name: 'Starter', price: '$9', period: '/mo', cta: 'Choose Starter', features: 'Up to 3 projects\n10 GB storage\nEmail support' },
+    { name: 'Pro', price: '$29', period: '/mo', cta: 'Choose Pro', features: 'Unlimited projects\n100 GB storage\nPriority support\nCustom domain' },
+    { name: 'Team', price: '$79', period: '/mo', cta: 'Contact sales', features: 'Everything in Pro\nSSO & audit logs\nDedicated manager' },
+    { name: 'Enterprise', price: 'Custom', period: '', cta: 'Talk to us', features: 'On-premise deploy\nSLA 99.99%\nSecurity review' }
+  ];
+  function el(id) { return document.getElementById(id); }
+  function fail(msg) { TN.setErr(SLUG + '-error', msg); }
+  function clear() { TN.clearErr(SLUG + '-error'); }
+
+  function renderTierInputs(n) {
+    var host = el(SLUG + '-tierinputs');
+    host.innerHTML = '';
+    for (var i = 0; i < n; i++) {
+      var d = DEFAULTS[i];
+      var div = document.createElement('div');
+      div.className = 'tool-card';
+      div.style.marginBottom = '12px';
+      div.innerHTML =
+        '<strong>Tier ' + (i + 1) + '</strong>' +
+        '<div class="grid2" style="margin-top:8px">' +
+        '<div class="field"><label for="' + SLUG + '-name-' + i + '">Name</label><input class="input" id="' + SLUG + '-name-' + i + '" value="' + TN.esc(d.name) + '"></div>' +
+        '<div class="field"><label for="' + SLUG + '-price-' + i + '">Price</label><input class="input" id="' + SLUG + '-price-' + i + '" value="' + TN.esc(d.price) + '"></div>' +
+        '<div class="field"><label for="' + SLUG + '-period-' + i + '">Period</label><input class="input" id="' + SLUG + '-period-' + i + '" value="' + TN.esc(d.period) + '"></div>' +
+        '<div class="field"><label for="' + SLUG + '-cta-' + i + '">Button text</label><input class="input" id="' + SLUG + '-cta-' + i + '" value="' + TN.esc(d.cta) + '"></div>' +
+        '</div>' +
+        '<div class="field"><label for="' + SLUG + '-features-' + i + '">Features (one per line)</label><textarea class="textarea" id="' + SLUG + '-features-' + i + '" rows="3">' + TN.esc(d.features) + '</textarea></div>';
+      host.appendChild(div);
+    }
+    host.querySelectorAll('input,textarea').forEach(function (inp) {
+      inp.addEventListener('input', update);
+    });
+  }
+
+  function tiers(n) {
+    var out = [];
+    for (var i = 0; i < n; i++) {
+      out.push({
+        name: el(SLUG + '-name-' + i).value.trim() || ('Tier ' + (i + 1)),
+        price: el(SLUG + '-price-' + i).value.trim() || '$0',
+        period: el(SLUG + '-period-' + i).value.trim(),
+        cta: el(SLUG + '-cta-' + i).value.trim() || 'Choose',
+        features: el(SLUG + '-features-' + i).value.split('\n').map(function (l) { return l.trim(); }).filter(Boolean)
+      });
+    }
+    return out;
+  }
+
+  function build(ts, highlight, accent, theme) {
+    var dark = theme === 'dark';
+    var cardBg = dark ? '#27272a' : '#ffffff';
+    var textC = dark ? '#f4f4f5' : '#18181b';
+    var mutC = dark ? '#a1a1aa' : '#52525b';
+    var cards = ts.map(function (t, i) {
+      var hot = highlight === i + 1;
+      var feats = t.features.map(function (f) {
+        return '      <li><span class="pt-check">✓</span>' + TN.esc(f) + '</li>';
+      }).join('\n');
+      return '  <div class="pt-card' + (hot ? ' pt-hot' : '') + '">\n' +
+        (hot ? '    <div class="pt-badge">Most popular</div>\n' : '') +
+        '    <div class="pt-name">' + TN.esc(t.name) + '</div>\n' +
+        '    <div class="pt-price">' + TN.esc(t.price) + '<span>' + TN.esc(t.period) + '</span></div>\n' +
+        '    <ul class="pt-feats">\n' + feats + '\n    </ul>\n' +
+        '    <a href="#" class="pt-cta">' + TN.esc(t.cta) + '</a>\n  </div>';
+    }).join('\n');
+    var html = '<div class="pt-wrap">\n' + cards + '\n</div>';
+    var css =
+      '.pt-wrap { display: grid; grid-template-columns: repeat(' + ts.length + ', 1fr); gap: 20px; max-width: 1000px; margin: 0 auto; }\n' +
+      '@media (max-width: 760px) { .pt-wrap { grid-template-columns: 1fr; } }\n' +
+      '.pt-card { position: relative; background: ' + cardBg + '; color: ' + textC + '; border-radius: 16px; padding: 28px 24px; border: 1px solid ' + (dark ? '#3f3f46' : '#e4e4e7') + '; display: flex; flex-direction: column; }\n' +
+      '.pt-card.pt-hot { border: 2px solid ' + accent + '; transform: scale(1.04); box-shadow: 0 12px 32px rgba(0,0,0,.18); }\n' +
+      '.pt-badge { position: absolute; top: -13px; left: 50%; transform: translateX(-50%); background: ' + accent + '; color: #fff; font-size: 12px; font-weight: 700; padding: 4px 14px; border-radius: 999px; white-space: nowrap; }\n' +
+      '.pt-name { font-size: 15px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: ' + mutC + '; }\n' +
+      '.pt-price { font-size: 40px; font-weight: 800; margin: 10px 0 18px; }\n' +
+      '.pt-price span { font-size: 16px; font-weight: 500; color: ' + mutC + '; }\n' +
+      '.pt-feats { list-style: none; margin: 0 0 24px; padding: 0; flex: 1; }\n' +
+      '.pt-feats li { display: flex; gap: 10px; align-items: flex-start; padding: 7px 0; font-size: 15px; color: ' + textC + '; }\n' +
+      '.pt-check { color: ' + accent + '; font-weight: 800; }\n' +
+      '.pt-cta { display: block; text-align: center; text-decoration: none; background: ' + accent + '; color: #fff; font-weight: 700; padding: 12px; border-radius: 10px; }\n' +
+      '.pt-card:not(.pt-hot) .pt-cta { background: transparent; color: ' + accent + '; border: 2px solid ' + accent + '; }';
+    return { html: html, css: css };
+  }
+
+  function update() {
+    clear();
+    var n = parseInt(el(SLUG + '-tiers').value, 10);
+    var accent = el(SLUG + '-accent').value;
+    var theme = el(SLUG + '-theme').value;
+    var hl = parseInt(el(SLUG + '-highlight').value, 10) || 0;
+    var ts = tiers(n);
+    var b = build(ts, hl, accent, theme);
+    el(SLUG + '-preview').style.background = theme === 'dark' ? '#18181b' : '#f4f4f5';
+    el(SLUG + '-preview').innerHTML = '<style>' + b.css + '</style>' + b.html;
+    el(SLUG + '-output').value = '<!DOCTYPE html>\n<html lang="en">\n<head>\n<meta charset="UTF-8">\n<meta name="viewport" content="width=device-width, initial-scale=1.0">\n<title>Pricing</title>\n<style>\n' +
+      b.css + '\nbody { font-family: system-ui, sans-serif; background: ' + (theme === 'dark' ? '#111' : '#fafafa') + '; padding: 40px 16px; }\n</style>\n</head>\n<body>\n' +
+      b.html + '\n</body>\n</html>\n';
+  }
+
+  try {
+    if (!el(SLUG + '-tiers')) return;
+    renderTierInputs(3);
+    TN.on(SLUG + '-tiers', 'change', function () {
+      renderTierInputs(parseInt(el(SLUG + '-tiers').value, 10));
+      update();
+    });
+    ['accent', 'theme', 'highlight'].forEach(function (k) {
+      TN.on(SLUG + '-' + k, k === 'accent' ? 'input' : 'change', update);
+    });
+    TN.on(SLUG + '-copy', 'click', function () {
+      var v = el(SLUG + '-output').value;
+      if (!v) { fail('Nothing to copy yet.'); return; }
+      TN.copy(v).then(function (ok) { if (!ok) fail('Copy failed — select the text manually.'); });
+    });
+    TN.on(SLUG + '-download', 'click', function () {
+      var v = el(SLUG + '-output').value;
+      if (!v) { fail('Nothing to download yet.'); return; }
+      TN.downloadText(v, 'pricing.html', 'text/html');
+    });
+    update();
+  } catch (e) { /* never throw on load */ }
+})();
+
+</script>
+</body>
+</html>

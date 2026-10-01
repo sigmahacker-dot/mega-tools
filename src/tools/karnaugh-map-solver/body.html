@@ -1,0 +1,41 @@
+<div class="tool-card">
+  <div class="grid3">
+    <div class="field">
+      <label for="karnaugh-map-solver-vars">Variables</label>
+      <select class="select" id="karnaugh-map-solver-vars">
+        <option value="2">2 (A, B)</option>
+        <option value="3" selected>3 (A, B, C)</option>
+        <option value="4">4 (A, B, C, D)</option>
+      </select>
+    </div>
+    <div class="field">
+      <label for="karnaugh-map-solver-minterms">Minterms Σm (comma separated)</label>
+      <input class="input" id="karnaugh-map-solver-minterms" type="text" placeholder="e.g. 0, 1, 2, 5, 6, 7" value="0, 1, 2, 5, 6, 7">
+    </div>
+    <div class="field">
+      <label for="karnaugh-map-solver-dc">Don't cares Σd (optional)</label>
+      <input class="input" id="karnaugh-map-solver-dc" type="text" placeholder="e.g. 3">
+    </div>
+  </div>
+  <div class="btn-row">
+    <button type="button" class="btn" id="karnaugh-map-solver-solve">Solve</button>
+    <button type="button" class="btn btn-outline" id="karnaugh-map-solver-clear">Clear</button>
+  </div>
+  <div class="error" id="karnaugh-map-solver-error"></div>
+  <div id="karnaugh-map-solver-out" class="hidden">
+    <div class="result">
+      <h3>Minimized expression</h3>
+      <p id="karnaugh-map-solver-expr" style="font-size:1.25em;font-weight:bold"></p>
+      <div class="btn-row"><button type="button" class="btn btn-outline btn-sm" id="karnaugh-map-solver-copy">Copy expression</button></div>
+    </div>
+    <div class="result">
+      <h3>K-map</h3>
+      <div id="karnaugh-map-solver-grid" style="overflow-x:auto"></div>
+      <p class="muted" id="karnaugh-map-solver-legend"></p>
+    </div>
+    <div class="result">
+      <h3>How it was solved</h3>
+      <div id="karnaugh-map-solver-steps"></div>
+    </div>
+  </div>
+</div>

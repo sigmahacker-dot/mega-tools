@@ -1,0 +1,51 @@
+<div class="tool-card">
+  <div class="grid2">
+    <div class="field">
+      <label for="headache-diary-when">Start date & time</label>
+      <input type="datetime-local" class="input" id="headache-diary-when">
+    </div>
+    <div class="field">
+      <label for="headache-diary-duration">Duration (minutes)</label>
+      <input type="number" class="input" id="headache-diary-duration" min="0" step="any" placeholder="120">
+    </div>
+    <div class="field">
+      <label for="headache-diary-intensity">Intensity: <span id="headache-diary-intensity-val">5</span>/10</label>
+      <input type="range" class="input" id="headache-diary-intensity" min="1" max="10" step="1" value="5">
+    </div>
+    <div class="field">
+      <label for="headache-diary-type">Type</label>
+      <select class="select" id="headache-diary-type">
+        <option>Tension</option><option>Migraine</option><option>Cluster</option><option>Sinus</option><option>Other</option>
+      </select>
+    </div>
+  </div>
+  <div class="field">
+    <label>Possible triggers</label>
+    <div class="btn-row" style="flex-wrap:wrap" id="headache-diary-triggers">
+      <label class="checkline"><input type="checkbox" value="Stress"> Stress</label>
+      <label class="checkline"><input type="checkbox" value="Lack of sleep"> Lack of sleep</label>
+      <label class="checkline"><input type="checkbox" value="Dehydration"> Dehydration</label>
+      <label class="checkline"><input type="checkbox" value="Caffeine"> Caffeine</label>
+      <label class="checkline"><input type="checkbox" value="Screen time"> Screen time</label>
+      <label class="checkline"><input type="checkbox" value="Weather change"> Weather change</label>
+      <label class="checkline"><input type="checkbox" value="Certain foods"> Certain foods</label>
+      <label class="checkline"><input type="checkbox" value="Hormonal"> Hormonal</label>
+    </div>
+  </div>
+  <div class="field">
+    <label for="headache-diary-meds">Medication taken (optional)</label>
+    <input type="text" class="input" id="headache-diary-meds" placeholder="e.g. ibuprofen 400mg">
+  </div>
+  <div class="btn-row"><button class="btn" id="headache-diary-add" type="button">Log episode</button></div>
+  <div class="error" id="headache-diary-error"></div>
+  <div class="result" id="headache-diary-result">
+    <div class="stat-cards">
+      <div class="stat-card"><div class="v" id="headache-diary-count">0</div><div class="l">Episodes</div></div>
+      <div class="stat-card"><div class="v" id="headache-diary-avgint">–</div><div class="l">Avg intensity</div></div>
+      <div class="stat-card"><div class="v" id="headache-diary-avgdur">–</div><div class="l">Avg duration</div></div>
+      <div class="stat-card"><div class="v" id="headache-diary-toptrig">–</div><div class="l">Top trigger</div></div>
+    </div>
+    <div id="headache-diary-out"></div>
+    <p class="note">Personal log only, not a diagnosis. Seek prompt care for sudden severe headache. For information only &mdash; not medical advice.</p>
+  </div>
+</div>

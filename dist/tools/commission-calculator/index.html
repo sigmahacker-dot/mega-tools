@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Commission Calculator — Free Online | ToolNest</title>
+<meta name="description" content="Calculate sales commission with tiered rate brackets you can edit.">
+<meta name="keywords" content="commission calculator, tiered commission, sales commission">
+<link rel="canonical" href="https://toolnest.vercel.app/tools/commission-calculator/">
+<meta name="theme-color" content="#07070b">
+<meta property="og:title" content="Commission Calculator — Free Online | ToolNest">
+<meta property="og:description" content="Calculate sales commission with tiered rate brackets you can edit.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css?v=4">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%23e01111'/><text x='50' y='68' font-size='58' text-anchor='middle' fill='white' font-family='Arial' font-weight='bold'>T</text></svg>">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebApplication","name":"Commission Calculator","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0"},"url":"https://toolnest.vercel.app/tools/commission-calculator/","description":"Calculate sales commission with tiered rate brackets you can edit."},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How are tiered commissions calculated?","acceptedAnswer":{"@type":"Answer","text":"Each portion of sales is paid at the rate of the bracket it falls in, like marginal tax brackets. Only the sales inside a bracket earn that bracket's rate."}},{"@type":"Question","name":"What does an empty 'Up to' mean?","acceptedAnswer":{"@type":"Answer","text":"An empty cap means no upper limit, so that tier catches all remaining sales. It is normally the last row."}},{"@type":"Question","name":"Can tiers overlap?","acceptedAnswer":{"@type":"Answer","text":"No. Brackets are applied in ascending order of their caps, and overlapping caps are rejected with an error."}}]}]}</script>
+</head>
+<body>
+<header class="site-header">
+  <div class="container">
+    <a class="logo" href="/"><span class="logo-mark">T</span> ToolNest</a>
+    <div class="header-right">
+      <form class="nav-search" action="/" method="get" role="search">
+        <span class="ns-icon">🔍</span>
+        <input type="search" name="q" placeholder="Search tools…" aria-label="Search tools" autocomplete="off">
+      </form>
+      <div class="menu-wrap">
+        <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="menuPanel" aria-label="Open menu"><span></span><span></span><span></span></button>
+        <nav class="menu-panel" id="menuPanel" aria-label="Site">
+          <a href="/">Home</a>
+          <a href="/#categories">Categories</a>
+          <a href="/#all-tools">All Tools</a>
+        </nav>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ADSTERRA-HEADER: paste your Adsterra banner ad code inside the div below -->
+<div class="container"><div class="ad-slot ad-leaderboard" data-ad="header"></div></div>
+
+<main class="container">
+  <nav class="crumbs"><a href="/">Home</a> &rsaquo; <a href="/#finance">Finance &amp; Money</a> &rsaquo; Commission Calculator</nav>
+  <div class="tool-hero">
+    <h1>Commission Calculator</h1>
+    <p>Calculate sales commission with tiered rate brackets you can edit.</p>
+  </div>
+
+  <div class="tool-card">
+  <div class="field">
+    <label for="commission-calculator-sales">Total sales ($)</label>
+    <input type="number" class="input" id="commission-calculator-sales" min="0" step="any" placeholder="75000">
+  </div>
+  <div class="field">
+    <label>Commission tiers (applied marginally)</label>
+    <div id="commission-calculator-tiers"></div>
+    <div class="btn-row" style="margin-top:8px">
+      <button class="btn btn-sm btn-outline" id="commission-calculator-add" type="button">+ Add tier</button>
+    </div>
+    <p class="muted">Leave the last tier's "Up to" empty for no cap.</p>
+  </div>
+  <div class="error" id="commission-calculator-error"></div>
+  <div class="result" id="commission-calculator-result">
+    <div id="commission-calculator-out"></div>
+    <p class="note">For information only &mdash; not financial advice.</p>
+  </div>
+</div>
+
+  <!-- ADSTERRA-INCONTENT: paste your Adsterra native/in-content ad code inside the div below -->
+  <div class="ad-slot" data-ad="incontent"></div>
+
+  <div class="info-grid">
+    <div class="info-card">
+      <h2>📖 How to use</h2>
+      <ol><li>Enter the total sales amount.</li><li>Edit the tier brackets: each row sets the sales &quot;up to&quot; amount and its rate. Leave the last &quot;up to&quot; empty for no cap.</li><li>Add or remove tiers as needed.</li><li>Read the commission earned in each bracket plus the total and effective rate.</li></ol>
+    </div>
+    <div class="info-card">
+      <h2>❓ Frequently asked questions</h2>
+      <div class="faq"><details><summary>How are tiered commissions calculated?</summary><p>Each portion of sales is paid at the rate of the bracket it falls in, like marginal tax brackets. Only the sales inside a bracket earn that bracket&#39;s rate.</p></details><details><summary>What does an empty &#39;Up to&#39; mean?</summary><p>An empty cap means no upper limit, so that tier catches all remaining sales. It is normally the last row.</p></details><details><summary>Can tiers overlap?</summary><p>No. Brackets are applied in ascending order of their caps, and overlapping caps are rejected with an error.</p></details></div>
+    </div>
+  </div>
+
+  <section class="section">
+    <h2>🔗 Related tools</h2>
+    <div class="tool-grid"><a class="tool-link" href="/tools/apr-calculator/" data-search="apr calculator solve the true annual percentage rate of a loan by bisection — including upfront fees — and compare it with the nominal rate. apr calculator true apr calculator annual percentage rate calculator loan apr calculator nominal vs effective rate"><span class="t-ico">💰</span><span class="t-body"><b>APR Calculator</b><small>Solve the true Annual Percentage Rate of a loan by bisection — including upfront fees — and …</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/baby-cost-calculator/" data-search="baby cost calculator estimate first-year baby costs from editable monthly and one-time line items. baby cost first year baby expenses newborn cost"><span class="t-ico">💰</span><span class="t-body"><b>Baby Cost Calculator</b><small>Estimate first-year baby costs from editable monthly and one-time line items.</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/balloon-payment-calculator/" data-search="balloon payment calculator compute the monthly payment on a balloon loan and the lump-sum balloon balance still due at the end of the term. balloon payment calculator balloon loan calculator balloon mortgage calculator balloon balance calculator lump sum loan calculator"><span class="t-ico">💰</span><span class="t-body"><b>Balloon Payment Calculator</b><small>Compute the monthly payment on a balloon loan and the lump-sum balloon balance still due at …</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/benefits-value-calculator/" data-search="benefits value calculator compute total compensation: salary plus health, retirement match and pto value. benefits calculator total compensation job benefits value"><span class="t-ico">💰</span><span class="t-body"><b>Benefits Value Calculator</b><small>Compute total compensation: salary plus health, retirement match and PTO value.</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/break-even-calculator/" data-search="break-even calculator find your break-even point in units and revenue from fixed costs, price per unit and variable cost per unit. break even calculator breakeven point calculator break even analysis units to break even business break even calculator"><span class="t-ico">💰</span><span class="t-body"><b>Break-Even Calculator</b><small>Find your break-even point in units and revenue from fixed costs, price per unit and variabl…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/budget-50-30-20-calculator/" data-search="50/30/20 budget calculator split your take-home pay into needs (50%), wants (30%) and savings (20%), then compare with your actual spending. 50 30 20 budget budget calculator needs wants savings monthly budget planner budget rule calculator"><span class="t-ico">💰</span><span class="t-body"><b>50/30/20 Budget Calculator</b><small>Split your take-home pay into needs (50%), wants (30%) and savings (20%), then compare with …</small></span><span class="t-arrow">→</span></a></div>
+  </section>
+</main>
+
+<!-- ADSTERRA-FOOTER: paste your Adsterra footer/banner ad code inside the div below -->
+<div class="container"><div class="ad-slot" data-ad="footer"></div></div>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="f-grid">
+      <div>
+        <span class="brandline"><span class="logo-mark">T</span> ToolNest</span>
+        <p>Free online tools that actually work. No sign-up, no watermarks — and your files never leave your device for client-side tools.</p>
+      </div>
+      <div>
+        <h4>Popular</h4>
+        <a href="/tools/qr-code-generator/">QR Code Generator</a>
+        <a href="/tools/background-remover/">Background Remover</a>
+        <a href="/tools/pdf-merger/">PDF Merger</a>
+        <a href="/tools/word-counter/">Word Counter</a>
+      </div>
+      <div>
+        <h4>Categories</h4>
+        <a href="/#image">Image Tools</a>
+        <a href="/#pdf">PDF &amp; Documents</a>
+        <a href="/#calculators">Calculators</a>
+        <a href="/#developer">Developer Tools</a>
+      </div>
+      <div>
+        <h4>Site</h4>
+        <a href="/">Home</a>
+        <a href="/#all-tools">All Tools</a>
+        <a href="/sitemap.xml">Sitemap</a>
+      </div>
+    </div>
+    <div class="f-bottom">© 2026 ToolNest · Free tools for everyone · Made with care</div>
+  </div>
+</footer>
+
+<script src="/assets/site.js?v=5"></script>
+
+<script>
+(function(){
+'use strict';
+var S='commission-calculator', ERR=S+'-error';
+function money(n){ return '$'+Number(n).toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2}); }
+function rows(){ return Array.prototype.slice.call(TN.el(S+'-tiers').querySelectorAll('[data-row]')); }
+function addTier(cap,rate){
+  var wrap=TN.el(S+'-tiers');
+  var div=document.createElement('div');
+  div.setAttribute('data-row','1');
+  div.style.cssText='display:flex;gap:8px;margin-bottom:8px;align-items:flex-end';
+  div.innerHTML=
+    '<div class="field" style="flex:1;min-width:0"><label>Up to ($)</label><input type="number" class="input" data-cap min="0" step="any" placeholder="No cap" value="'+(cap==null||cap===''?'':cap)+'"></div>'+
+    '<div class="field" style="flex:1;min-width:0"><label>Rate (%)</label><input type="number" class="input" data-rate min="0" max="100" step="any" placeholder="10" value="'+(rate==null?'':rate)+'"></div>'+
+    '<button class="btn btn-sm btn-outline" data-remove type="button" aria-label="Remove tier">X</button>';
+  wrap.appendChild(div);
+  div.querySelector('[data-remove]').addEventListener('click',function(){ div.remove(); calc(); });
+  Array.prototype.forEach.call(div.querySelectorAll('input'),function(inp){ inp.addEventListener('input',calc); });
+}
+function calc(){
+  if(!TN.el(S+'-sales')) return;
+  TN.clearErr(ERR);
+  var out=TN.el(S+'-out'); out.innerHTML='';
+  var sales=parseFloat(TN.el(S+'-sales').value);
+  if(!(sales>0)) return;
+  var tiers=rows().map(function(r){
+    var capRaw=r.querySelector('[data-cap]').value.trim();
+    return { cap:capRaw===''?Infinity:parseFloat(capRaw), rate:parseFloat(r.querySelector('[data-rate]').value) };
+  });
+  if(!tiers.length){ TN.setErr(ERR,'Add at least one tier.'); return; }
+  for(var i=0;i<tiers.length;i++){
+    if(isNaN(tiers[i].rate)||tiers[i].rate<0||tiers[i].rate>100){ TN.setErr(ERR,'Tier '+(i+1)+': rate must be between 0 and 100.'); return; }
+    if(tiers[i].cap!==Infinity&&!(tiers[i].cap>0)){ TN.setErr(ERR,'Tier '+(i+1)+': cap must be positive or empty.'); return; }
+  }
+  tiers.sort(function(a,b){ return a.cap-b.cap; });
+  for(var j=1;j<tiers.length;j++){
+    if(tiers[j].cap<=tiers[j-1].cap&&tiers[j-1].cap!==Infinity){ TN.setErr(ERR,'Tier caps must be strictly increasing.'); return; }
+  }
+  var prev=0, total=0, html='<table class="data"><thead><tr><th>Bracket</th><th>Rate</th><th>Sales in bracket</th><th>Commission</th></tr></thead><tbody>';
+  tiers.forEach(function(t){
+    var inBracket=Math.max(0,Math.min(sales,t.cap)-prev);
+    var comm=inBracket*t.rate/100;
+    total+=comm;
+    var label=t.cap===Infinity?('Over '+money(prev)):('Up to '+money(t.cap));
+    html+='<tr><td>'+label+'</td><td>'+t.rate+'%</td><td>'+money(inBracket)+'</td><td>'+money(comm)+'</td></tr>';
+    prev=t.cap===Infinity?sales:t.cap;
+    if(t.cap!==Infinity&&sales<=t.cap) prev=sales;
+  });
+  html+='</tbody></table>';
+  html='<div class="stat-cards"><div class="stat-card"><div class="v">'+money(total)+'</div><div class="l">Total commission</div></div>'+
+    '<div class="stat-card"><div class="v">'+(Math.round(total/sales*10000)/100)+'%</div><div class="l">Effective rate</div></div></div>'+html;
+  out.innerHTML=html;
+}
+try{
+  addTier(10000,5); addTier(50000,7); addTier('',10);
+  TN.on(S+'-sales','input',calc);
+  TN.on(S+'-add','click',function(){ addTier('',5); });
+  calc();
+}catch(e){}
+})();
+
+</script>
+</body>
+</html>

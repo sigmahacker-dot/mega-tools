@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Concert Ticket Maker — Free Online | ToolNest</title>
+<meta name="description" content="Design a realistic concert ticket with a perforated stub, event details and a decorative barcode — ready to download.">
+<meta name="keywords" content="concert ticket maker, event ticket, fake ticket generator, ticket template">
+<link rel="canonical" href="https://toolnest.vercel.app/tools/concert-ticket-maker/">
+<meta name="theme-color" content="#07070b">
+<meta property="og:title" content="Concert Ticket Maker — Free Online | ToolNest">
+<meta property="og:description" content="Design a realistic concert ticket with a perforated stub, event details and a decorative barcode — ready to download.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css?v=4">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%23e01111'/><text x='50' y='68' font-size='58' text-anchor='middle' fill='white' font-family='Arial' font-weight='bold'>T</text></svg>">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebApplication","name":"Concert Ticket Maker","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0"},"url":"https://toolnest.vercel.app/tools/concert-ticket-maker/","description":"Design a realistic concert ticket with a perforated stub, event details and a decorative barcode — ready to download."},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What does the ticket look like?","acceptedAnswer":{"@type":"Answer","text":"The ticket is rendered at 1200 × 480 px PNG with a perforated stub and punched notches, like a real ticket."}},{"@type":"Question","name":"Is the barcode scannable?","acceptedAnswer":{"@type":"Answer","text":"The barcode strip is decorative artwork for the design, not a scannable code."}},{"@type":"Question","name":"Can I use it as a real ticket?","acceptedAnswer":{"@type":"Answer","text":"For personal and novelty use — don't try to pass it off as a real admission ticket."}}]}]}</script>
+</head>
+<body>
+<header class="site-header">
+  <div class="container">
+    <a class="logo" href="/"><span class="logo-mark">T</span> ToolNest</a>
+    <div class="header-right">
+      <form class="nav-search" action="/" method="get" role="search">
+        <span class="ns-icon">🔍</span>
+        <input type="search" name="q" placeholder="Search tools…" aria-label="Search tools" autocomplete="off">
+      </form>
+      <div class="menu-wrap">
+        <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="menuPanel" aria-label="Open menu"><span></span><span></span><span></span></button>
+        <nav class="menu-panel" id="menuPanel" aria-label="Site">
+          <a href="/">Home</a>
+          <a href="/#categories">Categories</a>
+          <a href="/#all-tools">All Tools</a>
+        </nav>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ADSTERRA-HEADER: paste your Adsterra banner ad code inside the div below -->
+<div class="container"><div class="ad-slot ad-leaderboard" data-ad="header"></div></div>
+
+<main class="container">
+  <nav class="crumbs"><a href="/">Home</a> &rsaquo; <a href="/#image">Image Tools</a> &rsaquo; Concert Ticket Maker</nav>
+  <div class="tool-hero">
+    <h1>Concert Ticket Maker</h1>
+    <p>Design a realistic concert ticket with a perforated stub, event details and a decorative barcode — ready to download.</p>
+  </div>
+
+  <div class="tool-card">
+  <div class="grid2">
+    <div class="field">
+      <label for="concert-ticket-maker-event">Event name</label>
+      <input type="text" id="concert-ticket-maker-event" class="input" value="SUMMER SOUND FEST" maxlength="40">
+    </div>
+    <div class="field">
+      <label for="concert-ticket-maker-artist">Artist / headliner</label>
+      <input type="text" id="concert-ticket-maker-artist" class="input" value="The Midnight Echoes" maxlength="40">
+    </div>
+  </div>
+  <div class="grid3">
+    <div class="field">
+      <label for="concert-ticket-maker-venue">Venue</label>
+      <input type="text" id="concert-ticket-maker-venue" class="input" value="Grand Arena" maxlength="30">
+    </div>
+    <div class="field">
+      <label for="concert-ticket-maker-date">Date</label>
+      <input type="text" id="concert-ticket-maker-date" class="input" value="SAT · AUG 15 · 8 PM" maxlength="30">
+    </div>
+    <div class="field">
+      <label for="concert-ticket-maker-seat">Seat</label>
+      <input type="text" id="concert-ticket-maker-seat" class="input" value="A-23" maxlength="12">
+    </div>
+  </div>
+  <div class="grid2">
+    <div class="field">
+      <label for="concert-ticket-maker-price">Price</label>
+      <input type="text" id="concert-ticket-maker-price" class="input" value="$49.99" maxlength="12">
+    </div>
+    <div class="field">
+      <label for="concert-ticket-maker-color">Accent color</label>
+      <input type="color" id="concert-ticket-maker-color" class="input" value="#e11d48" style="height:42px;padding:4px;">
+    </div>
+  </div>
+  <div class="btn-row">
+    <button class="btn btn-primary" id="concert-ticket-maker-download">Download ticket</button>
+  </div>
+  <div class="result">
+    <canvas id="concert-ticket-maker-canvas" style="width:100%;border-radius:10px;"></canvas>
+  </div>
+  <div class="error" id="concert-ticket-maker-error"></div>
+  <p class="note">Novelty use only — this is a design mockup, not a real admission ticket. The barcode strip is decorative.</p>
+</div>
+
+
+  <!-- ADSTERRA-INCONTENT: paste your Adsterra native/in-content ad code inside the div below -->
+  <div class="ad-slot" data-ad="incontent"></div>
+
+  <div class="info-grid">
+    <div class="info-card">
+      <h2>📖 How to use</h2>
+      <ol><li>Fill in the event name, artist, venue, date, seat and price.</li><li>Pick an accent color for your ticket.</li><li>Watch the live preview update as you type.</li><li>Click &quot;Download ticket&quot; to save the PNG.</li></ol>
+    </div>
+    <div class="info-card">
+      <h2>❓ Frequently asked questions</h2>
+      <div class="faq"><details><summary>What does the ticket look like?</summary><p>The ticket is rendered at 1200 × 480 px PNG with a perforated stub and punched notches, like a real ticket.</p></details><details><summary>Is the barcode scannable?</summary><p>The barcode strip is decorative artwork for the design, not a scannable code.</p></details><details><summary>Can I use it as a real ticket?</summary><p>For personal and novelty use — don&#39;t try to pass it off as a real admission ticket.</p></details></div>
+    </div>
+  </div>
+
+  <section class="section">
+    <h2>🔗 Related tools</h2>
+    <div class="tool-grid"><a class="tool-link" href="/tools/app-icon-resizer/" data-search="app icon resizer generate every common app icon size from one image — 16, 32, 48, 180, 192 and 512 px — with instant preview and one-click png downloads. app icon resizer icon generator favicon sizes pwa icon apple touch icon generator"><span class="t-ico">🖼️</span><span class="t-body"><b>App Icon Resizer</b><small>Generate every common app icon size from one image — 16, 32, 48, 180, 192 and 512 px — with …</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/background-remover/" data-search="background remover remove the background from any photo with real on-device ai and download a transparent png. free, private and unlimited — no sign-up needed. background remover remove image background transparent png maker"><span class="t-ico">🖼️</span><span class="t-body"><b>Background Remover</b><small>Remove the background from any photo with real on-device AI and download a transparent PNG. …</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/before-after-slider-maker/" data-search="before/after slider maker upload two photos and get a standalone before/after comparison slider as an html file. before after slider image comparison slider photo compare html before after html"><span class="t-ico">🖼️</span><span class="t-body"><b>Before/After Slider Maker</b><small>Upload two photos and get a standalone before/after comparison slider as an HTML file.</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/business-card-maker/" data-search="business card maker design a business card front (1050×600): your name, role and contact details, color themes, live preview, and a png download. business card maker business card design business card png visiting card maker card designer"><span class="t-ico">🖼️</span><span class="t-body"><b>Business Card Maker</b><small>Design a business card front (1050×600): your name, role and contact details, color themes, …</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/certificate-maker/" data-search="certificate maker design printable certificates: recipient name, course title, date and signature line, live preview, and a high-res png download. certificate maker certificate generator certificate png award certificate maker printable certificate"><span class="t-ico">🖼️</span><span class="t-body"><b>Certificate Maker</b><small>Design printable certificates: recipient name, course title, date and signature line, live p…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/color-splash-effect/" data-search="color splash effect pick a color to keep and turn everything else black-and-white — the classic color splash effect with a tolerance slider. color splash selective color color pop effect black and white photo"><span class="t-ico">🖼️</span><span class="t-body"><b>Color Splash Effect</b><small>Pick a color to keep and turn everything else black-and-white — the classic color splash eff…</small></span><span class="t-arrow">→</span></a></div>
+  </section>
+</main>
+
+<!-- ADSTERRA-FOOTER: paste your Adsterra footer/banner ad code inside the div below -->
+<div class="container"><div class="ad-slot" data-ad="footer"></div></div>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="f-grid">
+      <div>
+        <span class="brandline"><span class="logo-mark">T</span> ToolNest</span>
+        <p>Free online tools that actually work. No sign-up, no watermarks — and your files never leave your device for client-side tools.</p>
+      </div>
+      <div>
+        <h4>Popular</h4>
+        <a href="/tools/qr-code-generator/">QR Code Generator</a>
+        <a href="/tools/background-remover/">Background Remover</a>
+        <a href="/tools/pdf-merger/">PDF Merger</a>
+        <a href="/tools/word-counter/">Word Counter</a>
+      </div>
+      <div>
+        <h4>Categories</h4>
+        <a href="/#image">Image Tools</a>
+        <a href="/#pdf">PDF &amp; Documents</a>
+        <a href="/#calculators">Calculators</a>
+        <a href="/#developer">Developer Tools</a>
+      </div>
+      <div>
+        <h4>Site</h4>
+        <a href="/">Home</a>
+        <a href="/#all-tools">All Tools</a>
+        <a href="/sitemap.xml">Sitemap</a>
+      </div>
+    </div>
+    <div class="f-bottom">© 2026 ToolNest · Free tools for everyone · Made with care</div>
+  </div>
+</footer>
+
+<script src="/assets/site.js?v=5"></script>
+
+<script>
+/* Concert Ticket Maker — ticket with perforated stub, punched notches, decorative barcode. */
+(function () {
+  'use strict';
+  var SLUG = 'concert-ticket-maker';
+  var ERR = SLUG + '-error';
+  var W = 1200, H = 480;
+  var STUB = 300; // stub width
+
+  function v(id) {
+    var el = document.getElementById(SLUG + '-' + id);
+    return el ? el.value : '';
+  }
+
+  function drawBarcode(ctx, x, y, w, h) {
+    ctx.save();
+    ctx.fillStyle = '#fff';
+    ctx.fillRect(x, y, w, h);
+    ctx.fillStyle = '#111';
+    var bx = x + 8;
+    var seed = 7;
+    function rnd() { seed = (seed * 16807) % 2147483647; return seed / 2147483647; }
+    while (bx < x + w - 8) {
+      var bw = 1 + Math.floor(rnd() * 4);
+      if (rnd() < 0.55) ctx.fillRect(bx, y + 6, bw, h - 22);
+      bx += bw + 1 + Math.floor(rnd() * 3);
+    }
+    ctx.fillStyle = '#111';
+    ctx.font = '16px monospace';
+    ctx.textAlign = 'center';
+    ctx.fillText('ADMIT ONE', x + w / 2, y + h - 6);
+    ctx.restore();
+  }
+
+  function draw() {
+    var canvas = document.getElementById(SLUG + '-canvas');
+    if (!canvas) return;
+    canvas.width = W; canvas.height = H;
+    var ctx = canvas.getContext('2d');
+    var accent = v('color') || '#e11d48';
+
+    // page backdrop (transparent corners for notches)
+    ctx.clearRect(0, 0, W, H);
+
+    // ticket body
+    var g = ctx.createLinearGradient(0, 0, W, 0);
+    g.addColorStop(0, '#17171c');
+    g.addColorStop(1, '#26262e');
+    ctx.fillStyle = g;
+    ctx.beginPath();
+    var r = 26;
+    ctx.moveTo(r, 0);
+    ctx.lineTo(W - r, 0); ctx.arcTo(W, 0, W, r, r);
+    ctx.lineTo(W, H - r); ctx.arcTo(W, H, W - r, H, r);
+    ctx.lineTo(r, H); ctx.arcTo(0, H, 0, H - r, r);
+    ctx.lineTo(0, r); ctx.arcTo(0, 0, r, 0, r);
+    ctx.closePath(); ctx.fill();
+
+    // accent band on top
+    ctx.fillStyle = accent;
+    ctx.fillRect(0, 0, W, 26);
+    // subtle diagonal texture
+    ctx.strokeStyle = 'rgba(255,255,255,0.05)';
+    ctx.lineWidth = 8;
+    for (var dx = -H; dx < W; dx += 46) {
+      ctx.beginPath(); ctx.moveTo(dx, H); ctx.lineTo(dx + H, 0); ctx.stroke();
+    }
+
+    var sx = W - STUB; // stub x
+
+    // main fields
+    ctx.textAlign = 'left';
+    ctx.fillStyle = accent;
+    ctx.font = 'bold 30px Arial, sans-serif';
+    ctx.fillText('★ LIVE EVENT ★', 60, 96);
+    ctx.fillStyle = '#ffffff';
+    ctx.font = 'bold 64px Arial, sans-serif';
+    var ev = (v('event') || '').toUpperCase();
+    while (ctx.measureText(ev).width > sx - 160 && ev.length > 4) ev = ev.slice(0, -1);
+    ctx.fillText(ev, 60, 168);
+    ctx.fillStyle = '#c9c9d4';
+    ctx.font = '36px Arial, sans-serif';
+    ctx.fillText(v('artist'), 60, 226);
+    ctx.font = '28px Arial, sans-serif';
+    ctx.fillStyle = '#9a9aa8';
+    ctx.fillText(v('venue'), 60, 286);
+    ctx.fillText(v('date'), 60, 330);
+    ctx.fillStyle = '#ffffff';
+    ctx.font = 'bold 30px Arial, sans-serif';
+    ctx.fillText('SEAT  ' + v('seat'), 60, 392);
+    ctx.fillStyle = accent;
+    ctx.font = 'bold 44px Arial, sans-serif';
+    ctx.fillText(v('price'), 60, 448 - 8);
+
+    // decorative barcode on main section
+    drawBarcode(ctx, sx - 250, 330, 210, 100);
+
+    // perforation
+    ctx.strokeStyle = 'rgba(255,255,255,0.55)';
+    ctx.lineWidth = 3;
+    ctx.setLineDash([14, 12]);
+    ctx.beginPath(); ctx.moveTo(sx, 14); ctx.lineTo(sx, H - 14); ctx.stroke();
+    ctx.setLineDash([]);
+    // punched notches top/bottom
+    ctx.fillStyle = '#0b0b0e';
+    ctx.beginPath(); ctx.arc(sx, 0, 22, 0, 7); ctx.fill();
+    ctx.beginPath(); ctx.arc(sx, H, 22, 0, 7); ctx.fill();
+
+    // stub
+    ctx.save();
+    ctx.translate(sx, 0);
+    ctx.fillStyle = accent;
+    ctx.fillRect(0, 0, STUB, 64);
+    ctx.fillStyle = '#fff';
+    ctx.font = 'bold 26px Arial, sans-serif';
+    ctx.textAlign = 'center';
+    ctx.fillText('ADMIT ONE', STUB / 2, 43);
+    ctx.fillStyle = '#e8e8ee';
+    ctx.font = 'bold 30px Arial, sans-serif';
+    var ev2 = (v('event') || '').toUpperCase();
+    ctx.save();
+    ctx.translate(STUB / 2, 210);
+    ctx.rotate(-Math.PI / 2);
+    while (ctx.measureText(ev2).width > 200 && ev2.length > 4) ev2 = ev2.slice(0, -1);
+    ctx.fillText(ev2, 0, 0);
+    ctx.restore();
+    ctx.fillStyle = '#c9c9d4';
+    ctx.font = '24px Arial, sans-serif';
+    ctx.fillText(v('date'), STUB / 2, 330);
+    ctx.fillText('SEAT ' + v('seat'), STUB / 2, 366);
+    ctx.fillStyle = accent;
+    ctx.font = 'bold 34px Arial, sans-serif';
+    ctx.fillText(v('price'), STUB / 2, 412);
+    ctx.restore();
+  }
+
+  try {
+    if (!document.getElementById(SLUG + '-canvas')) return;
+    draw();
+    ['event', 'artist', 'venue', 'date', 'seat', 'price'].forEach(function (k) {
+      TN.on(SLUG + '-' + k, 'input', TN.debounce(draw, 120));
+    });
+    TN.on(SLUG + '-color', 'input', draw);
+    TN.on(SLUG + '-download', 'click', function () {
+      TN.clearErr(ERR);
+      draw();
+      var canvas = document.getElementById(SLUG + '-canvas');
+      try {
+        canvas.toBlob(function (b) {
+          if (b) TN.download(b, 'concert-ticket.png');
+          else TN.setErr(ERR, 'Could not export the ticket.');
+        }, 'image/png');
+      } catch (e) { TN.setErr(ERR, 'Could not export the ticket.'); }
+    });
+  } catch (e) {
+    TN.setErr(ERR, 'This tool could not start: ' + (e && e.message || e));
+  }
+})();
+
+</script>
+</body>
+</html>

@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ID Badge Maker — Free Online | ToolNest</title>
+<meta name="description" content="Create a photo ID badge with name, role, ID number and company branding — rendered as a printable badge.">
+<meta name="keywords" content="id badge maker, photo id card, employee badge, conference badge">
+<link rel="canonical" href="https://toolnest.vercel.app/tools/id-badge-maker/">
+<meta name="theme-color" content="#07070b">
+<meta property="og:title" content="ID Badge Maker — Free Online | ToolNest">
+<meta property="og:description" content="Create a photo ID badge with name, role, ID number and company branding — rendered as a printable badge.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css?v=4">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%23e01111'/><text x='50' y='68' font-size='58' text-anchor='middle' fill='white' font-family='Arial' font-weight='bold'>T</text></svg>">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebApplication","name":"ID Badge Maker","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0"},"url":"https://toolnest.vercel.app/tools/id-badge-maker/","description":"Create a photo ID badge with name, role, ID number and company branding — rendered as a printable badge."},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What size is the badge?","acceptedAnswer":{"@type":"Answer","text":"The badge is rendered at 640 × 1000 px PNG, a standard vertical badge ratio."}},{"@type":"Question","name":"Does the barcode work?","acceptedAnswer":{"@type":"Answer","text":"The striped code at the bottom is decorative artwork, not a real scannable code."}},{"@type":"Question","name":"Can I use it as a real staff ID?","acceptedAnswer":{"@type":"Answer","text":"For novelty, events, cosplay and mockups. Don't use it to impersonate staff or gain access anywhere."}}]}]}</script>
+</head>
+<body>
+<header class="site-header">
+  <div class="container">
+    <a class="logo" href="/"><span class="logo-mark">T</span> ToolNest</a>
+    <div class="header-right">
+      <form class="nav-search" action="/" method="get" role="search">
+        <span class="ns-icon">🔍</span>
+        <input type="search" name="q" placeholder="Search tools…" aria-label="Search tools" autocomplete="off">
+      </form>
+      <div class="menu-wrap">
+        <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="menuPanel" aria-label="Open menu"><span></span><span></span><span></span></button>
+        <nav class="menu-panel" id="menuPanel" aria-label="Site">
+          <a href="/">Home</a>
+          <a href="/#categories">Categories</a>
+          <a href="/#all-tools">All Tools</a>
+        </nav>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ADSTERRA-HEADER: paste your Adsterra banner ad code inside the div below -->
+<div class="container"><div class="ad-slot ad-leaderboard" data-ad="header"></div></div>
+
+<main class="container">
+  <nav class="crumbs"><a href="/">Home</a> &rsaquo; <a href="/#image">Image Tools</a> &rsaquo; ID Badge Maker</nav>
+  <div class="tool-hero">
+    <h1>ID Badge Maker</h1>
+    <p>Create a photo ID badge with name, role, ID number and company branding — rendered as a printable badge.</p>
+  </div>
+
+  <div class="tool-card">
+  <div class="grid2">
+    <div class="field">
+      <label for="id-badge-maker-file">Headshot photo</label>
+      <input type="file" id="id-badge-maker-file" accept="image/*" class="input">
+    </div>
+    <div class="field">
+      <label for="id-badge-maker-company">Company / org</label>
+      <input type="text" id="id-badge-maker-company" class="input" value="ACME CORP" maxlength="30">
+    </div>
+  </div>
+  <div class="grid2">
+    <div class="field">
+      <label for="id-badge-maker-name">Full name</label>
+      <input type="text" id="id-badge-maker-name" class="input" value="Alex Morgan" maxlength="30">
+    </div>
+    <div class="field">
+      <label for="id-badge-maker-role">Role</label>
+      <input type="text" id="id-badge-maker-role" class="input" value="Event Staff" maxlength="30">
+    </div>
+  </div>
+  <div class="grid2">
+    <div class="field">
+      <label for="id-badge-maker-idnum">ID number</label>
+      <input type="text" id="id-badge-maker-idnum" class="input" value="ID-004213" maxlength="20">
+    </div>
+    <div class="field">
+      <label for="id-badge-maker-color">Theme color</label>
+      <input type="color" id="id-badge-maker-color" class="input" value="#166534" style="height:42px;padding:4px;">
+    </div>
+  </div>
+  <div class="btn-row">
+    <button class="btn btn-primary" id="id-badge-maker-download">Download badge</button>
+  </div>
+  <div class="result">
+    <canvas id="id-badge-maker-canvas" style="width:100%;max-width:320px;border-radius:14px;box-shadow:0 4px 18px rgba(0,0,0,0.25);"></canvas>
+  </div>
+  <div class="error" id="id-badge-maker-error"></div>
+  <p class="note">For novelty, events, cosplay and mockups — not a real credential. The striped code is decorative. Your photo never leaves your browser.</p>
+</div>
+
+
+  <!-- ADSTERRA-INCONTENT: paste your Adsterra native/in-content ad code inside the div below -->
+  <div class="ad-slot" data-ad="incontent"></div>
+
+  <div class="info-grid">
+    <div class="info-card">
+      <h2>📖 How to use</h2>
+      <ol><li>Upload a headshot photo for the badge.</li><li>Type the name, role, ID number and company.</li><li>Pick a theme color.</li><li>Click &quot;Download badge&quot; to save the PNG.</li></ol>
+    </div>
+    <div class="info-card">
+      <h2>❓ Frequently asked questions</h2>
+      <div class="faq"><details><summary>What size is the badge?</summary><p>The badge is rendered at 640 × 1000 px PNG, a standard vertical badge ratio.</p></details><details><summary>Does the barcode work?</summary><p>The striped code at the bottom is decorative artwork, not a real scannable code.</p></details><details><summary>Can I use it as a real staff ID?</summary><p>For novelty, events, cosplay and mockups. Don&#39;t use it to impersonate staff or gain access anywhere.</p></details></div>
+    </div>
+  </div>
+
+  <section class="section">
+    <h2>🔗 Related tools</h2>
+    <div class="tool-grid"><a class="tool-link" href="/tools/app-icon-resizer/" data-search="app icon resizer generate every common app icon size from one image — 16, 32, 48, 180, 192 and 512 px — with instant preview and one-click png downloads. app icon resizer icon generator favicon sizes pwa icon apple touch icon generator"><span class="t-ico">🖼️</span><span class="t-body"><b>App Icon Resizer</b><small>Generate every common app icon size from one image — 16, 32, 48, 180, 192 and 512 px — with …</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/background-remover/" data-search="background remover remove the background from any photo with real on-device ai and download a transparent png. free, private and unlimited — no sign-up needed. background remover remove image background transparent png maker"><span class="t-ico">🖼️</span><span class="t-body"><b>Background Remover</b><small>Remove the background from any photo with real on-device AI and download a transparent PNG. …</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/before-after-slider-maker/" data-search="before/after slider maker upload two photos and get a standalone before/after comparison slider as an html file. before after slider image comparison slider photo compare html before after html"><span class="t-ico">🖼️</span><span class="t-body"><b>Before/After Slider Maker</b><small>Upload two photos and get a standalone before/after comparison slider as an HTML file.</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/business-card-maker/" data-search="business card maker design a business card front (1050×600): your name, role and contact details, color themes, live preview, and a png download. business card maker business card design business card png visiting card maker card designer"><span class="t-ico">🖼️</span><span class="t-body"><b>Business Card Maker</b><small>Design a business card front (1050×600): your name, role and contact details, color themes, …</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/certificate-maker/" data-search="certificate maker design printable certificates: recipient name, course title, date and signature line, live preview, and a high-res png download. certificate maker certificate generator certificate png award certificate maker printable certificate"><span class="t-ico">🖼️</span><span class="t-body"><b>Certificate Maker</b><small>Design printable certificates: recipient name, course title, date and signature line, live p…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/color-splash-effect/" data-search="color splash effect pick a color to keep and turn everything else black-and-white — the classic color splash effect with a tolerance slider. color splash selective color color pop effect black and white photo"><span class="t-ico">🖼️</span><span class="t-body"><b>Color Splash Effect</b><small>Pick a color to keep and turn everything else black-and-white — the classic color splash eff…</small></span><span class="t-arrow">→</span></a></div>
+  </section>
+</main>
+
+<!-- ADSTERRA-FOOTER: paste your Adsterra footer/banner ad code inside the div below -->
+<div class="container"><div class="ad-slot" data-ad="footer"></div></div>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="f-grid">
+      <div>
+        <span class="brandline"><span class="logo-mark">T</span> ToolNest</span>
+        <p>Free online tools that actually work. No sign-up, no watermarks — and your files never leave your device for client-side tools.</p>
+      </div>
+      <div>
+        <h4>Popular</h4>
+        <a href="/tools/qr-code-generator/">QR Code Generator</a>
+        <a href="/tools/background-remover/">Background Remover</a>
+        <a href="/tools/pdf-merger/">PDF Merger</a>
+        <a href="/tools/word-counter/">Word Counter</a>
+      </div>
+      <div>
+        <h4>Categories</h4>
+        <a href="/#image">Image Tools</a>
+        <a href="/#pdf">PDF &amp; Documents</a>
+        <a href="/#calculators">Calculators</a>
+        <a href="/#developer">Developer Tools</a>
+      </div>
+      <div>
+        <h4>Site</h4>
+        <a href="/">Home</a>
+        <a href="/#all-tools">All Tools</a>
+        <a href="/sitemap.xml">Sitemap</a>
+      </div>
+    </div>
+    <div class="f-bottom">© 2026 ToolNest · Free tools for everyone · Made with care</div>
+  </div>
+</footer>
+
+<script src="/assets/site.js?v=5"></script>
+
+<script>
+/* ID Badge Maker — photo ID badge with clip slot, details, decorative code. */
+(function () {
+  'use strict';
+  var SLUG = 'id-badge-maker';
+  var ERR = SLUG + '-error';
+  var W = 640, H = 1000;
+  var img = null;
+
+  function v(id) {
+    var el = document.getElementById(SLUG + '-' + id);
+    return el ? el.value : '';
+  }
+
+  function rr(ctx, x, y, w, h, r) {
+    ctx.beginPath();
+    ctx.moveTo(x + r, y);
+    ctx.arcTo(x + w, y, x + w, y + h, r);
+    ctx.arcTo(x + w, y + h, x, y + h, r);
+    ctx.arcTo(x, y + h, x, y, r);
+    ctx.arcTo(x, y, x + w, y, r);
+    ctx.closePath();
+  }
+
+  function draw() {
+    var canvas = document.getElementById(SLUG + '-canvas');
+    if (!canvas) return;
+    canvas.width = W; canvas.height = H;
+    var ctx = canvas.getContext('2d');
+    var theme = v('color') || '#166534';
+
+    // card
+    var g = ctx.createLinearGradient(0, 0, 0, H);
+    g.addColorStop(0, '#ffffff');
+    g.addColorStop(1, '#eef1f4');
+    rr(ctx, 0, 0, W, H, 40);
+    ctx.fillStyle = g; ctx.fill();
+
+    // clip slot
+    ctx.fillStyle = '#c9ced4';
+    rr(ctx, W / 2 - 90, 26, 180, 34, 17); ctx.fill();
+    ctx.fillStyle = '#8f959c';
+    rr(ctx, W / 2 - 70, 32, 140, 10, 5); ctx.fill();
+
+    // header band
+    ctx.fillStyle = theme;
+    rr(ctx, 0, 78, W, 130, 0);
+    ctx.fillRect(0, 78 + 0, W, 130);
+    ctx.fillStyle = '#fff';
+    ctx.font = 'bold 44px Arial, sans-serif';
+    ctx.textAlign = 'center';
+    var co = (v('company') || '').toUpperCase();
+    while (ctx.measureText(co).width > W - 80 && co.length > 3) co = co.slice(0, -1);
+    ctx.fillText(co, W / 2, 162);
+
+    // photo
+    var px = 170, py = 250, pw = W - 340, ph = 330;
+    ctx.save();
+    rr(ctx, px, py, pw, ph, 18);
+    ctx.clip();
+    if (img) {
+      var s = Math.max(pw / img.naturalWidth, ph / img.naturalHeight);
+      var dw = img.naturalWidth * s, dh = img.naturalHeight * s;
+      ctx.drawImage(img, px + (pw - dw) / 2, py + (ph - dh) / 2, dw, dh);
+    } else {
+      ctx.fillStyle = '#dde2e8';
+      ctx.fillRect(px, py, pw, ph);
+      ctx.fillStyle = '#8f959c';
+      ctx.font = '28px Arial, sans-serif';
+      ctx.fillText('Choose a photo', W / 2, py + ph / 2);
+    }
+    ctx.restore();
+    rr(ctx, px, py, pw, ph, 18);
+    ctx.strokeStyle = theme; ctx.lineWidth = 6; ctx.stroke();
+
+    // details
+    var y = 660;
+    ctx.fillStyle = '#1a1a1a';
+    ctx.font = 'bold 52px Arial, sans-serif';
+    var nm = v('name') || 'Your Name';
+    while (ctx.measureText(nm).width > W - 80 && nm.length > 3) nm = nm.slice(0, -1);
+    ctx.fillText(nm, W / 2, y);
+    y += 58;
+    ctx.fillStyle = theme;
+    ctx.font = 'bold 34px Arial, sans-serif';
+    ctx.fillText(v('role') || 'Role', W / 2, y);
+    y += 66;
+    ctx.fillStyle = '#555b63';
+    ctx.font = '30px monospace';
+    ctx.fillText(v('idnum') || 'ID-000000', W / 2, y);
+
+    // decorative striped code
+    var cw = 320, ch = 84, cx = (W - cw) / 2, cy = H - 170;
+    ctx.fillStyle = '#fff';
+    ctx.fillRect(cx, cy, cw, ch);
+    ctx.fillStyle = '#111';
+    var seed = 42, bx = cx + 10;
+    function rnd() { seed = (seed * 16807) % 2147483647; return seed / 2147483647; }
+    while (bx < cx + cw - 10) {
+      var bw = 1 + Math.floor(rnd() * 4);
+      if (rnd() < 0.55) ctx.fillRect(bx, cy + 8, bw, ch - 16);
+      bx += bw + 1 + Math.floor(rnd() * 3);
+    }
+    ctx.strokeStyle = '#c9ced4';
+    ctx.lineWidth = 2;
+    ctx.strokeRect(cx, cy, cw, ch);
+
+    ctx.fillStyle = '#8f959c';
+    ctx.font = '20px Arial, sans-serif';
+    ctx.fillText('NOVELTY BADGE — NOT AN OFFICIAL ID', W / 2, H - 44);
+  }
+
+  try {
+    if (!document.getElementById(SLUG + '-canvas')) return;
+    draw();
+    TN.on(SLUG + '-file', 'change', function () {
+      var f = this.files && this.files[0];
+      if (!f) return;
+      TN.clearErr(ERR);
+      TN.readAsDataURL(f).then(TN.loadImage).then(function (im) { img = im; draw(); })
+        .catch(function () { TN.setErr(ERR, 'That file could not be read as an image. Try a JPG, PNG or WebP file.'); });
+    });
+    ['name', 'role', 'idnum', 'company'].forEach(function (k) {
+      TN.on(SLUG + '-' + k, 'input', TN.debounce(draw, 120));
+    });
+    TN.on(SLUG + '-color', 'input', draw);
+    TN.on(SLUG + '-download', 'click', function () {
+      TN.clearErr(ERR);
+      draw();
+      var canvas = document.getElementById(SLUG + '-canvas');
+      try {
+        canvas.toBlob(function (b) {
+          if (b) TN.download(b, 'id-badge.png');
+          else TN.setErr(ERR, 'Could not export the badge.');
+        }, 'image/png');
+      } catch (e) { TN.setErr(ERR, 'Could not export the badge.'); }
+    });
+  } catch (e) {
+    TN.setErr(ERR, 'This tool could not start: ' + (e && e.message || e));
+  }
+})();
+
+</script>
+</body>
+</html>

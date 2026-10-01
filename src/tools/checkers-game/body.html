@@ -1,0 +1,26 @@
+<div class="tool-card" style="text-align:center">
+  <div class="grid2" style="max-width:440px;margin:0 auto 10px">
+    <div class="field" style="text-align:left">
+      <label for="checkers-game-mode">Mode</label>
+      <select class="input" id="checkers-game-mode">
+        <option value="ai" selected>Vs Computer (you are dark)</option>
+        <option value="2p">Two players</option>
+      </select>
+    </div>
+    <div class="field" style="text-align:left">
+      <label>&nbsp;</label>
+      <button class="btn btn-primary" id="checkers-game-new" style="width:100%">New game</button>
+    </div>
+  </div>
+  <p class="muted" id="checkers-game-status" style="min-height:24px;font-weight:600"></p>
+  <div style="display:inline-block;max-width:100%;overflow:auto">
+    <div id="checkers-game-board" style="display:inline-grid;grid-template-columns:repeat(8,minmax(34px,52px));gap:0;border:3px solid #4D7C0F;border-radius:8px;overflow:hidden"></div>
+  </div>
+  <div class="stat-cards" style="max-width:440px;margin:12px auto 0">
+    <div class="stat-card"><div class="v" id="checkers-game-you">12</div><div class="l">Your pieces</div></div>
+    <div class="stat-card"><div class="v" id="checkers-game-opp">12</div><div class="l">Opponent pieces</div></div>
+    <div class="stat-card"><div class="v" id="checkers-game-turn">You</div><div class="l">Turn</div></div>
+  </div>
+  <p class="note" style="max-width:440px;margin:10px auto 0">Captures are forced — when a jump is available the game highlights only capturing moves. Kings move diagonally in both directions.</p>
+  <div class="error" id="checkers-game-error"></div>
+</div>

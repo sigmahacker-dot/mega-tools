@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Secure Note Vault — Free Online | ToolNest</title>
+<meta name="description" content="Store notes encrypted with real AES-256-GCM (PBKDF2 password key). Genuinely encrypted at rest.">
+<meta name="keywords" content="secure notes, encrypted notes, private notes, password protected notes">
+<link rel="canonical" href="https://toolnest.vercel.app/tools/secure-note-vault/">
+<meta name="theme-color" content="#07070b">
+<meta property="og:title" content="Secure Note Vault — Free Online | ToolNest">
+<meta property="og:description" content="Store notes encrypted with real AES-256-GCM (PBKDF2 password key). Genuinely encrypted at rest.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css?v=4">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%23e01111'/><text x='50' y='68' font-size='58' text-anchor='middle' fill='white' font-family='Arial' font-weight='bold'>T</text></svg>">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebApplication","name":"Secure Note Vault","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0"},"url":"https://toolnest.vercel.app/tools/secure-note-vault/","description":"Store notes encrypted with real AES-256-GCM (PBKDF2 password key). Genuinely encrypted at rest."},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Is the encryption real?","acceptedAnswer":{"@type":"Answer","text":"Yes. Each note is encrypted with AES-256-GCM using a key derived from your password via PBKDF2 (100,000 SHA-256 iterations) with a random salt. Only ciphertext is stored."}},{"@type":"Question","name":"What if I forget my password?","acceptedAnswer":{"@type":"Answer","text":"No. Your password never leaves the page and is never stored. Wrong password = failed decryption, and there is no recovery."}},{"@type":"Question","name":"Can I access notes on another device?","acceptedAnswer":{"@type":"Answer","text":"You can unlock the vault with the password on any device, but the encrypted notes are stored per-browser — paste the ciphertext to the other device manually."}},{"@type":"Question","name":"How do I use it?","acceptedAnswer":{"@type":"Answer","text":"Enter your password, give the note a title, write it, and click Save Encrypted Note. Use Unlock Vault to decrypt and view."}}]}]}</script>
+</head>
+<body>
+<header class="site-header">
+  <div class="container">
+    <a class="logo" href="/"><span class="logo-mark">T</span> ToolNest</a>
+    <div class="header-right">
+      <form class="nav-search" action="/" method="get" role="search">
+        <span class="ns-icon">🔍</span>
+        <input type="search" name="q" placeholder="Search tools…" aria-label="Search tools" autocomplete="off">
+      </form>
+      <div class="menu-wrap">
+        <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="menuPanel" aria-label="Open menu"><span></span><span></span><span></span></button>
+        <nav class="menu-panel" id="menuPanel" aria-label="Site">
+          <a href="/">Home</a>
+          <a href="/#categories">Categories</a>
+          <a href="/#all-tools">All Tools</a>
+        </nav>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ADSTERRA-HEADER: paste your Adsterra banner ad code inside the div below -->
+<div class="container"><div class="ad-slot ad-leaderboard" data-ad="header"></div></div>
+
+<main class="container">
+  <nav class="crumbs"><a href="/">Home</a> &rsaquo; <a href="/#fun">Fun &amp; Lifestyle</a> &rsaquo; Secure Note Vault</nav>
+  <div class="tool-hero">
+    <h1>Secure Note Vault</h1>
+    <p>Store notes encrypted with real AES-256-GCM (PBKDF2 password key). Genuinely encrypted at rest.</p>
+  </div>
+
+  <div class="tool-card">
+  <div class="field">
+    <label for="secure-note-vault-pass">Vault password</label>
+    <input class="input" type="password" id="secure-note-vault-pass" placeholder="Your vault password" autocomplete="current-password">
+  </div>
+  <p class="note">Your password is never stored — only the encrypted ciphertext is kept in this browser.</p>
+  <div class="field">
+    <label for="secure-note-vault-title">Note title</label>
+    <input class="input" type="text" id="secure-note-vault-title" placeholder="Note title">
+  </div>
+  <div class="field">
+    <label for="secure-note-vault-body">Note content</label>
+    <textarea class="textarea" id="secure-note-vault-body" rows="5" placeholder="Secret content…"></textarea>
+  </div>
+  <div class="btn-row">
+    <button class="btn" id="secure-note-vault-save">Save Encrypted Note</button>
+    <button class="btn btn-outline" id="secure-note-vault-unlock">Unlock Vault</button>
+    <button class="btn btn-outline" id="secure-note-vault-lock">Lock</button>
+  </div>
+  <div class="error" id="secure-note-vault-error"></div>
+</div>
+
+<div class="tool-card">
+  <h3>Vault <span class="muted" id="secure-note-vault-state"></span></h3>
+  <div id="secure-note-vault-list"></div>
+</div>
+
+  <!-- ADSTERRA-INCONTENT: paste your Adsterra native/in-content ad code inside the div below -->
+  <div class="ad-slot" data-ad="incontent"></div>
+
+  <div class="info-grid">
+    <div class="info-card">
+      <h2>📖 How to use</h2>
+      <ol><li>Enter a strong vault password (it is never stored).</li><li>Give the note a title and write its content.</li><li>Click Save Encrypted Note — only ciphertext is stored.</li><li>Click Unlock Vault with your password to read notes.</li></ol>
+    </div>
+    <div class="info-card">
+      <h2>❓ Frequently asked questions</h2>
+      <div class="faq"><details><summary>Is the encryption real?</summary><p>Yes. Each note is encrypted with AES-256-GCM using a key derived from your password via PBKDF2 (100,000 SHA-256 iterations) with a random salt. Only ciphertext is stored.</p></details><details><summary>What if I forget my password?</summary><p>No. Your password never leaves the page and is never stored. Wrong password = failed decryption, and there is no recovery.</p></details><details><summary>Can I access notes on another device?</summary><p>You can unlock the vault with the password on any device, but the encrypted notes are stored per-browser — paste the ciphertext to the other device manually.</p></details><details><summary>How do I use it?</summary><p>Enter your password, give the note a title, write it, and click Save Encrypted Note. Use Unlock Vault to decrypt and view.</p></details></div>
+    </div>
+  </div>
+
+  <section class="section">
+    <h2>🔗 Related tools</h2>
+    <div class="tool-grid"><a class="tool-link" href="/tools/100-day-challenge-tracker/" data-search="100-day challenge tracker track a 100-day challenge with a checkable 100-cell grid, streaks and stats. 100 day challenge habit tracker 100 days challenge tracker streak tracker"><span class="t-ico">🎲</span><span class="t-body"><b>100-Day Challenge Tracker</b><small>Track a 100-day challenge with a checkable 100-cell grid, streaks and stats.</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/24-game/" data-search="24 game the 24 game — combine four numbers with + − × ÷ to make 24. built-in solver guarantees every deal and gives hints. 24 game make 24 game 24 puzzle solver math puzzle game"><span class="t-ico">🎲</span><span class="t-body"><b>24 Game</b><small>The 24 Game — combine four numbers with + − × ÷ to make 24. Built-in solver guarantees every…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/aim-trainer-game/" data-search="aim trainer game test and train your aim — targets pop up at random spots for 30 seconds. hits, misses and accuracy are tracked live. aim trainer aim test reaction test click speed test fps aim trainer"><span class="t-ico">🎲</span><span class="t-body"><b>Aim Trainer Game</b><small>Test and train your aim — targets pop up at random spots for 30 seconds. Hits, misses and ac…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/asteroid-shooter/" data-search="asteroid shooter asteroid shooter — rotate, thrust and blast splitting asteroids on canvas. 3 lives, rising levels. asteroid shooter game asteroids game online space shooter canvas"><span class="t-ico">🎲</span><span class="t-body"><b>Asteroid Shooter</b><small>Asteroid Shooter — rotate, thrust and blast splitting asteroids on canvas. 3 lives, rising l…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/attendance-tracker/" data-search="attendance tracker track class attendance: roster with present/absent marks per date and % summaries. attendance tracker class attendance student attendance roll call app"><span class="t-ico">🎲</span><span class="t-body"><b>Attendance Tracker</b><small>Track class attendance: roster with present/absent marks per date and % summaries.</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/baby-name-generator/" data-search="baby name generator discover baby names by gender and origin — pakistani, arabic, western, indian or turkish — with meanings, random picks and tap-to-copy. baby name generator baby names with meanings muslim baby names boy girl names"><span class="t-ico">🎲</span><span class="t-body"><b>Baby Name Generator</b><small>Discover baby names by gender and origin — Pakistani, Arabic, Western, Indian or Turkish — w…</small></span><span class="t-arrow">→</span></a></div>
+  </section>
+</main>
+
+<!-- ADSTERRA-FOOTER: paste your Adsterra footer/banner ad code inside the div below -->
+<div class="container"><div class="ad-slot" data-ad="footer"></div></div>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="f-grid">
+      <div>
+        <span class="brandline"><span class="logo-mark">T</span> ToolNest</span>
+        <p>Free online tools that actually work. No sign-up, no watermarks — and your files never leave your device for client-side tools.</p>
+      </div>
+      <div>
+        <h4>Popular</h4>
+        <a href="/tools/qr-code-generator/">QR Code Generator</a>
+        <a href="/tools/background-remover/">Background Remover</a>
+        <a href="/tools/pdf-merger/">PDF Merger</a>
+        <a href="/tools/word-counter/">Word Counter</a>
+      </div>
+      <div>
+        <h4>Categories</h4>
+        <a href="/#image">Image Tools</a>
+        <a href="/#pdf">PDF &amp; Documents</a>
+        <a href="/#calculators">Calculators</a>
+        <a href="/#developer">Developer Tools</a>
+      </div>
+      <div>
+        <h4>Site</h4>
+        <a href="/">Home</a>
+        <a href="/#all-tools">All Tools</a>
+        <a href="/sitemap.xml">Sitemap</a>
+      </div>
+    </div>
+    <div class="f-bottom">© 2026 ToolNest · Free tools for everyone · Made with care</div>
+  </div>
+</footer>
+
+<script src="/assets/site.js?v=5"></script>
+
+<script>
+/* Secure Note Vault — notes encrypted with AES-GCM, key from PBKDF2. */
+(function () {
+  'use strict';
+
+  var SLUG = 'secure-note-vault';
+  var KEY = 'tn-' + SLUG + '-notes';
+  var ITERS = 100000;
+
+  function cryptoOk() {
+    return window.crypto && window.crypto.subtle && typeof TextEncoder !== 'undefined';
+  }
+
+  function load() {
+    try {
+      var arr = JSON.parse(localStorage.getItem(KEY) || '[]');
+      return Array.isArray(arr) ? arr : [];
+    } catch (e) { return []; }
+  }
+
+  function persist(notes) {
+    try { localStorage.setItem(KEY, JSON.stringify(notes)); }
+    catch (e) { TN.setErr(SLUG + '-error', 'Could not save — browser storage is unavailable.'); }
+  }
+
+  function b64encode(bytes) {
+    var u8 = new Uint8Array(bytes), bin = '';
+    for (var i = 0; i < u8.length; i++) bin += String.fromCharCode(u8[i]);
+    return btoa(bin);
+  }
+
+  function b64decode(s) {
+    var bin = atob(s);
+    var u8 = new Uint8Array(bin.length);
+    for (var i = 0; i < bin.length; i++) u8[i] = bin.charCodeAt(i);
+    return u8;
+  }
+
+  function deriveKey(password, salt) {
+    var enc = new TextEncoder();
+    return crypto.subtle.importKey('raw', enc.encode(password), 'PBKDF2', false, ['deriveKey'])
+      .then(function (base) {
+        return crypto.subtle.deriveKey(
+          { name: 'PBKDF2', salt: salt, iterations: ITERS, hash: 'SHA-256' },
+          base, { name: 'AES-GCM', length: 256 }, false, ['encrypt', 'decrypt']);
+      });
+  }
+
+  function encryptNote(password, text) {
+    var enc = new TextEncoder();
+    var salt = crypto.getRandomValues(new Uint8Array(16));
+    var iv = crypto.getRandomValues(new Uint8Array(12));
+    return deriveKey(password, salt).then(function (key) {
+      return crypto.subtle.encrypt({ name: 'AES-GCM', iv: iv }, key, enc.encode(text));
+    }).then(function (ct) {
+      return b64encode(salt) + '.' + b64encode(iv) + '.' + b64encode(ct);
+    });
+  }
+
+  function decryptNote(password, packed) {
+    var parts = packed.split('.');
+    if (parts.length !== 3) return Promise.reject(new Error('bad format'));
+    var salt = b64decode(parts[0]), iv = b64decode(parts[1]), ct = b64decode(parts[2]);
+    return deriveKey(password, salt).then(function (key) {
+      return crypto.subtle.decrypt({ name: 'AES-GCM', iv: iv }, key, ct);
+    }).then(function (pt) {
+      return new TextDecoder().decode(pt);
+    });
+  }
+
+  function renderLocked() {
+    var notes = load();
+    TN.el(SLUG + '-state').textContent = '🔒 locked (' + notes.length + ' encrypted notes)';
+    var list = TN.el(SLUG + '-list');
+    if (!notes.length) { list.innerHTML = '<p class="muted">Vault is empty.</p>'; return; }
+    list.innerHTML = notes.map(function (n) {
+      return '<div class="tool-card" style="margin:8px 0">' +
+        '<strong>🔒 ' + TN.esc(n.title) + '</strong>' +
+        '<p class="muted" style="margin:2px 0">' + n.packed.length + ' chars of ciphertext — unlock to read</p>' +
+        '<button class="btn btn-sm btn-outline" data-del="' + n.id + '">Delete</button></div>';
+    }).join('');
+    bindDelete(list);
+  }
+
+  function bindDelete(scope) {
+    var dels = scope.querySelectorAll('[data-del]');
+    for (var i = 0; i < dels.length; i++) {
+      (function (b) {
+        b.addEventListener('click', function () {
+          persist(load().filter(function (x) { return String(x.id) !== b.getAttribute('data-del'); }));
+          lock();
+        });
+      })(dels[i]);
+    }
+  }
+
+  function lock() {
+    TN.el(SLUG + '-pass').value = '';
+    renderLocked();
+  }
+
+  function unlock() {
+    TN.clearErr(SLUG + '-error');
+    if (!cryptoOk()) { TN.setErr(SLUG + '-error', 'WebCrypto is unavailable in this browser.'); return; }
+    var pass = TN.el(SLUG + '-pass').value;
+    if (!pass) { TN.setErr(SLUG + '-error', 'Enter your vault password to unlock.'); return; }
+    var notes = load();
+    if (!notes.length) { TN.setErr(SLUG + '-error', 'The vault is empty.'); return; }
+    var chain = Promise.resolve();
+    var results = [];
+    notes.forEach(function (n) {
+      chain = chain.then(function () {
+        return decryptNote(pass, n.packed).then(function (text) {
+          results.push({ id: n.id, title: n.title, text: text });
+        });
+      });
+    });
+    chain.then(function () {
+      var list = TN.el(SLUG + '-list');
+      TN.el(SLUG + '-state').textContent = '🔓 unlocked';
+      list.innerHTML = results.reverse().map(function (n) {
+        return '<div class="tool-card" style="margin:8px 0">' +
+          '<strong>' + TN.esc(n.title) + '</strong>' +
+          '<p style="margin:4px 0;white-space:pre-wrap">' + TN.esc(n.text) + '</p>' +
+          '<button class="btn btn-sm btn-outline" data-del="' + n.id + '">Delete</button></div>';
+      }).join('');
+      bindDelete(list);
+      // clear password from memory shortly after
+      setTimeout(function () { TN.el(SLUG + '-pass').value = ''; }, 30000);
+    }).catch(function () {
+      TN.setErr(SLUG + '-error', 'Wrong password — could not decrypt.');
+      renderLocked();
+    });
+  }
+
+  function saveNote() {
+    TN.clearErr(SLUG + '-error');
+    if (!cryptoOk()) { TN.setErr(SLUG + '-error', 'WebCrypto is unavailable in this browser.'); return; }
+    var pass = TN.el(SLUG + '-pass').value;
+    var title = TN.el(SLUG + '-title').value.trim();
+    var body = TN.el(SLUG + '-body').value;
+    if (!pass) { TN.setErr(SLUG + '-error', 'Enter a vault password first.'); return; }
+    if (!title) { TN.setErr(SLUG + '-error', 'Give the note a title.'); return; }
+    if (!body) { TN.setErr(SLUG + '-error', 'The note is empty.'); return; }
+    encryptNote(pass, body).then(function (packed) {
+      var notes = load();
+      notes.push({ id: Date.now(), title: title, packed: packed });
+      persist(notes);
+      TN.el(SLUG + '-title').value = '';
+      TN.el(SLUG + '-body').value = '';
+      renderLocked();
+    }).catch(function () {
+      TN.setErr(SLUG + '-error', 'Encryption failed.');
+    });
+  }
+
+  function init() {
+    try {
+      if (!TN.el(SLUG + '-save')) return;
+      TN.on(SLUG + '-save', 'click', saveNote);
+      TN.on(SLUG + '-unlock', 'click', unlock);
+      TN.on(SLUG + '-lock', 'click', lock);
+      renderLocked();
+    } catch (e) { /* never throw on load */ }
+  }
+
+  init();
+})();
+</script>
+</body>
+</html>

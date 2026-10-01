@@ -1,0 +1,38 @@
+{
+  "slug": "systemd-service-generator",
+  "title": "systemd Service Generator",
+  "category": "developer",
+  "description": "Generate a systemd unit file \u2014 ExecStart, user, restart policy, environment and install target.",
+  "keywords": [
+    "systemd service generator",
+    "systemd unit file",
+    "service file generator",
+    "linux service"
+  ],
+  "howto": [
+    "Enter the description and ExecStart command.",
+    "Set the user, working directory and restart policy.",
+    "Add environment variables (one KEY=value per line).",
+    "Copy the unit file or download myapp.service."
+  ],
+  "faqs": [
+    {
+      "q": "Where does the file go?",
+      "a": "Save as /etc/systemd/system/<name>.service, then run: systemctl daemon-reload && systemctl enable --now <name>."
+    },
+    {
+      "q": "Which restart policy should I use?",
+      "a": "on-failure restarts only on crashes; always restarts even after clean exits."
+    },
+    {
+      "q": "How are environment variables formatted?",
+      "a": "One KEY=value per line \u2014 values with spaces are quoted automatically."
+    },
+    {
+      "q": "What does WantedBy do?",
+      "a": "WantedBy=multi-user.target makes the service start on boot when enabled."
+    }
+  ],
+  "libs": [],
+  "module": false
+}

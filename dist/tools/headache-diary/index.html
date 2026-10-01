@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Headache Diary — Free Online | ToolNest</title>
+<meta name="description" content="Log headache episodes with duration, intensity, and triggers; see stats and top triggers.">
+<meta name="keywords" content="headache diary, migraine tracker, headache log">
+<link rel="canonical" href="https://toolnest.vercel.app/tools/headache-diary/">
+<meta name="theme-color" content="#07070b">
+<meta property="og:title" content="Headache Diary — Free Online | ToolNest">
+<meta property="og:description" content="Log headache episodes with duration, intensity, and triggers; see stats and top triggers.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css?v=4">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%23e01111'/><text x='50' y='68' font-size='58' text-anchor='middle' fill='white' font-family='Arial' font-weight='bold'>T</text></svg>">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebApplication","name":"Headache Diary","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0"},"url":"https://toolnest.vercel.app/tools/headache-diary/","description":"Log headache episodes with duration, intensity, and triggers; see stats and top triggers."},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Where is my diary stored?","acceptedAnswer":{"@type":"Answer","text":"Only in your browser's localStorage. Nothing is uploaded."}},{"@type":"Question","name":"How are top triggers computed?","acceptedAnswer":{"@type":"Answer","text":"By counting how often each trigger is ticked across all logged episodes."}},{"@type":"Question","name":"Is this a diagnostic tool?","acceptedAnswer":{"@type":"Answer","text":"No. It is a personal log to share with a clinician. Seek care for sudden severe headaches."}}]}]}</script>
+</head>
+<body>
+<header class="site-header">
+  <div class="container">
+    <a class="logo" href="/"><span class="logo-mark">T</span> ToolNest</a>
+    <div class="header-right">
+      <form class="nav-search" action="/" method="get" role="search">
+        <span class="ns-icon">🔍</span>
+        <input type="search" name="q" placeholder="Search tools…" aria-label="Search tools" autocomplete="off">
+      </form>
+      <div class="menu-wrap">
+        <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="menuPanel" aria-label="Open menu"><span></span><span></span><span></span></button>
+        <nav class="menu-panel" id="menuPanel" aria-label="Site">
+          <a href="/">Home</a>
+          <a href="/#categories">Categories</a>
+          <a href="/#all-tools">All Tools</a>
+        </nav>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ADSTERRA-HEADER: paste your Adsterra banner ad code inside the div below -->
+<div class="container"><div class="ad-slot ad-leaderboard" data-ad="header"></div></div>
+
+<main class="container">
+  <nav class="crumbs"><a href="/">Home</a> &rsaquo; <a href="/#health">Health &amp; Fitness</a> &rsaquo; Headache Diary</nav>
+  <div class="tool-hero">
+    <h1>Headache Diary</h1>
+    <p>Log headache episodes with duration, intensity, and triggers; see stats and top triggers.</p>
+  </div>
+
+  <div class="tool-card">
+  <div class="grid2">
+    <div class="field">
+      <label for="headache-diary-when">Start date & time</label>
+      <input type="datetime-local" class="input" id="headache-diary-when">
+    </div>
+    <div class="field">
+      <label for="headache-diary-duration">Duration (minutes)</label>
+      <input type="number" class="input" id="headache-diary-duration" min="0" step="any" placeholder="120">
+    </div>
+    <div class="field">
+      <label for="headache-diary-intensity">Intensity: <span id="headache-diary-intensity-val">5</span>/10</label>
+      <input type="range" class="input" id="headache-diary-intensity" min="1" max="10" step="1" value="5">
+    </div>
+    <div class="field">
+      <label for="headache-diary-type">Type</label>
+      <select class="select" id="headache-diary-type">
+        <option>Tension</option><option>Migraine</option><option>Cluster</option><option>Sinus</option><option>Other</option>
+      </select>
+    </div>
+  </div>
+  <div class="field">
+    <label>Possible triggers</label>
+    <div class="btn-row" style="flex-wrap:wrap" id="headache-diary-triggers">
+      <label class="checkline"><input type="checkbox" value="Stress"> Stress</label>
+      <label class="checkline"><input type="checkbox" value="Lack of sleep"> Lack of sleep</label>
+      <label class="checkline"><input type="checkbox" value="Dehydration"> Dehydration</label>
+      <label class="checkline"><input type="checkbox" value="Caffeine"> Caffeine</label>
+      <label class="checkline"><input type="checkbox" value="Screen time"> Screen time</label>
+      <label class="checkline"><input type="checkbox" value="Weather change"> Weather change</label>
+      <label class="checkline"><input type="checkbox" value="Certain foods"> Certain foods</label>
+      <label class="checkline"><input type="checkbox" value="Hormonal"> Hormonal</label>
+    </div>
+  </div>
+  <div class="field">
+    <label for="headache-diary-meds">Medication taken (optional)</label>
+    <input type="text" class="input" id="headache-diary-meds" placeholder="e.g. ibuprofen 400mg">
+  </div>
+  <div class="btn-row"><button class="btn" id="headache-diary-add" type="button">Log episode</button></div>
+  <div class="error" id="headache-diary-error"></div>
+  <div class="result" id="headache-diary-result">
+    <div class="stat-cards">
+      <div class="stat-card"><div class="v" id="headache-diary-count">0</div><div class="l">Episodes</div></div>
+      <div class="stat-card"><div class="v" id="headache-diary-avgint">–</div><div class="l">Avg intensity</div></div>
+      <div class="stat-card"><div class="v" id="headache-diary-avgdur">–</div><div class="l">Avg duration</div></div>
+      <div class="stat-card"><div class="v" id="headache-diary-toptrig">–</div><div class="l">Top trigger</div></div>
+    </div>
+    <div id="headache-diary-out"></div>
+    <p class="note">Personal log only, not a diagnosis. Seek prompt care for sudden severe headache. For information only &mdash; not medical advice.</p>
+  </div>
+</div>
+
+  <!-- ADSTERRA-INCONTENT: paste your Adsterra native/in-content ad code inside the div below -->
+  <div class="ad-slot" data-ad="incontent"></div>
+
+  <div class="info-grid">
+    <div class="info-card">
+      <h2>📖 How to use</h2>
+      <ol><li>Enter when the headache started, how long it lasted, and the intensity 1-10.</li><li>Choose the headache type and tick any triggers.</li><li>Add medication taken if any, then log the episode.</li><li>Review episode counts, averages, and your top triggers.</li></ol>
+    </div>
+    <div class="info-card">
+      <h2>❓ Frequently asked questions</h2>
+      <div class="faq"><details><summary>Where is my diary stored?</summary><p>Only in your browser&#39;s localStorage. Nothing is uploaded.</p></details><details><summary>How are top triggers computed?</summary><p>By counting how often each trigger is ticked across all logged episodes.</p></details><details><summary>Is this a diagnostic tool?</summary><p>No. It is a personal log to share with a clinician. Seek care for sudden severe headaches.</p></details></div>
+    </div>
+  </div>
+
+  <section class="section">
+    <h2>🔗 Related tools</h2>
+    <div class="tool-grid"><a class="tool-link" href="/tools/allergy-tracker/" data-search="allergy tracker log allergy exposures, symptoms, and severity with summaries, saved in your browser. allergy tracker allergy diary symptom log"><span class="t-ico">❤️</span><span class="t-body"><b>Allergy Tracker</b><small>Log allergy exposures, symptoms, and severity with summaries, saved in your browser.</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/baby-feeding-log/" data-search="baby feeding log log nursing and bottle sessions with timestamps, daily totals, saved in your browser. baby feeding log nursing tracker bottle feeding log"><span class="t-ico">❤️</span><span class="t-body"><b>Baby Feeding Log</b><small>Log nursing and bottle sessions with timestamps, daily totals, saved in your browser.</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/baby-growth-tracker/" data-search="baby growth tracker log your baby&#39;s weight and height over time and see a growth log with typical-range guidance. baby growth tracker baby weight tracker infant growth chart baby height log newborn growth"><span class="t-ico">❤️</span><span class="t-body"><b>Baby Growth Tracker</b><small>Log your baby&#39;s weight and height over time and see a growth log with typical-range guidance…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/balance-test-timer/" data-search="balance test timer single-leg stance stopwatch with age benchmarks for balance testing. balance test single leg stance balance timer"><span class="t-ico">❤️</span><span class="t-body"><b>Balance Test Timer</b><small>Single-leg stance stopwatch with age benchmarks for balance testing.</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/blood-donation-eligibility-checker/" data-search="blood donation eligibility checker check common blood donation eligibility rules: age, weight, hemoglobin, intervals. blood donation eligibility can i donate blood donor requirements"><span class="t-ico">❤️</span><span class="t-body"><b>Blood Donation Eligibility Checker</b><small>Check common blood donation eligibility rules: age, weight, hemoglobin, intervals.</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/blood-pressure-tracker/" data-search="blood pressure tracker log blood pressure readings with automatic aha category classification, averages and history saved in your browser. blood pressure tracker bp log blood pressure chart hypertension tracker bp monitor log"><span class="t-ico">❤️</span><span class="t-body"><b>Blood Pressure Tracker</b><small>Log blood pressure readings with automatic AHA category classification, averages and history…</small></span><span class="t-arrow">→</span></a></div>
+  </section>
+</main>
+
+<!-- ADSTERRA-FOOTER: paste your Adsterra footer/banner ad code inside the div below -->
+<div class="container"><div class="ad-slot" data-ad="footer"></div></div>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="f-grid">
+      <div>
+        <span class="brandline"><span class="logo-mark">T</span> ToolNest</span>
+        <p>Free online tools that actually work. No sign-up, no watermarks — and your files never leave your device for client-side tools.</p>
+      </div>
+      <div>
+        <h4>Popular</h4>
+        <a href="/tools/qr-code-generator/">QR Code Generator</a>
+        <a href="/tools/background-remover/">Background Remover</a>
+        <a href="/tools/pdf-merger/">PDF Merger</a>
+        <a href="/tools/word-counter/">Word Counter</a>
+      </div>
+      <div>
+        <h4>Categories</h4>
+        <a href="/#image">Image Tools</a>
+        <a href="/#pdf">PDF &amp; Documents</a>
+        <a href="/#calculators">Calculators</a>
+        <a href="/#developer">Developer Tools</a>
+      </div>
+      <div>
+        <h4>Site</h4>
+        <a href="/">Home</a>
+        <a href="/#all-tools">All Tools</a>
+        <a href="/sitemap.xml">Sitemap</a>
+      </div>
+    </div>
+    <div class="f-bottom">© 2026 ToolNest · Free tools for everyone · Made with care</div>
+  </div>
+</footer>
+
+<script src="/assets/site.js?v=5"></script>
+
+<script>
+(function(){
+'use strict';
+var S='headache-diary', ERR=S+'-error', LS='tn-headache-diary';
+function nowLocal(){ var d=new Date(); function p(n){ return ('0'+n).slice(-2); } return d.getFullYear()+'-'+p(d.getMonth()+1)+'-'+p(d.getDate())+'T'+p(d.getHours())+':'+p(d.getMinutes()); }
+function read(){ try{ return JSON.parse(localStorage.getItem(LS)||'[]'); }catch(e){ return []; } }
+function write(a){ try{ localStorage.setItem(LS,JSON.stringify(a)); }catch(e){} }
+function fmtDur(min){
+  if(min<60) return Math.round(min)+' min';
+  var h=Math.floor(min/60), m=Math.round(min%60);
+  return h+'h '+(m<10?'0':'')+m+'m';
+}
+function render(){
+  if(!TN.el(S+'-when')) return;
+  var log=read().slice().sort(function(a,b){ return a.when<b.when?-1:1; });
+  TN.el(S+'-count').textContent=log.length;
+  if(log.length){
+    var ai=log.reduce(function(a,e){ return a+e.intensity; },0)/log.length;
+    var ad=log.reduce(function(a,e){ return a+e.duration; },0)/log.length;
+    TN.el(S+'-avgint').textContent=(Math.round(ai*10)/10)+' / 10';
+    TN.el(S+'-avgdur').textContent=fmtDur(ad);
+    var tc={};
+    log.forEach(function(e){ e.triggers.forEach(function(t){ tc[t]=(tc[t]||0)+1; }); });
+    var top=Object.keys(tc).sort(function(a,b){ return tc[b]-tc[a]; })[0];
+    TN.el(S+'-toptrig').textContent=top?top+' ('+tc[top]+')':'–';
+    var html='<table class="data"><thead><tr><th>Start</th><th>Type</th><th>Duration</th><th>Intensity</th><th>Triggers</th><th></th></tr></thead><tbody>';
+    log.forEach(function(e){
+      html+='<tr><td>'+TN.esc(e.when.slice(0,10)+' '+e.when.slice(11,16))+'</td><td>'+TN.esc(e.type)+'</td><td>'+fmtDur(e.duration)+'</td><td>'+e.intensity+'/10</td>'+
+        '<td>'+TN.esc(e.triggers.join(', ')||'–')+(e.meds?' <span class="muted">('+TN.esc(e.meds)+')</span>':'')+'</td>'+
+        '<td><button class="btn btn-sm btn-outline" data-del="'+e.ts+'" type="button">X</button></td></tr>';
+    });
+    TN.el(S+'-out').innerHTML=html+'</tbody></table>';
+    Array.prototype.forEach.call(TN.el(S+'-out').querySelectorAll('[data-del]'),function(btn){
+      btn.addEventListener('click',function(){
+        var ts=btn.getAttribute('data-del');
+        write(read().filter(function(e){ return String(e.ts)!==ts; }));
+        render();
+      });
+    });
+  } else {
+    ['avgint','avgdur','toptrig'].forEach(function(f){ TN.el(S+'-'+f).textContent='–'; });
+    TN.el(S+'-out').innerHTML='<p class="muted">No episodes logged yet.</p>';
+  }
+}
+try{
+  TN.el(S+'-when').value=nowLocal();
+  TN.on(S+'-intensity','input',function(){ TN.el(S+'-intensity-val').textContent=TN.el(S+'-intensity').value; });
+  TN.on(S+'-add','click',function(){
+    TN.clearErr(ERR);
+    var dur=parseFloat(TN.el(S+'-duration').value);
+    if(!(dur>0)){ TN.setErr(ERR,'Enter a duration greater than 0 minutes.'); return; }
+    var trig=Array.prototype.map.call(TN.el(S+'-triggers').querySelectorAll('input:checked'),function(c){ return c.value; });
+    var log=read();
+    log.push({ts:Date.now(),when:TN.el(S+'-when').value||nowLocal(),duration:dur,
+      intensity:parseInt(TN.el(S+'-intensity').value,10),type:TN.el(S+'-type').value,
+      triggers:trig,meds:TN.el(S+'-meds').value.trim()});
+    write(log);
+    TN.el(S+'-duration').value=''; TN.el(S+'-meds').value='';
+    Array.prototype.forEach.call(TN.el(S+'-triggers').querySelectorAll('input:checked'),function(c){ c.checked=false; });
+    TN.el(S+'-when').value=nowLocal();
+    render();
+  });
+  render();
+}catch(e){}
+})();
+
+</script>
+</body>
+</html>

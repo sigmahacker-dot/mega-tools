@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nonogram — Free Online | ToolNest</title>
+<meta name="description" content="Nonogram — solve three hand-designed picture logic puzzles (5×5, 10×10, 15×15) with row and column clues.">
+<meta name="keywords" content="nonogram game, nonogram puzzle online, picross game">
+<link rel="canonical" href="https://toolnest.vercel.app/tools/nonogram-game/">
+<meta name="theme-color" content="#07070b">
+<meta property="og:title" content="Nonogram — Free Online | ToolNest">
+<meta property="og:description" content="Nonogram — solve three hand-designed picture logic puzzles (5×5, 10×10, 15×15) with row and column clues.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css?v=4">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%23e01111'/><text x='50' y='68' font-size='58' text-anchor='middle' fill='white' font-family='Arial' font-weight='bold'>T</text></svg>">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebApplication","name":"Nonogram","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0"},"url":"https://toolnest.vercel.app/tools/nonogram-game/","description":"Nonogram — solve three hand-designed picture logic puzzles (5×5, 10×10, 15×15) with row and column clues."},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How do I play?","acceptedAnswer":{"@type":"Answer","text":"Click a cell to fill it, right-click (or switch to ✕ mode) to mark it empty. Fill all and only the picture cells to win."}},{"@type":"Question","name":"What do the clue numbers mean?","acceptedAnswer":{"@type":"Answer","text":"The numbers are runs of consecutive filled cells. “3 1” means a run of 3 filled cells, then at least one gap, then 1 filled cell."}},{"@type":"Question","name":"Can I get help while solving?","acceptedAnswer":{"@type":"Answer","text":"Turn on “Flag mistakes” and wrong fills are marked red the moment you place them — great for learning."}}]}]}</script>
+</head>
+<body>
+<header class="site-header">
+  <div class="container">
+    <a class="logo" href="/"><span class="logo-mark">T</span> ToolNest</a>
+    <div class="header-right">
+      <form class="nav-search" action="/" method="get" role="search">
+        <span class="ns-icon">🔍</span>
+        <input type="search" name="q" placeholder="Search tools…" aria-label="Search tools" autocomplete="off">
+      </form>
+      <div class="menu-wrap">
+        <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="menuPanel" aria-label="Open menu"><span></span><span></span><span></span></button>
+        <nav class="menu-panel" id="menuPanel" aria-label="Site">
+          <a href="/">Home</a>
+          <a href="/#categories">Categories</a>
+          <a href="/#all-tools">All Tools</a>
+        </nav>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ADSTERRA-HEADER: paste your Adsterra banner ad code inside the div below -->
+<div class="container"><div class="ad-slot ad-leaderboard" data-ad="header"></div></div>
+
+<main class="container">
+  <nav class="crumbs"><a href="/">Home</a> &rsaquo; <a href="/#fun">Fun &amp; Lifestyle</a> &rsaquo; Nonogram</nav>
+  <div class="tool-hero">
+    <h1>Nonogram</h1>
+    <p>Nonogram — solve three hand-designed picture logic puzzles (5×5, 10×10, 15×15) with row and column clues.</p>
+  </div>
+
+  <div class="tool-card" style="text-align:center">
+  <div class="grid3" style="max-width:560px;margin:0 auto 10px">
+    <div class="field" style="text-align:left">
+      <label for="nonogram-game-puzzle">Puzzle</label>
+      <select class="input" id="nonogram-game-puzzle">
+        <option value="0">Heart (5×5)</option>
+        <option value="1">Mushroom (10×10)</option>
+        <option value="2">Rocket (15×15)</option>
+      </select>
+    </div>
+    <div class="field" style="text-align:left">
+      <label for="nonogram-game-markmode">Tap mode</label>
+      <select class="input" id="nonogram-game-markmode">
+        <option value="fill">■ Fill</option>
+        <option value="cross">✕ Cross out</option>
+      </select>
+    </div>
+    <div class="field" style="text-align:left">
+      <label>&nbsp;</label>
+      <button class="btn btn-primary" id="nonogram-game-reset" style="width:100%">Reset</button>
+    </div>
+  </div>
+  <label class="checkline" style="justify-content:center;margin-bottom:8px"><input type="checkbox" id="nonogram-game-mistakes"> Flag mistakes immediately</label>
+  <p class="muted" id="nonogram-game-status" style="min-height:24px;font-weight:600"></p>
+  <div style="display:inline-block;max-width:100%;overflow:auto">
+    <div id="nonogram-game-wrap" style="display:inline-block"></div>
+  </div>
+  <div class="error" id="nonogram-game-error"></div>
+</div>
+
+
+  <!-- ADSTERRA-INCONTENT: paste your Adsterra native/in-content ad code inside the div below -->
+  <div class="ad-slot" data-ad="incontent"></div>
+
+  <div class="info-grid">
+    <div class="info-card">
+      <h2>📖 How to use</h2>
+      <ol><li>Pick a puzzle: 5×5, 10×10 or 15×15.</li><li>Click cells to fill, right-click (or ✕ mode) to cross out.</li><li>Use row/column clues to find the hidden picture.</li><li>Fill every picture cell — with no extras — to win.</li></ol>
+    </div>
+    <div class="info-card">
+      <h2>❓ Frequently asked questions</h2>
+      <div class="faq"><details><summary>How do I play?</summary><p>Click a cell to fill it, right-click (or switch to ✕ mode) to mark it empty. Fill all and only the picture cells to win.</p></details><details><summary>What do the clue numbers mean?</summary><p>The numbers are runs of consecutive filled cells. “3 1” means a run of 3 filled cells, then at least one gap, then 1 filled cell.</p></details><details><summary>Can I get help while solving?</summary><p>Turn on “Flag mistakes” and wrong fills are marked red the moment you place them — great for learning.</p></details></div>
+    </div>
+  </div>
+
+  <section class="section">
+    <h2>🔗 Related tools</h2>
+    <div class="tool-grid"><a class="tool-link" href="/tools/100-day-challenge-tracker/" data-search="100-day challenge tracker track a 100-day challenge with a checkable 100-cell grid, streaks and stats. 100 day challenge habit tracker 100 days challenge tracker streak tracker"><span class="t-ico">🎲</span><span class="t-body"><b>100-Day Challenge Tracker</b><small>Track a 100-day challenge with a checkable 100-cell grid, streaks and stats.</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/24-game/" data-search="24 game the 24 game — combine four numbers with + − × ÷ to make 24. built-in solver guarantees every deal and gives hints. 24 game make 24 game 24 puzzle solver math puzzle game"><span class="t-ico">🎲</span><span class="t-body"><b>24 Game</b><small>The 24 Game — combine four numbers with + − × ÷ to make 24. Built-in solver guarantees every…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/aim-trainer-game/" data-search="aim trainer game test and train your aim — targets pop up at random spots for 30 seconds. hits, misses and accuracy are tracked live. aim trainer aim test reaction test click speed test fps aim trainer"><span class="t-ico">🎲</span><span class="t-body"><b>Aim Trainer Game</b><small>Test and train your aim — targets pop up at random spots for 30 seconds. Hits, misses and ac…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/asteroid-shooter/" data-search="asteroid shooter asteroid shooter — rotate, thrust and blast splitting asteroids on canvas. 3 lives, rising levels. asteroid shooter game asteroids game online space shooter canvas"><span class="t-ico">🎲</span><span class="t-body"><b>Asteroid Shooter</b><small>Asteroid Shooter — rotate, thrust and blast splitting asteroids on canvas. 3 lives, rising l…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/attendance-tracker/" data-search="attendance tracker track class attendance: roster with present/absent marks per date and % summaries. attendance tracker class attendance student attendance roll call app"><span class="t-ico">🎲</span><span class="t-body"><b>Attendance Tracker</b><small>Track class attendance: roster with present/absent marks per date and % summaries.</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/baby-name-generator/" data-search="baby name generator discover baby names by gender and origin — pakistani, arabic, western, indian or turkish — with meanings, random picks and tap-to-copy. baby name generator baby names with meanings muslim baby names boy girl names"><span class="t-ico">🎲</span><span class="t-body"><b>Baby Name Generator</b><small>Discover baby names by gender and origin — Pakistani, Arabic, Western, Indian or Turkish — w…</small></span><span class="t-arrow">→</span></a></div>
+  </section>
+</main>
+
+<!-- ADSTERRA-FOOTER: paste your Adsterra footer/banner ad code inside the div below -->
+<div class="container"><div class="ad-slot" data-ad="footer"></div></div>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="f-grid">
+      <div>
+        <span class="brandline"><span class="logo-mark">T</span> ToolNest</span>
+        <p>Free online tools that actually work. No sign-up, no watermarks — and your files never leave your device for client-side tools.</p>
+      </div>
+      <div>
+        <h4>Popular</h4>
+        <a href="/tools/qr-code-generator/">QR Code Generator</a>
+        <a href="/tools/background-remover/">Background Remover</a>
+        <a href="/tools/pdf-merger/">PDF Merger</a>
+        <a href="/tools/word-counter/">Word Counter</a>
+      </div>
+      <div>
+        <h4>Categories</h4>
+        <a href="/#image">Image Tools</a>
+        <a href="/#pdf">PDF &amp; Documents</a>
+        <a href="/#calculators">Calculators</a>
+        <a href="/#developer">Developer Tools</a>
+      </div>
+      <div>
+        <h4>Site</h4>
+        <a href="/">Home</a>
+        <a href="/#all-tools">All Tools</a>
+        <a href="/sitemap.xml">Sitemap</a>
+      </div>
+    </div>
+    <div class="f-bottom">© 2026 ToolNest · Free tools for everyone · Made with care</div>
+  </div>
+</footer>
+
+<script src="/assets/site.js?v=5"></script>
+
+<script>
+(function () {
+  'use strict';
+  var P = 'nonogram-game-';
+  function g(id) { return document.getElementById(P + id); }
+  var PUZZLES = [
+    {
+      name: 'Heart', rows: [
+        'XX.XX',
+        'XXXXX',
+        'XXXXX',
+        '.XXX.',
+        '..X..'
+      ]
+    },
+    {
+      name: 'Mushroom', rows: [
+        '...XXXX...',
+        '..XXXXXX..',
+        '.XXXXXXXX.',
+        '.XXXXXXXX.',
+        '..XXXXXX..',
+        '...XXXX...',
+        '...XXXX...',
+        '...XXXX...',
+        '..XXXXXX..',
+        '..XXXXXX..'
+      ]
+    },
+    {
+      name: 'Rocket', rows: [
+        '.......X.......',
+        '.......X.......',
+        '......XXX......',
+        '......XXX......',
+        '.....XXXXX.....',
+        '.....XXXXX.....',
+        '.....XXXXX.....',
+        '.....XXXXX.....',
+        '....XXXXXXX....',
+        '....XXXXXXX....',
+        '.....XXXXX.....',
+        '...X.XXXXX.X...',
+        '...X.XXXXX.X...',
+        '......X.X......',
+        '.....XX.XX.....'
+      ]
+    }
+  ];
+  var N = 0, sol = [], state = [], over = false;
+  function runs(line) {
+    var out = [], n = 0;
+    for (var i = 0; i < line.length; i++) {
+      if (line[i]) { n++; }
+      else if (n) { out.push(n); n = 0; }
+    }
+    if (n) out.push(n);
+    return out;
+  }
+  function load(idx) {
+    var pz = PUZZLES[idx];
+    N = pz.rows.length;
+    sol = [];
+    state = [];
+    for (var r = 0; r < N; r++) {
+      sol.push([]); state.push([]);
+      for (var c = 0; c < N; c++) {
+        sol[r].push(pz.rows[r][c] === 'X' ? 1 : 0);
+        state[r].push(0); // 0 empty, 1 filled, 2 crossed
+      }
+    }
+    over = false;
+  }
+  function rowClues() {
+    var out = [];
+    for (var r = 0; r < N; r++) out.push(runs(sol[r]));
+    return out;
+  }
+  function colClues() {
+    var out = [];
+    for (var c = 0; c < N; c++) {
+      var line = [];
+      for (var r = 0; r < N; r++) line.push(sol[r][c]);
+      out.push(runs(line));
+    }
+    return out;
+  }
+  function status(t) { var el = g('status'); if (el) el.textContent = t; }
+  function flagMistakes() { var el = g('mistakes'); return el ? el.checked : false; }
+  function tapMode() { var el = g('markmode'); return el ? el.value : 'fill'; }
+  function render() {
+    var wrap = g('wrap'); if (!wrap) return;
+    wrap.innerHTML = '';
+    var rc = rowClues(), cc = colClues();
+    var maxR = 0, maxC = 0, r, c;
+    for (r = 0; r < N; r++) maxR = Math.max(maxR, rc[r].length);
+    for (c = 0; c < N; c++) maxC = Math.max(maxC, cc[c].length);
+    var cell = N > 10 ? 22 : (N > 5 ? 30 : 40);
+    var t = document.createElement('table');
+    t.style.cssText = 'border-collapse:collapse;margin:0 auto';
+    function clueCell(txt) {
+      var td = document.createElement('td');
+      td.style.cssText = 'min-width:' + cell + 'px;height:' + cell + 'px;text-align:center;font-size:' + (N > 10 ? 10 : 12) + 'px;color:#a8a29e;font-weight:700;padding:0 2px';
+      td.textContent = txt;
+      return td;
+    }
+    // top clue rows
+    for (r = 0; r < maxC; r++) {
+      var tr = document.createElement('tr');
+      for (var k = 0; k < maxR; k++) tr.appendChild(clueCell(''));
+      for (c = 0; c < N; c++) {
+        var arr = cc[c], idx = arr.length - maxC + r;
+        tr.appendChild(clueCell(idx >= 0 ? String(arr[idx]) : ''));
+      }
+      t.appendChild(tr);
+    }
+    for (r = 0; r < N; r++) {
+      var tr2 = document.createElement('tr');
+      var ra = rc[r];
+      for (var k2 = 0; k2 < maxR; k2++) {
+        var idx2 = ra.length - maxR + k2;
+        tr2.appendChild(clueCell(idx2 >= 0 ? String(ra[idx2]) : ''));
+      }
+      for (c = 0; c < N; c++) {
+        (function (rr, cc2) {
+          var td = document.createElement('td');
+          var st = state[rr][cc2];
+          var wrong = flagMistakes() && st === 1 && !sol[rr][cc2];
+          td.style.cssText = 'width:' + cell + 'px;height:' + cell + 'px;border:1px solid #57534e;text-align:center;font-size:' + (cell * 0.55) + 'px;cursor:pointer;padding:0;' +
+            'background:' + (st === 1 ? (wrong ? '#7f1d1d' : '#4D7C0F') : (st === 2 ? '#292524' : '#fafaf9')) + ';' +
+            'color:' + (st === 2 ? '#78716c' : '#fff');
+          td.textContent = st === 1 ? '■' : (st === 2 ? '✕' : '');
+          if (!over) {
+            td.addEventListener('click', function () { cycle(rr, cc2, 1); });
+            td.addEventListener('contextmenu', function (e) { e.preventDefault(); cycle(rr, cc2, 2); });
+          }
+          tr2.appendChild(td);
+        })(r, c);
+      }
+      t.appendChild(tr2);
+    }
+    wrap.appendChild(t);
+  }
+  function cycle(r, c, which) {
+    if (over) return;
+    // which: 1 = left click (uses tap mode), 2 = right click (cross)
+    var target = which === 2 ? 2 : (tapMode() === 'fill' ? 1 : 2);
+    state[r][c] = state[r][c] === target ? 0 : target;
+    render();
+    checkWin();
+  }
+  function checkWin() {
+    for (var r = 0; r < N; r++) for (var c = 0; c < N; c++) {
+      if (sol[r][c] === 1 && state[r][c] !== 1) return;
+      if (sol[r][c] === 0 && state[r][c] === 1) return;
+    }
+    over = true;
+    render();
+    var pz = PUZZLES[g('puzzle') ? parseInt(g('puzzle').value, 10) : 0];
+    status('🎉 Solved! That\'s ' + (pz ? pz.name : 'the picture') + '!');
+  }
+  function reset() {
+    var idx = g('puzzle') ? parseInt(g('puzzle').value, 10) : 0;
+    load(idx);
+    TN.clearErr(P + 'error');
+    render();
+    status('Find the hidden ' + PUZZLES[idx].name.toLowerCase() + '. Left-click fills, right-click crosses out.');
+  }
+  try {
+    if (!g('wrap')) return;
+    TN.on(P + 'reset', 'click', reset);
+    TN.on(P + 'puzzle', 'change', reset);
+    TN.on(P + 'mistakes', 'change', render);
+    reset();
+  } catch (e) { /* never throw on load */ }
+})();
+
+</script>
+</body>
+</html>

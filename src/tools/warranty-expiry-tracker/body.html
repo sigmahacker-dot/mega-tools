@@ -1,0 +1,30 @@
+<div class="tool-card">
+  <div class="grid3">
+    <div class="field">
+      <label for="warranty-expiry-tracker-name">Product</label>
+      <input class="input" id="warranty-expiry-tracker-name" type="text" placeholder="e.g. Laptop">
+    </div>
+    <div class="field">
+      <label for="warranty-expiry-tracker-date">Purchase date</label>
+      <input class="input" id="warranty-expiry-tracker-date" type="date">
+    </div>
+    <div class="field">
+      <label for="warranty-expiry-tracker-len">Warranty length</label>
+      <div style="display:flex;gap:6px">
+        <input class="input" id="warranty-expiry-tracker-len" type="number" min="1" max="120" value="12" style="flex:1">
+        <select class="select" id="warranty-expiry-tracker-unit" style="flex:1">
+          <option value="m">Months</option>
+          <option value="y">Years</option>
+        </select>
+      </div>
+    </div>
+  </div>
+  <div class="btn-row">
+    <button type="button" class="btn" id="warranty-expiry-tracker-add">Add product</button>
+  </div>
+  <div class="error" id="warranty-expiry-tracker-error"></div>
+  <div class="result">
+    <h3>Warranties</h3>
+    <div style="overflow-x:auto"><table class="data"><thead><tr><th>Product</th><th>Purchased</th><th>Warranty</th><th>Expires</th><th>Status</th><th></th></tr></thead><tbody id="warranty-expiry-tracker-list"></tbody></table></div>
+  </div>
+</div>

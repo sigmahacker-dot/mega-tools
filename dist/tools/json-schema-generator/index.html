@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>JSON Schema Generator — Free Online | ToolNest</title>
+<meta name="description" content="Infer a draft-07 JSON Schema from sample JSON — nested objects, arrays, formats and required fields.">
+<meta name="keywords" content="json schema generator, json to schema, infer json schema, draft-07 schema">
+<link rel="canonical" href="https://toolnest.vercel.app/tools/json-schema-generator/">
+<meta name="theme-color" content="#07070b">
+<meta property="og:title" content="JSON Schema Generator — Free Online | ToolNest">
+<meta property="og:description" content="Infer a draft-07 JSON Schema from sample JSON — nested objects, arrays, formats and required fields.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css?v=4">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%23e01111'/><text x='50' y='68' font-size='58' text-anchor='middle' fill='white' font-family='Arial' font-weight='bold'>T</text></svg>">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebApplication","name":"JSON Schema Generator","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0"},"url":"https://toolnest.vercel.app/tools/json-schema-generator/","description":"Infer a draft-07 JSON Schema from sample JSON — nested objects, arrays, formats and required fields."},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How is the schema inferred?","acceptedAnswer":{"@type":"Answer","text":"The sample is walked recursively: objects become properties, arrays merge their item types, and strings are checked for date-time, email and UUID formats."}},{"@type":"Question","name":"What does \"required\" contain?","acceptedAnswer":{"@type":"Answer","text":"All keys seen in the sample — inferred from a single sample, so review it against your real data."}},{"@type":"Question","name":"How are mixed-type arrays handled?","acceptedAnswer":{"@type":"Answer","text":"Item types are merged with anyOf so every observed shape stays valid."}},{"@type":"Question","name":"Which draft is generated?","acceptedAnswer":{"@type":"Answer","text":"JSON Schema draft-07, the most widely supported draft."}}]}]}</script>
+</head>
+<body>
+<header class="site-header">
+  <div class="container">
+    <a class="logo" href="/"><span class="logo-mark">T</span> ToolNest</a>
+    <div class="header-right">
+      <form class="nav-search" action="/" method="get" role="search">
+        <span class="ns-icon">🔍</span>
+        <input type="search" name="q" placeholder="Search tools…" aria-label="Search tools" autocomplete="off">
+      </form>
+      <div class="menu-wrap">
+        <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="menuPanel" aria-label="Open menu"><span></span><span></span><span></span></button>
+        <nav class="menu-panel" id="menuPanel" aria-label="Site">
+          <a href="/">Home</a>
+          <a href="/#categories">Categories</a>
+          <a href="/#all-tools">All Tools</a>
+        </nav>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ADSTERRA-HEADER: paste your Adsterra banner ad code inside the div below -->
+<div class="container"><div class="ad-slot ad-leaderboard" data-ad="header"></div></div>
+
+<main class="container">
+  <nav class="crumbs"><a href="/">Home</a> &rsaquo; <a href="/#developer">Developer Tools</a> &rsaquo; JSON Schema Generator</nav>
+  <div class="tool-hero">
+    <h1>JSON Schema Generator</h1>
+    <p>Infer a draft-07 JSON Schema from sample JSON — nested objects, arrays, formats and required fields.</p>
+  </div>
+
+  <div class="tool-card">
+  <div class="field">
+    <label for="json-schema-generator-input">Sample JSON</label>
+    <textarea class="textarea" id="json-schema-generator-input" rows="8" style="font-family:monospace">{
+  "id": 42,
+  "name": "Ada Lovelace",
+  "email": "ada@example.com",
+  "active": true,
+  "score": 98.6,
+  "createdAt": "2026-09-30T10:15:00Z",
+  "tags": ["admin", "beta"],
+  "address": {
+    "city": "Lahore",
+    "zip": "54000"
+  },
+  "nickname": null
+}</textarea>
+  </div>
+  <div class="btn-row">
+    <button class="btn" id="json-schema-generator-generate">Generate schema</button>
+  </div>
+  <div class="error" id="json-schema-generator-error"></div>
+  <div class="field">
+    <label for="json-schema-generator-output">JSON Schema (draft-07)</label>
+    <textarea class="textarea" id="json-schema-generator-output" rows="16" readonly style="font-family:monospace"></textarea>
+  </div>
+  <div class="btn-row">
+    <button class="btn btn-outline" id="json-schema-generator-copy">Copy schema</button>
+    <button class="btn btn-outline" id="json-schema-generator-download">Download schema.json</button>
+  </div>
+  <p class="note">"required" lists every key seen in the sample — review it against your full dataset.</p>
+</div>
+
+
+  <!-- ADSTERRA-INCONTENT: paste your Adsterra native/in-content ad code inside the div below -->
+  <div class="ad-slot" data-ad="incontent"></div>
+
+  <div class="info-grid">
+    <div class="info-card">
+      <h2>📖 How to use</h2>
+      <ol><li>Paste sample JSON (object or array).</li><li>Click Generate to infer the schema.</li><li>Review detected types and string formats.</li><li>Copy the schema or download schema.json.</li></ol>
+    </div>
+    <div class="info-card">
+      <h2>❓ Frequently asked questions</h2>
+      <div class="faq"><details><summary>How is the schema inferred?</summary><p>The sample is walked recursively: objects become properties, arrays merge their item types, and strings are checked for date-time, email and UUID formats.</p></details><details><summary>What does &quot;required&quot; contain?</summary><p>All keys seen in the sample — inferred from a single sample, so review it against your real data.</p></details><details><summary>How are mixed-type arrays handled?</summary><p>Item types are merged with anyOf so every observed shape stays valid.</p></details><details><summary>Which draft is generated?</summary><p>JSON Schema draft-07, the most widely supported draft.</p></details></div>
+    </div>
+  </div>
+
+  <section class="section">
+    <h2>🔗 Related tools</h2>
+    <div class="tool-grid"><a class="tool-link" href="/tools/api-key-generator/" data-search="api key generator generate cryptographically secure api keys with crypto.getrandomvalues — hex, base64, base64url or uuid v4. api key generator random api key uuid generator secure token generator"><span class="t-ico">💻</span><span class="t-body"><b>API Key Generator</b><small>Generate cryptographically secure API keys with crypto.getRandomValues — hex, base64, base64…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/ascii-table-reference/" data-search="ascii table reference full ascii table 0–127: decimal, hex, octal, character, control-code names and html entities — searchable. ascii table ascii codes ascii chart control characters ascii reference"><span class="t-ico">💻</span><span class="t-body"><b>ASCII Table Reference</b><small>Full ASCII table 0–127: decimal, hex, octal, character, control-code names and HTML entities…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/badge-generator/" data-search="badge generator design css badges and pills — colors, sizes, shapes — with live preview and copy-ready html/css. badge css generator css pill badge status badge code label badge html"><span class="t-ico">💻</span><span class="t-body"><b>Badge Generator</b><small>Design CSS badges and pills — colors, sizes, shapes — with live preview and copy-ready HTML/…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/base64-encoder-decoder/" data-search="base64 encoder / decoder encode text to base64 or decode base64 back to text, with full utf-8 support and a file-to-data-url converter. base64 encoder base64 decoder base64 encode base64 decode file to base64"><span class="t-ico">💻</span><span class="t-body"><b>Base64 Encoder / Decoder</b><small>Encode text to Base64 or decode Base64 back to text, with full UTF-8 support and a file-to-d…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/basic-auth-header-generator/" data-search="basic auth header generator encode username:password to a base64 authorization header (unicode-safe) — copy or download. basic auth header base64 authorization http basic auth generator authorization header"><span class="t-ico">💻</span><span class="t-body"><b>Basic Auth Header Generator</b><small>Encode username:password to a Base64 Authorization header (Unicode-safe) — copy or download.</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/binary-text-converter/" data-search="binary and text converter convert text to binary or hex and back, with full utf-8 awareness and strict input validation. binary to text text to binary hex to text converter"><span class="t-ico">💻</span><span class="t-body"><b>Binary and Text Converter</b><small>Convert text to binary or hex and back, with full UTF-8 awareness and strict input validatio…</small></span><span class="t-arrow">→</span></a></div>
+  </section>
+</main>
+
+<!-- ADSTERRA-FOOTER: paste your Adsterra footer/banner ad code inside the div below -->
+<div class="container"><div class="ad-slot" data-ad="footer"></div></div>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="f-grid">
+      <div>
+        <span class="brandline"><span class="logo-mark">T</span> ToolNest</span>
+        <p>Free online tools that actually work. No sign-up, no watermarks — and your files never leave your device for client-side tools.</p>
+      </div>
+      <div>
+        <h4>Popular</h4>
+        <a href="/tools/qr-code-generator/">QR Code Generator</a>
+        <a href="/tools/background-remover/">Background Remover</a>
+        <a href="/tools/pdf-merger/">PDF Merger</a>
+        <a href="/tools/word-counter/">Word Counter</a>
+      </div>
+      <div>
+        <h4>Categories</h4>
+        <a href="/#image">Image Tools</a>
+        <a href="/#pdf">PDF &amp; Documents</a>
+        <a href="/#calculators">Calculators</a>
+        <a href="/#developer">Developer Tools</a>
+      </div>
+      <div>
+        <h4>Site</h4>
+        <a href="/">Home</a>
+        <a href="/#all-tools">All Tools</a>
+        <a href="/sitemap.xml">Sitemap</a>
+      </div>
+    </div>
+    <div class="f-bottom">© 2026 ToolNest · Free tools for everyone · Made with care</div>
+  </div>
+</footer>
+
+<script src="/assets/site.js?v=5"></script>
+
+<script>
+/* JSON Schema Generator — infers draft-07 schema from sample JSON. */
+(function () {
+  'use strict';
+  var SLUG = 'json-schema-generator';
+  function el(id) { return document.getElementById(id); }
+  function fail(msg) { TN.setErr(SLUG + '-error', msg); }
+  function clear() { TN.clearErr(SLUG + '-error'); }
+
+  function strFormat(s) {
+    if (/^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$/.test(s)) return 'uuid';
+    if (/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(s)) return 'email';
+    if (/^\d{4}-\d{2}-\d{2}([T ]\d{2}:\d{2}(:\d{2}(\.\d+)?(Z|[+-]\d{2}:?\d{2})?)?)?$/.test(s)) return 'date-time';
+    if (/^https?:\/\/\S+$/.test(s)) return 'uri';
+    return null;
+  }
+  function mergeSchemas(list) {
+    var seen = {}, out = [];
+    list.forEach(function (s) {
+      var k = JSON.stringify(s);
+      if (!seen[k]) { seen[k] = 1; out.push(s); }
+    });
+    return out.length === 1 ? out[0] : { anyOf: out };
+  }
+  function infer(v) {
+    if (v === null) return { type: 'null' };
+    var t = typeof v;
+    if (t === 'string') {
+      var s = { type: 'string' };
+      var f = strFormat(v);
+      if (f) s.format = f;
+      return s;
+    }
+    if (t === 'number') return { type: Number.isInteger(v) ? 'integer' : 'number' };
+    if (t === 'boolean') return { type: 'boolean' };
+    if (Array.isArray(v)) {
+      var s = { type: 'array' };
+      if (v.length) s.items = mergeSchemas(v.map(infer));
+      return s;
+    }
+    if (t === 'object') {
+      var props = {}, req = [];
+      Object.keys(v).forEach(function (k) {
+        props[k] = infer(v[k]);
+        req.push(k);
+      });
+      var o = { type: 'object', properties: props };
+      if (req.length) o.required = req;
+      return o;
+    }
+    return {};
+  }
+
+  function generate() {
+    clear();
+    var raw = el(SLUG + '-input').value.trim();
+    if (!raw) { fail('Paste sample JSON first.'); return; }
+    var data;
+    try { data = JSON.parse(raw); }
+    catch (e) { fail('Invalid JSON: ' + e.message); return; }
+    var schema = {
+      '$schema': 'http://json-schema.org/draft-07/schema#',
+      title: 'GeneratedSchema'
+    };
+    var inferred = infer(data);
+    Object.keys(inferred).forEach(function (k) { schema[k] = inferred[k]; });
+    el(SLUG + '-output').value = JSON.stringify(schema, null, 2) + '\n';
+  }
+
+  try {
+    if (!el(SLUG + '-generate')) return;
+    TN.on(SLUG + '-generate', 'click', generate);
+    TN.on(SLUG + '-copy', 'click', function () {
+      var v = el(SLUG + '-output').value;
+      if (!v) { fail('Generate a schema first.'); return; }
+      TN.copy(v).then(function (ok) { if (!ok) fail('Copy failed — select the text manually.'); });
+    });
+    TN.on(SLUG + '-download', 'click', function () {
+      var v = el(SLUG + '-output').value;
+      if (!v) { fail('Generate a schema first.'); return; }
+      TN.downloadText(v, 'schema.json', 'application/json');
+    });
+    generate();
+  } catch (e) { /* never throw on load */ }
+})();
+
+</script>
+</body>
+</html>

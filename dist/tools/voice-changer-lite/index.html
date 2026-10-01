@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Voice Changer (Lite) — Free Online | ToolNest</title>
+<meta name="description" content="Have fun with your voice: pitch/speed shift, robot ring-modulation and echo on uploaded audio or mic recordings. Honest lite effects.">
+<meta name="keywords" content="voice changer, pitch shifter, robot voice, voice effects">
+<link rel="canonical" href="https://toolnest.vercel.app/tools/voice-changer-lite/">
+<meta name="theme-color" content="#07070b">
+<meta property="og:title" content="Voice Changer (Lite) — Free Online | ToolNest">
+<meta property="og:description" content="Have fun with your voice: pitch/speed shift, robot ring-modulation and echo on uploaded audio or mic recordings. Honest lite effects.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css?v=4">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%23e01111'/><text x='50' y='68' font-size='58' text-anchor='middle' fill='white' font-family='Arial' font-weight='bold'>T</text></svg>">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebApplication","name":"Voice Changer (Lite)","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0"},"url":"https://toolnest.vercel.app/tools/voice-changer-lite/","description":"Have fun with your voice: pitch/speed shift, robot ring-modulation and echo on uploaded audio or mic recordings. Honest lite effects."},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Why is it called 'lite'?","acceptedAnswer":{"@type":"Answer","text":"Lite means honest: the pitch slider changes speed too (like tape), robot is ring modulation, echo is a simple delay. No pro formant shifting is claimed."}},{"@type":"Question","name":"Can I record with my mic?","acceptedAnswer":{"@type":"Answer","text":"Yes — hold the record button, allow the microphone, and your recording is processed locally."}},{"@type":"Question","name":"What format is the download?","acceptedAnswer":{"@type":"Answer","text":"WAV — always works, straight from your browser."}}]}]}</script>
+</head>
+<body>
+<header class="site-header">
+  <div class="container">
+    <a class="logo" href="/"><span class="logo-mark">T</span> ToolNest</a>
+    <div class="header-right">
+      <form class="nav-search" action="/" method="get" role="search">
+        <span class="ns-icon">🔍</span>
+        <input type="search" name="q" placeholder="Search tools…" aria-label="Search tools" autocomplete="off">
+      </form>
+      <div class="menu-wrap">
+        <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="menuPanel" aria-label="Open menu"><span></span><span></span><span></span></button>
+        <nav class="menu-panel" id="menuPanel" aria-label="Site">
+          <a href="/">Home</a>
+          <a href="/#categories">Categories</a>
+          <a href="/#all-tools">All Tools</a>
+        </nav>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ADSTERRA-HEADER: paste your Adsterra banner ad code inside the div below -->
+<div class="container"><div class="ad-slot ad-leaderboard" data-ad="header"></div></div>
+
+<main class="container">
+  <nav class="crumbs"><a href="/">Home</a> &rsaquo; <a href="/#video-audio">Video &amp; Audio</a> &rsaquo; Voice Changer (Lite)</nav>
+  <div class="tool-hero">
+    <h1>Voice Changer (Lite)</h1>
+    <p>Have fun with your voice: pitch/speed shift, robot ring-modulation and echo on uploaded audio or mic recordings. Honest lite effects.</p>
+  </div>
+
+  <div class="tool-card">
+  <div class="grid2">
+    <div class="field">
+      <label for="voice-changer-lite-file">Audio file</label>
+      <input type="file" id="voice-changer-lite-file" accept="audio/*" class="input">
+    </div>
+    <div class="field">
+      <label>Or record</label>
+      <div class="btn-row" style="margin:0">
+        <button class="btn btn-outline" id="voice-changer-lite-rec">● Record</button>
+        <button class="btn btn-outline hidden" id="voice-changer-lite-stop">Stop</button>
+      </div>
+      <span class="hint" id="voice-changer-lite-rechint">Mic recording stays in your browser.</span>
+    </div>
+  </div>
+  <div class="grid3">
+    <div class="field">
+      <label for="voice-changer-lite-pitch">Pitch / speed: <span id="voice-changer-lite-pitch-val">1.00</span>×</label>
+      <input type="range" id="voice-changer-lite-pitch" min="0.5" max="2" step="0.05" value="1">
+      <span class="hint">Like tape: pitch and speed change together.</span>
+    </div>
+    <div class="field checkline">
+      <input type="checkbox" id="voice-changer-lite-robot">
+      <label for="voice-changer-lite-robot">🤖 Robot (ring modulation)</label>
+    </div>
+    <div class="field checkline">
+      <input type="checkbox" id="voice-changer-lite-echo">
+      <label for="voice-changer-lite-echo">🔁 Echo (delay)</label>
+    </div>
+  </div>
+  <div class="btn-row">
+    <button class="btn btn-primary" id="voice-changer-lite-go">Apply effects</button>
+    <button class="btn btn-outline hidden" id="voice-changer-lite-play">Play result</button>
+    <button class="btn btn-outline hidden" id="voice-changer-lite-download">Download WAV</button>
+  </div>
+  <div class="error" id="voice-changer-lite-error"></div>
+  <p class="note"><strong>Lite = honest:</strong> pitch shifts speed too (tape-style), robot is ring modulation, echo is a simple delay. No formant-shifting magic is claimed. Everything runs in your browser.</p>
+</div>
+
+
+  <!-- ADSTERRA-INCONTENT: paste your Adsterra native/in-content ad code inside the div below -->
+  <div class="ad-slot" data-ad="incontent"></div>
+
+  <div class="info-grid">
+    <div class="info-card">
+      <h2>📖 How to use</h2>
+      <ol><li>Upload audio or record with your mic.</li><li>Set pitch/speed, toggle robot and echo.</li><li>Click &quot;Apply effects&quot; to render.</li><li>Preview the result and download the WAV.</li></ol>
+    </div>
+    <div class="info-card">
+      <h2>❓ Frequently asked questions</h2>
+      <div class="faq"><details><summary>Why is it called &#39;lite&#39;?</summary><p>Lite means honest: the pitch slider changes speed too (like tape), robot is ring modulation, echo is a simple delay. No pro formant shifting is claimed.</p></details><details><summary>Can I record with my mic?</summary><p>Yes — hold the record button, allow the microphone, and your recording is processed locally.</p></details><details><summary>What format is the download?</summary><p>WAV — always works, straight from your browser.</p></details></div>
+    </div>
+  </div>
+
+  <section class="section">
+    <h2>🔗 Related tools</h2>
+    <div class="tool-grid"><a class="tool-link" href="/tools/8d-audio-panner/" data-search="8d audio panner the viral 8d audio effect: your track circles around your head with a rotating stereo-pan lfo. play it and download it. 8d audio 8d converter surround sound effect panning effect"><span class="t-ico">🎬</span><span class="t-body"><b>8D Audio Panner</b><small>The viral 8D audio effect: your track circles around your head with a rotating stereo-pan LF…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/audio-cutter/" data-search="audio cutter cut a section out of any audio file in your browser. set start and end times, preview the selection, then download it as an mp3. audio cutter cut audio online trim mp3 audio trimmer mp3 cutter"><span class="t-ico">🎬</span><span class="t-body"><b>Audio Cutter</b><small>Cut a section out of any audio file in your browser. Set start and end times, preview the se…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/audio-fade-in-out/" data-search="audio fade in/out add smooth fade-in and fade-out to any audio track and export as wav. audio fade in out fade audio add fade to mp3 fade in fade out"><span class="t-ico">🎬</span><span class="t-body"><b>Audio Fade In/Out</b><small>Add smooth fade-in and fade-out to any audio track and export as WAV.</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/audio-joiner/" data-search="audio joiner merge several audio files end-to-end into one wav download. join audio merge audio files combine mp3 audio joiner"><span class="t-ico">🎬</span><span class="t-body"><b>Audio Joiner</b><small>Merge several audio files end-to-end into one WAV download.</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/audio-normalizer/" data-search="audio normalizer peak-normalize any audio to your target level with a real offlineaudiocontext gain stage — see before/after peaks. audio normalizer normalize volume peak normalize loudness"><span class="t-ico">🎬</span><span class="t-body"><b>Audio Normalizer</b><small>Peak-normalize any audio to your target level with a real OfflineAudioContext gain stage — s…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/audio-reverse/" data-search="audio reverse reverse any audio file backwards and export it as a wav. reverse audio backwards audio reverse mp3 audio reverser"><span class="t-ico">🎬</span><span class="t-body"><b>Audio Reverse</b><small>Reverse any audio file backwards and export it as a WAV.</small></span><span class="t-arrow">→</span></a></div>
+  </section>
+</main>
+
+<!-- ADSTERRA-FOOTER: paste your Adsterra footer/banner ad code inside the div below -->
+<div class="container"><div class="ad-slot" data-ad="footer"></div></div>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="f-grid">
+      <div>
+        <span class="brandline"><span class="logo-mark">T</span> ToolNest</span>
+        <p>Free online tools that actually work. No sign-up, no watermarks — and your files never leave your device for client-side tools.</p>
+      </div>
+      <div>
+        <h4>Popular</h4>
+        <a href="/tools/qr-code-generator/">QR Code Generator</a>
+        <a href="/tools/background-remover/">Background Remover</a>
+        <a href="/tools/pdf-merger/">PDF Merger</a>
+        <a href="/tools/word-counter/">Word Counter</a>
+      </div>
+      <div>
+        <h4>Categories</h4>
+        <a href="/#image">Image Tools</a>
+        <a href="/#pdf">PDF &amp; Documents</a>
+        <a href="/#calculators">Calculators</a>
+        <a href="/#developer">Developer Tools</a>
+      </div>
+      <div>
+        <h4>Site</h4>
+        <a href="/">Home</a>
+        <a href="/#all-tools">All Tools</a>
+        <a href="/sitemap.xml">Sitemap</a>
+      </div>
+    </div>
+    <div class="f-bottom">© 2026 ToolNest · Free tools for everyone · Made with care</div>
+  </div>
+</footer>
+
+<script src="/assets/site.js?v=5"></script>
+
+<script>
+/* Voice Changer Lite — pitch/speed, robot ring-mod, echo; upload or mic record. */
+(function () {
+  'use strict';
+  var SLUG = 'voice-changer-lite';
+  var ERR = SLUG + '-error';
+  var audioBuf = null, fileName = 'voice';
+  var outBuf = null;
+  var actx = null, playSrc = null;
+  var mediaRec = null, recChunks = [];
+
+  function AC() { return window.AudioContext || window.webkitAudioContext; }
+
+  function decodeFile(f) {
+    TN.clearErr(ERR);
+    fileName = (f.name || 'voice').replace(/\.[^.]+$/, '') || 'voice';
+    var Ctor = AC();
+    if (!Ctor) { TN.setErr(ERR, 'Your browser does not support Web Audio.'); return; }
+    var tmp = new Ctor();
+    TN.readAsArrayBuffer(f).then(function (b) { return tmp.decodeAudioData(b); }).then(function (ab) {
+      audioBuf = ab; outBuf = null;
+      document.getElementById(SLUG + '-play').classList.add('hidden');
+      document.getElementById(SLUG + '-download').classList.add('hidden');
+      try { tmp.close(); } catch (e) {}
+    }).catch(function () {
+      try { tmp.close(); } catch (e2) {}
+      TN.setErr(ERR, 'Could not decode this file. It may use a format your browser cannot read.');
+    });
+  }
+
+  function render() {
+    TN.clearErr(ERR);
+    if (!audioBuf) { TN.setErr(ERR, 'Upload audio or record something first.'); return; }
+    var pitch = parseFloat(document.getElementById(SLUG + '-pitch').value) || 1;
+    var robot = document.getElementById(SLUG + '-robot').checked;
+    var echo = document.getElementById(SLUG + '-echo').checked;
+    if (pitch === 1 && !robot && !echo) { TN.setErr(ERR, 'Turn on at least one effect first.'); return; }
+
+    var btn = document.getElementById(SLUG + '-go');
+    if (btn) btn.disabled = true;
+    var Ctor = window.OfflineAudioContext || window.webkitOfflineAudioContext;
+    if (!Ctor) { TN.setErr(ERR, 'Offline rendering is not supported in this browser.'); if (btn) btn.disabled = false; return; }
+
+    try {
+      var sr = audioBuf.sampleRate;
+      var ch = Math.min(audioBuf.numberOfChannels, 2);
+      var outLen = Math.ceil(audioBuf.length / pitch) + (echo ? Math.ceil(sr * 1.2) : 0);
+      var off = new Ctor(ch, outLen, sr);
+      var src = off.createBufferSource();
+      src.buffer = audioBuf;
+      src.playbackRate.value = pitch; // tape-style: pitch + speed together
+      var tail = src;
+
+      if (robot) {
+        // ring modulation: multiply signal by 45 Hz sine
+        var osc = off.createOscillator();
+        osc.type = 'sine'; osc.frequency.value = 45;
+        var og = off.createGain(); og.gain.value = 0.5;
+        var ring = off.createGain(); ring.gain.value = 0;
+        osc.connect(og); og.connect(ring.gain);
+        tail.connect(ring);
+        osc.start(0);
+        tail = ring;
+      }
+      if (echo) {
+        var dry = off.createGain(); dry.gain.value = 0.8;
+        var wet = off.createGain(); wet.gain.value = 0.35;
+        var dly = off.createDelay(2); dly.delayTime.value = 0.28;
+        var fb = off.createGain(); fb.gain.value = 0.38;
+        tail.connect(dry);
+        tail.connect(dly); dly.connect(fb); fb.connect(dly); dly.connect(wet);
+        var mix = off.createGain();
+        dry.connect(mix); wet.connect(mix);
+        tail = mix;
+      }
+      tail.connect(off.destination);
+      src.start(0);
+      off.startRendering().then(function (rendered) {
+        outBuf = rendered;
+        document.getElementById(SLUG + '-play').classList.remove('hidden');
+        document.getElementById(SLUG + '-download').classList.remove('hidden');
+        if (btn) btn.disabled = false;
+      }).catch(function () {
+        TN.setErr(ERR, 'Rendering failed.');
+        if (btn) btn.disabled = false;
+      });
+    } catch (e) {
+      TN.setErr(ERR, 'Rendering failed: ' + (e && e.message || e));
+      if (btn) btn.disabled = false;
+    }
+  }
+
+  function encodeWav(ab) {
+    var ch = Math.min(ab.numberOfChannels, 2), sr = ab.sampleRate, len = ab.length;
+    var bytes = 44 + len * ch * 2;
+    var buf = new ArrayBuffer(bytes), v = new DataView(buf);
+    function ws(o, s) { for (var i = 0; i < s.length; i++) v.setUint8(o + i, s.charCodeAt(i)); }
+    ws(0, 'RIFF'); v.setUint32(4, bytes - 8, true); ws(8, 'WAVE'); ws(12, 'fmt ');
+    v.setUint32(16, 16, true); v.setUint16(20, 1, true); v.setUint16(22, ch, true);
+    v.setUint32(24, sr, true); v.setUint32(28, sr * ch * 2, true); v.setUint16(32, ch * 2, true);
+    v.setUint16(34, 16, true); ws(36, 'data'); v.setUint32(40, len * ch * 2, true);
+    var chans = [];
+    for (var c = 0; c < ch; c++) chans.push(ab.getChannelData(c));
+    var off = 44;
+    for (var i = 0; i < len; i++) {
+      for (var cc = 0; cc < ch; cc++) {
+        var s = Math.max(-1, Math.min(1, chans[cc][i]));
+        v.setInt16(off, s < 0 ? s * 0x8000 : s * 0x7FFF, true);
+        off += 2;
+      }
+    }
+    return new Blob([buf], { type: 'audio/wav' });
+  }
+
+  function stopPlay() {
+    try { if (playSrc) playSrc.stop(); } catch (e) {}
+    playSrc = null;
+  }
+
+  try {
+    if (!document.getElementById(SLUG + '-go')) return;
+    TN.on(SLUG + '-file', 'change', function () {
+      var f = this.files && this.files[0];
+      if (f) decodeFile(f);
+    });
+    TN.on(SLUG + '-pitch', 'input', function () {
+      document.getElementById(SLUG + '-pitch-val').textContent = parseFloat(this.value).toFixed(2);
+    });
+    TN.on(SLUG + '-go', 'click', render);
+    TN.on(SLUG + '-play', 'click', function () {
+      if (!outBuf) return;
+      stopPlay();
+      var Ctor = AC();
+      actx = actx || new Ctor();
+      if (actx.state === 'suspended') actx.resume();
+      playSrc = actx.createBufferSource();
+      playSrc.buffer = outBuf;
+      playSrc.connect(actx.destination);
+      playSrc.start();
+    });
+    TN.on(SLUG + '-download', 'click', function () {
+      if (!outBuf) return;
+      TN.download(encodeWav(outBuf), fileName + '-voice-fx.wav');
+    });
+
+    // mic recording
+    TN.on(SLUG + '-rec', 'click', function () {
+      TN.clearErr(ERR);
+      if (!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia) {
+        TN.setErr(ERR, 'Microphone recording is not supported in this browser.');
+        return;
+      }
+      navigator.mediaDevices.getUserMedia({ audio: true }).then(function (stream) {
+        recChunks = [];
+        try { mediaRec = new MediaRecorder(stream); }
+        catch (e) { TN.setErr(ERR, 'Recording is not supported in this browser.'); return; }
+        mediaRec.ondataavailable = function (e) { if (e.data && e.data.size) recChunks.push(e.data); };
+        mediaRec.onstop = function () {
+          stream.getTracks().forEach(function (t) { try { t.stop(); } catch (e2) {} });
+          document.getElementById(SLUG + '-rec').classList.remove('hidden');
+          document.getElementById(SLUG + '-stop').classList.add('hidden');
+          var blob = new Blob(recChunks, { type: mediaRec.mimeType || 'audio/webm' });
+          decodeFile(new File([blob], 'mic-recording.webm', { type: blob.type }));
+        };
+        mediaRec.start();
+        document.getElementById(SLUG + '-rec').classList.add('hidden');
+        document.getElementById(SLUG + '-stop').classList.remove('hidden');
+        document.getElementById(SLUG + '-rechint').textContent = 'Recording… click Stop when done.';
+      }).catch(function () {
+        TN.setErr(ERR, 'Microphone access was denied.');
+      });
+    });
+    TN.on(SLUG + '-stop', 'click', function () {
+      try { if (mediaRec && mediaRec.state !== 'inactive') mediaRec.stop(); } catch (e) {}
+      document.getElementById(SLUG + '-rechint').textContent = 'Mic recording stays in your browser.';
+    });
+  } catch (e) {
+    TN.setErr(ERR, 'This tool could not start: ' + (e && e.message || e));
+  }
+})();
+
+</script>
+</body>
+</html>

@@ -1,0 +1,20 @@
+{
+  "slug": "karnaugh-map-solver",
+  "title": "Karnaugh Map Solver",
+  "category": "math",
+  "description": "Minimize 2 to 4 variable Boolean functions with a real Quine–McCluskey solver: see the K-map grid, essential prime implicant groupings, and the minimized sum-of-products expression.",
+  "keywords": ["karnaugh map", "kmap solver", "boolean minimization", "quine mccluskey", "logic minimization"],
+  "howto": [
+    "Choose 2, 3 or 4 variables and type the minterm numbers (comma separated) in the Σm box.",
+    "Optionally type don't-care numbers in the Σd box (must not overlap with minterms).",
+    "Press Solve to get the minimized expression, the K-map grid with colored groupings, and the prime implicant steps.",
+    "Copy the minimized sum-of-products expression with the Copy button."
+  ],
+  "faqs": [
+    {"q": "How does the solver find the minimized expression?", "a": "It runs the Quine–McCluskey algorithm: all minterms and don't-cares are repeatedly combined into larger implicants until only prime implicants remain, then essential prime implicants are selected via a prime implicant chart and any leftover minterms are covered greedily."},
+    {"q": "What are don't-care conditions?", "a": "Input combinations whose output does not matter. The solver may treat them as 0 or 1, whichever gives a smaller expression — they can only help reduce the number of terms, never hurt."},
+    {"q": "Why is the K-map column order 00, 01, 11, 10?", "a": "That is Gray code order: only one bit changes between adjacent cells, which is what makes visual grouping valid. Group sizes must be powers of two (1, 2, 4, 8)."}
+  ],
+  "libs": [],
+  "module": false
+}

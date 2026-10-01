@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Avatar Generator — Free Online | ToolNest</title>
+<meta name="description" content="Generate procedural seeded SVG avatars — same seed always gives the same face. Shuffle, or download as SVG/PNG.">
+<meta name="keywords" content="avatar generator, profile picture generator, svg avatar, random avatar, seeded avatar">
+<link rel="canonical" href="https://toolnest.vercel.app/tools/avatar-generator/">
+<meta name="theme-color" content="#07070b">
+<meta property="og:title" content="Avatar Generator — Free Online | ToolNest">
+<meta property="og:description" content="Generate procedural seeded SVG avatars — same seed always gives the same face. Shuffle, or download as SVG/PNG.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css?v=4">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%23e01111'/><text x='50' y='68' font-size='58' text-anchor='middle' fill='white' font-family='Arial' font-weight='bold'>T</text></svg>">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebApplication","name":"Avatar Generator","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0"},"url":"https://toolnest.vercel.app/tools/avatar-generator/","description":"Generate procedural seeded SVG avatars — same seed always gives the same face. Shuffle, or download as SVG/PNG."},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How are avatars made?","acceptedAnswer":{"@type":"Answer","text":"A seeded random generator picks face shapes, skin tones, hair, eyes, mouths, and accessories — fully procedural, no images."}},{"@type":"Question","name":"Are they reproducible?","acceptedAnswer":{"@type":"Answer","text":"Yes — type any seed word and the same avatar is generated every time."}},{"@type":"Question","name":"What can I download?","acceptedAnswer":{"@type":"Answer","text":"Download the vector SVG or a raster PNG (512×512)."}},{"@type":"Question","name":"What does Shuffle do?","acceptedAnswer":{"@type":"Answer","text":"Shuffle rolls a random seed for a brand-new face."}}]}]}</script>
+</head>
+<body>
+<header class="site-header">
+  <div class="container">
+    <a class="logo" href="/"><span class="logo-mark">T</span> ToolNest</a>
+    <div class="header-right">
+      <form class="nav-search" action="/" method="get" role="search">
+        <span class="ns-icon">🔍</span>
+        <input type="search" name="q" placeholder="Search tools…" aria-label="Search tools" autocomplete="off">
+      </form>
+      <div class="menu-wrap">
+        <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="menuPanel" aria-label="Open menu"><span></span><span></span><span></span></button>
+        <nav class="menu-panel" id="menuPanel" aria-label="Site">
+          <a href="/">Home</a>
+          <a href="/#categories">Categories</a>
+          <a href="/#all-tools">All Tools</a>
+        </nav>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ADSTERRA-HEADER: paste your Adsterra banner ad code inside the div below -->
+<div class="container"><div class="ad-slot ad-leaderboard" data-ad="header"></div></div>
+
+<main class="container">
+  <nav class="crumbs"><a href="/">Home</a> &rsaquo; <a href="/#generators">Generators</a> &rsaquo; Avatar Generator</nav>
+  <div class="tool-hero">
+    <h1>Avatar Generator</h1>
+    <p>Generate procedural seeded SVG avatars — same seed always gives the same face. Shuffle, or download as SVG/PNG.</p>
+  </div>
+
+  <div class="tool-card" style="text-align:center">
+  <div class="field" style="max-width:420px;margin:0 auto">
+    <label for="avatar-generator-seed">Seed word (same seed = same avatar)</label>
+    <input class="input" id="avatar-generator-seed" type="text" placeholder="e.g. dragon42" maxlength="40">
+  </div>
+  <div class="btn-row" style="justify-content:center">
+    <button class="btn btn-primary" id="avatar-generator-go" type="button">Generate Avatar</button>
+    <button class="btn btn-outline" id="avatar-generator-shuffle" type="button">Shuffle</button>
+  </div>
+  <div class="error" id="avatar-generator-error"></div>
+  <div id="avatar-generator-stage" style="margin:14px auto;width:220px;height:220px"></div>
+  <div class="btn-row" style="justify-content:center">
+    <button class="btn btn-outline btn-sm" id="avatar-generator-svg" type="button">Download SVG</button>
+    <button class="btn btn-outline btn-sm" id="avatar-generator-png" type="button">Download PNG</button>
+  </div>
+</div>
+
+
+  <!-- ADSTERRA-INCONTENT: paste your Adsterra native/in-content ad code inside the div below -->
+  <div class="ad-slot" data-ad="incontent"></div>
+
+  <div class="info-grid">
+    <div class="info-card">
+      <h2>📖 How to use</h2>
+      <ol><li>Type a seed word (or leave blank).</li><li>Press Generate Avatar (or Shuffle).</li><li>Download as SVG or PNG.</li></ol>
+    </div>
+    <div class="info-card">
+      <h2>❓ Frequently asked questions</h2>
+      <div class="faq"><details><summary>How are avatars made?</summary><p>A seeded random generator picks face shapes, skin tones, hair, eyes, mouths, and accessories — fully procedural, no images.</p></details><details><summary>Are they reproducible?</summary><p>Yes — type any seed word and the same avatar is generated every time.</p></details><details><summary>What can I download?</summary><p>Download the vector SVG or a raster PNG (512×512).</p></details><details><summary>What does Shuffle do?</summary><p>Shuffle rolls a random seed for a brand-new face.</p></details></div>
+    </div>
+  </div>
+
+  <section class="section">
+    <h2>🔗 Related tools</h2>
+    <div class="tool-grid"><a class="tool-link" href="/tools/affirmation-generator/" data-search="affirmation generator daily affirmations for confidence, calm, and motivation — pick a focus and get 10 positive statements to copy or repeat. affirmation generator daily affirmations positive affirmations confidence affirmations motivation quotes"><span class="t-ico">⚙️</span><span class="t-body"><b>Affirmation Generator</b><small>Daily affirmations for confidence, calm, and motivation — pick a focus and get 10 positive s…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/album-name-generator/" data-search="album name generator generate album titles by genre — rock, pop, hip-hop, electronic, jazz, country, and metal. album name generator band album titles music album names record title ideas album title generator"><span class="t-ico">⚙️</span><span class="t-body"><b>Album Name Generator</b><small>Generate album titles by genre — rock, pop, hip-hop, electronic, jazz, country, and metal.</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/app-name-generator/" data-search="app name generator invent brandable app names — syllable blending, prefix/suffix fusion, and compound styles like &#39;snaply&#39; or &#39;taskforge&#39;. app name generator startup name brandable names app naming business name ideas"><span class="t-ico">⚙️</span><span class="t-body"><b>App Name Generator</b><small>Invent brandable app names — syllable blending, prefix/suffix fusion, and compound styles li…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/author-pen-name-generator/" data-search="author pen name generator generate author pen names with the right vibe for your genre — literary, thriller, romance, fantasy, sci-fi, or children&#39;s. pen name generator author name pseudonym generator writer name nom de plume"><span class="t-ico">⚙️</span><span class="t-body"><b>Author Pen Name Generator</b><small>Generate author pen names with the right vibe for your genre — literary, thriller, romance, …</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/band-name-generator/" data-search="band name generator generate original band names by genre — rock, metal, pop, hip-hop, electronic, jazz, punk or indie — with one click and copy. band name generator rock band names metal band names cool band names music group name ideas"><span class="t-ico">⚙️</span><span class="t-body"><b>Band Name Generator</b><small>Generate original band names by genre — rock, metal, pop, hip-hop, electronic, jazz, punk or…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/barcode-generator/" data-search="barcode generator generate barcodes in common formats — code128, code39, ean-13, ean-8, upc and itf-14 — and download them as png or svg images. barcode generator barcode maker ean13 barcode upc barcode generator"><span class="t-ico">⚙️</span><span class="t-body"><b>Barcode Generator</b><small>Generate barcodes in common formats — CODE128, CODE39, EAN-13, EAN-8, UPC and ITF-14 — and d…</small></span><span class="t-arrow">→</span></a></div>
+  </section>
+</main>
+
+<!-- ADSTERRA-FOOTER: paste your Adsterra footer/banner ad code inside the div below -->
+<div class="container"><div class="ad-slot" data-ad="footer"></div></div>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="f-grid">
+      <div>
+        <span class="brandline"><span class="logo-mark">T</span> ToolNest</span>
+        <p>Free online tools that actually work. No sign-up, no watermarks — and your files never leave your device for client-side tools.</p>
+      </div>
+      <div>
+        <h4>Popular</h4>
+        <a href="/tools/qr-code-generator/">QR Code Generator</a>
+        <a href="/tools/background-remover/">Background Remover</a>
+        <a href="/tools/pdf-merger/">PDF Merger</a>
+        <a href="/tools/word-counter/">Word Counter</a>
+      </div>
+      <div>
+        <h4>Categories</h4>
+        <a href="/#image">Image Tools</a>
+        <a href="/#pdf">PDF &amp; Documents</a>
+        <a href="/#calculators">Calculators</a>
+        <a href="/#developer">Developer Tools</a>
+      </div>
+      <div>
+        <h4>Site</h4>
+        <a href="/">Home</a>
+        <a href="/#all-tools">All Tools</a>
+        <a href="/sitemap.xml">Sitemap</a>
+      </div>
+    </div>
+    <div class="f-bottom">© 2026 ToolNest · Free tools for everyone · Made with care</div>
+  </div>
+</footer>
+
+<script src="/assets/site.js?v=5"></script>
+
+<script>
+/* Avatar Generator — procedural seeded SVG avatars, downloadable as SVG/PNG. */
+(function () {
+  'use strict';
+  var SLUG = 'avatar-generator';
+
+  var SKIN = ['#ffdbac', '#f1c27d', '#e0ac69', '#c68642', '#8d5524', '#ffcc99', '#f0c8a0', '#d9a066'];
+  var BG = ['#1e3a5f', '#166534', '#7c2d12', '#4a1d6b', '#0f4c5c', '#5f1e3a', '#2d4a22', '#3b3b6b', '#6b3b1d', '#1d4b6b'];
+  var HAIR = ['#2b2b2b', '#5b3a1e', '#8a5a2b', '#c9a227', '#d9541e', '#7a2d2d', '#4a4a6b', '#1e6b5f', '#8b1e4b', '#333'];
+  var SHIRT = ['#e74c3c', '#3498db', '#2ecc71', '#f39c12', '#9b59b6', '#1abc9c', '#e67e22', '#95a5a6', '#34495e', '#d35400'];
+
+  function xmur3(str) {
+    var h = 1779033703 ^ str.length;
+    for (var i = 0; i < str.length; i++) {
+      h = Math.imul(h ^ str.charCodeAt(i), 3432918353);
+      h = (h << 13) | (h >>> 19);
+    }
+    return function () {
+      h = Math.imul(h ^ (h >>> 16), 2246822507);
+      h = Math.imul(h ^ (h >>> 13), 3266489909);
+      return (h ^= h >>> 16) >>> 0;
+    };
+  }
+  function mulberry32(a) {
+    return function () {
+      a |= 0; a = (a + 0x6D2B79F5) | 0;
+      var t = Math.imul(a ^ (a >>> 15), 1 | a);
+      t = (t + Math.imul(t ^ (t >>> 7), 61 | t)) ^ t;
+      return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
+    };
+  }
+  function rngFromSeed(seed) {
+    var s = seed || 'avatar';
+    return mulberry32(xmur3(s)());
+  }
+
+  function buildSVG(seed) {
+    var rnd = rngFromSeed(seed);
+    function rp(a) { return a[Math.floor(rnd() * a.length)]; }
+    function rr(a, b) { return a + rnd() * (b - a); }
+
+    var bg = rp(BG), skin = rp(SKIN), hair = rp(HAIR), shirt = rp(SHIRT);
+    var faceW = rr(64, 76), faceH = rr(70, 82);
+    var hairStyle = Math.floor(rnd() * 4); /* 0 short, 1 long, 2 mohawk, 3 bald */
+    var eyeStyle = Math.floor(rnd() * 3);  /* 0 dots, 1 happy arcs, 2 sleepy */
+    var mouth = Math.floor(rnd() * 3);     /* 0 smile, 1 grin, 2 flat */
+    var glasses = rnd() < 0.3, blush = rnd() < 0.5, beard = rnd() < 0.25;
+
+    var s = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">';
+    s += '<rect width="200" height="200" fill="' + bg + '"/>';
+    /* body */
+    s += '<rect x="55" y="150" width="90" height="60" rx="18" fill="' + shirt + '"/>';
+    s += '<rect x="88" y="140" width="24" height="22" fill="' + skin + '"/>';
+    /* face */
+    s += '<ellipse cx="100" cy="105" rx="' + faceW / 2 + '" ry="' + faceH / 2 + '" fill="' + skin + '"/>';
+    /* hair */
+    if (hairStyle === 0) s += '<path d="M' + (100 - faceW / 2 - 4) + ' 95 Q100 ' + (105 - faceH / 2 - 26) + ' ' + (100 + faceW / 2 + 4) + ' 95 L' + (100 + faceW / 2 - 6) + ' 78 Q100 ' + (105 - faceH / 2 - 12) + ' ' + (100 - faceW / 2 + 6) + ' 78 Z" fill="' + hair + '"/>';
+    else if (hairStyle === 1) s += '<path d="M' + (100 - faceW / 2 - 8) + ' 60 Q100 ' + (105 - faceH / 2 - 30) + ' ' + (100 + faceW / 2 + 8) + ' 60 L' + (100 + faceW / 2 + 8) + ' 150 Q' + (100 + faceW / 2 - 10) + ' 130 ' + (100 + faceW / 2 - 4) + ' 92 L' + (100 - faceW / 2 + 4) + ' 92 Q' + (100 - faceW / 2 + 10) + ' 130 ' + (100 - faceW / 2 - 8) + ' 150 Z" fill="' + hair + '"/>';
+    else if (hairStyle === 2) s += '<rect x="92" y="' + (105 - faceH / 2 - 30) + '" width="16" height="34" rx="8" fill="' + hair + '"/>';
+    /* eyes */
+    var ey = 100;
+    if (eyeStyle === 0) {
+      s += '<circle cx="82" cy="' + ey + '" r="5" fill="#222"/><circle cx="118" cy="' + ey + '" r="5" fill="#222"/>';
+      s += '<circle cx="84" cy="' + (ey - 2) + '" r="1.6" fill="#fff"/><circle cx="120" cy="' + (ey - 2) + '" r="1.6" fill="#fff"/>';
+    } else if (eyeStyle === 1) {
+      s += '<path d="M74 ' + ey + ' Q82 ' + (ey - 9) + ' 90 ' + ey + '" stroke="#222" stroke-width="4" fill="none" stroke-linecap="round"/>';
+      s += '<path d="M110 ' + ey + ' Q118 ' + (ey - 9) + ' 126 ' + ey + '" stroke="#222" stroke-width="4" fill="none" stroke-linecap="round"/>';
+    } else {
+      s += '<path d="M74 ' + ey + ' Q82 ' + (ey + 6) + ' 90 ' + ey + '" stroke="#222" stroke-width="4" fill="none" stroke-linecap="round"/>';
+      s += '<path d="M110 ' + ey + ' Q118 ' + (ey + 6) + ' 126 ' + ey + '" stroke="#222" stroke-width="4" fill="none" stroke-linecap="round"/>';
+    }
+    if (glasses) {
+      s += '<circle cx="82" cy="' + ey + '" r="13" fill="none" stroke="#222" stroke-width="3.5"/>';
+      s += '<circle cx="118" cy="' + ey + '" r="13" fill="none" stroke="#222" stroke-width="3.5"/>';
+      s += '<path d="M95 ' + ey + ' L105 ' + ey + '" stroke="#222" stroke-width="3.5"/>';
+    }
+    if (blush) {
+      s += '<ellipse cx="66" cy="118" rx="8" ry="5" fill="#f1948a" opacity="0.7"/>';
+      s += '<ellipse cx="134" cy="118" rx="8" ry="5" fill="#f1948a" opacity="0.7"/>';
+    }
+    /* mouth */
+    var my = 128;
+    if (mouth === 0) s += '<path d="M86 ' + my + ' Q100 ' + (my + 12) + ' 114 ' + my + '" stroke="#7a2d2d" stroke-width="4" fill="none" stroke-linecap="round"/>';
+    else if (mouth === 1) s += '<path d="M84 ' + my + ' Q100 ' + (my + 16) + ' 116 ' + my + ' Q100 ' + (my + 4) + ' 84 ' + my + ' Z" fill="#7a2d2d"/>';
+    else s += '<path d="M88 ' + (my + 4) + ' L112 ' + (my + 4) + '" stroke="#7a2d2d" stroke-width="4" stroke-linecap="round"/>';
+    if (beard) s += '<path d="M' + (100 - faceW / 2 + 6) + ' 118 Q100 ' + (105 + faceH / 2 + 14) + ' ' + (100 + faceW / 2 - 6) + ' 118 Q100 132 ' + (100 - faceW / 2 + 6) + ' 118 Z" fill="' + hair + '" opacity="0.9"/>';
+    s += '</svg>';
+    return s;
+  }
+
+  var currentSVG = '', currentSeed = '';
+
+  function show() {
+    var stage = TN.el(SLUG + '-stage');
+    stage.innerHTML = currentSVG;
+    var svg = stage.querySelector('svg');
+    if (svg) { svg.style.width = '220px'; svg.style.height = '220px'; svg.style.borderRadius = '16px'; }
+  }
+
+  function init() {
+    if (!TN.el(SLUG + '-go')) return;
+    function generate(seed) {
+      try {
+        TN.clearErr(SLUG + '-error');
+        currentSeed = seed;
+        currentSVG = buildSVG(seed);
+        show();
+      } catch (e) { TN.setErr(SLUG + '-error', 'Could not generate the avatar. Please try again.'); }
+    }
+    TN.on(SLUG + '-go', 'click', function () {
+      var seed = TN.el(SLUG + '-seed').value.trim();
+      generate(seed || ('avatar-' + Math.floor(Math.random() * 1e9)));
+    });
+    TN.on(SLUG + '-shuffle', 'click', function () {
+      var seed = 'avatar-' + Math.floor(Math.random() * 1e9);
+      TN.el(SLUG + '-seed').value = seed;
+      generate(seed);
+    });
+    TN.on(SLUG + '-svg', 'click', function () {
+      if (!currentSVG) { TN.setErr(SLUG + '-error', 'Generate an avatar first.'); return; }
+      TN.downloadText(currentSVG, 'avatar-' + currentSeed.replace(/[^a-z0-9]+/gi, '-') + '.svg', 'image/svg+xml');
+    });
+    TN.on(SLUG + '-png', 'click', function () {
+      if (!currentSVG) { TN.setErr(SLUG + '-error', 'Generate an avatar first.'); return; }
+      try {
+        var blob = new Blob([currentSVG], { type: 'image/svg+xml' });
+        var url = URL.createObjectURL(blob);
+        var img = new Image();
+        img.onload = function () {
+          try {
+            var cv = document.createElement('canvas');
+            cv.width = 512; cv.height = 512;
+            cv.getContext('2d').drawImage(img, 0, 0, 512, 512);
+            URL.revokeObjectURL(url);
+            cv.toBlob(function (b) {
+              if (b) TN.download(b, 'avatar-' + currentSeed.replace(/[^a-z0-9]+/gi, '-') + '.png');
+              else TN.setErr(SLUG + '-error', 'PNG export failed in this browser.');
+            }, 'image/png');
+          } catch (e) { TN.setErr(SLUG + '-error', 'PNG export failed in this browser.'); }
+        };
+        img.onerror = function () { TN.setErr(SLUG + '-error', 'PNG export failed in this browser.'); };
+        img.src = url;
+      } catch (e) { TN.setErr(SLUG + '-error', 'PNG export failed in this browser.'); }
+    });
+    generate('avatar-seed-1');
+  }
+  try { init(); } catch (e) { /* never throw on load */ }
+})();
+
+</script>
+</body>
+</html>

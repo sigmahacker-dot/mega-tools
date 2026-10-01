@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Altitude Pressure Calculator — Free Online | ToolNest</title>
+<meta name="description" content="The barometric formula gives air pressure at any altitude (below 11,000 m) from sea-level pressure — in hPa, inHg and percent of sea level.">
+<meta name="keywords" content="altitude pressure calculator, barometric formula, air pressure at altitude, pressure vs altitude, QNH pressure calculator">
+<link rel="canonical" href="https://toolnest.vercel.app/tools/altitude-pressure-calculator/">
+<meta name="theme-color" content="#07070b">
+<meta property="og:title" content="Altitude Pressure Calculator — Free Online | ToolNest">
+<meta property="og:description" content="The barometric formula gives air pressure at any altitude (below 11,000 m) from sea-level pressure — in hPa, inHg and percent of sea level.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css?v=4">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%23e01111'/><text x='50' y='68' font-size='58' text-anchor='middle' fill='white' font-family='Arial' font-weight='bold'>T</text></svg>">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebApplication","name":"Altitude Pressure Calculator","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0"},"url":"https://toolnest.vercel.app/tools/altitude-pressure-calculator/","description":"The barometric formula gives air pressure at any altitude (below 11,000 m) from sea-level pressure — in hPa, inHg and percent of sea level."},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What is the barometric formula?","acceptedAnswer":{"@type":"Answer","text":"P = P₀ × (1 − 0.0065·h/288.15)^5.25588, with h in metres — the standard-atmosphere barometric formula, valid below 11,000 m (the tropopause)."}},{"@type":"Question","name":"What sea-level pressure should I enter?","acceptedAnswer":{"@type":"Answer","text":"Sea-level pressure varies with weather around 1013.25 hPa (the ISA standard). Enter your local sea-level (QNH) pressure for the most accurate result."}},{"@type":"Question","name":"Why is there an 11,000 m limit?","acceptedAnswer":{"@type":"Answer","text":"The formula assumes the standard troposphere lapse rate of 6.5 °C per km and stops being valid above the tropopause (11,000 m)."}}]}]}</script>
+</head>
+<body>
+<header class="site-header">
+  <div class="container">
+    <a class="logo" href="/"><span class="logo-mark">T</span> ToolNest</a>
+    <div class="header-right">
+      <form class="nav-search" action="/" method="get" role="search">
+        <span class="ns-icon">🔍</span>
+        <input type="search" name="q" placeholder="Search tools…" aria-label="Search tools" autocomplete="off">
+      </form>
+      <div class="menu-wrap">
+        <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="menuPanel" aria-label="Open menu"><span></span><span></span><span></span></button>
+        <nav class="menu-panel" id="menuPanel" aria-label="Site">
+          <a href="/">Home</a>
+          <a href="/#categories">Categories</a>
+          <a href="/#all-tools">All Tools</a>
+        </nav>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ADSTERRA-HEADER: paste your Adsterra banner ad code inside the div below -->
+<div class="container"><div class="ad-slot ad-leaderboard" data-ad="header"></div></div>
+
+<main class="container">
+  <nav class="crumbs"><a href="/">Home</a> &rsaquo; <a href="/#converters">Converters</a> &rsaquo; Altitude Pressure Calculator</nav>
+  <div class="tool-hero">
+    <h1>Altitude Pressure Calculator</h1>
+    <p>The barometric formula gives air pressure at any altitude (below 11,000 m) from sea-level pressure — in hPa, inHg and percent of sea level.</p>
+  </div>
+
+  <div class="tool-card">
+  <div class="grid2">
+    <div class="field">
+      <label for="altitude-pressure-calculator-p0">Sea-level pressure (hPa)</label>
+      <input type="number" step="any" min="0" class="input" id="altitude-pressure-calculator-p0" placeholder="e.g. 1013.25" value="1013.25">
+    </div>
+    <div class="field">
+      <label for="altitude-pressure-calculator-aunit">Altitude unit</label>
+      <select class="select" id="altitude-pressure-calculator-aunit">
+        <option value="m" selected>Metres</option>
+        <option value="ft">Feet</option>
+      </select>
+    </div>
+  </div>
+  <div class="field">
+    <label for="altitude-pressure-calculator-alt">Altitude</label>
+    <input type="number" step="any" class="input" id="altitude-pressure-calculator-alt" placeholder="e.g. 1500">
+  </div>
+  <div class="error" id="altitude-pressure-calculator-error"></div>
+  <div class="result" id="altitude-pressure-calculator-result">
+    <div class="stat-cards">
+      <div class="stat-card"><div class="v" id="altitude-pressure-calculator-hpa">–</div><div class="l">Pressure (hPa)</div></div>
+      <div class="stat-card"><div class="v" id="altitude-pressure-calculator-inhg">–</div><div class="l">Pressure (inHg)</div></div>
+      <div class="stat-card"><div class="v" id="altitude-pressure-calculator-pct">–</div><div class="l">% of sea level</div></div>
+    </div>
+    <p class="note">P = P₀ · (1 − 0.0065·h/288.15)^5.25588. Valid below 11,000 m (tropopause). Assumes the standard 6.5 °C/km lapse rate.</p>
+  </div>
+</div>
+
+
+  <!-- ADSTERRA-INCONTENT: paste your Adsterra native/in-content ad code inside the div below -->
+  <div class="ad-slot" data-ad="incontent"></div>
+
+  <div class="info-grid">
+    <div class="info-card">
+      <h2>📖 How to use</h2>
+      <ol><li>Enter the sea-level pressure (default 1013.25 hPa).</li><li>Enter the altitude in metres or feet.</li><li>Read the pressure at altitude in hPa, inHg and as a percent of sea level.</li></ol>
+    </div>
+    <div class="info-card">
+      <h2>❓ Frequently asked questions</h2>
+      <div class="faq"><details><summary>What is the barometric formula?</summary><p>P = P₀ × (1 − 0.0065·h/288.15)^5.25588, with h in metres — the standard-atmosphere barometric formula, valid below 11,000 m (the tropopause).</p></details><details><summary>What sea-level pressure should I enter?</summary><p>Sea-level pressure varies with weather around 1013.25 hPa (the ISA standard). Enter your local sea-level (QNH) pressure for the most accurate result.</p></details><details><summary>Why is there an 11,000 m limit?</summary><p>The formula assumes the standard troposphere lapse rate of 6.5 °C per km and stops being valid above the tropopause (11,000 m).</p></details></div>
+    </div>
+  </div>
+
+  <section class="section">
+    <h2>🔗 Related tools</h2>
+    <div class="tool-grid"><a class="tool-link" href="/tools/angle-converter/" data-search="angle converter convert angles between degrees, radians, gradians, turns, arcminutes, arcseconds and mils. enter a value once and see it in every unit instantly. angle converter degrees to radians radians to degrees gradians converter mils to degrees"><span class="t-ico">🔄</span><span class="t-body"><b>Angle Converter</b><small>Convert angles between degrees, radians, gradians, turns, arcminutes, arcseconds and mils. E…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/area-converter/" data-search="area converter square millimeters to square miles. area converter square feet to square meters acres to hectares"><span class="t-ico">🔄</span><span class="t-body"><b>Area Converter</b><small>Square millimeters to square miles.</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/baking-pan-converter/" data-search="baking pan converter compare pan volumes from dimensions, then scale every ingredient by the exact ratio — plus a batter-fill check. baking pan converter pan size conversion cake pan volume recipe scaling pan size"><span class="t-ico">🔄</span><span class="t-body"><b>Baking Pan Converter</b><small>Compare pan volumes from dimensions, then scale every ingredient by the exact ratio — plus a…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/beaufort-scale-converter/" data-search="beaufort scale converter convert wind speed (km/h, mph, knots, m/s) to the beaufort scale number with official speed ranges and land/sea descriptions. beaufort scale converter wind speed to beaufort beaufort scale chart knots to beaufort gale wind speed"><span class="t-ico">🔄</span><span class="t-body"><b>Beaufort Scale Converter</b><small>Convert wind speed (km/h, mph, knots, m/s) to the Beaufort scale number with official speed …</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/cat-age-converter/" data-search="cat age converter convert cat years to human years with the accepted life-stage chart: 15 for year one, 9 for year two, then about 4 per year. cat age converter cat years to human years how old is my cat cat age chart cat life stages"><span class="t-ico">🔄</span><span class="t-body"><b>Cat Age Converter</b><small>Convert cat years to human years with the accepted life-stage chart: 15 for year one, 9 for …</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/clothing-size-converter/" data-search="clothing size converter convert clothing and shoe sizes between us, uk, eu and international systems for men&#39;s tops, pants, women&#39;s dresses and footwear. clothing size converter us to eu size uk to us shoe size dress size conversion pant size converter"><span class="t-ico">🔄</span><span class="t-body"><b>Clothing Size Converter</b><small>Convert clothing and shoe sizes between US, UK, EU and international systems for men&#39;s tops,…</small></span><span class="t-arrow">→</span></a></div>
+  </section>
+</main>
+
+<!-- ADSTERRA-FOOTER: paste your Adsterra footer/banner ad code inside the div below -->
+<div class="container"><div class="ad-slot" data-ad="footer"></div></div>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="f-grid">
+      <div>
+        <span class="brandline"><span class="logo-mark">T</span> ToolNest</span>
+        <p>Free online tools that actually work. No sign-up, no watermarks — and your files never leave your device for client-side tools.</p>
+      </div>
+      <div>
+        <h4>Popular</h4>
+        <a href="/tools/qr-code-generator/">QR Code Generator</a>
+        <a href="/tools/background-remover/">Background Remover</a>
+        <a href="/tools/pdf-merger/">PDF Merger</a>
+        <a href="/tools/word-counter/">Word Counter</a>
+      </div>
+      <div>
+        <h4>Categories</h4>
+        <a href="/#image">Image Tools</a>
+        <a href="/#pdf">PDF &amp; Documents</a>
+        <a href="/#calculators">Calculators</a>
+        <a href="/#developer">Developer Tools</a>
+      </div>
+      <div>
+        <h4>Site</h4>
+        <a href="/">Home</a>
+        <a href="/#all-tools">All Tools</a>
+        <a href="/sitemap.xml">Sitemap</a>
+      </div>
+    </div>
+    <div class="f-bottom">© 2026 ToolNest · Free tools for everyone · Made with care</div>
+  </div>
+</footer>
+
+<script src="/assets/site.js?v=5"></script>
+
+<script>
+(function () {
+  'use strict';
+  var S = 'altitude-pressure-calculator';
+  /* ISA troposphere barometric formula */
+  var L = 0.0065, T0 = 288.15, EXP = 5.25588;
+  function r1(n) { return Math.round(n * 10) / 10; }
+  function convert() {
+    try {
+      TN.clearErr(S + '-error');
+      var hEl = TN.el(S + '-hpa'), iEl = TN.el(S + '-inhg'), pEl = TN.el(S + '-pct');
+      var p0 = parseFloat(TN.el(S + '-p0').value);
+      var aRaw = TN.el(S + '-alt').value;
+      if (aRaw === '' || aRaw === null) {
+        if (hEl) hEl.textContent = '–';
+        if (iEl) iEl.textContent = '–';
+        if (pEl) pEl.textContent = '–';
+        return;
+      }
+      var a = parseFloat(aRaw);
+      if (!isFinite(p0) || p0 <= 0) { TN.setErr(S + '-error', 'Enter a positive sea-level pressure.'); return; }
+      if (!isFinite(a)) { TN.setErr(S + '-error', 'Enter a valid altitude.'); return; }
+      var h = TN.el(S + '-aunit').value === 'ft' ? a * 0.3048 : a;
+      if (h < 0) { TN.setErr(S + '-error', 'Altitude cannot be negative.'); return; }
+      if (h > 11000) { TN.setErr(S + '-error', 'The troposphere formula is only valid below 11,000 m.'); }
+      var p = p0 * Math.pow(1 - L * h / T0, EXP);
+      if (hEl) hEl.textContent = r1(p) + ' hPa';
+      if (iEl) iEl.textContent = r1(p * 0.0295299830714) + ' inHg';
+      if (pEl) pEl.textContent = r1(100 * p / p0) + '%';
+    } catch (e) { /* never throw on input */ }
+  }
+  function init() {
+    ['p0', 'alt'].forEach(function (k) { TN.on(S + '-' + k, 'input', convert); });
+    TN.on(S + '-aunit', 'change', convert);
+    convert();
+  }
+  try { init(); } catch (e) { /* never throw on load */ }
+})();
+
+</script>
+</body>
+</html>

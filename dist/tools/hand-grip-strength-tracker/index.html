@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Grip Strength Tracker — Free Online | ToolNest</title>
+<meta name="description" content="Log dynamometer readings and compare against age and gender reference ranges.">
+<meta name="keywords" content="grip strength, hand grip test, dynamometer">
+<link rel="canonical" href="https://toolnest.vercel.app/tools/hand-grip-strength-tracker/">
+<meta name="theme-color" content="#07070b">
+<meta property="og:title" content="Grip Strength Tracker — Free Online | ToolNest">
+<meta property="og:description" content="Log dynamometer readings and compare against age and gender reference ranges.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css?v=4">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%23e01111'/><text x='50' y='68' font-size='58' text-anchor='middle' fill='white' font-family='Arial' font-weight='bold'>T</text></svg>">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebApplication","name":"Grip Strength Tracker","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0"},"url":"https://toolnest.vercel.app/tools/hand-grip-strength-tracker/","description":"Log dynamometer readings and compare against age and gender reference ranges."},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Where do the reference ranges come from?","acceptedAnswer":{"@type":"Answer","text":"Approximate typical ranges for dominant-hand grip by decade. They are illustrative, not clinical cut-offs."}},{"@type":"Question","name":"How should I measure?","acceptedAnswer":{"@type":"Answer","text":"With a hand dynamometer, arm at your side, elbow at 90 degrees, squeezing maximally. Take the best of 2-3 tries."}},{"@type":"Question","name":"Which hand should I test?","acceptedAnswer":{"@type":"Answer","text":"Test both, but the reference ranges reflect the dominant hand. Log which hand you used."}}]}]}</script>
+</head>
+<body>
+<header class="site-header">
+  <div class="container">
+    <a class="logo" href="/"><span class="logo-mark">T</span> ToolNest</a>
+    <div class="header-right">
+      <form class="nav-search" action="/" method="get" role="search">
+        <span class="ns-icon">🔍</span>
+        <input type="search" name="q" placeholder="Search tools…" aria-label="Search tools" autocomplete="off">
+      </form>
+      <div class="menu-wrap">
+        <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="menuPanel" aria-label="Open menu"><span></span><span></span><span></span></button>
+        <nav class="menu-panel" id="menuPanel" aria-label="Site">
+          <a href="/">Home</a>
+          <a href="/#categories">Categories</a>
+          <a href="/#all-tools">All Tools</a>
+        </nav>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ADSTERRA-HEADER: paste your Adsterra banner ad code inside the div below -->
+<div class="container"><div class="ad-slot ad-leaderboard" data-ad="header"></div></div>
+
+<main class="container">
+  <nav class="crumbs"><a href="/">Home</a> &rsaquo; <a href="/#health">Health &amp; Fitness</a> &rsaquo; Grip Strength Tracker</nav>
+  <div class="tool-hero">
+    <h1>Grip Strength Tracker</h1>
+    <p>Log dynamometer readings and compare against age and gender reference ranges.</p>
+  </div>
+
+  <div class="tool-card">
+  <div class="grid2">
+    <div class="field">
+      <label for="hand-grip-strength-tracker-gender">Gender</label>
+      <select class="select" id="hand-grip-strength-tracker-gender">
+        <option value="male">Male</option>
+        <option value="female">Female</option>
+      </select>
+    </div>
+    <div class="field">
+      <label for="hand-grip-strength-tracker-age">Age</label>
+      <input type="number" class="input" id="hand-grip-strength-tracker-age" min="10" max="110" step="1" placeholder="35">
+    </div>
+    <div class="field">
+      <label for="hand-grip-strength-tracker-reading">Reading (kg)</label>
+      <input type="number" class="input" id="hand-grip-strength-tracker-reading" min="0" step="any" placeholder="42">
+    </div>
+    <div class="field">
+      <label for="hand-grip-strength-tracker-hand">Hand</label>
+      <select class="select" id="hand-grip-strength-tracker-hand">
+        <option>Dominant</option><option>Non-dominant</option>
+      </select>
+    </div>
+  </div>
+  <div class="btn-row"><button class="btn" id="hand-grip-strength-tracker-add" type="button">Log reading</button></div>
+  <div class="error" id="hand-grip-strength-tracker-error"></div>
+  <div class="result" id="hand-grip-strength-tracker-result">
+    <div class="stat-cards">
+      <div class="stat-card"><div class="v" id="hand-grip-strength-tracker-range">&ndash;</div><div class="l">Reference range</div></div>
+      <div class="stat-card"><div class="v" id="hand-grip-strength-tracker-verdict">&ndash;</div><div class="l">Latest vs range</div></div>
+    </div>
+    <div id="hand-grip-strength-tracker-out"></div>
+    <p class="note">Approximate reference ranges for illustration, not clinical cut-offs. For information only &mdash; not medical advice.</p>
+  </div>
+</div>
+
+  <!-- ADSTERRA-INCONTENT: paste your Adsterra native/in-content ad code inside the div below -->
+  <div class="ad-slot" data-ad="incontent"></div>
+
+  <div class="info-grid">
+    <div class="info-card">
+      <h2>📖 How to use</h2>
+      <ol><li>Select gender and enter your age.</li><li>Enter your dynamometer reading in kg and the hand tested.</li><li>Click Log reading to compare against the reference range.</li><li>Build a history log saved in your browser.</li></ol>
+    </div>
+    <div class="info-card">
+      <h2>❓ Frequently asked questions</h2>
+      <div class="faq"><details><summary>Where do the reference ranges come from?</summary><p>Approximate typical ranges for dominant-hand grip by decade. They are illustrative, not clinical cut-offs.</p></details><details><summary>How should I measure?</summary><p>With a hand dynamometer, arm at your side, elbow at 90 degrees, squeezing maximally. Take the best of 2-3 tries.</p></details><details><summary>Which hand should I test?</summary><p>Test both, but the reference ranges reflect the dominant hand. Log which hand you used.</p></details></div>
+    </div>
+  </div>
+
+  <section class="section">
+    <h2>🔗 Related tools</h2>
+    <div class="tool-grid"><a class="tool-link" href="/tools/allergy-tracker/" data-search="allergy tracker log allergy exposures, symptoms, and severity with summaries, saved in your browser. allergy tracker allergy diary symptom log"><span class="t-ico">❤️</span><span class="t-body"><b>Allergy Tracker</b><small>Log allergy exposures, symptoms, and severity with summaries, saved in your browser.</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/baby-feeding-log/" data-search="baby feeding log log nursing and bottle sessions with timestamps, daily totals, saved in your browser. baby feeding log nursing tracker bottle feeding log"><span class="t-ico">❤️</span><span class="t-body"><b>Baby Feeding Log</b><small>Log nursing and bottle sessions with timestamps, daily totals, saved in your browser.</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/baby-growth-tracker/" data-search="baby growth tracker log your baby&#39;s weight and height over time and see a growth log with typical-range guidance. baby growth tracker baby weight tracker infant growth chart baby height log newborn growth"><span class="t-ico">❤️</span><span class="t-body"><b>Baby Growth Tracker</b><small>Log your baby&#39;s weight and height over time and see a growth log with typical-range guidance…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/balance-test-timer/" data-search="balance test timer single-leg stance stopwatch with age benchmarks for balance testing. balance test single leg stance balance timer"><span class="t-ico">❤️</span><span class="t-body"><b>Balance Test Timer</b><small>Single-leg stance stopwatch with age benchmarks for balance testing.</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/blood-donation-eligibility-checker/" data-search="blood donation eligibility checker check common blood donation eligibility rules: age, weight, hemoglobin, intervals. blood donation eligibility can i donate blood donor requirements"><span class="t-ico">❤️</span><span class="t-body"><b>Blood Donation Eligibility Checker</b><small>Check common blood donation eligibility rules: age, weight, hemoglobin, intervals.</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/blood-pressure-tracker/" data-search="blood pressure tracker log blood pressure readings with automatic aha category classification, averages and history saved in your browser. blood pressure tracker bp log blood pressure chart hypertension tracker bp monitor log"><span class="t-ico">❤️</span><span class="t-body"><b>Blood Pressure Tracker</b><small>Log blood pressure readings with automatic AHA category classification, averages and history…</small></span><span class="t-arrow">→</span></a></div>
+  </section>
+</main>
+
+<!-- ADSTERRA-FOOTER: paste your Adsterra footer/banner ad code inside the div below -->
+<div class="container"><div class="ad-slot" data-ad="footer"></div></div>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="f-grid">
+      <div>
+        <span class="brandline"><span class="logo-mark">T</span> ToolNest</span>
+        <p>Free online tools that actually work. No sign-up, no watermarks — and your files never leave your device for client-side tools.</p>
+      </div>
+      <div>
+        <h4>Popular</h4>
+        <a href="/tools/qr-code-generator/">QR Code Generator</a>
+        <a href="/tools/background-remover/">Background Remover</a>
+        <a href="/tools/pdf-merger/">PDF Merger</a>
+        <a href="/tools/word-counter/">Word Counter</a>
+      </div>
+      <div>
+        <h4>Categories</h4>
+        <a href="/#image">Image Tools</a>
+        <a href="/#pdf">PDF &amp; Documents</a>
+        <a href="/#calculators">Calculators</a>
+        <a href="/#developer">Developer Tools</a>
+      </div>
+      <div>
+        <h4>Site</h4>
+        <a href="/">Home</a>
+        <a href="/#all-tools">All Tools</a>
+        <a href="/sitemap.xml">Sitemap</a>
+      </div>
+    </div>
+    <div class="f-bottom">© 2026 ToolNest · Free tools for everyone · Made with care</div>
+  </div>
+</footer>
+
+<script src="/assets/site.js?v=5"></script>
+
+<script>
+(function(){
+'use strict';
+var S='hand-grip-strength-tracker', ERR=S+'-error', LS='tn-hand-grip-strength-tracker';
+var NORMS={
+  male:[[20,40,55],[30,40,54],[40,37,52],[50,34,48],[60,29,42],[70,24,36],[80,19,30]],
+  female:[[20,24,36],[30,24,35],[40,22,33],[50,20,30],[60,17,27],[70,14,23],[80,12,20]]
+};
+function read(){ try{ return JSON.parse(localStorage.getItem(LS)||'[]'); }catch(e){ return []; } }
+function write(a){ try{ localStorage.setItem(LS,JSON.stringify(a)); }catch(e){} }
+function normFor(gender,age){
+  var rows=NORMS[gender]||NORMS.male;
+  var pick=rows[0];
+  rows.forEach(function(r){ if(age>=r[0]) pick=r; });
+  return {lo:pick[1],hi:pick[2],band:pick[0]+'s'};
+}
+function render(){
+  if(!TN.el(S+'-gender')) return;
+  var gender=TN.el(S+'-gender').value;
+  var age=parseFloat(TN.el(S+'-age').value);
+  var n=age>=10?normFor(gender,age):null;
+  TN.el(S+'-range').textContent=n?(n.lo+'–'+n.hi+' kg (age '+n.band+')'):'–';
+  var log=read().slice().sort(function(a,b){ return a.ts<b.ts?-1:1; });
+  var html='';
+  if(log.length){
+    html='<table class="data"><thead><tr><th>Date</th><th>Reading</th><th>Hand</th><th>vs range</th><th></th></tr></thead><tbody>';
+    log.forEach(function(e){
+      var nn=normFor(e.gender,e.age);
+      var v=e.kg<nn.lo?'Below':e.kg>nn.hi?'Above':'Within';
+      html+='<tr><td>'+TN.esc(e.date)+'</td><td>'+e.kg+' kg</td><td>'+TN.esc(e.hand)+'</td><td>'+v+'</td>'+
+        '<td><button class="btn btn-sm btn-outline" data-del="'+e.ts+'" type="button">X</button></td></tr>';
+    });
+    html+='</tbody></table>';
+    var last=log[log.length-1];
+    var nl=normFor(last.gender,last.age);
+    var lv=last.kg<nl.lo?'Below range':last.kg>nl.hi?'Above range':'Within range';
+    var vel=TN.el(S+'-verdict');
+    vel.textContent=lv;
+    vel.style.color=lv==='Within range'?'#84cc16':'#eab308';
+  } else {
+    html='<p class="muted">No readings logged yet.</p>';
+    TN.el(S+'-verdict').textContent='–';
+  }
+  TN.el(S+'-out').innerHTML=html;
+  Array.prototype.forEach.call(TN.el(S+'-out').querySelectorAll('[data-del]'),function(btn){
+    btn.addEventListener('click',function(){
+      var ts=btn.getAttribute('data-del');
+      write(read().filter(function(e){ return String(e.ts)!==ts; }));
+      render();
+    });
+  });
+}
+try{
+  TN.on(S+'-gender','change',render);
+  TN.on(S+'-age','input',render);
+  TN.on(S+'-add','click',function(){
+    TN.clearErr(ERR);
+    var age=parseFloat(TN.el(S+'-age').value);
+    var kg=parseFloat(TN.el(S+'-reading').value);
+    if(!(age>=10)){ TN.setErr(ERR,'Enter a valid age.'); return; }
+    if(!(kg>0)){ TN.setErr(ERR,'Enter a reading greater than 0.'); return; }
+    var d=new Date();
+    var log=read();
+    log.push({ts:Date.now(),date:d.getFullYear()+'-'+('0'+(d.getMonth()+1)).slice(-2)+'-'+('0'+d.getDate()).slice(-2),
+      gender:TN.el(S+'-gender').value,age:age,kg:kg,hand:TN.el(S+'-hand').value});
+    write(log);
+    TN.el(S+'-reading').value='';
+    render();
+  });
+  render();
+}catch(e){}
+})();
+
+</script>
+</body>
+</html>

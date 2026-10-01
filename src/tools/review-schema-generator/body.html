@@ -1,0 +1,49 @@
+<div class="tool-card">
+  <div class="grid2">
+    <div class="field">
+      <label for="review-schema-generator-type">Item type</label>
+      <select class="select" id="review-schema-generator-type">
+        <option value="Product">Product</option>
+        <option value="LocalBusiness">LocalBusiness</option>
+        <option value="Movie">Movie</option>
+        <option value="Book">Book</option>
+        <option value="Restaurant">Restaurant</option>
+      </select>
+    </div>
+    <div class="field">
+      <label for="review-schema-generator-item">Item name</label>
+      <input class="input" type="text" id="review-schema-generator-item" placeholder="e.g. Acme Headphones">
+    </div>
+    <div class="field">
+      <label for="review-schema-generator-rating">Rating (1–5)</label>
+      <input class="input" type="number" id="review-schema-generator-rating" min="1" max="5" step="0.5" placeholder="4.5">
+    </div>
+    <div class="field">
+      <label for="review-schema-generator-author">Reviewer name</label>
+      <input class="input" type="text" id="review-schema-generator-author">
+    </div>
+    <div class="field">
+      <label for="review-schema-generator-date">Review date</label>
+      <input class="input" type="date" id="review-schema-generator-date">
+    </div>
+    <div class="field">
+      <label for="review-schema-generator-title">Review title</label>
+      <input class="input" type="text" id="review-schema-generator-title">
+    </div>
+  </div>
+  <div class="field">
+    <label for="review-schema-generator-body">Review text</label>
+    <textarea class="textarea" id="review-schema-generator-body" rows="4" placeholder="Write the review…"></textarea>
+  </div>
+  <div class="btn-row">
+    <button class="btn" id="review-schema-generator-gen">Generate Schema</button>
+    <button class="btn btn-outline" id="review-schema-generator-copy">Copy JSON-LD</button>
+    <button class="btn btn-outline" id="review-schema-generator-dl">Download .json</button>
+  </div>
+  <div class="error" id="review-schema-generator-error"></div>
+</div>
+
+<div class="tool-card">
+  <h3>JSON-LD output</h3>
+  <pre id="review-schema-generator-out" style="white-space:pre-wrap;font-family:monospace;font-size:13px"></pre>
+</div>

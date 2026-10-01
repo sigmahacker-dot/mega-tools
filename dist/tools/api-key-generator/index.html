@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>API Key Generator — Free Online | ToolNest</title>
+<meta name="description" content="Generate cryptographically secure API keys with crypto.getRandomValues — hex, base64, base64url or UUID v4.">
+<meta name="keywords" content="api key generator, random api key, uuid generator, secure token generator">
+<link rel="canonical" href="https://toolnest.vercel.app/tools/api-key-generator/">
+<meta name="theme-color" content="#07070b">
+<meta property="og:title" content="API Key Generator — Free Online | ToolNest">
+<meta property="og:description" content="Generate cryptographically secure API keys with crypto.getRandomValues — hex, base64, base64url or UUID v4.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css?v=4">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%23e01111'/><text x='50' y='68' font-size='58' text-anchor='middle' fill='white' font-family='Arial' font-weight='bold'>T</text></svg>">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebApplication","name":"API Key Generator","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0"},"url":"https://toolnest.vercel.app/tools/api-key-generator/","description":"Generate cryptographically secure API keys with crypto.getRandomValues — hex, base64, base64url or UUID v4."},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Are the keys cryptographically secure?","acceptedAnswer":{"@type":"Answer","text":"Yes — they come from crypto.getRandomValues, the browser CSPRNG, not Math.random."}},{"@type":"Question","name":"What is the difference between base64 and base64url?","acceptedAnswer":{"@type":"Answer","text":"base64url replaces +/ with -_ and drops padding, making keys safe in URLs and filenames."}},{"@type":"Question","name":"How are UUIDs generated?","acceptedAnswer":{"@type":"Answer","text":"As true UUID v4: 128 random bits with the version and variant bits set per RFC 4122."}},{"@type":"Question","name":"Are generated keys stored anywhere?","acceptedAnswer":{"@type":"Answer","text":"No — everything happens in your browser. Nothing is sent or saved."}}]}]}</script>
+</head>
+<body>
+<header class="site-header">
+  <div class="container">
+    <a class="logo" href="/"><span class="logo-mark">T</span> ToolNest</a>
+    <div class="header-right">
+      <form class="nav-search" action="/" method="get" role="search">
+        <span class="ns-icon">🔍</span>
+        <input type="search" name="q" placeholder="Search tools…" aria-label="Search tools" autocomplete="off">
+      </form>
+      <div class="menu-wrap">
+        <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="menuPanel" aria-label="Open menu"><span></span><span></span><span></span></button>
+        <nav class="menu-panel" id="menuPanel" aria-label="Site">
+          <a href="/">Home</a>
+          <a href="/#categories">Categories</a>
+          <a href="/#all-tools">All Tools</a>
+        </nav>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ADSTERRA-HEADER: paste your Adsterra banner ad code inside the div below -->
+<div class="container"><div class="ad-slot ad-leaderboard" data-ad="header"></div></div>
+
+<main class="container">
+  <nav class="crumbs"><a href="/">Home</a> &rsaquo; <a href="/#developer">Developer Tools</a> &rsaquo; API Key Generator</nav>
+  <div class="tool-hero">
+    <h1>API Key Generator</h1>
+    <p>Generate cryptographically secure API keys with crypto.getRandomValues — hex, base64, base64url or UUID v4.</p>
+  </div>
+
+  <div class="tool-card">
+  <div class="grid3">
+    <div class="field">
+      <label for="api-key-generator-format">Format</label>
+      <select class="select" id="api-key-generator-format">
+        <option value="hex">Hex</option>
+        <option value="base64">Base64</option>
+        <option value="base64url">Base64 URL-safe</option>
+        <option value="uuid">UUID v4</option>
+      </select>
+    </div>
+    <div class="field">
+      <label for="api-key-generator-bytes">Random bytes</label>
+      <input class="input" id="api-key-generator-bytes" type="number" value="32" min="8" max="128">
+    </div>
+    <div class="field">
+      <label for="api-key-generator-count">Count</label>
+      <input class="input" id="api-key-generator-count" type="number" value="1" min="1" max="20">
+    </div>
+  </div>
+  <div class="field">
+    <label for="api-key-generator-prefix">Prefix (optional, e.g. sk_live_)</label>
+    <input class="input" id="api-key-generator-prefix" placeholder="sk_live_">
+  </div>
+  <div class="btn-row">
+    <button class="btn" id="api-key-generator-generate">Generate keys</button>
+  </div>
+  <div class="error" id="api-key-generator-error"></div>
+  <div class="field">
+    <label for="api-key-generator-output">Generated keys</label>
+    <textarea class="textarea" id="api-key-generator-output" rows="8" readonly></textarea>
+  </div>
+  <div class="btn-row">
+    <button class="btn btn-outline" id="api-key-generator-copy">Copy all</button>
+    <button class="btn btn-outline" id="api-key-generator-download">Download .txt</button>
+  </div>
+  <p class="note">Keys are generated locally with crypto.getRandomValues — never sent anywhere.</p>
+</div>
+
+
+  <!-- ADSTERRA-INCONTENT: paste your Adsterra native/in-content ad code inside the div below -->
+  <div class="ad-slot" data-ad="incontent"></div>
+
+  <div class="info-grid">
+    <div class="info-card">
+      <h2>📖 How to use</h2>
+      <ol><li>Choose the format and the number of random bytes.</li><li>Add an optional prefix (e.g. sk_live_).</li><li>Generate one or many keys at once.</li><li>Copy them or download as a .txt file.</li></ol>
+    </div>
+    <div class="info-card">
+      <h2>❓ Frequently asked questions</h2>
+      <div class="faq"><details><summary>Are the keys cryptographically secure?</summary><p>Yes — they come from crypto.getRandomValues, the browser CSPRNG, not Math.random.</p></details><details><summary>What is the difference between base64 and base64url?</summary><p>base64url replaces +/ with -_ and drops padding, making keys safe in URLs and filenames.</p></details><details><summary>How are UUIDs generated?</summary><p>As true UUID v4: 128 random bits with the version and variant bits set per RFC 4122.</p></details><details><summary>Are generated keys stored anywhere?</summary><p>No — everything happens in your browser. Nothing is sent or saved.</p></details></div>
+    </div>
+  </div>
+
+  <section class="section">
+    <h2>🔗 Related tools</h2>
+    <div class="tool-grid"><a class="tool-link" href="/tools/ascii-table-reference/" data-search="ascii table reference full ascii table 0–127: decimal, hex, octal, character, control-code names and html entities — searchable. ascii table ascii codes ascii chart control characters ascii reference"><span class="t-ico">💻</span><span class="t-body"><b>ASCII Table Reference</b><small>Full ASCII table 0–127: decimal, hex, octal, character, control-code names and HTML entities…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/badge-generator/" data-search="badge generator design css badges and pills — colors, sizes, shapes — with live preview and copy-ready html/css. badge css generator css pill badge status badge code label badge html"><span class="t-ico">💻</span><span class="t-body"><b>Badge Generator</b><small>Design CSS badges and pills — colors, sizes, shapes — with live preview and copy-ready HTML/…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/base64-encoder-decoder/" data-search="base64 encoder / decoder encode text to base64 or decode base64 back to text, with full utf-8 support and a file-to-data-url converter. base64 encoder base64 decoder base64 encode base64 decode file to base64"><span class="t-ico">💻</span><span class="t-body"><b>Base64 Encoder / Decoder</b><small>Encode text to Base64 or decode Base64 back to text, with full UTF-8 support and a file-to-d…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/basic-auth-header-generator/" data-search="basic auth header generator encode username:password to a base64 authorization header (unicode-safe) — copy or download. basic auth header base64 authorization http basic auth generator authorization header"><span class="t-ico">💻</span><span class="t-body"><b>Basic Auth Header Generator</b><small>Encode username:password to a Base64 Authorization header (Unicode-safe) — copy or download.</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/binary-text-converter/" data-search="binary and text converter convert text to binary or hex and back, with full utf-8 awareness and strict input validation. binary to text text to binary hex to text converter"><span class="t-ico">💻</span><span class="t-body"><b>Binary and Text Converter</b><small>Convert text to binary or hex and back, with full UTF-8 awareness and strict input validatio…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/breadcrumb-generator/" data-search="breadcrumb generator build an accessible breadcrumb trail from your path segments — live preview plus html and css. breadcrumb html css breadcrumb generator breadcrumb navigation code seo breadcrumbs"><span class="t-ico">💻</span><span class="t-body"><b>Breadcrumb Generator</b><small>Build an accessible breadcrumb trail from your path segments — live preview plus HTML and CS…</small></span><span class="t-arrow">→</span></a></div>
+  </section>
+</main>
+
+<!-- ADSTERRA-FOOTER: paste your Adsterra footer/banner ad code inside the div below -->
+<div class="container"><div class="ad-slot" data-ad="footer"></div></div>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="f-grid">
+      <div>
+        <span class="brandline"><span class="logo-mark">T</span> ToolNest</span>
+        <p>Free online tools that actually work. No sign-up, no watermarks — and your files never leave your device for client-side tools.</p>
+      </div>
+      <div>
+        <h4>Popular</h4>
+        <a href="/tools/qr-code-generator/">QR Code Generator</a>
+        <a href="/tools/background-remover/">Background Remover</a>
+        <a href="/tools/pdf-merger/">PDF Merger</a>
+        <a href="/tools/word-counter/">Word Counter</a>
+      </div>
+      <div>
+        <h4>Categories</h4>
+        <a href="/#image">Image Tools</a>
+        <a href="/#pdf">PDF &amp; Documents</a>
+        <a href="/#calculators">Calculators</a>
+        <a href="/#developer">Developer Tools</a>
+      </div>
+      <div>
+        <h4>Site</h4>
+        <a href="/">Home</a>
+        <a href="/#all-tools">All Tools</a>
+        <a href="/sitemap.xml">Sitemap</a>
+      </div>
+    </div>
+    <div class="f-bottom">© 2026 ToolNest · Free tools for everyone · Made with care</div>
+  </div>
+</footer>
+
+<script src="/assets/site.js?v=5"></script>
+
+<script>
+/* API Key Generator — crypto.getRandomValues keys in hex/base64/base64url/uuid formats. */
+(function () {
+  'use strict';
+  var SLUG = 'api-key-generator';
+  function el(id) { return document.getElementById(id); }
+  function fail(msg) { TN.setErr(SLUG + '-error', msg); }
+  function clear() { TN.clearErr(SLUG + '-error'); }
+
+  function randBytes(n) {
+    var b = new Uint8Array(n);
+    crypto.getRandomValues(b);
+    return b;
+  }
+  function toHex(b) {
+    var s = '';
+    for (var i = 0; i < b.length; i++) s += ('0' + b[i].toString(16)).slice(-2);
+    return s;
+  }
+  function toB64(b, urlsafe) {
+    var bin = '';
+    for (var i = 0; i < b.length; i++) bin += String.fromCharCode(b[i]);
+    var s = btoa(bin);
+    if (urlsafe) s = s.replace(/\+/g, '-').replace(/\//g, '_').replace(/=+$/, '');
+    return s;
+  }
+  function uuid() {
+    var b = randBytes(16);
+    b[6] = (b[6] & 0x0f) | 0x40;
+    b[8] = (b[8] & 0x3f) | 0x80;
+    var h = toHex(b);
+    return h.slice(0, 8) + '-' + h.slice(8, 12) + '-' + h.slice(12, 16) + '-' + h.slice(16, 20) + '-' + h.slice(20);
+  }
+
+  function generate() {
+    clear();
+    var format = el(SLUG + '-format').value;
+    var n = Math.max(8, Math.min(128, parseInt(el(SLUG + '-bytes').value, 10) || 32));
+    var count = Math.max(1, Math.min(20, parseInt(el(SLUG + '-count').value, 10) || 1));
+    var prefix = el(SLUG + '-prefix').value;
+    var out = [];
+    for (var i = 0; i < count; i++) {
+      var k = format === 'uuid' ? uuid()
+        : format === 'base64' ? toB64(randBytes(n), false)
+        : format === 'base64url' ? toB64(randBytes(n), true)
+        : toHex(randBytes(n));
+      out.push(prefix + k);
+    }
+    el(SLUG + '-output').value = out.join('\n') + '\n';
+  }
+
+  try {
+    if (!el(SLUG + '-generate')) return;
+    TN.on(SLUG + '-generate', 'click', generate);
+    TN.on(SLUG + '-copy', 'click', function () {
+      var v = el(SLUG + '-output').value;
+      if (!v) { fail('Generate keys first.'); return; }
+      TN.copy(v).then(function (ok) { if (!ok) fail('Copy failed — select the text manually.'); });
+    });
+    TN.on(SLUG + '-download', 'click', function () {
+      var v = el(SLUG + '-output').value;
+      if (!v) { fail('Generate keys first.'); return; }
+      TN.downloadText(v, 'api-keys.txt', 'text/plain');
+    });
+    generate();
+  } catch (e) { /* never throw on load */ }
+})();
+
+</script>
+</body>
+</html>

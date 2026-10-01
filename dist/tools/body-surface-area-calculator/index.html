@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Body Surface Area Calculator — Free Online | ToolNest</title>
+<meta name="description" content="Compute body surface area with the DuBois formula (plus Mosteller for reference).">
+<meta name="keywords" content="body surface area, BSA calculator, DuBois formula">
+<link rel="canonical" href="https://toolnest.vercel.app/tools/body-surface-area-calculator/">
+<meta name="theme-color" content="#07070b">
+<meta property="og:title" content="Body Surface Area Calculator — Free Online | ToolNest">
+<meta property="og:description" content="Compute body surface area with the DuBois formula (plus Mosteller for reference).">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css?v=4">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%23e01111'/><text x='50' y='68' font-size='58' text-anchor='middle' fill='white' font-family='Arial' font-weight='bold'>T</text></svg>">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebApplication","name":"Body Surface Area Calculator","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0"},"url":"https://toolnest.vercel.app/tools/body-surface-area-calculator/","description":"Compute body surface area with the DuBois formula (plus Mosteller for reference)."},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What is the DuBois formula?","acceptedAnswer":{"@type":"Answer","text":"BSA = 0.007184 x weight^0.425 x height^0.725, with weight in kg and height in cm. Published in 1916, still widely used in medicine."}},{"@type":"Question","name":"What is BSA used for?","acceptedAnswer":{"@type":"Answer","text":"Chemotherapy dosing, burn size assessment, cardiac index, and renal function estimates, among others."}},{"@type":"Question","name":"Why show Mosteller too?","acceptedAnswer":{"@type":"Answer","text":"Mosteller (square root of weight x height / 3600) is simpler and very close to DuBois; clinicians often cross-check with it."}}]}]}</script>
+</head>
+<body>
+<header class="site-header">
+  <div class="container">
+    <a class="logo" href="/"><span class="logo-mark">T</span> ToolNest</a>
+    <div class="header-right">
+      <form class="nav-search" action="/" method="get" role="search">
+        <span class="ns-icon">🔍</span>
+        <input type="search" name="q" placeholder="Search tools…" aria-label="Search tools" autocomplete="off">
+      </form>
+      <div class="menu-wrap">
+        <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="menuPanel" aria-label="Open menu"><span></span><span></span><span></span></button>
+        <nav class="menu-panel" id="menuPanel" aria-label="Site">
+          <a href="/">Home</a>
+          <a href="/#categories">Categories</a>
+          <a href="/#all-tools">All Tools</a>
+        </nav>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ADSTERRA-HEADER: paste your Adsterra banner ad code inside the div below -->
+<div class="container"><div class="ad-slot ad-leaderboard" data-ad="header"></div></div>
+
+<main class="container">
+  <nav class="crumbs"><a href="/">Home</a> &rsaquo; <a href="/#health">Health &amp; Fitness</a> &rsaquo; Body Surface Area Calculator</nav>
+  <div class="tool-hero">
+    <h1>Body Surface Area Calculator</h1>
+    <p>Compute body surface area with the DuBois formula (plus Mosteller for reference).</p>
+  </div>
+
+  <div class="tool-card">
+  <div class="grid2">
+    <div class="field">
+      <label for="body-surface-area-calculator-units">Units</label>
+      <select class="select" id="body-surface-area-calculator-units">
+        <option value="metric">Metric (kg / cm)</option>
+        <option value="imperial">Imperial (lb / in)</option>
+      </select>
+    </div>
+    <div class="field">
+      <label for="body-surface-area-calculator-weight">Weight</label>
+      <input type="number" class="input" id="body-surface-area-calculator-weight" min="0" step="any" placeholder="70">
+    </div>
+    <div class="field">
+      <label for="body-surface-area-calculator-height">Height</label>
+      <input type="number" class="input" id="body-surface-area-calculator-height" min="0" step="any" placeholder="175">
+    </div>
+  </div>
+  <div class="error" id="body-surface-area-calculator-error"></div>
+  <div class="result" id="body-surface-area-calculator-result">
+    <div class="stat-cards">
+      <div class="stat-card"><div class="v" id="body-surface-area-calculator-dubois">&ndash;</div><div class="l">BSA (DuBois)</div></div>
+      <div class="stat-card"><div class="v" id="body-surface-area-calculator-mosteller">&ndash;</div><div class="l">BSA (Mosteller)</div></div>
+    </div>
+    <p class="note">BSA in m&sup2;. For information only &mdash; not medical advice.</p>
+  </div>
+</div>
+
+  <!-- ADSTERRA-INCONTENT: paste your Adsterra native/in-content ad code inside the div below -->
+  <div class="ad-slot" data-ad="incontent"></div>
+
+  <div class="info-grid">
+    <div class="info-card">
+      <h2>📖 How to use</h2>
+      <ol><li>Choose metric or imperial units.</li><li>Enter your weight and height.</li><li>Read your BSA by the DuBois formula.</li><li>Compare with the Mosteller estimate shown for reference.</li></ol>
+    </div>
+    <div class="info-card">
+      <h2>❓ Frequently asked questions</h2>
+      <div class="faq"><details><summary>What is the DuBois formula?</summary><p>BSA = 0.007184 x weight^0.425 x height^0.725, with weight in kg and height in cm. Published in 1916, still widely used in medicine.</p></details><details><summary>What is BSA used for?</summary><p>Chemotherapy dosing, burn size assessment, cardiac index, and renal function estimates, among others.</p></details><details><summary>Why show Mosteller too?</summary><p>Mosteller (square root of weight x height / 3600) is simpler and very close to DuBois; clinicians often cross-check with it.</p></details></div>
+    </div>
+  </div>
+
+  <section class="section">
+    <h2>🔗 Related tools</h2>
+    <div class="tool-grid"><a class="tool-link" href="/tools/allergy-tracker/" data-search="allergy tracker log allergy exposures, symptoms, and severity with summaries, saved in your browser. allergy tracker allergy diary symptom log"><span class="t-ico">❤️</span><span class="t-body"><b>Allergy Tracker</b><small>Log allergy exposures, symptoms, and severity with summaries, saved in your browser.</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/baby-feeding-log/" data-search="baby feeding log log nursing and bottle sessions with timestamps, daily totals, saved in your browser. baby feeding log nursing tracker bottle feeding log"><span class="t-ico">❤️</span><span class="t-body"><b>Baby Feeding Log</b><small>Log nursing and bottle sessions with timestamps, daily totals, saved in your browser.</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/baby-growth-tracker/" data-search="baby growth tracker log your baby&#39;s weight and height over time and see a growth log with typical-range guidance. baby growth tracker baby weight tracker infant growth chart baby height log newborn growth"><span class="t-ico">❤️</span><span class="t-body"><b>Baby Growth Tracker</b><small>Log your baby&#39;s weight and height over time and see a growth log with typical-range guidance…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/balance-test-timer/" data-search="balance test timer single-leg stance stopwatch with age benchmarks for balance testing. balance test single leg stance balance timer"><span class="t-ico">❤️</span><span class="t-body"><b>Balance Test Timer</b><small>Single-leg stance stopwatch with age benchmarks for balance testing.</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/blood-donation-eligibility-checker/" data-search="blood donation eligibility checker check common blood donation eligibility rules: age, weight, hemoglobin, intervals. blood donation eligibility can i donate blood donor requirements"><span class="t-ico">❤️</span><span class="t-body"><b>Blood Donation Eligibility Checker</b><small>Check common blood donation eligibility rules: age, weight, hemoglobin, intervals.</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/blood-pressure-tracker/" data-search="blood pressure tracker log blood pressure readings with automatic aha category classification, averages and history saved in your browser. blood pressure tracker bp log blood pressure chart hypertension tracker bp monitor log"><span class="t-ico">❤️</span><span class="t-body"><b>Blood Pressure Tracker</b><small>Log blood pressure readings with automatic AHA category classification, averages and history…</small></span><span class="t-arrow">→</span></a></div>
+  </section>
+</main>
+
+<!-- ADSTERRA-FOOTER: paste your Adsterra footer/banner ad code inside the div below -->
+<div class="container"><div class="ad-slot" data-ad="footer"></div></div>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="f-grid">
+      <div>
+        <span class="brandline"><span class="logo-mark">T</span> ToolNest</span>
+        <p>Free online tools that actually work. No sign-up, no watermarks — and your files never leave your device for client-side tools.</p>
+      </div>
+      <div>
+        <h4>Popular</h4>
+        <a href="/tools/qr-code-generator/">QR Code Generator</a>
+        <a href="/tools/background-remover/">Background Remover</a>
+        <a href="/tools/pdf-merger/">PDF Merger</a>
+        <a href="/tools/word-counter/">Word Counter</a>
+      </div>
+      <div>
+        <h4>Categories</h4>
+        <a href="/#image">Image Tools</a>
+        <a href="/#pdf">PDF &amp; Documents</a>
+        <a href="/#calculators">Calculators</a>
+        <a href="/#developer">Developer Tools</a>
+      </div>
+      <div>
+        <h4>Site</h4>
+        <a href="/">Home</a>
+        <a href="/#all-tools">All Tools</a>
+        <a href="/sitemap.xml">Sitemap</a>
+      </div>
+    </div>
+    <div class="f-bottom">© 2026 ToolNest · Free tools for everyone · Made with care</div>
+  </div>
+</footer>
+
+<script src="/assets/site.js?v=5"></script>
+
+<script>
+(function(){
+'use strict';
+var S='body-surface-area-calculator', ERR=S+'-error';
+function calc(){
+  if(!TN.el(S+'-weight')) return;
+  TN.clearErr(ERR);
+  var metric=TN.el(S+'-units').value==='metric';
+  var w=parseFloat(TN.el(S+'-weight').value);
+  var h=parseFloat(TN.el(S+'-height').value);
+  if(!(w>0)||!(h>0)){ TN.setErr(ERR,'Enter weight and height greater than 0.'); return; }
+  var wkg=metric?w:w*0.45359237;
+  var hcm=metric?h:h*2.54;
+  var dubois=0.007184*Math.pow(wkg,0.425)*Math.pow(hcm,0.725);
+  var mosteller=Math.sqrt(wkg*hcm/3600);
+  TN.el(S+'-dubois').textContent=(Math.round(dubois*100)/100)+' m²';
+  TN.el(S+'-mosteller').textContent=(Math.round(mosteller*100)/100)+' m²';
+}
+try{
+  ['weight','height'].forEach(function(f){ TN.on(S+'-'+f,'input',calc); });
+  TN.on(S+'-units','change',function(){
+    TN.el(S+'-weight').placeholder=TN.el(S+'-units').value==='metric'?'70':'154';
+    TN.el(S+'-height').placeholder=TN.el(S+'-units').value==='metric'?'175':'69';
+    calc();
+  });
+  calc();
+}catch(e){}
+})();
+
+</script>
+</body>
+</html>

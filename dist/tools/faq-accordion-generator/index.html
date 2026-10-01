@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FAQ Accordion Generator — Free Online | ToolNest</title>
+<meta name="description" content="Build an accessible FAQ accordion (ARIA, keyboard-friendly) — live preview plus HTML, CSS and JS.">
+<meta name="keywords" content="faq accordion html, accessible accordion, faq section generator, accordion css js">
+<link rel="canonical" href="https://toolnest.vercel.app/tools/faq-accordion-generator/">
+<meta name="theme-color" content="#07070b">
+<meta property="og:title" content="FAQ Accordion Generator — Free Online | ToolNest">
+<meta property="og:description" content="Build an accessible FAQ accordion (ARIA, keyboard-friendly) — live preview plus HTML, CSS and JS.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css?v=4">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%23e01111'/><text x='50' y='68' font-size='58' text-anchor='middle' fill='white' font-family='Arial' font-weight='bold'>T</text></svg>">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebApplication","name":"FAQ Accordion Generator","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0"},"url":"https://toolnest.vercel.app/tools/faq-accordion-generator/","description":"Build an accessible FAQ accordion (ARIA, keyboard-friendly) — live preview plus HTML, CSS and JS."},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Is the accordion accessible?","acceptedAnswer":{"@type":"Answer","text":"Yes. It uses \u003cbutton> with aria-expanded and aria-controls, regions with role=\"region\", and works with keyboard Enter/Space."}},{"@type":"Question","name":"How are FAQs parsed?","acceptedAnswer":{"@type":"Answer","text":"Blank lines split blocks; the first line of each block is the question, the rest is the answer."}},{"@type":"Question","name":"Can multiple items be open?","acceptedAnswer":{"@type":"Answer","text":"By default opening one closes the others. Edit the JS if you want independent toggling."}},{"@type":"Question","name":"Does it need any library?","acceptedAnswer":{"@type":"Answer","text":"No — vanilla HTML, CSS and JavaScript only."}}]}]}</script>
+</head>
+<body>
+<header class="site-header">
+  <div class="container">
+    <a class="logo" href="/"><span class="logo-mark">T</span> ToolNest</a>
+    <div class="header-right">
+      <form class="nav-search" action="/" method="get" role="search">
+        <span class="ns-icon">🔍</span>
+        <input type="search" name="q" placeholder="Search tools…" aria-label="Search tools" autocomplete="off">
+      </form>
+      <div class="menu-wrap">
+        <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="menuPanel" aria-label="Open menu"><span></span><span></span><span></span></button>
+        <nav class="menu-panel" id="menuPanel" aria-label="Site">
+          <a href="/">Home</a>
+          <a href="/#categories">Categories</a>
+          <a href="/#all-tools">All Tools</a>
+        </nav>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ADSTERRA-HEADER: paste your Adsterra banner ad code inside the div below -->
+<div class="container"><div class="ad-slot ad-leaderboard" data-ad="header"></div></div>
+
+<main class="container">
+  <nav class="crumbs"><a href="/">Home</a> &rsaquo; <a href="/#developer">Developer Tools</a> &rsaquo; FAQ Accordion Generator</nav>
+  <div class="tool-hero">
+    <h1>FAQ Accordion Generator</h1>
+    <p>Build an accessible FAQ accordion (ARIA, keyboard-friendly) — live preview plus HTML, CSS and JS.</p>
+  </div>
+
+  <div class="tool-card">
+  <div class="field">
+    <label for="faq-accordion-generator-faqs">FAQs (question line, answer lines, blank line between)</label>
+    <textarea class="textarea" id="faq-accordion-generator-faqs" rows="7">What is your refund policy?
+We offer a 30-day money-back guarantee on all plans, no questions asked.
+
+How do I cancel my subscription?
+Go to Settings → Billing → Cancel. You keep access until the end of the billing period.
+
+Do you offer discounts for teams?
+Yes — teams of 5 or more get 20% off annual plans. Contact sales for a quote.</textarea>
+  </div>
+  <div class="grid3">
+    <div class="field">
+      <label for="faq-accordion-generator-accent">Accent color</label>
+      <input class="input" id="faq-accordion-generator-accent" type="color" value="#4d7c0f">
+    </div>
+    <div class="field">
+      <label for="faq-accordion-generator-theme">Theme</label>
+      <select class="select" id="faq-accordion-generator-theme">
+        <option value="dark">Dark</option>
+        <option value="light">Light</option>
+      </select>
+    </div>
+    <div class="field">
+      <label for="faq-accordion-generator-icon">Icon style</label>
+      <select class="select" id="faq-accordion-generator-icon">
+        <option value="plus">Plus / minus</option>
+        <option value="chevron">Chevron</option>
+      </select>
+    </div>
+  </div>
+  <div class="field">
+    <label>Live preview (clickable)</label>
+    <div id="faq-accordion-generator-preview" style="border:1px solid #27272a;border-radius:12px;padding:20px;background:#18181b"></div>
+  </div>
+  <div class="error" id="faq-accordion-generator-error"></div>
+  <div class="field">
+    <label for="faq-accordion-generator-output">HTML + CSS + JS</label>
+    <textarea class="textarea" id="faq-accordion-generator-output" rows="16" readonly></textarea>
+  </div>
+  <div class="btn-row">
+    <button class="btn btn-outline" id="faq-accordion-generator-copy">Copy code</button>
+    <button class="btn btn-outline" id="faq-accordion-generator-download">Download faq.html</button>
+  </div>
+</div>
+
+
+  <!-- ADSTERRA-INCONTENT: paste your Adsterra native/in-content ad code inside the div below -->
+  <div class="ad-slot" data-ad="incontent"></div>
+
+  <div class="info-grid">
+    <div class="info-card">
+      <h2>📖 How to use</h2>
+      <ol><li>Enter each FAQ as a block: question line, then answer lines, blank line between FAQs.</li><li>Pick the accent color and icon style.</li><li>Test the live preview — it is fully clickable.</li><li>Copy the code or download the self-contained faq.html.</li></ol>
+    </div>
+    <div class="info-card">
+      <h2>❓ Frequently asked questions</h2>
+      <div class="faq"><details><summary>Is the accordion accessible?</summary><p>Yes. It uses &lt;button&gt; with aria-expanded and aria-controls, regions with role=&quot;region&quot;, and works with keyboard Enter/Space.</p></details><details><summary>How are FAQs parsed?</summary><p>Blank lines split blocks; the first line of each block is the question, the rest is the answer.</p></details><details><summary>Can multiple items be open?</summary><p>By default opening one closes the others. Edit the JS if you want independent toggling.</p></details><details><summary>Does it need any library?</summary><p>No — vanilla HTML, CSS and JavaScript only.</p></details></div>
+    </div>
+  </div>
+
+  <section class="section">
+    <h2>🔗 Related tools</h2>
+    <div class="tool-grid"><a class="tool-link" href="/tools/api-key-generator/" data-search="api key generator generate cryptographically secure api keys with crypto.getrandomvalues — hex, base64, base64url or uuid v4. api key generator random api key uuid generator secure token generator"><span class="t-ico">💻</span><span class="t-body"><b>API Key Generator</b><small>Generate cryptographically secure API keys with crypto.getRandomValues — hex, base64, base64…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/ascii-table-reference/" data-search="ascii table reference full ascii table 0–127: decimal, hex, octal, character, control-code names and html entities — searchable. ascii table ascii codes ascii chart control characters ascii reference"><span class="t-ico">💻</span><span class="t-body"><b>ASCII Table Reference</b><small>Full ASCII table 0–127: decimal, hex, octal, character, control-code names and HTML entities…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/badge-generator/" data-search="badge generator design css badges and pills — colors, sizes, shapes — with live preview and copy-ready html/css. badge css generator css pill badge status badge code label badge html"><span class="t-ico">💻</span><span class="t-body"><b>Badge Generator</b><small>Design CSS badges and pills — colors, sizes, shapes — with live preview and copy-ready HTML/…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/base64-encoder-decoder/" data-search="base64 encoder / decoder encode text to base64 or decode base64 back to text, with full utf-8 support and a file-to-data-url converter. base64 encoder base64 decoder base64 encode base64 decode file to base64"><span class="t-ico">💻</span><span class="t-body"><b>Base64 Encoder / Decoder</b><small>Encode text to Base64 or decode Base64 back to text, with full UTF-8 support and a file-to-d…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/basic-auth-header-generator/" data-search="basic auth header generator encode username:password to a base64 authorization header (unicode-safe) — copy or download. basic auth header base64 authorization http basic auth generator authorization header"><span class="t-ico">💻</span><span class="t-body"><b>Basic Auth Header Generator</b><small>Encode username:password to a Base64 Authorization header (Unicode-safe) — copy or download.</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/binary-text-converter/" data-search="binary and text converter convert text to binary or hex and back, with full utf-8 awareness and strict input validation. binary to text text to binary hex to text converter"><span class="t-ico">💻</span><span class="t-body"><b>Binary and Text Converter</b><small>Convert text to binary or hex and back, with full UTF-8 awareness and strict input validatio…</small></span><span class="t-arrow">→</span></a></div>
+  </section>
+</main>
+
+<!-- ADSTERRA-FOOTER: paste your Adsterra footer/banner ad code inside the div below -->
+<div class="container"><div class="ad-slot" data-ad="footer"></div></div>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="f-grid">
+      <div>
+        <span class="brandline"><span class="logo-mark">T</span> ToolNest</span>
+        <p>Free online tools that actually work. No sign-up, no watermarks — and your files never leave your device for client-side tools.</p>
+      </div>
+      <div>
+        <h4>Popular</h4>
+        <a href="/tools/qr-code-generator/">QR Code Generator</a>
+        <a href="/tools/background-remover/">Background Remover</a>
+        <a href="/tools/pdf-merger/">PDF Merger</a>
+        <a href="/tools/word-counter/">Word Counter</a>
+      </div>
+      <div>
+        <h4>Categories</h4>
+        <a href="/#image">Image Tools</a>
+        <a href="/#pdf">PDF &amp; Documents</a>
+        <a href="/#calculators">Calculators</a>
+        <a href="/#developer">Developer Tools</a>
+      </div>
+      <div>
+        <h4>Site</h4>
+        <a href="/">Home</a>
+        <a href="/#all-tools">All Tools</a>
+        <a href="/sitemap.xml">Sitemap</a>
+      </div>
+    </div>
+    <div class="f-bottom">© 2026 ToolNest · Free tools for everyone · Made with care</div>
+  </div>
+</footer>
+
+<script src="/assets/site.js?v=5"></script>
+
+<script>
+/* FAQ Accordion Generator — FAQ blocks → accessible accordion HTML+CSS+JS, live preview. */
+(function () {
+  'use strict';
+  var SLUG = 'faq-accordion-generator';
+  function el(id) { return document.getElementById(id); }
+  function fail(msg) { TN.setErr(SLUG + '-error', msg); }
+  function clear() { TN.clearErr(SLUG + '-error'); }
+
+  function parseFaqs(text) {
+    return text.split(/\n\s*\n/).map(function (b) {
+      return b.split('\n').map(function (l) { return l.trim(); }).filter(Boolean);
+    }).filter(function (lines) { return lines.length >= 2; })
+      .map(function (lines) { return { q: lines[0], a: lines.slice(1).join(' ') }; });
+  }
+
+  function build(faqs, accent, theme, icon) {
+    var dark = theme === 'dark';
+    var cardBg = dark ? '#27272a' : '#ffffff';
+    var textC = dark ? '#f4f4f5' : '#18181b';
+    var items = faqs.map(function (f, i) {
+      var ic = icon === 'chevron' ? '<span class="fq-ic">▾</span>' : '<span class="fq-ic">+</span>';
+      return '  <div class="fq-item">\n' +
+        '    <button class="fq-q" aria-expanded="false" aria-controls="fq-a-' + i + '" id="fq-q-' + i + '">' +
+        TN.esc(f.q) + ic + '</button>\n' +
+        '    <div class="fq-a" id="fq-a-' + i + '" role="region" aria-labelledby="fq-q-' + i + '" hidden>\n' +
+        '      <p>' + TN.esc(f.a) + '</p>\n    </div>\n  </div>';
+    }).join('\n');
+    var html = '<div class="fq-wrap">\n' + items + '\n</div>';
+    var css =
+      '.fq-wrap { max-width: 640px; margin: 0 auto; font-family: system-ui, sans-serif; }\n' +
+      '.fq-item { background: ' + cardBg + '; border: 1px solid ' + (dark ? '#3f3f46' : '#e4e4e7') + '; border-radius: 12px; margin-bottom: 10px; overflow: hidden; }\n' +
+      '.fq-q { width: 100%; display: flex; justify-content: space-between; align-items: center; gap: 12px; background: none; border: none; color: ' + textC + '; font-size: 16px; font-weight: 600; text-align: left; padding: 16px 18px; cursor: pointer; }\n' +
+      '.fq-q:focus-visible { outline: 2px solid ' + accent + '; outline-offset: -2px; }\n' +
+      '.fq-ic { flex-shrink: 0; width: 28px; height: 28px; border-radius: 50%; background: ' + accent + '; color: #fff; display: inline-flex; align-items: center; justify-content: center; font-size: 16px; transition: transform .25s; }\n' +
+      '.fq-q[aria-expanded="true"] .fq-ic { transform: rotate(' + (icon === 'chevron' ? '180' : '45') + 'deg); }\n' +
+      '.fq-a { padding: 0 18px; }\n' +
+      '.fq-a p { margin: 0 0 16px; color: ' + (dark ? '#d4d4d8' : '#3f3f46') + '; line-height: 1.6; font-size: 15px; }\n' +
+      '.fq-a[hidden] { display: none; }';
+    var js =
+      "document.querySelectorAll('.fq-q').forEach(function (btn) {\n" +
+      "  btn.addEventListener('click', function () {\n" +
+      "    var open = btn.getAttribute('aria-expanded') === 'true';\n" +
+      "    document.querySelectorAll('.fq-q[aria-expanded=\"true\"]').forEach(function (b) {\n" +
+      "      b.setAttribute('aria-expanded', 'false');\n" +
+      "      document.getElementById(b.getAttribute('aria-controls')).hidden = true;\n" +
+      "    });\n" +
+      "    btn.setAttribute('aria-expanded', String(!open));\n" +
+      "    document.getElementById(btn.getAttribute('aria-controls')).hidden = open;\n" +
+      "  });\n" +
+      "});";
+    return { html: html, css: css, js: js };
+  }
+
+  function wirePreview() {
+    var pv = el(SLUG + '-preview');
+    pv.querySelectorAll('.fq-q').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        var open = btn.getAttribute('aria-expanded') === 'true';
+        pv.querySelectorAll('.fq-q[aria-expanded="true"]').forEach(function (b) {
+          b.setAttribute('aria-expanded', 'false');
+          var r = pv.querySelector('#' + CSS.escape(b.getAttribute('aria-controls')));
+          if (r) r.hidden = true;
+        });
+        btn.setAttribute('aria-expanded', String(!open));
+        var region = pv.querySelector('#' + CSS.escape(btn.getAttribute('aria-controls')));
+        if (region) region.hidden = open;
+      });
+    });
+  }
+
+  function update() {
+    clear();
+    var faqs = parseFaqs(el(SLUG + '-faqs').value);
+    if (!faqs.length) { fail('Add at least one FAQ (question line + answer line, blank line between).'); return; }
+    var b = build(faqs, el(SLUG + '-accent').value, el(SLUG + '-theme').value, el(SLUG + '-icon').value);
+    el(SLUG + '-preview').style.background = el(SLUG + '-theme').value === 'dark' ? '#18181b' : '#f4f4f5';
+    el(SLUG + '-preview').innerHTML = '<style>' + b.css + '</style>' + b.html;
+    wirePreview();
+    el(SLUG + '-output').value = '<!DOCTYPE html>\n<html lang="en">\n<head>\n<meta charset="UTF-8">\n<meta name="viewport" content="width=device-width, initial-scale=1.0">\n<title>FAQ</title>\n<style>\n' +
+      b.css + '\nbody { background: ' + (el(SLUG + '-theme').value === 'dark' ? '#111' : '#fafafa') + '; padding: 40px 16px; }\n</style>\n</head>\n<body>\n' +
+      b.html + '\n<script>\n' + b.js + '\n<\/script>\n</body>\n</html>\n';
+  }
+
+  try {
+    if (!el(SLUG + '-faqs')) return;
+    TN.on(SLUG + '-faqs', 'input', update);
+    TN.on(SLUG + '-accent', 'input', update);
+    ['theme', 'icon'].forEach(function (k) { TN.on(SLUG + '-' + k, 'change', update); });
+    TN.on(SLUG + '-copy', 'click', function () {
+      var v = el(SLUG + '-output').value;
+      if (!v) { fail('Nothing to copy yet.'); return; }
+      TN.copy(v).then(function (ok) { if (!ok) fail('Copy failed — select the text manually.'); });
+    });
+    TN.on(SLUG + '-download', 'click', function () {
+      var v = el(SLUG + '-output').value;
+      if (!v) { fail('Nothing to download yet.'); return; }
+      TN.downloadText(v, 'faq.html', 'text/html');
+    });
+    update();
+  } catch (e) { /* never throw on load */ }
+})();
+
+</script>
+</body>
+</html>

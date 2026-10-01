@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Wanted Poster Maker — Free Online | ToolNest</title>
+<meta name="description" content="Make an old-west WANTED poster with a sepia photo, name, crime and reward — rendered on aged paper.">
+<meta name="keywords" content="wanted poster, western poster maker, old west wanted">
+<link rel="canonical" href="https://toolnest.vercel.app/tools/wanted-poster-maker/">
+<meta name="theme-color" content="#07070b">
+<meta property="og:title" content="Wanted Poster Maker — Free Online | ToolNest">
+<meta property="og:description" content="Make an old-west WANTED poster with a sepia photo, name, crime and reward — rendered on aged paper.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css?v=4">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%23e01111'/><text x='50' y='68' font-size='58' text-anchor='middle' fill='white' font-family='Arial' font-weight='bold'>T</text></svg>">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebApplication","name":"Wanted Poster Maker","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0"},"url":"https://toolnest.vercel.app/tools/wanted-poster-maker/","description":"Make an old-west WANTED poster with a sepia photo, name, crime and reward — rendered on aged paper."},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How does it get the old-west look?","acceptedAnswer":{"@type":"Answer","text":"Sepia toning, vignette edges, paper grain and the classic type layout recreate the look. The photo is converted to sepia automatically."}},{"@type":"Question","name":"Can I put a friend's face on it?","acceptedAnswer":{"@type":"Answer","text":"Yes — for personal, non-commercial fun. Don't use it to impersonate or defame a real person."}},{"@type":"Question","name":"What size is the download?","acceptedAnswer":{"@type":"Answer","text":"The poster is rendered at 800 × 1100 px PNG, sharp for sharing and small prints."}}]}]}</script>
+</head>
+<body>
+<header class="site-header">
+  <div class="container">
+    <a class="logo" href="/"><span class="logo-mark">T</span> ToolNest</a>
+    <div class="header-right">
+      <form class="nav-search" action="/" method="get" role="search">
+        <span class="ns-icon">🔍</span>
+        <input type="search" name="q" placeholder="Search tools…" aria-label="Search tools" autocomplete="off">
+      </form>
+      <div class="menu-wrap">
+        <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="menuPanel" aria-label="Open menu"><span></span><span></span><span></span></button>
+        <nav class="menu-panel" id="menuPanel" aria-label="Site">
+          <a href="/">Home</a>
+          <a href="/#categories">Categories</a>
+          <a href="/#all-tools">All Tools</a>
+        </nav>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ADSTERRA-HEADER: paste your Adsterra banner ad code inside the div below -->
+<div class="container"><div class="ad-slot ad-leaderboard" data-ad="header"></div></div>
+
+<main class="container">
+  <nav class="crumbs"><a href="/">Home</a> &rsaquo; <a href="/#image">Image Tools</a> &rsaquo; Wanted Poster Maker</nav>
+  <div class="tool-hero">
+    <h1>Wanted Poster Maker</h1>
+    <p>Make an old-west WANTED poster with a sepia photo, name, crime and reward — rendered on aged paper.</p>
+  </div>
+
+  <div class="tool-card">
+  <div class="field">
+    <label for="wanted-poster-maker-file">Portrait photo</label>
+    <input type="file" id="wanted-poster-maker-file" accept="image/*" class="input">
+  </div>
+  <div class="grid2">
+    <div class="field">
+      <label for="wanted-poster-maker-name">Outlaw name</label>
+      <input type="text" id="wanted-poster-maker-name" class="input" value="BLACK JAKE RIVERS" maxlength="40">
+    </div>
+    <div class="field">
+      <label for="wanted-poster-maker-status">Wanted</label>
+      <select class="select" id="wanted-poster-maker-status">
+        <option value="DEAD OR ALIVE">Dead or alive</option>
+        <option value="ALIVE">Alive</option>
+        <option value="DEAD">Dead</option>
+      </select>
+    </div>
+  </div>
+  <div class="grid2">
+    <div class="field">
+      <label for="wanted-poster-maker-crime">Crime</label>
+      <input type="text" id="wanted-poster-maker-crime" class="input" value="Train robbery & bank heists" maxlength="60">
+    </div>
+    <div class="field">
+      <label for="wanted-poster-maker-reward">Reward</label>
+      <input type="text" id="wanted-poster-maker-reward" class="input" value="$5,000" maxlength="20">
+    </div>
+  </div>
+  <div class="btn-row">
+    <button class="btn btn-primary" id="wanted-poster-maker-download">Download poster</button>
+  </div>
+  <div class="result">
+    <canvas id="wanted-poster-maker-canvas" style="width:100%;max-width:400px;border:1px solid #e5e7eb;border-radius:8px;"></canvas>
+  </div>
+  <div class="error" id="wanted-poster-maker-error"></div>
+  <p class="note">For fun and personal use only — don't use it to impersonate or defame a real person. Everything runs in your browser.</p>
+</div>
+
+
+  <!-- ADSTERRA-INCONTENT: paste your Adsterra native/in-content ad code inside the div below -->
+  <div class="ad-slot" data-ad="incontent"></div>
+
+  <div class="info-grid">
+    <div class="info-card">
+      <h2>📖 How to use</h2>
+      <ol><li>Choose a photo for the wanted portrait.</li><li>Type the outlaw&#39;s name, the crime, and the reward amount.</li><li>Pick whether they are wanted dead or alive.</li><li>Click &quot;Download poster&quot; to save the PNG.</li></ol>
+    </div>
+    <div class="info-card">
+      <h2>❓ Frequently asked questions</h2>
+      <div class="faq"><details><summary>How does it get the old-west look?</summary><p>Sepia toning, vignette edges, paper grain and the classic type layout recreate the look. The photo is converted to sepia automatically.</p></details><details><summary>Can I put a friend&#39;s face on it?</summary><p>Yes — for personal, non-commercial fun. Don&#39;t use it to impersonate or defame a real person.</p></details><details><summary>What size is the download?</summary><p>The poster is rendered at 800 × 1100 px PNG, sharp for sharing and small prints.</p></details></div>
+    </div>
+  </div>
+
+  <section class="section">
+    <h2>🔗 Related tools</h2>
+    <div class="tool-grid"><a class="tool-link" href="/tools/app-icon-resizer/" data-search="app icon resizer generate every common app icon size from one image — 16, 32, 48, 180, 192 and 512 px — with instant preview and one-click png downloads. app icon resizer icon generator favicon sizes pwa icon apple touch icon generator"><span class="t-ico">🖼️</span><span class="t-body"><b>App Icon Resizer</b><small>Generate every common app icon size from one image — 16, 32, 48, 180, 192 and 512 px — with …</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/background-remover/" data-search="background remover remove the background from any photo with real on-device ai and download a transparent png. free, private and unlimited — no sign-up needed. background remover remove image background transparent png maker"><span class="t-ico">🖼️</span><span class="t-body"><b>Background Remover</b><small>Remove the background from any photo with real on-device AI and download a transparent PNG. …</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/before-after-slider-maker/" data-search="before/after slider maker upload two photos and get a standalone before/after comparison slider as an html file. before after slider image comparison slider photo compare html before after html"><span class="t-ico">🖼️</span><span class="t-body"><b>Before/After Slider Maker</b><small>Upload two photos and get a standalone before/after comparison slider as an HTML file.</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/business-card-maker/" data-search="business card maker design a business card front (1050×600): your name, role and contact details, color themes, live preview, and a png download. business card maker business card design business card png visiting card maker card designer"><span class="t-ico">🖼️</span><span class="t-body"><b>Business Card Maker</b><small>Design a business card front (1050×600): your name, role and contact details, color themes, …</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/certificate-maker/" data-search="certificate maker design printable certificates: recipient name, course title, date and signature line, live preview, and a high-res png download. certificate maker certificate generator certificate png award certificate maker printable certificate"><span class="t-ico">🖼️</span><span class="t-body"><b>Certificate Maker</b><small>Design printable certificates: recipient name, course title, date and signature line, live p…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/color-splash-effect/" data-search="color splash effect pick a color to keep and turn everything else black-and-white — the classic color splash effect with a tolerance slider. color splash selective color color pop effect black and white photo"><span class="t-ico">🖼️</span><span class="t-body"><b>Color Splash Effect</b><small>Pick a color to keep and turn everything else black-and-white — the classic color splash eff…</small></span><span class="t-arrow">→</span></a></div>
+  </section>
+</main>
+
+<!-- ADSTERRA-FOOTER: paste your Adsterra footer/banner ad code inside the div below -->
+<div class="container"><div class="ad-slot" data-ad="footer"></div></div>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="f-grid">
+      <div>
+        <span class="brandline"><span class="logo-mark">T</span> ToolNest</span>
+        <p>Free online tools that actually work. No sign-up, no watermarks — and your files never leave your device for client-side tools.</p>
+      </div>
+      <div>
+        <h4>Popular</h4>
+        <a href="/tools/qr-code-generator/">QR Code Generator</a>
+        <a href="/tools/background-remover/">Background Remover</a>
+        <a href="/tools/pdf-merger/">PDF Merger</a>
+        <a href="/tools/word-counter/">Word Counter</a>
+      </div>
+      <div>
+        <h4>Categories</h4>
+        <a href="/#image">Image Tools</a>
+        <a href="/#pdf">PDF &amp; Documents</a>
+        <a href="/#calculators">Calculators</a>
+        <a href="/#developer">Developer Tools</a>
+      </div>
+      <div>
+        <h4>Site</h4>
+        <a href="/">Home</a>
+        <a href="/#all-tools">All Tools</a>
+        <a href="/sitemap.xml">Sitemap</a>
+      </div>
+    </div>
+    <div class="f-bottom">© 2026 ToolNest · Free tools for everyone · Made with care</div>
+  </div>
+</footer>
+
+<script src="/assets/site.js?v=5"></script>
+
+<script>
+/* Wanted Poster Maker — aged western poster with sepia portrait. */
+(function () {
+  'use strict';
+  var SLUG = 'wanted-poster-maker';
+  var ERR = SLUG + '-error';
+  var W = 800, H = 1100;
+  var img = null;
+
+  function paperTexture(ctx) {
+    ctx.fillStyle = '#e3cfa0';
+    ctx.fillRect(0, 0, W, H);
+    // grain blotches
+    for (var i = 0; i < 900; i++) {
+      var x = Math.random() * W, y = Math.random() * H, r = 1 + Math.random() * 3;
+      ctx.fillStyle = Math.random() < 0.5 ? 'rgba(120,85,40,0.05)' : 'rgba(255,245,220,0.06)';
+      ctx.beginPath(); ctx.arc(x, y, r, 0, 7); ctx.fill();
+    }
+    // edge burn / vignette
+    var g = ctx.createRadialGradient(W / 2, H / 2, H * 0.25, W / 2, H / 2, H * 0.72);
+    g.addColorStop(0, 'rgba(90,55,20,0)');
+    g.addColorStop(1, 'rgba(90,55,20,0.45)');
+    ctx.fillStyle = g;
+    ctx.fillRect(0, 0, W, H);
+    // border frame
+    ctx.strokeStyle = '#5a3a18';
+    ctx.lineWidth = 10;
+    ctx.strokeRect(24, 24, W - 48, H - 48);
+    ctx.lineWidth = 3;
+    ctx.strokeRect(44, 44, W - 88, H - 88);
+  }
+
+  function drawSepiaPhoto(ctx, px, py, pw, ph) {
+    ctx.save();
+    ctx.fillStyle = '#2e1f0e';
+    ctx.fillRect(px - 8, py - 8, pw + 16, ph + 16);
+    var off = document.createElement('canvas');
+    off.width = pw; off.height = ph;
+    var o = off.getContext('2d');
+    if (img) {
+      var s = Math.max(pw / img.naturalWidth, ph / img.naturalHeight);
+      var dw = img.naturalWidth * s, dh = img.naturalHeight * s;
+      o.drawImage(img, (pw - dw) / 2, (ph - dh) / 2, dw, dh);
+      var d = o.getImageData(0, 0, pw, ph), px2 = d.data;
+      for (var i = 0; i < px2.length; i += 4) {
+        var r = px2[i], g2 = px2[i + 1], b = px2[i + 2];
+        var lum = 0.299 * r + 0.587 * g2 + 0.114 * b;
+        px2[i] = Math.min(255, lum * 1.05 + 22);
+        px2[i + 1] = Math.min(255, lum * 0.88 + 12);
+        px2[i + 2] = Math.min(255, lum * 0.68);
+      }
+      o.putImageData(d, 0, 0);
+    } else {
+      o.fillStyle = '#c9b184';
+      o.fillRect(0, 0, pw, ph);
+      o.fillStyle = '#5a3a18';
+      o.font = '26px Georgia, serif';
+      o.textAlign = 'center';
+      o.fillText('Choose a photo', pw / 2, ph / 2);
+    }
+    ctx.drawImage(off, px, py);
+    ctx.restore();
+  }
+
+  function draw() {
+    var canvas = document.getElementById(SLUG + '-canvas');
+    if (!canvas) return;
+    canvas.width = W; canvas.height = H;
+    var ctx = canvas.getContext('2d');
+    paperTexture(ctx);
+    ctx.fillStyle = '#3a2410';
+    ctx.textAlign = 'center';
+
+    ctx.font = 'bold 110px Georgia, "Times New Roman", serif';
+    ctx.fillText('WANTED', W / 2, 190);
+
+    var name = (document.getElementById(SLUG + '-name').value || '').trim();
+    var status = document.getElementById(SLUG + '-status').value;
+    var crime = (document.getElementById(SLUG + '-crime').value || '').trim();
+    var reward = (document.getElementById(SLUG + '-reward').value || '').trim();
+
+    drawSepiaPhoto(ctx, 200, 250, 400, 440);
+
+    ctx.font = 'bold 44px Georgia, serif';
+    var y = 790;
+    ctx.fillText(status, W / 2, y);
+    y += 70;
+    ctx.font = 'bold 52px Georgia, serif';
+    // shrink name to fit
+    var ns = 52;
+    ctx.font = 'bold ' + ns + 'px Georgia, serif';
+    while (ctx.measureText(name).width > W - 140 && ns > 26) {
+      ns -= 2; ctx.font = 'bold ' + ns + 'px Georgia, serif';
+    }
+    ctx.fillText(name, W / 2, y);
+    y += 56;
+    ctx.font = 'italic 34px Georgia, serif';
+    ctx.fillText('for ' + crime, W / 2, y);
+    y += 76;
+    ctx.font = 'bold 64px Georgia, serif';
+    ctx.fillText(reward + ' REWARD', W / 2, y);
+    ctx.font = '28px Georgia, serif';
+    ctx.fillText('— By order of the Sheriff —', W / 2, H - 90);
+  }
+
+  try {
+    if (!document.getElementById(SLUG + '-canvas')) return;
+    draw();
+    TN.on(SLUG + '-file', 'change', function () {
+      var f = this.files && this.files[0];
+      if (!f) return;
+      TN.clearErr(ERR);
+      TN.readAsDataURL(f).then(TN.loadImage).then(function (im) { img = im; draw(); })
+        .catch(function () { TN.setErr(ERR, 'That file could not be read as an image. Try a JPG, PNG or WebP file.'); });
+    });
+    TN.on(SLUG + '-name', 'input', TN.debounce(draw, 120));
+    TN.on(SLUG + '-crime', 'input', TN.debounce(draw, 120));
+    TN.on(SLUG + '-reward', 'input', TN.debounce(draw, 120));
+    TN.on(SLUG + '-status', 'change', draw);
+    TN.on(SLUG + '-download', 'click', function () {
+      TN.clearErr(ERR);
+      draw();
+      var canvas = document.getElementById(SLUG + '-canvas');
+      try {
+        canvas.toBlob(function (b) {
+          if (b) TN.download(b, 'wanted-poster.png');
+          else TN.setErr(ERR, 'Could not export the poster.');
+        }, 'image/png');
+      } catch (e) { TN.setErr(ERR, 'Could not export the poster.'); }
+    });
+  } catch (e) {
+    TN.setErr(ERR, 'This tool could not start: ' + (e && e.message || e));
+  }
+})();
+
+</script>
+</body>
+</html>

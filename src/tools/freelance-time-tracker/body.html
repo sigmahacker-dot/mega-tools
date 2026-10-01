@@ -1,0 +1,40 @@
+<div class="tool-card">
+  <div class="grid3">
+    <div class="field">
+      <label for="freelance-time-tracker-client">Client</label>
+      <input class="input" id="freelance-time-tracker-client" type="text" placeholder="e.g. Acme Corp">
+    </div>
+    <div class="field">
+      <label for="freelance-time-tracker-project">Project</label>
+      <input class="input" id="freelance-time-tracker-project" type="text" placeholder="e.g. Website redesign">
+    </div>
+    <div class="field" style="align-self:end">
+      <div class="btn-row">
+        <button type="button" class="btn" id="freelance-time-tracker-start">Start</button>
+        <button type="button" class="btn btn-outline" id="freelance-time-tracker-stop" disabled>Stop</button>
+      </div>
+    </div>
+  </div>
+  <p style="font-size:1.4em;font-family:monospace" id="freelance-time-tracker-live">00:00:00</p>
+  <div class="error" id="freelance-time-tracker-error"></div>
+  <div class="result">
+    <h3>Manual entry</h3>
+    <div class="grid3">
+      <div class="field"><label for="freelance-time-tracker-mdate">Date</label><input class="input" id="freelance-time-tracker-mdate" type="date"></div>
+      <div class="field"><label for="freelance-time-tracker-mmin">Minutes</label><input class="input" id="freelance-time-tracker-mmin" type="number" min="1" value="60"></div>
+      <div class="field" style="align-self:end"><button type="button" class="btn btn-outline btn-sm" id="freelance-time-tracker-madd">Add entry</button></div>
+    </div>
+  </div>
+  <div class="result">
+    <h3>Log</h3>
+    <div style="overflow-x:auto"><table class="data"><thead><tr><th>Date</th><th>Client</th><th>Project</th><th>Duration</th><th></th></tr></thead><tbody id="freelance-time-tracker-log"></tbody></table></div>
+    <div class="btn-row" style="margin-top:8px">
+      <button type="button" class="btn btn-outline btn-sm" id="freelance-time-tracker-csv">Export CSV</button>
+      <button type="button" class="btn btn-outline btn-sm" id="freelance-time-tracker-clear">Clear log</button>
+    </div>
+  </div>
+  <div class="result">
+    <h3>Totals per client</h3>
+    <div id="freelance-time-tracker-totals"></div>
+  </div>
+</div>

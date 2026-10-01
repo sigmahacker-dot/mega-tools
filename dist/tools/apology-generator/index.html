@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Apology Generator — Free Online | ToolNest</title>
+<meta name="description" content="Build a sincere, structured apology from your situation — acknowledge, take responsibility, make amends, and promise change.">
+<meta name="keywords" content="apology generator, sorry letter, apology message, write an apology, apology text">
+<link rel="canonical" href="https://toolnest.vercel.app/tools/apology-generator/">
+<meta name="theme-color" content="#07070b">
+<meta property="og:title" content="Apology Generator — Free Online | ToolNest">
+<meta property="og:description" content="Build a sincere, structured apology from your situation — acknowledge, take responsibility, make amends, and promise change.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css?v=4">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%23e01111'/><text x='50' y='68' font-size='58' text-anchor='middle' fill='white' font-family='Arial' font-weight='bold'>T</text></svg>">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebApplication","name":"Apology Generator","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0"},"url":"https://toolnest.vercel.app/tools/apology-generator/","description":"Build a sincere, structured apology from your situation — acknowledge, take responsibility, make amends, and promise change."},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How does it work?","acceptedAnswer":{"@type":"Answer","text":"Enter who you are apologizing to, what happened, and your tone — the tool writes a complete apology with all four parts."}},{"@type":"Question","name":"What tones are available?","acceptedAnswer":{"@type":"Answer","text":"Sincere, Lighthearted, or Formal — pick the tone that fits the situation."}},{"@type":"Question","name":"Can I copy or download it?","acceptedAnswer":{"@type":"Answer","text":"Yes — copy it or download it as a text file to send however you like."}}]}]}</script>
+</head>
+<body>
+<header class="site-header">
+  <div class="container">
+    <a class="logo" href="/"><span class="logo-mark">T</span> ToolNest</a>
+    <div class="header-right">
+      <form class="nav-search" action="/" method="get" role="search">
+        <span class="ns-icon">🔍</span>
+        <input type="search" name="q" placeholder="Search tools…" aria-label="Search tools" autocomplete="off">
+      </form>
+      <div class="menu-wrap">
+        <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="menuPanel" aria-label="Open menu"><span></span><span></span><span></span></button>
+        <nav class="menu-panel" id="menuPanel" aria-label="Site">
+          <a href="/">Home</a>
+          <a href="/#categories">Categories</a>
+          <a href="/#all-tools">All Tools</a>
+        </nav>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ADSTERRA-HEADER: paste your Adsterra banner ad code inside the div below -->
+<div class="container"><div class="ad-slot ad-leaderboard" data-ad="header"></div></div>
+
+<main class="container">
+  <nav class="crumbs"><a href="/">Home</a> &rsaquo; <a href="/#text">Text &amp; Writing</a> &rsaquo; Apology Generator</nav>
+  <div class="tool-hero">
+    <h1>Apology Generator</h1>
+    <p>Build a sincere, structured apology from your situation — acknowledge, take responsibility, make amends, and promise change.</p>
+  </div>
+
+  <div class="tool-card">
+  <div class="grid2">
+    <div class="field">
+      <label for="apology-generator-name">Apologizing to</label>
+      <input class="input" id="apology-generator-name" type="text" placeholder="e.g. Sarah" maxlength="40">
+    </div>
+    <div class="field">
+      <label for="apology-generator-from">Your name</label>
+      <input class="input" id="apology-generator-from" type="text" placeholder="e.g. Alex" maxlength="40">
+    </div>
+    <div class="field">
+      <label for="apology-generator-type">Situation</label>
+      <select class="select" id="apology-generator-type">
+        <option value="late">I was late / missed something</option>
+        <option value="hurt">I said something hurtful</option>
+        <option value="forgot">I forgot something important</option>
+        <option value="broke">I broke / lost something</option>
+        <option value="cancelled">I cancelled plans</option>
+        <option value="work">A work mistake</option>
+      </select>
+    </div>
+    <div class="field">
+      <label for="apology-generator-tone">Tone</label>
+      <select class="select" id="apology-generator-tone">
+        <option value="sincere">Sincere</option>
+        <option value="light">Lighthearted</option>
+        <option value="formal">Formal</option>
+      </select>
+    </div>
+  </div>
+  <div class="field">
+    <label for="apology-generator-what">What happened? (a few words)</label>
+    <input class="input" id="apology-generator-what" type="text" placeholder="e.g. your birthday dinner" maxlength="120">
+  </div>
+  <div class="btn-row">
+    <button class="btn btn-primary" id="apology-generator-go" type="button">Write My Apology</button>
+  </div>
+  <div class="error" id="apology-generator-error"></div>
+  <div class="field" style="margin-top:12px">
+    <label>Your apology</label>
+    <div class="result" id="apology-generator-output" style="white-space:pre-wrap">Your structured apology will appear here.</div>
+  </div>
+  <div class="btn-row">
+    <button class="btn btn-outline btn-sm" id="apology-generator-copy" type="button">Copy</button>
+    <button class="btn btn-outline btn-sm" id="apology-generator-download" type="button">Download .txt</button>
+  </div>
+</div>
+
+
+  <!-- ADSTERRA-INCONTENT: paste your Adsterra native/in-content ad code inside the div below -->
+  <div class="ad-slot" data-ad="incontent"></div>
+
+  <div class="info-grid">
+    <div class="info-card">
+      <h2>📖 How to use</h2>
+      <ol><li>Enter the person&#39;s name and what happened.</li><li>Choose the situation type and tone.</li><li>Generate, then copy or download your apology.</li></ol>
+    </div>
+    <div class="info-card">
+      <h2>❓ Frequently asked questions</h2>
+      <div class="faq"><details><summary>How does it work?</summary><p>Enter who you are apologizing to, what happened, and your tone — the tool writes a complete apology with all four parts.</p></details><details><summary>What tones are available?</summary><p>Sincere, Lighthearted, or Formal — pick the tone that fits the situation.</p></details><details><summary>Can I copy or download it?</summary><p>Yes — copy it or download it as a text file to send however you like.</p></details></div>
+    </div>
+  </div>
+
+  <section class="section">
+    <h2>🔗 Related tools</h2>
+    <div class="tool-grid"><a class="tool-link" href="/tools/acronym-generator/" data-search="acronym generator turn any phrase into an acronym instantly — first letters, with options to skip small words, add periods and force uppercase. acronym generator make acronym from words initialism generator phrase to acronym"><span class="t-ico">✍️</span><span class="t-body"><b>Acronym Generator</b><small>Turn any phrase into an acronym instantly — first letters, with options to skip small words,…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/acrostic-poem-generator/" data-search="acrostic poem generator turn any word into an acrostic poem — one poetic line per letter from built-in line banks. acrostic poem generator acrostic generator name poem acrostic maker poem from word"><span class="t-ico">✍️</span><span class="t-body"><b>Acrostic Poem Generator</b><small>Turn any word into an acrostic poem — one poetic line per letter from built-in line banks.</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/aes-text-encryptor/" data-search="aes text encryptor encrypt text with real aes-256-gcm using a password-derived key (pbkdf2), fully in your browser. aes encrypt text encrypt message password aes-gcm online"><span class="t-ico">✍️</span><span class="t-body"><b>AES Text Encryptor</b><small>Encrypt text with real AES-256-GCM using a password-derived key (PBKDF2), fully in your brow…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/alliteration-generator/" data-search="alliteration generator generate alliterative phrases — pick a letter and a theme, get tongue-twisting word combos. alliteration generator alliteration examples tongue twister generator alliterative phrases letter phrases"><span class="t-ico">✍️</span><span class="t-body"><b>Alliteration Generator</b><small>Generate alliterative phrases — pick a letter and a theme, get tongue-twisting word combos.</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/anagram-generator/" data-search="anagram generator find every real anagram of your word — all unique permutations checked against a built-in word list. anagram generator anagram solver find anagrams anagram finder word unscrambler"><span class="t-ico">✍️</span><span class="t-body"><b>Anagram Generator</b><small>Find every real anagram of your word — all unique permutations checked against a built-in wo…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/article-rewriter/" data-search="article rewriter rewrite articles with a built-in synonym engine covering 130+ common english words. whole-word replacement with capitalization preserved and a change report. article rewriter paraphrasing tool rewrite text online"><span class="t-ico">✍️</span><span class="t-body"><b>Article Rewriter</b><small>Rewrite articles with a built-in synonym engine covering 130+ common English words. Whole-wo…</small></span><span class="t-arrow">→</span></a></div>
+  </section>
+</main>
+
+<!-- ADSTERRA-FOOTER: paste your Adsterra footer/banner ad code inside the div below -->
+<div class="container"><div class="ad-slot" data-ad="footer"></div></div>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="f-grid">
+      <div>
+        <span class="brandline"><span class="logo-mark">T</span> ToolNest</span>
+        <p>Free online tools that actually work. No sign-up, no watermarks — and your files never leave your device for client-side tools.</p>
+      </div>
+      <div>
+        <h4>Popular</h4>
+        <a href="/tools/qr-code-generator/">QR Code Generator</a>
+        <a href="/tools/background-remover/">Background Remover</a>
+        <a href="/tools/pdf-merger/">PDF Merger</a>
+        <a href="/tools/word-counter/">Word Counter</a>
+      </div>
+      <div>
+        <h4>Categories</h4>
+        <a href="/#image">Image Tools</a>
+        <a href="/#pdf">PDF &amp; Documents</a>
+        <a href="/#calculators">Calculators</a>
+        <a href="/#developer">Developer Tools</a>
+      </div>
+      <div>
+        <h4>Site</h4>
+        <a href="/">Home</a>
+        <a href="/#all-tools">All Tools</a>
+        <a href="/sitemap.xml">Sitemap</a>
+      </div>
+    </div>
+    <div class="f-bottom">© 2026 ToolNest · Free tools for everyone · Made with care</div>
+  </div>
+</footer>
+
+<script src="/assets/site.js?v=5"></script>
+
+<script>
+/* Apology Generator — structured apology: acknowledge, responsibility, amends, promise. */
+(function () {
+  'use strict';
+  var SLUG = 'apology-generator';
+
+  var OPEN = {
+    sincere: ['I owe you a real apology.', 'I have been thinking about this, and I need to say sorry properly.', 'You deserve a proper apology from me.'],
+    light: ['Okay, I messed up — time for the official apology.', 'Cue the sad music: I owe you a sorry.', 'I come bearing the sincerest of sorries (and snacks, if that helps).'],
+    formal: ['Please accept my sincere apologies.', 'I am writing to offer my unreserved apology.', 'I wish to express my deepest regrets.']
+  };
+  var SITUATION = {
+    late: 'being late to {w} and keeping you waiting',
+    hurt: 'what I said about {w} — my words were careless and hurtful',
+    forgot: 'forgetting {w}, which I know mattered to you',
+    broke: 'breaking {w} — I know it was important to you',
+    cancelled: 'cancelling {w} at the last minute',
+    work: 'my mistake with {w} and the extra work it caused you'
+  };
+  var RESPONSIBILITY = {
+    sincere: ['There is no excuse — that was on me, and I take full responsibility.', 'I will not hide behind excuses. I was wrong, plain and simple.'],
+    light: ['No excuses, no "but the traffic" — this one is 100% on me.', 'I could blame the universe, but honestly? My bad. Entirely my bad.'],
+    formal: ['I accept full responsibility for my actions and their consequences.', 'There is no justification for my conduct, and I do not offer one.']
+  };
+  var AMENDS = {
+    sincere: ['I would like to make it up to you — tell me what would help, and I will do it.', 'Please let me make this right. You tell me how.'],
+    light: ['To make amends, I officially owe you one — redeemable for coffee, favors, or eternal gratitude.', 'I propose reparations in the form of your favorite treat, on me.'],
+    formal: ['I am committed to making appropriate amends and welcome your guidance on how best to do so.', 'Please allow me the opportunity to make this right.']
+  };
+  var PROMISE = {
+    sincere: ['I will do better. You have my word — and I intend to keep it.', 'This will not happen again. I am going to make sure of that.'],
+    light: ['I solemnly swear to be less of a mess next time. (Baby steps.)', 'Lesson learned, I promise. My track record starts improving today.'],
+    formal: ['I assure you that I will take every measure to ensure this does not recur.', 'You have my assurance that this will not happen again.']
+  };
+  var CLOSE = {
+    sincere: ['Thank you for hearing me out. It means a lot.', 'I hope you can forgive me.'],
+    light: ['Forgive me? I will even do the dishes.', 'Friends again? I will bring snacks next time.'],
+    formal: ['Thank you for your understanding.', 'With sincere regards,']
+  };
+
+  function pick(a) { return a[Math.floor(Math.random() * a.length)]; }
+
+  var current = '';
+  function init() {
+    if (!TN.el(SLUG + '-go')) return;
+    TN.on(SLUG + '-go', 'click', function () {
+      try {
+        TN.clearErr(SLUG + '-error');
+        var name = TN.el(SLUG + '-name').value.trim() || 'friend';
+        var from = TN.el(SLUG + '-from').value.trim();
+        var type = TN.el(SLUG + '-type').value;
+        var tone = TN.el(SLUG + '-tone').value;
+        var what = TN.el(SLUG + '-what').value.trim() || 'what happened';
+        var sit = SITUATION[type].replace('{w}', what);
+        var parts = [
+          'Dear ' + name + ',',
+          '',
+          pick(OPEN[tone]) + ' I am truly sorry for ' + sit + '.',
+          '',
+          pick(RESPONSIBILITY[tone]),
+          '',
+          pick(AMENDS[tone]),
+          '',
+          pick(PROMISE[tone]),
+          '',
+          pick(CLOSE[tone])
+        ];
+        if (from) parts.push(from);
+        current = parts.join('\n');
+        TN.el(SLUG + '-output').textContent = current;
+      } catch (e) { TN.setErr(SLUG + '-error', 'Could not write the apology. Please try again.'); }
+    });
+    TN.on(SLUG + '-copy', 'click', function () {
+      if (!current) { TN.setErr(SLUG + '-error', 'Write your apology first.'); return; }
+      var btn = TN.el(SLUG + '-copy');
+      TN.copy(current).then(function (ok) {
+        btn.textContent = ok ? 'Copied ✓' : 'Copy';
+        setTimeout(function () { btn.textContent = 'Copy'; }, 1200);
+      });
+    });
+    TN.on(SLUG + '-download', 'click', function () {
+      if (!current) { TN.setErr(SLUG + '-error', 'Write your apology first.'); return; }
+      TN.downloadText(current, 'apology.txt', 'text/plain');
+    });
+  }
+  try { init(); } catch (e) { /* never throw on load */ }
+})();
+
+</script>
+</body>
+</html>

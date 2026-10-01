@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Home Maintenance Calendar — Free Online | ToolNest</title>
+<meta name="description" content="Generate a full 12-month home maintenance schedule: monthly chores, seasonal tasks and annual checks, laid out month by month.">
+<meta name="keywords" content="home maintenance, house maintenance schedule, seasonal home checklist, homeowner calendar">
+<link rel="canonical" href="https://toolnest.vercel.app/tools/home-maintenance-calendar/">
+<meta name="theme-color" content="#07070b">
+<meta property="og:title" content="Home Maintenance Calendar — Free Online | ToolNest">
+<meta property="og:description" content="Generate a full 12-month home maintenance schedule: monthly chores, seasonal tasks and annual checks, laid out month by month.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css?v=4">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%23e01111'/><text x='50' y='68' font-size='58' text-anchor='middle' fill='white' font-family='Arial' font-weight='bold'>T</text></svg>">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebApplication","name":"Home Maintenance Calendar","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0"},"url":"https://toolnest.vercel.app/tools/home-maintenance-calendar/","description":"Generate a full 12-month home maintenance schedule: monthly chores, seasonal tasks and annual checks, laid out month by month."},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Where do the tasks come from?","acceptedAnswer":{"@type":"Answer","text":"A built-in checklist used by homeowner guides: monthly items (filters, detectors), seasonal items (gutters in fall, AC in spring) and annual checks."}},{"@type":"Question","name":"Is my check-off progress saved?","acceptedAnswer":{"@type":"Answer","text":"Yes — in your browser's localStorage, keyed to the start month. Regenerating with a different start month gives a fresh list."}},{"@type":"Question","name":"Does it know my climate?","acceptedAnswer":{"@type":"Answer","text":"Tasks are ordered for northern-hemisphere seasons. Southern-hemisphere users can read the schedule shifted by 6 months — noted on the page."}}]}]}</script>
+</head>
+<body>
+<header class="site-header">
+  <div class="container">
+    <a class="logo" href="/"><span class="logo-mark">T</span> ToolNest</a>
+    <div class="header-right">
+      <form class="nav-search" action="/" method="get" role="search">
+        <span class="ns-icon">🔍</span>
+        <input type="search" name="q" placeholder="Search tools…" aria-label="Search tools" autocomplete="off">
+      </form>
+      <div class="menu-wrap">
+        <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="menuPanel" aria-label="Open menu"><span></span><span></span><span></span></button>
+        <nav class="menu-panel" id="menuPanel" aria-label="Site">
+          <a href="/">Home</a>
+          <a href="/#categories">Categories</a>
+          <a href="/#all-tools">All Tools</a>
+        </nav>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ADSTERRA-HEADER: paste your Adsterra banner ad code inside the div below -->
+<div class="container"><div class="ad-slot ad-leaderboard" data-ad="header"></div></div>
+
+<main class="container">
+  <nav class="crumbs"><a href="/">Home</a> &rsaquo; <a href="/#time">Time &amp; Date</a> &rsaquo; Home Maintenance Calendar</nav>
+  <div class="tool-hero">
+    <h1>Home Maintenance Calendar</h1>
+    <p>Generate a full 12-month home maintenance schedule: monthly chores, seasonal tasks and annual checks, laid out month by month.</p>
+  </div>
+
+  <div class="tool-card">
+  <div class="grid3">
+    <div class="field">
+      <label for="home-maintenance-calendar-start">Start month</label>
+      <input class="input" id="home-maintenance-calendar-start" type="month">
+    </div>
+    <div class="field">
+      <label>Extras</label>
+      <div class="checkbox-row"><input type="checkbox" id="home-maintenance-calendar-pool"> <label for="home-maintenance-calendar-pool">Swimming pool</label></div>
+      <div class="checkbox-row"><input type="checkbox" id="home-maintenance-calendar-fire"> <label for="home-maintenance-calendar-fire">Fireplace / chimney</label></div>
+      <div class="checkbox-row"><input type="checkbox" id="home-maintenance-calendar-garden"> <label for="home-maintenance-calendar-garden">Garden / lawn</label></div>
+    </div>
+    <div class="field" style="align-self:end">
+      <button type="button" class="btn" id="home-maintenance-calendar-gen">Generate calendar</button>
+    </div>
+  </div>
+  <div class="error" id="home-maintenance-calendar-error"></div>
+  <div id="home-maintenance-calendar-out" class="hidden">
+    <div class="stat-cards">
+      <div class="stat-card"><div class="v" id="home-maintenance-calendar-done">–</div><div class="l">Tasks done</div></div>
+      <div class="stat-card"><div class="v" id="home-maintenance-calendar-total">–</div><div class="l">Total tasks</div></div>
+    </div>
+    <div id="home-maintenance-calendar-months"></div>
+  </div>
+  <p class="note">Ordered for northern-hemisphere seasons — southern-hemisphere users can read the schedule shifted by 6 months.</p>
+</div>
+
+
+  <!-- ADSTERRA-INCONTENT: paste your Adsterra native/in-content ad code inside the div below -->
+  <div class="ad-slot" data-ad="incontent"></div>
+
+  <div class="info-grid">
+    <div class="info-card">
+      <h2>📖 How to use</h2>
+      <ol><li>Pick the starting month (usually the current one).</li><li>Optionally tick if you have extras like a pool, fireplace or garden.</li><li>Press Generate for a 12-month calendar of tasks.</li><li>Check tasks off as you do them — progress is saved in your browser.</li></ol>
+    </div>
+    <div class="info-card">
+      <h2>❓ Frequently asked questions</h2>
+      <div class="faq"><details><summary>Where do the tasks come from?</summary><p>A built-in checklist used by homeowner guides: monthly items (filters, detectors), seasonal items (gutters in fall, AC in spring) and annual checks.</p></details><details><summary>Is my check-off progress saved?</summary><p>Yes — in your browser&#39;s localStorage, keyed to the start month. Regenerating with a different start month gives a fresh list.</p></details><details><summary>Does it know my climate?</summary><p>Tasks are ordered for northern-hemisphere seasons. Southern-hemisphere users can read the schedule shifted by 6 months — noted on the page.</p></details></div>
+    </div>
+  </div>
+
+  <section class="section">
+    <h2>🔗 Related tools</h2>
+    <div class="tool-grid"><a class="tool-link" href="/tools/add-subtract-days-calculator/" data-search="add / subtract days calculator add or subtract days, weeks, months or years from any date. optional business-days-only mode skips weekends automatically. add days to date subtract days calculator date plus days business days calculator date arithmetic"><span class="t-ico">⏰</span><span class="t-body"><b>Add / Subtract Days Calculator</b><small>Add or subtract days, weeks, months or years from any date. Optional business-days-only mode…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/anniversary-calculator/" data-search="anniversary calculator track any anniversary: days until the next one, which number it is (10th, 25th…), total days together and the weekday it falls on. anniversary calculator wedding anniversary countdown how many days until anniversary anniversary date tracker years together calculator"><span class="t-ico">⏰</span><span class="t-body"><b>Anniversary Calculator</b><small>Track any anniversary: days until the next one, which number it is (10th, 25th…), total days…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/bill-due-tracker/" data-search="bill due tracker never miss a payment — track recurring monthly bills with automatic next-due dates, days remaining and urgency sorting. bill due tracker bill reminder recurring bills tracker monthly bills organizer due date tracker"><span class="t-ico">⏰</span><span class="t-body"><b>Bill Due Tracker</b><small>Never miss a payment — track recurring monthly bills with automatic next-due dates, days rem…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/billable-hours-calculator/" data-search="billable hours calculator turn hours into invoices: billable hours × rate, utilization percentage against non-billable time, and the final invoice total. billable hours invoice calculator utilization rate freelance rate calculator"><span class="t-ico">⏰</span><span class="t-body"><b>Billable Hours Calculator</b><small>Turn hours into invoices: billable hours × rate, utilization percentage against non-billable…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/birthday-reminder-list/" data-search="birthday reminder list never miss a birthday: names and dates with days-until countdowns, next upcoming birthday highlighted, saved in your browser. birthday reminder birthday tracker birthday countdown never forget birthday"><span class="t-ico">⏰</span><span class="t-body"><b>Birthday Reminder List</b><small>Never miss a birthday: names and dates with days-until countdowns, next upcoming birthday hi…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/business-days-calculator/" data-search="business days calculator count working days between two dates, excluding weekends and your own custom holidays, with a full breakdown. business days calculator working days calculator weekdays between dates net workdays business days excluding holidays"><span class="t-ico">⏰</span><span class="t-body"><b>Business Days Calculator</b><small>Count working days between two dates, excluding weekends and your own custom holidays, with …</small></span><span class="t-arrow">→</span></a></div>
+  </section>
+</main>
+
+<!-- ADSTERRA-FOOTER: paste your Adsterra footer/banner ad code inside the div below -->
+<div class="container"><div class="ad-slot" data-ad="footer"></div></div>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="f-grid">
+      <div>
+        <span class="brandline"><span class="logo-mark">T</span> ToolNest</span>
+        <p>Free online tools that actually work. No sign-up, no watermarks — and your files never leave your device for client-side tools.</p>
+      </div>
+      <div>
+        <h4>Popular</h4>
+        <a href="/tools/qr-code-generator/">QR Code Generator</a>
+        <a href="/tools/background-remover/">Background Remover</a>
+        <a href="/tools/pdf-merger/">PDF Merger</a>
+        <a href="/tools/word-counter/">Word Counter</a>
+      </div>
+      <div>
+        <h4>Categories</h4>
+        <a href="/#image">Image Tools</a>
+        <a href="/#pdf">PDF &amp; Documents</a>
+        <a href="/#calculators">Calculators</a>
+        <a href="/#developer">Developer Tools</a>
+      </div>
+      <div>
+        <h4>Site</h4>
+        <a href="/">Home</a>
+        <a href="/#all-tools">All Tools</a>
+        <a href="/sitemap.xml">Sitemap</a>
+      </div>
+    </div>
+    <div class="f-bottom">© 2026 ToolNest · Free tools for everyone · Made with care</div>
+  </div>
+</footer>
+
+<script src="/assets/site.js?v=5"></script>
+
+<script>
+(function () {
+  'use strict';
+  var P = 'home-maintenance-calendar-', ERR = P + 'error';
+  var MONTHS = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+  var MONTHLY = ['Test smoke & CO detectors', 'Check HVAC filter; replace if dirty', 'Inspect fire extinguisher pressure', 'Clean range hood filter'];
+  var SEASONAL = {
+    0: ['Check attic insulation & ventilation', 'Inspect pipes for freeze protection'],
+    1: ['Clean dryer vent hose', 'Check sump pump operation'],
+    2: ['Service air conditioner before summer', 'Inspect roof for winter damage', 'Clean gutters & downspouts'],
+    3: ['Fertilize lawn', 'Check outdoor faucets for leaks', 'Service lawn mower'],
+    4: ['Inspect deck/patio; reseal if needed', 'Check window screens; repair tears', 'Flush water heater sediment'],
+    5: ['Clean refrigerator coils', 'Check washing machine hoses', 'Trim trees away from house'],
+    6: ['Deep-clean garbage disposal', 'Inspect attic for pests', 'Check driveway for cracks'],
+    7: ['Service heating system before fall', 'Seal windows & doors (weatherstrip)', 'Clean chimney flue inspection booking'],
+    8: ['Clean gutters & downspouts', 'Drain outdoor faucets; store hoses', 'Check roof before rainy season'],
+    9: ['Test heating system', 'Reverse ceiling fans to clockwise', 'Check attic insulation'],
+    10: ['Inspect fireplace & chimney', 'Protect pipes from freezing', 'Check emergency kit supplies'],
+    11: ['Deep-clean oven', 'Check basement for moisture', 'Test GFCI outlets']
+  };
+  var EXTRAS = {
+    pool: { months: [4, 5, 6, 7, 8], task: 'Pool: check chemicals, clean filter, inspect pump' },
+    fire: { months: [9, 10, 11, 0, 1], task: 'Fireplace: professional chimney sweep & inspection' },
+    garden: { months: [2, 3, 4, 8, 9], task: 'Garden: prune, mulch, check irrigation lines' }
+  };
+  function g(id) { return TN.el(P + id); }
+  function lsKey(start) { return 'tn-home-maintenance-calendar-' + start; }
+  function loadDone(start) {
+    try {
+      var raw = localStorage.getItem(lsKey(start));
+      return raw ? JSON.parse(raw) : {};
+    } catch (e) { return {}; }
+  }
+  function saveDone(start, done) {
+    try { localStorage.setItem(lsKey(start), JSON.stringify(done)); } catch (e) { /* unavailable */ }
+  }
+  function gen() {
+    try {
+      TN.clearErr(ERR);
+      var start = g('start').value;
+      if (!start) { TN.setErr(ERR, 'Pick a start month.'); return; }
+      var sp = start.split('-');
+      var y = parseInt(sp[0], 10), m0 = parseInt(sp[1], 10) - 1;
+      var extras = [];
+      if (g('pool').checked) extras.push('pool');
+      if (g('fire').checked) extras.push('fire');
+      if (g('garden').checked) extras.push('garden');
+      var done = loadDone(start);
+      var wrap = g('months');
+      var html = '', total = 0, doneCount = 0, mi;
+      for (mi = 0; mi < 12; mi++) {
+        var m = (m0 + mi) % 12;
+        var yy = y + Math.floor((m0 + mi) / 12);
+        var tasks = MONTHLY.concat(SEASONAL[m] || []);
+        extras.forEach(function (ex) {
+          if (EXTRAS[ex].months.indexOf(m) >= 0) tasks.push(EXTRAS[ex].task);
+        });
+        html += '<div class="result"><h3>' + MONTHS[m] + ' ' + yy + '</h3><ul style="list-style:none;padding:0">';
+        tasks.forEach(function (t, ti) {
+          var key = mi + ':' + ti;
+          var chk = done[key] ? ' checked' : '';
+          if (done[key]) doneCount++;
+          total++;
+          html += '<li><label class="checkbox-row"><input type="checkbox" data-hm="' + key + '"' + chk + '> <span>' + TN.esc(t) + '</span></label></li>';
+        });
+        html += '</ul></div>';
+      }
+      wrap.innerHTML = html;
+      TN.show(P + 'out');
+      g('done').textContent = String(doneCount);
+      g('total').textContent = String(total);
+      var boxes = wrap.querySelectorAll('[data-hm]');
+      for (var i = 0; i < boxes.length; i++) {
+        (function (b) {
+          TN.on(b, 'change', function () {
+            var d = loadDone(start);
+            if (b.checked) d[b.getAttribute('data-hm')] = 1; else delete d[b.getAttribute('data-hm')];
+            saveDone(start, d);
+            var c = 0;
+            for (var k in d) if (d.hasOwnProperty(k)) c++;
+            g('done').textContent = String(c);
+          });
+        })(boxes[i]);
+      }
+    } catch (e) { TN.setErr(ERR, e.message || 'Could not generate the calendar.'); }
+  }
+  try {
+    if (!TN.el(P + 'gen')) return;
+    var n = new Date();
+    g('start').value = n.getFullYear() + '-' + String(n.getMonth() + 1).padStart(2, '0');
+    TN.on(P + 'gen', 'click', gen);
+  } catch (e) { /* never throw on load */ }
+})();
+
+</script>
+</body>
+</html>

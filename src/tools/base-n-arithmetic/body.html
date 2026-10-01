@@ -1,0 +1,48 @@
+<div class="tool-card">
+  <div class="grid3">
+    <div class="field">
+      <label for="base-n-arithmetic-base">Base (2–36)</label>
+      <input class="input" id="base-n-arithmetic-base" type="number" min="2" max="36" value="16">
+    </div>
+    <div class="field">
+      <label for="base-n-arithmetic-a">First operand</label>
+      <input class="input" id="base-n-arithmetic-a" type="text" placeholder="e.g. 1F" value="1F" style="font-family:monospace">
+    </div>
+    <div class="field">
+      <label for="base-n-arithmetic-b">Second operand</label>
+      <input class="input" id="base-n-arithmetic-b" type="text" placeholder="e.g. A" value="A" style="font-family:monospace">
+    </div>
+  </div>
+  <div class="grid2">
+    <div class="field">
+      <label for="base-n-arithmetic-op">Operation</label>
+      <select class="select" id="base-n-arithmetic-op">
+        <option value="+">+ Add</option>
+        <option value="-">− Subtract</option>
+        <option value="*">× Multiply</option>
+        <option value="/">÷ Divide (quotient + remainder)</option>
+      </select>
+    </div>
+    <div class="field" style="align-self:end">
+      <div class="btn-row">
+        <button type="button" class="btn" id="base-n-arithmetic-calc">Calculate</button>
+        <button type="button" class="btn btn-outline btn-sm" id="base-n-arithmetic-copy">Copy result</button>
+      </div>
+    </div>
+  </div>
+  <div class="error" id="base-n-arithmetic-error"></div>
+  <div id="base-n-arithmetic-out" class="hidden">
+    <div class="stat-cards">
+      <div class="stat-card"><div class="v" id="base-n-arithmetic-result" style="font-family:monospace">–</div><div class="l" id="base-n-arithmetic-result-l">Result</div></div>
+      <div class="stat-card"><div class="v" id="base-n-arithmetic-dec" style="font-family:monospace">–</div><div class="l">Decimal check</div></div>
+    </div>
+    <div class="result" id="base-n-arithmetic-rem-wrap" style="display:none">
+      <h3>Division detail</h3>
+      <p id="base-n-arithmetic-rem"></p>
+    </div>
+    <div class="result">
+      <h3>Steps</h3>
+      <div id="base-n-arithmetic-steps"></div>
+    </div>
+  </div>
+</div>

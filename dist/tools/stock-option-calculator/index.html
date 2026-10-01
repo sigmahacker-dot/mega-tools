@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Stock Option Calculator — Free Online | ToolNest</title>
+<meta name="description" content="Value stock options from strike price versus fair market value and share count.">
+<meta name="keywords" content="stock options, ISO NSO calculator, option spread value">
+<link rel="canonical" href="https://toolnest.vercel.app/tools/stock-option-calculator/">
+<meta name="theme-color" content="#07070b">
+<meta property="og:title" content="Stock Option Calculator — Free Online | ToolNest">
+<meta property="og:description" content="Value stock options from strike price versus fair market value and share count.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css?v=4">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%23e01111'/><text x='50' y='68' font-size='58' text-anchor='middle' fill='white' font-family='Arial' font-weight='bold'>T</text></svg>">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebApplication","name":"Stock Option Calculator","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0"},"url":"https://toolnest.vercel.app/tools/stock-option-calculator/","description":"Value stock options from strike price versus fair market value and share count."},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What is the spread?","acceptedAnswer":{"@type":"Answer","text":"Fair market value minus strike price, times shares. It is the paper gain you capture by exercising."}},{"@type":"Question","name":"What does underwater mean?","acceptedAnswer":{"@type":"Answer","text":"The FMV is below the strike price, so exercising now would lose money. The spread shows as negative."}},{"@type":"Question","name":"How are ISOs and NSOs taxed differently?","acceptedAnswer":{"@type":"Answer","text":"Broadly: NSOs are taxed as ordinary income on the spread at exercise; ISOs can qualify for capital-gains treatment if holding rules are met but may trigger AMT. See a tax professional."}}]}]}</script>
+</head>
+<body>
+<header class="site-header">
+  <div class="container">
+    <a class="logo" href="/"><span class="logo-mark">T</span> ToolNest</a>
+    <div class="header-right">
+      <form class="nav-search" action="/" method="get" role="search">
+        <span class="ns-icon">🔍</span>
+        <input type="search" name="q" placeholder="Search tools…" aria-label="Search tools" autocomplete="off">
+      </form>
+      <div class="menu-wrap">
+        <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="menuPanel" aria-label="Open menu"><span></span><span></span><span></span></button>
+        <nav class="menu-panel" id="menuPanel" aria-label="Site">
+          <a href="/">Home</a>
+          <a href="/#categories">Categories</a>
+          <a href="/#all-tools">All Tools</a>
+        </nav>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ADSTERRA-HEADER: paste your Adsterra banner ad code inside the div below -->
+<div class="container"><div class="ad-slot ad-leaderboard" data-ad="header"></div></div>
+
+<main class="container">
+  <nav class="crumbs"><a href="/">Home</a> &rsaquo; <a href="/#finance">Finance &amp; Money</a> &rsaquo; Stock Option Calculator</nav>
+  <div class="tool-hero">
+    <h1>Stock Option Calculator</h1>
+    <p>Value stock options from strike price versus fair market value and share count.</p>
+  </div>
+
+  <div class="tool-card">
+  <div class="grid2">
+    <div class="field">
+      <label for="stock-option-calculator-shares">Vested shares</label>
+      <input type="number" class="input" id="stock-option-calculator-shares" min="0" step="1" placeholder="1000">
+    </div>
+    <div class="field">
+      <label for="stock-option-calculator-strike">Strike price ($/share)</label>
+      <input type="number" class="input" id="stock-option-calculator-strike" min="0" step="any" placeholder="10">
+    </div>
+    <div class="field">
+      <label for="stock-option-calculator-fmv">Current fair market value ($/share)</label>
+      <input type="number" class="input" id="stock-option-calculator-fmv" min="0" step="any" placeholder="35">
+    </div>
+    <div class="field">
+      <label for="stock-option-calculator-type">Option type</label>
+      <select class="select" id="stock-option-calculator-type">
+        <option value="nso">NSO (non-qualified)</option>
+        <option value="iso">ISO (incentive)</option>
+      </select>
+    </div>
+  </div>
+  <div class="error" id="stock-option-calculator-error"></div>
+  <div class="result" id="stock-option-calculator-result">
+    <div class="stat-cards">
+      <div class="stat-card"><div class="v" id="stock-option-calculator-cost">&ndash;</div><div class="l">Cost to exercise</div></div>
+      <div class="stat-card"><div class="v" id="stock-option-calculator-spread">&ndash;</div><div class="l">Spread value</div></div>
+      <div class="stat-card"><div class="v" id="stock-option-calculator-pershare">&ndash;</div><div class="l">Spread / share</div></div>
+      <div class="stat-card"><div class="v" id="stock-option-calculator-breakeven">&ndash;</div><div class="l">Break-even FMV</div></div>
+    </div>
+    <p class="note" id="stock-option-calculator-taxnote"></p>
+    <p class="note">For information only &mdash; not financial advice. Option taxation is complex; confirm with a tax professional.</p>
+  </div>
+</div>
+
+  <!-- ADSTERRA-INCONTENT: paste your Adsterra native/in-content ad code inside the div below -->
+  <div class="ad-slot" data-ad="incontent"></div>
+
+  <div class="info-grid">
+    <div class="info-card">
+      <h2>📖 How to use</h2>
+      <ol><li>Enter the number of vested shares you can exercise.</li><li>Enter the strike (exercise) price and the current fair market value per share.</li><li>Choose ISO or NSO for the tax note.</li><li>Read the cost to exercise, the spread value, and the break-even price.</li></ol>
+    </div>
+    <div class="info-card">
+      <h2>❓ Frequently asked questions</h2>
+      <div class="faq"><details><summary>What is the spread?</summary><p>Fair market value minus strike price, times shares. It is the paper gain you capture by exercising.</p></details><details><summary>What does underwater mean?</summary><p>The FMV is below the strike price, so exercising now would lose money. The spread shows as negative.</p></details><details><summary>How are ISOs and NSOs taxed differently?</summary><p>Broadly: NSOs are taxed as ordinary income on the spread at exercise; ISOs can qualify for capital-gains treatment if holding rules are met but may trigger AMT. See a tax professional.</p></details></div>
+    </div>
+  </div>
+
+  <section class="section">
+    <h2>🔗 Related tools</h2>
+    <div class="tool-grid"><a class="tool-link" href="/tools/apr-calculator/" data-search="apr calculator solve the true annual percentage rate of a loan by bisection — including upfront fees — and compare it with the nominal rate. apr calculator true apr calculator annual percentage rate calculator loan apr calculator nominal vs effective rate"><span class="t-ico">💰</span><span class="t-body"><b>APR Calculator</b><small>Solve the true Annual Percentage Rate of a loan by bisection — including upfront fees — and …</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/baby-cost-calculator/" data-search="baby cost calculator estimate first-year baby costs from editable monthly and one-time line items. baby cost first year baby expenses newborn cost"><span class="t-ico">💰</span><span class="t-body"><b>Baby Cost Calculator</b><small>Estimate first-year baby costs from editable monthly and one-time line items.</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/balloon-payment-calculator/" data-search="balloon payment calculator compute the monthly payment on a balloon loan and the lump-sum balloon balance still due at the end of the term. balloon payment calculator balloon loan calculator balloon mortgage calculator balloon balance calculator lump sum loan calculator"><span class="t-ico">💰</span><span class="t-body"><b>Balloon Payment Calculator</b><small>Compute the monthly payment on a balloon loan and the lump-sum balloon balance still due at …</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/benefits-value-calculator/" data-search="benefits value calculator compute total compensation: salary plus health, retirement match and pto value. benefits calculator total compensation job benefits value"><span class="t-ico">💰</span><span class="t-body"><b>Benefits Value Calculator</b><small>Compute total compensation: salary plus health, retirement match and PTO value.</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/break-even-calculator/" data-search="break-even calculator find your break-even point in units and revenue from fixed costs, price per unit and variable cost per unit. break even calculator breakeven point calculator break even analysis units to break even business break even calculator"><span class="t-ico">💰</span><span class="t-body"><b>Break-Even Calculator</b><small>Find your break-even point in units and revenue from fixed costs, price per unit and variabl…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/budget-50-30-20-calculator/" data-search="50/30/20 budget calculator split your take-home pay into needs (50%), wants (30%) and savings (20%), then compare with your actual spending. 50 30 20 budget budget calculator needs wants savings monthly budget planner budget rule calculator"><span class="t-ico">💰</span><span class="t-body"><b>50/30/20 Budget Calculator</b><small>Split your take-home pay into needs (50%), wants (30%) and savings (20%), then compare with …</small></span><span class="t-arrow">→</span></a></div>
+  </section>
+</main>
+
+<!-- ADSTERRA-FOOTER: paste your Adsterra footer/banner ad code inside the div below -->
+<div class="container"><div class="ad-slot" data-ad="footer"></div></div>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="f-grid">
+      <div>
+        <span class="brandline"><span class="logo-mark">T</span> ToolNest</span>
+        <p>Free online tools that actually work. No sign-up, no watermarks — and your files never leave your device for client-side tools.</p>
+      </div>
+      <div>
+        <h4>Popular</h4>
+        <a href="/tools/qr-code-generator/">QR Code Generator</a>
+        <a href="/tools/background-remover/">Background Remover</a>
+        <a href="/tools/pdf-merger/">PDF Merger</a>
+        <a href="/tools/word-counter/">Word Counter</a>
+      </div>
+      <div>
+        <h4>Categories</h4>
+        <a href="/#image">Image Tools</a>
+        <a href="/#pdf">PDF &amp; Documents</a>
+        <a href="/#calculators">Calculators</a>
+        <a href="/#developer">Developer Tools</a>
+      </div>
+      <div>
+        <h4>Site</h4>
+        <a href="/">Home</a>
+        <a href="/#all-tools">All Tools</a>
+        <a href="/sitemap.xml">Sitemap</a>
+      </div>
+    </div>
+    <div class="f-bottom">© 2026 ToolNest · Free tools for everyone · Made with care</div>
+  </div>
+</footer>
+
+<script src="/assets/site.js?v=5"></script>
+
+<script>
+(function(){
+'use strict';
+var S='stock-option-calculator', ERR=S+'-error';
+function money(n){
+  var neg=n<0;
+  return (neg?'-$':'$')+Math.abs(n).toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2});
+}
+function calc(){
+  if(!TN.el(S+'-shares')) return;
+  TN.clearErr(ERR);
+  var shares=parseFloat(TN.el(S+'-shares').value);
+  var strike=parseFloat(TN.el(S+'-strike').value);
+  var fmv=parseFloat(TN.el(S+'-fmv').value);
+  var type=TN.el(S+'-type').value;
+  if(!(shares>0)){ TN.setErr(ERR,'Enter vested shares greater than 0.'); return; }
+  if(!(strike>=0)||!(fmv>=0)){ TN.setErr(ERR,'Enter valid strike price and FMV.'); return; }
+  var cost=shares*strike;
+  var perShare=fmv-strike;
+  var spread=perShare*shares;
+  TN.el(S+'-cost').textContent=money(cost);
+  TN.el(S+'-spread').textContent=money(spread);
+  TN.el(S+'-pershare').textContent=money(perShare);
+  TN.el(S+'-breakeven').textContent=money(strike);
+  var note=spread<0?'Warning: these options are underwater (FMV below strike). Exercising now would lock in a loss. ':
+    'These options are in the money. ';
+  note+=type==='iso'?
+    'ISOs may qualify for capital-gains treatment if you meet the holding periods, but the spread can trigger AMT.':
+    'NSOs are generally taxed as ordinary income on the spread in the year you exercise.';
+  TN.el(S+'-taxnote').textContent=note;
+}
+try{
+  ['shares','strike','fmv','type'].forEach(function(f){ TN.on(S+'-'+f,f==='type'?'change':'input',calc); });
+  calc();
+}catch(e){}
+})();
+
+</script>
+</body>
+</html>

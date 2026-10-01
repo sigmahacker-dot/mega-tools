@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BCD Converter — Free Online | ToolNest</title>
+<meta name="description" content="Convert decimal numbers to Binary-Coded Decimal (packed and unpacked) and decode BCD back to decimal, with per-digit nibble breakdowns.">
+<meta name="keywords" content="bcd converter, binary coded decimal, packed bcd, unpacked bcd, bcd decoder">
+<link rel="canonical" href="https://toolnest.vercel.app/tools/bcd-converter/">
+<meta name="theme-color" content="#07070b">
+<meta property="og:title" content="BCD Converter — Free Online | ToolNest">
+<meta property="og:description" content="Convert decimal numbers to Binary-Coded Decimal (packed and unpacked) and decode BCD back to decimal, with per-digit nibble breakdowns.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css?v=4">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%23e01111'/><text x='50' y='68' font-size='58' text-anchor='middle' fill='white' font-family='Arial' font-weight='bold'>T</text></svg>">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebApplication","name":"BCD Converter","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0"},"url":"https://toolnest.vercel.app/tools/bcd-converter/","description":"Convert decimal numbers to Binary-Coded Decimal (packed and unpacked) and decode BCD back to decimal, with per-digit nibble breakdowns."},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What is BCD?","acceptedAnswer":{"@type":"Answer","text":"Binary-Coded Decimal encodes each decimal digit in its own 4-bit nibble (0→0000 … 9→1001). Packed BCD stores two digits per byte; unpacked BCD uses one byte per digit."}},{"@type":"Question","name":"Why use BCD instead of binary?","acceptedAnswer":{"@type":"Answer","text":"BCD avoids binary↔decimal rounding surprises, so it is used in financial systems, digital clocks and seven-segment display drivers where exact decimal digits matter."}},{"@type":"Question","name":"Which nibbles are invalid in BCD?","acceptedAnswer":{"@type":"Answer","text":"1010 through 1111 (A–F) are not valid BCD digits. The decoder rejects them and tells you exactly which nibble is bad."}}]}]}</script>
+</head>
+<body>
+<header class="site-header">
+  <div class="container">
+    <a class="logo" href="/"><span class="logo-mark">T</span> ToolNest</a>
+    <div class="header-right">
+      <form class="nav-search" action="/" method="get" role="search">
+        <span class="ns-icon">🔍</span>
+        <input type="search" name="q" placeholder="Search tools…" aria-label="Search tools" autocomplete="off">
+      </form>
+      <div class="menu-wrap">
+        <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="menuPanel" aria-label="Open menu"><span></span><span></span><span></span></button>
+        <nav class="menu-panel" id="menuPanel" aria-label="Site">
+          <a href="/">Home</a>
+          <a href="/#categories">Categories</a>
+          <a href="/#all-tools">All Tools</a>
+        </nav>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ADSTERRA-HEADER: paste your Adsterra banner ad code inside the div below -->
+<div class="container"><div class="ad-slot ad-leaderboard" data-ad="header"></div></div>
+
+<main class="container">
+  <nav class="crumbs"><a href="/">Home</a> &rsaquo; <a href="/#math">Math &amp; Numbers</a> &rsaquo; BCD Converter</nav>
+  <div class="tool-hero">
+    <h1>BCD Converter</h1>
+    <p>Convert decimal numbers to Binary-Coded Decimal (packed and unpacked) and decode BCD back to decimal, with per-digit nibble breakdowns.</p>
+  </div>
+
+  <div class="tool-card">
+  <div class="grid3">
+    <div class="field">
+      <label for="bcd-converter-dir">Direction</label>
+      <select class="select" id="bcd-converter-dir">
+        <option value="d2b">Decimal → BCD</option>
+        <option value="b2d">BCD → Decimal</option>
+      </select>
+    </div>
+    <div class="field">
+      <label for="bcd-converter-pack">BCD packing</label>
+      <select class="select" id="bcd-converter-pack">
+        <option value="packed">Packed (2 digits / byte)</option>
+        <option value="unpacked">Unpacked (1 digit / byte)</option>
+      </select>
+    </div>
+    <div class="field">
+      <label for="bcd-converter-in">Input</label>
+      <input class="input" id="bcd-converter-in" type="text" placeholder="Decimal: 259  |  BCD: 1001 0011" value="259" style="font-family:monospace">
+    </div>
+  </div>
+  <div class="btn-row">
+    <button type="button" class="btn" id="bcd-converter-convert">Convert</button>
+    <button type="button" class="btn btn-outline btn-sm" id="bcd-converter-copy">Copy result</button>
+  </div>
+  <div class="error" id="bcd-converter-error"></div>
+  <div id="bcd-converter-out" class="hidden">
+    <div class="stat-cards">
+      <div class="stat-card"><div class="v" id="bcd-converter-result" style="font-family:monospace;font-size:1em">–</div><div class="l" id="bcd-converter-result-l">Packed BCD</div></div>
+      <div class="stat-card"><div class="v" id="bcd-converter-hex" style="font-family:monospace">–</div><div class="l">Hex bytes</div></div>
+    </div>
+    <div class="result">
+      <h3>Nibble breakdown</h3>
+      <div style="overflow-x:auto"><table class="data"><thead><tr><th>Digit</th><th>4-bit nibble</th><th>Hex</th></tr></thead><tbody id="bcd-converter-table"></tbody></table></div>
+    </div>
+  </div>
+</div>
+
+
+  <!-- ADSTERRA-INCONTENT: paste your Adsterra native/in-content ad code inside the div below -->
+  <div class="ad-slot" data-ad="incontent"></div>
+
+  <div class="info-grid">
+    <div class="info-card">
+      <h2>📖 How to use</h2>
+      <ol><li>Choose decimal → BCD or BCD → decimal.</li><li>For decimal → BCD pick packed (two digits per byte) or unpacked (one nibble per digit) display.</li><li>Press Convert to see each digit as a 4-bit nibble plus the byte/hex view.</li><li>For BCD → decimal, paste nibbles like 1001 0011 and get the decoded number.</li></ol>
+    </div>
+    <div class="info-card">
+      <h2>❓ Frequently asked questions</h2>
+      <div class="faq"><details><summary>What is BCD?</summary><p>Binary-Coded Decimal encodes each decimal digit in its own 4-bit nibble (0→0000 … 9→1001). Packed BCD stores two digits per byte; unpacked BCD uses one byte per digit.</p></details><details><summary>Why use BCD instead of binary?</summary><p>BCD avoids binary↔decimal rounding surprises, so it is used in financial systems, digital clocks and seven-segment display drivers where exact decimal digits matter.</p></details><details><summary>Which nibbles are invalid in BCD?</summary><p>1010 through 1111 (A–F) are not valid BCD digits. The decoder rejects them and tells you exactly which nibble is bad.</p></details></div>
+    </div>
+  </div>
+
+  <section class="section">
+    <h2>🔗 Related tools</h2>
+    <div class="tool-grid"><a class="tool-link" href="/tools/24-game-solver/" data-search="24 game solver solve the 24 game exhaustively: every ordering, operation and parenthesization is tried with exact fraction arithmetic, and all distinct solutions are shown. 24 game solver make 24 solver 24 puzzle arithmetic puzzle solver"><span class="t-ico">📐</span><span class="t-body"><b>24 Game Solver</b><small>Solve the 24 game exhaustively: every ordering, operation and parenthesization is tried with…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/ancient-numerals-converter/" data-search="ancient numerals converter convert decimal numbers to roman, egyptian hieroglyphic, babylonian cuneiform and mayan numerals — with roman numerals also decoded back to decimal. roman numerals egyptian numerals babylonian numerals mayan numerals ancient numbers"><span class="t-ico">📐</span><span class="t-body"><b>Ancient Numerals Converter</b><small>Convert decimal numbers to Roman, Egyptian hieroglyphic, Babylonian cuneiform and Mayan nume…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/arithmetic-sequence-calculator/" data-search="arithmetic sequence calculator from the first term and common difference get the nth term and the sum of the first n terms. arithmetic sequence arithmetic progression nth term sum of arithmetic series common difference"><span class="t-ico">📐</span><span class="t-body"><b>Arithmetic Sequence Calculator</b><small>From the first term and common difference get the nth term and the sum of the first n terms.</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/base-n-arithmetic/" data-search="base-n arithmetic add, subtract, multiply and divide numbers in any base from 2 to 36 with exact bigint math and a full conversion breakdown. base n arithmetic binary addition hexadecimal calculator base 36 math"><span class="t-ico">📐</span><span class="t-body"><b>Base-N Arithmetic</b><small>Add, subtract, multiply and divide numbers in any base from 2 to 36 with exact BigInt math a…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/bayes-theorem-calculator/" data-search="bayes theorem calculator compute posterior probabilities from prior, sensitivity and specificity with the full bayes formula, natural frequencies and a probability tree. bayes theorem calculator posterior probability sensitivity specificity medical test probability"><span class="t-ico">📐</span><span class="t-body"><b>Bayes Theorem Calculator</b><small>Compute posterior probabilities from prior, sensitivity and specificity with the full Bayes …</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/binary-adder-calculator/" data-search="binary adder calculator add two binary numbers with every column addition and carry shown, plus a decimal check. binary addition add binary numbers binary adder binary sum binary carry"><span class="t-ico">📐</span><span class="t-body"><b>Binary Adder Calculator</b><small>Add two binary numbers with every column addition and carry shown, plus a decimal check.</small></span><span class="t-arrow">→</span></a></div>
+  </section>
+</main>
+
+<!-- ADSTERRA-FOOTER: paste your Adsterra footer/banner ad code inside the div below -->
+<div class="container"><div class="ad-slot" data-ad="footer"></div></div>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="f-grid">
+      <div>
+        <span class="brandline"><span class="logo-mark">T</span> ToolNest</span>
+        <p>Free online tools that actually work. No sign-up, no watermarks — and your files never leave your device for client-side tools.</p>
+      </div>
+      <div>
+        <h4>Popular</h4>
+        <a href="/tools/qr-code-generator/">QR Code Generator</a>
+        <a href="/tools/background-remover/">Background Remover</a>
+        <a href="/tools/pdf-merger/">PDF Merger</a>
+        <a href="/tools/word-counter/">Word Counter</a>
+      </div>
+      <div>
+        <h4>Categories</h4>
+        <a href="/#image">Image Tools</a>
+        <a href="/#pdf">PDF &amp; Documents</a>
+        <a href="/#calculators">Calculators</a>
+        <a href="/#developer">Developer Tools</a>
+      </div>
+      <div>
+        <h4>Site</h4>
+        <a href="/">Home</a>
+        <a href="/#all-tools">All Tools</a>
+        <a href="/sitemap.xml">Sitemap</a>
+      </div>
+    </div>
+    <div class="f-bottom">© 2026 ToolNest · Free tools for everyone · Made with care</div>
+  </div>
+</footer>
+
+<script src="/assets/site.js?v=5"></script>
+
+<script>
+(function () {
+  'use strict';
+  var P = 'bcd-converter-', ERR = P + 'error';
+  function g(id) { return TN.el(P + id); }
+  function nibbleOf(d) { return d.toString(2).padStart(4, '0'); }
+  function decToBcd(decStr, packed) {
+    var digits = decStr.split('');
+    var rows = digits.map(function (d, i) {
+      return { digit: d, nibble: nibbleOf(parseInt(d, 10)), hex: parseInt(d, 10).toString(16).toUpperCase() };
+    });
+    var nibbles = rows.map(function (r) { return r.nibble; });
+    var bytes = [];
+    if (packed) {
+      var ns = nibbles.slice();
+      if (ns.length % 2) ns.unshift('0000'); // pad high nibble
+      for (var i = 0; i < ns.length; i += 2) bytes.push(ns[i] + ns[i + 1]);
+    } else {
+      nibbles.forEach(function (nb) { bytes.push('0000' + nb); });
+    }
+    var hex = bytes.map(function (b) { return parseInt(b, 2).toString(16).toUpperCase().padStart(2, '0'); });
+    return { rows: rows, bytes: bytes, hex: hex };
+  }
+  function convert() {
+    try {
+      TN.clearErr(ERR);
+      var dir = g('dir').value, packed = g('pack').value === 'packed';
+      var raw = g('in').value.trim();
+      if (!raw) { TN.setErr(ERR, 'Type an input value first.'); return; }
+      if (dir === 'd2b') {
+        if (!/^\d+$/.test(raw)) { TN.setErr(ERR, 'Decimal input must contain digits only (no sign, no decimal point).'); return; }
+        if (raw.length > 24) { TN.setErr(ERR, 'Keep the number to 24 digits or fewer.'); return; }
+        var r = decToBcd(raw, packed);
+        TN.show(P + 'out');
+        g('result').textContent = r.bytes.join(' ');
+        g('result').setAttribute('data-r', r.bytes.join(' '));
+        g('result-l').textContent = packed ? 'Packed BCD (nibbles)' : 'Unpacked BCD (nibbles)';
+        g('hex').textContent = r.hex.join(' ');
+        g('table').innerHTML = r.rows.map(function (row) {
+          return '<tr><td><b>' + row.digit + '</b></td><td><code>' + row.nibble + '</code></td><td><code>' + row.hex + '</code></td></tr>';
+        }).join('');
+      } else {
+        var groups = raw.split(/[\s,;|]+/).filter(Boolean);
+        if (!groups.length) { TN.setErr(ERR, 'Type BCD nibbles, e.g. 1001 0011.'); return; }
+        var digits = '';
+        for (var i = 0; i < groups.length; i++) {
+          var grp = groups[i];
+          if (!/^[01]{4}$/.test(grp) && !/^[01]{8}$/.test(grp)) { TN.setErr(ERR, 'Group "' + grp + '" is not 4 or 8 bits of 0/1.'); return; }
+          var nbs = grp.length === 8 ? [grp.slice(0, 4), grp.slice(4)] : [grp];
+          for (var j = 0; j < nbs.length; j++) {
+            var v = parseInt(nbs[j], 2);
+            if (v > 9) { TN.setErr(ERR, 'Invalid BCD nibble "' + nbs[j] + '" (= ' + v + '): BCD digits must be 0000–1001.'); return; }
+            digits += String(v);
+          }
+        }
+        var dec = digits.replace(/^0+(?=\d)/, '') || '0';
+        var r2 = decToBcd(dec, true);
+        TN.show(P + 'out');
+        g('result').textContent = dec;
+        g('result').setAttribute('data-r', dec);
+        g('result-l').textContent = 'Decoded decimal';
+        g('hex').textContent = r2.hex.join(' ');
+        g('table').innerHTML = r2.rows.map(function (row) {
+          return '<tr><td><b>' + row.digit + '</b></td><td><code>' + row.nibble + '</code></td><td><code>' + row.hex + '</code></td></tr>';
+        }).join('');
+      }
+    } catch (e) { TN.setErr(ERR, e.message || 'Could not convert.'); }
+  }
+  try {
+    if (!TN.el(P + 'convert')) return;
+    TN.on(P + 'convert', 'click', convert);
+    TN.on(P + 'dir', 'change', function () {
+      g('in').placeholder = g('dir').value === 'd2b' ? 'Decimal: 259' : 'BCD: 1001 0011';
+      g('in').value = g('dir').value === 'd2b' ? '259' : '0010 0101 1001';
+      TN.hide(P + 'out');
+    });
+    TN.on(P + 'copy', 'click', function () {
+      var r = g('result').getAttribute('data-r');
+      if (r) TN.copy(r);
+    });
+  } catch (e) { /* never throw on load */ }
+})();
+
+</script>
+</body>
+</html>

@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Coloring Page Maker — Free Online | ToolNest</title>
+<meta name="description" content="Turn any photo into a black-and-white coloring page using real Sobel edge detection — print and color it in.">
+<meta name="keywords" content="coloring page maker, photo to coloring page, coloring book, edge detection">
+<link rel="canonical" href="https://toolnest.vercel.app/tools/coloring-page-maker/">
+<meta name="theme-color" content="#07070b">
+<meta property="og:title" content="Coloring Page Maker — Free Online | ToolNest">
+<meta property="og:description" content="Turn any photo into a black-and-white coloring page using real Sobel edge detection — print and color it in.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css?v=4">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%23e01111'/><text x='50' y='68' font-size='58' text-anchor='middle' fill='white' font-family='Arial' font-weight='bold'>T</text></svg>">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebApplication","name":"Coloring Page Maker","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0"},"url":"https://toolnest.vercel.app/tools/coloring-page-maker/","description":"Turn any photo into a black-and-white coloring page using real Sobel edge detection — print and color it in."},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How does it make a coloring page?","acceptedAnswer":{"@type":"Answer","text":"The photo is converted to grayscale, then a Sobel filter finds edges (rapid brightness changes). Pixels above your threshold become black lines on white — like a coloring book."}},{"@type":"Question","name":"The page is too detailed / too plain — how do I fix it?","acceptedAnswer":{"@type":"Answer","text":"Lower the threshold to keep more detail (more lines), raise it for a simpler page with bold outlines."}},{"@type":"Question","name":"Is my photo uploaded?","acceptedAnswer":{"@type":"Answer","text":"Yes — edge detection runs on your photo's pixels in your browser; nothing is uploaded."}}]}]}</script>
+</head>
+<body>
+<header class="site-header">
+  <div class="container">
+    <a class="logo" href="/"><span class="logo-mark">T</span> ToolNest</a>
+    <div class="header-right">
+      <form class="nav-search" action="/" method="get" role="search">
+        <span class="ns-icon">🔍</span>
+        <input type="search" name="q" placeholder="Search tools…" aria-label="Search tools" autocomplete="off">
+      </form>
+      <div class="menu-wrap">
+        <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="menuPanel" aria-label="Open menu"><span></span><span></span><span></span></button>
+        <nav class="menu-panel" id="menuPanel" aria-label="Site">
+          <a href="/">Home</a>
+          <a href="/#categories">Categories</a>
+          <a href="/#all-tools">All Tools</a>
+        </nav>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ADSTERRA-HEADER: paste your Adsterra banner ad code inside the div below -->
+<div class="container"><div class="ad-slot ad-leaderboard" data-ad="header"></div></div>
+
+<main class="container">
+  <nav class="crumbs"><a href="/">Home</a> &rsaquo; <a href="/#image">Image Tools</a> &rsaquo; Coloring Page Maker</nav>
+  <div class="tool-hero">
+    <h1>Coloring Page Maker</h1>
+    <p>Turn any photo into a black-and-white coloring page using real Sobel edge detection — print and color it in.</p>
+  </div>
+
+  <div class="tool-card">
+  <div class="field">
+    <label for="coloring-page-maker-file">Photo</label>
+    <input type="file" id="coloring-page-maker-file" accept="image/*" class="input">
+  </div>
+  <div class="grid2">
+    <div class="field">
+      <label for="coloring-page-maker-threshold">Detail threshold: <span id="coloring-page-maker-threshold-val">60</span></label>
+      <input type="range" id="coloring-page-maker-threshold" min="10" max="200" value="60">
+      <span class="hint">Lower = more lines · higher = simpler.</span>
+    </div>
+    <div class="field">
+      <label for="coloring-page-maker-blur">Soften edges: <span id="coloring-page-maker-blur-val">1</span></label>
+      <input type="range" id="coloring-page-maker-blur" min="0" max="3" value="1" step="1">
+      <span class="hint">Blurs before edge detection to reduce noise.</span>
+    </div>
+  </div>
+  <div class="field checkline">
+    <input type="checkbox" id="coloring-page-maker-invert">
+    <label for="coloring-page-maker-invert">Invert (white lines on black)</label>
+  </div>
+  <div class="btn-row">
+    <button class="btn btn-primary" id="coloring-page-maker-download">Download coloring page</button>
+  </div>
+  <div class="result">
+    <canvas id="coloring-page-maker-canvas" style="width:100%;border:1px solid #e5e7eb;border-radius:8px;"></canvas>
+  </div>
+  <div class="error" id="coloring-page-maker-error"></div>
+  <p class="note">Real Sobel edge detection on your photo's pixels — nothing is uploaded, everything runs in your browser.</p>
+</div>
+
+
+  <!-- ADSTERRA-INCONTENT: paste your Adsterra native/in-content ad code inside the div below -->
+  <div class="ad-slot" data-ad="incontent"></div>
+
+  <div class="info-grid">
+    <div class="info-card">
+      <h2>📖 How to use</h2>
+      <ol><li>Choose a photo (bold, simple subjects work best).</li><li>Drag the detail threshold until the outlines look right.</li><li>Optionally invert for white lines on black.</li><li>Click &quot;Download coloring page&quot; to save the PNG.</li></ol>
+    </div>
+    <div class="info-card">
+      <h2>❓ Frequently asked questions</h2>
+      <div class="faq"><details><summary>How does it make a coloring page?</summary><p>The photo is converted to grayscale, then a Sobel filter finds edges (rapid brightness changes). Pixels above your threshold become black lines on white — like a coloring book.</p></details><details><summary>The page is too detailed / too plain — how do I fix it?</summary><p>Lower the threshold to keep more detail (more lines), raise it for a simpler page with bold outlines.</p></details><details><summary>Is my photo uploaded?</summary><p>Yes — edge detection runs on your photo&#39;s pixels in your browser; nothing is uploaded.</p></details></div>
+    </div>
+  </div>
+
+  <section class="section">
+    <h2>🔗 Related tools</h2>
+    <div class="tool-grid"><a class="tool-link" href="/tools/app-icon-resizer/" data-search="app icon resizer generate every common app icon size from one image — 16, 32, 48, 180, 192 and 512 px — with instant preview and one-click png downloads. app icon resizer icon generator favicon sizes pwa icon apple touch icon generator"><span class="t-ico">🖼️</span><span class="t-body"><b>App Icon Resizer</b><small>Generate every common app icon size from one image — 16, 32, 48, 180, 192 and 512 px — with …</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/background-remover/" data-search="background remover remove the background from any photo with real on-device ai and download a transparent png. free, private and unlimited — no sign-up needed. background remover remove image background transparent png maker"><span class="t-ico">🖼️</span><span class="t-body"><b>Background Remover</b><small>Remove the background from any photo with real on-device AI and download a transparent PNG. …</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/before-after-slider-maker/" data-search="before/after slider maker upload two photos and get a standalone before/after comparison slider as an html file. before after slider image comparison slider photo compare html before after html"><span class="t-ico">🖼️</span><span class="t-body"><b>Before/After Slider Maker</b><small>Upload two photos and get a standalone before/after comparison slider as an HTML file.</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/business-card-maker/" data-search="business card maker design a business card front (1050×600): your name, role and contact details, color themes, live preview, and a png download. business card maker business card design business card png visiting card maker card designer"><span class="t-ico">🖼️</span><span class="t-body"><b>Business Card Maker</b><small>Design a business card front (1050×600): your name, role and contact details, color themes, …</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/certificate-maker/" data-search="certificate maker design printable certificates: recipient name, course title, date and signature line, live preview, and a high-res png download. certificate maker certificate generator certificate png award certificate maker printable certificate"><span class="t-ico">🖼️</span><span class="t-body"><b>Certificate Maker</b><small>Design printable certificates: recipient name, course title, date and signature line, live p…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/color-splash-effect/" data-search="color splash effect pick a color to keep and turn everything else black-and-white — the classic color splash effect with a tolerance slider. color splash selective color color pop effect black and white photo"><span class="t-ico">🖼️</span><span class="t-body"><b>Color Splash Effect</b><small>Pick a color to keep and turn everything else black-and-white — the classic color splash eff…</small></span><span class="t-arrow">→</span></a></div>
+  </section>
+</main>
+
+<!-- ADSTERRA-FOOTER: paste your Adsterra footer/banner ad code inside the div below -->
+<div class="container"><div class="ad-slot" data-ad="footer"></div></div>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="f-grid">
+      <div>
+        <span class="brandline"><span class="logo-mark">T</span> ToolNest</span>
+        <p>Free online tools that actually work. No sign-up, no watermarks — and your files never leave your device for client-side tools.</p>
+      </div>
+      <div>
+        <h4>Popular</h4>
+        <a href="/tools/qr-code-generator/">QR Code Generator</a>
+        <a href="/tools/background-remover/">Background Remover</a>
+        <a href="/tools/pdf-merger/">PDF Merger</a>
+        <a href="/tools/word-counter/">Word Counter</a>
+      </div>
+      <div>
+        <h4>Categories</h4>
+        <a href="/#image">Image Tools</a>
+        <a href="/#pdf">PDF &amp; Documents</a>
+        <a href="/#calculators">Calculators</a>
+        <a href="/#developer">Developer Tools</a>
+      </div>
+      <div>
+        <h4>Site</h4>
+        <a href="/">Home</a>
+        <a href="/#all-tools">All Tools</a>
+        <a href="/sitemap.xml">Sitemap</a>
+      </div>
+    </div>
+    <div class="f-bottom">© 2026 ToolNest · Free tools for everyone · Made with care</div>
+  </div>
+</footer>
+
+<script src="/assets/site.js?v=5"></script>
+
+<script>
+/* Coloring Page Maker — Sobel edge detection → black-and-white coloring page. */
+(function () {
+  'use strict';
+  var SLUG = 'coloring-page-maker';
+  var ERR = SLUG + '-error';
+  var gray = null, gw = 0, gh = 0;
+  var MAXW = 1200;
+
+  function toGray(im, blurPx) {
+    var s = Math.min(1, MAXW / im.naturalWidth);
+    var w = Math.round(im.naturalWidth * s), h = Math.round(im.naturalHeight * s);
+    var c = document.createElement('canvas');
+    c.width = w; c.height = h;
+    var x = c.getContext('2d');
+    if (blurPx > 0) { try { x.filter = 'blur(' + blurPx + 'px)'; } catch (e) {} }
+    x.drawImage(im, 0, 0, w, h);
+    try { x.filter = 'none'; } catch (e) {}
+    var d = x.getImageData(0, 0, w, h).data;
+    var g = new Float32Array(w * h);
+    for (var i = 0; i < w * h; i++) {
+      g[i] = 0.299 * d[i * 4] + 0.587 * d[i * 4 + 1] + 0.114 * d[i * 4 + 2];
+    }
+    return { g: g, w: w, h: h };
+  }
+
+  function apply() {
+    var canvas = document.getElementById(SLUG + '-canvas');
+    if (!canvas || !gray) return;
+    var thr = parseInt(document.getElementById(SLUG + '-threshold').value, 10) || 60;
+    var invert = document.getElementById(SLUG + '-invert').checked;
+    var w = gw, h = gh, g = gray;
+    canvas.width = w; canvas.height = h;
+    var ctx = canvas.getContext('2d');
+    var out = ctx.createImageData(w, h);
+    var px = out.data;
+    // Sobel kernels
+    for (var y = 1; y < h - 1; y++) {
+      for (var x = 1; x < w - 1; x++) {
+        var i = y * w + x;
+        var gx = -g[i - w - 1] - 2 * g[i - 1] - g[i + w - 1] + g[i - w + 1] + 2 * g[i + 1] + g[i + w + 1];
+        var gy = -g[i - w - 1] - 2 * g[i - w] - g[i - w + 1] + g[i + w - 1] + 2 * g[i + w] + g[i + w + 1];
+        var mag = Math.sqrt(gx * gx + gy * gy);
+        var edge = mag > thr;
+        var v = edge ? 0 : 255;
+        if (invert) v = 255 - v;
+        var o = i * 4;
+        px[o] = px[o + 1] = px[o + 2] = v;
+        px[o + 3] = 255;
+      }
+    }
+    // border rows/cols: white (or black if inverted)
+    var bv = invert ? 0 : 255;
+    for (var bx = 0; bx < w; bx++) {
+      var t1 = bx * 4, t2 = ((h - 1) * w + bx) * 4;
+      px[t1] = px[t1 + 1] = px[t1 + 2] = bv; px[t1 + 3] = 255;
+      px[t2] = px[t2 + 1] = px[t2 + 2] = bv; px[t2 + 3] = 255;
+    }
+    for (var by = 0; by < h; by++) {
+      var l1 = (by * w) * 4, l2 = (by * w + w - 1) * 4;
+      px[l1] = px[l1 + 1] = px[l1 + 2] = bv; px[l1 + 3] = 255;
+      px[l2] = px[l2 + 1] = px[l2 + 2] = bv; px[l2 + 3] = 255;
+    }
+    ctx.putImageData(out, 0, 0);
+  }
+
+  function recompute() {
+    var canvas = document.getElementById(SLUG + '-canvas');
+    if (!canvas || !window.__cpmImg) return;
+    var blur = parseInt(document.getElementById(SLUG + '-blur').value, 10) || 0;
+    var r = toGray(window.__cpmImg, blur);
+    gray = r.g; gw = r.w; gh = r.h;
+    apply();
+  }
+
+  try {
+    if (!document.getElementById(SLUG + '-canvas')) return;
+    TN.on(SLUG + '-file', 'change', function () {
+      var f = this.files && this.files[0];
+      if (!f) return;
+      TN.clearErr(ERR);
+      TN.readAsDataURL(f).then(TN.loadImage).then(function (im) {
+        window.__cpmImg = im;
+        recompute();
+      }).catch(function () {
+        TN.setErr(ERR, 'That file could not be read as an image. Try a JPG, PNG or WebP file.');
+      });
+    });
+    TN.on(SLUG + '-threshold', 'input', function () {
+      var v = document.getElementById(SLUG + '-threshold-val');
+      if (v) v.textContent = this.value;
+      apply();
+    });
+    TN.on(SLUG + '-blur', 'input', function () {
+      var v = document.getElementById(SLUG + '-blur-val');
+      if (v) v.textContent = this.value;
+      recompute();
+    });
+    TN.on(SLUG + '-invert', 'change', apply);
+    TN.on(SLUG + '-download', 'click', function () {
+      TN.clearErr(ERR);
+      var canvas = document.getElementById(SLUG + '-canvas');
+      if (!gray) { TN.setErr(ERR, 'Choose a photo first.'); return; }
+      try {
+        canvas.toBlob(function (b) {
+          if (b) TN.download(b, 'coloring-page.png');
+          else TN.setErr(ERR, 'Could not export the page.');
+        }, 'image/png');
+      } catch (e) { TN.setErr(ERR, 'Could not export the page.'); }
+    });
+  } catch (e) {
+    TN.setErr(ERR, 'This tool could not start: ' + (e && e.message || e));
+  }
+})();
+
+</script>
+</body>
+</html>

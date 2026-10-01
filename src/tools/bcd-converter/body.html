@@ -1,0 +1,37 @@
+<div class="tool-card">
+  <div class="grid3">
+    <div class="field">
+      <label for="bcd-converter-dir">Direction</label>
+      <select class="select" id="bcd-converter-dir">
+        <option value="d2b">Decimal → BCD</option>
+        <option value="b2d">BCD → Decimal</option>
+      </select>
+    </div>
+    <div class="field">
+      <label for="bcd-converter-pack">BCD packing</label>
+      <select class="select" id="bcd-converter-pack">
+        <option value="packed">Packed (2 digits / byte)</option>
+        <option value="unpacked">Unpacked (1 digit / byte)</option>
+      </select>
+    </div>
+    <div class="field">
+      <label for="bcd-converter-in">Input</label>
+      <input class="input" id="bcd-converter-in" type="text" placeholder="Decimal: 259  |  BCD: 1001 0011" value="259" style="font-family:monospace">
+    </div>
+  </div>
+  <div class="btn-row">
+    <button type="button" class="btn" id="bcd-converter-convert">Convert</button>
+    <button type="button" class="btn btn-outline btn-sm" id="bcd-converter-copy">Copy result</button>
+  </div>
+  <div class="error" id="bcd-converter-error"></div>
+  <div id="bcd-converter-out" class="hidden">
+    <div class="stat-cards">
+      <div class="stat-card"><div class="v" id="bcd-converter-result" style="font-family:monospace;font-size:1em">–</div><div class="l" id="bcd-converter-result-l">Packed BCD</div></div>
+      <div class="stat-card"><div class="v" id="bcd-converter-hex" style="font-family:monospace">–</div><div class="l">Hex bytes</div></div>
+    </div>
+    <div class="result">
+      <h3>Nibble breakdown</h3>
+      <div style="overflow-x:auto"><table class="data"><thead><tr><th>Digit</th><th>4-bit nibble</th><th>Hex</th></tr></thead><tbody id="bcd-converter-table"></tbody></table></div>
+    </div>
+  </div>
+</div>

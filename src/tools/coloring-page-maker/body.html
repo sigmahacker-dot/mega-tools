@@ -1,0 +1,30 @@
+<div class="tool-card">
+  <div class="field">
+    <label for="coloring-page-maker-file">Photo</label>
+    <input type="file" id="coloring-page-maker-file" accept="image/*" class="input">
+  </div>
+  <div class="grid2">
+    <div class="field">
+      <label for="coloring-page-maker-threshold">Detail threshold: <span id="coloring-page-maker-threshold-val">60</span></label>
+      <input type="range" id="coloring-page-maker-threshold" min="10" max="200" value="60">
+      <span class="hint">Lower = more lines · higher = simpler.</span>
+    </div>
+    <div class="field">
+      <label for="coloring-page-maker-blur">Soften edges: <span id="coloring-page-maker-blur-val">1</span></label>
+      <input type="range" id="coloring-page-maker-blur" min="0" max="3" value="1" step="1">
+      <span class="hint">Blurs before edge detection to reduce noise.</span>
+    </div>
+  </div>
+  <div class="field checkline">
+    <input type="checkbox" id="coloring-page-maker-invert">
+    <label for="coloring-page-maker-invert">Invert (white lines on black)</label>
+  </div>
+  <div class="btn-row">
+    <button class="btn btn-primary" id="coloring-page-maker-download">Download coloring page</button>
+  </div>
+  <div class="result">
+    <canvas id="coloring-page-maker-canvas" style="width:100%;border:1px solid #e5e7eb;border-radius:8px;"></canvas>
+  </div>
+  <div class="error" id="coloring-page-maker-error"></div>
+  <p class="note">Real Sobel edge detection on your photo's pixels — nothing is uploaded, everything runs in your browser.</p>
+</div>

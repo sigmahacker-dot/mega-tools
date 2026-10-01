@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Wedding Planner — Free Online | ToolNest</title>
+<meta name="description" content="Plan your wedding with a task checklist and budget tracker in one place.">
+<meta name="keywords" content="wedding planner, wedding checklist, wedding budget tracker, wedding planning app">
+<link rel="canonical" href="https://toolnest.vercel.app/tools/wedding-planner-lite/">
+<meta name="theme-color" content="#07070b">
+<meta property="og:title" content="Wedding Planner — Free Online | ToolNest">
+<meta property="og:description" content="Plan your wedding with a task checklist and budget tracker in one place.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css?v=4">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%23e01111'/><text x='50' y='68' font-size='58' text-anchor='middle' fill='white' font-family='Arial' font-weight='bold'>T</text></svg>">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebApplication","name":"Wedding Planner","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0"},"url":"https://toolnest.vercel.app/tools/wedding-planner-lite/","description":"Plan your wedding with a task checklist and budget tracker in one place."},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How do the checklist and budget work?","acceptedAnswer":{"@type":"Answer","text":"Use the Checklist tab to add tasks with due dates and check them off; use the Budget tab to add planned vs actual costs."}},{"@type":"Question","name":"What do the budget stats show?","acceptedAnswer":{"@type":"Answer","text":"The budget tab shows planned total, actual spent, and remaining budget per item and overall."}},{"@type":"Question","name":"Is everything saved?","acceptedAnswer":{"@type":"Answer","text":"Yes — both checklist and budget are stored in this browser's localStorage."}},{"@type":"Question","name":"Can I back up my plan?","acceptedAnswer":{"@type":"Answer","text":"Click Export JSON to download both lists as a backup file."}}]}]}</script>
+</head>
+<body>
+<header class="site-header">
+  <div class="container">
+    <a class="logo" href="/"><span class="logo-mark">T</span> ToolNest</a>
+    <div class="header-right">
+      <form class="nav-search" action="/" method="get" role="search">
+        <span class="ns-icon">🔍</span>
+        <input type="search" name="q" placeholder="Search tools…" aria-label="Search tools" autocomplete="off">
+      </form>
+      <div class="menu-wrap">
+        <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="menuPanel" aria-label="Open menu"><span></span><span></span><span></span></button>
+        <nav class="menu-panel" id="menuPanel" aria-label="Site">
+          <a href="/">Home</a>
+          <a href="/#categories">Categories</a>
+          <a href="/#all-tools">All Tools</a>
+        </nav>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ADSTERRA-HEADER: paste your Adsterra banner ad code inside the div below -->
+<div class="container"><div class="ad-slot ad-leaderboard" data-ad="header"></div></div>
+
+<main class="container">
+  <nav class="crumbs"><a href="/">Home</a> &rsaquo; <a href="/#fun">Fun &amp; Lifestyle</a> &rsaquo; Wedding Planner</nav>
+  <div class="tool-hero">
+    <h1>Wedding Planner</h1>
+    <p>Plan your wedding with a task checklist and budget tracker in one place.</p>
+  </div>
+
+  <div class="tool-card">
+  <div class="btn-row">
+    <button class="btn btn-sm" id="wedding-planner-lite-tab-check">Checklist</button>
+    <button class="btn btn-sm btn-outline" id="wedding-planner-lite-tab-budget">Budget</button>
+  </div>
+  <div class="error" id="wedding-planner-lite-error"></div>
+</div>
+
+<div class="tool-card" id="wedding-planner-lite-check-pane">
+  <div class="stat-cards">
+    <div class="stat-card"><div class="v" id="wedding-planner-lite-tdone">0/0</div><div class="l">Tasks done</div></div>
+  </div>
+  <div class="grid2">
+    <div class="field">
+      <label for="wedding-planner-lite-task">Task</label>
+      <input class="input" type="text" id="wedding-planner-lite-task" placeholder="e.g. Book venue">
+    </div>
+    <div class="field">
+      <label for="wedding-planner-lite-due">Due date</label>
+      <input class="input" type="date" id="wedding-planner-lite-due">
+    </div>
+  </div>
+  <div class="btn-row">
+    <button class="btn" id="wedding-planner-lite-addtask">Add Task</button>
+  </div>
+  <div id="wedding-planner-lite-tasks" style="margin-top:10px"></div>
+</div>
+
+<div class="tool-card hidden" id="wedding-planner-lite-budget-pane">
+  <div class="stat-cards">
+    <div class="stat-card"><div class="v" id="wedding-planner-lite-est">0</div><div class="l">Estimated total</div></div>
+    <div class="stat-card"><div class="v" id="wedding-planner-lite-spent">0</div><div class="l">Actual spent</div></div>
+    <div class="stat-card"><div class="v" id="wedding-planner-lite-left">0</div><div class="l">Remaining</div></div>
+  </div>
+  <div class="grid3">
+    <div class="field">
+      <label for="wedding-planner-lite-item">Item</label>
+      <input class="input" type="text" id="wedding-planner-lite-item" placeholder="e.g. Venue">
+    </div>
+    <div class="field">
+      <label for="wedding-planner-lite-ecost">Estimated cost</label>
+      <input class="input" type="number" id="wedding-planner-lite-ecost" min="0" step="0.01">
+    </div>
+    <div class="field">
+      <label for="wedding-planner-lite-acost">Actual cost</label>
+      <input class="input" type="number" id="wedding-planner-lite-acost" min="0" step="0.01">
+    </div>
+  </div>
+  <div class="btn-row">
+    <button class="btn" id="wedding-planner-lite-additem">Add Budget Item</button>
+    <button class="btn btn-outline" id="wedding-planner-lite-export">Export JSON</button>
+  </div>
+  <div id="wedding-planner-lite-items" style="margin-top:10px"></div>
+</div>
+
+  <!-- ADSTERRA-INCONTENT: paste your Adsterra native/in-content ad code inside the div below -->
+  <div class="ad-slot" data-ad="incontent"></div>
+
+  <div class="info-grid">
+    <div class="info-card">
+      <h2>📖 How to use</h2>
+      <ol><li>Add checklist tasks with optional due dates.</li><li>Check tasks off as you complete them.</li><li>Add budget items with estimated and actual costs.</li><li>Watch the totals and remaining budget update.</li></ol>
+    </div>
+    <div class="info-card">
+      <h2>❓ Frequently asked questions</h2>
+      <div class="faq"><details><summary>How do the checklist and budget work?</summary><p>Use the Checklist tab to add tasks with due dates and check them off; use the Budget tab to add planned vs actual costs.</p></details><details><summary>What do the budget stats show?</summary><p>The budget tab shows planned total, actual spent, and remaining budget per item and overall.</p></details><details><summary>Is everything saved?</summary><p>Yes — both checklist and budget are stored in this browser&#39;s localStorage.</p></details><details><summary>Can I back up my plan?</summary><p>Click Export JSON to download both lists as a backup file.</p></details></div>
+    </div>
+  </div>
+
+  <section class="section">
+    <h2>🔗 Related tools</h2>
+    <div class="tool-grid"><a class="tool-link" href="/tools/100-day-challenge-tracker/" data-search="100-day challenge tracker track a 100-day challenge with a checkable 100-cell grid, streaks and stats. 100 day challenge habit tracker 100 days challenge tracker streak tracker"><span class="t-ico">🎲</span><span class="t-body"><b>100-Day Challenge Tracker</b><small>Track a 100-day challenge with a checkable 100-cell grid, streaks and stats.</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/24-game/" data-search="24 game the 24 game — combine four numbers with + − × ÷ to make 24. built-in solver guarantees every deal and gives hints. 24 game make 24 game 24 puzzle solver math puzzle game"><span class="t-ico">🎲</span><span class="t-body"><b>24 Game</b><small>The 24 Game — combine four numbers with + − × ÷ to make 24. Built-in solver guarantees every…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/aim-trainer-game/" data-search="aim trainer game test and train your aim — targets pop up at random spots for 30 seconds. hits, misses and accuracy are tracked live. aim trainer aim test reaction test click speed test fps aim trainer"><span class="t-ico">🎲</span><span class="t-body"><b>Aim Trainer Game</b><small>Test and train your aim — targets pop up at random spots for 30 seconds. Hits, misses and ac…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/asteroid-shooter/" data-search="asteroid shooter asteroid shooter — rotate, thrust and blast splitting asteroids on canvas. 3 lives, rising levels. asteroid shooter game asteroids game online space shooter canvas"><span class="t-ico">🎲</span><span class="t-body"><b>Asteroid Shooter</b><small>Asteroid Shooter — rotate, thrust and blast splitting asteroids on canvas. 3 lives, rising l…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/attendance-tracker/" data-search="attendance tracker track class attendance: roster with present/absent marks per date and % summaries. attendance tracker class attendance student attendance roll call app"><span class="t-ico">🎲</span><span class="t-body"><b>Attendance Tracker</b><small>Track class attendance: roster with present/absent marks per date and % summaries.</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/baby-name-generator/" data-search="baby name generator discover baby names by gender and origin — pakistani, arabic, western, indian or turkish — with meanings, random picks and tap-to-copy. baby name generator baby names with meanings muslim baby names boy girl names"><span class="t-ico">🎲</span><span class="t-body"><b>Baby Name Generator</b><small>Discover baby names by gender and origin — Pakistani, Arabic, Western, Indian or Turkish — w…</small></span><span class="t-arrow">→</span></a></div>
+  </section>
+</main>
+
+<!-- ADSTERRA-FOOTER: paste your Adsterra footer/banner ad code inside the div below -->
+<div class="container"><div class="ad-slot" data-ad="footer"></div></div>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="f-grid">
+      <div>
+        <span class="brandline"><span class="logo-mark">T</span> ToolNest</span>
+        <p>Free online tools that actually work. No sign-up, no watermarks — and your files never leave your device for client-side tools.</p>
+      </div>
+      <div>
+        <h4>Popular</h4>
+        <a href="/tools/qr-code-generator/">QR Code Generator</a>
+        <a href="/tools/background-remover/">Background Remover</a>
+        <a href="/tools/pdf-merger/">PDF Merger</a>
+        <a href="/tools/word-counter/">Word Counter</a>
+      </div>
+      <div>
+        <h4>Categories</h4>
+        <a href="/#image">Image Tools</a>
+        <a href="/#pdf">PDF &amp; Documents</a>
+        <a href="/#calculators">Calculators</a>
+        <a href="/#developer">Developer Tools</a>
+      </div>
+      <div>
+        <h4>Site</h4>
+        <a href="/">Home</a>
+        <a href="/#all-tools">All Tools</a>
+        <a href="/sitemap.xml">Sitemap</a>
+      </div>
+    </div>
+    <div class="f-bottom">© 2026 ToolNest · Free tools for everyone · Made with care</div>
+  </div>
+</footer>
+
+<script src="/assets/site.js?v=5"></script>
+
+<script>
+/* Wedding Planner — checklist + budget tracker combined, localStorage. */
+(function () {
+  'use strict';
+
+  var SLUG = 'wedding-planner-lite';
+  var KEY = 'tn-' + SLUG + '-data';
+
+  function load() {
+    try {
+      var obj = JSON.parse(localStorage.getItem(KEY) || '{}');
+      if (obj && typeof obj === 'object') {
+        return { tasks: Array.isArray(obj.tasks) ? obj.tasks : [], budget: Array.isArray(obj.budget) ? obj.budget : [] };
+      }
+    } catch (e) { /* fall through */ }
+    return { tasks: [], budget: [] };
+  }
+
+  function persist(data) {
+    try { localStorage.setItem(KEY, JSON.stringify(data)); }
+    catch (e) { TN.setErr(SLUG + '-error', 'Could not save — browser storage is unavailable.'); }
+  }
+
+  function money(n) {
+    return Number(n).toLocaleString(undefined, { minimumFractionDigits: 0, maximumFractionDigits: 2 });
+  }
+
+  function renderTasks() {
+    var data = load();
+    var done = data.tasks.filter(function (t) { return t.done; }).length;
+    TN.el(SLUG + '-tdone').textContent = done + '/' + data.tasks.length;
+    var box = TN.el(SLUG + '-tasks');
+    if (!data.tasks.length) { box.innerHTML = '<p class="muted">No tasks yet.</p>'; return; }
+    var ordered = data.tasks.slice().sort(function (a, b) { return (a.done ? 1 : 0) - (b.done ? 1 : 0); });
+    box.innerHTML = ordered.map(function (t) {
+      return '<div style="display:flex;align-items:center;gap:8px;margin:6px 0;' + (t.done ? 'opacity:0.6' : '') + '">' +
+        '<span style="font-size:20px;cursor:pointer" data-ttoggle="' + t.id + '">' + (t.done ? '✅' : '⬜') + '</span>' +
+        '<span style="flex:1;' + (t.done ? 'text-decoration:line-through' : '') + '"><strong>' + TN.esc(t.task) + '</strong>' +
+        (t.due ? ' <span class="muted">due ' + TN.esc(t.due) + '</span>' : '') + '</span>' +
+        '<button class="btn btn-sm btn-outline" data-tdel="' + t.id + '">×</button></div>';
+    }).join('');
+    bind(box, 'ttoggle', 'tasks', function (d, id) {
+      var t = d.tasks.filter(function (x) { return String(x.id) === id; })[0];
+      if (t) t.done = !t.done;
+    });
+    bindDel(box, 'tdel', 'tasks');
+  }
+
+  function renderBudget() {
+    var data = load();
+    var est = 0, spent = 0;
+    data.budget.forEach(function (b) { est += b.est || 0; spent += b.actual || 0; });
+    TN.el(SLUG + '-est').textContent = money(est);
+    TN.el(SLUG + '-spent').textContent = money(spent);
+    TN.el(SLUG + '-left').textContent = money(est - spent);
+    var box = TN.el(SLUG + '-items');
+    if (!data.budget.length) { box.innerHTML = '<p class="muted">No budget items yet.</p>'; return; }
+    box.innerHTML = data.budget.map(function (b) {
+      var diff = (b.est || 0) - (b.actual || 0);
+      return '<div class="tool-card" style="margin:8px 0"><strong>' + TN.esc(b.item) + '</strong> ' +
+        '<span class="muted">est ' + money(b.est || 0) + ' · actual ' + money(b.actual || 0) +
+        ' · ' + (diff >= 0 ? 'under by ' : 'over by ') + money(Math.abs(diff)) + '</span>' +
+        '<button class="btn btn-sm btn-outline" data-bdel="' + b.id + '" style="float:right">×</button></div>';
+    }).join('');
+    bindDel(box, 'bdel', 'budget');
+  }
+
+  function bind(scope, attr, list, fn) {
+    var els = scope.querySelectorAll('[data-' + attr + ']');
+    for (var i = 0; i < els.length; i++) {
+      (function (el) {
+        el.addEventListener('click', function () {
+          var d = load();
+          fn(d, el.getAttribute('data-' + attr));
+          persist(d);
+          renderTasks(); renderBudget();
+        });
+      })(els[i]);
+    }
+  }
+
+  function bindDel(scope, attr, list) {
+    var els = scope.querySelectorAll('[data-' + attr + ']');
+    for (var i = 0; i < els.length; i++) {
+      (function (el) {
+        el.addEventListener('click', function () {
+          var d = load();
+          var id = el.getAttribute('data-' + attr);
+          d[list] = d[list].filter(function (x) { return String(x.id) !== id; });
+          persist(d);
+          renderTasks(); renderBudget();
+        });
+      })(els[i]);
+    }
+  }
+
+  function addTask() {
+    TN.clearErr(SLUG + '-error');
+    var task = TN.el(SLUG + '-task').value.trim();
+    var due = TN.el(SLUG + '-due').value;
+    if (!task) { TN.setErr(SLUG + '-error', 'Enter a task.'); return; }
+    var d = load();
+    d.tasks.push({ id: Date.now(), task: task, due: due, done: false });
+    persist(d);
+    TN.el(SLUG + '-task').value = '';
+    TN.el(SLUG + '-due').value = '';
+    renderTasks();
+  }
+
+  function addItem() {
+    TN.clearErr(SLUG + '-error');
+    var item = TN.el(SLUG + '-item').value.trim();
+    var est = parseFloat(TN.el(SLUG + '-ecost').value) || 0;
+    var actual = parseFloat(TN.el(SLUG + '-acost').value) || 0;
+    if (!item) { TN.setErr(SLUG + '-error', 'Enter a budget item.'); return; }
+    var d = load();
+    d.budget.push({ id: Date.now(), item: item, est: est, actual: actual });
+    persist(d);
+    TN.el(SLUG + '-item').value = '';
+    TN.el(SLUG + '-ecost').value = '';
+    TN.el(SLUG + '-acost').value = '';
+    renderBudget();
+  }
+
+  function switchTab(budget) {
+    TN.el(SLUG + '-check-pane').classList.toggle('hidden', budget);
+    TN.el(SLUG + '-budget-pane').classList.toggle('hidden', !budget);
+    TN.el(SLUG + '-tab-check').classList.toggle('btn-outline', budget);
+    TN.el(SLUG + '-tab-budget').classList.toggle('btn-outline', !budget);
+  }
+
+  function init() {
+    try {
+      if (!TN.el(SLUG + '-addtask')) return;
+      TN.on(SLUG + '-addtask', 'click', addTask);
+      TN.on(SLUG + '-additem', 'click', addItem);
+      TN.on(SLUG + '-tab-check', 'click', function () { switchTab(false); });
+      TN.on(SLUG + '-tab-budget', 'click', function () { switchTab(true); });
+      TN.on(SLUG + '-export', 'click', function () {
+        var d = load();
+        if (!d.tasks.length && !d.budget.length) { TN.setErr(SLUG + '-error', 'Nothing to export yet.'); return; }
+        TN.downloadText(JSON.stringify(d, null, 2), 'wedding-plan.json', 'application/json');
+      });
+      renderTasks(); renderBudget();
+    } catch (e) { /* never throw on load */ }
+  }
+
+  init();
+})();
+</script>
+</body>
+</html>

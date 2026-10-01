@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Comic Strip Maker — Free Online | ToolNest</title>
+<meta name="description" content="Build a 3 or 4-panel comic strip from your photos with caption boxes — rendered as one shareable image.">
+<meta name="keywords" content="comic strip maker, meme comic, photo comic strip, comic panels">
+<link rel="canonical" href="https://toolnest.vercel.app/tools/comic-strip-maker/">
+<meta name="theme-color" content="#07070b">
+<meta property="og:title" content="Comic Strip Maker — Free Online | ToolNest">
+<meta property="og:description" content="Build a 3 or 4-panel comic strip from your photos with caption boxes — rendered as one shareable image.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css?v=4">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%23e01111'/><text x='50' y='68' font-size='58' text-anchor='middle' fill='white' font-family='Arial' font-weight='bold'>T</text></svg>">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebApplication","name":"Comic Strip Maker","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0"},"url":"https://toolnest.vercel.app/tools/comic-strip-maker/","description":"Build a 3 or 4-panel comic strip from your photos with caption boxes — rendered as one shareable image."},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What size is the strip?","acceptedAnswer":{"@type":"Answer","text":"The strip is rendered as a single PNG, 1600 px wide, with black gutters between panels."}},{"@type":"Question","name":"What if I only have 2 photos?","acceptedAnswer":{"@type":"Answer","text":"Yes — panels you leave empty get a fun placeholder so your strip still looks complete."}},{"@type":"Question","name":"What font are the captions in?","acceptedAnswer":{"@type":"Answer","text":"Captions use a comic-style font if your device has one, with a clean fallback otherwise."}}]}]}</script>
+</head>
+<body>
+<header class="site-header">
+  <div class="container">
+    <a class="logo" href="/"><span class="logo-mark">T</span> ToolNest</a>
+    <div class="header-right">
+      <form class="nav-search" action="/" method="get" role="search">
+        <span class="ns-icon">🔍</span>
+        <input type="search" name="q" placeholder="Search tools…" aria-label="Search tools" autocomplete="off">
+      </form>
+      <div class="menu-wrap">
+        <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="menuPanel" aria-label="Open menu"><span></span><span></span><span></span></button>
+        <nav class="menu-panel" id="menuPanel" aria-label="Site">
+          <a href="/">Home</a>
+          <a href="/#categories">Categories</a>
+          <a href="/#all-tools">All Tools</a>
+        </nav>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ADSTERRA-HEADER: paste your Adsterra banner ad code inside the div below -->
+<div class="container"><div class="ad-slot ad-leaderboard" data-ad="header"></div></div>
+
+<main class="container">
+  <nav class="crumbs"><a href="/">Home</a> &rsaquo; <a href="/#image">Image Tools</a> &rsaquo; Comic Strip Maker</nav>
+  <div class="tool-hero">
+    <h1>Comic Strip Maker</h1>
+    <p>Build a 3 or 4-panel comic strip from your photos with caption boxes — rendered as one shareable image.</p>
+  </div>
+
+  <div class="tool-card">
+  <div class="field">
+    <label for="comic-strip-maker-count">Panels</label>
+    <select class="select" id="comic-strip-maker-count">
+      <option value="3">3 panels</option>
+      <option value="4" selected>4 panels</option>
+    </select>
+  </div>
+  <div class="grid2" id="comic-strip-maker-panels"></div>
+  <div class="btn-row">
+    <button class="btn btn-primary" id="comic-strip-maker-download">Download strip</button>
+  </div>
+  <div class="result">
+    <canvas id="comic-strip-maker-canvas" style="width:100%;border:1px solid #e5e7eb;border-radius:8px;"></canvas>
+  </div>
+  <div class="error" id="comic-strip-maker-error"></div>
+  <p class="note">Everything is rendered in your browser — your photos are never uploaded.</p>
+</div>
+
+
+  <!-- ADSTERRA-INCONTENT: paste your Adsterra native/in-content ad code inside the div below -->
+  <div class="ad-slot" data-ad="incontent"></div>
+
+  <div class="info-grid">
+    <div class="info-card">
+      <h2>📖 How to use</h2>
+      <ol><li>Choose 3 or 4 panels.</li><li>Upload a photo and type a caption for each panel.</li><li>The strip preview updates live as you edit.</li><li>Click &quot;Download strip&quot; to save the PNG.</li></ol>
+    </div>
+    <div class="info-card">
+      <h2>❓ Frequently asked questions</h2>
+      <div class="faq"><details><summary>What size is the strip?</summary><p>The strip is rendered as a single PNG, 1600 px wide, with black gutters between panels.</p></details><details><summary>What if I only have 2 photos?</summary><p>Yes — panels you leave empty get a fun placeholder so your strip still looks complete.</p></details><details><summary>What font are the captions in?</summary><p>Captions use a comic-style font if your device has one, with a clean fallback otherwise.</p></details></div>
+    </div>
+  </div>
+
+  <section class="section">
+    <h2>🔗 Related tools</h2>
+    <div class="tool-grid"><a class="tool-link" href="/tools/app-icon-resizer/" data-search="app icon resizer generate every common app icon size from one image — 16, 32, 48, 180, 192 and 512 px — with instant preview and one-click png downloads. app icon resizer icon generator favicon sizes pwa icon apple touch icon generator"><span class="t-ico">🖼️</span><span class="t-body"><b>App Icon Resizer</b><small>Generate every common app icon size from one image — 16, 32, 48, 180, 192 and 512 px — with …</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/background-remover/" data-search="background remover remove the background from any photo with real on-device ai and download a transparent png. free, private and unlimited — no sign-up needed. background remover remove image background transparent png maker"><span class="t-ico">🖼️</span><span class="t-body"><b>Background Remover</b><small>Remove the background from any photo with real on-device AI and download a transparent PNG. …</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/before-after-slider-maker/" data-search="before/after slider maker upload two photos and get a standalone before/after comparison slider as an html file. before after slider image comparison slider photo compare html before after html"><span class="t-ico">🖼️</span><span class="t-body"><b>Before/After Slider Maker</b><small>Upload two photos and get a standalone before/after comparison slider as an HTML file.</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/business-card-maker/" data-search="business card maker design a business card front (1050×600): your name, role and contact details, color themes, live preview, and a png download. business card maker business card design business card png visiting card maker card designer"><span class="t-ico">🖼️</span><span class="t-body"><b>Business Card Maker</b><small>Design a business card front (1050×600): your name, role and contact details, color themes, …</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/certificate-maker/" data-search="certificate maker design printable certificates: recipient name, course title, date and signature line, live preview, and a high-res png download. certificate maker certificate generator certificate png award certificate maker printable certificate"><span class="t-ico">🖼️</span><span class="t-body"><b>Certificate Maker</b><small>Design printable certificates: recipient name, course title, date and signature line, live p…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/color-splash-effect/" data-search="color splash effect pick a color to keep and turn everything else black-and-white — the classic color splash effect with a tolerance slider. color splash selective color color pop effect black and white photo"><span class="t-ico">🖼️</span><span class="t-body"><b>Color Splash Effect</b><small>Pick a color to keep and turn everything else black-and-white — the classic color splash eff…</small></span><span class="t-arrow">→</span></a></div>
+  </section>
+</main>
+
+<!-- ADSTERRA-FOOTER: paste your Adsterra footer/banner ad code inside the div below -->
+<div class="container"><div class="ad-slot" data-ad="footer"></div></div>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="f-grid">
+      <div>
+        <span class="brandline"><span class="logo-mark">T</span> ToolNest</span>
+        <p>Free online tools that actually work. No sign-up, no watermarks — and your files never leave your device for client-side tools.</p>
+      </div>
+      <div>
+        <h4>Popular</h4>
+        <a href="/tools/qr-code-generator/">QR Code Generator</a>
+        <a href="/tools/background-remover/">Background Remover</a>
+        <a href="/tools/pdf-merger/">PDF Merger</a>
+        <a href="/tools/word-counter/">Word Counter</a>
+      </div>
+      <div>
+        <h4>Categories</h4>
+        <a href="/#image">Image Tools</a>
+        <a href="/#pdf">PDF &amp; Documents</a>
+        <a href="/#calculators">Calculators</a>
+        <a href="/#developer">Developer Tools</a>
+      </div>
+      <div>
+        <h4>Site</h4>
+        <a href="/">Home</a>
+        <a href="/#all-tools">All Tools</a>
+        <a href="/sitemap.xml">Sitemap</a>
+      </div>
+    </div>
+    <div class="f-bottom">© 2026 ToolNest · Free tools for everyone · Made with care</div>
+  </div>
+</footer>
+
+<script src="/assets/site.js?v=5"></script>
+
+<script>
+/* Comic Strip Maker — 3-4 panels with uploaded images + caption boxes. */
+(function () {
+  'use strict';
+  var SLUG = 'comic-strip-maker';
+  var ERR = SLUG + '-error';
+  var PW = 1600, PH = 520, GUT = 16;
+  var imgs = [null, null, null, null];
+  var DEFAULT_CAPS = ['MEANWHILE…', 'SUDDENLY!', 'BUT THEN…', 'TO BE CONTINUED…'];
+
+  function panelCount() {
+    var el = document.getElementById(SLUG + '-count');
+    return el ? parseInt(el.value, 10) : 4;
+  }
+
+  function buildInputs() {
+    var wrap = document.getElementById(SLUG + '-panels');
+    if (!wrap) return;
+    wrap.innerHTML = '';
+    for (var i = 0; i < 4; i++) {
+      (function (i) {
+        var d = document.createElement('div');
+        d.className = 'field';
+        d.id = SLUG + '-pwrap' + i;
+        d.innerHTML =
+          '<label>Panel ' + (i + 1) + ' photo</label>' +
+          '<input type="file" accept="image/*" class="input" id="' + SLUG + '-file' + i + '">' +
+          '<label style="margin-top:8px">Panel ' + (i + 1) + ' caption</label>' +
+          '<input type="text" class="input" id="' + SLUG + '-cap' + i + '" maxlength="60" value="' + DEFAULT_CAPS[i] + '">';
+        wrap.appendChild(d);
+        TN.on(SLUG + '-file' + i, 'change', function () {
+          var f = this.files && this.files[0];
+          if (!f) return;
+          TN.clearErr(ERR);
+          TN.readAsDataURL(f).then(TN.loadImage).then(function (im) { imgs[i] = im; draw(); })
+            .catch(function () { TN.setErr(ERR, 'Panel ' + (i + 1) + ': that file could not be read as an image.'); });
+        });
+        TN.on(SLUG + '-cap' + i, 'input', TN.debounce(draw, 120));
+      })(i);
+    }
+    syncVisibility();
+  }
+
+  function syncVisibility() {
+    var n = panelCount();
+    for (var i = 0; i < 4; i++) {
+      var w = document.getElementById(SLUG + '-pwrap' + i);
+      if (w) w.style.display = i < n ? '' : 'none';
+    }
+  }
+
+  function wrapText(ctx, text, maxW) {
+    var words = text.split(/\s+/), lines = [], line = '';
+    words.forEach(function (w) {
+      var t = line ? line + ' ' + w : w;
+      if (ctx.measureText(t).width > maxW) { if (line) lines.push(line); line = w; }
+      else line = t;
+    });
+    if (line) lines.push(line);
+    return lines.slice(0, 3);
+  }
+
+  function draw() {
+    var canvas = document.getElementById(SLUG + '-canvas');
+    if (!canvas) return;
+    var n = panelCount();
+    canvas.width = PW; canvas.height = PH;
+    var ctx = canvas.getContext('2d');
+    ctx.fillStyle = '#111';
+    ctx.fillRect(0, 0, PW, PH);
+    var pw = (PW - GUT * (n + 1)) / n;
+    for (var i = 0; i < n; i++) {
+      (function (i) {
+        var x = GUT + i * (pw + GUT), y = GUT, ph = PH - GUT * 2;
+        ctx.save();
+        ctx.beginPath();
+        ctx.rect(x, y, pw, ph);
+        ctx.clip();
+        if (imgs[i]) {
+          var im = imgs[i];
+          var s = Math.max(pw / im.naturalWidth, ph / im.naturalHeight);
+          var dw = im.naturalWidth * s, dh = im.naturalHeight * s;
+          ctx.drawImage(im, x + (pw - dw) / 2, y + (ph - dh) / 2, dw, dh);
+        } else {
+          var g = ctx.createLinearGradient(0, y, 0, y + ph);
+          g.addColorStop(0, '#3a3a42'); g.addColorStop(1, '#232328');
+          ctx.fillStyle = g;
+          ctx.fillRect(x, y, pw, ph);
+          ctx.fillStyle = 'rgba(255,255,255,0.5)';
+          ctx.font = '28px Arial, sans-serif';
+          ctx.textAlign = 'center';
+          ctx.fillText('Panel ' + (i + 1), x + pw / 2, y + ph / 2);
+        }
+        // caption box
+        var capEl = document.getElementById(SLUG + '-cap' + i);
+        var cap = capEl ? capEl.value.trim() : '';
+        if (cap) {
+          ctx.font = 'bold 30px "Comic Sans MS", "Segoe Print", "Chalkboard SE", cursive';
+          var lines = wrapText(ctx, cap, pw - 48);
+          var boxH = lines.length * 40 + 28;
+          ctx.fillStyle = '#ffffff';
+          ctx.fillRect(x + 14, y + 14, pw - 28, boxH);
+          ctx.strokeStyle = '#111';
+          ctx.lineWidth = 4;
+          ctx.strokeRect(x + 14, y + 14, pw - 28, boxH);
+          ctx.fillStyle = '#111';
+          ctx.textAlign = 'center';
+          lines.forEach(function (ln, li) {
+            ctx.fillText(ln, x + pw / 2, y + 14 + 36 + li * 40);
+          });
+        }
+        ctx.restore();
+      })(i);
+    }
+  }
+
+  try {
+    if (!document.getElementById(SLUG + '-canvas')) return;
+    buildInputs();
+    draw();
+    TN.on(SLUG + '-count', 'change', function () { syncVisibility(); draw(); });
+    TN.on(SLUG + '-download', 'click', function () {
+      TN.clearErr(ERR);
+      draw();
+      var canvas = document.getElementById(SLUG + '-canvas');
+      try {
+        canvas.toBlob(function (b) {
+          if (b) TN.download(b, 'comic-strip.png');
+          else TN.setErr(ERR, 'Could not export the strip.');
+        }, 'image/png');
+      } catch (e) { TN.setErr(ERR, 'Could not export the strip.'); }
+    });
+  } catch (e) {
+    TN.setErr(ERR, 'This tool could not start: ' + (e && e.message || e));
+  }
+})();
+
+</script>
+</body>
+</html>

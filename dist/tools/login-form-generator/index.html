@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Login Form Generator — Free Online | ToolNest</title>
+<meta name="description" content="Generate a styled login form — labels, remember-me, show/hide password — with live preview and HTML/CSS.">
+<meta name="keywords" content="login form html, login form css, sign in form generator, auth form snippet">
+<link rel="canonical" href="https://toolnest.vercel.app/tools/login-form-generator/">
+<meta name="theme-color" content="#07070b">
+<meta property="og:title" content="Login Form Generator — Free Online | ToolNest">
+<meta property="og:description" content="Generate a styled login form — labels, remember-me, show/hide password — with live preview and HTML/CSS.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css?v=4">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%23e01111'/><text x='50' y='68' font-size='58' text-anchor='middle' fill='white' font-family='Arial' font-weight='bold'>T</text></svg>">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebApplication","name":"Login Form Generator","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0"},"url":"https://toolnest.vercel.app/tools/login-form-generator/","description":"Generate a styled login form — labels, remember-me, show/hide password — with live preview and HTML/CSS."},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Does the form actually log anyone in?","acceptedAnswer":{"@type":"Answer","text":"No — it is front-end markup and styles. Wire the \u003cform> action to your own backend or auth provider."}},{"@type":"Question","name":"How does the show/hide password work?","acceptedAnswer":{"@type":"Answer","text":"The included JavaScript toggles the password field type between password and text."}},{"@type":"Question","name":"Is it accessible?","acceptedAnswer":{"@type":"Answer","text":"Yes — every input has a real \u003clabel>, and the form uses autocomplete attributes."}},{"@type":"Question","name":"Can I embed it in my page?","acceptedAnswer":{"@type":"Answer","text":"Copy the markup and the \u003cstyle> block. All classes are prefixed with lf- to avoid collisions."}}]}]}</script>
+</head>
+<body>
+<header class="site-header">
+  <div class="container">
+    <a class="logo" href="/"><span class="logo-mark">T</span> ToolNest</a>
+    <div class="header-right">
+      <form class="nav-search" action="/" method="get" role="search">
+        <span class="ns-icon">🔍</span>
+        <input type="search" name="q" placeholder="Search tools…" aria-label="Search tools" autocomplete="off">
+      </form>
+      <div class="menu-wrap">
+        <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="menuPanel" aria-label="Open menu"><span></span><span></span><span></span></button>
+        <nav class="menu-panel" id="menuPanel" aria-label="Site">
+          <a href="/">Home</a>
+          <a href="/#categories">Categories</a>
+          <a href="/#all-tools">All Tools</a>
+        </nav>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ADSTERRA-HEADER: paste your Adsterra banner ad code inside the div below -->
+<div class="container"><div class="ad-slot ad-leaderboard" data-ad="header"></div></div>
+
+<main class="container">
+  <nav class="crumbs"><a href="/">Home</a> &rsaquo; <a href="/#developer">Developer Tools</a> &rsaquo; Login Form Generator</nav>
+  <div class="tool-hero">
+    <h1>Login Form Generator</h1>
+    <p>Generate a styled login form — labels, remember-me, show/hide password — with live preview and HTML/CSS.</p>
+  </div>
+
+  <div class="tool-card">
+  <div class="grid2">
+    <div class="field">
+      <label for="login-form-generator-title">Title</label>
+      <input class="input" id="login-form-generator-title" value="Welcome back">
+    </div>
+    <div class="field">
+      <label for="login-form-generator-sub">Subtitle</label>
+      <input class="input" id="login-form-generator-sub" value="Sign in to your account">
+    </div>
+  </div>
+  <div class="grid3">
+    <div class="field">
+      <label for="login-form-generator-btn">Button text</label>
+      <input class="input" id="login-form-generator-btn" value="Sign in">
+    </div>
+    <div class="field">
+      <label for="login-form-generator-accent">Accent color</label>
+      <input class="input" id="login-form-generator-accent" type="color" value="#4d7c0f">
+    </div>
+    <div class="field">
+      <label for="login-form-generator-theme">Theme</label>
+      <select class="select" id="login-form-generator-theme">
+        <option value="dark">Dark page</option>
+        <option value="light">Light page</option>
+      </select>
+    </div>
+  </div>
+  <div class="grid3">
+    <div class="field checkline">
+      <input type="checkbox" id="login-form-generator-remember" checked>
+      <label for="login-form-generator-remember">Remember me</label>
+    </div>
+    <div class="field checkline">
+      <input type="checkbox" id="login-form-generator-forgot" checked>
+      <label for="login-form-generator-forgot">Forgot password link</label>
+    </div>
+    <div class="field checkline">
+      <input type="checkbox" id="login-form-generator-social">
+      <label for="login-form-generator-social">Social buttons</label>
+    </div>
+  </div>
+  <div class="field">
+    <label>Live preview</label>
+    <div id="login-form-generator-preview" style="border:1px solid #27272a;border-radius:12px;padding:32px 16px;background:#18181b"></div>
+  </div>
+  <div class="error" id="login-form-generator-error"></div>
+  <div class="field">
+    <label for="login-form-generator-output">HTML + CSS + JS</label>
+    <textarea class="textarea" id="login-form-generator-output" rows="16" readonly></textarea>
+  </div>
+  <div class="btn-row">
+    <button class="btn btn-outline" id="login-form-generator-copy">Copy code</button>
+    <button class="btn btn-outline" id="login-form-generator-download">Download login.html</button>
+  </div>
+  <p class="note">Front-end markup only — connect the form action to your own backend.</p>
+</div>
+
+
+  <!-- ADSTERRA-INCONTENT: paste your Adsterra native/in-content ad code inside the div below -->
+  <div class="ad-slot" data-ad="incontent"></div>
+
+  <div class="info-grid">
+    <div class="info-card">
+      <h2>📖 How to use</h2>
+      <ol><li>Set the form title, subtitle and button text.</li><li>Toggle remember-me, forgot-password and social buttons.</li><li>Pick the accent color and theme.</li><li>Copy the code or download the self-contained login.html.</li></ol>
+    </div>
+    <div class="info-card">
+      <h2>❓ Frequently asked questions</h2>
+      <div class="faq"><details><summary>Does the form actually log anyone in?</summary><p>No — it is front-end markup and styles. Wire the &lt;form&gt; action to your own backend or auth provider.</p></details><details><summary>How does the show/hide password work?</summary><p>The included JavaScript toggles the password field type between password and text.</p></details><details><summary>Is it accessible?</summary><p>Yes — every input has a real &lt;label&gt;, and the form uses autocomplete attributes.</p></details><details><summary>Can I embed it in my page?</summary><p>Copy the markup and the &lt;style&gt; block. All classes are prefixed with lf- to avoid collisions.</p></details></div>
+    </div>
+  </div>
+
+  <section class="section">
+    <h2>🔗 Related tools</h2>
+    <div class="tool-grid"><a class="tool-link" href="/tools/api-key-generator/" data-search="api key generator generate cryptographically secure api keys with crypto.getrandomvalues — hex, base64, base64url or uuid v4. api key generator random api key uuid generator secure token generator"><span class="t-ico">💻</span><span class="t-body"><b>API Key Generator</b><small>Generate cryptographically secure API keys with crypto.getRandomValues — hex, base64, base64…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/ascii-table-reference/" data-search="ascii table reference full ascii table 0–127: decimal, hex, octal, character, control-code names and html entities — searchable. ascii table ascii codes ascii chart control characters ascii reference"><span class="t-ico">💻</span><span class="t-body"><b>ASCII Table Reference</b><small>Full ASCII table 0–127: decimal, hex, octal, character, control-code names and HTML entities…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/badge-generator/" data-search="badge generator design css badges and pills — colors, sizes, shapes — with live preview and copy-ready html/css. badge css generator css pill badge status badge code label badge html"><span class="t-ico">💻</span><span class="t-body"><b>Badge Generator</b><small>Design CSS badges and pills — colors, sizes, shapes — with live preview and copy-ready HTML/…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/base64-encoder-decoder/" data-search="base64 encoder / decoder encode text to base64 or decode base64 back to text, with full utf-8 support and a file-to-data-url converter. base64 encoder base64 decoder base64 encode base64 decode file to base64"><span class="t-ico">💻</span><span class="t-body"><b>Base64 Encoder / Decoder</b><small>Encode text to Base64 or decode Base64 back to text, with full UTF-8 support and a file-to-d…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/basic-auth-header-generator/" data-search="basic auth header generator encode username:password to a base64 authorization header (unicode-safe) — copy or download. basic auth header base64 authorization http basic auth generator authorization header"><span class="t-ico">💻</span><span class="t-body"><b>Basic Auth Header Generator</b><small>Encode username:password to a Base64 Authorization header (Unicode-safe) — copy or download.</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/binary-text-converter/" data-search="binary and text converter convert text to binary or hex and back, with full utf-8 awareness and strict input validation. binary to text text to binary hex to text converter"><span class="t-ico">💻</span><span class="t-body"><b>Binary and Text Converter</b><small>Convert text to binary or hex and back, with full UTF-8 awareness and strict input validatio…</small></span><span class="t-arrow">→</span></a></div>
+  </section>
+</main>
+
+<!-- ADSTERRA-FOOTER: paste your Adsterra footer/banner ad code inside the div below -->
+<div class="container"><div class="ad-slot" data-ad="footer"></div></div>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="f-grid">
+      <div>
+        <span class="brandline"><span class="logo-mark">T</span> ToolNest</span>
+        <p>Free online tools that actually work. No sign-up, no watermarks — and your files never leave your device for client-side tools.</p>
+      </div>
+      <div>
+        <h4>Popular</h4>
+        <a href="/tools/qr-code-generator/">QR Code Generator</a>
+        <a href="/tools/background-remover/">Background Remover</a>
+        <a href="/tools/pdf-merger/">PDF Merger</a>
+        <a href="/tools/word-counter/">Word Counter</a>
+      </div>
+      <div>
+        <h4>Categories</h4>
+        <a href="/#image">Image Tools</a>
+        <a href="/#pdf">PDF &amp; Documents</a>
+        <a href="/#calculators">Calculators</a>
+        <a href="/#developer">Developer Tools</a>
+      </div>
+      <div>
+        <h4>Site</h4>
+        <a href="/">Home</a>
+        <a href="/#all-tools">All Tools</a>
+        <a href="/sitemap.xml">Sitemap</a>
+      </div>
+    </div>
+    <div class="f-bottom">© 2026 ToolNest · Free tools for everyone · Made with care</div>
+  </div>
+</footer>
+
+<script src="/assets/site.js?v=5"></script>
+
+<script>
+/* Login Form Generator — title/options/theme → styled login form HTML+CSS+JS, live preview. */
+(function () {
+  'use strict';
+  var SLUG = 'login-form-generator';
+  function el(id) { return document.getElementById(id); }
+  function fail(msg) { TN.setErr(SLUG + '-error', msg); }
+  function clear() { TN.clearErr(SLUG + '-error'); }
+
+  function build(o) {
+    var dark = o.theme === 'dark';
+    var cardBg = dark ? '#27272a' : '#ffffff';
+    var textC = dark ? '#f4f4f5' : '#18181b';
+    var mutC = dark ? '#a1a1aa' : '#52525b';
+    var html =
+      '<div class="lf-page">\n' +
+      '  <form class="lf-card" action="#" method="post">\n' +
+      '    <h1 class="lf-title">' + TN.esc(o.title) + '</h1>\n' +
+      '    <p class="lf-sub">' + TN.esc(o.sub) + '</p>\n' +
+      (o.social ? '    <div class="lf-social">\n      <button type="button" class="lf-soc">G Google</button>\n      <button type="button" class="lf-soc">GH GitHub</button>\n    </div>\n    <div class="lf-div"><span>or</span></div>\n' : '') +
+      '    <label class="lf-label" for="lf-email">Email</label>\n' +
+      '    <input class="lf-input" type="email" id="lf-email" name="email" placeholder="you@example.com" autocomplete="email" required>\n' +
+      '    <label class="lf-label" for="lf-pass">Password</label>\n' +
+      '    <div class="lf-passwrap">\n' +
+      '      <input class="lf-input" type="password" id="lf-pass" name="password" placeholder="••••••••" autocomplete="current-password" required>\n' +
+      '      <button type="button" class="lf-show" aria-label="Show password">Show</button>\n' +
+      '    </div>\n' +
+      '    <div class="lf-row">\n' +
+      (o.remember ? '      <label class="lf-check"><input type="checkbox" name="remember"> Remember me</label>\n' : '      <span></span>\n') +
+      (o.forgot ? '      <a href="#" class="lf-link">Forgot password?</a>\n' : '') +
+      '    </div>\n' +
+      '    <button type="submit" class="lf-submit">' + TN.esc(o.btn) + '</button>\n' +
+      '    <p class="lf-signup">No account? <a href="#" class="lf-link">Sign up</a></p>\n' +
+      '  </form>\n</div>';
+    var css =
+      '.lf-page { display: flex; justify-content: center; padding: 16px; font-family: system-ui, sans-serif; }\n' +
+      '.lf-card { background: ' + cardBg + '; color: ' + textC + '; width: 100%; max-width: 400px; border-radius: 16px; padding: 32px; box-shadow: 0 12px 40px rgba(0,0,0,.16); }\n' +
+      '.lf-title { margin: 0 0 6px; font-size: 26px; }\n' +
+      '.lf-sub { margin: 0 0 22px; color: ' + mutC + '; font-size: 14px; }\n' +
+      '.lf-social { display: flex; gap: 10px; margin-bottom: 18px; }\n' +
+      '.lf-soc { flex: 1; padding: 10px; border-radius: 10px; border: 1px solid ' + (dark ? '#3f3f46' : '#d4d4d8') + '; background: transparent; color: ' + textC + '; font-weight: 600; cursor: pointer; }\n' +
+      '.lf-div { display: flex; align-items: center; gap: 12px; color: ' + mutC + '; font-size: 13px; margin-bottom: 18px; }\n' +
+      '.lf-div::before, .lf-div::after { content: ""; flex: 1; height: 1px; background: ' + (dark ? '#3f3f46' : '#e4e4e7') + '; }\n' +
+      '.lf-label { display: block; font-size: 14px; font-weight: 600; margin: 0 0 6px; }\n' +
+      '.lf-input { width: 100%; box-sizing: border-box; padding: 12px 14px; border-radius: 10px; border: 1px solid ' + (dark ? '#3f3f46' : '#d4d4d8') + '; background: ' + (dark ? '#18181b' : '#fafafa') + '; color: ' + textC + '; font-size: 15px; margin-bottom: 14px; }\n' +
+      '.lf-input:focus { outline: 2px solid ' + o.accent + '; border-color: ' + o.accent + '; }\n' +
+      '.lf-passwrap { position: relative; }\n' +
+      '.lf-show { position: absolute; right: 8px; top: 8px; background: none; border: none; color: ' + o.accent + '; font-weight: 700; font-size: 13px; cursor: pointer; }\n' +
+      '.lf-row { display: flex; justify-content: space-between; align-items: center; margin: 2px 0 18px; font-size: 14px; }\n' +
+      '.lf-check { display: flex; gap: 8px; align-items: center; color: ' + mutC + '; }\n' +
+      '.lf-link { color: ' + o.accent + '; text-decoration: none; font-weight: 600; }\n' +
+      '.lf-submit { width: 100%; padding: 13px; border: none; border-radius: 10px; background: ' + o.accent + '; color: #fff; font-size: 16px; font-weight: 700; cursor: pointer; }\n' +
+      '.lf-submit:hover { filter: brightness(1.08); }\n' +
+      '.lf-signup { text-align: center; font-size: 14px; color: ' + mutC + '; margin: 18px 0 0; }';
+    var js =
+      "var lfShow = document.querySelector('.lf-show');\n" +
+      "lfShow.addEventListener('click', function () {\n" +
+      "  var p = document.getElementById('lf-pass');\n" +
+      "  var show = p.type === 'password';\n" +
+      "  p.type = show ? 'text' : 'password';\n" +
+      "  lfShow.textContent = show ? 'Hide' : 'Show';\n" +
+      "});";
+    return { html: html, css: css, js: js };
+  }
+
+  function wirePreview(pv) {
+    var show = pv.querySelector('.lf-show');
+    if (show) show.addEventListener('click', function () {
+      var p = pv.querySelector('#lf-pass');
+      var s = p.type === 'password';
+      p.type = s ? 'text' : 'password';
+      show.textContent = s ? 'Hide' : 'Show';
+    });
+    var form = pv.querySelector('.lf-card');
+    if (form) form.addEventListener('submit', function (e) { e.preventDefault(); });
+  }
+
+  function update() {
+    clear();
+    var title = el(SLUG + '-title').value.trim();
+    if (!title) { fail('Enter a form title.'); return; }
+    var b = build({
+      title: title, sub: el(SLUG + '-sub').value.trim(),
+      btn: el(SLUG + '-btn').value.trim() || 'Sign in',
+      accent: el(SLUG + '-accent').value, theme: el(SLUG + '-theme').value,
+      remember: el(SLUG + '-remember').checked, forgot: el(SLUG + '-forgot').checked,
+      social: el(SLUG + '-social').checked
+    });
+    el(SLUG + '-preview').style.background = el(SLUG + '-theme').value === 'dark' ? '#18181b' : '#f4f4f5';
+    el(SLUG + '-preview').innerHTML = '<style>' + b.css + '</style>' + b.html;
+    wirePreview(el(SLUG + '-preview'));
+    el(SLUG + '-output').value = '<!DOCTYPE html>\n<html lang="en">\n<head>\n<meta charset="UTF-8">\n<meta name="viewport" content="width=device-width, initial-scale=1.0">\n<title>Login</title>\n<style>\n' +
+      b.css + '\nbody { margin: 0; background: ' + (el(SLUG + '-theme').value === 'dark' ? '#111' : '#f4f4f5') + '; min-height: 100vh; display: flex; align-items: center; justify-content: center; }\n</style>\n</head>\n<body>\n' +
+      b.html + '\n<script>\n' + b.js + '\n<\/script>\n</body>\n</html>\n';
+  }
+
+  try {
+    if (!el(SLUG + '-title')) return;
+    ['title', 'sub', 'btn'].forEach(function (k) { TN.on(SLUG + '-' + k, 'input', update); });
+    TN.on(SLUG + '-accent', 'input', update);
+    TN.on(SLUG + '-theme', 'change', update);
+    ['remember', 'forgot', 'social'].forEach(function (k) { TN.on(SLUG + '-' + k, 'change', update); });
+    TN.on(SLUG + '-copy', 'click', function () {
+      var v = el(SLUG + '-output').value;
+      if (!v) { fail('Nothing to copy yet.'); return; }
+      TN.copy(v).then(function (ok) { if (!ok) fail('Copy failed — select the text manually.'); });
+    });
+    TN.on(SLUG + '-download', 'click', function () {
+      var v = el(SLUG + '-output').value;
+      if (!v) { fail('Nothing to download yet.'); return; }
+      TN.downloadText(v, 'login.html', 'text/html');
+    });
+    update();
+  } catch (e) { /* never throw on load */ }
+})();
+
+</script>
+</body>
+</html>

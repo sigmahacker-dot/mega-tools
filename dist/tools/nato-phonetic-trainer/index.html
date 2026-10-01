@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NATO Phonetic Alphabet Trainer — Free Online | ToolNest</title>
+<meta name="description" content="Learn the NATO phonetic alphabet with flashcards, a typing quiz and a word-spelling practice mode.">
+<meta name="keywords" content="nato phonetic alphabet, alpha bravo charlie, phonetic alphabet quiz, nato spelling trainer">
+<link rel="canonical" href="https://toolnest.vercel.app/tools/nato-phonetic-trainer/">
+<meta name="theme-color" content="#07070b">
+<meta property="og:title" content="NATO Phonetic Alphabet Trainer — Free Online | ToolNest">
+<meta property="og:description" content="Learn the NATO phonetic alphabet with flashcards, a typing quiz and a word-spelling practice mode.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css?v=4">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%23e01111'/><text x='50' y='68' font-size='58' text-anchor='middle' fill='white' font-family='Arial' font-weight='bold'>T</text></svg>">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebApplication","name":"NATO Phonetic Alphabet Trainer","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0"},"url":"https://toolnest.vercel.app/tools/nato-phonetic-trainer/","description":"Learn the NATO phonetic alphabet with flashcards, a typing quiz and a word-spelling practice mode."},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Is it Alfa or Alpha?","acceptedAnswer":{"@type":"Answer","text":"This trainer uses the official ITU/NATO spellings: Alfa, Juliett and X-ray — the spellings designed to avoid mispronunciation over radio."}},{"@type":"Question","name":"Who uses the NATO phonetic alphabet?","acceptedAnswer":{"@type":"Answer","text":"Yes — pilots, air-traffic control, military radio operators and emergency services use it worldwide to spell names and call signs clearly."}},{"@type":"Question","name":"Is my quiz score saved anywhere?","acceptedAnswer":{"@type":"Answer","text":"Your score is kept only in this browser tab while you practice. Nothing is uploaded or stored."}}]}]}</script>
+</head>
+<body>
+<header class="site-header">
+  <div class="container">
+    <a class="logo" href="/"><span class="logo-mark">T</span> ToolNest</a>
+    <div class="header-right">
+      <form class="nav-search" action="/" method="get" role="search">
+        <span class="ns-icon">🔍</span>
+        <input type="search" name="q" placeholder="Search tools…" aria-label="Search tools" autocomplete="off">
+      </form>
+      <div class="menu-wrap">
+        <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="menuPanel" aria-label="Open menu"><span></span><span></span><span></span></button>
+        <nav class="menu-panel" id="menuPanel" aria-label="Site">
+          <a href="/">Home</a>
+          <a href="/#categories">Categories</a>
+          <a href="/#all-tools">All Tools</a>
+        </nav>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ADSTERRA-HEADER: paste your Adsterra banner ad code inside the div below -->
+<div class="container"><div class="ad-slot ad-leaderboard" data-ad="header"></div></div>
+
+<main class="container">
+  <nav class="crumbs"><a href="/">Home</a> &rsaquo; <a href="/#text">Text &amp; Writing</a> &rsaquo; NATO Phonetic Alphabet Trainer</nav>
+  <div class="tool-hero">
+    <h1>NATO Phonetic Alphabet Trainer</h1>
+    <p>Learn the NATO phonetic alphabet with flashcards, a typing quiz and a word-spelling practice mode.</p>
+  </div>
+
+  <div class="tool-card">
+  <div class="btn-row" style="justify-content:center;margin-bottom:14px">
+    <button class="btn btn-sm" id="nato-phonetic-trainer-m-learn">Learn</button>
+    <button class="btn btn-sm btn-outline" id="nato-phonetic-trainer-m-quiz">Quiz</button>
+    <button class="btn btn-sm btn-outline" id="nato-phonetic-trainer-m-spell">Spell a word</button>
+  </div>
+  <div id="nato-phonetic-trainer-learn">
+    <div style="text-align:center;padding:26px 10px;border:1px solid #2a2a33;border-radius:14px;background:#0d0d13;cursor:pointer" id="nato-phonetic-trainer-card">
+      <div style="font-size:56px;font-weight:700" id="nato-phonetic-trainer-face">A</div>
+      <div class="muted" style="margin-top:6px">tap card to flip</div>
+    </div>
+    <div class="btn-row" style="justify-content:center;margin-top:12px">
+      <button class="btn btn-sm btn-outline" id="nato-phonetic-trainer-prev">← Prev</button>
+      <span class="muted" id="nato-phonetic-trainer-pos" style="align-self:center">1 / 26</span>
+      <button class="btn btn-sm btn-outline" id="nato-phonetic-trainer-next">Next →</button>
+      <button class="btn btn-sm btn-outline" id="nato-phonetic-trainer-shuf">Shuffle</button>
+    </div>
+  </div>
+  <div id="nato-phonetic-trainer-quiz" class="hidden">
+    <div style="text-align:center;padding:20px 10px;border:1px solid #2a2a33;border-radius:14px;background:#0d0d13">
+      <div class="muted">What is the NATO word for</div>
+      <div style="font-size:64px;font-weight:700;margin:6px 0" id="nato-phonetic-trainer-q">A</div>
+      <input class="input" id="nato-phonetic-trainer-a" placeholder="Type the word…" autocomplete="off" style="max-width:280px;margin:0 auto">
+      <div style="min-height:26px;margin-top:8px;font-weight:600" id="nato-phonetic-trainer-fb"></div>
+    </div>
+    <div class="btn-row" style="justify-content:center;margin-top:12px">
+      <button class="btn btn-sm" id="nato-phonetic-trainer-check">Check</button>
+      <button class="btn btn-sm btn-outline" id="nato-phonetic-trainer-skip">Skip</button>
+      <button class="btn btn-sm btn-outline" id="nato-phonetic-trainer-reset">Reset score</button>
+    </div>
+    <div class="stat-cards" style="max-width:420px;margin:12px auto 0">
+      <div class="stat-card"><div class="v" id="nato-phonetic-trainer-ok">0</div><div class="l">Correct</div></div>
+      <div class="stat-card"><div class="v" id="nato-phonetic-trainer-bad">0</div><div class="l">Wrong</div></div>
+      <div class="stat-card"><div class="v" id="nato-phonetic-trainer-acc">–</div><div class="l">Accuracy</div></div>
+    </div>
+  </div>
+  <div id="nato-phonetic-trainer-spell" class="hidden">
+    <div class="field">
+      <label for="nato-phonetic-trainer-word">Enter a word or call sign</label>
+      <input class="input" id="nato-phonetic-trainer-word" placeholder="e.g. Rawi 7" autocomplete="off">
+    </div>
+    <div class="result" id="nato-phonetic-trainer-spellout" style="font-size:18px;line-height:1.9"></div>
+  </div>
+  <div class="error" id="nato-phonetic-trainer-error"></div>
+</div>
+
+
+  <!-- ADSTERRA-INCONTENT: paste your Adsterra native/in-content ad code inside the div below -->
+  <div class="ad-slot" data-ad="incontent"></div>
+
+  <div class="info-grid">
+    <div class="info-card">
+      <h2>📖 How to use</h2>
+      <ol><li>Pick Learn to flip through flashcards of all 26 letters.</li><li>Switch to Quiz and type the NATO word for each shown letter.</li><li>Try Spell mode: enter any word to see its NATO spelling.</li><li>Track your score and retry the letters you miss.</li></ol>
+    </div>
+    <div class="info-card">
+      <h2>❓ Frequently asked questions</h2>
+      <div class="faq"><details><summary>Is it Alfa or Alpha?</summary><p>This trainer uses the official ITU/NATO spellings: Alfa, Juliett and X-ray — the spellings designed to avoid mispronunciation over radio.</p></details><details><summary>Who uses the NATO phonetic alphabet?</summary><p>Yes — pilots, air-traffic control, military radio operators and emergency services use it worldwide to spell names and call signs clearly.</p></details><details><summary>Is my quiz score saved anywhere?</summary><p>Your score is kept only in this browser tab while you practice. Nothing is uploaded or stored.</p></details></div>
+    </div>
+  </div>
+
+  <section class="section">
+    <h2>🔗 Related tools</h2>
+    <div class="tool-grid"><a class="tool-link" href="/tools/acronym-generator/" data-search="acronym generator turn any phrase into an acronym instantly — first letters, with options to skip small words, add periods and force uppercase. acronym generator make acronym from words initialism generator phrase to acronym"><span class="t-ico">✍️</span><span class="t-body"><b>Acronym Generator</b><small>Turn any phrase into an acronym instantly — first letters, with options to skip small words,…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/acrostic-poem-generator/" data-search="acrostic poem generator turn any word into an acrostic poem — one poetic line per letter from built-in line banks. acrostic poem generator acrostic generator name poem acrostic maker poem from word"><span class="t-ico">✍️</span><span class="t-body"><b>Acrostic Poem Generator</b><small>Turn any word into an acrostic poem — one poetic line per letter from built-in line banks.</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/aes-text-encryptor/" data-search="aes text encryptor encrypt text with real aes-256-gcm using a password-derived key (pbkdf2), fully in your browser. aes encrypt text encrypt message password aes-gcm online"><span class="t-ico">✍️</span><span class="t-body"><b>AES Text Encryptor</b><small>Encrypt text with real AES-256-GCM using a password-derived key (PBKDF2), fully in your brow…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/alliteration-generator/" data-search="alliteration generator generate alliterative phrases — pick a letter and a theme, get tongue-twisting word combos. alliteration generator alliteration examples tongue twister generator alliterative phrases letter phrases"><span class="t-ico">✍️</span><span class="t-body"><b>Alliteration Generator</b><small>Generate alliterative phrases — pick a letter and a theme, get tongue-twisting word combos.</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/anagram-generator/" data-search="anagram generator find every real anagram of your word — all unique permutations checked against a built-in word list. anagram generator anagram solver find anagrams anagram finder word unscrambler"><span class="t-ico">✍️</span><span class="t-body"><b>Anagram Generator</b><small>Find every real anagram of your word — all unique permutations checked against a built-in wo…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/apology-generator/" data-search="apology generator build a sincere, structured apology from your situation — acknowledge, take responsibility, make amends, and promise change. apology generator sorry letter apology message write an apology apology text"><span class="t-ico">✍️</span><span class="t-body"><b>Apology Generator</b><small>Build a sincere, structured apology from your situation — acknowledge, take responsibility, …</small></span><span class="t-arrow">→</span></a></div>
+  </section>
+</main>
+
+<!-- ADSTERRA-FOOTER: paste your Adsterra footer/banner ad code inside the div below -->
+<div class="container"><div class="ad-slot" data-ad="footer"></div></div>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="f-grid">
+      <div>
+        <span class="brandline"><span class="logo-mark">T</span> ToolNest</span>
+        <p>Free online tools that actually work. No sign-up, no watermarks — and your files never leave your device for client-side tools.</p>
+      </div>
+      <div>
+        <h4>Popular</h4>
+        <a href="/tools/qr-code-generator/">QR Code Generator</a>
+        <a href="/tools/background-remover/">Background Remover</a>
+        <a href="/tools/pdf-merger/">PDF Merger</a>
+        <a href="/tools/word-counter/">Word Counter</a>
+      </div>
+      <div>
+        <h4>Categories</h4>
+        <a href="/#image">Image Tools</a>
+        <a href="/#pdf">PDF &amp; Documents</a>
+        <a href="/#calculators">Calculators</a>
+        <a href="/#developer">Developer Tools</a>
+      </div>
+      <div>
+        <h4>Site</h4>
+        <a href="/">Home</a>
+        <a href="/#all-tools">All Tools</a>
+        <a href="/sitemap.xml">Sitemap</a>
+      </div>
+    </div>
+    <div class="f-bottom">© 2026 ToolNest · Free tools for everyone · Made with care</div>
+  </div>
+</footer>
+
+<script src="/assets/site.js?v=5"></script>
+
+<script>
+/* NATO Phonetic Alphabet Trainer — learn, quiz, spell. Official ITU spellings. */
+(function () {
+  'use strict';
+  var S = 'nato-phonetic-trainer';
+  var NATO = [
+    ['A', 'Alfa'], ['B', 'Bravo'], ['C', 'Charlie'], ['D', 'Delta'],
+    ['E', 'Echo'], ['F', 'Foxtrot'], ['G', 'Golf'], ['H', 'Hotel'],
+    ['I', 'India'], ['J', 'Juliett'], ['K', 'Kilo'], ['L', 'Lima'],
+    ['M', 'Mike'], ['N', 'November'], ['O', 'Oscar'], ['P', 'Papa'],
+    ['Q', 'Quebec'], ['R', 'Romeo'], ['S', 'Sierra'], ['T', 'Tango'],
+    ['U', 'Uniform'], ['V', 'Victor'], ['W', 'Whiskey'], ['X', 'X-ray'],
+    ['Y', 'Yankee'], ['Z', 'Zulu']
+  ];
+  var DIGITS = { '0': 'Zero', '1': 'One', '2': 'Two', '3': 'Three', '4': 'Four', '5': 'Five', '6': 'Six', '7': 'Seven', '8': 'Eight', '9': 'Niner' };
+  var order = NATO.map(function (_, i) { return i; });
+  var pos = 0, flipped = false;
+  var qi = 0, ok = 0, bad = 0;
+
+  function showMode(m) {
+    ['learn', 'quiz', 'spell'].forEach(function (x) {
+      TN.el(S + '-' + x).classList.toggle('hidden', x !== m);
+      var b = TN.el(S + '-m-' + x);
+      b.classList.toggle('btn-outline', x !== m);
+    });
+  }
+  function drawCard() {
+    var e = NATO[order[pos]];
+    TN.el(S + '-face').textContent = flipped ? e[0] + ' — ' + e[1] : e[0];
+    TN.el(S + '-pos').textContent = (pos + 1) + ' / 26';
+  }
+  function nextQ() {
+    qi = Math.floor(Math.random() * 26);
+    TN.el(S + '-q').textContent = NATO[qi][0];
+    TN.el(S + '-a').value = '';
+    TN.el(S + '-fb').textContent = '';
+    TN.el(S + '-a').focus();
+  }
+  function score() {
+    TN.el(S + '-ok').textContent = String(ok);
+    TN.el(S + '-bad').textContent = String(bad);
+    var t = ok + bad;
+    TN.el(S + '-acc').textContent = t ? Math.round(100 * ok / t) + '%' : '–';
+  }
+  function check() {
+    var v = TN.el(S + '-a').value.trim().toLowerCase().replace(/[^a-z-]/g, '');
+    var want = NATO[qi][1].toLowerCase();
+    var fb = TN.el(S + '-fb');
+    if (!v) return;
+    if (v === want) { ok++; fb.style.color = '#4ade80'; fb.textContent = '✓ Correct!'; }
+    else { bad++; fb.style.color = '#f87171'; fb.textContent = '✗ It is "' + NATO[qi][1] + '".'; }
+    score();
+    setTimeout(nextQ, 900);
+  }
+  function spell() {
+    var w = TN.el(S + '-word').value.toUpperCase();
+    var out = [];
+    for (var i = 0; i < w.length; i++) {
+      var c = w[i];
+      if (c === ' ') { out.push('<span class="muted">· pause ·</span>'); continue; }
+      var idx = c >= 'A' && c <= 'Z' ? c.charCodeAt(0) - 65 : -1;
+      if (idx >= 0) out.push('<b>' + c + '</b> ' + TN.esc(NATO[idx][1]));
+      else if (DIGITS[c]) out.push('<b>' + c + '</b> ' + DIGITS[c]);
+      else out.push('<span class="muted">' + TN.esc(c) + '</span>');
+    }
+    TN.el(S + '-spellout').innerHTML = out.length ? out.join('<br>') : '<span class="muted">Type a word above.</span>';
+  }
+
+  try {
+    if (!TN.el(S + '-card')) return;
+    ['learn', 'quiz', 'spell'].forEach(function (m) {
+      TN.on(S + '-m-' + m, 'click', function () { showMode(m); if (m === 'quiz') nextQ(); });
+    });
+    TN.on(S + '-card', 'click', function () { flipped = !flipped; drawCard(); });
+    TN.on(S + '-prev', 'click', function () { pos = (pos + 25) % 26; flipped = false; drawCard(); });
+    TN.on(S + '-next', 'click', function () { pos = (pos + 1) % 26; flipped = false; drawCard(); });
+    TN.on(S + '-shuf', 'click', function () {
+      for (var i = order.length - 1; i > 0; i--) {
+        var j = Math.floor(Math.random() * (i + 1));
+        var t = order[i]; order[i] = order[j]; order[j] = t;
+      }
+      pos = 0; flipped = false; drawCard();
+    });
+    TN.on(S + '-check', 'click', check);
+    TN.on(S + '-a', 'keydown', function (e) { if (e.key === 'Enter') check(); });
+    TN.on(S + '-skip', 'click', nextQ);
+    TN.on(S + '-reset', 'click', function () { ok = 0; bad = 0; score(); nextQ(); });
+    TN.on(S + '-word', 'input', spell);
+    drawCard(); score(); spell();
+  } catch (e) { /* never throw on load */ }
+})();
+
+</script>
+</body>
+</html>

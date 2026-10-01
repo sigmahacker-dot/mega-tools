@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Chi-Square Test Calculator — Free Online | ToolNest</title>
+<meta name="description" content="Run real chi-square goodness-of-fit and independence tests: test statistic, degrees of freedom and p-value from the incomplete gamma function, with assumption checks.">
+<meta name="keywords" content="chi square test, chi-square calculator, goodness of fit, test of independence, p-value">
+<link rel="canonical" href="https://toolnest.vercel.app/tools/chi-square-test-calculator/">
+<meta name="theme-color" content="#07070b">
+<meta property="og:title" content="Chi-Square Test Calculator — Free Online | ToolNest">
+<meta property="og:description" content="Run real chi-square goodness-of-fit and independence tests: test statistic, degrees of freedom and p-value from the incomplete gamma function, with assumption checks.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css?v=4">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%23e01111'/><text x='50' y='68' font-size='58' text-anchor='middle' fill='white' font-family='Arial' font-weight='bold'>T</text></svg>">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebApplication","name":"Chi-Square Test Calculator","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0"},"url":"https://toolnest.vercel.app/tools/chi-square-test-calculator/","description":"Run real chi-square goodness-of-fit and independence tests: test statistic, degrees of freedom and p-value from the incomplete gamma function, with assumption checks."},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How is the p-value computed?","acceptedAnswer":{"@type":"Answer","text":"From the upper tail of the chi-square distribution via the regularized incomplete gamma function Q(k/2, χ²/2) — the same math statistical packages use, computed right in your browser."}},{"@type":"Question","name":"What is the difference between the two tests?","acceptedAnswer":{"@type":"Answer","text":"Goodness-of-fit asks whether one categorical variable matches a claimed distribution. Independence asks whether two categorical variables in a contingency table are associated."}},{"@type":"Question","name":"When is the chi-square test unreliable?","acceptedAnswer":{"@type":"Answer","text":"When expected counts are small (rule of thumb: all ≥ 5). The tool flags any expected count below 5 so you know to be cautious."}}]}]}</script>
+</head>
+<body>
+<header class="site-header">
+  <div class="container">
+    <a class="logo" href="/"><span class="logo-mark">T</span> ToolNest</a>
+    <div class="header-right">
+      <form class="nav-search" action="/" method="get" role="search">
+        <span class="ns-icon">🔍</span>
+        <input type="search" name="q" placeholder="Search tools…" aria-label="Search tools" autocomplete="off">
+      </form>
+      <div class="menu-wrap">
+        <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="menuPanel" aria-label="Open menu"><span></span><span></span><span></span></button>
+        <nav class="menu-panel" id="menuPanel" aria-label="Site">
+          <a href="/">Home</a>
+          <a href="/#categories">Categories</a>
+          <a href="/#all-tools">All Tools</a>
+        </nav>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ADSTERRA-HEADER: paste your Adsterra banner ad code inside the div below -->
+<div class="container"><div class="ad-slot ad-leaderboard" data-ad="header"></div></div>
+
+<main class="container">
+  <nav class="crumbs"><a href="/">Home</a> &rsaquo; <a href="/#math">Math &amp; Numbers</a> &rsaquo; Chi-Square Test Calculator</nav>
+  <div class="tool-hero">
+    <h1>Chi-Square Test Calculator</h1>
+    <p>Run real chi-square goodness-of-fit and independence tests: test statistic, degrees of freedom and p-value from the incomplete gamma function, with assumption checks.</p>
+  </div>
+
+  <div class="tool-card">
+  <div class="field" style="max-width:320px">
+    <label for="chi-square-test-calculator-mode">Test type</label>
+    <select class="select" id="chi-square-test-calculator-mode">
+      <option value="gof">Goodness-of-fit (one variable)</option>
+      <option value="ind">Independence (contingency table)</option>
+    </select>
+  </div>
+  <div class="field">
+    <label for="chi-square-test-calculator-obs" id="chi-square-test-calculator-obs-l">Observed counts (comma separated)</label>
+    <textarea class="textarea" id="chi-square-test-calculator-obs" rows="3" placeholder="e.g. 23, 31, 19, 27">23, 31, 19, 27</textarea>
+  </div>
+  <div class="field" id="chi-square-test-calculator-exp-wrap">
+    <label for="chi-square-test-calculator-exp">Expected counts (comma separated, or blank = uniform)</label>
+    <input class="input" id="chi-square-test-calculator-exp" type="text" placeholder="blank = equal expected counts" style="font-family:monospace">
+  </div>
+  <div class="btn-row">
+    <button type="button" class="btn" id="chi-square-test-calculator-calc">Calculate</button>
+  </div>
+  <div class="error" id="chi-square-test-calculator-error"></div>
+  <div id="chi-square-test-calculator-out" class="hidden">
+    <div class="stat-cards">
+      <div class="stat-card"><div class="v" id="chi-square-test-calculator-chi2">–</div><div class="l">χ² statistic</div></div>
+      <div class="stat-card"><div class="v" id="chi-square-test-calculator-df">–</div><div class="l">Degrees of freedom</div></div>
+      <div class="stat-card"><div class="v" id="chi-square-test-calculator-p">–</div><div class="l">p-value</div></div>
+    </div>
+    <div class="result">
+      <h3>Verdict (α = 0.05)</h3>
+      <p id="chi-square-test-calculator-verdict"></p>
+    </div>
+    <div class="result">
+      <h3>Calculation detail</h3>
+      <div style="overflow-x:auto"><table class="data"><thead><tr><th>Cell</th><th>Observed</th><th>Expected</th><th>(O−E)²/E</th></tr></thead><tbody id="chi-square-test-calculator-table"></tbody></table></div>
+      <p class="muted" id="chi-square-test-calculator-check"></p>
+    </div>
+  </div>
+  <p class="note">Educational tool — for information only, not a substitute for proper statistical review.</p>
+</div>
+
+
+  <!-- ADSTERRA-INCONTENT: paste your Adsterra native/in-content ad code inside the div below -->
+  <div class="ad-slot" data-ad="incontent"></div>
+
+  <div class="info-grid">
+    <div class="info-card">
+      <h2>📖 How to use</h2>
+      <ol><li>Choose goodness-of-fit (one list of counts) or independence (a contingency table).</li><li>Type observed counts; for goodness-of-fit also type expected counts or leave them uniform.</li><li>Press Calculate to get χ², degrees of freedom and the exact p-value.</li><li>Read the verdict at α = 0.05 plus the assumption checks (expected counts ≥ 5).</li></ol>
+    </div>
+    <div class="info-card">
+      <h2>❓ Frequently asked questions</h2>
+      <div class="faq"><details><summary>How is the p-value computed?</summary><p>From the upper tail of the chi-square distribution via the regularized incomplete gamma function Q(k/2, χ²/2) — the same math statistical packages use, computed right in your browser.</p></details><details><summary>What is the difference between the two tests?</summary><p>Goodness-of-fit asks whether one categorical variable matches a claimed distribution. Independence asks whether two categorical variables in a contingency table are associated.</p></details><details><summary>When is the chi-square test unreliable?</summary><p>When expected counts are small (rule of thumb: all ≥ 5). The tool flags any expected count below 5 so you know to be cautious.</p></details></div>
+    </div>
+  </div>
+
+  <section class="section">
+    <h2>🔗 Related tools</h2>
+    <div class="tool-grid"><a class="tool-link" href="/tools/24-game-solver/" data-search="24 game solver solve the 24 game exhaustively: every ordering, operation and parenthesization is tried with exact fraction arithmetic, and all distinct solutions are shown. 24 game solver make 24 solver 24 puzzle arithmetic puzzle solver"><span class="t-ico">📐</span><span class="t-body"><b>24 Game Solver</b><small>Solve the 24 game exhaustively: every ordering, operation and parenthesization is tried with…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/ancient-numerals-converter/" data-search="ancient numerals converter convert decimal numbers to roman, egyptian hieroglyphic, babylonian cuneiform and mayan numerals — with roman numerals also decoded back to decimal. roman numerals egyptian numerals babylonian numerals mayan numerals ancient numbers"><span class="t-ico">📐</span><span class="t-body"><b>Ancient Numerals Converter</b><small>Convert decimal numbers to Roman, Egyptian hieroglyphic, Babylonian cuneiform and Mayan nume…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/arithmetic-sequence-calculator/" data-search="arithmetic sequence calculator from the first term and common difference get the nth term and the sum of the first n terms. arithmetic sequence arithmetic progression nth term sum of arithmetic series common difference"><span class="t-ico">📐</span><span class="t-body"><b>Arithmetic Sequence Calculator</b><small>From the first term and common difference get the nth term and the sum of the first n terms.</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/base-n-arithmetic/" data-search="base-n arithmetic add, subtract, multiply and divide numbers in any base from 2 to 36 with exact bigint math and a full conversion breakdown. base n arithmetic binary addition hexadecimal calculator base 36 math"><span class="t-ico">📐</span><span class="t-body"><b>Base-N Arithmetic</b><small>Add, subtract, multiply and divide numbers in any base from 2 to 36 with exact BigInt math a…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/bayes-theorem-calculator/" data-search="bayes theorem calculator compute posterior probabilities from prior, sensitivity and specificity with the full bayes formula, natural frequencies and a probability tree. bayes theorem calculator posterior probability sensitivity specificity medical test probability"><span class="t-ico">📐</span><span class="t-body"><b>Bayes Theorem Calculator</b><small>Compute posterior probabilities from prior, sensitivity and specificity with the full Bayes …</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/bcd-converter/" data-search="bcd converter convert decimal numbers to binary-coded decimal (packed and unpacked) and decode bcd back to decimal, with per-digit nibble breakdowns. bcd converter binary coded decimal packed bcd unpacked bcd bcd decoder"><span class="t-ico">📐</span><span class="t-body"><b>BCD Converter</b><small>Convert decimal numbers to Binary-Coded Decimal (packed and unpacked) and decode BCD back to…</small></span><span class="t-arrow">→</span></a></div>
+  </section>
+</main>
+
+<!-- ADSTERRA-FOOTER: paste your Adsterra footer/banner ad code inside the div below -->
+<div class="container"><div class="ad-slot" data-ad="footer"></div></div>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="f-grid">
+      <div>
+        <span class="brandline"><span class="logo-mark">T</span> ToolNest</span>
+        <p>Free online tools that actually work. No sign-up, no watermarks — and your files never leave your device for client-side tools.</p>
+      </div>
+      <div>
+        <h4>Popular</h4>
+        <a href="/tools/qr-code-generator/">QR Code Generator</a>
+        <a href="/tools/background-remover/">Background Remover</a>
+        <a href="/tools/pdf-merger/">PDF Merger</a>
+        <a href="/tools/word-counter/">Word Counter</a>
+      </div>
+      <div>
+        <h4>Categories</h4>
+        <a href="/#image">Image Tools</a>
+        <a href="/#pdf">PDF &amp; Documents</a>
+        <a href="/#calculators">Calculators</a>
+        <a href="/#developer">Developer Tools</a>
+      </div>
+      <div>
+        <h4>Site</h4>
+        <a href="/">Home</a>
+        <a href="/#all-tools">All Tools</a>
+        <a href="/sitemap.xml">Sitemap</a>
+      </div>
+    </div>
+    <div class="f-bottom">© 2026 ToolNest · Free tools for everyone · Made with care</div>
+  </div>
+</footer>
+
+<script src="/assets/site.js?v=5"></script>
+
+<script>
+(function () {
+  'use strict';
+  var P = 'chi-square-test-calculator-', ERR = P + 'error';
+  function g(id) { return TN.el(P + id); }
+  // regularized upper incomplete gamma Q(a,x) — Numerical Recipes
+  function gser(a, x) {
+    var gln = gammaln(a), ap = a, sum = 1 / a, del = sum, n;
+    for (n = 1; n <= 200; n++) {
+      ap++; del *= x / ap; sum += del;
+      if (Math.abs(del) < Math.abs(sum) * 1e-14) break;
+    }
+    return { p: sum * Math.exp(-x + a * Math.log(x) - gln), gln: gln };
+  }
+  function gcf(a, x) {
+    var gln = gammaln(a), b = x + 1 - a, c = 1e300, d = 1 / b, h = d, i, an, del;
+    for (i = 1; i <= 200; i++) {
+      an = -i * (i - a); b += 2; d = an * d + b;
+      if (Math.abs(d) < 1e-300) d = 1e-300;
+      c = b + an / c;
+      if (Math.abs(c) < 1e-300) c = 1e-300;
+      d = 1 / d; del = d * c; h *= del;
+      if (Math.abs(del - 1) < 1e-14) break;
+    }
+    return { q: Math.exp(-x + a * Math.log(x) - gln) * h, gln: gln };
+  }
+  function gammaincc(a, x) { // Q(a,x)
+    if (x < 0 || a <= 0) return NaN;
+    if (x === 0) return 1;
+    if (x < a + 1) return 1 - gser(a, x).p;
+    return gcf(a, x).q;
+  }
+  var gammlnC = [76.18009172947146, -86.50532032961677, 24.01409824083091, -1.231739572450155, 0.001208650973866179, -0.000005395239384953];
+  function gammaln(x) {
+    var y = x, tmp = x + 5.5, ser = 1.000000000190015, j;
+    tmp -= (x + 0.5) * Math.log(tmp);
+    for (j = 0; j < 6; j++) { y++; ser += gammlnC[j] / y; }
+    return -tmp + Math.log(2.5066282746310005 * ser / x);
+  }
+  function fmt(x, d) {
+    if (!isFinite(x)) return String(x);
+    if (x !== 0 && (Math.abs(x) < 1e-4 || Math.abs(x) >= 1e10)) return x.toExponential(4);
+    return String(parseFloat(x.toPrecision(d || 6)));
+  }
+  function parseNums(s) {
+    var parts = s.split(/[\s,;]+/).filter(Boolean), out = [];
+    for (var i = 0; i < parts.length; i++) {
+      var v = parseFloat(parts[i]);
+      if (isNaN(v) || v < 0) throw new Error('Counts must be non-negative numbers. Bad value: "' + parts[i] + '".');
+      out.push(v);
+    }
+    return out;
+  }
+  function calc() {
+    try {
+      TN.clearErr(ERR);
+      var mode = g('mode').value;
+      var chi2 = 0, df = 0, rows = [], expSmall = 0, note = '';
+      if (mode === 'gof') {
+        var obs = parseNums(g('obs').value);
+        if (obs.length < 2) { TN.setErr(ERR, 'Goodness-of-fit needs at least 2 observed counts.'); return; }
+        var expRaw = g('exp').value.trim();
+        var exp;
+        if (!expRaw) {
+          var tot = obs.reduce(function (s, v) { return s + v; }, 0);
+          exp = obs.map(function () { return tot / obs.length; });
+          note = 'Expected counts assumed uniform (total ' + fmt(tot) + ' ÷ ' + obs.length + ' categories).';
+        } else {
+          exp = parseNums(expRaw);
+          if (exp.length !== obs.length) { TN.setErr(ERR, 'Expected (' + exp.length + ') and observed (' + obs.length + ') counts must match.'); return; }
+        }
+        df = obs.length - 1;
+        for (var i = 0; i < obs.length; i++) {
+          if (exp[i] === 0) { TN.setErr(ERR, 'Expected count for category ' + (i + 1) + ' is 0 — χ² is undefined.'); return; }
+          var term = Math.pow(obs[i] - exp[i], 2) / exp[i];
+          chi2 += term;
+          if (exp[i] < 5) expSmall++;
+          rows.push({ cell: 'Category ' + (i + 1), o: obs[i], e: exp[i], t: term });
+        }
+        note += (note ? ' ' : '') + 'H₀: observed follows the expected distribution.';
+      } else {
+        var lines = g('obs').value.split('\n').map(function (l) { return l.trim(); }).filter(Boolean);
+        if (lines.length < 2) { TN.setErr(ERR, 'Independence needs at least 2 rows (one per line).'); return; }
+        var tab = lines.map(parseNums);
+        var nc = tab[0].length;
+        if (nc < 2) { TN.setErr(ERR, 'Need at least 2 columns.'); return; }
+        for (var r = 0; r < tab.length; r++) if (tab[r].length !== nc) { TN.setErr(ERR, 'Row ' + (r + 1) + ' has ' + tab[r].length + ' values, expected ' + nc + '.'); return; }
+        var rowT = tab.map(function (row) { return row.reduce(function (s, v) { return s + v; }, 0); });
+        var colT = [];
+        for (var c = 0; c < nc; c++) { var s = 0; for (var rr = 0; rr < tab.length; rr++) s += tab[rr][c]; colT.push(s); }
+        var grand = rowT.reduce(function (s, v) { return s + v; }, 0);
+        if (grand === 0) { TN.setErr(ERR, 'All counts are zero.'); return; }
+        df = (tab.length - 1) * (nc - 1);
+        for (r = 0; r < tab.length; r++) for (c = 0; c < nc; c++) {
+          var e = rowT[r] * colT[c] / grand;
+          if (e === 0) { TN.setErr(ERR, 'Expected count is 0 for a cell — χ² is undefined.'); return; }
+          var t2 = Math.pow(tab[r][c] - e, 2) / e;
+          chi2 += t2;
+          if (e < 5) expSmall++;
+          rows.push({ cell: 'Row ' + (r + 1) + ', Col ' + (c + 1), o: tab[r][c], e: e, t: t2 });
+        }
+        note = 'H₀: the two variables are independent. Expected = row total × column total ÷ grand total.';
+      }
+      var p = gammaincc(df / 2, chi2 / 2);
+      TN.show(P + 'out');
+      g('chi2').textContent = fmt(chi2);
+      g('df').textContent = String(df);
+      g('p').textContent = fmt(p);
+      var sig = p < 0.05;
+      g('verdict').innerHTML = 'p = ' + fmt(p) + (sig
+        ? ' &lt; 0.05 → <b>reject H₀</b>: the difference is statistically significant at the 5% level.'
+        : ' ≥ 0.05 → <b>fail to reject H₀</b>: no significant difference at the 5% level.');
+      g('table').innerHTML = rows.map(function (rw) {
+        return '<tr><td>' + TN.esc(rw.cell) + '</td><td>' + fmt(rw.o) + '</td><td>' + fmt(rw.e) + '</td><td>' + fmt(rw.t) + '</td></tr>';
+      }).join('') + '<tr><td><b>Total</b></td><td></td><td></td><td><b>χ² = ' + fmt(chi2) + '</b></td></tr>';
+      g('check').textContent = note + (expSmall ? ' Caution: ' + expSmall + ' expected count(s) < 5 — the χ² approximation may be unreliable.' : ' All expected counts ≥ 5 — the χ² approximation is fine.');
+    } catch (e) { TN.setErr(ERR, e.message || 'Could not calculate.'); }
+  }
+  try {
+    if (!TN.el(P + 'calc')) return;
+    TN.on(P + 'calc', 'click', calc);
+    TN.on(P + 'mode', 'change', function () {
+      var ind = g('mode').value === 'ind';
+      g('exp-wrap').style.display = ind ? 'none' : '';
+      g('obs-l').textContent = ind ? 'Contingency table (one row per line, commas between columns)' : 'Observed counts (comma separated)';
+      g('obs').value = ind ? '20, 15, 10\n12, 18, 25' : '23, 31, 19, 27';
+      g('obs').placeholder = ind ? 'e.g.\n20, 15, 10\n12, 18, 25' : 'e.g. 23, 31, 19, 27';
+      TN.hide(P + 'out');
+    });
+  } catch (e) { /* never throw on load */ }
+})();
+
+</script>
+</body>
+</html>

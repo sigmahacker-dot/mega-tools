@@ -1,0 +1,54 @@
+<div class="tool-card">
+  <div class="grid3">
+    <div class="field">
+      <label for="user-story-generator-role">As a…</label>
+      <input class="input" id="user-story-generator-role" type="text" placeholder="e.g. shopper" maxlength="60">
+    </div>
+    <div class="field">
+      <label for="user-story-generator-goal">I want…</label>
+      <input class="input" id="user-story-generator-goal" type="text" placeholder="e.g. to filter by size" maxlength="120">
+    </div>
+    <div class="field">
+      <label for="user-story-generator-benefit">So that…</label>
+      <input class="input" id="user-story-generator-benefit" type="text" placeholder="e.g. I find shoes that fit" maxlength="120">
+    </div>
+    <div class="field">
+      <label for="user-story-generator-points">Story points</label>
+      <select class="select" id="user-story-generator-points">
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3" selected>3</option>
+        <option value="5">5</option>
+        <option value="8">8</option>
+        <option value="13">13</option>
+      </select>
+    </div>
+    <div class="field">
+      <label for="user-story-generator-priority">Priority</label>
+      <select class="select" id="user-story-generator-priority">
+        <option value="Must have">Must have</option>
+        <option value="Should have">Should have</option>
+        <option value="Could have">Could have</option>
+        <option value="Won't have">Won't have</option>
+      </select>
+    </div>
+  </div>
+  <div class="field">
+    <label>Add acceptance criterion (Given / When / Then)</label>
+    <div style="display:flex;gap:8px">
+      <input class="input" id="user-story-generator-ac" type="text" placeholder="e.g. Given I am on the product page, when I pick size 9, then only size-9 shoes show" maxlength="200">
+      <button class="btn btn-outline btn-sm" id="user-story-generator-add" type="button" style="white-space:nowrap">+ Add</button>
+    </div>
+  </div>
+  <div class="error" id="user-story-generator-error"></div>
+  <div id="user-story-generator-list" style="margin-top:8px"></div>
+  <div class="btn-row" style="margin-top:12px">
+    <button class="btn btn-primary btn-sm" id="user-story-generator-go" type="button">Build User Story</button>
+    <button class="btn btn-outline btn-sm" id="user-story-generator-copy" type="button">Copy</button>
+    <button class="btn btn-outline btn-sm" id="user-story-generator-download" type="button">Download .txt</button>
+  </div>
+  <div class="field" style="margin-top:12px">
+    <label>Your user story</label>
+    <div class="result" id="user-story-generator-output" style="white-space:pre-wrap">Your user story will appear here.</div>
+  </div>
+</div>

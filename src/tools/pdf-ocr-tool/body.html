@@ -1,0 +1,34 @@
+<div class="tool-card">
+  <div class="grid2">
+    <div class="field">
+      <label for="pdf-ocr-tool-file">Scanned PDF</label>
+      <input type="file" id="pdf-ocr-tool-file" accept="application/pdf" class="input">
+    </div>
+    <div class="field">
+      <label for="pdf-ocr-tool-lang">OCR language</label>
+      <select class="select" id="pdf-ocr-tool-lang">
+        <option value="eng">English</option>
+        <option value="spa">Spanish</option>
+        <option value="fra">French</option>
+        <option value="deu">German</option>
+        <option value="ita">Italian</option>
+        <option value="por">Portuguese</option>
+        <option value="ara">Arabic</option>
+        <option value="urd">Urdu</option>
+        <option value="hin">Hindi</option>
+      </select>
+    </div>
+  </div>
+  <div class="btn-row">
+    <button class="btn btn-primary" id="pdf-ocr-tool-go">Run OCR</button>
+    <button class="btn btn-outline hidden" id="pdf-ocr-tool-download">Download all text</button>
+  </div>
+  <div class="result hidden" id="pdf-ocr-tool-progress-wrap">
+    <p class="muted" id="pdf-ocr-tool-progress">Starting…</p>
+  </div>
+  <div class="result hidden" id="pdf-ocr-tool-result">
+    <div id="pdf-ocr-tool-pages"></div>
+  </div>
+  <div class="error" id="pdf-ocr-tool-error"></div>
+  <p class="note">Real OCR with Tesseract.js, loaded on demand from a CDN. Your PDF is rendered and recognized locally — never uploaded. Scanned/image PDFs only; text-based PDFs don't need OCR.</p>
+</div>

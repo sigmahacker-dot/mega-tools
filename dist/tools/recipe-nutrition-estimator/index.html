@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Recipe Nutrition Estimator — Free Online | ToolNest</title>
+<meta name="description" content="Paste ingredient lines, match them against a nutrition database, get macros per serving.">
+<meta name="keywords" content="recipe nutrition, ingredient calories, nutrition estimator">
+<link rel="canonical" href="https://toolnest.vercel.app/tools/recipe-nutrition-estimator/">
+<meta name="theme-color" content="#07070b">
+<meta property="og:title" content="Recipe Nutrition Estimator — Free Online | ToolNest">
+<meta property="og:description" content="Paste ingredient lines, match them against a nutrition database, get macros per serving.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css?v=4">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%23e01111'/><text x='50' y='68' font-size='58' text-anchor='middle' fill='white' font-family='Arial' font-weight='bold'>T</text></svg>">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebApplication","name":"Recipe Nutrition Estimator","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0"},"url":"https://toolnest.vercel.app/tools/recipe-nutrition-estimator/","description":"Paste ingredient lines, match them against a nutrition database, get macros per serving."},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Which units are understood?","acceptedAnswer":{"@type":"Answer","text":"Grams (g), kilograms (kg), ounces (oz), and pounds (lb/lbs). A line like '2 cups flour' has no convertible unit and will be listed as unmatched."}},{"@type":"Question","name":"How does ingredient matching work?","acceptedAnswer":{"@type":"Answer","text":"Each line is matched against the 42-food database by name. Unmatched lines are listed so you can fix the wording."}},{"@type":"Question","name":"How accurate is the result?","acceptedAnswer":{"@type":"Answer","text":"It is an estimate from typical per-100g values. Unmatched ingredients are excluded from the totals, which the report shows."}}]}]}</script>
+</head>
+<body>
+<header class="site-header">
+  <div class="container">
+    <a class="logo" href="/"><span class="logo-mark">T</span> ToolNest</a>
+    <div class="header-right">
+      <form class="nav-search" action="/" method="get" role="search">
+        <span class="ns-icon">🔍</span>
+        <input type="search" name="q" placeholder="Search tools…" aria-label="Search tools" autocomplete="off">
+      </form>
+      <div class="menu-wrap">
+        <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="menuPanel" aria-label="Open menu"><span></span><span></span><span></span></button>
+        <nav class="menu-panel" id="menuPanel" aria-label="Site">
+          <a href="/">Home</a>
+          <a href="/#categories">Categories</a>
+          <a href="/#all-tools">All Tools</a>
+        </nav>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ADSTERRA-HEADER: paste your Adsterra banner ad code inside the div below -->
+<div class="container"><div class="ad-slot ad-leaderboard" data-ad="header"></div></div>
+
+<main class="container">
+  <nav class="crumbs"><a href="/">Home</a> &rsaquo; <a href="/#health">Health &amp; Fitness</a> &rsaquo; Recipe Nutrition Estimator</nav>
+  <div class="tool-hero">
+    <h1>Recipe Nutrition Estimator</h1>
+    <p>Paste ingredient lines, match them against a nutrition database, get macros per serving.</p>
+  </div>
+
+  <div class="tool-card">
+  <div class="field">
+    <label for="recipe-nutrition-estimator-ingredients">Ingredients (one per line)</label>
+    <textarea class="textarea" id="recipe-nutrition-estimator-ingredients" rows="7" placeholder="200g chicken breast&#10;150g white rice (cooked)&#10;1 tbsp olive oil&#10;100g broccoli"></textarea>
+  </div>
+  <div class="grid2">
+    <div class="field">
+      <label for="recipe-nutrition-estimator-servings">Servings</label>
+      <input type="number" class="input" id="recipe-nutrition-estimator-servings" min="1" step="1" value="2">
+    </div>
+    <div class="field" style="display:flex;align-items:flex-end">
+      <button class="btn" id="recipe-nutrition-estimator-go" type="button">Estimate nutrition</button>
+    </div>
+  </div>
+  <div class="error" id="recipe-nutrition-estimator-error"></div>
+  <div class="result" id="recipe-nutrition-estimator-result">
+    <div id="recipe-nutrition-estimator-out"></div>
+    <p class="note">Estimates from typical per-100g values. For information only &mdash; not medical advice.</p>
+  </div>
+</div>
+
+  <!-- ADSTERRA-INCONTENT: paste your Adsterra native/in-content ad code inside the div below -->
+  <div class="ad-slot" data-ad="incontent"></div>
+
+  <div class="info-grid">
+    <div class="info-card">
+      <h2>📖 How to use</h2>
+      <ol><li>Paste one ingredient per line, e.g. &quot;200g chicken breast&quot; or &quot;2 tbsp olive oil&quot;.</li><li>Supported units: g, kg, oz, lb. Lines without an amount are assumed to be 100 g and flagged.</li><li>Enter the number of servings the recipe makes.</li><li>Click Estimate to see matched ingredients, totals, and per-serving macros.</li></ol>
+    </div>
+    <div class="info-card">
+      <h2>❓ Frequently asked questions</h2>
+      <div class="faq"><details><summary>Which units are understood?</summary><p>Grams (g), kilograms (kg), ounces (oz), and pounds (lb/lbs). A line like &#39;2 cups flour&#39; has no convertible unit and will be listed as unmatched.</p></details><details><summary>How does ingredient matching work?</summary><p>Each line is matched against the 42-food database by name. Unmatched lines are listed so you can fix the wording.</p></details><details><summary>How accurate is the result?</summary><p>It is an estimate from typical per-100g values. Unmatched ingredients are excluded from the totals, which the report shows.</p></details></div>
+    </div>
+  </div>
+
+  <section class="section">
+    <h2>🔗 Related tools</h2>
+    <div class="tool-grid"><a class="tool-link" href="/tools/allergy-tracker/" data-search="allergy tracker log allergy exposures, symptoms, and severity with summaries, saved in your browser. allergy tracker allergy diary symptom log"><span class="t-ico">❤️</span><span class="t-body"><b>Allergy Tracker</b><small>Log allergy exposures, symptoms, and severity with summaries, saved in your browser.</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/baby-feeding-log/" data-search="baby feeding log log nursing and bottle sessions with timestamps, daily totals, saved in your browser. baby feeding log nursing tracker bottle feeding log"><span class="t-ico">❤️</span><span class="t-body"><b>Baby Feeding Log</b><small>Log nursing and bottle sessions with timestamps, daily totals, saved in your browser.</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/baby-growth-tracker/" data-search="baby growth tracker log your baby&#39;s weight and height over time and see a growth log with typical-range guidance. baby growth tracker baby weight tracker infant growth chart baby height log newborn growth"><span class="t-ico">❤️</span><span class="t-body"><b>Baby Growth Tracker</b><small>Log your baby&#39;s weight and height over time and see a growth log with typical-range guidance…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/balance-test-timer/" data-search="balance test timer single-leg stance stopwatch with age benchmarks for balance testing. balance test single leg stance balance timer"><span class="t-ico">❤️</span><span class="t-body"><b>Balance Test Timer</b><small>Single-leg stance stopwatch with age benchmarks for balance testing.</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/blood-donation-eligibility-checker/" data-search="blood donation eligibility checker check common blood donation eligibility rules: age, weight, hemoglobin, intervals. blood donation eligibility can i donate blood donor requirements"><span class="t-ico">❤️</span><span class="t-body"><b>Blood Donation Eligibility Checker</b><small>Check common blood donation eligibility rules: age, weight, hemoglobin, intervals.</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/blood-pressure-tracker/" data-search="blood pressure tracker log blood pressure readings with automatic aha category classification, averages and history saved in your browser. blood pressure tracker bp log blood pressure chart hypertension tracker bp monitor log"><span class="t-ico">❤️</span><span class="t-body"><b>Blood Pressure Tracker</b><small>Log blood pressure readings with automatic AHA category classification, averages and history…</small></span><span class="t-arrow">→</span></a></div>
+  </section>
+</main>
+
+<!-- ADSTERRA-FOOTER: paste your Adsterra footer/banner ad code inside the div below -->
+<div class="container"><div class="ad-slot" data-ad="footer"></div></div>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="f-grid">
+      <div>
+        <span class="brandline"><span class="logo-mark">T</span> ToolNest</span>
+        <p>Free online tools that actually work. No sign-up, no watermarks — and your files never leave your device for client-side tools.</p>
+      </div>
+      <div>
+        <h4>Popular</h4>
+        <a href="/tools/qr-code-generator/">QR Code Generator</a>
+        <a href="/tools/background-remover/">Background Remover</a>
+        <a href="/tools/pdf-merger/">PDF Merger</a>
+        <a href="/tools/word-counter/">Word Counter</a>
+      </div>
+      <div>
+        <h4>Categories</h4>
+        <a href="/#image">Image Tools</a>
+        <a href="/#pdf">PDF &amp; Documents</a>
+        <a href="/#calculators">Calculators</a>
+        <a href="/#developer">Developer Tools</a>
+      </div>
+      <div>
+        <h4>Site</h4>
+        <a href="/">Home</a>
+        <a href="/#all-tools">All Tools</a>
+        <a href="/sitemap.xml">Sitemap</a>
+      </div>
+    </div>
+    <div class="f-bottom">© 2026 ToolNest · Free tools for everyone · Made with care</div>
+  </div>
+</footer>
+
+<script src="/assets/site.js?v=5"></script>
+
+<script>
+var FOODS=[
+["Chicken breast",31,0,3.6],["Chicken thigh",26,0,11],["Turkey breast",29,0,7],
+["Lean beef",26,0,10],["Salmon",20,0,13],["Tuna (canned in water)",23,0,1],
+["Cod",18,0,0.7],["Shrimp",24,0,0.3],["Eggs",13,1.1,11],["Egg whites",11,0.7,0.2],
+["Greek yogurt",10,3.6,0.4],["Cottage cheese",11,3.4,4.3],["Whole milk",3.2,4.8,3.3],
+["Cheddar cheese",25,0.3,33],["Firm tofu",17,2,9],["Tempeh",19,9,11],
+["Lentils (cooked)",9,20,0.4],["Chickpeas (cooked)",9,27,2.6],["Black beans (cooked)",9,24,0.5],
+["White rice (cooked)",2.7,28,0.3],["Brown rice (cooked)",2.6,23,0.9],["Oats",13,66,7],
+["Whole wheat bread",13,41,4.2],["Pasta (cooked)",5.8,31,0.9],["Quinoa (cooked)",4.4,22,1.9],
+["Sweet potato",1.6,20,0.1],["Potato",2,17,0.1],["Banana",1.1,23,0.3],
+["Apple",0.3,14,0.2],["Orange",0.9,12,0.1],["Blueberries",0.7,14,0.3],
+["Almonds",21,22,50],["Peanuts",26,16,49],["Walnuts",15,14,65],
+["Peanut butter",25,20,50],["Olive oil",0,0,100],["Broccoli",2.8,6.6,0.4],
+["Spinach",2.9,3.6,0.4],["Avocado",2,9,15],["Whey protein powder",80,10,5],["Honey",0.3,82,0]];
+(function(){
+'use strict';
+var S='recipe-nutrition-estimator', ERR=S+'-error';
+var UNITS={g:1,kg:1000,oz:28.3495,lb:453.592,lbs:453.592};
+function matchFood(text){
+  var t=text.toLowerCase();
+  var best=null;
+  FOODS.forEach(function(f){
+    var n=f[0].toLowerCase();
+    var variants=[n];
+    if(n.slice(-1)==='s') variants.push(n.slice(0,-1));
+    for(var i=0;i<variants.length;i++){
+      if(t.indexOf(variants[i])>=0&&(!best||variants[i].length>best.n.length)){
+        best={f:f,n:variants[i]};
+      }
+    }
+  });
+  return best?best.f:null;
+}
+function calc(){
+  if(!TN.el(S+'-ingredients')) return;
+  TN.clearErr(ERR);
+  var out=TN.el(S+'-out'); out.innerHTML='';
+  var lines=TN.el(S+'-ingredients').value.split('\n');
+  var servings=parseFloat(TN.el(S+'-servings').value);
+  if(!(servings>=1)){ TN.setErr(ERR,'Enter servings of 1 or more.'); return; }
+  var matched=[], unmatched=[], assumed=[];
+  var P=0,C=0,F=0;
+  lines.forEach(function(raw){
+    var line=raw.trim();
+    if(!line) return;
+    var m=line.match(/^\s*([\d.]+)\s*(kg|g|oz|lbs|lb)?\s+(.+)$/i);
+    var grams, name, flag='';
+    if(m){
+      var amt=parseFloat(m[1]);
+      var unit=(m[2]||'g').toLowerCase();
+      grams=amt*(UNITS[unit]||1);
+      name=m[3];
+    } else {
+      grams=100; name=line; flag='assumed 100 g';
+      assumed.push(line);
+    }
+    var food=matchFood(name);
+    if(!food){ unmatched.push(line); return; }
+    var p=food[1]*grams/100, c=food[2]*grams/100, fa=food[3]*grams/100;
+    P+=p; C+=c; F+=fa;
+    matched.push({line:line,food:food[0],grams:Math.round(grams),p:p,c:c,f:fa,flag:flag});
+  });
+  if(!matched.length&&!unmatched.length){ TN.setErr(ERR,'Paste at least one ingredient line.'); return; }
+  var kcal=P*4+C*4+F*9;
+  var html='<div class="stat-cards">'+
+    '<div class="stat-card"><div class="v">'+Math.round(kcal)+'</div><div class="l">Total kcal</div></div>'+
+    '<div class="stat-card"><div class="v">'+Math.round(P*10)/10+'g</div><div class="l">Protein</div></div>'+
+    '<div class="stat-card"><div class="v">'+Math.round(C*10)/10+'g</div><div class="l">Carbs</div></div>'+
+    '<div class="stat-card"><div class="v">'+Math.round(F*10)/10+'g</div><div class="l">Fat</div></div>'+
+    '<div class="stat-card"><div class="v">'+Math.round(kcal/servings)+'</div><div class="l">Kcal / serving</div></div>'+
+    '<div class="stat-card"><div class="v">'+Math.round(P/servings*10)/10+'g / '+Math.round(C/servings*10)/10+'g / '+Math.round(F/servings*10)/10+'g</div><div class="l">P / C / F per serving</div></div></div>';
+  html+='<table class="data"><thead><tr><th>Ingredient</th><th>Matched food</th><th>Grams</th><th>Kcal</th></tr></thead><tbody>';
+  matched.forEach(function(x){
+    html+='<tr><td>'+TN.esc(x.line)+(x.flag?' <span class="muted">('+x.flag+')</span>':'')+'</td><td>'+TN.esc(x.food)+'</td><td>'+x.grams+'</td><td>'+Math.round(x.p*4+x.c*4+x.f*9)+'</td></tr>';
+  });
+  html+='</tbody></table>';
+  if(unmatched.length){
+    html+='<p class="note" style="margin-top:10px"><strong>Unmatched (not counted):</strong> '+TN.esc(unmatched.join('; '))+'</p>';
+  }
+  out.innerHTML=html;
+}
+try{
+  TN.on(S+'-go','click',calc);
+  calc();
+}catch(e){}
+})();
+
+</script>
+</body>
+</html>

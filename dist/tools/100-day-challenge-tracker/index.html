@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>100-Day Challenge Tracker — Free Online | ToolNest</title>
+<meta name="description" content="Track a 100-day challenge with a checkable 100-cell grid, streaks and stats.">
+<meta name="keywords" content="100 day challenge, habit tracker 100 days, challenge tracker, streak tracker">
+<link rel="canonical" href="https://toolnest.vercel.app/tools/100-day-challenge-tracker/">
+<meta name="theme-color" content="#07070b">
+<meta property="og:title" content="100-Day Challenge Tracker — Free Online | ToolNest">
+<meta property="og:description" content="Track a 100-day challenge with a checkable 100-cell grid, streaks and stats.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css?v=4">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%23e01111'/><text x='50' y='68' font-size='58' text-anchor='middle' fill='white' font-family='Arial' font-weight='bold'>T</text></svg>">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebApplication","name":"100-Day Challenge Tracker","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0"},"url":"https://toolnest.vercel.app/tools/100-day-challenge-tracker/","description":"Track a 100-day challenge with a checkable 100-cell grid, streaks and stats."},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How do I check off a day?","acceptedAnswer":{"@type":"Answer","text":"Click any cell to toggle it checked (done) or unchecked. The grid fills in order but you can toggle any day."}},{"@type":"Question","name":"What is the longest streak stat?","acceptedAnswer":{"@type":"Answer","text":"The longest streak is your longest run of consecutive checked days, in grid order."}},{"@type":"Question","name":"Is my progress saved?","acceptedAnswer":{"@type":"Answer","text":"Yes — your checks are stored in localStorage in this browser."}},{"@type":"Question","name":"How do I start over?","acceptedAnswer":{"@type":"Answer","text":"Click Reset Challenge to clear all 100 cells and start over (with confirmation)."}}]}]}</script>
+</head>
+<body>
+<header class="site-header">
+  <div class="container">
+    <a class="logo" href="/"><span class="logo-mark">T</span> ToolNest</a>
+    <div class="header-right">
+      <form class="nav-search" action="/" method="get" role="search">
+        <span class="ns-icon">🔍</span>
+        <input type="search" name="q" placeholder="Search tools…" aria-label="Search tools" autocomplete="off">
+      </form>
+      <div class="menu-wrap">
+        <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="menuPanel" aria-label="Open menu"><span></span><span></span><span></span></button>
+        <nav class="menu-panel" id="menuPanel" aria-label="Site">
+          <a href="/">Home</a>
+          <a href="/#categories">Categories</a>
+          <a href="/#all-tools">All Tools</a>
+        </nav>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ADSTERRA-HEADER: paste your Adsterra banner ad code inside the div below -->
+<div class="container"><div class="ad-slot ad-leaderboard" data-ad="header"></div></div>
+
+<main class="container">
+  <nav class="crumbs"><a href="/">Home</a> &rsaquo; <a href="/#fun">Fun &amp; Lifestyle</a> &rsaquo; 100-Day Challenge Tracker</nav>
+  <div class="tool-hero">
+    <h1>100-Day Challenge Tracker</h1>
+    <p>Track a 100-day challenge with a checkable 100-cell grid, streaks and stats.</p>
+  </div>
+
+  <div class="tool-card">
+  <div class="grid2">
+    <div class="field">
+      <label for="100-day-challenge-tracker-name">Challenge name</label>
+      <input class="input" type="text" id="100-day-challenge-tracker-name" placeholder="e.g. Read 20 pages daily">
+    </div>
+    <div class="field">
+      <label for="100-day-challenge-tracker-start">Start date</label>
+      <input class="input" type="date" id="100-day-challenge-tracker-start">
+    </div>
+  </div>
+  <div class="stat-cards">
+    <div class="stat-card"><div class="v" id="100-day-challenge-tracker-done">0/100</div><div class="l">Days done</div></div>
+    <div class="stat-card"><div class="v" id="100-day-challenge-tracker-cur">0</div><div class="l">Current streak</div></div>
+    <div class="stat-card"><div class="v" id="100-day-challenge-tracker-best">0</div><div class="l">Longest streak</div></div>
+    <div class="stat-card"><div class="v" id="100-day-challenge-tracker-pct">0%</div><div class="l">Complete</div></div>
+  </div>
+  <div class="btn-row" style="margin-top:10px">
+    <button class="btn btn-outline" id="100-day-challenge-tracker-reset">Reset Challenge</button>
+  </div>
+  <div class="error" id="100-day-challenge-tracker-error"></div>
+</div>
+
+<div class="tool-card">
+  <div id="100-day-challenge-tracker-grid" style="display:grid;grid-template-columns:repeat(10,1fr);gap:6px"></div>
+  <p class="muted" style="margin-top:8px">Click a cell to toggle it. <span id="100-day-challenge-tracker-finish"></span></p>
+</div>
+
+  <!-- ADSTERRA-INCONTENT: paste your Adsterra native/in-content ad code inside the div below -->
+  <div class="ad-slot" data-ad="incontent"></div>
+
+  <div class="info-grid">
+    <div class="info-card">
+      <h2>📖 How to use</h2>
+      <ol><li>Set your challenge name and start date (optional).</li><li>Click cells to check off completed days.</li><li>Watch your completion %, current streak and longest streak update.</li><li>Use Reset Challenge to start over.</li></ol>
+    </div>
+    <div class="info-card">
+      <h2>❓ Frequently asked questions</h2>
+      <div class="faq"><details><summary>How do I check off a day?</summary><p>Click any cell to toggle it checked (done) or unchecked. The grid fills in order but you can toggle any day.</p></details><details><summary>What is the longest streak stat?</summary><p>The longest streak is your longest run of consecutive checked days, in grid order.</p></details><details><summary>Is my progress saved?</summary><p>Yes — your checks are stored in localStorage in this browser.</p></details><details><summary>How do I start over?</summary><p>Click Reset Challenge to clear all 100 cells and start over (with confirmation).</p></details></div>
+    </div>
+  </div>
+
+  <section class="section">
+    <h2>🔗 Related tools</h2>
+    <div class="tool-grid"><a class="tool-link" href="/tools/24-game/" data-search="24 game the 24 game — combine four numbers with + − × ÷ to make 24. built-in solver guarantees every deal and gives hints. 24 game make 24 game 24 puzzle solver math puzzle game"><span class="t-ico">🎲</span><span class="t-body"><b>24 Game</b><small>The 24 Game — combine four numbers with + − × ÷ to make 24. Built-in solver guarantees every…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/aim-trainer-game/" data-search="aim trainer game test and train your aim — targets pop up at random spots for 30 seconds. hits, misses and accuracy are tracked live. aim trainer aim test reaction test click speed test fps aim trainer"><span class="t-ico">🎲</span><span class="t-body"><b>Aim Trainer Game</b><small>Test and train your aim — targets pop up at random spots for 30 seconds. Hits, misses and ac…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/asteroid-shooter/" data-search="asteroid shooter asteroid shooter — rotate, thrust and blast splitting asteroids on canvas. 3 lives, rising levels. asteroid shooter game asteroids game online space shooter canvas"><span class="t-ico">🎲</span><span class="t-body"><b>Asteroid Shooter</b><small>Asteroid Shooter — rotate, thrust and blast splitting asteroids on canvas. 3 lives, rising l…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/attendance-tracker/" data-search="attendance tracker track class attendance: roster with present/absent marks per date and % summaries. attendance tracker class attendance student attendance roll call app"><span class="t-ico">🎲</span><span class="t-body"><b>Attendance Tracker</b><small>Track class attendance: roster with present/absent marks per date and % summaries.</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/baby-name-generator/" data-search="baby name generator discover baby names by gender and origin — pakistani, arabic, western, indian or turkish — with meanings, random picks and tap-to-copy. baby name generator baby names with meanings muslim baby names boy girl names"><span class="t-ico">🎲</span><span class="t-body"><b>Baby Name Generator</b><small>Discover baby names by gender and origin — Pakistani, Arabic, Western, Indian or Turkish — w…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/battery-status-checker/" data-search="battery status checker check your device&#39;s battery level, charging status and estimated time remaining, with live updates — where your browser supports the battery api. battery status battery level checker laptop battery charging status"><span class="t-ico">🎲</span><span class="t-body"><b>Battery Status Checker</b><small>Check your device&#39;s battery level, charging status and estimated time remaining, with live u…</small></span><span class="t-arrow">→</span></a></div>
+  </section>
+</main>
+
+<!-- ADSTERRA-FOOTER: paste your Adsterra footer/banner ad code inside the div below -->
+<div class="container"><div class="ad-slot" data-ad="footer"></div></div>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="f-grid">
+      <div>
+        <span class="brandline"><span class="logo-mark">T</span> ToolNest</span>
+        <p>Free online tools that actually work. No sign-up, no watermarks — and your files never leave your device for client-side tools.</p>
+      </div>
+      <div>
+        <h4>Popular</h4>
+        <a href="/tools/qr-code-generator/">QR Code Generator</a>
+        <a href="/tools/background-remover/">Background Remover</a>
+        <a href="/tools/pdf-merger/">PDF Merger</a>
+        <a href="/tools/word-counter/">Word Counter</a>
+      </div>
+      <div>
+        <h4>Categories</h4>
+        <a href="/#image">Image Tools</a>
+        <a href="/#pdf">PDF &amp; Documents</a>
+        <a href="/#calculators">Calculators</a>
+        <a href="/#developer">Developer Tools</a>
+      </div>
+      <div>
+        <h4>Site</h4>
+        <a href="/">Home</a>
+        <a href="/#all-tools">All Tools</a>
+        <a href="/sitemap.xml">Sitemap</a>
+      </div>
+    </div>
+    <div class="f-bottom">© 2026 ToolNest · Free tools for everyone · Made with care</div>
+  </div>
+</footer>
+
+<script src="/assets/site.js?v=5"></script>
+
+<script>
+/* 100-Day Challenge Tracker — 100-cell grid, streak stats, localStorage. */
+(function () {
+  'use strict';
+
+  var SLUG = '100-day-challenge-tracker';
+  var KEY = 'tn-' + SLUG + '-state';
+
+  function load() {
+    try {
+      var obj = JSON.parse(localStorage.getItem(KEY) || '{}');
+      if (obj && typeof obj === 'object' && Array.isArray(obj.done)) return obj;
+    } catch (e) { /* fall through */ }
+    return { name: '', start: '', done: [] };
+  }
+
+  function persist(state) {
+    try { localStorage.setItem(KEY, JSON.stringify(state)); }
+    catch (e) { TN.setErr(SLUG + '-error', 'Could not save — browser storage is unavailable.'); }
+  }
+
+  function streaks(doneArr) {
+    var set = {};
+    doneArr.forEach(function (d) { set[d] = 1; });
+    var best = 0, cur = 0, run = 0;
+    for (var d = 1; d <= 100; d++) {
+      if (set[d]) { run++; if (run > best) best = run; }
+      else run = 0;
+    }
+    // current streak: from highest checked day backwards
+    for (d = 100; d >= 1; d--) {
+      if (set[d]) cur++; else break;
+    }
+    return { best: best, cur: cur };
+  }
+
+  function render() {
+    var state = load();
+    var grid = TN.el(SLUG + '-grid');
+    grid.innerHTML = '';
+    var set = {};
+    state.done.forEach(function (d) { set[d] = 1; });
+    for (var d = 1; d <= 100; d++) {
+      (function (day) {
+        var cell = document.createElement('button');
+        cell.type = 'button';
+        cell.textContent = day;
+        cell.style.cssText = 'aspect-ratio:1;border-radius:8px;border:1px solid #444;cursor:pointer;font-size:12px;' +
+          (set[day] ? 'background:#4D7C0F;color:#fff;border-color:#4D7C0F' : 'background:#222;color:#aaa');
+        cell.addEventListener('click', function () {
+          var s = load();
+          var i = s.done.indexOf(day);
+          if (i === -1) s.done.push(day); else s.done.splice(i, 1);
+          persist(s);
+          render();
+        });
+        grid.appendChild(cell);
+      })(d);
+    }
+    var st = streaks(state.done);
+    TN.el(SLUG + '-done').textContent = state.done.length + '/100';
+    TN.el(SLUG + '-cur').textContent = st.cur;
+    TN.el(SLUG + '-best').textContent = st.best;
+    TN.el(SLUG + '-pct').textContent = state.done.length + '%';
+    if (state.start) {
+      var end = new Date(state.start + 'T00:00:00');
+      end.setDate(end.getDate() + 99);
+      TN.el(SLUG + '-finish').textContent = 'Day 100 lands on ' + end.toISOString().slice(0, 10) + '.';
+    } else {
+      TN.el(SLUG + '-finish').textContent = '';
+    }
+    if (state.name) TN.el(SLUG + '-name').value = state.name;
+    if (state.start) TN.el(SLUG + '-start').value = state.start;
+  }
+
+  function init() {
+    try {
+      if (!TN.el(SLUG + '-grid')) return;
+      TN.el(SLUG + '-name').addEventListener('input', function () {
+        var s = load(); s.name = this.value; persist(s);
+      });
+      TN.el(SLUG + '-start').addEventListener('change', function () {
+        var s = load(); s.start = this.value; persist(s); render();
+      });
+      TN.on(SLUG + '-reset', 'click', function () {
+        if (!window.confirm('Reset all 100 days and start over?')) return;
+        persist({ name: TN.el(SLUG + '-name').value, start: TN.el(SLUG + '-start').value, done: [] });
+        render();
+      });
+      render();
+    } catch (e) { /* never throw on load */ }
+  }
+
+  init();
+})();
+</script>
+</body>
+</html>

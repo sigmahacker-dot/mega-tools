@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Vision Board Maker — Free Online | ToolNest</title>
+<meta name="description" content="Build a vision board collage from your uploaded images and affirmations, then download it as PNG.">
+<meta name="keywords" content="vision board, vision board maker, dream board, manifestation board">
+<link rel="canonical" href="https://toolnest.vercel.app/tools/vision-board-maker/">
+<meta name="theme-color" content="#07070b">
+<meta property="og:title" content="Vision Board Maker — Free Online | ToolNest">
+<meta property="og:description" content="Build a vision board collage from your uploaded images and affirmations, then download it as PNG.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css?v=4">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%23e01111'/><text x='50' y='68' font-size='58' text-anchor='middle' fill='white' font-family='Arial' font-weight='bold'>T</text></svg>">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebApplication","name":"Vision Board Maker","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0"},"url":"https://toolnest.vercel.app/tools/vision-board-maker/","description":"Build a vision board collage from your uploaded images and affirmations, then download it as PNG."},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How do I make a vision board?","acceptedAnswer":{"@type":"Answer","text":"Click Upload Images and choose photos from your device, or type affirmations. Then click Build Board to lay them out on a canvas."}},{"@type":"Question","name":"How is the board laid out?","acceptedAnswer":{"@type":"Answer","text":"The layout is automatic: images and affirmations are tiled in a grid on a 1200×900 canvas. Refresh to shuffle the order."}},{"@type":"Question","name":"How do I save it?","acceptedAnswer":{"@type":"Answer","text":"Click Download PNG to save a 1200×900 image of your board."}},{"@type":"Question","name":"Are my images uploaded anywhere?","acceptedAnswer":{"@type":"Answer","text":"No — uploads stay in your browser memory only for the session. Download the PNG if you want to keep the board."}}]}]}</script>
+</head>
+<body>
+<header class="site-header">
+  <div class="container">
+    <a class="logo" href="/"><span class="logo-mark">T</span> ToolNest</a>
+    <div class="header-right">
+      <form class="nav-search" action="/" method="get" role="search">
+        <span class="ns-icon">🔍</span>
+        <input type="search" name="q" placeholder="Search tools…" aria-label="Search tools" autocomplete="off">
+      </form>
+      <div class="menu-wrap">
+        <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="menuPanel" aria-label="Open menu"><span></span><span></span><span></span></button>
+        <nav class="menu-panel" id="menuPanel" aria-label="Site">
+          <a href="/">Home</a>
+          <a href="/#categories">Categories</a>
+          <a href="/#all-tools">All Tools</a>
+        </nav>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ADSTERRA-HEADER: paste your Adsterra banner ad code inside the div below -->
+<div class="container"><div class="ad-slot ad-leaderboard" data-ad="header"></div></div>
+
+<main class="container">
+  <nav class="crumbs"><a href="/">Home</a> &rsaquo; <a href="/#fun">Fun &amp; Lifestyle</a> &rsaquo; Vision Board Maker</nav>
+  <div class="tool-hero">
+    <h1>Vision Board Maker</h1>
+    <p>Build a vision board collage from your uploaded images and affirmations, then download it as PNG.</p>
+  </div>
+
+  <div class="tool-card">
+  <div class="grid2">
+    <div class="field">
+      <label for="vision-board-maker-files">Upload images</label>
+      <input class="input" type="file" id="vision-board-maker-files" accept="image/*" multiple>
+    </div>
+    <div class="field">
+      <label for="vision-board-maker-theme">Background theme</label>
+      <select class="select" id="vision-board-maker-theme">
+        <option value="dark">Midnight</option>
+        <option value="light">Paper</option>
+        <option value="green">Forest</option>
+      </select>
+    </div>
+  </div>
+  <div class="field">
+    <label for="vision-board-maker-text">Affirmations (one per line)</label>
+    <textarea class="textarea" id="vision-board-maker-text" rows="4" placeholder="I am calm and focused&#10;I attract good opportunities"></textarea>
+  </div>
+  <div class="btn-row">
+    <button class="btn" id="vision-board-maker-build">Build Board</button>
+    <button class="btn btn-outline" id="vision-board-maker-shuffle">Shuffle</button>
+    <button class="btn btn-outline" id="vision-board-maker-dl">Download PNG</button>
+  </div>
+  <div class="error" id="vision-board-maker-error"></div>
+</div>
+
+<div class="tool-card">
+  <canvas id="vision-board-maker-canvas" width="1200" height="900" style="width:100%;height:auto;border-radius:12px"></canvas>
+  <p class="muted" id="vision-board-maker-status">Add images and affirmations, then click Build Board.</p>
+</div>
+
+  <!-- ADSTERRA-INCONTENT: paste your Adsterra native/in-content ad code inside the div below -->
+  <div class="ad-slot" data-ad="incontent"></div>
+
+  <div class="info-grid">
+    <div class="info-card">
+      <h2>📖 How to use</h2>
+      <ol><li>Upload images from your device (optional).</li><li>Type affirmations, one per line (optional).</li><li>Click Build Board to generate the collage.</li><li>Click Download PNG to save it.</li></ol>
+    </div>
+    <div class="info-card">
+      <h2>❓ Frequently asked questions</h2>
+      <div class="faq"><details><summary>How do I make a vision board?</summary><p>Click Upload Images and choose photos from your device, or type affirmations. Then click Build Board to lay them out on a canvas.</p></details><details><summary>How is the board laid out?</summary><p>The layout is automatic: images and affirmations are tiled in a grid on a 1200×900 canvas. Refresh to shuffle the order.</p></details><details><summary>How do I save it?</summary><p>Click Download PNG to save a 1200×900 image of your board.</p></details><details><summary>Are my images uploaded anywhere?</summary><p>No — uploads stay in your browser memory only for the session. Download the PNG if you want to keep the board.</p></details></div>
+    </div>
+  </div>
+
+  <section class="section">
+    <h2>🔗 Related tools</h2>
+    <div class="tool-grid"><a class="tool-link" href="/tools/100-day-challenge-tracker/" data-search="100-day challenge tracker track a 100-day challenge with a checkable 100-cell grid, streaks and stats. 100 day challenge habit tracker 100 days challenge tracker streak tracker"><span class="t-ico">🎲</span><span class="t-body"><b>100-Day Challenge Tracker</b><small>Track a 100-day challenge with a checkable 100-cell grid, streaks and stats.</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/24-game/" data-search="24 game the 24 game — combine four numbers with + − × ÷ to make 24. built-in solver guarantees every deal and gives hints. 24 game make 24 game 24 puzzle solver math puzzle game"><span class="t-ico">🎲</span><span class="t-body"><b>24 Game</b><small>The 24 Game — combine four numbers with + − × ÷ to make 24. Built-in solver guarantees every…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/aim-trainer-game/" data-search="aim trainer game test and train your aim — targets pop up at random spots for 30 seconds. hits, misses and accuracy are tracked live. aim trainer aim test reaction test click speed test fps aim trainer"><span class="t-ico">🎲</span><span class="t-body"><b>Aim Trainer Game</b><small>Test and train your aim — targets pop up at random spots for 30 seconds. Hits, misses and ac…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/asteroid-shooter/" data-search="asteroid shooter asteroid shooter — rotate, thrust and blast splitting asteroids on canvas. 3 lives, rising levels. asteroid shooter game asteroids game online space shooter canvas"><span class="t-ico">🎲</span><span class="t-body"><b>Asteroid Shooter</b><small>Asteroid Shooter — rotate, thrust and blast splitting asteroids on canvas. 3 lives, rising l…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/attendance-tracker/" data-search="attendance tracker track class attendance: roster with present/absent marks per date and % summaries. attendance tracker class attendance student attendance roll call app"><span class="t-ico">🎲</span><span class="t-body"><b>Attendance Tracker</b><small>Track class attendance: roster with present/absent marks per date and % summaries.</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/baby-name-generator/" data-search="baby name generator discover baby names by gender and origin — pakistani, arabic, western, indian or turkish — with meanings, random picks and tap-to-copy. baby name generator baby names with meanings muslim baby names boy girl names"><span class="t-ico">🎲</span><span class="t-body"><b>Baby Name Generator</b><small>Discover baby names by gender and origin — Pakistani, Arabic, Western, Indian or Turkish — w…</small></span><span class="t-arrow">→</span></a></div>
+  </section>
+</main>
+
+<!-- ADSTERRA-FOOTER: paste your Adsterra footer/banner ad code inside the div below -->
+<div class="container"><div class="ad-slot" data-ad="footer"></div></div>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="f-grid">
+      <div>
+        <span class="brandline"><span class="logo-mark">T</span> ToolNest</span>
+        <p>Free online tools that actually work. No sign-up, no watermarks — and your files never leave your device for client-side tools.</p>
+      </div>
+      <div>
+        <h4>Popular</h4>
+        <a href="/tools/qr-code-generator/">QR Code Generator</a>
+        <a href="/tools/background-remover/">Background Remover</a>
+        <a href="/tools/pdf-merger/">PDF Merger</a>
+        <a href="/tools/word-counter/">Word Counter</a>
+      </div>
+      <div>
+        <h4>Categories</h4>
+        <a href="/#image">Image Tools</a>
+        <a href="/#pdf">PDF &amp; Documents</a>
+        <a href="/#calculators">Calculators</a>
+        <a href="/#developer">Developer Tools</a>
+      </div>
+      <div>
+        <h4>Site</h4>
+        <a href="/">Home</a>
+        <a href="/#all-tools">All Tools</a>
+        <a href="/sitemap.xml">Sitemap</a>
+      </div>
+    </div>
+    <div class="f-bottom">© 2026 ToolNest · Free tools for everyone · Made with care</div>
+  </div>
+</footer>
+
+<script src="/assets/site.js?v=5"></script>
+
+<script>
+/* Vision Board Maker — canvas collage of uploaded images + affirmations, download PNG. */
+(function () {
+  'use strict';
+
+  var SLUG = 'vision-board-maker';
+  var images = []; // HTMLImageElement list
+  var built = false;
+
+  var THEMES = {
+    dark: { bg: '#111827', fg: '#f9fafb', card: '#1f2937' },
+    light: { bg: '#faf6ef', fg: '#1f2937', card: '#ffffff' },
+    green: { bg: '#0b3d2e', fg: '#ecfdf5', card: '#14532d' }
+  };
+
+  function drawCover(ctx, img, x, y, w, h) {
+    var s = Math.max(w / img.width, h / img.height);
+    var dw = img.width * s, dh = img.height * s;
+    ctx.drawImage(img, x + (w - dw) / 2, y + (h - dh) / 2, dw, dh);
+  }
+
+  function wrapText(ctx, text, maxW) {
+    var words = text.split(/\s+/), lines = [], line = '';
+    for (var i = 0; i < words.length; i++) {
+      var t = line ? line + ' ' + words[i] : words[i];
+      if (ctx.measureText(t).width > maxW && line) { lines.push(line); line = words[i]; }
+      else line = t;
+    }
+    if (line) lines.push(line);
+    return lines;
+  }
+
+  function build(shuffle) {
+    TN.clearErr(SLUG + '-error');
+    var affirm = TN.el(SLUG + '-text').value.split('\n').map(function (l) { return l.trim(); }).filter(Boolean);
+    if (!images.length && !affirm.length) {
+      TN.setErr(SLUG + '-error', 'Upload at least one image or type an affirmation first.');
+      return;
+    }
+    var theme = THEMES[TN.el(SLUG + '-theme').value] || THEMES.dark;
+    var cv = TN.el(SLUG + '-canvas');
+    var ctx = cv.getContext('2d');
+    var W = cv.width, H = cv.height, pad = 20;
+    ctx.fillStyle = theme.bg;
+    ctx.fillRect(0, 0, W, H);
+
+    var items = [];
+    images.forEach(function (img) { items.push({ type: 'img', img: img }); });
+    affirm.forEach(function (t) { items.push({ type: 'text', text: t }); });
+    if (shuffle) {
+      for (var i = items.length - 1; i > 0; i--) {
+        var j = Math.floor(Math.random() * (i + 1));
+        var tmp = items[i]; items[i] = items[j]; items[j] = tmp;
+      }
+    }
+    // grid sized to item count
+    var cols = Math.ceil(Math.sqrt(items.length * (W / H)));
+    var rows = Math.ceil(items.length / cols);
+    var cw = (W - pad * (cols + 1)) / cols;
+    var ch = (H - pad * (rows + 1)) / rows;
+    ctx.textAlign = 'center';
+    ctx.textBaseline = 'middle';
+    items.forEach(function (it, idx) {
+      var r = Math.floor(idx / cols), c = idx % cols;
+      var x = pad + c * (cw + pad), y = pad + r * (ch + pad);
+      ctx.save();
+      ctx.beginPath();
+      ctx.rect(x, y, cw, ch);
+      ctx.clip();
+      if (it.type === 'img') {
+        drawCover(ctx, it.img, x, y, cw, ch);
+      } else {
+        ctx.fillStyle = theme.card;
+        ctx.fillRect(x, y, cw, ch);
+        ctx.fillStyle = theme.fg;
+        var fs = Math.max(18, Math.min(44, cw / 10));
+        ctx.font = 'bold ' + fs + 'px Georgia, serif';
+        var lines = wrapText(ctx, '\u201c' + it.text + '\u201d', cw - 40);
+        var lh = fs * 1.4;
+        var startY = y + ch / 2 - (lines.length - 1) * lh / 2;
+        lines.forEach(function (ln, li) { ctx.fillText(ln, x + cw / 2, startY + li * lh); });
+      }
+      ctx.restore();
+    });
+    built = true;
+    TN.el(SLUG + '-status').textContent = 'Board ready — ' + images.length + ' image(s), ' + affirm.length + ' affirmation(s).';
+  }
+
+  function download() {
+    if (!built) { TN.setErr(SLUG + '-error', 'Build the board first.'); return; }
+    var cv = TN.el(SLUG + '-canvas');
+    if (cv.toBlob) {
+      cv.toBlob(function (blob) { if (blob) TN.download(blob, 'vision-board.png'); });
+    } else {
+      var a = document.createElement('a');
+      a.href = cv.toDataURL('image/png');
+      a.download = 'vision-board.png';
+      document.body.appendChild(a); a.click(); a.remove();
+    }
+  }
+
+  function init() {
+    try {
+      if (!TN.el(SLUG + '-build')) return;
+      TN.el(SLUG + '-files').addEventListener('change', function (e) {
+        images = [];
+        var files = e.target.files;
+        if (!files || !files.length) return;
+        var pending = files.length;
+        for (var i = 0; i < files.length; i++) {
+          (function (f) {
+            TN.readAsDataURL(f).then(function (url) {
+              var img = new Image();
+              img.onload = function () { images.push(img); if (--pending === 0) build(false); };
+              img.onerror = function () { if (--pending === 0) build(false); };
+              img.src = url;
+            }).catch(function () { if (--pending === 0) build(false); });
+          })(files[i]);
+        }
+      });
+      TN.on(SLUG + '-build', 'click', function () { build(false); });
+      TN.on(SLUG + '-shuffle', 'click', function () { build(true); });
+      TN.on(SLUG + '-dl', 'click', download);
+    } catch (e) { /* never throw on load */ }
+  }
+
+  init();
+})();
+</script>
+</body>
+</html>

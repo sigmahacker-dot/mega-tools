@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Expected Value Calculator — Free Online | ToolNest</title>
+<meta name="description" content="Compute expected value, variance and standard deviation from an outcomes × probabilities table with automatic probability-sum validation.">
+<meta name="keywords" content="expected value calculator, expected value, probability distribution mean, variance calculator">
+<link rel="canonical" href="https://toolnest.vercel.app/tools/expected-value-calculator/">
+<meta name="theme-color" content="#07070b">
+<meta property="og:title" content="Expected Value Calculator — Free Online | ToolNest">
+<meta property="og:description" content="Compute expected value, variance and standard deviation from an outcomes × probabilities table with automatic probability-sum validation.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css?v=4">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%23e01111'/><text x='50' y='68' font-size='58' text-anchor='middle' fill='white' font-family='Arial' font-weight='bold'>T</text></svg>">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebApplication","name":"Expected Value Calculator","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0"},"url":"https://toolnest.vercel.app/tools/expected-value-calculator/","description":"Compute expected value, variance and standard deviation from an outcomes × probabilities table with automatic probability-sum validation."},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What is expected value?","acceptedAnswer":{"@type":"Answer","text":"E(X) = Σ xᵢ·pᵢ: each outcome weighted by its probability. It is the long-run average if the experiment were repeated many times."}},{"@type":"Question","name":"Do the probabilities have to sum to 1?","acceptedAnswer":{"@type":"Answer","text":"Yes — they must describe a complete distribution. The tool refuses to compute otherwise and shows the current sum."}},{"@type":"Question","name":"What do variance and standard deviation add?","acceptedAnswer":{"@type":"Answer","text":"Variance Var(X) = Σ pᵢ(xᵢ − μ)² measures spread around the mean; the standard deviation is its square root, in the same units as the outcomes."}}]}]}</script>
+</head>
+<body>
+<header class="site-header">
+  <div class="container">
+    <a class="logo" href="/"><span class="logo-mark">T</span> ToolNest</a>
+    <div class="header-right">
+      <form class="nav-search" action="/" method="get" role="search">
+        <span class="ns-icon">🔍</span>
+        <input type="search" name="q" placeholder="Search tools…" aria-label="Search tools" autocomplete="off">
+      </form>
+      <div class="menu-wrap">
+        <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="menuPanel" aria-label="Open menu"><span></span><span></span><span></span></button>
+        <nav class="menu-panel" id="menuPanel" aria-label="Site">
+          <a href="/">Home</a>
+          <a href="/#categories">Categories</a>
+          <a href="/#all-tools">All Tools</a>
+        </nav>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ADSTERRA-HEADER: paste your Adsterra banner ad code inside the div below -->
+<div class="container"><div class="ad-slot ad-leaderboard" data-ad="header"></div></div>
+
+<main class="container">
+  <nav class="crumbs"><a href="/">Home</a> &rsaquo; <a href="/#math">Math &amp; Numbers</a> &rsaquo; Expected Value Calculator</nav>
+  <div class="tool-hero">
+    <h1>Expected Value Calculator</h1>
+    <p>Compute expected value, variance and standard deviation from an outcomes × probabilities table with automatic probability-sum validation.</p>
+  </div>
+
+  <div class="tool-card">
+  <div style="overflow-x:auto">
+  <table class="data">
+    <thead><tr><th>#</th><th>Outcome value x</th><th>Probability p</th><th></th></tr></thead>
+    <tbody id="expected-value-calculator-rows"></tbody>
+  </table>
+  </div>
+  <div class="btn-row">
+    <button type="button" class="btn btn-outline btn-sm" id="expected-value-calculator-add">+ Add row</button>
+    <button type="button" class="btn" id="expected-value-calculator-calc">Calculate</button>
+  </div>
+  <div class="error" id="expected-value-calculator-error"></div>
+  <div id="expected-value-calculator-out" class="hidden">
+    <div class="stat-cards">
+      <div class="stat-card"><div class="v" id="expected-value-calculator-ev">–</div><div class="l">E(X)</div></div>
+      <div class="stat-card"><div class="v" id="expected-value-calculator-var">–</div><div class="l">Var(X)</div></div>
+      <div class="stat-card"><div class="v" id="expected-value-calculator-sd">–</div><div class="l">σ (std dev)</div></div>
+    </div>
+    <div class="result">
+      <h3>Term-by-term</h3>
+      <div id="expected-value-calculator-steps"></div>
+    </div>
+  </div>
+</div>
+
+
+  <!-- ADSTERRA-INCONTENT: paste your Adsterra native/in-content ad code inside the div below -->
+  <div class="ad-slot" data-ad="incontent"></div>
+
+  <div class="info-grid">
+    <div class="info-card">
+      <h2>📖 How to use</h2>
+      <ol><li>Add one row per outcome: the value and its probability.</li><li>Use Add row / Remove to adjust the table; probabilities must be between 0 and 1.</li><li>Press Calculate — the tool checks the probabilities sum to 1.</li><li>Read E(X), variance and standard deviation with the term-by-term sum.</li></ol>
+    </div>
+    <div class="info-card">
+      <h2>❓ Frequently asked questions</h2>
+      <div class="faq"><details><summary>What is expected value?</summary><p>E(X) = Σ xᵢ·pᵢ: each outcome weighted by its probability. It is the long-run average if the experiment were repeated many times.</p></details><details><summary>Do the probabilities have to sum to 1?</summary><p>Yes — they must describe a complete distribution. The tool refuses to compute otherwise and shows the current sum.</p></details><details><summary>What do variance and standard deviation add?</summary><p>Variance Var(X) = Σ pᵢ(xᵢ − μ)² measures spread around the mean; the standard deviation is its square root, in the same units as the outcomes.</p></details></div>
+    </div>
+  </div>
+
+  <section class="section">
+    <h2>🔗 Related tools</h2>
+    <div class="tool-grid"><a class="tool-link" href="/tools/24-game-solver/" data-search="24 game solver solve the 24 game exhaustively: every ordering, operation and parenthesization is tried with exact fraction arithmetic, and all distinct solutions are shown. 24 game solver make 24 solver 24 puzzle arithmetic puzzle solver"><span class="t-ico">📐</span><span class="t-body"><b>24 Game Solver</b><small>Solve the 24 game exhaustively: every ordering, operation and parenthesization is tried with…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/ancient-numerals-converter/" data-search="ancient numerals converter convert decimal numbers to roman, egyptian hieroglyphic, babylonian cuneiform and mayan numerals — with roman numerals also decoded back to decimal. roman numerals egyptian numerals babylonian numerals mayan numerals ancient numbers"><span class="t-ico">📐</span><span class="t-body"><b>Ancient Numerals Converter</b><small>Convert decimal numbers to Roman, Egyptian hieroglyphic, Babylonian cuneiform and Mayan nume…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/arithmetic-sequence-calculator/" data-search="arithmetic sequence calculator from the first term and common difference get the nth term and the sum of the first n terms. arithmetic sequence arithmetic progression nth term sum of arithmetic series common difference"><span class="t-ico">📐</span><span class="t-body"><b>Arithmetic Sequence Calculator</b><small>From the first term and common difference get the nth term and the sum of the first n terms.</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/base-n-arithmetic/" data-search="base-n arithmetic add, subtract, multiply and divide numbers in any base from 2 to 36 with exact bigint math and a full conversion breakdown. base n arithmetic binary addition hexadecimal calculator base 36 math"><span class="t-ico">📐</span><span class="t-body"><b>Base-N Arithmetic</b><small>Add, subtract, multiply and divide numbers in any base from 2 to 36 with exact BigInt math a…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/bayes-theorem-calculator/" data-search="bayes theorem calculator compute posterior probabilities from prior, sensitivity and specificity with the full bayes formula, natural frequencies and a probability tree. bayes theorem calculator posterior probability sensitivity specificity medical test probability"><span class="t-ico">📐</span><span class="t-body"><b>Bayes Theorem Calculator</b><small>Compute posterior probabilities from prior, sensitivity and specificity with the full Bayes …</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/bcd-converter/" data-search="bcd converter convert decimal numbers to binary-coded decimal (packed and unpacked) and decode bcd back to decimal, with per-digit nibble breakdowns. bcd converter binary coded decimal packed bcd unpacked bcd bcd decoder"><span class="t-ico">📐</span><span class="t-body"><b>BCD Converter</b><small>Convert decimal numbers to Binary-Coded Decimal (packed and unpacked) and decode BCD back to…</small></span><span class="t-arrow">→</span></a></div>
+  </section>
+</main>
+
+<!-- ADSTERRA-FOOTER: paste your Adsterra footer/banner ad code inside the div below -->
+<div class="container"><div class="ad-slot" data-ad="footer"></div></div>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="f-grid">
+      <div>
+        <span class="brandline"><span class="logo-mark">T</span> ToolNest</span>
+        <p>Free online tools that actually work. No sign-up, no watermarks — and your files never leave your device for client-side tools.</p>
+      </div>
+      <div>
+        <h4>Popular</h4>
+        <a href="/tools/qr-code-generator/">QR Code Generator</a>
+        <a href="/tools/background-remover/">Background Remover</a>
+        <a href="/tools/pdf-merger/">PDF Merger</a>
+        <a href="/tools/word-counter/">Word Counter</a>
+      </div>
+      <div>
+        <h4>Categories</h4>
+        <a href="/#image">Image Tools</a>
+        <a href="/#pdf">PDF &amp; Documents</a>
+        <a href="/#calculators">Calculators</a>
+        <a href="/#developer">Developer Tools</a>
+      </div>
+      <div>
+        <h4>Site</h4>
+        <a href="/">Home</a>
+        <a href="/#all-tools">All Tools</a>
+        <a href="/sitemap.xml">Sitemap</a>
+      </div>
+    </div>
+    <div class="f-bottom">© 2026 ToolNest · Free tools for everyone · Made with care</div>
+  </div>
+</footer>
+
+<script src="/assets/site.js?v=5"></script>
+
+<script>
+(function () {
+  'use strict';
+  var P = 'expected-value-calculator-', ERR = P + 'error';
+  var rowCount = 0;
+  function g(id) { return TN.el(P + id); }
+  function fmt(x) {
+    if (!isFinite(x)) return String(x);
+    return String(parseFloat(x.toPrecision(10)));
+  }
+  function addRow(xv, pv) {
+    var i = rowCount++;
+    var tr = document.createElement('tr');
+    tr.id = P + 'row-' + i;
+    tr.innerHTML = '<td>' + (i + 1) + '</td>' +
+      '<td><input class="input" style="width:110px" type="number" step="any" id="' + P + 'x-' + i + '" value="' + (xv !== undefined ? xv : '') + '"></td>' +
+      '<td><input class="input" style="width:110px" type="number" step="any" min="0" max="1" id="' + P + 'p-' + i + '" value="' + (pv !== undefined ? pv : '') + '"></td>' +
+      '<td><button type="button" class="btn btn-outline btn-sm" data-rm="' + i + '">Remove</button></td>';
+    g('rows').appendChild(tr);
+    var btn = tr.querySelector('[data-rm]');
+    TN.on(btn, 'click', function () {
+      tr.parentNode.removeChild(tr);
+      TN.hide(P + 'out');
+    });
+  }
+  function calc() {
+    try {
+      TN.clearErr(ERR);
+      var rows = g('rows').querySelectorAll('tr');
+      if (!rows.length) { TN.setErr(ERR, 'Add at least one outcome row.'); return; }
+      var xs = [], ps = [], i;
+      for (i = 0; i < rows.length; i++) {
+        var id = rows[i].id.replace(P + 'row-', '');
+        var x = parseFloat(TN.el(P + 'x-' + id).value);
+        var p = parseFloat(TN.el(P + 'p-' + id).value);
+        if (isNaN(x)) { TN.setErr(ERR, 'Row ' + (i + 1) + ': outcome value must be a number.'); return; }
+        if (isNaN(p) || p < 0 || p > 1) { TN.setErr(ERR, 'Row ' + (i + 1) + ': probability must be between 0 and 1.'); return; }
+        xs.push(x); ps.push(p);
+      }
+      var sumP = ps.reduce(function (s, v) { return s + v; }, 0);
+      if (Math.abs(sumP - 1) > 1e-9) { TN.setErr(ERR, 'Probabilities sum to ' + fmt(sumP) + ', not 1. Adjust them so the distribution is complete.'); return; }
+      var ev = 0, terms = [];
+      for (i = 0; i < xs.length; i++) {
+        var t = xs[i] * ps[i];
+        ev += t;
+        terms.push(fmt(xs[i]) + ' × ' + fmt(ps[i]) + ' = ' + fmt(t));
+      }
+      var vr = 0, vterms = [];
+      for (i = 0; i < xs.length; i++) {
+        var d = xs[i] - ev, vt = ps[i] * d * d;
+        vr += vt;
+        vterms.push(fmt(ps[i]) + ' × (' + fmt(xs[i]) + ' − ' + fmt(ev) + ')² = ' + fmt(vt));
+      }
+      TN.show(P + 'out');
+      g('ev').textContent = fmt(ev);
+      g('var').textContent = fmt(vr);
+      g('sd').textContent = fmt(Math.sqrt(vr));
+      g('steps').innerHTML = '<p>E(X) = Σ x·p = ' + terms.map(TN.esc).join(' + ') + ' = <b>' + fmt(ev) + '</b></p>' +
+        '<p>Var(X) = Σ p·(x − μ)² = ' + vterms.map(TN.esc).join(' + ') + ' = <b>' + fmt(vr) + '</b>; σ = √Var = <b>' + fmt(Math.sqrt(vr)) + '</b></p>';
+    } catch (e) { TN.setErr(ERR, e.message || 'Could not calculate.'); }
+  }
+  try {
+    if (!TN.el(P + 'calc')) return;
+    addRow(10, 0.5); addRow(20, 0.3); addRow(30, 0.2);
+    TN.on(P + 'add', 'click', function () { addRow(); });
+    TN.on(P + 'calc', 'click', calc);
+  } catch (e) { /* never throw on load */ }
+})();
+
+</script>
+</body>
+</html>

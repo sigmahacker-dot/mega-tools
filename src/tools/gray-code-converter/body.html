@@ -1,0 +1,41 @@
+<div class="tool-card">
+  <div class="grid3">
+    <div class="field">
+      <label for="gray-code-converter-dir">Direction</label>
+      <select class="select" id="gray-code-converter-dir">
+        <option value="b2g">Binary → Gray</option>
+        <option value="g2b">Gray → Binary</option>
+      </select>
+    </div>
+    <div class="field">
+      <label for="gray-code-converter-mode">Input as</label>
+      <select class="select" id="gray-code-converter-mode">
+        <option value="bits">Bit string</option>
+        <option value="dec">Decimal number</option>
+      </select>
+    </div>
+    <div class="field">
+      <label for="gray-code-converter-in">Input</label>
+      <input class="input" id="gray-code-converter-in" type="text" placeholder="e.g. 10110" value="10110" style="font-family:monospace">
+    </div>
+  </div>
+  <div class="btn-row">
+    <button type="button" class="btn" id="gray-code-converter-convert">Convert</button>
+    <button type="button" class="btn btn-outline btn-sm" id="gray-code-converter-copy">Copy result</button>
+  </div>
+  <div class="error" id="gray-code-converter-error"></div>
+  <div id="gray-code-converter-out" class="hidden">
+    <div class="stat-cards">
+      <div class="stat-card"><div class="v" id="gray-code-converter-out-bits" style="font-family:monospace">–</div><div class="l" id="gray-code-converter-out-l">Gray code</div></div>
+      <div class="stat-card"><div class="v" id="gray-code-converter-out-dec" style="font-family:monospace">–</div><div class="l">Decimal value</div></div>
+    </div>
+    <div class="result">
+      <h3>Steps</h3>
+      <div id="gray-code-converter-steps"></div>
+    </div>
+    <div class="result">
+      <h3>Reference table (0–15)</h3>
+      <div style="overflow-x:auto"><table class="data"><thead><tr><th>Decimal</th><th>Binary</th><th>Gray</th></tr></thead><tbody id="gray-code-converter-table"></tbody></table></div>
+    </div>
+  </div>
+</div>

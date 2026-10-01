@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GraphQL Query Builder — Free Online | ToolNest</title>
+<meta name="description" content="Build a GraphQL query from an indented field tree — operation name, nesting and arguments supported.">
+<meta name="keywords" content="graphql query builder, graphql generator, build graphql query, graphql syntax">
+<link rel="canonical" href="https://toolnest.vercel.app/tools/graphql-query-builder/">
+<meta name="theme-color" content="#07070b">
+<meta property="og:title" content="GraphQL Query Builder — Free Online | ToolNest">
+<meta property="og:description" content="Build a GraphQL query from an indented field tree — operation name, nesting and arguments supported.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css?v=4">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%23e01111'/><text x='50' y='68' font-size='58' text-anchor='middle' fill='white' font-family='Arial' font-weight='bold'>T</text></svg>">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebApplication","name":"GraphQL Query Builder","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0"},"url":"https://toolnest.vercel.app/tools/graphql-query-builder/","description":"Build a GraphQL query from an indented field tree — operation name, nesting and arguments supported."},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How do I nest fields?","acceptedAnswer":{"@type":"Answer","text":"Indent child fields with 2 spaces per level — the builder turns indentation into nested braces."}},{"@type":"Question","name":"How do I add arguments?","acceptedAnswer":{"@type":"Answer","text":"Write them inline: user(id: \"1\", active: true) — everything in parentheses is kept verbatim."}},{"@type":"Question","name":"Can I add variables?","acceptedAnswer":{"@type":"Answer","text":"Yes — declare them in the signature field, e.g. ($id: ID!), and reference $id in your field arguments."}},{"@type":"Question","name":"What operations are supported?","acceptedAnswer":{"@type":"Answer","text":"query, mutation and subscription, each with an optional operation name."}}]}]}</script>
+</head>
+<body>
+<header class="site-header">
+  <div class="container">
+    <a class="logo" href="/"><span class="logo-mark">T</span> ToolNest</a>
+    <div class="header-right">
+      <form class="nav-search" action="/" method="get" role="search">
+        <span class="ns-icon">🔍</span>
+        <input type="search" name="q" placeholder="Search tools…" aria-label="Search tools" autocomplete="off">
+      </form>
+      <div class="menu-wrap">
+        <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="menuPanel" aria-label="Open menu"><span></span><span></span><span></span></button>
+        <nav class="menu-panel" id="menuPanel" aria-label="Site">
+          <a href="/">Home</a>
+          <a href="/#categories">Categories</a>
+          <a href="/#all-tools">All Tools</a>
+        </nav>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ADSTERRA-HEADER: paste your Adsterra banner ad code inside the div below -->
+<div class="container"><div class="ad-slot ad-leaderboard" data-ad="header"></div></div>
+
+<main class="container">
+  <nav class="crumbs"><a href="/">Home</a> &rsaquo; <a href="/#developer">Developer Tools</a> &rsaquo; GraphQL Query Builder</nav>
+  <div class="tool-hero">
+    <h1>GraphQL Query Builder</h1>
+    <p>Build a GraphQL query from an indented field tree — operation name, nesting and arguments supported.</p>
+  </div>
+
+  <div class="tool-card">
+  <div class="grid3">
+    <div class="field">
+      <label for="graphql-query-builder-type">Operation type</label>
+      <select class="select" id="graphql-query-builder-type">
+        <option value="query">query</option>
+        <option value="mutation">mutation</option>
+        <option value="subscription">subscription</option>
+      </select>
+    </div>
+    <div class="field">
+      <label for="graphql-query-builder-name">Operation name</label>
+      <input class="input" id="graphql-query-builder-name" value="GetUser">
+    </div>
+    <div class="field">
+      <label for="graphql-query-builder-vars">Variables (e.g. $id: ID!)</label>
+      <input class="input" id="graphql-query-builder-vars" value="$id: ID!">
+    </div>
+  </div>
+  <div class="field">
+    <label for="graphql-query-builder-fields">Field tree (2 spaces per indent level)</label>
+    <textarea class="textarea" id="graphql-query-builder-fields" rows="8" style="font-family:monospace">user(id: $id)
+  id
+  name
+  email
+  posts(first: 5)
+    title
+    publishedAt
+    comments
+      body
+      author
+        name</textarea>
+  </div>
+  <div class="error" id="graphql-query-builder-error"></div>
+  <div class="field">
+    <label for="graphql-query-builder-output">GraphQL query</label>
+    <textarea class="textarea" id="graphql-query-builder-output" rows="14" readonly style="font-family:monospace"></textarea>
+  </div>
+  <div class="btn-row">
+    <button class="btn btn-outline" id="graphql-query-builder-copy">Copy query</button>
+    <button class="btn btn-outline" id="graphql-query-builder-download">Download .graphql</button>
+  </div>
+</div>
+
+
+  <!-- ADSTERRA-INCONTENT: paste your Adsterra native/in-content ad code inside the div below -->
+  <div class="ad-slot" data-ad="incontent"></div>
+
+  <div class="info-grid">
+    <div class="info-card">
+      <h2>📖 How to use</h2>
+      <ol><li>Type fields one per line, indenting with 2 spaces per level.</li><li>Add arguments inline, e.g. user(id: 1).</li><li>Set the operation type and name.</li><li>Copy the query or download it as .graphql.</li></ol>
+    </div>
+    <div class="info-card">
+      <h2>❓ Frequently asked questions</h2>
+      <div class="faq"><details><summary>How do I nest fields?</summary><p>Indent child fields with 2 spaces per level — the builder turns indentation into nested braces.</p></details><details><summary>How do I add arguments?</summary><p>Write them inline: user(id: &quot;1&quot;, active: true) — everything in parentheses is kept verbatim.</p></details><details><summary>Can I add variables?</summary><p>Yes — declare them in the signature field, e.g. ($id: ID!), and reference $id in your field arguments.</p></details><details><summary>What operations are supported?</summary><p>query, mutation and subscription, each with an optional operation name.</p></details></div>
+    </div>
+  </div>
+
+  <section class="section">
+    <h2>🔗 Related tools</h2>
+    <div class="tool-grid"><a class="tool-link" href="/tools/api-key-generator/" data-search="api key generator generate cryptographically secure api keys with crypto.getrandomvalues — hex, base64, base64url or uuid v4. api key generator random api key uuid generator secure token generator"><span class="t-ico">💻</span><span class="t-body"><b>API Key Generator</b><small>Generate cryptographically secure API keys with crypto.getRandomValues — hex, base64, base64…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/ascii-table-reference/" data-search="ascii table reference full ascii table 0–127: decimal, hex, octal, character, control-code names and html entities — searchable. ascii table ascii codes ascii chart control characters ascii reference"><span class="t-ico">💻</span><span class="t-body"><b>ASCII Table Reference</b><small>Full ASCII table 0–127: decimal, hex, octal, character, control-code names and HTML entities…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/badge-generator/" data-search="badge generator design css badges and pills — colors, sizes, shapes — with live preview and copy-ready html/css. badge css generator css pill badge status badge code label badge html"><span class="t-ico">💻</span><span class="t-body"><b>Badge Generator</b><small>Design CSS badges and pills — colors, sizes, shapes — with live preview and copy-ready HTML/…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/base64-encoder-decoder/" data-search="base64 encoder / decoder encode text to base64 or decode base64 back to text, with full utf-8 support and a file-to-data-url converter. base64 encoder base64 decoder base64 encode base64 decode file to base64"><span class="t-ico">💻</span><span class="t-body"><b>Base64 Encoder / Decoder</b><small>Encode text to Base64 or decode Base64 back to text, with full UTF-8 support and a file-to-d…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/basic-auth-header-generator/" data-search="basic auth header generator encode username:password to a base64 authorization header (unicode-safe) — copy or download. basic auth header base64 authorization http basic auth generator authorization header"><span class="t-ico">💻</span><span class="t-body"><b>Basic Auth Header Generator</b><small>Encode username:password to a Base64 Authorization header (Unicode-safe) — copy or download.</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/binary-text-converter/" data-search="binary and text converter convert text to binary or hex and back, with full utf-8 awareness and strict input validation. binary to text text to binary hex to text converter"><span class="t-ico">💻</span><span class="t-body"><b>Binary and Text Converter</b><small>Convert text to binary or hex and back, with full UTF-8 awareness and strict input validatio…</small></span><span class="t-arrow">→</span></a></div>
+  </section>
+</main>
+
+<!-- ADSTERRA-FOOTER: paste your Adsterra footer/banner ad code inside the div below -->
+<div class="container"><div class="ad-slot" data-ad="footer"></div></div>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="f-grid">
+      <div>
+        <span class="brandline"><span class="logo-mark">T</span> ToolNest</span>
+        <p>Free online tools that actually work. No sign-up, no watermarks — and your files never leave your device for client-side tools.</p>
+      </div>
+      <div>
+        <h4>Popular</h4>
+        <a href="/tools/qr-code-generator/">QR Code Generator</a>
+        <a href="/tools/background-remover/">Background Remover</a>
+        <a href="/tools/pdf-merger/">PDF Merger</a>
+        <a href="/tools/word-counter/">Word Counter</a>
+      </div>
+      <div>
+        <h4>Categories</h4>
+        <a href="/#image">Image Tools</a>
+        <a href="/#pdf">PDF &amp; Documents</a>
+        <a href="/#calculators">Calculators</a>
+        <a href="/#developer">Developer Tools</a>
+      </div>
+      <div>
+        <h4>Site</h4>
+        <a href="/">Home</a>
+        <a href="/#all-tools">All Tools</a>
+        <a href="/sitemap.xml">Sitemap</a>
+      </div>
+    </div>
+    <div class="f-bottom">© 2026 ToolNest · Free tools for everyone · Made with care</div>
+  </div>
+</footer>
+
+<script src="/assets/site.js?v=5"></script>
+
+<script>
+/* GraphQL Query Builder — indented field tree → GraphQL query string. */
+(function () {
+  'use strict';
+  var SLUG = 'graphql-query-builder';
+  function el(id) { return document.getElementById(id); }
+  function fail(msg) { TN.setErr(SLUG + '-error', msg); }
+  function clear() { TN.clearErr(SLUG + '-error'); }
+
+  function build() {
+    clear();
+    var lines = el(SLUG + '-fields').value.split('\n');
+    var nodes = [];
+    lines.forEach(function (raw) {
+      if (!raw.trim()) return;
+      var indent = raw.match(/^ */)[0].length;
+      if (indent % 2 !== 0) throw new Error('Indent each level with exactly 2 spaces.');
+      nodes.push({ level: indent / 2, field: raw.trim() });
+    });
+    if (!nodes.length) { fail('Enter at least one field.'); return; }
+    var out = [];
+    var stack = [];
+    nodes.forEach(function (n, idx) {
+      while (stack.length > n.level) {
+        var closed = stack.pop();
+        out.push('  '.repeat(closed + 1) + '}');
+      }
+      var hasChild = idx + 1 < nodes.length && nodes[idx + 1].level > n.level;
+      out.push('  '.repeat(n.level + 1) + n.field + (hasChild ? ' {' : ''));
+      if (hasChild) stack.push(n.level);
+    });
+    while (stack.length) out.push('  '.repeat(stack.pop() + 1) + '}');
+    var type = el(SLUG + '-type').value;
+    var name = el(SLUG + '-name').value.trim();
+    var vars = el(SLUG + '-vars').value.trim();
+    var sig = type + (name ? ' ' + name : '') + (vars ? '(' + vars + ')' : '');
+    el(SLUG + '-output').value = sig + ' {\n' + out.join('\n') + '\n}\n';
+  }
+
+  try {
+    if (!el(SLUG + '-fields')) return;
+    ['type', 'name', 'vars', 'fields'].forEach(function (k) {
+      TN.on(SLUG + '-' + k, (k === 'type') ? 'change' : 'input', function () {
+        try { build(); } catch (e) { fail(e.message); }
+      });
+    });
+    TN.on(SLUG + '-copy', 'click', function () {
+      var v = el(SLUG + '-output').value;
+      if (!v) { fail('Nothing to copy yet.'); return; }
+      TN.copy(v).then(function (ok) { if (!ok) fail('Copy failed — select the text manually.'); });
+    });
+    TN.on(SLUG + '-download', 'click', function () {
+      var v = el(SLUG + '-output').value;
+      if (!v) { fail('Nothing to download yet.'); return; }
+      TN.downloadText(v, 'query.graphql', 'text/plain');
+    });
+    build();
+  } catch (e) { /* never throw on load */ }
+})();
+
+</script>
+</body>
+</html>

@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Name Tag Maker — Free Online | ToolNest</title>
+<meta name="description" content="Make classic &quot;Hello, my name is&quot; name tags — a full printable sheet of 4, 6 or 8 tags with your name.">
+<meta name="keywords" content="name tag maker, hello my name is, printable name tags, conference badges">
+<link rel="canonical" href="https://toolnest.vercel.app/tools/name-tag-maker/">
+<meta name="theme-color" content="#07070b">
+<meta property="og:title" content="Name Tag Maker — Free Online | ToolNest">
+<meta property="og:description" content="Make classic &quot;Hello, my name is&quot; name tags — a full printable sheet of 4, 6 or 8 tags with your name.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css?v=4">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%23e01111'/><text x='50' y='68' font-size='58' text-anchor='middle' fill='white' font-family='Arial' font-weight='bold'>T</text></svg>">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebApplication","name":"Name Tag Maker","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0"},"url":"https://toolnest.vercel.app/tools/name-tag-maker/","description":"Make classic \"Hello, my name is\" name tags — a full printable sheet of 4, 6 or 8 tags with your name."},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How do I print the tags?","acceptedAnswer":{"@type":"Answer","text":"The sheet is an A4-ratio PNG (1240 × 1754 px) you can print at home or at a print shop and cut apart."}},{"@type":"Question","name":"How many tags per sheet?","acceptedAnswer":{"@type":"Answer","text":"4 large, 6 medium or 8 compact tags per sheet — pick what fits your event."}},{"@type":"Question","name":"Does it remember my name?","acceptedAnswer":{"@type":"Answer","text":"Yes — the sheet keeps your last name and subtitle saved in this browser so repeat events are quick."}}]}]}</script>
+</head>
+<body>
+<header class="site-header">
+  <div class="container">
+    <a class="logo" href="/"><span class="logo-mark">T</span> ToolNest</a>
+    <div class="header-right">
+      <form class="nav-search" action="/" method="get" role="search">
+        <span class="ns-icon">🔍</span>
+        <input type="search" name="q" placeholder="Search tools…" aria-label="Search tools" autocomplete="off">
+      </form>
+      <div class="menu-wrap">
+        <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="menuPanel" aria-label="Open menu"><span></span><span></span><span></span></button>
+        <nav class="menu-panel" id="menuPanel" aria-label="Site">
+          <a href="/">Home</a>
+          <a href="/#categories">Categories</a>
+          <a href="/#all-tools">All Tools</a>
+        </nav>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ADSTERRA-HEADER: paste your Adsterra banner ad code inside the div below -->
+<div class="container"><div class="ad-slot ad-leaderboard" data-ad="header"></div></div>
+
+<main class="container">
+  <nav class="crumbs"><a href="/">Home</a> &rsaquo; <a href="/#image">Image Tools</a> &rsaquo; Name Tag Maker</nav>
+  <div class="tool-hero">
+    <h1>Name Tag Maker</h1>
+    <p>Make classic &quot;Hello, my name is&quot; name tags — a full printable sheet of 4, 6 or 8 tags with your name.</p>
+  </div>
+
+  <div class="tool-card">
+  <div class="grid2">
+    <div class="field">
+      <label for="name-tag-maker-name">Name</label>
+      <input type="text" id="name-tag-maker-name" class="input" value="Alex Morgan" maxlength="30">
+    </div>
+    <div class="field">
+      <label for="name-tag-maker-sub">Subtitle (optional)</label>
+      <input type="text" id="name-tag-maker-sub" class="input" value="Speaker" maxlength="40">
+    </div>
+  </div>
+  <div class="grid2">
+    <div class="field">
+      <label for="name-tag-maker-count">Tags per sheet</label>
+      <select class="select" id="name-tag-maker-count">
+        <option value="4">4 — large</option>
+        <option value="6" selected>6 — medium</option>
+        <option value="8">8 — compact</option>
+      </select>
+    </div>
+    <div class="field">
+      <label for="name-tag-maker-color">Accent color</label>
+      <input type="color" id="name-tag-maker-color" class="input" value="#d92b2b" style="height:42px;padding:4px;">
+    </div>
+  </div>
+  <div class="btn-row">
+    <button class="btn btn-primary" id="name-tag-maker-download">Download sheet</button>
+  </div>
+  <div class="result">
+    <canvas id="name-tag-maker-canvas" style="width:100%;max-width:420px;border:1px solid #e5e7eb;border-radius:8px;"></canvas>
+  </div>
+  <div class="error" id="name-tag-maker-error"></div>
+  <p class="note">The sheet is an A4-ratio PNG — print at 100% scale and cut along the guides. Your name is remembered in this browser only.</p>
+</div>
+
+
+  <!-- ADSTERRA-INCONTENT: paste your Adsterra native/in-content ad code inside the div below -->
+  <div class="ad-slot" data-ad="incontent"></div>
+
+  <div class="info-grid">
+    <div class="info-card">
+      <h2>📖 How to use</h2>
+      <ol><li>Type your name and an optional subtitle (role, company…).</li><li>Choose 4, 6 or 8 tags per sheet and an accent color.</li><li>The sheet preview updates live.</li><li>Click &quot;Download sheet&quot; to save the printable PNG.</li></ol>
+    </div>
+    <div class="info-card">
+      <h2>❓ Frequently asked questions</h2>
+      <div class="faq"><details><summary>How do I print the tags?</summary><p>The sheet is an A4-ratio PNG (1240 × 1754 px) you can print at home or at a print shop and cut apart.</p></details><details><summary>How many tags per sheet?</summary><p>4 large, 6 medium or 8 compact tags per sheet — pick what fits your event.</p></details><details><summary>Does it remember my name?</summary><p>Yes — the sheet keeps your last name and subtitle saved in this browser so repeat events are quick.</p></details></div>
+    </div>
+  </div>
+
+  <section class="section">
+    <h2>🔗 Related tools</h2>
+    <div class="tool-grid"><a class="tool-link" href="/tools/app-icon-resizer/" data-search="app icon resizer generate every common app icon size from one image — 16, 32, 48, 180, 192 and 512 px — with instant preview and one-click png downloads. app icon resizer icon generator favicon sizes pwa icon apple touch icon generator"><span class="t-ico">🖼️</span><span class="t-body"><b>App Icon Resizer</b><small>Generate every common app icon size from one image — 16, 32, 48, 180, 192 and 512 px — with …</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/background-remover/" data-search="background remover remove the background from any photo with real on-device ai and download a transparent png. free, private and unlimited — no sign-up needed. background remover remove image background transparent png maker"><span class="t-ico">🖼️</span><span class="t-body"><b>Background Remover</b><small>Remove the background from any photo with real on-device AI and download a transparent PNG. …</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/before-after-slider-maker/" data-search="before/after slider maker upload two photos and get a standalone before/after comparison slider as an html file. before after slider image comparison slider photo compare html before after html"><span class="t-ico">🖼️</span><span class="t-body"><b>Before/After Slider Maker</b><small>Upload two photos and get a standalone before/after comparison slider as an HTML file.</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/business-card-maker/" data-search="business card maker design a business card front (1050×600): your name, role and contact details, color themes, live preview, and a png download. business card maker business card design business card png visiting card maker card designer"><span class="t-ico">🖼️</span><span class="t-body"><b>Business Card Maker</b><small>Design a business card front (1050×600): your name, role and contact details, color themes, …</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/certificate-maker/" data-search="certificate maker design printable certificates: recipient name, course title, date and signature line, live preview, and a high-res png download. certificate maker certificate generator certificate png award certificate maker printable certificate"><span class="t-ico">🖼️</span><span class="t-body"><b>Certificate Maker</b><small>Design printable certificates: recipient name, course title, date and signature line, live p…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/color-splash-effect/" data-search="color splash effect pick a color to keep and turn everything else black-and-white — the classic color splash effect with a tolerance slider. color splash selective color color pop effect black and white photo"><span class="t-ico">🖼️</span><span class="t-body"><b>Color Splash Effect</b><small>Pick a color to keep and turn everything else black-and-white — the classic color splash eff…</small></span><span class="t-arrow">→</span></a></div>
+  </section>
+</main>
+
+<!-- ADSTERRA-FOOTER: paste your Adsterra footer/banner ad code inside the div below -->
+<div class="container"><div class="ad-slot" data-ad="footer"></div></div>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="f-grid">
+      <div>
+        <span class="brandline"><span class="logo-mark">T</span> ToolNest</span>
+        <p>Free online tools that actually work. No sign-up, no watermarks — and your files never leave your device for client-side tools.</p>
+      </div>
+      <div>
+        <h4>Popular</h4>
+        <a href="/tools/qr-code-generator/">QR Code Generator</a>
+        <a href="/tools/background-remover/">Background Remover</a>
+        <a href="/tools/pdf-merger/">PDF Merger</a>
+        <a href="/tools/word-counter/">Word Counter</a>
+      </div>
+      <div>
+        <h4>Categories</h4>
+        <a href="/#image">Image Tools</a>
+        <a href="/#pdf">PDF &amp; Documents</a>
+        <a href="/#calculators">Calculators</a>
+        <a href="/#developer">Developer Tools</a>
+      </div>
+      <div>
+        <h4>Site</h4>
+        <a href="/">Home</a>
+        <a href="/#all-tools">All Tools</a>
+        <a href="/sitemap.xml">Sitemap</a>
+      </div>
+    </div>
+    <div class="f-bottom">© 2026 ToolNest · Free tools for everyone · Made with care</div>
+  </div>
+</footer>
+
+<script src="/assets/site.js?v=5"></script>
+
+<script>
+/* Name Tag Maker — "Hello, my name is" printable sheets of 4/6/8. */
+(function () {
+  'use strict';
+  var SLUG = 'name-tag-maker';
+  var ERR = SLUG + '-error';
+  var W = 1240, H = 1754; // A4 ratio
+
+  function v(id) {
+    var el = document.getElementById(SLUG + '-' + id);
+    return el ? el.value : '';
+  }
+
+  function rr(ctx, x, y, w, h, r) {
+    ctx.beginPath();
+    ctx.moveTo(x + r, y);
+    ctx.arcTo(x + w, y, x + w, y + h, r);
+    ctx.arcTo(x + w, y + h, x, y + h, r);
+    ctx.arcTo(x, y + h, x, y, r);
+    ctx.arcTo(x, y, x + w, y, r);
+    ctx.closePath();
+  }
+
+  function drawTag(ctx, x, y, w, h, name, sub, accent) {
+    ctx.save();
+    rr(ctx, x, y, w, h, 28);
+    ctx.clip();
+    ctx.fillStyle = '#ffffff';
+    ctx.fillRect(x, y, w, h);
+    var bandH = h * 0.30;
+    ctx.fillStyle = accent;
+    ctx.fillRect(x, y, w, bandH);
+    ctx.fillStyle = '#fff';
+    ctx.textAlign = 'center';
+    ctx.font = 'bold ' + Math.round(bandH * 0.30) + 'px Arial, sans-serif';
+    ctx.fillText('HELLO', x + w / 2, y + bandH * 0.36);
+    ctx.font = Math.round(bandH * 0.20) + 'px Arial, sans-serif';
+    ctx.fillText('my name is', x + w / 2, y + bandH * 0.66);
+    // name
+    ctx.fillStyle = '#111';
+    var fs = Math.round(h * 0.20);
+    ctx.font = 'bold ' + fs + 'px "Comic Sans MS", "Segoe Print", cursive';
+    while (ctx.measureText(name).width > w * 0.9 && fs > 20) {
+      fs -= 4; ctx.font = 'bold ' + fs + 'px "Comic Sans MS", "Segoe Print", cursive';
+    }
+    ctx.fillText(name, x + w / 2, y + bandH + (h - bandH) * 0.52);
+    if (sub) {
+      ctx.fillStyle = '#555';
+      ctx.font = Math.round(h * 0.075) + 'px Arial, sans-serif';
+      ctx.fillText(sub, x + w / 2, y + bandH + (h - bandH) * 0.74);
+    }
+    ctx.restore();
+    // border + cut guides
+    rr(ctx, x, y, w, h, 28);
+    ctx.strokeStyle = '#c9ced4'; ctx.lineWidth = 4; ctx.stroke();
+  }
+
+  function draw() {
+    var canvas = document.getElementById(SLUG + '-canvas');
+    if (!canvas) return;
+    canvas.width = W; canvas.height = H;
+    var ctx = canvas.getContext('2d');
+    var name = (v('name') || 'Your Name').trim() || 'Your Name';
+    var sub = (v('sub') || '').trim();
+    var accent = v('color') || '#d92b2b';
+    var count = parseInt(v('count'), 10) || 6;
+
+    ctx.fillStyle = '#ffffff';
+    ctx.fillRect(0, 0, W, H);
+
+    var cols = count === 4 ? 2 : (count === 6 ? 2 : 2);
+    var rows = count / cols;
+    var mx = 60, my = 70;
+    var tw = (W - mx * 2) / cols, th = (H - my * 2) / rows;
+    var pad = 26;
+    for (var i = 0; i < count; i++) {
+      var c = i % cols, r = Math.floor(i / cols);
+      drawTag(ctx, mx + c * tw + pad, my + r * th + pad, tw - pad * 2, th - pad * 2, name, sub, accent);
+    }
+    // cut guides
+    ctx.strokeStyle = '#d7dbe0';
+    ctx.lineWidth = 2;
+    ctx.setLineDash([12, 10]);
+    for (var gi = 1; gi < cols; gi++) {
+      ctx.beginPath(); ctx.moveTo(mx + gi * tw, my); ctx.lineTo(mx + gi * tw, H - my); ctx.stroke();
+    }
+    for (var gj = 1; gj < rows; gj++) {
+      ctx.beginPath(); ctx.moveTo(mx, my + gj * th); ctx.lineTo(W - mx, my + gj * th); ctx.stroke();
+    }
+    ctx.setLineDash([]);
+  }
+
+  function save() {
+    try {
+      localStorage.setItem('tn-' + SLUG + '-name', v('name'));
+      localStorage.setItem('tn-' + SLUG + '-sub', v('sub'));
+    } catch (e) {}
+  }
+
+  try {
+    if (!document.getElementById(SLUG + '-canvas')) return;
+    try {
+      var sn = localStorage.getItem('tn-' + SLUG + '-name');
+      var ss = localStorage.getItem('tn-' + SLUG + '-sub');
+      if (sn !== null) document.getElementById(SLUG + '-name').value = sn;
+      if (ss !== null) document.getElementById(SLUG + '-sub').value = ss;
+    } catch (e) {}
+    draw();
+    TN.on(SLUG + '-name', 'input', TN.debounce(function () { draw(); save(); }, 150));
+    TN.on(SLUG + '-sub', 'input', TN.debounce(function () { draw(); save(); }, 150));
+    TN.on(SLUG + '-count', 'change', draw);
+    TN.on(SLUG + '-color', 'input', draw);
+    TN.on(SLUG + '-download', 'click', function () {
+      TN.clearErr(ERR);
+      draw();
+      var canvas = document.getElementById(SLUG + '-canvas');
+      try {
+        canvas.toBlob(function (b) {
+          if (b) TN.download(b, 'name-tags-sheet.png');
+          else TN.setErr(ERR, 'Could not export the sheet.');
+        }, 'image/png');
+      } catch (e) { TN.setErr(ERR, 'Could not export the sheet.'); }
+    });
+  } catch (e) {
+    TN.setErr(ERR, 'This tool could not start: ' + (e && e.message || e));
+  }
+})();
+
+</script>
+</body>
+</html>

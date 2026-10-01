@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gomoku — Free Online | ToolNest</title>
+<meta name="description" content="Gomoku on a 15×15 board — get five stones in a row before the computer or a friend does.">
+<meta name="keywords" content="gomoku game, five in a row game, gomoku vs computer, 15x15 board game">
+<link rel="canonical" href="https://toolnest.vercel.app/tools/gomoku-game/">
+<meta name="theme-color" content="#07070b">
+<meta property="og:title" content="Gomoku — Free Online | ToolNest">
+<meta property="og:description" content="Gomoku on a 15×15 board — get five stones in a row before the computer or a friend does.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css?v=4">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%23e01111'/><text x='50' y='68' font-size='58' text-anchor='middle' fill='white' font-family='Arial' font-weight='bold'>T</text></svg>">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebApplication","name":"Gomoku","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0"},"url":"https://toolnest.vercel.app/tools/gomoku-game/","description":"Gomoku on a 15×15 board — get five stones in a row before the computer or a friend does."},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How does the computer play?","acceptedAnswer":{"@type":"Answer","text":"The computer scores every empty square by the threats it creates for both sides — it takes an immediate win, blocks your open fours and threes, and otherwise builds its strongest line."}},{"@type":"Question","name":"Who moves first?","acceptedAnswer":{"@type":"Answer","text":"You do. Black always moves first, which is a real advantage in Gomoku — that's why the computer takes black when you choose white."}},{"@type":"Question","name":"Can the game end in a draw?","acceptedAnswer":{"@type":"Answer","text":"Stones can never be moved or captured in Gomoku, so draws are rare but possible if the whole 15×15 board fills up."}}]}]}</script>
+</head>
+<body>
+<header class="site-header">
+  <div class="container">
+    <a class="logo" href="/"><span class="logo-mark">T</span> ToolNest</a>
+    <div class="header-right">
+      <form class="nav-search" action="/" method="get" role="search">
+        <span class="ns-icon">🔍</span>
+        <input type="search" name="q" placeholder="Search tools…" aria-label="Search tools" autocomplete="off">
+      </form>
+      <div class="menu-wrap">
+        <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="menuPanel" aria-label="Open menu"><span></span><span></span><span></span></button>
+        <nav class="menu-panel" id="menuPanel" aria-label="Site">
+          <a href="/">Home</a>
+          <a href="/#categories">Categories</a>
+          <a href="/#all-tools">All Tools</a>
+        </nav>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ADSTERRA-HEADER: paste your Adsterra banner ad code inside the div below -->
+<div class="container"><div class="ad-slot ad-leaderboard" data-ad="header"></div></div>
+
+<main class="container">
+  <nav class="crumbs"><a href="/">Home</a> &rsaquo; <a href="/#fun">Fun &amp; Lifestyle</a> &rsaquo; Gomoku</nav>
+  <div class="tool-hero">
+    <h1>Gomoku</h1>
+    <p>Gomoku on a 15×15 board — get five stones in a row before the computer or a friend does.</p>
+  </div>
+
+  <div class="tool-card" style="text-align:center">
+  <div class="grid3" style="max-width:560px;margin:0 auto 10px">
+    <div class="field" style="text-align:left">
+      <label for="gomoku-game-mode">Mode</label>
+      <select class="input" id="gomoku-game-mode">
+        <option value="ai" selected>Vs Computer</option>
+        <option value="2p">Two players</option>
+      </select>
+    </div>
+    <div class="field" style="text-align:left">
+      <label for="gomoku-game-color">Your stones</label>
+      <select class="input" id="gomoku-game-color">
+        <option value="1" selected>Black (first)</option>
+        <option value="2">White (second)</option>
+      </select>
+    </div>
+    <div class="field" style="text-align:left">
+      <label>&nbsp;</label>
+      <button class="btn btn-primary" id="gomoku-game-new" style="width:100%">New game</button>
+    </div>
+  </div>
+  <p class="muted" id="gomoku-game-status" style="min-height:24px;font-weight:600"></p>
+  <div style="display:inline-block;max-width:100%;overflow:auto">
+    <div id="gomoku-game-board" style="display:inline-grid;grid-template-columns:repeat(15,minmax(20px,30px));gap:0;background:#d6a75c;padding:6px;border-radius:8px"></div>
+  </div>
+  <div class="stat-cards" style="max-width:420px;margin:12px auto 0">
+    <div class="stat-card"><div class="v" id="gomoku-game-w1">0</div><div class="l">Black wins</div></div>
+    <div class="stat-card"><div class="v" id="gomoku-game-w2">0</div><div class="l">White wins</div></div>
+    <div class="stat-card"><div class="v" id="gomoku-game-wd">0</div><div class="l">Draws</div></div>
+  </div>
+  <div class="error" id="gomoku-game-error"></div>
+</div>
+
+
+  <!-- ADSTERRA-INCONTENT: paste your Adsterra native/in-content ad code inside the div below -->
+  <div class="ad-slot" data-ad="incontent"></div>
+
+  <div class="info-grid">
+    <div class="info-card">
+      <h2>📖 How to use</h2>
+      <ol><li>Pick “Vs computer” (choose your color) or “Two players”.</li><li>Click any empty intersection to place your stone.</li><li>Get five of your stones in a row — horizontal, vertical or diagonal.</li><li>The AI answers after a short think; the winning five are highlighted.</li></ol>
+    </div>
+    <div class="info-card">
+      <h2>❓ Frequently asked questions</h2>
+      <div class="faq"><details><summary>How does the computer play?</summary><p>The computer scores every empty square by the threats it creates for both sides — it takes an immediate win, blocks your open fours and threes, and otherwise builds its strongest line.</p></details><details><summary>Who moves first?</summary><p>You do. Black always moves first, which is a real advantage in Gomoku — that&#39;s why the computer takes black when you choose white.</p></details><details><summary>Can the game end in a draw?</summary><p>Stones can never be moved or captured in Gomoku, so draws are rare but possible if the whole 15×15 board fills up.</p></details></div>
+    </div>
+  </div>
+
+  <section class="section">
+    <h2>🔗 Related tools</h2>
+    <div class="tool-grid"><a class="tool-link" href="/tools/100-day-challenge-tracker/" data-search="100-day challenge tracker track a 100-day challenge with a checkable 100-cell grid, streaks and stats. 100 day challenge habit tracker 100 days challenge tracker streak tracker"><span class="t-ico">🎲</span><span class="t-body"><b>100-Day Challenge Tracker</b><small>Track a 100-day challenge with a checkable 100-cell grid, streaks and stats.</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/24-game/" data-search="24 game the 24 game — combine four numbers with + − × ÷ to make 24. built-in solver guarantees every deal and gives hints. 24 game make 24 game 24 puzzle solver math puzzle game"><span class="t-ico">🎲</span><span class="t-body"><b>24 Game</b><small>The 24 Game — combine four numbers with + − × ÷ to make 24. Built-in solver guarantees every…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/aim-trainer-game/" data-search="aim trainer game test and train your aim — targets pop up at random spots for 30 seconds. hits, misses and accuracy are tracked live. aim trainer aim test reaction test click speed test fps aim trainer"><span class="t-ico">🎲</span><span class="t-body"><b>Aim Trainer Game</b><small>Test and train your aim — targets pop up at random spots for 30 seconds. Hits, misses and ac…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/asteroid-shooter/" data-search="asteroid shooter asteroid shooter — rotate, thrust and blast splitting asteroids on canvas. 3 lives, rising levels. asteroid shooter game asteroids game online space shooter canvas"><span class="t-ico">🎲</span><span class="t-body"><b>Asteroid Shooter</b><small>Asteroid Shooter — rotate, thrust and blast splitting asteroids on canvas. 3 lives, rising l…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/attendance-tracker/" data-search="attendance tracker track class attendance: roster with present/absent marks per date and % summaries. attendance tracker class attendance student attendance roll call app"><span class="t-ico">🎲</span><span class="t-body"><b>Attendance Tracker</b><small>Track class attendance: roster with present/absent marks per date and % summaries.</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/baby-name-generator/" data-search="baby name generator discover baby names by gender and origin — pakistani, arabic, western, indian or turkish — with meanings, random picks and tap-to-copy. baby name generator baby names with meanings muslim baby names boy girl names"><span class="t-ico">🎲</span><span class="t-body"><b>Baby Name Generator</b><small>Discover baby names by gender and origin — Pakistani, Arabic, Western, Indian or Turkish — w…</small></span><span class="t-arrow">→</span></a></div>
+  </section>
+</main>
+
+<!-- ADSTERRA-FOOTER: paste your Adsterra footer/banner ad code inside the div below -->
+<div class="container"><div class="ad-slot" data-ad="footer"></div></div>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="f-grid">
+      <div>
+        <span class="brandline"><span class="logo-mark">T</span> ToolNest</span>
+        <p>Free online tools that actually work. No sign-up, no watermarks — and your files never leave your device for client-side tools.</p>
+      </div>
+      <div>
+        <h4>Popular</h4>
+        <a href="/tools/qr-code-generator/">QR Code Generator</a>
+        <a href="/tools/background-remover/">Background Remover</a>
+        <a href="/tools/pdf-merger/">PDF Merger</a>
+        <a href="/tools/word-counter/">Word Counter</a>
+      </div>
+      <div>
+        <h4>Categories</h4>
+        <a href="/#image">Image Tools</a>
+        <a href="/#pdf">PDF &amp; Documents</a>
+        <a href="/#calculators">Calculators</a>
+        <a href="/#developer">Developer Tools</a>
+      </div>
+      <div>
+        <h4>Site</h4>
+        <a href="/">Home</a>
+        <a href="/#all-tools">All Tools</a>
+        <a href="/sitemap.xml">Sitemap</a>
+      </div>
+    </div>
+    <div class="f-bottom">© 2026 ToolNest · Free tools for everyone · Made with care</div>
+  </div>
+</footer>
+
+<script src="/assets/site.js?v=5"></script>
+
+<script>
+(function () {
+  'use strict';
+  var P = 'gomoku-game-';
+  function g(id) { return document.getElementById(P + id); }
+  var N = 15, board = [], turn = 1, over = false, winLine = [];
+  var scores = { w1: 0, w2: 0, wd: 0 };
+  var DIRS = [[0, 1], [1, 0], [1, 1], [1, -1]];
+  function inB(r, c) { return r >= 0 && r < N && c >= 0 && c < N; }
+  function setup() {
+    board = [];
+    for (var r = 0; r < N; r++) { board.push([]); for (var c = 0; c < N; c++) board[r].push(0); }
+    turn = 1; over = false; winLine = [];
+  }
+  function mode() { var el = g('mode'); return el ? el.value : 'ai'; }
+  function humanColor() { var el = g('color'); return el ? parseInt(el.value, 10) : 1; }
+  // longest line through (r,c) for player p, plus open ends
+  function lineScore(r, c, p) {
+    var total = 0;
+    for (var d = 0; d < DIRS.length; d++) {
+      var dr = DIRS[d][0], dc = DIRS[d][1], n = 1, open = 0, i, rr, cc;
+      for (i = 1; i < 6; i++) {
+        rr = r + dr * i; cc = c + dc * i;
+        if (!inB(rr, cc) || board[rr][cc] !== p) break;
+        n++;
+      }
+      if (inB(r + dr * i, c + dc * i) && board[r + dr * i][c + dc * i] === 0) open++;
+      for (i = 1; i < 6; i++) {
+        rr = r - dr * i; cc = c - dc * i;
+        if (!inB(rr, cc) || board[rr][cc] !== p) break;
+        n++;
+      }
+      if (inB(r - dr * i, c - dc * i) && board[r - dr * i][c - dc * i] === 0) open++;
+      if (n >= 5) return 100000000;
+      var s = 0;
+      if (n === 4) s = open === 2 ? 1000000 : 100000;
+      else if (n === 3) s = open === 2 ? 50000 : 5000;
+      else if (n === 2) s = open === 2 ? 1000 : 100;
+      else s = open === 2 ? 10 : 1;
+      total += s;
+    }
+    return total;
+  }
+  function aiMove() {
+    if (over) return;
+    var me = turn, opp = 3 - me, best = -1, bestCells = [], r, c, sc;
+    for (r = 0; r < N; r++) for (c = 0; c < N; c++) {
+      if (board[r][c] !== 0) continue;
+      var near = false;
+      for (var dr = -2; dr <= 2 && !near; dr++) for (var dc = -2; dc <= 2; dc++) {
+        if (inB(r + dr, c + dc) && board[r + dr][c + dc] !== 0) { near = true; break; }
+      }
+      if (!near) continue;
+      board[r][c] = me; var mine = lineScore(r, c, me); board[r][c] = 0;
+      board[r][c] = opp; var theirs = lineScore(r, c, opp); board[r][c] = 0;
+      sc = mine + theirs * 0.92;
+      if (sc > best) { best = sc; bestCells = [[r, c]]; }
+      else if (sc === best) bestCells.push([r, c]);
+    }
+    var pick;
+    if (!bestCells.length) { pick = [7, 7]; }
+    else pick = bestCells[Math.floor(Math.random() * bestCells.length)];
+    place(pick[0], pick[1]);
+  }
+  function checkWin(r, c, p) {
+    for (var d = 0; d < DIRS.length; d++) {
+      var dr = DIRS[d][0], dc = DIRS[d][1], cells = [[r, c]], i;
+      for (i = 1; i < 6; i++) {
+        var r1 = r + dr * i, c1 = c + dc * i;
+        if (!inB(r1, c1) || board[r1][c1] !== p) break;
+        cells.push([r1, c1]);
+      }
+      for (i = 1; i < 6; i++) {
+        var r2 = r - dr * i, c2 = c - dc * i;
+        if (!inB(r2, c2) || board[r2][c2] !== p) break;
+        cells.push([r2, c2]);
+      }
+      if (cells.length >= 5) return cells.slice(0, 5);
+    }
+    return null;
+  }
+  function full() {
+    for (var r = 0; r < N; r++) for (var c = 0; c < N; c++) if (!board[r][c]) return false;
+    return true;
+  }
+  function status(t) { var el = g('status'); if (el) el.textContent = t; }
+  function nameOf(p) {
+    if (mode() === '2p') return p === 1 ? 'Black' : 'White';
+    return p === humanColor() ? 'You' : 'Computer';
+  }
+  function renderScores() {
+    var a = g('w1'), b = g('w2'), d = g('wd');
+    if (a) a.textContent = String(scores.w1);
+    if (b) b.textContent = String(scores.w2);
+    if (d) d.textContent = String(scores.wd);
+  }
+  function render() {
+    var bd = g('board'); if (!bd) return;
+    bd.innerHTML = '';
+    var winSet = {};
+    for (var i = 0; i < winLine.length; i++) winSet[winLine[i][0] + ',' + winLine[i][1]] = 1;
+    for (var r = 0; r < N; r++) for (var c = 0; c < N; c++) {
+      (function (rr, cc) {
+        var b = document.createElement('button');
+        b.type = 'button';
+        b.style.cssText = 'width:100%;aspect-ratio:1;border:0;padding:0;background:transparent;position:relative;cursor:pointer;';
+        b.setAttribute('aria-label', 'Play at row ' + (rr + 1) + ' col ' + (cc + 1));
+        var inner = '<span style="position:absolute;left:0;top:50%;width:100%;height:1px;background:#8a6d3b"></span>' +
+          '<span style="position:absolute;top:0;left:50%;height:100%;width:1px;background:#8a6d3b"></span>' +
+          '<span style="position:absolute;left:15%;top:15%;width:70%;height:70%;border-radius:50%;background:#8a6d3b;opacity:.55"></span>';
+        var v = board[rr][cc];
+        if (v) {
+          var isWin = winSet[rr + ',' + cc];
+          inner = '<span style="position:absolute;left:8%;top:8%;width:84%;height:84%;border-radius:50%;background:' + (v === 1 ? '#1c1917' : '#fafaf9') + ';box-shadow:0 2px 4px rgba(0,0,0,.45);' + (isWin ? 'outline:3px solid #f43f5e;' : '') + '"></span>';
+        }
+        b.innerHTML = inner;
+        if (!over && !v) b.addEventListener('click', function () { onPlay(rr, cc); });
+        bd.appendChild(b);
+      })(r, c);
+    }
+  }
+  function onPlay(r, c) {
+    if (over || board[r][c]) return;
+    if (mode() === 'ai' && turn !== humanColor()) return;
+    place(r, c);
+  }
+  function place(r, c) {
+    board[r][c] = turn;
+    var w = checkWin(r, c, turn);
+    if (w) {
+      over = true; winLine = w;
+      if (turn === 1) scores.w1++; else scores.w2++;
+      renderScores(); render();
+      status('🎉 ' + nameOf(turn) + (turn === 1 ? ' (black)' : ' (white)') + ' wins with five in a row!');
+      return;
+    }
+    if (full()) {
+      over = true; scores.wd++;
+      renderScores(); render();
+      status('It\'s a draw — the board is full.');
+      return;
+    }
+    turn = 3 - turn;
+    render();
+    if (over) return;
+    if (mode() === 'ai' && turn !== humanColor()) {
+      status('Computer is thinking…');
+      setTimeout(aiMove, 350);
+    } else status(nameOf(turn) + ' to move (' + (turn === 1 ? 'black' : 'white') + ').');
+  }
+  function reset() {
+    setup();
+    TN.clearErr(P + 'error');
+    render();
+    if (mode() === 'ai' && humanColor() === 2) { status('Computer (black) moves first…'); setTimeout(aiMove, 400); }
+    else status(nameOf(turn) + ' to move — black goes first.');
+  }
+  try {
+    if (!g('board')) return;
+    TN.on(P + 'new', 'click', reset);
+    TN.on(P + 'mode', 'change', reset);
+    TN.on(P + 'color', 'change', reset);
+    reset();
+  } catch (e) { /* never throw on load */ }
+})();
+
+</script>
+</body>
+</html>

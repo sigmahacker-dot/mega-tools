@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Riemann Sum Visualizer — Free Online | ToolNest</title>
+<meta name="description" content="See Riemann sums come alive: canvas bar visualization for left, right, midpoint and trapezoidal sums of any function over [a, b], all four estimates compared.">
+<meta name="keywords" content="riemann sum, riemann sum visualizer, left right midpoint, trapezoid rule graph">
+<link rel="canonical" href="https://toolnest.vercel.app/tools/riemann-sum-visualizer/">
+<meta name="theme-color" content="#07070b">
+<meta property="og:title" content="Riemann Sum Visualizer — Free Online | ToolNest">
+<meta property="og:description" content="See Riemann sums come alive: canvas bar visualization for left, right, midpoint and trapezoidal sums of any function over [a, b], all four estimates compared.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css?v=4">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%23e01111'/><text x='50' y='68' font-size='58' text-anchor='middle' fill='white' font-family='Arial' font-weight='bold'>T</text></svg>">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebApplication","name":"Riemann Sum Visualizer","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0"},"url":"https://toolnest.vercel.app/tools/riemann-sum-visualizer/","description":"See Riemann sums come alive: canvas bar visualization for left, right, midpoint and trapezoidal sums of any function over [a, b], all four estimates compared."},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What is the difference between the four sums?","acceptedAnswer":{"@type":"Answer","text":"Left uses f at each subinterval's left end, right uses the right end, midpoint uses the center, and trapezoid averages left and right (drawing trapezoids instead of rectangles)."}},{"@type":"Question","name":"Why do the sums disagree for small n?","acceptedAnswer":{"@type":"Answer","text":"Each method samples the function at different points, so on a sloped curve left under- or over-estimates. As n grows, all four converge to the true integral."}},{"@type":"Question","name":"What functions can I type?","acceptedAnswer":{"@type":"Answer","text":"Polynomials (x^2), sin, cos, tan, exp, ln, sqrt, abs, pi, e, with + − * / ^ and parentheses."}}]}]}</script>
+</head>
+<body>
+<header class="site-header">
+  <div class="container">
+    <a class="logo" href="/"><span class="logo-mark">T</span> ToolNest</a>
+    <div class="header-right">
+      <form class="nav-search" action="/" method="get" role="search">
+        <span class="ns-icon">🔍</span>
+        <input type="search" name="q" placeholder="Search tools…" aria-label="Search tools" autocomplete="off">
+      </form>
+      <div class="menu-wrap">
+        <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="menuPanel" aria-label="Open menu"><span></span><span></span><span></span></button>
+        <nav class="menu-panel" id="menuPanel" aria-label="Site">
+          <a href="/">Home</a>
+          <a href="/#categories">Categories</a>
+          <a href="/#all-tools">All Tools</a>
+        </nav>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ADSTERRA-HEADER: paste your Adsterra banner ad code inside the div below -->
+<div class="container"><div class="ad-slot ad-leaderboard" data-ad="header"></div></div>
+
+<main class="container">
+  <nav class="crumbs"><a href="/">Home</a> &rsaquo; <a href="/#math">Math &amp; Numbers</a> &rsaquo; Riemann Sum Visualizer</nav>
+  <div class="tool-hero">
+    <h1>Riemann Sum Visualizer</h1>
+    <p>See Riemann sums come alive: canvas bar visualization for left, right, midpoint and trapezoidal sums of any function over [a, b], all four estimates compared.</p>
+  </div>
+
+  <div class="tool-card">
+  <div class="grid2">
+    <div class="field">
+      <label for="riemann-sum-visualizer-fn">f(x)</label>
+      <input class="input" id="riemann-sum-visualizer-fn" type="text" placeholder="e.g. x^2" value="x^2" style="font-family:monospace">
+    </div>
+    <div class="field">
+      <label for="riemann-sum-visualizer-method">Draw method</label>
+      <select class="select" id="riemann-sum-visualizer-method">
+        <option value="left">Left endpoints</option>
+        <option value="right">Right endpoints</option>
+        <option value="midpoint" selected>Midpoints</option>
+        <option value="trapezoid">Trapezoids</option>
+      </select>
+    </div>
+    <div class="field">
+      <label for="riemann-sum-visualizer-a">a</label>
+      <input class="input" id="riemann-sum-visualizer-a" type="number" step="any" value="0">
+    </div>
+    <div class="field">
+      <label for="riemann-sum-visualizer-b">b</label>
+      <input class="input" id="riemann-sum-visualizer-b" type="number" step="any" value="3">
+    </div>
+    <div class="field">
+      <label for="riemann-sum-visualizer-n">Rectangles n (1–200)</label>
+      <input class="input" id="riemann-sum-visualizer-n" type="number" min="1" max="200" step="1" value="8">
+    </div>
+    <div class="field" style="align-self:end">
+      <button type="button" class="btn" id="riemann-sum-visualizer-draw">Draw</button>
+    </div>
+  </div>
+  <div class="error" id="riemann-sum-visualizer-error"></div>
+  <div id="riemann-sum-visualizer-out" class="hidden">
+    <canvas id="riemann-sum-visualizer-cv" width="680" height="360" style="width:100%;height:auto;border-radius:8px;background:#0b1220"></canvas>
+    <div class="stat-cards" style="margin-top:12px">
+      <div class="stat-card"><div class="v" id="riemann-sum-visualizer-s-left">–</div><div class="l">Left sum</div></div>
+      <div class="stat-card"><div class="v" id="riemann-sum-visualizer-s-right">–</div><div class="l">Right sum</div></div>
+      <div class="stat-card"><div class="v" id="riemann-sum-visualizer-s-mid">–</div><div class="l">Midpoint sum</div></div>
+      <div class="stat-card"><div class="v" id="riemann-sum-visualizer-s-trap">–</div><div class="l">Trapezoid sum</div></div>
+    </div>
+    <p class="muted" id="riemann-sum-visualizer-note"></p>
+  </div>
+</div>
+
+
+  <!-- ADSTERRA-INCONTENT: paste your Adsterra native/in-content ad code inside the div below -->
+  <div class="ad-slot" data-ad="incontent"></div>
+
+  <div class="info-grid">
+    <div class="info-card">
+      <h2>📖 How to use</h2>
+      <ol><li>Type f(x), the limits a and b, and the number of rectangles n.</li><li>Pick left, right, midpoint or trapezoid to choose which rectangles the canvas draws.</li><li>Press Draw to render the curve with the approximating bars.</li><li>Compare all four sums in the stat cards — watch them converge as you raise n.</li></ol>
+    </div>
+    <div class="info-card">
+      <h2>❓ Frequently asked questions</h2>
+      <div class="faq"><details><summary>What is the difference between the four sums?</summary><p>Left uses f at each subinterval&#39;s left end, right uses the right end, midpoint uses the center, and trapezoid averages left and right (drawing trapezoids instead of rectangles).</p></details><details><summary>Why do the sums disagree for small n?</summary><p>Each method samples the function at different points, so on a sloped curve left under- or over-estimates. As n grows, all four converge to the true integral.</p></details><details><summary>What functions can I type?</summary><p>Polynomials (x^2), sin, cos, tan, exp, ln, sqrt, abs, pi, e, with + − * / ^ and parentheses.</p></details></div>
+    </div>
+  </div>
+
+  <section class="section">
+    <h2>🔗 Related tools</h2>
+    <div class="tool-grid"><a class="tool-link" href="/tools/24-game-solver/" data-search="24 game solver solve the 24 game exhaustively: every ordering, operation and parenthesization is tried with exact fraction arithmetic, and all distinct solutions are shown. 24 game solver make 24 solver 24 puzzle arithmetic puzzle solver"><span class="t-ico">📐</span><span class="t-body"><b>24 Game Solver</b><small>Solve the 24 game exhaustively: every ordering, operation and parenthesization is tried with…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/ancient-numerals-converter/" data-search="ancient numerals converter convert decimal numbers to roman, egyptian hieroglyphic, babylonian cuneiform and mayan numerals — with roman numerals also decoded back to decimal. roman numerals egyptian numerals babylonian numerals mayan numerals ancient numbers"><span class="t-ico">📐</span><span class="t-body"><b>Ancient Numerals Converter</b><small>Convert decimal numbers to Roman, Egyptian hieroglyphic, Babylonian cuneiform and Mayan nume…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/arithmetic-sequence-calculator/" data-search="arithmetic sequence calculator from the first term and common difference get the nth term and the sum of the first n terms. arithmetic sequence arithmetic progression nth term sum of arithmetic series common difference"><span class="t-ico">📐</span><span class="t-body"><b>Arithmetic Sequence Calculator</b><small>From the first term and common difference get the nth term and the sum of the first n terms.</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/base-n-arithmetic/" data-search="base-n arithmetic add, subtract, multiply and divide numbers in any base from 2 to 36 with exact bigint math and a full conversion breakdown. base n arithmetic binary addition hexadecimal calculator base 36 math"><span class="t-ico">📐</span><span class="t-body"><b>Base-N Arithmetic</b><small>Add, subtract, multiply and divide numbers in any base from 2 to 36 with exact BigInt math a…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/bayes-theorem-calculator/" data-search="bayes theorem calculator compute posterior probabilities from prior, sensitivity and specificity with the full bayes formula, natural frequencies and a probability tree. bayes theorem calculator posterior probability sensitivity specificity medical test probability"><span class="t-ico">📐</span><span class="t-body"><b>Bayes Theorem Calculator</b><small>Compute posterior probabilities from prior, sensitivity and specificity with the full Bayes …</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/bcd-converter/" data-search="bcd converter convert decimal numbers to binary-coded decimal (packed and unpacked) and decode bcd back to decimal, with per-digit nibble breakdowns. bcd converter binary coded decimal packed bcd unpacked bcd bcd decoder"><span class="t-ico">📐</span><span class="t-body"><b>BCD Converter</b><small>Convert decimal numbers to Binary-Coded Decimal (packed and unpacked) and decode BCD back to…</small></span><span class="t-arrow">→</span></a></div>
+  </section>
+</main>
+
+<!-- ADSTERRA-FOOTER: paste your Adsterra footer/banner ad code inside the div below -->
+<div class="container"><div class="ad-slot" data-ad="footer"></div></div>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="f-grid">
+      <div>
+        <span class="brandline"><span class="logo-mark">T</span> ToolNest</span>
+        <p>Free online tools that actually work. No sign-up, no watermarks — and your files never leave your device for client-side tools.</p>
+      </div>
+      <div>
+        <h4>Popular</h4>
+        <a href="/tools/qr-code-generator/">QR Code Generator</a>
+        <a href="/tools/background-remover/">Background Remover</a>
+        <a href="/tools/pdf-merger/">PDF Merger</a>
+        <a href="/tools/word-counter/">Word Counter</a>
+      </div>
+      <div>
+        <h4>Categories</h4>
+        <a href="/#image">Image Tools</a>
+        <a href="/#pdf">PDF &amp; Documents</a>
+        <a href="/#calculators">Calculators</a>
+        <a href="/#developer">Developer Tools</a>
+      </div>
+      <div>
+        <h4>Site</h4>
+        <a href="/">Home</a>
+        <a href="/#all-tools">All Tools</a>
+        <a href="/sitemap.xml">Sitemap</a>
+      </div>
+    </div>
+    <div class="f-bottom">© 2026 ToolNest · Free tools for everyone · Made with care</div>
+  </div>
+</footer>
+
+<script src="/assets/site.js?v=5"></script>
+
+<script>
+(function () {
+  'use strict';
+  var P = 'riemann-sum-visualizer-', ERR = P + 'error';
+  function g(id) { return TN.el(P + id); }
+  var FN1 = { sin: Math.sin, cos: Math.cos, tan: Math.tan, asin: Math.asin, acos: Math.acos, atan: Math.atan, exp: Math.exp, ln: Math.log, sqrt: Math.sqrt, abs: Math.abs };
+  function makeEval(src) {
+    var toks = [], i = 0;
+    while (i < src.length) {
+      var c = src[i];
+      if (/\s/.test(c)) { i++; continue; }
+      if (/[0-9.]/.test(c)) {
+        var j = i;
+        while (j < src.length && /[0-9.]/.test(src[j])) j++;
+        var num = src.slice(i, j);
+        if (!/^\d+(\.\d+)?$/.test(num)) throw new Error('Bad number "' + num + '".');
+        toks.push({ t: 'num', v: parseFloat(num) }); i = j; continue;
+      }
+      if (/[a-zA-Z]/.test(c)) {
+        var k = i;
+        while (k < src.length && /[a-zA-Z]/.test(src[k])) k++;
+        var w = src.slice(i, k).toLowerCase(); i = k;
+        if (w === 'x') toks.push({ t: 'x' });
+        else if (w === 'e') toks.push({ t: 'num', v: Math.E });
+        else if (w === 'pi') toks.push({ t: 'num', v: Math.PI });
+        else if (w === 'log') toks.push({ t: 'fn', v: 'log10' });
+        else if (FN1[w]) toks.push({ t: 'fn', v: w });
+        else throw new Error('Unknown name "' + w + '".');
+        continue;
+      }
+      if ('+-*/^()'.indexOf(c) >= 0) { toks.push({ t: c }); i++; continue; }
+      throw new Error('Unexpected character "' + c + '".');
+    }
+    var out = [];
+    for (var q = 0; q < toks.length; q++) {
+      out.push(toks[q]);
+      if (q + 1 < toks.length) {
+        var a = toks[q].t, b = toks[q + 1].t;
+        if ((a === 'num' || a === 'x' || a === ')') && (b === 'num' || b === 'x' || b === 'fn' || b === '(')) out.push({ t: '*' });
+      }
+    }
+    toks = out;
+    var pos = 0;
+    function peek() { return toks[pos]; }
+    function next() { return toks[pos++]; }
+    function expr() {
+      var n = term();
+      while (peek() && (peek().t === '+' || peek().t === '-')) { var o = next().t, r = term(); n = { t: o, l: n, r: r }; }
+      return n;
+    }
+    function term() {
+      var n = unary();
+      while (peek() && (peek().t === '*' || peek().t === '/')) { var o = next().t, r = unary(); n = { t: o, l: n, r: r }; }
+      return n;
+    }
+    function unary() {
+      if (peek() && peek().t === '-') { next(); return { t: 'neg', a: unary() }; }
+      if (peek() && peek().t === '+') { next(); return unary(); }
+      return power();
+    }
+    function power() {
+      var n = atom();
+      if (peek() && peek().t === '^') { next(); n = { t: 'pow', l: n, r: unary() }; }
+      return n;
+    }
+    function atom() {
+      var tk = next();
+      if (!tk) throw new Error('Unexpected end of expression.');
+      if (tk.t === 'num' || tk.t === 'x') return tk;
+      if (tk.t === 'fn') {
+        if (!peek() || peek().t !== '(') throw new Error('Expected ( after function.');
+        next(); var a = expr();
+        if (!peek() || peek().t !== ')') throw new Error('Missing ).');
+        next(); return { t: 'fn', v: tk.v, a: a };
+      }
+      if (tk.t === '(') {
+        var e = expr();
+        if (!peek() || peek().t !== ')') throw new Error('Missing ).');
+        next(); return e;
+      }
+      throw new Error('Unexpected token.');
+    }
+    var tree = expr();
+    if (pos < toks.length) throw new Error('Could not parse the whole expression.');
+    function ev(n, x) {
+      switch (n.t) {
+        case 'num': return n.v;
+        case 'x': return x;
+        case 'neg': return -ev(n.a, x);
+        case '+': return ev(n.l, x) + ev(n.r, x);
+        case '-': return ev(n.l, x) - ev(n.r, x);
+        case '*': return ev(n.l, x) * ev(n.r, x);
+        case '/': { var d = ev(n.r, x); if (d === 0) throw new Error('Division by zero in f.'); return ev(n.l, x) / d; }
+        case 'pow': return Math.pow(ev(n.l, x), ev(n.r, x));
+        case 'fn': {
+          var a = ev(n.a, x), f = n.v;
+          if ((f === 'ln' || f === 'log10') && a <= 0) throw new Error('log of non-positive value.');
+          if (f === 'sqrt' && a < 0) throw new Error('sqrt of negative value.');
+          return f === 'log10' ? Math.log10(a) : FN1[f](a);
+        }
+      }
+      throw new Error('Evaluation error.');
+    }
+    return function (x) {
+      var v = ev(tree, x);
+      if (!isFinite(v)) throw new Error('f is not finite at x = ' + x + '.');
+      return v;
+    };
+  }
+  function fmt(x) {
+    if (!isFinite(x)) return String(x);
+    return String(parseFloat(x.toPrecision(8)));
+  }
+  function draw() {
+    try {
+      TN.clearErr(ERR);
+      var src = g('fn').value.trim();
+      if (!src) { TN.setErr(ERR, 'Type f(x) first.'); return; }
+      var f;
+      try { f = makeEval(src); } catch (e) { TN.setErr(ERR, e.message); return; }
+      var a = parseFloat(g('a').value), b = parseFloat(g('b').value);
+      if (isNaN(a) || isNaN(b) || a === b) { TN.setErr(ERR, 'Limits a and b must be numbers with a ≠ b.'); return; }
+      var n = parseInt(g('n').value, 10);
+      if (isNaN(n) || n < 1 || n > 200) { TN.setErr(ERR, 'n must be an integer from 1 to 200.'); return; }
+      var method = g('method').value;
+      var lo = Math.min(a, b), hi = Math.max(a, b), sign = a < b ? 1 : -1;
+      var h = (hi - lo) / n, i;
+      // sums
+      var sL = 0, sR = 0, sM = 0, sT = 0;
+      var fl = f(lo), fr;
+      for (i = 0; i < n; i++) {
+        var x0 = lo + i * h, x1 = x0 + h, xm = (x0 + x1) / 2;
+        var f0 = f(x0), f1 = f(x1), fm = f(xm);
+        sL += f0 * h; sR += f1 * h; sM += fm * h; sT += (f0 + f1) / 2 * h;
+      }
+      g('s-left').textContent = fmt(sign * sL);
+      g('s-right').textContent = fmt(sign * sR);
+      g('s-mid').textContent = fmt(sign * sM);
+      g('s-trap').textContent = fmt(sign * sT);
+      // canvas
+      var cv = g('cv');
+      if (!cv || !cv.getContext) { TN.setErr(ERR, 'Canvas is not supported in this browser.'); return; }
+      var ctx = cv.getContext('2d');
+      var W = cv.width, H = cv.height, ml = 46, mr = 14, mt = 14, mb = 34;
+      var pw = W - ml - mr, ph = H - mt - mb;
+      var NS = 240, xs = [], ys = [], ymin = Infinity, ymax = -Infinity;
+      for (i = 0; i <= NS; i++) {
+        var xx = lo + (hi - lo) * i / NS, yy = f(xx);
+        xs.push(xx); ys.push(yy);
+        if (yy < ymin) ymin = yy;
+        if (yy > ymax) ymax = yy;
+      }
+      if (ymin === ymax) { ymin -= 1; ymax += 1; }
+      var pad = (ymax - ymin) * 0.12;
+      ymin -= pad; ymax += pad;
+      function X(x) { return ml + (x - lo) / (hi - lo) * pw; }
+      function Y(y) { return mt + ph - (y - ymin) / (ymax - ymin) * ph; }
+      ctx.clearRect(0, 0, W, H);
+      ctx.fillStyle = '#0b1220'; ctx.fillRect(0, 0, W, H);
+      // grid + axes
+      ctx.strokeStyle = '#1e293b'; ctx.lineWidth = 1;
+      for (i = 0; i <= 4; i++) {
+        var gy = mt + ph * i / 4;
+        ctx.beginPath(); ctx.moveTo(ml, gy); ctx.lineTo(W - mr, gy); ctx.stroke();
+      }
+      var y0 = Y(0);
+      if (y0 >= mt && y0 <= mt + ph) {
+        ctx.strokeStyle = '#475569'; ctx.lineWidth = 1.5;
+        ctx.beginPath(); ctx.moveTo(ml, y0); ctx.lineTo(W - mr, y0); ctx.stroke();
+      }
+      ctx.strokeStyle = '#475569';
+      ctx.beginPath(); ctx.moveTo(ml, mt); ctx.lineTo(ml, mt + ph); ctx.stroke();
+      // bars
+      ctx.fillStyle = 'rgba(74,222,128,0.35)';
+      ctx.strokeStyle = '#4ade80'; ctx.lineWidth = 1;
+      for (i = 0; i < n; i++) {
+        var bx0 = lo + i * h, bx1 = bx0 + h, bxm = (bx0 + bx1) / 2;
+        var px0 = X(bx0), px1 = X(bx1);
+        if (method === 'trapezoid') {
+          ctx.beginPath();
+          ctx.moveTo(px0, Y(0)); ctx.lineTo(px0, Y(f(bx0)));
+          ctx.lineTo(px1, Y(f(bx1))); ctx.lineTo(px1, Y(0));
+          ctx.closePath(); ctx.fill(); ctx.stroke();
+        } else {
+          var hx = method === 'left' ? bx0 : (method === 'right' ? bx1 : bxm);
+          var hv = f(hx), py = Y(hv), pz = Y(0);
+          ctx.fillRect(px0 + 0.5, Math.min(py, pz), Math.max(px1 - px0 - 1, 1), Math.abs(py - pz));
+          ctx.strokeRect(px0 + 0.5, Math.min(py, pz), Math.max(px1 - px0 - 1, 1), Math.abs(py - pz));
+        }
+      }
+      // curve
+      ctx.strokeStyle = '#f87171'; ctx.lineWidth = 2.5;
+      ctx.beginPath();
+      for (i = 0; i <= NS; i++) {
+        var px = X(xs[i]), py2 = Y(ys[i]);
+        if (i === 0) ctx.moveTo(px, py2); else ctx.lineTo(px, py2);
+      }
+      ctx.stroke();
+      // labels
+      ctx.fillStyle = '#94a3b8'; ctx.font = '11px sans-serif';
+      ctx.fillText(fmt(lo), ml - 4, H - 12);
+      var lbl = fmt(hi);
+      ctx.fillText(lbl, W - mr - ctx.measureText(lbl).width, H - 12);
+      ctx.fillText(fmt(ymax - pad), 4, mt + 10);
+      ctx.fillText(fmt(ymin + pad), 4, mt + ph);
+      TN.show(P + 'out');
+      var names = { left: 'left endpoints', right: 'right endpoints', midpoint: 'midpoints', trapezoid: 'trapezoids' };
+      g('note').textContent = 'Drawing ' + names[method] + ' with n=' + n + ', h=' + fmt(h) + '. Raise n to watch all four sums converge.';
+    } catch (e) { TN.setErr(ERR, e.message || 'Could not draw.'); }
+  }
+  try {
+    if (!TN.el(P + 'draw')) return;
+    TN.on(P + 'draw', 'click', draw);
+    TN.on(P + 'method', 'change', function () { if (!TN.el(P + 'out').classList.contains('hidden')) draw(); });
+  } catch (e) { /* never throw on load */ }
+})();
+
+</script>
+</body>
+</html>

@@ -1,0 +1,38 @@
+{
+  "slug": "json-to-typescript",
+  "title": "JSON to TypeScript",
+  "category": "developer",
+  "description": "Convert JSON to TypeScript interfaces \u2014 nested objects, arrays, unions and optional detection.",
+  "keywords": [
+    "json to typescript",
+    "json to interface",
+    "typescript interface generator",
+    "json ts converter"
+  ],
+  "howto": [
+    "Paste your JSON sample.",
+    "Set the root interface name.",
+    "Toggle export and optional-field handling.",
+    "Copy the interfaces or download types.ts."
+  ],
+  "faqs": [
+    {
+      "q": "How are nested objects handled?",
+      "a": "Each nested object becomes its own named interface (ParentKey + suffix), so the output compiles cleanly."
+    },
+    {
+      "q": "How are arrays typed?",
+      "a": "From their items \u2014 a single type when uniform, a union when mixed, unknown[] when empty."
+    },
+    {
+      "q": "What does \"optional for nulls\" do?",
+      "a": "Fields whose sample value is null become optional (field?: type | null) since the real type is unknown."
+    },
+    {
+      "q": "Does the output compile?",
+      "a": "Yes \u2014 valid TypeScript with no dependencies. Run tsc --noEmit to verify."
+    }
+  ],
+  "libs": [],
+  "module": false
+}

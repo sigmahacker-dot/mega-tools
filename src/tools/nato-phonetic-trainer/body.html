@@ -1,0 +1,45 @@
+<div class="tool-card">
+  <div class="btn-row" style="justify-content:center;margin-bottom:14px">
+    <button class="btn btn-sm" id="nato-phonetic-trainer-m-learn">Learn</button>
+    <button class="btn btn-sm btn-outline" id="nato-phonetic-trainer-m-quiz">Quiz</button>
+    <button class="btn btn-sm btn-outline" id="nato-phonetic-trainer-m-spell">Spell a word</button>
+  </div>
+  <div id="nato-phonetic-trainer-learn">
+    <div style="text-align:center;padding:26px 10px;border:1px solid #2a2a33;border-radius:14px;background:#0d0d13;cursor:pointer" id="nato-phonetic-trainer-card">
+      <div style="font-size:56px;font-weight:700" id="nato-phonetic-trainer-face">A</div>
+      <div class="muted" style="margin-top:6px">tap card to flip</div>
+    </div>
+    <div class="btn-row" style="justify-content:center;margin-top:12px">
+      <button class="btn btn-sm btn-outline" id="nato-phonetic-trainer-prev">← Prev</button>
+      <span class="muted" id="nato-phonetic-trainer-pos" style="align-self:center">1 / 26</span>
+      <button class="btn btn-sm btn-outline" id="nato-phonetic-trainer-next">Next →</button>
+      <button class="btn btn-sm btn-outline" id="nato-phonetic-trainer-shuf">Shuffle</button>
+    </div>
+  </div>
+  <div id="nato-phonetic-trainer-quiz" class="hidden">
+    <div style="text-align:center;padding:20px 10px;border:1px solid #2a2a33;border-radius:14px;background:#0d0d13">
+      <div class="muted">What is the NATO word for</div>
+      <div style="font-size:64px;font-weight:700;margin:6px 0" id="nato-phonetic-trainer-q">A</div>
+      <input class="input" id="nato-phonetic-trainer-a" placeholder="Type the word…" autocomplete="off" style="max-width:280px;margin:0 auto">
+      <div style="min-height:26px;margin-top:8px;font-weight:600" id="nato-phonetic-trainer-fb"></div>
+    </div>
+    <div class="btn-row" style="justify-content:center;margin-top:12px">
+      <button class="btn btn-sm" id="nato-phonetic-trainer-check">Check</button>
+      <button class="btn btn-sm btn-outline" id="nato-phonetic-trainer-skip">Skip</button>
+      <button class="btn btn-sm btn-outline" id="nato-phonetic-trainer-reset">Reset score</button>
+    </div>
+    <div class="stat-cards" style="max-width:420px;margin:12px auto 0">
+      <div class="stat-card"><div class="v" id="nato-phonetic-trainer-ok">0</div><div class="l">Correct</div></div>
+      <div class="stat-card"><div class="v" id="nato-phonetic-trainer-bad">0</div><div class="l">Wrong</div></div>
+      <div class="stat-card"><div class="v" id="nato-phonetic-trainer-acc">–</div><div class="l">Accuracy</div></div>
+    </div>
+  </div>
+  <div id="nato-phonetic-trainer-spell" class="hidden">
+    <div class="field">
+      <label for="nato-phonetic-trainer-word">Enter a word or call sign</label>
+      <input class="input" id="nato-phonetic-trainer-word" placeholder="e.g. Rawi 7" autocomplete="off">
+    </div>
+    <div class="result" id="nato-phonetic-trainer-spellout" style="font-size:18px;line-height:1.9"></div>
+  </div>
+  <div class="error" id="nato-phonetic-trainer-error"></div>
+</div>

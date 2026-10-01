@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Shift Calendar Maker — Free Online | ToolNest</title>
+<meta name="description" content="Build a monthly shift rota from a rotation pattern (e.g. DDNNOOOO for 2 days, 2 nights, 4 off): color-coded calendar, shift totals and print view.">
+<meta name="keywords" content="shift calendar, rota maker, shift schedule, work rotation planner, DDNNOOOO">
+<link rel="canonical" href="https://toolnest.vercel.app/tools/shift-calendar-maker/">
+<meta name="theme-color" content="#07070b">
+<meta property="og:title" content="Shift Calendar Maker — Free Online | ToolNest">
+<meta property="og:description" content="Build a monthly shift rota from a rotation pattern (e.g. DDNNOOOO for 2 days, 2 nights, 4 off): color-coded calendar, shift totals and print view.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css?v=4">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%23e01111'/><text x='50' y='68' font-size='58' text-anchor='middle' fill='white' font-family='Arial' font-weight='bold'>T</text></svg>">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebApplication","name":"Shift Calendar Maker","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0"},"url":"https://toolnest.vercel.app/tools/shift-calendar-maker/","description":"Build a monthly shift rota from a rotation pattern (e.g. DDNNOOOO for 2 days, 2 nights, 4 off): color-coded calendar, shift totals and print view."},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How do I write the pattern?","acceptedAnswer":{"@type":"Answer","text":"One letter per day in cycle order: D day, N night, O off. 'DDNNOOOO' means 2 day shifts, 2 night shifts, then 4 days off, repeating. Letters are case-insensitive."}},{"@type":"Question","name":"What does 'cycle starts' mean?","acceptedAnswer":{"@type":"Answer","text":"The date on which day 1 of your pattern falls. If today you are on the second night of DDNNOOOO, set the start date 2 days earlier so the pattern lines up."}},{"@type":"Question","name":"Can I print the calendar?","acceptedAnswer":{"@type":"Answer","text":"Yes — the Print button produces a clean black-and-white-friendly layout of the current month."}}]}]}</script>
+</head>
+<body>
+<header class="site-header">
+  <div class="container">
+    <a class="logo" href="/"><span class="logo-mark">T</span> ToolNest</a>
+    <div class="header-right">
+      <form class="nav-search" action="/" method="get" role="search">
+        <span class="ns-icon">🔍</span>
+        <input type="search" name="q" placeholder="Search tools…" aria-label="Search tools" autocomplete="off">
+      </form>
+      <div class="menu-wrap">
+        <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="menuPanel" aria-label="Open menu"><span></span><span></span><span></span></button>
+        <nav class="menu-panel" id="menuPanel" aria-label="Site">
+          <a href="/">Home</a>
+          <a href="/#categories">Categories</a>
+          <a href="/#all-tools">All Tools</a>
+        </nav>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ADSTERRA-HEADER: paste your Adsterra banner ad code inside the div below -->
+<div class="container"><div class="ad-slot ad-leaderboard" data-ad="header"></div></div>
+
+<main class="container">
+  <nav class="crumbs"><a href="/">Home</a> &rsaquo; <a href="/#time">Time &amp; Date</a> &rsaquo; Shift Calendar Maker</nav>
+  <div class="tool-hero">
+    <h1>Shift Calendar Maker</h1>
+    <p>Build a monthly shift rota from a rotation pattern (e.g. DDNNOOOO for 2 days, 2 nights, 4 off): color-coded calendar, shift totals and print view.</p>
+  </div>
+
+  <div class="tool-card">
+  <div class="grid3">
+    <div class="field">
+      <label for="shift-calendar-maker-pattern">Rotation pattern (D/N/O)</label>
+      <input class="input" id="shift-calendar-maker-pattern" type="text" value="DDNNOOOO" style="font-family:monospace;text-transform:uppercase">
+    </div>
+    <div class="field">
+      <label for="shift-calendar-maker-month">Month</label>
+      <input class="input" id="shift-calendar-maker-month" type="month">
+    </div>
+    <div class="field">
+      <label for="shift-calendar-maker-start">Cycle day-1 date</label>
+      <input class="input" id="shift-calendar-maker-start" type="date">
+    </div>
+  </div>
+  <div class="btn-row">
+    <button type="button" class="btn" id="shift-calendar-maker-gen">Generate</button>
+    <button type="button" class="btn btn-outline" id="shift-calendar-maker-print">Print</button>
+  </div>
+  <div class="error" id="shift-calendar-maker-error"></div>
+  <div id="shift-calendar-maker-out" class="hidden">
+    <div class="stat-cards">
+      <div class="stat-card"><div class="v" id="shift-calendar-maker-c-days">–</div><div class="l">Day shifts</div></div>
+      <div class="stat-card"><div class="v" id="shift-calendar-maker-c-nights">–</div><div class="l">Night shifts</div></div>
+      <div class="stat-card"><div class="v" id="shift-calendar-maker-c-off">–</div><div class="l">Days off</div></div>
+    </div>
+    <div id="shift-calendar-maker-cal" style="overflow-x:auto"></div>
+    <p class="muted"><span style="color:#4ade80">■</span> Day &nbsp;<span style="color:#60a5fa">■</span> Night &nbsp;<span style="color:#94a3b8">■</span> Off</p>
+  </div>
+</div>
+
+
+  <!-- ADSTERRA-INCONTENT: paste your Adsterra native/in-content ad code inside the div below -->
+  <div class="ad-slot" data-ad="incontent"></div>
+
+  <div class="info-grid">
+    <div class="info-card">
+      <h2>📖 How to use</h2>
+      <ol><li>Type your rotation pattern with D = day shift, N = night shift, O = off (e.g. DDNNOOOO).</li><li>Pick the month and the date your current cycle starts (day 1 of the pattern).</li><li>Press Generate to render the color-coded month calendar with shift totals.</li><li>Use Print for a clean paper copy of the rota.</li></ol>
+    </div>
+    <div class="info-card">
+      <h2>❓ Frequently asked questions</h2>
+      <div class="faq"><details><summary>How do I write the pattern?</summary><p>One letter per day in cycle order: D day, N night, O off. &#39;DDNNOOOO&#39; means 2 day shifts, 2 night shifts, then 4 days off, repeating. Letters are case-insensitive.</p></details><details><summary>What does &#39;cycle starts&#39; mean?</summary><p>The date on which day 1 of your pattern falls. If today you are on the second night of DDNNOOOO, set the start date 2 days earlier so the pattern lines up.</p></details><details><summary>Can I print the calendar?</summary><p>Yes — the Print button produces a clean black-and-white-friendly layout of the current month.</p></details></div>
+    </div>
+  </div>
+
+  <section class="section">
+    <h2>🔗 Related tools</h2>
+    <div class="tool-grid"><a class="tool-link" href="/tools/add-subtract-days-calculator/" data-search="add / subtract days calculator add or subtract days, weeks, months or years from any date. optional business-days-only mode skips weekends automatically. add days to date subtract days calculator date plus days business days calculator date arithmetic"><span class="t-ico">⏰</span><span class="t-body"><b>Add / Subtract Days Calculator</b><small>Add or subtract days, weeks, months or years from any date. Optional business-days-only mode…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/anniversary-calculator/" data-search="anniversary calculator track any anniversary: days until the next one, which number it is (10th, 25th…), total days together and the weekday it falls on. anniversary calculator wedding anniversary countdown how many days until anniversary anniversary date tracker years together calculator"><span class="t-ico">⏰</span><span class="t-body"><b>Anniversary Calculator</b><small>Track any anniversary: days until the next one, which number it is (10th, 25th…), total days…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/bill-due-tracker/" data-search="bill due tracker never miss a payment — track recurring monthly bills with automatic next-due dates, days remaining and urgency sorting. bill due tracker bill reminder recurring bills tracker monthly bills organizer due date tracker"><span class="t-ico">⏰</span><span class="t-body"><b>Bill Due Tracker</b><small>Never miss a payment — track recurring monthly bills with automatic next-due dates, days rem…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/billable-hours-calculator/" data-search="billable hours calculator turn hours into invoices: billable hours × rate, utilization percentage against non-billable time, and the final invoice total. billable hours invoice calculator utilization rate freelance rate calculator"><span class="t-ico">⏰</span><span class="t-body"><b>Billable Hours Calculator</b><small>Turn hours into invoices: billable hours × rate, utilization percentage against non-billable…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/birthday-reminder-list/" data-search="birthday reminder list never miss a birthday: names and dates with days-until countdowns, next upcoming birthday highlighted, saved in your browser. birthday reminder birthday tracker birthday countdown never forget birthday"><span class="t-ico">⏰</span><span class="t-body"><b>Birthday Reminder List</b><small>Never miss a birthday: names and dates with days-until countdowns, next upcoming birthday hi…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/business-days-calculator/" data-search="business days calculator count working days between two dates, excluding weekends and your own custom holidays, with a full breakdown. business days calculator working days calculator weekdays between dates net workdays business days excluding holidays"><span class="t-ico">⏰</span><span class="t-body"><b>Business Days Calculator</b><small>Count working days between two dates, excluding weekends and your own custom holidays, with …</small></span><span class="t-arrow">→</span></a></div>
+  </section>
+</main>
+
+<!-- ADSTERRA-FOOTER: paste your Adsterra footer/banner ad code inside the div below -->
+<div class="container"><div class="ad-slot" data-ad="footer"></div></div>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="f-grid">
+      <div>
+        <span class="brandline"><span class="logo-mark">T</span> ToolNest</span>
+        <p>Free online tools that actually work. No sign-up, no watermarks — and your files never leave your device for client-side tools.</p>
+      </div>
+      <div>
+        <h4>Popular</h4>
+        <a href="/tools/qr-code-generator/">QR Code Generator</a>
+        <a href="/tools/background-remover/">Background Remover</a>
+        <a href="/tools/pdf-merger/">PDF Merger</a>
+        <a href="/tools/word-counter/">Word Counter</a>
+      </div>
+      <div>
+        <h4>Categories</h4>
+        <a href="/#image">Image Tools</a>
+        <a href="/#pdf">PDF &amp; Documents</a>
+        <a href="/#calculators">Calculators</a>
+        <a href="/#developer">Developer Tools</a>
+      </div>
+      <div>
+        <h4>Site</h4>
+        <a href="/">Home</a>
+        <a href="/#all-tools">All Tools</a>
+        <a href="/sitemap.xml">Sitemap</a>
+      </div>
+    </div>
+    <div class="f-bottom">© 2026 ToolNest · Free tools for everyone · Made with care</div>
+  </div>
+</footer>
+
+<script src="/assets/site.js?v=5"></script>
+
+<script>
+(function () {
+  'use strict';
+  var P = 'shift-calendar-maker-', ERR = P + 'error';
+  function g(id) { return TN.el(P + id); }
+  var DAY = 86400000;
+  function parseDate(s) {
+    var p = s.split('-');
+    return new Date(p[0], p[1] - 1, p[2]);
+  }
+  function gen() {
+    try {
+      TN.clearErr(ERR);
+      var pat = g('pattern').value.trim().toUpperCase().replace(/[^DNO]/g, '');
+      if (pat.length < 2) { TN.setErr(ERR, 'Pattern needs at least 2 letters using D (day), N (night), O (off) — e.g. DDNNOOOO.'); return; }
+      var monthV = g('month').value, startV = g('start').value;
+      if (!monthV) { TN.setErr(ERR, 'Pick a month.'); return; }
+      if (!startV) { TN.setErr(ERR, 'Pick the date your current cycle starts (pattern day 1).'); return; }
+      var mp = monthV.split('-'), y = parseInt(mp[0], 10), m = parseInt(mp[1], 10) - 1;
+      var cycleStart = parseDate(startV);
+      var first = new Date(y, m, 1);
+      var daysIn = new Date(y, m + 1, 0).getDate();
+      var startDay = (first.getDay() + 6) % 7; // Monday-first
+      var names = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
+      var colors = { D: '#4ade80', N: '#60a5fa', O: '#94a3b8' };
+      var labels = { D: 'Day', N: 'Night', O: 'Off' };
+      var cd = 0, cn = 0, co = 0;
+      var h = '<table class="data" style="border-collapse:collapse;width:100%;table-layout:fixed"><thead><tr>';
+      names.forEach(function (n) { h += '<th>' + n + '</th>'; });
+      h += '</tr></thead><tbody><tr>';
+      for (var b = 0; b < startDay; b++) h += '<td></td>';
+      var dow = startDay;
+      for (var d = 1; d <= daysIn; d++) {
+        var dt = new Date(y, m, d);
+        var idx = Math.round((dt - cycleStart) / DAY) % pat.length;
+        idx = ((idx % pat.length) + pat.length) % pat.length;
+        var code = pat.charAt(idx);
+        if (code === 'D') cd++; else if (code === 'N') cn++; else co++;
+        h += '<td style="height:64px;vertical-align:top;border-left:4px solid ' + colors[code] + '"><b>' + d + '</b><br><small>' + labels[code] + '</small></td>';
+        dow++;
+        if (dow === 7 && d < daysIn) { h += '</tr><tr>'; dow = 0; }
+      }
+      while (dow > 0 && dow < 7) { h += '<td></td>'; dow++; }
+      h += '</tr></tbody></table>';
+      TN.show(P + 'out');
+      g('cal').innerHTML = h;
+      g('c-days').textContent = String(cd);
+      g('c-nights').textContent = String(cn);
+      g('c-off').textContent = String(co);
+    } catch (e) { TN.setErr(ERR, e.message || 'Could not generate the calendar.'); }
+  }
+  try {
+    if (!TN.el(P + 'gen')) return;
+    var now = new Date();
+    g('month').value = now.getFullYear() + '-' + String(now.getMonth() + 1).padStart(2, '0');
+    g('start').value = now.getFullYear() + '-' + String(now.getMonth() + 1).padStart(2, '0') + '-01';
+    TN.on(P + 'gen', 'click', gen);
+    TN.on(P + 'print', 'click', function () { window.print(); });
+  } catch (e) { /* never throw on load */ }
+})();
+
+</script>
+</body>
+</html>

@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ringtone Maker — Free Online | ToolNest</title>
+<meta name="description" content="Trim any audio file into a ringtone with fade in/out — preview it, then download as WAV or MP3.">
+<meta name="keywords" content="ringtone maker, audio trimmer, mp3 cutter, custom ringtone">
+<link rel="canonical" href="https://toolnest.vercel.app/tools/ringtone-maker/">
+<meta name="theme-color" content="#07070b">
+<meta property="og:title" content="Ringtone Maker — Free Online | ToolNest">
+<meta property="og:description" content="Trim any audio file into a ringtone with fade in/out — preview it, then download as WAV or MP3.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css?v=4">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%23e01111'/><text x='50' y='68' font-size='58' text-anchor='middle' fill='white' font-family='Arial' font-weight='bold'>T</text></svg>">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebApplication","name":"Ringtone Maker","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0"},"url":"https://toolnest.vercel.app/tools/ringtone-maker/","description":"Trim any audio file into a ringtone with fade in/out — preview it, then download as WAV or MP3."},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How do trimming and fades work?","acceptedAnswer":{"@type":"Answer","text":"Set start/end times and fade lengths, then preview before downloading. Fades are linear volume ramps applied to the real audio data."}},{"@type":"Question","name":"WAV or MP3 — which should I pick?","acceptedAnswer":{"@type":"Answer","text":"WAV always works (built into your browser). MP3 needs the encoder library to load from the CDN — if it fails you'll get an honest message."}},{"@type":"Question","name":"Is my audio uploaded?","acceptedAnswer":{"@type":"Answer","text":"Yes — decoding, trimming and encoding all happen locally in your browser."}}]}]}</script>
+</head>
+<body>
+<header class="site-header">
+  <div class="container">
+    <a class="logo" href="/"><span class="logo-mark">T</span> ToolNest</a>
+    <div class="header-right">
+      <form class="nav-search" action="/" method="get" role="search">
+        <span class="ns-icon">🔍</span>
+        <input type="search" name="q" placeholder="Search tools…" aria-label="Search tools" autocomplete="off">
+      </form>
+      <div class="menu-wrap">
+        <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="menuPanel" aria-label="Open menu"><span></span><span></span><span></span></button>
+        <nav class="menu-panel" id="menuPanel" aria-label="Site">
+          <a href="/">Home</a>
+          <a href="/#categories">Categories</a>
+          <a href="/#all-tools">All Tools</a>
+        </nav>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ADSTERRA-HEADER: paste your Adsterra banner ad code inside the div below -->
+<div class="container"><div class="ad-slot ad-leaderboard" data-ad="header"></div></div>
+
+<main class="container">
+  <nav class="crumbs"><a href="/">Home</a> &rsaquo; <a href="/#video-audio">Video &amp; Audio</a> &rsaquo; Ringtone Maker</nav>
+  <div class="tool-hero">
+    <h1>Ringtone Maker</h1>
+    <p>Trim any audio file into a ringtone with fade in/out — preview it, then download as WAV or MP3.</p>
+  </div>
+
+  <div class="tool-card">
+  <div class="field">
+    <label for="ringtone-maker-file">Audio file</label>
+    <input type="file" id="ringtone-maker-file" accept="audio/*" class="input">
+  </div>
+  <div class="grid2">
+    <div class="field">
+      <label for="ringtone-maker-start">Start: <span id="ringtone-maker-start-val">0.0</span>s</label>
+      <input type="range" id="ringtone-maker-start" min="0" max="100" step="0.1" value="0">
+    </div>
+    <div class="field">
+      <label for="ringtone-maker-end">End: <span id="ringtone-maker-end-val">30.0</span>s</label>
+      <input type="range" id="ringtone-maker-end" min="0" max="100" step="0.1" value="30">
+    </div>
+  </div>
+  <div class="grid2">
+    <div class="field">
+      <label for="ringtone-maker-fadein">Fade in: <span id="ringtone-maker-fadein-val">0.5</span>s</label>
+      <input type="range" id="ringtone-maker-fadein" min="0" max="5" step="0.1" value="0.5">
+    </div>
+    <div class="field">
+      <label for="ringtone-maker-fadeout">Fade out: <span id="ringtone-maker-fadeout-val">1.0</span>s</label>
+      <input type="range" id="ringtone-maker-fadeout" min="0" max="5" step="0.1" value="1">
+    </div>
+  </div>
+  <p class="muted" id="ringtone-maker-info"></p>
+  <div class="btn-row">
+    <button class="btn btn-primary" id="ringtone-maker-preview">Preview</button>
+    <button class="btn btn-outline" id="ringtone-maker-wav">Download WAV</button>
+    <button class="btn btn-outline" id="ringtone-maker-mp3">Download MP3</button>
+  </div>
+  <div class="error" id="ringtone-maker-error"></div>
+  <p class="note">WAV export always works. MP3 needs the lamejs encoder from the CDN. Everything is processed in your browser.</p>
+</div>
+
+
+  <!-- ADSTERRA-INCONTENT: paste your Adsterra native/in-content ad code inside the div below -->
+  <div class="ad-slot" data-ad="incontent"></div>
+
+  <div class="info-grid">
+    <div class="info-card">
+      <h2>📖 How to use</h2>
+      <ol><li>Choose an audio file.</li><li>Drag the start/end sliders to the section you want.</li><li>Set fade-in and fade-out lengths.</li><li>Preview, then download as WAV or MP3.</li></ol>
+    </div>
+    <div class="info-card">
+      <h2>❓ Frequently asked questions</h2>
+      <div class="faq"><details><summary>How do trimming and fades work?</summary><p>Set start/end times and fade lengths, then preview before downloading. Fades are linear volume ramps applied to the real audio data.</p></details><details><summary>WAV or MP3 — which should I pick?</summary><p>WAV always works (built into your browser). MP3 needs the encoder library to load from the CDN — if it fails you&#39;ll get an honest message.</p></details><details><summary>Is my audio uploaded?</summary><p>Yes — decoding, trimming and encoding all happen locally in your browser.</p></details></div>
+    </div>
+  </div>
+
+  <section class="section">
+    <h2>🔗 Related tools</h2>
+    <div class="tool-grid"><a class="tool-link" href="/tools/8d-audio-panner/" data-search="8d audio panner the viral 8d audio effect: your track circles around your head with a rotating stereo-pan lfo. play it and download it. 8d audio 8d converter surround sound effect panning effect"><span class="t-ico">🎬</span><span class="t-body"><b>8D Audio Panner</b><small>The viral 8D audio effect: your track circles around your head with a rotating stereo-pan LF…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/audio-cutter/" data-search="audio cutter cut a section out of any audio file in your browser. set start and end times, preview the selection, then download it as an mp3. audio cutter cut audio online trim mp3 audio trimmer mp3 cutter"><span class="t-ico">🎬</span><span class="t-body"><b>Audio Cutter</b><small>Cut a section out of any audio file in your browser. Set start and end times, preview the se…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/audio-fade-in-out/" data-search="audio fade in/out add smooth fade-in and fade-out to any audio track and export as wav. audio fade in out fade audio add fade to mp3 fade in fade out"><span class="t-ico">🎬</span><span class="t-body"><b>Audio Fade In/Out</b><small>Add smooth fade-in and fade-out to any audio track and export as WAV.</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/audio-joiner/" data-search="audio joiner merge several audio files end-to-end into one wav download. join audio merge audio files combine mp3 audio joiner"><span class="t-ico">🎬</span><span class="t-body"><b>Audio Joiner</b><small>Merge several audio files end-to-end into one WAV download.</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/audio-normalizer/" data-search="audio normalizer peak-normalize any audio to your target level with a real offlineaudiocontext gain stage — see before/after peaks. audio normalizer normalize volume peak normalize loudness"><span class="t-ico">🎬</span><span class="t-body"><b>Audio Normalizer</b><small>Peak-normalize any audio to your target level with a real OfflineAudioContext gain stage — s…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/audio-reverse/" data-search="audio reverse reverse any audio file backwards and export it as a wav. reverse audio backwards audio reverse mp3 audio reverser"><span class="t-ico">🎬</span><span class="t-body"><b>Audio Reverse</b><small>Reverse any audio file backwards and export it as a WAV.</small></span><span class="t-arrow">→</span></a></div>
+  </section>
+</main>
+
+<!-- ADSTERRA-FOOTER: paste your Adsterra footer/banner ad code inside the div below -->
+<div class="container"><div class="ad-slot" data-ad="footer"></div></div>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="f-grid">
+      <div>
+        <span class="brandline"><span class="logo-mark">T</span> ToolNest</span>
+        <p>Free online tools that actually work. No sign-up, no watermarks — and your files never leave your device for client-side tools.</p>
+      </div>
+      <div>
+        <h4>Popular</h4>
+        <a href="/tools/qr-code-generator/">QR Code Generator</a>
+        <a href="/tools/background-remover/">Background Remover</a>
+        <a href="/tools/pdf-merger/">PDF Merger</a>
+        <a href="/tools/word-counter/">Word Counter</a>
+      </div>
+      <div>
+        <h4>Categories</h4>
+        <a href="/#image">Image Tools</a>
+        <a href="/#pdf">PDF &amp; Documents</a>
+        <a href="/#calculators">Calculators</a>
+        <a href="/#developer">Developer Tools</a>
+      </div>
+      <div>
+        <h4>Site</h4>
+        <a href="/">Home</a>
+        <a href="/#all-tools">All Tools</a>
+        <a href="/sitemap.xml">Sitemap</a>
+      </div>
+    </div>
+    <div class="f-bottom">© 2026 ToolNest · Free tools for everyone · Made with care</div>
+  </div>
+</footer>
+
+<script src="/assets/site.js?v=5"></script>
+<script src="https://cdn.jsdelivr.net/npm/lamejs@1.2.1/lame.min.js" defer></script>
+<script>
+/* Ringtone Maker — trim + fades, preview, WAV (always) / MP3 (lamejs) download. */
+(function () {
+  'use strict';
+  var SLUG = 'ringtone-maker';
+  var ERR = SLUG + '-error';
+  var audioBuf = null, fileName = 'ringtone';
+  var actx = null, previewSrc = null;
+
+  function AC() { return window.AudioContext || window.webkitAudioContext; }
+
+  function gv(id) {
+    var el = document.getElementById(SLUG + '-' + id);
+    return el ? parseFloat(el.value) || 0 : 0;
+  }
+
+  function buildRingtone() {
+    // returns a new AudioBuffer: trimmed + fades applied
+    var Ctor = AC();
+    if (!Ctor) throw new Error('Your browser does not support Web Audio.');
+    if (!audioBuf) throw new Error('Choose an audio file first.');
+    var sr = audioBuf.sampleRate;
+    var start = Math.max(0, gv('start'));
+    var end = Math.max(start + 0.1, gv('end'));
+    end = Math.min(end, audioBuf.duration);
+    var fi = Math.min(gv('fadein'), (end - start) / 2);
+    var fo = Math.min(gv('fadeout'), (end - start) / 2);
+    var len = Math.max(1, Math.floor((end - start) * sr));
+    var ch = Math.min(audioBuf.numberOfChannels, 2);
+    var tmp = new Ctor();
+    var out = tmp.createBuffer(ch, len, sr);
+    for (var c = 0; c < ch; c++) {
+      var src = audioBuf.getChannelData(c);
+      var dst = out.getChannelData(c);
+      var off = Math.floor(start * sr);
+      for (var i = 0; i < len; i++) {
+        var t = i / sr, s = src[off + i] || 0;
+        var g = 1;
+        if (t < fi) g = t / fi;
+        var remain = (end - start) - t;
+        if (remain < fo) g = Math.min(g, Math.max(0, remain / fo));
+        dst[i] = s * g;
+      }
+    }
+    try { tmp.close(); } catch (e) {}
+    return out;
+  }
+
+  function encodeWav(ab) {
+    var ch = Math.min(ab.numberOfChannels, 2), sr = ab.sampleRate, len = ab.length;
+    var bytes = 44 + len * ch * 2;
+    var buf = new ArrayBuffer(bytes), v = new DataView(buf);
+    function ws(o, s) { for (var i = 0; i < s.length; i++) v.setUint8(o + i, s.charCodeAt(i)); }
+    ws(0, 'RIFF'); v.setUint32(4, bytes - 8, true); ws(8, 'WAVE'); ws(12, 'fmt ');
+    v.setUint32(16, 16, true); v.setUint16(20, 1, true); v.setUint16(22, ch, true);
+    v.setUint32(24, sr, true); v.setUint32(28, sr * ch * 2, true); v.setUint16(32, ch * 2, true);
+    v.setUint16(34, 16, true); ws(36, 'data'); v.setUint32(40, len * ch * 2, true);
+    var chans = [];
+    for (var c = 0; c < ch; c++) chans.push(ab.getChannelData(c));
+    var off = 44;
+    for (var i = 0; i < len; i++) {
+      for (var cc = 0; cc < ch; cc++) {
+        var s = Math.max(-1, Math.min(1, chans[cc][i]));
+        v.setInt16(off, s < 0 ? s * 0x8000 : s * 0x7FFF, true);
+        off += 2;
+      }
+    }
+    return new Blob([buf], { type: 'audio/wav' });
+  }
+
+  function encodeMp3(ab) {
+    return new Promise(function (res, rej) {
+      try {
+        if (typeof lamejs === 'undefined') { rej(new Error('mp3lib')); return; }
+        var ch = Math.min(ab.numberOfChannels, 2);
+        var enc = new lamejs.Mp3Encoder(ch, ab.sampleRate, 128);
+        var left = ab.getChannelData(0);
+        var right = ch > 1 ? ab.getChannelData(1) : null;
+        var parts = [];
+        var CHUNK = 1152 * 64, i = 0, len = ab.length;
+        (function step() {
+          try {
+            if (i >= len) {
+              var end = enc.flush();
+              if (end.length) parts.push(new Int8Array(end));
+              res(new Blob(parts, { type: 'audio/mpeg' }));
+              return;
+            }
+            var n = Math.min(CHUNK, len - i);
+            var l16 = new Int16Array(n), r16 = new Int16Array(n);
+            for (var k = 0; k < n; k++) {
+              var a = Math.max(-1, Math.min(1, left[i + k]));
+              l16[k] = a < 0 ? a * 0x8000 : a * 0x7FFF;
+              if (right) {
+                var b2 = Math.max(-1, Math.min(1, right[i + k]));
+                r16[k] = b2 < 0 ? b2 * 0x8000 : b2 * 0x7FFF;
+              }
+            }
+            var data = ch > 1 ? enc.encodeBuffer(l16, r16) : enc.encodeBuffer(l16);
+            if (data.length) parts.push(new Int8Array(data));
+            i += n;
+            setTimeout(step, 0);
+          } catch (e) { rej(e); }
+        })();
+      } catch (e) { rej(e); }
+    });
+  }
+
+  function stopPreview() {
+    try { if (previewSrc) previewSrc.stop(); } catch (e) {}
+    previewSrc = null;
+  }
+
+  try {
+    if (!document.getElementById(SLUG + '-file')) return;
+    TN.on(SLUG + '-file', 'change', function () {
+      var f = this.files && this.files[0];
+      stopPreview();
+      audioBuf = null;
+      if (!f) return;
+      TN.clearErr(ERR);
+      fileName = (f.name || 'ringtone').replace(/\.[^.]+$/, '') || 'ringtone';
+      var Ctor = AC();
+      if (!Ctor) { TN.setErr(ERR, 'Your browser does not support Web Audio.'); return; }
+      var tmp = new Ctor();
+      TN.readAsArrayBuffer(f).then(function (b) { return tmp.decodeAudioData(b); }).then(function (ab) {
+        audioBuf = ab;
+        try { tmp.close(); } catch (e) {}
+        var dur = ab.duration;
+        var st = document.getElementById(SLUG + '-start');
+        var en = document.getElementById(SLUG + '-end');
+        st.max = dur.toFixed(1); st.value = 0;
+        en.max = dur.toFixed(1); en.value = Math.min(30, dur).toFixed(1);
+        document.getElementById(SLUG + '-start-val').textContent = '0.0';
+        document.getElementById(SLUG + '-end-val').textContent = Math.min(30, dur).toFixed(1);
+        document.getElementById(SLUG + '-info').textContent =
+          'Loaded: ' + dur.toFixed(1) + 's · ' + ab.numberOfChannels + ' ch · ' + ab.sampleRate + ' Hz';
+        TN.clearErr(ERR);
+      }).catch(function () {
+        try { tmp.close(); } catch (e2) {}
+        TN.setErr(ERR, 'Could not decode this file. It may use a format your browser cannot read.');
+      });
+    });
+
+    [['start', 's'], ['end', 's'], ['fadein', 's'], ['fadeout', 's']].forEach(function (k) {
+      TN.on(SLUG + '-' + k[0], 'input', function () {
+        var v = document.getElementById(SLUG + '-' + k[0] + '-val');
+        if (v) v.textContent = parseFloat(this.value).toFixed(1);
+        stopPreview();
+      });
+    });
+
+    TN.on(SLUG + '-preview', 'click', function () {
+      TN.clearErr(ERR);
+      stopPreview();
+      var ring;
+      try { ring = buildRingtone(); }
+      catch (e) { TN.setErr(ERR, e.message); return; }
+      var Ctor = AC();
+      actx = actx || new Ctor();
+      if (actx.state === 'suspended') actx.resume();
+      previewSrc = actx.createBufferSource();
+      previewSrc.buffer = ring;
+      previewSrc.connect(actx.destination);
+      previewSrc.start();
+    });
+
+    TN.on(SLUG + '-wav', 'click', function () {
+      TN.clearErr(ERR);
+      var ring;
+      try { ring = buildRingtone(); }
+      catch (e) { TN.setErr(ERR, e.message); return; }
+      TN.download(encodeWav(ring), fileName + '-ringtone.wav');
+    });
+
+    TN.on(SLUG + '-mp3', 'click', function () {
+      TN.clearErr(ERR);
+      if (typeof lamejs === 'undefined') {
+        TN.setErr(ERR, 'The MP3 encoder failed to load from the CDN. Download as WAV instead, or reload the page.');
+        return;
+      }
+      var ring;
+      try { ring = buildRingtone(); }
+      catch (e) { TN.setErr(ERR, e.message); return; }
+      var btn = document.getElementById(SLUG + '-mp3');
+      if (btn) btn.disabled = true;
+      encodeMp3(ring).then(function (blob) {
+        TN.download(blob, fileName + '-ringtone.mp3');
+      }).catch(function () {
+        TN.setErr(ERR, 'MP3 encoding failed. Try WAV instead.');
+      }).then(function () { if (btn) btn.disabled = false; });
+    });
+  } catch (e) {
+    TN.setErr(ERR, 'This tool could not start: ' + (e && e.message || e));
+  }
+})();
+
+</script>
+</body>
+</html>

@@ -1,0 +1,27 @@
+<div class="tool-card">
+  <div class="grid2">
+    <div class="field">
+      <label for="capo-transposer-shape">Chord shape</label>
+      <select class="select" id="capo-transposer-shape"></select>
+    </div>
+    <div class="field">
+      <label for="capo-transposer-capo">Capo position: <span id="capo-transposer-capo-val">2</span></label>
+      <input type="range" id="capo-transposer-capo" min="0" max="11" value="2">
+    </div>
+  </div>
+  <div class="result" id="capo-transposer-result">
+    <div class="stat-cards">
+      <div class="stat-card"><div class="v" id="capo-transposer-out" style="font-size:34px">–</div><div class="l">Sounds as</div></div>
+    </div>
+    <p class="muted" id="capo-transposer-explain"></p>
+  </div>
+  <div class="result">
+    <h4 style="margin:0 0 8px">All shapes at this capo</h4>
+    <table class="data">
+      <thead><tr><th>Shape</th><th>Sounds as</th></tr></thead>
+      <tbody id="capo-transposer-rows"></tbody>
+    </table>
+  </div>
+  <div class="error" id="capo-transposer-error"></div>
+  <p class="note">Pure transposition math: shape root + capo semitones = sounding chord. Quality (major/minor/7th) never changes.</p>
+</div>

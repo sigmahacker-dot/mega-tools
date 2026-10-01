@@ -1,0 +1,39 @@
+<div class="tool-card">
+  <div class="field">
+    <label for="light-leak-effect-file">Photo</label>
+    <input type="file" id="light-leak-effect-file" accept="image/*" class="input">
+  </div>
+  <div class="grid3">
+    <div class="field">
+      <label for="light-leak-effect-pos">Leak position</label>
+      <select class="select" id="light-leak-effect-pos">
+        <option value="tl">Top left</option>
+        <option value="tr">Top right</option>
+        <option value="bl">Bottom left</option>
+        <option value="br">Bottom right</option>
+        <option value="random">🎲 Random</option>
+      </select>
+    </div>
+    <div class="field">
+      <label for="light-leak-effect-mood">Color mood</label>
+      <select class="select" id="light-leak-effect-mood">
+        <option value="amber">Warm amber</option>
+        <option value="rose">Sunset rose</option>
+        <option value="gold">Golden hour</option>
+        <option value="rainbow">Rainbow streak</option>
+      </select>
+    </div>
+    <div class="field">
+      <label for="light-leak-effect-intensity">Intensity: <span id="light-leak-effect-intensity-val">60</span></label>
+      <input type="range" id="light-leak-effect-intensity" min="10" max="100" value="60">
+    </div>
+  </div>
+  <div class="btn-row">
+    <button class="btn btn-primary" id="light-leak-effect-download">Download image</button>
+  </div>
+  <div class="result">
+    <canvas id="light-leak-effect-canvas" style="width:100%;border-radius:8px;"></canvas>
+  </div>
+  <div class="error" id="light-leak-effect-error"></div>
+  <p class="note">Leaks are layered gradients blended in screen mode, like real film leaks. Processed locally in your browser.</p>
+</div>

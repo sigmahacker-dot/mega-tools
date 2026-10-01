@@ -1,0 +1,27 @@
+<div class="tool-card" style="max-width:520px;margin:0 auto;text-align:center">
+  <div class="btn-row" style="margin-bottom:10px">
+    <button class="btn btn-primary" id="word-ladder-game-new">New puzzle</button>
+    <button class="btn btn-outline" id="word-ladder-game-hint">Hint</button>
+    <button class="btn btn-outline" id="word-ladder-game-solve">Show solution</button>
+  </div>
+  <p class="muted" id="word-ladder-game-status" style="min-height:24px;font-weight:600"></p>
+  <div class="stat-cards" style="margin-bottom:10px">
+    <div class="stat-card"><div class="v" id="word-ladder-game-from">—</div><div class="l">Start</div></div>
+    <div class="stat-card"><div class="v">→</div><div class="l">to</div></div>
+    <div class="stat-card"><div class="v" id="word-ladder-game-to">—</div><div class="l">Target</div></div>
+    <div class="stat-card"><div class="v" id="word-ladder-game-steps">0</div><div class="l">Your steps</div></div>
+  </div>
+  <div id="word-ladder-game-chain" style="display:flex;flex-direction:column;gap:4px;margin-bottom:10px;align-items:center"></div>
+  <div class="grid2">
+    <div class="field" style="text-align:left">
+      <label for="word-ladder-game-word">Next word</label>
+      <input class="input" id="word-ladder-game-word" maxlength="5" placeholder="one letter different" style="text-transform:uppercase">
+    </div>
+    <div class="field" style="text-align:left">
+      <label>&nbsp;</label>
+      <button class="btn btn-primary" id="word-ladder-game-add" style="width:100%">Add step</button>
+    </div>
+  </div>
+  <p class="note">Each step must be a real dictionary word, same length, differing by exactly one letter from the previous word.</p>
+  <div class="error" id="word-ladder-game-error"></div>
+</div>

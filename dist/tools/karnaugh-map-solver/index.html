@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Karnaugh Map Solver — Free Online | ToolNest</title>
+<meta name="description" content="Minimize 2 to 4 variable Boolean functions with a real Quine–McCluskey solver: see the K-map grid, essential prime implicant groupings, and the minimized sum-of-products expression.">
+<meta name="keywords" content="karnaugh map, kmap solver, boolean minimization, quine mccluskey, logic minimization">
+<link rel="canonical" href="https://toolnest.vercel.app/tools/karnaugh-map-solver/">
+<meta name="theme-color" content="#07070b">
+<meta property="og:title" content="Karnaugh Map Solver — Free Online | ToolNest">
+<meta property="og:description" content="Minimize 2 to 4 variable Boolean functions with a real Quine–McCluskey solver: see the K-map grid, essential prime implicant groupings, and the minimized sum-of-products expression.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css?v=4">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%23e01111'/><text x='50' y='68' font-size='58' text-anchor='middle' fill='white' font-family='Arial' font-weight='bold'>T</text></svg>">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebApplication","name":"Karnaugh Map Solver","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0"},"url":"https://toolnest.vercel.app/tools/karnaugh-map-solver/","description":"Minimize 2 to 4 variable Boolean functions with a real Quine–McCluskey solver: see the K-map grid, essential prime implicant groupings, and the minimized sum-of-products expression."},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How does the solver find the minimized expression?","acceptedAnswer":{"@type":"Answer","text":"It runs the Quine–McCluskey algorithm: all minterms and don't-cares are repeatedly combined into larger implicants until only prime implicants remain, then essential prime implicants are selected via a prime implicant chart and any leftover minterms are covered greedily."}},{"@type":"Question","name":"What are don't-care conditions?","acceptedAnswer":{"@type":"Answer","text":"Input combinations whose output does not matter. The solver may treat them as 0 or 1, whichever gives a smaller expression — they can only help reduce the number of terms, never hurt."}},{"@type":"Question","name":"Why is the K-map column order 00, 01, 11, 10?","acceptedAnswer":{"@type":"Answer","text":"That is Gray code order: only one bit changes between adjacent cells, which is what makes visual grouping valid. Group sizes must be powers of two (1, 2, 4, 8)."}}]}]}</script>
+</head>
+<body>
+<header class="site-header">
+  <div class="container">
+    <a class="logo" href="/"><span class="logo-mark">T</span> ToolNest</a>
+    <div class="header-right">
+      <form class="nav-search" action="/" method="get" role="search">
+        <span class="ns-icon">🔍</span>
+        <input type="search" name="q" placeholder="Search tools…" aria-label="Search tools" autocomplete="off">
+      </form>
+      <div class="menu-wrap">
+        <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="menuPanel" aria-label="Open menu"><span></span><span></span><span></span></button>
+        <nav class="menu-panel" id="menuPanel" aria-label="Site">
+          <a href="/">Home</a>
+          <a href="/#categories">Categories</a>
+          <a href="/#all-tools">All Tools</a>
+        </nav>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ADSTERRA-HEADER: paste your Adsterra banner ad code inside the div below -->
+<div class="container"><div class="ad-slot ad-leaderboard" data-ad="header"></div></div>
+
+<main class="container">
+  <nav class="crumbs"><a href="/">Home</a> &rsaquo; <a href="/#math">Math &amp; Numbers</a> &rsaquo; Karnaugh Map Solver</nav>
+  <div class="tool-hero">
+    <h1>Karnaugh Map Solver</h1>
+    <p>Minimize 2 to 4 variable Boolean functions with a real Quine–McCluskey solver: see the K-map grid, essential prime implicant groupings, and the minimized sum-of-products expression.</p>
+  </div>
+
+  <div class="tool-card">
+  <div class="grid3">
+    <div class="field">
+      <label for="karnaugh-map-solver-vars">Variables</label>
+      <select class="select" id="karnaugh-map-solver-vars">
+        <option value="2">2 (A, B)</option>
+        <option value="3" selected>3 (A, B, C)</option>
+        <option value="4">4 (A, B, C, D)</option>
+      </select>
+    </div>
+    <div class="field">
+      <label for="karnaugh-map-solver-minterms">Minterms Σm (comma separated)</label>
+      <input class="input" id="karnaugh-map-solver-minterms" type="text" placeholder="e.g. 0, 1, 2, 5, 6, 7" value="0, 1, 2, 5, 6, 7">
+    </div>
+    <div class="field">
+      <label for="karnaugh-map-solver-dc">Don't cares Σd (optional)</label>
+      <input class="input" id="karnaugh-map-solver-dc" type="text" placeholder="e.g. 3">
+    </div>
+  </div>
+  <div class="btn-row">
+    <button type="button" class="btn" id="karnaugh-map-solver-solve">Solve</button>
+    <button type="button" class="btn btn-outline" id="karnaugh-map-solver-clear">Clear</button>
+  </div>
+  <div class="error" id="karnaugh-map-solver-error"></div>
+  <div id="karnaugh-map-solver-out" class="hidden">
+    <div class="result">
+      <h3>Minimized expression</h3>
+      <p id="karnaugh-map-solver-expr" style="font-size:1.25em;font-weight:bold"></p>
+      <div class="btn-row"><button type="button" class="btn btn-outline btn-sm" id="karnaugh-map-solver-copy">Copy expression</button></div>
+    </div>
+    <div class="result">
+      <h3>K-map</h3>
+      <div id="karnaugh-map-solver-grid" style="overflow-x:auto"></div>
+      <p class="muted" id="karnaugh-map-solver-legend"></p>
+    </div>
+    <div class="result">
+      <h3>How it was solved</h3>
+      <div id="karnaugh-map-solver-steps"></div>
+    </div>
+  </div>
+</div>
+
+
+  <!-- ADSTERRA-INCONTENT: paste your Adsterra native/in-content ad code inside the div below -->
+  <div class="ad-slot" data-ad="incontent"></div>
+
+  <div class="info-grid">
+    <div class="info-card">
+      <h2>📖 How to use</h2>
+      <ol><li>Choose 2, 3 or 4 variables and type the minterm numbers (comma separated) in the Σm box.</li><li>Optionally type don&#39;t-care numbers in the Σd box (must not overlap with minterms).</li><li>Press Solve to get the minimized expression, the K-map grid with colored groupings, and the prime implicant steps.</li><li>Copy the minimized sum-of-products expression with the Copy button.</li></ol>
+    </div>
+    <div class="info-card">
+      <h2>❓ Frequently asked questions</h2>
+      <div class="faq"><details><summary>How does the solver find the minimized expression?</summary><p>It runs the Quine–McCluskey algorithm: all minterms and don&#39;t-cares are repeatedly combined into larger implicants until only prime implicants remain, then essential prime implicants are selected via a prime implicant chart and any leftover minterms are covered greedily.</p></details><details><summary>What are don&#39;t-care conditions?</summary><p>Input combinations whose output does not matter. The solver may treat them as 0 or 1, whichever gives a smaller expression — they can only help reduce the number of terms, never hurt.</p></details><details><summary>Why is the K-map column order 00, 01, 11, 10?</summary><p>That is Gray code order: only one bit changes between adjacent cells, which is what makes visual grouping valid. Group sizes must be powers of two (1, 2, 4, 8).</p></details></div>
+    </div>
+  </div>
+
+  <section class="section">
+    <h2>🔗 Related tools</h2>
+    <div class="tool-grid"><a class="tool-link" href="/tools/24-game-solver/" data-search="24 game solver solve the 24 game exhaustively: every ordering, operation and parenthesization is tried with exact fraction arithmetic, and all distinct solutions are shown. 24 game solver make 24 solver 24 puzzle arithmetic puzzle solver"><span class="t-ico">📐</span><span class="t-body"><b>24 Game Solver</b><small>Solve the 24 game exhaustively: every ordering, operation and parenthesization is tried with…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/ancient-numerals-converter/" data-search="ancient numerals converter convert decimal numbers to roman, egyptian hieroglyphic, babylonian cuneiform and mayan numerals — with roman numerals also decoded back to decimal. roman numerals egyptian numerals babylonian numerals mayan numerals ancient numbers"><span class="t-ico">📐</span><span class="t-body"><b>Ancient Numerals Converter</b><small>Convert decimal numbers to Roman, Egyptian hieroglyphic, Babylonian cuneiform and Mayan nume…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/arithmetic-sequence-calculator/" data-search="arithmetic sequence calculator from the first term and common difference get the nth term and the sum of the first n terms. arithmetic sequence arithmetic progression nth term sum of arithmetic series common difference"><span class="t-ico">📐</span><span class="t-body"><b>Arithmetic Sequence Calculator</b><small>From the first term and common difference get the nth term and the sum of the first n terms.</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/base-n-arithmetic/" data-search="base-n arithmetic add, subtract, multiply and divide numbers in any base from 2 to 36 with exact bigint math and a full conversion breakdown. base n arithmetic binary addition hexadecimal calculator base 36 math"><span class="t-ico">📐</span><span class="t-body"><b>Base-N Arithmetic</b><small>Add, subtract, multiply and divide numbers in any base from 2 to 36 with exact BigInt math a…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/bayes-theorem-calculator/" data-search="bayes theorem calculator compute posterior probabilities from prior, sensitivity and specificity with the full bayes formula, natural frequencies and a probability tree. bayes theorem calculator posterior probability sensitivity specificity medical test probability"><span class="t-ico">📐</span><span class="t-body"><b>Bayes Theorem Calculator</b><small>Compute posterior probabilities from prior, sensitivity and specificity with the full Bayes …</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/bcd-converter/" data-search="bcd converter convert decimal numbers to binary-coded decimal (packed and unpacked) and decode bcd back to decimal, with per-digit nibble breakdowns. bcd converter binary coded decimal packed bcd unpacked bcd bcd decoder"><span class="t-ico">📐</span><span class="t-body"><b>BCD Converter</b><small>Convert decimal numbers to Binary-Coded Decimal (packed and unpacked) and decode BCD back to…</small></span><span class="t-arrow">→</span></a></div>
+  </section>
+</main>
+
+<!-- ADSTERRA-FOOTER: paste your Adsterra footer/banner ad code inside the div below -->
+<div class="container"><div class="ad-slot" data-ad="footer"></div></div>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="f-grid">
+      <div>
+        <span class="brandline"><span class="logo-mark">T</span> ToolNest</span>
+        <p>Free online tools that actually work. No sign-up, no watermarks — and your files never leave your device for client-side tools.</p>
+      </div>
+      <div>
+        <h4>Popular</h4>
+        <a href="/tools/qr-code-generator/">QR Code Generator</a>
+        <a href="/tools/background-remover/">Background Remover</a>
+        <a href="/tools/pdf-merger/">PDF Merger</a>
+        <a href="/tools/word-counter/">Word Counter</a>
+      </div>
+      <div>
+        <h4>Categories</h4>
+        <a href="/#image">Image Tools</a>
+        <a href="/#pdf">PDF &amp; Documents</a>
+        <a href="/#calculators">Calculators</a>
+        <a href="/#developer">Developer Tools</a>
+      </div>
+      <div>
+        <h4>Site</h4>
+        <a href="/">Home</a>
+        <a href="/#all-tools">All Tools</a>
+        <a href="/sitemap.xml">Sitemap</a>
+      </div>
+    </div>
+    <div class="f-bottom">© 2026 ToolNest · Free tools for everyone · Made with care</div>
+  </div>
+</footer>
+
+<script src="/assets/site.js?v=5"></script>
+
+<script>
+(function () {
+  'use strict';
+  var P = 'karnaugh-map-solver-', ERR = P + 'error';
+  var VARS = ['A', 'B', 'C', 'D'];
+  var COLORS = ['#f87171', '#60a5fa', '#34d399', '#fbbf24', '#a78bfa', '#f472b6', '#22d3ee', '#fb9234'];
+  function g(id) { return TN.el(P + id); }
+  function gray(i) { return i ^ (i >> 1); }
+  function parseList(s, n, name) {
+    var max = (1 << n) - 1, out = [], seen = {};
+    if (!s.trim()) return out;
+    var parts = s.split(/[\s,;]+/);
+    for (var i = 0; i < parts.length; i++) {
+      if (!parts[i]) continue;
+      var v = parseInt(parts[i], 10);
+      if (isNaN(v) || v < 0 || v > max) throw new Error(name + ' must be integers between 0 and ' + max + '. Bad value: "' + parts[i] + '".');
+      if (!seen[v]) { seen[v] = 1; out.push(v); }
+    }
+    return out.sort(function (a, b) { return a - b; });
+  }
+  function termStr(n, p) {
+    var t = '';
+    for (var i = 0; i < n; i++) {
+      var bp = n - 1 - i;
+      if (p.mask & (1 << bp)) continue;
+      t += VARS[i] + ((p.bits & (1 << bp)) ? '' : "'");
+    }
+    return t || '1';
+  }
+  function quineMcCluskey(n, ones, dcs) {
+    var seen = {}, cur = [], log = [];
+    ones.concat(dcs).forEach(function (m) {
+      if (!seen[m]) { seen[m] = 1; cur.push({ mask: 0, bits: m, terms: [m] }); }
+    });
+    var primes = [], pkey = {};
+    while (cur.length) {
+      var used = [], next = [], nseen = {}, i, j;
+      for (i = 0; i < cur.length; i++) used[i] = false;
+      for (i = 0; i < cur.length; i++) for (j = i + 1; j < cur.length; j++) {
+        var a = cur[i], b = cur[j];
+        if (a.mask !== b.mask) continue;
+        var d = a.bits ^ b.bits;
+        if (d && !(d & (d - 1))) {
+          used[i] = used[j] = true;
+          var nm = a.mask | d, nb = a.bits & ~d, k = nm + ':' + nb;
+          if (!nseen[k]) {
+            nseen[k] = 1;
+            var terms = a.terms.concat(b.terms).filter(function (x, ix, arr) { return arr.indexOf(x) === ix; }).sort(function (x, y) { return x - y; });
+            next.push({ mask: nm, bits: nb, terms: terms });
+          }
+        }
+      }
+      for (i = 0; i < cur.length; i++) {
+        if (!used[i]) { var k2 = cur[i].mask + ':' + cur[i].bits; if (!pkey[k2]) { pkey[k2] = 1; primes.push(cur[i]); } }
+      }
+      cur = next;
+    }
+    log.push('Found ' + primes.length + ' prime implicant(s): ' + primes.map(function (p) { return termStr(n, p) + ' (m' + p.terms.join(',m') + ')'; }).join('; '));
+    // essential primes
+    var uncovered = {}, essential = [], ei, mi;
+    ones.forEach(function (m) { uncovered[m] = 1; });
+    var remaining = primes.slice();
+    var guard = 0;
+    while (Object.keys(uncovered).length && guard++ < 200) {
+      var found = false;
+      var keys = Object.keys(uncovered).map(Number);
+      for (mi = 0; mi < keys.length; mi++) {
+        var m = keys[mi], cover = [];
+        for (ei = 0; ei < remaining.length; ei++) if (remaining[ei].terms.indexOf(m) >= 0) cover.push(ei);
+        if (cover.length === 1) {
+          var ep = remaining[cover[0]];
+          essential.push(ep);
+          ep.terms.forEach(function (t) { delete uncovered[t]; });
+          remaining.splice(cover[0], 1);
+          log.push('Essential prime implicant: ' + termStr(n, ep) + ' (only one covering m' + m + ').');
+          found = true;
+          break;
+        }
+      }
+      if (!found) {
+        // greedy: pick prime covering most uncovered minterms
+        var best = -1, bestN = 0;
+        for (ei = 0; ei < remaining.length; ei++) {
+          var c = 0;
+          remaining[ei].terms.forEach(function (t) { if (uncovered[t]) c++; });
+          if (c > bestN) { bestN = c; best = ei; }
+        }
+        if (best < 0) break;
+        var gp = remaining[best];
+        essential.push(gp);
+        gp.terms.forEach(function (t) { delete uncovered[t]; });
+        remaining.splice(best, 1);
+        log.push('Covered remaining minterms with: ' + termStr(n, gp) + '.');
+      }
+    }
+    return { cover: essential, log: log };
+  }
+  function renderGrid(n, ones, dcs, cover) {
+    var rowVars = n === 2 ? 1 : (n === 3 ? 1 : 2);
+    var colVars = n - rowVars;
+    var rows = 1 << rowVars, cols = 1 << colVars;
+    var rowLabels = [], colLabels = [];
+    var i, j;
+    for (i = 0; i < rows; i++) rowLabels.push(gray(i).toString(2).padStart(rowVars, '0'));
+    for (j = 0; j < cols; j++) colLabels.push(gray(j).toString(2).padStart(colVars, '0'));
+    var rowName = VARS.slice(0, rowVars).join(''), colName = VARS.slice(rowVars).join('');
+    var h = '<table class="data" style="border-collapse:collapse"><thead><tr><th>' + TN.esc(rowName + ' \\ ' + colName) + '</th>';
+    for (j = 0; j < cols; j++) h += '<th>' + colLabels[j] + '</th>';
+    h += '</tr></thead><tbody>';
+    var cellGroups = {};
+    cover.forEach(function (p, gi) {
+      p.terms.forEach(function (m) {
+        if (ones.indexOf(m) < 0 && dcs.indexOf(m) < 0) return;
+        (cellGroups[m] = cellGroups[m] || []).push(gi);
+      });
+    });
+    for (i = 0; i < rows; i++) {
+      h += '<tr><th>' + rowLabels[i] + '</th>';
+      for (j = 0; j < cols; j++) {
+        var m = (gray(i) << colVars) | gray(j);
+        var val = ones.indexOf(m) >= 0 ? '1' : (dcs.indexOf(m) >= 0 ? 'd' : '0');
+        var style = '', title = 'm' + m;
+        var gs = cellGroups[m] || [];
+        if (gs.length) {
+          var c = COLORS[gs[0] % COLORS.length];
+          style = ' style="background:' + c + '33;border:2px solid ' + c + '"';
+          title += ' — groups: ' + gs.map(function (x) { return x + 1; }).join(', ');
+        }
+        h += '<td' + style + ' title="' + TN.esc(title) + '"><b>' + val + '</b></td>';
+      }
+      h += '</tr>';
+    }
+    h += '</tbody></table>';
+    return h;
+  }
+  function solve() {
+    try {
+      TN.clearErr(ERR);
+      var n = parseInt(g('vars').value, 10);
+      var ones = parseList(g('minterms').value, n, 'Minterms');
+      var dcs = parseList(g('dc').value, n, "Don't cares");
+      var overlap = ones.filter(function (m) { return dcs.indexOf(m) >= 0; });
+      if (overlap.length) { TN.setErr(ERR, 'Minterms and don\'t cares overlap at: ' + overlap.join(', ')); return; }
+      var total = 1 << n;
+      TN.show(P + 'out');
+      var expr, cover, log;
+      if (!ones.length) { expr = '0'; cover = []; log = ['No minterms — the function is always 0.']; }
+      else if (ones.length === total) { expr = '1'; cover = []; log = ['All minterms are 1 — the function is always 1.']; }
+      else {
+        var r = quineMcCluskey(n, ones, dcs);
+        cover = r.cover; log = r.log;
+        expr = cover.map(function (p) { return termStr(n, p); }).join(' + ');
+      }
+      g('expr').textContent = 'F = ' + expr;
+      g('expr').setAttribute('data-expr', expr);
+      g('grid').innerHTML = renderGrid(n, ones, dcs, cover);
+      g('legend').textContent = cover.length ? 'Each color is one implicant group in the minimized cover.' : '';
+      var sh = '<ol>' + log.map(function (l) { return '<li>' + TN.esc(l) + '</li>'; }).join('') + '</ol>';
+      if (cover.length) {
+        sh += '<table class="data"><thead><tr><th>#</th><th>Implicant</th><th>Covers minterms</th></tr></thead><tbody>' +
+          cover.map(function (p, i) {
+            return '<tr><td><span style="display:inline-block;width:12px;height:12px;background:' + COLORS[i % COLORS.length] + ';border-radius:3px"></span> ' + (i + 1) + '</td><td><b>' + TN.esc(termStr(n, p)) + '</b></td><td>m' + p.terms.join(', m') + '</td></tr>';
+          }).join('') + '</tbody></table>';
+      }
+      g('steps').innerHTML = sh;
+    } catch (e) { TN.setErr(ERR, e.message || 'Could not solve. Check your inputs.'); }
+  }
+  try {
+    if (!TN.el(P + 'solve')) return;
+    TN.on(P + 'solve', 'click', solve);
+    TN.on(P + 'clear', 'click', function () { g('minterms').value = ''; g('dc').value = ''; TN.hide(P + 'out'); TN.clearErr(ERR); });
+    TN.on(P + 'vars', 'change', function () { TN.hide(P + 'out'); });
+    TN.on(P + 'copy', 'click', function () {
+      var e = g('expr').getAttribute('data-expr') || '';
+      if (e) TN.copy('F = ' + e);
+    });
+  } catch (e) { /* never throw on load */ }
+})();
+
+</script>
+</body>
+</html>

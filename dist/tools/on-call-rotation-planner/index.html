@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>On-Call Rotation Planner — Free Online | ToolNest</title>
+<meta name="description" content="Plan a fair round-robin on-call rotation: enter the team, pick a start date and number of weeks, get the full schedule with per-person totals and CSV export.">
+<meta name="keywords" content="on call rotation, oncall schedule, rotation planner, team schedule">
+<link rel="canonical" href="https://toolnest.vercel.app/tools/on-call-rotation-planner/">
+<meta name="theme-color" content="#07070b">
+<meta property="og:title" content="On-Call Rotation Planner — Free Online | ToolNest">
+<meta property="og:description" content="Plan a fair round-robin on-call rotation: enter the team, pick a start date and number of weeks, get the full schedule with per-person totals and CSV export.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css?v=4">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%23e01111'/><text x='50' y='68' font-size='58' text-anchor='middle' fill='white' font-family='Arial' font-weight='bold'>T</text></svg>">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebApplication","name":"On-Call Rotation Planner","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0"},"url":"https://toolnest.vercel.app/tools/on-call-rotation-planner/","description":"Plan a fair round-robin on-call rotation: enter the team, pick a start date and number of weeks, get the full schedule with per-person totals and CSV export."},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How is the rotation assigned?","acceptedAnswer":{"@type":"Answer","text":"Strict round-robin: member 1 takes the first turn, member 2 the second, and so on, wrapping back to member 1. Everyone gets equal turns over a full cycle."}},{"@type":"Question","name":"What if the weeks don't divide evenly?","acceptedAnswer":{"@type":"Answer","text":"The schedule simply continues the rotation — the totals row shows exactly how many weeks each person covers, so any imbalance is visible."}},{"@type":"Question","name":"Can I skip holidays?","acceptedAnswer":{"@type":"Answer","text":"The planner assigns continuous turns. For holiday overrides, generate the CSV, then adjust the affected rows in a spreadsheet."}}]}]}</script>
+</head>
+<body>
+<header class="site-header">
+  <div class="container">
+    <a class="logo" href="/"><span class="logo-mark">T</span> ToolNest</a>
+    <div class="header-right">
+      <form class="nav-search" action="/" method="get" role="search">
+        <span class="ns-icon">🔍</span>
+        <input type="search" name="q" placeholder="Search tools…" aria-label="Search tools" autocomplete="off">
+      </form>
+      <div class="menu-wrap">
+        <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="menuPanel" aria-label="Open menu"><span></span><span></span><span></span></button>
+        <nav class="menu-panel" id="menuPanel" aria-label="Site">
+          <a href="/">Home</a>
+          <a href="/#categories">Categories</a>
+          <a href="/#all-tools">All Tools</a>
+        </nav>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ADSTERRA-HEADER: paste your Adsterra banner ad code inside the div below -->
+<div class="container"><div class="ad-slot ad-leaderboard" data-ad="header"></div></div>
+
+<main class="container">
+  <nav class="crumbs"><a href="/">Home</a> &rsaquo; <a href="/#time">Time &amp; Date</a> &rsaquo; On-Call Rotation Planner</nav>
+  <div class="tool-hero">
+    <h1>On-Call Rotation Planner</h1>
+    <p>Plan a fair round-robin on-call rotation: enter the team, pick a start date and number of weeks, get the full schedule with per-person totals and CSV export.</p>
+  </div>
+
+  <div class="tool-card">
+  <div class="field">
+    <label for="on-call-rotation-planner-team">Team members (one per line)</label>
+    <textarea class="textarea" id="on-call-rotation-planner-team" rows="4">Ayesha
+Bilal
+Chen
+Dana</textarea>
+  </div>
+  <div class="grid3">
+    <div class="field">
+      <label for="on-call-rotation-planner-start">Start date</label>
+      <input class="input" id="on-call-rotation-planner-start" type="date">
+    </div>
+    <div class="field">
+      <label for="on-call-rotation-planner-len">Weeks per turn</label>
+      <input class="input" id="on-call-rotation-planner-len" type="number" min="1" max="12" value="1">
+    </div>
+    <div class="field">
+      <label for="on-call-rotation-planner-weeks">Total weeks</label>
+      <input class="input" id="on-call-rotation-planner-weeks" type="number" min="1" max="104" value="12">
+    </div>
+  </div>
+  <div class="btn-row">
+    <button type="button" class="btn" id="on-call-rotation-planner-gen">Generate</button>
+    <button type="button" class="btn btn-outline btn-sm" id="on-call-rotation-planner-csv">Download CSV</button>
+    <button type="button" class="btn btn-outline btn-sm" id="on-call-rotation-planner-copy">Copy</button>
+  </div>
+  <div class="error" id="on-call-rotation-planner-error"></div>
+  <div id="on-call-rotation-planner-out" class="hidden">
+    <div class="result">
+      <h3>Rotation schedule</h3>
+      <div style="overflow-x:auto"><table class="data"><thead><tr><th>#</th><th>On call</th><th>From</th><th>To</th></tr></thead><tbody id="on-call-rotation-planner-rows"></tbody></table></div>
+    </div>
+    <div class="result">
+      <h3>Totals</h3>
+      <div style="overflow-x:auto"><table class="data"><thead><tr><th>Member</th><th>Turns</th><th>Weeks</th></tr></thead><tbody id="on-call-rotation-planner-totals"></tbody></table></div>
+    </div>
+  </div>
+</div>
+
+
+  <!-- ADSTERRA-INCONTENT: paste your Adsterra native/in-content ad code inside the div below -->
+  <div class="ad-slot" data-ad="incontent"></div>
+
+  <div class="info-grid">
+    <div class="info-card">
+      <h2>📖 How to use</h2>
+      <ol><li>Type one team member per line.</li><li>Pick the rotation start date, weeks per turn and total weeks.</li><li>Press Generate for the round-robin schedule with exact date ranges.</li><li>Download the CSV or copy the schedule to share with the team.</li></ol>
+    </div>
+    <div class="info-card">
+      <h2>❓ Frequently asked questions</h2>
+      <div class="faq"><details><summary>How is the rotation assigned?</summary><p>Strict round-robin: member 1 takes the first turn, member 2 the second, and so on, wrapping back to member 1. Everyone gets equal turns over a full cycle.</p></details><details><summary>What if the weeks don&#39;t divide evenly?</summary><p>The schedule simply continues the rotation — the totals row shows exactly how many weeks each person covers, so any imbalance is visible.</p></details><details><summary>Can I skip holidays?</summary><p>The planner assigns continuous turns. For holiday overrides, generate the CSV, then adjust the affected rows in a spreadsheet.</p></details></div>
+    </div>
+  </div>
+
+  <section class="section">
+    <h2>🔗 Related tools</h2>
+    <div class="tool-grid"><a class="tool-link" href="/tools/add-subtract-days-calculator/" data-search="add / subtract days calculator add or subtract days, weeks, months or years from any date. optional business-days-only mode skips weekends automatically. add days to date subtract days calculator date plus days business days calculator date arithmetic"><span class="t-ico">⏰</span><span class="t-body"><b>Add / Subtract Days Calculator</b><small>Add or subtract days, weeks, months or years from any date. Optional business-days-only mode…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/anniversary-calculator/" data-search="anniversary calculator track any anniversary: days until the next one, which number it is (10th, 25th…), total days together and the weekday it falls on. anniversary calculator wedding anniversary countdown how many days until anniversary anniversary date tracker years together calculator"><span class="t-ico">⏰</span><span class="t-body"><b>Anniversary Calculator</b><small>Track any anniversary: days until the next one, which number it is (10th, 25th…), total days…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/bill-due-tracker/" data-search="bill due tracker never miss a payment — track recurring monthly bills with automatic next-due dates, days remaining and urgency sorting. bill due tracker bill reminder recurring bills tracker monthly bills organizer due date tracker"><span class="t-ico">⏰</span><span class="t-body"><b>Bill Due Tracker</b><small>Never miss a payment — track recurring monthly bills with automatic next-due dates, days rem…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/billable-hours-calculator/" data-search="billable hours calculator turn hours into invoices: billable hours × rate, utilization percentage against non-billable time, and the final invoice total. billable hours invoice calculator utilization rate freelance rate calculator"><span class="t-ico">⏰</span><span class="t-body"><b>Billable Hours Calculator</b><small>Turn hours into invoices: billable hours × rate, utilization percentage against non-billable…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/birthday-reminder-list/" data-search="birthday reminder list never miss a birthday: names and dates with days-until countdowns, next upcoming birthday highlighted, saved in your browser. birthday reminder birthday tracker birthday countdown never forget birthday"><span class="t-ico">⏰</span><span class="t-body"><b>Birthday Reminder List</b><small>Never miss a birthday: names and dates with days-until countdowns, next upcoming birthday hi…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/business-days-calculator/" data-search="business days calculator count working days between two dates, excluding weekends and your own custom holidays, with a full breakdown. business days calculator working days calculator weekdays between dates net workdays business days excluding holidays"><span class="t-ico">⏰</span><span class="t-body"><b>Business Days Calculator</b><small>Count working days between two dates, excluding weekends and your own custom holidays, with …</small></span><span class="t-arrow">→</span></a></div>
+  </section>
+</main>
+
+<!-- ADSTERRA-FOOTER: paste your Adsterra footer/banner ad code inside the div below -->
+<div class="container"><div class="ad-slot" data-ad="footer"></div></div>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="f-grid">
+      <div>
+        <span class="brandline"><span class="logo-mark">T</span> ToolNest</span>
+        <p>Free online tools that actually work. No sign-up, no watermarks — and your files never leave your device for client-side tools.</p>
+      </div>
+      <div>
+        <h4>Popular</h4>
+        <a href="/tools/qr-code-generator/">QR Code Generator</a>
+        <a href="/tools/background-remover/">Background Remover</a>
+        <a href="/tools/pdf-merger/">PDF Merger</a>
+        <a href="/tools/word-counter/">Word Counter</a>
+      </div>
+      <div>
+        <h4>Categories</h4>
+        <a href="/#image">Image Tools</a>
+        <a href="/#pdf">PDF &amp; Documents</a>
+        <a href="/#calculators">Calculators</a>
+        <a href="/#developer">Developer Tools</a>
+      </div>
+      <div>
+        <h4>Site</h4>
+        <a href="/">Home</a>
+        <a href="/#all-tools">All Tools</a>
+        <a href="/sitemap.xml">Sitemap</a>
+      </div>
+    </div>
+    <div class="f-bottom">© 2026 ToolNest · Free tools for everyone · Made with care</div>
+  </div>
+</footer>
+
+<script src="/assets/site.js?v=5"></script>
+
+<script>
+(function () {
+  'use strict';
+  var P = 'on-call-rotation-planner-', ERR = P + 'error';
+  var DAY = 86400000;
+  function g(id) { return TN.el(P + id); }
+  function fmtD(d) {
+    return d.getFullYear() + '-' + String(d.getMonth() + 1).padStart(2, '0') + '-' + String(d.getDate()).padStart(2, '0');
+  }
+  var lastCsv = '';
+  function gen() {
+    try {
+      TN.clearErr(ERR);
+      var team = g('team').value.split('\n').map(function (s) { return s.trim(); }).filter(Boolean);
+      if (team.length < 2) { TN.setErr(ERR, 'Enter at least 2 team members (one per line).'); return; }
+      var startV = g('start').value;
+      if (!startV) { TN.setErr(ERR, 'Pick a start date.'); return; }
+      var per = parseInt(g('len').value, 10), weeks = parseInt(g('weeks').value, 10);
+      if (isNaN(per) || per < 1 || per > 12) { TN.setErr(ERR, 'Weeks per turn must be 1–12.'); return; }
+      if (isNaN(weeks) || weeks < 1 || weeks > 104) { TN.setErr(ERR, 'Total weeks must be 1–104.'); return; }
+      var sp = startV.split('-');
+      var start = new Date(sp[0], sp[1] - 1, sp[2]);
+      var turns = Math.ceil(weeks / per);
+      var rows = [], totals = {}, csv = 'Turn,On call,From,To\n';
+      team.forEach(function (m) { totals[m] = { turns: 0, weeks: 0 }; });
+      var covered = 0, ti = 0;
+      while (covered < weeks) {
+        var member = team[ti % team.length];
+        var w = Math.min(per, weeks - covered);
+        var from = new Date(start.getTime() + covered * 7 * DAY);
+        var to = new Date(from.getTime() + w * 7 * DAY - DAY);
+        rows.push({ n: ti + 1, m: member, from: from, to: to, w: w });
+        totals[member].turns++; totals[member].weeks += w;
+        csv += (ti + 1) + ',"' + member.replace(/"/g, '""') + '",' + fmtD(from) + ',' + fmtD(to) + '\n';
+        covered += w; ti++;
+      }
+      lastCsv = csv;
+      TN.show(P + 'out');
+      g('rows').innerHTML = rows.map(function (r) {
+        return '<tr><td>' + r.n + '</td><td><b>' + TN.esc(r.m) + '</b></td><td>' + fmtD(r.from) + '</td><td>' + fmtD(r.to) + ' (' + r.w + ' wk)</td></tr>';
+      }).join('');
+      g('totals').innerHTML = team.map(function (m) {
+        return '<tr><td><b>' + TN.esc(m) + '</b></td><td>' + totals[m].turns + '</td><td>' + totals[m].weeks + '</td></tr>';
+      }).join('');
+      g('copy').setAttribute('data-t', rows.map(function (r) { return 'Week ' + r.n + ': ' + r.m + ' (' + fmtD(r.from) + ' → ' + fmtD(r.to) + ')'; }).join('\n'));
+    } catch (e) { TN.setErr(ERR, e.message || 'Could not generate the rotation.'); }
+  }
+  try {
+    if (!TN.el(P + 'gen')) return;
+    var now = new Date();
+    g('start').value = now.getFullYear() + '-' + String(now.getMonth() + 1).padStart(2, '0') + '-' + String(now.getDate()).padStart(2, '0');
+    TN.on(P + 'gen', 'click', gen);
+    TN.on(P + 'csv', 'click', function () {
+      if (!lastCsv) { TN.setErr(ERR, 'Generate the schedule first.'); return; }
+      TN.downloadText(lastCsv, 'on-call-rotation.csv', 'text/csv');
+    });
+    TN.on(P + 'copy', 'click', function () {
+      var t = g('copy').getAttribute('data-t');
+      if (t) TN.copy(t); else TN.setErr(ERR, 'Generate the schedule first.');
+    });
+  } catch (e) { /* never throw on load */ }
+})();
+
+</script>
+</body>
+</html>

@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bowling Score Calculator — Free Online | ToolNest</title>
+<meta name="description" content="Bowling Score Calculator — real 10-frame scoring with strikes, spares and 10th-frame bonuses, entered frame by frame.">
+<meta name="keywords" content="bowling score calculator, bowling scoring, 10 frame bowling scorer">
+<link rel="canonical" href="https://toolnest.vercel.app/tools/bowling-score-calculator/">
+<meta name="theme-color" content="#07070b">
+<meta property="og:title" content="Bowling Score Calculator — Free Online | ToolNest">
+<meta property="og:description" content="Bowling Score Calculator — real 10-frame scoring with strikes, spares and 10th-frame bonuses, entered frame by frame.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css?v=4">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%23e01111'/><text x='50' y='68' font-size='58' text-anchor='middle' fill='white' font-family='Arial' font-weight='bold'>T</text></svg>">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebApplication","name":"Bowling Score Calculator","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0"},"url":"https://toolnest.vercel.app/tools/bowling-score-calculator/","description":"Bowling Score Calculator — real 10-frame scoring with strikes, spares and 10th-frame bonuses, entered frame by frame."},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How do strike and spare bonuses work?","acceptedAnswer":{"@type":"Answer","text":"Strike = 10 plus your next two balls. Spare = 10 plus your next one ball. That's why a strike can be worth up to 30."}},{"@type":"Question","name":"How does the 10th frame work?","acceptedAnswer":{"@type":"Answer","text":"Strike on the first ball and you get two more balls (pins reset). Spare the first two and you get one bonus ball. Otherwise the frame ends at two balls."}},{"@type":"Question","name":"What is a perfect game worth?","acceptedAnswer":{"@type":"Answer","text":"A perfect game is 12 strikes = 300. The calculator handles it correctly."}}]}]}</script>
+</head>
+<body>
+<header class="site-header">
+  <div class="container">
+    <a class="logo" href="/"><span class="logo-mark">T</span> ToolNest</a>
+    <div class="header-right">
+      <form class="nav-search" action="/" method="get" role="search">
+        <span class="ns-icon">🔍</span>
+        <input type="search" name="q" placeholder="Search tools…" aria-label="Search tools" autocomplete="off">
+      </form>
+      <div class="menu-wrap">
+        <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="menuPanel" aria-label="Open menu"><span></span><span></span><span></span></button>
+        <nav class="menu-panel" id="menuPanel" aria-label="Site">
+          <a href="/">Home</a>
+          <a href="/#categories">Categories</a>
+          <a href="/#all-tools">All Tools</a>
+        </nav>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ADSTERRA-HEADER: paste your Adsterra banner ad code inside the div below -->
+<div class="container"><div class="ad-slot ad-leaderboard" data-ad="header"></div></div>
+
+<main class="container">
+  <nav class="crumbs"><a href="/">Home</a> &rsaquo; <a href="/#fun">Fun &amp; Lifestyle</a> &rsaquo; Bowling Score Calculator</nav>
+  <div class="tool-hero">
+    <h1>Bowling Score Calculator</h1>
+    <p>Bowling Score Calculator — real 10-frame scoring with strikes, spares and 10th-frame bonuses, entered frame by frame.</p>
+  </div>
+
+  <div class="tool-card" style="max-width:860px;margin:0 auto">
+  <div class="btn-row" style="margin-bottom:10px">
+    <button class="btn btn-primary" id="bowling-score-calculator-new">New game</button>
+    <button class="btn btn-outline" id="bowling-score-calculator-perfect">Perfect game</button>
+    <button class="btn btn-outline" id="bowling-score-calculator-gutter">All gutters</button>
+  </div>
+  <p class="muted" id="bowling-score-calculator-status" style="min-height:24px;font-weight:600;text-align:center"></p>
+  <div style="overflow:auto">
+    <div id="bowling-score-calculator-frames" style="display:grid;grid-template-columns:repeat(9,minmax(74px,1fr)) minmax(108px,1.4fr);gap:6px;min-width:760px"></div>
+  </div>
+  <div class="stat-cards" style="max-width:320px;margin:12px auto 0">
+    <div class="stat-card"><div class="v" id="bowling-score-calculator-total">0</div><div class="l">Total score</div></div>
+  </div>
+  <p class="note">Real scoring: strikes and spares earn bonus balls; the 10th frame allows up to 3 balls. Pin menus enforce legal values.</p>
+  <div class="error" id="bowling-score-calculator-error"></div>
+</div>
+
+
+  <!-- ADSTERRA-INCONTENT: paste your Adsterra native/in-content ad code inside the div below -->
+  <div class="ad-slot" data-ad="incontent"></div>
+
+  <div class="info-grid">
+    <div class="info-card">
+      <h2>📖 How to use</h2>
+      <ol><li>Enter pins for each ball, frame by frame.</li><li>Pin limits update automatically (e.g. no 2nd ball after a strike).</li><li>Cumulative scores appear as each frame becomes final.</li><li>Total updates live — 300 is perfect.</li></ol>
+    </div>
+    <div class="info-card">
+      <h2>❓ Frequently asked questions</h2>
+      <div class="faq"><details><summary>How do strike and spare bonuses work?</summary><p>Strike = 10 plus your next two balls. Spare = 10 plus your next one ball. That&#39;s why a strike can be worth up to 30.</p></details><details><summary>How does the 10th frame work?</summary><p>Strike on the first ball and you get two more balls (pins reset). Spare the first two and you get one bonus ball. Otherwise the frame ends at two balls.</p></details><details><summary>What is a perfect game worth?</summary><p>A perfect game is 12 strikes = 300. The calculator handles it correctly.</p></details></div>
+    </div>
+  </div>
+
+  <section class="section">
+    <h2>🔗 Related tools</h2>
+    <div class="tool-grid"><a class="tool-link" href="/tools/100-day-challenge-tracker/" data-search="100-day challenge tracker track a 100-day challenge with a checkable 100-cell grid, streaks and stats. 100 day challenge habit tracker 100 days challenge tracker streak tracker"><span class="t-ico">🎲</span><span class="t-body"><b>100-Day Challenge Tracker</b><small>Track a 100-day challenge with a checkable 100-cell grid, streaks and stats.</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/24-game/" data-search="24 game the 24 game — combine four numbers with + − × ÷ to make 24. built-in solver guarantees every deal and gives hints. 24 game make 24 game 24 puzzle solver math puzzle game"><span class="t-ico">🎲</span><span class="t-body"><b>24 Game</b><small>The 24 Game — combine four numbers with + − × ÷ to make 24. Built-in solver guarantees every…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/aim-trainer-game/" data-search="aim trainer game test and train your aim — targets pop up at random spots for 30 seconds. hits, misses and accuracy are tracked live. aim trainer aim test reaction test click speed test fps aim trainer"><span class="t-ico">🎲</span><span class="t-body"><b>Aim Trainer Game</b><small>Test and train your aim — targets pop up at random spots for 30 seconds. Hits, misses and ac…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/asteroid-shooter/" data-search="asteroid shooter asteroid shooter — rotate, thrust and blast splitting asteroids on canvas. 3 lives, rising levels. asteroid shooter game asteroids game online space shooter canvas"><span class="t-ico">🎲</span><span class="t-body"><b>Asteroid Shooter</b><small>Asteroid Shooter — rotate, thrust and blast splitting asteroids on canvas. 3 lives, rising l…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/attendance-tracker/" data-search="attendance tracker track class attendance: roster with present/absent marks per date and % summaries. attendance tracker class attendance student attendance roll call app"><span class="t-ico">🎲</span><span class="t-body"><b>Attendance Tracker</b><small>Track class attendance: roster with present/absent marks per date and % summaries.</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/baby-name-generator/" data-search="baby name generator discover baby names by gender and origin — pakistani, arabic, western, indian or turkish — with meanings, random picks and tap-to-copy. baby name generator baby names with meanings muslim baby names boy girl names"><span class="t-ico">🎲</span><span class="t-body"><b>Baby Name Generator</b><small>Discover baby names by gender and origin — Pakistani, Arabic, Western, Indian or Turkish — w…</small></span><span class="t-arrow">→</span></a></div>
+  </section>
+</main>
+
+<!-- ADSTERRA-FOOTER: paste your Adsterra footer/banner ad code inside the div below -->
+<div class="container"><div class="ad-slot" data-ad="footer"></div></div>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="f-grid">
+      <div>
+        <span class="brandline"><span class="logo-mark">T</span> ToolNest</span>
+        <p>Free online tools that actually work. No sign-up, no watermarks — and your files never leave your device for client-side tools.</p>
+      </div>
+      <div>
+        <h4>Popular</h4>
+        <a href="/tools/qr-code-generator/">QR Code Generator</a>
+        <a href="/tools/background-remover/">Background Remover</a>
+        <a href="/tools/pdf-merger/">PDF Merger</a>
+        <a href="/tools/word-counter/">Word Counter</a>
+      </div>
+      <div>
+        <h4>Categories</h4>
+        <a href="/#image">Image Tools</a>
+        <a href="/#pdf">PDF &amp; Documents</a>
+        <a href="/#calculators">Calculators</a>
+        <a href="/#developer">Developer Tools</a>
+      </div>
+      <div>
+        <h4>Site</h4>
+        <a href="/">Home</a>
+        <a href="/#all-tools">All Tools</a>
+        <a href="/sitemap.xml">Sitemap</a>
+      </div>
+    </div>
+    <div class="f-bottom">© 2026 ToolNest · Free tools for everyone · Made with care</div>
+  </div>
+</footer>
+
+<script src="/assets/site.js?v=5"></script>
+
+<script>
+(function () {
+  'use strict';
+  var P = 'bowling-score-calculator-';
+  function g(id) { return document.getElementById(P + id); }
+  var frames = []; // each: array of balls (null = not yet entered)
+  function blank() {
+    frames = [];
+    for (var i = 0; i < 10; i++) frames.push([]);
+  }
+  function status(t) { var el = g('status'); if (el) el.textContent = t; }
+  function ballCount(fi) {
+    if (fi < 9) {
+      var b1 = frames[fi][0];
+      if (b1 === 10) return 1;
+      return 2;
+    }
+    var c1 = frames[9][0], c2 = frames[9][1];
+    if (c1 === undefined) return 1;
+    if (c1 === 10 || (c2 !== undefined && c1 + c2 === 10)) {
+      if (c2 === undefined) return 2;
+      return 3;
+    }
+    return 2;
+  }
+  function maxFor(fi, bi) {
+    if (fi < 9) {
+      if (bi === 0) return 10;
+      return 10 - (frames[fi][0] || 0);
+    }
+    var b = frames[9];
+    if (bi === 0) return 10;
+    if (bi === 1) return b[0] === 10 ? 10 : 10 - (b[0] || 0);
+    // third ball
+    if (b[0] === 10) {
+      if (b[1] === 10) return 10;
+      return 10 - (b[1] || 0);
+    }
+    return 10; // spare on first two
+  }
+  function sym(fi, bi, v) {
+    if (v === null || v === undefined) return '';
+    if (fi < 9) {
+      if (bi === 0 && v === 10) return 'X';
+      if (bi === 1) {
+        if (frames[fi][0] + v === 10) return '/';
+        return String(v);
+      }
+      return String(v);
+    }
+    var b = frames[9];
+    if (bi === 0) return v === 10 ? 'X' : String(v);
+    if (bi === 1) {
+      if (b[0] === 10) return v === 10 ? 'X' : String(v);
+      return (b[0] + v === 10) ? '/' : String(v);
+    }
+    if (b[0] === 10) {
+      if (b[1] === 10) return v === 10 ? 'X' : String(v);
+      return (b[1] + v === 10) ? '/' : String(v);
+    }
+    return v === 10 ? 'X' : String(v);
+  }
+  function flatBalls() {
+    var out = [];
+    for (var i = 0; i < 10; i++) for (var j = 0; j < frames[i].length; j++) {
+      if (frames[i][j] !== undefined && frames[i][j] !== null) out.push({ f: i, v: frames[i][j] });
+    }
+    return out;
+  }
+  function frameScore(fi, flat) {
+    // returns {score, done}
+    if (fi < 9) {
+      var b1 = frames[fi][0], b2 = frames[fi][1];
+      if (b1 === undefined || b1 === null) return { done: false };
+      var idx = -1;
+      for (var i = 0; i < flat.length; i++) if (flat[i].f === fi) { idx = i; break; }
+      if (b1 === 10) {
+        if (idx + 2 < flat.length) return { done: true, score: 10 + flat[idx + 1].v + flat[idx + 2].v };
+        return { done: false };
+      }
+      if (b2 === undefined || b2 === null) return { done: false };
+      if (b1 + b2 === 10) {
+        if (idx + 2 < flat.length) return { done: true, score: 10 + flat[idx + 2].v };
+        return { done: false };
+      }
+      return { done: true, score: b1 + b2 };
+    }
+    var b = frames[9];
+    if (ballCount(9) === b.filter(function (x) { return x !== undefined && x !== null; }).length && b[0] !== undefined && b[0] !== null) {
+      var s = 0;
+      for (var k = 0; k < b.length; k++) s += b[k] || 0;
+      return { done: true, score: s };
+    }
+    return { done: false };
+  }
+  function render() {
+    var el = g('frames'); if (!el) return;
+    el.innerHTML = '';
+    var flat = flatBalls(), cum = 0, total = 0, allDone = true;
+    var cumScores = [];
+    for (var fi = 0; fi < 10; fi++) {
+      var fs = frameScore(fi, flat);
+      if (fs.done) { cum += fs.score; cumScores.push(cum); }
+      else { cumScores.push(null); allDone = false; }
+    }
+    total = cum;
+    for (var f2 = 0; f2 < 10; f2++) {
+      (function (fi) {
+        var box = document.createElement('div');
+        box.style.cssText = 'background:#292524;border-radius:8px;padding:6px;display:flex;flex-direction:column;gap:4px';
+        var title = document.createElement('div');
+        title.style.cssText = 'font-size:11px;color:#a8a29e;font-weight:700;text-align:center';
+        title.textContent = fi === 9 ? '10th' : 'Frame ' + (fi + 1);
+        box.appendChild(title);
+        var ballsRow = document.createElement('div');
+        ballsRow.style.cssText = 'display:flex;gap:4px;justify-content:center';
+        var nb = ballCount(fi);
+        for (var bi = 0; bi < nb; bi++) {
+          (function (bj) {
+            var cur = frames[fi][bj];
+            var sel = document.createElement('select');
+            sel.className = 'input';
+            sel.style.cssText = 'width:100%;min-width:0;font-size:13px;padding:4px 2px;text-align:center';
+            sel.setAttribute('aria-label', 'Frame ' + (fi + 1) + ' ball ' + (bj + 1));
+            var emp = document.createElement('option');
+            emp.value = ''; emp.textContent = '–';
+            sel.appendChild(emp);
+            var mx = maxFor(fi, bj);
+            for (var v = 0; v <= mx; v++) {
+              var op = document.createElement('option');
+              op.value = String(v);
+              op.textContent = sym(fi, bj, v) || String(v);
+              if (cur === v) op.selected = true;
+              sel.appendChild(op);
+            }
+            sel.addEventListener('change', function () {
+              var nv = sel.value === '' ? null : parseInt(sel.value, 10);
+              frames[fi][bj] = nv;
+              // clear later balls that are now illegal/out of range
+              var legal = ballCount(fi);
+              frames[fi] = frames[fi].slice(0, legal);
+              for (var q = bj + 1; q < legal; q++) {
+                if (frames[fi][q] !== null && frames[fi][q] !== undefined && frames[fi][q] > maxFor(fi, q)) frames[fi][q] = null;
+              }
+              render();
+            });
+            ballsRow.appendChild(sel);
+          })(bi);
+        }
+        box.appendChild(ballsRow);
+        var cs = document.createElement('div');
+        cs.style.cssText = 'text-align:center;font-weight:800;font-size:18px;min-height:26px;color:' + (cumScores[fi] !== null ? '#4ade80' : '#57534e');
+        cs.textContent = cumScores[fi] !== null ? String(cumScores[fi]) : '–';
+        box.appendChild(cs);
+        el.appendChild(box);
+      })(f2);
+    }
+    var t = g('total'); if (t) t.textContent = String(total);
+    var st = g('status');
+    if (st) {
+      if (allDone) st.textContent = total === 300 ? '🎳 PERFECT GAME — 300!' : 'Game complete — final score ' + total + '.';
+      else st.textContent = 'Enter pins ball by ball. Strike = X, spare = /.';
+    }
+  }
+  function fill(game) {
+    blank();
+    if (game === 'perfect') {
+      for (var i = 0; i < 9; i++) frames[i] = [10];
+      frames[9] = [10, 10, 10];
+    } else {
+      for (var j = 0; j < 9; j++) frames[j] = [0, 0];
+      frames[9] = [0, 0];
+    }
+    render();
+  }
+  try {
+    if (!g('frames')) return;
+    blank();
+    TN.on(P + 'new', 'click', function () { blank(); TN.clearErr(P + 'error'); render(); });
+    TN.on(P + 'perfect', 'click', function () { fill('perfect'); });
+    TN.on(P + 'gutter', 'click', function () { fill('gutter'); });
+    render();
+  } catch (e) { /* never throw on load */ }
+})();
+
+</script>
+</body>
+</html>

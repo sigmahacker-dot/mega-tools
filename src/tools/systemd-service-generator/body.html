@@ -1,0 +1,63 @@
+<div class="tool-card">
+  <div class="grid2">
+    <div class="field">
+      <label for="systemd-service-generator-desc">Description</label>
+      <input class="input" id="systemd-service-generator-desc" value="My application service">
+    </div>
+    <div class="field">
+      <label for="systemd-service-generator-exec">ExecStart</label>
+      <input class="input" id="systemd-service-generator-exec" value="/usr/bin/node /opt/myapp/server.js" style="font-family:monospace">
+    </div>
+  </div>
+  <div class="grid3">
+    <div class="field">
+      <label for="systemd-service-generator-user">User</label>
+      <input class="input" id="systemd-service-generator-user" value="www-data">
+    </div>
+    <div class="field">
+      <label for="systemd-service-generator-group">Group (blank = user's)</label>
+      <input class="input" id="systemd-service-generator-group" placeholder="www-data">
+    </div>
+    <div class="field">
+      <label for="systemd-service-generator-workdir">WorkingDirectory</label>
+      <input class="input" id="systemd-service-generator-workdir" value="/opt/myapp">
+    </div>
+  </div>
+  <div class="grid3">
+    <div class="field">
+      <label for="systemd-service-generator-restart">Restart</label>
+      <select class="select" id="systemd-service-generator-restart">
+        <option value="on-failure" selected>on-failure</option>
+        <option value="always">always</option>
+        <option value="on-abnormal">on-abnormal</option>
+        <option value="no">no</option>
+      </select>
+    </div>
+    <div class="field">
+      <label for="systemd-service-generator-restartsec">RestartSec</label>
+      <input class="input" id="systemd-service-generator-restartsec" value="5s">
+    </div>
+    <div class="field">
+      <label for="systemd-service-generator-wantedby">WantedBy</label>
+      <input class="input" id="systemd-service-generator-wantedby" value="multi-user.target">
+    </div>
+  </div>
+  <div class="field">
+    <label for="systemd-service-generator-env">Environment (one KEY=value per line)</label>
+    <textarea class="textarea" id="systemd-service-generator-env" rows="2" style="font-family:monospace">NODE_ENV=production
+PORT=3000</textarea>
+  </div>
+  <div class="btn-row">
+    <button class="btn" id="systemd-service-generator-generate">Generate unit file</button>
+  </div>
+  <div class="error" id="systemd-service-generator-error"></div>
+  <div class="field">
+    <label for="systemd-service-generator-output">Unit file</label>
+    <textarea class="textarea" id="systemd-service-generator-output" rows="16" readonly style="font-family:monospace"></textarea>
+  </div>
+  <div class="btn-row">
+    <button class="btn btn-outline" id="systemd-service-generator-copy">Copy unit file</button>
+    <button class="btn btn-outline" id="systemd-service-generator-download">Download myapp.service</button>
+  </div>
+  <p class="note">Install: save to /etc/systemd/system/myapp.service, then systemctl daemon-reload &amp;&amp; systemctl enable --now myapp</p>
+</div>

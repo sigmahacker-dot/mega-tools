@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Twitter Card Generator — Free Online | ToolNest</title>
+<meta name="description" content="Generate Twitter/X card meta tags (summary or large image) with a live preview.">
+<meta name="keywords" content="twitter card generator, x card meta tags, twitter card preview, social meta tags">
+<link rel="canonical" href="https://toolnest.vercel.app/tools/twitter-card-generator/">
+<meta name="theme-color" content="#07070b">
+<meta property="og:title" content="Twitter Card Generator — Free Online | ToolNest">
+<meta property="og:description" content="Generate Twitter/X card meta tags (summary or large image) with a live preview.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css?v=4">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%23e01111'/><text x='50' y='68' font-size='58' text-anchor='middle' fill='white' font-family='Arial' font-weight='bold'>T</text></svg>">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebApplication","name":"Twitter Card Generator","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0"},"url":"https://toolnest.vercel.app/tools/twitter-card-generator/","description":"Generate Twitter/X card meta tags (summary or large image) with a live preview."},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How do I generate card tags?","acceptedAnswer":{"@type":"Answer","text":"Choose summary or summary_large_image, fill in title, description and image URL, and click Generate — you get the full set of twitter: meta tags plus a visual preview."}},{"@type":"Question","name":"Summary vs large image — which to pick?","acceptedAnswer":{"@type":"Answer","text":"summary shows a small thumbnail; summary_large_image shows a big image. Large image cards get more engagement for visual content."}},{"@type":"Question","name":"What image size should I use?","acceptedAnswer":{"@type":"Answer","text":"Images should be under 5MB; summary_large_image works best at 1200×628."}},{"@type":"Question","name":"How do I add the tags to my site?","acceptedAnswer":{"@type":"Answer","text":"Paste the tags into your page \u003chead>. X reads twitter:card, twitter:title, twitter:description and twitter:image."}}]}]}</script>
+</head>
+<body>
+<header class="site-header">
+  <div class="container">
+    <a class="logo" href="/"><span class="logo-mark">T</span> ToolNest</a>
+    <div class="header-right">
+      <form class="nav-search" action="/" method="get" role="search">
+        <span class="ns-icon">🔍</span>
+        <input type="search" name="q" placeholder="Search tools…" aria-label="Search tools" autocomplete="off">
+      </form>
+      <div class="menu-wrap">
+        <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="menuPanel" aria-label="Open menu"><span></span><span></span><span></span></button>
+        <nav class="menu-panel" id="menuPanel" aria-label="Site">
+          <a href="/">Home</a>
+          <a href="/#categories">Categories</a>
+          <a href="/#all-tools">All Tools</a>
+        </nav>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ADSTERRA-HEADER: paste your Adsterra banner ad code inside the div below -->
+<div class="container"><div class="ad-slot ad-leaderboard" data-ad="header"></div></div>
+
+<main class="container">
+  <nav class="crumbs"><a href="/">Home</a> &rsaquo; <a href="/#social">Social Media</a> &rsaquo; Twitter Card Generator</nav>
+  <div class="tool-hero">
+    <h1>Twitter Card Generator</h1>
+    <p>Generate Twitter/X card meta tags (summary or large image) with a live preview.</p>
+  </div>
+
+  <div class="tool-card">
+  <div class="grid2">
+    <div class="field">
+      <label for="twitter-card-generator-type">Card type</label>
+      <select class="select" id="twitter-card-generator-type">
+        <option value="summary">Summary</option>
+        <option value="summary_large_image">Summary Large Image</option>
+      </select>
+    </div>
+    <div class="field">
+      <label for="twitter-card-generator-site">Site handle (optional)</label>
+      <input class="input" type="text" id="twitter-card-generator-site" placeholder="@yourhandle">
+    </div>
+    <div class="field">
+      <label for="twitter-card-generator-title">Title (≤70 chars)</label>
+      <input class="input" type="text" id="twitter-card-generator-title" maxlength="70" placeholder="Card title">
+    </div>
+    <div class="field">
+      <label for="twitter-card-generator-img">Image URL</label>
+      <input class="input" type="url" id="twitter-card-generator-img" placeholder="https://example.com/card.png">
+    </div>
+  </div>
+  <div class="field">
+    <label for="twitter-card-generator-desc">Description (≤200 chars)</label>
+    <textarea class="textarea" id="twitter-card-generator-desc" rows="2" maxlength="200" placeholder="Card description"></textarea>
+  </div>
+  <div class="btn-row">
+    <button class="btn" id="twitter-card-generator-gen">Generate + Preview</button>
+    <button class="btn btn-outline" id="twitter-card-generator-copy">Copy Meta Tags</button>
+  </div>
+  <div class="error" id="twitter-card-generator-error"></div>
+</div>
+
+<div class="tool-card">
+  <h3>Preview</h3>
+  <div id="twitter-card-generator-preview" style="max-width:560px"></div>
+</div>
+
+<div class="tool-card">
+  <h3>Meta tags</h3>
+  <pre id="twitter-card-generator-out" style="white-space:pre-wrap;font-family:monospace;font-size:13px"></pre>
+</div>
+
+  <!-- ADSTERRA-INCONTENT: paste your Adsterra native/in-content ad code inside the div below -->
+  <div class="ad-slot" data-ad="incontent"></div>
+
+  <div class="info-grid">
+    <div class="info-card">
+      <h2>📖 How to use</h2>
+      <ol><li>Pick summary or summary_large_image.</li><li>Fill in title, description and image URL.</li><li>Click Generate to get the meta tags.</li><li>Preview the card mock and copy the tags into your page &lt;head&gt;.</li></ol>
+    </div>
+    <div class="info-card">
+      <h2>❓ Frequently asked questions</h2>
+      <div class="faq"><details><summary>How do I generate card tags?</summary><p>Choose summary or summary_large_image, fill in title, description and image URL, and click Generate — you get the full set of twitter: meta tags plus a visual preview.</p></details><details><summary>Summary vs large image — which to pick?</summary><p>summary shows a small thumbnail; summary_large_image shows a big image. Large image cards get more engagement for visual content.</p></details><details><summary>What image size should I use?</summary><p>Images should be under 5MB; summary_large_image works best at 1200×628.</p></details><details><summary>How do I add the tags to my site?</summary><p>Paste the tags into your page &lt;head&gt;. X reads twitter:card, twitter:title, twitter:description and twitter:image.</p></details></div>
+    </div>
+  </div>
+
+  <section class="section">
+    <h2>🔗 Related tools</h2>
+    <div class="tool-grid"><a class="tool-link" href="/tools/bio-generator/" data-search="bio generator create 4 polished social-media bios from your name, profession and interests in professional, funny, minimalist or inspirational tones. click to copy. bio generator instagram bio ideas social media bio"><span class="t-ico">📣</span><span class="t-body"><b>Bio Generator</b><small>Create 4 polished social-media bios from your name, profession and interests in Professional…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/caption-counter/" data-search="instagram caption counter write instagram captions with live stats — characters vs the 2,200 limit, hashtags, mentions and the 125-char fold preview. instagram caption counter caption character limit hashtag counter instagram caption length"><span class="t-ico">📣</span><span class="t-body"><b>Instagram Caption Counter</b><small>Write Instagram captions with live stats — characters vs the 2,200 limit, hashtags, mentions…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/caption-generator/" data-search="caption generator get 6 engaging captions for any topic in funny, aesthetic, motivational, savage or cute moods, plus a matching hashtag line. one-tap copy included. caption generator instagram captions social media captions"><span class="t-ico">📣</span><span class="t-body"><b>Caption Generator</b><small>Get 6 engaging captions for any topic in Funny, Aesthetic, Motivational, Savage or Cute mood…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/content-calendar-maker/" data-search="content calendar maker plan a month of social posts: schedule content per day, save and export. content calendar social media calendar post scheduler planner content planner"><span class="t-ico">📣</span><span class="t-body"><b>Content Calendar Maker</b><small>Plan a month of social posts: schedule content per day, save and export.</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/engagement-rate-calculator/" data-search="engagement rate calculator calculate engagement rate from likes, comments, shares and followers or reach. engagement rate calculator instagram engagement rate social media engagement er calculator"><span class="t-ico">📣</span><span class="t-body"><b>Engagement Rate Calculator</b><small>Calculate engagement rate from likes, comments, shares and followers or reach.</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/facebook-ad-copy-generator/" data-search="facebook ad copy generator generate facebook ad copy: primary text, headline and cta combinations. facebook ad copy fb ad generator ad copy generator facebook ads text"><span class="t-ico">📣</span><span class="t-body"><b>Facebook Ad Copy Generator</b><small>Generate Facebook ad copy: primary text, headline and CTA combinations.</small></span><span class="t-arrow">→</span></a></div>
+  </section>
+</main>
+
+<!-- ADSTERRA-FOOTER: paste your Adsterra footer/banner ad code inside the div below -->
+<div class="container"><div class="ad-slot" data-ad="footer"></div></div>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="f-grid">
+      <div>
+        <span class="brandline"><span class="logo-mark">T</span> ToolNest</span>
+        <p>Free online tools that actually work. No sign-up, no watermarks — and your files never leave your device for client-side tools.</p>
+      </div>
+      <div>
+        <h4>Popular</h4>
+        <a href="/tools/qr-code-generator/">QR Code Generator</a>
+        <a href="/tools/background-remover/">Background Remover</a>
+        <a href="/tools/pdf-merger/">PDF Merger</a>
+        <a href="/tools/word-counter/">Word Counter</a>
+      </div>
+      <div>
+        <h4>Categories</h4>
+        <a href="/#image">Image Tools</a>
+        <a href="/#pdf">PDF &amp; Documents</a>
+        <a href="/#calculators">Calculators</a>
+        <a href="/#developer">Developer Tools</a>
+      </div>
+      <div>
+        <h4>Site</h4>
+        <a href="/">Home</a>
+        <a href="/#all-tools">All Tools</a>
+        <a href="/sitemap.xml">Sitemap</a>
+      </div>
+    </div>
+    <div class="f-bottom">© 2026 ToolNest · Free tools for everyone · Made with care</div>
+  </div>
+</footer>
+
+<script src="/assets/site.js?v=5"></script>
+
+<script>
+/* Twitter Card Generator — summary/large-image card meta tags + preview. */
+(function () {
+  'use strict';
+
+  var SLUG = 'twitter-card-generator';
+  var lastTags = '';
+
+  function v(id) { return TN.el(SLUG + '-' + id).value.trim(); }
+
+  function escAttr(s) { return String(s).replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;'); }
+
+  function generate() {
+    TN.clearErr(SLUG + '-error');
+    var type = TN.el(SLUG + '-type').value;
+    var title = v('title'), desc = v('desc'), img = v('img'), site = v('site');
+    if (!title) { TN.setErr(SLUG + '-error', 'Enter a card title.'); return; }
+    if (!img) { TN.setErr(SLUG + '-error', 'Enter an image URL.'); return; }
+    try { new URL(img); } catch (e) { TN.setErr(SLUG + '-error', 'That image URL looks invalid.'); return; }
+
+    var tags = [
+      '<meta name="twitter:card" content="' + type + '">',
+      '<meta name="twitter:title" content="' + escAttr(title) + '">'
+    ];
+    if (desc) tags.push('<meta name="twitter:description" content="' + escAttr(desc) + '">');
+    tags.push('<meta name="twitter:image" content="' + escAttr(img) + '">');
+    if (site) tags.push('<meta name="twitter:site" content="' + escAttr(site.charAt(0) === '@' ? site : '@' + site) + '">');
+    // og fallbacks, genuinely useful
+    tags.push('<meta property="og:title" content="' + escAttr(title) + '">');
+    if (desc) tags.push('<meta property="og:description" content="' + escAttr(desc) + '">');
+    tags.push('<meta property="og:image" content="' + escAttr(img) + '">');
+
+    lastTags = tags.join('\n');
+    TN.el(SLUG + '-out').textContent = lastTags;
+
+    var large = type === 'summary_large_image';
+    var pv = TN.el(SLUG + '-preview');
+    pv.innerHTML =
+      '<div style="border:1px solid #333;border-radius:16px;overflow:hidden;background:#000;max-width:520px">' +
+      (large
+        ? '<img src="' + escAttr(img) + '" alt="card image" style="width:100%;display:block;aspect-ratio:1.91/1;object-fit:cover" onerror="this.style.display=\'none\'">' +
+          '<div style="padding:12px"><div style="color:#fff;font-weight:bold">' + TN.esc(title) + '</div>' +
+          (desc ? '<div style="color:#71767b;font-size:14px;margin-top:4px">' + TN.esc(desc) + '</div>' : '') + '</div>'
+        : '<div style="display:flex;padding:12px;gap:12px">' +
+          '<img src="' + escAttr(img) + '" alt="card image" style="width:120px;height:120px;object-fit:cover;border-radius:8px" onerror="this.style.display=\'none\'">' +
+          '<div><div style="color:#fff;font-weight:bold">' + TN.esc(title) + '</div>' +
+          (desc ? '<div style="color:#71767b;font-size:14px;margin-top:4px">' + TN.esc(desc) + '</div>' : '') + '</div></div>') +
+      '</div>';
+  }
+
+  function init() {
+    try {
+      if (!TN.el(SLUG + '-gen')) return;
+      TN.on(SLUG + '-gen', 'click', generate);
+      TN.on(SLUG + '-copy', 'click', function () {
+        if (!lastTags) { TN.setErr(SLUG + '-error', 'Generate the tags first.'); return; }
+        TN.copy(lastTags).catch(function () { TN.setErr(SLUG + '-error', 'Copy failed — select the text manually.'); });
+      });
+    } catch (e) { /* never throw on load */ }
+  }
+
+  init();
+})();
+</script>
+</body>
+</html>

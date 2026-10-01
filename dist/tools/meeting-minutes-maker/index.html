@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Meeting Minutes Maker — Free Online | ToolNest</title>
+<meta name="description" content="Turn rough notes into structured meeting minutes — attendees, decisions, and action items with owners and due dates. Copy or download.">
+<meta name="keywords" content="meeting minutes, minutes maker, meeting notes, meeting minutes template, action items">
+<link rel="canonical" href="https://toolnest.vercel.app/tools/meeting-minutes-maker/">
+<meta name="theme-color" content="#07070b">
+<meta property="og:title" content="Meeting Minutes Maker — Free Online | ToolNest">
+<meta property="og:description" content="Turn rough notes into structured meeting minutes — attendees, decisions, and action items with owners and due dates. Copy or download.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css?v=4">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%23e01111'/><text x='50' y='68' font-size='58' text-anchor='middle' fill='white' font-family='Arial' font-weight='bold'>T</text></svg>">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebApplication","name":"Meeting Minutes Maker","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0"},"url":"https://toolnest.vercel.app/tools/meeting-minutes-maker/","description":"Turn rough notes into structured meeting minutes — attendees, decisions, and action items with owners and due dates. Copy or download."},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What sections are included?","acceptedAnswer":{"@type":"Answer","text":"The meeting title, date, attendees, key discussion points, decisions made, and action items with owners and due dates."}},{"@type":"Question","name":"How do action items work?","acceptedAnswer":{"@type":"Answer","text":"Action items each get an owner and a due date, so nothing falls through the cracks."}},{"@type":"Question","name":"Can I remove entries?","acceptedAnswer":{"@type":"Answer","text":"Yes — remove any decision or action item with its ✕ button."}},{"@type":"Question","name":"How do I share the minutes?","acceptedAnswer":{"@type":"Answer","text":"Copy the formatted minutes or download them as a .txt file."}}]}]}</script>
+</head>
+<body>
+<header class="site-header">
+  <div class="container">
+    <a class="logo" href="/"><span class="logo-mark">T</span> ToolNest</a>
+    <div class="header-right">
+      <form class="nav-search" action="/" method="get" role="search">
+        <span class="ns-icon">🔍</span>
+        <input type="search" name="q" placeholder="Search tools…" aria-label="Search tools" autocomplete="off">
+      </form>
+      <div class="menu-wrap">
+        <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="menuPanel" aria-label="Open menu"><span></span><span></span><span></span></button>
+        <nav class="menu-panel" id="menuPanel" aria-label="Site">
+          <a href="/">Home</a>
+          <a href="/#categories">Categories</a>
+          <a href="/#all-tools">All Tools</a>
+        </nav>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ADSTERRA-HEADER: paste your Adsterra banner ad code inside the div below -->
+<div class="container"><div class="ad-slot ad-leaderboard" data-ad="header"></div></div>
+
+<main class="container">
+  <nav class="crumbs"><a href="/">Home</a> &rsaquo; <a href="/#text">Text &amp; Writing</a> &rsaquo; Meeting Minutes Maker</nav>
+  <div class="tool-hero">
+    <h1>Meeting Minutes Maker</h1>
+    <p>Turn rough notes into structured meeting minutes — attendees, decisions, and action items with owners and due dates. Copy or download.</p>
+  </div>
+
+  <div class="tool-card">
+  <div class="grid2">
+    <div class="field">
+      <label for="meeting-minutes-maker-title">Meeting title</label>
+      <input class="input" id="meeting-minutes-maker-title" type="text" placeholder="e.g. Weekly Team Sync" maxlength="80">
+    </div>
+    <div class="field">
+      <label for="meeting-minutes-maker-date">Date</label>
+      <input class="input" id="meeting-minutes-maker-date" type="date">
+    </div>
+  </div>
+  <div class="field">
+    <label for="meeting-minutes-maker-attendees">Attendees (comma separated)</label>
+    <input class="input" id="meeting-minutes-maker-attendees" type="text" placeholder="e.g. Alex, Sarah, Dan" maxlength="200">
+  </div>
+  <div class="grid2">
+    <div class="field">
+      <label>Add decision</label>
+      <div style="display:flex;gap:8px">
+        <input class="input" id="meeting-minutes-maker-decision" type="text" placeholder="Decision made" maxlength="160">
+        <button class="btn btn-outline btn-sm" id="meeting-minutes-maker-add-decision" type="button" style="white-space:nowrap">+ Add</button>
+      </div>
+    </div>
+    <div class="field">
+      <label>Add discussion point</label>
+      <div style="display:flex;gap:8px">
+        <input class="input" id="meeting-minutes-maker-point" type="text" placeholder="Key point discussed" maxlength="160">
+        <button class="btn btn-outline btn-sm" id="meeting-minutes-maker-add-point" type="button" style="white-space:nowrap">+ Add</button>
+      </div>
+    </div>
+  </div>
+  <div class="field">
+    <label>Add action item</label>
+    <div class="grid3">
+      <input class="input" id="meeting-minutes-maker-action" type="text" placeholder="Action item" maxlength="160">
+      <input class="input" id="meeting-minutes-maker-owner" type="text" placeholder="Owner" maxlength="40">
+      <div style="display:flex;gap:8px">
+        <input class="input" id="meeting-minutes-maker-due" type="date" style="flex:1">
+        <button class="btn btn-outline btn-sm" id="meeting-minutes-maker-add-action" type="button" style="white-space:nowrap">+ Add</button>
+      </div>
+    </div>
+  </div>
+  <div class="error" id="meeting-minutes-maker-error"></div>
+  <div id="meeting-minutes-maker-list" style="margin-top:8px"></div>
+  <div class="btn-row" style="margin-top:12px">
+    <button class="btn btn-primary btn-sm" id="meeting-minutes-maker-copy" type="button">Copy Minutes</button>
+    <button class="btn btn-outline btn-sm" id="meeting-minutes-maker-download" type="button">Download .txt</button>
+  </div>
+</div>
+
+
+  <!-- ADSTERRA-INCONTENT: paste your Adsterra native/in-content ad code inside the div below -->
+  <div class="ad-slot" data-ad="incontent"></div>
+
+  <div class="info-grid">
+    <div class="info-card">
+      <h2>📖 How to use</h2>
+      <ol><li>Enter the meeting title, date, and attendees.</li><li>Add decisions and action items.</li><li>Copy or download the finished minutes.</li></ol>
+    </div>
+    <div class="info-card">
+      <h2>❓ Frequently asked questions</h2>
+      <div class="faq"><details><summary>What sections are included?</summary><p>The meeting title, date, attendees, key discussion points, decisions made, and action items with owners and due dates.</p></details><details><summary>How do action items work?</summary><p>Action items each get an owner and a due date, so nothing falls through the cracks.</p></details><details><summary>Can I remove entries?</summary><p>Yes — remove any decision or action item with its ✕ button.</p></details><details><summary>How do I share the minutes?</summary><p>Copy the formatted minutes or download them as a .txt file.</p></details></div>
+    </div>
+  </div>
+
+  <section class="section">
+    <h2>🔗 Related tools</h2>
+    <div class="tool-grid"><a class="tool-link" href="/tools/acronym-generator/" data-search="acronym generator turn any phrase into an acronym instantly — first letters, with options to skip small words, add periods and force uppercase. acronym generator make acronym from words initialism generator phrase to acronym"><span class="t-ico">✍️</span><span class="t-body"><b>Acronym Generator</b><small>Turn any phrase into an acronym instantly — first letters, with options to skip small words,…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/acrostic-poem-generator/" data-search="acrostic poem generator turn any word into an acrostic poem — one poetic line per letter from built-in line banks. acrostic poem generator acrostic generator name poem acrostic maker poem from word"><span class="t-ico">✍️</span><span class="t-body"><b>Acrostic Poem Generator</b><small>Turn any word into an acrostic poem — one poetic line per letter from built-in line banks.</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/aes-text-encryptor/" data-search="aes text encryptor encrypt text with real aes-256-gcm using a password-derived key (pbkdf2), fully in your browser. aes encrypt text encrypt message password aes-gcm online"><span class="t-ico">✍️</span><span class="t-body"><b>AES Text Encryptor</b><small>Encrypt text with real AES-256-GCM using a password-derived key (PBKDF2), fully in your brow…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/alliteration-generator/" data-search="alliteration generator generate alliterative phrases — pick a letter and a theme, get tongue-twisting word combos. alliteration generator alliteration examples tongue twister generator alliterative phrases letter phrases"><span class="t-ico">✍️</span><span class="t-body"><b>Alliteration Generator</b><small>Generate alliterative phrases — pick a letter and a theme, get tongue-twisting word combos.</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/anagram-generator/" data-search="anagram generator find every real anagram of your word — all unique permutations checked against a built-in word list. anagram generator anagram solver find anagrams anagram finder word unscrambler"><span class="t-ico">✍️</span><span class="t-body"><b>Anagram Generator</b><small>Find every real anagram of your word — all unique permutations checked against a built-in wo…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/apology-generator/" data-search="apology generator build a sincere, structured apology from your situation — acknowledge, take responsibility, make amends, and promise change. apology generator sorry letter apology message write an apology apology text"><span class="t-ico">✍️</span><span class="t-body"><b>Apology Generator</b><small>Build a sincere, structured apology from your situation — acknowledge, take responsibility, …</small></span><span class="t-arrow">→</span></a></div>
+  </section>
+</main>
+
+<!-- ADSTERRA-FOOTER: paste your Adsterra footer/banner ad code inside the div below -->
+<div class="container"><div class="ad-slot" data-ad="footer"></div></div>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="f-grid">
+      <div>
+        <span class="brandline"><span class="logo-mark">T</span> ToolNest</span>
+        <p>Free online tools that actually work. No sign-up, no watermarks — and your files never leave your device for client-side tools.</p>
+      </div>
+      <div>
+        <h4>Popular</h4>
+        <a href="/tools/qr-code-generator/">QR Code Generator</a>
+        <a href="/tools/background-remover/">Background Remover</a>
+        <a href="/tools/pdf-merger/">PDF Merger</a>
+        <a href="/tools/word-counter/">Word Counter</a>
+      </div>
+      <div>
+        <h4>Categories</h4>
+        <a href="/#image">Image Tools</a>
+        <a href="/#pdf">PDF &amp; Documents</a>
+        <a href="/#calculators">Calculators</a>
+        <a href="/#developer">Developer Tools</a>
+      </div>
+      <div>
+        <h4>Site</h4>
+        <a href="/">Home</a>
+        <a href="/#all-tools">All Tools</a>
+        <a href="/sitemap.xml">Sitemap</a>
+      </div>
+    </div>
+    <div class="f-bottom">© 2026 ToolNest · Free tools for everyone · Made with care</div>
+  </div>
+</footer>
+
+<script src="/assets/site.js?v=5"></script>
+
+<script>
+/* Meeting Minutes Maker — structured minutes: attendees, decisions, actions. */
+(function () {
+  'use strict';
+  var SLUG = 'meeting-minutes-maker';
+  var decisions = [], points = [], actions = [];
+
+  function row(text, arr, i) {
+    var r = document.createElement('div');
+    r.className = 'copy-row mt';
+    var d = document.createElement('div');
+    d.className = 'result';
+    d.style.flex = '1';
+    d.textContent = text;
+    var del = document.createElement('button');
+    del.className = 'btn btn-outline btn-sm';
+    del.type = 'button';
+    del.textContent = '✕';
+    del.setAttribute('aria-label', 'Remove');
+    del.addEventListener('click', function () { arr.splice(i, 1); render(); });
+    r.appendChild(d);
+    r.appendChild(del);
+    return r;
+  }
+
+  function render() {
+    var list = TN.el(SLUG + '-list');
+    list.innerHTML = '';
+    function section(title, arr, fmt) {
+      if (!arr.length) return;
+      var h = document.createElement('div');
+      h.style.cssText = 'font-weight:700;margin:12px 0 4px';
+      h.textContent = title;
+      list.appendChild(h);
+      arr.forEach(function (it, i) { list.appendChild(row(fmt(it), arr, i)); });
+    }
+    section('Decisions', decisions, function (d) { return d; });
+    section('Discussion points', points, function (p) { return p; });
+    section('Action items', actions, function (a) {
+      return a.text + '  — Owner: ' + a.owner + (a.due ? ', Due: ' + a.due : '');
+    });
+  }
+
+  function minutesText() {
+    var title = TN.el(SLUG + '-title').value.trim() || 'Meeting Minutes';
+    var date = TN.el(SLUG + '-date').value || '[date]';
+    var att = TN.el(SLUG + '-attendees').value.trim() || '[attendees]';
+    var L = ['MINUTES: ' + title, 'Date: ' + date, 'Attendees: ' + att, ''];
+    if (decisions.length) {
+      L.push('DECISIONS:');
+      decisions.forEach(function (d, i) { L.push((i + 1) + '. ' + d); });
+      L.push('');
+    }
+    if (points.length) {
+      L.push('DISCUSSION POINTS:');
+      points.forEach(function (p, i) { L.push((i + 1) + '. ' + p); });
+      L.push('');
+    }
+    if (actions.length) {
+      L.push('ACTION ITEMS:');
+      actions.forEach(function (a, i) { L.push((i + 1) + '. ' + a.text + ' — Owner: ' + a.owner + (a.due ? ', Due: ' + a.due : '')); });
+      L.push('');
+    }
+    return L.join('\n');
+  }
+
+  function init() {
+    if (!TN.el(SLUG + '-add-decision')) return;
+    render();
+    TN.on(SLUG + '-add-decision', 'click', function () {
+      var v = TN.el(SLUG + '-decision').value.trim();
+      if (!v) { TN.setErr(SLUG + '-error', 'Type a decision first.'); return; }
+      TN.clearErr(SLUG + '-error');
+      decisions.push(v); TN.el(SLUG + '-decision').value = ''; render();
+    });
+    TN.on(SLUG + '-add-point', 'click', function () {
+      var v = TN.el(SLUG + '-point').value.trim();
+      if (!v) { TN.setErr(SLUG + '-error', 'Type a discussion point first.'); return; }
+      TN.clearErr(SLUG + '-error');
+      points.push(v); TN.el(SLUG + '-point').value = ''; render();
+    });
+    TN.on(SLUG + '-add-action', 'click', function () {
+      var t = TN.el(SLUG + '-action').value.trim();
+      var o = TN.el(SLUG + '-owner').value.trim();
+      if (!t) { TN.setErr(SLUG + '-error', 'Type an action item first.'); return; }
+      if (!o) { TN.setErr(SLUG + '-error', 'Every action item needs an owner.'); return; }
+      TN.clearErr(SLUG + '-error');
+      actions.push({ text: t, owner: o, due: TN.el(SLUG + '-due').value });
+      TN.el(SLUG + '-action').value = ''; TN.el(SLUG + '-owner').value = ''; TN.el(SLUG + '-due').value = '';
+      render();
+    });
+    TN.on(SLUG + '-copy', 'click', function () {
+      if (!decisions.length && !points.length && !actions.length) { TN.setErr(SLUG + '-error', 'Add at least one entry first.'); return; }
+      var btn = TN.el(SLUG + '-copy');
+      TN.copy(minutesText()).then(function (ok) {
+        btn.textContent = ok ? 'Copied ✓' : 'Copy Minutes';
+        setTimeout(function () { btn.textContent = 'Copy Minutes'; }, 1200);
+      });
+    });
+    TN.on(SLUG + '-download', 'click', function () {
+      if (!decisions.length && !points.length && !actions.length) { TN.setErr(SLUG + '-error', 'Add at least one entry first.'); return; }
+      TN.downloadText(minutesText(), 'meeting-minutes.txt', 'text/plain');
+    });
+  }
+  try { init(); } catch (e) { /* never throw on load */ }
+})();
+
+</script>
+</body>
+</html>

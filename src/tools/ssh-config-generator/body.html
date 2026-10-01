@@ -1,0 +1,28 @@
+<div class="tool-card">
+  <div class="field">
+    <label for="ssh-config-generator-hosts">Hosts (one per line: alias|hostname|user|port|identityfile)</label>
+    <textarea class="textarea" id="ssh-config-generator-hosts" rows="4" style="font-family:monospace">web|203.0.113.10|deploy|22|~/.ssh/id_ed25519
+db|db.internal|postgres||~/.ssh/db_key
+github|github.com|git||</textarea>
+  </div>
+  <div class="grid2">
+    <div class="field checkline">
+      <input type="checkbox" id="ssh-config-generator-keepalive" checked>
+      <label for="ssh-config-generator-keepalive">Keepalive (ServerAliveInterval 60)</label>
+    </div>
+    <div class="field checkline">
+      <input type="checkbox" id="ssh-config-generator-compression">
+      <label for="ssh-config-generator-compression">Enable compression</label>
+    </div>
+  </div>
+  <div class="error" id="ssh-config-generator-error"></div>
+  <div class="field">
+    <label for="ssh-config-generator-output">~/.ssh/config</label>
+    <textarea class="textarea" id="ssh-config-generator-output" rows="14" readonly style="font-family:monospace"></textarea>
+  </div>
+  <div class="btn-row">
+    <button class="btn btn-outline" id="ssh-config-generator-copy">Copy config</button>
+    <button class="btn btn-outline" id="ssh-config-generator-download">Download config</button>
+  </div>
+  <p class="note">Save as ~/.ssh/config and run: chmod 600 ~/.ssh/config</p>
+</div>

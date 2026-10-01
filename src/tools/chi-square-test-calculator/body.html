@@ -1,0 +1,38 @@
+<div class="tool-card">
+  <div class="field" style="max-width:320px">
+    <label for="chi-square-test-calculator-mode">Test type</label>
+    <select class="select" id="chi-square-test-calculator-mode">
+      <option value="gof">Goodness-of-fit (one variable)</option>
+      <option value="ind">Independence (contingency table)</option>
+    </select>
+  </div>
+  <div class="field">
+    <label for="chi-square-test-calculator-obs" id="chi-square-test-calculator-obs-l">Observed counts (comma separated)</label>
+    <textarea class="textarea" id="chi-square-test-calculator-obs" rows="3" placeholder="e.g. 23, 31, 19, 27">23, 31, 19, 27</textarea>
+  </div>
+  <div class="field" id="chi-square-test-calculator-exp-wrap">
+    <label for="chi-square-test-calculator-exp">Expected counts (comma separated, or blank = uniform)</label>
+    <input class="input" id="chi-square-test-calculator-exp" type="text" placeholder="blank = equal expected counts" style="font-family:monospace">
+  </div>
+  <div class="btn-row">
+    <button type="button" class="btn" id="chi-square-test-calculator-calc">Calculate</button>
+  </div>
+  <div class="error" id="chi-square-test-calculator-error"></div>
+  <div id="chi-square-test-calculator-out" class="hidden">
+    <div class="stat-cards">
+      <div class="stat-card"><div class="v" id="chi-square-test-calculator-chi2">–</div><div class="l">χ² statistic</div></div>
+      <div class="stat-card"><div class="v" id="chi-square-test-calculator-df">–</div><div class="l">Degrees of freedom</div></div>
+      <div class="stat-card"><div class="v" id="chi-square-test-calculator-p">–</div><div class="l">p-value</div></div>
+    </div>
+    <div class="result">
+      <h3>Verdict (α = 0.05)</h3>
+      <p id="chi-square-test-calculator-verdict"></p>
+    </div>
+    <div class="result">
+      <h3>Calculation detail</h3>
+      <div style="overflow-x:auto"><table class="data"><thead><tr><th>Cell</th><th>Observed</th><th>Expected</th><th>(O−E)²/E</th></tr></thead><tbody id="chi-square-test-calculator-table"></tbody></table></div>
+      <p class="muted" id="chi-square-test-calculator-check"></p>
+    </div>
+  </div>
+  <p class="note">Educational tool — for information only, not a substitute for proper statistical review.</p>
+</div>

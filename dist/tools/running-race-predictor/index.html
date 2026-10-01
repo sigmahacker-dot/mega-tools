@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Running Race Predictor — Free Online | ToolNest</title>
+<meta name="description" content="Predict race times from a known performance using the Riegel formula.">
+<meta name="keywords" content="race time predictor, Riegel formula, running pace predictor">
+<link rel="canonical" href="https://toolnest.vercel.app/tools/running-race-predictor/">
+<meta name="theme-color" content="#07070b">
+<meta property="og:title" content="Running Race Predictor — Free Online | ToolNest">
+<meta property="og:description" content="Predict race times from a known performance using the Riegel formula.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css?v=4">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%23e01111'/><text x='50' y='68' font-size='58' text-anchor='middle' fill='white' font-family='Arial' font-weight='bold'>T</text></svg>">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebApplication","name":"Running Race Predictor","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0"},"url":"https://toolnest.vercel.app/tools/running-race-predictor/","description":"Predict race times from a known performance using the Riegel formula."},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What is the Riegel formula?","acceptedAnswer":{"@type":"Answer","text":"Predicted time = known time x (new distance / known distance)^1.06. It is an empirical fit from exercise scientist Peter Riegel."}},{"@type":"Question","name":"How accurate is it?","acceptedAnswer":{"@type":"Answer","text":"Reasonably close for trained runners between 5K and marathon. It assumes similar fitness and conditions, and tends to be optimistic for beginners."}},{"@type":"Question","name":"What time format is accepted?","acceptedAnswer":{"@type":"Answer","text":"mm:ss (e.g. 24:30) or h:mm:ss (e.g. 1:52:10)."}}]}]}</script>
+</head>
+<body>
+<header class="site-header">
+  <div class="container">
+    <a class="logo" href="/"><span class="logo-mark">T</span> ToolNest</a>
+    <div class="header-right">
+      <form class="nav-search" action="/" method="get" role="search">
+        <span class="ns-icon">🔍</span>
+        <input type="search" name="q" placeholder="Search tools…" aria-label="Search tools" autocomplete="off">
+      </form>
+      <div class="menu-wrap">
+        <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="menuPanel" aria-label="Open menu"><span></span><span></span><span></span></button>
+        <nav class="menu-panel" id="menuPanel" aria-label="Site">
+          <a href="/">Home</a>
+          <a href="/#categories">Categories</a>
+          <a href="/#all-tools">All Tools</a>
+        </nav>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ADSTERRA-HEADER: paste your Adsterra banner ad code inside the div below -->
+<div class="container"><div class="ad-slot ad-leaderboard" data-ad="header"></div></div>
+
+<main class="container">
+  <nav class="crumbs"><a href="/">Home</a> &rsaquo; <a href="/#health">Health &amp; Fitness</a> &rsaquo; Running Race Predictor</nav>
+  <div class="tool-hero">
+    <h1>Running Race Predictor</h1>
+    <p>Predict race times from a known performance using the Riegel formula.</p>
+  </div>
+
+  <div class="tool-card">
+  <div class="grid2">
+    <div class="field">
+      <label for="running-race-predictor-dist">Known race distance</label>
+      <select class="select" id="running-race-predictor-dist">
+        <option value="1.5">1500 m</option>
+        <option value="1.60934">1 mile</option>
+        <option value="5" selected>5K</option>
+        <option value="10">10K</option>
+        <option value="16.0934">10 miles</option>
+        <option value="21.0975">Half marathon</option>
+        <option value="42.195">Marathon</option>
+        <option value="custom">Custom...</option>
+      </select>
+    </div>
+    <div class="field" id="running-race-predictor-customwrap" style="display:none">
+      <label for="running-race-predictor-custom">Custom distance (km)</label>
+      <input type="number" class="input" id="running-race-predictor-custom" min="0" step="any" placeholder="15">
+    </div>
+    <div class="field">
+      <label for="running-race-predictor-time">Your time (mm:ss or h:mm:ss)</label>
+      <input type="text" class="input" id="running-race-predictor-time" placeholder="24:30">
+    </div>
+    <div class="field">
+      <label for="running-race-predictor-target">Extra target distance (km, optional)</label>
+      <input type="number" class="input" id="running-race-predictor-target" min="0" step="any" placeholder="e.g. 15">
+    </div>
+  </div>
+  <div class="error" id="running-race-predictor-error"></div>
+  <div class="result" id="running-race-predictor-result">
+    <div id="running-race-predictor-out"></div>
+    <p class="note">Riegel formula predictions; assumes similar fitness and conditions. For information only &mdash; not medical advice.</p>
+  </div>
+</div>
+
+  <!-- ADSTERRA-INCONTENT: paste your Adsterra native/in-content ad code inside the div below -->
+  <div class="ad-slot" data-ad="incontent"></div>
+
+  <div class="info-grid">
+    <div class="info-card">
+      <h2>📖 How to use</h2>
+      <ol><li>Select the distance of a recent race (or enter a custom distance).</li><li>Enter your finishing time as mm:ss or h:mm:ss.</li><li>Optionally enter a custom target distance.</li><li>Read predicted times and paces for 5K, 10K, half marathon, marathon, and your custom distance.</li></ol>
+    </div>
+    <div class="info-card">
+      <h2>❓ Frequently asked questions</h2>
+      <div class="faq"><details><summary>What is the Riegel formula?</summary><p>Predicted time = known time x (new distance / known distance)^1.06. It is an empirical fit from exercise scientist Peter Riegel.</p></details><details><summary>How accurate is it?</summary><p>Reasonably close for trained runners between 5K and marathon. It assumes similar fitness and conditions, and tends to be optimistic for beginners.</p></details><details><summary>What time format is accepted?</summary><p>mm:ss (e.g. 24:30) or h:mm:ss (e.g. 1:52:10).</p></details></div>
+    </div>
+  </div>
+
+  <section class="section">
+    <h2>🔗 Related tools</h2>
+    <div class="tool-grid"><a class="tool-link" href="/tools/allergy-tracker/" data-search="allergy tracker log allergy exposures, symptoms, and severity with summaries, saved in your browser. allergy tracker allergy diary symptom log"><span class="t-ico">❤️</span><span class="t-body"><b>Allergy Tracker</b><small>Log allergy exposures, symptoms, and severity with summaries, saved in your browser.</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/baby-feeding-log/" data-search="baby feeding log log nursing and bottle sessions with timestamps, daily totals, saved in your browser. baby feeding log nursing tracker bottle feeding log"><span class="t-ico">❤️</span><span class="t-body"><b>Baby Feeding Log</b><small>Log nursing and bottle sessions with timestamps, daily totals, saved in your browser.</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/baby-growth-tracker/" data-search="baby growth tracker log your baby&#39;s weight and height over time and see a growth log with typical-range guidance. baby growth tracker baby weight tracker infant growth chart baby height log newborn growth"><span class="t-ico">❤️</span><span class="t-body"><b>Baby Growth Tracker</b><small>Log your baby&#39;s weight and height over time and see a growth log with typical-range guidance…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/balance-test-timer/" data-search="balance test timer single-leg stance stopwatch with age benchmarks for balance testing. balance test single leg stance balance timer"><span class="t-ico">❤️</span><span class="t-body"><b>Balance Test Timer</b><small>Single-leg stance stopwatch with age benchmarks for balance testing.</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/blood-donation-eligibility-checker/" data-search="blood donation eligibility checker check common blood donation eligibility rules: age, weight, hemoglobin, intervals. blood donation eligibility can i donate blood donor requirements"><span class="t-ico">❤️</span><span class="t-body"><b>Blood Donation Eligibility Checker</b><small>Check common blood donation eligibility rules: age, weight, hemoglobin, intervals.</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/blood-pressure-tracker/" data-search="blood pressure tracker log blood pressure readings with automatic aha category classification, averages and history saved in your browser. blood pressure tracker bp log blood pressure chart hypertension tracker bp monitor log"><span class="t-ico">❤️</span><span class="t-body"><b>Blood Pressure Tracker</b><small>Log blood pressure readings with automatic AHA category classification, averages and history…</small></span><span class="t-arrow">→</span></a></div>
+  </section>
+</main>
+
+<!-- ADSTERRA-FOOTER: paste your Adsterra footer/banner ad code inside the div below -->
+<div class="container"><div class="ad-slot" data-ad="footer"></div></div>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="f-grid">
+      <div>
+        <span class="brandline"><span class="logo-mark">T</span> ToolNest</span>
+        <p>Free online tools that actually work. No sign-up, no watermarks — and your files never leave your device for client-side tools.</p>
+      </div>
+      <div>
+        <h4>Popular</h4>
+        <a href="/tools/qr-code-generator/">QR Code Generator</a>
+        <a href="/tools/background-remover/">Background Remover</a>
+        <a href="/tools/pdf-merger/">PDF Merger</a>
+        <a href="/tools/word-counter/">Word Counter</a>
+      </div>
+      <div>
+        <h4>Categories</h4>
+        <a href="/#image">Image Tools</a>
+        <a href="/#pdf">PDF &amp; Documents</a>
+        <a href="/#calculators">Calculators</a>
+        <a href="/#developer">Developer Tools</a>
+      </div>
+      <div>
+        <h4>Site</h4>
+        <a href="/">Home</a>
+        <a href="/#all-tools">All Tools</a>
+        <a href="/sitemap.xml">Sitemap</a>
+      </div>
+    </div>
+    <div class="f-bottom">© 2026 ToolNest · Free tools for everyone · Made with care</div>
+  </div>
+</footer>
+
+<script src="/assets/site.js?v=5"></script>
+
+<script>
+(function(){
+'use strict';
+var S='running-race-predictor', ERR=S+'-error';
+function parseTime(str){
+  var m=String(str).trim().match(/^(\d+):([0-5]?\d)(?::([0-5]?\d))?$/);
+  if(!m) return NaN;
+  if(m[3]!==undefined) return parseInt(m[1],10)*3600+parseInt(m[2],10)*60+parseInt(m[3],10);
+  return parseInt(m[1],10)*60+parseInt(m[2],10);
+}
+function fmt(sec){
+  sec=Math.round(sec);
+  var h=Math.floor(sec/3600), m=Math.floor(sec%3600/60), s=sec%60;
+  var mm=(h>0&&m<10?'0':'')+m, ss=(s<10?'0':'')+s;
+  return (h>0?h+':':'')+mm+':'+ss;
+}
+function paceStr(sec,km){
+  var p=sec/km, m=Math.floor(p/60), s=Math.round(p%60);
+  if(s===60){ m++; s=0; }
+  return m+':'+(s<10?'0':'')+s+' /km';
+}
+function calc(){
+  if(!TN.el(S+'-dist')) return;
+  TN.clearErr(ERR);
+  var out=TN.el(S+'-out'); out.innerHTML='';
+  var dv=TN.el(S+'-dist').value;
+  var d1=dv==='custom'?parseFloat(TN.el(S+'-custom').value):parseFloat(dv);
+  var t1=parseTime(TN.el(S+'-time').value);
+  if(!(d1>0)){ TN.setErr(ERR,'Enter a valid known distance.'); return; }
+  if(isNaN(t1)||!(t1>0)){ TN.setErr(ERR,'Enter your time as mm:ss or h:mm:ss.'); return; }
+  var targets=[['5K',5],['10K',10],['Half marathon',21.0975],['Marathon',42.195]];
+  var tc=parseFloat(TN.el(S+'-target').value);
+  if(tc>0) targets.push(['Custom ('+tc+' km)',tc]);
+  var html='<table class="data"><thead><tr><th>Distance</th><th>Predicted time</th><th>Pace</th></tr></thead><tbody>';
+  targets.forEach(function(t){
+    var t2=t1*Math.pow(t[1]/d1,1.06);
+    html+='<tr><td>'+t[0]+'</td><td><strong>'+fmt(t2)+'</strong></td><td>'+paceStr(t2,t[1])+'</td></tr>';
+  });
+  out.innerHTML=html+'</tbody></table>';
+  TN.el(S+'-customwrap').style.display=dv==='custom'?'':'none';
+}
+try{
+  TN.on(S+'-dist','change',calc);
+  ['custom','time','target'].forEach(function(f){ TN.on(S+'-'+f,'input',calc); });
+  calc();
+}catch(e){}
+})();
+
+</script>
+</body>
+</html>

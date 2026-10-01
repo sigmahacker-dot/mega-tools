@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>401(k) Match Calculator — Free Online | ToolNest</title>
+<meta name="description" content="Compute employer 401(k) match dollars from your contribution % and the match formula.">
+<meta name="keywords" content="401k match calculator, employer match, retirement match">
+<link rel="canonical" href="https://toolnest.vercel.app/tools/retirement-match-calculator/">
+<meta name="theme-color" content="#07070b">
+<meta property="og:title" content="401(k) Match Calculator — Free Online | ToolNest">
+<meta property="og:description" content="Compute employer 401(k) match dollars from your contribution % and the match formula.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css?v=4">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%23e01111'/><text x='50' y='68' font-size='58' text-anchor='middle' fill='white' font-family='Arial' font-weight='bold'>T</text></svg>">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebApplication","name":"401(k) Match Calculator","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0"},"url":"https://toolnest.vercel.app/tools/retirement-match-calculator/","description":"Compute employer 401(k) match dollars from your contribution % and the match formula."},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What does '50% match on the first 6%' mean?","acceptedAnswer":{"@type":"Answer","text":"Enter 50 as the match rate and 6 as the cap. If you contribute at least 6%, the employer adds 3% of your salary."}},{"@type":"Question","name":"Should I contribute beyond the cap?","acceptedAnswer":{"@type":"Answer","text":"Contributions beyond the cap earn no extra match in this formula, but they still grow your own savings. This tool does not give advice."}},{"@type":"Question","name":"Is the match vested immediately?","acceptedAnswer":{"@type":"Answer","text":"Often not. Many employers vest the match over a few years; leaving early can forfeit unvested match dollars."}}]}]}</script>
+</head>
+<body>
+<header class="site-header">
+  <div class="container">
+    <a class="logo" href="/"><span class="logo-mark">T</span> ToolNest</a>
+    <div class="header-right">
+      <form class="nav-search" action="/" method="get" role="search">
+        <span class="ns-icon">🔍</span>
+        <input type="search" name="q" placeholder="Search tools…" aria-label="Search tools" autocomplete="off">
+      </form>
+      <div class="menu-wrap">
+        <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="menuPanel" aria-label="Open menu"><span></span><span></span><span></span></button>
+        <nav class="menu-panel" id="menuPanel" aria-label="Site">
+          <a href="/">Home</a>
+          <a href="/#categories">Categories</a>
+          <a href="/#all-tools">All Tools</a>
+        </nav>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ADSTERRA-HEADER: paste your Adsterra banner ad code inside the div below -->
+<div class="container"><div class="ad-slot ad-leaderboard" data-ad="header"></div></div>
+
+<main class="container">
+  <nav class="crumbs"><a href="/">Home</a> &rsaquo; <a href="/#finance">Finance &amp; Money</a> &rsaquo; 401(k) Match Calculator</nav>
+  <div class="tool-hero">
+    <h1>401(k) Match Calculator</h1>
+    <p>Compute employer 401(k) match dollars from your contribution % and the match formula.</p>
+  </div>
+
+  <div class="tool-card">
+  <div class="grid2">
+    <div class="field">
+      <label for="retirement-match-calculator-salary">Salary ($/yr)</label>
+      <input type="number" class="input" id="retirement-match-calculator-salary" min="0" step="any" placeholder="90000">
+    </div>
+    <div class="field">
+      <label for="retirement-match-calculator-contrib">Your contribution (%)</label>
+      <input type="number" class="input" id="retirement-match-calculator-contrib" min="0" max="100" step="any" placeholder="6">
+    </div>
+    <div class="field">
+      <label for="retirement-match-calculator-rate">Employer match rate (%)</label>
+      <input type="number" class="input" id="retirement-match-calculator-rate" min="0" max="100" step="any" placeholder="50">
+    </div>
+    <div class="field">
+      <label for="retirement-match-calculator-cap">Match applies to first (%) of salary</label>
+      <input type="number" class="input" id="retirement-match-calculator-cap" min="0" max="100" step="any" placeholder="6">
+    </div>
+  </div>
+  <div class="error" id="retirement-match-calculator-error"></div>
+  <div class="result" id="retirement-match-calculator-result">
+    <div class="stat-cards">
+      <div class="stat-card"><div class="v" id="retirement-match-calculator-yours">&ndash;</div><div class="l">Your contribution</div></div>
+      <div class="stat-card"><div class="v" id="retirement-match-calculator-employer">&ndash;</div><div class="l">Employer match</div></div>
+      <div class="stat-card"><div class="v" id="retirement-match-calculator-total">&ndash;</div><div class="l">Combined / yr</div></div>
+      <div class="stat-card"><div class="v" id="retirement-match-calculator-freepct">&ndash;</div><div class="l">Match as % of salary</div></div>
+    </div>
+    <p class="note" id="retirement-match-calculator-note"></p>
+    <p class="note">For information only &mdash; not financial advice. Match dollars may vest over time.</p>
+  </div>
+</div>
+
+  <!-- ADSTERRA-INCONTENT: paste your Adsterra native/in-content ad code inside the div below -->
+  <div class="ad-slot" data-ad="incontent"></div>
+
+  <div class="info-grid">
+    <div class="info-card">
+      <h2>📖 How to use</h2>
+      <ol><li>Enter your salary.</li><li>Enter the % of salary you contribute.</li><li>Enter the employer match rate % and the % of salary the match applies to.</li><li>Read the free employer money, your contribution, and the combined total.</li></ol>
+    </div>
+    <div class="info-card">
+      <h2>❓ Frequently asked questions</h2>
+      <div class="faq"><details><summary>What does &#39;50% match on the first 6%&#39; mean?</summary><p>Enter 50 as the match rate and 6 as the cap. If you contribute at least 6%, the employer adds 3% of your salary.</p></details><details><summary>Should I contribute beyond the cap?</summary><p>Contributions beyond the cap earn no extra match in this formula, but they still grow your own savings. This tool does not give advice.</p></details><details><summary>Is the match vested immediately?</summary><p>Often not. Many employers vest the match over a few years; leaving early can forfeit unvested match dollars.</p></details></div>
+    </div>
+  </div>
+
+  <section class="section">
+    <h2>🔗 Related tools</h2>
+    <div class="tool-grid"><a class="tool-link" href="/tools/apr-calculator/" data-search="apr calculator solve the true annual percentage rate of a loan by bisection — including upfront fees — and compare it with the nominal rate. apr calculator true apr calculator annual percentage rate calculator loan apr calculator nominal vs effective rate"><span class="t-ico">💰</span><span class="t-body"><b>APR Calculator</b><small>Solve the true Annual Percentage Rate of a loan by bisection — including upfront fees — and …</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/baby-cost-calculator/" data-search="baby cost calculator estimate first-year baby costs from editable monthly and one-time line items. baby cost first year baby expenses newborn cost"><span class="t-ico">💰</span><span class="t-body"><b>Baby Cost Calculator</b><small>Estimate first-year baby costs from editable monthly and one-time line items.</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/balloon-payment-calculator/" data-search="balloon payment calculator compute the monthly payment on a balloon loan and the lump-sum balloon balance still due at the end of the term. balloon payment calculator balloon loan calculator balloon mortgage calculator balloon balance calculator lump sum loan calculator"><span class="t-ico">💰</span><span class="t-body"><b>Balloon Payment Calculator</b><small>Compute the monthly payment on a balloon loan and the lump-sum balloon balance still due at …</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/benefits-value-calculator/" data-search="benefits value calculator compute total compensation: salary plus health, retirement match and pto value. benefits calculator total compensation job benefits value"><span class="t-ico">💰</span><span class="t-body"><b>Benefits Value Calculator</b><small>Compute total compensation: salary plus health, retirement match and PTO value.</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/break-even-calculator/" data-search="break-even calculator find your break-even point in units and revenue from fixed costs, price per unit and variable cost per unit. break even calculator breakeven point calculator break even analysis units to break even business break even calculator"><span class="t-ico">💰</span><span class="t-body"><b>Break-Even Calculator</b><small>Find your break-even point in units and revenue from fixed costs, price per unit and variabl…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/budget-50-30-20-calculator/" data-search="50/30/20 budget calculator split your take-home pay into needs (50%), wants (30%) and savings (20%), then compare with your actual spending. 50 30 20 budget budget calculator needs wants savings monthly budget planner budget rule calculator"><span class="t-ico">💰</span><span class="t-body"><b>50/30/20 Budget Calculator</b><small>Split your take-home pay into needs (50%), wants (30%) and savings (20%), then compare with …</small></span><span class="t-arrow">→</span></a></div>
+  </section>
+</main>
+
+<!-- ADSTERRA-FOOTER: paste your Adsterra footer/banner ad code inside the div below -->
+<div class="container"><div class="ad-slot" data-ad="footer"></div></div>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="f-grid">
+      <div>
+        <span class="brandline"><span class="logo-mark">T</span> ToolNest</span>
+        <p>Free online tools that actually work. No sign-up, no watermarks — and your files never leave your device for client-side tools.</p>
+      </div>
+      <div>
+        <h4>Popular</h4>
+        <a href="/tools/qr-code-generator/">QR Code Generator</a>
+        <a href="/tools/background-remover/">Background Remover</a>
+        <a href="/tools/pdf-merger/">PDF Merger</a>
+        <a href="/tools/word-counter/">Word Counter</a>
+      </div>
+      <div>
+        <h4>Categories</h4>
+        <a href="/#image">Image Tools</a>
+        <a href="/#pdf">PDF &amp; Documents</a>
+        <a href="/#calculators">Calculators</a>
+        <a href="/#developer">Developer Tools</a>
+      </div>
+      <div>
+        <h4>Site</h4>
+        <a href="/">Home</a>
+        <a href="/#all-tools">All Tools</a>
+        <a href="/sitemap.xml">Sitemap</a>
+      </div>
+    </div>
+    <div class="f-bottom">© 2026 ToolNest · Free tools for everyone · Made with care</div>
+  </div>
+</footer>
+
+<script src="/assets/site.js?v=5"></script>
+
+<script>
+(function(){
+'use strict';
+var S='retirement-match-calculator', ERR=S+'-error';
+function money(n){ return '$'+Number(n).toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2}); }
+function calc(){
+  if(!TN.el(S+'-salary')) return;
+  TN.clearErr(ERR);
+  var salary=parseFloat(TN.el(S+'-salary').value);
+  var contrib=parseFloat(TN.el(S+'-contrib').value);
+  var rate=parseFloat(TN.el(S+'-rate').value);
+  var cap=parseFloat(TN.el(S+'-cap').value);
+  if(!(salary>0)){ TN.setErr(ERR,'Enter a salary greater than 0.'); return; }
+  if([contrib,rate,cap].some(function(v){ return isNaN(v)||v<0; })){ TN.setErr(ERR,'Enter valid non-negative percentages.'); return; }
+  var yours=salary*contrib/100;
+  var matchedPct=Math.min(contrib,cap);
+  var employer=salary*matchedPct/100*rate/100;
+  TN.el(S+'-yours').textContent=money(yours);
+  TN.el(S+'-employer').textContent=money(employer);
+  TN.el(S+'-total').textContent=money(yours+employer);
+  TN.el(S+'-freepct').textContent=(Math.round(employer/salary*10000)/100)+'%';
+  var note=TN.el(S+'-note');
+  if(contrib<cap){
+    var extra=salary*(cap-contrib)/100*rate/100;
+    note.textContent='Raising your contribution to '+cap+'% would capture an extra '+money(extra)+'/yr of match.';
+  } else {
+    note.textContent='You are capturing the full match available under this formula.';
+  }
+}
+try{
+  ['salary','contrib','rate','cap'].forEach(function(f){ TN.on(S+'-'+f,'input',calc); });
+  calc();
+}catch(e){}
+})();
+
+</script>
+</body>
+</html>

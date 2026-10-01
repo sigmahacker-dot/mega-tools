@@ -1,0 +1,43 @@
+<div class="tool-card">
+  <div class="grid3">
+    <div class="field">
+      <label for="graphql-query-builder-type">Operation type</label>
+      <select class="select" id="graphql-query-builder-type">
+        <option value="query">query</option>
+        <option value="mutation">mutation</option>
+        <option value="subscription">subscription</option>
+      </select>
+    </div>
+    <div class="field">
+      <label for="graphql-query-builder-name">Operation name</label>
+      <input class="input" id="graphql-query-builder-name" value="GetUser">
+    </div>
+    <div class="field">
+      <label for="graphql-query-builder-vars">Variables (e.g. $id: ID!)</label>
+      <input class="input" id="graphql-query-builder-vars" value="$id: ID!">
+    </div>
+  </div>
+  <div class="field">
+    <label for="graphql-query-builder-fields">Field tree (2 spaces per indent level)</label>
+    <textarea class="textarea" id="graphql-query-builder-fields" rows="8" style="font-family:monospace">user(id: $id)
+  id
+  name
+  email
+  posts(first: 5)
+    title
+    publishedAt
+    comments
+      body
+      author
+        name</textarea>
+  </div>
+  <div class="error" id="graphql-query-builder-error"></div>
+  <div class="field">
+    <label for="graphql-query-builder-output">GraphQL query</label>
+    <textarea class="textarea" id="graphql-query-builder-output" rows="14" readonly style="font-family:monospace"></textarea>
+  </div>
+  <div class="btn-row">
+    <button class="btn btn-outline" id="graphql-query-builder-copy">Copy query</button>
+    <button class="btn btn-outline" id="graphql-query-builder-download">Download .graphql</button>
+  </div>
+</div>

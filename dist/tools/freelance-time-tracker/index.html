@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Freelance Time Tracker — Free Online | ToolNest</title>
+<meta name="description" content="Track billable time per client and project: start/stop timer, automatic log saved in your browser, per-client totals and CSV export for invoicing.">
+<meta name="keywords" content="freelance time tracker, billable hours tracker, time tracking, freelancer timer">
+<link rel="canonical" href="https://toolnest.vercel.app/tools/freelance-time-tracker/">
+<meta name="theme-color" content="#07070b">
+<meta property="og:title" content="Freelance Time Tracker — Free Online | ToolNest">
+<meta property="og:description" content="Track billable time per client and project: start/stop timer, automatic log saved in your browser, per-client totals and CSV export for invoicing.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css?v=4">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%23e01111'/><text x='50' y='68' font-size='58' text-anchor='middle' fill='white' font-family='Arial' font-weight='bold'>T</text></svg>">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebApplication","name":"Freelance Time Tracker","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0"},"url":"https://toolnest.vercel.app/tools/freelance-time-tracker/","description":"Track billable time per client and project: start/stop timer, automatic log saved in your browser, per-client totals and CSV export for invoicing."},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Where are my time entries stored?","acceptedAnswer":{"@type":"Answer","text":"In your browser's localStorage, namespaced to this tool. They persist across reloads on the same device and browser."}},{"@type":"Question","name":"What if I close the tab mid-session?","acceptedAnswer":{"@type":"Answer","text":"The start timestamp is saved immediately, so reopening the tool resumes the running timer from the original start time."}},{"@type":"Question","name":"Can I log time manually?","acceptedAnswer":{"@type":"Answer","text":"Yes — the manual entry form adds a session for a past date and duration, e.g. for work done offline."}}]}]}</script>
+</head>
+<body>
+<header class="site-header">
+  <div class="container">
+    <a class="logo" href="/"><span class="logo-mark">T</span> ToolNest</a>
+    <div class="header-right">
+      <form class="nav-search" action="/" method="get" role="search">
+        <span class="ns-icon">🔍</span>
+        <input type="search" name="q" placeholder="Search tools…" aria-label="Search tools" autocomplete="off">
+      </form>
+      <div class="menu-wrap">
+        <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="menuPanel" aria-label="Open menu"><span></span><span></span><span></span></button>
+        <nav class="menu-panel" id="menuPanel" aria-label="Site">
+          <a href="/">Home</a>
+          <a href="/#categories">Categories</a>
+          <a href="/#all-tools">All Tools</a>
+        </nav>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ADSTERRA-HEADER: paste your Adsterra banner ad code inside the div below -->
+<div class="container"><div class="ad-slot ad-leaderboard" data-ad="header"></div></div>
+
+<main class="container">
+  <nav class="crumbs"><a href="/">Home</a> &rsaquo; <a href="/#time">Time &amp; Date</a> &rsaquo; Freelance Time Tracker</nav>
+  <div class="tool-hero">
+    <h1>Freelance Time Tracker</h1>
+    <p>Track billable time per client and project: start/stop timer, automatic log saved in your browser, per-client totals and CSV export for invoicing.</p>
+  </div>
+
+  <div class="tool-card">
+  <div class="grid3">
+    <div class="field">
+      <label for="freelance-time-tracker-client">Client</label>
+      <input class="input" id="freelance-time-tracker-client" type="text" placeholder="e.g. Acme Corp">
+    </div>
+    <div class="field">
+      <label for="freelance-time-tracker-project">Project</label>
+      <input class="input" id="freelance-time-tracker-project" type="text" placeholder="e.g. Website redesign">
+    </div>
+    <div class="field" style="align-self:end">
+      <div class="btn-row">
+        <button type="button" class="btn" id="freelance-time-tracker-start">Start</button>
+        <button type="button" class="btn btn-outline" id="freelance-time-tracker-stop" disabled>Stop</button>
+      </div>
+    </div>
+  </div>
+  <p style="font-size:1.4em;font-family:monospace" id="freelance-time-tracker-live">00:00:00</p>
+  <div class="error" id="freelance-time-tracker-error"></div>
+  <div class="result">
+    <h3>Manual entry</h3>
+    <div class="grid3">
+      <div class="field"><label for="freelance-time-tracker-mdate">Date</label><input class="input" id="freelance-time-tracker-mdate" type="date"></div>
+      <div class="field"><label for="freelance-time-tracker-mmin">Minutes</label><input class="input" id="freelance-time-tracker-mmin" type="number" min="1" value="60"></div>
+      <div class="field" style="align-self:end"><button type="button" class="btn btn-outline btn-sm" id="freelance-time-tracker-madd">Add entry</button></div>
+    </div>
+  </div>
+  <div class="result">
+    <h3>Log</h3>
+    <div style="overflow-x:auto"><table class="data"><thead><tr><th>Date</th><th>Client</th><th>Project</th><th>Duration</th><th></th></tr></thead><tbody id="freelance-time-tracker-log"></tbody></table></div>
+    <div class="btn-row" style="margin-top:8px">
+      <button type="button" class="btn btn-outline btn-sm" id="freelance-time-tracker-csv">Export CSV</button>
+      <button type="button" class="btn btn-outline btn-sm" id="freelance-time-tracker-clear">Clear log</button>
+    </div>
+  </div>
+  <div class="result">
+    <h3>Totals per client</h3>
+    <div id="freelance-time-tracker-totals"></div>
+  </div>
+</div>
+
+
+  <!-- ADSTERRA-INCONTENT: paste your Adsterra native/in-content ad code inside the div below -->
+  <div class="ad-slot" data-ad="incontent"></div>
+
+  <div class="info-grid">
+    <div class="info-card">
+      <h2>📖 How to use</h2>
+      <ol><li>Type the client and project, then press Start — the timer runs live.</li><li>Press Stop to log the session with its exact duration.</li><li>Review the log below: edit nothing, delete mistakes, see per-client totals.</li><li>Export CSV when it is time to invoice.</li></ol>
+    </div>
+    <div class="info-card">
+      <h2>❓ Frequently asked questions</h2>
+      <div class="faq"><details><summary>Where are my time entries stored?</summary><p>In your browser&#39;s localStorage, namespaced to this tool. They persist across reloads on the same device and browser.</p></details><details><summary>What if I close the tab mid-session?</summary><p>The start timestamp is saved immediately, so reopening the tool resumes the running timer from the original start time.</p></details><details><summary>Can I log time manually?</summary><p>Yes — the manual entry form adds a session for a past date and duration, e.g. for work done offline.</p></details></div>
+    </div>
+  </div>
+
+  <section class="section">
+    <h2>🔗 Related tools</h2>
+    <div class="tool-grid"><a class="tool-link" href="/tools/add-subtract-days-calculator/" data-search="add / subtract days calculator add or subtract days, weeks, months or years from any date. optional business-days-only mode skips weekends automatically. add days to date subtract days calculator date plus days business days calculator date arithmetic"><span class="t-ico">⏰</span><span class="t-body"><b>Add / Subtract Days Calculator</b><small>Add or subtract days, weeks, months or years from any date. Optional business-days-only mode…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/anniversary-calculator/" data-search="anniversary calculator track any anniversary: days until the next one, which number it is (10th, 25th…), total days together and the weekday it falls on. anniversary calculator wedding anniversary countdown how many days until anniversary anniversary date tracker years together calculator"><span class="t-ico">⏰</span><span class="t-body"><b>Anniversary Calculator</b><small>Track any anniversary: days until the next one, which number it is (10th, 25th…), total days…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/bill-due-tracker/" data-search="bill due tracker never miss a payment — track recurring monthly bills with automatic next-due dates, days remaining and urgency sorting. bill due tracker bill reminder recurring bills tracker monthly bills organizer due date tracker"><span class="t-ico">⏰</span><span class="t-body"><b>Bill Due Tracker</b><small>Never miss a payment — track recurring monthly bills with automatic next-due dates, days rem…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/billable-hours-calculator/" data-search="billable hours calculator turn hours into invoices: billable hours × rate, utilization percentage against non-billable time, and the final invoice total. billable hours invoice calculator utilization rate freelance rate calculator"><span class="t-ico">⏰</span><span class="t-body"><b>Billable Hours Calculator</b><small>Turn hours into invoices: billable hours × rate, utilization percentage against non-billable…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/birthday-reminder-list/" data-search="birthday reminder list never miss a birthday: names and dates with days-until countdowns, next upcoming birthday highlighted, saved in your browser. birthday reminder birthday tracker birthday countdown never forget birthday"><span class="t-ico">⏰</span><span class="t-body"><b>Birthday Reminder List</b><small>Never miss a birthday: names and dates with days-until countdowns, next upcoming birthday hi…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/business-days-calculator/" data-search="business days calculator count working days between two dates, excluding weekends and your own custom holidays, with a full breakdown. business days calculator working days calculator weekdays between dates net workdays business days excluding holidays"><span class="t-ico">⏰</span><span class="t-body"><b>Business Days Calculator</b><small>Count working days between two dates, excluding weekends and your own custom holidays, with …</small></span><span class="t-arrow">→</span></a></div>
+  </section>
+</main>
+
+<!-- ADSTERRA-FOOTER: paste your Adsterra footer/banner ad code inside the div below -->
+<div class="container"><div class="ad-slot" data-ad="footer"></div></div>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="f-grid">
+      <div>
+        <span class="brandline"><span class="logo-mark">T</span> ToolNest</span>
+        <p>Free online tools that actually work. No sign-up, no watermarks — and your files never leave your device for client-side tools.</p>
+      </div>
+      <div>
+        <h4>Popular</h4>
+        <a href="/tools/qr-code-generator/">QR Code Generator</a>
+        <a href="/tools/background-remover/">Background Remover</a>
+        <a href="/tools/pdf-merger/">PDF Merger</a>
+        <a href="/tools/word-counter/">Word Counter</a>
+      </div>
+      <div>
+        <h4>Categories</h4>
+        <a href="/#image">Image Tools</a>
+        <a href="/#pdf">PDF &amp; Documents</a>
+        <a href="/#calculators">Calculators</a>
+        <a href="/#developer">Developer Tools</a>
+      </div>
+      <div>
+        <h4>Site</h4>
+        <a href="/">Home</a>
+        <a href="/#all-tools">All Tools</a>
+        <a href="/sitemap.xml">Sitemap</a>
+      </div>
+    </div>
+    <div class="f-bottom">© 2026 ToolNest · Free tools for everyone · Made with care</div>
+  </div>
+</footer>
+
+<script src="/assets/site.js?v=5"></script>
+
+<script>
+(function () {
+  'use strict';
+  var P = 'freelance-time-tracker-', ERR = P + 'error';
+  var LS = 'tn-freelance-time-tracker-log', LSR = 'tn-freelance-time-tracker-running';
+  var log = [], tickId = null;
+  function g(id) { return TN.el(P + id); }
+  function load() {
+    try {
+      var raw = localStorage.getItem(LS);
+      log = raw ? JSON.parse(raw) : [];
+    } catch (e) { log = []; }
+  }
+  function save() {
+    try { localStorage.setItem(LS, JSON.stringify(log)); } catch (e) { /* unavailable */ }
+  }
+  function fmtHMS(ms) {
+    var s = Math.floor(ms / 1000);
+    function p(x) { return String(x).padStart(2, '0'); }
+    return p(Math.floor(s / 3600)) + ':' + p(Math.floor(s / 60) % 60) + ':' + p(s % 60);
+  }
+  function fmtDur(min) {
+    var h = Math.floor(min / 60), m = Math.round(min % 60);
+    return h ? h + 'h ' + m + 'm' : m + 'm';
+  }
+  function running() {
+    try {
+      var raw = localStorage.getItem(LSR);
+      return raw ? JSON.parse(raw) : null;
+    } catch (e) { return null; }
+  }
+  function tick() {
+    var r = running();
+    if (r) g('live').textContent = fmtHMS(Date.now() - r.start);
+  }
+  function setRunningUI(on) {
+    g('start').disabled = on;
+    g('stop').disabled = !on;
+    g('client').disabled = on;
+    g('project').disabled = on;
+  }
+  function render() {
+    var body = g('log');
+    if (!log.length) { body.innerHTML = '<tr><td colspan="5" class="muted">No entries yet — start the timer or add a manual entry.</td></tr>'; }
+    else {
+      var rows = log.slice().sort(function (a, b) { return b.start - a.start; });
+      body.innerHTML = rows.map(function (e) {
+        var d = new Date(e.start);
+        var ds = d.getFullYear() + '-' + String(d.getMonth() + 1).padStart(2, '0') + '-' + String(d.getDate()).padStart(2, '0');
+        return '<tr><td>' + ds + '</td><td>' + TN.esc(e.client) + '</td><td>' + TN.esc(e.project) + '</td><td>' + fmtDur(e.min) + '</td>' +
+          '<td><button type="button" class="btn btn-outline btn-sm" data-del="' + e.id + '">Delete</button></td></tr>';
+      }).join('');
+      var dels = body.querySelectorAll('[data-del]');
+      for (var i = 0; i < dels.length; i++) {
+        (function (b) {
+          TN.on(b, 'click', function () {
+            var id = b.getAttribute('data-del');
+            log = log.filter(function (e) { return String(e.id) !== id; });
+            save(); render();
+          });
+        })(dels[i]);
+      }
+    }
+    var totals = {};
+    log.forEach(function (e) {
+      var k = e.client || '(no client)';
+      totals[k] = (totals[k] || 0) + e.min;
+    });
+    var keys = Object.keys(totals);
+    g('totals').innerHTML = keys.length
+      ? '<table class="data"><tbody>' + keys.map(function (k) { return '<tr><td><b>' + TN.esc(k) + '</b></td><td>' + fmtDur(totals[k]) + '</td></tr>'; }).join('') + '</tbody></table>'
+      : '<p class="muted">No time logged yet.</p>';
+  }
+  try {
+    if (!TN.el(P + 'start')) return;
+    load(); render();
+    var r0 = running();
+    if (r0) {
+      setRunningUI(true);
+      g('client').value = r0.client; g('project').value = r0.project;
+      tickId = setInterval(tick, 1000); tick();
+    }
+    TN.on(P + 'start', 'click', function () {
+      TN.clearErr(ERR);
+      var client = g('client').value.trim(), project = g('project').value.trim();
+      if (!client && !project) { TN.setErr(ERR, 'Enter a client or project name first.'); return; }
+      try { localStorage.setItem(LSR, JSON.stringify({ start: Date.now(), client: client, project: project })); }
+      catch (e) { TN.setErr(ERR, 'Storage is unavailable — the timer cannot persist.'); return; }
+      setRunningUI(true);
+      tickId = setInterval(tick, 1000); tick();
+    });
+    TN.on(P + 'stop', 'click', function () {
+      TN.clearErr(ERR);
+      var r = running();
+      if (!r) { setRunningUI(false); return; }
+      var min = Math.max(1, Math.round((Date.now() - r.start) / 60000));
+      log.push({ id: Date.now(), start: r.start, client: r.client, project: r.project, min: min });
+      save();
+      try { localStorage.removeItem(LSR); } catch (e) { /* ignore */ }
+      if (tickId) { clearInterval(tickId); tickId = null; }
+      g('live').textContent = '00:00:00';
+      setRunningUI(false);
+      render();
+    });
+    TN.on(P + 'madd', 'click', function () {
+      TN.clearErr(ERR);
+      var dv = g('mdate').value, min = parseInt(g('mmin').value, 10);
+      var client = g('client').value.trim(), project = g('project').value.trim();
+      if (!dv) { TN.setErr(ERR, 'Pick a date for the manual entry.'); return; }
+      if (isNaN(min) || min < 1 || min > 1440) { TN.setErr(ERR, 'Minutes must be 1–1440.'); return; }
+      if (!client && !project) { TN.setErr(ERR, 'Enter a client or project name first.'); return; }
+      var p = dv.split('-');
+      log.push({ id: Date.now(), start: new Date(p[0], p[1] - 1, p[2], 12, 0, 0).getTime(), client: client, project: project, min: min });
+      save(); render();
+    });
+    TN.on(P + 'csv', 'click', function () {
+      if (!log.length) { TN.setErr(ERR, 'Nothing to export yet.'); return; }
+      var csv = 'Date,Client,Project,Minutes\n';
+      log.forEach(function (e) {
+        var d = new Date(e.start);
+        var ds = d.getFullYear() + '-' + String(d.getMonth() + 1).padStart(2, '0') + '-' + String(d.getDate()).padStart(2, '0');
+        csv += ds + ',"' + e.client.replace(/"/g, '""') + '","' + e.project.replace(/"/g, '""') + '",' + e.min + '\n';
+      });
+      TN.downloadText(csv, 'time-log.csv', 'text/csv');
+    });
+    TN.on(P + 'clear', 'click', function () {
+      log = []; save(); render();
+    });
+  } catch (e) { /* never throw on load */ }
+})();
+
+</script>
+</body>
+</html>

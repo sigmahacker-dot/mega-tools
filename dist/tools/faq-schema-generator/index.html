@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FAQ Schema Generator — Free Online | ToolNest</title>
+<meta name="description" content="Turn Q&amp;A pairs into valid FAQPage JSON-LD schema markup.">
+<meta name="keywords" content="faq schema generator, faqpage json-ld, faq structured data, faq rich results">
+<link rel="canonical" href="https://toolnest.vercel.app/tools/faq-schema-generator/">
+<meta name="theme-color" content="#07070b">
+<meta property="og:title" content="FAQ Schema Generator — Free Online | ToolNest">
+<meta property="og:description" content="Turn Q&amp;A pairs into valid FAQPage JSON-LD schema markup.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css?v=4">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%23e01111'/><text x='50' y='68' font-size='58' text-anchor='middle' fill='white' font-family='Arial' font-weight='bold'>T</text></svg>">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebApplication","name":"FAQ Schema Generator","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0"},"url":"https://toolnest.vercel.app/tools/faq-schema-generator/","description":"Turn Q&A pairs into valid FAQPage JSON-LD schema markup."},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How do I generate FAQ schema?","acceptedAnswer":{"@type":"Answer","text":"Add questions and answers one by one, then click Generate — the tool builds a valid FAQPage JSON-LD block."}},{"@type":"Question","name":"How many FAQs should I include?","acceptedAnswer":{"@type":"Answer","text":"Google shows a maximum of a few FAQs as rich results; keep questions genuinely helpful and matching visible page content."}},{"@type":"Question","name":"Must the FAQs appear on the page?","acceptedAnswer":{"@type":"Answer","text":"Yes — Google requires the questions and answers to be visible on the page for FAQ rich results eligibility."}},{"@type":"Question","name":"How do I add it to my site?","acceptedAnswer":{"@type":"Answer","text":"Click Copy JSON-LD and paste the block inside your page's \u003chead> or before \u003c/body>."}}]}]}</script>
+</head>
+<body>
+<header class="site-header">
+  <div class="container">
+    <a class="logo" href="/"><span class="logo-mark">T</span> ToolNest</a>
+    <div class="header-right">
+      <form class="nav-search" action="/" method="get" role="search">
+        <span class="ns-icon">🔍</span>
+        <input type="search" name="q" placeholder="Search tools…" aria-label="Search tools" autocomplete="off">
+      </form>
+      <div class="menu-wrap">
+        <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="menuPanel" aria-label="Open menu"><span></span><span></span><span></span></button>
+        <nav class="menu-panel" id="menuPanel" aria-label="Site">
+          <a href="/">Home</a>
+          <a href="/#categories">Categories</a>
+          <a href="/#all-tools">All Tools</a>
+        </nav>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ADSTERRA-HEADER: paste your Adsterra banner ad code inside the div below -->
+<div class="container"><div class="ad-slot ad-leaderboard" data-ad="header"></div></div>
+
+<main class="container">
+  <nav class="crumbs"><a href="/">Home</a> &rsaquo; <a href="/#seo">SEO &amp; Web</a> &rsaquo; FAQ Schema Generator</nav>
+  <div class="tool-hero">
+    <h1>FAQ Schema Generator</h1>
+    <p>Turn Q&amp;A pairs into valid FAQPage JSON-LD schema markup.</p>
+  </div>
+
+  <div class="tool-card">
+  <div class="field">
+    <label for="faq-schema-generator-q">Question</label>
+    <input class="input" type="text" id="faq-schema-generator-q" placeholder="What is…?">
+  </div>
+  <div class="field">
+    <label for="faq-schema-generator-a">Answer</label>
+    <textarea class="textarea" id="faq-schema-generator-a" rows="3" placeholder="The answer…"></textarea>
+  </div>
+  <div class="btn-row">
+    <button class="btn" id="faq-schema-generator-add">Add Q&A</button>
+    <button class="btn btn-outline" id="faq-schema-generator-clear">Clear All</button>
+  </div>
+  <div class="error" id="faq-schema-generator-error"></div>
+  <div id="faq-schema-generator-pairs" style="margin-top:10px"></div>
+</div>
+
+<div class="tool-card">
+  <div class="btn-row">
+    <button class="btn" id="faq-schema-generator-gen">Generate Schema</button>
+    <button class="btn btn-outline" id="faq-schema-generator-copy">Copy JSON-LD</button>
+    <button class="btn btn-outline" id="faq-schema-generator-dl">Download .json</button>
+  </div>
+  <pre id="faq-schema-generator-out" style="white-space:pre-wrap;font-family:monospace;font-size:13px;margin-top:10px"></pre>
+</div>
+
+  <!-- ADSTERRA-INCONTENT: paste your Adsterra native/in-content ad code inside the div below -->
+  <div class="ad-slot" data-ad="incontent"></div>
+
+  <div class="info-grid">
+    <div class="info-card">
+      <h2>📖 How to use</h2>
+      <ol><li>Type a question and its answer.</li><li>Click Add Q&amp;A — repeat for each pair.</li><li>Click Generate Schema to build the JSON-LD.</li><li>Copy or download it and paste into your page.</li></ol>
+    </div>
+    <div class="info-card">
+      <h2>❓ Frequently asked questions</h2>
+      <div class="faq"><details><summary>How do I generate FAQ schema?</summary><p>Add questions and answers one by one, then click Generate — the tool builds a valid FAQPage JSON-LD block.</p></details><details><summary>How many FAQs should I include?</summary><p>Google shows a maximum of a few FAQs as rich results; keep questions genuinely helpful and matching visible page content.</p></details><details><summary>Must the FAQs appear on the page?</summary><p>Yes — Google requires the questions and answers to be visible on the page for FAQ rich results eligibility.</p></details><details><summary>How do I add it to my site?</summary><p>Click Copy JSON-LD and paste the block inside your page&#39;s &lt;head&gt; or before &lt;/body&gt;.</p></details></div>
+    </div>
+  </div>
+
+  <section class="section">
+    <h2>🔗 Related tools</h2>
+    <div class="tool-grid"><a class="tool-link" href="/tools/alt-text-checker/" data-search="alt text checker paste html and audit every image&#39;s alt text — missing, empty, too-long and filename-as-alt issues flagged in a table. alt text checker image alt attribute tester alt tag checker seo image audit"><span class="t-ico">🔍</span><span class="t-body"><b>Alt Text Checker</b><small>Paste HTML and audit every image&#39;s alt text — missing, empty, too-long and filename-as-alt i…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/blog-title-generator/" data-search="blog title generator generate 24 click-worthy blog titles from your keyword — listicles, how-tos, questions and guides from real templates. blog title generator article title ideas blog post title maker seo title generator"><span class="t-ico">🔍</span><span class="t-body"><b>Blog Title Generator</b><small>Generate 24 click-worthy blog titles from your keyword — listicles, how-tos, questions and g…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/breadcrumb-schema-generator/" data-search="breadcrumb schema generator build breadcrumblist json-ld schema from your page&#39;s breadcrumb trail. breadcrumb schema generator breadcrumblist json-ld breadcrumb structured data"><span class="t-ico">🔍</span><span class="t-body"><b>Breadcrumb Schema Generator</b><small>Build BreadcrumbList JSON-LD schema from your page&#39;s breadcrumb trail.</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/campaign-name-generator/" data-search="campaign name generator create clean, consistent marketing campaign names — snake_case, kebab-case and utm-ready variants from your inputs. campaign name generator utm campaign naming marketing campaign names campaign naming convention"><span class="t-ico">🔍</span><span class="t-body"><b>Campaign Name Generator</b><small>Create clean, consistent marketing campaign names — snake_case, kebab-case and UTM-ready var…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/headline-analyzer/" data-search="headline analyzer score any headline on length, word balance and emotional pull — using built-in power-word and emotion-word banks. headline analyzer blog title analyzer headline score checker title optimizer"><span class="t-ico">🔍</span><span class="t-body"><b>Headline Analyzer</b><small>Score any headline on length, word balance and emotional pull — using built-in power-word an…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/howto-schema-generator/" data-search="howto schema generator turn step-by-step instructions into valid howto json-ld schema markup. howto schema generator how-to json-ld howto structured data how to rich results"><span class="t-ico">🔍</span><span class="t-body"><b>HowTo Schema Generator</b><small>Turn step-by-step instructions into valid HowTo JSON-LD schema markup.</small></span><span class="t-arrow">→</span></a></div>
+  </section>
+</main>
+
+<!-- ADSTERRA-FOOTER: paste your Adsterra footer/banner ad code inside the div below -->
+<div class="container"><div class="ad-slot" data-ad="footer"></div></div>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="f-grid">
+      <div>
+        <span class="brandline"><span class="logo-mark">T</span> ToolNest</span>
+        <p>Free online tools that actually work. No sign-up, no watermarks — and your files never leave your device for client-side tools.</p>
+      </div>
+      <div>
+        <h4>Popular</h4>
+        <a href="/tools/qr-code-generator/">QR Code Generator</a>
+        <a href="/tools/background-remover/">Background Remover</a>
+        <a href="/tools/pdf-merger/">PDF Merger</a>
+        <a href="/tools/word-counter/">Word Counter</a>
+      </div>
+      <div>
+        <h4>Categories</h4>
+        <a href="/#image">Image Tools</a>
+        <a href="/#pdf">PDF &amp; Documents</a>
+        <a href="/#calculators">Calculators</a>
+        <a href="/#developer">Developer Tools</a>
+      </div>
+      <div>
+        <h4>Site</h4>
+        <a href="/">Home</a>
+        <a href="/#all-tools">All Tools</a>
+        <a href="/sitemap.xml">Sitemap</a>
+      </div>
+    </div>
+    <div class="f-bottom">© 2026 ToolNest · Free tools for everyone · Made with care</div>
+  </div>
+</footer>
+
+<script src="/assets/site.js?v=5"></script>
+
+<script>
+/* FAQ Schema Generator — Q&A pairs → FAQPage JSON-LD. */
+(function () {
+  'use strict';
+
+  var SLUG = 'faq-schema-generator';
+  var pairs = [];
+  var lastJson = '';
+
+  function renderPairs() {
+    var box = TN.el(SLUG + '-pairs');
+    if (!pairs.length) { box.innerHTML = '<p class="muted">No Q&A pairs yet.</p>'; return; }
+    box.innerHTML = pairs.map(function (p, i) {
+      return '<div class="tool-card" style="margin:6px 0"><strong>Q: ' + TN.esc(p.q) + '</strong>' +
+        '<p class="muted" style="margin:4px 0">A: ' + TN.esc(p.a) + '</p>' +
+        '<button class="btn btn-sm btn-outline" data-del="' + i + '">Remove</button></div>';
+    }).join('');
+    var dels = box.querySelectorAll('[data-del]');
+    for (var i = 0; i < dels.length; i++) {
+      (function (b) {
+        b.addEventListener('click', function () {
+          pairs.splice(parseInt(b.getAttribute('data-del'), 10), 1);
+          renderPairs();
+        });
+      })(dels[i]);
+    }
+  }
+
+  function add() {
+    TN.clearErr(SLUG + '-error');
+    var q = TN.el(SLUG + '-q').value.trim();
+    var a = TN.el(SLUG + '-a').value.trim();
+    if (!q) { TN.setErr(SLUG + '-error', 'Enter a question.'); return; }
+    if (!a) { TN.setErr(SLUG + '-error', 'Enter the answer.'); return; }
+    pairs.push({ q: q, a: a });
+    TN.el(SLUG + '-q').value = '';
+    TN.el(SLUG + '-a').value = '';
+    renderPairs();
+  }
+
+  function generate() {
+    TN.clearErr(SLUG + '-error');
+    if (!pairs.length) { TN.setErr(SLUG + '-error', 'Add at least one Q&A pair first.'); return; }
+    var obj = {
+      '@context': 'https://schema.org',
+      '@type': 'FAQPage',
+      mainEntity: pairs.map(function (p) {
+        return {
+          '@type': 'Question',
+          name: p.q,
+          acceptedAnswer: { '@type': 'Answer', text: p.a }
+        };
+      })
+    };
+    lastJson = JSON.stringify(obj, null, 2);
+    TN.el(SLUG + '-out').textContent = lastJson;
+  }
+
+  function init() {
+    try {
+      if (!TN.el(SLUG + '-add')) return;
+      TN.on(SLUG + '-add', 'click', add);
+      TN.on(SLUG + '-gen', 'click', generate);
+      TN.on(SLUG + '-clear', 'click', function () { pairs = []; renderPairs(); });
+      TN.on(SLUG + '-copy', 'click', function () {
+        if (!lastJson) { TN.setErr(SLUG + '-error', 'Generate the schema first.'); return; }
+        TN.copy(lastJson).catch(function () { TN.setErr(SLUG + '-error', 'Copy failed — select the text manually.'); });
+      });
+      TN.on(SLUG + '-dl', 'click', function () {
+        if (!lastJson) { TN.setErr(SLUG + '-error', 'Generate the schema first.'); return; }
+        TN.downloadText(lastJson, 'faq-schema.json', 'application/ld+json');
+      });
+      renderPairs();
+    } catch (e) { /* never throw on load */ }
+  }
+
+  init();
+})();
+</script>
+</body>
+</html>

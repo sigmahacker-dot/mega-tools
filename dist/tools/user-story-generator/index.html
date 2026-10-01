@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>User Story Generator — Free Online | ToolNest</title>
+<meta name="description" content="Write proper agile user stories — &#39;As a… I want… so that…&#39; — with a Given/When/Then acceptance criteria builder. Copy or download.">
+<meta name="keywords" content="user story generator, user story, acceptance criteria, agile user story, given when then">
+<link rel="canonical" href="https://toolnest.vercel.app/tools/user-story-generator/">
+<meta name="theme-color" content="#07070b">
+<meta property="og:title" content="User Story Generator — Free Online | ToolNest">
+<meta property="og:description" content="Write proper agile user stories — &#39;As a… I want… so that…&#39; — with a Given/When/Then acceptance criteria builder. Copy or download.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css?v=4">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%23e01111'/><text x='50' y='68' font-size='58' text-anchor='middle' fill='white' font-family='Arial' font-weight='bold'>T</text></svg>">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebApplication","name":"User Story Generator","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0"},"url":"https://toolnest.vercel.app/tools/user-story-generator/","description":"Write proper agile user stories — 'As a… I want… so that…' — with a Given/When/Then acceptance criteria builder. Copy or download."},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What makes a user story?","acceptedAnswer":{"@type":"Answer","text":"The role, the goal, and the benefit — the classic 'As a [role], I want [goal], so that [benefit]' format."}},{"@type":"Question","name":"How do acceptance criteria work?","acceptedAnswer":{"@type":"Answer","text":"Add as many Given/When/Then criteria as you need; each is numbered in the output."}},{"@type":"Question","name":"Can I set story points?","acceptedAnswer":{"@type":"Answer","text":"Story points 1–13 (Fibonacci) plus a priority level."}},{"@type":"Question","name":"How do I export it?","acceptedAnswer":{"@type":"Answer","text":"Copy the story or download it as a .txt file for your backlog tool."}}]}]}</script>
+</head>
+<body>
+<header class="site-header">
+  <div class="container">
+    <a class="logo" href="/"><span class="logo-mark">T</span> ToolNest</a>
+    <div class="header-right">
+      <form class="nav-search" action="/" method="get" role="search">
+        <span class="ns-icon">🔍</span>
+        <input type="search" name="q" placeholder="Search tools…" aria-label="Search tools" autocomplete="off">
+      </form>
+      <div class="menu-wrap">
+        <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="menuPanel" aria-label="Open menu"><span></span><span></span><span></span></button>
+        <nav class="menu-panel" id="menuPanel" aria-label="Site">
+          <a href="/">Home</a>
+          <a href="/#categories">Categories</a>
+          <a href="/#all-tools">All Tools</a>
+        </nav>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ADSTERRA-HEADER: paste your Adsterra banner ad code inside the div below -->
+<div class="container"><div class="ad-slot ad-leaderboard" data-ad="header"></div></div>
+
+<main class="container">
+  <nav class="crumbs"><a href="/">Home</a> &rsaquo; <a href="/#text">Text &amp; Writing</a> &rsaquo; User Story Generator</nav>
+  <div class="tool-hero">
+    <h1>User Story Generator</h1>
+    <p>Write proper agile user stories — &#39;As a… I want… so that…&#39; — with a Given/When/Then acceptance criteria builder. Copy or download.</p>
+  </div>
+
+  <div class="tool-card">
+  <div class="grid3">
+    <div class="field">
+      <label for="user-story-generator-role">As a…</label>
+      <input class="input" id="user-story-generator-role" type="text" placeholder="e.g. shopper" maxlength="60">
+    </div>
+    <div class="field">
+      <label for="user-story-generator-goal">I want…</label>
+      <input class="input" id="user-story-generator-goal" type="text" placeholder="e.g. to filter by size" maxlength="120">
+    </div>
+    <div class="field">
+      <label for="user-story-generator-benefit">So that…</label>
+      <input class="input" id="user-story-generator-benefit" type="text" placeholder="e.g. I find shoes that fit" maxlength="120">
+    </div>
+    <div class="field">
+      <label for="user-story-generator-points">Story points</label>
+      <select class="select" id="user-story-generator-points">
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3" selected>3</option>
+        <option value="5">5</option>
+        <option value="8">8</option>
+        <option value="13">13</option>
+      </select>
+    </div>
+    <div class="field">
+      <label for="user-story-generator-priority">Priority</label>
+      <select class="select" id="user-story-generator-priority">
+        <option value="Must have">Must have</option>
+        <option value="Should have">Should have</option>
+        <option value="Could have">Could have</option>
+        <option value="Won't have">Won't have</option>
+      </select>
+    </div>
+  </div>
+  <div class="field">
+    <label>Add acceptance criterion (Given / When / Then)</label>
+    <div style="display:flex;gap:8px">
+      <input class="input" id="user-story-generator-ac" type="text" placeholder="e.g. Given I am on the product page, when I pick size 9, then only size-9 shoes show" maxlength="200">
+      <button class="btn btn-outline btn-sm" id="user-story-generator-add" type="button" style="white-space:nowrap">+ Add</button>
+    </div>
+  </div>
+  <div class="error" id="user-story-generator-error"></div>
+  <div id="user-story-generator-list" style="margin-top:8px"></div>
+  <div class="btn-row" style="margin-top:12px">
+    <button class="btn btn-primary btn-sm" id="user-story-generator-go" type="button">Build User Story</button>
+    <button class="btn btn-outline btn-sm" id="user-story-generator-copy" type="button">Copy</button>
+    <button class="btn btn-outline btn-sm" id="user-story-generator-download" type="button">Download .txt</button>
+  </div>
+  <div class="field" style="margin-top:12px">
+    <label>Your user story</label>
+    <div class="result" id="user-story-generator-output" style="white-space:pre-wrap">Your user story will appear here.</div>
+  </div>
+</div>
+
+
+  <!-- ADSTERRA-INCONTENT: paste your Adsterra native/in-content ad code inside the div below -->
+  <div class="ad-slot" data-ad="incontent"></div>
+
+  <div class="info-grid">
+    <div class="info-card">
+      <h2>📖 How to use</h2>
+      <ol><li>Fill in the role, goal, and benefit.</li><li>Add acceptance criteria and points.</li><li>Copy or download your user story.</li></ol>
+    </div>
+    <div class="info-card">
+      <h2>❓ Frequently asked questions</h2>
+      <div class="faq"><details><summary>What makes a user story?</summary><p>The role, the goal, and the benefit — the classic &#39;As a [role], I want [goal], so that [benefit]&#39; format.</p></details><details><summary>How do acceptance criteria work?</summary><p>Add as many Given/When/Then criteria as you need; each is numbered in the output.</p></details><details><summary>Can I set story points?</summary><p>Story points 1–13 (Fibonacci) plus a priority level.</p></details><details><summary>How do I export it?</summary><p>Copy the story or download it as a .txt file for your backlog tool.</p></details></div>
+    </div>
+  </div>
+
+  <section class="section">
+    <h2>🔗 Related tools</h2>
+    <div class="tool-grid"><a class="tool-link" href="/tools/acronym-generator/" data-search="acronym generator turn any phrase into an acronym instantly — first letters, with options to skip small words, add periods and force uppercase. acronym generator make acronym from words initialism generator phrase to acronym"><span class="t-ico">✍️</span><span class="t-body"><b>Acronym Generator</b><small>Turn any phrase into an acronym instantly — first letters, with options to skip small words,…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/acrostic-poem-generator/" data-search="acrostic poem generator turn any word into an acrostic poem — one poetic line per letter from built-in line banks. acrostic poem generator acrostic generator name poem acrostic maker poem from word"><span class="t-ico">✍️</span><span class="t-body"><b>Acrostic Poem Generator</b><small>Turn any word into an acrostic poem — one poetic line per letter from built-in line banks.</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/aes-text-encryptor/" data-search="aes text encryptor encrypt text with real aes-256-gcm using a password-derived key (pbkdf2), fully in your browser. aes encrypt text encrypt message password aes-gcm online"><span class="t-ico">✍️</span><span class="t-body"><b>AES Text Encryptor</b><small>Encrypt text with real AES-256-GCM using a password-derived key (PBKDF2), fully in your brow…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/alliteration-generator/" data-search="alliteration generator generate alliterative phrases — pick a letter and a theme, get tongue-twisting word combos. alliteration generator alliteration examples tongue twister generator alliterative phrases letter phrases"><span class="t-ico">✍️</span><span class="t-body"><b>Alliteration Generator</b><small>Generate alliterative phrases — pick a letter and a theme, get tongue-twisting word combos.</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/anagram-generator/" data-search="anagram generator find every real anagram of your word — all unique permutations checked against a built-in word list. anagram generator anagram solver find anagrams anagram finder word unscrambler"><span class="t-ico">✍️</span><span class="t-body"><b>Anagram Generator</b><small>Find every real anagram of your word — all unique permutations checked against a built-in wo…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/apology-generator/" data-search="apology generator build a sincere, structured apology from your situation — acknowledge, take responsibility, make amends, and promise change. apology generator sorry letter apology message write an apology apology text"><span class="t-ico">✍️</span><span class="t-body"><b>Apology Generator</b><small>Build a sincere, structured apology from your situation — acknowledge, take responsibility, …</small></span><span class="t-arrow">→</span></a></div>
+  </section>
+</main>
+
+<!-- ADSTERRA-FOOTER: paste your Adsterra footer/banner ad code inside the div below -->
+<div class="container"><div class="ad-slot" data-ad="footer"></div></div>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="f-grid">
+      <div>
+        <span class="brandline"><span class="logo-mark">T</span> ToolNest</span>
+        <p>Free online tools that actually work. No sign-up, no watermarks — and your files never leave your device for client-side tools.</p>
+      </div>
+      <div>
+        <h4>Popular</h4>
+        <a href="/tools/qr-code-generator/">QR Code Generator</a>
+        <a href="/tools/background-remover/">Background Remover</a>
+        <a href="/tools/pdf-merger/">PDF Merger</a>
+        <a href="/tools/word-counter/">Word Counter</a>
+      </div>
+      <div>
+        <h4>Categories</h4>
+        <a href="/#image">Image Tools</a>
+        <a href="/#pdf">PDF &amp; Documents</a>
+        <a href="/#calculators">Calculators</a>
+        <a href="/#developer">Developer Tools</a>
+      </div>
+      <div>
+        <h4>Site</h4>
+        <a href="/">Home</a>
+        <a href="/#all-tools">All Tools</a>
+        <a href="/sitemap.xml">Sitemap</a>
+      </div>
+    </div>
+    <div class="f-bottom">© 2026 ToolNest · Free tools for everyone · Made with care</div>
+  </div>
+</footer>
+
+<script src="/assets/site.js?v=5"></script>
+
+<script>
+/* User Story Generator — "As a… I want… so that…" + Given/When/Then criteria. */
+(function () {
+  'use strict';
+  var SLUG = 'user-story-generator';
+  var criteria = [];
+  var current = '';
+
+  function render() {
+    var list = TN.el(SLUG + '-list');
+    list.innerHTML = '';
+    criteria.forEach(function (c, i) {
+      var row = document.createElement('div');
+      row.className = 'copy-row mt';
+      var d = document.createElement('div');
+      d.className = 'result';
+      d.style.flex = '1';
+      d.textContent = (i + 1) + '. ' + c;
+      var del = document.createElement('button');
+      del.className = 'btn btn-outline btn-sm';
+      del.type = 'button';
+      del.textContent = '✕';
+      del.setAttribute('aria-label', 'Remove criterion');
+      del.addEventListener('click', function () { criteria.splice(i, 1); render(); });
+      row.appendChild(d);
+      row.appendChild(del);
+      list.appendChild(row);
+    });
+    if (!criteria.length) list.innerHTML = '<p class="muted">No acceptance criteria yet — add at least one.</p>';
+  }
+
+  function build() {
+    var role = TN.el(SLUG + '-role').value.trim();
+    var goal = TN.el(SLUG + '-goal').value.trim();
+    var benefit = TN.el(SLUG + '-benefit').value.trim();
+    if (!role || !goal || !benefit) return null;
+    var points = TN.el(SLUG + '-points').value;
+    var priority = TN.el(SLUG + '-priority').value;
+    var L = [];
+    L.push('USER STORY');
+    L.push('As a ' + role + ',');
+    L.push('I want ' + goal + ',');
+    L.push('so that ' + benefit + '.');
+    L.push('');
+    L.push('Story points: ' + points + ' | Priority: ' + priority);
+    L.push('');
+    L.push('ACCEPTANCE CRITERIA:');
+    if (criteria.length) {
+      criteria.forEach(function (c, i) { L.push((i + 1) + '. ' + c); });
+    } else {
+      L.push('[add acceptance criteria above]');
+    }
+    return L.join('\n');
+  }
+
+  function init() {
+    if (!TN.el(SLUG + '-go')) return;
+    render();
+    TN.on(SLUG + '-add', 'click', function () {
+      var v = TN.el(SLUG + '-ac').value.trim();
+      if (!v) { TN.setErr(SLUG + '-error', 'Type an acceptance criterion first.'); return; }
+      TN.clearErr(SLUG + '-error');
+      criteria.push(v);
+      TN.el(SLUG + '-ac').value = '';
+      render();
+    });
+    TN.on(SLUG + '-go', 'click', function () {
+      TN.clearErr(SLUG + '-error');
+      var s = build();
+      if (!s) { TN.setErr(SLUG + '-error', 'Please fill in the role, goal, and benefit.'); return; }
+      current = s;
+      TN.el(SLUG + '-output').textContent = current;
+    });
+    TN.on(SLUG + '-copy', 'click', function () {
+      if (!current) { TN.setErr(SLUG + '-error', 'Build your user story first.'); return; }
+      var btn = TN.el(SLUG + '-copy');
+      TN.copy(current).then(function (ok) {
+        btn.textContent = ok ? 'Copied ✓' : 'Copy';
+        setTimeout(function () { btn.textContent = 'Copy'; }, 1200);
+      });
+    });
+    TN.on(SLUG + '-download', 'click', function () {
+      if (!current) { TN.setErr(SLUG + '-error', 'Build your user story first.'); return; }
+      TN.downloadText(current, 'user-story.txt', 'text/plain');
+    });
+  }
+  try { init(); } catch (e) { /* never throw on load */ }
+})();
+
+</script>
+</body>
+</html>

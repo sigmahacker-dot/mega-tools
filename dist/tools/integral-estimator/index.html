@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Integral Estimator — Free Online | ToolNest</title>
+<meta name="description" content="Numerically integrate any expression over [a, b] with Simpson&#39;s, trapezoidal or midpoint rule — real quadrature with the formula and error behavior shown.">
+<meta name="keywords" content="integral estimator, numerical integration, simpsons rule, trapezoidal rule, definite integral">
+<link rel="canonical" href="https://toolnest.vercel.app/tools/integral-estimator/">
+<meta name="theme-color" content="#07070b">
+<meta property="og:title" content="Integral Estimator — Free Online | ToolNest">
+<meta property="og:description" content="Numerically integrate any expression over [a, b] with Simpson&#39;s, trapezoidal or midpoint rule — real quadrature with the formula and error behavior shown.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css?v=4">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%23e01111'/><text x='50' y='68' font-size='58' text-anchor='middle' fill='white' font-family='Arial' font-weight='bold'>T</text></svg>">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebApplication","name":"Integral Estimator","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0"},"url":"https://toolnest.vercel.app/tools/integral-estimator/","description":"Numerically integrate any expression over [a, b] with Simpson's, trapezoidal or midpoint rule — real quadrature with the formula and error behavior shown."},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Which rule is most accurate?","acceptedAnswer":{"@type":"Answer","text":"Simpson's rule is exact for polynomials up to degree 3 and usually converges fastest (error ~ 1/n⁴). The tool shows all three side by side so you can compare."}},{"@type":"Question","name":"Why must n be even for Simpson's rule?","acceptedAnswer":{"@type":"Answer","text":"Simpson's rule fits parabolas over pairs of subintervals, so it needs an even count. The tool rounds an odd n up and tells you."}},{"@type":"Question","name":"What functions can I type?","acceptedAnswer":{"@type":"Answer","text":"Polynomials (x^2), sin, cos, tan, asin, acos, atan, exp, ln, log (base 10), sqrt, abs, pi, e, and the usual + − * / ^ operators with parentheses."}}]}]}</script>
+</head>
+<body>
+<header class="site-header">
+  <div class="container">
+    <a class="logo" href="/"><span class="logo-mark">T</span> ToolNest</a>
+    <div class="header-right">
+      <form class="nav-search" action="/" method="get" role="search">
+        <span class="ns-icon">🔍</span>
+        <input type="search" name="q" placeholder="Search tools…" aria-label="Search tools" autocomplete="off">
+      </form>
+      <div class="menu-wrap">
+        <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="menuPanel" aria-label="Open menu"><span></span><span></span><span></span></button>
+        <nav class="menu-panel" id="menuPanel" aria-label="Site">
+          <a href="/">Home</a>
+          <a href="/#categories">Categories</a>
+          <a href="/#all-tools">All Tools</a>
+        </nav>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ADSTERRA-HEADER: paste your Adsterra banner ad code inside the div below -->
+<div class="container"><div class="ad-slot ad-leaderboard" data-ad="header"></div></div>
+
+<main class="container">
+  <nav class="crumbs"><a href="/">Home</a> &rsaquo; <a href="/#math">Math &amp; Numbers</a> &rsaquo; Integral Estimator</nav>
+  <div class="tool-hero">
+    <h1>Integral Estimator</h1>
+    <p>Numerically integrate any expression over [a, b] with Simpson&#39;s, trapezoidal or midpoint rule — real quadrature with the formula and error behavior shown.</p>
+  </div>
+
+  <div class="tool-card">
+  <div class="grid2">
+    <div class="field">
+      <label for="integral-estimator-fn">Integrand f(x)</label>
+      <input class="input" id="integral-estimator-fn" type="text" placeholder="e.g. sin(x) + x^2" value="sin(x)" style="font-family:monospace">
+    </div>
+    <div class="field">
+      <label for="integral-estimator-method">Rule</label>
+      <select class="select" id="integral-estimator-method">
+        <option value="simpson">Simpson's rule</option>
+        <option value="trapezoid">Trapezoidal rule</option>
+        <option value="midpoint">Midpoint rule</option>
+      </select>
+    </div>
+    <div class="field">
+      <label for="integral-estimator-a">Lower limit a</label>
+      <input class="input" id="integral-estimator-a" type="number" step="any" value="0">
+    </div>
+    <div class="field">
+      <label for="integral-estimator-b">Upper limit b</label>
+      <input class="input" id="integral-estimator-b" type="number" step="any" value="3.14159">
+    </div>
+    <div class="field">
+      <label for="integral-estimator-n">Subintervals n</label>
+      <input class="input" id="integral-estimator-n" type="number" min="1" max="100000" step="1" value="100">
+    </div>
+    <div class="field" style="align-self:end">
+      <button type="button" class="btn" id="integral-estimator-go">Integrate</button>
+    </div>
+  </div>
+  <div class="error" id="integral-estimator-error"></div>
+  <div id="integral-estimator-out" class="hidden">
+    <div class="stat-cards">
+      <div class="stat-card"><div class="v" id="integral-estimator-result">–</div><div class="l">Estimate</div></div>
+      <div class="stat-card"><div class="v" id="integral-estimator-h">–</div><div class="l">Step h = (b−a)/n</div></div>
+      <div class="stat-card"><div class="v" id="integral-estimator-evals">–</div><div class="l">Function evaluations</div></div>
+    </div>
+    <div class="result">
+      <h3>How it was computed</h3>
+      <div id="integral-estimator-steps"></div>
+    </div>
+    <div class="result">
+      <h3>Convergence check (n doubled)</h3>
+      <div style="overflow-x:auto"><table class="data"><thead><tr><th>n</th><th>Estimate</th><th>Change</th></tr></thead><tbody id="integral-estimator-conv"></tbody></table></div>
+    </div>
+  </div>
+</div>
+
+
+  <!-- ADSTERRA-INCONTENT: paste your Adsterra native/in-content ad code inside the div below -->
+  <div class="ad-slot" data-ad="incontent"></div>
+
+  <div class="info-grid">
+    <div class="info-card">
+      <h2>📖 How to use</h2>
+      <ol><li>Type the integrand as a function of x, e.g. sin(x) + x^2.</li><li>Enter the limits a and b and the number of subintervals n.</li><li>Choose Simpson&#39;s, trapezoidal or midpoint rule and press Integrate.</li><li>Read the estimate, the exact formula applied, and how the value converges as n grows.</li></ol>
+    </div>
+    <div class="info-card">
+      <h2>❓ Frequently asked questions</h2>
+      <div class="faq"><details><summary>Which rule is most accurate?</summary><p>Simpson&#39;s rule is exact for polynomials up to degree 3 and usually converges fastest (error ~ 1/n⁴). The tool shows all three side by side so you can compare.</p></details><details><summary>Why must n be even for Simpson&#39;s rule?</summary><p>Simpson&#39;s rule fits parabolas over pairs of subintervals, so it needs an even count. The tool rounds an odd n up and tells you.</p></details><details><summary>What functions can I type?</summary><p>Polynomials (x^2), sin, cos, tan, asin, acos, atan, exp, ln, log (base 10), sqrt, abs, pi, e, and the usual + − * / ^ operators with parentheses.</p></details></div>
+    </div>
+  </div>
+
+  <section class="section">
+    <h2>🔗 Related tools</h2>
+    <div class="tool-grid"><a class="tool-link" href="/tools/24-game-solver/" data-search="24 game solver solve the 24 game exhaustively: every ordering, operation and parenthesization is tried with exact fraction arithmetic, and all distinct solutions are shown. 24 game solver make 24 solver 24 puzzle arithmetic puzzle solver"><span class="t-ico">📐</span><span class="t-body"><b>24 Game Solver</b><small>Solve the 24 game exhaustively: every ordering, operation and parenthesization is tried with…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/ancient-numerals-converter/" data-search="ancient numerals converter convert decimal numbers to roman, egyptian hieroglyphic, babylonian cuneiform and mayan numerals — with roman numerals also decoded back to decimal. roman numerals egyptian numerals babylonian numerals mayan numerals ancient numbers"><span class="t-ico">📐</span><span class="t-body"><b>Ancient Numerals Converter</b><small>Convert decimal numbers to Roman, Egyptian hieroglyphic, Babylonian cuneiform and Mayan nume…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/arithmetic-sequence-calculator/" data-search="arithmetic sequence calculator from the first term and common difference get the nth term and the sum of the first n terms. arithmetic sequence arithmetic progression nth term sum of arithmetic series common difference"><span class="t-ico">📐</span><span class="t-body"><b>Arithmetic Sequence Calculator</b><small>From the first term and common difference get the nth term and the sum of the first n terms.</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/base-n-arithmetic/" data-search="base-n arithmetic add, subtract, multiply and divide numbers in any base from 2 to 36 with exact bigint math and a full conversion breakdown. base n arithmetic binary addition hexadecimal calculator base 36 math"><span class="t-ico">📐</span><span class="t-body"><b>Base-N Arithmetic</b><small>Add, subtract, multiply and divide numbers in any base from 2 to 36 with exact BigInt math a…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/bayes-theorem-calculator/" data-search="bayes theorem calculator compute posterior probabilities from prior, sensitivity and specificity with the full bayes formula, natural frequencies and a probability tree. bayes theorem calculator posterior probability sensitivity specificity medical test probability"><span class="t-ico">📐</span><span class="t-body"><b>Bayes Theorem Calculator</b><small>Compute posterior probabilities from prior, sensitivity and specificity with the full Bayes …</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/bcd-converter/" data-search="bcd converter convert decimal numbers to binary-coded decimal (packed and unpacked) and decode bcd back to decimal, with per-digit nibble breakdowns. bcd converter binary coded decimal packed bcd unpacked bcd bcd decoder"><span class="t-ico">📐</span><span class="t-body"><b>BCD Converter</b><small>Convert decimal numbers to Binary-Coded Decimal (packed and unpacked) and decode BCD back to…</small></span><span class="t-arrow">→</span></a></div>
+  </section>
+</main>
+
+<!-- ADSTERRA-FOOTER: paste your Adsterra footer/banner ad code inside the div below -->
+<div class="container"><div class="ad-slot" data-ad="footer"></div></div>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="f-grid">
+      <div>
+        <span class="brandline"><span class="logo-mark">T</span> ToolNest</span>
+        <p>Free online tools that actually work. No sign-up, no watermarks — and your files never leave your device for client-side tools.</p>
+      </div>
+      <div>
+        <h4>Popular</h4>
+        <a href="/tools/qr-code-generator/">QR Code Generator</a>
+        <a href="/tools/background-remover/">Background Remover</a>
+        <a href="/tools/pdf-merger/">PDF Merger</a>
+        <a href="/tools/word-counter/">Word Counter</a>
+      </div>
+      <div>
+        <h4>Categories</h4>
+        <a href="/#image">Image Tools</a>
+        <a href="/#pdf">PDF &amp; Documents</a>
+        <a href="/#calculators">Calculators</a>
+        <a href="/#developer">Developer Tools</a>
+      </div>
+      <div>
+        <h4>Site</h4>
+        <a href="/">Home</a>
+        <a href="/#all-tools">All Tools</a>
+        <a href="/sitemap.xml">Sitemap</a>
+      </div>
+    </div>
+    <div class="f-bottom">© 2026 ToolNest · Free tools for everyone · Made with care</div>
+  </div>
+</footer>
+
+<script src="/assets/site.js?v=5"></script>
+
+<script>
+(function () {
+  'use strict';
+  var P = 'integral-estimator-', ERR = P + 'error';
+  function g(id) { return TN.el(P + id); }
+  var FN1 = { sin: Math.sin, cos: Math.cos, tan: Math.tan, asin: Math.asin, acos: Math.acos, atan: Math.atan, exp: Math.exp, ln: Math.log, sqrt: Math.sqrt, abs: Math.abs };
+  function makeEval(src) {
+    var toks = [], i = 0;
+    while (i < src.length) {
+      var c = src[i];
+      if (/\s/.test(c)) { i++; continue; }
+      if (/[0-9.]/.test(c)) {
+        var j = i;
+        while (j < src.length && /[0-9.]/.test(src[j])) j++;
+        var num = src.slice(i, j);
+        if (!/^\d+(\.\d+)?$/.test(num)) throw new Error('Bad number "' + num + '".');
+        toks.push({ t: 'num', v: parseFloat(num) }); i = j; continue;
+      }
+      if (/[a-zA-Z]/.test(c)) {
+        var k = i;
+        while (k < src.length && /[a-zA-Z]/.test(src[k])) k++;
+        var w = src.slice(i, k).toLowerCase(); i = k;
+        if (w === 'x') toks.push({ t: 'x' });
+        else if (w === 'e') toks.push({ t: 'num', v: Math.E });
+        else if (w === 'pi') toks.push({ t: 'num', v: Math.PI });
+        else if (w === 'log') toks.push({ t: 'fn', v: 'log10' });
+        else if (FN1[w]) toks.push({ t: 'fn', v: w });
+        else throw new Error('Unknown name "' + w + '".');
+        continue;
+      }
+      if ('+-*/^()'.indexOf(c) >= 0) { toks.push({ t: c }); i++; continue; }
+      throw new Error('Unexpected character "' + c + '".');
+    }
+    var pos = 0;
+    function peek() { return toks[pos]; }
+    function next() { return toks[pos++]; }
+    function expr() {
+      var n = term();
+      while (peek() && (peek().t === '+' || peek().t === '-')) { var o = next().t, r = term(); n = { t: o, l: n, r: r }; }
+      return n;
+    }
+    function term() {
+      var n = unary();
+      while (peek() && (peek().t === '*' || peek().t === '/')) { var o = next().t, r = unary(); n = { t: o, l: n, r: r }; }
+      return n;
+    }
+    function unary() {
+      if (peek() && peek().t === '-') { next(); return { t: 'neg', a: unary() }; }
+      if (peek() && peek().t === '+') { next(); return unary(); }
+      return power();
+    }
+    function power() {
+      var n = atom();
+      if (peek() && peek().t === '^') { next(); n = { t: 'pow', l: n, r: unary() }; }
+      return n;
+    }
+    function atom() {
+      var tk = next();
+      if (!tk) throw new Error('Unexpected end of expression.');
+      if (tk.t === 'num') return tk;
+      if (tk.t === 'x') return tk;
+      if (tk.t === 'fn') {
+        if (!peek() || peek().t !== '(') throw new Error('Expected ( after function.');
+        next(); var a = expr();
+        if (!peek() || peek().t !== ')') throw new Error('Missing ).');
+        next(); return { t: 'fn', v: tk.v, a: a };
+      }
+      if (tk.t === '(') {
+        var e = expr();
+        if (!peek() || peek().t !== ')') throw new Error('Missing ).');
+        next(); return e;
+      }
+      throw new Error('Unexpected token.');
+    }
+    // implicit multiplication
+    function withImplicit(list) {
+      var out = [];
+      for (var q = 0; q < list.length; q++) {
+        out.push(list[q]);
+        if (q + 1 < list.length) {
+          var a = list[q].t, b = list[q + 1].t;
+          if ((a === 'num' || a === 'x' || a === ')') && (b === 'num' || b === 'x' || b === 'fn' || b === '(')) out.push({ t: '*' });
+        }
+      }
+      return out;
+    }
+    toks = withImplicit(toks);
+    var tree = expr();
+    if (pos < toks.length) throw new Error('Could not parse the whole expression.');
+    function ev(n, x) {
+      switch (n.t) {
+        case 'num': return n.v;
+        case 'x': return x;
+        case 'neg': return -ev(n.a, x);
+        case '+': return ev(n.l, x) + ev(n.r, x);
+        case '-': return ev(n.l, x) - ev(n.r, x);
+        case '*': return ev(n.l, x) * ev(n.r, x);
+        case '/': { var d = ev(n.r, x); if (d === 0) throw new Error('Division by zero in integrand.'); return ev(n.l, x) / d; }
+        case 'pow': return Math.pow(ev(n.l, x), ev(n.r, x));
+        case 'fn': {
+          var a = ev(n.a, x), f = n.v;
+          if (f === 'ln' && a <= 0) throw new Error('ln of non-positive value.');
+          if (f === 'log10' && a <= 0) throw new Error('log of non-positive value.');
+          if (f === 'sqrt' && a < 0) throw new Error('sqrt of negative value.');
+          return f === 'log10' ? Math.log10(a) : FN1[f](a);
+        }
+      }
+      throw new Error('Evaluation error.');
+    }
+    return function (x) {
+      var v = ev(tree, x);
+      if (!isFinite(v)) throw new Error('Integrand is not finite at x = ' + x + '.');
+      return v;
+    };
+  }
+  function integrate(f, a, b, n, method) {
+    if (method === 'simpson' && n % 2 === 1) n++;
+    var h = (b - a) / n, sum = 0, evals = 0, i;
+    if (method === 'trapezoid') {
+      sum = (f(a) + f(b)) / 2; evals = 2;
+      for (i = 1; i < n; i++) { sum += f(a + i * h); evals++; }
+      return { val: sum * h, n: n, evals: evals, h: h };
+    }
+    if (method === 'midpoint') {
+      for (i = 0; i < n; i++) { sum += f(a + (i + 0.5) * h); evals++; }
+      return { val: sum * h, n: n, evals: evals, h: h };
+    }
+    // simpson
+    sum = f(a) + f(b); evals = 2;
+    for (i = 1; i < n; i++) { sum += (i % 2 ? 4 : 2) * f(a + i * h); evals++; }
+    return { val: sum * h / 3, n: n, evals: evals, h: h };
+  }
+  function fmt(x) {
+    if (!isFinite(x)) return String(x);
+    return String(parseFloat(x.toPrecision(10)));
+  }
+  function go() {
+    try {
+      TN.clearErr(ERR);
+      var src = g('fn').value.trim();
+      if (!src) { TN.setErr(ERR, 'Type an integrand first.'); return; }
+      var f;
+      try { f = makeEval(src); } catch (e) { TN.setErr(ERR, e.message); return; }
+      var a = parseFloat(g('a').value), b = parseFloat(g('b').value);
+      if (isNaN(a) || isNaN(b)) { TN.setErr(ERR, 'Limits a and b must be numbers.'); return; }
+      if (a === b) { TN.setErr(ERR, 'Limits must differ (a ≠ b).'); return; }
+      var n = parseInt(g('n').value, 10);
+      if (isNaN(n) || n < 1 || n > 100000) { TN.setErr(ERR, 'n must be an integer from 1 to 100000.'); return; }
+      var method = g('method').value;
+      var lo = Math.min(a, b), hi = Math.max(a, b), sign = a < b ? 1 : -1;
+      var r;
+      try { r = integrate(f, lo, hi, n, method); } catch (e) { TN.setErr(ERR, e.message); return; }
+      var val = sign * r.val;
+      TN.show(P + 'out');
+      g('result').textContent = fmt(val);
+      g('h').textContent = fmt(r.h);
+      g('evals').textContent = String(r.evals);
+      var names = { simpson: "Simpson's rule", trapezoid: 'Trapezoidal rule', midpoint: 'Midpoint rule' };
+      var formula = method === 'simpson'
+        ? '∫ ≈ h/3 · [f(x₀) + f(xₙ) + 4·Σf(x_odd) + 2·Σf(x_even)]'
+        : method === 'trapezoid' ? '∫ ≈ h · [½f(x₀) + ½f(xₙ) + Σf(xᵢ)]' : '∫ ≈ h · Σf(midpoints)';
+      var steps = '<ol>' +
+        '<li>Using <b>' + names[method] + '</b> on [' + fmt(a) + ', ' + fmt(b) + '] with n = ' + r.n + (method === 'simpson' && n % 2 === 1 ? ' (your odd n was rounded up to the next even number)' : '') + '.</li>' +
+        '<li>Step size h = (b − a)/n = ' + fmt(r.h) + '.</li>' +
+        '<li>Formula: ' + TN.esc(formula) + '.</li>' +
+        '<li>' + r.evals + ' function evaluations → estimate <b>' + fmt(val) + '</b>.</li>' +
+        '<li>Error order: ' + (method === 'simpson' ? 'O(h⁴) — doubling n cuts the error ~16×.' : 'O(h²) — doubling n cuts the error ~4×.') + '</li>' +
+        '</ol>';
+      g('steps').innerHTML = steps;
+      // convergence table
+      var rows = '', prev = null;
+      var nn = Math.min(n, 2000);
+      for (var k = 0; k < 4; k++) {
+        var rk = integrate(f, lo, hi, method === 'simpson' && nn % 2 ? nn + 1 : nn, method);
+        var vk = sign * rk.val;
+        rows += '<tr><td>' + rk.n + '</td><td>' + fmt(vk) + '</td><td>' + (prev === null ? '—' : fmt(Math.abs(vk - prev))) + '</td></tr>';
+        prev = vk;
+        nn *= 2;
+        if (nn > 64000) break;
+      }
+      g('conv').innerHTML = rows;
+    } catch (e) { TN.setErr(ERR, e.message || 'Could not integrate.'); }
+  }
+  try {
+    if (!TN.el(P + 'go')) return;
+    TN.on(P + 'go', 'click', go);
+  } catch (e) { /* never throw on load */ }
+})();
+
+</script>
+</body>
+</html>

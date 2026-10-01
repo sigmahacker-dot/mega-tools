@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LinkedIn Summary Generator — Free Online | ToolNest</title>
+<meta name="description" content="Build a polished LinkedIn About section from your role, skills and achievements.">
+<meta name="keywords" content="linkedin summary generator, linkedin about section, linkedin bio generator, linkedin profile summary">
+<link rel="canonical" href="https://toolnest.vercel.app/tools/linkedin-summary-generator/">
+<meta name="theme-color" content="#07070b">
+<meta property="og:title" content="LinkedIn Summary Generator — Free Online | ToolNest">
+<meta property="og:description" content="Build a polished LinkedIn About section from your role, skills and achievements.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css?v=4">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%23e01111'/><text x='50' y='68' font-size='58' text-anchor='middle' fill='white' font-family='Arial' font-weight='bold'>T</text></svg>">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebApplication","name":"LinkedIn Summary Generator","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0"},"url":"https://toolnest.vercel.app/tools/linkedin-summary-generator/","description":"Build a polished LinkedIn About section from your role, skills and achievements."},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How does it work?","acceptedAnswer":{"@type":"Answer","text":"Enter your role, years of experience, skills and achievements — the tool assembles a first-person About section with a hook, story and CTA."}},{"@type":"Question","name":"Which tones are available?","acceptedAnswer":{"@type":"Answer","text":"Professional, friendly or bold — each changes the voice of the generated summary."}},{"@type":"Question","name":"How long is the summary?","acceptedAnswer":{"@type":"Answer","text":"The About section allows 2,600 characters; the generator keeps output well under that and shows the count."}},{"@type":"Question","name":"How do I use the result?","acceptedAnswer":{"@type":"Answer","text":"Click Copy Summary and paste it into the About section of your LinkedIn profile."}}]}]}</script>
+</head>
+<body>
+<header class="site-header">
+  <div class="container">
+    <a class="logo" href="/"><span class="logo-mark">T</span> ToolNest</a>
+    <div class="header-right">
+      <form class="nav-search" action="/" method="get" role="search">
+        <span class="ns-icon">🔍</span>
+        <input type="search" name="q" placeholder="Search tools…" aria-label="Search tools" autocomplete="off">
+      </form>
+      <div class="menu-wrap">
+        <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="menuPanel" aria-label="Open menu"><span></span><span></span><span></span></button>
+        <nav class="menu-panel" id="menuPanel" aria-label="Site">
+          <a href="/">Home</a>
+          <a href="/#categories">Categories</a>
+          <a href="/#all-tools">All Tools</a>
+        </nav>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ADSTERRA-HEADER: paste your Adsterra banner ad code inside the div below -->
+<div class="container"><div class="ad-slot ad-leaderboard" data-ad="header"></div></div>
+
+<main class="container">
+  <nav class="crumbs"><a href="/">Home</a> &rsaquo; <a href="/#social">Social Media</a> &rsaquo; LinkedIn Summary Generator</nav>
+  <div class="tool-hero">
+    <h1>LinkedIn Summary Generator</h1>
+    <p>Build a polished LinkedIn About section from your role, skills and achievements.</p>
+  </div>
+
+  <div class="tool-card">
+  <div class="grid2">
+    <div class="field">
+      <label for="linkedin-summary-generator-role">Current role</label>
+      <input class="input" type="text" id="linkedin-summary-generator-role" placeholder="e.g. Product Designer">
+    </div>
+    <div class="field">
+      <label for="linkedin-summary-generator-industry">Industry</label>
+      <input class="input" type="text" id="linkedin-summary-generator-industry" placeholder="e.g. Fintech">
+    </div>
+    <div class="field">
+      <label for="linkedin-summary-generator-years">Years of experience</label>
+      <input class="input" type="number" id="linkedin-summary-generator-years" min="0" max="60" placeholder="5">
+    </div>
+    <div class="field">
+      <label for="linkedin-summary-generator-tone">Tone</label>
+      <select class="select" id="linkedin-summary-generator-tone">
+        <option value="professional">Professional</option>
+        <option value="friendly">Friendly</option>
+        <option value="bold">Bold</option>
+      </select>
+    </div>
+  </div>
+  <div class="field">
+    <label for="linkedin-summary-generator-skills">Top skills (comma-separated)</label>
+    <input class="input" type="text" id="linkedin-summary-generator-skills" placeholder="UX research, Figma, design systems">
+  </div>
+  <div class="field">
+    <label for="linkedin-summary-generator-wins">Key achievements (one per line)</label>
+    <textarea class="textarea" id="linkedin-summary-generator-wins" rows="3" placeholder="Grew activation 40% in 6 months&#10;Led a team of 4 designers"></textarea>
+  </div>
+  <div class="field">
+    <label for="linkedin-summary-generator-passion">What drives you (optional)</label>
+    <input class="input" type="text" id="linkedin-summary-generator-passion" placeholder="e.g. building products people love">
+  </div>
+  <div class="btn-row">
+    <button class="btn" id="linkedin-summary-generator-gen">Generate Summary</button>
+    <button class="btn btn-outline" id="linkedin-summary-generator-copy">Copy Summary</button>
+  </div>
+  <div class="error" id="linkedin-summary-generator-error"></div>
+</div>
+
+<div class="tool-card">
+  <h3>Your About section</h3>
+  <p id="linkedin-summary-generator-out" style="white-space:pre-wrap"></p>
+  <p class="muted" id="linkedin-summary-generator-count"></p>
+</div>
+
+  <!-- ADSTERRA-INCONTENT: paste your Adsterra native/in-content ad code inside the div below -->
+  <div class="ad-slot" data-ad="incontent"></div>
+
+  <div class="info-grid">
+    <div class="info-card">
+      <h2>📖 How to use</h2>
+      <ol><li>Enter your current role and industry.</li><li>Add years of experience, top skills and achievements.</li><li>Pick a tone.</li><li>Generate, review, and copy into LinkedIn.</li></ol>
+    </div>
+    <div class="info-card">
+      <h2>❓ Frequently asked questions</h2>
+      <div class="faq"><details><summary>How does it work?</summary><p>Enter your role, years of experience, skills and achievements — the tool assembles a first-person About section with a hook, story and CTA.</p></details><details><summary>Which tones are available?</summary><p>Professional, friendly or bold — each changes the voice of the generated summary.</p></details><details><summary>How long is the summary?</summary><p>The About section allows 2,600 characters; the generator keeps output well under that and shows the count.</p></details><details><summary>How do I use the result?</summary><p>Click Copy Summary and paste it into the About section of your LinkedIn profile.</p></details></div>
+    </div>
+  </div>
+
+  <section class="section">
+    <h2>🔗 Related tools</h2>
+    <div class="tool-grid"><a class="tool-link" href="/tools/bio-generator/" data-search="bio generator create 4 polished social-media bios from your name, profession and interests in professional, funny, minimalist or inspirational tones. click to copy. bio generator instagram bio ideas social media bio"><span class="t-ico">📣</span><span class="t-body"><b>Bio Generator</b><small>Create 4 polished social-media bios from your name, profession and interests in Professional…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/caption-counter/" data-search="instagram caption counter write instagram captions with live stats — characters vs the 2,200 limit, hashtags, mentions and the 125-char fold preview. instagram caption counter caption character limit hashtag counter instagram caption length"><span class="t-ico">📣</span><span class="t-body"><b>Instagram Caption Counter</b><small>Write Instagram captions with live stats — characters vs the 2,200 limit, hashtags, mentions…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/caption-generator/" data-search="caption generator get 6 engaging captions for any topic in funny, aesthetic, motivational, savage or cute moods, plus a matching hashtag line. one-tap copy included. caption generator instagram captions social media captions"><span class="t-ico">📣</span><span class="t-body"><b>Caption Generator</b><small>Get 6 engaging captions for any topic in Funny, Aesthetic, Motivational, Savage or Cute mood…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/content-calendar-maker/" data-search="content calendar maker plan a month of social posts: schedule content per day, save and export. content calendar social media calendar post scheduler planner content planner"><span class="t-ico">📣</span><span class="t-body"><b>Content Calendar Maker</b><small>Plan a month of social posts: schedule content per day, save and export.</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/engagement-rate-calculator/" data-search="engagement rate calculator calculate engagement rate from likes, comments, shares and followers or reach. engagement rate calculator instagram engagement rate social media engagement er calculator"><span class="t-ico">📣</span><span class="t-body"><b>Engagement Rate Calculator</b><small>Calculate engagement rate from likes, comments, shares and followers or reach.</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/facebook-ad-copy-generator/" data-search="facebook ad copy generator generate facebook ad copy: primary text, headline and cta combinations. facebook ad copy fb ad generator ad copy generator facebook ads text"><span class="t-ico">📣</span><span class="t-body"><b>Facebook Ad Copy Generator</b><small>Generate Facebook ad copy: primary text, headline and CTA combinations.</small></span><span class="t-arrow">→</span></a></div>
+  </section>
+</main>
+
+<!-- ADSTERRA-FOOTER: paste your Adsterra footer/banner ad code inside the div below -->
+<div class="container"><div class="ad-slot" data-ad="footer"></div></div>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="f-grid">
+      <div>
+        <span class="brandline"><span class="logo-mark">T</span> ToolNest</span>
+        <p>Free online tools that actually work. No sign-up, no watermarks — and your files never leave your device for client-side tools.</p>
+      </div>
+      <div>
+        <h4>Popular</h4>
+        <a href="/tools/qr-code-generator/">QR Code Generator</a>
+        <a href="/tools/background-remover/">Background Remover</a>
+        <a href="/tools/pdf-merger/">PDF Merger</a>
+        <a href="/tools/word-counter/">Word Counter</a>
+      </div>
+      <div>
+        <h4>Categories</h4>
+        <a href="/#image">Image Tools</a>
+        <a href="/#pdf">PDF &amp; Documents</a>
+        <a href="/#calculators">Calculators</a>
+        <a href="/#developer">Developer Tools</a>
+      </div>
+      <div>
+        <h4>Site</h4>
+        <a href="/">Home</a>
+        <a href="/#all-tools">All Tools</a>
+        <a href="/sitemap.xml">Sitemap</a>
+      </div>
+    </div>
+    <div class="f-bottom">© 2026 ToolNest · Free tools for everyone · Made with care</div>
+  </div>
+</footer>
+
+<script src="/assets/site.js?v=5"></script>
+
+<script>
+/* LinkedIn Summary Generator — about-section builder from role/skills. */
+(function () {
+  'use strict';
+
+  var SLUG = 'linkedin-summary-generator';
+  var lastSummary = '';
+
+  var HOOKS = {
+    professional: 'I help organizations in {industry} achieve measurable results as a {role}.',
+    friendly: 'Hi there! I\'m a {role} who genuinely loves working in {industry}. 👋',
+    bold: 'I don\'t just work in {industry} — I move it forward as a {role}. 🚀'
+  };
+  var STORIES = {
+    professional: 'With {years} of experience, I specialize in {skills}. My approach is data-driven and outcome-focused.',
+    friendly: 'Over the past {years}, I\'ve had the joy of working with {skills} — and I\'m just getting started!',
+    bold: '{years} in the game. My weapons: {skills}. My record speaks for itself.'
+  };
+  var CTAS = {
+    professional: 'I\'m always open to connecting with fellow {industry} professionals. Let\'s talk.',
+    friendly: 'Want to chat about {industry}, or just say hi? My inbox is open! ☕',
+    bold: 'If you want results, not excuses — let\'s connect. 📩'
+  };
+
+  function v(id) { return TN.el(SLUG + '-' + id).value.trim(); }
+
+  function fill(s, map) {
+    return s.replace(/\{role\}/g, map.role).replace(/\{industry\}/g, map.industry)
+      .replace(/\{years\}/g, map.years).replace(/\{skills\}/g, map.skills);
+  }
+
+  function generate() {
+    TN.clearErr(SLUG + '-error');
+    var role = v('role'), industry = v('industry') || 'my industry';
+    var years = v('years'), skills = v('skills'), wins = v('wins'), passion = v('passion');
+    var tone = TN.el(SLUG + '-tone').value;
+    if (!role) { TN.setErr(SLUG + '-error', 'Enter your current role.'); return; }
+    if (!skills) { TN.setErr(SLUG + '-error', 'Enter at least one skill.'); return; }
+
+    var map = { role: role, industry: industry, years: years || 'several years', skills: skills };
+    var out = fill(HOOKS[tone], map) + '\n\n' + fill(STORIES[tone], map);
+    if (passion) out += ' What drives me: ' + passion + '.';
+    if (wins) {
+      var list = wins.split('\n').map(function (l) { return l.trim(); }).filter(Boolean);
+      if (list.length) {
+        out += '\n\n🏆 Highlights:\n' + list.map(function (w) { return '• ' + w; }).join('\n');
+      }
+    }
+    out += '\n\n' + fill(CTAS[tone], map);
+    if (out.length > 2600) out = out.slice(0, 2597) + '…';
+
+    lastSummary = out;
+    TN.el(SLUG + '-out').textContent = out;
+    TN.el(SLUG + '-count').textContent = out.length + ' / 2600 characters.';
+  }
+
+  function init() {
+    try {
+      if (!TN.el(SLUG + '-gen')) return;
+      TN.on(SLUG + '-gen', 'click', generate);
+      TN.on(SLUG + '-copy', 'click', function () {
+        if (!lastSummary) { TN.setErr(SLUG + '-error', 'Generate the summary first.'); return; }
+        TN.copy(lastSummary).then(function () { TN.clearErr(SLUG + '-error'); })
+          .catch(function () { TN.setErr(SLUG + '-error', 'Copy failed — select the text manually.'); });
+      });
+    } catch (e) { /* never throw on load */ }
+  }
+
+  init();
+})();
+</script>
+</body>
+</html>

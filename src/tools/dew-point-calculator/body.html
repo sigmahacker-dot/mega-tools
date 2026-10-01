@@ -1,0 +1,28 @@
+<div class="tool-card">
+  <div class="grid2">
+    <div class="field">
+      <label for="dew-point-calculator-temp">Air temperature</label>
+      <input type="number" step="any" class="input" id="dew-point-calculator-temp" placeholder="e.g. 25">
+    </div>
+    <div class="field">
+      <label for="dew-point-calculator-tunit">Temperature unit</label>
+      <select class="select" id="dew-point-calculator-tunit">
+        <option value="C" selected>Celsius (°C)</option>
+        <option value="F">Fahrenheit (°F)</option>
+      </select>
+    </div>
+  </div>
+  <div class="field">
+    <label for="dew-point-calculator-rh">Relative humidity (%)</label>
+    <input type="number" step="any" min="0" max="100" class="input" id="dew-point-calculator-rh" placeholder="e.g. 60">
+  </div>
+  <div class="error" id="dew-point-calculator-error"></div>
+  <div class="result" id="dew-point-calculator-result">
+    <div class="stat-cards">
+      <div class="stat-card"><div class="v" id="dew-point-calculator-dp">–</div><div class="l">Dew point</div></div>
+      <div class="stat-card"><div class="v" id="dew-point-calculator-spread">–</div><div class="l">Temp–dewpoint spread</div></div>
+      <div class="stat-card"><div class="v" id="dew-point-calculator-comfort">–</div><div class="l">Comfort</div></div>
+    </div>
+    <p class="note" id="dew-point-calculator-note">Magnus formula with Alduchov–Eskridge constants (b = 17.625, c = 243.04 °C).</p>
+  </div>
+</div>

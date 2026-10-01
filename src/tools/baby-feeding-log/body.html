@@ -1,0 +1,46 @@
+<div class="tool-card">
+  <div class="grid2">
+    <div class="field">
+      <label for="baby-feeding-log-type">Session type</label>
+      <select class="select" id="baby-feeding-log-type">
+        <option value="nursing">Nursing</option>
+        <option value="bottle">Bottle</option>
+      </select>
+    </div>
+    <div class="field">
+      <label for="baby-feeding-log-when">Date & time</label>
+      <input type="datetime-local" class="input" id="baby-feeding-log-when">
+    </div>
+    <div class="field" id="baby-feeding-log-nursingwrap">
+      <label for="baby-feeding-log-side">Side</label>
+      <select class="select" id="baby-feeding-log-side">
+        <option>Left</option><option>Right</option><option>Both</option>
+      </select>
+    </div>
+    <div class="field" id="baby-feeding-log-durationwrap">
+      <label for="baby-feeding-log-duration">Duration (minutes)</label>
+      <input type="number" class="input" id="baby-feeding-log-duration" min="0" step="any" placeholder="20">
+    </div>
+    <div class="field" id="baby-feeding-log-bottlwrap" style="display:none">
+      <label for="baby-feeding-log-ml">Amount (ml)</label>
+      <input type="number" class="input" id="baby-feeding-log-ml" min="0" step="any" placeholder="120">
+    </div>
+    <div class="field" style="display:flex;align-items:flex-end">
+      <button class="btn" id="baby-feeding-log-add" type="button">Log session</button>
+    </div>
+  </div>
+  <div class="field" style="max-width:240px">
+    <label for="baby-feeding-log-date">Show date</label>
+    <input type="date" class="input" id="baby-feeding-log-date">
+  </div>
+  <div class="error" id="baby-feeding-log-error"></div>
+  <div class="result" id="baby-feeding-log-result">
+    <div class="stat-cards">
+      <div class="stat-card"><div class="v" id="baby-feeding-log-sessions">0</div><div class="l">Sessions</div></div>
+      <div class="stat-card"><div class="v" id="baby-feeding-log-nursemin">0</div><div class="l">Nursing minutes</div></div>
+      <div class="stat-card"><div class="v" id="baby-feeding-log-bottleml">0</div><div class="l">Bottle ml</div></div>
+    </div>
+    <div id="baby-feeding-log-out"></div>
+    <p class="note">Saved in your browser only. For information only &mdash; not medical advice.</p>
+  </div>
+</div>

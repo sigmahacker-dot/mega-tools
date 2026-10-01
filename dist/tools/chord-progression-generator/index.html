@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Chord Progression Generator — Free Online | ToolNest</title>
+<meta name="description" content="Generate chord progressions by key and mood, see the chords with roman numerals, and hear each one played.">
+<meta name="keywords" content="chord progression, songwriting, chord generator, music theory">
+<link rel="canonical" href="https://toolnest.vercel.app/tools/chord-progression-generator/">
+<meta name="theme-color" content="#07070b">
+<meta property="og:title" content="Chord Progression Generator — Free Online | ToolNest">
+<meta property="og:description" content="Generate chord progressions by key and mood, see the chords with roman numerals, and hear each one played.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css?v=4">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%23e01111'/><text x='50' y='68' font-size='58' text-anchor='middle' fill='white' font-family='Arial' font-weight='bold'>T</text></svg>">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebApplication","name":"Chord Progression Generator","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0"},"url":"https://toolnest.vercel.app/tools/chord-progression-generator/","description":"Generate chord progressions by key and mood, see the chords with roman numerals, and hear each one played."},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Which moods are available?","acceptedAnswer":{"@type":"Answer","text":"Happy, Sad, Epic, Chill, Jazzy and Dark — each mood has hand-picked progression patterns that are transposed to your key with real music theory."}},{"@type":"Question","name":"Are the chords musically correct?","acceptedAnswer":{"@type":"Answer","text":"Chords are built from your key using proper harmonization (major/minor/diminished triads and 7ths), then played with a WebAudio synth."}},{"@type":"Question","name":"Does it use audio files?","acceptedAnswer":{"@type":"Answer","text":"No — everything is synthesized live in your browser."}}]}]}</script>
+</head>
+<body>
+<header class="site-header">
+  <div class="container">
+    <a class="logo" href="/"><span class="logo-mark">T</span> ToolNest</a>
+    <div class="header-right">
+      <form class="nav-search" action="/" method="get" role="search">
+        <span class="ns-icon">🔍</span>
+        <input type="search" name="q" placeholder="Search tools…" aria-label="Search tools" autocomplete="off">
+      </form>
+      <div class="menu-wrap">
+        <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="menuPanel" aria-label="Open menu"><span></span><span></span><span></span></button>
+        <nav class="menu-panel" id="menuPanel" aria-label="Site">
+          <a href="/">Home</a>
+          <a href="/#categories">Categories</a>
+          <a href="/#all-tools">All Tools</a>
+        </nav>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ADSTERRA-HEADER: paste your Adsterra banner ad code inside the div below -->
+<div class="container"><div class="ad-slot ad-leaderboard" data-ad="header"></div></div>
+
+<main class="container">
+  <nav class="crumbs"><a href="/">Home</a> &rsaquo; <a href="/#video-audio">Video &amp; Audio</a> &rsaquo; Chord Progression Generator</nav>
+  <div class="tool-hero">
+    <h1>Chord Progression Generator</h1>
+    <p>Generate chord progressions by key and mood, see the chords with roman numerals, and hear each one played.</p>
+  </div>
+
+  <div class="tool-card">
+  <div class="grid3">
+    <div class="field">
+      <label for="chord-progression-generator-key">Key</label>
+      <select class="select" id="chord-progression-generator-key"></select>
+    </div>
+    <div class="field">
+      <label for="chord-progression-generator-mood">Mood</label>
+      <select class="select" id="chord-progression-generator-mood">
+        <option value="happy">😊 Happy</option>
+        <option value="sad">😢 Sad</option>
+        <option value="epic">⚔️ Epic</option>
+        <option value="chill">🌊 Chill</option>
+        <option value="jazzy">🎷 Jazzy</option>
+        <option value="dark">🌑 Dark</option>
+      </select>
+    </div>
+    <div class="field">
+      <label for="chord-progression-generator-pattern">Progression</label>
+      <select class="select" id="chord-progression-generator-pattern"></select>
+    </div>
+  </div>
+  <div class="btn-row">
+    <button class="btn btn-primary" id="chord-progression-generator-playall">▶ Play progression</button>
+    <button class="btn btn-outline" id="chord-progression-generator-stop">Stop</button>
+  </div>
+  <div class="result" id="chord-progression-generator-result">
+    <div id="chord-progression-generator-chords" style="display:flex;flex-wrap:wrap;gap:10px;margin-bottom:10px;"></div>
+    <p class="muted" id="chord-progression-generator-numerals"></p>
+  </div>
+  <div class="error" id="chord-progression-generator-error"></div>
+  <p class="note">Chords are harmonized from your key with real music theory and synthesized live with WebAudio.</p>
+</div>
+
+
+  <!-- ADSTERRA-INCONTENT: paste your Adsterra native/in-content ad code inside the div below -->
+  <div class="ad-slot" data-ad="incontent"></div>
+
+  <div class="info-grid">
+    <div class="info-card">
+      <h2>📖 How to use</h2>
+      <ol><li>Pick a key and a mood.</li><li>Choose a progression pattern.</li><li>Click any chord chip to hear it, or &quot;Play all&quot; for the full sequence.</li><li>Try different keys to hear how the mood changes.</li></ol>
+    </div>
+    <div class="info-card">
+      <h2>❓ Frequently asked questions</h2>
+      <div class="faq"><details><summary>Which moods are available?</summary><p>Happy, Sad, Epic, Chill, Jazzy and Dark — each mood has hand-picked progression patterns that are transposed to your key with real music theory.</p></details><details><summary>Are the chords musically correct?</summary><p>Chords are built from your key using proper harmonization (major/minor/diminished triads and 7ths), then played with a WebAudio synth.</p></details><details><summary>Does it use audio files?</summary><p>No — everything is synthesized live in your browser.</p></details></div>
+    </div>
+  </div>
+
+  <section class="section">
+    <h2>🔗 Related tools</h2>
+    <div class="tool-grid"><a class="tool-link" href="/tools/8d-audio-panner/" data-search="8d audio panner the viral 8d audio effect: your track circles around your head with a rotating stereo-pan lfo. play it and download it. 8d audio 8d converter surround sound effect panning effect"><span class="t-ico">🎬</span><span class="t-body"><b>8D Audio Panner</b><small>The viral 8D audio effect: your track circles around your head with a rotating stereo-pan LF…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/audio-cutter/" data-search="audio cutter cut a section out of any audio file in your browser. set start and end times, preview the selection, then download it as an mp3. audio cutter cut audio online trim mp3 audio trimmer mp3 cutter"><span class="t-ico">🎬</span><span class="t-body"><b>Audio Cutter</b><small>Cut a section out of any audio file in your browser. Set start and end times, preview the se…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/audio-fade-in-out/" data-search="audio fade in/out add smooth fade-in and fade-out to any audio track and export as wav. audio fade in out fade audio add fade to mp3 fade in fade out"><span class="t-ico">🎬</span><span class="t-body"><b>Audio Fade In/Out</b><small>Add smooth fade-in and fade-out to any audio track and export as WAV.</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/audio-joiner/" data-search="audio joiner merge several audio files end-to-end into one wav download. join audio merge audio files combine mp3 audio joiner"><span class="t-ico">🎬</span><span class="t-body"><b>Audio Joiner</b><small>Merge several audio files end-to-end into one WAV download.</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/audio-normalizer/" data-search="audio normalizer peak-normalize any audio to your target level with a real offlineaudiocontext gain stage — see before/after peaks. audio normalizer normalize volume peak normalize loudness"><span class="t-ico">🎬</span><span class="t-body"><b>Audio Normalizer</b><small>Peak-normalize any audio to your target level with a real OfflineAudioContext gain stage — s…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/audio-reverse/" data-search="audio reverse reverse any audio file backwards and export it as a wav. reverse audio backwards audio reverse mp3 audio reverser"><span class="t-ico">🎬</span><span class="t-body"><b>Audio Reverse</b><small>Reverse any audio file backwards and export it as a WAV.</small></span><span class="t-arrow">→</span></a></div>
+  </section>
+</main>
+
+<!-- ADSTERRA-FOOTER: paste your Adsterra footer/banner ad code inside the div below -->
+<div class="container"><div class="ad-slot" data-ad="footer"></div></div>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="f-grid">
+      <div>
+        <span class="brandline"><span class="logo-mark">T</span> ToolNest</span>
+        <p>Free online tools that actually work. No sign-up, no watermarks — and your files never leave your device for client-side tools.</p>
+      </div>
+      <div>
+        <h4>Popular</h4>
+        <a href="/tools/qr-code-generator/">QR Code Generator</a>
+        <a href="/tools/background-remover/">Background Remover</a>
+        <a href="/tools/pdf-merger/">PDF Merger</a>
+        <a href="/tools/word-counter/">Word Counter</a>
+      </div>
+      <div>
+        <h4>Categories</h4>
+        <a href="/#image">Image Tools</a>
+        <a href="/#pdf">PDF &amp; Documents</a>
+        <a href="/#calculators">Calculators</a>
+        <a href="/#developer">Developer Tools</a>
+      </div>
+      <div>
+        <h4>Site</h4>
+        <a href="/">Home</a>
+        <a href="/#all-tools">All Tools</a>
+        <a href="/sitemap.xml">Sitemap</a>
+      </div>
+    </div>
+    <div class="f-bottom">© 2026 ToolNest · Free tools for everyone · Made with care</div>
+  </div>
+</footer>
+
+<script src="/assets/site.js?v=5"></script>
+
+<script>
+/* Chord Progression Generator — progressions by key/mood with WebAudio chord playback. */
+(function () {
+  'use strict';
+  var SLUG = 'chord-progression-generator';
+  var ERR = SLUG + '-error';
+
+  var NAMES = ['C', 'C#', 'D', 'D#', 'E', 'F', 'F#', 'G', 'G#', 'A', 'A#', 'B'];
+  var QUALITY_IV = {
+    maj: [0, 4, 7], min: [0, 3, 7], dim: [0, 3, 6],
+    maj7: [0, 4, 7, 11], min7: [0, 3, 7, 10], dom7: [0, 4, 7, 10], sus4: [0, 5, 7]
+  };
+  var QUALITY_SUF = { maj: '', min: 'm', dim: 'dim', maj7: 'maj7', min7: 'm7', dom7: '7', sus4: 'sus4' };
+  var ROMAN = ['I', 'II', 'III', 'IV', 'V', 'VI', 'VII'];
+
+  // chords: {r: semitones above key root, q: quality}
+  var MOODS = {
+    happy: [
+      { name: 'Pop classic', chords: [{ r: 0, q: 'maj' }, { r: 7, q: 'maj' }, { r: 9, q: 'min' }, { r: 5, q: 'maj' }], num: 'I – V – vi – IV' },
+      { name: 'Sunshine', chords: [{ r: 0, q: 'maj' }, { r: 5, q: 'maj' }, { r: 7, q: 'maj' }, { r: 5, q: 'maj' }], num: 'I – IV – V – IV' },
+      { name: 'Uplift', chords: [{ r: 9, q: 'min' }, { r: 5, q: 'maj' }, { r: 0, q: 'maj' }, { r: 7, q: 'maj' }], num: 'vi – IV – I – V' }
+    ],
+    sad: [
+      { name: 'Heartbreak', chords: [{ r: 9, q: 'min' }, { r: 5, q: 'maj' }, { r: 0, q: 'maj' }, { r: 7, q: 'maj' }], num: 'vi – IV – I – V' },
+      { name: 'Minor lament', chords: [{ r: 0, q: 'min' }, { r: 8, q: 'maj' }, { r: 3, q: 'maj' }, { r: 10, q: 'maj' }], num: 'i – ♭VI – ♭III – ♭VII' },
+      { name: 'Rainy day', chords: [{ r: 0, q: 'min' }, { r: 5, q: 'min' }, { r: 8, q: 'maj' }, { r: 7, q: 'min' }], num: 'i – iv – ♭VI – v' }
+    ],
+    epic: [
+      { name: 'Anthem', chords: [{ r: 0, q: 'min' }, { r: 8, q: 'maj' }, { r: 3, q: 'maj' }, { r: 10, q: 'maj' }], num: 'i – ♭VI – ♭III – ♭VII' },
+      { name: 'Rise', chords: [{ r: 8, q: 'maj' }, { r: 10, q: 'maj' }, { r: 0, q: 'min' }, { r: 0, q: 'min' }], num: '♭VI – ♭VII – i – i' },
+      { name: 'Heroic major', chords: [{ r: 0, q: 'maj' }, { r: 7, q: 'maj' }, { r: 9, q: 'min' }, { r: 7, q: 'maj' }], num: 'I – V – vi – V' }
+    ],
+    chill: [
+      { name: 'Lo-fi', chords: [{ r: 0, q: 'maj7' }, { r: 9, q: 'min7' }, { r: 5, q: 'maj7' }, { r: 7, q: 'dom7' }], num: 'Imaj7 – vi7 – IVmaj7 – V7' },
+      { name: 'Drift', chords: [{ r: 2, q: 'min7' }, { r: 7, q: 'dom7' }, { r: 0, q: 'maj7' }, { r: 9, q: 'min7' }], num: 'ii7 – V7 – Imaj7 – vi7' },
+      { name: 'Mellow', chords: [{ r: 0, q: 'maj' }, { r: 9, q: 'min' }, { r: 2, q: 'min' }, { r: 5, q: 'maj' }], num: 'I – vi – ii – IV' }
+    ],
+    jazzy: [
+      { name: 'ii–V–I', chords: [{ r: 2, q: 'min7' }, { r: 7, q: 'dom7' }, { r: 0, q: 'maj7' }, { r: 0, q: 'maj7' }], num: 'ii7 – V7 – Imaj7' },
+      { name: 'Turnaround', chords: [{ r: 0, q: 'maj7' }, { r: 9, q: 'min7' }, { r: 2, q: 'min7' }, { r: 7, q: 'dom7' }], num: 'Imaj7 – vi7 – ii7 – V7' },
+      { name: 'Minor swing', chords: [{ r: 0, q: 'min7' }, { r: 2, q: 'dim' }, { r: 7, q: 'dom7' }, { r: 0, q: 'min7' }], num: 'i7 – ii° – V7 – i7' }
+    ],
+    dark: [
+      { name: 'Phrygian', chords: [{ r: 0, q: 'min' }, { r: 1, q: 'maj' }, { r: 0, q: 'min' }, { r: 10, q: 'maj' }], num: 'i – ♭II – i – ♭VII' },
+      { name: 'Ominous', chords: [{ r: 0, q: 'min' }, { r: 8, q: 'maj' }, { r: 10, q: 'maj' }, { r: 8, q: 'maj' }], num: 'i – ♭VI – ♭VII – ♭VI' },
+      { name: 'Tension', chords: [{ r: 0, q: 'dim' }, { r: 0, q: 'min' }, { r: 1, q: 'maj' }, { r: 0, q: 'min' }], num: 'i° – i – ♭II – i' }
+    ]
+  };
+
+  var actx = null, stopFlag = false;
+  function AC() { return window.AudioContext || window.webkitAudioContext; }
+  function ctx() {
+    if (!actx) {
+      var Ctor = AC();
+      if (!Ctor) { TN.setErr(ERR, 'Your browser does not support Web Audio.'); return null; }
+      actx = new Ctor();
+    }
+    if (actx.state === 'suspended') actx.resume();
+    return actx;
+  }
+  function hz(m) { return 440 * Math.pow(2, (m - 69) / 12); }
+
+  function playChord(midis, t0, dur) {
+    var c = ctx();
+    if (!c) return;
+    midis.forEach(function (m) {
+      var o = c.createOscillator(), g = c.createGain();
+      o.type = 'triangle';
+      o.frequency.value = hz(m);
+      g.gain.setValueAtTime(0.0001, t0);
+      g.gain.exponentialRampToValueAtTime(0.28, t0 + 0.04);
+      g.gain.setValueAtTime(0.28, t0 + dur - 0.15);
+      g.gain.exponentialRampToValueAtTime(0.0001, t0 + dur);
+      o.connect(g); g.connect(c.destination);
+      o.start(t0); o.stop(t0 + dur + 0.05);
+    });
+  }
+
+  function currentChords() {
+    var key = parseInt(document.getElementById(SLUG + '-key').value, 10) || 0;
+    var mood = document.getElementById(SLUG + '-mood').value;
+    var pi = parseInt(document.getElementById(SLUG + '-pattern').value, 10) || 0;
+    var pat = (MOODS[mood] || MOODS.happy)[pi] || MOODS.happy[0];
+    return pat.chords.map(function (ch) {
+      var rootPc = (key + ch.r) % 12;
+      var midis = QUALITY_IV[ch.q].map(function (iv) { return 48 + ch.r + iv; });
+      return {
+        name: NAMES[rootPc] + QUALITY_SUF[ch.q],
+        midis: midis, num: pat.num
+      };
+    });
+  }
+
+  function render() {
+    TN.clearErr(ERR);
+    var wrap = document.getElementById(SLUG + '-chords');
+    var num = document.getElementById(SLUG + '-numerals');
+    if (!wrap) return;
+    wrap.innerHTML = '';
+    var chords = currentChords();
+    chords.forEach(function (ch) {
+      var b = document.createElement('button');
+      b.className = 'btn btn-outline';
+      b.style.cssText = 'font-size:20px;font-weight:bold;padding:12px 18px;';
+      b.textContent = '♪ ' + ch.name;
+      b.title = 'Play ' + ch.name;
+      b.onclick = function () {
+        var c = ctx(); if (!c) return;
+        playChord(ch.midis, c.currentTime + 0.03, 1.4);
+      };
+      wrap.appendChild(b);
+    });
+    if (num) num.textContent = 'Roman numerals: ' + chords[0].num + '   ·   Key of ' + NAMES[parseInt(document.getElementById(SLUG + '-key').value, 10) || 0];
+  }
+
+  function refreshPatterns() {
+    var mood = document.getElementById(SLUG + '-mood').value;
+    var sel = document.getElementById(SLUG + '-pattern');
+    sel.innerHTML = '';
+    (MOODS[mood] || []).forEach(function (p, i) {
+      var o = document.createElement('option');
+      o.value = i; o.textContent = p.name + '  (' + p.num + ')';
+      sel.appendChild(o);
+    });
+    render();
+  }
+
+  try {
+    if (!document.getElementById(SLUG + '-key')) return;
+    var keySel = document.getElementById(SLUG + '-key');
+    NAMES.forEach(function (n, i) {
+      var o = document.createElement('option');
+      o.value = i; o.textContent = n;
+      keySel.appendChild(o);
+    });
+    keySel.value = '0';
+    refreshPatterns();
+    TN.on(SLUG + '-key', 'change', render);
+    TN.on(SLUG + '-mood', 'change', refreshPatterns);
+    TN.on(SLUG + '-pattern', 'change', render);
+    TN.on(SLUG + '-stop', 'click', function () { stopFlag = true; });
+    TN.on(SLUG + '-playall', 'click', function () {
+      TN.clearErr(ERR);
+      var c = ctx(); if (!c) return;
+      stopFlag = false;
+      var chords = currentChords();
+      var t = c.currentTime + 0.05;
+      chords.forEach(function (ch, i) {
+        setTimeout(function () {
+          if (!stopFlag) playChord(ch.midis, ctx().currentTime + 0.03, 1.1);
+        }, i * 1050);
+      });
+      void t;
+    });
+  } catch (e) {
+    TN.setErr(ERR, 'This tool could not start: ' + (e && e.message || e));
+  }
+})();
+
+</script>
+</body>
+</html>

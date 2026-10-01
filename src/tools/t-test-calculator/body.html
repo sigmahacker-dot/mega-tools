@@ -1,0 +1,43 @@
+<div class="tool-card">
+  <div class="grid3">
+    <div class="field">
+      <label for="t-test-calculator-mode">Test type</label>
+      <select class="select" id="t-test-calculator-mode">
+        <option value="one">One-sample</option>
+        <option value="two">Two-sample</option>
+      </select>
+    </div>
+    <div class="field" id="t-test-calculator-mu-wrap">
+      <label for="t-test-calculator-mu">Claimed mean μ₀</label>
+      <input class="input" id="t-test-calculator-mu" type="number" step="any" value="100">
+    </div>
+    <div class="field" style="align-self:end">
+      <button type="button" class="btn" id="t-test-calculator-calc">Calculate</button>
+    </div>
+  </div>
+  <div class="field">
+    <label for="t-test-calculator-d1">Sample 1 (comma separated)</label>
+    <textarea class="textarea" id="t-test-calculator-d1" rows="3">98, 102, 95, 105, 101, 99, 103, 97, 100, 104</textarea>
+  </div>
+  <div class="field" id="t-test-calculator-d2-wrap" style="display:none">
+    <label for="t-test-calculator-d2">Sample 2 (comma separated)</label>
+    <textarea class="textarea" id="t-test-calculator-d2" rows="3">110, 108, 112, 105, 109, 111, 107, 113, 106, 110</textarea>
+  </div>
+  <div class="error" id="t-test-calculator-error"></div>
+  <div id="t-test-calculator-out" class="hidden">
+    <div class="stat-cards">
+      <div class="stat-card"><div class="v" id="t-test-calculator-t">–</div><div class="l">t statistic</div></div>
+      <div class="stat-card"><div class="v" id="t-test-calculator-df">–</div><div class="l">df</div></div>
+      <div class="stat-card"><div class="v" id="t-test-calculator-p">–</div><div class="l">p-value (two-tailed)</div></div>
+    </div>
+    <div class="result">
+      <h3>Verdict (α = 0.05)</h3>
+      <p id="t-test-calculator-verdict"></p>
+    </div>
+    <div class="result">
+      <h3>Detail</h3>
+      <div id="t-test-calculator-steps"></div>
+    </div>
+  </div>
+  <p class="note">Educational tool — for information only, not a substitute for proper statistical review.</p>
+</div>

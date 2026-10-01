@@ -1,0 +1,39 @@
+<div class="tool-card">
+  <div class="field">
+    <label for="on-call-rotation-planner-team">Team members (one per line)</label>
+    <textarea class="textarea" id="on-call-rotation-planner-team" rows="4">Ayesha
+Bilal
+Chen
+Dana</textarea>
+  </div>
+  <div class="grid3">
+    <div class="field">
+      <label for="on-call-rotation-planner-start">Start date</label>
+      <input class="input" id="on-call-rotation-planner-start" type="date">
+    </div>
+    <div class="field">
+      <label for="on-call-rotation-planner-len">Weeks per turn</label>
+      <input class="input" id="on-call-rotation-planner-len" type="number" min="1" max="12" value="1">
+    </div>
+    <div class="field">
+      <label for="on-call-rotation-planner-weeks">Total weeks</label>
+      <input class="input" id="on-call-rotation-planner-weeks" type="number" min="1" max="104" value="12">
+    </div>
+  </div>
+  <div class="btn-row">
+    <button type="button" class="btn" id="on-call-rotation-planner-gen">Generate</button>
+    <button type="button" class="btn btn-outline btn-sm" id="on-call-rotation-planner-csv">Download CSV</button>
+    <button type="button" class="btn btn-outline btn-sm" id="on-call-rotation-planner-copy">Copy</button>
+  </div>
+  <div class="error" id="on-call-rotation-planner-error"></div>
+  <div id="on-call-rotation-planner-out" class="hidden">
+    <div class="result">
+      <h3>Rotation schedule</h3>
+      <div style="overflow-x:auto"><table class="data"><thead><tr><th>#</th><th>On call</th><th>From</th><th>To</th></tr></thead><tbody id="on-call-rotation-planner-rows"></tbody></table></div>
+    </div>
+    <div class="result">
+      <h3>Totals</h3>
+      <div style="overflow-x:auto"><table class="data"><thead><tr><th>Member</th><th>Turns</th><th>Weeks</th></tr></thead><tbody id="on-call-rotation-planner-totals"></tbody></table></div>
+    </div>
+  </div>
+</div>

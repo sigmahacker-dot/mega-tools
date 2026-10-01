@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Logic Gate Simulator — Free Online | ToolNest</title>
+<meta name="description" content="Interactive AND, OR, NOT, XOR, NAND, NOR and XNOR gates: flip inputs A and B, watch the live output lamp, and see the full truth table with your row highlighted.">
+<meta name="keywords" content="logic gate simulator, truth table, AND OR NOT gate, boolean logic simulator">
+<link rel="canonical" href="https://toolnest.vercel.app/tools/logic-gate-simulator/">
+<meta name="theme-color" content="#07070b">
+<meta property="og:title" content="Logic Gate Simulator — Free Online | ToolNest">
+<meta property="og:description" content="Interactive AND, OR, NOT, XOR, NAND, NOR and XNOR gates: flip inputs A and B, watch the live output lamp, and see the full truth table with your row highlighted.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css?v=4">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%23e01111'/><text x='50' y='68' font-size='58' text-anchor='middle' fill='white' font-family='Arial' font-weight='bold'>T</text></svg>">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebApplication","name":"Logic Gate Simulator","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0"},"url":"https://toolnest.vercel.app/tools/logic-gate-simulator/","description":"Interactive AND, OR, NOT, XOR, NAND, NOR and XNOR gates: flip inputs A and B, watch the live output lamp, and see the full truth table with your row highlighted."},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What does each gate compute?","acceptedAnswer":{"@type":"Answer","text":"AND: both 1. OR: at least one 1. NOT: inverts. XOR: exactly one 1. NAND/NOR: inverted AND/OR. XNOR: both equal."}},{"@type":"Question","name":"Why is NAND special?","acceptedAnswer":{"@type":"Answer","text":"NAND (and NOR) are functionally complete: any Boolean function can be built from NAND gates alone, which is why real chips are often NAND-based."}},{"@type":"Question","name":"How do I read the truth table?","acceptedAnswer":{"@type":"Answer","text":"Each row is one input combination with the gate's output. The row matching your current A/B toggles is highlighted so you can verify the lamp."}}]}]}</script>
+</head>
+<body>
+<header class="site-header">
+  <div class="container">
+    <a class="logo" href="/"><span class="logo-mark">T</span> ToolNest</a>
+    <div class="header-right">
+      <form class="nav-search" action="/" method="get" role="search">
+        <span class="ns-icon">🔍</span>
+        <input type="search" name="q" placeholder="Search tools…" aria-label="Search tools" autocomplete="off">
+      </form>
+      <div class="menu-wrap">
+        <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="menuPanel" aria-label="Open menu"><span></span><span></span><span></span></button>
+        <nav class="menu-panel" id="menuPanel" aria-label="Site">
+          <a href="/">Home</a>
+          <a href="/#categories">Categories</a>
+          <a href="/#all-tools">All Tools</a>
+        </nav>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ADSTERRA-HEADER: paste your Adsterra banner ad code inside the div below -->
+<div class="container"><div class="ad-slot ad-leaderboard" data-ad="header"></div></div>
+
+<main class="container">
+  <nav class="crumbs"><a href="/">Home</a> &rsaquo; <a href="/#math">Math &amp; Numbers</a> &rsaquo; Logic Gate Simulator</nav>
+  <div class="tool-hero">
+    <h1>Logic Gate Simulator</h1>
+    <p>Interactive AND, OR, NOT, XOR, NAND, NOR and XNOR gates: flip inputs A and B, watch the live output lamp, and see the full truth table with your row highlighted.</p>
+  </div>
+
+  <div class="tool-card">
+  <div class="grid2">
+    <div class="field">
+      <label for="logic-gate-simulator-gate">Gate</label>
+      <select class="select" id="logic-gate-simulator-gate">
+        <option value="AND">AND</option>
+        <option value="OR">OR</option>
+        <option value="NOT">NOT</option>
+        <option value="XOR">XOR</option>
+        <option value="NAND">NAND</option>
+        <option value="NOR">NOR</option>
+        <option value="XNOR">XNOR</option>
+      </select>
+    </div>
+    <div class="field">
+      <label>Inputs (click to toggle)</label>
+      <div class="btn-row">
+        <button type="button" class="btn" id="logic-gate-simulator-a">A = 0</button>
+        <button type="button" class="btn" id="logic-gate-simulator-b">B = 0</button>
+      </div>
+    </div>
+  </div>
+  <div class="error" id="logic-gate-simulator-error"></div>
+  <div class="result" style="text-align:center">
+    <div id="logic-gate-simulator-lamp" style="width:72px;height:72px;border-radius:50%;margin:8px auto;background:#1e293b;border:3px solid #475569;transition:all .15s"></div>
+    <p style="font-family:monospace;font-size:1.3em">Output = <b id="logic-gate-simulator-out">0</b></p>
+    <p class="muted" id="logic-gate-simulator-expr" style="font-family:monospace"></p>
+  </div>
+  <div class="result">
+    <h3>Truth table</h3>
+    <table class="data"><thead><tr><th>A</th><th>B</th><th>Output</th></tr></thead><tbody id="logic-gate-simulator-table"></tbody></table>
+  </div>
+</div>
+
+
+  <!-- ADSTERRA-INCONTENT: paste your Adsterra native/in-content ad code inside the div below -->
+  <div class="ad-slot" data-ad="incontent"></div>
+
+  <div class="info-grid">
+    <div class="info-card">
+      <h2>📖 How to use</h2>
+      <ol><li>Pick a gate: AND, OR, NOT, XOR, NAND, NOR or XNOR.</li><li>Toggle inputs A and B (NOT uses A only).</li><li>Watch the output lamp and the live Boolean expression update instantly.</li><li>Study the full truth table — your current input row is highlighted.</li></ol>
+    </div>
+    <div class="info-card">
+      <h2>❓ Frequently asked questions</h2>
+      <div class="faq"><details><summary>What does each gate compute?</summary><p>AND: both 1. OR: at least one 1. NOT: inverts. XOR: exactly one 1. NAND/NOR: inverted AND/OR. XNOR: both equal.</p></details><details><summary>Why is NAND special?</summary><p>NAND (and NOR) are functionally complete: any Boolean function can be built from NAND gates alone, which is why real chips are often NAND-based.</p></details><details><summary>How do I read the truth table?</summary><p>Each row is one input combination with the gate&#39;s output. The row matching your current A/B toggles is highlighted so you can verify the lamp.</p></details></div>
+    </div>
+  </div>
+
+  <section class="section">
+    <h2>🔗 Related tools</h2>
+    <div class="tool-grid"><a class="tool-link" href="/tools/24-game-solver/" data-search="24 game solver solve the 24 game exhaustively: every ordering, operation and parenthesization is tried with exact fraction arithmetic, and all distinct solutions are shown. 24 game solver make 24 solver 24 puzzle arithmetic puzzle solver"><span class="t-ico">📐</span><span class="t-body"><b>24 Game Solver</b><small>Solve the 24 game exhaustively: every ordering, operation and parenthesization is tried with…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/ancient-numerals-converter/" data-search="ancient numerals converter convert decimal numbers to roman, egyptian hieroglyphic, babylonian cuneiform and mayan numerals — with roman numerals also decoded back to decimal. roman numerals egyptian numerals babylonian numerals mayan numerals ancient numbers"><span class="t-ico">📐</span><span class="t-body"><b>Ancient Numerals Converter</b><small>Convert decimal numbers to Roman, Egyptian hieroglyphic, Babylonian cuneiform and Mayan nume…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/arithmetic-sequence-calculator/" data-search="arithmetic sequence calculator from the first term and common difference get the nth term and the sum of the first n terms. arithmetic sequence arithmetic progression nth term sum of arithmetic series common difference"><span class="t-ico">📐</span><span class="t-body"><b>Arithmetic Sequence Calculator</b><small>From the first term and common difference get the nth term and the sum of the first n terms.</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/base-n-arithmetic/" data-search="base-n arithmetic add, subtract, multiply and divide numbers in any base from 2 to 36 with exact bigint math and a full conversion breakdown. base n arithmetic binary addition hexadecimal calculator base 36 math"><span class="t-ico">📐</span><span class="t-body"><b>Base-N Arithmetic</b><small>Add, subtract, multiply and divide numbers in any base from 2 to 36 with exact BigInt math a…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/bayes-theorem-calculator/" data-search="bayes theorem calculator compute posterior probabilities from prior, sensitivity and specificity with the full bayes formula, natural frequencies and a probability tree. bayes theorem calculator posterior probability sensitivity specificity medical test probability"><span class="t-ico">📐</span><span class="t-body"><b>Bayes Theorem Calculator</b><small>Compute posterior probabilities from prior, sensitivity and specificity with the full Bayes …</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/bcd-converter/" data-search="bcd converter convert decimal numbers to binary-coded decimal (packed and unpacked) and decode bcd back to decimal, with per-digit nibble breakdowns. bcd converter binary coded decimal packed bcd unpacked bcd bcd decoder"><span class="t-ico">📐</span><span class="t-body"><b>BCD Converter</b><small>Convert decimal numbers to Binary-Coded Decimal (packed and unpacked) and decode BCD back to…</small></span><span class="t-arrow">→</span></a></div>
+  </section>
+</main>
+
+<!-- ADSTERRA-FOOTER: paste your Adsterra footer/banner ad code inside the div below -->
+<div class="container"><div class="ad-slot" data-ad="footer"></div></div>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="f-grid">
+      <div>
+        <span class="brandline"><span class="logo-mark">T</span> ToolNest</span>
+        <p>Free online tools that actually work. No sign-up, no watermarks — and your files never leave your device for client-side tools.</p>
+      </div>
+      <div>
+        <h4>Popular</h4>
+        <a href="/tools/qr-code-generator/">QR Code Generator</a>
+        <a href="/tools/background-remover/">Background Remover</a>
+        <a href="/tools/pdf-merger/">PDF Merger</a>
+        <a href="/tools/word-counter/">Word Counter</a>
+      </div>
+      <div>
+        <h4>Categories</h4>
+        <a href="/#image">Image Tools</a>
+        <a href="/#pdf">PDF &amp; Documents</a>
+        <a href="/#calculators">Calculators</a>
+        <a href="/#developer">Developer Tools</a>
+      </div>
+      <div>
+        <h4>Site</h4>
+        <a href="/">Home</a>
+        <a href="/#all-tools">All Tools</a>
+        <a href="/sitemap.xml">Sitemap</a>
+      </div>
+    </div>
+    <div class="f-bottom">© 2026 ToolNest · Free tools for everyone · Made with care</div>
+  </div>
+</footer>
+
+<script src="/assets/site.js?v=5"></script>
+
+<script>
+(function () {
+  'use strict';
+  var P = 'logic-gate-simulator-', ERR = P + 'error';
+  var A = false, B = false;
+  function g(id) { return TN.el(P + id); }
+  var GATES = {
+    AND: { f: function (a, b) { return a && b; }, expr: function (a, b) { return a + ' ∧ ' + b; } },
+    OR: { f: function (a, b) { return a || b; }, expr: function (a, b) { return a + ' ∨ ' + b; } },
+    NOT: { f: function (a) { return !a; }, expr: function (a) { return '¬' + a; }, unary: true },
+    XOR: { f: function (a, b) { return (a !== b); }, expr: function (a, b) { return a + ' ⊕ ' + b; } },
+    NAND: { f: function (a, b) { return !(a && b); }, expr: function (a, b) { return '¬(' + a + ' ∧ ' + b + ')'; } },
+    NOR: { f: function (a, b) { return !(a || b); }, expr: function (a, b) { return '¬(' + a + ' ∨ ' + b + ')'; } },
+    XNOR: { f: function (a, b) { return a === b; }, expr: function (a, b) { return '¬(' + a + ' ⊕ ' + b + ')'; } }
+  };
+  function render() {
+    try {
+      TN.clearErr(ERR);
+      var name = g('gate').value, gate = GATES[name];
+      var a = A ? 1 : 0, b = B ? 1 : 0;
+      var out = gate.f(A, B) ? 1 : 0;
+      g('a').textContent = 'A = ' + a;
+      g('b').textContent = 'B = ' + b;
+      g('b').disabled = !!gate.unary;
+      g('b').style.opacity = gate.unary ? '0.4' : '1';
+      g('out').textContent = String(out);
+      g('expr').textContent = name + '(' + (gate.unary ? a : a + ', ' + b) + ') = ' + gate.expr(a, b) + ' = ' + out;
+      var lamp = g('lamp');
+      lamp.style.background = out ? '#4ade80' : '#1e293b';
+      lamp.style.borderColor = out ? '#22c55e' : '#475569';
+      lamp.style.boxShadow = out ? '0 0 24px #4ade80' : 'none';
+      var rows = '';
+      var combos = gate.unary ? [[1], [0]] : [[0, 0], [0, 1], [1, 0], [1, 1]];
+      combos.forEach(function (cb) {
+        var ca = cb[0] === 1, cbb = cb.length > 1 ? cb[1] === 1 : false;
+        var o = gate.f(ca, cbb) ? 1 : 0;
+        var cur = (ca === A) && (gate.unary || cbb === B);
+        rows += '<tr' + (cur ? ' style="background:#16653433;font-weight:bold"' : '') + '><td>' + cb[0] + '</td><td>' + (cb.length > 1 ? cb[1] : '—') + '</td><td>' + o + '</td></tr>';
+      });
+      g('table').innerHTML = rows;
+    } catch (e) { TN.setErr(ERR, 'Could not update the simulator.'); }
+  }
+  try {
+    if (!TN.el(P + 'gate')) return;
+    TN.on(P + 'gate', 'change', render);
+    TN.on(P + 'a', 'click', function () { A = !A; render(); });
+    TN.on(P + 'b', 'click', function () { B = !B; render(); });
+    render();
+  } catch (e) { /* never throw on load */ }
+})();
+
+</script>
+</body>
+</html>

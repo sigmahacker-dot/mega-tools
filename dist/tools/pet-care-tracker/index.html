@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pet Care Tracker — Free Online | ToolNest</title>
+<meta name="description" content="Track pet care: feeding, walks, vet visits and medications per pet.">
+<meta name="keywords" content="pet care tracker, pet feeding log, dog walk tracker, vet visit log">
+<link rel="canonical" href="https://toolnest.vercel.app/tools/pet-care-tracker/">
+<meta name="theme-color" content="#07070b">
+<meta property="og:title" content="Pet Care Tracker — Free Online | ToolNest">
+<meta property="og:description" content="Track pet care: feeding, walks, vet visits and medications per pet.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css?v=4">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%23e01111'/><text x='50' y='68' font-size='58' text-anchor='middle' fill='white' font-family='Arial' font-weight='bold'>T</text></svg>">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebApplication","name":"Pet Care Tracker","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0"},"url":"https://toolnest.vercel.app/tools/pet-care-tracker/","description":"Track pet care: feeding, walks, vet visits and medications per pet."},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How do I log pet care?","acceptedAnswer":{"@type":"Answer","text":"Add your pet's name first, then log activities: select the pet, choose feeding/walk/vet/medication, and save."}},{"@type":"Question","name":"How do I track medication?","acceptedAnswer":{"@type":"Answer","text":"The medication type stores the medicine name and dose in the note field — the log keeps a dated record of every dose."}},{"@type":"Question","name":"What does the summary show?","acceptedAnswer":{"@type":"Answer","text":"The latest entry per pet and activity type is summarized at the top."}},{"@type":"Question","name":"Where is the data stored?","acceptedAnswer":{"@type":"Answer","text":"In this browser's localStorage — private to this device."}}]}]}</script>
+</head>
+<body>
+<header class="site-header">
+  <div class="container">
+    <a class="logo" href="/"><span class="logo-mark">T</span> ToolNest</a>
+    <div class="header-right">
+      <form class="nav-search" action="/" method="get" role="search">
+        <span class="ns-icon">🔍</span>
+        <input type="search" name="q" placeholder="Search tools…" aria-label="Search tools" autocomplete="off">
+      </form>
+      <div class="menu-wrap">
+        <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="menuPanel" aria-label="Open menu"><span></span><span></span><span></span></button>
+        <nav class="menu-panel" id="menuPanel" aria-label="Site">
+          <a href="/">Home</a>
+          <a href="/#categories">Categories</a>
+          <a href="/#all-tools">All Tools</a>
+        </nav>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ADSTERRA-HEADER: paste your Adsterra banner ad code inside the div below -->
+<div class="container"><div class="ad-slot ad-leaderboard" data-ad="header"></div></div>
+
+<main class="container">
+  <nav class="crumbs"><a href="/">Home</a> &rsaquo; <a href="/#fun">Fun &amp; Lifestyle</a> &rsaquo; Pet Care Tracker</nav>
+  <div class="tool-hero">
+    <h1>Pet Care Tracker</h1>
+    <p>Track pet care: feeding, walks, vet visits and medications per pet.</p>
+  </div>
+
+  <div class="tool-card">
+  <div class="grid2">
+    <div class="field">
+      <label for="pet-care-tracker-petname">New pet name</label>
+      <input class="input" type="text" id="pet-care-tracker-petname" placeholder="e.g. Max">
+    </div>
+    <div class="field">
+      <label>&nbsp;</label>
+      <div class="btn-row"><button class="btn btn-outline" id="pet-care-tracker-addpet">Add Pet</button></div>
+    </div>
+  </div>
+  <div class="grid3">
+    <div class="field">
+      <label for="pet-care-tracker-pet">Pet</label>
+      <select class="select" id="pet-care-tracker-pet"></select>
+    </div>
+    <div class="field">
+      <label for="pet-care-tracker-type">Activity</label>
+      <select class="select" id="pet-care-tracker-type">
+        <option value="feeding">🍽️ Feeding</option>
+        <option value="walk">🦮 Walk</option>
+        <option value="vet">🏥 Vet visit</option>
+        <option value="medication">💊 Medication</option>
+      </select>
+    </div>
+    <div class="field">
+      <label for="pet-care-tracker-note">Details</label>
+      <input class="input" type="text" id="pet-care-tracker-note" placeholder="e.g. 1 cup kibble, 20 min">
+    </div>
+  </div>
+  <div class="btn-row">
+    <button class="btn" id="pet-care-tracker-log">Log Activity</button>
+  </div>
+  <div class="error" id="pet-care-tracker-error"></div>
+</div>
+
+<div class="tool-card">
+  <h3>Latest per pet</h3>
+  <div id="pet-care-tracker-summary"></div>
+</div>
+
+<div class="tool-card">
+  <h3>Activity log</h3>
+  <div id="pet-care-tracker-list"></div>
+</div>
+
+  <!-- ADSTERRA-INCONTENT: paste your Adsterra native/in-content ad code inside the div below -->
+  <div class="ad-slot" data-ad="incontent"></div>
+
+  <div class="info-grid">
+    <div class="info-card">
+      <h2>📖 How to use</h2>
+      <ol><li>Add a pet with the Add Pet field.</li><li>Select the pet and the activity type (feeding, walk, vet, medication).</li><li>Add details/notes and click Log Activity.</li><li>Check the per-pet summary and full log below.</li></ol>
+    </div>
+    <div class="info-card">
+      <h2>❓ Frequently asked questions</h2>
+      <div class="faq"><details><summary>How do I log pet care?</summary><p>Add your pet&#39;s name first, then log activities: select the pet, choose feeding/walk/vet/medication, and save.</p></details><details><summary>How do I track medication?</summary><p>The medication type stores the medicine name and dose in the note field — the log keeps a dated record of every dose.</p></details><details><summary>What does the summary show?</summary><p>The latest entry per pet and activity type is summarized at the top.</p></details><details><summary>Where is the data stored?</summary><p>In this browser&#39;s localStorage — private to this device.</p></details></div>
+    </div>
+  </div>
+
+  <section class="section">
+    <h2>🔗 Related tools</h2>
+    <div class="tool-grid"><a class="tool-link" href="/tools/100-day-challenge-tracker/" data-search="100-day challenge tracker track a 100-day challenge with a checkable 100-cell grid, streaks and stats. 100 day challenge habit tracker 100 days challenge tracker streak tracker"><span class="t-ico">🎲</span><span class="t-body"><b>100-Day Challenge Tracker</b><small>Track a 100-day challenge with a checkable 100-cell grid, streaks and stats.</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/24-game/" data-search="24 game the 24 game — combine four numbers with + − × ÷ to make 24. built-in solver guarantees every deal and gives hints. 24 game make 24 game 24 puzzle solver math puzzle game"><span class="t-ico">🎲</span><span class="t-body"><b>24 Game</b><small>The 24 Game — combine four numbers with + − × ÷ to make 24. Built-in solver guarantees every…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/aim-trainer-game/" data-search="aim trainer game test and train your aim — targets pop up at random spots for 30 seconds. hits, misses and accuracy are tracked live. aim trainer aim test reaction test click speed test fps aim trainer"><span class="t-ico">🎲</span><span class="t-body"><b>Aim Trainer Game</b><small>Test and train your aim — targets pop up at random spots for 30 seconds. Hits, misses and ac…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/asteroid-shooter/" data-search="asteroid shooter asteroid shooter — rotate, thrust and blast splitting asteroids on canvas. 3 lives, rising levels. asteroid shooter game asteroids game online space shooter canvas"><span class="t-ico">🎲</span><span class="t-body"><b>Asteroid Shooter</b><small>Asteroid Shooter — rotate, thrust and blast splitting asteroids on canvas. 3 lives, rising l…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/attendance-tracker/" data-search="attendance tracker track class attendance: roster with present/absent marks per date and % summaries. attendance tracker class attendance student attendance roll call app"><span class="t-ico">🎲</span><span class="t-body"><b>Attendance Tracker</b><small>Track class attendance: roster with present/absent marks per date and % summaries.</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/baby-name-generator/" data-search="baby name generator discover baby names by gender and origin — pakistani, arabic, western, indian or turkish — with meanings, random picks and tap-to-copy. baby name generator baby names with meanings muslim baby names boy girl names"><span class="t-ico">🎲</span><span class="t-body"><b>Baby Name Generator</b><small>Discover baby names by gender and origin — Pakistani, Arabic, Western, Indian or Turkish — w…</small></span><span class="t-arrow">→</span></a></div>
+  </section>
+</main>
+
+<!-- ADSTERRA-FOOTER: paste your Adsterra footer/banner ad code inside the div below -->
+<div class="container"><div class="ad-slot" data-ad="footer"></div></div>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="f-grid">
+      <div>
+        <span class="brandline"><span class="logo-mark">T</span> ToolNest</span>
+        <p>Free online tools that actually work. No sign-up, no watermarks — and your files never leave your device for client-side tools.</p>
+      </div>
+      <div>
+        <h4>Popular</h4>
+        <a href="/tools/qr-code-generator/">QR Code Generator</a>
+        <a href="/tools/background-remover/">Background Remover</a>
+        <a href="/tools/pdf-merger/">PDF Merger</a>
+        <a href="/tools/word-counter/">Word Counter</a>
+      </div>
+      <div>
+        <h4>Categories</h4>
+        <a href="/#image">Image Tools</a>
+        <a href="/#pdf">PDF &amp; Documents</a>
+        <a href="/#calculators">Calculators</a>
+        <a href="/#developer">Developer Tools</a>
+      </div>
+      <div>
+        <h4>Site</h4>
+        <a href="/">Home</a>
+        <a href="/#all-tools">All Tools</a>
+        <a href="/sitemap.xml">Sitemap</a>
+      </div>
+    </div>
+    <div class="f-bottom">© 2026 ToolNest · Free tools for everyone · Made with care</div>
+  </div>
+</footer>
+
+<script src="/assets/site.js?v=5"></script>
+
+<script>
+/* Pet Care Tracker — feeding/walk/vet/medication log per pet. */
+(function () {
+  'use strict';
+
+  var SLUG = 'pet-care-tracker';
+  var KEY = 'tn-' + SLUG + '-data';
+
+  var ICONS = { feeding: '🍽️', walk: '🦮', vet: '🏥', medication: '💊' };
+
+  function load() {
+    try {
+      var obj = JSON.parse(localStorage.getItem(KEY) || '{}');
+      if (obj && typeof obj === 'object') {
+        return { pets: Array.isArray(obj.pets) ? obj.pets : [], log: Array.isArray(obj.log) ? obj.log : [] };
+      }
+    } catch (e) { /* fall through */ }
+    return { pets: [], log: [] };
+  }
+
+  function persist(data) {
+    try { localStorage.setItem(KEY, JSON.stringify(data)); }
+    catch (e) { TN.setErr(SLUG + '-error', 'Could not save — browser storage is unavailable.'); }
+  }
+
+  function fmtWhen(ts) {
+    var d = new Date(ts);
+    return d.toLocaleDateString() + ' ' + d.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+  }
+
+  function renderPets() {
+    var data = load();
+    var sel = TN.el(SLUG + '-pet');
+    sel.innerHTML = data.pets.length
+      ? data.pets.map(function (p) { return '<option value="' + TN.esc(p) + '">' + TN.esc(p) + '</option>'; }).join('')
+      : '<option value="">(add a pet first)</option>';
+  }
+
+  function render() {
+    renderPets();
+    var data = load();
+    var sum = TN.el(SLUG + '-summary');
+    if (!data.pets.length) {
+      sum.innerHTML = '<p class="muted">No pets yet — add one above.</p>';
+    } else {
+      sum.innerHTML = data.pets.map(function (p) {
+        var latest = {};
+        data.log.forEach(function (e) {
+          if (e.pet === p && (!latest[e.type] || e.ts > latest[e.type].ts)) latest[e.type] = e;
+        });
+        var rows = Object.keys(ICONS).map(function (t) {
+          var e = latest[t];
+          return '<span class="muted" style="margin-right:12px">' + ICONS[t] + ' ' +
+            (e ? fmtWhen(e.ts) : '—') + '</span>';
+        }).join('');
+        return '<div style="margin:8px 0"><strong>' + TN.esc(p) + '</strong><br>' + rows + '</div>';
+      }).join('');
+    }
+    var list = TN.el(SLUG + '-list');
+    if (!data.log.length) { list.innerHTML = '<p class="muted">No activities logged yet.</p>'; return; }
+    list.innerHTML = data.log.slice().reverse().map(function (e) {
+      return '<div class="tool-card" style="margin:8px 0">' +
+        ICONS[e.type] + ' <strong>' + TN.esc(e.pet) + '</strong> <span class="muted">' + fmtWhen(e.ts) + '</span>' +
+        (e.note ? '<p style="margin:4px 0">' + TN.esc(e.note) + '</p>' : '') +
+        '<button class="btn btn-sm btn-outline" data-del="' + e.id + '">Delete</button></div>';
+    }).join('');
+    var dels = list.querySelectorAll('[data-del]');
+    for (var i = 0; i < dels.length; i++) {
+      (function (b) {
+        b.addEventListener('click', function () {
+          var d = load();
+          d.log = d.log.filter(function (x) { return String(x.id) !== b.getAttribute('data-del'); });
+          persist(d); render();
+        });
+      })(dels[i]);
+    }
+  }
+
+  function addPet() {
+    TN.clearErr(SLUG + '-error');
+    var name = TN.el(SLUG + '-petname').value.trim();
+    if (!name) { TN.setErr(SLUG + '-error', 'Enter a pet name.'); return; }
+    var data = load();
+    if (data.pets.indexOf(name) !== -1) { TN.setErr(SLUG + '-error', 'That pet is already added.'); return; }
+    data.pets.push(name);
+    persist(data);
+    TN.el(SLUG + '-petname').value = '';
+    render();
+    TN.el(SLUG + '-pet').value = name;
+  }
+
+  function logActivity() {
+    TN.clearErr(SLUG + '-error');
+    var pet = TN.el(SLUG + '-pet').value;
+    var type = TN.el(SLUG + '-type').value;
+    var note = TN.el(SLUG + '-note').value.trim();
+    if (!pet) { TN.setErr(SLUG + '-error', 'Add a pet first.'); return; }
+    var data = load();
+    data.log.push({ id: Date.now(), pet: pet, type: type, note: note, ts: Date.now() });
+    persist(data);
+    TN.el(SLUG + '-note').value = '';
+    render();
+  }
+
+  function init() {
+    try {
+      if (!TN.el(SLUG + '-log')) return;
+      TN.on(SLUG + '-addpet', 'click', addPet);
+      TN.on(SLUG + '-log', 'click', logActivity);
+      render();
+    } catch (e) { /* never throw on load */ }
+  }
+
+  init();
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Car Total Cost of Ownership — Free Online | ToolNest</title>
+<meta name="description" content="True car cost: purchase plus fuel, insurance and maintenance minus resale over N years.">
+<meta name="keywords" content="car ownership cost, total cost of ownership, car TCO">
+<link rel="canonical" href="https://toolnest.vercel.app/tools/car-total-cost-ownership/">
+<meta name="theme-color" content="#07070b">
+<meta property="og:title" content="Car Total Cost of Ownership — Free Online | ToolNest">
+<meta property="og:description" content="True car cost: purchase plus fuel, insurance and maintenance minus resale over N years.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css?v=4">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%23e01111'/><text x='50' y='68' font-size='58' text-anchor='middle' fill='white' font-family='Arial' font-weight='bold'>T</text></svg>">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebApplication","name":"Car Total Cost of Ownership","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0"},"url":"https://toolnest.vercel.app/tools/car-total-cost-ownership/","description":"True car cost: purchase plus fuel, insurance and maintenance minus resale over N years."},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What is included in total cost of ownership?","acceptedAnswer":{"@type":"Answer","text":"Purchase price plus fuel, insurance, and maintenance over the ownership period, minus what you expect to sell it for."}},{"@type":"Question","name":"What is not included?","acceptedAnswer":{"@type":"Answer","text":"Financing interest, taxes and registration, depreciation beyond resale, parking, and tolls. Add them to maintenance if you want them counted."}},{"@type":"Question","name":"Why subtract resale value?","acceptedAnswer":{"@type":"Answer","text":"Because money you recover at sale is not really spent. A car that holds value costs less to own."}}]}]}</script>
+</head>
+<body>
+<header class="site-header">
+  <div class="container">
+    <a class="logo" href="/"><span class="logo-mark">T</span> ToolNest</a>
+    <div class="header-right">
+      <form class="nav-search" action="/" method="get" role="search">
+        <span class="ns-icon">🔍</span>
+        <input type="search" name="q" placeholder="Search tools…" aria-label="Search tools" autocomplete="off">
+      </form>
+      <div class="menu-wrap">
+        <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="menuPanel" aria-label="Open menu"><span></span><span></span><span></span></button>
+        <nav class="menu-panel" id="menuPanel" aria-label="Site">
+          <a href="/">Home</a>
+          <a href="/#categories">Categories</a>
+          <a href="/#all-tools">All Tools</a>
+        </nav>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ADSTERRA-HEADER: paste your Adsterra banner ad code inside the div below -->
+<div class="container"><div class="ad-slot ad-leaderboard" data-ad="header"></div></div>
+
+<main class="container">
+  <nav class="crumbs"><a href="/">Home</a> &rsaquo; <a href="/#finance">Finance &amp; Money</a> &rsaquo; Car Total Cost of Ownership</nav>
+  <div class="tool-hero">
+    <h1>Car Total Cost of Ownership</h1>
+    <p>True car cost: purchase plus fuel, insurance and maintenance minus resale over N years.</p>
+  </div>
+
+  <div class="tool-card">
+  <div class="grid2">
+    <div class="field">
+      <label for="car-total-cost-ownership-price">Purchase price ($)</label>
+      <input type="number" class="input" id="car-total-cost-ownership-price" min="0" step="any" placeholder="28000">
+    </div>
+    <div class="field">
+      <label for="car-total-cost-ownership-years">Years of ownership</label>
+      <input type="number" class="input" id="car-total-cost-ownership-years" min="1" max="30" step="1" placeholder="8">
+    </div>
+    <div class="field">
+      <label for="car-total-cost-ownership-miles">Miles driven / year</label>
+      <input type="number" class="input" id="car-total-cost-ownership-miles" min="0" step="any" placeholder="12000">
+    </div>
+    <div class="field">
+      <label for="car-total-cost-ownership-mpg">Fuel economy (mpg)</label>
+      <input type="number" class="input" id="car-total-cost-ownership-mpg" min="1" step="any" placeholder="30">
+    </div>
+    <div class="field">
+      <label for="car-total-cost-ownership-fuelprice">Fuel price ($/gallon)</label>
+      <input type="number" class="input" id="car-total-cost-ownership-fuelprice" min="0" step="any" placeholder="3.50">
+    </div>
+    <div class="field">
+      <label for="car-total-cost-ownership-insurance">Insurance ($/yr)</label>
+      <input type="number" class="input" id="car-total-cost-ownership-insurance" min="0" step="any" placeholder="1400">
+    </div>
+    <div class="field">
+      <label for="car-total-cost-ownership-maint">Maintenance & repairs ($/yr)</label>
+      <input type="number" class="input" id="car-total-cost-ownership-maint" min="0" step="any" placeholder="800">
+    </div>
+    <div class="field">
+      <label for="car-total-cost-ownership-resale">Expected resale value ($)</label>
+      <input type="number" class="input" id="car-total-cost-ownership-resale" min="0" step="any" placeholder="9000">
+    </div>
+  </div>
+  <div class="error" id="car-total-cost-ownership-error"></div>
+  <div class="result" id="car-total-cost-ownership-result">
+    <div class="stat-cards">
+      <div class="stat-card"><div class="v" id="car-total-cost-ownership-fuel">&ndash;</div><div class="l">Fuel / yr</div></div>
+      <div class="stat-card"><div class="v" id="car-total-cost-ownership-running">&ndash;</div><div class="l">Running costs total</div></div>
+      <div class="stat-card"><div class="v" id="car-total-cost-ownership-total">&ndash;</div><div class="l">Total ownership cost</div></div>
+      <div class="stat-card"><div class="v" id="car-total-cost-ownership-peryear">&ndash;</div><div class="l">Cost / year</div></div>
+      <div class="stat-card"><div class="v" id="car-total-cost-ownership-permile">&ndash;</div><div class="l">Cost / mile</div></div>
+    </div>
+    <div id="car-total-cost-ownership-out"></div>
+    <p class="note">For information only &mdash; not financial advice. Excludes financing interest, taxes, and registration.</p>
+  </div>
+</div>
+
+  <!-- ADSTERRA-INCONTENT: paste your Adsterra native/in-content ad code inside the div below -->
+  <div class="ad-slot" data-ad="incontent"></div>
+
+  <div class="info-grid">
+    <div class="info-card">
+      <h2>📖 How to use</h2>
+      <ol><li>Enter the purchase price and how many years you will keep the car.</li><li>Enter annual miles, fuel economy, and fuel price.</li><li>Enter yearly insurance and maintenance, plus expected resale value.</li><li>Read the total ownership cost, cost per year, and cost per mile.</li></ol>
+    </div>
+    <div class="info-card">
+      <h2>❓ Frequently asked questions</h2>
+      <div class="faq"><details><summary>What is included in total cost of ownership?</summary><p>Purchase price plus fuel, insurance, and maintenance over the ownership period, minus what you expect to sell it for.</p></details><details><summary>What is not included?</summary><p>Financing interest, taxes and registration, depreciation beyond resale, parking, and tolls. Add them to maintenance if you want them counted.</p></details><details><summary>Why subtract resale value?</summary><p>Because money you recover at sale is not really spent. A car that holds value costs less to own.</p></details></div>
+    </div>
+  </div>
+
+  <section class="section">
+    <h2>🔗 Related tools</h2>
+    <div class="tool-grid"><a class="tool-link" href="/tools/apr-calculator/" data-search="apr calculator solve the true annual percentage rate of a loan by bisection — including upfront fees — and compare it with the nominal rate. apr calculator true apr calculator annual percentage rate calculator loan apr calculator nominal vs effective rate"><span class="t-ico">💰</span><span class="t-body"><b>APR Calculator</b><small>Solve the true Annual Percentage Rate of a loan by bisection — including upfront fees — and …</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/baby-cost-calculator/" data-search="baby cost calculator estimate first-year baby costs from editable monthly and one-time line items. baby cost first year baby expenses newborn cost"><span class="t-ico">💰</span><span class="t-body"><b>Baby Cost Calculator</b><small>Estimate first-year baby costs from editable monthly and one-time line items.</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/balloon-payment-calculator/" data-search="balloon payment calculator compute the monthly payment on a balloon loan and the lump-sum balloon balance still due at the end of the term. balloon payment calculator balloon loan calculator balloon mortgage calculator balloon balance calculator lump sum loan calculator"><span class="t-ico">💰</span><span class="t-body"><b>Balloon Payment Calculator</b><small>Compute the monthly payment on a balloon loan and the lump-sum balloon balance still due at …</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/benefits-value-calculator/" data-search="benefits value calculator compute total compensation: salary plus health, retirement match and pto value. benefits calculator total compensation job benefits value"><span class="t-ico">💰</span><span class="t-body"><b>Benefits Value Calculator</b><small>Compute total compensation: salary plus health, retirement match and PTO value.</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/break-even-calculator/" data-search="break-even calculator find your break-even point in units and revenue from fixed costs, price per unit and variable cost per unit. break even calculator breakeven point calculator break even analysis units to break even business break even calculator"><span class="t-ico">💰</span><span class="t-body"><b>Break-Even Calculator</b><small>Find your break-even point in units and revenue from fixed costs, price per unit and variabl…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/budget-50-30-20-calculator/" data-search="50/30/20 budget calculator split your take-home pay into needs (50%), wants (30%) and savings (20%), then compare with your actual spending. 50 30 20 budget budget calculator needs wants savings monthly budget planner budget rule calculator"><span class="t-ico">💰</span><span class="t-body"><b>50/30/20 Budget Calculator</b><small>Split your take-home pay into needs (50%), wants (30%) and savings (20%), then compare with …</small></span><span class="t-arrow">→</span></a></div>
+  </section>
+</main>
+
+<!-- ADSTERRA-FOOTER: paste your Adsterra footer/banner ad code inside the div below -->
+<div class="container"><div class="ad-slot" data-ad="footer"></div></div>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="f-grid">
+      <div>
+        <span class="brandline"><span class="logo-mark">T</span> ToolNest</span>
+        <p>Free online tools that actually work. No sign-up, no watermarks — and your files never leave your device for client-side tools.</p>
+      </div>
+      <div>
+        <h4>Popular</h4>
+        <a href="/tools/qr-code-generator/">QR Code Generator</a>
+        <a href="/tools/background-remover/">Background Remover</a>
+        <a href="/tools/pdf-merger/">PDF Merger</a>
+        <a href="/tools/word-counter/">Word Counter</a>
+      </div>
+      <div>
+        <h4>Categories</h4>
+        <a href="/#image">Image Tools</a>
+        <a href="/#pdf">PDF &amp; Documents</a>
+        <a href="/#calculators">Calculators</a>
+        <a href="/#developer">Developer Tools</a>
+      </div>
+      <div>
+        <h4>Site</h4>
+        <a href="/">Home</a>
+        <a href="/#all-tools">All Tools</a>
+        <a href="/sitemap.xml">Sitemap</a>
+      </div>
+    </div>
+    <div class="f-bottom">© 2026 ToolNest · Free tools for everyone · Made with care</div>
+  </div>
+</footer>
+
+<script src="/assets/site.js?v=5"></script>
+
+<script>
+(function(){
+'use strict';
+var S='car-total-cost-ownership', ERR=S+'-error';
+function money(n){ return '$'+Number(n).toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2}); }
+function num(id){ return parseFloat(TN.el(id).value)||0; }
+function calc(){
+  if(!TN.el(S+'-price')) return;
+  TN.clearErr(ERR);
+  var out=TN.el(S+'-out'); out.innerHTML='';
+  var price=num(S+'-price');
+  var years=parseFloat(TN.el(S+'-years').value);
+  var miles=num(S+'-miles'), mpg=parseFloat(TN.el(S+'-mpg').value);
+  var fuelP=num(S+'-fuelprice'), ins=num(S+'-insurance'), maint=num(S+'-maint'), resale=num(S+'-resale');
+  if(!(price>0)){ TN.setErr(ERR,'Enter a purchase price greater than 0.'); return; }
+  if(!(years>=1)){ TN.setErr(ERR,'Enter years of ownership of 1 or more.'); return; }
+  if(!(mpg>0)){ TN.setErr(ERR,'Enter fuel economy greater than 0.'); return; }
+  if([miles,fuelP,ins,maint,resale].some(function(v){ return v<0; })){ TN.setErr(ERR,'Values cannot be negative.'); return; }
+  var fuelYr=miles/mpg*fuelP;
+  var running=(fuelYr+ins+maint)*years;
+  var total=price+running-resale;
+  TN.el(S+'-fuel').textContent=money(fuelYr);
+  TN.el(S+'-running').textContent=money(running);
+  TN.el(S+'-total').textContent=money(total);
+  TN.el(S+'-peryear').textContent=money(total/years);
+  TN.el(S+'-permile').textContent=miles*years>0?money(total/(miles*years)):'n/a';
+  var html='<table class="data"><thead><tr><th>Component</th><th>Amount</th></tr></thead><tbody>'+
+    '<tr><td>Purchase price</td><td>'+money(price)+'</td></tr>'+
+    '<tr><td>Fuel ('+years+' yrs)</td><td>'+money(fuelYr*years)+'</td></tr>'+
+    '<tr><td>Insurance ('+years+' yrs)</td><td>'+money(ins*years)+'</td></tr>'+
+    '<tr><td>Maintenance ('+years+' yrs)</td><td>'+money(maint*years)+'</td></tr>'+
+    '<tr><td>Less: resale value</td><td>&minus;'+money(resale)+'</td></tr>'+
+    '<tr><td><strong>Total ownership cost</strong></td><td><strong>'+money(total)+'</strong></td></tr></tbody></table>';
+  out.innerHTML=html;
+}
+try{
+  ['price','years','miles','mpg','fuelprice','insurance','maint','resale'].forEach(function(f){ TN.on(S+'-'+f,'input',calc); });
+  calc();
+}catch(e){}
+})();
+
+</script>
+</body>
+</html>

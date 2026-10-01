@@ -1,0 +1,59 @@
+<div class="tool-card">
+  <div class="grid2">
+    <div class="field">
+      <label for="git-config-generator-name">user.name</label>
+      <input class="input" id="git-config-generator-name" value="Ada Lovelace" autocomplete="name">
+    </div>
+    <div class="field">
+      <label for="git-config-generator-email">user.email</label>
+      <input class="input" id="git-config-generator-email" value="ada@example.com" autocomplete="email">
+    </div>
+  </div>
+  <div class="grid3">
+    <div class="field">
+      <label for="git-config-generator-branch">Default branch</label>
+      <input class="input" id="git-config-generator-branch" value="main">
+    </div>
+    <div class="field">
+      <label for="git-config-generator-editor">Editor</label>
+      <input class="input" id="git-config-generator-editor" value="code --wait">
+    </div>
+    <div class="field">
+      <label for="git-config-generator-autocrlf">core.autocrlf</label>
+      <select class="select" id="git-config-generator-autocrlf">
+        <option value="input">input (Linux/macOS)</option>
+        <option value="true">true (Windows)</option>
+        <option value="false">false</option>
+      </select>
+    </div>
+  </div>
+  <div class="grid2">
+    <div class="field checkline">
+      <input type="checkbox" id="git-config-generator-rebase" checked>
+      <label for="git-config-generator-rebase">pull.rebase = true</label>
+    </div>
+    <div class="field checkline">
+      <input type="checkbox" id="git-config-generator-color" checked>
+      <label for="git-config-generator-color">color.ui = auto</label>
+    </div>
+  </div>
+  <div class="field">
+    <label for="git-config-generator-aliases">Aliases (one "name=command" per line)</label>
+    <textarea class="textarea" id="git-config-generator-aliases" rows="5" style="font-family:monospace">co = checkout
+br = branch
+ci = commit
+st = status
+unstage = reset HEAD --
+last = log -1 HEAD
+visual = !gitk</textarea>
+  </div>
+  <div class="error" id="git-config-generator-error"></div>
+  <div class="field">
+    <label for="git-config-generator-output">.gitconfig</label>
+    <textarea class="textarea" id="git-config-generator-output" rows="16" readonly style="font-family:monospace"></textarea>
+  </div>
+  <div class="btn-row">
+    <button class="btn btn-outline" id="git-config-generator-copy">Copy config</button>
+    <button class="btn btn-outline" id="git-config-generator-download">Download .gitconfig</button>
+  </div>
+</div>

@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hat Size Converter — Free Online | ToolNest</title>
+<meta name="description" content="Convert head circumference (cm or inches) to US/UK, EU and Japanese hat sizes using the real fitted-hat size table.">
+<meta name="keywords" content="hat size converter, head circumference to hat size, US hat size chart, fitted hat size calculator">
+<link rel="canonical" href="https://toolnest.vercel.app/tools/hat-size-converter/">
+<meta name="theme-color" content="#07070b">
+<meta property="og:title" content="Hat Size Converter — Free Online | ToolNest">
+<meta property="og:description" content="Convert head circumference (cm or inches) to US/UK, EU and Japanese hat sizes using the real fitted-hat size table.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css?v=4">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%23e01111'/><text x='50' y='68' font-size='58' text-anchor='middle' fill='white' font-family='Arial' font-weight='bold'>T</text></svg>">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebApplication","name":"Hat Size Converter","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0"},"url":"https://toolnest.vercel.app/tools/hat-size-converter/","description":"Convert head circumference (cm or inches) to US/UK, EU and Japanese hat sizes using the real fitted-hat size table."},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How are US hat sizes calculated?","acceptedAnswer":{"@type":"Answer","text":"US (and UK) hat sizes equal the head circumference in inches divided by π, rounded to the nearest eighth — e.g. a 22-inch head ÷ π ≈ 7."}},{"@type":"Question","name":"Are EU hat sizes just centimetres?","acceptedAnswer":{"@type":"Answer","text":"Yes — EU and Japanese sizes are simply the head circumference in centimetres, rounded to the nearest whole cm."}},{"@type":"Question","name":"How do I measure my head?","acceptedAnswer":{"@type":"Answer","text":"Measure around your head just above the eyebrows and ears, where the hat will sit. Use a soft tape, snug but not tight."}}]}]}</script>
+</head>
+<body>
+<header class="site-header">
+  <div class="container">
+    <a class="logo" href="/"><span class="logo-mark">T</span> ToolNest</a>
+    <div class="header-right">
+      <form class="nav-search" action="/" method="get" role="search">
+        <span class="ns-icon">🔍</span>
+        <input type="search" name="q" placeholder="Search tools…" aria-label="Search tools" autocomplete="off">
+      </form>
+      <div class="menu-wrap">
+        <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="menuPanel" aria-label="Open menu"><span></span><span></span><span></span></button>
+        <nav class="menu-panel" id="menuPanel" aria-label="Site">
+          <a href="/">Home</a>
+          <a href="/#categories">Categories</a>
+          <a href="/#all-tools">All Tools</a>
+        </nav>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ADSTERRA-HEADER: paste your Adsterra banner ad code inside the div below -->
+<div class="container"><div class="ad-slot ad-leaderboard" data-ad="header"></div></div>
+
+<main class="container">
+  <nav class="crumbs"><a href="/">Home</a> &rsaquo; <a href="/#converters">Converters</a> &rsaquo; Hat Size Converter</nav>
+  <div class="tool-hero">
+    <h1>Hat Size Converter</h1>
+    <p>Convert head circumference (cm or inches) to US/UK, EU and Japanese hat sizes using the real fitted-hat size table.</p>
+  </div>
+
+  <div class="tool-card">
+  <div class="grid2">
+    <div class="field">
+      <label for="hat-size-converter-circ">Head circumference</label>
+      <input type="number" step="any" min="0" class="input" id="hat-size-converter-circ" placeholder="e.g. 57">
+    </div>
+    <div class="field">
+      <label for="hat-size-converter-units">Measured in</label>
+      <select class="select" id="hat-size-converter-units">
+        <option value="cm" selected>Centimetres</option>
+        <option value="in">Inches</option>
+      </select>
+    </div>
+  </div>
+  <div class="error" id="hat-size-converter-error"></div>
+  <div class="result" id="hat-size-converter-result">
+    <div class="stat-cards">
+      <div class="stat-card"><div class="v" id="hat-size-converter-us">–</div><div class="l">US / UK size</div></div>
+      <div class="stat-card"><div class="v" id="hat-size-converter-eu">–</div><div class="l">EU size (cm)</div></div>
+      <div class="stat-card"><div class="v" id="hat-size-converter-jp">–</div><div class="l">JP size (cm)</div></div>
+    </div>
+    <table class="data">
+      <thead><tr><th>US / UK</th><th>Inches</th><th>CM</th></tr></thead>
+      <tbody id="hat-size-converter-table"></tbody>
+    </table>
+    <p class="note">Measure around your head just above the eyebrows and ears. Sizes between standards: round up for comfort.</p>
+  </div>
+</div>
+
+
+  <!-- ADSTERRA-INCONTENT: paste your Adsterra native/in-content ad code inside the div below -->
+  <div class="ad-slot" data-ad="incontent"></div>
+
+  <div class="info-grid">
+    <div class="info-card">
+      <h2>📖 How to use</h2>
+      <ol><li>Enter your head circumference.</li><li>Pick whether you measured in centimetres or inches.</li><li>Read the nearest US/UK, EU and Japanese sizes plus the full reference table.</li></ol>
+    </div>
+    <div class="info-card">
+      <h2>❓ Frequently asked questions</h2>
+      <div class="faq"><details><summary>How are US hat sizes calculated?</summary><p>US (and UK) hat sizes equal the head circumference in inches divided by π, rounded to the nearest eighth — e.g. a 22-inch head ÷ π ≈ 7.</p></details><details><summary>Are EU hat sizes just centimetres?</summary><p>Yes — EU and Japanese sizes are simply the head circumference in centimetres, rounded to the nearest whole cm.</p></details><details><summary>How do I measure my head?</summary><p>Measure around your head just above the eyebrows and ears, where the hat will sit. Use a soft tape, snug but not tight.</p></details></div>
+    </div>
+  </div>
+
+  <section class="section">
+    <h2>🔗 Related tools</h2>
+    <div class="tool-grid"><a class="tool-link" href="/tools/altitude-pressure-calculator/" data-search="altitude pressure calculator the barometric formula gives air pressure at any altitude (below 11,000 m) from sea-level pressure — in hpa, inhg and percent of sea level. altitude pressure calculator barometric formula air pressure at altitude pressure vs altitude qnh pressure calculator"><span class="t-ico">🔄</span><span class="t-body"><b>Altitude Pressure Calculator</b><small>The barometric formula gives air pressure at any altitude (below 11,000 m) from sea-level pr…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/angle-converter/" data-search="angle converter convert angles between degrees, radians, gradians, turns, arcminutes, arcseconds and mils. enter a value once and see it in every unit instantly. angle converter degrees to radians radians to degrees gradians converter mils to degrees"><span class="t-ico">🔄</span><span class="t-body"><b>Angle Converter</b><small>Convert angles between degrees, radians, gradians, turns, arcminutes, arcseconds and mils. E…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/area-converter/" data-search="area converter square millimeters to square miles. area converter square feet to square meters acres to hectares"><span class="t-ico">🔄</span><span class="t-body"><b>Area Converter</b><small>Square millimeters to square miles.</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/baking-pan-converter/" data-search="baking pan converter compare pan volumes from dimensions, then scale every ingredient by the exact ratio — plus a batter-fill check. baking pan converter pan size conversion cake pan volume recipe scaling pan size"><span class="t-ico">🔄</span><span class="t-body"><b>Baking Pan Converter</b><small>Compare pan volumes from dimensions, then scale every ingredient by the exact ratio — plus a…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/beaufort-scale-converter/" data-search="beaufort scale converter convert wind speed (km/h, mph, knots, m/s) to the beaufort scale number with official speed ranges and land/sea descriptions. beaufort scale converter wind speed to beaufort beaufort scale chart knots to beaufort gale wind speed"><span class="t-ico">🔄</span><span class="t-body"><b>Beaufort Scale Converter</b><small>Convert wind speed (km/h, mph, knots, m/s) to the Beaufort scale number with official speed …</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/cat-age-converter/" data-search="cat age converter convert cat years to human years with the accepted life-stage chart: 15 for year one, 9 for year two, then about 4 per year. cat age converter cat years to human years how old is my cat cat age chart cat life stages"><span class="t-ico">🔄</span><span class="t-body"><b>Cat Age Converter</b><small>Convert cat years to human years with the accepted life-stage chart: 15 for year one, 9 for …</small></span><span class="t-arrow">→</span></a></div>
+  </section>
+</main>
+
+<!-- ADSTERRA-FOOTER: paste your Adsterra footer/banner ad code inside the div below -->
+<div class="container"><div class="ad-slot" data-ad="footer"></div></div>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="f-grid">
+      <div>
+        <span class="brandline"><span class="logo-mark">T</span> ToolNest</span>
+        <p>Free online tools that actually work. No sign-up, no watermarks — and your files never leave your device for client-side tools.</p>
+      </div>
+      <div>
+        <h4>Popular</h4>
+        <a href="/tools/qr-code-generator/">QR Code Generator</a>
+        <a href="/tools/background-remover/">Background Remover</a>
+        <a href="/tools/pdf-merger/">PDF Merger</a>
+        <a href="/tools/word-counter/">Word Counter</a>
+      </div>
+      <div>
+        <h4>Categories</h4>
+        <a href="/#image">Image Tools</a>
+        <a href="/#pdf">PDF &amp; Documents</a>
+        <a href="/#calculators">Calculators</a>
+        <a href="/#developer">Developer Tools</a>
+      </div>
+      <div>
+        <h4>Site</h4>
+        <a href="/">Home</a>
+        <a href="/#all-tools">All Tools</a>
+        <a href="/sitemap.xml">Sitemap</a>
+      </div>
+    </div>
+    <div class="f-bottom">© 2026 ToolNest · Free tools for everyone · Made with care</div>
+  </div>
+</footer>
+
+<script src="/assets/site.js?v=5"></script>
+
+<script>
+(function () {
+  'use strict';
+  var S = 'hat-size-converter';
+  var FRAC = ['', '⅛', '¼', '⅜', '½', '⅝', '¾', '⅞'];
+  function fracStr(eighths) {
+    var w = Math.floor(eighths / 8), r = eighths % 8;
+    var s = String(w);
+    if (r) s += ' ' + FRAC[r];
+    return s;
+  }
+  function convert() {
+    try {
+      TN.clearErr(S + '-error');
+      var usEl = TN.el(S + '-us'), euEl = TN.el(S + '-eu'), jpEl = TN.el(S + '-jp');
+      var raw = TN.el(S + '-circ').value;
+      if (raw === '' || raw === null) {
+        if (usEl) usEl.textContent = '–';
+        if (euEl) euEl.textContent = '–';
+        if (jpEl) jpEl.textContent = '–';
+        return;
+      }
+      var v = parseFloat(raw);
+      if (!isFinite(v) || v <= 0) { TN.setErr(S + '-error', 'Enter a positive head circumference.'); return; }
+      var cm = TN.el(S + '-units').value === 'in' ? v * 2.54 : v;
+      var inches = cm / 2.54;
+      if (cm < 40 || cm > 75) { TN.setErr(S + '-error', 'That seems outside the normal head range (40–75 cm) — check your value.'); }
+      /* US/UK size = circumference in inches ÷ π, snapped to nearest 1/8 */
+      var eighths = Math.round((inches / Math.PI) * 8);
+      if (usEl) usEl.textContent = fracStr(eighths);
+      if (euEl) euEl.textContent = String(Math.round(cm));
+      if (jpEl) jpEl.textContent = String(Math.round(cm));
+    } catch (e) { /* never throw on input */ }
+  }
+  function init() {
+    var tb = TN.el(S + '-table');
+    if (tb) {
+      /* standard fitted-hat table: US size, inches, cm */
+      var sizes = [
+        ['6 ¾', 21.25, 54], ['6 ⅞', 21.625, 55], ['7', 22, 56], ['7 ⅛', 22.375, 57],
+        ['7 ¼', 22.75, 58], ['7 ⅜', 23.125, 59], ['7 ½', 23.5, 60], ['7 ⅝', 23.875, 61],
+        ['7 ¾', 24.25, 62], ['7 ⅞', 24.625, 63]
+      ];
+      var html = '';
+      for (var i = 0; i < sizes.length; i++) {
+        html += '<tr><td>' + sizes[i][0] + '</td><td>' + sizes[i][1] + '</td><td>' + sizes[i][2] + '</td></tr>';
+      }
+      tb.innerHTML = html;
+    }
+    ['circ', 'units'].forEach(function (k) {
+      TN.on(S + '-' + k, 'input', convert);
+      TN.on(S + '-' + k, 'change', convert);
+    });
+    convert();
+  }
+  try { init(); } catch (e) { /* never throw on load */ }
+})();
+
+</script>
+</body>
+</html>

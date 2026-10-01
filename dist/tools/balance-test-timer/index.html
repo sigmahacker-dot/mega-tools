@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Balance Test Timer — Free Online | ToolNest</title>
+<meta name="description" content="Single-leg stance stopwatch with age benchmarks for balance testing.">
+<meta name="keywords" content="balance test, single leg stance, balance timer">
+<link rel="canonical" href="https://toolnest.vercel.app/tools/balance-test-timer/">
+<meta name="theme-color" content="#07070b">
+<meta property="og:title" content="Balance Test Timer — Free Online | ToolNest">
+<meta property="og:description" content="Single-leg stance stopwatch with age benchmarks for balance testing.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css?v=4">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%23e01111'/><text x='50' y='68' font-size='58' text-anchor='middle' fill='white' font-family='Arial' font-weight='bold'>T</text></svg>">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebApplication","name":"Balance Test Timer","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0"},"url":"https://toolnest.vercel.app/tools/balance-test-timer/","description":"Single-leg stance stopwatch with age benchmarks for balance testing."},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How should I do the test?","acceptedAnswer":{"@type":"Answer","text":"Barefoot, eyes open, arms at your sides, near a wall or chair for safety. Time starts when the foot lifts."}},{"@type":"Question","name":"What are the benchmarks?","acceptedAnswer":{"@type":"Answer","text":"Approximate typical single-leg stance times by age band. They are illustrative, not clinical cut-offs."}},{"@type":"Question","name":"When should I stop?","acceptedAnswer":{"@type":"Answer","text":"Stop immediately if you feel dizzy or unsteady. Safety first; this is not a medical test."}}]}]}</script>
+</head>
+<body>
+<header class="site-header">
+  <div class="container">
+    <a class="logo" href="/"><span class="logo-mark">T</span> ToolNest</a>
+    <div class="header-right">
+      <form class="nav-search" action="/" method="get" role="search">
+        <span class="ns-icon">🔍</span>
+        <input type="search" name="q" placeholder="Search tools…" aria-label="Search tools" autocomplete="off">
+      </form>
+      <div class="menu-wrap">
+        <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="menuPanel" aria-label="Open menu"><span></span><span></span><span></span></button>
+        <nav class="menu-panel" id="menuPanel" aria-label="Site">
+          <a href="/">Home</a>
+          <a href="/#categories">Categories</a>
+          <a href="/#all-tools">All Tools</a>
+        </nav>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ADSTERRA-HEADER: paste your Adsterra banner ad code inside the div below -->
+<div class="container"><div class="ad-slot ad-leaderboard" data-ad="header"></div></div>
+
+<main class="container">
+  <nav class="crumbs"><a href="/">Home</a> &rsaquo; <a href="/#health">Health &amp; Fitness</a> &rsaquo; Balance Test Timer</nav>
+  <div class="tool-hero">
+    <h1>Balance Test Timer</h1>
+    <p>Single-leg stance stopwatch with age benchmarks for balance testing.</p>
+  </div>
+
+  <div class="tool-card">
+  <div class="field" style="max-width:280px">
+    <label for="balance-test-timer-age">Age band</label>
+    <select class="select" id="balance-test-timer-age">
+      <option value="45">18–39</option>
+      <option value="40">40–49</option>
+      <option value="35">50–59</option>
+      <option value="25">60–69</option>
+      <option value="15">70–79</option>
+      <option value="8">80+</option>
+    </select>
+  </div>
+  <div style="text-align:center;margin:20px 0">
+    <div id="balance-test-timer-display" style="font-size:3rem;font-weight:bold;font-variant-numeric:tabular-nums">0.0s</div>
+  </div>
+  <div class="btn-row" style="justify-content:center">
+    <button class="btn" id="balance-test-timer-start" type="button">Start</button>
+    <button class="btn btn-outline" id="balance-test-timer-stop" type="button">Stop</button>
+    <button class="btn btn-outline" id="balance-test-timer-reset" type="button">Reset</button>
+  </div>
+  <div class="error" id="balance-test-timer-error"></div>
+  <div class="result" id="balance-test-timer-result">
+    <div class="stat-cards">
+      <div class="stat-card"><div class="v" id="balance-test-timer-last">&ndash;</div><div class="l">Last time</div></div>
+      <div class="stat-card"><div class="v" id="balance-test-timer-bench">&ndash;</div><div class="l">Benchmark</div></div>
+      <div class="stat-card"><div class="v" id="balance-test-timer-best">&ndash;</div><div class="l">Your best</div></div>
+    </div>
+    <p class="note" id="balance-test-timer-msg">Stand near support. Stop if you feel dizzy.</p>
+    <p class="note">For information only &mdash; not medical advice.</p>
+  </div>
+</div>
+
+  <!-- ADSTERRA-INCONTENT: paste your Adsterra native/in-content ad code inside the div below -->
+  <div class="ad-slot" data-ad="incontent"></div>
+
+  <div class="info-grid">
+    <div class="info-card">
+      <h2>📖 How to use</h2>
+      <ol><li>Stand near support, lift one foot, and press Start.</li><li>Press Stop when you put your foot down or wobble off.</li><li>Compare your time against the age benchmark.</li><li>Your best time is saved in your browser.</li></ol>
+    </div>
+    <div class="info-card">
+      <h2>❓ Frequently asked questions</h2>
+      <div class="faq"><details><summary>How should I do the test?</summary><p>Barefoot, eyes open, arms at your sides, near a wall or chair for safety. Time starts when the foot lifts.</p></details><details><summary>What are the benchmarks?</summary><p>Approximate typical single-leg stance times by age band. They are illustrative, not clinical cut-offs.</p></details><details><summary>When should I stop?</summary><p>Stop immediately if you feel dizzy or unsteady. Safety first; this is not a medical test.</p></details></div>
+    </div>
+  </div>
+
+  <section class="section">
+    <h2>🔗 Related tools</h2>
+    <div class="tool-grid"><a class="tool-link" href="/tools/allergy-tracker/" data-search="allergy tracker log allergy exposures, symptoms, and severity with summaries, saved in your browser. allergy tracker allergy diary symptom log"><span class="t-ico">❤️</span><span class="t-body"><b>Allergy Tracker</b><small>Log allergy exposures, symptoms, and severity with summaries, saved in your browser.</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/baby-feeding-log/" data-search="baby feeding log log nursing and bottle sessions with timestamps, daily totals, saved in your browser. baby feeding log nursing tracker bottle feeding log"><span class="t-ico">❤️</span><span class="t-body"><b>Baby Feeding Log</b><small>Log nursing and bottle sessions with timestamps, daily totals, saved in your browser.</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/baby-growth-tracker/" data-search="baby growth tracker log your baby&#39;s weight and height over time and see a growth log with typical-range guidance. baby growth tracker baby weight tracker infant growth chart baby height log newborn growth"><span class="t-ico">❤️</span><span class="t-body"><b>Baby Growth Tracker</b><small>Log your baby&#39;s weight and height over time and see a growth log with typical-range guidance…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/blood-donation-eligibility-checker/" data-search="blood donation eligibility checker check common blood donation eligibility rules: age, weight, hemoglobin, intervals. blood donation eligibility can i donate blood donor requirements"><span class="t-ico">❤️</span><span class="t-body"><b>Blood Donation Eligibility Checker</b><small>Check common blood donation eligibility rules: age, weight, hemoglobin, intervals.</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/blood-pressure-tracker/" data-search="blood pressure tracker log blood pressure readings with automatic aha category classification, averages and history saved in your browser. blood pressure tracker bp log blood pressure chart hypertension tracker bp monitor log"><span class="t-ico">❤️</span><span class="t-body"><b>Blood Pressure Tracker</b><small>Log blood pressure readings with automatic AHA category classification, averages and history…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/body-fat-calculator/" data-search="body fat calculator estimate body fat percentage with the us navy tape-measure method and see your fitness category. body fat calculator us navy body fat body fat percentage calculator"><span class="t-ico">❤️</span><span class="t-body"><b>Body Fat Calculator</b><small>Estimate body fat percentage with the US Navy tape-measure method and see your fitness categ…</small></span><span class="t-arrow">→</span></a></div>
+  </section>
+</main>
+
+<!-- ADSTERRA-FOOTER: paste your Adsterra footer/banner ad code inside the div below -->
+<div class="container"><div class="ad-slot" data-ad="footer"></div></div>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="f-grid">
+      <div>
+        <span class="brandline"><span class="logo-mark">T</span> ToolNest</span>
+        <p>Free online tools that actually work. No sign-up, no watermarks — and your files never leave your device for client-side tools.</p>
+      </div>
+      <div>
+        <h4>Popular</h4>
+        <a href="/tools/qr-code-generator/">QR Code Generator</a>
+        <a href="/tools/background-remover/">Background Remover</a>
+        <a href="/tools/pdf-merger/">PDF Merger</a>
+        <a href="/tools/word-counter/">Word Counter</a>
+      </div>
+      <div>
+        <h4>Categories</h4>
+        <a href="/#image">Image Tools</a>
+        <a href="/#pdf">PDF &amp; Documents</a>
+        <a href="/#calculators">Calculators</a>
+        <a href="/#developer">Developer Tools</a>
+      </div>
+      <div>
+        <h4>Site</h4>
+        <a href="/">Home</a>
+        <a href="/#all-tools">All Tools</a>
+        <a href="/sitemap.xml">Sitemap</a>
+      </div>
+    </div>
+    <div class="f-bottom">© 2026 ToolNest · Free tools for everyone · Made with care</div>
+  </div>
+</footer>
+
+<script src="/assets/site.js?v=5"></script>
+
+<script>
+(function(){
+'use strict';
+var S='balance-test-timer', ERR=S+'-error', LS='tn-balance-test-timer';
+var running=false, startT=0, elapsed=0, timer=null;
+function fmt(ms){ return (Math.round(ms/100)/10)+'s'; }
+function draw(){ TN.el(S+'-display').textContent=fmt(elapsed+(running?Date.now()-startT:0)); }
+function best(){ try{ return parseFloat(localStorage.getItem(LS+'-best'))||'0'; }catch(e){ return 0; } }
+function setBest(v){ try{ localStorage.setItem(LS+'-best',String(v)); }catch(e){} }
+function refreshStats(){
+  var b=parseFloat(TN.el(S+'-age').value);
+  TN.el(S+'-bench').textContent=b+'s';
+  var bb=best();
+  TN.el(S+'-best').textContent=bb>0?fmt(bb):'–';
+}
+function stop(){
+  if(!running) return;
+  running=false;
+  clearInterval(timer);
+  elapsed+=Date.now()-startT;
+  draw();
+  var b=parseFloat(TN.el(S+'-age').value);
+  TN.el(S+'-last').textContent=fmt(elapsed);
+  var msg=TN.el(S+'-msg');
+  if(elapsed/1000>=b){ msg.textContent='At or above the benchmark for your age band. Well done!'; msg.style.color='#84cc16'; }
+  else { msg.textContent='Below the '+b+'s benchmark. Regular balance practice can help.'; msg.style.color='#eab308'; }
+  if(elapsed>best()){ setBest(elapsed); }
+  refreshStats();
+}
+try{
+  TN.on(S+'-start','click',function(){
+    if(running) return;
+    running=true; startT=Date.now();
+    timer=setInterval(draw,50);
+  });
+  TN.on(S+'-stop','click',stop);
+  TN.on(S+'-reset','click',function(){
+    running=false; clearInterval(timer); elapsed=0; draw();
+    TN.el(S+'-last').textContent='–';
+  });
+  TN.on(S+'-age','change',refreshStats);
+  draw(); refreshStats();
+}catch(e){}
+})();
+
+</script>
+</body>
+</html>

@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Synthetic Division Calculator — Free Online | ToolNest</title>
+<meta name="description" content="Divide a polynomial by (x − c) with synthetic division: full tableau, bring-down / multiply / add steps, quotient and remainder.">
+<meta name="keywords" content="synthetic division, polynomial division, divide polynomial, remainder theorem">
+<link rel="canonical" href="https://toolnest.vercel.app/tools/synthetic-division-calculator/">
+<meta name="theme-color" content="#07070b">
+<meta property="og:title" content="Synthetic Division Calculator — Free Online | ToolNest">
+<meta property="og:description" content="Divide a polynomial by (x − c) with synthetic division: full tableau, bring-down / multiply / add steps, quotient and remainder.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css?v=4">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%23e01111'/><text x='50' y='68' font-size='58' text-anchor='middle' fill='white' font-family='Arial' font-weight='bold'>T</text></svg>">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebApplication","name":"Synthetic Division Calculator","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0"},"url":"https://toolnest.vercel.app/tools/synthetic-division-calculator/","description":"Divide a polynomial by (x − c) with synthetic division: full tableau, bring-down / multiply / add steps, quotient and remainder."},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What is synthetic division?","acceptedAnswer":{"@type":"Answer","text":"A shortcut for dividing a polynomial by (x − c): bring down the leading coefficient, multiply by c, add to the next coefficient, repeat. The bottom row gives the quotient coefficients and the final remainder."}},{"@type":"Question","name":"How do I divide by (x + 3)?","acceptedAnswer":{"@type":"Answer","text":"Write (x + 3) as (x − (−3)) and enter c = −3. The sign matters: always use the value subtracted from x."}},{"@type":"Question","name":"What does the remainder tell me?","acceptedAnswer":{"@type":"Answer","text":"By the Remainder Theorem, the remainder equals P(c). If it is 0, then (x − c) is a factor of the polynomial."}}]}]}</script>
+</head>
+<body>
+<header class="site-header">
+  <div class="container">
+    <a class="logo" href="/"><span class="logo-mark">T</span> ToolNest</a>
+    <div class="header-right">
+      <form class="nav-search" action="/" method="get" role="search">
+        <span class="ns-icon">🔍</span>
+        <input type="search" name="q" placeholder="Search tools…" aria-label="Search tools" autocomplete="off">
+      </form>
+      <div class="menu-wrap">
+        <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="menuPanel" aria-label="Open menu"><span></span><span></span><span></span></button>
+        <nav class="menu-panel" id="menuPanel" aria-label="Site">
+          <a href="/">Home</a>
+          <a href="/#categories">Categories</a>
+          <a href="/#all-tools">All Tools</a>
+        </nav>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ADSTERRA-HEADER: paste your Adsterra banner ad code inside the div below -->
+<div class="container"><div class="ad-slot ad-leaderboard" data-ad="header"></div></div>
+
+<main class="container">
+  <nav class="crumbs"><a href="/">Home</a> &rsaquo; <a href="/#math">Math &amp; Numbers</a> &rsaquo; Synthetic Division Calculator</nav>
+  <div class="tool-hero">
+    <h1>Synthetic Division Calculator</h1>
+    <p>Divide a polynomial by (x − c) with synthetic division: full tableau, bring-down / multiply / add steps, quotient and remainder.</p>
+  </div>
+
+  <div class="tool-card">
+  <div class="grid2">
+    <div class="field">
+      <label for="synthetic-division-calculator-coeffs">Dividend coefficients (highest → constant)</label>
+      <input class="input" id="synthetic-division-calculator-coeffs" type="text" placeholder="e.g. 2 3 -4 1" value="2 3 -4 1" style="font-family:monospace">
+    </div>
+    <div class="field">
+      <label for="synthetic-division-calculator-c">Divisor (x − c): enter c</label>
+      <input class="input" id="synthetic-division-calculator-c" type="number" step="any" value="2">
+    </div>
+  </div>
+  <div class="btn-row">
+    <button type="button" class="btn" id="synthetic-division-calculator-divide">Divide</button>
+    <button type="button" class="btn btn-outline btn-sm" id="synthetic-division-calculator-copy">Copy result</button>
+  </div>
+  <div class="error" id="synthetic-division-calculator-error"></div>
+  <div id="synthetic-division-calculator-out" class="hidden">
+    <div class="stat-cards">
+      <div class="stat-card"><div class="v" id="synthetic-division-calculator-quot" style="font-family:monospace;font-size:1em">–</div><div class="l">Quotient coefficients</div></div>
+      <div class="stat-card"><div class="v" id="synthetic-division-calculator-rem">–</div><div class="l">Remainder (= P(c))</div></div>
+    </div>
+    <div class="result">
+      <h3>Tableau</h3>
+      <div id="synthetic-division-calculator-table" style="overflow-x:auto"></div>
+    </div>
+    <div class="result">
+      <h3>Steps</h3>
+      <div id="synthetic-division-calculator-steps"></div>
+    </div>
+  </div>
+</div>
+
+
+  <!-- ADSTERRA-INCONTENT: paste your Adsterra native/in-content ad code inside the div below -->
+  <div class="ad-slot" data-ad="incontent"></div>
+
+  <div class="info-grid">
+    <div class="info-card">
+      <h2>📖 How to use</h2>
+      <ol><li>Type the dividend coefficients from highest degree to constant (e.g. 2 3 -4 1).</li><li>Type c — the value in the divisor (x − c).</li><li>Press Divide to see the tableau built step by step.</li><li>Read the quotient coefficients and the remainder from the bottom row.</li></ol>
+    </div>
+    <div class="info-card">
+      <h2>❓ Frequently asked questions</h2>
+      <div class="faq"><details><summary>What is synthetic division?</summary><p>A shortcut for dividing a polynomial by (x − c): bring down the leading coefficient, multiply by c, add to the next coefficient, repeat. The bottom row gives the quotient coefficients and the final remainder.</p></details><details><summary>How do I divide by (x + 3)?</summary><p>Write (x + 3) as (x − (−3)) and enter c = −3. The sign matters: always use the value subtracted from x.</p></details><details><summary>What does the remainder tell me?</summary><p>By the Remainder Theorem, the remainder equals P(c). If it is 0, then (x − c) is a factor of the polynomial.</p></details></div>
+    </div>
+  </div>
+
+  <section class="section">
+    <h2>🔗 Related tools</h2>
+    <div class="tool-grid"><a class="tool-link" href="/tools/24-game-solver/" data-search="24 game solver solve the 24 game exhaustively: every ordering, operation and parenthesization is tried with exact fraction arithmetic, and all distinct solutions are shown. 24 game solver make 24 solver 24 puzzle arithmetic puzzle solver"><span class="t-ico">📐</span><span class="t-body"><b>24 Game Solver</b><small>Solve the 24 game exhaustively: every ordering, operation and parenthesization is tried with…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/ancient-numerals-converter/" data-search="ancient numerals converter convert decimal numbers to roman, egyptian hieroglyphic, babylonian cuneiform and mayan numerals — with roman numerals also decoded back to decimal. roman numerals egyptian numerals babylonian numerals mayan numerals ancient numbers"><span class="t-ico">📐</span><span class="t-body"><b>Ancient Numerals Converter</b><small>Convert decimal numbers to Roman, Egyptian hieroglyphic, Babylonian cuneiform and Mayan nume…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/arithmetic-sequence-calculator/" data-search="arithmetic sequence calculator from the first term and common difference get the nth term and the sum of the first n terms. arithmetic sequence arithmetic progression nth term sum of arithmetic series common difference"><span class="t-ico">📐</span><span class="t-body"><b>Arithmetic Sequence Calculator</b><small>From the first term and common difference get the nth term and the sum of the first n terms.</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/base-n-arithmetic/" data-search="base-n arithmetic add, subtract, multiply and divide numbers in any base from 2 to 36 with exact bigint math and a full conversion breakdown. base n arithmetic binary addition hexadecimal calculator base 36 math"><span class="t-ico">📐</span><span class="t-body"><b>Base-N Arithmetic</b><small>Add, subtract, multiply and divide numbers in any base from 2 to 36 with exact BigInt math a…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/bayes-theorem-calculator/" data-search="bayes theorem calculator compute posterior probabilities from prior, sensitivity and specificity with the full bayes formula, natural frequencies and a probability tree. bayes theorem calculator posterior probability sensitivity specificity medical test probability"><span class="t-ico">📐</span><span class="t-body"><b>Bayes Theorem Calculator</b><small>Compute posterior probabilities from prior, sensitivity and specificity with the full Bayes …</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/bcd-converter/" data-search="bcd converter convert decimal numbers to binary-coded decimal (packed and unpacked) and decode bcd back to decimal, with per-digit nibble breakdowns. bcd converter binary coded decimal packed bcd unpacked bcd bcd decoder"><span class="t-ico">📐</span><span class="t-body"><b>BCD Converter</b><small>Convert decimal numbers to Binary-Coded Decimal (packed and unpacked) and decode BCD back to…</small></span><span class="t-arrow">→</span></a></div>
+  </section>
+</main>
+
+<!-- ADSTERRA-FOOTER: paste your Adsterra footer/banner ad code inside the div below -->
+<div class="container"><div class="ad-slot" data-ad="footer"></div></div>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="f-grid">
+      <div>
+        <span class="brandline"><span class="logo-mark">T</span> ToolNest</span>
+        <p>Free online tools that actually work. No sign-up, no watermarks — and your files never leave your device for client-side tools.</p>
+      </div>
+      <div>
+        <h4>Popular</h4>
+        <a href="/tools/qr-code-generator/">QR Code Generator</a>
+        <a href="/tools/background-remover/">Background Remover</a>
+        <a href="/tools/pdf-merger/">PDF Merger</a>
+        <a href="/tools/word-counter/">Word Counter</a>
+      </div>
+      <div>
+        <h4>Categories</h4>
+        <a href="/#image">Image Tools</a>
+        <a href="/#pdf">PDF &amp; Documents</a>
+        <a href="/#calculators">Calculators</a>
+        <a href="/#developer">Developer Tools</a>
+      </div>
+      <div>
+        <h4>Site</h4>
+        <a href="/">Home</a>
+        <a href="/#all-tools">All Tools</a>
+        <a href="/sitemap.xml">Sitemap</a>
+      </div>
+    </div>
+    <div class="f-bottom">© 2026 ToolNest · Free tools for everyone · Made with care</div>
+  </div>
+</footer>
+
+<script src="/assets/site.js?v=5"></script>
+
+<script>
+(function () {
+  'use strict';
+  var P = 'synthetic-division-calculator-', ERR = P + 'error';
+  function g(id) { return TN.el(P + id); }
+  function fmt(x) {
+    if (!isFinite(x)) return String(x);
+    return String(parseFloat(x.toPrecision(10)));
+  }
+  function divide() {
+    try {
+      TN.clearErr(ERR);
+      var raw = g('coeffs').value.trim();
+      if (!raw) { TN.setErr(ERR, 'Type the dividend coefficients first.'); return; }
+      var parts = raw.split(/[\s,;]+/).filter(Boolean), coeffs = [];
+      for (var i = 0; i < parts.length; i++) {
+        var v = parseFloat(parts[i]);
+        if (isNaN(v)) { TN.setErr(ERR, '"' + parts[i] + '" is not a number.'); return; }
+        coeffs.push(v);
+      }
+      if (coeffs.length < 2) { TN.setErr(ERR, 'Need at least 2 coefficients.'); return; }
+      var c = parseFloat(g('c').value);
+      if (isNaN(c)) { TN.setErr(ERR, 'Enter a numeric value for c.'); return; }
+      var n = coeffs.length;
+      var bottom = [], prods = [], steps = [];
+      bottom.push(coeffs[0]);
+      steps.push('<li>Bring down the leading coefficient <b>' + fmt(coeffs[0]) + '</b>.</li>');
+      for (var k = 0; k < n - 1; k++) {
+        var prod = bottom[k] * c;
+        prods.push(prod);
+        var sum = coeffs[k + 1] + prod;
+        steps.push('<li>Multiply ' + fmt(bottom[k]) + ' × ' + fmt(c) + ' = ' + fmt(prod) + ', add to ' + fmt(coeffs[k + 1]) + ': ' + fmt(coeffs[k + 1]) + ' + ' + fmt(prod) + ' = <b>' + fmt(sum) + '</b>.</li>');
+        bottom.push(sum);
+      }
+      var rem = bottom[n - 1];
+      var quot = bottom.slice(0, n - 1);
+      var deg = n - 2;
+      function polyStr(cs, d) {
+        var parts2 = [];
+        for (var i2 = 0; i2 < cs.length; i2++) {
+          var cc = cs[i2], p = d - i2;
+          if (Math.abs(cc) < 1e-12) continue;
+          var mag = Math.abs(cc), term = (mag === 1 && p > 0) ? '' : fmt(mag);
+          if (p > 1) term += 'x^' + p; else if (p === 1) term += 'x';
+          parts2.push((!parts2.length ? (cc < 0 ? '−' : '') : (cc < 0 ? ' − ' : ' + ')) + term);
+        }
+        return parts2.length ? parts2.join('') : '0';
+      }
+      // tableau
+      var h = '<table class="data" style="border-collapse:collapse;text-align:center"><tbody><tr><td style="border-right:2px solid"><b>' + fmt(c) + '</b></td>';
+      for (i = 0; i < n; i++) h += '<td style="min-width:56px"><b>' + fmt(coeffs[i]) + '</b></td>';
+      h += '</tr><tr><td style="border-right:2px solid"></td>';
+      for (i = 0; i < n - 1; i++) h += '<td>' + fmt(prods[i]) + '</td>';
+      h += '<td></td></tr><tr><td style="border-right:2px solid;border-top:2px solid"></td>';
+      for (i = 0; i < n; i++) h += '<td style="border-top:2px solid"><b>' + fmt(bottom[i]) + '</b></td>';
+      h += '</tr></tbody></table>';
+      TN.show(P + 'out');
+      g('quot').textContent = quot.map(fmt).join(', ');
+      g('rem').textContent = fmt(rem);
+      g('table').innerHTML = h;
+      steps.push('<li>The bottom row is <b>' + quot.map(fmt).join(', ') + '</b> (quotient) and <b>' + fmt(rem) + '</b> (remainder).</li>');
+      steps.push('<li>Result: (' + polyStr(coeffs, n - 1) + ') ÷ (x − ' + fmt(c) + ') = <b>' + polyStr(quot, deg) + '</b>, remainder <b>' + fmt(rem) + '</b>.</li>');
+      if (Math.abs(rem) < 1e-9) steps.push('<li>Remainder is 0, so <b>(x − ' + fmt(c) + ') is a factor</b> of the dividend ✓.</li>');
+      else steps.push('<li>Remainder Theorem check: P(' + fmt(c) + ') = ' + fmt(rem) + '.</li>');
+      g('steps').innerHTML = '<ol>' + steps.join('') + '</ol>';
+      g('copy').setAttribute('data-r', 'Quotient: ' + polyStr(quot, deg) + '  Remainder: ' + fmt(rem));
+    } catch (e) { TN.setErr(ERR, e.message || 'Could not divide.'); }
+  }
+  try {
+    if (!TN.el(P + 'divide')) return;
+    TN.on(P + 'divide', 'click', divide);
+    TN.on(P + 'copy', 'click', function () {
+      var r = g('copy').getAttribute('data-r');
+      if (r) TN.copy(r);
+    });
+  } catch (e) { /* never throw on load */ }
+})();
+
+</script>
+</body>
+</html>

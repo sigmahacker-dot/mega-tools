@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pregnancy Weight Gain Tracker — Free Online | ToolNest</title>
+<meta name="description" content="IOM guideline weight-gain ranges by pre-pregnancy BMI, plus a weight log chart.">
+<meta name="keywords" content="pregnancy weight gain, pregnancy weight tracker, IOM weight gain">
+<link rel="canonical" href="https://toolnest.vercel.app/tools/pregnancy-weight-gain-tracker/">
+<meta name="theme-color" content="#07070b">
+<meta property="og:title" content="Pregnancy Weight Gain Tracker — Free Online | ToolNest">
+<meta property="og:description" content="IOM guideline weight-gain ranges by pre-pregnancy BMI, plus a weight log chart.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css?v=4">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%23e01111'/><text x='50' y='68' font-size='58' text-anchor='middle' fill='white' font-family='Arial' font-weight='bold'>T</text></svg>">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebApplication","name":"Pregnancy Weight Gain Tracker","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0"},"url":"https://toolnest.vercel.app/tools/pregnancy-weight-gain-tracker/","description":"IOM guideline weight-gain ranges by pre-pregnancy BMI, plus a weight log chart."},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What are the IOM ranges?","acceptedAnswer":{"@type":"Answer","text":"Underweight (BMI \u003c18.5): 12.5-18 kg; normal (18.5-24.9): 11.5-16 kg; overweight (25-29.9): 7-11.5 kg; obese (30+): 5-9 kg total gain."}},{"@type":"Question","name":"Where is my log stored?","acceptedAnswer":{"@type":"Answer","text":"In your browser's localStorage. Nothing is uploaded."}},{"@type":"Question","name":"Is this medical advice?","acceptedAnswer":{"@type":"Answer","text":"No. These are general guidelines; your provider may set a different target for you."}}]}]}</script>
+</head>
+<body>
+<header class="site-header">
+  <div class="container">
+    <a class="logo" href="/"><span class="logo-mark">T</span> ToolNest</a>
+    <div class="header-right">
+      <form class="nav-search" action="/" method="get" role="search">
+        <span class="ns-icon">🔍</span>
+        <input type="search" name="q" placeholder="Search tools…" aria-label="Search tools" autocomplete="off">
+      </form>
+      <div class="menu-wrap">
+        <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="menuPanel" aria-label="Open menu"><span></span><span></span><span></span></button>
+        <nav class="menu-panel" id="menuPanel" aria-label="Site">
+          <a href="/">Home</a>
+          <a href="/#categories">Categories</a>
+          <a href="/#all-tools">All Tools</a>
+        </nav>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ADSTERRA-HEADER: paste your Adsterra banner ad code inside the div below -->
+<div class="container"><div class="ad-slot ad-leaderboard" data-ad="header"></div></div>
+
+<main class="container">
+  <nav class="crumbs"><a href="/">Home</a> &rsaquo; <a href="/#health">Health &amp; Fitness</a> &rsaquo; Pregnancy Weight Gain Tracker</nav>
+  <div class="tool-hero">
+    <h1>Pregnancy Weight Gain Tracker</h1>
+    <p>IOM guideline weight-gain ranges by pre-pregnancy BMI, plus a weight log chart.</p>
+  </div>
+
+  <div class="tool-card">
+  <div class="grid2">
+    <div class="field">
+      <label for="pregnancy-weight-gain-tracker-height">Height (cm)</label>
+      <input type="number" class="input" id="pregnancy-weight-gain-tracker-height" min="0" step="any" placeholder="165">
+    </div>
+    <div class="field">
+      <label for="pregnancy-weight-gain-tracker-prew">Pre-pregnancy weight (kg)</label>
+      <input type="number" class="input" id="pregnancy-weight-gain-tracker-prew" min="0" step="any" placeholder="62">
+    </div>
+  </div>
+  <div class="grid3">
+    <div class="field">
+      <label for="pregnancy-weight-gain-tracker-date">Weigh-in date</label>
+      <input type="date" class="input" id="pregnancy-weight-gain-tracker-date">
+    </div>
+    <div class="field">
+      <label for="pregnancy-weight-gain-tracker-weight">Weight (kg)</label>
+      <input type="number" class="input" id="pregnancy-weight-gain-tracker-weight" min="0" step="any" placeholder="64.5">
+    </div>
+    <div class="field" style="display:flex;align-items:flex-end">
+      <button class="btn" id="pregnancy-weight-gain-tracker-add" type="button">Log weigh-in</button>
+    </div>
+  </div>
+  <div class="error" id="pregnancy-weight-gain-tracker-error"></div>
+  <div class="result" id="pregnancy-weight-gain-tracker-result">
+    <div class="stat-cards">
+      <div class="stat-card"><div class="v" id="pregnancy-weight-gain-tracker-bmi">&ndash;</div><div class="l">Pre-pregnancy BMI</div></div>
+      <div class="stat-card"><div class="v" id="pregnancy-weight-gain-tracker-range">&ndash;</div><div class="l">IOM gain range</div></div>
+      <div class="stat-card"><div class="v" id="pregnancy-weight-gain-tracker-current">&ndash;</div><div class="l">Current gain</div></div>
+      <div class="stat-card"><div class="v" id="pregnancy-weight-gain-tracker-status">&ndash;</div><div class="l">Status</div></div>
+    </div>
+    <canvas id="pregnancy-weight-gain-tracker-chart" width="640" height="280" style="width:100%;height:auto;margin-top:12px;background:rgba(255,255,255,.03);border-radius:8px"></canvas>
+    <div id="pregnancy-weight-gain-tracker-out" style="margin-top:12px"></div>
+    <p class="note">Guideline ranges from the Institute of Medicine. Discuss your personal target with your healthcare provider. For information only &mdash; not medical advice.</p>
+  </div>
+</div>
+
+  <!-- ADSTERRA-INCONTENT: paste your Adsterra native/in-content ad code inside the div below -->
+  <div class="ad-slot" data-ad="incontent"></div>
+
+  <div class="info-grid">
+    <div class="info-card">
+      <h2>📖 How to use</h2>
+      <ol><li>Enter your height and pre-pregnancy weight to get your BMI and IOM recommended gain range.</li><li>Log weigh-ins with date and weight.</li><li>See each entry&#39;s total gain and whether it is inside the recommended range.</li><li>View the chart of your gain against the guideline band.</li></ol>
+    </div>
+    <div class="info-card">
+      <h2>❓ Frequently asked questions</h2>
+      <div class="faq"><details><summary>What are the IOM ranges?</summary><p>Underweight (BMI &lt;18.5): 12.5-18 kg; normal (18.5-24.9): 11.5-16 kg; overweight (25-29.9): 7-11.5 kg; obese (30+): 5-9 kg total gain.</p></details><details><summary>Where is my log stored?</summary><p>In your browser&#39;s localStorage. Nothing is uploaded.</p></details><details><summary>Is this medical advice?</summary><p>No. These are general guidelines; your provider may set a different target for you.</p></details></div>
+    </div>
+  </div>
+
+  <section class="section">
+    <h2>🔗 Related tools</h2>
+    <div class="tool-grid"><a class="tool-link" href="/tools/allergy-tracker/" data-search="allergy tracker log allergy exposures, symptoms, and severity with summaries, saved in your browser. allergy tracker allergy diary symptom log"><span class="t-ico">❤️</span><span class="t-body"><b>Allergy Tracker</b><small>Log allergy exposures, symptoms, and severity with summaries, saved in your browser.</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/baby-feeding-log/" data-search="baby feeding log log nursing and bottle sessions with timestamps, daily totals, saved in your browser. baby feeding log nursing tracker bottle feeding log"><span class="t-ico">❤️</span><span class="t-body"><b>Baby Feeding Log</b><small>Log nursing and bottle sessions with timestamps, daily totals, saved in your browser.</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/baby-growth-tracker/" data-search="baby growth tracker log your baby&#39;s weight and height over time and see a growth log with typical-range guidance. baby growth tracker baby weight tracker infant growth chart baby height log newborn growth"><span class="t-ico">❤️</span><span class="t-body"><b>Baby Growth Tracker</b><small>Log your baby&#39;s weight and height over time and see a growth log with typical-range guidance…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/balance-test-timer/" data-search="balance test timer single-leg stance stopwatch with age benchmarks for balance testing. balance test single leg stance balance timer"><span class="t-ico">❤️</span><span class="t-body"><b>Balance Test Timer</b><small>Single-leg stance stopwatch with age benchmarks for balance testing.</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/blood-donation-eligibility-checker/" data-search="blood donation eligibility checker check common blood donation eligibility rules: age, weight, hemoglobin, intervals. blood donation eligibility can i donate blood donor requirements"><span class="t-ico">❤️</span><span class="t-body"><b>Blood Donation Eligibility Checker</b><small>Check common blood donation eligibility rules: age, weight, hemoglobin, intervals.</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/blood-pressure-tracker/" data-search="blood pressure tracker log blood pressure readings with automatic aha category classification, averages and history saved in your browser. blood pressure tracker bp log blood pressure chart hypertension tracker bp monitor log"><span class="t-ico">❤️</span><span class="t-body"><b>Blood Pressure Tracker</b><small>Log blood pressure readings with automatic AHA category classification, averages and history…</small></span><span class="t-arrow">→</span></a></div>
+  </section>
+</main>
+
+<!-- ADSTERRA-FOOTER: paste your Adsterra footer/banner ad code inside the div below -->
+<div class="container"><div class="ad-slot" data-ad="footer"></div></div>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="f-grid">
+      <div>
+        <span class="brandline"><span class="logo-mark">T</span> ToolNest</span>
+        <p>Free online tools that actually work. No sign-up, no watermarks — and your files never leave your device for client-side tools.</p>
+      </div>
+      <div>
+        <h4>Popular</h4>
+        <a href="/tools/qr-code-generator/">QR Code Generator</a>
+        <a href="/tools/background-remover/">Background Remover</a>
+        <a href="/tools/pdf-merger/">PDF Merger</a>
+        <a href="/tools/word-counter/">Word Counter</a>
+      </div>
+      <div>
+        <h4>Categories</h4>
+        <a href="/#image">Image Tools</a>
+        <a href="/#pdf">PDF &amp; Documents</a>
+        <a href="/#calculators">Calculators</a>
+        <a href="/#developer">Developer Tools</a>
+      </div>
+      <div>
+        <h4>Site</h4>
+        <a href="/">Home</a>
+        <a href="/#all-tools">All Tools</a>
+        <a href="/sitemap.xml">Sitemap</a>
+      </div>
+    </div>
+    <div class="f-bottom">© 2026 ToolNest · Free tools for everyone · Made with care</div>
+  </div>
+</footer>
+
+<script src="/assets/site.js?v=5"></script>
+
+<script>
+(function(){
+'use strict';
+var S='pregnancy-weight-gain-tracker', ERR=S+'-error', LS='tn-pregnancy-weight-gain-tracker';
+function today(){ var d=new Date(); return d.getFullYear()+'-'+('0'+(d.getMonth()+1)).slice(-2)+'-'+('0'+d.getDate()).slice(-2); }
+function read(){ try{ return JSON.parse(localStorage.getItem(LS)||'{"log":[]}'); }catch(e){ return {log:[]}; } }
+function write(d){ try{ localStorage.setItem(LS,JSON.stringify(d)); }catch(e){} }
+function iomRange(bmi){
+  if(bmi<18.5) return {cat:'Underweight',lo:12.5,hi:18};
+  if(bmi<25) return {cat:'Normal weight',lo:11.5,hi:16};
+  if(bmi<30) return {cat:'Overweight',lo:7,hi:11.5};
+  return {cat:'Obese',lo:5,hi:9};
+}
+function base(){
+  var h=parseFloat(TN.el(S+'-height').value), pre=parseFloat(TN.el(S+'-prew').value);
+  if(!(h>0)||!(pre>0)) return null;
+  var bmi=pre/Math.pow(h/100,2);
+  return {h:h,pre:pre,bmi:bmi,range:iomRange(bmi)};
+}
+function render(){
+  if(!TN.el(S+'-height')) return;
+  TN.clearErr(ERR);
+  var out=TN.el(S+'-out'); out.innerHTML='';
+  var b=base();
+  var d=read();
+  ['bmi','range','current','status'].forEach(function(f){ TN.el(S+'-'+f).textContent='–'; });
+  drawChart(null,null,[]);
+  if(!b){ return; }
+  TN.el(S+'-bmi').textContent=(Math.round(b.bmi*10)/10)+' ('+b.range.cat+')';
+  TN.el(S+'-range').textContent=b.range.lo+'–'+b.range.hi+' kg';
+  var log=d.log.slice().sort(function(a,c){ return a.d<c.d?-1:1; });
+  if(log.length){
+    var last=log[log.length-1];
+    var gain=last.w-b.pre;
+    TN.el(S+'-current').textContent=(gain>=0?'+':'')+(Math.round(gain*10)/10)+' kg';
+    TN.el(S+'-status').textContent=gain<b.range.lo?'Below range':gain>b.range.hi?'Above range':'In range';
+    TN.el(S+'-status').style.color=gain<b.range.lo||gain>b.range.hi?'#eab308':'#84cc16';
+    var html='<table class="data"><thead><tr><th>Date</th><th>Weight</th><th>Gain</th><th></th></tr></thead><tbody>';
+    log.forEach(function(e,i){
+      var g=e.w-b.pre;
+      html+='<tr><td>'+TN.esc(e.d)+'</td><td>'+e.w+' kg</td><td>'+(g>=0?'+':'')+(Math.round(g*10)/10)+' kg</td>'+
+        '<td><button class="btn btn-sm btn-outline" data-del="'+i+'" type="button">X</button></td></tr>';
+    });
+    out.innerHTML=html+'</tbody></table>';
+    Array.prototype.forEach.call(out.querySelectorAll('[data-del]'),function(btn){
+      btn.addEventListener('click',function(){
+        var dd=read();
+        var sorted=dd.log.slice().sort(function(a,c){ return a.d<c.d?-1:1; });
+        var target=sorted[parseInt(btn.getAttribute('data-del'),10)];
+        dd.log=dd.log.filter(function(e){ return e!==target; });
+        write(dd); render();
+      });
+    });
+    drawChart(b,log.map(function(e){ return e.w-b.pre; }),log.map(function(e){ return e.d.slice(5); }));
+  } else {
+    out.innerHTML='<p class="muted">No weigh-ins logged yet.</p>';
+  }
+}
+function drawChart(b,gains,labels){
+  var cv=TN.el(S+'-chart');
+  if(!cv||!cv.getContext) return;
+  var ctx=cv.getContext('2d');
+  var W=cv.width,H=cv.height;
+  ctx.clearRect(0,0,W,H);
+  ctx.fillStyle='rgba(255,255,255,.5)';
+  ctx.font='11px sans-serif';
+  if(!b||!gains.length){
+    ctx.fillText('Log weigh-ins to see your chart.',20,30);
+    return;
+  }
+  var lo=b.range.lo,hi=b.range.hi;
+  var min=Math.min(0,lo,Math.min.apply(null,gains))-1;
+  var max=Math.max(hi,Math.max.apply(null,gains))+1;
+  function y(v){ return H-30-((v-min)/(max-min))*(H-60); }
+  function x(i){ return 40+(i/(Math.max(1,gains.length-1)))*(W-60); }
+  ctx.fillStyle='rgba(132,204,22,.15)';
+  ctx.fillRect(40,y(hi),W-60,y(lo)-y(hi));
+  ctx.fillStyle='rgba(255,255,255,.5)';
+  ctx.fillText(hi+' kg',4,y(hi)+4); ctx.fillText(lo+' kg',4,y(lo)+4);
+  ctx.strokeStyle='#84cc16'; ctx.lineWidth=2; ctx.beginPath();
+  gains.forEach(function(g,i){ if(i===0)ctx.moveTo(x(i),y(g)); else ctx.lineTo(x(i),y(g)); });
+  ctx.stroke();
+  ctx.fillStyle='#fff';
+  gains.forEach(function(g,i){ ctx.beginPath(); ctx.arc(x(i),y(g),3,0,7); ctx.fill(); });
+  ctx.fillStyle='rgba(255,255,255,.5)';
+  labels.forEach(function(l,i){ if(i%Math.ceil(labels.length/8)===0) ctx.fillText(l,x(i)-10,H-12); });
+}
+try{
+  TN.el(S+'-date').value=today();
+  var saved=read();
+  if(saved.h) TN.el(S+'-height').value=saved.h;
+  if(saved.pre) TN.el(S+'-prew').value=saved.pre;
+  ['height','prew'].forEach(function(f){
+    TN.on(S+'-'+f,'input',function(){
+      var dd=read(); dd.h=TN.el(S+'-height').value; dd.pre=TN.el(S+'-prew').value; write(dd); render();
+    });
+  });
+  TN.on(S+'-add','click',function(){
+    TN.clearErr(ERR);
+    var b=base();
+    if(!b){ TN.setErr(ERR,'Enter your height and pre-pregnancy weight first.'); return; }
+    var w=parseFloat(TN.el(S+'-weight').value);
+    var dt=TN.el(S+'-date').value||today();
+    if(!(w>0)){ TN.setErr(ERR,'Enter a weight greater than 0.'); return; }
+    var dd=read(); dd.log.push({d:dt,w:w}); write(dd);
+    TN.el(S+'-weight').value='';
+    render();
+  });
+  render();
+}catch(e){}
+})();
+
+</script>
+</body>
+</html>

@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bulls and Cows — Free Online | ToolNest</title>
+<meta name="description" content="Bulls and Cows — guess the secret 4-digit number from A (bulls) and B (cows) feedback.">
+<meta name="keywords" content="bulls and cows game, number guessing game, 4 digit code breaker">
+<link rel="canonical" href="https://toolnest.vercel.app/tools/bulls-and-cows-game/">
+<meta name="theme-color" content="#07070b">
+<meta property="og:title" content="Bulls and Cows — Free Online | ToolNest">
+<meta property="og:description" content="Bulls and Cows — guess the secret 4-digit number from A (bulls) and B (cows) feedback.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css?v=4">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%23e01111'/><text x='50' y='68' font-size='58' text-anchor='middle' fill='white' font-family='Arial' font-weight='bold'>T</text></svg>">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebApplication","name":"Bulls and Cows","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0"},"url":"https://toolnest.vercel.app/tools/bulls-and-cows-game/","description":"Bulls and Cows — guess the secret 4-digit number from A (bulls) and B (cows) feedback."},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What do A and B mean?","acceptedAnswer":{"@type":"Answer","text":"A means bulls: right digit in the right place. B means cows: right digit but in the wrong place. So “1A2B” = one digit perfectly placed, two more correct digits misplaced."}},{"@type":"Question","name":"Can digits repeat?","acceptedAnswer":{"@type":"Answer","text":"Yes — every game uses 4 different digits, and the number never starts with 0."}},{"@type":"Question","name":"Any strategy tips?","acceptedAnswer":{"@type":"Answer","text":"Start with 4 distinct digits (e.g. 1234) to maximize information, then use the A/B counts to eliminate. With perfect play it takes about 5–6 tries on average."}}]}]}</script>
+</head>
+<body>
+<header class="site-header">
+  <div class="container">
+    <a class="logo" href="/"><span class="logo-mark">T</span> ToolNest</a>
+    <div class="header-right">
+      <form class="nav-search" action="/" method="get" role="search">
+        <span class="ns-icon">🔍</span>
+        <input type="search" name="q" placeholder="Search tools…" aria-label="Search tools" autocomplete="off">
+      </form>
+      <div class="menu-wrap">
+        <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="menuPanel" aria-label="Open menu"><span></span><span></span><span></span></button>
+        <nav class="menu-panel" id="menuPanel" aria-label="Site">
+          <a href="/">Home</a>
+          <a href="/#categories">Categories</a>
+          <a href="/#all-tools">All Tools</a>
+        </nav>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ADSTERRA-HEADER: paste your Adsterra banner ad code inside the div below -->
+<div class="container"><div class="ad-slot ad-leaderboard" data-ad="header"></div></div>
+
+<main class="container">
+  <nav class="crumbs"><a href="/">Home</a> &rsaquo; <a href="/#fun">Fun &amp; Lifestyle</a> &rsaquo; Bulls and Cows</nav>
+  <div class="tool-hero">
+    <h1>Bulls and Cows</h1>
+    <p>Bulls and Cows — guess the secret 4-digit number from A (bulls) and B (cows) feedback.</p>
+  </div>
+
+  <div class="tool-card" style="text-align:center;max-width:520px;margin:0 auto">
+  <div class="btn-row" style="margin-bottom:10px">
+    <button class="btn btn-primary" id="bulls-and-cows-game-new">New game</button>
+    <button class="btn btn-outline" id="bulls-and-cows-game-reveal">Reveal number</button>
+  </div>
+  <p class="muted" id="bulls-and-cows-game-status" style="min-height:24px;font-weight:600"></p>
+  <div class="grid2" style="margin-bottom:8px">
+    <div class="field" style="text-align:left">
+      <label for="bulls-and-cows-game-guess">Your guess (4 different digits)</label>
+      <input class="input" id="bulls-and-cows-game-guess" inputmode="numeric" maxlength="4" placeholder="e.g. 1234" style="font-size:22px;letter-spacing:6px;text-align:center">
+    </div>
+    <div class="field" style="text-align:left">
+      <label>&nbsp;</label>
+      <button class="btn btn-primary" id="bulls-and-cows-game-go" style="width:100%">Guess</button>
+    </div>
+  </div>
+  <div class="stat-cards">
+    <div class="stat-card"><div class="v" id="bulls-and-cows-game-tries">0</div><div class="l">Guesses</div></div>
+    <div class="stat-card"><div class="v" id="bulls-and-cows-game-best">—</div><div class="l">Best (fewest)</div></div>
+  </div>
+  <div id="bulls-and-cows-game-history" style="margin-top:10px;display:flex;flex-direction:column;gap:6px;text-align:left"></div>
+  <p class="note">A = bulls (right digit, right spot) · B = cows (right digit, wrong spot). The secret never repeats a digit.</p>
+  <div class="error" id="bulls-and-cows-game-error"></div>
+</div>
+
+
+  <!-- ADSTERRA-INCONTENT: paste your Adsterra native/in-content ad code inside the div below -->
+  <div class="ad-slot" data-ad="incontent"></div>
+
+  <div class="info-grid">
+    <div class="info-card">
+      <h2>📖 How to use</h2>
+      <ol><li>Press “New game” to get a secret 4-digit number.</li><li>Type your guess (4 different digits) and press “Guess”.</li><li>Read the A/B feedback: A = right digit, right spot; B = right digit, wrong spot.</li><li>Get 4A0B to win — fewest guesses wins.</li></ol>
+    </div>
+    <div class="info-card">
+      <h2>❓ Frequently asked questions</h2>
+      <div class="faq"><details><summary>What do A and B mean?</summary><p>A means bulls: right digit in the right place. B means cows: right digit but in the wrong place. So “1A2B” = one digit perfectly placed, two more correct digits misplaced.</p></details><details><summary>Can digits repeat?</summary><p>Yes — every game uses 4 different digits, and the number never starts with 0.</p></details><details><summary>Any strategy tips?</summary><p>Start with 4 distinct digits (e.g. 1234) to maximize information, then use the A/B counts to eliminate. With perfect play it takes about 5–6 tries on average.</p></details></div>
+    </div>
+  </div>
+
+  <section class="section">
+    <h2>🔗 Related tools</h2>
+    <div class="tool-grid"><a class="tool-link" href="/tools/100-day-challenge-tracker/" data-search="100-day challenge tracker track a 100-day challenge with a checkable 100-cell grid, streaks and stats. 100 day challenge habit tracker 100 days challenge tracker streak tracker"><span class="t-ico">🎲</span><span class="t-body"><b>100-Day Challenge Tracker</b><small>Track a 100-day challenge with a checkable 100-cell grid, streaks and stats.</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/24-game/" data-search="24 game the 24 game — combine four numbers with + − × ÷ to make 24. built-in solver guarantees every deal and gives hints. 24 game make 24 game 24 puzzle solver math puzzle game"><span class="t-ico">🎲</span><span class="t-body"><b>24 Game</b><small>The 24 Game — combine four numbers with + − × ÷ to make 24. Built-in solver guarantees every…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/aim-trainer-game/" data-search="aim trainer game test and train your aim — targets pop up at random spots for 30 seconds. hits, misses and accuracy are tracked live. aim trainer aim test reaction test click speed test fps aim trainer"><span class="t-ico">🎲</span><span class="t-body"><b>Aim Trainer Game</b><small>Test and train your aim — targets pop up at random spots for 30 seconds. Hits, misses and ac…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/asteroid-shooter/" data-search="asteroid shooter asteroid shooter — rotate, thrust and blast splitting asteroids on canvas. 3 lives, rising levels. asteroid shooter game asteroids game online space shooter canvas"><span class="t-ico">🎲</span><span class="t-body"><b>Asteroid Shooter</b><small>Asteroid Shooter — rotate, thrust and blast splitting asteroids on canvas. 3 lives, rising l…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/attendance-tracker/" data-search="attendance tracker track class attendance: roster with present/absent marks per date and % summaries. attendance tracker class attendance student attendance roll call app"><span class="t-ico">🎲</span><span class="t-body"><b>Attendance Tracker</b><small>Track class attendance: roster with present/absent marks per date and % summaries.</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/baby-name-generator/" data-search="baby name generator discover baby names by gender and origin — pakistani, arabic, western, indian or turkish — with meanings, random picks and tap-to-copy. baby name generator baby names with meanings muslim baby names boy girl names"><span class="t-ico">🎲</span><span class="t-body"><b>Baby Name Generator</b><small>Discover baby names by gender and origin — Pakistani, Arabic, Western, Indian or Turkish — w…</small></span><span class="t-arrow">→</span></a></div>
+  </section>
+</main>
+
+<!-- ADSTERRA-FOOTER: paste your Adsterra footer/banner ad code inside the div below -->
+<div class="container"><div class="ad-slot" data-ad="footer"></div></div>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="f-grid">
+      <div>
+        <span class="brandline"><span class="logo-mark">T</span> ToolNest</span>
+        <p>Free online tools that actually work. No sign-up, no watermarks — and your files never leave your device for client-side tools.</p>
+      </div>
+      <div>
+        <h4>Popular</h4>
+        <a href="/tools/qr-code-generator/">QR Code Generator</a>
+        <a href="/tools/background-remover/">Background Remover</a>
+        <a href="/tools/pdf-merger/">PDF Merger</a>
+        <a href="/tools/word-counter/">Word Counter</a>
+      </div>
+      <div>
+        <h4>Categories</h4>
+        <a href="/#image">Image Tools</a>
+        <a href="/#pdf">PDF &amp; Documents</a>
+        <a href="/#calculators">Calculators</a>
+        <a href="/#developer">Developer Tools</a>
+      </div>
+      <div>
+        <h4>Site</h4>
+        <a href="/">Home</a>
+        <a href="/#all-tools">All Tools</a>
+        <a href="/sitemap.xml">Sitemap</a>
+      </div>
+    </div>
+    <div class="f-bottom">© 2026 ToolNest · Free tools for everyone · Made with care</div>
+  </div>
+</footer>
+
+<script src="/assets/site.js?v=5"></script>
+
+<script>
+(function () {
+  'use strict';
+  var P = 'bulls-and-cows-game-';
+  function g(id) { return document.getElementById(P + id); }
+  var secret = '', tries = 0, over = false, best = null;
+  var LS = 'tn-bulls-and-cows-game-best';
+  try { var b0 = localStorage.getItem(LS); if (b0) best = parseInt(b0, 10); } catch (e) {}
+  function newSecret() {
+    var ds = [];
+    while (ds.length < 4) {
+      var d = Math.floor(Math.random() * 10);
+      if (ds.length === 0 && d === 0) continue;
+      if (ds.indexOf(d) === -1) ds.push(d);
+    }
+    return ds.join('');
+  }
+  function status(t) { var el = g('status'); if (el) el.textContent = t; }
+  function renderBest() { var el = g('best'); if (el) el.textContent = best === null ? '—' : String(best); }
+  function valid(s) {
+    if (!/^[0-9]{4}$/.test(s)) return 'Enter exactly 4 digits.';
+    if (s[0] === '0') return 'The guess can\'t start with 0.';
+    var seen = {};
+    for (var i = 0; i < 4; i++) { if (seen[s[i]]) return 'Digits must not repeat.'; seen[s[i]] = 1; }
+    return null;
+  }
+  function score(s) {
+    var a = 0, b = 0, i;
+    for (i = 0; i < 4; i++) if (s[i] === secret[i]) a++;
+    for (i = 0; i < 4; i++) for (var j = 0; j < 4; j++) if (i !== j && s[i] === secret[j]) b++;
+    return [a, b];
+  }
+  function doGuess() {
+    if (over) return;
+    var inp = g('guess');
+    var s = inp ? inp.value.trim() : '';
+    var err = valid(s);
+    if (err) { TN.setErr(P + 'error', err); return; }
+    TN.clearErr(P + 'error');
+    var sc = score(s);
+    tries++;
+    var t = g('tries'); if (t) t.textContent = String(tries);
+    var hist = g('history');
+    if (hist) {
+      var row = document.createElement('div');
+      row.style.cssText = 'display:flex;align-items:center;gap:10px;background:#292524;border-radius:8px;padding:6px 12px';
+      var good = sc[0] === 4;
+      row.innerHTML = '<span style="font-size:20px;letter-spacing:5px;font-weight:700">' + TN.esc(s) + '</span>' +
+        '<span class="muted">→</span>' +
+        '<span style="font-weight:800;color:' + (good ? '#4ade80' : '#fbbf24') + '">' + sc[0] + 'A' + sc[1] + 'B</span>' +
+        '<span class="muted" style="font-size:12px">#' + tries + '</span>';
+      hist.insertBefore(row, hist.firstChild);
+    }
+    if (inp) { inp.value = ''; inp.focus(); }
+    if (sc[0] === 4) {
+      over = true;
+      if (best === null || tries < best) {
+        best = tries;
+        try { localStorage.setItem(LS, String(best)); } catch (e) {}
+        renderBest();
+      }
+      status('🎉 You cracked it in ' + tries + ' ' + (tries === 1 ? 'guess' : 'guesses') + '! The number was ' + secret + '.');
+    } else {
+      status(sc[0] + 'A' + sc[1] + 'B — ' + (sc[0] + sc[1] === 0 ? 'no digits match at all.' : 'keep going!'));
+    }
+  }
+  function reset() {
+    secret = newSecret(); tries = 0; over = false;
+    TN.clearErr(P + 'error');
+    var t = g('tries'); if (t) t.textContent = '0';
+    var hist = g('history'); if (hist) hist.innerHTML = '';
+    var inp = g('guess'); if (inp) inp.value = '';
+    renderBest();
+    status('New secret number chosen. Make your first guess!');
+  }
+  try {
+    if (!g('guess')) return;
+    TN.on(P + 'go', 'click', doGuess);
+    TN.on(P + 'guess', 'keydown', function (e) { if (e.key === 'Enter') doGuess(); });
+    TN.on(P + 'new', 'click', reset);
+    TN.on(P + 'reveal', 'click', function () { if (!over) { over = true; status('The secret was ' + secret + '. Start a new game to try again.'); } });
+    reset();
+  } catch (e) { /* never throw on load */ }
+})();
+
+</script>
+</body>
+</html>

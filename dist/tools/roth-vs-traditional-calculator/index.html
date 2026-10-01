@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Roth vs Traditional Calculator — Free Online | ToolNest</title>
+<meta name="description" content="Compare after-tax future values of Roth vs traditional contributions with growth and tax assumptions.">
+<meta name="keywords" content="roth vs traditional, roth IRA calculator, traditional IRA">
+<link rel="canonical" href="https://toolnest.vercel.app/tools/roth-vs-traditional-calculator/">
+<meta name="theme-color" content="#07070b">
+<meta property="og:title" content="Roth vs Traditional Calculator — Free Online | ToolNest">
+<meta property="og:description" content="Compare after-tax future values of Roth vs traditional contributions with growth and tax assumptions.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css?v=4">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%23e01111'/><text x='50' y='68' font-size='58' text-anchor='middle' fill='white' font-family='Arial' font-weight='bold'>T</text></svg>">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebApplication","name":"Roth vs Traditional Calculator","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0"},"url":"https://toolnest.vercel.app/tools/roth-vs-traditional-calculator/","description":"Compare after-tax future values of Roth vs traditional contributions with growth and tax assumptions."},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What is the core trade-off?","acceptedAnswer":{"@type":"Answer","text":"Traditional: tax deduction now, tax on withdrawals later. Roth: pay tax now, tax-free withdrawals later. This tool compares the after-tax future value of each."}},{"@type":"Question","name":"When does Roth usually win?","acceptedAnswer":{"@type":"Answer","text":"When your retirement tax rate is higher than today's rate. When it is lower, traditional usually wins. Equal rates make them equivalent."}},{"@type":"Question","name":"Does this include contribution limits?","acceptedAnswer":{"@type":"Answer","text":"No. It compares equal gross contributions; real-world limits and eligibility rules are not modeled."}}]}]}</script>
+</head>
+<body>
+<header class="site-header">
+  <div class="container">
+    <a class="logo" href="/"><span class="logo-mark">T</span> ToolNest</a>
+    <div class="header-right">
+      <form class="nav-search" action="/" method="get" role="search">
+        <span class="ns-icon">🔍</span>
+        <input type="search" name="q" placeholder="Search tools…" aria-label="Search tools" autocomplete="off">
+      </form>
+      <div class="menu-wrap">
+        <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="menuPanel" aria-label="Open menu"><span></span><span></span><span></span></button>
+        <nav class="menu-panel" id="menuPanel" aria-label="Site">
+          <a href="/">Home</a>
+          <a href="/#categories">Categories</a>
+          <a href="/#all-tools">All Tools</a>
+        </nav>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ADSTERRA-HEADER: paste your Adsterra banner ad code inside the div below -->
+<div class="container"><div class="ad-slot ad-leaderboard" data-ad="header"></div></div>
+
+<main class="container">
+  <nav class="crumbs"><a href="/">Home</a> &rsaquo; <a href="/#finance">Finance &amp; Money</a> &rsaquo; Roth vs Traditional Calculator</nav>
+  <div class="tool-hero">
+    <h1>Roth vs Traditional Calculator</h1>
+    <p>Compare after-tax future values of Roth vs traditional contributions with growth and tax assumptions.</p>
+  </div>
+
+  <div class="tool-card">
+  <div class="grid2">
+    <div class="field">
+      <label for="roth-vs-traditional-calculator-contrib">Annual contribution ($)</label>
+      <input type="number" class="input" id="roth-vs-traditional-calculator-contrib" min="0" step="any" placeholder="7000">
+    </div>
+    <div class="field">
+      <label for="roth-vs-traditional-calculator-years">Years invested</label>
+      <input type="number" class="input" id="roth-vs-traditional-calculator-years" min="1" max="70" step="1" placeholder="30">
+    </div>
+    <div class="field">
+      <label for="roth-vs-traditional-calculator-return">Expected annual return (%)</label>
+      <input type="number" class="input" id="roth-vs-traditional-calculator-return" min="0" max="30" step="any" placeholder="7">
+    </div>
+    <div class="field">
+      <label for="roth-vs-traditional-calculator-curtax">Current tax rate (%)</label>
+      <input type="number" class="input" id="roth-vs-traditional-calculator-curtax" min="0" max="100" step="any" placeholder="24">
+    </div>
+    <div class="field">
+      <label for="roth-vs-traditional-calculator-rettax">Retirement tax rate (%)</label>
+      <input type="number" class="input" id="roth-vs-traditional-calculator-rettax" min="0" max="100" step="any" placeholder="22">
+    </div>
+  </div>
+  <div class="error" id="roth-vs-traditional-calculator-error"></div>
+  <div class="result" id="roth-vs-traditional-calculator-result">
+    <div class="stat-cards">
+      <div class="stat-card"><div class="v" id="roth-vs-traditional-calculator-roth">&ndash;</div><div class="l">Roth after-tax value</div></div>
+      <div class="stat-card"><div class="v" id="roth-vs-traditional-calculator-trad">&ndash;</div><div class="l">Traditional after-tax value</div></div>
+      <div class="stat-card"><div class="v" id="roth-vs-traditional-calculator-diff">&ndash;</div><div class="l">Difference</div></div>
+    </div>
+    <p class="note" id="roth-vs-traditional-calculator-verdict"></p>
+    <p class="note">For information only &mdash; not financial advice. Simplified model; ignores limits, RMDs, and state taxes.</p>
+  </div>
+</div>
+
+  <!-- ADSTERRA-INCONTENT: paste your Adsterra native/in-content ad code inside the div below -->
+  <div class="ad-slot" data-ad="incontent"></div>
+
+  <div class="info-grid">
+    <div class="info-card">
+      <h2>📖 How to use</h2>
+      <ol><li>Enter the annual contribution, years invested, and expected annual return.</li><li>Enter your current tax rate and your expected tax rate in retirement.</li><li>Read the after-tax future value of each path.</li><li>Compare the difference and the verdict.</li></ol>
+    </div>
+    <div class="info-card">
+      <h2>❓ Frequently asked questions</h2>
+      <div class="faq"><details><summary>What is the core trade-off?</summary><p>Traditional: tax deduction now, tax on withdrawals later. Roth: pay tax now, tax-free withdrawals later. This tool compares the after-tax future value of each.</p></details><details><summary>When does Roth usually win?</summary><p>When your retirement tax rate is higher than today&#39;s rate. When it is lower, traditional usually wins. Equal rates make them equivalent.</p></details><details><summary>Does this include contribution limits?</summary><p>No. It compares equal gross contributions; real-world limits and eligibility rules are not modeled.</p></details></div>
+    </div>
+  </div>
+
+  <section class="section">
+    <h2>🔗 Related tools</h2>
+    <div class="tool-grid"><a class="tool-link" href="/tools/apr-calculator/" data-search="apr calculator solve the true annual percentage rate of a loan by bisection — including upfront fees — and compare it with the nominal rate. apr calculator true apr calculator annual percentage rate calculator loan apr calculator nominal vs effective rate"><span class="t-ico">💰</span><span class="t-body"><b>APR Calculator</b><small>Solve the true Annual Percentage Rate of a loan by bisection — including upfront fees — and …</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/baby-cost-calculator/" data-search="baby cost calculator estimate first-year baby costs from editable monthly and one-time line items. baby cost first year baby expenses newborn cost"><span class="t-ico">💰</span><span class="t-body"><b>Baby Cost Calculator</b><small>Estimate first-year baby costs from editable monthly and one-time line items.</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/balloon-payment-calculator/" data-search="balloon payment calculator compute the monthly payment on a balloon loan and the lump-sum balloon balance still due at the end of the term. balloon payment calculator balloon loan calculator balloon mortgage calculator balloon balance calculator lump sum loan calculator"><span class="t-ico">💰</span><span class="t-body"><b>Balloon Payment Calculator</b><small>Compute the monthly payment on a balloon loan and the lump-sum balloon balance still due at …</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/benefits-value-calculator/" data-search="benefits value calculator compute total compensation: salary plus health, retirement match and pto value. benefits calculator total compensation job benefits value"><span class="t-ico">💰</span><span class="t-body"><b>Benefits Value Calculator</b><small>Compute total compensation: salary plus health, retirement match and PTO value.</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/break-even-calculator/" data-search="break-even calculator find your break-even point in units and revenue from fixed costs, price per unit and variable cost per unit. break even calculator breakeven point calculator break even analysis units to break even business break even calculator"><span class="t-ico">💰</span><span class="t-body"><b>Break-Even Calculator</b><small>Find your break-even point in units and revenue from fixed costs, price per unit and variabl…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/budget-50-30-20-calculator/" data-search="50/30/20 budget calculator split your take-home pay into needs (50%), wants (30%) and savings (20%), then compare with your actual spending. 50 30 20 budget budget calculator needs wants savings monthly budget planner budget rule calculator"><span class="t-ico">💰</span><span class="t-body"><b>50/30/20 Budget Calculator</b><small>Split your take-home pay into needs (50%), wants (30%) and savings (20%), then compare with …</small></span><span class="t-arrow">→</span></a></div>
+  </section>
+</main>
+
+<!-- ADSTERRA-FOOTER: paste your Adsterra footer/banner ad code inside the div below -->
+<div class="container"><div class="ad-slot" data-ad="footer"></div></div>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="f-grid">
+      <div>
+        <span class="brandline"><span class="logo-mark">T</span> ToolNest</span>
+        <p>Free online tools that actually work. No sign-up, no watermarks — and your files never leave your device for client-side tools.</p>
+      </div>
+      <div>
+        <h4>Popular</h4>
+        <a href="/tools/qr-code-generator/">QR Code Generator</a>
+        <a href="/tools/background-remover/">Background Remover</a>
+        <a href="/tools/pdf-merger/">PDF Merger</a>
+        <a href="/tools/word-counter/">Word Counter</a>
+      </div>
+      <div>
+        <h4>Categories</h4>
+        <a href="/#image">Image Tools</a>
+        <a href="/#pdf">PDF &amp; Documents</a>
+        <a href="/#calculators">Calculators</a>
+        <a href="/#developer">Developer Tools</a>
+      </div>
+      <div>
+        <h4>Site</h4>
+        <a href="/">Home</a>
+        <a href="/#all-tools">All Tools</a>
+        <a href="/sitemap.xml">Sitemap</a>
+      </div>
+    </div>
+    <div class="f-bottom">© 2026 ToolNest · Free tools for everyone · Made with care</div>
+  </div>
+</footer>
+
+<script src="/assets/site.js?v=5"></script>
+
+<script>
+(function(){
+'use strict';
+var S='roth-vs-traditional-calculator', ERR=S+'-error';
+function money(n){ return '$'+Number(n).toLocaleString('en-US',{minimumFractionDigits:0,maximumFractionDigits:0}); }
+function calc(){
+  if(!TN.el(S+'-contrib')) return;
+  TN.clearErr(ERR);
+  var c=parseFloat(TN.el(S+'-contrib').value);
+  var n=parseFloat(TN.el(S+'-years').value);
+  var r=parseFloat(TN.el(S+'-return').value)/100;
+  var ct=parseFloat(TN.el(S+'-curtax').value);
+  var rt=parseFloat(TN.el(S+'-rettax').value);
+  if(!(c>0)){ TN.setErr(ERR,'Enter an annual contribution greater than 0.'); return; }
+  if(!(n>=1)){ TN.setErr(ERR,'Enter years of 1 or more.'); return; }
+  if(isNaN(r)||r<0){ TN.setErr(ERR,'Enter a valid expected return.'); return; }
+  if([ct,rt].some(function(v){ return isNaN(v)||v<0||v>100; })){ TN.setErr(ERR,'Tax rates must be between 0 and 100.'); return; }
+  var factor=r===0?n:(Math.pow(1+r,n)-1)/r;
+  var roth=c*(1-ct/100)*factor;
+  var trad=c*factor*(1-rt/100);
+  var diff=roth-trad;
+  TN.el(S+'-roth').textContent=money(roth);
+  TN.el(S+'-trad').textContent=money(trad);
+  TN.el(S+'-diff').textContent=(diff>=0?'+':'-')+money(Math.abs(diff)).slice(0);
+  var v=TN.el(S+'-verdict');
+  if(Math.abs(diff)<1){ v.textContent='Verdict: effectively a tie at these tax rates.'; }
+  else if(diff>0){ v.textContent='Verdict: Roth wins by '+money(diff)+' after tax, because your retirement tax rate is higher than today\u2019s.'; }
+  else { v.textContent='Verdict: Traditional wins by '+money(-diff)+' after tax, because your retirement tax rate is lower than today\u2019s.'; }
+}
+try{
+  ['contrib','years','return','curtax','rettax'].forEach(function(f){ TN.on(S+'-'+f,'input',calc); });
+  calc();
+}catch(e){}
+})();
+
+</script>
+</body>
+</html>

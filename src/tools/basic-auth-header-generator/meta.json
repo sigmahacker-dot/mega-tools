@@ -1,0 +1,38 @@
+{
+  "slug": "basic-auth-header-generator",
+  "title": "Basic Auth Header Generator",
+  "category": "developer",
+  "description": "Encode username:password to a Base64 Authorization header (Unicode-safe) \u2014 copy or download.",
+  "keywords": [
+    "basic auth header",
+    "base64 authorization",
+    "http basic auth generator",
+    "authorization header"
+  ],
+  "howto": [
+    "Enter the username and password.",
+    "The header is generated live (Unicode-safe Base64).",
+    "Copy the full header or just the encoded value.",
+    "Download as a .txt snippet."
+  ],
+  "faqs": [
+    {
+      "q": "How is the encoding done?",
+      "a": "The string \"username:password\" is UTF-8 encoded, then Base64 \u2014 matching RFC 7617."
+    },
+    {
+      "q": "Does it handle non-ASCII passwords?",
+      "a": "Yes \u2014 Unicode characters are UTF-8 encoded before Base64, unlike naive btoa() use."
+    },
+    {
+      "q": "Is my password sent anywhere?",
+      "a": "No \u2014 encoding happens entirely in your browser."
+    },
+    {
+      "q": "How do I use the header?",
+      "a": "Send it as the Authorization header: Authorization: Basic <base64>. Most HTTP clients also accept it via a -u flag or auth option."
+    }
+  ],
+  "libs": [],
+  "module": false
+}

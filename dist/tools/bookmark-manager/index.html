@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bookmark Manager — Free Online | ToolNest</title>
+<meta name="description" content="Save bookmarks with title, URL and tags; search, filter, and export them as JSON.">
+<meta name="keywords" content="bookmark manager, save bookmarks, bookmark organizer, link saver">
+<link rel="canonical" href="https://toolnest.vercel.app/tools/bookmark-manager/">
+<meta name="theme-color" content="#07070b">
+<meta property="og:title" content="Bookmark Manager — Free Online | ToolNest">
+<meta property="og:description" content="Save bookmarks with title, URL and tags; search, filter, and export them as JSON.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css?v=4">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%23e01111'/><text x='50' y='68' font-size='58' text-anchor='middle' fill='white' font-family='Arial' font-weight='bold'>T</text></svg>">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebApplication","name":"Bookmark Manager","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0"},"url":"https://toolnest.vercel.app/tools/bookmark-manager/","description":"Save bookmarks with title, URL and tags; search, filter, and export them as JSON."},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How do I add a bookmark?","acceptedAnswer":{"@type":"Answer","text":"Type or paste the full address (https://…), give it a title, optionally add comma-separated tags, and click Save Bookmark."}},{"@type":"Question","name":"How do search and filters work?","acceptedAnswer":{"@type":"Answer","text":"The search box matches the title, URL and tags together. The tag filter dropdown shows only bookmarks with that tag."}},{"@type":"Question","name":"Can I export my bookmarks?","acceptedAnswer":{"@type":"Answer","text":"Click Export JSON to download a file with all your bookmarks, which you can back up or import elsewhere."}},{"@type":"Question","name":"Where are bookmarks stored?","acceptedAnswer":{"@type":"Answer","text":"Bookmarks live in this browser's localStorage only — private to this device, and they disappear if browser data is cleared."}}]}]}</script>
+</head>
+<body>
+<header class="site-header">
+  <div class="container">
+    <a class="logo" href="/"><span class="logo-mark">T</span> ToolNest</a>
+    <div class="header-right">
+      <form class="nav-search" action="/" method="get" role="search">
+        <span class="ns-icon">🔍</span>
+        <input type="search" name="q" placeholder="Search tools…" aria-label="Search tools" autocomplete="off">
+      </form>
+      <div class="menu-wrap">
+        <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="menuPanel" aria-label="Open menu"><span></span><span></span><span></span></button>
+        <nav class="menu-panel" id="menuPanel" aria-label="Site">
+          <a href="/">Home</a>
+          <a href="/#categories">Categories</a>
+          <a href="/#all-tools">All Tools</a>
+        </nav>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ADSTERRA-HEADER: paste your Adsterra banner ad code inside the div below -->
+<div class="container"><div class="ad-slot ad-leaderboard" data-ad="header"></div></div>
+
+<main class="container">
+  <nav class="crumbs"><a href="/">Home</a> &rsaquo; <a href="/#fun">Fun &amp; Lifestyle</a> &rsaquo; Bookmark Manager</nav>
+  <div class="tool-hero">
+    <h1>Bookmark Manager</h1>
+    <p>Save bookmarks with title, URL and tags; search, filter, and export them as JSON.</p>
+  </div>
+
+  <div class="tool-card">
+  <div class="grid2">
+    <div class="field">
+      <label for="bookmark-manager-title">Title</label>
+      <input class="input" type="text" id="bookmark-manager-title" placeholder="Page title">
+    </div>
+    <div class="field">
+      <label for="bookmark-manager-url">URL</label>
+      <input class="input" type="url" id="bookmark-manager-url" placeholder="https://example.com">
+    </div>
+  </div>
+  <div class="field">
+    <label for="bookmark-manager-tags">Tags (comma-separated)</label>
+    <input class="input" type="text" id="bookmark-manager-tags" placeholder="work, research">
+  </div>
+  <div class="btn-row">
+    <button class="btn" id="bookmark-manager-add">Save Bookmark</button>
+    <button class="btn btn-outline" id="bookmark-manager-export">Export JSON</button>
+  </div>
+  <div class="error" id="bookmark-manager-error"></div>
+</div>
+
+<div class="tool-card">
+  <div class="grid2">
+    <div class="field">
+      <label for="bookmark-manager-search">Search</label>
+      <input class="input" type="text" id="bookmark-manager-search" placeholder="Search title, URL, tags…">
+    </div>
+    <div class="field">
+      <label for="bookmark-manager-filter">Filter by tag</label>
+      <select class="select" id="bookmark-manager-filter"><option value="">All tags</option></select>
+    </div>
+  </div>
+  <div id="bookmark-manager-list"></div>
+  <p class="muted" id="bookmark-manager-count"></p>
+</div>
+
+  <!-- ADSTERRA-INCONTENT: paste your Adsterra native/in-content ad code inside the div below -->
+  <div class="ad-slot" data-ad="incontent"></div>
+
+  <div class="info-grid">
+    <div class="info-card">
+      <h2>📖 How to use</h2>
+      <ol><li>Paste the URL and give it a title.</li><li>Add comma-separated tags (optional) for easy filtering.</li><li>Click Save Bookmark — click a saved row&#39;s × to delete it.</li><li>Use search or the tag filter to find things, or Export JSON for a backup.</li></ol>
+    </div>
+    <div class="info-card">
+      <h2>❓ Frequently asked questions</h2>
+      <div class="faq"><details><summary>How do I add a bookmark?</summary><p>Type or paste the full address (https://…), give it a title, optionally add comma-separated tags, and click Save Bookmark.</p></details><details><summary>How do search and filters work?</summary><p>The search box matches the title, URL and tags together. The tag filter dropdown shows only bookmarks with that tag.</p></details><details><summary>Can I export my bookmarks?</summary><p>Click Export JSON to download a file with all your bookmarks, which you can back up or import elsewhere.</p></details><details><summary>Where are bookmarks stored?</summary><p>Bookmarks live in this browser&#39;s localStorage only — private to this device, and they disappear if browser data is cleared.</p></details></div>
+    </div>
+  </div>
+
+  <section class="section">
+    <h2>🔗 Related tools</h2>
+    <div class="tool-grid"><a class="tool-link" href="/tools/100-day-challenge-tracker/" data-search="100-day challenge tracker track a 100-day challenge with a checkable 100-cell grid, streaks and stats. 100 day challenge habit tracker 100 days challenge tracker streak tracker"><span class="t-ico">🎲</span><span class="t-body"><b>100-Day Challenge Tracker</b><small>Track a 100-day challenge with a checkable 100-cell grid, streaks and stats.</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/24-game/" data-search="24 game the 24 game — combine four numbers with + − × ÷ to make 24. built-in solver guarantees every deal and gives hints. 24 game make 24 game 24 puzzle solver math puzzle game"><span class="t-ico">🎲</span><span class="t-body"><b>24 Game</b><small>The 24 Game — combine four numbers with + − × ÷ to make 24. Built-in solver guarantees every…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/aim-trainer-game/" data-search="aim trainer game test and train your aim — targets pop up at random spots for 30 seconds. hits, misses and accuracy are tracked live. aim trainer aim test reaction test click speed test fps aim trainer"><span class="t-ico">🎲</span><span class="t-body"><b>Aim Trainer Game</b><small>Test and train your aim — targets pop up at random spots for 30 seconds. Hits, misses and ac…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/asteroid-shooter/" data-search="asteroid shooter asteroid shooter — rotate, thrust and blast splitting asteroids on canvas. 3 lives, rising levels. asteroid shooter game asteroids game online space shooter canvas"><span class="t-ico">🎲</span><span class="t-body"><b>Asteroid Shooter</b><small>Asteroid Shooter — rotate, thrust and blast splitting asteroids on canvas. 3 lives, rising l…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/attendance-tracker/" data-search="attendance tracker track class attendance: roster with present/absent marks per date and % summaries. attendance tracker class attendance student attendance roll call app"><span class="t-ico">🎲</span><span class="t-body"><b>Attendance Tracker</b><small>Track class attendance: roster with present/absent marks per date and % summaries.</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/baby-name-generator/" data-search="baby name generator discover baby names by gender and origin — pakistani, arabic, western, indian or turkish — with meanings, random picks and tap-to-copy. baby name generator baby names with meanings muslim baby names boy girl names"><span class="t-ico">🎲</span><span class="t-body"><b>Baby Name Generator</b><small>Discover baby names by gender and origin — Pakistani, Arabic, Western, Indian or Turkish — w…</small></span><span class="t-arrow">→</span></a></div>
+  </section>
+</main>
+
+<!-- ADSTERRA-FOOTER: paste your Adsterra footer/banner ad code inside the div below -->
+<div class="container"><div class="ad-slot" data-ad="footer"></div></div>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="f-grid">
+      <div>
+        <span class="brandline"><span class="logo-mark">T</span> ToolNest</span>
+        <p>Free online tools that actually work. No sign-up, no watermarks — and your files never leave your device for client-side tools.</p>
+      </div>
+      <div>
+        <h4>Popular</h4>
+        <a href="/tools/qr-code-generator/">QR Code Generator</a>
+        <a href="/tools/background-remover/">Background Remover</a>
+        <a href="/tools/pdf-merger/">PDF Merger</a>
+        <a href="/tools/word-counter/">Word Counter</a>
+      </div>
+      <div>
+        <h4>Categories</h4>
+        <a href="/#image">Image Tools</a>
+        <a href="/#pdf">PDF &amp; Documents</a>
+        <a href="/#calculators">Calculators</a>
+        <a href="/#developer">Developer Tools</a>
+      </div>
+      <div>
+        <h4>Site</h4>
+        <a href="/">Home</a>
+        <a href="/#all-tools">All Tools</a>
+        <a href="/sitemap.xml">Sitemap</a>
+      </div>
+    </div>
+    <div class="f-bottom">© 2026 ToolNest · Free tools for everyone · Made with care</div>
+  </div>
+</footer>
+
+<script src="/assets/site.js?v=5"></script>
+
+<script>
+/* Bookmark Manager — title+URL+tags, search/filter, JSON export. */
+(function () {
+  'use strict';
+
+  var SLUG = 'bookmark-manager';
+  var KEY = 'tn-' + SLUG + '-items';
+
+  function load() {
+    try {
+      var arr = JSON.parse(localStorage.getItem(KEY) || '[]');
+      return Array.isArray(arr) ? arr : [];
+    } catch (e) { return []; }
+  }
+
+  function persist(items) {
+    try { localStorage.setItem(KEY, JSON.stringify(items)); }
+    catch (e) { TN.setErr(SLUG + '-error', 'Could not save — browser storage is unavailable.'); }
+  }
+
+  function parseTags(s) {
+    return s.split(',').map(function (t) { return t.trim(); }).filter(Boolean);
+  }
+
+  function renderFilters(items) {
+    var sel = TN.el(SLUG + '-filter');
+    var tags = {};
+    items.forEach(function (it) { (it.tags || []).forEach(function (t) { tags[t] = 1; }); });
+    var cur = sel.value;
+    sel.innerHTML = '<option value="">All tags</option>' + Object.keys(tags).sort().map(function (t) {
+      return '<option value="' + TN.esc(t) + '"' + (t === cur ? ' selected' : '') + '>' + TN.esc(t) + '</option>';
+    }).join('');
+  }
+
+  function render() {
+    var items = load();
+    renderFilters(items);
+    var q = (TN.el(SLUG + '-search').value || '').toLowerCase();
+    var f = TN.el(SLUG + '-filter').value;
+    var shown = items.filter(function (it) {
+      if (f && (it.tags || []).indexOf(f) === -1) return false;
+      if (q && (it.title + ' ' + it.url + ' ' + (it.tags || []).join(' ')).toLowerCase().indexOf(q) === -1) return false;
+      return true;
+    }).reverse();
+    var list = TN.el(SLUG + '-list');
+    if (!shown.length) {
+      list.innerHTML = '<p class="muted">No bookmarks yet.</p>';
+    } else {
+      list.innerHTML = shown.map(function (it) {
+        return '<div class="tool-card" style="margin:8px 0">' +
+          '<a href="' + TN.esc(it.url) + '" target="_blank" rel="noopener">' + TN.esc(it.title || it.url) + '</a>' +
+          '<p class="muted" style="margin:4px 0">' + TN.esc(it.url) + '</p>' +
+          (it.tags && it.tags.length ? '<p style="margin:4px 0">' + it.tags.map(function (t) {
+            return '<span class="muted" style="border:1px solid #444;border-radius:10px;padding:2px 8px;margin-right:6px;font-size:12px">' + TN.esc(t) + '</span>';
+          }).join('') + '</p>' : '') +
+          '<button class="btn btn-sm btn-outline" data-del="' + it.id + '">Delete</button></div>';
+      }).join('');
+      var dels = list.querySelectorAll('[data-del]');
+      for (var i = 0; i < dels.length; i++) {
+        (function (btn) {
+          btn.addEventListener('click', function () {
+            persist(load().filter(function (it) { return String(it.id) !== btn.getAttribute('data-del'); }));
+            render();
+          });
+        })(dels[i]);
+      }
+    }
+    TN.el(SLUG + '-count').textContent = shown.length + ' of ' + items.length + ' bookmarks.';
+  }
+
+  function add() {
+    TN.clearErr(SLUG + '-error');
+    var title = TN.el(SLUG + '-title').value.trim();
+    var url = TN.el(SLUG + '-url').value.trim();
+    var tags = parseTags(TN.el(SLUG + '-tags').value);
+    if (!url) { TN.setErr(SLUG + '-error', 'Please enter a URL.'); return; }
+    if (!/^https?:\/\//i.test(url)) url = 'https://' + url;
+    try { new URL(url); } catch (e) { TN.setErr(SLUG + '-error', 'That URL looks invalid.'); return; }
+    var items = load();
+    items.push({ id: Date.now(), title: title || url, url: url, tags: tags });
+    persist(items);
+    TN.el(SLUG + '-title').value = '';
+    TN.el(SLUG + '-url').value = '';
+    TN.el(SLUG + '-tags').value = '';
+    render();
+  }
+
+  function exportJson() {
+    var items = load();
+    if (!items.length) { TN.setErr(SLUG + '-error', 'Nothing to export yet.'); return; }
+    TN.downloadText(JSON.stringify(items, null, 2), 'bookmarks.json', 'application/json');
+  }
+
+  function init() {
+    try {
+      if (!TN.el(SLUG + '-add')) return;
+      TN.on(SLUG + '-add', 'click', add);
+      TN.on(SLUG + '-export', 'click', exportJson);
+      TN.el(SLUG + '-search').addEventListener('input', render);
+      TN.el(SLUG + '-filter').addEventListener('change', render);
+      render();
+    } catch (e) { /* never throw on load */ }
+  }
+
+  init();
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Book Tracker — Free Online | ToolNest</title>
+<meta name="description" content="Log books you have read with star ratings and track how many you finish each year.">
+<meta name="keywords" content="book tracker, books read log, reading log, book ratings">
+<link rel="canonical" href="https://toolnest.vercel.app/tools/book-tracker/">
+<meta name="theme-color" content="#07070b">
+<meta property="og:title" content="Book Tracker — Free Online | ToolNest">
+<meta property="og:description" content="Log books you have read with star ratings and track how many you finish each year.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css?v=4">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%23e01111'/><text x='50' y='68' font-size='58' text-anchor='middle' fill='white' font-family='Arial' font-weight='bold'>T</text></svg>">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebApplication","name":"Book Tracker","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0"},"url":"https://toolnest.vercel.app/tools/book-tracker/","description":"Log books you have read with star ratings and track how many you finish each year."},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How do I log a book?","acceptedAnswer":{"@type":"Answer","text":"Enter the title, author, the date you finished, and a 1–5 star rating, then click Log Book."}},{"@type":"Question","name":"How is the yearly count calculated?","acceptedAnswer":{"@type":"Answer","text":"The yearly count card uses the finished date — it counts books logged with a finish date in the current calendar year."}},{"@type":"Question","name":"How do I rate a book?","acceptedAnswer":{"@type":"Answer","text":"Click the stars before logging. The stars row defaults to 0 (no rating) — tap a star to set 1–5."}},{"@type":"Question","name":"Is my book log saved?","acceptedAnswer":{"@type":"Answer","text":"Yes, in this browser's localStorage. Your log stays private on this device."}}]}]}</script>
+</head>
+<body>
+<header class="site-header">
+  <div class="container">
+    <a class="logo" href="/"><span class="logo-mark">T</span> ToolNest</a>
+    <div class="header-right">
+      <form class="nav-search" action="/" method="get" role="search">
+        <span class="ns-icon">🔍</span>
+        <input type="search" name="q" placeholder="Search tools…" aria-label="Search tools" autocomplete="off">
+      </form>
+      <div class="menu-wrap">
+        <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="menuPanel" aria-label="Open menu"><span></span><span></span><span></span></button>
+        <nav class="menu-panel" id="menuPanel" aria-label="Site">
+          <a href="/">Home</a>
+          <a href="/#categories">Categories</a>
+          <a href="/#all-tools">All Tools</a>
+        </nav>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ADSTERRA-HEADER: paste your Adsterra banner ad code inside the div below -->
+<div class="container"><div class="ad-slot ad-leaderboard" data-ad="header"></div></div>
+
+<main class="container">
+  <nav class="crumbs"><a href="/">Home</a> &rsaquo; <a href="/#fun">Fun &amp; Lifestyle</a> &rsaquo; Book Tracker</nav>
+  <div class="tool-hero">
+    <h1>Book Tracker</h1>
+    <p>Log books you have read with star ratings and track how many you finish each year.</p>
+  </div>
+
+  <div class="tool-card">
+  <div class="stat-cards">
+    <div class="stat-card"><div class="v" id="book-tracker-year">0</div><div class="l" id="book-tracker-yearlabel">Books this year</div></div>
+    <div class="stat-card"><div class="v" id="book-tracker-avg">—</div><div class="l">Average rating</div></div>
+    <div class="stat-card"><div class="v" id="book-tracker-total">0</div><div class="l">Total books</div></div>
+  </div>
+  <div class="grid3">
+    <div class="field">
+      <label for="book-tracker-title">Title</label>
+      <input class="input" type="text" id="book-tracker-title" placeholder="Book title">
+    </div>
+    <div class="field">
+      <label for="book-tracker-author">Author</label>
+      <input class="input" type="text" id="book-tracker-author" placeholder="Author">
+    </div>
+    <div class="field">
+      <label for="book-tracker-date">Finished on</label>
+      <input class="input" type="date" id="book-tracker-date">
+    </div>
+  </div>
+  <div class="field">
+    <label>Rating</label>
+    <div class="btn-row" id="book-tracker-stars">
+      <button class="btn btn-outline btn-sm" data-r="1">★</button>
+      <button class="btn btn-outline btn-sm" data-r="2">★</button>
+      <button class="btn btn-outline btn-sm" data-r="3">★</button>
+      <button class="btn btn-outline btn-sm" data-r="4">★</button>
+      <button class="btn btn-outline btn-sm" data-r="5">★</button>
+    </div>
+  </div>
+  <div class="btn-row">
+    <button class="btn" id="book-tracker-add">Log Book</button>
+  </div>
+  <div class="error" id="book-tracker-error"></div>
+</div>
+
+<div class="tool-card">
+  <h3>Log</h3>
+  <div id="book-tracker-list"></div>
+</div>
+
+  <!-- ADSTERRA-INCONTENT: paste your Adsterra native/in-content ad code inside the div below -->
+  <div class="ad-slot" data-ad="incontent"></div>
+
+  <div class="info-grid">
+    <div class="info-card">
+      <h2>📖 How to use</h2>
+      <ol><li>Fill in title, author, finish date and rating.</li><li>Click Log Book.</li><li>See your yearly total and average rating at the top.</li><li>Delete entries you added by mistake.</li></ol>
+    </div>
+    <div class="info-card">
+      <h2>❓ Frequently asked questions</h2>
+      <div class="faq"><details><summary>How do I log a book?</summary><p>Enter the title, author, the date you finished, and a 1–5 star rating, then click Log Book.</p></details><details><summary>How is the yearly count calculated?</summary><p>The yearly count card uses the finished date — it counts books logged with a finish date in the current calendar year.</p></details><details><summary>How do I rate a book?</summary><p>Click the stars before logging. The stars row defaults to 0 (no rating) — tap a star to set 1–5.</p></details><details><summary>Is my book log saved?</summary><p>Yes, in this browser&#39;s localStorage. Your log stays private on this device.</p></details></div>
+    </div>
+  </div>
+
+  <section class="section">
+    <h2>🔗 Related tools</h2>
+    <div class="tool-grid"><a class="tool-link" href="/tools/100-day-challenge-tracker/" data-search="100-day challenge tracker track a 100-day challenge with a checkable 100-cell grid, streaks and stats. 100 day challenge habit tracker 100 days challenge tracker streak tracker"><span class="t-ico">🎲</span><span class="t-body"><b>100-Day Challenge Tracker</b><small>Track a 100-day challenge with a checkable 100-cell grid, streaks and stats.</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/24-game/" data-search="24 game the 24 game — combine four numbers with + − × ÷ to make 24. built-in solver guarantees every deal and gives hints. 24 game make 24 game 24 puzzle solver math puzzle game"><span class="t-ico">🎲</span><span class="t-body"><b>24 Game</b><small>The 24 Game — combine four numbers with + − × ÷ to make 24. Built-in solver guarantees every…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/aim-trainer-game/" data-search="aim trainer game test and train your aim — targets pop up at random spots for 30 seconds. hits, misses and accuracy are tracked live. aim trainer aim test reaction test click speed test fps aim trainer"><span class="t-ico">🎲</span><span class="t-body"><b>Aim Trainer Game</b><small>Test and train your aim — targets pop up at random spots for 30 seconds. Hits, misses and ac…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/asteroid-shooter/" data-search="asteroid shooter asteroid shooter — rotate, thrust and blast splitting asteroids on canvas. 3 lives, rising levels. asteroid shooter game asteroids game online space shooter canvas"><span class="t-ico">🎲</span><span class="t-body"><b>Asteroid Shooter</b><small>Asteroid Shooter — rotate, thrust and blast splitting asteroids on canvas. 3 lives, rising l…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/attendance-tracker/" data-search="attendance tracker track class attendance: roster with present/absent marks per date and % summaries. attendance tracker class attendance student attendance roll call app"><span class="t-ico">🎲</span><span class="t-body"><b>Attendance Tracker</b><small>Track class attendance: roster with present/absent marks per date and % summaries.</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/baby-name-generator/" data-search="baby name generator discover baby names by gender and origin — pakistani, arabic, western, indian or turkish — with meanings, random picks and tap-to-copy. baby name generator baby names with meanings muslim baby names boy girl names"><span class="t-ico">🎲</span><span class="t-body"><b>Baby Name Generator</b><small>Discover baby names by gender and origin — Pakistani, Arabic, Western, Indian or Turkish — w…</small></span><span class="t-arrow">→</span></a></div>
+  </section>
+</main>
+
+<!-- ADSTERRA-FOOTER: paste your Adsterra footer/banner ad code inside the div below -->
+<div class="container"><div class="ad-slot" data-ad="footer"></div></div>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="f-grid">
+      <div>
+        <span class="brandline"><span class="logo-mark">T</span> ToolNest</span>
+        <p>Free online tools that actually work. No sign-up, no watermarks — and your files never leave your device for client-side tools.</p>
+      </div>
+      <div>
+        <h4>Popular</h4>
+        <a href="/tools/qr-code-generator/">QR Code Generator</a>
+        <a href="/tools/background-remover/">Background Remover</a>
+        <a href="/tools/pdf-merger/">PDF Merger</a>
+        <a href="/tools/word-counter/">Word Counter</a>
+      </div>
+      <div>
+        <h4>Categories</h4>
+        <a href="/#image">Image Tools</a>
+        <a href="/#pdf">PDF &amp; Documents</a>
+        <a href="/#calculators">Calculators</a>
+        <a href="/#developer">Developer Tools</a>
+      </div>
+      <div>
+        <h4>Site</h4>
+        <a href="/">Home</a>
+        <a href="/#all-tools">All Tools</a>
+        <a href="/sitemap.xml">Sitemap</a>
+      </div>
+    </div>
+    <div class="f-bottom">© 2026 ToolNest · Free tools for everyone · Made with care</div>
+  </div>
+</footer>
+
+<script src="/assets/site.js?v=5"></script>
+
+<script>
+/* Book Tracker — books read log with ratings + yearly count. */
+(function () {
+  'use strict';
+
+  var SLUG = 'book-tracker';
+  var KEY = 'tn-' + SLUG + '-books';
+  var rating = 0;
+
+  function load() {
+    try {
+      var arr = JSON.parse(localStorage.getItem(KEY) || '[]');
+      return Array.isArray(arr) ? arr : [];
+    } catch (e) { return []; }
+  }
+
+  function persist(books) {
+    try { localStorage.setItem(KEY, JSON.stringify(books)); }
+    catch (e) { TN.setErr(SLUG + '-error', 'Could not save — browser storage is unavailable.'); }
+  }
+
+  function stars(n) {
+    var s = '';
+    for (var i = 1; i <= 5; i++) s += i <= n ? '★' : '☆';
+    return s;
+  }
+
+  function paintStars() {
+    var btns = TN.el(SLUG + '-stars').querySelectorAll('button');
+    for (var i = 0; i < btns.length; i++) {
+      var r = parseInt(btns[i].getAttribute('data-r'), 10);
+      btns[i].style.color = r <= rating ? '#f1c40f' : '';
+    }
+  }
+
+  function render() {
+    var books = load();
+    var year = new Date().getFullYear();
+    TN.el(SLUG + '-yearlabel').textContent = 'Books in ' + year;
+    TN.el(SLUG + '-year').textContent = books.filter(function (b) {
+      return b.date && b.date.slice(0, 4) === String(year);
+    }).length;
+    TN.el(SLUG + '-total').textContent = books.length;
+    var rated = books.filter(function (b) { return b.rating > 0; });
+    TN.el(SLUG + '-avg').textContent = rated.length
+      ? (rated.reduce(function (a, b) { return a + b.rating; }, 0) / rated.length).toFixed(1) + ' ★'
+      : '—';
+    var list = TN.el(SLUG + '-list');
+    if (!books.length) { list.innerHTML = '<p class="muted">No books logged yet.</p>'; return; }
+    list.innerHTML = books.slice().reverse().map(function (b) {
+      return '<div class="tool-card" style="margin:8px 0">' +
+        '<strong>' + TN.esc(b.title) + '</strong> <span class="muted">by ' + TN.esc(b.author || 'Unknown') + '</span>' +
+        '<p style="margin:4px 0;color:#f1c40f">' + stars(b.rating) + '</p>' +
+        '<p class="muted" style="margin:0">Finished: ' + TN.esc(b.date || '—') + '</p>' +
+        '<button class="btn btn-sm btn-outline" data-del="' + b.id + '" style="margin-top:6px">Delete</button></div>';
+    }).join('');
+    var dels = list.querySelectorAll('[data-del]');
+    for (var i = 0; i < dels.length; i++) {
+      (function (btn) {
+        btn.addEventListener('click', function () {
+          persist(load().filter(function (x) { return String(x.id) !== btn.getAttribute('data-del'); }));
+          render();
+        });
+      })(dels[i]);
+    }
+  }
+
+  function add() {
+    TN.clearErr(SLUG + '-error');
+    var title = TN.el(SLUG + '-title').value.trim();
+    var author = TN.el(SLUG + '-author').value.trim();
+    var date = TN.el(SLUG + '-date').value;
+    if (!title) { TN.setErr(SLUG + '-error', 'Please enter a book title.'); return; }
+    var books = load();
+    books.push({ id: Date.now(), title: title, author: author, date: date, rating: rating });
+    persist(books);
+    TN.el(SLUG + '-title').value = '';
+    TN.el(SLUG + '-author').value = '';
+    rating = 0; paintStars();
+    render();
+  }
+
+  function init() {
+    try {
+      if (!TN.el(SLUG + '-add')) return;
+      var btns = TN.el(SLUG + '-stars').querySelectorAll('button');
+      for (var i = 0; i < btns.length; i++) {
+        (function (b) {
+          b.addEventListener('click', function () {
+            rating = parseInt(b.getAttribute('data-r'), 10);
+            paintStars();
+          });
+        })(btns[i]);
+      }
+      TN.on(SLUG + '-add', 'click', add);
+      render();
+    } catch (e) { /* never throw on load */ }
+  }
+
+  init();
+})();
+</script>
+</body>
+</html>

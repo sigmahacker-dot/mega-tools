@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Interval Trainer — Free Online | ToolNest</title>
+<meta name="description" content="Train your ear: hear two notes played with WebAudio, guess the interval, and track your score and streak.">
+<meta name="keywords" content="interval trainer, ear training, music intervals, aural skills">
+<link rel="canonical" href="https://toolnest.vercel.app/tools/interval-trainer/">
+<meta name="theme-color" content="#07070b">
+<meta property="og:title" content="Interval Trainer — Free Online | ToolNest">
+<meta property="og:description" content="Train your ear: hear two notes played with WebAudio, guess the interval, and track your score and streak.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css?v=4">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%23e01111'/><text x='50' y='68' font-size='58' text-anchor='middle' fill='white' font-family='Arial' font-weight='bold'>T</text></svg>">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebApplication","name":"Interval Trainer","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0"},"url":"https://toolnest.vercel.app/tools/interval-trainer/","description":"Train your ear: hear two notes played with WebAudio, guess the interval, and track your score and streak."},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Which intervals are tested?","acceptedAnswer":{"@type":"Answer","text":"All 12 intervals from minor 2nd to octave, played as two sequential notes with a real WebAudio synth."}},{"@type":"Question","name":"Is my progress saved?","acceptedAnswer":{"@type":"Answer","text":"Your best streak is saved in this browser so you can beat it next session."}},{"@type":"Question","name":"Does it use audio files?","acceptedAnswer":{"@type":"Answer","text":"No — every note is synthesized live with the Web Audio API; nothing is downloaded or uploaded."}}]}]}</script>
+</head>
+<body>
+<header class="site-header">
+  <div class="container">
+    <a class="logo" href="/"><span class="logo-mark">T</span> ToolNest</a>
+    <div class="header-right">
+      <form class="nav-search" action="/" method="get" role="search">
+        <span class="ns-icon">🔍</span>
+        <input type="search" name="q" placeholder="Search tools…" aria-label="Search tools" autocomplete="off">
+      </form>
+      <div class="menu-wrap">
+        <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="menuPanel" aria-label="Open menu"><span></span><span></span><span></span></button>
+        <nav class="menu-panel" id="menuPanel" aria-label="Site">
+          <a href="/">Home</a>
+          <a href="/#categories">Categories</a>
+          <a href="/#all-tools">All Tools</a>
+        </nav>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ADSTERRA-HEADER: paste your Adsterra banner ad code inside the div below -->
+<div class="container"><div class="ad-slot ad-leaderboard" data-ad="header"></div></div>
+
+<main class="container">
+  <nav class="crumbs"><a href="/">Home</a> &rsaquo; <a href="/#video-audio">Video &amp; Audio</a> &rsaquo; Interval Trainer</nav>
+  <div class="tool-hero">
+    <h1>Interval Trainer</h1>
+    <p>Train your ear: hear two notes played with WebAudio, guess the interval, and track your score and streak.</p>
+  </div>
+
+  <div class="tool-card">
+  <div class="stat-cards">
+    <div class="stat-card"><div class="v" id="interval-trainer-score">0 / 0</div><div class="l">Score</div></div>
+    <div class="stat-card"><div class="v" id="interval-trainer-streak">0</div><div class="l">Streak</div></div>
+    <div class="stat-card"><div class="v" id="interval-trainer-best">0</div><div class="l">Best streak</div></div>
+  </div>
+  <div class="btn-row">
+    <button class="btn btn-primary" id="interval-trainer-new">New round</button>
+    <button class="btn btn-outline" id="interval-trainer-replay">Replay notes</button>
+    <button class="btn btn-outline" id="interval-trainer-reset">Reset score</button>
+  </div>
+  <p class="muted" id="interval-trainer-status" style="min-height:24px">Press "New round" to begin.</p>
+  <div class="grid3" id="interval-trainer-buttons"></div>
+  <div class="error" id="interval-trainer-error"></div>
+  <p class="note">Notes are synthesized live with the Web Audio API — no audio files. Best streak is saved in this browser.</p>
+</div>
+
+
+  <!-- ADSTERRA-INCONTENT: paste your Adsterra native/in-content ad code inside the div below -->
+  <div class="ad-slot" data-ad="incontent"></div>
+
+  <div class="info-grid">
+    <div class="info-card">
+      <h2>📖 How to use</h2>
+      <ol><li>Click &quot;New round&quot; — you&#39;ll hear two notes.</li><li>Click the interval you think you heard.</li><li>Your score, streak and best streak update live.</li><li>Use &quot;Replay&quot; to hear the notes again.</li></ol>
+    </div>
+    <div class="info-card">
+      <h2>❓ Frequently asked questions</h2>
+      <div class="faq"><details><summary>Which intervals are tested?</summary><p>All 12 intervals from minor 2nd to octave, played as two sequential notes with a real WebAudio synth.</p></details><details><summary>Is my progress saved?</summary><p>Your best streak is saved in this browser so you can beat it next session.</p></details><details><summary>Does it use audio files?</summary><p>No — every note is synthesized live with the Web Audio API; nothing is downloaded or uploaded.</p></details></div>
+    </div>
+  </div>
+
+  <section class="section">
+    <h2>🔗 Related tools</h2>
+    <div class="tool-grid"><a class="tool-link" href="/tools/8d-audio-panner/" data-search="8d audio panner the viral 8d audio effect: your track circles around your head with a rotating stereo-pan lfo. play it and download it. 8d audio 8d converter surround sound effect panning effect"><span class="t-ico">🎬</span><span class="t-body"><b>8D Audio Panner</b><small>The viral 8D audio effect: your track circles around your head with a rotating stereo-pan LF…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/audio-cutter/" data-search="audio cutter cut a section out of any audio file in your browser. set start and end times, preview the selection, then download it as an mp3. audio cutter cut audio online trim mp3 audio trimmer mp3 cutter"><span class="t-ico">🎬</span><span class="t-body"><b>Audio Cutter</b><small>Cut a section out of any audio file in your browser. Set start and end times, preview the se…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/audio-fade-in-out/" data-search="audio fade in/out add smooth fade-in and fade-out to any audio track and export as wav. audio fade in out fade audio add fade to mp3 fade in fade out"><span class="t-ico">🎬</span><span class="t-body"><b>Audio Fade In/Out</b><small>Add smooth fade-in and fade-out to any audio track and export as WAV.</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/audio-joiner/" data-search="audio joiner merge several audio files end-to-end into one wav download. join audio merge audio files combine mp3 audio joiner"><span class="t-ico">🎬</span><span class="t-body"><b>Audio Joiner</b><small>Merge several audio files end-to-end into one WAV download.</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/audio-normalizer/" data-search="audio normalizer peak-normalize any audio to your target level with a real offlineaudiocontext gain stage — see before/after peaks. audio normalizer normalize volume peak normalize loudness"><span class="t-ico">🎬</span><span class="t-body"><b>Audio Normalizer</b><small>Peak-normalize any audio to your target level with a real OfflineAudioContext gain stage — s…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/audio-reverse/" data-search="audio reverse reverse any audio file backwards and export it as a wav. reverse audio backwards audio reverse mp3 audio reverser"><span class="t-ico">🎬</span><span class="t-body"><b>Audio Reverse</b><small>Reverse any audio file backwards and export it as a WAV.</small></span><span class="t-arrow">→</span></a></div>
+  </section>
+</main>
+
+<!-- ADSTERRA-FOOTER: paste your Adsterra footer/banner ad code inside the div below -->
+<div class="container"><div class="ad-slot" data-ad="footer"></div></div>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="f-grid">
+      <div>
+        <span class="brandline"><span class="logo-mark">T</span> ToolNest</span>
+        <p>Free online tools that actually work. No sign-up, no watermarks — and your files never leave your device for client-side tools.</p>
+      </div>
+      <div>
+        <h4>Popular</h4>
+        <a href="/tools/qr-code-generator/">QR Code Generator</a>
+        <a href="/tools/background-remover/">Background Remover</a>
+        <a href="/tools/pdf-merger/">PDF Merger</a>
+        <a href="/tools/word-counter/">Word Counter</a>
+      </div>
+      <div>
+        <h4>Categories</h4>
+        <a href="/#image">Image Tools</a>
+        <a href="/#pdf">PDF &amp; Documents</a>
+        <a href="/#calculators">Calculators</a>
+        <a href="/#developer">Developer Tools</a>
+      </div>
+      <div>
+        <h4>Site</h4>
+        <a href="/">Home</a>
+        <a href="/#all-tools">All Tools</a>
+        <a href="/sitemap.xml">Sitemap</a>
+      </div>
+    </div>
+    <div class="f-bottom">© 2026 ToolNest · Free tools for everyone · Made with care</div>
+  </div>
+</footer>
+
+<script src="/assets/site.js?v=5"></script>
+
+<script>
+/* Interval Trainer — WebAudio ear training with score and streak. */
+(function () {
+  'use strict';
+  var SLUG = 'interval-trainer';
+  var ERR = SLUG + '-error';
+
+  var INTERVALS = [
+    { n: 'Minor 2nd', s: 1 }, { n: 'Major 2nd', s: 2 },
+    { n: 'Minor 3rd', s: 3 }, { n: 'Major 3rd', s: 4 },
+    { n: 'Perfect 4th', s: 5 }, { n: 'Tritone', s: 6 },
+    { n: 'Perfect 5th', s: 7 }, { n: 'Minor 6th', s: 8 },
+    { n: 'Major 6th', s: 9 }, { n: 'Minor 7th', s: 10 },
+    { n: 'Major 7th', s: 11 }, { n: 'Octave', s: 12 }
+  ];
+
+  var actx = null;
+  var cur = null; // {semi, baseMidi}
+  var correct = 0, total = 0, streak = 0, best = 0;
+  var answered = true;
+
+  function AC() { return window.AudioContext || window.webkitAudioContext; }
+
+  function ctx() {
+    if (!actx) {
+      var Ctor = AC();
+      if (!Ctor) { TN.setErr(ERR, 'Your browser does not support Web Audio.'); return null; }
+      actx = new Ctor();
+    }
+    if (actx.state === 'suspended') actx.resume();
+    return actx;
+  }
+
+  function midiHz(m) { return 440 * Math.pow(2, (m - 69) / 12); }
+
+  function playNote(midi, t0, dur) {
+    var c = ctx();
+    if (!c) return;
+    var o1 = c.createOscillator(), o2 = c.createOscillator(), g = c.createGain();
+    o1.type = 'sine'; o2.type = 'triangle';
+    o1.frequency.value = midiHz(midi);
+    o2.frequency.value = midiHz(midi);
+    var g2 = c.createGain(); g2.gain.value = 0.25;
+    o1.connect(g); o2.connect(g2); g2.connect(g); g.connect(c.destination);
+    g.gain.setValueAtTime(0.0001, t0);
+    g.gain.exponentialRampToValueAtTime(0.5, t0 + 0.03);
+    g.gain.setValueAtTime(0.5, t0 + dur - 0.12);
+    g.gain.exponentialRampToValueAtTime(0.0001, t0 + dur);
+    o1.start(t0); o2.start(t0);
+    o1.stop(t0 + dur + 0.05); o2.stop(t0 + dur + 0.05);
+  }
+
+  function playInterval() {
+    if (!cur) return;
+    var c = ctx();
+    if (!c) return;
+    var t = c.currentTime + 0.05;
+    playNote(cur.base, t, 0.65);
+    playNote(cur.base + cur.semi, t + 0.75, 0.8);
+  }
+
+  function updateStats() {
+    document.getElementById(SLUG + '-score').textContent = correct + ' / ' + total;
+    document.getElementById(SLUG + '-streak').textContent = streak;
+    document.getElementById(SLUG + '-best').textContent = best;
+  }
+
+  function newRound() {
+    TN.clearErr(ERR);
+    var iv = INTERVALS[Math.floor(Math.random() * INTERVALS.length)];
+    var base = 48 + Math.floor(Math.random() * 20); // C3..~G4
+    cur = { semi: iv.s, base: base, name: iv.n };
+    answered = false;
+    document.getElementById(SLUG + '-status').textContent = 'Listen… which interval is it?';
+    playInterval();
+  }
+
+  function guess(semi, name, btn) {
+    if (!cur || answered) return;
+    answered = true;
+    total++;
+    var st = document.getElementById(SLUG + '-status');
+    if (semi === cur.semi) {
+      correct++; streak++;
+      if (streak > best) { best = streak; try { localStorage.setItem('tn-' + SLUG + '-best', String(best)); } catch (e) {} }
+      st.textContent = '✓ Correct! That was a ' + cur.name + '.';
+      st.style.color = '#166534';
+    } else {
+      streak = 0;
+      st.textContent = '✗ Not quite — that was a ' + cur.name + '. You guessed ' + name + '.';
+      st.style.color = '#b91c1c';
+      if (btn) { btn.style.borderColor = '#b91c1c'; setTimeout(function () { btn.style.borderColor = ''; }, 900); }
+    }
+    updateStats();
+  }
+
+  try {
+    if (!document.getElementById(SLUG + '-new')) return;
+    try { best = parseInt(localStorage.getItem('tn-' + SLUG + '-best'), 10) || 0; } catch (e) {}
+    var wrap = document.getElementById(SLUG + '-buttons');
+    INTERVALS.forEach(function (iv) {
+      var b = document.createElement('button');
+      b.className = 'btn btn-outline';
+      b.textContent = iv.n;
+      b.style.marginBottom = '8px';
+      b.onclick = function () { guess(iv.s, iv.n, b); };
+      wrap.appendChild(b);
+    });
+    updateStats();
+    TN.on(SLUG + '-new', 'click', newRound);
+    TN.on(SLUG + '-replay', 'click', function () {
+      if (!cur) { TN.setErr(ERR, 'Start a round first.'); return; }
+      playInterval();
+    });
+    TN.on(SLUG + '-reset', 'click', function () {
+      correct = 0; total = 0; streak = 0;
+      document.getElementById(SLUG + '-status').textContent = 'Score reset. Press "New round" to begin.';
+      document.getElementById(SLUG + '-status').style.color = '';
+      updateStats();
+    });
+  } catch (e) {
+    TN.setErr(ERR, 'This tool could not start: ' + (e && e.message || e));
+  }
+})();
+
+</script>
+</body>
+</html>

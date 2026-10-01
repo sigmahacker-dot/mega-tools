@@ -1,0 +1,38 @@
+{
+  "slug": "k8s-manifest-generator",
+  "title": "K8s Manifest Generator",
+  "category": "developer",
+  "description": "Generate Kubernetes Deployment + Service YAML from your app settings \u2014 valid multi-doc manifests.",
+  "keywords": [
+    "kubernetes manifest generator",
+    "k8s deployment yaml",
+    "kubectl yaml generator",
+    "k8s service yaml"
+  ],
+  "howto": [
+    "Enter the app name, image and replica count.",
+    "Set container and service ports, plus env vars.",
+    "Pick the Service type.",
+    "Copy the YAML or download deployment.yaml."
+  ],
+  "faqs": [
+    {
+      "q": "What does the output contain?",
+      "a": "A Deployment (with labels, selector, container port, env vars) and a Service, as two YAML documents separated by ---."
+    },
+    {
+      "q": "How are env vars formatted?",
+      "a": "One KEY=value per line \u2014 each becomes an env entry with name and value."
+    },
+    {
+      "q": "Which Service types are supported?",
+      "a": "ClusterIP, NodePort and LoadBalancer."
+    },
+    {
+      "q": "Is the YAML valid?",
+      "a": "Yes \u2014 standard apiVersion/v1 and apps/v1 manifests you can apply with kubectl apply -f."
+    }
+  ],
+  "libs": [],
+  "module": false
+}

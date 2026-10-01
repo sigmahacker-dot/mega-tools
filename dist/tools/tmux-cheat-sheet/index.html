@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>tmux Cheat Sheet — Free Online | ToolNest</title>
+<meta name="description" content="Searchable reference of 60+ real tmux keybindings and commands — sessions, windows, panes, copy mode.">
+<meta name="keywords" content="tmux cheat sheet, tmux keybindings, tmux commands, tmux shortcuts">
+<link rel="canonical" href="https://toolnest.vercel.app/tools/tmux-cheat-sheet/">
+<meta name="theme-color" content="#07070b">
+<meta property="og:title" content="tmux Cheat Sheet — Free Online | ToolNest">
+<meta property="og:description" content="Searchable reference of 60+ real tmux keybindings and commands — sessions, windows, panes, copy mode.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css?v=4">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%23e01111'/><text x='50' y='68' font-size='58' text-anchor='middle' fill='white' font-family='Arial' font-weight='bold'>T</text></svg>">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebApplication","name":"tmux Cheat Sheet","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0"},"url":"https://toolnest.vercel.app/tools/tmux-cheat-sheet/","description":"Searchable reference of 60+ real tmux keybindings and commands — sessions, windows, panes, copy mode."},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How many entries are listed?","acceptedAnswer":{"@type":"Answer","text":"Over 60 real bindings and commands across sessions, windows, panes, copy mode and misc."}},{"@type":"Question","name":"What does C-b mean?","acceptedAnswer":{"@type":"Answer","text":"Hold Ctrl and press b — the default tmux prefix. Press it first, then the listed key."}},{"@type":"Question","name":"Are these the default bindings?","acceptedAnswer":{"@type":"Answer","text":"Yes — defaults for tmux 3.x. Custom configs may remap some keys."}},{"@type":"Question","name":"Can I copy a binding?","acceptedAnswer":{"@type":"Answer","text":"Click any row to copy the keybinding or command to your clipboard."}}]}]}</script>
+</head>
+<body>
+<header class="site-header">
+  <div class="container">
+    <a class="logo" href="/"><span class="logo-mark">T</span> ToolNest</a>
+    <div class="header-right">
+      <form class="nav-search" action="/" method="get" role="search">
+        <span class="ns-icon">🔍</span>
+        <input type="search" name="q" placeholder="Search tools…" aria-label="Search tools" autocomplete="off">
+      </form>
+      <div class="menu-wrap">
+        <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="menuPanel" aria-label="Open menu"><span></span><span></span><span></span></button>
+        <nav class="menu-panel" id="menuPanel" aria-label="Site">
+          <a href="/">Home</a>
+          <a href="/#categories">Categories</a>
+          <a href="/#all-tools">All Tools</a>
+        </nav>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ADSTERRA-HEADER: paste your Adsterra banner ad code inside the div below -->
+<div class="container"><div class="ad-slot ad-leaderboard" data-ad="header"></div></div>
+
+<main class="container">
+  <nav class="crumbs"><a href="/">Home</a> &rsaquo; <a href="/#developer">Developer Tools</a> &rsaquo; tmux Cheat Sheet</nav>
+  <div class="tool-hero">
+    <h1>tmux Cheat Sheet</h1>
+    <p>Searchable reference of 60+ real tmux keybindings and commands — sessions, windows, panes, copy mode.</p>
+  </div>
+
+  <div class="tool-card">
+  <div class="grid2">
+    <div class="field">
+      <label for="tmux-cheat-sheet-q">Search bindings</label>
+      <input class="input" id="tmux-cheat-sheet-q" placeholder="e.g. split, pane, session…">
+    </div>
+    <div class="field">
+      <label for="tmux-cheat-sheet-sec">Section</label>
+      <select class="select" id="tmux-cheat-sheet-sec"><option value="">All sections</option></select>
+    </div>
+  </div>
+  <p class="muted" id="tmux-cheat-sheet-count"></p>
+  <div style="overflow:auto">
+    <table style="width:100%;border-collapse:collapse;font-size:14px" id="tmux-cheat-sheet-table">
+      <thead><tr style="text-align:left;border-bottom:1px solid #3f3f46">
+        <th style="padding:8px">Keys / Command</th><th style="padding:8px">Section</th><th style="padding:8px">Description</th>
+      </tr></thead>
+      <tbody id="tmux-cheat-sheet-body"></tbody>
+    </table>
+  </div>
+  <div class="error" id="tmux-cheat-sheet-error"></div>
+  <div class="btn-row" style="margin-top:12px">
+    <button class="btn btn-outline" id="tmux-cheat-sheet-download">Download as Markdown</button>
+  </div>
+  <p class="note">C-b = Ctrl+b, the default tmux prefix. Bindings are tmux 3.x defaults.</p>
+</div>
+
+
+  <!-- ADSTERRA-INCONTENT: paste your Adsterra native/in-content ad code inside the div below -->
+  <div class="ad-slot" data-ad="incontent"></div>
+
+  <div class="info-grid">
+    <div class="info-card">
+      <h2>📖 How to use</h2>
+      <ol><li>Type in the search box to filter bindings instantly.</li><li>Use the section dropdown to browse one area.</li><li>Click a row to copy the keybinding.</li><li>C-b means Ctrl+b, the default prefix key.</li></ol>
+    </div>
+    <div class="info-card">
+      <h2>❓ Frequently asked questions</h2>
+      <div class="faq"><details><summary>How many entries are listed?</summary><p>Over 60 real bindings and commands across sessions, windows, panes, copy mode and misc.</p></details><details><summary>What does C-b mean?</summary><p>Hold Ctrl and press b — the default tmux prefix. Press it first, then the listed key.</p></details><details><summary>Are these the default bindings?</summary><p>Yes — defaults for tmux 3.x. Custom configs may remap some keys.</p></details><details><summary>Can I copy a binding?</summary><p>Click any row to copy the keybinding or command to your clipboard.</p></details></div>
+    </div>
+  </div>
+
+  <section class="section">
+    <h2>🔗 Related tools</h2>
+    <div class="tool-grid"><a class="tool-link" href="/tools/api-key-generator/" data-search="api key generator generate cryptographically secure api keys with crypto.getrandomvalues — hex, base64, base64url or uuid v4. api key generator random api key uuid generator secure token generator"><span class="t-ico">💻</span><span class="t-body"><b>API Key Generator</b><small>Generate cryptographically secure API keys with crypto.getRandomValues — hex, base64, base64…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/ascii-table-reference/" data-search="ascii table reference full ascii table 0–127: decimal, hex, octal, character, control-code names and html entities — searchable. ascii table ascii codes ascii chart control characters ascii reference"><span class="t-ico">💻</span><span class="t-body"><b>ASCII Table Reference</b><small>Full ASCII table 0–127: decimal, hex, octal, character, control-code names and HTML entities…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/badge-generator/" data-search="badge generator design css badges and pills — colors, sizes, shapes — with live preview and copy-ready html/css. badge css generator css pill badge status badge code label badge html"><span class="t-ico">💻</span><span class="t-body"><b>Badge Generator</b><small>Design CSS badges and pills — colors, sizes, shapes — with live preview and copy-ready HTML/…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/base64-encoder-decoder/" data-search="base64 encoder / decoder encode text to base64 or decode base64 back to text, with full utf-8 support and a file-to-data-url converter. base64 encoder base64 decoder base64 encode base64 decode file to base64"><span class="t-ico">💻</span><span class="t-body"><b>Base64 Encoder / Decoder</b><small>Encode text to Base64 or decode Base64 back to text, with full UTF-8 support and a file-to-d…</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/basic-auth-header-generator/" data-search="basic auth header generator encode username:password to a base64 authorization header (unicode-safe) — copy or download. basic auth header base64 authorization http basic auth generator authorization header"><span class="t-ico">💻</span><span class="t-body"><b>Basic Auth Header Generator</b><small>Encode username:password to a Base64 Authorization header (Unicode-safe) — copy or download.</small></span><span class="t-arrow">→</span></a><a class="tool-link" href="/tools/binary-text-converter/" data-search="binary and text converter convert text to binary or hex and back, with full utf-8 awareness and strict input validation. binary to text text to binary hex to text converter"><span class="t-ico">💻</span><span class="t-body"><b>Binary and Text Converter</b><small>Convert text to binary or hex and back, with full UTF-8 awareness and strict input validatio…</small></span><span class="t-arrow">→</span></a></div>
+  </section>
+</main>
+
+<!-- ADSTERRA-FOOTER: paste your Adsterra footer/banner ad code inside the div below -->
+<div class="container"><div class="ad-slot" data-ad="footer"></div></div>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="f-grid">
+      <div>
+        <span class="brandline"><span class="logo-mark">T</span> ToolNest</span>
+        <p>Free online tools that actually work. No sign-up, no watermarks — and your files never leave your device for client-side tools.</p>
+      </div>
+      <div>
+        <h4>Popular</h4>
+        <a href="/tools/qr-code-generator/">QR Code Generator</a>
+        <a href="/tools/background-remover/">Background Remover</a>
+        <a href="/tools/pdf-merger/">PDF Merger</a>
+        <a href="/tools/word-counter/">Word Counter</a>
+      </div>
+      <div>
+        <h4>Categories</h4>
+        <a href="/#image">Image Tools</a>
+        <a href="/#pdf">PDF &amp; Documents</a>
+        <a href="/#calculators">Calculators</a>
+        <a href="/#developer">Developer Tools</a>
+      </div>
+      <div>
+        <h4>Site</h4>
+        <a href="/">Home</a>
+        <a href="/#all-tools">All Tools</a>
+        <a href="/sitemap.xml">Sitemap</a>
+      </div>
+    </div>
+    <div class="f-bottom">© 2026 ToolNest · Free tools for everyone · Made with care</div>
+  </div>
+</footer>
+
+<script src="/assets/site.js?v=5"></script>
+
+<script>
+/* tmux Cheat Sheet — searchable reference of real keybindings/commands. */
+(function () {
+  'use strict';
+  var SLUG = 'tmux-cheat-sheet';
+  var DATA = [{"sec": "Sessions", "keys": "tmux new -s <name>", "desc": "Create a new session called <name>."}, {"sec": "Sessions", "keys": "tmux attach -t <name>", "desc": "Attach to the session <name>."}, {"sec": "Sessions", "keys": "tmux ls", "desc": "List all sessions."}, {"sec": "Sessions", "keys": "tmux kill-session -t <name>", "desc": "Kill the session <name>."}, {"sec": "Sessions", "keys": "tmux kill-server", "desc": "Kill the tmux server and all sessions."}, {"sec": "Sessions", "keys": "C-b d", "desc": "Detach from the current session."}, {"sec": "Sessions", "keys": "C-b s", "desc": "List sessions and windows (choose-tree)."}, {"sec": "Sessions", "keys": "C-b $", "desc": "Rename the current session."}, {"sec": "Sessions", "keys": "C-b (", "desc": "Switch to the previous session."}, {"sec": "Sessions", "keys": "C-b )", "desc": "Switch to the next session."}, {"sec": "Sessions", "keys": "C-b L", "desc": "Switch to the last (previously used) session."}, {"sec": "Sessions", "keys": "C-b D", "desc": "Choose a client to detach."}, {"sec": "Windows", "keys": "C-b c", "desc": "Create a new window."}, {"sec": "Windows", "keys": "C-b ,", "desc": "Rename the current window."}, {"sec": "Windows", "keys": "C-b n", "desc": "Next window."}, {"sec": "Windows", "keys": "C-b p", "desc": "Previous window."}, {"sec": "Windows", "keys": "C-b l", "desc": "Last (previously used) window."}, {"sec": "Windows", "keys": "C-b 0 \u2026 9", "desc": "Select window by number."}, {"sec": "Windows", "keys": "C-b w", "desc": "List windows."}, {"sec": "Windows", "keys": "C-b f", "desc": "Find a window by name."}, {"sec": "Windows", "keys": "C-b &", "desc": "Kill the current window (asks for confirmation)."}, {"sec": "Windows", "keys": "C-b .", "desc": "Move the window (prompts for an index)."}, {"sec": "Windows", "keys": "tmux neww -n <name> <cmd>", "desc": "New window called <name> running <cmd>."}, {"sec": "Windows", "keys": "tmux rename-window <name>", "desc": "Rename the current window from the shell."}, {"sec": "Panes", "keys": "C-b %", "desc": "Split the pane vertically (side by side)."}, {"sec": "Panes", "keys": "C-b \"", "desc": "Split the pane horizontally (top and bottom)."}, {"sec": "Panes", "keys": "C-b o", "desc": "Go to the next pane."}, {"sec": "Panes", "keys": "C-b ;", "desc": "Go to the last active pane."}, {"sec": "Panes", "keys": "C-b Up / Down / Left / Right", "desc": "Move to the pane in that direction."}, {"sec": "Panes", "keys": "C-b q", "desc": "Show pane numbers briefly."}, {"sec": "Panes", "keys": "C-b q 0 \u2026 9", "desc": "Jump to the pane with that number."}, {"sec": "Panes", "keys": "C-b x", "desc": "Kill the current pane (asks for confirmation)."}, {"sec": "Panes", "keys": "C-b z", "desc": "Zoom the pane to fill the window (toggle)."}, {"sec": "Panes", "keys": "C-b !", "desc": "Break the pane out into a new window."}, {"sec": "Panes", "keys": "C-b {", "desc": "Swap the pane with the previous one."}, {"sec": "Panes", "keys": "C-b }", "desc": "Swap the pane with the next one."}, {"sec": "Panes", "keys": "C-b C-o", "desc": "Rotate panes forward."}, {"sec": "Panes", "keys": "C-b M-o", "desc": "Rotate panes backward."}, {"sec": "Panes", "keys": "C-b Space", "desc": "Cycle through pane layouts."}, {"sec": "Panes", "keys": "C-b M-1 \u2026 M-5", "desc": "Apply a preset layout (even-horizontal, even-vertical, main-horizontal, main-vertical, tiled)."}, {"sec": "Panes", "keys": "C-b C-Up / C-Down / C-Left / C-Right", "desc": "Resize the pane by one cell."}, {"sec": "Panes", "keys": "C-b M-Up / M-Down / M-Left / M-Right", "desc": "Resize the pane by five cells."}, {"sec": "Panes", "keys": "C-b :setw synchronize-panes", "desc": "Toggle sending input to all panes at once."}, {"sec": "Panes", "keys": "tmux split-window -h", "desc": "Split vertically from the shell."}, {"sec": "Panes", "keys": "tmux send-keys -t <pane> \"<cmd>\" Enter", "desc": "Type a command into another pane."}, {"sec": "Copy mode", "keys": "C-b [", "desc": "Enter copy mode (scroll and select)."}, {"sec": "Copy mode", "keys": "q", "desc": "Quit copy mode."}, {"sec": "Copy mode", "keys": "Space", "desc": "Start a selection (vi keys)."}, {"sec": "Copy mode", "keys": "Enter", "desc": "Copy the selection and quit (vi keys)."}, {"sec": "Copy mode", "keys": "/ then ?", "desc": "Search forward / backward in copy mode."}, {"sec": "Copy mode", "keys": "C-b ]", "desc": "Paste the most recent buffer."}, {"sec": "Copy mode", "keys": "C-b =", "desc": "Choose a paste buffer interactively."}, {"sec": "Copy mode", "keys": "C-b -", "desc": "Delete the most recent paste buffer."}, {"sec": "Copy mode", "keys": "tmux show-buffer", "desc": "Print the top paste buffer from the shell."}, {"sec": "Misc", "keys": "C-b ?", "desc": "List all key bindings."}, {"sec": "Misc", "keys": "C-b :", "desc": "Open the tmux command prompt."}, {"sec": "Misc", "keys": "C-b t", "desc": "Show a big clock."}, {"sec": "Misc", "keys": "C-b i", "desc": "Display information about the current window."}, {"sec": "Misc", "keys": "C-b ~", "desc": "Show previous tmux messages."}, {"sec": "Misc", "keys": "C-b C-z", "desc": "Suspend the tmux client."}, {"sec": "Misc", "keys": "tmux source-file ~/.tmux.conf", "desc": "Reload the config file from the shell."}, {"sec": "Misc", "keys": "tmux set -g mouse on", "desc": "Enable mouse support (put in ~/.tmux.conf)."}, {"sec": "Misc", "keys": "tmux set -g prefix C-a", "desc": "Change the prefix key to C-a (in ~/.tmux.conf, then unbind C-b)."}, {"sec": "Misc", "keys": "tmux list-keys", "desc": "List key bindings from the shell."}, {"sec": "Misc", "keys": "tmux display-message -p \"#S\"", "desc": "Print the current session name from the shell."}];
+  function el(id) { return document.getElementById(id); }
+  function fail(msg) { TN.setErr(SLUG + '-error', msg); }
+  function clear() { TN.clearErr(SLUG + '-error'); }
+
+  function render() {
+    clear();
+    var q = el(SLUG + '-q').value.trim().toLowerCase();
+    var sec = el(SLUG + '-sec').value;
+    var body = el(SLUG + '-body');
+    body.innerHTML = '';
+    var n = 0;
+    DATA.forEach(function (e) {
+      if (sec && e.sec !== sec) return;
+      var hay = (e.keys + ' ' + e.sec + ' ' + e.desc).toLowerCase();
+      if (q && hay.indexOf(q) < 0) return;
+      var tr = document.createElement('tr');
+      tr.style.cssText = 'border-bottom:1px solid #27272a;cursor:pointer';
+      tr.title = 'Click to copy';
+      tr.innerHTML = '<td style="padding:8px;font-family:monospace;color:#a3e635;white-space:nowrap">' + TN.esc(e.keys) + '</td>' +
+        '<td style="padding:8px;color:#a1a1aa">' + TN.esc(e.sec) + '</td>' +
+        '<td style="padding:8px">' + TN.esc(e.desc) + '</td>';
+      (function (keys) {
+        tr.addEventListener('click', function () {
+          TN.copy(keys).then(function (ok) { if (!ok) fail('Copy failed.'); });
+        });
+      })(e.keys);
+      body.appendChild(tr);
+      n++;
+    });
+    el(SLUG + '-count').textContent = n + ' of ' + DATA.length + ' entries — click a row to copy.';
+  }
+
+  try {
+    if (!el(SLUG + '-q')) return;
+    var secs = {};
+    DATA.forEach(function (e) { secs[e.sec] = 1; });
+    var sel = el(SLUG + '-sec');
+    Object.keys(secs).forEach(function (s) {
+      var o = document.createElement('option');
+      o.value = s; o.textContent = s;
+      sel.appendChild(o);
+    });
+    TN.on(SLUG + '-q', 'input', render);
+    TN.on(SLUG + '-sec', 'change', render);
+    TN.on(SLUG + '-download', 'click', function () {
+      var md = '# tmux Cheat Sheet\n\n| Keys / Command | Section | Description |\n|---|---|---|\n' +
+        DATA.map(function (e) { return '| `' + e.keys + '` | ' + e.sec + ' | ' + e.desc + ' |'; }).join('\n') + '\n';
+      TN.downloadText(md, 'tmux-cheatsheet.md', 'text/markdown');
+    });
+    render();
+  } catch (e) { /* never throw on load */ }
+})();
+
+</script>
+</body>
+</html>
